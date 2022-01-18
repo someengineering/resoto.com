@@ -53,13 +53,9 @@ const config = {
           src: 'img/placeholder-logo.png',
         },
         items: [
-          {
-            type: 'doc',
-            docId: 'index',
-            position: 'left',
-            label: 'Documentation',
-          },
+          { to: '/docs', label: 'Documentation', position: 'left' },
           { to: '/news', label: 'News', position: 'left' },
+          { to: '/support', label: 'Support', position: 'left' },
           {
             label: 'GitHub',
             href: 'https://github.com/someengineering/resoto',

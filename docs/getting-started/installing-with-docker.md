@@ -1,0 +1,112 @@
+---
+title: Installing with Docker
+---
+
+# Installing with Docker
+
+Docker provides the ability to run an application in a loosely isolated environment called a "container."
+
+Currently, all of the requirements and components of Resoto are packaged into a single Docker container image.
+
+For more information on Docker, please see the [official Docker documentation](https://docs.docker.com).
+
+## Prerequisites
+
+- [Docker](https://docs.docker.com/get-started/#download-and-install-docker)
+- [AWS IAM access keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
+
+## Installation
+
+There are multiple ways to get the Resoto Docker image up and running.
+
+### `docker run` Command
+
+First, create a volume in which to persist data:
+
+```bash
+docker create volume resoto-data
+```
+
+Then, start the container:
+
+```bash
+docker run \
+  --name resoto \
+  -e AWS_ACCESS_KEY_ID=YOUR_ACCESS_KEY_ID \
+  -e AWS_SECRET_ACCESS_KEY=YOUR_ACCESS_KEY \
+  -e CKWORKER_COLLECTOR='AWS Example' \
+  -p 8900:8900 \
+  -v resoto-data:/data \
+  --restart unless-stopped \
+  ghcr.io/someengineering/resoto:2.0.0a10
+```
+
+And just like that, you now have Resoto running in Docker!
+
+### Docker Compose
+
+Add the following volume and service definitions to a `docker-compose.yml` file:
+
+```yml title="docker-compose.yml"
+---
+version: '3'
+
+services:
+  resoto:
+    image: ghcr.io/someengineering/resoto:2.0.0a10
+    container_name: resoto
+    environment:
+      AWS_ACCESS_KEY_ID: YOUR_ACCESS_KEY_ID
+      AWS_SECRET_ACCESS_KEY: YOUR_ACCESS_KEY
+      CKWORKER_COLLECTOR: AWS Example
+    ports:
+      - 8900:8900
+    volumes:
+      - resoto-data:/data
+    restart: unless-stopped
+```
+
+Then, run the following command from the directory containing the `docker-compose.yml` file:
+
+```bash
+docker-compose up -d
+```
+
+## Resoto CLI
+
+[`cksh` (Resoto Shell)](https://github.com/someengineering/resoto/tree/main/cksh) is used to interact with [`ckcore` (Resoto Core Graph Platform)](https://github.com/someengineering/resoto/tree/main/ckcore).
+
+To access the Resoto shell interface, simply execute the following command:
+
+```bash
+docker exec -it resoto cksh
+```
+
+## Resoto Web UI
+
+To access the Resoto web interface, navigate to [http://localhost:8900/ui](http://localhost:8900/ui) in your preferred web browser.
+
+## Updating
+
+When a new version of Resoto is available, the update process is dependent on how Resoto was installed initially.
+
+### `docker run` Command
+
+First, stop and remove the existing container:
+
+```bash
+docker stop resoto
+docker rm resoto
+```
+
+Next, recreate the container with the same parameters used previously, but updating the image tag (e.g., `2.0.0a10`) to reflect the desired Resoto release.
+
+### Docker Compose
+
+Simply edit the image tag (e.g., `2.0.0a10`) specified in the `docker-compose.yml` file to reflect the desired Resoto release.
+
+Then, run the following command from the directory containing the `docker-compose.yml` file:
+
+```bash
+docker-compose up -d
+```

@@ -7,7 +7,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Resoto by Some Engineering',
-  tagline: '',
+  tagline:
+    'Resoto is an open source tool that finds leaky resources, manages quota limits, detects drift, and cleans up!',
   url: 'https://resoto.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -24,10 +25,11 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl:
-            'https://github.com/someengineering/resoto.com/edit/main',
+          editUrl: 'https://github.com/someengineering/resoto.com/edit/main',
         },
         blog: {
+          blogTitle: 'News',
+          blogDescription: 'Resoto release notes and news',
           showReadingTime: true,
           path: 'news',
           routeBasePath: 'news',
@@ -51,9 +53,11 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'intro',
+            docId: 'index',
             position: 'left',
             label: 'Documentation',
+            showLastUpdateAuthor: true,
+            showLastUpdateTime: true,
           },
           { to: '/news', label: 'News', position: 'left' },
           {

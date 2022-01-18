@@ -26,6 +26,8 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/someengineering/resoto.com/edit/main',
+          showLastUpdateAuthor: true,
+          showLastUpdateTime: true,
         },
         blog: {
           blogTitle: 'News',
@@ -56,8 +58,6 @@ const config = {
             docId: 'index',
             position: 'left',
             label: 'Documentation',
-            showLastUpdateAuthor: true,
-            showLastUpdateTime: true,
           },
           { to: '/news', label: 'News', position: 'left' },
           {
@@ -73,6 +73,13 @@ const config = {
             position: 'right',
             className: 'header-icon-link header-linkedin-link',
             'aria-label': 'LinkedIn',
+          },
+          {
+            label: 'Twitter',
+            href: 'https://twitter.com/someengineering',
+            position: 'right',
+            className: 'header-icon-link header-twitter-link',
+            'aria-label': 'Twitter',
           },
           {
             label: 'Discord',

@@ -127,6 +127,10 @@ strong {
   --ifm-heading-color: var(--ifm-alert-foreground-color);
 }
 
+.footer {
+  --ifm-footer-link-hover-color: var(--ifm-footer-link-color);
+}
+
 .footer__title {
   font-family: var(--ifm-heading-font-family);
   color: #ffaf37;

@@ -107,6 +107,10 @@ const config = {
             title: 'Community',
             items: [
               {
+                label: 'Code of Conduct',
+                to: '/code-of-conduct',
+              },
+              {
                 label: 'Discord',
                 href: 'https://discord.gg/someengineering',
               },

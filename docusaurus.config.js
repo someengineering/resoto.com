@@ -25,7 +25,7 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl:
-            'https://github.com/someengineering/resoto.com/edit/main/docs',
+            'https://github.com/someengineering/resoto.com/edit/main',
         },
         blog: {
           showReadingTime: true,

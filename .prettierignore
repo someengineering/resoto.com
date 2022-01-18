@@ -1,0 +1,5 @@
+# Generated files which we would not like to format
+.docusaurus/
+
+# assets
+static/img/

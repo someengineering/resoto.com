@@ -90,7 +90,7 @@ html[data-theme='dark'] {
   background: #0a253f;
 }
 
-@media screen and (max-width: 996px) {
+@media screen and (max-width: 966px) {
   .header-icon-link {
     justify-content: flex-start;
   }
@@ -107,7 +107,7 @@ html[data-theme='dark'] {
   }
 }
 
-@media screen and (min-width: 997px) {
+@media screen and (min-width: 967px) {
   .header-icon-link > span {
     display: none;
   }

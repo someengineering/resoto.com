@@ -1,0 +1,19 @@
+lars:
+  name: Lars Kamp
+  image_url: https://github.com/scapecast.png
+
+lukas:
+  name: Lukas Lösche
+  image_url: https://github.com/lloesche.png
+
+matthias:
+  name: Matthias Veit
+  image_url: https://github.com/aquamatthias.png
+
+raffa:
+  name: Raffaele Picca
+  image_url: https://github.com/RPicster.png
+
+doris:
+  name: Doris Houng
+  image_url: https://github.com/TheCatLady.png

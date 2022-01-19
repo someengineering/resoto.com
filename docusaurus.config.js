@@ -33,11 +33,12 @@ const config = {
           remarkPlugins: [a11yEmoji],
         },
         blog: {
-          blogTitle: 'News',
-          blogDescription: 'Resoto release notes and news',
+          blogTitle: 'Blog',
+          blogDescription: 'Resoto blog',
+          blogSidebarTitle: 'Posts',
+          path: 'blog',
+          routeBasePath: 'blog',
           showReadingTime: true,
-          path: 'news',
-          routeBasePath: 'news',
           remarkPlugins: [a11yEmoji],
         },
         theme: {
@@ -46,9 +47,31 @@ const config = {
       }),
     ],
   ],
+  plugins: [
+    [
+      '@docusaurus/plugin-content-blog',
+      {
+        id: 'news',
+        blogTitle: 'News',
+        blogDescription: 'Resoto release notes and updates',
+        blogSidebarTitle: 'Announcements',
+        path: 'news',
+        routeBasePath: 'news',
+        showReadingTime: true,
+        remarkPlugins: [a11yEmoji],
+      },
+    ],
+  ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      metadata: [
+        {
+          name: 'keywords',
+          content:
+            'resoto, some engineering, sre, cloud, cloud services, cloud providers, aws, amazon web services, gcp, google cloud platform, azure, docker, kubernetes, k8s, devops, prometheus, infrastructure, resource tool, multicloud, metrics, python, terraform, vsphere, finops, risotto',
+        },
+      ],
       navbar: {
         title: 'Resoto',
         logo: {
@@ -58,6 +81,7 @@ const config = {
         items: [
           { to: '/docs', label: 'Documentation', position: 'left' },
           { to: '/news', label: 'News', position: 'left' },
+          { to: '/blog', label: 'Blog', position: 'left' },
           { to: '/support', label: 'Support', position: 'left' },
           {
             label: 'GitHub',

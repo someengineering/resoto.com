@@ -15,8 +15,9 @@ const config = {
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/placeholder-logo.png',
   organizationName: 'someengineering',
-  projectName: 'resoto',
+  projectName: 'resoto.com',
   deploymentBranch: 'gh-pages',
+  trailingSlash: false,
 
   presets: [
     [

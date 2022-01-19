@@ -148,12 +148,12 @@ const config = {
             title: 'Legal',
             items: [
               {
-                label: 'Terms',
-                href: 'https://some.engineering/terms.html',
+                label: 'Privacy Policy',
+                href: 'https://some.engineering/privacy.html',
               },
               {
-                label: 'Privacy',
-                href: 'https://some.engineering/privacy.html',
+                label: 'Terms of Use',
+                href: 'https://some.engineering/terms.html',
               },
             ],
           },

@@ -173,6 +173,10 @@ strong {
   --ifm-footer-link-hover-color: var(--ifm-footer-link-color);
 }
 
+.footer__copyright a {
+  color: #89d1f1;
+}
+
 .footer__title {
   font-family: var(--ifm-heading-font-family);
   color: #ffaf37;

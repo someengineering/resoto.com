@@ -3,6 +3,7 @@
 
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const a11yEmoji = require('@fec/remark-a11y-emoji');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -29,6 +30,7 @@ const config = {
           editUrl: 'https://github.com/someengineering/resoto.com/edit/main',
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
+          remarkPlugins: [a11yEmoji],
         },
         blog: {
           blogTitle: 'News',
@@ -36,6 +38,7 @@ const config = {
           showReadingTime: true,
           path: 'news',
           routeBasePath: 'news',
+          remarkPlugins: [a11yEmoji],
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -43,7 +46,6 @@ const config = {
       }),
     ],
   ],
-
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({

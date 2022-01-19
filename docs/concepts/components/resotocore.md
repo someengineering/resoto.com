@@ -21,7 +21,7 @@ The `resotocore` API is exposed at `http://<resoto-address>:8900/api-doc`.
 
 The `cli/evaluate` functinality is used internally on every `cli/execute` before the command executes.
 
-Below is a simulation of sending a [`resotoshell`](./resotoshell.md) query to the CLI API.
+Below is a simulation of sending a [`resh`](./resh.md) query to the CLI API.
 
 We will evaluate the query before executing it for demonstration. We also introduce this query with a typo to show the response if not successful.
 

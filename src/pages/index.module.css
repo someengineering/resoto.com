@@ -24,3 +24,7 @@
   align-items: center;
   justify-content: center;
 }
+
+.buttons > * {
+  margin-right: 1rem;
+}

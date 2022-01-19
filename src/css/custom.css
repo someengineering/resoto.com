@@ -43,12 +43,6 @@ html[data-theme='dark'] {
   --ifm-background-color: #000d19;
 }
 
-.hero {
-  --ifm-hero-background-color: #0a253f;
-  --ifm-heading-color: #ffaf37;
-  --ifm-hero-text-color: var(--ifm-color-gray-300);
-}
-
 .navbar,
 .navbar-sidebar {
   background-color: #0f3356;

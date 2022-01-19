@@ -4,6 +4,9 @@
  */
 
 .heroBanner {
+  --ifm-hero-background-color: #0a253f;
+  --ifm-heading-color: #ffaf37;
+  --ifm-hero-text-color: var(--ifm-color-gray-300);
   padding: 4rem 0;
   text-align: center;
   position: relative;

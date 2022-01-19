@@ -35,4 +35,9 @@ module.exports = {
     'prettier/prettier': ['error', { endOfLine: 'auto' }],
   },
   reportUnusedDisableDirectives: true,
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
 };

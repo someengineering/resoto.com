@@ -13,7 +13,7 @@
     "clear": "docusaurus clear",
     "deploy": "docusaurus deploy",
     "format": "prettier --write .",
-    "lint": "eslint \"./src/**/*.{ts,tsx,md}\" \"./docs/**/*.{ts,tsx,md}\" \"./news/**/*.{ts,tsx,md}\"",
+    "lint": "eslint \"./**/*.{ts,tsx}\"",
     "prepare": "husky install",
     "serve": "docusaurus serve",
     "start": "docusaurus start",

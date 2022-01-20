@@ -15,6 +15,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Checkout someengineering/resoto
+        if: github.event_name != 'pull_request' && !contains(github.event.head_commit.message, '[skip ci]')
+        uses: actions/checkout@v2
+        with:
+          repository: someengineering/resoto
+          path: resoto
+      - name: Generate resotocore API Swagger UI
+        if: github.event_name != 'pull_request' && !contains(github.event.head_commit.message, '[skip ci]')
+        uses: Legion2/swagger-ui-action@v1
+        with:
+          output: static/api
+          spec-file: resoto/resotocore/core/static/api-doc.yaml
       - name: Install dependencies
         env:
           HUSKY_SKIP_INSTALL: 1

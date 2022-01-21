@@ -41,6 +41,7 @@ html[data-theme='dark'] {
 
 .navbar__brand {
   font-size: 1.75em;
+  text-transform: lowercase;
 }
 
 .header-icon-link:before {

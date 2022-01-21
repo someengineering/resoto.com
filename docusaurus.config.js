@@ -72,6 +72,10 @@ const config = {
             'resoto, some engineering, sre, cloud, cloud services, cloud providers, aws, amazon web services, gcp, google cloud platform, azure, docker, kubernetes, k8s, devops, prometheus, infrastructure, resource tool, multicloud, metrics, python, terraform, vsphere, finops, risotto',
         },
       ],
+      tableOfContents: {
+        minHeadingLevel: 2,
+        maxHeadingLevel: 5,
+      },
       navbar: {
         title: 'Resoto',
         logo: {
@@ -116,23 +120,23 @@ const config = {
       footer: {
         style: 'dark',
         links: [
-          // {
-          //   title: 'Documentation',
-          //   items: [
-          //     {
-          //       label: 'Tutorials',
-          //       to: '/docs/tutorial',
-          //     },
-          //     {
-          //       label: 'Concepts',
-          //       to: '/docs/concept',
-          //     },
-          //     {
-          //       label: 'Reference',
-          //       to: '/docs/reference',
-          //     },
-          //   ],
-          // },
+          {
+            title: 'Documentation',
+            items: [
+              {
+                label: 'Getting Started',
+                to: '/docs/getting-started',
+              },
+              {
+                label: 'Concepts',
+                to: '/docs/concepts',
+              },
+              {
+                label: 'Reference',
+                to: '/docs/reference',
+              },
+            ],
+          },
           {
             title: 'Community',
             items: [

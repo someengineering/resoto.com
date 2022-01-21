@@ -9,12 +9,12 @@ const a11yEmoji = require('@fec/remark-a11y-emoji');
 const config = {
   title: 'Resoto by Some Engineering',
   tagline:
-    'Resoto is an open source tool that finds leaky resources, manages quota limits, detects drift, and cleans up!',
+    'Find leaky resources, manage quota limits, detect drift, and clean up!',
   url: 'https://resoto.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/placeholder-logo.png',
+  favicon: 'img/favicon.ico',
   organizationName: 'someengineering',
   projectName: 'resoto.com',
   deploymentBranch: 'gh-pages',
@@ -76,7 +76,7 @@ const config = {
         title: 'Resoto',
         logo: {
           alt: 'Resoto Logo',
-          src: 'img/placeholder-logo.png',
+          src: 'img/logo-md.svg',
         },
         items: [
           { to: '/docs', label: 'Documentation', position: 'left' },

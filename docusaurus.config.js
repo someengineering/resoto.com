@@ -83,6 +83,7 @@ const config = {
           src: 'img/logo-md.svg',
         },
         items: [
+          { to: '/about', label: 'About', position: 'left' },
           { to: '/docs', label: 'Documentation', position: 'left' },
           { to: '/news', label: 'News', position: 'left' },
           { to: '/blog', label: 'Blog', position: 'left' },

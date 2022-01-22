@@ -37,7 +37,14 @@ html[data-theme='dark'] {
   text-transform: lowercase;
 }
 
+.header-icon-link > span {
+  display: none;
+}
+
 .header-icon-link:before {
+  width: 2em;
+  height: 2em;
+  margin-left: -0.75em;
   background-color: var(--ifm-navbar-link-color);
   -webkit-mask-image: var(--icon);
   mask-image: var(--icon);
@@ -56,33 +63,18 @@ html[data-theme='dark'] {
 
   .header-icon-link > span {
     margin-left: 0.5em;
+    display: inline;
   }
 
   .header-icon-link:before {
     width: 1.25em;
     height: 1.25em;
+    margin: 0;
     background-color: var(--ifm-menu-color);
   }
 
   .header-icon-link:hover:before {
     background-color: var(--ifm-menu-color);
-  }
-}
-
-@media screen and (min-width: 967px) {
-  .header-icon-link > span {
-    display: none;
-  }
-
-  .header-icon-link:before {
-    width: 2em;
-    height: 2em;
-    margin-left: -0.75em;
-    background-color: var(--ifm-navbar-link-color);
-  }
-
-  .header-icon-link:hover:before {
-    background-color: var(--ifm-navbar-link-hover-color);
   }
 }
 

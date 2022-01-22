@@ -1,12 +1,20 @@
-# Selecting Nodes
+---
+sidebar_position: 1
+---
 
-## By [Kind](../../../concepts/graph/node.md#kind)
+# Basic Queries
+
+## Selecting Nodes by ID
+
+Nodes can be selected by their id via the `id(xyz)` function. This function can be used globally no matter which section is used.
+
+## Selecting Nodes by [Kind](../../../concepts/graph/node.md#kind)
 
 In order to select nodes by a specific type, the query language supports the `is(kind)` function. The term `is(instance)` would select the EC2 instance above, but also all other instances, e.g. Google Cloud instances.
 
 The term `is(aws_ec2_instance)` would select only EC2 instances from AWS.
 
-## By Predicate
+## Selecting Nodes by Predicate
 
 In order to filter for specific attributes of a node, it is possible to define predicates.
 A predicate always has the syntax: `<property_path> <operation> <value>` (e.g. `answer!=42`).
@@ -122,33 +130,7 @@ instance_cores > 2
 
 :::
 
-## By ID
-
-Nodes can be selected by their id via the `id(xyz)` function. This function can be used globally no matter which section is used.
-
-## Combining Selections
-
-All listed selections can be combined with `and` and `or` clauses.
-
-In order to define precedence, simply enclose terms with brackets.
-
-:::tip Examples
-
-```bash title="Select nodes where reported.name is either sunrise or sunset"
-query name == sunset or name == sunrise
-```
-
-```bash title="Select aws_ec2_instance nodes where reported.name is sunrise"
-query is(aws_ec2_instance) and name==sunrise
-```
-
-```bash title="Select aws_ec2_instance nodes of specific type or more than 2 cores"
-query is(aws_ec2_instance) and (instance_type=="m5a.large" or instance_cores>2)
-```
-
-:::
-
-## By Traversal
+## Selecting Nodes by Traversal
 
 `<--` traverses the graph inbound, `-->` traverses the graph outbound.
 
@@ -289,5 +271,27 @@ There are also commands doing a traversal selection that you can chain using a p
 | <code>query is(aws_region) &#124; successors</code>   | `query is(aws_region) -->`     |
 | <code>query is(aws_region) &#124; ancestors</code>    | `query is(aws_region) <-[1:]-` |
 | <code>query is(aws_region) &#124; descendants</code>  | `query is(aws_region) -[1:]->` |
+
+:::
+
+## Combining Selections
+
+All listed selections can be combined with `and` and `or` clauses.
+
+In order to define precedence, simply enclose terms with brackets.
+
+:::tip Examples
+
+```bash title="Select nodes where reported.name is either sunrise or sunset"
+query name == sunset or name == sunrise
+```
+
+```bash title="Select aws_ec2_instance nodes where reported.name is sunrise"
+query is(aws_ec2_instance) and name==sunrise
+```
+
+```bash title="Select aws_ec2_instance nodes of specific type or more than 2 cores"
+query is(aws_ec2_instance) and (instance_type=="m5a.large" or instance_cores>2)
+```
 
 :::

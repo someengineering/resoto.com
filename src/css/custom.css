@@ -111,9 +111,15 @@ h5 code {
   border: none;
 }
 
-/* strong {
-  color: var(--ifm-color-primary);
-} */
+em,
+strong {
+  color: var(--ifm-color-primary-darkest);
+}
+
+html[data-theme='dark'] em,
+html[data-theme='dark'] strong {
+  color: var(--ifm-color-primary-lightest);
+}
 
 .admonition-heading {
   --ifm-heading-color: var(--ifm-alert-foreground-color);

@@ -4,7 +4,13 @@ title: About
 
 # About Resoto
 
-## Origin
+Resoto indexes resources, captures dependencies, and maps out your infrastructure in an understandable [graph](/docs/concepts/graph). The graph contains metrics for each [resource](/docs/reference/resources).
+
+Developers and SREs can search the graph with a [query language](/docs/reference/cli/query), and create alerting and clean-up [workflows](/docs/concepts/automation/workflow).
+
+Metrics can be aggregated and exported to a time-series database such as [Prometheus](https://prometheus.io).
+
+## Origin and Story
 
 [Lukas](https://github.com/lloesche) started developing "Cloudkeeper" (now known as **Resoto**) in late 2019 as an internal project at [D2iQ](<https://[D2iQ](https://d2iq.com/).com/>) (formerly Mesosphere).
 

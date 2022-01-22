@@ -16,34 +16,34 @@ total unmatched: 0
 
 To help you find the information you need, the documentation is structured as follows:
 
-- [Getting Started](/docs/getting-started) walks you through how to install and use Resoto, step by step. Start here if you're new to Resoto.
+- [Getting Started](/docs/getting-started) walks you through how to install and use Resoto, step by step. _Start here if you're new to Resoto._
 <!-- - [How-To Guides](/docs/how-to) provide guided instructions for specific use cases and scenarios. -->
-- [Concepts](/docs/concepts) describe key topics and ideas, and provide an overview of Resoto's architecture and components.
-- [Reference](/docs/reference) is a manual describing the CLI and data model. It is assumed that you have a basic understanding of important concepts.
+- [Concepts](/docs/concepts) describe key topics and ideas, and provide an overview of how Resoto works and its [components](./concepts/components/README.md).
+- [Reference](/docs/reference) is a manual describing the [command-line interface (CLI)](./reference/cli/README.md) and [data models](./reference/resources/data-models.md). It is assumed that you have a basic understanding of important concepts.
 <!-- - [Contributing](/docs/contributing) lists instructions and guidelines for contributing to Resoto. -->
 
 ## What Is Resoto?
 
-Resoto indexes resources, captures dependencies and maps out your infrastructure in an understandable graph. The graph contains metrics for each resource.
+Resoto indexes resources, captures dependencies, and maps out your infrastructure in an understandable [graph](/docs/concepts/graph). The graph contains metrics for each [resource](/docs/reference/resources).
 
-Developers and SREs can **search the graph with a query language**, and create **alerting and clean-up workflows**.
+Developers and SREs can search the graph with a [query language](/docs/reference/cli/query), and create alerting and clean-up [workflows](./concepts/automation/workflow.md).
 
-Metrics can be aggregated and exported to a time series database like Prometheus.
+Metrics can be aggregated and exported to a time-series database such as [Prometheus](https://prometheus.io).
 
 ## Why Resoto?
 
-Have you ever...
+Have you ever…
 
 - had a standstill in your CI pipeline because a broken job leaked cloud resources and triggered a [quota limit](./reference/cli/query/examples.md#quota)?
 - wanted to find all expired [certificates](./reference/cli/query/examples.md#certificate)?
 - had to change the [tags](./reference/cli/tag.md) of thousands of EC2 instances?
 - needed to delete all unused EBS [volumes](./reference/cli/query/examples.md#volume) with no I/O in the past month?
-- wished for an aggregate view of resource usage across all cloud services?
+- wished for an [aggregate](./reference/cli/query/aggregation.md) view of resource usage across all cloud services?
 - tediously created a report of the cost of a project across different accounts or cloud services?
 - manually cleaned up orphaned [load balancers](./reference/cli/query/examples.md#aws_alb) that had no active backends?
 - wanted to [automate](./concepts/automation/workflow.md) any of the above?
 
-If you answered yes to any of the above, then Resoto was built to make your life easier!
+If you answered **yes** to any of the above, then Resoto was built to make _your_ life easier!
 
 ## Supported Cloud Providers and Integrations
 

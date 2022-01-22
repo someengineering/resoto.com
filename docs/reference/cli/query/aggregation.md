@@ -25,7 +25,7 @@ If we only want to know the number of instances, that matches that criteria, we 
 > count: 20
 ```
 
-... which would return the total number of all compute instances that are older than 3 years.
+… which would return the total number of all compute instances that are older than 3 years.
 
 You can see the `aggregate():` part in front of the filter query part. The query part itself has not changed - the aggregation part tells Resoto to aggregate the resulting data based on the defined criteria.
 

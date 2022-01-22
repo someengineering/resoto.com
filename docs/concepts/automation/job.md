@@ -119,7 +119,7 @@ could be natural candidates for automation:
 
   or you can use the `tag` command to directly fix the issue.
 
-- Many more...
+- And much more…
 
 This list should give inspiration for possible jobs that can be automated and is by no means complete.
 We are interested in your use case - so please create a PR and extend this list.

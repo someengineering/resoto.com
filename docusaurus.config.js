@@ -152,10 +152,6 @@ const config = {
                 label: 'LinkedIn',
                 href: 'https://www.linkedin.com/company/someengineering/',
               },
-              // {
-              //   label: 'Help',
-              //   href: '/community/support',
-              // },
             ],
           },
           {
@@ -164,6 +160,10 @@ const config = {
               {
                 label: 'News',
                 href: '/news',
+              },
+              {
+                label: 'Blog',
+                href: '/blog',
               },
               {
                 label: 'GitHub',
@@ -191,7 +191,7 @@ const config = {
         ],
         logo: {
           alt: 'Some Engineering Logo',
-          src: 'img/someengineering.png',
+          src: 'img/someengineering.svg',
           href: 'https://some.engineering',
           width: 167,
           height: 121,

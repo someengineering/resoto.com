@@ -16,11 +16,11 @@ total unmatched: 0
 
 To help you find the information you need, the documentation is structured as follows:
 
-- [Getting Started](./getting-started) walks you through how to install and use Resoto, step by step. Start here if you're new to Resoto.
-<!-- - [How-To Guides](./how-to) provide guided instructions for specific use cases and scenarios. -->
-- [Concepts](./concepts) describe key topics and ideas, and provide an overview of Resoto's architecture and components.
-- [Reference](./reference) is a manual describing the CLI and data model. It is assumed that you have a basic understanding of important concepts.
-<!-- - [Contributing](./contributing) lists instructions and guidelines for contributing to Resoto. -->
+- [Getting Started](/docs/getting-started) walks you through how to install and use Resoto, step by step. Start here if you're new to Resoto.
+<!-- - [How-To Guides](/docs/how-to) provide guided instructions for specific use cases and scenarios. -->
+- [Concepts](/docs/concepts) describe key topics and ideas, and provide an overview of Resoto's architecture and components.
+- [Reference](/docs/reference) is a manual describing the CLI and data model. It is assumed that you have a basic understanding of important concepts.
+<!-- - [Contributing](/docs/contributing) lists instructions and guidelines for contributing to Resoto. -->
 
 ## What Is Resoto?
 

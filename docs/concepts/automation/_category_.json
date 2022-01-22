@@ -1,3 +1,8 @@
 {
-  "label": "Automation"
+  "label": "Automation",
+  "link": {
+    "type": "generated-index",
+    "title": "Automation",
+    "slug": "/concepts/automation"
+  }
 }

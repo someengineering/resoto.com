@@ -27,7 +27,7 @@
 }
 
 .heroSubtitle strong {
-  color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary) !important;
 }
 
 @media only screen and (max-width: 768px) {

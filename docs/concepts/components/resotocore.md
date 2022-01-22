@@ -12,14 +12,14 @@ Within `resotocore`, there are workflows consisting of steps that result in acti
 
 ## API
 
-The `resotocore` API is exposed at `http://<resoto-address>:8900/api-doc`.
+The `resotocore` API is exposed at `http://<resoto-address>:8900/api-doc`. You can also access it at [`https://resoto.com/api`](https://resoto.com/api).
 
 `resotocore` has two API endpoints to connect to for CLI purposes:
 
-1. `http://<resoto-address>:8900/cli/evaluate`
-2. `http://<resoto-address>:8900/cli/execute`
+1. `/cli/evaluate`
+2. `/cli/execute`
 
-The `cli/evaluate` functinality is used internally on every `cli/execute` before the command executes.
+The `cli/evaluate` functinality is used internally on every `/cli/execute` before the command executes.
 
 Below is a simulation of sending a [`resh`](./resh.md) query to the CLI API.
 
@@ -103,4 +103,4 @@ Message: expected one of '!=', '!~', '<', '<=', '=', '==', '=~', '>', '>=', '[A-
 # More API Endpoints
 
 `resotocore` is the central hub for everything Resoto does.
-You can explore additional `resotocore` API endpoints at `http://<resoto-address>:8900/`.
+You can explore additional `resotocore` API endpoints at `http://<resoto-address>:8900/` or [`https://resoto.com/api`](https://resoto.com/api).

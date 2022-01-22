@@ -1,6 +1,6 @@
 # Access Permissions
 
-To use Resoto with all it's features - including cleanup - it requires wide permissions. It needs to collect all the resources, do tag validations and updates as well as deleting resources.
+To use Resoto with all it's features—including cleanup—it requires wide permissions. It needs to collect all the resources, do tag validations and updates as well as deleting resources.
 
 To use Resoto in a read-only capacity you can limit access to your cloud provider accordingly.
 
@@ -333,7 +333,7 @@ To use Resoto in a read-only capacity it needs the following IAM role permission
 
 ### Full capabilities
 
-For production use - where Resoto also clean-up and validate tags - the needed permission role is a PowerUser that is locked down to not be able to create any resources or modify IAM settings.
+For production use—where Resoto also clean-up and validate tags—the needed permission role is a PowerUser that is locked down to not be able to create any resources or modify IAM settings.
 
 The following three policies are needed for Resoto to run with full capabilities.
 

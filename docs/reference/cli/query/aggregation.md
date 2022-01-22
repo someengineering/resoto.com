@@ -27,14 +27,14 @@ If we only want to know the number of instances, that matches that criteria, we 
 
 … which would return the total number of all compute instances that are older than 3 years.
 
-You can see the `aggregate():` part in front of the filter query part. The query part itself has not changed - the aggregation part tells Resoto to aggregate the resulting data based on the defined criteria.
+You can see the `aggregate():` part in front of the filter query part. The query part itself has not changed—the aggregation part tells Resoto to aggregate the resulting data based on the defined criteria.
 
 Every resulting element of the filter query is passed to the aggregation function. This function can aggregate data from the incoming element using on of `sum(x)`, `min(x)`, `max(x)` or `avg(x)`.
 
 :::tip
 This criteria in this case is `sum(1) as count`, which uses the static value `1` for every element passed and then sums it up.
 
-Since every element counts as `1` - `sum(1)` is basically the number of elements passed.
+Since every element counts as `1`; `sum(1)` is basically the number of elements passed.
 
 Please note, that the variable to sum does not need to be a static value, but could come from the element passed to this function.
 :::

@@ -8,9 +8,9 @@ title: About
 
 [Lukas](https://github.com/lloesche) started developing "Cloudkeeper" (now known as **Resoto**) in late 2019 as an internal project at [D2iQ](<https://[D2iQ](https://d2iq.com/).com/>) (formerly Mesosphere).
 
-At the time, [Lukas](https://github.com/lloesche) was an SRE at [D2iQ](https://d2iq.com/) and needed a tool to give him the big picture of all cloud resources running, automate their documentation, and reduce spend.
+At the time, [Lukas](https://github.com/lloesche) was a site reliability engineer (SRE) at [D2iQ](https://d2iq.com/) and needed a tool to give him the big picture of all cloud resources running, automate their documentation, and reduce spend.
 
-Like all startups, [D2iQ](https://d2iq.com/) had prioritized growth. Engineering headcount at [D2iQ](https://d2iq.com/) had grown to over 200 people, with some 40+ AWS sub-accounts, and everyone was spinning up resources. A team of just three SREs had to support all this growth, and their priority was to build things that would increase feature velocity. "Let's worry later about that SRE stuff."
+Like all startups, [D2iQ](https://d2iq.com/) had prioritized growth. Engineering headcount at [D2iQ](https://d2iq.com/) had grown to over 200 people, with some 40+ [AWS](https://aws.amazon.com) sub-accounts, and everyone was spinning up resources. A team of just three SREs had to support all this growth, and their priority was to build things that would increase feature velocity. "Let's worry about that SRE stuff later."
 
 As a result, [D2iQ](https://d2iq.com/)'s [Amazon Web Services (AWS)](https://aws.amazon.com) bill kept creeping up. From the mid 5-figure range to the mid 6-figure range _every month_. [D2iQ](https://d2iq.com/) as a business had grown too, but cloud spend was growing much faster than customers and revenue. There also were outages. Usually because some obscure [AWS](https://aws.amazon.com) service in a sub-account had run into quota limit, which brought the entire development pipeline to a halt.
 

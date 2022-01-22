@@ -74,12 +74,12 @@ docker-compose up -d
 
 ## Resoto CLI
 
-[`cksh` (Resoto Shell)](https://github.com/someengineering/resoto/tree/main/cksh) is used to interact with [`ckcore` (Resoto Core Graph Platform)](https://github.com/someengineering/resoto/tree/main/ckcore).
+[`resh`](../concepts/components/resh.md) is used to interact with [`resotocore`](../concepts/components/resotocore.md).
 
 To access the Resoto shell interface, simply execute the following command:
 
 ```bash
-docker exec -it resoto cksh
+docker exec -it resoto resh
 ```
 
 ## Resoto Web UI

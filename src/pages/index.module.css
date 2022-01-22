@@ -1,11 +1,4 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
-
 .hero {
-  /* background-color: #cccccc; */
-  /* background-color: #2b3137; */
   background-color: var(--ifm-color-primary-contrast-background);
   padding: 48px;
 }

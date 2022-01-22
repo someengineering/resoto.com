@@ -15,7 +15,7 @@ function HomepageHeader() {
           alt="Resoto Logo"
         />
         <h1 className={styles.heroTitle}>{siteConfig.title}</h1>
-        <span
+        <div
           className={styles.heroSubtitle}
           dangerouslySetInnerHTML={{
             __html:

@@ -38,7 +38,7 @@ You can pipe commands using `|` and chain multiple commands using `;`.
 | `start_task`                 | Start a task with the given name.                                                   |
 | `successors`                 | Select all successor of this node in the graph.                                     |
 | `system`                     | Access and manage system wide properties.                                           |
-| `tag`                        | Update a tag with provided value or delete a tag                                    |
+| [`tag`](./tag.md)            | Update a tag with provided value or delete a tag                                    |
 | `tail`                       | Return `n` last elements of the stream.                                             |
 | `templates`                  | Access the query template library.                                                  |
 | `uniq`                       | Remove all duplicated objects from the stream.                                      |

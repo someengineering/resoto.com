@@ -5,6 +5,7 @@ import Emoji from 'a11y-react-emoji';
 import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
 import HomepageFeatures from '../components/HomepageFeatures';
+import GitHubLogo from './github.svg';
 import styles from './index.module.css';
 
 function HomepageHeader() {
@@ -43,6 +44,7 @@ function HomepageHeader() {
               rel="noreferrer noopener"
               className="button button--primary button--lg"
             >
+              <GitHubLogo className={styles.buttonIcon} />
               View on GitHub
             </a>
             {!!githubStars && (

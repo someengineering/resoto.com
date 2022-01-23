@@ -76,6 +76,10 @@ const config = {
         minHeadingLevel: 2,
         maxHeadingLevel: 5,
       },
+      announcementBar: {
+        id: 'announcementBar-1', // Increment on change
+        content: `<span aria-label="star" role="img">⭐</span> If you like Resoto, please star the project on <a href="https://github.com/someengineering/resoto" target="_blank" rel="noopener noreferrer">GitHub</a> and follow Some Engineering, Inc. on <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/company/someengineering">LinkedIn</a>. Thanks for your support! <span aria-label="heart" role="img">❤️</span>`,
+      },
       navbar: {
         title: 'Resoto',
         logo: {

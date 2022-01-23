@@ -35,6 +35,8 @@
 }
 
 .heroButtons > * {
+  display: inline-flex;
+  align-items: center;
   margin-right: 0.75rem;
   padding: calc(
       var(--ifm-button-padding-vertical) * var(--ifm-button-size-multiplier)
@@ -43,6 +45,12 @@
       var(--ifm-button-padding-horizontal) * var(--ifm-button-size-multiplier) *
         3 / 5
     );
+}
+
+.buttonIcon {
+  margin-right: 0.5rem;
+  width: 1em;
+  height: 1em;
 }
 
 .speechButton {

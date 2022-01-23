@@ -1,31 +1,26 @@
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import { Octokit } from '@octokit/core';
 import Layout from '@theme/Layout';
 import Emoji from 'a11y-react-emoji';
 import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
 import HomepageFeatures from '../components/HomepageFeatures';
+import { getGithubStars, getLatestTag } from '../utils/githubHelper';
 import GitHubLogo from './github.svg';
 import styles from './index.module.css';
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
-  const [githubStars, setGithubStars] = useState(undefined);
+  const [resotoVersion, setResotoVersion] = useState<string | null>(null);
+  const [githubStars, setGithubStars] = useState<number | null>(null);
 
   useEffect(() => {
-    const getGithubStars = async () => {
-      try {
-        const res = await new Octokit().request(
-          '/repos/someengineering/resoto'
-        );
-        setGithubStars(res.data.stargazers_count);
-      } catch (err) {
-        setGithubStars(undefined);
-      }
+    const getGithubData = async () => {
+      setResotoVersion(await getLatestTag('someengineering', 'resoto'));
+      setGithubStars(await getGithubStars('someengineering', 'resoto'));
     };
 
-    getGithubStars();
-  });
+    getGithubData();
+  }, []);
 
   return (
     <header className={styles.hero}>
@@ -45,7 +40,7 @@ function HomepageHeader() {
               className="button button--primary button--lg"
             >
               <GitHubLogo className={styles.buttonIcon} />
-              View on GitHub
+              {resotoVersion}
             </a>
             {!!githubStars && (
               <a

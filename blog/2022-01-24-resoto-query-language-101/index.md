@@ -5,7 +5,7 @@ tags: [query language, aws]
 image: ./img/finance-no-context.png
 ---
 
-# Query Language 101
+# Resoto Query Language 101
 
 <!-- ![Confused Sheep with Abacus](./img/finance-no-context.png) -->
 

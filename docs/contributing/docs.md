@@ -56,9 +56,10 @@ git checkout -b YOUR_BRANCH_NAME main
 
 ### Starting the Development Server
 
-We are finally able to get to the fun stuff! 🥳 Start a local development server:
+We are finally able to get to the fun stuff! 🥳 Install dependencies and start a local development server:
 
 ```bash
+yarn
 yarn start
 ```
 

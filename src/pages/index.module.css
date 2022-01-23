@@ -78,9 +78,11 @@
 .heroLogo {
   height: 100%;
   width: auto;
-  max-height: 250px;
+  max-height: 215px;
   flex-shrink: 0;
   margin-left: 1rem;
+  animation-duration: 2s;
+  animation-name: logo-animation;
 }
 
 @media only screen and (max-width: 1099px) {
@@ -119,5 +121,25 @@
     float: none;
     margin: 0 auto 20px;
     max-height: 200px;
+  }
+}
+
+@keyframes logo-animation {
+  from {
+    opacity: 0;
+    transform: rotate(30deg);
+    transform-origin: top left;
+  }
+
+  50% {
+    transform: rotate(-10deg);
+  }
+
+  70% {
+    transform: rotate(3deg);
+  }
+
+  to {
+    opacity: 1;
   }
 }

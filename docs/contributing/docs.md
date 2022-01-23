@@ -20,9 +20,9 @@ Simply click the link, make your changes, and select the "**Create a new branch 
 
 For supported Markdown features, please refer to the [Docusaurus documentation](https://docusaurus.io/docs/markdown-features).
 
-## Git
+### Git
 
-### Prerequisites
+#### Prerequisites
 
 - [Git](https://git-scm.com)
 - Code editor
@@ -30,7 +30,7 @@ For supported Markdown features, please refer to the [Docusaurus documentation](
 - [Node.js](https://nodejs.org)
 - [Yarn](https://yarnpkg.com)
 
-### Cloning the Repository
+#### Cloning the Repository
 
 You will first need to [fork](https://docs.github.com/get-started/quickstart/fork-a-repo) the repository.
 
@@ -54,7 +54,7 @@ We will now create a new [branch](https://git-scm.com/book/en/v2/Git-Branching-B
 git checkout -b YOUR_BRANCH_NAME main
 ```
 
-### Starting the Development Server
+#### Starting the Development Server
 
 We are finally able to get to the fun stuff! 🥳 Install dependencies and start a local development server:
 
@@ -65,7 +65,7 @@ yarn start
 
 You will notice that `http://localhost:3000` has been opened in your browser, where you can see your changes reflected live.
 
-### Pushing Your Changes
+#### Pushing Your Changes
 
 After you are done authoring your changes, be sure to verify that they will pass our [lint](<https://en.wikipedia.org/wiki/Lint_(software)>) and build [continuous integration](https://docs.github.com/actions/automating-builds-and-tests/about-continuous-integration) checks.
 
@@ -88,7 +88,7 @@ git push --set-upstream origin YOUR_BRANCH_NAME
 
 You can now [submit your pull request on GitHub](https://github.com/someengineering/resoto.com/pulls)! You are welcome to [open your pull request as a draft](https://docs.github.com/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests#draft-pull-requests) for early feedback and review. Be sure to follow the pull request template!
 
-### Keeping Your Branch Up-to-Date
+#### Keeping Your Branch Up-to-Date
 
 If there are new commits to the `main` branch of the repository, you can update your branch by rebasing from your `upstream` remote:
 

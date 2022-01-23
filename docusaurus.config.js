@@ -140,6 +140,10 @@ const config = {
                 label: 'Reference',
                 to: '/docs/reference',
               },
+              {
+                label: 'Contributing',
+                to: '/docs/contributing',
+              },
             ],
           },
           {

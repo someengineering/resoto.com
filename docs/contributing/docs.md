@@ -8,7 +8,7 @@ The Resoto website and documentation are built with [Docusaurus](https://docusau
 
 ## Authoring Changes
 
-Contributions are made via [pull requests to the GitHub repository](https://github.com/someengineering/resoto.com/pulls). Changes can be authored via the [GitHub web interface](#github-web-interface) (easy) or [your favorite `git` client](#git) (recommended).
+Contributions are made via [pull requests to the GitHub repository](https://github.com/someengineering/resoto.com/pulls). Changes can be authored [via the GitHub web interface](#github-web-interface) (easy) or [in a local repository using your favorite `git` client](#local-git-repository) (recommended).
 
 If your changes modify non-Markdown files, it is strongly recommended to work on a local clone of the repository rather than within the GitHub web interface.
 
@@ -20,13 +20,12 @@ Simply click the link, make your changes, and select the "**Create a new branch 
 
 For supported Markdown features, please refer to the [Docusaurus documentation](https://docusaurus.io/docs/markdown-features).
 
-### Git
+### Local Git Repository
 
 #### Prerequisites
 
-- [Git](https://git-scm.com)
-- Code editor
-  - [Visual Studio Code](https://code.visualstudio.com/) is recommended.
+- [Git](https://git-scm.com) (the below instructions assume you are using the CLI, though [GUI clients](https://git-scm.com/downloads/guis) will also work!)
+- Code editor ([Visual Studio Code](https://code.visualstudio.com/) is recommended)
 - [Node.js](https://nodejs.org)
 - [Yarn](https://yarnpkg.com)
 

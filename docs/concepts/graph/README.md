@@ -17,5 +17,9 @@ Commands can be connected using a pipe to form complex and deep requests about r
 
 To learn about your new superpowers and use them in the best way, it is important to understand the data model and structure.
 
-- [Graph Node](./node.md)
-- [Graph Edge](./edge.md)
+```mdx-code-block
+import { useCurrentSidebarCategory } from '@docusaurus/theme-common';
+import DocCardList from '@theme/DocCardList';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
+```

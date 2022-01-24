@@ -9,13 +9,17 @@ tags: [website, documentation, branding, docusaurus]
 
 Right before Christmas, we decided to part ways with the name "Cloudkeeper." There were many reasons behind this decision, one of which was that we did not feel the product we were developing should be limited to cloud infrastructure. We were building a product that did much more than just "housekeeping for your clouds."
 
-We partnered with brand namer [Steve Cecil](http://wherewords.com) to devise a new name. I found the process to be really special and quite fun (though [Steve](http://wherewords.com) did require us to invest quite a bit of our time).
+We partnered with brand namer [Steve Cecil](http://wherewords.com) to devise a new name. I found the process to be really special and quite fun, though [Steve](http://wherewords.com) did require us to invest quite a bit of our time.
 
-All the work [Steve](http://wherewords.com) asked of us paid off, and we now have our new name: **_Resoto_**. ✨
+The process began with each member of the "naming committee" individually completing a sixty-question questionnaire exploring different facets of our product and brand identity. 📝
+
+We then met for a two-hour working session, during which we were assigned homework: to review 264 potential product names born from [Steve](http://wherewords.com)'s genius, reading and re-reading them both front-to-back and back-to-front, and (again, individually) submit a ranked list of our favorites.
+
+All the work [Steve](http://wherewords.com) asked of us paid off, and we ended the second working session with our new name: **_Resoto_**. ✨
 
 Since you've found your way here, you presumably have also noticed that we have a new website to accompany the rebranded project!
 
-I was hired as a [technical writer](https://github.com/lloesche/valheim-server-docker/issues/423) (no, your eyes are not deceiving you—I was discovered on [GitHub](https://github.com) as a result of my open-source contributions!) and joined the [Some Engineering](https://some.engineering) team to find a somewhat broken documentation system and pipeline.
+I joined the team as a [technical writer](https://github.com/lloesche/valheim-server-docker/issues/423) (no, your eyes are not deceiving you—I was discovered on [GitHub](https://github.com) as a result of my open-source contributions!) and joined the [Some Engineering](https://some.engineering) team to find a somewhat broken documentation system and pipeline.
 
 Documentation was formatted using [reStructredText](https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html), and [Lukas](https://github.com/lloesche) told me that he "\[hated\] editing [reStructredText](https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html) in [Sphinx](https://www.sphinx-doc.org/), so \[he doesn't\] do it." 😅
 

@@ -90,7 +90,7 @@ const config = {
           { to: '/about', label: 'About', position: 'left' },
           { to: '/docs', label: 'Documentation', position: 'left' },
           { to: '/news', label: 'News', position: 'left' },
-          // { to: '/blog', label: 'Blog', position: 'left' },
+          { to: '/blog', label: 'Blog', position: 'left' },
           { to: '/support', label: 'Support', position: 'left' },
           {
             label: 'GitHub',
@@ -170,10 +170,10 @@ const config = {
                 label: 'News',
                 to: '/news',
               },
-              // {
-              //   label: 'Blog',
-              //   href: '/blog',
-              // },
+              {
+                label: 'Blog',
+                href: '/blog',
+              },
               {
                 label: 'GitHub',
                 href: 'https://github.com/someengineering',

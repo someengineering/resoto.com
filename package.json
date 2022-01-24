@@ -39,7 +39,7 @@
     "@docusaurus/module-type-aliases": "^2.0.0-beta.14",
     "@tsconfig/docusaurus": "^1.0.4",
     "@typescript-eslint/eslint-plugin": "^5.10.0",
-    "@typescript-eslint/parser": "^5.10.0",
+    "@typescript-eslint/parser": "^5.10.1",
     "commitizen": "^4.2.4",
     "eslint": "^8.7.0",
     "eslint-config-prettier": "^8.3.0",

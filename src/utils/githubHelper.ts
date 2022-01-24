@@ -22,9 +22,7 @@ export const getLatestTag = async (
       `/repos/${owner}/${repository}/tags?per_page=1`
     );
 
-    return res.data[0].name.startsWith('v')
-      ? res.data[0].name
-      : `v${res.data[0].name}`;
+    return res.data[0].name;
   } catch (err) {
     return null;
   }

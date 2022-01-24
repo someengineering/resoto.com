@@ -12,7 +12,7 @@ const config = {
     'Find leaky resources, manage quota limits, detect drift, and clean up!',
   url: 'https://resoto.com',
   baseUrl: '/',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'someengineering',

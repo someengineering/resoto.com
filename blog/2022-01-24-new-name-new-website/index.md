@@ -7,9 +7,9 @@ tags: [website, documentation, branding, docusaurus]
 
 **This past month has been quite the roller coaster for us at [Some Engineering](https://some.engineering).** 🎢
 
-Right before Christmas, it was decided that we needed to part ways with the name "Cloudkeeper." There were many reasons behind this decision, one of which was that we did not feel the product we were developing should be limited to cloud infrastructure. We were building a product that did much more than just "housekeeping for your clouds."
+Right before Christmas, we decided to part ways with the name "Cloudkeeper." There were many reasons behind this decision, one of which was that we did not feel the product we were developing should be limited to cloud infrastructure. We were building a product that did much more than just "housekeeping for your clouds."
 
-We partnered with brand namer [Steve Cecil](http://wherewords.com) to devise a new name. I can't speak for the rest of the naming committee, but I found the process to be really special and quite fun (though [Steve](http://wherewords.com) did require us to invest quite a bit of our time).
+We partnered with brand namer [Steve Cecil](http://wherewords.com) to devise a new name. I found the process to be really special and quite fun (though [Steve](http://wherewords.com) did require us to invest quite a bit of our time).
 
 All the work [Steve](http://wherewords.com) asked of us paid off, and we now have our new name: **_Resoto_**. ✨
 

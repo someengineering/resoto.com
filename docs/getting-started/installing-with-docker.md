@@ -4,9 +4,9 @@ title: Installing with Docker
 
 # Installing with Docker
 
-Docker provides the ability to run an application in a loosely isolated environment called a "container."
+[Docker](https://docker.com) provides the ability to run an application in a loosely isolated environment called a "[container](https://docs.docker.com/get-started/overview#containers)."
 
-Currently, all of the requirements and components of Resoto are packaged into a single Docker container image.
+Currently, all of the requirements and components of Resoto are packaged into a single Docker [image](https://docs.docker.com/get-started/overview#images).
 
 For more information on Docker, please see the [official Docker documentation](https://docs.docker.com).
 
@@ -19,7 +19,7 @@ For more information on Docker, please see the [official Docker documentation](h
 
 There are multiple ways to get the Resoto Docker image up and running.
 
-### `docker run` Command
+### [`docker run`](https://docs.docker.com/engine/reference/run) Command
 
 First, create a volume in which to persist data:
 
@@ -38,14 +38,14 @@ docker run \
   -p 8900:8900 \
   -v resoto-data:/data \
   --restart unless-stopped \
-  ghcr.io/someengineering/resoto:2.0.0a10
+  ghcr.io/someengineering/resoto:2.0.0a12
 ```
 
 And just like that, you now have Resoto running in Docker!
 
-### Docker Compose
+### [Docker Compose](https://docs.docker.com/compose/reference)
 
-Add the following volume and service definitions to a `docker-compose.yml` file:
+Add the following volume and service definitions to a [`docker-compose.yml` file](https://docs.docker.com/compose/compose-file):
 
 ```yml title="docker-compose.yml"
 ---
@@ -53,7 +53,7 @@ version: '3'
 
 services:
   resoto:
-    image: ghcr.io/someengineering/resoto:2.0.0a10
+    image: ghcr.io/someengineering/resoto:2.0.0a12
     container_name: resoto
     environment:
       AWS_ACCESS_KEY_ID: YOUR_ACCESS_KEY_ID
@@ -99,11 +99,11 @@ docker stop resoto
 docker rm resoto
 ```
 
-Next, recreate the container with the same parameters used previously, but updating the image tag (e.g., `2.0.0a10`) to reflect the desired Resoto release.
+Next, recreate the container with the same parameters used previously, but updating the image tag (e.g., `2.0.0a12`) to reflect the desired Resoto release.
 
 ### Docker Compose
 
-Simply edit the image tag (e.g., `2.0.0a10`) specified in the `docker-compose.yml` file to reflect the desired Resoto release.
+Simply edit the image tag (e.g., `2.0.0a12`) specified in the `docker-compose.yml` file to reflect the desired Resoto release.
 
 Then, run the following command from the directory containing the `docker-compose.yml` file:
 

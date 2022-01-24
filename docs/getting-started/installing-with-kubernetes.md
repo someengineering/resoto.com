@@ -150,7 +150,7 @@
     Next, install Resoto using Helm:
 
     ```bash
-    helm install resoto ./resoto/kubernetes/chart --set image.tag=2.0.0a10 -f resoto-values.yaml
+    helm install resoto ./resoto/kubernetes/chart --set image.tag=2.0.0a12 -f resoto-values.yaml
     ```
 
 ## Resoto CLI

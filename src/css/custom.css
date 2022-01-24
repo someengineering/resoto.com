@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@700&display=swap');
 
 :root {
   --ifm-color-primary: #762dd7;
@@ -50,9 +51,13 @@ div[class^='announcementBar_'] .close {
   color: var(--ifm-color-primary-contrast-foreground);
 }
 
-.navbar__brand {
-  font-size: 1.75em;
+.navbar__title {
+  font-size: 2.15em;
+  line-height: 0.85;
   text-transform: lowercase;
+  font-family: Dosis, Cabin, sans-serif;
+  font-weight: 700;
+  margin-top: -0.15em;
 }
 
 .header-icon-link > span {

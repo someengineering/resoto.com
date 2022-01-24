@@ -61,7 +61,7 @@ const sidebars = {
         {
           type: 'link',
           label: 'Resoto Core API',
-          href: '/docs/reference/resotocore-api/',
+          href: 'https://resoto.com/docs/reference/resotocore-api/',
         },
         {
           type: 'category',

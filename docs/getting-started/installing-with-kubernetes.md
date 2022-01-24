@@ -46,15 +46,13 @@
     Set up a database and password:
 
     ```bash
-    RESOTOCORE_GRAPHDB_LOGIN=resoto
-    RESOTOCORE_GRAPHDB_DATABASE=resoto
     RESOTOCORE_GRAPHDB_PASSWORD=$(head -c 1500 /dev/urandom | tr -dc 'a-zA-Z0-9' | cut -c -32)
     POD=$(kubectl get pods --selector=arango_deployment=single-server -o jsonpath="{.items[0].metadata.name}")
     kubectl exec -i ${POD} -- arangosh --console.history false --server.password "" <<EOF
         const users = require('@arangodb/users');
-        users.save('$RESOTOCORE_GRAPHDB_LOGIN', '$RESOTOCORE_GRAPHDB_PASSWORD');
-        db._createDatabase('$RESOTOCORE_GRAPHDB_DATABASE');
-        users.grantDatabase('$RESOTOCORE_GRAPHDB_LOGIN', '$RESOTOCORE_GRAPHDB_DATABASE', 'rw');
+        users.save('resoto', '$RESOTOCORE_GRAPHDB_PASSWORD');
+        db._createDatabase('resoto');
+        users.grantDatabase('resoto', 'resoto', 'rw');
     EOF
     ```
 
@@ -70,8 +68,8 @@
     resotocore:
       graphdb:
         server: http://single-server:8529
-        login: $RESOTOCORE_GRAPHDB_LOGIN
-        database: $RESOTOCORE_GRAPHDB_DATABASE
+        login: resoto
+        database: resoto
         passwordSecret:
           name: resoto-graphdb-credentials
           key: password
@@ -160,7 +158,7 @@
 To access the Resoto shell interface, simply execute the following command:
 
 ```bash
-
+resh
 ```
 
 ## Resoto Web UI

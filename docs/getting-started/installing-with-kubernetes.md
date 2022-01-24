@@ -52,7 +52,7 @@
         const users = require('@arangodb/users');
         users.save('resoto', '$RESOTOCORE_GRAPHDB_PASSWORD');
         db._createDatabase('resoto');
-        users.grantDatabase('resoto', '$RESOTOCORE_GRAPHDB_DATABASE', 'rw');
+        users.grantDatabase('resoto', 'resoto', 'rw');
     EOF
     ```
 

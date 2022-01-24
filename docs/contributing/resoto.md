@@ -1,8 +1,8 @@
 ---
-sidebar_label: Resoto
+sidebar_label: Resoto Components
 ---
 
-# Contributing to Resoto
+# Contributing to Resoto Components
 
 The source code for Resoto lives in the [`someengineering/resoto` repository on GitHub](https://github.com/someengineering/resoto).
 Resoto consists of multiple components, where each component is maintained as separate project.
@@ -26,7 +26,7 @@ You will first need to [fork](https://docs.github.com/get-started/quickstart/for
 - [ArangoDB](https://www.arangodb.com) Version 3.8.2 or later is required.
 - Optional [gcc](https://gcc.gnu.org) Depending on the host system, dependant python packages need to be compiled from source.
 
-#### Setup a virtual environment
+#### Set Up a Virtual Environment
 
 We recommend using a Python [virtual environment](https://docs.python.org/3/tutorial/venv.html) to develop.
 A script is part of the Resoto code base to simplify this process and will prepare your virtual environment.
@@ -61,7 +61,7 @@ Once the virtual environment has been created and the database is running, you c
 
 Start the core
 
-```shell
+```bash
 cd resotocore
 python -m core
 ```

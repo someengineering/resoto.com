@@ -38,7 +38,7 @@ docker run \
   -p 8900:8900 \
   -v resoto-data:/data \
   --restart unless-stopped \
-  ghcr.io/someengineering/resoto:2.0.0a12
+  somecr.io/someengineering/resoto:2.0.0a12
 ```
 
 And just like that, you now have Resoto running in Docker!
@@ -53,7 +53,7 @@ version: '3'
 
 services:
   resoto:
-    image: ghcr.io/someengineering/resoto:2.0.0a12
+    image: somecr.io/someengineering/resoto:2.0.0a12
     container_name: resoto
     environment:
       AWS_ACCESS_KEY_ID: YOUR_ACCESS_KEY_ID

@@ -33,24 +33,30 @@ function HomepageHeader() {
             up!
           </span>
           <span className={styles.heroButtons}>
-            <a
-              href="https://github.com/someengineering/resoto"
-              target="_blank"
-              rel="noreferrer noopener"
-              className="button button--primary button--lg"
-            >
-              <GitHubLogo className={styles.buttonIcon} />
-              {resotoVersion}
-            </a>
-            {!!githubStars && (
-              <a
-                href="https://github.com/someengineering/resoto/stargazers"
-                target="_blank"
-                rel="noreferrer noopener"
-                className={clsx('button button--lg', styles.speechButton)}
-              >
-                {githubStars} <Emoji symbol="⭐" label="stars" />
-              </a>
+            {resotoVersion && (
+              <>
+                <a
+                  href="https://github.com/someengineering/resoto"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="button button--primary button--lg"
+                >
+                  <GitHubLogo className={styles.buttonIcon} />
+                  {resotoVersion.startsWith('v')
+                    ? resotoVersion
+                    : `v${resotoVersion}`}
+                </a>
+                {!!githubStars && (
+                  <a
+                    href="https://github.com/someengineering/resoto/stargazers"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className={clsx('button button--lg', styles.speechButton)}
+                  >
+                    {githubStars} <Emoji symbol="⭐" label="stars" />
+                  </a>
+                )}
+              </>
             )}
           </span>
         </div>

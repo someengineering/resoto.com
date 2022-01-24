@@ -6,3 +6,10 @@
 - [Resoto Metrics (`resotometrics`)](./resotometrics.md) is a [Prometheus exporter](https://prometheus.io/docs/instrumenting/exporters).
 
 ![Resoto Component Graph](./img/component_graph.png)
+
+```mdx-code-block
+import { useCurrentSidebarCategory } from '@docusaurus/theme-common';
+import DocCardList from '@theme/DocCardList';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
+```

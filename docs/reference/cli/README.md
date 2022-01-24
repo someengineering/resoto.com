@@ -44,6 +44,13 @@ You can pipe commands using `|` and chain multiple commands using `;`.
 | `uniq`                       | Remove all duplicated objects from the stream.                                      |
 | `write`                      | Writes the incoming stream of data to a file in the defined format.                 |
 
+```mdx-code-block
+import { useCurrentSidebarCategory } from '@docusaurus/theme-common';
+import DocCardList from '@theme/DocCardList';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
+```
+
 ### Command Aliases
 
 | Alias            | Command      | Description                              |
@@ -54,24 +61,26 @@ You can pipe commands using `|` and chain multiple commands using `;`.
 
 ## Placeholder Strings
 
-|`@UTC@`|`2022-01-21T03:58:19Z`|
-|`@NOW@`|`2022-01-21T03:58:19Z`|
-|`@TODAY@`|`2022-01-21`|
-|`@TOMORROW@`|`2022-01-22`|
-|`@YESTERDAY@`|`2022-01-20`|
-|`@YEAR@`|`2022`|
-|`@MONTH@`|`01`|
-|`@DAY@`|`21`|
-|`@TIME@`|`03:58:19`|
-|`@HOUR@`|`03`|
-|`@MINUTE@`|`58`|
-|`@SECOND@`|`19`|
-|`@TZ_OFFSET@`|`+0000`|
-|`@TZ@`|`UTC`|
-|`@MONDAY@`|`2022-01-24`|
-|`@TUESDAY@`|`2022-01-25`|
-|`@WEDNESDAY@`|`2022-01-26`|
-|`@THURSDAY@`|`2022-01-27`|
-|`@FRIDAY@`|`2022-01-21`|
-|`@SATURDAY@`|`2022-01-22`|
-|`@SUNDAY@`|`2022-01-23`|
+| Placeholder   | Example                |
+| ------------- | ---------------------- |
+| `@UTC@`       | `2022-01-21T03:58:19Z` |
+| `@NOW@`       | `2022-01-21T03:58:19Z` |
+| `@TODAY@`     | `2022-01-21`           |
+| `@TOMORROW@`  | `2022-01-22`           |
+| `@YESTERDAY@` | `2022-01-20`           |
+| `@YEAR@`      | `2022`                 |
+| `@MONTH@`     | `01`                   |
+| `@DAY@`       | `21`                   |
+| `@TIME@`      | `03:58:19`             |
+| `@HOUR@`      | `03`                   |
+| `@MINUTE@`    | `58`                   |
+| `@SECOND@`    | `19`                   |
+| `@TZ_OFFSET@` | `+0000`                |
+| `@TZ@`        | `UTC`                  |
+| `@MONDAY@`    | `2022-01-24`           |
+| `@TUESDAY@`   | `2022-01-25`           |
+| `@WEDNESDAY@` | `2022-01-26`           |
+| `@THURSDAY@`  | `2022-01-27`           |
+| `@FRIDAY@`    | `2022-01-21`           |
+| `@SATURDAY@`  | `2022-01-22`           |
+| `@SUNDAY@`    | `2022-01-23`           |

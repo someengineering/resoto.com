@@ -1,3 +1,3 @@
 import { Redirect } from '@docusaurus/router';
 
-<Redirect to="/docs/reference/resotocore-api" />
+<Redirect to="/docs/reference/resotocore-api/" />

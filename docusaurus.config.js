@@ -18,7 +18,7 @@ const config = {
   organizationName: 'someengineering',
   projectName: 'resoto.com',
   deploymentBranch: 'gh-pages',
-  trailingSlash: false,
+  trailingSlash: true,
 
   presets: [
     [

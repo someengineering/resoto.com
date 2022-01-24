@@ -47,6 +47,10 @@ div[class^='announcementBar_'] {
   );
 }
 
+html[data-theme='dark'] div[class^='announcementBar_'] {
+  --stripe-color2: var(--ifm-background-color);
+}
+
 div[class^='announcementBar_'] .close {
   color: var(--ifm-color-primary-contrast-foreground);
 }

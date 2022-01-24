@@ -34,7 +34,7 @@ The scenario probably sounds familiar. And there were plenty of infrastructure t
 
 The first version of Cloudkeeper was deployed in early 2020. And it delivered. Within four weeks, cloud spend was cut in half! Another six months later, cloud spend had been reduced by a total of 70%. The entire infrastructure had become more resilient.
 
-In 2020, [D2iQ](https://d2iq.com/) open-sourced Cloudkeeper, and [Some Engineering, Inc.](https://some.engineering) took over development in July 2021. In 2022, the Cloudkeeper project was rebranded as "Resoto."
+In 2020, [D2iQ](https://d2iq.com/) open-sourced Cloudkeeper, and [Some Engineering Inc.](https://some.engineering) took over development in July 2021. In 2022, the Cloudkeeper project was rebranded as "Resoto."
 
 ## Product Vision
 

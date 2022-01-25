@@ -1,8 +1,14 @@
 ---
-sidebar_label: Resoto Components
+sidebar_label: Components
 ---
 
-# Contributing to Resoto Components
+```mdx-code-block
+import CodeBlock from '@theme/CodeBlock';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
+# Contributing to Components
 
 The source code for Resoto lives in the [`someengineering/resoto` repository on GitHub](https://github.com/someengineering/resoto).
 Resoto consists of multiple components, where each component is maintained as separate project.
@@ -22,82 +28,83 @@ You will first need to [fork](https://docs.github.com/get-started/quickstart/for
 #### Prerequisites
 
 - [Git](https://git-scm.com)
-- [Python](https://www.python.org) Version 3.8 or later is required. We recommend 3.10.
-- [ArangoDB](https://www.arangodb.com) Version 3.8.2 or later is required.
-- Optional [gcc](https://gcc.gnu.org) Depending on the host system, dependant python packages need to be compiled from source.
+- [Python](https://python.org) 3.8+ (3.10 is recommended)
+- [ArangoDB](https://arangodb.com) 3.8.2+
+- [GNU Compiler Collection (GCC)](https://gcc.gnu.org) (depending on the host system, Python dependencies may need to be compiled from source)
 
-#### Set Up a Virtual Environment
+#### Setting Up a Virtual Environment
 
-We recommend using a Python [virtual environment](https://docs.python.org/3/tutorial/venv.html) to develop.
-A script is part of the Resoto code base to simplify this process and will prepare your virtual environment.
+We recommend using a [Python virtual environment](https://docs.python.org/3/tutorial/venv.html).
+
+A script is provided to simplify the process of configuring the virtual environment:
 
 ```bash
 ./setup_venv.sh --dev --path .
 ```
 
-After the virtual env has been created, it needs to be activated.
-Linux and macOS:
+Activate the virtual environment:
 
-```bash
-source venv/bin/activate
+```mdx-code-block
+<Tabs>
+  <TabItem value="linux" label="Linux/macOS">
+    <CodeBlock language="bash">source venv/bin/activate</CodeBlock>
+  </TabItem>
+  <TabItem value="windows" label="Windows">
+    <CodeBlock language="powershell">venv\Scripts\activate.bat</CodeBlock>
+  </TabItem>
+</Tabs>
 ```
 
-or Windows:
-
-```powershell
-venv\Scripts\activate.bat
-```
-
-#### Start the database
+#### Starting the Database
 
 After you have installed ArangoDB, you need to start it.
-The default root access is username `root` with no password.
-This setup is required for the tests to run, since it will create all the necessary entities, like users and databases.
-Please note: this setup is for development only and should not be used in production environments.
+**By default, the built-in user account `root` does not have a password configured.** This is required for tests to pass, as the tests create users and databases.
+
+:::caution
+This setup is for development only and should not be deployed in production environments.
+:::
 
 #### Start components locally
 
-Once the virtual environment has been created and the database is running, you can also start all Resoto components locally.
+You can now start each of the Resoto components:
 
-Start the core
-
-```bash
-cd resotocore
-python -m core
+```mdx-code-block
+<Tabs>
+  <TabItem value="core" label="Core (resotocore)">
+    <CodeBlock language="bash">
+      cd resotocore{'\n'}
+      python -m core
+    </CodeBlock>
+  </TabItem>
+  <TabItem value="shell" label="Shell (resh)">
+    <CodeBlock language="bash">
+      cd resotoshell{'\n'}
+      python -m resotoshell
+    </CodeBlock>
+  </TabItem>
+  <TabItem value="worker" label="Worker (resotoworker)">
+    <CodeBlock language="bash">
+      cd resotoworker{'\n'}
+      python -m resotoworker
+    </CodeBlock>
+  </TabItem>
+  <TabItem value="metrics" label="Metrics (resotometrics)">
+    <CodeBlock language="bash">
+      cd resotometrics{'\n'}
+      python -m resotometrics
+    </CodeBlock>
+  </TabItem>
+</Tabs>
 ```
 
-Start the shell
+#### Testing Your Changes
 
-```shell
-cd resotoshell
-python -m resotoshell
-```
+We use the [`pytest`](https://pytest.org) framework. Prior to submitting your changes for review, please verify that all existing tests pass and add test coverage for new code.
 
-Start the worker
-
-```shell
-cd resotowortker
-python -m resotowortker
-```
-
-Start metrics
-
-```shell
-cd resotometrics
-python -m resotometrics
-```
-
-#### Test your change
-
-After you have made your changes, you can test if everything works as expected.
-We are using [pytest](https://docs.pytest.org) and would encourage you to add a test case for the change you have made.
-Linting and tests can be invoked manually via:
+Lint and test your code:
 
 ```shell
 tox
 ```
 
-If everything is green, you can now [submit your pull request on GitHub](https://github.com/someengineering/resoto/pulls)!
-You are welcome to [open your pull request as a draft](https://docs.github.com/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests#draft-pull-requests) for early feedback and review.
-
-Our CI pipeline will execute all tests automatically, once the PR is created and allowed.
+You can now [submit your pull request on GitHub](https://github.com/someengineering/resoto/pulls)! You are welcome to [open your pull request as a draft](https://docs.github.com/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests#draft-pull-requests) for early feedback and review. Be sure to follow the pull request template!

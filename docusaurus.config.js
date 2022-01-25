@@ -88,7 +88,30 @@ const config = {
         },
         items: [
           { to: '/about', label: 'About', position: 'left' },
-          { to: '/docs', label: 'Documentation', position: 'left' },
+          {
+            to: '/docs',
+            label: 'Documentation',
+            position: 'left',
+            type: 'dropdown',
+            items: [
+              {
+                label: 'Getting Started',
+                to: '/docs/getting-started',
+              },
+              {
+                label: 'Concepts',
+                to: '/docs/concepts',
+              },
+              {
+                label: 'Reference',
+                to: '/docs/reference',
+              },
+              {
+                label: 'Contributing',
+                to: '/docs/contributing',
+              },
+            ],
+          },
           { to: '/news', label: 'News', position: 'left' },
           { to: '/blog', label: 'Blog', position: 'left' },
           { to: '/support', label: 'Support', position: 'left' },

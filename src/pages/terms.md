@@ -84,7 +84,7 @@ We shall not be hold responsible for any content that appears on your Website. Y
 
 ## Your Privacy
 
-Please read [Privacy Policy](privacy.md).
+Please read [Privacy Policy](/privacy).
 
 ## Reservation of Rights
 

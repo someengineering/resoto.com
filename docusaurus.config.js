@@ -168,7 +168,7 @@ const config = {
             items: [
               {
                 label: 'News',
-                href: '/news',
+                to: '/news',
               },
               // {
               //   label: 'Blog',
@@ -189,11 +189,11 @@ const config = {
             items: [
               {
                 label: 'Privacy Policy',
-                href: 'https://some.engineering/privacy.html',
+                to: '/privacy',
               },
               {
-                label: 'Terms of Use',
-                href: 'https://some.engineering/terms.html',
+                label: 'Terms and Conditions',
+                to: '/terms',
               },
             ],
           },

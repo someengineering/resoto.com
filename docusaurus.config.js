@@ -84,7 +84,7 @@ const config = {
         title: 'Resoto',
         logo: {
           alt: 'Resoto Logo',
-          src: 'img/logo-md.svg',
+          src: 'img/navbar-logo.svg',
         },
         items: [
           { to: '/about', label: 'About', position: 'left' },
@@ -205,7 +205,7 @@ const config = {
           width: 167,
           height: 121,
         },
-        copyright: `Copyright © ${new Date().getFullYear()} <a href="https://some.engineering" target="_blank" rel="noopener noreferrer">Some Engineering Inc</a>. Built with <a href="https://docusaurus.io" target="_blank" rel="noopener noreferrer">Docusaurus</a>.`,
+        copyright: `<span aria-label="owl" role="img">🦉</span> Copyright © ${new Date().getFullYear()} <a href="https://some.engineering" target="_blank" rel="noopener noreferrer">Some Engineering Inc</a>. Built with <a href="https://docusaurus.io" target="_blank" rel="noopener noreferrer">Docusaurus</a>. <span aria-label="dinosaur" role="img">🦖</span>`,
       },
       prism: {
         theme: lightCodeTheme,

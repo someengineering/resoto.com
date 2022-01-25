@@ -1,6 +1,6 @@
 name: ✨ Feature Request
 description: Suggest an idea
-labels: ['enhancement']
+labels: ['🌟 enhancement']
 body:
   - type: markdown
     attributes:

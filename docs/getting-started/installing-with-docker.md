@@ -24,7 +24,7 @@ There are multiple ways to get the Resoto Docker image up and running.
 First, create a volume in which to persist data:
 
 ```bash
-docker create volume resoto-data
+docker volume create resoto-data
 ```
 
 Then, start the container:
@@ -64,6 +64,8 @@ services:
     volumes:
       - resoto-data:/data
     restart: unless-stopped
+volumes:
+  resoto-data:
 ```
 
 Then, run the following command from the directory containing the `docker-compose.yml` file:

@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@700&display=swap');
 
 :root {
   --ifm-color-primary: #762dd7;
@@ -55,13 +54,23 @@ div[class^='announcementBar_'] .close {
   color: var(--ifm-color-primary-contrast-foreground);
 }
 
+.navbar__logo {
+  margin: 0;
+  height: 2.25rem;
+}
+
 .navbar__title {
-  font-size: 2.15em;
-  line-height: 0.85;
-  text-transform: lowercase;
-  font-family: Dosis, Cabin, sans-serif;
-  font-weight: 700;
-  margin-top: -0.15em;
+  height: 2.25rem;
+  width: 5.625rem;
+  color: transparent;
+  background-color: var(--ifm-navbar-link-color);
+  --logo-text: url(/img/navbar-logotext.svg);
+  -webkit-mask-image: var(--logo-text);
+  mask-image: var(--logo-text);
+}
+
+.navbar__title:hover {
+  background-color: var(--ifm-navbar-link-hover-color);
 }
 
 .header-icon-link > span {

@@ -84,13 +84,36 @@ const config = {
         title: 'Resoto',
         logo: {
           alt: 'Resoto Logo',
-          src: 'img/logo-md.svg',
+          src: 'img/navbar-logo.svg',
         },
         items: [
           { to: '/about', label: 'About', position: 'left' },
-          { to: '/docs', label: 'Documentation', position: 'left' },
+          {
+            to: '/docs',
+            label: 'Documentation',
+            position: 'left',
+            type: 'dropdown',
+            items: [
+              {
+                label: 'Getting Started',
+                to: '/docs/getting-started',
+              },
+              {
+                label: 'Concepts',
+                to: '/docs/concepts',
+              },
+              {
+                label: 'Reference',
+                to: '/docs/reference',
+              },
+              {
+                label: 'Contributing',
+                to: '/docs/contributing',
+              },
+            ],
+          },
           { to: '/news', label: 'News', position: 'left' },
-          // { to: '/blog', label: 'Blog', position: 'left' },
+          { to: '/blog', label: 'Blog', position: 'left' },
           { to: '/support', label: 'Support', position: 'left' },
           {
             label: 'GitHub',
@@ -168,12 +191,12 @@ const config = {
             items: [
               {
                 label: 'News',
-                href: '/news',
+                to: '/news',
               },
-              // {
-              //   label: 'Blog',
-              //   href: '/blog',
-              // },
+              {
+                label: 'Blog',
+                to: '/blog',
+              },
               {
                 label: 'GitHub',
                 href: 'https://github.com/someengineering',
@@ -189,11 +212,11 @@ const config = {
             items: [
               {
                 label: 'Privacy Policy',
-                href: 'https://some.engineering/privacy.html',
+                to: '/privacy',
               },
               {
-                label: 'Terms of Use',
-                href: 'https://some.engineering/terms.html',
+                label: 'Terms and Conditions',
+                to: '/terms',
               },
             ],
           },
@@ -205,7 +228,7 @@ const config = {
           width: 167,
           height: 121,
         },
-        copyright: `Copyright © ${new Date().getFullYear()} <a href="https://some.engineering" target="_blank" rel="noopener noreferrer">Some Engineering Inc</a>. Built with <a href="https://docusaurus.io" target="_blank" rel="noopener noreferrer">Docusaurus</a>.`,
+        copyright: `<span aria-label="owl" role="img">🦉</span> Copyright © ${new Date().getFullYear()} <a href="https://some.engineering" target="_blank" rel="noopener noreferrer">Some Engineering Inc</a>. Built with <a href="https://docusaurus.io" target="_blank" rel="noopener noreferrer">Docusaurus</a>. <span aria-label="dinosaur" role="img">🦖</span>`,
       },
       prism: {
         theme: lightCodeTheme,

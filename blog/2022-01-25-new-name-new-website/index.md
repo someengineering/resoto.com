@@ -1,9 +1,12 @@
 ---
 authors: [doris]
 tags: [website, documentation, branding, docusaurus]
+image: ./img/banner.png
 ---
 
 # New Name, New Website!
+
+![Resoto Logo Graffiti](./img/banner.png)
 
 **This past month has been quite the roller coaster for us at [Some Engineering](https://some.engineering).** 🎢
 

@@ -57,12 +57,10 @@ Activate the virtual environment:
 
 #### Starting the Database
 
-After you have installed ArangoDB, you need to start it.
-The way the database is started depends on the way it has been installed (`systemctl` on Linux, clicking the application icon on macOS, etc.).
+Start ArangoDB (using `systemctl` on Linux, by clicking the application icon in macOS, etc.).
 
-**The expected default access is the built-in user account `root` with a configured empty string as password.**
-No additional settings are required in such a setup, since `resotocore` will use this access to create all necessary items.
-This setting is required for tests to pass, as the tests create users and databases.
+**The expected default access is the built-in user account `root` with a configured empty string as password or authentication turned off.**
+This is necessary for `resotocore` to perform the database setup, and also required for tests to pass.
 
 :::caution
 This setup is for development only and should not be deployed in production environments.

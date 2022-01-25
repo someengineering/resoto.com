@@ -1,7 +1,7 @@
 ---
 authors: [doris]
 tags: [website, documentation, branding, docusaurus]
-image: ./img/banner.png
+image: ./img/banner-social.png
 ---
 
 # New Name, New Website!

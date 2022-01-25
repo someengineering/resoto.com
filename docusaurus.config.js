@@ -129,13 +129,13 @@ const config = {
             className: 'header-icon-link header-linkedin-link',
             'aria-label': 'LinkedIn',
           },
-          {
-            label: 'Twitter',
-            href: 'https://twitter.com/someengineering',
-            position: 'right',
-            className: 'header-icon-link header-twitter-link',
-            'aria-label': 'Twitter',
-          },
+          // {
+          //   label: 'Twitter',
+          //   href: 'https://twitter.com/someengineering',
+          //   position: 'right',
+          //   className: 'header-icon-link header-twitter-link',
+          //   'aria-label': 'Twitter',
+          // },
           {
             label: 'Discord',
             href: 'https://discord.gg/someengineering',
@@ -201,10 +201,10 @@ const config = {
                 label: 'GitHub',
                 href: 'https://github.com/someengineering',
               },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/someengineering',
-              },
+              // {
+              //   label: 'Twitter',
+              //   href: 'https://twitter.com/someengineering',
+              // },
             ],
           },
           {

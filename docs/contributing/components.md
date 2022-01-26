@@ -59,8 +59,11 @@ Activate the virtual environment:
 
 Start ArangoDB (using `systemctl` on Linux, by clicking the application icon in macOS, etc.).
 
-**The expected default access is the built-in user account `root` with a configured empty string as password or authentication turned off.**
-This is necessary for `resotocore` to perform the database setup, and also required for tests to pass.
+Start [ArangoDB](https://arangodb.com) (using `systemctl` on Linux, by clicking the application icon in macOS, etc.).
+
+Depending on the installation method used for [ArangoDB](https://arangodb.com), [authentication may or may not be enabled on the built-in `root` user account](https://www.arangodb.com/docs/stable/getting-started-installation.html#securing-the-installation). The installation process either prompted for the `root` password (Debian, Windows), configured a random password (Red Hat), or set the password to an empty string.
+
+In order for `resotocore` to perform the required database setup and for tests to pass, authentication must be disabled or the password for `root` must be set to an empty string.
 
 :::caution
 This setup is for development only and should not be deployed in production environments.

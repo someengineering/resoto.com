@@ -2,11 +2,8 @@
 sidebar_label: Components
 ---
 
-```mdx-code-block
-import CodeBlock from '@theme/CodeBlock';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
 # Contributing to Components
 
@@ -44,16 +41,22 @@ A script is provided to simplify the process of configuring the virtual environm
 
 Activate the virtual environment:
 
-```mdx-code-block
 <Tabs>
-  <TabItem value="linux" label="Linux/macOS">
-    <CodeBlock language="bash">source venv/bin/activate</CodeBlock>
-  </TabItem>
-  <TabItem value="windows" label="Windows">
-    <CodeBlock language="powershell">venv\Scripts\activate.bat</CodeBlock>
-  </TabItem>
-</Tabs>
+<TabItem value="linux" label="Linux/macOS">
+
+```bash
+source venv/bin/activate
 ```
+
+</TabItem>
+<TabItem value="windows" label="Windows">
+
+```powershell
+venv\Scripts\activate.bat
+```
+
+</TabItem>
+</Tabs>
 
 #### Starting the Database
 
@@ -73,34 +76,40 @@ This setup is for development only and should not be deployed in production envi
 
 You can now start each of the Resoto components:
 
-```mdx-code-block
 <Tabs>
-  <TabItem value="core" label="Core (resotocore)">
-    <CodeBlock language="bash">
-      cd resotocore{'\n'}
-      python -m core
-    </CodeBlock>
-  </TabItem>
-  <TabItem value="shell" label="Shell (resh)">
-    <CodeBlock language="bash">
-      cd resotoshell{'\n'}
-      python -m resotoshell
-    </CodeBlock>
-  </TabItem>
-  <TabItem value="worker" label="Worker (resotoworker)">
-    <CodeBlock language="bash">
-      cd resotoworker{'\n'}
-      python -m resotoworker
-    </CodeBlock>
-  </TabItem>
-  <TabItem value="metrics" label="Metrics (resotometrics)">
-    <CodeBlock language="bash">
-      cd resotometrics{'\n'}
-      python -m resotometrics
-    </CodeBlock>
-  </TabItem>
-</Tabs>
+<TabItem value="core" label="Core (resotocore)">
+
+```bash
+cd resotocore
+python -m core
 ```
+
+</TabItem>
+<TabItem value="shell" label="Shell (resh)">
+
+```bash
+cd resotoshell
+python -m resotoshell
+```
+
+</TabItem>
+<TabItem value="worker" label="Worker (resotoworker)">
+
+```bash
+cd resotoworker
+python -m resotoworker
+```
+
+</TabItem>
+<TabItem value="metrics" label="Metrics (resotometrics)">
+
+```bash
+cd resotometrics
+python -m resotometrics
+```
+
+</TabItem>
+</Tabs>
 
 #### Testing Your Changes
 

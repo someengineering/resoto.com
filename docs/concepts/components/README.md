@@ -1,3 +1,6 @@
+import { useCurrentSidebarCategory } from '@docusaurus/theme-common';
+import DocCardList from '@theme/DocCardList';
+
 # Components
 
 - [Resoto Core (`resotocore`)](./resotocore.md) is the platform maintaining the [directed multigraph](<https://en.wikipedia.org/wiki/Multigraph#Directed_multigraph_(edges_with_own_identity)>).
@@ -7,9 +10,4 @@
 
 ![Resoto Component Graph](./img/component_graph.png)
 
-```mdx-code-block
-import { useCurrentSidebarCategory } from '@docusaurus/theme-common';
-import DocCardList from '@theme/DocCardList';
-
 <DocCardList items={useCurrentSidebarCategory().items}/>
-```

@@ -1,3 +1,6 @@
+import { useCurrentSidebarCategory } from '@docusaurus/theme-common';
+import DocCardList from '@theme/DocCardList';
+
 # Command-Line Interface (CLI)
 
 The [`resh`](/concepts/components/resh.md) CLI supports various commands that help you accessing the graph database.
@@ -44,12 +47,7 @@ You can pipe commands using `|` and chain multiple commands using `;`.
 | `uniq`                       | Remove all duplicated objects from the stream.                                      |
 | `write`                      | Writes the incoming stream of data to a file in the defined format.                 |
 
-```mdx-code-block
-import { useCurrentSidebarCategory } from '@docusaurus/theme-common';
-import DocCardList from '@theme/DocCardList';
-
 <DocCardList items={useCurrentSidebarCategory().items}/>
-```
 
 ### Command Aliases
 

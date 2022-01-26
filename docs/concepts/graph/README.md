@@ -1,3 +1,6 @@
+import { useCurrentSidebarCategory } from '@docusaurus/theme-common';
+import DocCardList from '@theme/DocCardList';
+
 # Graph
 
 You can search your cloud infrastructure and find the resources you are looking for using Resoto's powerful query language.
@@ -17,9 +20,4 @@ Commands can be connected using a pipe to form complex and deep requests about r
 
 To learn about your new superpowers and use them in the best way, it is important to understand the data model and structure.
 
-```mdx-code-block
-import { useCurrentSidebarCategory } from '@docusaurus/theme-common';
-import DocCardList from '@theme/DocCardList';
-
 <DocCardList items={useCurrentSidebarCategory().items}/>
-```

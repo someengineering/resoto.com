@@ -22,7 +22,6 @@ const sidebars = {
     {
       type: 'category',
       label: 'Getting Started',
-      collapsed: false,
       link: {
         type: 'generated-index',
         title: 'Getting Started',
@@ -38,8 +37,6 @@ const sidebars = {
     {
       type: 'category',
       label: 'Concepts',
-      collapsible: true,
-      collapsed: false,
       link: {
         type: 'generated-index',
         title: 'Concepts',
@@ -55,8 +52,6 @@ const sidebars = {
     {
       type: 'category',
       label: 'Reference',
-      collapsible: true,
-      collapsed: false,
       link: {
         type: 'generated-index',
         title: 'Reference',
@@ -77,8 +72,6 @@ const sidebars = {
     {
       type: 'category',
       label: 'Contributing',
-      collapsible: true,
-      collapsed: false,
       link: {
         type: 'generated-index',
         title: 'Contributing',

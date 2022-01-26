@@ -38,7 +38,7 @@ docker run \
   -p 8900:8900 \
   -v resoto-data:/data \
   --restart unless-stopped \
-  somecr.io/someengineering/resoto:2.0.0a12
+  somecr.io/someengineering/resoto:{{latestTag}}
 ```
 
 And just like that, you now have Resoto running in Docker!
@@ -53,7 +53,7 @@ version: '3'
 
 services:
   resoto:
-    image: somecr.io/someengineering/resoto:2.0.0a12
+    image: somecr.io/someengineering/resoto:{{latestTag}}
     container_name: resoto
     environment:
       AWS_ACCESS_KEY_ID: YOUR_ACCESS_KEY_ID
@@ -101,11 +101,11 @@ docker stop resoto
 docker rm resoto
 ```
 
-Next, recreate the container with the same parameters used previously, but updating the image tag (e.g., `2.0.0a12`) to reflect the desired Resoto release.
+Next, recreate the container with the same parameters used previously, but updating the image tag (e.g., <LatestTag />) to reflect the desired Resoto release.
 
 ### Docker Compose
 
-Simply edit the image tag (e.g., `2.0.0a12`) specified in the `docker-compose.yml` file to reflect the desired Resoto release.
+Simply edit the image tag (e.g., <LatestTag />) specified in the `docker-compose.yml` file to reflect the desired Resoto release.
 
 Then, run the following command from the directory containing the `docker-compose.yml` file:
 

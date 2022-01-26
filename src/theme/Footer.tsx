@@ -4,7 +4,7 @@ import React from 'react';
 
 export default process.env.NODE_ENV == 'development'
   ? OriginalFooter
-  : function Footer(props) {
+  : function Footer(): JSX.Element {
       return (
         <>
           <BrowserOnly>
@@ -16,7 +16,7 @@ export default process.env.NODE_ENV == 'development'
               />
             )}
           </BrowserOnly>
-          <OriginalFooter {...props} />
+          <OriginalFooter />
         </>
       );
     };

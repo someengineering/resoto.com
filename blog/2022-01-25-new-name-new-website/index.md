@@ -22,7 +22,7 @@ All the work [Steve](http://wherewords.com) asked of us paid off, and we ended t
 
 Since you've found your way here, you presumably have also noticed that we have a new website to accompany the rebranded project!
 
-I joined the team as a [technical writer](https://github.com/lloesche/valheim-server-docker/issues/423) (no, your eyes are not deceiving you—I was discovered on [GitHub](https://github.com) as a result of my open-source contributions!) and joined the [Some Engineering](https://some.engineering) team to find a somewhat broken documentation system and pipeline.
+I joined the [Some Engineering](https://some.engineering) team as a [technical writer](https://github.com/lloesche/valheim-server-docker/issues/423) (no, your eyes are not deceiving you—I was discovered on [GitHub](https://github.com) as a result of my open-source contributions!) to find a somewhat broken documentation system and pipeline.
 
 Documentation was formatted using [reStructredText](https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html), and [Lukas](https://github.com/lloesche) told me that he "\[hated\] editing [reStructredText](https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html) in [Sphinx](https://www.sphinx-doc.org/), so \[he doesn't\] do it." 😅
 

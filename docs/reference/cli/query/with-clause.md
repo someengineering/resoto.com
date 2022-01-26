@@ -8,6 +8,7 @@ sidebar_label: with Clause
 There are certain scenarios, where nodes need to be selected that have defined relationships and position in the graph without selecting the related nodes.
 
 :::tip Example
+
 Let's say we want to select all ALB target groups where there is no EC2 instance using the ALB.
 
 ```bash
@@ -51,12 +52,11 @@ Same as the `empty` case with the difference: the `with` clause needs to select 
 Same as the `empty` case with the difference: the with clause needs to select the specified amount of matching nodes in order to select the filtered node.
 
 :::note
+
 The `with` clause can be nested.
 
-Inside a with clause, you can use another with clause for nested expectations.
-The outermost element is filtered only if the outermost with clause holds,
-which includes that all inner with clauses have to match as well.
+Inside a with clause, you can use another with clause for nested expectations. The outermost element is filtered only if the outermost with clause holds, which includes that all inner with clauses have to match as well.
 
-This is a powerful construct to define queries to match a defined graph structure or
-to select nodes which are not in a predefined graph structure.
+This is a powerful construct to define queries to match a defined graph structure or to select nodes which are not in a predefined graph structure.
+
 :::

@@ -12,6 +12,6 @@ query id = i-039e06bb2539e5484 | tag update owner lukas
 query id = i-039e06bb2539e5484 | tag delete owner
 ```
 
-[`resotocore`](../../concepts/components/resotocore.md) will put this tagging task onto a task queue. This task is then consumed by a [`resotoworker`](../../concepts/components/resotoworker.md) that knows how to perform tagging for that particular resource and its particular cloud and account.
+[`resotocore`](../../concepts/components/core.md) will put this tagging task onto a task queue. This task is then consumed by a [`resotoworker`](../../concepts/components/worker.md) that knows how to perform tagging for that particular resource and its particular cloud and account.
 
-In our first example above we set the tag `owner: lukas` for the AWS EC2 instance with ID `i-039e06bb2539e5484`. This task is given to a [`resotoworker`](../../concepts/components/resotoworker.md) that knows how to update AWS EC2 instance tags in that resources account.
+In our first example above we set the tag `owner: lukas` for the AWS EC2 instance with ID `i-039e06bb2539e5484`. This task is given to a [`resotoworker`](../../concepts/components/worker.md) that knows how to update AWS EC2 instance tags in that resources account.

@@ -10,8 +10,7 @@
 
 ### Prepare ArangoDB Database
 
-If you don't have ArangoDB, you can use the operator to install it.
-See more info here: https://www.arangodb.com/docs/stable/tutorials-kubernetes.html
+If you don't have ArangoDB, you can use the operator to install it. See more info here: https://www.arangodb.com/docs/stable/tutorials-kubernetes.html
 
 You can use the following commands to install the DB, but do note that this is not a production-ready setup:
 
@@ -34,7 +33,9 @@ EOF
 ```
 
 :::note
+
 These instructuions were tested with version 1.2.4 of the operator.
+
 :::
 
 Wait until the the ArangoDB deployment is ready. You can check the conditions in the status to see that it is ready:
@@ -84,7 +85,7 @@ See [`kubernetes/chart/values.yaml`](https://github.com/someengineering/resoto/b
 
 ### Configure Cloud Credentials (optional)
 
-You can use Helm values `resotoworker.extraArgs`, `resotoworker.extraEnv`, `resotoworker.volumes`, and `resotoworker.volumeMounts` to inject credentials and their configuration to [`resotoworker`](../concepts/components/resotoworker.md).
+You can use Helm values `resotoworker.extraArgs`, `resotoworker.extraEnv`, `resotoworker.volumes`, and `resotoworker.volumeMounts` to inject credentials and their configuration to [`resotoworker`](../concepts/components/worker.md).
 
 For example, for AWS and GCP, you would do the following:
 
@@ -95,7 +96,7 @@ kubectl -n resoto create secret generic resoto-auth \
   --from-literal=AWS_SECRET_ACCESS_KEY=<YOUR ACCESS KEY>
 ```
 
-You could then use these values for [`resotoworker`](../concepts/components/resotoworker.md):
+You could then use these values for [`resotoworker`](../concepts/components/worker.md):
 
 ```yml
 resotocore:
@@ -156,13 +157,7 @@ helm install resoto ./resoto/kubernetes/chart --set image.tag={{latestTag}} -f r
 
 ## Resoto CLI
 
-[`resh`](../concepts/components/resh.md) is used to interact with [`resotocore`](../concepts/components/resotocore.md).
-
-To access the Resoto shell interface, simply execute the following command:
-
-```bash
-resh
-```
+The [`resh`](../concepts/components/shell.md) command is used to interact with [`resotocore`](../concepts/components/core.md).
 
 ## Resoto Web UI
 

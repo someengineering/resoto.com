@@ -1,12 +1,16 @@
+```mdx-code-block
 import { useCurrentSidebarCategory } from '@docusaurus/theme-common';
 import DocCardList from '@theme/DocCardList';
+```
 
 # Command-Line Interface (CLI)
 
-The [`resh`](/concepts/components/resh.md) CLI supports various commands that help you accessing the graph database.
+The [`resh`](/concepts/components/shell.md) CLI supports various commands that help you accessing the graph database.
 
 :::tip
+
 You can pipe commands using `|` and chain multiple commands using `;`.
+
 :::
 
 ## Commands

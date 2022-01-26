@@ -16,8 +16,7 @@ The term `is(aws_ec2_instance)` would select only EC2 instances from AWS.
 
 ## Selecting Nodes by Predicate
 
-In order to filter for specific attributes of a node, it is possible to define predicates.
-A predicate always has the syntax: `<property_path> <operation> <value>` (e.g. `answer!=42`).
+In order to filter for specific attributes of a node, it is possible to define predicates. A predicate always has the syntax: `<property_path> <operation> <value>` (e.g. `answer!=42`).
 
 ### `property_path`
 
@@ -88,16 +87,36 @@ The `value` can be any JSON literal or JSON conform value.
 
 A JSON conform value is:
 
-- string: Examples: `"hello world"`, `"test"`. Note: the query parser is gracious with quotes.
-  If there are no white space and no special characters, it is possible to omit quotes.
-  In case you see parse errors, try adding quotes to your strings.
-- number: Integers and float numbers can be expressed. Examples: `23`, `12.123`.
-  The model itself clearly defines if a number is `int32`, `int64`, `float` or `double`.
-  From the query point of view, all numbers are treated the same way.
-- boolean: Examples: `true`, `false`
-- array: Examples: `[1, true, "test"]`
-- json object: Examples: `{"a": 1, "b": 2}`
-- null: `null`
+- `string`
+
+  **Examples:** `"hello world"`, `"test"`
+
+  :::note
+
+  The query parser is gracious with quotes. If there are no white space and no special characters, it is possible to omit quotes. In case you see parse errors, try adding quotes to your strings.
+
+  :::
+
+- `number` (integers and floating-point numbers)
+
+  **Examples:** `23`, `12.123`
+
+  The model itself clearly defines if a number is `int32`, `int64`, `float` or `double`. From the query point of view, all numbers are treated the same way.
+
+- `boolean`
+
+  **Examples:** `true`, `false`
+
+- `array`
+
+  **Example:** `[1, true, "test"]`
+
+- `object`
+
+  **Example:** `{"a": 1, "b": 2}`
+
+- `null`
+
   This can be useful to query for properties that are unset or do not exist.
 
 ### Arrays
@@ -106,7 +125,7 @@ If the filtered property is an array, it is also possible to define a criteria b
 
 Let us assume following document: `{"reported": { "test": [1, 2, 3, 4]}}`, we could define a query like `test all >= 1` or `test any > 2` or `test none > 100`, which would match the document.
 
-:::tip Example predicates
+:::tip Example Predicates
 
 ```bash title="Select nodes with names exactly matching "sunset""
 name == "sunset"
@@ -148,8 +167,7 @@ query is(aws_account) -->
 
 This query would return a list of all matching regions.
 
-![Outbound Traversal Example Query Diagram](./img/graph_query_outbound_example.png)
-:::
+![Outbound Traversal Example Query Diagram](./img/graph_query_outbound_example.png) :::
 
 ### Inbound Traversal
 
@@ -161,8 +179,7 @@ This query would return a list of all matching regions.
 query is(aws_ec2_instance) <-- is(aws_region)
 ```
 
-![Inbound Traversal Example Query Diagram](./img/graph_query_inbound_example.png)
-:::
+![Inbound Traversal Example Query Diagram](./img/graph_query_inbound_example.png) :::
 
 ### Including the Current Node
 
@@ -174,8 +191,7 @@ query is(aws_ec2_instance) <-- is(aws_region)
 query is(aws_region) -[0:1]->`
 ```
 
-![Example Query Diagram](./img/graph_query_01.png)
-:::
+![Example Query Diagram](./img/graph_query_01.png) :::
 
 :::tip Example
 
@@ -189,13 +205,12 @@ query is(aws_region) and name==global <-[0:1]-
 
 #### Range
 
-`-[start:until]->` traverses the graph outbound starting from a user defined depth to a user defined depth.
-The graph will be traversed from the current node according to this specification. All matching nodes will be returned.
-The same applies for inbound traversals with `<-[start:until]-`.
+`-[start:until]->` traverses the graph outbound starting from a user defined depth to a user defined depth. The graph will be traversed from the current node according to this specification. All matching nodes will be returned. The same applies for inbound traversals with `<-[start:until]-`.
 
 ![Traversal by Depth Diagram](./img/graph_query_startuntil.png)
 
 :::tip Example
+
 The following query answers the question, "Which instance profile is used for ec2 instances connected to an alb target group?"
 
 ```bash title="Select aws_alb_target_groups, traverse 2 levels inbound, and filter for aws_iam_instance_profiles"
@@ -206,21 +221,17 @@ query is(aws_alb_target_groups) <-[2:2]- is(aws_iam_instance_profile)
 
 #### One-Sided Range
 
-`-[start:]->` traverses the graph outbound starting from a user defined depth to the leafs of the graph.
-The graph will be traversed from the current node according to this specification. All matching nodes will be returned.
-The same applies for inbound traversals with `<-[start:]-`.
+`-[start:]->` traverses the graph outbound starting from a user defined depth to the leafs of the graph. The graph will be traversed from the current node according to this specification. All matching nodes will be returned. The same applies for inbound traversals with `<-[start:]-`.
 
 .. admonition:: Example
 
 `query is(aws_account) and name==sunshine -[0:]->`
 
-This query will select the aws account with name `sunshine` and then select all nodes outbound to this node.
-This will select everything Resoto knows about nodes in this account.
+This query will select the aws account with name `sunshine` and then select all nodes outbound to this node. This will select everything Resoto knows about nodes in this account.
 
 #### Bi-Directional
 
-`<-[start:until]->` traverses the graph inbound and outbound starting from a user defined depth to a user defined depth.
-The graph will be traversed from the current node according to this specification. All matching nodes will be returned.
+`<-[start:until]->` traverses the graph inbound and outbound starting from a user defined depth to a user defined depth. The graph will be traversed from the current node according to this specification. All matching nodes will be returned.
 
 :::tip Example
 

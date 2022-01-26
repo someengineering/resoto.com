@@ -5,7 +5,9 @@ To use Resoto with all it's features—including cleanup—it requires wide perm
 To use Resoto in a read-only capacity you can limit access to your cloud provider accordingly.
 
 :::info
+
 Resoto will _NOT_ delete resources marked for deletion by default, even with the neccessary permissions.
+
 :::
 
 Resoto will **silently ignore** collecting specific resources if it does not have the required permissions.

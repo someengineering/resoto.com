@@ -32,11 +32,13 @@ You can see the `aggregate():` part in front of the filter query part. The query
 Every resulting element of the filter query is passed to the aggregation function. This function can aggregate data from the incoming element using on of `sum(x)`, `min(x)`, `max(x)` or `avg(x)`.
 
 :::tip
+
 This criteria in this case is `sum(1) as count`, which uses the static value `1` for every element passed and then sums it up.
 
 Since every element counts as `1`; `sum(1)` is basically the number of elements passed.
 
 Please note, that the variable to sum does not need to be a static value, but could come from the element passed to this function.
+
 :::
 
 If we would like to know the number of CPU cores, we could rewrite the aggregation like this:
@@ -76,14 +78,11 @@ cores: 11
 
 The query is the same and the aggregation functions are the same.
 
-The only addition here is the aggregation group: `instance_status`, which is defined by every compute instance.
-The result of this addition: the computation is performed on every matching subgroup.
+The only addition here is the aggregation group: `instance_status`, which is defined by every compute instance. The result of this addition: the computation is performed on every matching subgroup.
 
-Each group is identified by the value of the grouping variable.
-Every compute instance is put into one subgroup by its reported `instance_status` property.
+Each group is identified by the value of the grouping variable. Every compute instance is put into one subgroup by its reported `instance_status` property.
 
-We can see that there are 15 stopped and 5 terminated instances, with the related number of cores.
-It is totally possible to group by more than one variable.
+We can see that there are 15 stopped and 5 terminated instances, with the related number of cores. It is totally possible to group by more than one variable.
 
 Let's also use the instance_type as an additional group variable:
 
@@ -134,18 +133,13 @@ General structure of every aggregation query:
 aggregate([grouping_part:] [function_part]): [query]
 ```
 
-The grouping part is optional and could be omitted.
-All grouping variables are separated by comma.
-Every grouping variable can have an `as <name>` clause to give the variable a specific name: `<path_to_prop> as <name>`.
-If the `as <name>` clause is omitted, a name is derived from the property path.
+The grouping part is optional and could be omitted. All grouping variables are separated by comma. Every grouping variable can have an `as <name>` clause to give the variable a specific name: `<path_to_prop> as <name>`. If the `as <name>` clause is omitted, a name is derived from the property path.
 
 ```bash
 path.to.property1 as p1, path.to.property2 as p2
 ```
 
-The grouping function part is mandatory with this syntax: `<function>(..)`.
-Every grouping function can have an `as <name>` clause to give the function result a specific name: `<function>(..) as <name>`.
-If the `as <name>` clause is omitted, a name is derived from the function name and property path.
+The grouping function part is mandatory with this syntax: `<function>(..)`. Every grouping function can have an `as <name>` clause to give the function result a specific name: `<function>(..) as <name>`. If the `as <name>` clause is omitted, a name is derived from the function name and property path.
 
 ```bash
 sum(1) as fp1, avg(path.to.property) as fp2

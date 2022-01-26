@@ -10,8 +10,7 @@ This approach merges multiple nodes in a graph into one node. This combined node
 
 ![Merge Example Diagram](./img/merge_nodes.png)
 
-The merge node feature allows for subqueries, that are executed for every node in the result.
-The result of the subquery is then merged with the node data.
+The merge node feature allows for subqueries, that are executed for every node in the result. The result of the subquery is then merged with the node data.
 
 :::tip Example
 
@@ -49,7 +48,8 @@ If the merge name is a simple literal, zero or one result of the subquery is exp
 If the expected result of the subquery is a list, than the merge name has to be defined with square brackets.
 
 :::tip Example
-The following query will traverse inbound on every element and collect all predecessors under the name `predecessors` ).
+
+The following query will traverse inbound on every element and collect all predecessors under the name `predecessors`).
 
 ```
 > query is(volume) { predecessors[]: <-- all } limit 1 | dump
@@ -86,8 +86,7 @@ region:
         .
 ```
 
-![Merge Example Diagram](./img/merge_nodes.png)
-:::
+![Merge Example Diagram](./img/merge_nodes.png) :::
 
 A subquery can even be defined using subqueries:
 
@@ -96,5 +95,7 @@ A subquery can even be defined using subqueries:
 ```
 
 :::note
+
 Be aware that a subquery is executed for every node of the original query and might be expensive and time intensive to compute.
+
 :::

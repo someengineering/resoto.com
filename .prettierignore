@@ -1,5 +1,7 @@
 # Generated files which we would not like to format
 .docusaurus/
+build/
+node_modules/
 
 # assets
-static/img/
+*.svg

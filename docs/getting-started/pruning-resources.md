@@ -1,16 +1,18 @@
 # Pruning Resources
 
 :::danger
+
 Please act with caution when selecting and filtering resources for cleanup.
 
 If you run `query is(aws_ec2_volume) | clean`, it marks _all_ `aws_ec2_volume` resources in your cloud for deletion.
+
 :::
 
-By default, [`resotoworker`](../concepts/components/resotoworker.md) will _not_ delete resources marked for deletion. Resources marked with `| clean` will stay this way without deleting them.
+By default, [`resotoworker`](../concepts/components/worker.md) will _not_ delete resources marked for deletion. Resources marked with `| clean` will stay this way without deleting them.
 
-[`resotoworker`](../concepts/components/resotoworker.md) will only delete marked resources when started with the `--cleanup` command. When started in this way, marked resources will be cleaned every full hour via a [workflow](../concepts/automation/workflow.md).
+[`resotoworker`](../concepts/components/worker.md) will only delete marked resources when started with the `--cleanup` command. When started in this way, marked resources will be cleaned every full hour via a [workflow](../concepts/automation/workflow.md).
 
-You can provide `--cleanup-dry-run` at [`resotoworker`](../concepts/components/resotoworker.md) startup to output the resources that would be deleted (without actually performing the deletion).
+You can provide `--cleanup-dry-run` at [`resotoworker`](../concepts/components/worker.md) startup to output the resources that would be deleted (without actually performing the deletion).
 
 When doing a resource cleanup selection for the first time, it is good practice to confirm the list of selected resources for plausibility using something like `desired clean = true | count`.
 
@@ -34,6 +36,6 @@ query is(volume) and ctime < -30d and atime < -7d and mtime < -7d and volume_sta
 
 ## Prune Resources Marked for Deletion
 
-Resources in Resoto will only be deleted if you started a [`resotoworker`](../concepts/components/resotoworker.md) with the `--cleanup` parameter. If done so, there will be an automatic cleanup every full hour. Otherwise, the `cleanup` will only be simulated without actually being deleted.
+Resources in Resoto will only be deleted if you started a [`resotoworker`](../concepts/components/worker.md) with the `--cleanup` parameter. If done so, there will be an automatic cleanup every full hour. Otherwise, the `cleanup` will only be simulated without actually being deleted.
 
 Instant cleanup can alternatively be triggered via starting the corresponding [workflow](../concepts/automation/workflow.md).

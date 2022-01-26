@@ -82,9 +82,5 @@
     "**/*.{css,json,md,mdx,yml}": [
       "prettier --write"
     ]
-  },
-  "prettier": {
-    "singleQuote": true,
-    "trailingComma": "es5"
   }
 }

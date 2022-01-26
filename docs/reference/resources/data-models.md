@@ -19,22 +19,43 @@ Here we see properties that are common to every resource, no matter the resource
 ![Resoto Resource Data Model](./img/data-models/resource.svg)
 
 - `id`: identifier of this cloud specific resource.
-  This id does not need to be unique over all resources.
+
+  This identifier does not need to be unique over all resources.
+
 - `name`: the cloud specific name of this resource.
 - `kind`: this property is synthesized by Resoto and defines the concrete kind of this resource.
-  Example: [AWS EC2 Volumes](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ebs-volume.html)
-  All collected AWS EC2 volumes would be of kind `aws_ec2_volume`.
+
+  **Example:** All collected [AWS EC2 Volumes](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ebs-volume.html) would be of kind `aws_ec2_volume`.
+
 - `tags`: most cloud providers offer the ability to define tags on resources.
+
   Tags are simple key value pairs of type string that are held in a dictionary.
+
 - `ctime`: the point in time when the resource has been created.
-  Note: when the cloud provider does not provide this information, Resoto will set this property to the time, when it has discovered this resource the first time.
+
+  :::note
+
+  When the cloud provider does not provide this information, Resoto will set this property to the time, when it has discovered this resource the first time.
+
+  :::
+
 - `atime`: the last collected point in time when the resource has been accessed.
-  Note: this this time is not available on all resources for all cloud providers.
-  Resoto tries to do its best to synthesize the last access time based on the resource type.
-  Example: it uses AWS CloudWatch to detect last usage
+
+  :::note
+
+  This this time is not available on all resources for all cloud providers. Resoto tries to do its best to synthesize the last access time based on the resource type.
+
+  :::
+
+  **Example:** AWS CloudWatch to detect last usage
+
 - `mtime`: the last collected point in time when the resource has been modified.
-  Note: this this time is not available on all resources for all cloud providers.
-  Resoto tries to do its best to synthesize the last modification time based on the resource type.
+
+  :::note
+
+  This this time is not available on all resources for all cloud providers. Resoto tries to do its best to synthesize the last modification time based on the resource type.
+
+  :::
 
 ## Resource Hierarchy
 
@@ -127,8 +148,7 @@ query ctime < "2018-09-28"
 query ctime < "2021-09-28T22:00:00Z"
 ```
 
-This also allows the usage of relative times, when the type of the property is known as datetime.
-If we want to query resources, that have been created in the last 3 days, we could express this with a relative datetime.
+This also allows the usage of relative times, when the type of the property is known as datetime. If we want to query resources, that have been created in the last 3 days, we could express this with a relative datetime.
 
 ```
 query ctime > "-3d"

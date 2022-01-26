@@ -59,5 +59,7 @@ Support for the following is currently included out-of-the-box in Resoto:
 In addition to the above collector plugins, a [Slack](https://slack.com) plugin is also included for notification of resource cleanups.
 
 :::tip
+
 It is possible to write your own collector plugins! Please refer to the [example plugin in our GitHub repository](https://github.com/someengineering/resoto/tree/main/plugins/example_collector), and feel free to reach out on [Discord](https://discord.gg/someengineering) if we can be of any assistance.
+
 :::

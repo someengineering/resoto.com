@@ -7,7 +7,9 @@ Do you need help writing a query? Join us on [Discord](https://discord.gg/someen
 Have you written a query others may find useful? Contributions to this page are welcome!
 
 :::note
+
 All queries listed here are safe to use, as they will _NOT_ modify your resources.
+
 :::
 
 ## `aws_alb`

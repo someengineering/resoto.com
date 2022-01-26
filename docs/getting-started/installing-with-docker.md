@@ -76,9 +76,9 @@ docker-compose up -d
 
 ## Resoto CLI
 
-[`resh`](../concepts/components/resh.md) is used to interact with [`resotocore`](../concepts/components/resotocore.md).
+The [`resh`](../concepts/components/shell.md) command is used to interact with [`resotocore`](../concepts/components/core.md).
 
-To access the Resoto shell interface, simply execute the following command:
+To access the Resoto shell interface inside the Docker container, simply execute:
 
 ```bash
 docker exec -it resoto resh

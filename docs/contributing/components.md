@@ -2,34 +2,35 @@
 sidebar_label: Components
 ---
 
+```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+```
 
 # Contributing to Components
 
 The source code for Resoto lives in the [`someengineering/resoto` repository on GitHub](https://github.com/someengineering/resoto).
-Resoto consists of multiple components, where each component is maintained as separate project.
-A change should target one of the components.
-
-- [Resoto Core](https://github.com/someengineering/resoto/tree/main/resotocore)
-- [Resoto Shell](https://github.com/someengineering/resoto/tree/main/resotoshell)
-- [Resoto Worker](https://github.com/someengineering/resoto/tree/main/resotoworker)
-- [Resoto Metrics](https://github.com/someengineering/resoto/tree/main/resotometrics)
-- [Resoto Library](https://github.com/someengineering/resoto/tree/main/resotolib)
 
 ## Authoring Changes
 
-Contributions are made via [pull requests to the GitHub repository](https://github.com/someengineering/resoto/pulls).
-You will first need to [fork](https://docs.github.com/get-started/quickstart/fork-a-repo) the repository.
+Contributions are made via [pull requests to the GitHub repository](https://github.com/someengineering/resoto/pulls). You will first need to [fork](https://docs.github.com/get-started/quickstart/fork-a-repo) the repository.
 
-#### Prerequisites
+Each Resoto [component](../concepts/components/README.md) is maintained as separate project, and pull requests should target a single component:
+
+- [Resoto Core (`resotocore`)](https://github.com/someengineering/resoto/tree/main/resotocore)
+- [Resoto Shell (`resotoshell`)](https://github.com/someengineering/resoto/tree/main/resotoshell)
+- [Resoto Worker (`resotoworker`)](https://github.com/someengineering/resoto/tree/main/resotoworker)
+- [Resoto Metrics (`resotometrics`)](https://github.com/someengineering/resoto/tree/main/resotometrics)
+- [Resoto Library (`resotolib`)](https://github.com/someengineering/resoto/tree/main/resotolib)
+
+### Prerequisites
 
 - [Git](https://git-scm.com)
 - [Python](https://python.org) 3.8+ (3.10 is recommended)
 - [ArangoDB](https://arangodb.com) 3.8.2+
 - [GNU Compiler Collection (GCC)](https://gcc.gnu.org) (depending on the host system, Python dependencies may need to be compiled from source)
 
-#### Setting Up a Virtual Environment
+### Setting Up a Virtual Environment
 
 We recommend using a [Python virtual environment](https://docs.python.org/3/tutorial/venv.html).
 
@@ -58,7 +59,7 @@ venv\Scripts\activate.bat
 </TabItem>
 </Tabs>
 
-#### Starting the Database
+### Starting the Database
 
 Start ArangoDB (using `systemctl` on Linux, by clicking the application icon in macOS, etc.).
 
@@ -69,10 +70,12 @@ Depending on the installation method used for [ArangoDB](https://arangodb.com), 
 In order for `resotocore` to perform the required database setup and for tests to pass, authentication must be disabled or the password for `root` must be set to an empty string.
 
 :::caution
+
 This setup is for development only and should not be deployed in production environments.
+
 :::
 
-#### Start components locally
+### Start components locally
 
 You can now start each of the Resoto components:
 
@@ -111,7 +114,7 @@ python -m resotometrics
 </TabItem>
 </Tabs>
 
-#### Testing Your Changes
+### Testing Your Changes
 
 We use the [`pytest`](https://pytest.org) framework. Prior to submitting your changes for review, please verify that all existing tests pass and add test coverage for new code.
 

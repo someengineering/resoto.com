@@ -1,9 +1,9 @@
+# Graph
+
 ```mdx-code-block
 import { useCurrentSidebarCategory } from '@docusaurus/theme-common';
 import DocCardList from '@theme/DocCardList';
 ```
-
-# Graph
 
 You can search your cloud infrastructure and find the resources you are looking for using Resoto's powerful query language.
 

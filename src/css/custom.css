@@ -8,7 +8,9 @@
   --ifm-color-primary-light: #8443db;
   --ifm-color-primary-lighter: #8b4edd;
   --ifm-color-primary-lightest: #a16fe3;
+  --ifm-color-content: #0f3356;
   --ifm-color-primary-contrast-background: #ebf2fc;
+  --ifm-color-primary-contrast-foreground: var(--ifm-color-content);
   --ifm-heading-color: var(--ifm-color-primary);
   --ifm-font-size-base: 115%;
   --ifm-code-font-size: 80%;
@@ -30,7 +32,9 @@ html[data-theme='dark'] {
   --ifm-color-primary-light: #bf82f7;
   --ifm-color-primary-lighter: #c892f8;
   --ifm-color-primary-lightest: #e0c3fb;
+  --ifm-color-content: #ffffff;
   --ifm-color-primary-contrast-background: #0a253f;
+  --ifm-color-primary-contrast-foreground: var(--ifm-color-content);
 }
 
 div[class^='announcementBar_'] {
@@ -48,7 +52,7 @@ div[class^='announcementBar_'] {
 }
 
 html[data-theme='dark'] div[class^='announcementBar_'] {
-  --stripe-color2: var(--ifm-background-color);
+  --stripe-color2: #000d19;
 }
 
 div[class^='announcementBar_'] .close {

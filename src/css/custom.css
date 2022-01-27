@@ -29,7 +29,6 @@ html[data-theme='dark'] {
   --ifm-color-primary-light: #bf82f7;
   --ifm-color-primary-lighter: #c892f8;
   --ifm-color-primary-lightest: #e0c3fb;
-  --ifm-heading-color: var(--ifm-color-primary);
 }
 
 div[class^='announcementBar_'] {
@@ -156,6 +155,12 @@ html[data-theme='dark'] strong {
 .footer {
   font-size: 0.875rem;
   --ifm-footer-link-hover-color: var(--ifm-footer-link-color);
+  padding-top: calc(var(--ifm-footer-padding-vertical) + 4rem);
+}
+
+.footer__logo {
+  margin: 0 auto -4rem;
+  z-index: 15;
 }
 
 .footer__copyright a {

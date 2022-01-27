@@ -93,12 +93,6 @@
   animation-name: logo-animation;
 }
 
-@media only screen and (max-width: 1099px) {
-  .heroSubtitle {
-    flex-direction: column;
-  }
-}
-
 @media only screen and (max-width: 768px) {
   .heroBanner {
     padding-left: 20px;

@@ -222,13 +222,6 @@ const config = {
             ],
           },
         ],
-        logo: {
-          alt: 'Some Engineering Logo',
-          src: 'img/someengineering.svg',
-          href: 'https://some.engineering',
-          width: 167,
-          height: 121,
-        },
         copyright: `<span aria-label="owl" role="img">🦉</span> Copyright © ${new Date().getFullYear()} <a href="https://some.engineering" target="_blank" rel="noopener noreferrer">Some Engineering Inc</a>. Built with <a href="https://docusaurus.io" target="_blank" rel="noopener noreferrer">Docusaurus</a>. <span aria-label="dinosaur" role="img">🦖</span>`,
       },
       prism: {

@@ -61,6 +61,44 @@ const config = {
         remarkPlugins: [a11yEmoji],
       },
     ],
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            to: '/docs/concepts/components/core',
+            from: ['/docs/concepts/components/resotocore'],
+          },
+          {
+            to: '/docs/concepts/components/shell',
+            from: [
+              '/docs/concepts/components/resh',
+              '/docs/concepts/components/resotoshell',
+            ],
+          },
+          {
+            to: '/docs/concepts/components/worker',
+            from: ['/docs/concepts/components/resotoworker'],
+          },
+          {
+            to: '/docs/concepts/components/library',
+            from: ['/docs/concepts/components/resotolib'],
+          },
+          {
+            to: '/docs/concepts/components/metrics',
+            from: ['/docs/concepts/components/resotometrics'],
+          },
+          {
+            to: '/docs/contributing/components',
+            from: ['/contributing/resoto', '/docs/contributing/code'],
+          },
+          {
+            to: '/docs/contributing/documentation',
+            from: ['/contributing/docs', '/docs/contributing/docs'],
+          },
+        ],
+      },
+    ],
   ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */

@@ -8,6 +8,7 @@
   --ifm-color-primary-light: #8443db;
   --ifm-color-primary-lighter: #8b4edd;
   --ifm-color-primary-lightest: #a16fe3;
+  --ifm-color-primary-contrast-background: #ebf2fc;
   --ifm-heading-color: var(--ifm-color-primary);
   --ifm-font-size-base: 115%;
   --ifm-code-font-size: 80%;
@@ -29,6 +30,7 @@ html[data-theme='dark'] {
   --ifm-color-primary-light: #bf82f7;
   --ifm-color-primary-lighter: #c892f8;
   --ifm-color-primary-lightest: #e0c3fb;
+  --ifm-color-primary-contrast-background: #0a253f;
 }
 
 div[class^='announcementBar_'] {
@@ -154,6 +156,7 @@ html[data-theme='dark'] strong {
 
 .footer {
   font-size: 0.875rem;
+  --ifm-footer-background-color: #242526;
   --ifm-footer-link-hover-color: var(--ifm-footer-link-color);
   padding-top: calc(var(--ifm-footer-padding-vertical) + 4rem);
 }

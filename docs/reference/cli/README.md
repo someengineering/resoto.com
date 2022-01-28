@@ -12,35 +12,35 @@ You can pipe commands using `|` and chain multiple commands using `;`.
 
 | Command                                                                 | Description                                                                         |
 | ----------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| [`aggregate`](./query/aggregation.md)                                   | Aggregate this query by the provided specification                                  |
+| [`aggregate`](./query/aggregation.md)                                   | Aggregate this query by the provided specification.                                 |
 | [`ancestors`](./query/basic-queries.md#traversal-selection-commands)    | Select all ancestors of this node in the graph.                                     |
 | [`chunk`](./chunk.md)                                                   | Chunk incoming elements in batches.                                                 |
 | [`clean`](./clean.md)                                                   | Mark all incoming database objects for cleaning.                                    |
-| `count`                                                                 | Count incoming elements or sum defined property.                                    |
+| [`count`](./count.md)                                                   | Count incoming elements or sum defined property.                                    |
 | [`descendants`](./query/basic-queries.md#traversal-selection-commands)  | Select all descendants of this node in the graph.                                   |
-| `dump`                                                                  | Dump all properties of incoming objects.                                            |
-| `echo`                                                                  | Send the provided message to downstream                                             |
-| `env`                                                                   | Retrieve the environment and pass it to the output stream.                          |
+| [`dump`](./dump.md)                                                     | Dump all properties of incoming objects.                                            |
+| [`echo`](./echo.md)                                                     | Send the provided message to downstream.                                            |
+| [`env`](./env.md)                                                       | Retrieve the environment and pass it to the output stream.                          |
 | [`flatten`](./flatten.md)                                               | Take incoming batches of elements and flattens them to a stream of single elements. |
-| `format`                                                                | Transform incoming objects as string with a defined format.                         |
+| [`format`](./format.md)                                                 | Transform incoming objects as string with a defined format.                         |
 | `head`                                                                  | Return `n` first elements of the stream.                                            |
 | `help`                                                                  | Shows available commands, as well as help for any specific command.                 |
-| `http`                                                                  | Perform HTTP request with incoming data                                             |
+| `http`                                                                  | Perform HTTP request with incoming data.                                            |
 | `jobs`                                                                  | Manage all jobs.                                                                    |
-| `jq`                                                                    | Filter and process JSON.                                                            |
+| [`jq`](./jq.md)                                                         | Filter and process JSON.                                                            |
 | `json`                                                                  | Parse JSON and pass parsed objects to the output stream.                            |
 | `kind`                                                                  | Retrieves information about the graph data kinds.                                   |
-| `list`                                                                  | Transform incoming objects as string with defined properties.                       |
+| [`list`](./list.md)                                                     | Transform incoming objects as string with defined properties.                       |
 | [`predecessors`](./query/basic-queries.md#traversal-selection-commands) | Select all predecessors of this node in the graph.                                  |
 | `protect`                                                               | Mark all incoming database objects as protected.                                    |
 | [`query`](./query/README.md)                                            | Query the graph.                                                                    |
 | `set_desired`                                                           | Allows to set arbitrary properties as desired for all incoming database objects.    |
 | `set_metadata`                                                          | Allows to set arbitrary properties as metadata for all incoming database objects.   |
-| `sleep`                                                                 | Suspend execution for an interval of time                                           |
+| `sleep`                                                                 | Suspend execution for an interval of time.                                          |
 | `start_task`                                                            | Start a task with the given name.                                                   |
 | [`successors`](./query/basic-queries.md#traversal-selection-commands)   | Select all successor of this node in the graph.                                     |
 | `system`                                                                | Access and manage system wide properties.                                           |
-| [`tag`](./tag.md)                                                       | Update a tag with provided value or delete a tag                                    |
+| [`tag`](./tag.md)                                                       | Update a tag with provided value or delete a tag.                                   |
 | `tail`                                                                  | Return `n` last elements of the stream.                                             |
 | `templates`                                                             | Access the query template library.                                                  |
 | `uniq`                                                                  | Remove all duplicated objects from the stream.                                      |

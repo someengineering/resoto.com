@@ -18,4 +18,4 @@ $> json [[1, 2], 3, [4, 5]] | flatten
 
 :::
 
-See [`chunk`](./chunk.md) for the reverse operation.
+**See also:** [`chunk`](./chunk.md)

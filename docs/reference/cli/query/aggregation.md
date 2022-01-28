@@ -13,7 +13,7 @@ Let's look at an example to understand the concept better.
 For the sake of this example, consider this query:
 
 ```bash
-> query is(instance) and age > 3y
+$> query is(instance) and age > 3y
 ```
 
 This will select all compute instances in my cloud, that are older than 3 years.
@@ -21,8 +21,9 @@ This will select all compute instances in my cloud, that are older than 3 years.
 If we only want to know the number of instances, that matches that criteria, we could write this:
 
 ```bash
-> query aggregate(sum(1) as count): is(instance) and age > 3y
-> count: 20
+// highlight-next-line
+$> query aggregate(sum(1) as count): is(instance) and age > 3y
+count: 20
 ```
 
 … which would return the total number of all compute instances that are older than 3 years.
@@ -44,11 +45,12 @@ Please note, that the variable to sum does not need to be a static value, but co
 If we would like to know the number of CPU cores, we could rewrite the aggregation like this:
 
 ```bash
-> query aggregate(
-    sum(1) as count,
-    sum(instance_cores) as cores):
-  is(instance) and age > 3y
-
+// highlight-start
+$> query aggregate(
+     sum(1) as count,
+     sum(instance_cores) as cores):
+   is(instance) and age > 3y
+// highlight-end
 count: 20
 cores: 62
 ```
@@ -60,11 +62,12 @@ All of the above aggregations do not use any grouping information. Grouping can 
 Let us now assume we want to know the number of instances and cores for compute instances, grouped by its instance status:
 
 ```bash
-> query aggregate(
-    instance_status as status:
-    sum(1) as count, sum(instance_cores) as cores):
-  is(instance) and age > 3y
-
+// highlight-start
+$> query aggregate(
+     instance_status as status:
+     sum(1) as count, sum(instance_cores) as cores):
+   is(instance) and age > 3y
+// highlight-end
 group:
   status: stopped
 count: 15
@@ -87,13 +90,14 @@ We can see that there are 15 stopped and 5 terminated instances, with the relate
 Let's also use the instance_type as an additional group variable:
 
 ```bash
-> query aggregate(
-    instance_status as status,
-    instance_type as type:
-    sum(1) as count,
-    sum(instance_cores) as cores):
-  is(instance) and age > 3y
-
+// highlight-start
+$> query aggregate(
+     instance_status as status,
+     instance_type as type:
+     sum(1) as count,
+     sum(instance_cores) as cores):
+   is(instance) and age > 3y
+// highlight-end
 group:
   status: stopped
   type: m5.xlarge
@@ -130,7 +134,7 @@ cores: 4
 General structure of every aggregation query:
 
 ```bash
-aggregate([grouping_part:] [function_part]): [query]
+$> aggregate([grouping_part:] [function_part]): [query]
 ```
 
 The grouping part is optional and could be omitted. All grouping variables are separated by comma. Every grouping variable can have an `as <name>` clause to give the variable a specific name: `<path_to_prop> as <name>`. If the `as <name>` clause is omitted, a name is derived from the property path.
@@ -157,29 +161,29 @@ The following functions are supported:
 ## Examples
 
 ```bash title="Count all instances in the system"
-query aggregate(
-  sum(1) as count):
-  is(instance)
+$> query aggregate(
+     sum(1) as count):
+   is(instance)
 ```
 
 ```bash title="Count all instances and instance cores in the system"
-query aggregate(
-  sum(1) as count,
-  sum(instance_cores) as cores):
-  is(instance)
+$> query aggregate(
+     sum(1) as count,
+     sum(instance_cores) as cores):
+   is(instance)
 ```
 
 ```bash title="Same as above, but group all instances by status"
-query aggregate(
-  instance_status as status: sum(1) as count,
-  sum(instance_cores) as cores):
-  is(instance)
+$> query aggregate(
+     instance_status as status: sum(1) as count,
+     sum(instance_cores) as cores):
+   is(instance)
 ```
 
 ```bash title="Same as above, but group all instances by status and type"
-query aggregate(
-  instance_status as status,
-  instance_type as type: sum(1) as count,
-  sum(instance_cores) as cores):
-  is(instance)
+$> query aggregate(
+     instance_status as status,
+     instance_type as type: sum(1) as count,
+     sum(instance_cores) as cores):
+   is(instance)
 ```

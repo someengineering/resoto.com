@@ -28,10 +28,10 @@ Marking ressources for deletion is very easy. Just pipe your matched ressources 
 
 This will add `desired.clean = true` to all matched ressources.
 
-Optionally, you can provide a reason for marking the matched ressources for the next cleanup run by just adding the reason to the `clean` command:
+Optionally, you can provide a reason for marking the matched ressources for the next cleanup run:
 
 ```bash title="Mark all unused EBS volume older than 30 days that had no IO in the past 7d"
-query is(volume) and ctime < -30d and atime < -7d and mtime < -7d and volume_status = available | clean "older than 30d with more then 7d of not beeing used"
+$> query is(volume) and ctime < -30d and atime < -7d and mtime < -7d and volume_status = available | clean "older than 30d with more then 7d of not beeing used"
 ```
 
 ## Prune Resources Marked for Deletion

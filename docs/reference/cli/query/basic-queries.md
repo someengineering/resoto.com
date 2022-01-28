@@ -41,19 +41,19 @@ The section that is used to interpret the property paths is defined by the envir
 Since the CLI allows to define environment variables as part of the CLI command, this behaviour can be adjusted easily:
 
 ```bash
-$> section=reported query cpu_count>3 and /desired.clean==true
+section=reported query cpu_count>3 and /desired.clean==true
 ```
 
 is semantically the same as this query, which interprets all paths from the root
 
 ```
-$> section=/ query reported.cpu_count>3 and desired.clean==true
+section=/ query reported.cpu_count>3 and desired.clean==true
 ```
 
 is semantically the same as this query, which interprets all paths relative to the desired section
 
 ```
-$> section=desired query /reported.cpu_count>3 and clean==true
+section=desired query /reported.cpu_count>3 and clean==true
 ```
 
 The examples above only illustrate the mechanics of property paths. We suggest to keep the default, as the examples below assume the default setting.
@@ -162,7 +162,7 @@ instance_cores > 2
 :::tip Example
 
 ```bash title="Select AWS accounts and traverse the graph outbound"
-query is(aws_account) -->
+$> query is(aws_account) -->
 ```
 
 This query would return a list of all matching regions.
@@ -176,7 +176,7 @@ This query would return a list of all matching regions.
 :::tip Example
 
 ```bash title="Select AWS EC2 instances, traverse the graph inbound, and filter to only return the aws_regions"
-query is(aws_ec2_instance) <-- is(aws_region)
+$> query is(aws_ec2_instance) <-- is(aws_region)
 ```
 
 ![Inbound Traversal Example Query Diagram](./img/graph_query_inbound_example.png) :::
@@ -188,7 +188,7 @@ query is(aws_ec2_instance) <-- is(aws_region)
 :::tip Example
 
 ```bash title="Return all resources "under" an aws_region together with the matching aws_region"
-query is(aws_region) -[0:1]->`
+$> query is(aws_region) -[0:1]->`
 ```
 
 ![Example Query Diagram](./img/graph_query_01.png) :::
@@ -196,7 +196,7 @@ query is(aws_region) -[0:1]->`
 :::tip Example
 
 ```bash title="Return all aws_regions with name global, together with all accounts"
-query is(aws_region) and name==global <-[0:1]-
+$> query is(aws_region) and name==global <-[0:1]-
 ```
 
 :::
@@ -214,7 +214,7 @@ query is(aws_region) and name==global <-[0:1]-
 The following query answers the question, "Which instance profile is used for ec2 instances connected to an alb target group?"
 
 ```bash title="Select aws_alb_target_groups, traverse 2 levels inbound, and filter for aws_iam_instance_profiles"
-query is(aws_alb_target_groups) <-[2:2]- is(aws_iam_instance_profile)
+$> query is(aws_alb_target_groups) <-[2:2]- is(aws_iam_instance_profile)
 ```
 
 :::
@@ -236,7 +236,7 @@ This query will select the aws account with name `sunshine` and then select all 
 :::tip Example
 
 ```bash title="Select nodes with the name sunset connected on any depth to the AWS account"
-query name="sunset" and is(aws_account) <-[0:]->
+$> query name="sunset" and is(aws_account) <-[0:]->
 ```
 
 :::
@@ -294,15 +294,15 @@ In order to define precedence, simply enclose terms with brackets.
 :::tip Examples
 
 ```bash title="Select nodes where reported.name is either sunrise or sunset"
-query name == sunset or name == sunrise
+$> query name == sunset or name == sunrise
 ```
 
 ```bash title="Select aws_ec2_instance nodes where reported.name is sunrise"
-query is(aws_ec2_instance) and name==sunrise
+$> query is(aws_ec2_instance) and name==sunrise
 ```
 
 ```bash title="Select aws_ec2_instance nodes of specific type or more than 2 cores"
-query is(aws_ec2_instance) and (instance_type=="m5a.large" or instance_cores>2)
+$> query is(aws_ec2_instance) and (instance_type=="m5a.large" or instance_cores>2)
 ```
 
 :::

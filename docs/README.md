@@ -8,7 +8,8 @@ title: Documentation
 Welcome to the Resoto documentation!
 
 ```bash title="Hello World in Resoto 👋🌎"
-query is(resource) | count
+// highlight-next-line
+$> query is(resource) | count
 total matched: 459241
 total unmatched: 0
 ```

@@ -6,7 +6,7 @@ module.exports = {
       files: ['*.md', '*.mdx'],
       options: {
         embeddedLanguageFormatting: 'off',
-        printWidth: 120,
+        printWidth: 175,
         proseWrap: 'never',
       },
     },

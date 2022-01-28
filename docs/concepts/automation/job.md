@@ -21,6 +21,7 @@ Jobs allow you to take a defined CLI command and trigger it automatically either
 Let us now assume that we want to ensure there will be never resources without owner tag again. We can use the command we have written above and turn it into a job:
 
 ```bash
+// highlight-next-line
 $> jobs add ensure-owner-tag --wait-for-event post_collect 'query is(resource) and tags.owner==null | tag update owner "John Doe"'
 Job ensure-owner-tag added.
 ```
@@ -37,18 +38,21 @@ It probably does not make a lot of sense to turn commands into jobs that do not 
 
 :::
 
-```bash title="Further examples for job triggers"
-# print hello world every minute to the log stream
+:::tip Examples
+
+```bash title="Print 'hello world' to the log stream every minute"
 $> jobs add say-hello --schedule '* * * * *' echo hello world
+```
 
-# print a message when the post_collect event is received
+```bash title="Print a message when the post_collect event is received"
 $> jobs add on-collect-done --wait-for-event post_collect echo collect is done!
+```
 
-# print a message when the first post_collect is received after 4 AM
-# Under the assumption that the post_collect event will come every hour,
-# this job would be only triggered once a day.
+```bash title="Print a message when the first post_collect is received after 4 AM (assuming the post_collect event occurs every hour, this job would be triggered once per day)"
 $> jobs add early-message --schedule '0 4 * * *' --wait-for-event post_collect echo collect after 4AM is done!
 ```
+
+:::
 
 The job functionality can be used to automate actions. Here is a list of possible topics that could be natural candidates for automation:
 

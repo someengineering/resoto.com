@@ -11,7 +11,7 @@ Within `resotocore`, there are workflows consisting of steps that result in acti
 
 ## API
 
-The `resotocore` API is exposed at `http://<resoto-address>:8900/api-doc`. You can also access it at [`https://resoto.com/docs/reference/resotocore-api`](https://resoto.com/docs/reference/resotocore-api).
+The `resotocore` API is exposed at `http://<resoto-address>:8900/api-doc`. You can also access it at [`https://resoto.com/docs/reference/resotocore-api`](pathname:///docs/reference/resotocore-api).
 
 `resotocore` has two API endpoints to connect to for CLI purposes:
 
@@ -105,4 +105,4 @@ Message: expected one of '!=', '!~', '<', '<=', '=', '==', '=~', '>', '>=', '[A-
 
 # More API Endpoints
 
-Resoto Core is the central hub for everything Resoto does. You can explore additional API endpoints at `http://<resoto-address>:8900/` or [`https://resoto.com/docs/reference/resotocore-api`](https://resoto.com/docs/reference/resotocore-api).
+Resoto Core is the central hub for everything Resoto does. You can explore additional API endpoints at `http://<resoto-address>:8900/` or [`https://resoto.com/docs/reference/resotocore-api`](pathname:///docs/reference/resotocore-api).

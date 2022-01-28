@@ -1,13 +1,5 @@
 @font-face {
   font-family: 'Barlow';
-  font-style: italic;
-  font-weight: 22 188;
-  font-display: swap;
-  src: url(/fonts/Barlow.woff2) format('woff2');
-}
-
-@font-face {
-  font-family: 'Barlow';
   font-style: normal;
   font-weight: 22 188;
   font-display: swap;

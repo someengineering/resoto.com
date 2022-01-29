@@ -24,7 +24,7 @@ You can pipe commands using `|` and chain multiple commands using `;`.
 | [`flatten`](./flatten.md)                                               | Take incoming batches of elements and flattens them to a stream of single elements. |
 | [`format`](./format.md)                                                 | Transform incoming objects as string with a defined format.                         |
 | [`head`](./head.md)                                                     | Return `n` first elements of the stream.                                            |
-| `help`                                                                  | Shows available commands, as well as help for any specific command.                 |
+| [`help`](./help.md)                                                     | Shows available commands, as well as help for any specific command.                 |
 | `http`                                                                  | Perform HTTP request with incoming data.                                            |
 | `jobs`                                                                  | Manage all jobs.                                                                    |
 | [`jq`](./jq.md)                                                         | Filter and process JSON.                                                            |

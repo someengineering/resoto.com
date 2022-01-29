@@ -23,7 +23,7 @@ You can pipe commands using `|` and chain multiple commands using `;`.
 | [`env`](./env.md)                                                       | Retrieve the environment and pass it to the output stream.                          |
 | [`flatten`](./flatten.md)                                               | Take incoming batches of elements and flattens them to a stream of single elements. |
 | [`format`](./format.md)                                                 | Transform incoming objects as string with a defined format.                         |
-| `head`                                                                  | Return `n` first elements of the stream.                                            |
+| [`head`](./head.md)                                                     | Return `n` first elements of the stream.                                            |
 | `help`                                                                  | Shows available commands, as well as help for any specific command.                 |
 | `http`                                                                  | Perform HTTP request with incoming data.                                            |
 | `jobs`                                                                  | Manage all jobs.                                                                    |
@@ -41,7 +41,7 @@ You can pipe commands using `|` and chain multiple commands using `;`.
 | [`successors`](./query/basic-queries.md#traversal-selection-commands)   | Select all successor of this node in the graph.                                     |
 | `system`                                                                | Access and manage system wide properties.                                           |
 | [`tag`](./tag.md)                                                       | Update a tag with provided value or delete a tag.                                   |
-| `tail`                                                                  | Return `n` last elements of the stream.                                             |
+| [`tail`](./tail.md)                                                     | Return `n` last elements of the stream.                                             |
 | `templates`                                                             | Access the query template library.                                                  |
 | `uniq`                                                                  | Remove all duplicated objects from the stream.                                      |
 | `write`                                                                 | Writes the incoming stream of data to a file in the defined format.                 |

@@ -1,6 +1,6 @@
 # Command-Line Interface (CLI)
 
-The [`resh`](/concepts/components/shell.md) CLI supports various commands that help you accessing the graph database.
+The [Resoto Shell](/concepts/components/shell.md) CLI supports various commands that allow you to access the graph database.
 
 :::tip
 

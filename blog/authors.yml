@@ -1,29 +1,29 @@
 lars:
   name: Lars Kamp
-  title: Some CEO
+  title: Co-Founder & Some CEO
   image_url: https://github.com/scapecast.png
   url: https://github.com/scapecast
 
 lukas:
   name: Lukas Lösche
-  title: Some Engineer
+  title: Co-Founder & Some Engineer
   image_url: https://github.com/lloesche.png
   url: https://github.com/lloesche
 
 matthias:
   name: Matthias Veit
-  title: Some Engineer
+  title: Co-Founder & Some Engineer
   image_url: https://github.com/aquamatthias.png
   url: https://github.com/aquamatthias
 
 raffa:
   name: Raffaele Picca
-  title: Some Designer
+  title: Co-Founder & Some Designer
   image_url: https://github.com/RPicster.png
   url: https://github.com/RPicster
 
 doris:
   name: Doris Houng
-  title: Some Technical Writer
+  title: Some Developer Experience Engineer
   image_url: https://github.com/TheCatLady.png
   url: https://github.com/TheCatLady

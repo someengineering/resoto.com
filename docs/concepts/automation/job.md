@@ -21,8 +21,8 @@ Jobs allow you to take a defined CLI command and trigger it automatically either
 Let us now assume that we want to ensure there will be never resources without owner tag again. We can use the command we have written above and turn it into a job:
 
 ```bash
-// highlight-next-line
 $> jobs add ensure-owner-tag --wait-for-event post_collect 'query is(resource) and tags.owner==null | tag update owner "John Doe"'
+// highlight-next-line
 Job ensure-owner-tag added.
 ```
 

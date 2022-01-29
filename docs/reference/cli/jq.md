@@ -7,14 +7,14 @@ This command uses the well-known [`jq` JSON processor](https://stedolan.github.i
 :::tip Example
 
 ```bash title="Query all AWS EC2 instances and select the reported.id"
-// highlight-next-line
 $> query is(aws_ec2_instance) | jq '.reported.id'
+// highlight-next-line
 ["id-1", "id-2"]
 ```
 
 ```bash title="Query all AWS EC2 instances and select the reported.id as id and the revision as rev"
-// highlight-next-line
 $> query is(aws_ec2_instance) | jq '. | {id: .reported.id, rev:.revision}'
+// highlight-next-line
 [{"id": "id-1", "rev": "1"}, {"id": "id-2", "rev": "5"}]
 ```
 

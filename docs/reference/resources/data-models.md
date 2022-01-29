@@ -84,8 +84,8 @@ The model makes it easy to query conceptually common data and also to retrieve a
 If you want to see all available kinds in the system, you can use the `kind` CLI command in `resh`.
 
 ```bash
-// highlight-next-line
 $> kind
+// highlight-start
 - access_key
 - account
 - any
@@ -93,13 +93,14 @@ $> kind
 - aws_account
   .
   .
+// highlight-end
 ```
 
 If you want to see the properties of a specific kind use `kind <name>`:
 
 ```bash
-// highlight-next-line
 $> kind aws_ec2_volume
+// highlight-start
 name: aws_ec2_volume
 bases:
 - resource
@@ -108,8 +109,9 @@ bases:
 properties:
 - name: id
   kind: string
-.
-.
+  .
+  .
+// highlight-end
 ```
 
 ## Complex and Simple Kinds

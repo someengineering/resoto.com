@@ -21,8 +21,8 @@ This will select all compute instances in my cloud, that are older than 3 years.
 If we only want to know the number of instances, that matches that criteria, we could write this:
 
 ```bash
-// highlight-next-line
 $> query aggregate(sum(1) as count): is(instance) and age > 3y
+// highlight-next-line
 count: 20
 ```
 
@@ -45,14 +45,14 @@ Please note, that the variable to sum does not need to be a static value, but co
 If we would like to know the number of CPU cores, we could rewrite the aggregation like this:
 
 ```bash
-// highlight-start
 $> query aggregate(
      sum(1) as count,
      sum(instance_cores) as cores):
    is(instance) and age > 3y
-// highlight-end
+// highlight-start
 count: 20
 cores: 62
+// highlight-end
 ```
 
 In addition to the instance count, we also get the total number of instance cores in the system.
@@ -62,12 +62,11 @@ All of the above aggregations do not use any grouping information. Grouping can 
 Let us now assume we want to know the number of instances and cores for compute instances, grouped by its instance status:
 
 ```bash
-// highlight-start
 $> query aggregate(
      instance_status as status:
      sum(1) as count, sum(instance_cores) as cores):
    is(instance) and age > 3y
-// highlight-end
+// highlight-start
 group:
   status: stopped
 count: 15
@@ -77,6 +76,7 @@ group:
   status: terminated
 count: 5
 cores: 11
+// highlight-end
 ```
 
 The query is the same and the aggregation functions are the same.
@@ -90,14 +90,13 @@ We can see that there are 15 stopped and 5 terminated instances, with the relate
 Let's also use the instance_type as an additional group variable:
 
 ```bash
-// highlight-start
 $> query aggregate(
      instance_status as status,
      instance_type as type:
      sum(1) as count,
      sum(instance_cores) as cores):
    is(instance) and age > 3y
-// highlight-end
+// highlight-start
 group:
   status: stopped
   type: m5.xlarge
@@ -127,6 +126,7 @@ group:
   type: n1-standard-4
 count: 1
 cores: 4
+// highlight-end
 ```
 
 ## Syntax
@@ -134,7 +134,7 @@ cores: 4
 General structure of every aggregation query:
 
 ```bash
-$> aggregate([grouping_part:] [function_part]): [query]
+aggregate([grouping_part:] [function_part]): [query]
 ```
 
 The grouping part is optional and could be omitted. All grouping variables are separated by comma. Every grouping variable can have an `as <name>` clause to give the variable a specific name: `<path_to_prop> as <name>`. If the `as <name>` clause is omitted, a name is derived from the property path.

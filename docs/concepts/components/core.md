@@ -27,8 +27,8 @@ We will evaluate the query before executing it for demonstration. We also introd
 ### Evaluate
 
 ```bash title="Correct"
-// highlight-next-line
 $> echo 'query is("resource") limit 1' | http :8900/cli/evaluate
+// highlight-start
 HTTP/1.1 200 OK
 Content-Length: 47
 Content-Type: application/json; charset=utf-8
@@ -40,11 +40,12 @@ Server: Python/3.9 aiohttp/3.7.4.post0
         "execute_query": "is(\"resource\") limit 1"
     }
 ]
+// highlight-end
 ```
 
 ```bash title="Typo"
-// highlight-next-line
 $> echo 'graph=resoto query is("resource") limit1' | http :8900/cli/evaluate
+// highlight-start
 HTTP/1.1 400 Bad Request
 Content-Length: 151
 Content-Type: text/plain; charset=utf-8
@@ -53,13 +54,14 @@ Server: Python/3.9 aiohttp/3.7.4.post0
 
 Error: ParseError
 Message: expected one of '!=', '!~', '<', '<=', '=', '==', '=~', '>', '>=', '[A-Za-z][A-Za-z0-9_]*', '`', 'in', 'not in', '~' at 0:21
+// highlight-end
 ```
 
 ## Execute
 
 ```bash title="Correct"
-// highlight-next-line
 $> echo 'graph=resoto query is("resource") limit 1' | http :8900/cli/execute
+// highlight-start
 HTTP/1.1 200 OK
 Content-Type: application/json
 Date: Wed, 06 Oct 2021 15:08:10 GMT
@@ -88,11 +90,12 @@ Transfer-Encoding: chunked
         "type": "node"
     }
 ]
+// highlight-end
 ```
 
 ```bash title="Typo"
-// highlight-next-line
 $> echo 'graph=resoto query is("resource") limit1' | http :8900/cli/execute
+// highlight-start
 HTTP/1.1 400 Bad Request
 Content-Length: 151
 Content-Type: text/plain; charset=utf-8
@@ -101,6 +104,7 @@ Server: Python/3.9 aiohttp/3.7.4.post0
 
 Error: ParseError
 Message: expected one of '!=', '!~', '<', '<=', '=', '==', '=~', '>', '>=', '[A-Za-z][A-Za-z0-9_]*', '`', 'in', 'not in', '~' at 0:21
+// highlight-end
 ```
 
 # More API Endpoints

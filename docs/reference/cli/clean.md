@@ -5,20 +5,20 @@ The `clean` command marks resources for cleaning by adding `desired.clean = true
 :::tip Examples
 
 ```bash
-// highlight-next-line
 $> query isinstance("ec2") and atime&lt;"-2d" | clean
+// highlight-next-line
 [ { "id": "abc" "desired": { "clean": true }, "reported": { .. } }, . . { "id": "xyz" "desired": { "clean": true }, "reported": { .. } }, ]
 ```
 
 ```bash
-// highlight-next-line
 $> json [{"id": "id1"}, {"id": "id2"}] | clean
+// highlight-next-line
 [ { "id": "id1", "desired": { "clean": true }, "reported": { .. } }, { "id": "id2", "desired": { "clean": true }, "reported": { .. } }, ]
 ```
 
 ```bash
-// highlight-next-line
 $> json ["id1", "id2"] | clean
+// highlight-next-line
 [ { "id": "id1", "desired": { "clean": true }, "reported": { .. } }, { "id": "id2", "desired": { "clean": true }, "reported": { .. } }, ]
 ```
 

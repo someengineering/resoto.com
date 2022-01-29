@@ -22,18 +22,19 @@ And so, we developed our own query language tailored specifically to Resoto. The
 Let's try searching for all available EC2 instances. `is()` will match a specific or abstract type in a polymorphic fashion, checking all types and subtypes of the provided type. The `instance_cores` filter will limit results to only those instances with more than two cores. The query will automagically search your entire infrastructure, regardless of account or region!
 
 ```bash
-// highlight-next-line
 $> query is(aws_ec2_instance) and instance_cores > 2
+// highlight-start
 id=i-a..., name=crmsec, age=2y2M, account=dev, region=us-east-1
 id=i-0..., name=airgap, age=2M, account=staging, region=eu-central-1
 id=i-0..., name=flixer, age=1M3w, account=sales, region=us-west-2
+// highlight-end
 ```
 
 The query found three instances in three accounts and three regions. The default output is a condensed list view, but it is also possible to get all collected properties of any resource using the `dump` command:
 
 ```bash
-// highlight-next-line
 $> query is(aws_ec2_instance) and instance_cores > 2 limit 1 | dump
+// highlight-start
 reported:
   kind: aws_ec2_instance
   id: i-a...
@@ -47,17 +48,19 @@ reported:
   instance_type: t3.xlarge
   instance_status: stopped
   age: 1y10M
+// highlight-end
 ```
 
 Let us see how many EC2 instances we have grouped by `instance_type` using the `count` command:
 
 ```bash
-// highlight-next-line
 $> query is(aws_ec2_instance) and instance_cores > 2 | count instance_type
+// highlight-start
 t3.2xlarge: 1
 m5.4xlarge: 15
 total matched: 16
 total unmatched: 0
+// highlight-end
 ```
 
 Sixteen EC2 instances were returned, including fifteen `m5` and one `t3` `xlarge`.
@@ -69,10 +72,11 @@ When Resoto collects data on your cloud infrastructure, it creates an edge betwe
 <!-- DIAGRAM IMAGE GOES HERE -->
 
 ```bash
-// highlight-next-line
 $> query is(aws_ec2_instance) and instance_cores > 2 --> is(aws_elb)
+// highlight-start
 name=a5..., age=1y1M, account=sales, region=eu-central-1
 name=a3..., age=6M2w, account=staging, region=us-west-2
+// highlight-end
 ```
 
 The `-->` arrow will take all matching EC2 instances and walk the graph "outbound," moving precisely one step. The list of matching items is not limited only to ELB load balancers, so we need to filter this list again to return only ELB results.
@@ -80,10 +84,11 @@ The `-->` arrow will take all matching EC2 instances and walk the graph "outboun
 It is also possible to reverse the last query to output all EC2 instances behind an ELB:
 
 ```bash
-// highlight-next-line
 $> query is(aws_elb) <-- is(aws_ec2_instance) and instance_cores > 2
+// highlight-start
 id=i-0..., name=airgap, age=2M, account=staging, region=eu-central-1
 id=i-0..., name=flixer, age=1M3w, account=sales, region=us-west-2
+// highlight-end
 ```
 
 The arrow is now mirrored and traverses the graph "inbound," walking edges in the opposite direction.

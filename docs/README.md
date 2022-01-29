@@ -8,10 +8,11 @@ title: Documentation
 Welcome to the Resoto documentation!
 
 ```bash title="Hello World in Resoto 👋🌎"
-// highlight-next-line
 $> query is(resource) | count
+// highlight-start
 total matched: 459241
 total unmatched: 0
+// highlight-end
 ```
 
 To help you find the information you need, the documentation is structured as follows:

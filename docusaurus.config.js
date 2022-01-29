@@ -66,6 +66,10 @@ const config = {
       {
         redirects: [
           {
+            to: '/api',
+            from: ['/docs/reference/resotocore-api'],
+          },
+          {
             to: '/docs/concepts/components/core',
             from: ['/docs/concepts/components/resotocore'],
           },

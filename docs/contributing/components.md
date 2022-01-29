@@ -75,12 +75,12 @@ This setup is for development only and should not be deployed in production envi
 
 :::
 
-### Start components locally
+### Starting the Components
 
 You can now start each of the Resoto components:
 
 <Tabs>
-<TabItem value="core" label="Core (resotocore)">
+<TabItem value="core" label="Core">
 
 ```bash
 cd resotocore
@@ -88,7 +88,7 @@ python -m core
 ```
 
 </TabItem>
-<TabItem value="shell" label="Shell (resh)">
+<TabItem value="shell" label="Shell">
 
 ```bash
 cd resotoshell
@@ -96,7 +96,7 @@ python -m resotoshell
 ```
 
 </TabItem>
-<TabItem value="worker" label="Worker (resotoworker)">
+<TabItem value="worker" label="Worker">
 
 ```bash
 cd resotoworker
@@ -104,7 +104,7 @@ python -m resotoworker
 ```
 
 </TabItem>
-<TabItem value="metrics" label="Metrics (resotometrics)">
+<TabItem value="metrics" label="Metrics">
 
 ```bash
 cd resotometrics

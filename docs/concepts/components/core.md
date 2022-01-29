@@ -7,20 +7,20 @@ sidebar_position: 1
 
 The Resoto Core graph platform (`resotocore`) is the persistence and query backend of Resoto. It maintains the graph of resources and provides APIs to update and access them.
 
-Within `resotocore`, there are workflows consisting of steps that result in actions like `collect`, `cleanup` or `generate_metrics`. These actions are received by components like [`resotoworker`](./worker.md) and [`resotometrics`](./metrics.md).
+Within Resoto Core, there are workflows consisting of steps that result in actions like `collect`, `cleanup` or `generate_metrics`. These actions are received by components like [Resoto Worker](./worker.md) and [Resoto Metrics](./metrics.md).
 
 ## API
 
-The `resotocore` API is exposed at `http://<resoto-address>:8900/api-doc`. You can also access it at [`https://resoto.com/docs/reference/resotocore-api`](pathname:///docs/reference/resotocore-api).
+The Resoto Core API is exposed at `http://<resoto-address>:8900/api-doc`. You can also access it at [`https://resoto.com/docs/reference/core-api`](pathname:///docs/reference/core-api).
 
-`resotocore` has two API endpoints to connect to for CLI purposes:
+Resoto Core has two API endpoints to connect to for CLI purposes:
 
 1. `/cli/evaluate`
 2. `/cli/execute`
 
 The `cli/evaluate` functinality is used internally on every `/cli/execute` before the command executes.
 
-Below is a simulation of sending a [`resh`](./shell.md) query to the CLI API.
+Below is a simulation of sending a [Resoto Shell](./shell.md) query to the CLI API.
 
 We will evaluate the query before executing it for demonstration. We also introduce this query with a typo to show the response if not successful.
 
@@ -109,4 +109,4 @@ Message: expected one of '!=', '!~', '<', '<=', '=', '==', '=~', '>', '>=', '[A-
 
 # More API Endpoints
 
-Resoto Core is the central hub for everything Resoto does. You can explore additional API endpoints at `http://<resoto-address>:8900/` or [`https://resoto.com/docs/reference/resotocore-api`](pathname:///docs/reference/resotocore-api).
+Resoto Core is the central hub for everything Resoto does. You can explore additional API endpoints at `http://<resoto-address>:8900/` or [`https://resoto.com/docs/reference/core-api`](pathname:///docs/reference/core-api).

@@ -34,7 +34,7 @@ jobs:
         if: github.event_name != 'pull_request' && !contains(github.event.head_commit.message, '[skip ci]')
         uses: Legion2/swagger-ui-action@v1
         with:
-          output: static/docs/reference/resotocore-api
+          output: static/docs/reference/core-api
           spec-file: api-doc.yaml
       - name: Install dependencies
         env:

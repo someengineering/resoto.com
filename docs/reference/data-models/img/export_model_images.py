@@ -9,7 +9,7 @@ def export_images(path: str):
     for name, kind in kinds.items():
         if [a for a in filter_out if name.startswith(f"{a}_")]:
             image = requests.get(f"{core}/model/uml", params={"show": name})
-            with open(f"{path}/{name}.svg", "w+") as file:
+            with open(f"{path}/{a}/{name}.svg", "w+") as file:
                 file.write(image.text)
 
 
@@ -17,7 +17,7 @@ def print_md(cloud: str):
     for name in sorted(kinds):
         if name.startswith(cloud):
             print(f"## `{name}`\n")
-            print(f"![{name}](img/{name}.svg)\n")
+            print(f"![{name}](./img/{cloud}/{name}.svg)\n")
 
 
 export_images(".")

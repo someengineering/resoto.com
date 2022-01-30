@@ -14,7 +14,7 @@
   --ifm-color-primary-light: #8443db;
   --ifm-color-primary-lighter: #8b4edd;
   --ifm-color-primary-lightest: #a16fe3;
-  --ifm-color-content: #0f3356;
+  --ifm-color-content: #0a253f;
   --ifm-link-color: #af62f1;
   --ifm-color-primary-contrast-background: #ebf2fc;
   --ifm-color-primary-contrast-foreground: var(--ifm-color-content);
@@ -61,7 +61,7 @@ div[class^='announcementBar_'] {
 }
 
 html[data-theme='dark'] div[class^='announcementBar_'] {
-  --stripe-color2: #000d19;
+  --stripe-color2: #0a253f;
 }
 
 div[class^='announcementBar_'] .close {

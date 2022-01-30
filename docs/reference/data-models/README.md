@@ -17,7 +17,7 @@ Every resource collected by Resoto has the kind `resource` as a base.
 
 Here we see properties that are common to every resource, no matter the resource or cloud provider:
 
-![Resoto Resource Data Model](./img/data-models/resource.svg)
+![Resoto Resource Data Model](./img/resource.svg)
 
 - `id`: identifier of this cloud specific resource.
 
@@ -66,7 +66,7 @@ Every concrete resource in Resoto has the `resource` kind as root.
 
 Resoto introduces abstract model classes for almost all different resources that are collected.
 
-![Resoto Resource Example Model](./img/data-models/resource_example.svg)
+![Resoto Resource Example Model](./img/resource_example.svg)
 
 Let us make this very clear by showing a specific example: [AWS EC2 Volume](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ebs-volume.html) is modeled as `aws_ec2_volume`. As you can see, the `aws_ec2_volume` introduces four properties.
 
@@ -74,13 +74,15 @@ It inherits from the base kind `volume`, which itself inherits all properties fr
 
 The complete data that is collected and stored would look like the following:
 
-![Resoto Resource Data Example](./img/data-models/ec2_volume_example.svg)
+![Resoto Resource Data Example](./img/ec2_volume_example.svg)
 
 You might have noticed, that not only `aws_ec2_instance` is a subtype of `volume`, but also `gcp_disk`. A google cloud resource of type [Disk](https://cloud.google.com/compute/docs/reference/rest/v1/disks) is conceptually similar to an AWS EC2 Volume and shares quite some properties.
 
 The model makes it easy to query conceptually common data and also to retrieve and reason about this data.
 
 ### Supported Resource Types
+
+Resoto has built-in support for resource types from some cloud providers:
 
 <DocCardList items={useCurrentSidebarCategory().items}/>
 

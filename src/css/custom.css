@@ -61,7 +61,7 @@ div[class^='announcementBar_'] {
 }
 
 html[data-theme='dark'] div[class^='announcementBar_'] {
-  --stripe-color2: #0a253f;
+  --stripe-color2: #000d19;
 }
 
 div[class^='announcementBar_'] .close {

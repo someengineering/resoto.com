@@ -1,4 +1,4 @@
-# Command-Line Interface (CLI)
+# Command-Line Interface
 
 The [Resoto Shell](/concepts/components/shell.md) CLI supports various commands that allow you to access the graph database.
 

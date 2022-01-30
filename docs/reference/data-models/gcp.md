@@ -1,9 +1,8 @@
 ---
-slug: gcp
-sidebar_label: Google Cloud Platform (GCP)
+sidebar_label: Google Cloud Platform
 ---
 
-# Google Cloud Platform (GCP) Resources
+# Google Cloud Platform Resources
 
 ## `gcp_autoscaler`
 

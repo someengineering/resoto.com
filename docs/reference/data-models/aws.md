@@ -1,9 +1,8 @@
 ---
-slug: aws
-sidebar_label: Amazon Web Services (AWS)
+sidebar_label: Amazon Web Services
 ---
 
-# Amazon Web Services (AWS) Resources
+# Amazon Web Services Resources
 
 ## `aws_account`
 

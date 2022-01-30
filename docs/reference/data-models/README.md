@@ -1,8 +1,9 @@
----
-sidebar_position: 1
----
+# Resource Data Models
 
-# Data Models
+```mdx-code-block
+import { useCurrentSidebarCategory } from '@docusaurus/theme-common';
+import DocCardList from '@theme/DocCardList';
+```
 
 Resoto is able to collect data from different data sources that is maintained in a graph. It has a pluggable API to interface with different cloud providers.
 
@@ -10,7 +11,7 @@ The data model of the cloud providers is naturally defined by the cloud provider
 
 To make your life easier, Resoto introduces a model abstraction. Every resource collected by Resoto is described by a data model and checked for consistency during import time.
 
-## `resource`
+## Resources
 
 Every resource collected by Resoto has the kind `resource` as a base.
 
@@ -57,7 +58,7 @@ Here we see properties that are common to every resource, no matter the resource
 
   :::
 
-## Resource Hierarchy
+### Resource Hierarchy
 
 Resoto introduces a resource hierarchy. This hierarchy tries to do its best to abstract over the different data models from different cloud providers, delivering a consistent model to retrieve data from your different clouds.
 
@@ -79,7 +80,11 @@ You might have noticed, that not only `aws_ec2_instance` is a subtype of `volume
 
 The model makes it easy to query conceptually common data and also to retrieve and reason about this data.
 
-## `kind` CLI command
+### Supported Resource Types
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
+
+## Kinds
 
 If you want to see all available kinds in the system, you can use the `kind` CLI command in `resh`.
 
@@ -114,7 +119,7 @@ properties:
 // highlight-end
 ```
 
-## Complex and Simple Kinds
+### Complex and Simple Kinds
 
 We have looked at complex kinds so far: a complex kind has a name and a set of properties.
 

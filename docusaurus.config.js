@@ -104,6 +104,21 @@ const config = {
             to: '/docs/reference/cli/query/aggregation',
             from: ['/docs/reference/cli/aggregate'],
           },
+          {
+            to: '/docs/reference/data-models',
+            from: [
+              '/docs/reference/resources',
+              '/docs/reference/resources/data-models',
+            ],
+          },
+          {
+            to: '/docs/reference/data-models/aws',
+            from: ['/docs/reference/resources/aws'],
+          },
+          {
+            to: '/docs/reference/data-models/gcp',
+            from: ['/docs/reference/resources/gcp'],
+          },
         ],
       },
     ],

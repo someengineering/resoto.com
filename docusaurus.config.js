@@ -66,10 +66,6 @@ const config = {
       {
         redirects: [
           {
-            to: '/api',
-            from: ['/docs/reference/resotocore-api'],
-          },
-          {
             to: '/docs/concepts/components/core',
             from: ['/docs/concepts/components/resotocore'],
           },
@@ -93,12 +89,20 @@ const config = {
             from: ['/docs/concepts/components/resotometrics'],
           },
           {
+            to: '/docs/contributing',
+            from: ['/contributing'],
+          },
+          {
             to: '/docs/contributing/components',
             from: ['/contributing/resoto', '/docs/contributing/code'],
           },
           {
             to: '/docs/contributing/documentation',
             from: ['/contributing/docs', '/docs/contributing/docs'],
+          },
+          {
+            to: '/docs/reference/cli/query/aggregation',
+            from: ['/docs/reference/cli/aggregate'],
           },
         ],
       },

@@ -1,5 +1,5 @@
 import useIsBrowser from '@docusaurus/useIsBrowser';
-import SomeEngineeringLogo from '@site/static/img/someengineering.svg';
+import FooterLogo from '@site/static/img/someengineering.svg';
 import OriginalFooter from '@theme-original/Footer';
 import React from 'react';
 
@@ -11,7 +11,14 @@ export default function Footer(): JSX.Element {
 
   return (
     <>
-      <SomeEngineeringLogo className="footer__logo" />
+      <a
+        href="https://some.engineering"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="footer__logolink"
+      >
+        <FooterLogo className="footer__logo" />
+      </a>
       {isDev || !isBrowser ? (
         <OriginalFooter />
       ) : (

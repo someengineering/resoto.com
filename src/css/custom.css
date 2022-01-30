@@ -104,6 +104,8 @@ div[class^='announcementBar_'] .close {
 
 .header-icon-link:hover:before {
   background-color: var(--ifm-navbar-link-hover-color);
+  transform: scale(1.05);
+  transition-duration: 75ms;
 }
 
 @media screen and (max-width: 966px) {
@@ -125,6 +127,7 @@ div[class^='announcementBar_'] .close {
 
   .header-icon-link:hover:before {
     background-color: var(--ifm-menu-color);
+    transform: scale(1);
   }
 }
 
@@ -174,9 +177,21 @@ html[data-theme='dark'] strong {
   padding-top: calc(var(--ifm-footer-padding-vertical) + 4rem);
 }
 
-.footer__logo {
+.footer__logolink {
+  display: block;
   margin: 0 auto -4rem;
   z-index: 15;
+}
+
+.footer__logolink:hover {
+  transform: scale(1.025);
+  transition-duration: 75ms;
+}
+
+.footer__logo {
+  height: 100%;
+  width: 100%;
+  margin: 0;
 }
 
 .footer__copyright a {

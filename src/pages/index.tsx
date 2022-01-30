@@ -38,7 +38,7 @@ function HomepageHeader() {
                 <a
                   href="https://github.com/someengineering/resoto"
                   target="_blank"
-                  rel="noreferrer noopener"
+                  rel="noopener noreferrer"
                   className="button button--primary button--lg"
                 >
                   <GitHubLogo className={styles.buttonIcon} />
@@ -50,7 +50,7 @@ function HomepageHeader() {
                   <a
                     href="https://github.com/someengineering/resoto/stargazers"
                     target="_blank"
-                    rel="noreferrer noopener"
+                    rel="noopener noreferrer"
                     className={clsx('button button--lg', styles.speechButton)}
                   >
                     {githubStars} <Emoji symbol="⭐" label="stars" />

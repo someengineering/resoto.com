@@ -4,6 +4,10 @@ sidebar_position: 1
 
 # Basic Queries
 
+```mdx-code-block
+import Image from '@theme/IdealImage';
+```
+
 ## Selecting Nodes by ID
 
 Nodes can be selected by their id via the `id(xyz)` function. This function can be used globally no matter which section is used.
@@ -153,7 +157,7 @@ instance_cores > 2
 
 `<--` traverses the graph inbound, `-->` traverses the graph outbound.
 
-![Traversal Selectors Diagram](./img/graph_query_inout.png)
+<Image img={require('./img/graph_query_inout.png')} alt="Traversal Selectors Diagram" />
 
 ### Outbound Traversal
 
@@ -167,7 +171,7 @@ $> query is(aws_account) -->
 
 This query would return a list of all matching regions.
 
-![Outbound Traversal Example Query Diagram](./img/graph_query_outbound_example.png)
+<Image img={require('./img/graph_query_outbound_example.png')} alt="Outbound Traversal Example Query Diagram" />
 
 :::
 
@@ -181,7 +185,7 @@ This query would return a list of all matching regions.
 $> query is(aws_ec2_instance) <-- is(aws_region)
 ```
 
-![Inbound Traversal Example Query Diagram](./img/graph_query_inbound_example.png)
+<Image img={require('./img/graph_query_inbound_example.png')} alt="Inbound Traversal Example Query Diagram" />
 
 :::
 
@@ -195,7 +199,7 @@ $> query is(aws_ec2_instance) <-- is(aws_region)
 $> query is(aws_region) -[0:1]->`
 ```
 
-![Example Query Diagram](./img/graph_query_01.png)
+<Image img={require('./img/graph_query_01.png')} alt="Example Query Diagram" />
 
 :::
 
@@ -213,7 +217,7 @@ $> query is(aws_region) and name==global <-[0:1]-
 
 `-[start:until]->` traverses the graph outbound starting from a user defined depth to a user defined depth. The graph will be traversed from the current node according to this specification. All matching nodes will be returned. The same applies for inbound traversals with `<-[start:until]-`.
 
-![Traversal by Depth Diagram](./img/graph_query_startuntil.png)
+<Image img={require('./img/graph_query_startuntil.png')} alt="Traversal by Depth Diagram" />
 
 :::tip Example
 

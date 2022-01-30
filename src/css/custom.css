@@ -3,7 +3,7 @@
   font-style: normal;
   font-weight: 22 188;
   font-display: swap;
-  src: url(/fonts/Barlow.woff2) format('woff2');
+  src: url('/fonts/Barlow.woff2') format('woff2');
 }
 
 :root {
@@ -78,7 +78,7 @@ div[class^='announcementBar_'] .close {
   width: 5.625rem;
   color: transparent;
   background-color: var(--ifm-navbar-link-color);
-  --logo-text: url(/img/navbar-logotext.svg);
+  --logo-text: url('/img/navbar-logotext.svg');
   -webkit-mask-image: var(--logo-text);
   mask-image: var(--logo-text);
 }

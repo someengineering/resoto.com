@@ -6,7 +6,11 @@ image: ./img/banner-social.png
 
 # New Name, New Website!
 
-![Resoto Logo Graffiti](./img/banner.png)
+```mdx-code-block
+import Image from '@theme/IdealImage';
+```
+
+<Image img={require('./img/banner.png')} alt="Resoto Logo Graffiti" />
 
 **This past month has been quite the roller coaster for us at [Some Engineering](https://some.engineering).** 🎢
 

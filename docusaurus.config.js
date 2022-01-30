@@ -61,6 +61,7 @@ const config = {
         remarkPlugins: [a11yEmoji],
       },
     ],
+    '@docusaurus/plugin-ideal-image',
     [
       '@docusaurus/plugin-client-redirects',
       {

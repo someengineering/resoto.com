@@ -5,11 +5,15 @@ sidebar_position: 2
 
 # Graph Edge
 
+```mdx-code-block
+import Image from '@theme/IdealImage';
+```
+
 Nodes in the graph are connected via edges. Edges in the graph are directed, starting from a node pointing to a node.
 
 In order to traverse the graph in a meaningful way, it is important to understand the structure of the graph. The following model is only a subset of the graph model you will find in Resoto, but illustrates how we can "walk" edges in the graph:
 
-![Edge Data Model](./img/graph_query_graph_edges.png)
+<Image img={require('./img/graph_query_graph_edges.png')} alt="Edge Data Model" />
 
 All of the resources in AWS are placed in a region. The region is one node in the graph.
 

@@ -5,7 +5,7 @@ The `list` command transforms inputted JSON objects into `string`s.
 ## Usage
 
 ```bash
-list [properties]
+list <properties>
 ```
 
 ### Parameters

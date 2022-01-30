@@ -9,7 +9,7 @@ Optionally, you can provide a reason for marking the matched resources to be pru
 ## Usage
 
 ```bash
-clean [reason]
+clean <reason>
 ```
 
 ### Parameters

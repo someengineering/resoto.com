@@ -7,7 +7,7 @@ This command uses the well-known [`jq` JSON processor](https://stedolan.github.i
 ## Usage
 
 ```bash
-jq [filter]
+jq <filter>
 ```
 
 ### Parameters

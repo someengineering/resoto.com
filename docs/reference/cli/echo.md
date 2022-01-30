@@ -5,7 +5,7 @@ The `echo` command sends the provided message downstream.
 ## Usage
 
 ```bash
-echo [message]
+echo <message>
 ```
 
 ### Parameters

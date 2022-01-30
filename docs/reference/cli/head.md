@@ -7,7 +7,7 @@ The command returns 100 elements by default if the number of elements is not spe
 ## Usage
 
 ```bash
-head [n]
+head <n>
 ```
 
 ### Parameters

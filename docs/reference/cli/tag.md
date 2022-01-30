@@ -11,7 +11,7 @@ Tags are a useful to organize your cloud infrastructure and provide additional i
 ### Update
 
 ```bash
-tag update [--nowait] [tag] [value]
+tag update [--nowait] <tag> <value>
 ```
 
 #### Options
@@ -30,7 +30,7 @@ tag update [--nowait] [tag] [value]
 ### Delete
 
 ```bash
-tag delete [--nowait] [tag]
+tag delete [--nowait] <tag>
 ```
 
 #### Options

@@ -17,7 +17,7 @@ $> query is(volume) limit 30 | chunk 10 | http test.foo.org
 ## Usage
 
 ```bash
-http [--compress] [--timeout <seconds>] [--no-ssl-verify] [--no-body] [--nr-of-retries <num>] [http_method] [url] [headers] [query_params]
+http [--compress] [--timeout <seconds>] [--no-ssl-verify] [--no-body] [--nr-of-retries <num>] <http_method> <url> <headers> <query_params>
 ```
 
 ### Options
@@ -42,6 +42,10 @@ http [--compress] [--timeout <seconds>] [--no-ssl-verify] [--no-body] [--nr-of-r
 | `query_params` | HTTP request query parameters (e.g., `param1==value2 param2==value2 "param3==value with whitespace"`) | ❌        | N/A           |
 
 \* If a URL scheme is not present, it will be determined by whether or not the `http` command or the `https` command alias was used. Additionally, `localhost` can be omitted from `url` (e.g., `:8080/call/me`).
+
+### Aliases
+
+- `https`
 
 ## Examples
 

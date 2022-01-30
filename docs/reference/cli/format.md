@@ -5,7 +5,7 @@ The `format` command creates a string from the JSON input based on the provided 
 ## Usage
 
 ```bash
-format [--<format-option>] [format_string]
+format [--<format-option>] <format_string>
 ```
 
 ### Options

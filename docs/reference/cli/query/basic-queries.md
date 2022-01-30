@@ -283,7 +283,7 @@ There are also commands to perform a traversal selection, to which input can be 
 ##### Usage
 
 ```bash
-ancestors [--with-origin] [edge_type]
+ancestors [--with-origin] <edge_type>
 ```
 
 ##### Options
@@ -318,7 +318,7 @@ By default, the current element is not included in the result set. However, thes
 
 All listed selections can be combined with `and` and `or` clauses.
 
-In order to define precedence, simply enclose terms with brackets.
+In order to define precedence, simply enclose terms with parentheses.
 
 :::tip Examples
 

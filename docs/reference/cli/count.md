@@ -9,7 +9,7 @@ When a property name is provided, the number of elements with the specified prop
 ## Usage
 
 ```bash
-count [property]
+count <property>
 ```
 
 ### Parameters

@@ -7,7 +7,7 @@ The final chunk may contain fewer elements than the defined chunk size.
 ## Usage
 
 ```bash
-chunk [size]
+chunk <size>
 ```
 
 ### Parameters

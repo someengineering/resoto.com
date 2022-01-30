@@ -4,7 +4,19 @@ The `chunk` command groups elements from the input stream into "chunks" of a def
 
 The final chunk may contain fewer elements than the defined chunk size.
 
-:::tip Examples
+## Usage
+
+```bash
+chunk [size]
+```
+
+### Parameters
+
+| Parameter | Description                          | Required? | Default Value |
+| --------- | ------------------------------------ | --------- | ------------- |
+| `size`    | Desired number of elements per chunk | ❌        | `100`         |
+
+## Examples
 
 The result of the following command would be `[[1, 2], [3, 4], [5]]`:
 
@@ -18,6 +30,6 @@ The next command would return `[[1, 2, 3, 4, 5]]`:
 $> json [1,2,3,4,5] | chunk
 ```
 
-:::
+## See Also
 
-**See also:** [`flatten`](./flatten.md)
+[`flatten`](./flatten.md)

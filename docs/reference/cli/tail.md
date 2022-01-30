@@ -4,7 +4,19 @@ The `tail` command returns the last `n` elements of the input stream. The beginn
 
 The command returns 100 elements by default if the number of elements is not specified.
 
-:::tip Example
+## Usage
+
+```bash
+tail [n]
+```
+
+### Parameters
+
+| Parameter | Description                  | Required? | Default Value |
+| --------- | ---------------------------- | --------- | ------------- |
+| `n`       | Number of elements to return | ❌        | `100`         |
+
+## Examples
 
 This command has a result of `[4, 5]`:
 
@@ -18,6 +30,6 @@ The next command returns `[1, 2, 3, 4, 5]`:
 $> json [1,2,3,4,5] | tail
 ```
 
-:::
+## See Also
 
-**See also:** [`head`](./head.md)
+[`head`](./head.md)

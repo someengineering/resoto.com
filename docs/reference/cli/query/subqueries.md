@@ -92,7 +92,9 @@ region:
 // highlight-end
 ```
 
-![Merge Example Diagram](./img/merge_nodes.png) :::
+![Merge Example Diagram](./img/merge_nodes.png)
+
+:::
 
 A subquery can even be defined using subqueries:
 

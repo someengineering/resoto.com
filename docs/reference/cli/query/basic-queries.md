@@ -167,7 +167,9 @@ $> query is(aws_account) -->
 
 This query would return a list of all matching regions.
 
-![Outbound Traversal Example Query Diagram](./img/graph_query_outbound_example.png) :::
+![Outbound Traversal Example Query Diagram](./img/graph_query_outbound_example.png)
+
+:::
 
 ### Inbound Traversal
 
@@ -179,7 +181,9 @@ This query would return a list of all matching regions.
 $> query is(aws_ec2_instance) <-- is(aws_region)
 ```
 
-![Inbound Traversal Example Query Diagram](./img/graph_query_inbound_example.png) :::
+![Inbound Traversal Example Query Diagram](./img/graph_query_inbound_example.png)
+
+:::
 
 ### Including the Current Node
 
@@ -191,7 +195,9 @@ $> query is(aws_ec2_instance) <-- is(aws_region)
 $> query is(aws_region) -[0:1]->`
 ```
 
-![Example Query Diagram](./img/graph_query_01.png) :::
+![Example Query Diagram](./img/graph_query_01.png)
+
+:::
 
 :::tip Example
 
@@ -263,9 +269,9 @@ There are abbreviations for the most common traversal selectors.
 
 :::
 
-#### Traversal Selection Commands
+#### Commands
 
-There are also commands doing a traversal selection that you can chain using a pipe.
+There are also commands to perform a traversal selection, to which input can be piped:
 
 | Command        | Traversal Selector  |
 | -------------- | ------------------- |
@@ -273,6 +279,29 @@ There are also commands doing a traversal selection that you can chain using a p
 | `successors`   | `-->` or `-[1:1]->` |
 | `ancestors`    | `<-[1:]-`           |
 | `descendants`  | `-[1:]->`           |
+
+##### Usage
+
+```bash
+ancestors [--with-origin] [edge_type]
+```
+
+##### Options
+
+By default, the current element is not included in the result set. However, these commands have a command-line option `--with-origin` that alters this behavior:
+
+| Command                      | Traversal Selector |
+| ---------------------------- | ------------------ |
+| `predecessors --with-origin` | `<-[0:1]-`         |
+| `successors --with-origin`   | `-[0:1]->`         |
+| `ancestors --with-origin`    | `<-[0:]-`          |
+| `descendants --with-origin`  | `-[0:]->`          |
+
+###### Parameters
+
+| Parameter   | Description                    | Required? | Default Value |
+| ----------- | ------------------------------ | --------- | ------------- |
+| `edge_type` | Edge type by which to traverse | ❌        | `delete`      |
 
 :::tip Examples
 

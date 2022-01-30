@@ -2,7 +2,13 @@
 
 The `flatten` command combines groups of elements from the input stream into a stream of individual elements, preserving their original order.
 
-:::tip Examples
+## Usage
+
+```bash
+flatten
+```
+
+## Examples
 
 The result of the following command would be `[1, 2, 3, 4, 5]`:
 
@@ -16,6 +22,6 @@ The next command would also return `[1, 2, 3, 4, 5]`:
 $> json [[1, 2], 3, [4, 5]] | flatten
 ```
 
-:::
+## See Also
 
-**See also:** [`chunk`](./chunk.md)
+[`chunk`](./chunk.md)

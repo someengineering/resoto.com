@@ -4,7 +4,19 @@ The `head` command returns the first `n` elements of the input stream and discar
 
 The command returns 100 elements by default if the number of elements is not specified.
 
-:::tip Example
+## Usage
+
+```bash
+head [n]
+```
+
+### Parameters
+
+| Parameter | Description                  | Required? | Default Value |
+| --------- | ---------------------------- | --------- | ------------- |
+| `n`       | Number of elements to return | ❌        | `100`         |
+
+## Examples
 
 This command has a result of `[1, 2]`:
 
@@ -18,6 +30,6 @@ The next command returns `[1, 2, 3, 4, 5]`:
 $> json [1,2,3,4,5] | head
 ```
 
-:::
+## See Also
 
-**See also:** [`tail`](./tail.md)
+[`tail`](./tail.md)

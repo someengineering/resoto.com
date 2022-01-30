@@ -1,8 +1,51 @@
 # `tag`
 
+The `tag` command allows for mass creation, update, and deletion of tags.
+
 Tags are a useful to organize your cloud infrastructure and provide additional information to your resources.
 
-Resoto provides a powerful command to mass create, update or delete tags to keep everything clean and tidy.
+[Resoto Core](../../concepts/components/core.md) puts tagging tasks into a task queue. Tasks are then consumed by a [Resoto Worker](../../concepts/components/worker.md) instance that knows how to perform tagging for the specific resource and its cloud/account.
+
+## Usage
+
+### Update
+
+```bash
+tag update [--nowait] [tag] [value]
+```
+
+#### Options
+
+| Option     | Description                              |
+| ---------- | ---------------------------------------- |
+| `--nowait` | Execute asynchronously in the background |
+
+#### Parameters
+
+| Parameter | Description               | Required? | Default Value |
+| --------- | ------------------------- | --------- | ------------- |
+| `tag`     | Name of tag to delete     | ✔️        | N/A           |
+| `value`   | New value to store in tag | ✔️        | N/A           |
+
+### Delete
+
+```bash
+tag delete [--nowait] [tag]
+```
+
+#### Options
+
+| Option     | Description                              |
+| ---------- | ---------------------------------------- |
+| `--nowait` | Execute asynchronously in the background |
+
+#### Parameters
+
+| Parameter | Description           | Required? | Default Value |
+| --------- | --------------------- | --------- | ------------- |
+| `tag`     | Name of tag to delete | ✔️        | N/A           |
+
+## Examples
 
 ```bash title="update tag owner of instance i-039e06bb2539e5484 if present, create if new"
 $> query id = i-039e06bb2539e5484 | tag update owner lukas
@@ -11,7 +54,3 @@ $> query id = i-039e06bb2539e5484 | tag update owner lukas
 ```bash title="delete tag owner from instance i-039e06bb2539e5484"
 $> query id = i-039e06bb2539e5484 | tag delete owner
 ```
-
-[`resotocore`](../../concepts/components/core.md) will put this tagging task onto a task queue. This task is then consumed by a [`resotoworker`](../../concepts/components/worker.md) that knows how to perform tagging for that particular resource and its particular cloud and account.
-
-In our first example above we set the tag `owner: lukas` for the AWS EC2 instance with ID `i-039e06bb2539e5484`. This task is given to a [`resotoworker`](../../concepts/components/worker.md) that knows how to update AWS EC2 instance tags in that resources account.

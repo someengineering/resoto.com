@@ -2,6 +2,20 @@
 
 The `list` command transforms inputted JSON objects into `string`s.
 
+## Usage
+
+```bash
+list [properties]
+```
+
+### Parameters
+
+| Parameter    | Description                 | Required? | Default Value |
+| ------------ | --------------------------- | --------- | ------------- |
+| `properties` | Names of properties to show | ❌        | See note      |
+
+:::note
+
 If no properties are provided, a predefined list of properties will be shown:
 
 - `reported.kind` as `kind`
@@ -23,7 +37,9 @@ If no `as` clause is defined, the name of the last element of the property path 
 
 The `as` clause is important if the last part of the property path is not a unique property name.
 
-:::tip Examples
+:::
+
+## Examples
 
 ```bash
 $> query is(aws_ec2_instance) limit 3 | list
@@ -70,6 +86,6 @@ a=aws_ec2_instance, b=star
 // highlight-end
 ```
 
-:::
+## See Also
 
-**See also:** [`dump`](./dump.md), [`format`](./format.md), [`jq`](./jq.md)
+[`dump`](./dump.md), [`format`](./format.md), [`jq`](./jq.md)

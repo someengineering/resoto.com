@@ -2,9 +2,36 @@
 
 The `format` command creates a string from the JSON input based on the provided format string.
 
-The format string may contain placeholders in curly braces that access properties of the JSON object. If a property is not available, it will result in the string `null`.
+## Usage
 
-:::tip Example
+```bash
+format [--<format-option>] [format_string]
+```
+
+### Options
+
+The `format` command supports some predefined formats, which can be utilized using the following options:
+
+| Option        | Description                                                                                                |
+| ------------- | ---------------------------------------------------------------------------------------------------------- |
+| `--json`      | Creates a JSON string and returns it within a JSON array.                                                  |
+| `--ndjson`    | Creates a JSON object for each element, with line element per line in the output.                          |
+| `--text`      | Creates a text representation of each element.                                                             |
+| `--cytoscape` | Creates a string representation in [Cytoscape.js format](https://js.cytoscape.org/#notation/elements-json) |
+| `--graphml`   | Creates a string representation in [GraphML format](http://graphml.graphdrawing.org)                       |
+| `--dot`       | Creates a string representation in [Graphviz DOT format](https://graphviz.org/doc/info/lang.html)          |
+
+### Parameters
+
+Alternatively, a custom format string may be provided to the command:
+
+| Parameter       | Description      | Required? | Default Value |
+| --------------- | ---------------- | --------- | ------------- |
+| `format_string` | Format string \* | ❌        | N/A           |
+
+\* The format string may contain placeholders in curly braces that access properties of the JSON object. If a property is not available, it will result in the string `null`.
+
+## Examples
 
 This first example has a result of `[ "b!=d" ]`:
 
@@ -30,29 +57,12 @@ And the below example has a result of `[ "null:null:null" ]`:
 $> json {} | format {a}:{b.c.d}:{foo.bla[23].test}
 ```
 
-:::
-
-## Predefined Formats
-
-In lieu of a format string, the `format` command also supports some predefined formats:
-
-| Argument    | Description                                                                                                |
-| ----------- | ---------------------------------------------------------------------------------------------------------- |
-| `--json`    | Creates a JSON string and returns it within a JSON array.                                                  |
-| `--ndjson`  | Creates a JSON object for each element, with line element per line in the output.                          |
-| `--text`    | Creates a text representation of each element.                                                             |
-| `cytoscape` | Creates a string representation in [Cytoscape.js format](https://js.cytoscape.org/#notation/elements-json) |
-| `--graphml` | Creates a string representation in [GraphML format](http://graphml.graphdrawing.org)                       |
-| `--dot`     | Creates a string representation in [Graphviz DOT format](https://graphviz.org/doc/info/lang.html)          |
-
-:::tip Example
-
 This command writes the result of `query all` in JSON format to a file named `out.json`:
 
 ```bash
 $> query all | format --json | write out.json
 ```
 
-:::
+## See Also
 
-**See also:** [`dump`](./dump.md), [`list`](./list.md), [`jq`](./jq.md)
+[`dump`](./dump.md), [`list`](./list.md), [`jq`](./jq.md)

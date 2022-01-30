@@ -36,6 +36,9 @@ jobs:
         with:
           output: static/docs/reference/core-api
           spec-file: api-doc.yaml
+      - name: Add Scarf Documentation Insights
+        if: github.event_name != 'pull_request' && !contains(github.event.head_commit.message, '[skip ci]')
+        run: sed -i '/<\/body>/i <img referrerpolicy="no-referrer-when-downgrade" src="https://static.scarf.sh/a.png?x-pxid=3b6ccd5c-8a2a-4bf3-94a3-e366b88342d8" />' static/docs/reference/core-api/index.html
       - name: Install dependencies
         env:
           HUSKY_SKIP_INSTALL: 1

@@ -20,7 +20,7 @@ To help you find the information you need, the documentation is structured as fo
 - **[Getting Started](/docs/getting-started)** walks you through how to install and use Resoto, step by step. _Start here if you're new to Resoto._
 <!-- - **[How-To Guides](/docs/how-to)** provide guided instructions for specific use cases and scenarios. -->
 - **[Concepts](/docs/concepts)** describe key topics and ideas, and provide an overview of how Resoto works and its [components](./concepts/components/README.md).
-- **[Reference](/docs/reference)** is a manual describing the [command-line interface (CLI)](./reference/cli/README.md) and [data models](./reference/resources/data-models.md). It is assumed that you have a basic understanding of important concepts.
+- **[Reference](/docs/reference)** is a manual describing the [command-line interface (CLI)](./reference/cli/README.md) and [data models](./reference/data-models/README.md). It is assumed that you have a basic understanding of important concepts.
 - **[Contributing](/docs/contributing)** lists instructions and guidelines for contributing to Resoto.
 
 ## What Is Resoto?

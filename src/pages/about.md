@@ -6,7 +6,7 @@ title: About
 
 Resoto indexes resources, captures dependencies, and maps out your infrastructure in an understandable [graph](/docs/concepts/graph). The graph contains metrics for each [resource](/docs/reference/data-models).
 
-Developers and SREs can search the graph with a [query language](/docs/reference/cli/query), and create alerting and clean-up [workflows](/docs/concepts/automation/workflow).
+Developers and SREs can search the graph with a [query language](/docs/reference/cli/query), and create alerting and cleanup [workflows](/docs/concepts/automation/workflow).
 
 Metrics can be aggregated and exported to a time-series database such as [Prometheus](https://prometheus.io).
 
@@ -64,7 +64,7 @@ For SREs in charge of maintaining cloud infrastructure, it's a drag. They are ty
 
 Resoto automatically cleans up drift that shouldn't be there and closes the gap.
 
-Resoto indexes resources, captures dependencies, and maps out your infrastructure in a graph so that it is understandable for a human. The graph contains metrics for each resource. Developers and SREs can search the graph with a query language, and create alerting and clean-up workflows.
+Resoto indexes resources, captures dependencies, and maps out your infrastructure in a graph so that it is understandable for a human. The graph contains metrics for each resource. Developers and SREs can search the graph with a query language, and create alerting and cleanup workflows.
 
 #### 1-Year Vision
 

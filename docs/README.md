@@ -27,7 +27,7 @@ To help you find the information you need, the documentation is structured as fo
 
 Resoto indexes resources, captures dependencies, and maps out your infrastructure in an understandable [graph](./concepts/graph). The graph contains metrics for each [resource](./reference/data-models).
 
-Developers and SREs can search the graph with a [query language](./reference/cli/query), and create alerting and clean-up [workflows](./concepts/automation/workflow.md).
+Developers and SREs can search the graph with a [query language](./reference/cli/query), and create alerting and cleanup [workflows](./concepts/automation/workflow.md).
 
 Metrics can be aggregated and exported to a time-series database such as [Prometheus](https://prometheus.io).
 

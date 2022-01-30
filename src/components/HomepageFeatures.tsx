@@ -26,7 +26,7 @@ const FeatureList: FeatureItem[] = [
     description: (
       <>
         Developers and SREs can search the graph with a query language, and
-        create alerting and clean-up workflows.
+        create alerting and cleanup workflows.
       </>
     ),
   },

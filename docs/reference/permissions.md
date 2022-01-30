@@ -335,7 +335,7 @@ To use Resoto in a read-only capacity it needs the following IAM role permission
 
 ### Full Capabilities
 
-For production use—where Resoto also clean-up and validate tags—the needed permission role is a PowerUser that is locked down to not be able to create any resources or modify IAM settings.
+For production use—where Resoto also cleans up and validates tags—the needed permission role is a PowerUser that is locked down to not be able to create any resources or modify IAM settings.
 
 The following three policies are needed for Resoto to run with full capabilities.
 

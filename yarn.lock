@@ -1597,7 +1597,7 @@
     tslib "^2.3.1"
     webpack "^5.61.0"
 
-"@docusaurus/plugin-sitemap@2.0.0-beta.15":
+"@docusaurus/plugin-sitemap@2.0.0-beta.15", "@docusaurus/plugin-sitemap@^2.0.0-beta.15":
   version "2.0.0-beta.15"
   resolved "https://registry.yarnpkg.com/@docusaurus/plugin-sitemap/-/plugin-sitemap-2.0.0-beta.15.tgz#0cc083d9e76041897e81b4b82bcd0ccbfa65d6e5"
   integrity sha512-PBjeQb2Qpe4uPdRefWL/eXCeYjrgNB/UArExYeUuP4wiY1dpw2unGNCvFUxv4hzJGmARoTLsnRkeYkUim809LQ==

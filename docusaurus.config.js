@@ -144,6 +144,7 @@ const config = {
         content: `<span aria-label="star" role="img">⭐</span> If you like Resoto, please <a href="https://github.com/someengineering/resoto" target="_blank" rel="noopener noreferrer">star the project on GitHub</a> and <a href="https://www.linkedin.com/company/someengineering" target="_blank" rel="noopener noreferrer">follow Some Engineering Inc. on LinkedIn</a>. Thanks for your support! <span aria-label="heart" role="img">❤️</span>`,
       },
       navbar: {
+        hideOnScroll: true,
         title: 'Resoto',
         logo: {
           alt: 'Resoto Logo',

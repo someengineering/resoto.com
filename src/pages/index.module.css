@@ -1,6 +1,7 @@
 .hero {
   background-color: var(--ifm-color-primary-contrast-background);
   padding: 48px;
+  box-shadow: var(--ifm-global-shadow-md);
 }
 
 .heroInner {

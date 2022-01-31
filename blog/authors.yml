@@ -27,3 +27,9 @@ doris:
   title: Some Developer Experience Engineer
   image_url: https://github.com/TheCatLady.png
   url: https://github.com/TheCatLady
+
+nikita:
+  name: Nikita Melkozerov
+  title: Some Engineer
+  image_url: https://github.com/meln1k.png
+  url: https://github.com/meln1k

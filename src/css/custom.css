@@ -76,7 +76,7 @@ div[class^='announcementBar_'] .close {
 .navbar__title {
   height: 2.25rem;
   width: 5.625rem;
-  color: transparent;
+  font-size: 0;
   background-color: var(--ifm-navbar-link-color);
   --logo-text: url('/img/navbar-logotext.svg');
   -webkit-mask-image: var(--logo-text);

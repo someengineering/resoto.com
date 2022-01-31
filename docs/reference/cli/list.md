@@ -18,14 +18,14 @@ list <properties>
 
 If no properties are provided, a predefined list of properties will be shown:
 
-- `reported.kind` as `kind`
-- `reported.id` as `id`
-- `reported.name` as `name`
-- `reported.age` as `age`
-- `ancestors.cloud.reported.name` as `cloud`
-- `ancestors.account.reported.name` as `account`
-- `ancestors.region.reported.name` as `region`
-- `ancestors.zone.reported.name` as `zone`
+- `reported.kind as kind`
+- `reported.id as id`
+- `reported.name as name`
+- `reported.age as age`
+- `ancestors.cloud.reported.name as cloud`
+- `ancestors.account.reported.name as account`
+- `ancestors.region.reported.name as region`
+- `ancestors.zone.reported.name as zone`
 
 If properties are provided, it will override the defaults and only show the defined properties. Property paths can be absolute (i.e., include a section name, such as `reported`, `desired`, or `metadata`). If the section is not defined, the `reported` section is assumed.
 

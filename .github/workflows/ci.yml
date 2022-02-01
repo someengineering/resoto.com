@@ -23,22 +23,13 @@ jobs:
         run: echo ::set-output name=tag::$(curl -sL https://api.github.com/repos/someengineering/resoto/tags?per_page=1 | jq -r ".[0].name")
       - name: Fetch resotocore API YAML
         if: github.event_name != 'pull_request' && !contains(github.event.head_commit.message, '[skip ci]')
-        run: curl -O https://raw.githubusercontent.com/someengineering/resoto/${{ steps.version.outputs.tag }}/resotocore/core/static/api-doc.yaml
+        run: curl -o static/core-api.yml https://raw.githubusercontent.com/someengineering/resoto/${{ steps.version.outputs.tag }}/resotocore/core/static/api-doc.yaml
       - name: Edit resotocore API YAML
         id: api-yaml
         if: github.event_name != 'pull_request' && !contains(github.event.head_commit.message, '[skip ci]')
         uses: mikefarah/yq@master
         with:
-          cmd: yq e -i '.servers[0].url = "{server}" | .servers[0].variables.server.default = "http://localhost:8900" | del(.servers[0].description) | .info.title = "Resoto Core v${{ steps.version.outputs.tag }} REST API" | del(.info.description) | del(.info.version)' api-doc.yaml
-      - name: Generate resotocore API Swagger UI
-        if: github.event_name != 'pull_request' && !contains(github.event.head_commit.message, '[skip ci]')
-        uses: Legion2/swagger-ui-action@v1
-        with:
-          output: static/docs/reference/core-api
-          spec-file: api-doc.yaml
-      - name: Add Scarf Documentation Insights
-        if: github.event_name != 'pull_request' && !contains(github.event.head_commit.message, '[skip ci]')
-        run: sed -i '/<\/body>/i <img referrerpolicy="no-referrer-when-downgrade" src="https://static.scarf.sh/a.png?x-pxid=3b6ccd5c-8a2a-4bf3-94a3-e366b88342d8" />' static/docs/reference/core-api/index.html
+          cmd: yq e -i '.servers[0].url = "{Server}" | .servers[0].variables.Server.default = "http://localhost:8900" | del(.servers[0].description) | .info.title = "Resoto Core v${{ steps.version.outputs.tag }} REST API" | del(.info.description) | del(.info.version)' static/core-api.yml
       - name: Install dependencies
         env:
           HUSKY_SKIP_INSTALL: 1

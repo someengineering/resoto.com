@@ -24,6 +24,10 @@
   background: none;
 }
 
+.swagger-ui input {
+  color: #0a253f;
+}
+
 .swagger-ui .wrapper {
   padding: 0;
 }

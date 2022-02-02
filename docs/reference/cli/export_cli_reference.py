@@ -34,7 +34,7 @@ def preamble():
 
 
 def commands_overview():
-  print("\n\n## Commands\n\n")
+  print("\n\n# Commands\n\n")
   print("| Command  |  Description |")
   print("|----------|--------------|")
   for name, cmd in sorted(commands.items()):
@@ -43,10 +43,11 @@ def commands_overview():
 
 def command_help():
   for name, cmd in sorted(commands.items()):
-    print(f"\n\n### {name}\n\n")
+    print(f"\n\n## {name}\n\n")
     print(f'**{cmd["info"]}**')
     print("\n\n")
-    print(cmd["help"].replace("<", "&lt;").replace(">", "&gt;"))
+    #print(cmd["help"].replace("<", "&lt;").replace(">", "&gt;"))
+    print(cmd["help"].replace("<", "&lt;").replace("##", "###"))
 
 
 def command_aliases():

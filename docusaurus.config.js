@@ -4,6 +4,7 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const a11yEmoji = require('@fec/remark-a11y-emoji');
+const webpack = require('webpack');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -37,6 +38,7 @@ const config = {
           blogDescription: 'Resoto blog',
           blogSidebarTitle: 'Posts',
           path: 'blog',
+          archiveBasePath: null,
           routeBasePath: 'blog',
           showReadingTime: true,
           remarkPlugins: [a11yEmoji],
@@ -61,6 +63,7 @@ const config = {
         blogSidebarTitle: 'Announcements',
         path: 'news',
         routeBasePath: 'news',
+        archiveBasePath: null,
         showReadingTime: true,
         remarkPlugins: [a11yEmoji],
       },
@@ -127,6 +130,27 @@ const config = {
         ],
       },
     ],
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    function WebpackPlugin(context, options) {
+      return {
+        name: 'plugin-configure-webpack',
+        configureWebpack() {
+          return {
+            resolve: {
+              fallback: {
+                stream: require.resolve('stream-browserify'),
+                buffer: require.resolve('buffer/'),
+              },
+            },
+            plugins: [
+              new webpack.ProvidePlugin({
+                Buffer: ['buffer', 'Buffer'],
+              }),
+            ],
+          };
+        },
+      };
+    },
   ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -145,7 +169,8 @@ const config = {
       },
       announcementBar: {
         id: 'announcementBar-1', // Increment on change
-        content: `<span aria-label="star" role="img">⭐</span> If you like Resoto, please <a href="https://github.com/someengineering/resoto" target="_blank" rel="noopener noreferrer">star the project on GitHub</a> and <a href="https://www.linkedin.com/company/someengineering" target="_blank" rel="noopener noreferrer">follow Some Engineering Inc. on LinkedIn</a>. Thanks for your support! <span aria-label="heart" role="img">❤️</span>`,
+        content:
+          '<span aria-label="star" role="img">⭐</span> If you like Resoto, please <a href="https://github.com/someengineering/resoto" target="_blank" rel="noopener noreferrer">star the project on GitHub</a> and <a href="https://www.linkedin.com/company/someengineering" target="_blank" rel="noopener noreferrer">follow Some Engineering Inc. on LinkedIn</a>. Thanks for your support! <span aria-label="heart" role="img">❤️</span>',
       },
       navbar: {
         hideOnScroll: true,

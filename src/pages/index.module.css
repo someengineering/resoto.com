@@ -1,7 +1,11 @@
 .hero {
-  background-color: var(--ifm-color-primary-contrast-background);
+  background-color: #d9b8ff44;
   padding: 48px;
   box-shadow: var(--ifm-global-shadow-md);
+}
+
+html[data-theme='dark'] .hero {
+  background-color: #3d176e44;
 }
 
 .heroInner {

@@ -1,0 +1,105 @@
+.information-container,
+.servers-title,
+.servers > label,
+.servers .computed-url,
+.servers h4 {
+  display: none;
+}
+
+.swagger-ui {
+  background-color: #ffffff;
+}
+
+.swagger-ui * {
+  font-family: var(--ifm-font-family-base) !important;
+}
+
+.swagger-ui tr,
+.swagger-ui td,
+.swagger-ui th {
+  border: none;
+}
+
+.swagger-ui tr:nth-child(2n) {
+  background: none;
+}
+
+.swagger-ui input {
+  color: #0a253f;
+}
+
+.swagger-ui .wrapper {
+  padding: 0;
+}
+
+html[data-theme='dark'] .swagger-ui .wrapper {
+  padding: 0 10px;
+}
+
+.swagger-ui .scheme-container {
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+}
+
+.swagger-ui pre,
+.swagger-ui code,
+.swagger-ui kbd,
+.swagger-ui samp,
+.swagger-ui .code,
+.swagger-ui code,
+.swagger-ui .courier,
+.swagger-ui .parameter__type,
+.swagger-ui .opblock .opblock-summary-operation-id,
+.swagger-ui .opblock .opblock-summary-path,
+.swagger-ui .opblock .opblock-summary-path__deprecated,
+.swagger-ui .response-col_status .response-undocumented,
+.swagger-ui .response-col_links .response-undocumented,
+.swagger-ui .opblock-body pre.microlight,
+.swagger-ui textarea,
+.swagger-ui textarea.curl,
+.swagger-ui .checkbox p,
+.swagger-ui .model,
+.swagger-ui table.headers td,
+.swagger-ui .parameter__extension,
+.swagger-ui .parameter__in,
+.swagger-ui .parameter__deprecated,
+.swagger-ui .response__extension,
+.swagger-ui .info .base-url,
+.swagger-ui .auth-container .errors,
+.swagger-ui .errors-wrapper .errors h4,
+.swagger-ui .markdown code,
+.swagger-ui .renderedMarkdown code,
+.swagger-ui pre *,
+.swagger-ui code,
+.swagger-ui kbd,
+.swagger-ui samp *,
+.swagger-ui .code,
+.swagger-ui code *,
+.swagger-ui .courier *,
+.swagger-ui .parameter__type *,
+.swagger-ui .opblock .opblock-summary-operation-id,
+.swagger-ui .opblock .opblock-summary-path,
+.swagger-ui .opblock .opblock-summary-path__deprecated *,
+.swagger-ui .response-col_status .response-undocumented *,
+.swagger-ui .response-col_links .response-undocumented *,
+.swagger-ui .opblock-body pre.microlight *,
+.swagger-ui textarea *,
+.swagger-ui textarea.curl *,
+.swagger-ui .checkbox p *,
+.swagger-ui .model *,
+.swagger-ui table.headers td *,
+.swagger-ui .parameter__extension,
+.swagger-ui .parameter__in *,
+.swagger-ui .parameter__deprecated *,
+.swagger-ui .response__extension *,
+.swagger-ui .info .base-url *,
+.swagger-ui .auth-container .errors *,
+.swagger-ui .errors-wrapper .errors h4 *,
+.swagger-ui .markdown code,
+.swagger-ui .renderedMarkdown code,
+.swagger-ui .opblock-summary-method,
+.swagger-ui .opblock-summary-path *,
+.swagger-ui .opblock-tag a span {
+  font-family: var(--ifm-font-family-monospace) !important;
+}

@@ -32,8 +32,23 @@ export default function Footer(): JSX.Element {
         <>
           <img
             src={`https://static.scarf.sh/a.png?x-pxid=3b6ccd5c-8a2a-4bf3-94a3-e366b88342d8&${timestamp}`}
+            referrerPolicy="no-referrer-when-downgrade"
             alt=""
-            style={{ height: '1px', width: '1px' }}
+            style={{
+              height: '1px',
+              border: '0',
+              marginBottom: '-1px',
+            }}
+          />
+          <img
+            src={`https://webmat.resoto.com/matomo.php?idsite=2&rec=1&rand=${timestamp}`}
+            referrerPolicy="no-referrer-when-downgrade"
+            alt=""
+            style={{
+              height: '1px',
+              border: '0',
+              marginBottom: '-1px',
+            }}
           />
           <OriginalFooter />
         </>

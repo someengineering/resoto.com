@@ -98,7 +98,7 @@ html[data-theme='dark'] .hero {
   animation-name: logo-animation;
 }
 
-@media only screen and (max-width: 768px) {
+@media screen and (max-width: 966px) {
   .heroBanner {
     padding-left: 20px;
     padding-right: 20px;

@@ -2,7 +2,7 @@
 draft: true
 authors: [matthias]
 tags: [query language, aws]
-image: ./img/finance-no-context.png
+image: ./img/banner-social.png
 ---
 
 # Resoto Query Language 101
@@ -11,7 +11,7 @@ image: ./img/finance-no-context.png
 import Image from '@theme/IdealImage';
 ```
 
-<Image img={require('./img/finance-no-context.png')} alt="Confused Sheep with Abacus" />
+<Image img={require('./img/banner.png')} alt="Left: Sheep Spinning Up Cloud Resources; Right: Confused Sheep with Abacus" />
 
 Retrieving information about resources you have deployed in your [AWS](https://aws.amazon.com) infrastructure means tediously navigating the [AWS](https://aws.amazon.com) web console or using their CLI. Every product has its way of navigation and data to show. The process becomes cumbersome quickly, especially if you have infrastructure in more than one region or account since you need to switch explicitly for every combination.
 

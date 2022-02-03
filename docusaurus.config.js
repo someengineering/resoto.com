@@ -1,5 +1,5 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 // @ts-check
-// Note: type annotations allow type checking and IDEs autocompletion
 
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
@@ -315,6 +315,12 @@ const config = {
           },
         ],
         copyright: `<span aria-label="owl" role="img">🦉</span> Copyright © ${new Date().getFullYear()} <a href="https://some.engineering" target="_blank" rel="noopener noreferrer">Some Engineering Inc</a>. Built with <a href="https://docusaurus.io" target="_blank" rel="noopener noreferrer">Docusaurus</a>. <span aria-label="dinosaur" role="img">🦖</span>`,
+      },
+      algolia: {
+        appId: 'DOGNENB96P',
+        apiKey: '0e3e7cbce9da253ee147af5fe2f7d91b',
+        indexName: 'resoto',
+        contextualSearch: true,
       },
       prism: {
         theme: lightCodeTheme,

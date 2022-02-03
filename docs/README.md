@@ -1,9 +1,9 @@
 ---
-id: introduction
+id: overview
 title: Documentation
 ---
 
-# Introduction
+# Overview
 
 Welcome to the Resoto documentation!
 

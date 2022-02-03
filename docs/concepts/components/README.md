@@ -11,6 +11,6 @@ import Image from '@theme/IdealImage';
 - [Resoto Shell](./shell.md) allows for interactions with `resotocore`.
 - [Resoto Metrics](./metrics.md) is a [Prometheus exporter](https://prometheus.io/docs/instrumenting/exporters).
 
-<Image img={require('./img/component_graph.png')} alt="Resoto Component Graph" />
+<Image img={require('./img/component_diagram.png')} alt="Resoto Component Diagram" />
 
 <DocCardList items={useCurrentSidebarCategory().items}/>

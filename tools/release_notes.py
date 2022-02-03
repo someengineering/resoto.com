@@ -67,7 +67,7 @@ def show_log(from_tag: str, to_tag: str):
         ],
     )
 
-    print(f"# {to_tag}\n")
+    print(f"# v{to_tag}\n")
     for group, commits in grouped.items():
         print(f"\n## {long_names.get(group, group)}\n")
         for commit in commits:

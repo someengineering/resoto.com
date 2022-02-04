@@ -4,6 +4,10 @@ title: Installing with Docker
 
 # Installing with Docker
 
+```mdx-code-block
+import LatestRelease from '@site/src/components/LatestRelease';
+```
+
 [Docker](https://docker.com) provides the ability to run an application in a loosely isolated environment called a "[container](https://docs.docker.com/get-started/overview#containers)."
 
 Currently, all of the requirements and components of Resoto are packaged into a single Docker [image](https://docs.docker.com/get-started/overview#images).
@@ -38,7 +42,7 @@ docker run \
   -p 8900:8900 \
   -v resoto-data:/data \
   --restart unless-stopped \
-  somecr.io/someengineering/resoto:{{latestTag}}
+  somecr.io/someengineering/resoto:{{latestRelease}}
 ```
 
 And just like that, you now have Resoto running in Docker!
@@ -53,7 +57,7 @@ version: '3'
 
 services:
   resoto:
-    image: somecr.io/someengineering/resoto:{{latestTag}}
+    image: somecr.io/someengineering/resoto:{{latestRelease}}
     container_name: resoto
     environment:
       AWS_ACCESS_KEY_ID: YOUR_ACCESS_KEY_ID
@@ -101,11 +105,11 @@ docker stop resoto
 docker rm resoto
 ```
 
-Next, recreate the container with the same parameters used previously, but updating the image tag (e.g., <LatestTag />) to reflect the desired Resoto release.
+Next, recreate the container with the same parameters used previously, but updating the image tag (e.g., <LatestRelease />) to reflect the desired Resoto release.
 
 ### [Docker Compose](https://docs.docker.com/compose/reference) {#docker-compose-update}
 
-Simply edit the image tag (e.g., <LatestTag />) specified in the `docker-compose.yml` file to reflect the desired Resoto release.
+Simply edit the image tag (e.g., <LatestRelease />) specified in the `docker-compose.yml` file to reflect the desired Resoto release.
 
 Then, run the following command from the directory containing the `docker-compose.yml` file:
 

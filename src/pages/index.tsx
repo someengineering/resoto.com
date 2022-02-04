@@ -4,7 +4,7 @@ import Emoji from 'a11y-react-emoji';
 import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
 import HomepageFeatures from '../components/HomepageFeatures';
-import { getGithubStars, getLatestTag } from '../utils/githubHelper';
+import { getGithubStars, getLatestRelease } from '../utils/githubHelper';
 import GitHubLogo from './github.svg';
 import styles from './index.module.css';
 
@@ -15,7 +15,7 @@ function HomepageHeader() {
 
   useEffect(() => {
     const getGithubData = async () => {
-      setResotoVersion(await getLatestTag('someengineering', 'resoto'));
+      setResotoVersion(await getLatestRelease('someengineering', 'resoto'));
       setGithubStars(await getGithubStars('someengineering', 'resoto'));
     };
 
@@ -36,7 +36,7 @@ function HomepageHeader() {
             {resotoVersion && (
               <>
                 <a
-                  href="https://github.com/someengineering/resoto"
+                  href={`https://github.com/someengineering/resoto/releases/tag/${resotoVersion}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="button button--primary button--lg"

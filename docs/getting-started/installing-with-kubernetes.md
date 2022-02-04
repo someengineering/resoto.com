@@ -152,7 +152,7 @@ git clone https://github.com/someengineering/resoto
 Next, install Resoto using Helm:
 
 ```bash
-helm install resoto ./resoto/kubernetes/chart --set image.tag={{latestTag}} -f resoto-values.yaml
+helm install resoto ./resoto/kubernetes/chart --set image.tag={{latestRelease}} -f resoto-values.yaml
 ```
 
 ## Resoto CLI

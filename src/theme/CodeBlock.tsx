@@ -1,7 +1,7 @@
 import OriginalCodeBlock from '@theme-original/CodeBlock';
 import type { Props } from '@theme/CodeBlock';
 import React, { useEffect, useState } from 'react';
-import { getLatestTag } from '../utils/githubHelper';
+import { getLatestRelease } from '../utils/githubHelper';
 
 export default function CodeBlock({
   children,
@@ -9,11 +9,11 @@ export default function CodeBlock({
   metastring,
   title,
 }: Props): JSX.Element {
-  const [latestTag, setLatestTag] = useState(null);
+  const [latestRelease, setLatestRelease] = useState(null);
 
   useEffect(() => {
     const getGithubData = async () => {
-      setLatestTag(await getLatestTag('someengineering', 'resoto'));
+      setLatestRelease(await getLatestRelease('someengineering', 'resoto'));
     };
 
     getGithubData();
@@ -25,7 +25,7 @@ export default function CodeBlock({
       metastring={metastring}
       title={title}
     >
-      {children.toString().replace(/{{latestTag}}/g, latestTag)}
+      {children.toString().replace(/{{latestRelease}}/g, latestRelease)}
     </OriginalCodeBlock>
   );
 }

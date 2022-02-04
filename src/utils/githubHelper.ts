@@ -13,13 +13,13 @@ export const getGithubStars = async (
   }
 };
 
-export const getLatestTag = async (
+export const getLatestRelease = async (
   owner: string,
   repository: string
 ): Promise<string | null> => {
   try {
     const res = await new Octokit().request(
-      `/repos/${owner}/${repository}/tags?per_page=1`
+      `/repos/${owner}/${repository}/releases?per_page=1`
     );
 
     return res.data[0].name;

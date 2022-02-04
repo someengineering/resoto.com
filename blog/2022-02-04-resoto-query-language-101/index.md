@@ -1,5 +1,4 @@
 ---
-draft: true
 authors: [matthias]
 tags: [query language, aws]
 image: ./img/banner-social.png
@@ -71,9 +70,9 @@ Sixteen EC2 instances were returned, including fifteen `m5` and one `t3` `xlarge
 
 Now, let's say we want to find all ELB load balancers attached to the EC2 instances returned above. We must first understand Resoto's graph data structure to tackle this problem.
 
-When Resoto collects data on your cloud infrastructure, it creates an edge between ELB and EC2 instances if the ELB balances the traffic of the related EC2 instance.
+When Resoto collects data on your cloud infrastructure, it creates an edge between ELB and EC2 instances if the ELB balances the traffic of the related EC2 instance:
 
-<!-- DIAGRAM IMAGE GOES HERE -->
+![Graph Structure](./img/graph_structure.svg)
 
 ```bash
 $> query is(aws_ec2_instance) and instance_cores > 2 --> is(aws_elb)

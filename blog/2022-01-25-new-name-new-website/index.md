@@ -10,7 +10,7 @@ image: ./img/banner-social.png
 import Image from '@theme/IdealImage';
 ```
 
-<Image img={require('./img/banner.png')} alt="Resoto Logo Graffiti" />
+<p><Image img={require('./img/banner.png')} alt="Resoto Logo Graffiti" /></p>
 
 **This past month has been quite the roller coaster for us at [Some Engineering](https://some.engineering).** 🎢
 

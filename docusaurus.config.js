@@ -8,7 +8,7 @@ const webpack = require('webpack');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Resoto by Some Engineering',
+  title: 'Resoto by Some Engineering Inc.',
   tagline:
     'Find leaky resources, manage quota limits, detect drift, and clean up!',
   url: 'https://resoto.com',

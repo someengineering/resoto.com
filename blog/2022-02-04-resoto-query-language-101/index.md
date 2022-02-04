@@ -1,5 +1,4 @@
 ---
-draft: true
 authors: [matthias]
 tags: [query language, aws]
 image: ./img/banner-social.png
@@ -13,7 +12,7 @@ import Image from '@theme/IdealImage';
 
 <Image img={require('./img/banner.png')} alt="Left: Sheep Spinning Up Cloud Resources; Right: Confused Sheep with Abacus" />
 
-Retrieving information about resources you have deployed in your [AWS](https://aws.amazon.com) infrastructure means tediously navigating the [AWS](https://aws.amazon.com) web console or using their CLI. Every product has its way of navigation and data to show. The process becomes cumbersome quickly, especially if you have infrastructure in more than one region or account since you need to switch explicitly for every combination.
+Retrieving information about resources you have deployed in your [AWS](https://aws.amazon.com) infrastructure means tediously navigating the [AWS Management Console](https://aws.amazon.com/console) or using the [AWS Command Line Interface](https://aws.amazon.com/cli). That approach works well in a single account setup. However, the recommended best practice for [AWS](https://aws.amazon.com) is to set up a multi-account environment - and as the number of accounts grows, navigating your infrastructure and finding resources via the [Console](https://aws.amazon.com/console) or the [CLI](https://aws.amazon.com/cli/) becomes hard to impossible.
 
 Furthermore, the relationships between your resources are also relevant: an EBS volume is mounted to an EC2 instance running in a VPC and reachable via an ALB load balancer, for example. Developers create resources using tools such as [Terraform](https://terraform.io), [CDK](https://aws.amazon.com/cdk), or [CloudFormation](https://aws.amazon.com/cloudformation)… or sometimes even the console or CLI. How can you see everything that is running in your cloud?
 
@@ -71,9 +70,9 @@ Sixteen EC2 instances were returned, including fifteen `m5` and one `t3` `xlarge
 
 Now, let's say we want to find all ELB load balancers attached to the EC2 instances returned above. We must first understand Resoto's graph data structure to tackle this problem.
 
-When Resoto collects data on your cloud infrastructure, it creates an edge between ELB and EC2 instances if the ELB balances the traffic of the related EC2 instance.
+When Resoto collects data on your cloud infrastructure, it creates an edge between ELB and EC2 instances if the ELB balances the traffic of the related EC2 instance:
 
-<!-- DIAGRAM IMAGE GOES HERE -->
+![Graph Structure](./img/graph_structure.svg)
 
 ```bash
 $> query is(aws_ec2_instance) and instance_cores > 2 --> is(aws_elb)

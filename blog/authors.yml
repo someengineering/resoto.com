@@ -6,13 +6,13 @@ lars:
 
 lukas:
   name: Lukas Lösche
-  title: Co-Founder & Some Engineer
+  title: Co-Founder & Some Software Engineer
   image_url: https://github.com/lloesche.png
   url: https://github.com/lloesche
 
 matthias:
   name: Matthias Veit
-  title: Co-Founder & Some Engineer
+  title: Co-Founder & Some Software Engineer
   image_url: https://github.com/aquamatthias.png
   url: https://github.com/aquamatthias
 
@@ -30,6 +30,6 @@ doris:
 
 nikita:
   name: Nikita Melkozerov
-  title: Some Engineer
+  title: Some Software Engineer
   image_url: https://github.com/meln1k.png
   url: https://github.com/meln1k

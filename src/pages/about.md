@@ -12,13 +12,13 @@ Metrics can be aggregated and exported to a time-series database such as [Promet
 
 ## Origin and Story
 
-[Lukas](https://github.com/lloesche) started developing "Cloudkeeper" (now known as **Resoto**) in late 2019 as an internal project at [D2iQ](<https://[D2iQ](https://d2iq.com/).com/>) (formerly Mesosphere).
+[Lukas](https://github.com/lloesche) started developing "Cloudkeeper" (now known as **Resoto**) in late 2019 as an internal project at [D2iQ](https://d2iq.com) (formerly Mesosphere).
 
-At the time, [Lukas](https://github.com/lloesche) was a site reliability engineer (SRE) at [D2iQ](https://d2iq.com/) and needed a tool to give him the big picture of all cloud resources running, automate their documentation, and reduce spend.
+At the time, [Lukas](https://github.com/lloesche) was a site reliability engineer (SRE) at [D2iQ](https://d2iq.com) and needed a tool to give him the big picture of all cloud resources running, automate their documentation, and reduce spend.
 
-Like all startups, [D2iQ](https://d2iq.com/) had prioritized growth. Engineering headcount at [D2iQ](https://d2iq.com/) had grown to over 200 people, with some 40+ [AWS](https://aws.amazon.com) sub-accounts, and everyone was spinning up resources. A team of just three SREs had to support all this growth, and their priority was to build things that would increase feature velocity. "Let's worry about that SRE stuff later."
+Like all startups, [D2iQ](https://d2iq.com) had prioritized growth. Engineering headcount at [D2iQ](https://d2iq.com) had grown to over 200 people, with some 40+ [AWS](https://aws.amazon.com) sub-accounts, and everyone was spinning up resources. A team of just three SREs had to support all this growth, and their priority was to build things that would increase feature velocity. "Let's worry about that SRE stuff later."
 
-As a result, [D2iQ](https://d2iq.com/)'s [Amazon Web Services (AWS)](https://aws.amazon.com) bill kept creeping up. From the mid 5-figure range to the mid 6-figure range _every month_. [D2iQ](https://d2iq.com/) as a business had grown too, but cloud spend was growing much faster than customers and revenue. There also were outages. Usually because some obscure [AWS](https://aws.amazon.com) service in a sub-account had run into quota limit, which brought the entire development pipeline to a halt.
+As a result, [D2iQ](https://d2iq.com)'s [Amazon Web Services (AWS)](https://aws.amazon.com) bill kept creeping up. From the mid 5-figure range to the mid 6-figure range _every month_. [D2iQ](https://d2iq.com) as a business had grown too, but cloud spend was growing much faster than customers and revenue. There also were outages. Usually because some obscure [AWS](https://aws.amazon.com) service in a sub-account had run into quota limit, which brought the entire development pipeline to a halt.
 
 And so the order came down from the CEO and the CFO to reduce cloud spend, and bring order to the chaos.
 
@@ -34,7 +34,7 @@ The scenario probably sounds familiar. And there were plenty of infrastructure t
 
 The first version of Cloudkeeper was deployed in early 2020. And it delivered. Within four weeks, cloud spend was cut in half! Another six months later, cloud spend had been reduced by a total of 70%. The entire infrastructure had become more resilient.
 
-In 2020, [D2iQ](https://d2iq.com/) open-sourced Cloudkeeper, and [Some Engineering Inc.](https://some.engineering) took over development in July 2021. In 2022, the Cloudkeeper project was rebranded as "Resoto."
+In 2020, [D2iQ](https://d2iq.com) open-sourced Cloudkeeper, and [Some Engineering Inc.](https://some.engineering) took over development in July 2021. In 2022, the Cloudkeeper project was rebranded as "Resoto."
 
 ## Product Vision
 
@@ -72,7 +72,7 @@ Resoto indexes resources, captures dependencies, and maps out your infrastructur
 
 Resoto is the one place where developers and site reliability engineers go to search for resources in their cloud infrastructure. They create event-based workflows that automate high-value but also high-effort tasks such as deleting unused resources or documenting cloud inventory for audit purposes.
 
-Resoto is a horizontal product that supports [Amazon Web Services (AWS)](https://aws.amazon.com) and [Google Cloud Platform (GCP)](https://console.cloud.google.com). That is more for historic reasons than for market share reasons. Resoto started as an internal [D2iQ](https://d2iq.com/) project, and [D2iQ](https://d2iq.com/) runs on [AWS](https://aws.amazon.com) and [GCP](https://console.cloud.google.com).
+Resoto is a horizontal product that supports [Amazon Web Services (AWS)](https://aws.amazon.com) and [Google Cloud Platform (GCP)](https://console.cloud.google.com). That is more for historic reasons than for market share reasons. Resoto started as an internal [D2iQ](https://d2iq.com) project, and [D2iQ](https://d2iq.com) runs on [AWS](https://aws.amazon.com) and [GCP](https://console.cloud.google.com).
 
 Resoto is an expert tool for engineers that runs on top of the [Resoto Core](/docs/concepts/components/core) graph platform. They interact with Resoto via a [command-line interface (CLI)](/docs/reference/cli) which engineers are comfortable working with.
 
@@ -102,7 +102,7 @@ We make it easy for engineers and all other company stakeholders (Finance, Legal
 
 For example, Legal builds an inventory of workflows that verify ongoing infrastructure compliance with regulatory frameworks such as HIPAA, SOC or FedRAMP. Finance pulls cloud cost metrics down to the individual product and user level and exports them to their Snowflake data warehouse. For a sustainability report, engineering calculates a company's annual carbon footprint based on the hardware profiles of their cloud servers.
 
-By now, Resoto covers the major global ([AWS](https://aws.amazon.com), [GCP](https://console.cloud.google.com), [Azure](https://azure.microsoft.com), [Alibaba](https://www.alibabacloud.com)), specialized ([DigitalOcean](https://digitalocean.com), [Oracle](https://oracle.com), [IBM](https://cloud.ibm.com), etc.), and private/hybrid clouds such as [VMWare](https://cloud.vmware.com) and [Red Hat](https://cloud.redhat.com/).
+By now, Resoto covers the major global ([AWS](https://aws.amazon.com), [GCP](https://console.cloud.google.com), [Azure](https://azure.microsoft.com), [Alibaba](https://www.alibabacloud.com)), specialized ([DigitalOcean](https://digitalocean.com), [Oracle](https://oracle.com), [IBM](https://cloud.ibm.com), etc.), and private/hybrid clouds such as [VMWare](https://cloud.vmware.com) and [Red Hat](https://cloud.redhat.com).
 
 We've expanded beyond the cloud, and also collect metadata from other infrastructure such as IoT devices—[Raspberry Pi](https://raspberrypi.org), industrial appliances, etc. Either directly, or through community-supported plug-ins. If something has an IP address, we can collect metadata and metrics—and that opens up new (vertical) use cases. Cloud computing is not the only infrastructure where it's useful to be able to search, query resources, build workflows or have metrics and have event triggers. In short, reacting to changes. Something changes, and you want to be able to react to it. That's useful for any digital infrastructure.
 

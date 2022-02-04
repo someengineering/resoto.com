@@ -19,7 +19,7 @@ const config = {
   organizationName: 'someengineering',
   projectName: 'resoto.com',
   deploymentBranch: 'gh-pages',
-  trailingSlash: true,
+  trailingSlash: false,
 
   presets: [
     [
@@ -102,7 +102,12 @@ const config = {
           },
           {
             to: '/docs/contributing/components',
-            from: ['/contributing/resoto', '/docs/contributing/code'],
+            from: [
+              '/contributing/code',
+              '/contributing/components',
+              '/contributing/resoto',
+              '/docs/contributing/code',
+            ],
           },
           {
             to: '/docs/contributing/documentation',
@@ -111,6 +116,10 @@ const config = {
           {
             to: '/docs/reference/cli/query/aggregation',
             from: ['/docs/reference/cli/aggregate'],
+          },
+          {
+            to: '/docs/reference/core-api',
+            from: ['/api', '/docs/reference/resotocore-api'],
           },
           {
             to: '/docs/reference/data-models',
@@ -275,7 +284,7 @@ const config = {
               },
               {
                 label: 'LinkedIn',
-                href: 'https://www.linkedin.com/company/someengineering/',
+                href: 'https://www.linkedin.com/company/someengineering',
               },
             ],
           },

@@ -25,7 +25,7 @@ For supported Markdown features, please refer to the [Docusaurus documentation](
 #### Prerequisites
 
 - [Git](https://git-scm.com) (the below instructions assume you are using the CLI, though [GUI clients](https://git-scm.com/downloads/guis) will also work!)
-- Code editor ([Visual Studio Code](https://code.visualstudio.com/) is recommended)
+- Code editor ([Visual Studio Code](https://code.visualstudio.com) is recommended)
 - [Node.js](https://nodejs.org)
 - [Yarn](https://yarnpkg.com)
 

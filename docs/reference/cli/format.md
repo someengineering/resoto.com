@@ -12,14 +12,14 @@ format [--<format-option>] <format_string>
 
 The `format` command supports some predefined formats, which can be utilized using the following options:
 
-| Option        | Description                                                                                                |
-| ------------- | ---------------------------------------------------------------------------------------------------------- |
-| `--json`      | Creates a JSON string and returns it within a JSON array.                                                  |
-| `--ndjson`    | Creates a JSON object for each element, with line element per line in the output.                          |
-| `--text`      | Creates a text representation of each element.                                                             |
-| `--cytoscape` | Creates a string representation in [Cytoscape.js format](https://js.cytoscape.org/#notation/elements-json) |
-| `--graphml`   | Creates a string representation in [GraphML format](http://graphml.graphdrawing.org)                       |
-| `--dot`       | Creates a string representation in [Graphviz DOT format](https://graphviz.org/doc/info/lang.html)          |
+| Option        | Description                                                                                               |
+| ------------- | --------------------------------------------------------------------------------------------------------- |
+| `--json`      | Creates a JSON string and returns it within a JSON array.                                                 |
+| `--ndjson`    | Creates a JSON object for each element, with line element per line in the output.                         |
+| `--text`      | Creates a text representation of each element.                                                            |
+| `--cytoscape` | Creates a string representation in [Cytoscape.js format](https://js.cytoscape.org#notation/elements-json) |
+| `--graphml`   | Creates a string representation in [GraphML format](http://graphml.graphdrawing.org)                      |
+| `--dot`       | Creates a string representation in [Graphviz DOT format](https://graphviz.org/doc/info/lang.html)         |
 
 ### Parameters
 

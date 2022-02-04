@@ -12,7 +12,7 @@ For more information on Docker, please see the [official Docker documentation](h
 
 ## Prerequisites
 
-- [Docker](https://docs.docker.com/get-started/#download-and-install-docker)
+- [Docker](https://docs.docker.com/get-started#download-and-install-docker)
 - [AWS IAM access keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
 
 ## Installation

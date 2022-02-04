@@ -12,9 +12,9 @@ jq <filter>
 
 ### Parameters
 
-| Parameter | Description                                                       | Required? | Default Value |
-| --------- | ----------------------------------------------------------------- | --------- | ------------- |
-| `filter`  | [`jq` filter](https://stedolan.github.io/jq/manual/#Basicfilters) | ✔️        | N/A           |
+| Parameter | Description                                                      | Required? | Default Value |
+| --------- | ---------------------------------------------------------------- | --------- | ------------- |
+| `filter`  | [`jq` filter](https://stedolan.github.io/jq/manual#Basicfilters) | ✔️        | N/A           |
 
 ## Examples
 

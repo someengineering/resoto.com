@@ -19,7 +19,7 @@ For more information on Docker, please see the [official Docker documentation](h
 
 There are multiple ways to get the Resoto Docker image up and running.
 
-### [`docker run`](https://docs.docker.com/engine/reference/run) Command
+### [`docker run`](https://docs.docker.com/engine/reference/run) Command {#docker-run-install}
 
 First, create a volume in which to persist data:
 
@@ -43,7 +43,7 @@ docker run \
 
 And just like that, you now have Resoto running in Docker!
 
-### [Docker Compose](https://docs.docker.com/compose/reference)
+### [Docker Compose](https://docs.docker.com/compose/reference) {#docker-compose-install}
 
 Add the following volume and service definitions to a [`docker-compose.yml` file](https://docs.docker.com/compose/compose-file):
 
@@ -92,7 +92,7 @@ To access the Resoto web interface, navigate to [http://localhost:8900/ui](http:
 
 When a new version of Resoto is available, the update process is dependent on how Resoto was installed initially.
 
-### `docker run` Command
+### [`docker run`](https://docs.docker.com/engine/reference/run) Command {#docker-run-update}
 
 First, stop and remove the existing container:
 
@@ -103,7 +103,7 @@ docker rm resoto
 
 Next, recreate the container with the same parameters used previously, but updating the image tag (e.g., <LatestTag />) to reflect the desired Resoto release.
 
-### Docker Compose
+### [Docker Compose](https://docs.docker.com/compose/reference) {#docker-compose-update}
 
 Simply edit the image tag (e.g., <LatestTag />) specified in the `docker-compose.yml` file to reflect the desired Resoto release.
 

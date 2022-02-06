@@ -1,0 +1,34 @@
+# Resoto Logos and Usage
+
+```mdx-code-block
+import Image from '@theme/IdealImage';
+```
+
+<p>
+  <div class="card">
+    <div class="card__image">
+      <Image img={require('./img/resoto-logo.png')} alt="Resoto Logo" />
+    </div>
+    <div class="card__footer">
+      <a href="pathname:///assets/resoto-logos.zip" class="button button--primary button--block">Download Logos</a>
+    </div>
+  </div>
+</p>
+
+If possible, the full logo that includes the product name should be used.
+
+The logo has a ratio of 1:3.5 including the outside padding. The sheep head has a ratio of 1:1 with the sheep‘s face centered in this area.
+
+On dark or medium backgrounds, the default logo variant should be used. On light backgrounds, the variant with darker purple typography should be used. On medium-value (gray) or colorful backgrounds, the text color may be altered to either white or black.
+
+## Variants
+
+The logo has different variants for screen and print sizes. Use the largest variant that is suitable for each use case.
+
+Use the single-color or inverted single-color variants where the use of color is not permitted.
+
+## Clear Space
+
+Maintain a margin of one “center to pupil edge“ around the logo.
+
+When using a variant without text, use a square box with the sheep‘s face centered within the area.

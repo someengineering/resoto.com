@@ -158,7 +158,7 @@ html[data-theme='dark'] strong {
 }
 
 main {
-  padding-bottom: 5rem;
+  padding-bottom: 5rem !important;
 }
 
 .footer {
@@ -238,4 +238,16 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   .footer__links {
     text-align: center;
   }
+}
+
+.card__container {
+  display: flex;
+}
+
+.card__container > .card + .card {
+  margin-left: 1rem;
+}
+
+.card {
+  max-width: 320px;
 }

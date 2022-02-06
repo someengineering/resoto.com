@@ -1,19 +1,6 @@
 # Resoto Logos and Usage
 
-```mdx-code-block
-import Image from '@theme/IdealImage';
-```
-
-<p>
-  <div class="card">
-    <div class="card__image">
-      <Image img={require('./img/resoto-logo.png')} alt="Resoto Logo" />
-    </div>
-    <div class="card__footer">
-      <a href="pathname:///assets/resoto-logos.zip" class="button button--primary button--block">Download Logos</a>
-    </div>
-  </div>
-</p>
+<p><a href="pathname:///assets/resoto-logos.zip" class="button button--primary">Download Logos</a></p>
 
 If possible, the full logo that includes the product name should be used.
 

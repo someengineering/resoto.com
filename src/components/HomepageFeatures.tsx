@@ -4,50 +4,50 @@ import styles from './HomepageFeatures.module.css';
 
 type FeatureItem = {
   title: string;
-  // image: string;
+  image: string;
   description: JSX.Element;
 };
 
 const FeatureList: FeatureItem[] = [
   {
     title: 'Resource Graph',
-    // image: require('../../static/img/_.svg').default,
+    image: 'img/sheep-professor.svg',
     description: (
       <>
         Resoto indexes resources, captures dependencies, and maps out your
-        infrastructure in a human-friendly graph view with metrics for each
-        resource.
+        infrastructure in a <strong>human-friendly graph view</strong>.
       </>
     ),
   },
   {
     title: 'Search and Automation',
-    // image: require('../../static/img/_.svg').default,
+    image: 'img/sheep-airport.svg',
     description: (
       <>
-        Developers and SREs can search the graph with a query language, and
-        create alerting and cleanup workflows.
+        Developers and SREs can search the graph with a{' '}
+        <strong>query language</strong>, and create alerting and cleanup{' '}
+        <strong>workflows</strong>.
       </>
     ),
   },
   {
     title: 'Metrics',
-    // image: require('../../static/img/_.svg').default,
+    image: 'img/sheep-strong.svg',
     description: (
       <>
-        Data can be aggregated and exported to a time series database such as
-        Prometheus!
+        Data can be aggregated and exported to a{' '}
+        <strong>time series database</strong> such as Prometheus!
       </>
     ),
   },
 ];
 
-function Feature({ title, /*image,*/ description }: FeatureItem) {
+function Feature({ title, image, description }: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
-      {/* <div className="text--center">
+      <div className="text--center">
         <img className={styles.featureSvg} alt={title} src={image} />
-      </div> */}
+      </div>
       <div className="text--center padding-horiz--md">
         <h3>{title}</h3>
         <p>{description}</p>

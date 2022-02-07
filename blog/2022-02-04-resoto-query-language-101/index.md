@@ -97,3 +97,12 @@ id=i-0..., name=flixer, age=1M3w, account=sales, region=us-west-2
 The arrow is now mirrored and traverses the graph "inbound," walking edges in the opposite direction.
 
 The above examples only begin to scratch the surface of Resoto's [query language](/docs/reference/cli/query). I hope you will check out our [documentation](/docs) and give Resoto a spin!
+
+### References
+
+The example queries shown in this blog post are all made using AWS resources to make one consistent example. Resoto supports multiple cloud providers.
+
+- [AWS Resources](/docs/reference/data-models/aws)
+- [GCP Resources](/docs/reference/data-models/gcp)
+- [vSphere](https://github.com/someengineering/resoto/tree/main/plugins/vsphere) (alpha)
+- [kubernetes](https://github.com/someengineering/resoto/tree/main/plugins/k8s) (alpha)

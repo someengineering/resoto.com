@@ -100,7 +100,7 @@ The above examples only begin to scratch the surface of Resoto's [query language
 
 ### References
 
-The example queries shown in this blog post are all made using AWS resources to make one consistent example. Resoto supports multiple cloud providers.
+The example queries shown in this blog post are all made using AWS resources to make one consistent example. Resoto supports multiple cloud providers:
 
 - [AWS Resources](/docs/reference/data-models/aws)
 - [GCP Resources](/docs/reference/data-models/gcp)

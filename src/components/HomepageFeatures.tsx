@@ -14,7 +14,7 @@ const FeatureList: FeatureItem[] = [
     image: 'img/sheep-professor.svg',
     description: (
       <>
-        Resoto indexes resources, captures dependencies, and maps out your
+        Resoto indexes resources, captures dependencies, and maps out your cloud
         infrastructure in a <strong>human-friendly graph view</strong>.
       </>
     ),

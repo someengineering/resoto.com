@@ -1,6 +1,6 @@
 # Resoto Logos and Usage
 
-<p><a href="pathname:///assets/resoto-logos.zip" class="button button--primary">Download Logos</a></p>
+<p><a href="https://cdn.some.engineering/assets/resoto-logos.zip" class="button button--primary">Download Logos</a></p>
 
 If possible, the full logo that includes the product name should be used.
 

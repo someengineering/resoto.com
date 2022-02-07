@@ -10,13 +10,15 @@ image: ./img/banner-social.png
 import Image from '@theme/IdealImage';
 ```
 
-<p><Image img={require('./img/banner.png')} alt="Left: Sheep Spinning Up Cloud Resources; Right: Confused Sheep with Abacus" /></p>
-
-Retrieving information about resources you have deployed in your [AWS](https://aws.amazon.com) infrastructure means tediously navigating the [AWS Management Console](https://aws.amazon.com/console) or using the [AWS Command Line Interface](https://aws.amazon.com/cli). This approach works well in a single account setup, but best practice is to set up a multi-account environment. And as the number of accounts grows, navigating your infrastructure and finding resources via the [Console](https://aws.amazon.com/console) or the [CLI](https://aws.amazon.com/cli/) becomes increasingly difficult.
+Retrieving information about resources you have deployed in your [Amazon Web Services (AWS)](https://aws.amazon.com) infrastructure means tediously navigating the [AWS Management Console](https://aws.amazon.com/console) or using the [AWS Command Line Interface](https://aws.amazon.com/cli). This approach works well in a single account setup, but best practice is to set up a multi-account environment. And as the number of accounts grows, navigating your infrastructure and finding resources via the [Console](https://aws.amazon.com/console) or the [CLI](https://aws.amazon.com/cli/) becomes increasingly difficult.
 
 Furthermore, the relationships between your resources are also relevant: an EBS volume is mounted to an EC2 instance running in a VPC and reachable via an ALB load balancer, for example. Developers create resources using tools such as [Terraform](https://terraform.io), [CDK](https://aws.amazon.com/cdk), or [CloudFormation](https://aws.amazon.com/cloudformation)… or sometimes even the console or CLI. How can you see everything that is running in your cloud?
 
-We created Resoto to allow the user to effortlessly query resources and automate workflows. Resoto gathers data about your infrastructure and builds a directed acyclic graph, where resources are vertices and their relationships/dependencies edges. This graph is what makes Resoto so powerful, but we needed a way to allow users to query this data.
+<p><Image img={require('./img/banner.png')} alt="Left: Sheep Spinning Up Cloud Resources; Right: Confused Sheep with Abacus" /></p>
+
+<!--truncate-->
+
+We created Resoto to allow the user to effortlessly [query resources](/docs/reference/cli/query) and [automate workflows](/docs/concepts/automation/workflow). Resoto gathers data about your infrastructure and builds a directed acyclic [graph](/docs/concepts/graph), where resources are [vertices](/docs/concepts/graph/node) and their relationships/dependencies [edges](/docs/concepts/graph/edge). This graph is what makes Resoto so powerful, but we needed a way to allow users to query this data.
 
 Graph data is not relational, so SQL was not a good fit. And existing graph query languages like [Cypher](https://neo4j.com/developer/cypher), [Gremlin](https://tinkerpop.apache.org/gremlin.html), or [GSQL](https://tigergraph.com/gsql) have steep learning curves and are unnecessarily complex for this use case.
 
@@ -98,11 +100,12 @@ The arrow is now mirrored and traverses the graph "inbound," walking edges in th
 
 The above examples only begin to scratch the surface of Resoto's [query language](/docs/reference/cli/query). I hope you will check out our [documentation](/docs) and give Resoto a spin!
 
-### References
+:::note
 
-The example queries shown in this blog post are all made using AWS resources to make one consistent example. Resoto supports multiple cloud providers:
+This blog post showcases examples of working with [AWS resources](/docs/reference/data-models/aws), but Resoto also supports other resource types (and additional integrations with other providers are planned!):
 
-- [AWS Resources](/docs/reference/data-models/aws)
-- [GCP Resources](/docs/reference/data-models/gcp)
+- [Google Cloud Platform (GCP)](/docs/reference/data-models/gcp)
 - [vSphere](https://github.com/someengineering/resoto/tree/main/plugins/vsphere) (alpha)
-- [kubernetes](https://github.com/someengineering/resoto/tree/main/plugins/k8s) (alpha)
+- [Kubernetes (K8s)](https://github.com/someengineering/resoto/tree/main/plugins/k8s) (alpha)
+
+:::

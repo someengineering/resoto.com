@@ -213,6 +213,18 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   text-decoration: var(--ifm-link-hover-decoration);
 }
 
+.card__container {
+  display: flex;
+}
+
+.card__container > .card + .card {
+  margin-left: 1rem;
+}
+
+.card {
+  max-width: 320px;
+}
+
 @media screen and (max-width: 966px) {
   .header-icon-link {
     justify-content: flex-start;
@@ -238,16 +250,8 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   .footer__links {
     text-align: center;
   }
-}
 
-.card__container {
-  display: flex;
-}
-
-.card__container > .card + .card {
-  margin-left: 1rem;
-}
-
-.card {
-  max-width: 320px;
+  .lg-screens-only {
+    display: none;
+  }
 }

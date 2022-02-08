@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="709px" preserveAspectRatio="none" style="width:483px;height:709px;background:#00000000;" version="1.1" viewBox="0 0 483 709" width="483px" zoomAndPan="magnify"><defs/><g><!--MD5=[230a9b3152d0e43428e5ec47aa3382f3]
+class instance--><rect codeLine="17" fill="#3D176E" height="139.0078" id="instance" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="179" x="258.5" y="404"/><ellipse cx="303.75" cy="423.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M306.7188,429.5352 Q306.1406,429.832 305.5,429.9727 Q304.8594,430.1289 304.1563,430.1289 Q301.6563,430.1289 300.3281,428.4883 Q299.0156,426.832 299.0156,423.707 Q299.0156,420.582 300.3281,418.9258 Q301.6563,417.2695 304.1563,417.2695 Q304.8594,417.2695 305.5,417.4258 Q306.1563,417.582 306.7188,417.8789 L306.7188,420.5977 Q306.0938,420.0195 305.5,419.7539 Q304.9063,419.4727 304.2813,419.4727 Q302.9375,419.4727 302.25,420.5508 Q301.5625,421.6133 301.5625,423.707 Q301.5625,425.8008 302.25,426.8789 Q302.9375,427.9414 304.2813,427.9414 Q304.9063,427.9414 305.5,427.6758 Q306.0938,427.3945 306.7188,426.8164 L306.7188,429.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="70" x="329.25" y="429.7798">instance</text><line style="stroke:#000D19;stroke-width:1.5;" x1="259.5" x2="436.5" y1="443.7891" y2="443.7891"/><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="96" x="269.5" y="462.9995">instance_cores</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="46" x="365.5" y="462.9995">: double</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="111" x="269.5" y="485.8042">instance_memory</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="46" x="380.5" y="485.8042">: double</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="89" x="269.5" y="508.6089">instance_type</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="41" x="358.5" y="508.6089">: string</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="101" x="269.5" y="531.4136">instance_status</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="41" x="370.5" y="531.4136">: string</text><!--MD5=[45e941211880643daf501521e190bacb]
+class kubernetes_resource--><rect codeLine="23" fill="#3D176E" height="70.5938" id="kubernetes_resource" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="216" x="7" y="438"/><ellipse cx="22" cy="457.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M24.9688,463.5352 Q24.3906,463.832 23.75,463.9727 Q23.1094,464.1289 22.4063,464.1289 Q19.9063,464.1289 18.5781,462.4883 Q17.2656,460.832 17.2656,457.707 Q17.2656,454.582 18.5781,452.9258 Q19.9063,451.2695 22.4063,451.2695 Q23.1094,451.2695 23.75,451.4258 Q24.4063,451.582 24.9688,451.8789 L24.9688,454.5977 Q24.3438,454.0195 23.75,453.7539 Q23.1563,453.4727 22.5313,453.4727 Q21.1875,453.4727 20.5,454.5508 Q19.8125,455.6133 19.8125,457.707 Q19.8125,459.8008 20.5,460.8789 Q21.1875,461.9414 22.5313,461.9414 Q23.1563,461.9414 23.75,461.6758 Q24.3438,461.3945 24.9688,460.8164 L24.9688,463.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="174" x="41" y="463.7798">kubernetes_resource</text><line style="stroke:#000D19;stroke-width:1.5;" x1="8" x2="222" y1="477.7891" y2="477.7891"/><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="53" x="18" y="496.9995">self_link</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="41" x="71" y="496.9995">: string</text><!--MD5=[7f0ecf5f554433d3f2e1213379ac821c]
+class resource--><rect codeLine="26" fill="#3D176E" height="275.8359" id="resource" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="256" x="220" y="7"/><ellipse cx="303.25" cy="26.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M306.2188,32.5352 Q305.6406,32.832 305,32.9727 Q304.3594,33.1289 303.6563,33.1289 Q301.1563,33.1289 299.8281,31.4883 Q298.5156,29.832 298.5156,26.707 Q298.5156,23.582 299.8281,21.9258 Q301.1563,20.2695 303.6563,20.2695 Q304.3594,20.2695 305,20.4258 Q305.6563,20.582 306.2188,20.8789 L306.2188,23.5977 Q305.5938,23.0195 305,22.7539 Q304.4063,22.4727 303.7813,22.4727 Q302.4375,22.4727 301.75,23.5508 Q301.0625,24.6133 301.0625,26.707 Q301.0625,28.8008 301.75,29.8789 Q302.4375,30.9414 303.7813,30.9414 Q304.4063,30.9414 305,30.6758 Q305.5938,30.3945 306.2188,29.8164 L306.2188,32.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="71" x="328.75" y="32.7798">resource</text><line style="stroke:#000D19;stroke-width:1.5;" x1="221" x2="475" y1="46.7891" y2="46.7891"/><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="12" x="231" y="65.9995">id</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="41" x="243" y="65.9995">: string</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="28" x="231" y="88.8042">tags</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="145" x="259" y="88.8042">: dictionary[string, string]</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="35" x="231" y="111.6089">name</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="41" x="266" y="111.6089">: string</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="35" x="231" y="134.4136">ctime</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="58" x="266" y="134.4136">: datetime</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="24" x="231" y="157.2183">age</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="159" x="255" y="157.2183">: trafo.duration_to_datetime</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="39" x="231" y="180.0229">mtime</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="58" x="270" y="180.0229">: datetime</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="75" x="231" y="202.8276">last_update</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="159" x="306" y="202.8276">: trafo.duration_to_datetime</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="36" x="231" y="225.6323">atime</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="58" x="267" y="225.6323">: datetime</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="74" x="231" y="248.437">last_access</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="159" x="305" y="248.437">: trafo.duration_to_datetime</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="27" x="231" y="271.2417">kind</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="41" x="258" y="271.2417">: string</text><!--MD5=[5167f24a7730df9ab6778a64ba15a1e8]
+class kubernetes_pod--><rect codeLine="38" fill="#3D176E" height="39.7891" id="kubernetes_pod" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="175" x="62.5" y="664"/><ellipse cx="77.5" cy="683.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M80.4688,689.5352 Q79.8906,689.832 79.25,689.9727 Q78.6094,690.1289 77.9063,690.1289 Q75.4063,690.1289 74.0781,688.4883 Q72.7656,686.832 72.7656,683.707 Q72.7656,680.582 74.0781,678.9258 Q75.4063,677.2695 77.9063,677.2695 Q78.6094,677.2695 79.25,677.4258 Q79.9063,677.582 80.4688,677.8789 L80.4688,680.5977 Q79.8438,680.0195 79.25,679.7539 Q78.6563,679.4727 78.0313,679.4727 Q76.6875,679.4727 76,680.5508 Q75.3125,681.6133 75.3125,683.707 Q75.3125,685.8008 76,686.8789 Q76.6875,687.9414 78.0313,687.9414 Q78.6563,687.9414 79.25,687.6758 Q79.8438,687.3945 80.4688,686.8164 L80.4688,689.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="133" x="96.5" y="689.7798">kubernetes_pod</text><!--MD5=[d8c8fec3d897e15ddf46b16cbe65a677]
+reverse link resource to instance--><path codeLine="41" d="M348,303.22 C348,338.64 348,374.43 348,403.93 " fill="none" id="resource-backto-instance" style="stroke:#FFAF37;stroke-width:2.0;"/><polygon fill="none" points="341,303.05,348,283.05,355,303.05,341,303.05" style="stroke:#FFAF37;stroke-width:2.0;"/><!--MD5=[192f88de14cd93d0bbc733635322bc19]
+reverse link kubernetes_resource to kubernetes_pod--><path codeLine="42" d="M124.17,529.15 C131.63,573.59 141.72,633.7 146.8,663.95 " fill="none" id="kubernetes_resource-backto-kubernetes_pod" style="stroke:#FFAF37;stroke-width:2.0;"/><polygon fill="none" points="117.27,530.28,120.86,509.4,131.07,527.96,117.27,530.28" style="stroke:#FFAF37;stroke-width:2.0;"/><!--MD5=[de3adb667286085d6a418ca3c56643a7]
+reverse link instance to kubernetes_pod--><path codeLine="43" d="M268.98,557.71 C232.05,596.6 191.26,639.55 168.32,663.71 " fill="none" id="instance-backto-kubernetes_pod" style="stroke:#FFAF37;stroke-width:2.0;"/><polygon fill="none" points="264.04,552.74,282.89,543.06,274.2,562.38,264.04,552.74" style="stroke:#FFAF37;stroke-width:2.0;"/><!--MD5=[85c706b191b758b02f40e1d22949975b]
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class instance {
+**instance_cores**: double
+**instance_memory**: double
+**instance_type**: string
+**instance_status**: string
+}
+class kubernetes_resource {
+**self_link**: string
+}
+class resource {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: trafo.duration_to_datetime
+**mtime**: datetime
+**last_update**: trafo.duration_to_datetime
+**atime**: datetime
+**last_access**: trafo.duration_to_datetime
+**kind**: string
+}
+class kubernetes_pod {
+
+}
+resource <|- - - instance
+kubernetes_resource <|- - - kubernetes_pod
+instance <|- - - kubernetes_pod
+@enduml
+
+PlantUML version 1.2021.16(Wed Dec 08 17:25:22 UTC 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

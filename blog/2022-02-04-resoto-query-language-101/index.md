@@ -105,7 +105,7 @@ The above examples only begin to scratch the surface of Resoto's [query language
 This blog post showcases examples of working with [AWS resources](/docs/reference/data-models/aws), but Resoto also supports other resource types (and additional integrations with other providers are planned!):
 
 - [Google Cloud Platform (GCP)](/docs/reference/data-models/gcp)
-- [vSphere](https://github.com/someengineering/resoto/tree/main/plugins/vsphere) (alpha)
-- [Kubernetes (K8s)](https://github.com/someengineering/resoto/tree/main/plugins/k8s) (alpha)
+- [vSphere](/docs/reference/data-models/vsphere) (alpha)
+- [Kubernetes (K8s)](/docs/reference/data-models/kubernetes) (alpha)
 
 :::

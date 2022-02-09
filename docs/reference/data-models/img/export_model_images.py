@@ -25,4 +25,5 @@ def print_md(provider: str):
         print(f"![{name}](./img/{provider}/{name}.svg)\n")
 
 
-export_images("kubernetes")
+#export_images(".")
+#export_images("kubernetes")

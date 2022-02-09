@@ -2,7 +2,13 @@
 sidebar_label: Kubernetes
 ---
 
-# Kubernetes (alpha)
+# Kubernetes Resources
+
+:::note
+
+Kubernetes support is still in alpha. Please [report any issues on GitHub](https://github.com/someengineering/resoto/issues/new?assignees=&labels=bug&template=bug.yml)!
+
+:::
 
 ## `kubernetes_cluster`
 

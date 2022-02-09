@@ -2,7 +2,13 @@
 sidebar_label: VMware vSphere
 ---
 
-# VMware vSphere (alpha)
+# VMware vSphere Resources
+
+:::note
+
+vSphere support is still in alpha. Please [report any issues on GitHub](https://github.com/someengineering/resoto/issues/new?assignees=&labels=bug&template=bug.yml)!
+
+:::
 
 ## `vsphere_cluster`
 

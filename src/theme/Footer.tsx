@@ -8,7 +8,7 @@ export default function Footer(): JSX.Element {
   const isBrowser = useIsBrowser();
   const isDev =
     process.env.NODE_ENV == 'development' ||
-    (isBrowser && window.location.href.includes('localhost'));
+    (isBrowser && !window.location.href.includes('resoto.com'));
 
   const [timestamp, setTimestamp] = useState(new Date().getTime());
   const location = useLocation();

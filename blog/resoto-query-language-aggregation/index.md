@@ -85,7 +85,7 @@ This query filters all instances and then aggregates the on-demand cost of each 
 It is possible to walk the graph inbound with `ancestors` and outbound via `descendants`. Let's use this technique to filter only the running instances and aggregate the data using account and region. In a query where you can write a property path, you can also use the `ancestors` syntax - aggregation groups and functions included:
 
 ```shell
-> query is(instance) and instance_status==terminated | aggregate 
+> query is(instance) and instance_status!=terminated | aggregate 
   /ancestors.account.reported.name as account, 
   /ancestors.region.reported.name as region: 
   sum(instance_memory) as memory, 

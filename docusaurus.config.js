@@ -323,6 +323,13 @@ const config = {
             ],
           },
         ],
+        logo: {
+          alt: 'Deploys by Netlify',
+          src: 'https://netlify.com/img/global/badges/netlify-color-accent.svg',
+          width: 114,
+          height: 51,
+          href: 'https://netlify.com',
+        },
         copyright: `<span aria-label="owl" role="img" class="lg-screens-only">🦉</span> Copyright © ${new Date().getFullYear()} <a href="https://some.engineering" target="_blank" rel="noopener noreferrer">Some Engineering Inc</a>. Built with <a href="https://docusaurus.io" target="_blank" rel="noopener noreferrer">Docusaurus</a>. <span aria-label="dinosaur" role="img" class="lg-screens-only">🦖</span>`,
       },
       algolia: {

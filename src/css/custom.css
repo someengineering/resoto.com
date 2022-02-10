@@ -3,7 +3,7 @@
   font-style: normal;
   font-weight: 22 188;
   font-display: swap;
-  src: url('/fonts/Barlow.woff2') format('woff2');
+  src: url('https://cdn.some.engineering/fonts/Barlow.woff2') format('woff2');
 }
 
 :root {

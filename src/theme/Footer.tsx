@@ -22,9 +22,9 @@ export default function Footer(): JSX.Element {
         href="https://some.engineering"
         target="_blank"
         rel="noopener noreferrer"
-        className="footer__logolink"
+        className="companyLogoLink"
       >
-        <FooterLogo className="footer__logo" />
+        <FooterLogo className="companyLogo" />
       </a>
       {isDev || !isBrowser ? (
         <OriginalFooter />

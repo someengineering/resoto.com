@@ -16,6 +16,12 @@ export default function Footer(): JSX.Element {
     setTimestamp(new Date().getTime());
   }, [location]);
 
+  useEffect(() => {
+    if (window.location.href.endsWith('/')) {
+      window.location.href = window.location.href.slice(0, -1);
+    }
+  }, []);
+
   return (
     <>
       <a

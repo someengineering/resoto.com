@@ -40,16 +40,6 @@ export default function Footer(): JSX.Element {
               marginBottom: '-1px',
             }}
           />
-          <img
-            src={`https://webmat.resoto.com/matomo.php?idsite=2&rec=1&rand=${timestamp}`}
-            referrerPolicy="no-referrer-when-downgrade"
-            alt=""
-            style={{
-              height: '1px',
-              border: '0',
-              marginBottom: '-1px',
-            }}
-          />
           <OriginalFooter />
         </>
       )}

@@ -20,7 +20,15 @@ const config = {
   projectName: 'resoto.com',
   deploymentBranch: 'gh-pages',
   trailingSlash: false,
-
+  stylesheets: [
+    {
+      rel: 'preload',
+      href: 'https://cdn.some.engineering/fonts/Barlow.woff2',
+      as: 'font',
+      type: 'font/woff2',
+      crossorigin: true,
+    },
+  ],
   presets: [
     [
       'classic',

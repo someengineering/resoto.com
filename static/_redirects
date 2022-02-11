@@ -1,0 +1,20 @@
+https://resoto.netlify.app/*          https://resoto.com/:splat 301!
+
+/docs/concepts/components/resotolib   /docs/concepts/components/library
+/docs/concepts/components/resh        /docs/concepts/components/shell
+/docs/concepts/components/resoto*     /docs/concepts/components/:splat
+
+/contributing/*                       /docs/contributing/:splat
+
+/docs/reference/cli/aggregate         /docs/reference/cli/query/aggregation
+
+/docs/reference/cli/ancestors         /docs/reference/cli/query/basic-queries#traversal-selection-commands
+/docs/reference/cli/descendants       /docs/reference/cli/query/basic-queries#traversal-selection-commands
+/docs/reference/cli/predecessors      /docs/reference/cli/query/basic-queries#traversal-selection-commands
+/docs/reference/cli/successors        /docs/reference/cli/query/basic-queries#traversal-selection-commands
+
+/api                                  /docs/reference/core-api
+/docs/reference/resotocore-api        /docs/reference/core-api
+
+/docs/reference/resources/data-models /docs/reference/data-models
+/docs/reference/resources/*           /docs/reference/data-models/:splat

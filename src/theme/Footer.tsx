@@ -17,8 +17,11 @@ export default function Footer(): JSX.Element {
   }, [location]);
 
   useEffect(() => {
-    if (window.location.href.endsWith('/')) {
-      window.location.href = window.location.href.slice(0, -1);
+    if (
+      window.location.pathname !== '/' &&
+      window.location.pathname.endsWith('/')
+    ) {
+      window.location.pathname = window.location.pathname.slice(0, -1);
     }
   }, []);
 

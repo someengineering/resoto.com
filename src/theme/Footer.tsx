@@ -16,15 +16,6 @@ export default function Footer(): JSX.Element {
     setTimestamp(new Date().getTime());
   }, [location]);
 
-  useEffect(() => {
-    if (
-      window.location.pathname !== '/' &&
-      window.location.pathname.endsWith('/')
-    ) {
-      window.location.pathname = window.location.pathname.slice(0, -1);
-    }
-  }, []);
-
   return (
     <>
       <a

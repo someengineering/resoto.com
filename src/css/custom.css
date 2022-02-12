@@ -183,6 +183,7 @@ main {
 .companyLogo {
   height: 100%;
   width: auto;
+  max-width: 10rem;
   margin: 0;
 }
 

@@ -116,3 +116,7 @@ Then, run the following command from the directory containing the `docker-compos
 ```bash
 docker-compose up -d
 ```
+
+## A note regarding credentials
+
+Resoto is meant to run unattended using a service account. For the purposes of this interactive getting started guide we have been using IAM access key and secret access key. In production we recommend using an instance profile. Instead of providing any credentials to Resoto you can use all authentication methods described in [the AWS SDK](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html#configuring-credentials) similar to how the [`aws cli`](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html) works. You can volume mount a folder `/home/resoto/.aws/` with a `config` file containing a `[default]` profile with a `role_arn`, `external_id` and `credential_source = Ec2InstanceMetadata`. The role name would also have to be provided to `resotoworker` as `RESOTOWORKER_AWS_ROLE`. When using Resoto to crawl all of your AWS accounts using the `RESOTOWORKER_AWS_SCRAPE_ORG=true` option, this role is used to assume into each sub account and fetch the list of resources.

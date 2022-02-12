@@ -19,6 +19,25 @@ For more information on Docker, please see the [official Docker documentation](h
 - [Docker](https://docs.docker.com/get-started#download-and-install-docker)
 - [AWS IAM access keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
 
+:::note
+
+**Resoto is intended to be run unattended using a service account, and we recommend using an instance profile in production rather than IAM access and secret access keys as described in this tutorial.**
+
+Any authentication method described in [the AWS SDK documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html#configuring-credentials) may be used, in the same way [credentials for AWS Command Line Interface are configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html).
+
+You can configure a volume mount at `/home/resoto/.aws` for a directory containing a [`config` file](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings):
+
+```toml title="/home/resoto/.aws/config"
+[default]
+role_arn = [...]
+external_id = [...]
+credential_source = Ec2InstanceMetadata
+```
+
+The role name would also have to be provided to [`resotoworker`](../concepts/components/worker.md) as `RESOTOWORKER_AWS_ROLE`. When crawling your AWS accounts using the `RESOTOWORKER_AWS_SCRAPE_ORG=true` option, this role is assumed to fetch the list of resources in each sub-account.
+
+:::
+
 ## Installation
 
 There are multiple ways to get the Resoto Docker image up and running.
@@ -116,7 +135,3 @@ Then, run the following command from the directory containing the `docker-compos
 ```bash
 docker-compose up -d
 ```
-
-## A note regarding credentials
-
-Resoto is meant to run unattended using a service account. For the purposes of this interactive getting started guide we have been using IAM access key and secret access key. In production we recommend using an instance profile. Instead of providing any credentials to Resoto you can use all authentication methods described in [the AWS SDK](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html#configuring-credentials) similar to how the [`aws cli`](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html) works. You can volume mount a folder `/home/resoto/.aws/` with a `config` file containing a `[default]` profile with a `role_arn`, `external_id` and `credential_source = Ec2InstanceMetadata`. The role name would also have to be provided to `resotoworker` as `RESOTOWORKER_AWS_ROLE`. When using Resoto to crawl all of your AWS accounts using the `RESOTOWORKER_AWS_SCRAPE_ORG=true` option, this role is used to assume into each sub account and fetch the list of resources.

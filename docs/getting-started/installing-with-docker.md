@@ -21,11 +21,11 @@ For more information on Docker, please see the [official Docker documentation](h
 
 :::note
 
-**Resoto is intended to be run unattended using a service account. We recommend using an instance profile in production rather than IAM access keys as described in this tutorial.**
+**Resoto is intended to be run unattended using a service account.**
 
-Any authentication method described in the [AWS SDK documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html#configuring-credentials) may be used.
+For example, we recommend using an [instance profile](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html) for AWS in production rather than IAM access keys as described in this tutorial.
 
-For example, an [AWS `config` file](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html) can be mounted to the Docker container at `/home/resoto/.aws/config`:
+Any authentication method described in the [AWS SDK documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html#configuring-credentials) may be used. This includes providing an [AWS `config` file](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html#aws-config-file), which can be mounted into the Docker container at `/home/resoto/.aws/config`:
 
 ```ini title="/home/resoto/.aws/config"
 [default]
@@ -34,7 +34,7 @@ external_id = [...]
 credential_source = Ec2InstanceMetadata
 ```
 
-The [role ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) should also be provided to the [worker](../concepts/components/worker.md) as `RESOTOWORKER_AWS_ROLE`. This role is assumed while fetching the list of resources in each sub-account when `RESOTOWORKER_AWS_SCRAPE_ORG=true`.
+Note that the [role ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) must also be provided to the [worker](../concepts/components/worker.md) as `RESOTOWORKER_AWS_ROLE`. This role is assumed while fetching the list of resources in each sub-account when `RESOTOWORKER_AWS_SCRAPE_ORG=true`.
 
 :::
 

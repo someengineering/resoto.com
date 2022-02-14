@@ -6,15 +6,11 @@ image: ./img/banner-social.png
 
 # Resoto Query Language 101
 
-```mdx-code-block
-import Image from '@theme/IdealImage';
-```
-
 Retrieving information about resources you have deployed in your [Amazon Web Services (AWS)](https://aws.amazon.com) infrastructure means tediously navigating the [AWS Management Console](https://aws.amazon.com/console) or using the [AWS Command Line Interface](https://aws.amazon.com/cli). This approach works well in a single account setup, but best practice is to set up a multi-account environment. And as the number of accounts grows, navigating your infrastructure and finding resources via the [Console](https://aws.amazon.com/console) or the [CLI](https://aws.amazon.com/cli/) becomes increasingly difficult.
 
 Furthermore, the relationships between your resources are also relevant: an EBS volume is mounted to an EC2 instance running in a VPC and reachable via an ALB load balancer, for example. Developers create resources using tools such as [Terraform](https://terraform.io), [CDK](https://aws.amazon.com/cdk), or [CloudFormation](https://aws.amazon.com/cloudformation)… or sometimes even the console or CLI. How can you see everything that is running in your cloud?
 
-<p><Image img={require('./img/banner.png')} alt="Left: Sheep Spinning Up Cloud Resources; Right: Confused Sheep with Abacus" /></p>
+![Left: Sheep Spinning Up Cloud Resources; Right: Confused Sheep with Abacus](./img/banner.png)
 
 <!--truncate-->
 

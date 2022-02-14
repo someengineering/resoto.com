@@ -76,7 +76,6 @@ const config = {
         remarkPlugins: [a11yEmoji],
       },
     ],
-    '@docusaurus/plugin-ideal-image',
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     function WebpackPlugin(context, options) {
       return {

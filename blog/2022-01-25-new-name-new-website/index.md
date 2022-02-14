@@ -6,15 +6,11 @@ image: ./img/banner-social.png
 
 # New Name, New Website!
 
-```mdx-code-block
-import Image from '@theme/IdealImage';
-```
-
 **This past month has been quite the roller coaster for us at [Some Engineering](https://some.engineering).** 🎢
 
 Right before Christmas, we decided to part ways with the name "Cloudkeeper." There were many reasons behind this decision, one of which was that we did not feel the product we were developing should be limited to cloud infrastructure. We were building a product that did much more than just "housekeeping for your clouds."
 
-<p><Image img={require('./img/banner.png')} alt="Resoto Logo Graffiti" /></p>
+![Resoto Logo Graffiti](./img/banner.png)
 
 <!--truncate-->
 

@@ -3,7 +3,6 @@
 ```mdx-code-block
 import { useCurrentSidebarCategory } from '@docusaurus/theme-common';
 import DocCardList from '@theme/DocCardList';
-import Image from '@theme/IdealImage';
 ```
 
 - [Resoto Core](./core.md) maintains the [directed multigraph](<https://en.wikipedia.org/wiki/Multigraph#Directed_multigraph_(edges_with_own_identity)>).
@@ -11,6 +10,6 @@ import Image from '@theme/IdealImage';
 - [Resoto Shell](./shell.md) allows for interactions with `resotocore`.
 - [Resoto Metrics](./metrics.md) is a [Prometheus exporter](https://prometheus.io/docs/instrumenting/exporters).
 
-<Image img={require('./img/component_diagram.png')} alt="Resoto Component Diagram" />
+![Resoto Component Diagram](./img/component_diagram.png)
 
 <DocCardList items={useCurrentSidebarCategory().items}/>

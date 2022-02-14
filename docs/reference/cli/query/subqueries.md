@@ -4,15 +4,11 @@ sidebar_position: 3
 
 # Subqueries
 
-```mdx-code-block
-import Image from '@theme/IdealImage';
-```
-
 While it is possible to query and retrieve a filtered part of the graph, it is sometimes helpful to retrieve structural graph data as part of the node.
 
 This approach merges multiple nodes in a graph into one node. This combined node can simplify processing the node.
 
-<Image img={require('./img/merge_nodes.png')} alt="Example Merge Diagram" />
+![Example Merge Diagram](./img/merge_nodes.png)
 
 The merge node feature allows for subqueries, that are executed for every node in the result. The result of the subquery is then merged with the node data.
 
@@ -41,7 +37,7 @@ The result of this subquery is merged with the volume node on root level under t
 
 The complete information about the account is then available as part of the volume node:
 
-<Image img={require('./img/merge_nodes_1.png')} alt="Example Merge Diagram" />
+![Example Merge Diagram](./img/merge_nodes_1.png)
 
 :::
 
@@ -96,7 +92,7 @@ region:
 // highlight-end
 ```
 
-<Image img={require('./img/merge_nodes.png')} alt="Example Merge Diagram" />
+![Example Merge Diagram](./img/merge_nodes.png)
 
 :::
 

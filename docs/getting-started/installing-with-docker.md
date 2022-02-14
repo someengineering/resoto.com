@@ -21,20 +21,20 @@ For more information on Docker, please see the [official Docker documentation](h
 
 :::note
 
-**Resoto is intended to be run unattended using a service account, and we recommend using an instance profile in production rather than IAM access and secret access keys as described in this tutorial.**
+**Resoto is intended to be run unattended using a service account. We recommend using an instance profile in production rather than IAM access keys as described in this tutorial.**
 
-Any authentication method described in [the AWS SDK documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html#configuring-credentials) may be used, in the same way [credentials for AWS Command Line Interface are configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html).
+Any authentication method described in the [AWS SDK documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html#configuring-credentials) may be used.
 
-You can configure a volume mount at `/home/resoto/.aws` for a directory containing a [`config` file](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings):
+For example, an [AWS `config` file](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html) can be mounted to the Docker container at `/home/resoto/.aws/config`:
 
-```toml title="/home/resoto/.aws/config"
+```ini title="/home/resoto/.aws/config"
 [default]
 role_arn = [...]
 external_id = [...]
 credential_source = Ec2InstanceMetadata
 ```
 
-The role name would also have to be provided to [`resotoworker`](../concepts/components/worker.md) as `RESOTOWORKER_AWS_ROLE`. When crawling your AWS accounts using the `RESOTOWORKER_AWS_SCRAPE_ORG=true` option, this role is assumed to fetch the list of resources in each sub-account.
+The [role ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) should also be provided to the [worker](../concepts/components/worker.md) as `RESOTOWORKER_AWS_ROLE`. This role is assumed while fetching the list of resources in each sub-account when `RESOTOWORKER_AWS_SCRAPE_ORG=true`.
 
 :::
 

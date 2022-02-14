@@ -5,8 +5,8 @@ sidebar_label: Components
 # Contributing to Components
 
 ```mdx-code-block
-import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
 ```
 
 The source code for Resoto lives in the [`someengineering/resoto` repository on GitHub](https://github.com/someengineering/resoto).

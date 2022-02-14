@@ -20,7 +20,15 @@ const config = {
   projectName: 'resoto.com',
   deploymentBranch: 'gh-pages',
   trailingSlash: false,
-
+  stylesheets: [
+    {
+      rel: 'preload',
+      href: 'https://cdn.some.engineering/fonts/Barlow.woff2',
+      as: 'font',
+      type: 'font/woff2',
+      crossorigin: true,
+    },
+  ],
   presets: [
     [
       'classic',
@@ -69,76 +77,6 @@ const config = {
       },
     ],
     '@docusaurus/plugin-ideal-image',
-    [
-      '@docusaurus/plugin-client-redirects',
-      {
-        redirects: [
-          {
-            to: '/docs/concepts/components/core',
-            from: ['/docs/concepts/components/resotocore'],
-          },
-          {
-            to: '/docs/concepts/components/shell',
-            from: [
-              '/docs/concepts/components/resh',
-              '/docs/concepts/components/resotoshell',
-            ],
-          },
-          {
-            to: '/docs/concepts/components/worker',
-            from: ['/docs/concepts/components/resotoworker'],
-          },
-          {
-            to: '/docs/concepts/components/library',
-            from: ['/docs/concepts/components/resotolib'],
-          },
-          {
-            to: '/docs/concepts/components/metrics',
-            from: ['/docs/concepts/components/resotometrics'],
-          },
-          {
-            to: '/docs/contributing',
-            from: ['/contributing'],
-          },
-          {
-            to: '/docs/contributing/components',
-            from: [
-              '/contributing/code',
-              '/contributing/components',
-              '/contributing/resoto',
-              '/docs/contributing/code',
-            ],
-          },
-          {
-            to: '/docs/contributing/documentation',
-            from: ['/contributing/docs', '/docs/contributing/docs'],
-          },
-          {
-            to: '/docs/reference/cli/query/aggregation',
-            from: ['/docs/reference/cli/aggregate'],
-          },
-          {
-            to: '/docs/reference/core-api',
-            from: ['/api', '/docs/reference/resotocore-api'],
-          },
-          {
-            to: '/docs/reference/data-models',
-            from: [
-              '/docs/reference/resources',
-              '/docs/reference/resources/data-models',
-            ],
-          },
-          {
-            to: '/docs/reference/data-models/aws',
-            from: ['/docs/reference/resources/aws'],
-          },
-          {
-            to: '/docs/reference/data-models/gcp',
-            from: ['/docs/reference/resources/gcp'],
-          },
-        ],
-      },
-    ],
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     function WebpackPlugin(context, options) {
       return {
@@ -323,6 +261,13 @@ const config = {
             ],
           },
         ],
+        logo: {
+          alt: 'Deploys by Netlify',
+          src: 'https://netlify.com/img/global/badges/netlify-color-accent.svg',
+          width: 114,
+          height: 51,
+          href: 'https://netlify.com',
+        },
         copyright: `<span aria-label="owl" role="img" class="lg-screens-only">🦉</span> Copyright © ${new Date().getFullYear()} <a href="https://some.engineering" target="_blank" rel="noopener noreferrer">Some Engineering Inc</a>. Built with <a href="https://docusaurus.io" target="_blank" rel="noopener noreferrer">Docusaurus</a>. <span aria-label="dinosaur" role="img" class="lg-screens-only">🦖</span>`,
       },
       algolia: {

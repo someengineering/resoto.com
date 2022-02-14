@@ -6,6 +6,8 @@ sidebar_position: 1
 
 ```mdx-code-block
 import Image from '@theme/IdealImage';
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
 ```
 
 ## Selecting Nodes by ID
@@ -251,7 +253,7 @@ $> query name="sunset" and is(aws_account) <-[0:]->
 
 :::
 
-#### Abbreviations
+### Abbreviations {#traversal-abbreviations}
 
 There are abbreviations for the most common traversal selectors.
 
@@ -273,7 +275,7 @@ There are abbreviations for the most common traversal selectors.
 
 :::
 
-#### Commands
+### Commands {#traversal-commands}
 
 There are also commands to perform a traversal selection, to which input can be piped:
 
@@ -284,13 +286,40 @@ There are also commands to perform a traversal selection, to which input can be 
 | `ancestors`    | `<-[1:]-`           |
 | `descendants`  | `-[1:]->`           |
 
-##### Usage
+#### Usage
+
+<Tabs>
+<TabItem value="predecessors" label="predecessors">
+
+```bash
+predecessors [--with-origin] <edge_type>
+```
+
+</TabItem>
+<TabItem value="successors" label="successors">
+
+```bash
+successors [--with-origin] <edge_type>
+```
+
+</TabItem>
+<TabItem value="ancestors" label="ancestors">
 
 ```bash
 ancestors [--with-origin] <edge_type>
 ```
 
-##### Options
+</TabItem>
+<TabItem value="descendants" label="descendants">
+
+```bash
+descendants [--with-origin] <edge_type>
+```
+
+</TabItem>
+</Tabs>
+
+#### Options
 
 By default, the current element is not included in the result set. However, these commands have a command-line option `--with-origin` that alters this behavior:
 
@@ -301,7 +330,7 @@ By default, the current element is not included in the result set. However, thes
 | `ancestors --with-origin`    | `<-[0:]-`          |
 | `descendants --with-origin`  | `-[0:]->`          |
 
-###### Parameters
+#### Parameters
 
 | Parameter   | Description                    | Required? | Default Value |
 | ----------- | ------------------------------ | --------- | ------------- |

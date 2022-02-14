@@ -36,9 +36,9 @@ Then, start the container:
 ```bash
 docker run \
   --name resoto \
-  -e AWS_ACCESS_KEY_ID=YOUR_ACCESS_KEY_ID \
-  -e AWS_SECRET_ACCESS_KEY=YOUR_ACCESS_KEY \
-  -e CKWORKER_COLLECTOR='AWS Example' \
+  -e RESOTOWORKER_AWS_ACCESS_KEY_ID=YOUR_ACCESS_KEY_ID \
+  -e RESOTOWORKER_AWS_SECRET_ACCESS_KEY=YOUR_ACCESS_KEY \
+  -e RESOTOWORKER_COLLECT='aws example' \
   -p 8900:8900 \
   -v resoto-data:/data \
   --restart unless-stopped \
@@ -60,9 +60,9 @@ services:
     image: somecr.io/someengineering/resoto:{{latestRelease}}
     container_name: resoto
     environment:
-      AWS_ACCESS_KEY_ID: YOUR_ACCESS_KEY_ID
-      AWS_SECRET_ACCESS_KEY: YOUR_ACCESS_KEY
-      CKWORKER_COLLECTOR: AWS Example
+      RESOTOWORKER_AWS_ACCESS_KEY_ID: YOUR_ACCESS_KEY_ID
+      RESOTOWORKER_AWS_SECRET_ACCESS_KEY: YOUR_ACCESS_KEY
+      RESOTOWORKER_COLLECT: aws example
     ports:
       - 8900:8900
     volumes:

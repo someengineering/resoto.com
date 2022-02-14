@@ -1,0 +1,48 @@
+https://resoto.netlify.app/*          https://resoto.com/:splat 301!
+
+/docs/concepts/components/resotolib   /docs/concepts/components/library
+/docs/concepts/components/resh        /docs/concepts/components/shell
+/docs/concepts/components/resoto*     /docs/concepts/components/:splat
+
+/concepts/*                           /docs/concepts/:splat
+
+/contribute/code                      /docs/contributing/components
+/contribute/component                 /docs/contributing/components
+/contribute/doc                       /docs/contributing/documentation
+/contribute/docs                      /docs/contributing/documentation
+/contribute/*                         /docs/contributing/:splat
+
+/contributing/code                    /docs/contributing/components
+/contributing/component               /docs/contributing/components
+/contributing/doc                     /docs/contributing/documentation
+/contributing/docs                    /docs/contributing/documentation
+/contributing/*                       /docs/contributing/:splat
+
+/docs/getting-started/docker          /docs/getting-started/installing-with-docker
+/docs/getting-started/kubernetes      /docs/getting-started/installing-with-kubernetes
+/docs/getting-started/k8s             /docs/getting-started/installing-with-kubernetes
+
+/getting-started/*                    /docs/getting-started/:splat
+
+/docs/reference/cli/aggregate         /docs/reference/cli/query/aggregation
+/docs/reference/cli/aggregation       /docs/reference/cli/query/aggregation
+
+/docs/reference/cli/ancestor          /docs/reference/cli/query/basic-queries#traversal-commands
+/docs/reference/cli/ancestors         /docs/reference/cli/query/basic-queries#traversal-commands
+/docs/reference/cli/descendant        /docs/reference/cli/query/basic-queries#traversal-commands
+/docs/reference/cli/descendants       /docs/reference/cli/query/basic-queries#traversal-commands
+/docs/reference/cli/predecessor       /docs/reference/cli/query/basic-queries#traversal-commands
+/docs/reference/cli/predecessors      /docs/reference/cli/query/basic-queries#traversal-commands
+/docs/reference/cli/successor         /docs/reference/cli/query/basic-queries#traversal-commands
+/docs/reference/cli/successors        /docs/reference/cli/query/basic-queries#traversal-commands
+
+/api                                  /docs/reference/core-api
+/docs/reference/resotocore-api        /docs/reference/core-api
+
+/docs/reference/resources/data-models /docs/reference/data-models
+/docs/reference/resources/*           /docs/reference/data-models/:splat
+
+/reference/*                          /docs/reference/:splat
+
+/release/*                            /news/:splat
+/releases/*                           /news/:splat

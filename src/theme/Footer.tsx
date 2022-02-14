@@ -8,7 +8,8 @@ export default function Footer(): JSX.Element {
   const isBrowser = useIsBrowser();
   const isDev =
     process.env.NODE_ENV == 'development' ||
-    (isBrowser && window.location.href.includes('localhost'));
+    (isBrowser &&
+      !new URL(window.location.href).hostname.endsWith('resoto.com'));
 
   const [timestamp, setTimestamp] = useState(new Date().getTime());
   const location = useLocation();
@@ -22,9 +23,9 @@ export default function Footer(): JSX.Element {
         href="https://some.engineering"
         target="_blank"
         rel="noopener noreferrer"
-        className="footer__logolink"
+        className="companyLogoLink"
       >
-        <FooterLogo className="footer__logo" />
+        <FooterLogo className="companyLogo" />
       </a>
       {isDev || !isBrowser ? (
         <OriginalFooter />
@@ -32,16 +33,6 @@ export default function Footer(): JSX.Element {
         <>
           <img
             src={`https://static.scarf.sh/a.png?x-pxid=3b6ccd5c-8a2a-4bf3-94a3-e366b88342d8&${timestamp}`}
-            referrerPolicy="no-referrer-when-downgrade"
-            alt=""
-            style={{
-              height: '1px',
-              border: '0',
-              marginBottom: '-1px',
-            }}
-          />
-          <img
-            src={`https://webmat.resoto.com/matomo.php?idsite=2&rec=1&rand=${timestamp}`}
             referrerPolicy="no-referrer-when-downgrade"
             alt=""
             style={{

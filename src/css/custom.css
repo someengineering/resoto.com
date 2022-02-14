@@ -3,7 +3,7 @@
   font-style: normal;
   font-weight: 22 188;
   font-display: swap;
-  src: url('/fonts/Barlow.woff2') format('woff2');
+  src: url('https://cdn.some.engineering/fonts/Barlow.woff2') format('woff2');
 }
 
 :root {
@@ -168,21 +168,22 @@ main {
   padding-top: calc(var(--ifm-footer-padding-vertical) + 4rem);
 }
 
-.footer__logolink {
+.companyLogoLink {
   display: block;
   margin: -5rem auto;
   height: 10rem;
   z-index: 15;
 }
 
-.footer__logolink:hover {
+.companyLogoLink:hover {
   transform: scale(1.025);
   transition-duration: 75ms;
 }
 
-.footer__logo {
+.companyLogo {
   height: 100%;
   width: auto;
+  max-width: 10rem;
   margin: 0;
 }
 
@@ -211,18 +212,6 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 
 .breadcrumbs__link:hover {
   text-decoration: var(--ifm-link-hover-decoration);
-}
-
-.card__container {
-  display: flex;
-}
-
-.card__container > .card + .card {
-  margin-left: 1rem;
-}
-
-.card {
-  max-width: 320px;
 }
 
 @media screen and (max-width: 966px) {

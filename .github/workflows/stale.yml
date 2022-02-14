@@ -7,11 +7,9 @@ on:
 
 jobs:
   stale:
-    name: Close stale issues & pull requests
     runs-on: ubuntu-latest
-
     steps:
-      - name: Close stale issues & pull requests
+      - name: Close stale issues/PRs
         uses: actions/stale@v4
         with:
           days-before-stale: 90

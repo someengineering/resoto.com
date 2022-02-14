@@ -1,23 +1,29 @@
 import requests
+from collections import defaultdict
 
 core = "http://localhost:8900"
-kinds = requests.get(f"{core}/model").json()["kinds"]
+provider_names = ["aws", "gcp", "vsphere", "kubernetes"]
+
+by_provider = defaultdict(list)
+for name, kind in requests.get(f"{core}/model").json()["kinds"].items():
+    groups = [a for a in provider_names if name.startswith(f"{a}_")]
+    if groups:
+        by_provider[groups[0]].append(kind)
 
 
-def export_images(path: str):
-    filter_out = ["aws", "gcp"]
-    for name, kind in kinds.items():
-        if [a for a in filter_out if name.startswith(f"{a}_")]:
-            image = requests.get(f"{core}/model/uml", params={"show": name})
-            with open(f"{path}/{a}/{name}.svg", "w+") as file:
-                file.write(image.text)
+def export_images(provider: str, path: str = "."):
+    for kind in by_provider[provider]:
+        name = kind["fqn"]
+        image = requests.get(f"{core}/model/uml", params={"show": name})
+        with open(f"{path}/{provider}/{name}.svg", "w+") as file:
+            file.write(image.text)
 
 
-def print_md(cloud: str):
-    for name in sorted(kinds):
-        if name.startswith(cloud):
-            print(f"## `{name}`\n")
-            print(f"![{name}](./img/{cloud}/{name}.svg)\n")
+def print_md(provider: str):
+    for name in sorted(a["fqn"] for a in by_provider[provider]):
+        print(f"## `{name}`\n")
+        print(f"![{name}](./img/{provider}/{name}.svg)\n")
 
 
-export_images(".")
+#export_images(".")
+#export_images("kubernetes")

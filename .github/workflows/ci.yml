@@ -1,47 +1,24 @@
 name: CI
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
     branches:
       - main
   workflow_dispatch:
 
 jobs:
-  deploy:
+  lint-and-build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Check out repository
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: Fetch latest Resoto release
-        id: version
-        if: github.event_name != 'pull_request' && !contains(github.event.head_commit.message, '[skip ci]')
-        run: echo ::set-output name=release::$(curl -sL https://api.github.com/repos/someengineering/resoto/releases?per_page=1 | jq -r ".[0].name")
-      - name: Fetch resotocore API YAML
-        if: github.event_name != 'pull_request' && !contains(github.event.head_commit.message, '[skip ci]')
-        run: curl -o static/core-api.yml https://raw.githubusercontent.com/someengineering/resoto/${{ steps.version.outputs.release }}/resotocore/core/static/api-doc.yaml
-      - name: Edit resotocore API YAML
-        id: api-yaml
-        if: github.event_name != 'pull_request' && !contains(github.event.head_commit.message, '[skip ci]')
-        uses: mikefarah/yq@master
-        with:
-          cmd: yq e -i '.servers[0].url = "{Server}" | .servers[0].variables.Server.default = "http://localhost:8900" | del(.servers[0].description) | .info.title = "Resoto Core v${{ steps.version.outputs.release }} REST API" | del(.info.description) | del(.info.version)' static/core-api.yml
       - name: Install dependencies
         env:
           HUSKY_SKIP_INSTALL: 1
         run: yarn install --frozen-lockfile
       - name: Lint
-        if: github.event_name == 'pull_request'
         run: yarn lint
       - name: Build
         run: yarn build
-      - name: Deploy
-        if: github.event_name != 'pull_request' && !contains(github.event.head_commit.message, '[skip ci]')
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build

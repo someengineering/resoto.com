@@ -19,5 +19,5 @@ echo <message>
 The result of the following command would be `["test"]`:
 
 ```bash
-$> echo "test"
+> echo "test"
 ```

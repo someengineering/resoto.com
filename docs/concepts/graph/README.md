@@ -14,7 +14,7 @@ Resoto maintains its collected data in a graph database. This graph can be acces
 Sending a query in the [Resoto Shell](../components/shell.md) [command-line interface (CLI)](../../reference/cli/README.md) is done using the [`query`](../../reference/cli/query/README.md) command.
 
 ```bash
-$> query is(aws_account)
+> query is(aws_account)
 ```
 
 :::

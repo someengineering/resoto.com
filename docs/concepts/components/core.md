@@ -27,7 +27,7 @@ We will evaluate the query before executing it for demonstration. We also introd
 ### Evaluate
 
 ```bash title="Correct"
-$> echo 'query is("resource") limit 1' | http :8900/cli/evaluate
+> echo 'query is("resource") limit 1' | http :8900/cli/evaluate
 // highlight-start
 HTTP/1.1 200 OK
 Content-Length: 47
@@ -44,7 +44,7 @@ Server: Python/3.9 aiohttp/3.7.4.post0
 ```
 
 ```bash title="Typo"
-$> echo 'graph=resoto query is("resource") limit1' | http :8900/cli/evaluate
+> echo 'graph=resoto query is("resource") limit1' | http :8900/cli/evaluate
 // highlight-start
 HTTP/1.1 400 Bad Request
 Content-Length: 151
@@ -60,7 +60,7 @@ Message: expected one of '!=', '!~', '<', '<=', '=', '==', '=~', '>', '>=', '[A-
 ## Execute
 
 ```bash title="Correct"
-$> echo 'graph=resoto query is("resource") limit 1' | http :8900/cli/execute
+> echo 'graph=resoto query is("resource") limit 1' | http :8900/cli/execute
 // highlight-start
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -94,7 +94,7 @@ Transfer-Encoding: chunked
 ```
 
 ```bash title="Typo"
-$> echo 'graph=resoto query is("resource") limit1' | http :8900/cli/execute
+> echo 'graph=resoto query is("resource") limit1' | http :8900/cli/execute
 // highlight-start
 HTTP/1.1 400 Bad Request
 Content-Length: 151

@@ -21,13 +21,13 @@ chunk <size>
 The result of the following command would be `[[1, 2], [3, 4], [5]]`:
 
 ```bash
-$> json [1,2,3,4,5] | chunk 2
+> json [1,2,3,4,5] | chunk 2
 ```
 
 The next command would return `[[1, 2, 3, 4, 5]]`:
 
 ```bash
-$> json [1,2,3,4,5] | chunk
+> json [1,2,3,4,5] | chunk
 ```
 
 ## See Also

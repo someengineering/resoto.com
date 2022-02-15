@@ -36,31 +36,31 @@ Alternatively, a custom format string may be provided to the command:
 This first example has a result of `[ "b!=d" ]`:
 
 ```bash
-$> json {"a":"b", "b": {"c":"d"}} | format {a}!={b.c}
+> json {"a":"b", "b": {"c":"d"}} | format {a}!={b.c}
 ```
 
 The result of the next command is `[ "only select >2<" ]`:
 
 ```bash
-$> json {"b": {"c":[0,1,2,3]}} | format only select >{b.c[2]}<
+> json {"b": {"c":[0,1,2,3]}} | format only select >{b.c[2]}<
 ```
 
 The following command results in `[ "only select >2<" ]`:
 
 ```bash
-$> json {"b": {"c":[0,1,2,3]}} | format only select >{b.c[2]}<
+> json {"b": {"c":[0,1,2,3]}} | format only select >{b.c[2]}<
 ```
 
 And the below example has a result of `[ "null:null:null" ]`:
 
 ```bash
-$> json {} | format {a}:{b.c.d}:{foo.bla[23].test}
+> json {} | format {a}:{b.c.d}:{foo.bla[23].test}
 ```
 
 This command writes the result of `query all` in JSON format to a file named `out.json`:
 
 ```bash
-$> query all | format --json | write out.json
+> query all | format --json | write out.json
 ```
 
 ## See Also

@@ -64,7 +64,7 @@ docker run \
   somecr.io/someengineering/resoto:{{latestRelease}}
 ```
 
-And just like that, you now have Resoto running in Docker! Depending on the size of your AWS account the first collect run will take around 5-10 minutes.
+And just like that, you have Resoto running in Docker! A collect run will begin automatically. This first collect usually takes about 5 to 10 minutes, but the time is dependent on the size of your AWS account.
 
 ### [Docker Compose](https://docs.docker.com/compose/reference) {#docker-compose-install}
 
@@ -97,7 +97,7 @@ Then, run the following command from the directory containing the `docker-compos
 docker-compose up -d
 ```
 
-The container will start up and after some initial configuration start the first collect run. Depending on the size of your AWS account this run will take around 5-10 minutes.
+Docker Compose will start the container, and a collect run will begin automatically. This first collect usually takes about 5 to 10 minutes, but the time is dependent on the size of your AWS account.
 
 ## Using the Resoto CLI
 
@@ -109,7 +109,7 @@ To access the Resoto shell interface inside the Docker container, simply execute
 docker exec -it resoto resh
 ```
 
-Once Resoto has finished its first collect run, you can try [performing some queries](./performing-queries.md).
+Once Resoto has completed its first collect run, you can try [performing some queries](./performing-queries.md).
 
 ## Updating
 

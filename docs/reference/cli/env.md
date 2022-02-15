@@ -13,6 +13,6 @@ env
 ## Example
 
 ```bash
-$> env
+> env
 [{ "env_var1": "test", "env_var2": "foo" }]
 ```

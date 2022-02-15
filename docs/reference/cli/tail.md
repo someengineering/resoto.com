@@ -21,13 +21,13 @@ tail <n>
 This command has a result of `[4, 5]`:
 
 ```bash
-$> json [1,2,3,4,5] | tail 2
+> json [1,2,3,4,5] | tail 2
 ```
 
 The next command returns `[1, 2, 3, 4, 5]`:
 
 ```bash
-$> json [1,2,3,4,5] | tail
+> json [1,2,3,4,5] | tail
 ```
 
 ## See Also

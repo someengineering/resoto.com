@@ -13,13 +13,13 @@ flatten
 The result of the following command would be `[1, 2, 3, 4, 5]`:
 
 ```bash
-$> json [1, 2, 3, 4, 5] | chunk 2 | flatten
+> json [1, 2, 3, 4, 5] | chunk 2 | flatten
 ```
 
 The next command would also return `[1, 2, 3, 4, 5]`:
 
 ```bash
-$> json [[1, 2], 3, [4, 5]] | flatten
+> json [[1, 2], 3, [4, 5]] | flatten
 ```
 
 ## See Also

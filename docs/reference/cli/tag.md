@@ -48,9 +48,9 @@ tag delete [--nowait] <tag>
 ## Examples
 
 ```bash title="update tag owner of instance i-039e06bb2539e5484 if present, create if new"
-$> query id = i-039e06bb2539e5484 | tag update owner lukas
+> query id = i-039e06bb2539e5484 | tag update owner lukas
 ```
 
 ```bash title="delete tag owner from instance i-039e06bb2539e5484"
-$> query id = i-039e06bb2539e5484 | tag delete owner
+> query id = i-039e06bb2539e5484 | tag delete owner
 ```

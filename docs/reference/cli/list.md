@@ -42,7 +42,7 @@ The `as` clause is important if the last part of the property path is not a uniq
 ## Examples
 
 ```bash
-$> query is(aws_ec2_instance) limit 3 | list
+> query is(aws_ec2_instance) limit 3 | list
 // highlight-start
 kind=aws_ec2_instance, id=1, name=sun, ctime=2020-09-10T13:24:45Z, cloud=aws, account=prod, region=us-west-2
 kind=aws_ec2_instance, id=2, name=moon, ctime=2021-09-21T01:08:11Z, cloud=aws, account=dev, region=us-west-2
@@ -51,7 +51,7 @@ kind=aws_ec2_instance, id=3, name=star, ctime=2021-09-25T23:28:40Z, cloud=aws, a
 ```
 
 ```bash
-$> query is(aws_ec2_instance) limit 3 | list reported.name
+> query is(aws_ec2_instance) limit 3 | list reported.name
 // highlight-start
 name=sun
 name=moon
@@ -60,7 +60,7 @@ name=star
 ```
 
 ```bash title="Section name is missing, reported is used automatically"
-$> query is(aws_ec2_instance) limit 3 | list kind, name
+> query is(aws_ec2_instance) limit 3 | list kind, name
 // highlight-start
 kind=aws_ec2_instance, name=sun
 kind=aws_ec2_instance, name=moon
@@ -69,7 +69,7 @@ kind=aws_ec2_instance, name=star
 ```
 
 ```bash
-$> query is(aws_ec2_instance) limit 3 | list kind as a, name as b
+> query is(aws_ec2_instance) limit 3 | list kind as a, name as b
 // highlight-start
 a=aws_ec2_instance, b=sun
 a=aws_ec2_instance, b=moon
@@ -78,7 +78,7 @@ a=aws_ec2_instance, b=star
 ```
 
 ```bash
-$> query is(aws_ec2_instance) limit 3 | list kind as a, name as b, does_not_exist
+> query is(aws_ec2_instance) limit 3 | list kind as a, name as b, does_not_exist
 // highlight-start
 a=aws_ec2_instance, b=sun
 a=aws_ec2_instance, b=moon

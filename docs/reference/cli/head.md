@@ -21,13 +21,13 @@ head <n>
 This command has a result of `[1, 2]`:
 
 ```bash
-$> json [1,2,3,4,5] | head 2
+> json [1,2,3,4,5] | head 2
 ```
 
 The next command returns `[1, 2, 3, 4, 5]`:
 
 ```bash
-$> json [1,2,3,4,5] | head
+> json [1,2,3,4,5] | head
 ```
 
 ## See Also

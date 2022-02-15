@@ -5,13 +5,13 @@ You can use the [Resoto Shell](../components/shell.md) to trigger commands in Re
 Let's say you want to find all resources that have not been labeled with an owner tag. The following query would do the trick:
 
 ```bash
-$> query is(resource) and tags.owner==null
+> query is(resource) and tags.owner==null
 ```
 
 Let's further assume you want to automatically set the owner tag for such resources. This can be achieved by using the `tag` command, which would update the tags of the elements to the defined value.
 
 ```bash
-$> query is(resource) and tags.owner==null | tag update owner "John Doe"
+> query is(resource) and tags.owner==null | tag update owner "John Doe"
 ```
 
 While this is already an improvement, it will only update resources without tags at the moment. Resources that are created in the future and do not have an owner tag would need to be processed in the same way again.
@@ -21,7 +21,7 @@ Jobs allow you to take a defined CLI command and trigger it automatically either
 Let us now assume that we want to ensure there will be never resources without owner tag again. We can use the command we have written above and turn it into a job:
 
 ```bash
-$> jobs add ensure-owner-tag --wait-for-event post_collect 'query is(resource) and tags.owner==null | tag update owner "John Doe"'
+> jobs add ensure-owner-tag --wait-for-event post_collect 'query is(resource) and tags.owner==null | tag update owner "John Doe"'
 // highlight-next-line
 Job ensure-owner-tag added.
 ```
@@ -41,15 +41,15 @@ It probably does not make a lot of sense to turn commands into jobs that do not 
 :::tip Examples
 
 ```bash title="Print 'hello world' to the log stream every minute"
-$> jobs add say-hello --schedule '* * * * *' echo hello world
+> jobs add say-hello --schedule '* * * * *' echo hello world
 ```
 
 ```bash title="Print a message when the post_collect event is received"
-$> jobs add on-collect-done --wait-for-event post_collect echo collect is done!
+> jobs add on-collect-done --wait-for-event post_collect echo collect is done!
 ```
 
 ```bash title="Print a message when the first post_collect is received after 4 AM (assuming the post_collect event occurs every hour, this job would be triggered once per day)"
-$> jobs add early-message --schedule '0 4 * * *' --wait-for-event post_collect echo collect after 4AM is done!
+> jobs add early-message --schedule '0 4 * * *' --wait-for-event post_collect echo collect after 4AM is done!
 ```
 
 :::
@@ -97,7 +97,7 @@ The job functionality can be used to automate actions. Here is a list of possibl
   Imagine you want to cleanup all compute instances in the load-testing account every Friday night, so they will not run over the weekend.
 
   ```
-  $> jobs add mark-resources-for-cleanup --schedule '0 22 * * 5' --wait-for-event cleanup_plan 'query is(instance) and /ancestors.account.reported.name==load-testing | clean'
+  > jobs add mark-resources-for-cleanup --schedule '0 22 * * 5' --wait-for-event cleanup_plan 'query is(instance) and /ancestors.account.reported.name==load-testing | clean'
   ```
 
 - Enforce tags structure

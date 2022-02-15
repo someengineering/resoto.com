@@ -155,6 +155,8 @@ Next, install Resoto using Helm:
 helm install resoto ./resoto/kubernetes/chart --set image.tag={{latestRelease}} -f resoto-values.yaml
 ```
 
+And just like that, you have Resoto running in Kubernetes! A collect run will begin automatically. This first collect usually takes about 5 to 10 minutes, but the time is dependent on the size of your AWS account.
+
 ## Using the Resoto CLI
 
 The [`resh`](../concepts/components/shell.md) command is used to interact with [`resotocore`](../concepts/components/core.md).
@@ -165,4 +167,4 @@ To access the Resoto shell interface, simply execute:
 kubectl exec -it <pod_name> -- resh
 ```
 
-Once Resoto has finished its first collect run, you can try [performing some queries](./performing-queries.md).
+Once Resoto has completed its first collect run, you can try [performing some queries](./performing-queries.md).

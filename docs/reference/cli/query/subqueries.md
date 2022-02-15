@@ -21,7 +21,7 @@ Resources reference the region node, while the region node references the accoun
 In this example, we query nodes of kind `volume`. For every element that is returned, a subquery is executed, which will traverse the graph inbound until it finds a node of kind `account`.
 
 ```bash
-$> query is(volume) { account: <-[0:]- is(account) } limit 1 | dump
+> query is(volume) { account: <-[0:]- is(account) } limit 1 | dump
 // highlight-start
 reported:
     .
@@ -54,7 +54,7 @@ If the expected result of the subquery is a list, than the merge name has to be 
 The following query will traverse inbound on every element and collect all predecessors under the name `predecessors`).
 
 ```bash
-$> query is(volume) { predecessors[]: <-- all } limit 1 | dump
+> query is(volume) { predecessors[]: <-- all } limit 1 | dump
 // highlight-start
 reported:
     .
@@ -76,7 +76,7 @@ It is also possible to define multiple merge queries in one query statement.
 :::tip Example
 
 ```bash
-$> query is(volume) { account: <-[0:]- is(account), region: <-[0:]- is(region) } limit 1 | dump
+> query is(volume) { account: <-[0:]- is(account), region: <-[0:]- is(region) } limit 1 | dump
 // highlight-start
 reported:
     .
@@ -99,7 +99,7 @@ region:
 A subquery can even be defined using subqueries:
 
 ```bash
-$> query = <pre_filter> { <merge_name_1>: <query>, .., <merge_name_n>: <query> } <post_filter>
+> query = <pre_filter> { <merge_name_1>: <query>, .., <merge_name_n>: <query> } <post_filter>
 ```
 
 :::note

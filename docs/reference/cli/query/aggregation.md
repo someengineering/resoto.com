@@ -13,7 +13,7 @@ Let's look at an example to understand the concept better.
 For the sake of this example, consider this query:
 
 ```bash
-$> query is(instance) and age > 3y
+> query is(instance) and age > 3y
 ```
 
 This will select all compute instances in my cloud, that are older than 3 years.
@@ -21,7 +21,7 @@ This will select all compute instances in my cloud, that are older than 3 years.
 If we only want to know the number of instances, that matches that criteria, we could write this:
 
 ```bash
-$> query aggregate(sum(1) as count): is(instance) and age > 3y
+> query aggregate(sum(1) as count): is(instance) and age > 3y
 // highlight-next-line
 count: 20
 ```
@@ -45,7 +45,7 @@ Please note, that the variable to sum does not need to be a static value, but co
 If we would like to know the number of CPU cores, we could rewrite the aggregation like this:
 
 ```bash
-$> query aggregate(
+> query aggregate(
      sum(1) as count,
      sum(instance_cores) as cores):
    is(instance) and age > 3y
@@ -62,7 +62,7 @@ All of the above aggregations do not use any grouping information. Grouping can 
 Let us now assume we want to know the number of instances and cores for compute instances, grouped by its instance status:
 
 ```bash
-$> query aggregate(
+> query aggregate(
      instance_status as status:
      sum(1) as count, sum(instance_cores) as cores):
    is(instance) and age > 3y
@@ -90,7 +90,7 @@ We can see that there are 15 stopped and 5 terminated instances, with the relate
 Let's also use the instance_type as an additional group variable:
 
 ```bash
-$> query aggregate(
+> query aggregate(
      instance_status as status,
      instance_type as type:
      sum(1) as count,
@@ -161,27 +161,27 @@ The following functions are supported:
 ## Examples
 
 ```bash title="Count all instances in the system"
-$> query aggregate(
+> query aggregate(
      sum(1) as count):
    is(instance)
 ```
 
 ```bash title="Count all instances and instance cores in the system"
-$> query aggregate(
+> query aggregate(
      sum(1) as count,
      sum(instance_cores) as cores):
    is(instance)
 ```
 
 ```bash title="Same as above, but group all instances by status"
-$> query aggregate(
+> query aggregate(
      instance_status as status: sum(1) as count,
      sum(instance_cores) as cores):
    is(instance)
 ```
 
 ```bash title="Same as above, but group all instances by status and type"
-$> query aggregate(
+> query aggregate(
      instance_status as status,
      instance_type as type: sum(1) as count,
      sum(instance_cores) as cores):

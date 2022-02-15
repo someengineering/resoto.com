@@ -37,7 +37,7 @@ We recommend using a [Python virtual environment](https://docs.python.org/3/tuto
 A script is provided to simplify the process of configuring the virtual environment:
 
 ```bash
-./setup_venv.sh --path .
+./setup_venv.sh --dev --path .
 ```
 
 Activate the virtual environment:
@@ -121,7 +121,7 @@ We use the [`pytest`](https://pytest.org) framework. Prior to submitting your ch
 Lint and test your code:
 
 ```shell
-nox
+tox
 ```
 
 You can now [submit your pull request on GitHub](https://github.com/someengineering/resoto/pulls)! You are welcome to [open your pull request as a draft](https://docs.github.com/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests#draft-pull-requests) for early feedback and review. Be sure to follow the pull request template!

@@ -99,7 +99,7 @@ docker-compose up -d
 
 The container will start up and after some initial configuration start the first collect run. Depending on the size of your AWS account this run will take around 5-10 minutes.
 
-## Resoto CLI
+## Using the Resoto CLI
 
 The [`resh`](../concepts/components/shell.md) command is used to interact with [`resotocore`](../concepts/components/core.md).
 
@@ -109,42 +109,7 @@ To access the Resoto shell interface inside the Docker container, simply execute
 docker exec -it resoto resh
 ```
 
-### First steps on the CLI
-
-Once Resoto has finished its first collect run you can try some of the following queries:
-```
-> query is(resource) | count   # returns the number of collected resources
-> query is(instance)           # returns a list of all the compute instances
-
-# get a CSV like list of account,name,type,cores,mem
-> query is(instance) | format {/ancestors.account.reported.name},{name},{instance_type},{instance_cores},{instance_memory}
-
-# get a formated list of instance IDs and their creation time and write them to a text file
-> query is(instance) | format {id},{ctime} | write outfile.txt
-
-> query is(instance) and instance_cores > 2    # returns a list of all compute instances with more than two CPU cores
-> query is(aws_ec2_instance) | tail -1 | dump  # finds all AWS EC2 instances, takes the last one and shows all of its metadata
-
-# get the list of EBS volumes that are not in use, larger than 10GB, older than 30 days and had no I/O in the past 7 days
-> query is(aws_ec2_volume) and volume_status = available and volume_size > 10 and age > 30d and last_access > 7d
-
-# aggregate the number of EC2 instances by account ID
-> query aggregate(/ancestors.account.reported.id as account_id: sum(1) as instance_count): is(aws_ec2_instance)
-
-# aggregate the amount of RAM used in bytes, grouped by cloud, account, region and instance type
-> query aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account, /ancestors.region.reported.name as region, instance_type as type: sum(instance_memory * 1024 * 1024 * 1024) as memory_bytes): is(instance) and instance_status == running
-
-# aggregate the hourly instance cost grouped by cloud, account, region, type from the cost information
-# associated with the instance_type higher up in the graph
-> query aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account, /ancestors.region.reported.name as region, instance_type as type: sum(/ancestors.instance_type.reported.ondemand_cost) as instances_hourly_cost_estimate): is(instance) and instance_status == running
-
-```
-
-For more information check out [the query command reference](https://resoto.com/docs/reference/cli/query).
-
-## Resoto Web UI
-
-To access the Resoto web interface, navigate to [http://localhost:8900/ui](http://localhost:8900/ui) in your preferred web browser.
+Once Resoto has finished its first collect run, you can try [performing some queries](./performing-queries.md).
 
 ## Updating
 

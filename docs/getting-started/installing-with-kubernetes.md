@@ -155,10 +155,14 @@ Next, install Resoto using Helm:
 helm install resoto ./resoto/kubernetes/chart --set image.tag={{latestRelease}} -f resoto-values.yaml
 ```
 
-## Resoto CLI
+## Using the Resoto CLI
 
 The [`resh`](../concepts/components/shell.md) command is used to interact with [`resotocore`](../concepts/components/core.md).
 
-## Resoto Web UI
+To access the Resoto shell interface, simply execute:
 
-To access the Resoto web interface, navigate to [http://localhost:8900/ui](http://localhost:8900/ui) in your preferred web browser.
+```bash
+kubectl exec -it <pod_name> -- resh
+```
+
+Once Resoto has finished its first collect run, you can try [performing some queries](./performing-queries.md).

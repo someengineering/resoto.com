@@ -21,7 +21,7 @@ For more information on Docker, please see the [official Docker documentation](h
 
 :::note
 
-**Resoto is intended to be run unattended using a service account in production environments.**
+**Resoto is intended to run unattended using a service account in production environments.**
 
 For example, we recommend using an [instance profile](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html) for AWS rather than IAM access keys as described in this tutorial.
 
@@ -64,7 +64,7 @@ docker run \
   somecr.io/someengineering/resoto:{{latestRelease}}
 ```
 
-And just like that, you now have Resoto running in Docker!
+And just like that, you now have Resoto running in Docker! Depending on the size of your AWS account the first collect run will take around 5-10 minutes.
 
 ### [Docker Compose](https://docs.docker.com/compose/reference) {#docker-compose-install}
 
@@ -97,7 +97,9 @@ Then, run the following command from the directory containing the `docker-compos
 docker-compose up -d
 ```
 
-## Resoto CLI
+The container will start up and after some initial configuration start the first collect run. Depending on the size of your AWS account this run will take around 5-10 minutes.
+
+## Using the Resoto CLI
 
 The [`resh`](../concepts/components/shell.md) command is used to interact with [`resotocore`](../concepts/components/core.md).
 
@@ -107,9 +109,7 @@ To access the Resoto shell interface inside the Docker container, simply execute
 docker exec -it resoto resh
 ```
 
-## Resoto Web UI
-
-To access the Resoto web interface, navigate to [http://localhost:8900/ui](http://localhost:8900/ui) in your preferred web browser.
+Once Resoto has finished its first collect run, you can try [performing some queries](./performing-queries.md).
 
 ## Updating
 

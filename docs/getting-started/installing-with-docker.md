@@ -162,7 +162,7 @@ services:
     stop_grace_period: 2m
 
   resotometrics:
-    image: somecr.io/someengineering/resotometrics::{{latestRelease}}
+    image: somecr.io/someengineering/resotometrics:{{latestRelease}}
     container_name: resotometrics
     depends_on:
       - resotocore

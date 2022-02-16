@@ -6,6 +6,8 @@ title: Installing with Docker
 
 ```mdx-code-block
 import LatestRelease from '@site/src/components/LatestRelease';
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
 ```
 
 [Docker](https://docker.com) provides the ability to run an application in a loosely isolated environment called a "[container](https://docs.docker.com/get-started/overview#containers)."
@@ -68,11 +70,26 @@ And just like that, you have Resoto running in Docker! A collect run will begin 
 
 ### [Docker Compose](https://docs.docker.com/compose/reference) {#docker-compose-install}
 
-Add the following volume and service definitions to a [`docker-compose.yml` file](https://docs.docker.com/compose/compose-file):
+We publish an all-in-one Docker image (`somecr.io/someengineering/resoto`) in addition to Docker images for each individual Resoto [component](../concepts/components/README.md):
+
+- `somecr.io/someengineering/resotocore`
+- `somecr.io/someengineering/resotoworker`
+- `somecr.io/someengineering/resotoshell`
+- `somecr.io/someengineering/resotometrics`
+
+The component images allow for greater flexibility in deploying Resoto with Docker Compose, and also make it possible to update each component independently.
+
+To install Resoto using Docker Compose, add volume and service definitions to a [`docker-compose.yml` file](https://docs.docker.com/compose/compose-file) according to your preference for either the all-in-one image or the component images:
+
+<Tabs>
+<TabItem value="all-in-one" label="All-in-One Image">
 
 ```yml title="docker-compose.yml"
 ---
 version: '3'
+
+volumes:
+  resoto-data:
 
 services:
   resoto:
@@ -87,9 +104,92 @@ services:
     volumes:
       - resoto-data:/data
     restart: unless-stopped
+```
+
+</TabItem>
+<TabItem value="components" label="Separate Component Images">
+
+```yml title="docker-compose.yml"
+---
+version: "3"
+
 volumes:
   resoto-data:
+
+services:
+  graphdb:
+    image: arangodb:3.8.5
+    container_name: graphdb
+    platform: linux/amd64
+    environment:
+      ARANGO_NO_AUTH: 1
+    ports:
+      - 8529:8529
+    volumes:
+      - resoto-data:/var/lib/arangodb3
+
+  resotocore:
+    image: somecr.io/someengineering/resotocore:{{latestRelease}}
+    container_name: resotocore
+    depends_on:
+      - graphdb
+    ports:
+      - 8900:8900
+    environment:
+      PSK:
+      RESOTOCORE_HOST: resotocore
+      RESOTOCORE_START_COLLECT_ON_SUBSCRIBER_CONNECT: 'true'
+      RESOTOCORE_GRAPHDB_SERVER: http://graphdb:8529
+      RESOTOCORE_GRAPHDB_PASSWORD: changeme
+    restart: unless-stopped
+    stop_grace_period: 2m
+
+  resotoworker:
+    image: somecr.io/someengineering/resotoworker:{{latestRelease}}
+    container_name: resotoworker
+    depends_on:
+      - resotocore
+    ports:
+      - 9956:9956
+    environment:
+      PSK:
+      RESOTOWORKER_RESOTOCORE_URI: http://resotocore:8900
+      RESOTOWORKER_RESOTOCORE_WS_URI: ws://resotocore:8900
+      RESOTOWORKER_AWS_ACCESS_KEY_ID: YOUR_ACCESS_KEY_ID
+      RESOTOWORKER_AWS_SECRET_ACCESS_KEY: YOUR_ACCESS_KEY
+      RESOTOWORKER_COLLECT: aws example
+    restart: unless-stopped
+    stop_grace_period: 2m
+
+  resotometrics:
+    image: somecr.io/someengineering/resotometrics::{{latestRelease}}
+    container_name: resotometrics
+    depends_on:
+      - resotocore
+    ports:
+      - 9955:9955
+    environment:
+      PSK:
+      RESOTOMETRICS_RESOTOCORE_URI: http://resotocore:8900
+      RESOTOMETRICS_RESOTOCORE_WS_URI: ws://resotocore:8900
+    restart: unless-stopped
+    stop_grace_period: 2m
+
+  resotoshell:
+    image: somecr.io/someengineering/resotoshell:{{latestRelease}}
+    container_name: resotoshell
+    depends_on:
+      - resotocore
+    environment:
+      PSK:
+      RESOTOSHELL_RESOTOCORE_URI: http://resotocore:8900
+      RESOTOSHELL_RESOTOCORE_WS_URI: ws://resotocore:8900
+    restart: unless-stopped
+    stop_grace_period: 2m
 ```
+
+</TabItem>
+</Tabs>
 
 Then, run the following command from the directory containing the `docker-compose.yml` file:
 
@@ -128,7 +228,7 @@ Next, recreate the container with the same parameters used previously, but updat
 
 ### [Docker Compose](https://docs.docker.com/compose/reference) {#docker-compose-update}
 
-Simply edit the image tag (e.g., <LatestRelease />) specified in the `docker-compose.yml` file to reflect the desired Resoto release.
+Simply edit the image tag(s) (e.g., <LatestRelease />) specified in the `docker-compose.yml` file to reflect the desired Resoto release.
 
 Then, run the following command from the directory containing the `docker-compose.yml` file:
 

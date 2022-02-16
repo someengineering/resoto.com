@@ -111,9 +111,9 @@ count: 2899
 ancestors [--with-origin] [edge_type]
 ```
 
-This command extends an already existing query. It will select all descendants of the currently selected nodes of the query. The graph may contain different types of edges (e.g. the `default` graph or the `delete` graph). In order to define which graph to walk, the edge_type can be specified.
+This command extends an already existing query. It will select all ancestors of the currently selected nodes of the query. The graph may contain different types of edges (e.g. the `default` graph or the `delete` graph). In order to define which graph to walk, the edge_type can be specified.
 
-If --with-origin is specified, the current element is included in the result set as well. Assume node A with descendant B with descendant C: A --> B --> C `query id(A) | descendants` will select B and A, while `query id(A) | descendants --with-origin` will select C and B and A.
+If --with-origin is specified, the current element is included in the result set as well. Assume node A with descendant B with descendant C: A --> B --> C `query id(C) | ancestors` will select B and A, while `query id(C) | ancestors --with-origin` will select C and B and A.
 
 ### Options
 
@@ -121,9 +121,11 @@ If --with-origin is specified, the current element is included in the result set
 
 ### Parameters
 
-- `edge_type` [Optional, default to `default`]: Defines the type of edge to navigate. This command extends an already existing query. It will select all descendants of the currently selected nodes of the query. The graph may contain different types of edges (e.g. the `default` graph or the `delete` graph). In order to define which graph to walk, the edge_type can be specified.
+- `edge_type` [Optional, default to `default`]: Defines the type of edge to navigate.
 
-If --with-origin is specified, the current element is included in the result set as well. Assume node A with descendant B with descendant C: A --> B --> C `query id(A) | descendants` will select B and A, while `query id(A) | descendants --with-origin` will select C and B and A.
+### Environment Variables
+
+- `edge_type` [Optional]: Defines the type of the edge to navigate. The parameter takes precedence over the env var.
 
 ### Examples
 
@@ -272,6 +274,10 @@ If --with-origin is specified, the current element is included in the result set
 ### Parameters
 
 - `edge_type` [Optional, default to `default`]: Defines the type of edge to navigate.
+
+### Environment Variables
+
+- `edge_type` [Optional]: Defines the type of the edge to navigate. The parameter takes precedence over the env var.
 
 ### Examples
 
@@ -792,7 +798,7 @@ If no prop is defined a predefined list of properties will be shown:
 - /ancestors.region.reported.name as region
 - /ancestors.zone.reported.name as zone
 
-If property is defined, it will override the default and will show the defined properties. The syntax for property is a comma delimited list of property paths. The property path can be absolute, meaning it includes the section name (reported, desired, metadata). In case the section name is not defined, the reported section is assumed automatically.
+If property is defined, it will override the default and will show the defined properties. The syntax for property is a comma delimited list of property paths. The property path can be absolute, meaning it with the section name (reported, desired, metadata). In case the section name is not defined, the reported section is assumed automatically.
 
 The defined property path will be looked for every element in the incoming json. If the value is defined, it will be part of the list line. Undefined values are filtered out and will not be printed.
 
@@ -846,9 +852,9 @@ a=aws_ec2_instance, b=star
 predecessors [--with-origin] [edge_type]
 ```
 
-This command extends an already existing query. It will select all descendants of the currently selected nodes of the query. The graph may contain different types of edges (e.g. the `default` graph or the `delete` graph). In order to define which graph to walk, the edge_type can be specified.
+This command extends an already existing query. It will select all predecessors of the currently selected nodes of the query. The graph may contain different types of edges (e.g. the `default` graph or the `delete` graph). In order to define which graph to walk, the edge_type can be specified.
 
-If --with-origin is specified, the current element is included in the result set as well. Assume node A with descendant B with descendant C: A --> B --> C `query id(A) | descendants` will select B and A, while `query id(A) | descendants --with-origin` will select C and B and A.
+If --with-origin is specified, the current element is included in the result set as well. Assume node A with descendant B with descendant C: A --> B --> C `query id(C) | predecessors` will select B, while `query id(A) | predecessors --with-origin` will select C and B.
 
 ### Options
 
@@ -858,9 +864,9 @@ If --with-origin is specified, the current element is included in the result set
 
 - `edge_type` [Optional, default to `default`]: Defines the type of edge to navigate.
 
-This command extends an already existing query. It will select all descendants of the currently selected nodes of the query. The graph may contain different types of edges (e.g. the `default` graph or the `delete` graph). In order to define which graph to walk, the edge_type can be specified.
+### Environment Variables
 
-If --with-origin is specified, the current element is included in the result set as well. Assume node A with descendant B with descendant C: A --> B --> C `query id(A) | descendants` will select B and A, while `query id(A) | descendants --with-origin` will select C and B and A.
+- `edge_type` [Optional]: Defines the type of the edge to navigate. The parameter takes precedence over the env var.
 
 ### Examples
 
@@ -900,14 +906,14 @@ id=vol-123, protected=true
 **Query the graph.**
 
 ```shell
-query [--include-edges] [--explain] &lt;query>
+query [--with-edges] [--explain] &lt;query>
 ```
 
 This command allows to query the graph using filters, traversals, functions and aggregates.
 
 ### Options
 
-- `--include-edges`: Return edges in addition to nodes.
+- `--with-edges`: Return edges in addition to nodes.
 - `--explain`: Instead of executing the query, analyze its cost.
 
 ### Parameters
@@ -1020,7 +1026,7 @@ kind=aws_ec2_volume, id=vol-1, name=adf-image-1, age=2mo1d, cloud=aws, account=g
 kind=aws_ec2_volume, id=vol-2, name=adf-image-2, age=2mo1d, cloud=aws, account=general-support, region=us-west-2
 
 # Emit nodes together with the edges
-> query --include-edges id(root) -[0:1]->
+> query --with-edges id(root) -[0:1]->
 node_id=root, kind=graph_root, id=root, name=root
 node_id=L_tRxI2tn6iLZdK3e8EQ3w, kind=cloud, id=gcp, name=gcp, age=5d5h, cloud=gcp
 root -> L_tRxI2tn6iLZdK3e8EQ3w
@@ -1172,9 +1178,9 @@ See: add_job, delete_job, jobs
 successors [--with-origin] [edge_type]
 ```
 
-This command extends an already existing query. It will select all descendants of the currently selected nodes of the query. The graph may contain different types of edges (e.g. the `default` graph or the `delete` graph). In order to define which graph to walk, the edge_type can be specified.
+This command extends an already existing query. It will select all successors of the currently selected nodes of the query. The graph may contain different types of edges (e.g. the `default` graph or the `delete` graph). In order to define which graph to walk, the edge_type can be specified.
 
-If --with-origin is specified, the current element is included in the result set as well. Assume node A with descendant B with descendant C: A --> B --> C `query id(A) | descendants` will select B and A, while `query id(A) | descendants --with-origin` will select C and B and A.
+If --with-origin is specified, the current element is included in the result set as well. Assume node A with descendant B with descendant C: A --> B --> C `query id(A) | successors` will select B, while `query id(A) | successors --with-origin` will select C and B.
 
 ### Options
 
@@ -1182,9 +1188,11 @@ If --with-origin is specified, the current element is included in the result set
 
 ### Parameters
 
-- `edge_type` [Optional, default to `default`]: Defines the type of edge to navigate. This command extends an already existing query. It will select all descendants of the currently selected nodes of the query. The graph may contain different types of edges (e.g. the `default` graph or the `delete` graph). In order to define which graph to walk, the edge_type can be specified.
+- `edge_type` [Optional, default to `default`]: Defines the type of edge to navigate.
 
-If --with-origin is specified, the current element is included in the result set as well. Assume node A with descendant B with descendant C: A --> B --> C `query id(A) | descendants` will select B and A, while `query id(A) | descendants --with-origin` will select C and B and A.
+### Environment Variables
+
+- `edge_type` [Optional]: Defines the type of the edge to navigate. The parameter takes precedence over the env var.
 
 ### Examples
 
@@ -1444,7 +1452,7 @@ Writes the result of this command to a file with given name.
 Received a file out.json, which is stored to ./out.json.
 
 # Select the root node and traverse 2 levels deep. Format the result as dot graph and write it to out.dot.
-> query --include-edges id(root) -[0:2]-> | format --dot | write out.dot
+> query --with-edges id(root) -[0:2]-> | format --dot | write out.dot
 Received a file out.dot, which is stored to ./out.dot.
 ```
 
@@ -1460,24 +1468,24 @@ Received a file out.dot, which is stored to ./out.dot.
 
 | Placeholder   | Example                |
 | ------------- | ---------------------- |
-| `@DAY@`       | `02`                   |
-| `@FRIDAY@`    | `2022-02-04`           |
-| `@HOUR@`      | `22`                   |
-| `@MINUTE@`    | `18`                   |
-| `@MONDAY@`    | `2022-02-07`           |
+| `@DAY@`       | `16`                   |
+| `@FRIDAY@`    | `2022-02-18`           |
+| `@HOUR@`      | `15`                   |
+| `@MINUTE@`    | `23`                   |
+| `@MONDAY@`    | `2022-02-21`           |
 | `@MONTH@`     | `02`                   |
-| `@NOW@`       | `2022-02-02T22:18:47Z` |
-| `@SATURDAY@`  | `2022-02-05`           |
-| `@SECOND@`    | `47`                   |
-| `@SUNDAY@`    | `2022-02-06`           |
-| `@THURSDAY@`  | `2022-02-03`           |
-| `@TIME@`      | `22:18:47`             |
-| `@TODAY@`     | `2022-02-02`           |
-| `@TOMORROW@`  | `2022-02-03`           |
-| `@TUESDAY@`   | `2022-02-08`           |
+| `@NOW@`       | `2022-02-16T15:23:31Z` |
+| `@SATURDAY@`  | `2022-02-19`           |
+| `@SECOND@`    | `31`                   |
+| `@SUNDAY@`    | `2022-02-20`           |
+| `@THURSDAY@`  | `2022-02-17`           |
+| `@TIME@`      | `15:23:31`             |
+| `@TODAY@`     | `2022-02-16`           |
+| `@TOMORROW@`  | `2022-02-17`           |
+| `@TUESDAY@`   | `2022-02-22`           |
 | `@TZ@`        | `CET`                  |
 | `@TZ_OFFSET@` | `+0100`                |
-| `@UTC@`       | `2022-02-02T21:18:47Z` |
-| `@WEDNESDAY@` | `2022-02-02`           |
+| `@UTC@`       | `2022-02-16T14:23:31Z` |
+| `@WEDNESDAY@` | `2022-02-16`           |
 | `@YEAR@`      | `2022`                 |
-| `@YESTERDAY@` | `2022-02-01`           |
+| `@YESTERDAY@` | `2022-02-15`           |

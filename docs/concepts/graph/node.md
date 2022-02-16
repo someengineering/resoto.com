@@ -12,7 +12,8 @@ A graph node is a JSON document with a well-defined structure and the following 
   "id": "xxx",
   "reported": { ... },
   "desired": { ... },
-  "metadata": { ... }
+  "metadata": { ... },
+  "ancestors": { ... }
 }
 ```
 

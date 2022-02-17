@@ -10,10 +10,10 @@ list <properties>
 
 ### Options
 
-| Parameter    | Description               | Required? |
-| ------------ | ------------------------- | --------- |
-| `--markdown` | Format output as Markdown | ❌        |
-| `--csv`      | Format output as CSV      | ❌        |
+| Parameter    | Description               |
+| ------------ | ------------------------- |
+| `--markdown` | Format output as Markdown |
+| `--csv`      | Format output as CSV      |
 
 ### Parameters
 

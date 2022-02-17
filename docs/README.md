@@ -29,7 +29,7 @@ To help you find the information you need, the documentation is structured as fo
 
 Resoto indexes resources, captures dependencies, and maps out your infrastructure in an understandable [graph](./concepts/graph/README.md). The graph contains metrics for each [resource](./reference/data-models/README.md).
 
-Developers and SREs can search the graph with a [query language](./reference/cli/query/README.md), and create alerting and cleanup [workflows](./concepts/automation/workflow.md).
+Developers and SREs can [search the graph](./concepts/search/README.md) and create alerting and cleanup [workflows](./concepts/automation/workflow.md).
 
 Metrics can be aggregated and exported to a time-series database such as [Prometheus](https://prometheus.io).
 
@@ -37,13 +37,13 @@ Metrics can be aggregated and exported to a time-series database such as [Promet
 
 Have you ever…
 
-- had a standstill in your CI pipeline because a broken job leaked cloud resources and triggered a [quota limit](./reference/cli/query/examples.md#quota)?
-- wanted to find all expired [certificates](./reference/cli/query/examples.md#certificate)?
+- had a standstill in your CI pipeline because a broken job leaked cloud resources and triggered a [quota limit](./concepts/search/examples.md#quota)?
+- wanted to find all expired [certificates](./concepts/search/examples.md#certificate)?
 - had to change the [tags](./reference/cli/tag.md) of thousands of EC2 instances?
-- needed to delete all unused EBS [volumes](./reference/cli/query/examples.md#volume) with no I/O in the past month?
-- wished for an [aggregate](./reference/cli/query/aggregation.md) view of resource usage across all cloud services?
+- needed to delete all unused EBS [volumes](./concepts/search/examples.md#volume) with no I/O in the past month?
+- wished for an [aggregate](./concepts/search/aggregation.md) view of resource usage across all cloud services?
 - tediously created a report of the cost of a project across different accounts or cloud services?
-- manually cleaned up orphaned [load balancers](./reference/cli/query/examples.md#aws_alb) that had no active backends?
+- manually cleaned up orphaned [load balancers](./concepts/search/examples.md#aws_alb) that had no active backends?
 - wanted to [automate](./concepts/automation/workflow.md) any of the above?
 
 If you answered **yes** to any of the above, then Resoto was built to make _your_ life easier!

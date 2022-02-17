@@ -50,3 +50,7 @@ query [--include-edges] [--explain] <query>
 ```bash title="Find the 3 AWS accounts that are more than 2 weeks old with the greatest number of users"
 > query is(aws_account) and age>2w sort users desc limit 3
 ```
+
+## See Also
+
+- [`aggregate`](./aggregate.md)

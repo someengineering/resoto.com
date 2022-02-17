@@ -1,10 +1,10 @@
 ---
 authors: [matthias]
-tags: [query language, aws]
+tags: [search, graph, aws]
 image: ./img/banner-social.png
 ---
 
-# Resoto Query Language 101
+# Resoto Search Syntax 101
 
 Retrieving information about resources you have deployed in your [Amazon Web Services (AWS)](https://aws.amazon.com) infrastructure means tediously navigating the [AWS Management Console](https://aws.amazon.com/console) or using the [AWS Command Line Interface](https://aws.amazon.com/cli). This approach works well in a single account setup, but best practice is to set up a multi-account environment. And as the number of accounts grows, navigating your infrastructure and finding resources via the [Console](https://aws.amazon.com/console) or the [CLI](https://aws.amazon.com/cli/) becomes increasingly difficult.
 
@@ -14,11 +14,11 @@ Furthermore, the relationships between your resources are also relevant: an EBS 
 
 <!--truncate-->
 
-We created Resoto to allow the user to effortlessly [query resources](/docs/reference/cli/query) and [automate workflows](/docs/concepts/automation/workflow). Resoto gathers data about your infrastructure and builds a directed acyclic [graph](/docs/concepts/graph), where resources are [vertices](/docs/concepts/graph/node) and their relationships/dependencies [edges](/docs/concepts/graph/edge). This graph is what makes Resoto so powerful, but we needed a way to allow users to query this data.
+We created Resoto to allow the user to effortlessly [search resources](/docs/concepts/search) and [automate workflows](/docs/concepts/automation/workflow). Resoto gathers data about your infrastructure and builds a directed acyclic [graph](/docs/concepts/graph), where resources are [vertices](/docs/concepts/graph/node) and their relationships/dependencies [edges](/docs/concepts/graph/edge). This graph is what makes Resoto so powerful, but we needed a way to allow users to query this data.
 
 Graph data is not relational, so SQL was not a good fit. And existing graph query languages like [Cypher](https://neo4j.com/developer/cypher), [Gremlin](https://tinkerpop.apache.org/gremlin.html), or [GSQL](https://tigergraph.com/gsql) have steep learning curves and are unnecessarily complex for this use case.
 
-And so, we developed our own query language tailored specifically to Resoto. The [Resoto Shell](/docs/concepts/components/shell) allows you to interact with your Resoto installation. In particular, it provides a [`query`](/docs/reference/cli/query) command.
+And so, we developed our own search syntax tailored specifically to Resoto. The [Resoto Shell](/docs/concepts/components/shell) allows you to interact with your Resoto installation. In particular, it provides a [`query`](/docs/reference/cli/query) command.
 
 Let's try searching for all available EC2 instances. `is()` will match a specific or abstract type in a polymorphic fashion, checking all types and subtypes of the provided type. The `instance_cores` filter will limit results to only those instances with more than two cores. The query will automagically search your entire infrastructure, regardless of account or region!
 
@@ -94,7 +94,7 @@ id=i-0..., name=flixer, age=1M3w, account=sales, region=us-west-2
 
 The arrow is now mirrored and traverses the graph "inbound," walking edges in the opposite direction.
 
-The above examples only begin to scratch the surface of Resoto's [query language](/docs/reference/cli/query). I hope you will check out our [documentation](/docs) and give Resoto a spin!
+The above examples only begin to scratch the surface of Resoto's [search syntax](/docs/concepts/search). I hope you will check out our [documentation](/docs) and give Resoto a spin!
 
 :::note
 

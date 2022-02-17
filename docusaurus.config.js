@@ -49,6 +49,10 @@ const config = {
           archiveBasePath: null,
           routeBasePath: 'blog',
           showReadingTime: true,
+          feedOptions: {
+            type: 'all',
+            copyright: `Copyright © ${new Date().getFullYear()} Some Engineering Inc.`,
+          },
           remarkPlugins: [a11yEmoji],
         },
         theme: {
@@ -73,6 +77,10 @@ const config = {
         routeBasePath: 'news',
         archiveBasePath: null,
         showReadingTime: true,
+        feedOptions: {
+          type: 'all',
+          copyright: `Copyright © ${new Date().getFullYear()} Some Engineering Inc.`,
+        },
         remarkPlugins: [a11yEmoji],
       },
     ],

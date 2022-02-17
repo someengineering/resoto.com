@@ -5,13 +5,13 @@ import { useCurrentSidebarCategory } from '@docusaurus/theme-common';
 import DocCardList from '@theme/DocCardList';
 ```
 
-You can search your cloud infrastructure and find the resources you are looking for using Resoto's powerful query language.
+You can search your cloud infrastructure and find the resources you are looking for using Resoto's powerful search syntax.
 
-Resoto maintains its collected data in a graph database. This graph can be accessed via the query language.
+Resoto maintains its collected data in a graph database. This graph can be accessed via the search syntax.
 
 :::tip
 
-Sending a query in the [Resoto Shell](../components/shell.md) [command-line interface (CLI)](../../reference/cli/README.md) is done using the [`query`](../../reference/cli/query/README.md) command.
+Performing a search in the [Resoto Shell](../components/shell.md) [command-line interface (CLI)](../../reference/cli/README.md) is done using the [`query`](../../reference/cli/query.md) command.
 
 ```bash
 > query is(aws_account)

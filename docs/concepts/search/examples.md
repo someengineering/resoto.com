@@ -1,6 +1,11 @@
-# Examples
+---
+sidebar_position: 5
+sidebar_label: Examples
+---
 
-The following are some common queries for Resoto, organized by [kind](../../../concepts/graph/node.md#kind).
+# Search Examples
+
+The following are some common queries for Resoto, organized by [kind](../graph/node.md#kind).
 
 Do you need help writing a query? Join us on [Discord](https://discord.gg/someengineering) and we'll do our best to help!
 

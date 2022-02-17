@@ -1,48 +1,58 @@
-https://resoto.netlify.app/*          https://resoto.com/:splat 301!
+https://resoto.netlify.app/*                https://resoto.com/:splat 301!
 
-/docs/concepts/components/resotolib   /docs/concepts/components/library
-/docs/concepts/components/resh        /docs/concepts/components/shell
-/docs/concepts/components/resoto*     /docs/concepts/components/:splat
+https://docs.some.engineering/*             https://resoto.com/docs 301!
 
-/concepts/*                           /docs/concepts/:splat
+https://blog.resoto.com/*                   https://resoto.com/blog/:splat 301!
+https://docs.resoto.com/*                   https://resoto.com/docs/:splat 301!
+https://news.resoto.com/*                   https://resoto.com/news/:splat 301!
 
-/contribute/code                      /docs/contributing/components
-/contribute/component                 /docs/contributing/components
-/contribute/doc                       /docs/contributing/documentation
-/contribute/docs                      /docs/contributing/documentation
-/contribute/*                         /docs/contributing/:splat
+/blog/2022/02/04/resoto-query-language-101  /blog/2022/02/04/resoto-search-syntax-101
 
-/contributing/code                    /docs/contributing/components
-/contributing/component               /docs/contributing/components
-/contributing/doc                     /docs/contributing/documentation
-/contributing/docs                    /docs/contributing/documentation
-/contributing/*                       /docs/contributing/:splat
+/docs/concepts/components/resotolib         /docs/concepts/components/library
+/docs/concepts/components/resh              /docs/concepts/components/shell
+/docs/concepts/components/resoto*           /docs/concepts/components/:splat
 
-/docs/getting-started/docker          /docs/getting-started/installing-with-docker
-/docs/getting-started/kubernetes      /docs/getting-started/installing-with-kubernetes
-/docs/getting-started/k8s             /docs/getting-started/installing-with-kubernetes
+/concepts/*                                 /docs/concepts/:splat
 
-/getting-started/*                    /docs/getting-started/:splat
+/contribute/code                            /docs/contributing/components
+/contribute/component                       /docs/contributing/components
+/contribute/doc                             /docs/contributing/documentation
+/contribute/docs                            /docs/contributing/documentation
+/contribute/*                               /docs/contributing/:splat
 
-/docs/reference/cli/aggregate         /docs/reference/cli/query/aggregation
-/docs/reference/cli/aggregation       /docs/reference/cli/query/aggregation
+/contributing/code                          /docs/contributing/components
+/contributing/component                     /docs/contributing/components
+/contributing/doc                           /docs/contributing/documentation
+/contributing/docs                          /docs/contributing/documentation
+/contributing/*                             /docs/contributing/:splat
 
-/docs/reference/cli/ancestor          /docs/reference/cli/query/basic-queries#traversal-commands
-/docs/reference/cli/ancestors         /docs/reference/cli/query/basic-queries#traversal-commands
-/docs/reference/cli/descendant        /docs/reference/cli/query/basic-queries#traversal-commands
-/docs/reference/cli/descendants       /docs/reference/cli/query/basic-queries#traversal-commands
-/docs/reference/cli/predecessor       /docs/reference/cli/query/basic-queries#traversal-commands
-/docs/reference/cli/predecessors      /docs/reference/cli/query/basic-queries#traversal-commands
-/docs/reference/cli/successor         /docs/reference/cli/query/basic-queries#traversal-commands
-/docs/reference/cli/successors        /docs/reference/cli/query/basic-queries#traversal-commands
+/docs/getting-started/docker                /docs/getting-started/installing-with-docker
+/docs/getting-started/kubernetes            /docs/getting-started/installing-with-kubernetes
+/docs/getting-started/k8s                   /docs/getting-started/installing-with-kubernetes
 
-/api                                  /docs/reference/core-api
-/docs/reference/resotocore-api        /docs/reference/core-api
+/docs/getting-started/queries               /docs/getting-started/performing-searches
+/docs/getting-started/query                 /docs/getting-started/performing-searches
+/docs/getting-started/performing-queries    /docs/getting-started/performing-searches
+/docs/getting-started/search                /docs/getting-started/performing-searches
+/docs/getting-started/searches              /docs/getting-started/performing-searches
 
-/docs/reference/resources/data-models /docs/reference/data-models
-/docs/reference/resources/*           /docs/reference/data-models/:splat
+/getting-started/*                          /docs/getting-started/:splat
 
-/reference/*                          /docs/reference/:splat
+/docs/reference/cli/ancestor                /docs/reference/cli/ancestors
+/docs/reference/cli/descendant              /docs/reference/cli/descendants
+/docs/reference/cli/predecessor             /docs/reference/cli/predecessors
+/docs/reference/cli/successor               /docs/reference/cli/successors
 
-/release/*                            /news/:splat
-/releases/*                           /news/:splat
+/docs/reference/cli/query/basic-queries     /docs/concepts/search/basic-syntax
+/docs/reference/cli/query/*                 /docs/concepts/search/:splat
+
+/api                                        /docs/reference/core-api
+/docs/reference/resotocore-api              /docs/reference/core-api
+
+/docs/reference/resources/data-models       /docs/reference/data-models
+/docs/reference/resources/*                 /docs/reference/data-models/:splat
+
+/reference/*                                /docs/reference/:splat
+
+/release/*                                  /news/:splat
+/releases/*                                 /news/:splat

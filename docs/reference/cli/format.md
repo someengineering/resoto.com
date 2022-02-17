@@ -65,4 +65,6 @@ This command writes the result of `query all` in JSON format to a file named `ou
 
 ## See Also
 
-[`dump`](./dump.md), [`list`](./list.md), [`jq`](./jq.md)
+- [`dump`](./dump.md)
+- [`list`](./list.md)
+- [`jq`](./jq.md)

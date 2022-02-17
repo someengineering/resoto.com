@@ -15,7 +15,7 @@ const FeatureList: FeatureItem[] = [
     description: (
       <>
         Resoto indexes resources, captures dependencies, and maps out your cloud
-        infrastructure in a <strong>human-friendly graph view</strong>.
+        infrastructure in a <strong>human-friendly graph</strong>.
       </>
     ),
   },
@@ -24,9 +24,8 @@ const FeatureList: FeatureItem[] = [
     image: 'img/illustrations/sheep-airport.svg',
     description: (
       <>
-        Developers and SREs can search the graph with a{' '}
-        <strong>query language</strong>, and create alerting and cleanup{' '}
-        <strong>workflows</strong>.
+        Developers and SREs can <strong>search</strong> the graph and create
+        alerting and cleanup <strong>workflows</strong>.
       </>
     ),
   },

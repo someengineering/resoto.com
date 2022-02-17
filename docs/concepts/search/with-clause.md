@@ -1,12 +1,12 @@
 ---
 sidebar_position: 2
 sidebar_label: with Clause
-title: with Clause
+title: with Search Clause
 ---
 
-# `with` Clause
+# `with` Search Clause
 
-There are certain scenarios, where nodes need to be selected that have defined relationships and position in the graph without selecting the related nodes.
+There are certain scenarios where nodes that have defined relationships or positions in the graph need to be selected without selecting their related nodes.
 
 :::tip Example
 

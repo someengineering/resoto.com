@@ -5,7 +5,7 @@ sidebar_position: 1
 
 # Resoto Core
 
-The Resoto Core graph platform (`resotocore`) is the persistence and query backend of Resoto. It maintains the graph of resources and provides APIs to update and access them.
+The Resoto Core graph platform (`resotocore`) is the persistence and search backend of Resoto. It maintains the graph of resources and provides APIs to update and access them.
 
 Within Resoto Core, there are workflows consisting of steps that result in actions like `collect`, `cleanup` or `generate_metrics`. These actions are received by components like [Resoto Worker](./worker.md) and [Resoto Metrics](./metrics.md).
 

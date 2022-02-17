@@ -1,8 +1,9 @@
 ---
 sidebar_position: 1
+sidebar_label: Basic Syntax
 ---
 
-# Basic Queries
+# Basic Search Syntax
 
 ```mdx-code-block
 import TabItem from '@theme/TabItem';
@@ -13,7 +14,7 @@ import Tabs from '@theme/Tabs';
 
 Nodes can be selected by their id via the `id(xyz)` function. This function can be used globally no matter which section is used.
 
-## Selecting Nodes by [Kind](../../../concepts/graph/node.md#kind)
+## Selecting Nodes by [Kind](../graph/node.md#kind)
 
 In order to select nodes by a specific type, the query language supports the `is(kind)` function. The term `is(instance)` would select the EC2 instance above, but also all other instances, e.g. Google Cloud instances.
 
@@ -278,73 +279,12 @@ There are abbreviations for the most common traversal selectors.
 
 There are also commands to perform a traversal selection, to which input can be piped:
 
-| Command        | Traversal Selector  |
-| -------------- | ------------------- |
-| `predecessors` | `<--` or `<-[1:1]-` |
-| `successors`   | `-->` or `-[1:1]->` |
-| `ancestors`    | `<-[1:]-`           |
-| `descendants`  | `-[1:]->`           |
-
-#### Usage
-
-<Tabs>
-<TabItem value="predecessors" label="predecessors">
-
-```bash
-predecessors [--with-origin] <edge_type>
-```
-
-</TabItem>
-<TabItem value="successors" label="successors">
-
-```bash
-successors [--with-origin] <edge_type>
-```
-
-</TabItem>
-<TabItem value="ancestors" label="ancestors">
-
-```bash
-ancestors [--with-origin] <edge_type>
-```
-
-</TabItem>
-<TabItem value="descendants" label="descendants">
-
-```bash
-descendants [--with-origin] <edge_type>
-```
-
-</TabItem>
-</Tabs>
-
-#### Options
-
-By default, the current element is not included in the result set. However, these commands have a command-line option `--with-origin` that alters this behavior:
-
-| Command                      | Traversal Selector |
-| ---------------------------- | ------------------ |
-| `predecessors --with-origin` | `<-[0:1]-`         |
-| `successors --with-origin`   | `-[0:1]->`         |
-| `ancestors --with-origin`    | `<-[0:]-`          |
-| `descendants --with-origin`  | `-[0:]->`          |
-
-#### Parameters
-
-| Parameter   | Description                    | Required? | Default Value |
-| ----------- | ------------------------------ | --------- | ------------- |
-| `edge_type` | Edge type by which to traverse | ❌        | `delete`      |
-
-:::tip Examples
-
-| Piped Command                                         | Equivalent Query               |
-| ----------------------------------------------------- | ------------------------------ |
-| <code>query is(aws_region) &#124; predecessors</code> | `query is(aws_region) <--`     |
-| <code>query is(aws_region) &#124; successors</code>   | `query is(aws_region) -->`     |
-| <code>query is(aws_region) &#124; ancestors</code>    | `query is(aws_region) <-[1:]-` |
-| <code>query is(aws_region) &#124; descendants</code>  | `query is(aws_region) -[1:]->` |
-
-:::
+| Command                                               | Traversal Selector  |
+| ----------------------------------------------------- | ------------------- |
+| [`predecessors`](../../reference/cli/predecessors.md) | `<--` or `<-[1:1]-` |
+| [`successors`](../../reference/cli/successors.md)     | `-->` or `-[1:1]->` |
+| [`ancestors`](../../reference/cli/ancestors.md)       | `<-[1:]-`           |
+| [`descendants`](../../reference/cli/descendants.md)   | `-[1:]->`           |
 
 ## Combining Selections
 

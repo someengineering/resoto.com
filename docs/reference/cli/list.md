@@ -8,6 +8,13 @@ The `list` command transforms inputted JSON objects into `string`s.
 list <properties>
 ```
 
+### Options
+
+| Parameter    | Description               |
+| ------------ | ------------------------- |
+| `--markdown` | Format output as Markdown |
+| `--csv`      | Format output as CSV      |
+
 ### Parameters
 
 | Parameter    | Description                 | Required? | Default Value |
@@ -83,6 +90,27 @@ a=aws_ec2_instance, b=star
 a=aws_ec2_instance, b=sun
 a=aws_ec2_instance, b=moon
 a=aws_ec2_instance, b=star
+// highlight-end
+```
+
+```bash
+> query is(aws_ec2_instance) limit 3 | list --csv kind as a, name as b, does_not_exist
+// highlight-start
+a,b,does_not_exist
+aws_ec2_instance,sun,
+aws_ec2_instance,moon,
+aws_ec2_instance,star,
+// highlight-end
+```
+
+```bash
+> query is(aws_ec2_instance) limit 3 | list --markdown kind as a, name as b, does_not_exist
+// highlight-start
+|a               |b   |does_not_exist|
+|----------------|----|--------------|
+|aws_ec2_instance|sun |None          |
+|aws_ec2_instance|moon|None          |
+|aws_ec2_instance|star|None          |
 // highlight-end
 ```
 

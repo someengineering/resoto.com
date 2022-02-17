@@ -10,18 +10,16 @@ list <properties>
 
 ### Options
 
-| Parameter    | Description                 | Required? |
-| ------------ | --------------------------- | --------- |
-| `--markdown` | Format output as Markdown   | ❌        |
-| `--csv`      | Format output as CSV        | ❌        |
-
+| Parameter    | Description               | Required? |
+| ------------ | ------------------------- | --------- |
+| `--markdown` | Format output as Markdown | ❌        |
+| `--csv`      | Format output as CSV      | ❌        |
 
 ### Parameters
 
 | Parameter    | Description                 | Required? | Default Value |
 | ------------ | --------------------------- | --------- | ------------- |
 | `properties` | Names of properties to show | ❌        | See note      |
-
 
 :::note
 

@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
-import styles from './HomepageFeatures.module.css';
+import styles from './styles.module.css';
 
 type FeatureItem = {
   title: string;
@@ -11,7 +11,7 @@ type FeatureItem = {
 const FeatureList: FeatureItem[] = [
   {
     title: 'Resource Graph',
-    image: 'img/sheep-professor.svg',
+    image: 'img/illustrations/sheep-professor.svg',
     description: (
       <>
         Resoto indexes resources, captures dependencies, and maps out your cloud
@@ -21,7 +21,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Search and Automation',
-    image: 'img/sheep-airport.svg',
+    image: 'img/illustrations/sheep-airport.svg',
     description: (
       <>
         Developers and SREs can search the graph with a{' '}
@@ -32,7 +32,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Metrics',
-    image: 'img/sheep-strong.svg',
+    image: 'img/illustrations/sheep-strong.svg',
     description: (
       <>
         Data can be aggregated and exported to a{' '}

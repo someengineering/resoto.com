@@ -1,7 +1,7 @@
+import { getLatestRelease } from '@site/src/utils/githubHelper';
 import OriginalCodeBlock from '@theme-original/CodeBlock';
 import type { Props } from '@theme/CodeBlock';
 import React, { useEffect, useState } from 'react';
-import { getLatestRelease } from '../utils/githubHelper';
 
 export default function CodeBlock({
   children,

@@ -1,5 +1,5 @@
+import { getLatestRelease } from '@site/src/utils/githubHelper';
 import React, { useEffect, useState } from 'react';
-import { getLatestRelease } from '../utils/githubHelper';
 
 export default function LatestRelease(): JSX.Element {
   const [latestRelease, setLatestRelease] = useState(null);

@@ -12,7 +12,7 @@ function useBreadCrumbs(): { label: string; href: string }[] {
 
   function find(sidebar: PropSidebar) {
     for (const item of sidebar) {
-      if (item.href.replace(/\/$/, '') === pathname.replace(/\/$/, '')) {
+      if (item.href?.replace(/\/$/, '') === pathname.replace(/\/$/, '')) {
         breadcrumbs.push({ label: item.label, href: item.href });
         return true;
       }

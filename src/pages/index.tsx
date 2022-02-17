@@ -1,11 +1,11 @@
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import GitHubLogo from '@site/src/assets/github.svg';
+import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import { getGithubStars, getLatestRelease } from '@site/src/utils/githubHelper';
 import Layout from '@theme/Layout';
 import Emoji from 'a11y-react-emoji';
 import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
-import HomepageFeatures from '../components/HomepageFeatures';
-import { getGithubStars, getLatestRelease } from '../utils/githubHelper';
-import GitHubLogo from './github.svg';
 import styles from './index.module.css';
 
 function HomepageHeader() {

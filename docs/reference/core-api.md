@@ -6,4 +6,4 @@ import "swagger-ui-react/swagger-ui.css"
 import "./css/core-api.css"
 ```
 
-<SwaggerUI url="https://raw.githubusercontent.com/someengineering/resoto/main/resotocore/core/static/api-doc.yaml" />
+<SwaggerUI url="https://raw.githubusercontent.com/someengineering/resoto/main/resotocore/resotocore/static/api-doc.yaml" />

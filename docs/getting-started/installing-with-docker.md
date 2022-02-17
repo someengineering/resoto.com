@@ -111,7 +111,7 @@ services:
 
 ```yml title="docker-compose.yml"
 ---
-version: "3"
+version: '3'
 
 volumes:
   resoto-data:

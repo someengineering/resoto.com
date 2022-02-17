@@ -2,7 +2,7 @@
 // @ts-check
 
 const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const darkCodeTheme = require('./src/utils/prismDark.js');
 const a11yEmoji = require('@fec/remark-a11y-emoji');
 const webpack = require('webpack');
 

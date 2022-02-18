@@ -1,7 +1,5 @@
 https://resoto.netlify.app/*                https://resoto.com/:splat 301!
 
-https://docs.some.engineering/*             https://resoto.com/docs 301!
-
 https://blog.resoto.com/*                   https://resoto.com/blog/:splat 301!
 https://docs.resoto.com/*                   https://resoto.com/docs/:splat 301!
 https://news.resoto.com/*                   https://resoto.com/news/:splat 301!
@@ -11,6 +9,8 @@ https://news.resoto.com/*                   https://resoto.com/news/:splat 301!
 /docs/concepts/components/resotolib         /docs/concepts/components/library
 /docs/concepts/components/resh              /docs/concepts/components/shell
 /docs/concepts/components/resoto*           /docs/concepts/components/:splat
+
+/docs/concepts/search/basic-syntax          /docs/concepts/search/filters
 
 /concepts/*                                 /docs/concepts/:splat
 
@@ -43,7 +43,8 @@ https://news.resoto.com/*                   https://resoto.com/news/:splat 301!
 /docs/reference/cli/predecessor             /docs/reference/cli/predecessors
 /docs/reference/cli/successor               /docs/reference/cli/successors
 
-/docs/reference/cli/query/basic-queries     /docs/concepts/search/basic-syntax
+/docs/reference/cli/query/basic-queries     /docs/concepts/search/filters
+/docs/reference/cli/query/subqueries        /docs/concepts/search/nesting
 /docs/reference/cli/query/*                 /docs/concepts/search/:splat
 
 /api                                        /docs/reference/core-api

@@ -68,7 +68,7 @@ The job functionality can be used to automate actions. Here is a list of possibl
 
 - Gather or accumulate data.
 
-  Resoto has advanced aggregation query capabilities. resotometrics is using it to derive and report metrics to prometheus.
+  Resoto has advanced aggregation query capabilities. resotometrics is using it to derive and report metrics to [Prometheus](https://prometheus.io).
 
   If additional data besides metrics are relevant to you, create a job that gathers and publishes the data.
 
@@ -82,7 +82,7 @@ The job functionality can be used to automate actions. Here is a list of possibl
 
   This will query the graph from the root and traverse it 2 levels deep and will also emit all edges.
 
-  The resulting graph will be formatted in `Graphviz <https://graphviz.org>`\_ dot format and written to file out.dot.
+  The resulting graph will be formatted in `Graphviz <https://graphviz.org>` dot format and written to file `out.dot`.
 
   If you have graphviz installed, you can now create a diagram from the dot specification, for example with: `sfdp -Tsvg -o out.svg out.dot`.
 
@@ -96,7 +96,7 @@ The job functionality can be used to automate actions. Here is a list of possibl
 
   Imagine you want to cleanup all compute instances in the load-testing account every Friday night, so they will not run over the weekend.
 
-  ```
+  ```bash
   > jobs add mark-resources-for-cleanup --schedule '0 22 * * 5' --wait-for-event cleanup_plan 'query is(instance) and /ancestors.account.reported.name==load-testing | clean'
   ```
 

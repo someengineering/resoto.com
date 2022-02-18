@@ -32,4 +32,4 @@ The next command returns `[1, 2, 3, 4, 5]`:
 
 ## See Also
 
-[`head`](./head.md)
+- [`head`](./head.md)

@@ -1,8 +1,9 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
+sidebar_label: Aggregation
 ---
 
-# Aggregation
+# Search Aggregation
 
 There are several situations where specific data is not too relevant but needs lifting to a higher level. That is where aggregation comes into play.
 

@@ -27,7 +27,7 @@ To help you find the information you need, the documentation is structured as fo
 
 ## What Is Resoto?
 
-Resoto indexes resources, captures dependencies, and maps out your infrastructure in an understandable [graph](./concepts/graph/README.md). The graph contains metrics for each [resource](./reference/data-models/README.md).
+Resoto indexes resources, captures dependencies, and maps out your infrastructure in an intuitive [graph](./concepts/graph/README.md). The graph contains metrics for each [resource](./reference/data-models/README.md).
 
 Developers and SREs can [search the graph](./concepts/search/README.md) and create alerting and cleanup [workflows](./concepts/automation/workflow.md).
 
@@ -54,13 +54,12 @@ Resoto collects data using simple plugins written in [Python](https://www.python
 
 Support for the following is currently included out-of-the-box in Resoto:
 
-- [Amazon Web Services (AWS)](https://aws.amazon.com)
-- [Google Cloud Platform (GCP)](https://console.cloud.google.com)
-- [VMware Vsphere](https://www.vmware.com/products/vsphere.html)
-- [OneLogin](http://www.onelogin.com)
-- [Kubernetes (K8s)](https://kubernetes.io)
+- [Amazon Web Services (AWS)](./reference/data-models/aws.md)
+- [Google Cloud Platform (GCP)](./reference/data-models/gcp.md)
+- [Kubernetes (K8s)](./reference/data-models/kubernetes.md)
+- [VMware Vsphere](./reference/data-models/vsphere.md)
 
-In addition to the above collector plugins, a [Slack](https://slack.com) plugin is also included for notification of resource cleanups.
+In addition to the above collector plugins, a [Slack](https://slack.com) plugin is also included for notifications of resource cleanups.
 
 :::tip
 

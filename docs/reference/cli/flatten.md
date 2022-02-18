@@ -24,4 +24,4 @@ The next command would also return `[1, 2, 3, 4, 5]`:
 
 ## See Also
 
-[`chunk`](./chunk.md)
+- [`chunk`](./chunk.md)

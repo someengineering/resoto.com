@@ -1,3 +1,4 @@
+import Link from '@docusaurus/Link';
 import clsx from 'clsx';
 import React from 'react';
 import styles from './styles.module.css';
@@ -15,7 +16,11 @@ const FeatureList: FeatureItem[] = [
     description: (
       <>
         Resoto indexes resources, captures dependencies, and maps out your cloud
-        infrastructure in a <strong>human-friendly graph</strong>.
+        infrastructure in an intuitive{' '}
+        <strong>
+          <Link to="/docs/concepts/graph">graph</Link>
+        </strong>
+        .
       </>
     ),
   },
@@ -24,8 +29,15 @@ const FeatureList: FeatureItem[] = [
     image: 'img/illustrations/sheep-airport.svg',
     description: (
       <>
-        Developers and SREs can <strong>search</strong> the graph and create
-        alerting and cleanup <strong>workflows</strong>.
+        Developers and SREs can{' '}
+        <strong>
+          <Link to="/docs/concepts/search">search</Link>
+        </strong>{' '}
+        the graph and create alerting and cleanup{' '}
+        <strong>
+          <Link to="/docs/concepts/automation/workflow">workflows</Link>
+        </strong>
+        .
       </>
     ),
   },
@@ -35,7 +47,15 @@ const FeatureList: FeatureItem[] = [
     description: (
       <>
         Data can be aggregated and exported to a{' '}
-        <strong>time series database</strong> such as Prometheus!
+        <strong>time-series database</strong> such as{' '}
+        <a
+          href="https://prometheus.io"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Prometheus
+        </a>
+        !
       </>
     ),
   },

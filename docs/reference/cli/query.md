@@ -1,6 +1,6 @@
 # `query`
 
-The `query` command allows you to search the graph using filters, traversals, and functions.
+The `query` command allows you to search the graph using [filters](../../concepts/search/filters.md), [traversals](../../concepts/search/traversals.md), and [functions](../../concepts/search/aggregation.md).
 
 ## Usage
 

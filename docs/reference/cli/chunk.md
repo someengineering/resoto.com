@@ -32,4 +32,4 @@ The next command would return `[[1, 2, 3, 4, 5]]`:
 
 ## See Also
 
-[`flatten`](./flatten.md)
+- [`flatten`](./flatten.md)

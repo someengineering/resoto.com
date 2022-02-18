@@ -12,4 +12,6 @@ dump
 
 ## See Also
 
-[`format`](./format.md), [`list`](./list.md), [`jq`](./jq.md)
+- [`format`](./format.md)
+- [`list`](./list.md)
+- [`jq`](./jq.md)

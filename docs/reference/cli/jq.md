@@ -32,4 +32,6 @@ jq <filter>
 
 ## See Also
 
-[`dump`](./dump.md), [`format`](./format.md), [`list`](./list.md)
+- [`dump`](./dump.md)
+- [`format`](./format.md)
+- [`list`](./list.md)

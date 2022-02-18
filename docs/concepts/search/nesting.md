@@ -1,8 +1,9 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
+sidebar_label: Nesting
 ---
 
-# Subqueries
+# Search Nesting
 
 While it is possible to query and retrieve a filtered part of the graph, it is sometimes helpful to retrieve structural graph data as part of the node.
 
@@ -10,7 +11,7 @@ This approach merges multiple nodes in a graph into one node. This combined node
 
 ![Example Merge Diagram](./img/merge_nodes.png)
 
-The merge node feature allows for subqueries, that are executed for every node in the result. The result of the subquery is then merged with the node data.
+The merge node feature allows for nested searches, executed for every node in the result. The result of the nested search is then merged with the node data.
 
 :::tip Example
 
@@ -18,7 +19,7 @@ Most cloud resources are maintained in an account. Accounts are modeled as [node
 
 Resources reference the region node, while the region node references the account node. In order to retrieve the account, the graph has to be traversed inbound from the resource node until the account node is found. While this is possible, it might be more convenient to get the account information as part of the node!
 
-In this example, we query nodes of kind `volume`. For every element that is returned, a subquery is executed, which will traverse the graph inbound until it finds a node of kind `account`.
+In this example, we query nodes of kind `volume`. For every element that is returned, a nested search is executed, which will traverse the graph inbound until it finds a node of kind `account`.
 
 ```bash
 > query is(volume) { account: <-[0:]- is(account) } limit 1 | dump
@@ -33,7 +34,7 @@ account:
 // highlight-end
 ```
 
-The result of this subquery is merged with the volume node on root level under the name account.
+The result of this nested search is merged with the volume node on root level under the name account.
 
 The complete information about the account is then available as part of the volume node:
 
@@ -41,13 +42,13 @@ The complete information about the account is then available as part of the volu
 
 :::
 
-A subquery is a complete, standalone query and can use the features of any other query.
+A nested search is a complete, standalone query and can use the features of any other query.
 
-The result of a subquery is merged with the original node under the given merge name.
+The result of a nested search is merged with the original node under the given merge name.
 
-If the merge name is a simple literal, zero or one result of the subquery is expected. This also means, that the graph traversal of the subquery stops, when the first matching element is found.
+If the merge name is a simple literal, zero or one result of the nested search is expected. This also means, that the graph traversal of the nested search stops, when the first matching element is found.
 
-If the expected result of the subquery is a list, than the merge name has to be defined with square brackets.
+If the expected result of the nested search is a list, than the merge name has to be defined with square brackets.
 
 :::tip Example
 
@@ -96,7 +97,7 @@ region:
 
 :::
 
-A subquery can even be defined using subqueries:
+A nested search can even be defined using nested searches:
 
 ```bash
 > query = <pre_filter> { <merge_name_1>: <query>, .., <merge_name_n>: <query> } <post_filter>
@@ -104,6 +105,6 @@ A subquery can even be defined using subqueries:
 
 :::note
 
-Be aware that a subquery is executed for every node of the original query and might be expensive and time intensive to compute.
+Be aware that a nested search is executed for every node of the original query and might be expensive and time intensive to compute.
 
 :::

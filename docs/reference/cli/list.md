@@ -116,4 +116,6 @@ aws_ec2_instance,star,
 
 ## See Also
 
-[`dump`](./dump.md), [`format`](./format.md), [`jq`](./jq.md)
+- [`dump`](./dump.md)
+- [`format`](./format.md)
+- [`jq`](./jq.md)

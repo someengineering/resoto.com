@@ -88,6 +88,15 @@ div[class^='announcementBar_'] .close {
   mask-image: var(--logo-text);
 }
 
+.navbar__item {
+  margin: 0 0.125rem;
+}
+
+.navbar__link--active {
+  background: var(--ifm-menu-color-background-active);
+  border-radius: var(--ifm-global-radius);
+}
+
 .header-icon-link > span {
   display: none;
 }

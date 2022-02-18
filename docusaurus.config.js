@@ -134,6 +134,7 @@ const config = {
           src: 'img/navbar-logo.svg',
         },
         items: [
+          { to: '/', label: 'Home', position: 'left', exact: true },
           { to: '/about', label: 'About', position: 'left' },
           {
             to: '/docs',

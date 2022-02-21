@@ -7,7 +7,7 @@ tags: [search, aws, gcp]
 
 :::note
 
-This blog post is the second in a series about Resoto's powerful search capability. The previous post, [Resoto Query Language 101](/blog/2022/02/04/resoto-query-language-101), provides an introduction and overview of search syntax and options. 
+This blog post is the second in a series about Resoto's powerful search capability. The previous post, [Resoto Search 101](/blog/2022/02/04/resoto-search-syntax-101), provides an introduction and overview of search syntax and options. 
 
 :::
 
@@ -23,7 +23,7 @@ total unmatched: 0
 
 All compute instances are of [kind](/docs/concepts/search/filters#selecting-nodes-by-kind) `instance` regardless of cloud provider, so `is(instance)` will select both [`aws_ec2_instance`](/docs/reference/data-models/aws#aws_ec2_instance)s _and_ [`gcp_instance`](/docs/reference/data-models/gcp#gcp_instance)s. The [`count` command](/docs/reference/cli/count) then takes the results and returns the number of occurrences.
 
-The `count` command also allows specifying a property to use as a grouping value. The following query would show the instances grouped by `instance_status`:
+The `count` command also allows specifying a property to use as a grouping value. The following search would show the instances grouped by `instance_status`:
 
 ```bash
 > search is(instance) | count instance_status
@@ -48,7 +48,7 @@ sum_of_memory: 12802.25
 max_mem: 64
 ```
 
-As you can see, we have 3441 cores in total, while there is no instance with more than 16 cores. The same data is also available for the provisioned memory: almost 13TB of RAM, while no instance has more than 64GB of RAM. We could have also queried using `min` or `avg` functions.
+As you can see, we have 3441 cores in total, while there is no instance with more than 16 cores. The same data is also available for the provisioned memory: almost 13TB of RAM, while no instance has more than 64GB of RAM. We could have also searched using `min` or `avg` functions.
 
 While this aggregated data is already useful, we would like to break it down using grouping variables. We have already seen grouping variables in the `count` command: a group is defined by the value of a specified property. Let's assume we want to aggregate available memory broken down by instance status.
 

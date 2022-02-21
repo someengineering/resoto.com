@@ -3,16 +3,19 @@ authors: [matthias]
 tags: [query language, aws, gcp]
 ---
 
-# Aggregating data with Resoto
+# Aggregating Data with Resoto
 
-This post is the second episode of the Resoto query language series. While it is not required, I would encourage you to read the [RQL 101](/blog/2022/02/04/resoto-query-language-101) post to get a short
-introduction into the capabilities of the Resoto query language.
+:::note
 
-RQL allows selecting resources using filters, combinators, and traversals. It is probably the primary use case to perform a query and retrieve the resulting list of resources. This list can be used in other actions and commands or serves information retrieval. While it is beneficial to get a list of resource data,  we also want to combine, group, and aggregate data about our resources.
+This blog post is the second in a series about Resoto's powerful query language. The previous post, [Resoto Query Language 101](/blog/2022/02/04/resoto-query-language-101), provides an introduction to the query language.
 
-The simplest way of aggregating data using Resoto is the `count` command. It allows for counting objects or counting the occurrences of a specific property. Let's assume we are interested in the number of compute instances we maintain. We can get the answer by executing the following command:
+:::
 
-```shell
+Resoto's query language allows selecting resources using filters, [combinators](/docs/reference/cli/query/basic-queries#combining-selections), and [traversals](/docs/reference/cli/query/basic-queries#selecting-nodes-by-traversal). Query results can be [combined](/docs/reference/cli/query/basic-queries#combining-selections), grouped, and [aggregated](/docs/reference/cli/query/aggregation).
+
+The simplest example of query data aggregation in Resoto is the [`count` command](/docs/reference/cli/count), which enables you to count objects or the occurrences of a specific property. Let's say we are interested in the number of compute instances we maintain:
+
+```bash
 > query is(instance) | count
 total matched: 540
 total unmatched: 0
@@ -31,7 +34,7 @@ total unmatched: 0
 
 While `count` is easy to use for many cases, it is not powerful enough to do advanced aggregations. Let's assume we want to know the available CPU cores and memory of all instances in our clouds. We can achieve this by using the `aggregate` function. See the following example:
 
-```shell
+```bash
 > query is(instance) | aggregate 
   sum(instance_cores) as sum_of_cores,
   max(instance_cores) as max_cores, 
@@ -47,7 +50,7 @@ As you can see, we have 3441 cores in total, while there is no instance with mor
 
 While this aggregated data is already useful, we would like to break it down using grouping variables. We have already seen grouping variables in the `count` command: a group is defined by the value of a specified property. Let's assume we want to aggregate available memory broken down by instance status.
 
-```shell
+```bash
 > query is(instance) | aggregate 
    instance_status as status:
    sum(instance_memory) as memory
@@ -63,6 +66,7 @@ group:
  status: terminated
 memory: 2919.25
 ```
+
 This query will create multiple results, where each result has a group property. In this group object, you will find the values of the grouping variables. The grouping functions are all applied to the instances in this group. So we see compute instances running with a sum of 8TB, while the remaining 4TB are stopped or terminated.
 
 ## A tale about ancestors and descendants
@@ -74,17 +78,17 @@ The aggregation capabilities we have seen so far allow for grouping and function
 
 The diagram shows the relationship between instances. AWS resources are attached to a region, while GCP resources link to a zone. Every compute instance also has a related `instance_type` node as a predecessor in the graph. To access properties of ancestor nodes of a given kind relative to a node, we can use the `ancestors` notation:
 
-Example:
-```shell
+```bash
 > query is(instance) | aggregate 
   sum(/ancestors.instance_type.reported.ondemand_cost) as cost
 cost: 155.73
 ```
+
 This query filters all instances and then aggregates the on-demand cost of each element by walking the graph up to the instance type and selecting the `reported.ondemand_cost` property from this node. The path `/ancestors.instance_type.reported.ondemand_cost` can be translated into a walk over the node's ancestors until one of kind `instance_type` is found. The walk itself is not defined explicitly, but added automagically by Resoto. The remaining part of this path is relative to the node that is found, which is `reported.ondemand_cost` in this example. The result of this aggregation query is the on-demand cost of all instances that we maintain.
 
 It is possible to walk the graph inbound with `ancestors` and outbound via `descendants`. Let's use this technique to filter only the running instances and aggregate the data using account and region. In a query where you can write a property path, you can also use the `ancestors` syntax - aggregation groups and functions included:
 
-```shell
+```bash
 > query is(instance) and instance_status==running | aggregate 
   /ancestors.account.reported.name as account, 
   /ancestors.region.reported.name as region: 

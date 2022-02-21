@@ -4,7 +4,7 @@ tags: [search, graph, aws]
 image: ./img/banner-social.png
 ---
 
-# Resoto Search Syntax 101
+# Resoto Search 101
 
 Retrieving information about resources you have deployed in your [Amazon Web Services (AWS)](https://aws.amazon.com) infrastructure means tediously navigating the [AWS Management Console](https://aws.amazon.com/console) or using the [AWS Command Line Interface](https://aws.amazon.com/cli). This approach works well in a single account setup, but best practice is to set up a multi-account environment. And as the number of accounts grows, navigating your infrastructure and finding resources via the [Console](https://aws.amazon.com/console) or the [CLI](https://aws.amazon.com/cli/) becomes increasingly difficult.
 

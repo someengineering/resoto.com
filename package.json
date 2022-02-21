@@ -36,7 +36,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "stream-browserify": "^3.0.0",
-    "swagger-ui-react": "^4.5.1"
+    "swagger-ui-react": "^4.5.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.2.1",

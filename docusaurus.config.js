@@ -39,7 +39,7 @@ const config = {
           editUrl: 'https://github.com/someengineering/resoto.com/edit/main',
           showLastUpdateAuthor: false,
           showLastUpdateTime: true,
-          remarkPlugins: [a11yEmoji],
+          remarkPlugins: [a11yEmoji, require('mdx-mermaid')],
         },
         blog: {
           blogTitle: 'Blog',

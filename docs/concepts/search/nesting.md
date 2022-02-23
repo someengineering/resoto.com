@@ -1,9 +1,9 @@
 ---
 sidebar_position: 4
-sidebar_label: Merge nodes
+sidebar_label: Nesting
 ---
 
-# Merge Nodes via nested search
+# Search Nesting
 
 While it is possible to query and retrieve a filtered part of the graph, it is sometimes helpful to retrieve structural graph data as part of the node.
 
@@ -11,7 +11,7 @@ This approach merges multiple nodes in a graph into one node. This combined node
 
 ![Example Merge Diagram](./img/merge_nodes.png)
 
-The nested searches is executed for every node in the result. The result of the nested search is then merged with the original node data.
+The nested search is executed for every node in the result. The result of the nested search is then merged with the original node data.
 
 :::tip Example
 
@@ -40,8 +40,8 @@ The complete information about the account is then available as part of the volu
 
 ![Example Merge Diagram](./img/merge_nodes_1.png)
 
-*Note*: If you interact with the CLI, you will notice, that the account (and cloud, region and zone) is displayed
-automatically for every resource. The data is available in the `/ancestors` node section. 
+You will notice that the account, cloud, region, and zone are displayed for every resource. This data is available in the `/ancestors` node section.
+
 :::
 
 A nested search is a complete, standalone query and can use the features of any other query.
@@ -54,9 +54,8 @@ If the expected result of the nested search is a list, than the merge name has t
 
 :::tip Example
 
-The following query will traverse inbound on every element and collect all predecessors under the name `predecessors`).
-Please note the square brackets in the name `predecessors[]` - which will tell the search engine to return all predecessors, not only the first one.
-As a result the node is returned with a new property, which contains the list of all predecessors.
+The following query will traverse inbound on every element and collect all predecessors under the name `predecessors`). Please note the square brackets in the name `predecessors[]` - which will tell the search engine to return all predecessors, not only the first one. As a result the node is returned with a new property, which contains the list of all predecessors.
+
 ```bash
 > query is(volume) { predecessors[]: <-- all } limit 1 | dump
 // highlight-start
@@ -79,8 +78,8 @@ It is also possible to define multiple merge queries in one query statement.
 
 :::tip Example
 
-As a result every node that is returned has two additional properties: `account` holds the complete data of the account node,
-as well `region`, which contains the related region node.
+As a result every node that is returned has two additional properties: `account` holds the complete data of the account node, as well `region`, which contains the related region node.
+
 ```bash
 > query is(volume) { account: <-[0:]- is(account), region: <-[0:]- is(region) } limit 1 | dump
 // highlight-start
@@ -100,10 +99,7 @@ region:
 
 ![Example Merge Diagram](./img/merge_nodes.png)
 
-
-*Note*: If you interact with the CLI, you will notice, that the account and region (and cloud and zone) is displayed
-automatically for every resource. The data is available in the `/ancestors` node section.
-:::
+You will notice that the account, cloud, region, and zone are displayed for every resource. The data is available in the `/ancestors` node section. :::
 
 A nested search can even be defined using nested searches:
 
@@ -117,60 +113,59 @@ Be aware that a nested search is executed for every node of the original query a
 
 :::
 
-## ancestors and descendants
+## Ancestors and Descendants
 
-Nested search criteria can be defined as complex as necessary.
-We identified a rather simple case that is used very often: walk the hierarchy until you find a node of specific kind and merge it with the current node.
-Prominent example: cloud, account, region and zone of every resource is modelled as parent node using the default edge type.
-In order to retrieve the related information, you would need a nested merge query.
+A rather common use case is to walk the graph until you find a node of specific `kind`, and merge it with the current node.
 
-To simplify such common case, Resoto provides the `ancestors` and `descendants` section as part of every resource.
-Assume we want to filter resources of a specific account by its identifier, we can simply add a filter expression like this: 
+For example, cloud, account, region and zone of every resource is modeled as parent node using the default edge type. In order to retrieve the related information, you would need to perform a nested search.
+
+Resoto provides the `ancestors` and `descendants` section as part of every resource to make this a little easier.
+
+If we want to filter resources in a specific account by their identifiers, we can simply add a filter expression:
 
 ```bash
 > query is(volume) and /ancestors/account/reported/id==dev limit 1
 ```
 
-Let us clarify how this filter criteria needs to be interpreted:
-- it starts with a `/`. Remember that Resoto interprets property path by default relative to the `reported` section.
-  Since we want to access a property on the object root level, we need to prefix the path with a `/`.
-- `ancestors` this part of the path defines the direction to traverse: `ancestors` will traverse inbound to all 
-  ancestors of the current node, while `descendants` would traverse outbound to all descendants of the current node.
-- `account` defines the kind of the node to look for. It is possible to define any other kind here: `account` is just an example. 
-   Please note: the related node is purely selected by kind and no other criteria.
-- `reported.id` defines the property path in the target node (here the account node). The path in this notation is always absolute. 
-  This is the reason we have to write `reported.id` explicitly. 
+Let's break down the filter expression:
 
-It is possible to access every property of every parent or child resource that way. You can use this notation
-everywhere you can define a property path: as filter, aggregation, with clause and in subsequent commands.
-Resoto is clever enough to create nested merge queries on demand, when a property is defined that way.
+- It starts with a `/`. Resoto interprets property paths relative to the `reported` section by default. Since we want to access a property on the object root level, we need to prefix the path with a `/`.
 
-Just for reference: the nested merge query that is added on demand looks like this:
+- `ancestors` defines the direction in which to traverse; `ancestors` traverses inbound, while `descendants` would traverse outbound.
+
+- `account` defines the kind of the node to look for. It is possible to define any `kind` here; `account` is just an example.
+
+  :::note
+
+  The related node is selected by kind and not based on any other other criteria.
+
+  :::
+
+- `reported.id` defines the property path in the target node (in this case, the account node). The path in this notation is always absolute.
+
+It is possible to access every property of every parent or child resource in this way. You can use this notation anywhere a property path is specified: in [filters](./filters.md), [aggregations](./aggregation.md), [`with` clauses](./with-clause.md), and [CLI commands](../../reference/cli/README.md). Resoto is clever enough to create nested searches on demand when it encocunters this notation.
+
+This is the nested search that is automatically created for the above example:
+
 ```bash
 > query is(volume) {/ancestors.account: <-[1:]- is(account)} /ancestors.account.reported.id==dev
 ```
 
-### cloud, account, region, zone
+### Cloud, Account, Region, and Zone
 
-Nested merge queries are powerful, and the shorthand notation using `/ancestors` or `/descendants` allows accessing
-properties of any kind in the hierarchy easily.
+Nested merge queries are powerful, and the shorthand notation using `/ancestors` or `/descendants` allows accessing properties of any kind in the hierarchy easily.
 
-To simplify life even further, Resoto already provides information as part of every resource node without any additional effort.
+Resoto provides the following information as part of every resource node.
+
 - `/ancestors/cloud` the cloud provider with reported `id` and `name`
 - `/ancestors/account` the related account of the resource with reported `id` and `name`
 - `/ancestors/region` the related region (if applicable) with reported `id` and `name`
 - `/ancestors/zone` the related zone (if applicable) with reported `id` and `name`
 
-We consider this data as highly relevant to provide it always, no matter which query has been performed.
-The output on the CLI by default uses `list`, which always prints above data, if available.
+The [command-line interface](../../reference/cli/README.md) uses `list` for outputs by default, which always prints the above data if available.
 
-Please note: the above data is resolved during import time and duplicated to every node. 
-There is zero performance penalty using this data as filter, in aggregations or output.  
+:::note
 
+The above data is resolved during import time and duplicated to every node. There is zero performance penalty using this data as filter in aggregations or output.
 
-
-
-
-
-
-
+:::

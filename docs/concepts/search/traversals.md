@@ -83,11 +83,15 @@ The following query answers the question, "Which instance profile is used for ec
 
 `-[start:]->` traverses the graph outbound starting from a user defined depth to the leafs of the graph. The graph will be traversed from the current node according to this specification. All matching nodes will be returned. The same applies for inbound traversals with `<-[start:]-`.
 
-.. admonition:: Example
+:::tip Example
 
-`query is(aws_account) and name==sunshine -[0:]->`
+```bash
+> query is(aws_account) and name==sunshine -[0:]->
+```
 
 This query will select the aws account with name `sunshine` and then select all nodes outbound to this node. This will select everything Resoto knows about nodes in this account.
+
+:::
 
 ### Bi-Directional
 
@@ -101,50 +105,66 @@ This query will select the aws account with name `sunshine` and then select all 
 
 :::
 
-## Edge Type
+## By Edge Type
 
-Every edge has a type which defines the relationship between two nodes. 
-Resoto currently supports two types of edges:
+Every edge has a type which defines the relationship between two nodes.
 
-- default edge type. This edge is used assumed automatically if no specific edge type is defined or requested.
-  It usually means the "logical" dependency between 2 resources.
-  ```mermaid
-  graph LR;
-    instance_profile --default--> instance;
-    instance --default--> volume;
-    instance --default--> network_interface;
-  ```
-  A volume or network interface might be attached to a volume. The dependency between the 2 is expressed as default edge.
-  Every resource in Resoto is connected via an edge of type default.
-- delete edge type: If a resource has dependencies of type delete, then this resource can not be deleted right away.
-  All transitive dependencies need to be deleted first, while the order is also defined in the graph.
-  You can see the blast radius of a delete operation by following all transitive dependencies.
-  ```mermaid
-  graph LR;
-    volume --delete--> instance
-    network_interface --delete--> instance ;
-  ```
-  
-The types of edge can be specified via the graph traversal: `-<edge_type>[<start>:<until>]->`.
-If more than one type should be used for the traversal, the types need to be separated by comma.
+The types of edge can be specified via the graph traversal: `-<edge_type>[<start>:<until>]->`. If more than one type should be used for the traversal, the types need to be separated by comma.
 
-Here are examples of traversals:
-- `is(instance) -default-> is(volume)` selects all instances, walks the default edge outbound and filters all volumes. The result will be volumes that are attached to an instance.
-- `is(volume) and name==foo -delete[1:]->` blast radius of resources that are affected when volume foo would be deleted. 
-- `is(volume) and name==foo -default,delete->` find all volumes, traverse one step using default or edge dependency and return all resources that are found.
+Resoto currently supports two types of edges.
 
-There is one special syntax if you want to traverse the graph in both directions, but different edge types for every direction.
-```bash
+### Default Edges
+
+Default edges are assumed if no specific edge type is defined or requested. This usually means the "logical" dependency between two resources.
+
+```mermaid
+graph LR;
+  instance_profile --default--> instance;
+  instance --default--> volume;
+  instance --default--> network_interface;
+```
+
+A volume or network interface might be attached to a volume. The dependency between the 2 is expressed as default edge. Every resource in Resoto is connected via an edge of type default.
+
+### Delete Edges
+
+If a resource has dependencies of type `delete`, then this resource can not be deleted right away. All transitive dependencies need to be deleted first, while the order is also defined in the graph. You can see the blast radius of a delete operation by following all transitive dependencies.
+
+```mermaid
+graph LR;
+  volume --delete--> instance
+  network_interface --delete--> instance ;
+```
+
+:::tip Examples
+
+```bash title="Selects all instances, walk the default edge outbound, and filter on volumes; returns volumes that are attached to an instance"
+is(instance) -default-> is(volume)
+```
+
+```bash title="Blast radius of resources that are affected when volume foo would be deleted"
+is(volume) and name==foo -delete[1:]->
+```
+
+```bash title="Select all volumes and traverse one step using default/delete dependency; returns all resources that are found"
+is(volume) and name==foo -default,delete->
+```
+
+:::
+
+There is special syntax if you want to traverse the graph in both directions using different edge types for every direction:
+
+```bash title="Pick one volume, then traverse delete dependencies both inbound and outbound"
 > query is(volume) limit 1 <-delete[1:1]->
-> query is(volume) limit 1 <-delete[1:1]default,delete->
-``` 
-The first query will pick one volume and then traverse the `delete` dependency inbound and outbound, while the 
-second query walks inbound using the `delete` dependency and outbound using `delete` and `default` dependency.
+```
 
+```bash title="Pick one volume, then traverse inbound using delete dependencies and outbound using both delete and default dependencies"
+> query is(volume) limit 1 <-delete[1:1]default,delete->
+```
 
 ## Abbreviations
 
-There are abbreviations for the most common traversal selectors.
+There are abbreviations for commonly used traversal selectors:
 
 | Abbreviated Selector | Unabbreviated Selector |
 | -------------------- | ---------------------- |

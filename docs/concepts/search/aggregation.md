@@ -6,83 +6,143 @@ sidebar_label: Aggregation
 # Search Aggregation
 
 There are several situations where specific data is not too relevant but needs lifting to a higher level. That is where aggregation comes into play.
+Aggregation allows grouping entities by one or more properties and then do math operations on that group.
 
-Aggregation allows to group entities by one or more properties and then do math operations on that group.
-
-Let's look at an example to understand the concept better.
-
-For the sake of this example, consider this query:
-
+Let's look at an example to understand the concept better:
 ```bash
-> query is(instance) and age > 3y
+> query is(instance) and age > 3y | count
+
+total matched: 21
+total unmatched: 0
 ```
+This will select and count all compute instances in my cloud, that are older than 3 years.
+`count` actually already is a special purpose aggregation, that allows counting objects or property values.
 
-This will select all compute instances in my cloud, that are older than 3 years.
+## Aggregation Functions
 
-If we only want to know the number of instances, that matches that criteria, we could write this:
+Aggregations support a list of functions. 
+The value passed to this function is either a static number or the property path to lookup the number in every matching document.
+- `sum`
+- `min`
+- `max`
+- `avg`
 
-```bash
-> query is(instance) and age > 3y | aggregate sum(1) as count
-// highlight-next-line
-count: 20
-```
-
-… which would return the total number of all compute instances that are older than 3 years.
+Example: `min(memory)`, `sum(1) as count`, `avg(instance_cores) as average_cores`.
 
 The [`aggregate` command](../../reference/cli/aggregate.md) tells Resoto to aggregate the query results based on the defined criteria. Each result of the query is then passed to the defined aggregation function(s).
+Above CLI command using count could also be written with `aggregate` like this:
 
-:::tip
+```js
+> query is(instance) and age > 3y | aggregate sum(1) as count
 
-This criteria in this case is `sum(1) as count`, which uses the static value `1` for every element passed and then sums it up.
+count: 21
+```
+Every element is counted as `1`, so `sum(1)` is basically the number of elements passed.
+It is possible to define multiple aggregation function on the same data source.
+Let us get the all instances and the sum of all cores:
 
-Since every element counts as `1`; `sum(1)` is basically the number of elements passed.
+```js
+> query is(instance) and age > 3y | aggregate 
+  sum(1) as count, 
+  sum(instance_cores) as cores
 
-:::
-
-If we would like to know the number of CPU cores, we could rewrite the aggregation like this:
-
-```bash
-> query is(instance) and age > 3y | aggregate sum(1) as count, sum(instance_cores) as cores
-// highlight-start
-count: 20
-cores: 62
-// highlight-end
+count: 21
+cores: 66
 ```
 
 In addition to the instance count, we also get the total number of instance cores in the system.
 
-All of the above aggregations do not use any grouping information. Grouping can be a powerful feature, since it allows to make the defined computation on separate groups.
+Let us also query for avg, min and max of available core:
 
-Let us now assume we want to know the number of instances and cores for compute instances, grouped by instance status:
-
-```bash
-> query is(instance) and age > 3y | aggregate instance_status as status: sum(1) as count, sum(instance_cores) as cores)
-// highlight-start
-group:
-  status: stopped
-count: 15
-cores: 51
----
-group:
-  status: terminated
-count: 5
-cores: 11
-// highlight-end
+```js
+> query is(instance) and age > 3y | aggregate 
+  sum(1) as count, 
+  sum(instance_cores) as cores,
+  min(instance_cores) as min_cores,
+  max(instance_cores) as max_cores,
+  avg(instance_cores) as avg_cores,
+  
+count: 21
+cores: 66
+min_cores: 1
+max_cores: 4
+avg_cores: 3.14
 ```
 
-The query is the same and the aggregation functions are the same.
+## Aggregation Groups
 
-The only addition here is the aggregation group `instance_status as status`. The result of this addition is that the computation is performed on every matching subgroup.
+While aggregating all the things can be useful. The real power of aggregations come into play,
+when we can define groups and apply the functions on those groups.
 
-Each group is identified by the value of the grouping variable. Every compute instance is put into one subgroup by its reported `instance_status` property.
+A group is defined using a property path. The value of this path is looked up in every document.
+All documents with the same value form a group.
+Example: Let us group the instances by instance status and do a simple count:
 
-We can see that there are 15 stopped and 5 terminated instances, with the related number of cores. It is totally possible to group by more than one variable.
+```js
+> query is(instance) and age > 3y | aggregate instance_status: sum(1) as count
 
-Let's also use the instance_type as an additional group variable:
+group:
+  instance_status: running
+count: 1
+---
+group:
+  instance_status: stopped
+count: 15
+---
+group:
+  instance_status: terminated
+count: 5
+```
+The grouping variable can be named via an `as` clause. If omitted, the last part of the path is used as name.
+We could of course add additional aggregation functions, that get applied on each group:
+```js
+> query is(instance) and age > 3y | aggregate instance_status as status:
+  sum(1) as count,
+  sum(instance_cores) as cores,
+  min(instance_cores) as min_cores,
+  max(instance_cores) as max_cores,
+  avg(instance_cores) as avg_cores
 
-```bash
-> query is(instance) and age > 3y | aggregate instance_status as status, instance_type as type: sum(1) as count, sum(instance_cores) as cores)
-// highlight-start
+group:
+  status: running
+count: 1
+cores: 4
+min_cores: 4
+max_cores: 4
+avg_cores: 4
+---
+  group:
+status: stopped
+count: 15
+cores: 51
+min_cores: 1
+max_cores: 4
+avg_cores: 3.4
+---
+  group:
+status: terminated
+count: 5
+cores: 11
+min_cores: 1
+max_cores: 4
+avg_cores: 2.2
+```
+
+And we can also define groups using multiple grouping variables.
+In this example we will use `instance_status` and `instance_type` to form the groups.
+
+```js
+> query is(instance) and age > 3y | aggregate 
+  instance_status as status, instance_type as type:
+  sum(1) as count,
+  sum(instance_cores) as cores
+ 
+group:
+  status: running
+  type: n1-standard-4
+count: 1
+cores: 4
+---
 group:
   status: stopped
   type: m5.xlarge
@@ -97,22 +157,10 @@ cores: 3
 ---
 group:
   status: terminated
-  type: n1-standard-1
-count: 1
-cores: 1
----
-group:
-  status: terminated
   type: n1-standard-2
-count: 3
-cores: 6
----
-group:
-  status: terminated
-  type: n1-standard-4
-count: 1
-cores: 4
-// highlight-end
+count: 5
+cores: 11
 ```
 
-Please refer to the documentation of the [`aggregate` command](../../reference/cli/aggregate.md) for more details and examples.
+
+

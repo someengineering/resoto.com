@@ -6,14 +6,24 @@ title: with Search Clause
 
 # `with` Search Clause
 
-There are certain scenarios where nodes that have defined relationships or positions in the graph need to be selected without selecting their related nodes.
+The `with` clause can be useful, in case you want to select elements and ensure a certain "position" in the graph,
+meaning that you want to make sure there are specific edges existent to specific other nodes. 
+The `with` clause enables us to ensure defined relationships or positions in the graph without selecting their related nodes.
 
 :::tip Example
 
+```mermaid
+graph LR;
+  alb(aws_alb) --> tg(aws_alb_target_group)
+  tg --> instance(aws_ec2_instance)
+```
+
+The graph diagram shows the relationship between the nodes. 
 Let's say we want to select all ALB target groups where there is no EC2 instance using the ALB.
 
+
 ```bash
-> query is(aws_alb_target_group) with (empty, <-- is(aws_ec2_instance))
+> query is(aws_alb_target_group) with (empty, --> is(aws_ec2_instance))
 ```
 
 1. The `is(aws_alb_target_group)` part selects all aws_alb_target_groups.
@@ -26,31 +36,26 @@ Let's say we want to select all ALB target groups where there is no EC2 instance
 
 :::
 
+## `with` criteria
+
 The `with` clause allows for the three forms below.
 
-## No Match
+- Empty Match
+  ```bash
+  <filter> with (empty, <navigation> [filter])
+  ```
+  The first filter will select elements. With every element a graph traversal is done following the navigation and filter in the with clause. No result is allowed in order to select the node.
 
-```bash
-<filter> with (empty, <navigation> [filter])
-```
-
-The first filter will select elements. With every element a graph traversal is done following the navigation and filter in the with clause. No result is allowed in order to select the node.
-
-## Match Any
-
-```bash
-<filter> with (any, <navigation> [filter])
-```
-
-Same as the `empty` case with the difference: the `with` clause needs to select at least one matching node in order to select the filtered node.
-
-## Match Exact Count
-
-```bash
-<filter> with (count==3, <navigation> [filter])
-```
-
-Same as the `empty` case with the difference: the with clause needs to select the specified amount of matching nodes in order to select the filtered node.
+- Match at least one element
+  ```bash
+  <filter> with (any, <navigation> [filter])
+  ```
+  The `with` clause needs to select at least one matching node in order to select the filtered node.
+- Match Exact Count
+  ```bash
+  <filter> with (count==3, <navigation> [filter])
+  ```
+  The with clause needs to select the specified amount of matching nodes in order to select the filtered node.
 
 :::note
 

@@ -1,9 +1,9 @@
 ---
 sidebar_position: 4
-sidebar_label: Nesting
+sidebar_label: Merging Nodes
 ---
 
-# Search Nesting
+# Merging Nodes in Search
 
 While it is possible to query and retrieve a filtered part of the graph, it is sometimes helpful to retrieve structural graph data as part of the node.
 

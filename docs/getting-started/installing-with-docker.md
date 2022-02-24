@@ -118,7 +118,7 @@ volumes:
 
 services:
   graphdb:
-    image: arangodb:3.8.5
+    image: arangodb:3.8.6
     container_name: graphdb
     platform: linux/amd64
     environment:

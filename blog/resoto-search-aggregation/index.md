@@ -7,7 +7,7 @@ tags: [search, aws, gcp]
 
 :::note
 
-This blog post is the second in a series about Resoto's powerful search capability. The previous post, [Resoto Search 101](/blog/2022/02/04/resoto-search-syntax-101), provides an introduction and overview of search syntax and options. 
+This blog post is the second in a series about Resoto's powerful search capability. The previous post, [Resoto Search 101](/blog/2022/02/04/resoto-search-101), provides an introduction and overview of search syntax and options.
 
 :::
 

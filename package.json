@@ -22,9 +22,9 @@
     "write-translations": "docusaurus write-translations"
   },
   "dependencies": {
-    "@docusaurus/core": "2.0.0-beta.15",
-    "@docusaurus/plugin-sitemap": "^2.0.0-beta.15",
-    "@docusaurus/preset-classic": "2.0.0-beta.15",
+    "@docusaurus/core": "2.0.0-beta.16",
+    "@docusaurus/plugin-sitemap": "^2.0.0-beta.16",
+    "@docusaurus/preset-classic": "2.0.0-beta.16",
     "@fec/remark-a11y-emoji": "^3.1.0",
     "@mdx-js/react": "^1.6.22",
     "@octokit/core": "^3.5.1",
@@ -43,7 +43,7 @@
   "devDependencies": {
     "@commitlint/cli": "^16.2.1",
     "@commitlint/config-conventional": "^16.2.1",
-    "@docusaurus/module-type-aliases": "^2.0.0-beta.15",
+    "@docusaurus/module-type-aliases": "^2.0.0-beta.16",
     "@tsconfig/docusaurus": "^1.0.4",
     "@typescript-eslint/eslint-plugin": "^5.12.1",
     "@typescript-eslint/parser": "^5.12.1",
@@ -53,7 +53,7 @@
     "eslint-plugin-formatjs": "^3.0.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react": "^7.29.1",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.4",
     "prettier": "^2.5.1",

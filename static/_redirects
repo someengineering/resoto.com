@@ -49,8 +49,9 @@ https://news.resoto.com/*                   https://resoto.com/news/:splat 301!
 /docs/reference/cli/query/subqueries        /docs/concepts/search/merging-nodes
 /docs/reference/cli/query/*                 /docs/concepts/search/:splat
 
-/api                                        /docs/reference/core-api
-/docs/reference/resotocore-api              /docs/reference/core-api
+/api                                        /docs/reference/api
+/docs/reference/core-api                    /docs/reference/api
+/docs/reference/resotocore-api              /docs/reference/api
 
 /docs/reference/resources/data-models       /docs/reference/data-models
 /docs/reference/resources/*                 /docs/reference/data-models/:splat

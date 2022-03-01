@@ -31,6 +31,14 @@ const config = {
   ],
   presets: [
     [
+      'redocusaurus',
+      {
+        theme: {
+          primaryColor: '#762dd7',
+        },
+      },
+    ],
+    [
       'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
@@ -84,27 +92,6 @@ const config = {
         remarkPlugins: [a11yEmoji],
       },
     ],
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    function WebpackPlugin(context, options) {
-      return {
-        name: 'plugin-configure-webpack',
-        configureWebpack() {
-          return {
-            resolve: {
-              fallback: {
-                stream: require.resolve('stream-browserify'),
-                buffer: require.resolve('buffer/'),
-              },
-            },
-            plugins: [
-              new webpack.ProvidePlugin({
-                Buffer: ['buffer', 'Buffer'],
-              }),
-            ],
-          };
-        },
-      };
-    },
   ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */

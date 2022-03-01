@@ -68,6 +68,12 @@ docker run \
 
 And just like that, you have Resoto running in Docker! A collect run will begin automatically. This first collect usually takes about 5 to 10 minutes, but the time is dependent on the size of your AWS account.
 
+:::note
+
+By default, Resoto collects [anonymous statistics](../reference/telemetry.md) about how the product is used. However, this telemetry can be [disabled](../reference/telemetry.md#disabling) by setting the `RESOTOCORE_ANALYTICS_OPT_OUT` environment variable.
+
+:::
+
 ### [Docker Compose](https://docs.docker.com/compose/reference) {#docker-compose-install}
 
 We publish an all-in-one Docker image (`somecr.io/someengineering/resoto`) in addition to Docker images for each individual Resoto [component](../concepts/components/README.md):
@@ -198,6 +204,12 @@ docker-compose up -d
 ```
 
 Docker Compose will start the container, and a collect run will begin automatically. This first collect usually takes about 5 to 10 minutes, but the time is dependent on the size of your AWS account.
+
+:::note
+
+By default, Resoto collects [anonymous statistics](../reference/telemetry.md) about how the product is used. However, this telemetry can be [disabled](../reference/telemetry.md#disabling) by setting the `RESOTOCORE_ANALYTICS_OPT_OUT` environment variable.
+
+:::
 
 ## Launching the Resoto Command-Line Interface
 

@@ -15,7 +15,7 @@ There are currently two types of telemetry data collected.
 
 ### Usage Data
 
-Collected usage data includes non-sensitive information on how and what Resoto features are used. this data helps us to measure product adoption and understand how Resoto is used, and informs development of new features. This data does not contain any sensitive or personally identifiable data.
+Collected usage data includes non-sensitive information on how and what Resoto features are used. This data helps us to measure product adoption and understand how Resoto is used, and informs development of new features. This data does not contain any sensitive or personally identifiable data.
 
 The following are examples of metrics we currently monitor based on this usage data:
 

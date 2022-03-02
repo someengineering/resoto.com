@@ -1,5 +1,6 @@
 ---
-title: Installing with Docker
+pagination_prev: getting-started/README
+pagination_next: getting-started/performing-searches
 ---
 
 # Installing with Docker

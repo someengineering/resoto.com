@@ -1,3 +1,8 @@
+---
+pagination_prev: getting-started/README
+pagination_next: getting-started/performing-searches
+---
+
 # Installing with Kubernetes
 
 ## Prerequisites

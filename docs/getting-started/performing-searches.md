@@ -1,3 +1,7 @@
+---
+pagination_prev: getting-started/README
+---
+
 # Performing Searches
 
 Resoto's search syntax is quite powerful and has many features. Once Resoto has finished its first collect run, we suggest trying these example queries:
@@ -42,4 +46,4 @@ Resoto's search syntax is quite powerful and has many features. Once Resoto has 
 > query aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account, /ancestors.region.reported.name as region, instance_type as type: sum(/ancestors.instance_type.reported.ondemand_cost) as instances_hourly_cost_estimate): is(instance) and instance_status == running
 ```
 
-The above examples only highlight some of what is possible with Resoto's search syntax. For more in-depth explanations and additional examples, please refer to the [search syntax documentation](../concepts/search/README.md).
+The above examples only highlight some of what is possible with Resoto's search syntax. For more in-depth explanations and additional examples, please refer to the [search documentation](../concepts/search/README.md).

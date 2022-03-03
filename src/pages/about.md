@@ -6,7 +6,7 @@ title: About
 
 **Resoto** indexes resources, captures dependencies, and maps out your infrastructure in an understandable [graph](/docs/concepts/graph). The graph contains metrics for each [resource](/docs/reference/data-models).
 
-Developers and SREs can search the graph with a [query language](/docs/reference/cli/query), and create alerting and cleanup [workflows](/docs/concepts/automation/workflow).
+Developers and SREs can search the graph with a [search syntax](/docs/reference/cli/search), and create alerting and cleanup [workflows](/docs/concepts/automation/workflow).
 
 Metrics can be aggregated and exported to a time-series database such as [Prometheus](https://prometheus.io).
 
@@ -64,7 +64,7 @@ For SREs in charge of maintaining cloud infrastructure, it's a drag. They are ty
 
 Resoto automatically cleans up drift that shouldn't be there and closes the gap.
 
-Resoto indexes resources, captures dependencies, and maps out your infrastructure in a graph so that it is understandable for a human. The graph contains metrics for each resource. Developers and SREs can search the graph with a query language, and create alerting and cleanup workflows.
+Resoto indexes resources, captures dependencies, and maps out your infrastructure in a graph so that it is understandable for a human. The graph contains metrics for each resource. Developers and SREs can search the graph with a search syntax, and create alerting and cleanup workflows.
 
 #### 1-Year Vision
 
@@ -78,7 +78,7 @@ Resoto is an expert tool for engineers that runs on top of the [Resoto Core](/do
 
 - We keep their cloud infrastructure _permanently_ clean.
 
-- The [Resoto query language](/docs/reference/cli/query) offers an abstraction layer for engineers to query and collect metrics from their infrastructure. Think `> match is(instance) and tags.owner ~ jane`, for example, to find all compute instances across [AWS](https://aws.amazon.com) and [GCP](https://console.cloud.google.com) owned by Jane.
+- The [Resoto search syntax](/docs/concepts/search) offers an abstraction layer for engineers to query and collect metrics from their infrastructure. Think `> match is(instance) and tags.owner ~ jane`, for example, to find all compute instances across [AWS](https://aws.amazon.com) and [GCP](https://console.cloud.google.com) owned by Jane.
 
 - We collect bare-metal information. Hardware specifications differ, even for the same type of instance. Pre-deployment we give developers estimates about the fastest and/or cheapest hardware per region, and once they have the instance let them know exactly what they got.
 
@@ -108,7 +108,7 @@ We've expanded beyond the cloud, and also collect metadata from other infrastruc
 
 Say the valves of a fertilizer plant have embedded sensors. The sensors only have an analog serial interface and are not connected to the Internet. If the plant operator retrofits each valve with a [Raspberry Pi](https://raspberrypi.org), then Resoto collects data from both the Pis and the sensors, and integrates them into the overall company infrastructure graph. The plant operator builds the Resoto plug-in for the valves and defines the valve-specific primitives / attributes (e.g. `pressure`, `throughput`, `temperature`) to collect, in addition to any applicable common attributes (e.g. `atime`, `ctime`). Resoto provides an [MQTT](https://mqtt.org) bridge that integrates with existing IoT infrastructure and allows attribute updates via an industry standard protocol.
 
-Because of this abstraction via the primitives and our declarative query language—the Pis and valves are each just one more infrastructure component that users can discover, query and build workflows for. As the valves get replaced over time, their spec and even their brand may change. All the plant operator needs to do is write a new plug-in for a new spec or brand, and collect the same primitives. That means existing queries, workflows and automation for the entire plant will keep working.
+Because of this abstraction via the primitives and our declarative search syntax—the Pis and valves are each just one more infrastructure component that users can discover, query and build workflows for. As the valves get replaced over time, their spec and even their brand may change. All the plant operator needs to do is write a new plug-in for a new spec or brand, and collect the same primitives. That means existing queries, workflows and automation for the entire plant will keep working.
 
 We also collect metadata from popular SaaS and software tools, e.g. for identity ([Okta](https://okta.com), [OneLogin](https://onelogin.com)), source code management ([GitLab](https://gitlab.com), [GitHub](https://github.com)) or enterprise resource planning ([NetSuite](https://netsuite.com), [SAP](https://www.sap.com/products/enterprise-management-erp.html)). These tools are now sources, not just destinations or integrations where we export to.
 
@@ -170,10 +170,10 @@ With our open source and plug-in approach, we can support any and all of these n
 
 But the basic properties will stay the same—there's going to be some resource connected to some network, and the resources will have properties and attributes. As long as these primitives hold true, we can collect them and be useful. We may start with a limited set of primitives for each new infrastructure and its resources, but over time our coverage and depth will always go up.
 
-- We will replace point solutions to understand and map out any of these new types of infrastructures. There will always be a tension between a monolithic management layer that ships with a product, vs. a platform like ours.
+- We will replace point solutions to understand and map out any of these new types of infrastructures. There will always be tension between a monolithic management layer that ships with a product versus a platform like ours.
 
-- Our plug-in, no-code and query language approach lowers the barrier to work with any type of infrastructure. We think customers will value that simplicity and adoption speed.
+- Our plug-in, no-code, and search syntax approach lowers the barrier to work with any type of infrastructure. We think customers will value that simplicity and adoption speed.
 
-- Because we cover all these platforms, with a large reach, we're becoming a de-facto standard that other companies adopt when they ship their products and infrastructure elements. We attract more developers and creators that want to build custom apps.
+- Because we cover all these platforms with a large reach, we're becoming the de-facto standard that other companies adopt when they ship their products and infrastructure elements. We attract more developers and creators that want to build custom apps.
 
-- We've launched a Marketplace where our community of developers and ISVs can develop, distribute and monetize their services and infrastructure workflow apps.
+- We've launched a marketplace where our community of developers and ISVs can develop, distribute and monetize their services and infrastructure workflow applications.

@@ -19,13 +19,13 @@ jq <filter>
 ## Examples
 
 ```bash title="Query all AWS EC2 instances and select the reported.id"
-> query is(aws_ec2_instance) | jq '.reported.id'
+> search is(aws_ec2_instance) | jq '.reported.id'
 // highlight-next-line
 ["id-1", "id-2"]
 ```
 
 ```bash title="Query all AWS EC2 instances and select the reported.id as id and the revision as rev"
-> query is(aws_ec2_instance) | jq '. | {id: .reported.id, rev:.revision}'
+> search is(aws_ec2_instance) | jq '. | {id: .reported.id, rev:.revision}'
 // highlight-next-line
 [{"id": "id-1", "rev": "1"}, {"id": "id-2", "rev": "5"}]
 ```

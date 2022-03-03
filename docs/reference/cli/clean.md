@@ -21,7 +21,7 @@ clean <reason>
 ## Examples
 
 ```bash title="Mark query results for cleaning"
-> query isinstance("ec2") and atime<"-2d" | clean
+> search isinstance("ec2") and atime<"-2d" | clean
 // highlight-next-line
 [ { "id": "abc" "desired": { "clean": true }, "reported": { .. } }, . . { "id": "xyz" "desired": { "clean": true }, "reported": { .. } }, ]
 ```
@@ -39,5 +39,5 @@ clean <reason>
 ```
 
 ```bash title="Mark all unused EBS volume older than 30 days that had no I/O during the past 7 days for cleaning"
-> query is(volume) and ctime < -30d and atime < -7d and mtime < -7d and volume_status = available | clean "older than 30d with more then 7d of not beeing used"
+> search is(volume) and ctime < -30d and atime < -7d and mtime < -7d and volume_status = available | clean "older than 30d with more then 7d of not beeing used"
 ```

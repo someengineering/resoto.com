@@ -5,7 +5,7 @@ sidebar_label: Merging Nodes
 
 # Merging Nodes in Search
 
-While it is possible to query and retrieve a filtered part of the graph, it is sometimes helpful to retrieve structural graph data as part of the node.
+While it is possible to search and retrieve a filtered part of the graph, it is sometimes helpful to retrieve structural graph data as part of the node.
 
 This approach merges multiple nodes in a graph into one node. This combined node can simplify processing the node.
 
@@ -19,10 +19,10 @@ Most cloud resources are maintained in an account. Accounts are modeled as [node
 
 Resources reference the region node, while the region node references the account node. In order to retrieve the account, the graph has to be traversed inbound from the resource node until the account node is found. While this is possible, it might be more convenient to get the account information as part of the node!
 
-In this example, we query nodes of kind `volume`. For every element that is returned, a nested search is executed, which will traverse the graph inbound until it finds a node of kind `account`.
+In this example, we search for nodes of kind `volume`. For every element that is returned, a nested search is executed, which will traverse the graph inbound until it finds a node of kind `account`.
 
 ```bash
-> query is(volume) { account: <-[0:]- is(account) } limit 1 | dump
+> search is(volume) { account: <-[0:]- is(account) } limit 1 | dump
 // highlight-start
 reported:
     .
@@ -44,7 +44,7 @@ You will notice that the account, cloud, region, and zone are displayed for ever
 
 :::
 
-A nested search is a complete, standalone query and can use the features of any other query.
+A nested search is a complete, standalone query and can use the features of any other search.
 
 The result of a nested search is merged with the original node under the given merge name.
 
@@ -54,10 +54,10 @@ If the expected result of the nested search is a list, than the merge name has t
 
 :::tip Example
 
-The following query will traverse inbound on every element and collect all predecessors under the name `predecessors`). Please note the square brackets in the name `predecessors[]` - which will tell the search engine to return all predecessors, not only the first one. As a result the node is returned with a new property, which contains the list of all predecessors.
+The following search will traverse inbound on every element and collect all predecessors under the name `predecessors`). Please note the square brackets in the name `predecessors[]` - which will tell the search engine to return all predecessors, not only the first one. As a result the node is returned with a new property, which contains the list of all predecessors.
 
 ```bash
-> query is(volume) { predecessors[]: <-- all } limit 1 | dump
+> search is(volume) { predecessors[]: <-- all } limit 1 | dump
 // highlight-start
 reported:
     .
@@ -74,14 +74,14 @@ predecessors:
 
 :::
 
-It is also possible to define multiple merge queries in one query statement.
+It is also possible to define multiple merge queries in one `search` statement.
 
 :::tip Example
 
 As a result every node that is returned has two additional properties: `account` holds the complete data of the account node, as well `region`, which contains the related region node.
 
 ```bash
-> query is(volume) { account: <-[0:]- is(account), region: <-[0:]- is(region) } limit 1 | dump
+> search is(volume) { account: <-[0:]- is(account), region: <-[0:]- is(region) } limit 1 | dump
 // highlight-start
 reported:
     .
@@ -104,12 +104,12 @@ You will notice that the account, cloud, region, and zone are displayed for ever
 A nested search can even be defined using nested searches:
 
 ```bash
-> query = <pre_filter> { <merge_name_1>: <query>, .., <merge_name_n>: <query> } <post_filter>
+> search = <pre_filter> { <merge_name_1>: <query>, .., <merge_name_n>: <query> } <post_filter>
 ```
 
 :::note
 
-Be aware that a nested search is executed for every node of the original query and might be expensive and time intensive to compute.
+Be aware that a nested search is executed for every node of the original search and might be expensive and time intensive to compute.
 
 :::
 
@@ -124,7 +124,7 @@ Resoto provides the `ancestors` and `descendants` section as part of every resou
 If we want to filter resources in a specific account by their identifiers, we can simply add a filter expression:
 
 ```bash
-> query is(volume) and /ancestors/account/reported/id==dev limit 1
+> search is(volume) and /ancestors/account/reported/id==dev limit 1
 ```
 
 Let's break down the filter expression:
@@ -148,7 +148,7 @@ It is possible to access every property of every parent or child resource in thi
 This is the nested search that is automatically created for the above example:
 
 ```bash
-> query is(volume) {/ancestors.account: <-[1:]- is(account)} /ancestors.account.reported.id==dev
+> search is(volume) {/ancestors.account: <-[1:]- is(account)} /ancestors.account.reported.id==dev
 ```
 
 ### Cloud, Account, Region, and Zone

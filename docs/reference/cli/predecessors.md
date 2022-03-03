@@ -25,15 +25,15 @@ predecessors [--with-origin] <edge_type>
 ## Examples
 
 ```bash title="Equivalent to query is(aws_region) <--"
-> query is(aws_region) | predecessors
+> search is(aws_region) | predecessors
 ```
 
 ```bash title="Equivalent to query is(aws_region) <-[0:1]-"
-> query is(aws_region) | predecessors --with-origin
+> search is(aws_region) | predecessors --with-origin
 ```
 
 ```bash
-> query is(volume) and volume_status=available | predecessors | query is(volume_type)
+> search is(volume) and volume_status=available | predecessors | query is(volume_type)
 // highlight-start
 kind=gcp_disk_type, name=pd-standard, age=2yr1mo, cloud=gcp, account=eng, region=us-central1, zone=us-central1-a
 kind=gcp_disk_type, name=pd-standard, age=2yr1mo, cloud=gcp, account=sre, region=us-central1, zone=us-central1-a

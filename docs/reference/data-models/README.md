@@ -149,25 +149,25 @@ Resoto also introduces some additional simple types like `datetime` or `date`. T
 Example: Let us assume a user want to query a resource by creation time. According to the model we would need to filter for the `ctime` property. Since Resoto knows the type of `ctime` (which is of kind datetime), it can do its best to interpret the value given by the user.
 
 ```bash
-> query ctime < "2018-09-28"
+> search ctime < "2018-09-28"
 ```
 
 `ctime` is of type datetime. datetime is stored in Resoto always as ISO formatted datetime string. To make this query effective, the term `"2018-09-28"` is coerced into a valid datetime. Depending on the server time the value would be evaluated to something like:
 
 ```bash
-> query ctime < "2021-09-28T22:00:00Z"
+> search ctime < "2021-09-28T22:00:00Z"
 ```
 
 This also allows the usage of relative times, when the type of the property is known as datetime. If we want to query resources, that have been created in the last 3 days, we could express this with a relative datetime.
 
 ```bash
-> query ctime > "-3d"
+> search ctime > "-3d"
 ```
 
 This translates the term `"-3d"` using the current server time into a valid datetime. On my machine this translates into:
 
 ```bash
-> query ctime > "2021-09-26T08:13:56Z"
+> search ctime > "2021-09-26T08:13:56Z"
 ```
 
 The special type `any` is only used in scenarios, when the type is really not known and could be anything. Coercing is not possible for such a type.

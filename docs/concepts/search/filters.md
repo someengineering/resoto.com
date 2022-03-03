@@ -7,7 +7,7 @@ sidebar_label: Filters
 
 ## Selecting Nodes by [Kind](../graph/node.md#kind)
 
-In order to select nodes by a specific type, the query language supports the `is(<kind>)` function. The term `is(instance)` would select the EC2 instance above, but also all other instances, e.g. Google Cloud instances, while the term `is(aws_ec2_instance)` would select only EC2 instances from AWS.
+In order to select nodes by a specific type, the search syntax supports the `is(<kind>)` function. The term `is(instance)` would select the EC2 instance above, but also all other instances, e.g. Google Cloud instances, while the term `is(aws_ec2_instance)` would select only EC2 instances from AWS.
 
 You can get a list of all available kinds via the `kind` CLI command.
 
@@ -157,23 +157,23 @@ It is possible to negate a simple predicate or more complex term with `not`.
 :::tip Examples
 
 ```bash title="Select nodes where reported.name is either sunrise or sunset"
-> query name in [sunset, sunrise]
+> search name in [sunset, sunrise]
 ```
 
 ```bash title="Select instance nodes where reported.name is sunrise"
-> query is(instance) and name==sunrise
+> search is(instance) and name==sunrise
 ```
 
 ```bash title="Select aws_ec2_instance nodes of specific type or more than 2 cores"
-> query is(aws_ec2_instance) and (instance_type=="m5a.large" or instance_cores>2)
+> search is(aws_ec2_instance) and (instance_type=="m5a.large" or instance_cores>2)
 ```
 
 ```bash title="Select instance nodes in an account which name includes the term "engineering"
-> query is(instance) and /ancestors.account.reported.name=~engineering
+> search is(instance) and /ancestors.account.reported.name=~engineering
 ```
 
 ```bash title="Select all instance nodes wich are not in the engineering account"
-> query is(instance) and not /ancestors.account.reported.name==engineering
+> search is(instance) and not /ancestors.account.reported.name==engineering
 ```
 
 :::

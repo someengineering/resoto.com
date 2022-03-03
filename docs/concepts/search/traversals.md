@@ -16,7 +16,7 @@ sidebar_label: Traversals
 :::tip Example
 
 ```bash title="Select AWS accounts and traverse the graph outbound"
-> query is(aws_account) -->
+> search is(aws_account) -->
 ```
 
 This query would return a list of all matching regions.
@@ -32,7 +32,7 @@ This query would return a list of all matching regions.
 :::tip Example
 
 ```bash title="Select AWS EC2 instances, traverse the graph inbound, and filter to only return the aws_regions"
-> query is(aws_ec2_instance) <-- is(aws_region)
+> search is(aws_ec2_instance) <-- is(aws_region)
 ```
 
 ![Inbound Traversal Example Query Diagram](./img/graph_query_inbound_example.png)
@@ -46,7 +46,7 @@ This query would return a list of all matching regions.
 :::tip Example
 
 ```bash title="Return all resources "under" an aws_region together with the matching aws_region"
-> query is(aws_region) -[0:1]->`
+> search is(aws_region) -[0:1]->`
 ```
 
 ![Example Query Diagram](./img/graph_query_01.png)
@@ -56,7 +56,7 @@ This query would return a list of all matching regions.
 :::tip Example
 
 ```bash title="Return all aws_regions with name global, together with all accounts"
-> query is(aws_region) and name==global <-[0:1]-
+> search is(aws_region) and name==global <-[0:1]-
 ```
 
 :::
@@ -74,7 +74,7 @@ This query would return a list of all matching regions.
 The following query answers the question, "Which instance profile is used for ec2 instances connected to an alb target group?"
 
 ```bash title="Select aws_alb_target_groups, traverse 2 levels inbound, and filter for aws_iam_instance_profiles"
-> query is(aws_alb_target_groups) <-[2:2]- is(aws_iam_instance_profile)
+> search is(aws_alb_target_groups) <-[2:2]- is(aws_iam_instance_profile)
 ```
 
 :::
@@ -86,7 +86,7 @@ The following query answers the question, "Which instance profile is used for ec
 :::tip Example
 
 ```bash
-> query is(aws_account) and name==sunshine -[0:]->
+> search is(aws_account) and name==sunshine -[0:]->
 ```
 
 This query will select the aws account with name `sunshine` and then select all nodes outbound to this node. This will select everything Resoto knows about nodes in this account.
@@ -100,7 +100,7 @@ This query will select the aws account with name `sunshine` and then select all 
 :::tip Example
 
 ```bash title="Select nodes with the name sunset connected on any depth to the AWS account"
-> query name="sunset" and is(aws_account) <-[0:]->
+> search name="sunset" and is(aws_account) <-[0:]->
 ```
 
 :::
@@ -155,11 +155,11 @@ is(volume) and name==foo -default,delete->
 There is special syntax if you want to traverse the graph in both directions using different edge types for every direction:
 
 ```bash title="Pick one volume, then traverse delete dependencies both inbound and outbound"
-> query is(volume) limit 1 <-delete[1:1]->
+> search is(volume) limit 1 <-delete[1:1]->
 ```
 
 ```bash title="Pick one volume, then traverse inbound using delete dependencies and outbound using both delete and default dependencies"
-> query is(volume) limit 1 <-delete[1:1]default,delete->
+> search is(volume) limit 1 <-delete[1:1]default,delete->
 ```
 
 ## Abbreviations
@@ -175,12 +175,12 @@ There are abbreviations for commonly used traversal selectors:
 
 :::tip Examples
 
-| Abbreviated                    | Unabbreviated                    |
-| ------------------------------ | -------------------------------- |
-| `query is(aws_account) -->`    | `query is(aws_account) -[1:1]->` |
-| `query is(aws_region) <-->`    | `query is(aws_region) <-[1:1]->` |
-| `<-[x]-`                       | `<-[x:x]-`                       |
-| `query is(aws_region) <-[3]->` | `query is(aws_region) <-[3:3]->` |
+| Abbreviated                     | Unabbreviated                     |
+| ------------------------------- | --------------------------------- |
+| `search is(aws_account) -->`    | `search is(aws_account) -[1:1]->` |
+| `search is(aws_region) <-->`    | `search is(aws_region) <-[1:1]->` |
+| `<-[x]-`                        | `<-[x:x]-`                        |
+| `search is(aws_region) <-[3]->` | `search is(aws_region) <-[3:3]->` |
 
 :::
 

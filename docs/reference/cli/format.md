@@ -57,10 +57,10 @@ And the below example has a result of `[ "null:null:null" ]`:
 > json {} | format {a}:{b.c.d}:{foo.bla[23].test}
 ```
 
-This command writes the result of `query all` in JSON format to a file named `out.json`:
+This command writes the result of `search all` in JSON format to a file named `out.json`:
 
 ```bash
-> query all | format --json | write out.json
+> search all | format --json | write out.json
 ```
 
 ## See Also

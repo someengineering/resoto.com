@@ -21,7 +21,7 @@ Resoto's search allows for resources to be selected using [filters](/docs/concep
 The simplest example of search aggregation in Resoto is the [`count` command](/docs/reference/cli/count), which enables you to count objects or the occurrences of a specific property. Let's say we are interested in the number of compute instances we maintain:
 
 ```bash
-> query is(instance) | count
+> search is(instance) | count
 // highlight-start
 total matched: 540
 total unmatched: 0
@@ -33,7 +33,7 @@ Compute instances are of [kind](/docs/concepts/graph/node#kind) `instance` regar
 The `count` command also allows specifying a grouping value. The following search would return counts by `instance_status`:
 
 ```bash
-> query is(instance) | count instance_status
+> search is(instance) | count instance_status
 // highlight-start
 stopped: 48
 terminated: 151
@@ -46,7 +46,7 @@ total unmatched: 0
 While [`count`](/docs/reference/cli/count) is often sufficient, the [`aggregate` command](/docs/reference/cli/aggregate) is required for more advanced use cases. For example, we could get CPU core and memory data using [`aggregate`](/docs/reference/cli/aggregate):
 
 ```bash
-> query is(instance) | aggregate
+> search is(instance) | aggregate
   sum(instance_cores) as sum_of_cores,
   max(instance_cores) as max_cores,
   sum(instance_memory) as sum_of_memory,
@@ -64,7 +64,7 @@ In this example, we have 3441 cores in total and each instance has a maximum of 
 We can further analyze this aggregated data using grouping variables, which we have already seen in an above example of the [`count` command](/docs/reference/cli/count). Let's try aggregating the available memory by instance status:
 
 ```bash
-> query is(instance) | aggregate
+> search is(instance) | aggregate
    instance_status as status:
    sum(instance_memory) as memory
 // highlight-start
@@ -95,7 +95,7 @@ Wouldn't it be great if we could aggregate over not only the data of a single no
 The above diagram illustrates the relationship between compute instances. AWS resources are attached to a region, while GCP resources are associated with a zone. Each instance also has a `instance_type` predecessor node. To access properties of ancestor nodes of a given kind, we can use the following notation:
 
 ```bash
-> query is(instance) | aggregate
+> search is(instance) | aggregate
   sum(/ancestors.instance_type.reported.ondemand_cost) as cost
 cost: 155.73
 ```
@@ -107,7 +107,7 @@ The path `/ancestors.instance_type.reported.ondemand_cost` can be translated as 
 It is possible to walk the graph inbound with `ancestors`, and outbound using `descendants`. You can apply this syntax anywhere a property path is defined in a search. Let's use this technique to find running instances aggregated by account and region:
 
 ```bash
-> query is(instance) and instance_status==running | aggregate
+> search is(instance) and instance_status==running | aggregate
   /ancestors.account.reported.name as account,
   /ancestors.region.reported.name as region:
   sum(instance_memory) as memory,

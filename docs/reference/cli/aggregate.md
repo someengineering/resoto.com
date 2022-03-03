@@ -37,7 +37,7 @@ Each grouping function can have an `as <name>` clause to give the function resul
 ## Examples
 
 ```bash title="Count volumes in the system, grouped by kind"
-> query is(volume) | aggregate kind as kind: sum(1) as count
+> search is(volume) | aggregate kind as kind: sum(1) as count
 group:
   kind: aws_ec2_volume
 count: 1799
@@ -48,7 +48,7 @@ count: 1100
 ```
 
 ```bash title="Count volumes and compute total volume size, grouped by kind"
-> query is(volume) | aggregate kind: sum(volume_size) as summed, sum(1) as count
+> search is(volume) | aggregate kind: sum(volume_size) as summed, sum(1) as count
 group:
   reported.kind: aws_ec2_volume
 summed: 130903
@@ -61,11 +61,11 @@ count: 1100
 ```
 
 ```bash title="Count volumes and compute total volume size"
-> query is(volume) | aggregate sum(volume_size) as summed, sum(1) as count
+> search is(volume) | aggregate sum(volume_size) as summed, sum(1) as count
 summed: 154833
 count: 2899
 ```
 
 ## See Also
 
-- [`query`](./query.md)
+- [`search`](./search.md)

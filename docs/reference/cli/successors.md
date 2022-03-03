@@ -25,15 +25,15 @@ successors [--with-origin] <edge_type>
 ## Examples
 
 ```bash title="Equivalent to query is(aws_region) -->"
-> query is(aws_region) | successors
+> search is(aws_region) | successors
 ```
 
 ```bash title="Equivalent to query is(aws_region) -[0:1]->"
-> query is(aws_region) | successors --with-origin
+> search is(aws_region) | successors --with-origin
 ```
 
 ```bash
-> query is(volume_type) | successors | query is(volume)
+> search is(volume_type) | successors | query is(volume)
 // highlight-start
 kind=gcp_disk, id=16, name=gke16, age=8mo29d, cloud=gcp, account=eng, region=us-west1, zone=us-west1-a
 kind=gcp_disk, id=26, name=gke26, age=8mo29d, cloud=gcp, account=eng, region=us-west1, zone=us-west1-a

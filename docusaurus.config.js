@@ -4,7 +4,6 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('./src/utils/prismDark.js');
 const a11yEmoji = require('@fec/remark-a11y-emoji');
-const webpack = require('webpack');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {

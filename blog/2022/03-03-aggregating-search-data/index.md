@@ -1,6 +1,7 @@
 ---
 authors: [matthias]
-tags: [search, aws, gcp]
+tags: [search, graph, aws, gcp]
+image: ./img/banner-social.png
 ---
 
 # Aggregating Search Data
@@ -12,6 +13,10 @@ This blog post is the second in a series about Resoto's powerful search function
 :::
 
 Resoto's search allows for resources to be selected using [filters](/docs/concepts/search/filters), [combinators](/docs/concepts/search/filters#combining-selections), and [traversals](/docs/concepts/search/traversals). Search results can be combined, grouped, and [aggregated](/docs/concepts/search/aggregation).
+
+![Left: Sheep Finding a Diamond in a Gold Mine](./img/banner.png)
+
+<!--truncate-->
 
 The simplest example of search aggregation in Resoto is the [`count` command](/docs/reference/cli/count), which enables you to count objects or the occurrences of a specific property. Let's say we are interested in the number of compute instances we maintain:
 
@@ -87,7 +92,7 @@ Wouldn't it be great if we could aggregate over not only the data of a single no
 
 ![Instance Relationships](./img/carz_structure.svg)
 
-The above diagram illustrates the relationship between compute instances. AWS resources are attached to a region, while GCP resources are associated with a zone. Each instance also has a `instance_type` predecessor node. To access properties of ancestor nodes of a given kind relative to a node, we can use the following notation:
+The above diagram illustrates the relationship between compute instances. AWS resources are attached to a region, while GCP resources are associated with a zone. Each instance also has a `instance_type` predecessor node. To access properties of ancestor nodes of a given kind, we can use the following notation:
 
 ```bash
 > query is(instance) | aggregate
@@ -138,4 +143,4 @@ As you can see, Resoto's search enables you to gather data about your infrastruc
 
 Now, imagine feeding results of an aggregation search into a [Prometheus](https://prometheus.io) time series database and being able to visualize the data in a [Grafana](https://grafana.com) dashboard. [Resoto Metrics](https://github.com/someengineering/resoto/tree/main/resotometrics) serves this exact purpose, feeding robust aggregation metrics into a time series database.
 
-Please refer to our [documentation](/docs/concepts/search/aggregation) for more details about aggregation capabilities. I hope the examples presented here clearly illustrate the power of Resoto's search aggregation. If you're new to Resoto, we hope you will [try it out](/docs/getting-started)! ✨
+Please refer to our [documentation](/docs/concepts/search/aggregation) for more details about supported aggregation capabilities. I hope the examples presented here clearly illustrate the power of Resoto's search aggregation. If you're new to Resoto, we hope you will [try it out](/docs/getting-started)! ✨

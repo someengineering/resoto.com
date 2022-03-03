@@ -21,12 +21,18 @@ The `jobs` command allows for the management of jobs.
 
 ## Usage
 
-<Tabs groupId="jobs-command">
+<Tabs>
 <TabItem value="activate" label="activate">
 
 ```bash
 jobs activate <id>
 ```
+
+### Parameters
+
+| Parameter | Description    | Required? | Default Value |
+| --------- | -------------- | --------- | ------------- |
+| `id`      | Job identifier | ✔️        | N/A           |
 
 </TabItem>
 <TabItem value="add" label="add">
@@ -35,6 +41,23 @@ jobs activate <id>
 jobs add [--id <id>] [--schedule <cron_expression>] [--wait-for-event <event_name>] <command>
 ```
 
+### Options
+
+| Option                          | Description                                                                                                                                     |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--id <id>`                     | Job identifier (if no ID is provided, a random identifier will be automatically generated)                                                      |
+| `--schedule <cron_expression>`  | The schedule as a `cron` expression                                                                                                             |
+| `--wait-for-event <event_name>` | Waits for the specified event to occur (if this option is defined in conjunction with the `--schedule` option, the schedule must trigger first) |
+| `--timeout`                     | Number of seconds for which the job is allowed to run before being automatically terminated (default 3600)                                      |
+
+### Parameters
+
+| Parameter | Description                                                    | Required? | Default Value |
+| --------- | -------------------------------------------------------------- | --------- | ------------- |
+| `command` | CLI command that will be executed when the job is triggered \* | ✔️        | N/A           |
+
+\* It is recommended to either surround the `command` with single quotes (`'`) or escape special characters such as pipes (`|`) or semicolons (`;`). Multiple commands can be delimited using semicolons.
+
 </TabItem>
 <TabItem value="deactivate" label="deactivate">
 
@@ -42,12 +65,24 @@ jobs add [--id <id>] [--schedule <cron_expression>] [--wait-for-event <event_nam
 jobs deactivate <id>
 ```
 
+### Parameters
+
+| Parameter | Description    | Required? | Default Value |
+| --------- | -------------- | --------- | ------------- |
+| `id`      | Job identifier | ✔️        | N/A           |
+
 </TabItem>
 <TabItem value="delete" label="delete">
 
 ```bash
 jobs delete <id>
 ```
+
+### Parameters
+
+| Parameter | Description    | Required? | Default Value |
+| --------- | -------------- | --------- | ------------- |
+| `id`      | Job identifier | ✔️        | N/A           |
 
 </TabItem>
 <TabItem value="list" label="list">
@@ -63,6 +98,12 @@ jobs list
 jobs run <id>
 ```
 
+### Parameters
+
+| Parameter | Description    | Required? | Default Value |
+| --------- | -------------- | --------- | ------------- |
+| `id`      | Job identifier | ✔️        | N/A           |
+
 </TabItem>
 <TabItem value="running" label="running">
 
@@ -77,6 +118,12 @@ jobs running
 jobs show <id>
 ```
 
+### Parameters
+
+| Parameter | Description    | Required? | Default Value |
+| --------- | -------------- | --------- | ------------- |
+| `id`      | Job identifier | ✔️        | N/A           |
+
 </TabItem>
 <TabItem value="update" label="update">
 
@@ -84,126 +131,15 @@ jobs show <id>
 jobs update <id> [--schedule <cron_expression>] [--wait-for-event <event_name>] <command>
 ```
 
-</TabItem>
-</Tabs>
-
 ### Options
 
-<Tabs groupId="jobs-command">
-<TabItem value="activate" label="activate">
-
-_No options._
-
-</TabItem>
-<TabItem value="add" label="add">
-
-| Option                          | Description                                                                                                                                     |
-| ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--id <id>`                     | Job identifier (if no ID is provided, a random identifier will be automatically generated)                                                      |
-| `--schedule <cron_expression>`  | The schedule as a `cron` expression                                                                                                             |
-| `--wait-for-event <event_name>` | Waits for the specified event to occur (if this option is defined in conjunction with the `--schedule` option, the schedule must trigger first) |
-| `--timeout`                     | Number of seconds for which the job is allowed to run before being automatically terminated (default 3600)                                      |
-
-</TabItem>
-<TabItem value="deactivate" label="deactivate">
-
-_No options._
-
-</TabItem>
-<TabItem value="delete" label="delete">
-
-_No options._
-
-</TabItem>
-<TabItem value="list" label="list">
-
-_No options._
-
-</TabItem>
-<TabItem value="run" label="run">
-
-_No options._
-
-</TabItem>
-<TabItem value="running" label="running">
-
-_No options._
-
-</TabItem>
-<TabItem value="show" label="show">
-
-_No options._
-
-</TabItem>
-<TabItem value="update" label="update">
-
 | Option                          | Description                                                                                                                                     |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | `--schedule <cron_expression>`  | The schedule as a `cron` expression                                                                                                             |
 | `--wait-for-event <event_name>` | Waits for the specified event to occur (if this option is defined in conjunction with the `--schedule` option, the schedule must trigger first) |
 | `--timeout`                     | Number of seconds for which the job is allowed to run before being automatically terminated (default 3600)                                      |
-
-</TabItem>
-</Tabs>
 
 ### Parameters
-
-<Tabs groupId="jobs-command">
-<TabItem value="activate" label="activate">
-
-| Parameter | Description    | Required? | Default Value |
-| --------- | -------------- | --------- | ------------- |
-| `id`      | Job identifier | ✔️        | N/A           |
-
-</TabItem>
-<TabItem value="add" label="add">
-
-| Parameter | Description                                                    | Required? | Default Value |
-| --------- | -------------------------------------------------------------- | --------- | ------------- |
-| `command` | CLI command that will be executed when the job is triggered \* | ✔️        | N/A           |
-
-\* It is recommended to either surround the `command` with single quotes (`'`) or escape special characters such as pipes (`|`) or semicolons (`;`). Multiple commands can be delimited using semicolons.
-
-</TabItem>
-<TabItem value="deactivate" label="deactivate">
-
-| Parameter | Description    | Required? | Default Value |
-| --------- | -------------- | --------- | ------------- |
-| `id`      | Job identifier | ✔️        | N/A           |
-
-</TabItem>
-<TabItem value="delete" label="delete">
-
-| Parameter | Description    | Required? | Default Value |
-| --------- | -------------- | --------- | ------------- |
-| `id`      | Job identifier | ✔️        | N/A           |
-
-</TabItem>
-<TabItem value="list" label="list">
-
-_No parameters._
-
-</TabItem>
-<TabItem value="run" label="run">
-
-| Parameter | Description    | Required? | Default Value |
-| --------- | -------------- | --------- | ------------- |
-| `id`      | Job identifier | ✔️        | N/A           |
-
-</TabItem>
-<TabItem value="running" label="running">
-
-_No parameters._
-
-</TabItem>
-<TabItem value="show" label="show">
-
-| Parameter | Description    | Required? | Default Value |
-| --------- | -------------- | --------- | ------------- |
-| `id`      | Job identifier | ✔️        | N/A           |
-
-</TabItem>
-<TabItem value="update" label="update">
 
 | Parameter | Description                                                    | Required? | Default Value |
 | --------- | -------------------------------------------------------------- | --------- | ------------- |

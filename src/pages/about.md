@@ -64,7 +64,7 @@ For SREs in charge of maintaining cloud infrastructure, it's a drag. They are ty
 
 Resoto automatically cleans up drift that shouldn't be there and closes the gap.
 
-Resoto indexes resources, captures dependencies, and maps out your infrastructure in a graph so that it is understandable for a human. The graph contains metrics for each resource. Developers and SREs can query the graph with a search syntax, and create alerting and cleanup workflows.
+Resoto indexes resources, captures dependencies, and maps out your infrastructure in a graph so that it is understandable for a human. The graph contains metrics for each resource. Developers and SREs can search the graph with a search syntax, and create alerting and cleanup workflows.
 
 #### 1-Year Vision
 

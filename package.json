@@ -22,9 +22,9 @@
     "write-translations": "docusaurus write-translations"
   },
   "dependencies": {
-    "@docusaurus/core": "2.0.0-beta.16",
-    "@docusaurus/plugin-sitemap": "^2.0.0-beta.16",
-    "@docusaurus/preset-classic": "2.0.0-beta.16",
+    "@docusaurus/core": "2.0.0-beta.17",
+    "@docusaurus/plugin-sitemap": "^2.0.0-beta.17",
+    "@docusaurus/preset-classic": "2.0.0-beta.17",
     "@fec/remark-a11y-emoji": "^3.1.0",
     "@mdx-js/react": "^1.6.22",
     "@octokit/core": "^3.5.1",
@@ -41,7 +41,7 @@
   "devDependencies": {
     "@commitlint/cli": "^16.2.1",
     "@commitlint/config-conventional": "^16.2.1",
-    "@docusaurus/module-type-aliases": "^2.0.0-beta.16",
+    "@docusaurus/module-type-aliases": "^2.0.0-beta.17",
     "@tsconfig/docusaurus": "^1.0.4",
     "@typescript-eslint/eslint-plugin": "^5.13.0",
     "@typescript-eslint/parser": "^5.13.0",

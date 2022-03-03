@@ -223,7 +223,7 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   text-decoration: var(--ifm-link-hover-decoration);
 }
 
-@media screen and (max-width: 966px) {
+@media screen and (max-width: 996px) {
   .header-icon-link {
     justify-content: flex-start;
   }

@@ -4,7 +4,7 @@
 
 Please act with caution when selecting and filtering resources for cleanup.
 
-If you run `query is(aws_ec2_volume) | clean`, it marks _all_ `aws_ec2_volume` resources in your cloud for deletion.
+If you run `search is(aws_ec2_volume) | clean`, it marks _all_ `aws_ec2_volume` resources in your cloud for deletion.
 
 :::
 
@@ -16,7 +16,7 @@ You can provide `--cleanup-dry-run` at [`resotoworker`](../concepts/components/w
 
 When doing a resource cleanup selection for the first time, it is good practice to confirm the list of selected resources for plausibility using something like `desired clean = true | count`.
 
-To quickly undo marking all `aws_ec2_volumes` for cleanup, use `query is(aws_ec2_volume) | set_desired clean=false`.
+To quickly undo marking all `aws_ec2_volumes` for cleanup, use `search is(aws_ec2_volume) | set_desired clean=false`.
 
 To remove clean markers from all resources, you can use `desired clean=true | set_desired clean=false`.
 
@@ -31,7 +31,7 @@ This will add `desired.clean = true` to all matched ressources.
 Optionally, you can provide a reason for marking the matched ressources for the next cleanup run:
 
 ```bash title="Mark all unused EBS volume older than 30 days that had no IO in the past 7d"
-> query is(volume) and ctime < -30d and atime < -7d and mtime < -7d and volume_status = available | clean "older than 30d with more then 7d of not beeing used"
+> search is(volume) and ctime < -30d and atime < -7d and mtime < -7d and volume_status = available | clean "older than 30d with more then 7d of not beeing used"
 ```
 
 ## Prune Resources Marked for Deletion

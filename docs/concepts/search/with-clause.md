@@ -21,7 +21,7 @@ graph LR;
 Let's say we want to select all ALB target groups where there is no EC2 instance using the ALB:
 
 ```bash
-> query is(aws_alb_target_group) with (empty, --> is(aws_ec2_instance))
+> search is(aws_alb_target_group) with (empty, --> is(aws_ec2_instance))
 ```
 
 1. The `is(aws_alb_target_group)` part selects all aws_alb_target_groups.

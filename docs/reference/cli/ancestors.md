@@ -25,15 +25,15 @@ ancestors [--with-origin] <edge_type>
 ## Examples
 
 ```bash title="Equivalent to query is(aws_region) <-[1:]-"
-> query is(aws_region) | ancestors
+> search is(aws_region) | ancestors
 ```
 
 ```bash title="Equivalent to query is(aws_region) <-[0:]-"
-> query is(aws_region) | ancestors --with-origin
+> search is(aws_region) | ancestors --with-origin
 ```
 
 ```bash
-> query is(volume_type) limit 1 | ancestors
+> search is(volume_type) limit 1 | ancestors
 // highlight-start
 kind=gcp_service_sku, id=D2, name=Storage PD Capacity, age=5d8h, cloud=gcp, account=sre
 kind=gcp_zone, id=2, name=us-central1-a, age=52yr1mo, cloud=gcp, account=sre, region=us-central1, zone=us-central1-a

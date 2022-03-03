@@ -9,7 +9,7 @@ The shape and format of the object can be adjusted with commands such as [`list`
 You can use the [`chunk`](./chunk.md) command to send chunks of objects:
 
 ```bash title="Perform up to 3 requests, where every request will contain up to 10 elements"
-> query is(volume) limit 30 | chunk 10 | http test.foo.org
+> search is(volume) limit 30 | chunk 10 | http test.foo.org
 ```
 
 :::
@@ -50,19 +50,19 @@ http [--compress] [--timeout <seconds>] [--no-ssl-verify] [--no-body] [--nr-of-r
 ## Examples
 
 ```bash
-> query is(volume) and reported.volume_encrypted==false | https my.node.org/handle_unencrypted
+> search is(volume) and reported.volume_encrypted==false | https my.node.org/handle_unencrypted
 // highlight-next-line
 3 requests with status 200 sent.
 ```
 
 ```bash
-> query is(volume) | chunk 50 | https --compress my.node.org/handle
+> search is(volume) | chunk 50 | https --compress my.node.org/handle
 // highlight-next-line
 2 requests with status 200 sent.
 ```
 
 ```bash
-> query is(volume) | chunk 50 | https my.node.org/handle "greeting:hello from resotocore" type==volume
+> search is(volume) | chunk 50 | https my.node.org/handle "greeting:hello from resotocore" type==volume
 // highlight-next-line
 2 requests with status 200 sent.
 ```

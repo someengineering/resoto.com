@@ -33,7 +33,7 @@ You can pipe commands using `|` and chain multiple commands using `;`.
 | [`list`](./list.md)                 | Transform incoming objects as string with defined properties.                       |
 | [`predecessors`](./predecessors.md) | Select all predecessors of this node in the graph.                                  |
 | `protect`                           | Mark all incoming database objects as protected.                                    |
-| [`query`](./query.md)               | Query the graph.                                                                    |
+| [`search`](./search.md)             | Search the graph.                                                                   |
 | `set_desired`                       | Allows to set arbitrary properties as desired for all incoming database objects.    |
 | `set_metadata`                      | Allows to set arbitrary properties as metadata for all incoming database objects.   |
 | `sleep`                             | Suspend execution for an interval of time.                                          |
@@ -50,7 +50,8 @@ You can pipe commands using `|` and chain multiple commands using `;`.
 
 | Alias            | Command      | Description                              |
 | ---------------- | ------------ | ---------------------------------------- |
-| `match`          | `query`      | Query the graph.                         |
+| `match`          | `search`     | Search the graph.                        |
+| `query`          | `search`     | Search the graph.                        |
 | `start_workflow` | `start_task` | Start a task with the given name.        |
 | `https`          | `http`       | Perform HTTP request with incoming data. |
 

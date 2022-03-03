@@ -10,7 +10,7 @@ sidebar_position: 0
 Welcome to the Resoto documentation!
 
 ```bash title="Hello World in Resoto 👋🌎"
-> query is(resource) | count
+> search is(resource) | count
 // highlight-start
 total matched: 459241
 total unmatched: 0

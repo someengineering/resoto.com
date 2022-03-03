@@ -10,7 +10,7 @@ There are several situations where specific data is not too relevant but needs l
 For example, the following search will select and count compute instances that are older than 3 years:
 
 ```bash
-> query is(instance) and age > 3y | count
+> search is(instance) and age > 3y | count
 // highlight-start
 total matched: 21
 total unmatched: 0
@@ -34,12 +34,12 @@ Each grouping function can have an `as <name>` clause to give the function resul
 
 Example: `min(memory)`, `sum(1) as count`, `avg(instance_cores) as average_cores`.
 
-The [`aggregate` command](../../reference/cli/aggregate.md) tells Resoto to aggregate the query results based on the defined criteria. Each result of the query is then passed to the defined aggregation function(s).
+The [`aggregate` command](../../reference/cli/aggregate.md) tells Resoto to aggregate the search results based on the defined criteria. Each result of the search is then passed to the defined aggregation function(s).
 
 The above example using the [`count`](../../reference/cli/count.md) could also be rewritten with `aggregate` like so:
 
 ```bash
-> query is(instance) and age > 3y | aggregate sum(1) as count
+> search is(instance) and age > 3y | aggregate sum(1) as count
 // highlight-start
 count: 21
 // highlight-end
@@ -50,7 +50,7 @@ Every element is counted as `1`, so `sum(1)` is the number of elements.
 It is also possible to define multiple aggregation functions. Let's count both instances and cores:
 
 ```bash
-> query is(instance) and age > 3y | aggregate
+> search is(instance) and age > 3y | aggregate
   sum(1) as count,
   sum(instance_cores) as cores
 // highlight-start
@@ -62,7 +62,7 @@ cores: 66
 We could even compute the average, minimum, and maximum number of available cores:
 
 ```bash
-> query is(instance) and age > 3y | aggregate
+> search is(instance) and age > 3y | aggregate
   sum(1) as count,
   sum(instance_cores) as cores,
   min(instance_cores) as min_cores,
@@ -86,7 +86,7 @@ A group is defined using a property path. The value of this path is looked up in
 For example, instances can be grouped by status:
 
 ```bash
-> query is(instance) and age > 3y | aggregate instance_status: sum(1) as count
+> search is(instance) and age > 3y | aggregate instance_status: sum(1) as count
 // highlight-start
 group:
   instance_status: running
@@ -107,7 +107,7 @@ Grouping variable can be named using `as`. By default, the last part of the path
 Additional aggregation functions also get applied on each group:
 
 ```bash
-> query is(instance) and age > 3y | aggregate instance_status as status:
+> search is(instance) and age > 3y | aggregate instance_status as status:
   sum(1) as count,
   sum(instance_cores) as cores,
   min(instance_cores) as min_cores,
@@ -143,7 +143,7 @@ avg_cores: 2.2
 Groups can also be defined using multiple grouping variables:
 
 ```bash
-> query is(instance) and age > 3y | aggregate
+> search is(instance) and age > 3y | aggregate
   instance_status as status, instance_type as type:
   sum(1) as count,
   sum(instance_cores) as cores

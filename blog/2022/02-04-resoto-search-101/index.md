@@ -18,12 +18,12 @@ We created Resoto to allow the user to effortlessly [search resources](/docs/con
 
 Graph data is not relational, so SQL was not a good fit. And existing graph query languages like [Cypher](https://neo4j.com/developer/cypher), [Gremlin](https://tinkerpop.apache.org/gremlin.html), or [GSQL](https://tigergraph.com/gsql) have steep learning curves and are unnecessarily complex for this use case.
 
-And so, we developed our own search syntax tailored specifically to Resoto. The [Resoto Shell](/docs/concepts/components/shell) allows you to interact with your Resoto installation. In particular, it provides a [`query`](/docs/reference/cli/query) command.
+And so, we developed our own search syntax tailored specifically to Resoto. The [Resoto Shell](/docs/concepts/components/shell) allows you to interact with your Resoto installation. In particular, it provides a [`search`](/docs/reference/cli/search) command.
 
 Let's try searching for all available EC2 instances. `is()` will match a specific or abstract type in a polymorphic fashion, checking all types and subtypes of the provided type. The `instance_cores` filter will limit results to only those instances with more than two cores. The query will automagically search your entire infrastructure, regardless of account or region!
 
 ```bash
-> query is(aws_ec2_instance) and instance_cores > 2
+> search is(aws_ec2_instance) and instance_cores > 2
 // highlight-start
 id=i-a..., name=crmsec, age=2y2M, account=dev, region=us-east-1
 id=i-0..., name=airgap, age=2M, account=staging, region=eu-central-1
@@ -34,7 +34,7 @@ id=i-0..., name=flixer, age=1M3w, account=sales, region=us-west-2
 The query found three instances in three accounts and three regions. The default output is a condensed list view, but it is also possible to get all collected properties of any resource using the `dump` command:
 
 ```bash
-> query is(aws_ec2_instance) and instance_cores > 2 limit 1 | dump
+> search is(aws_ec2_instance) and instance_cores > 2 limit 1 | dump
 // highlight-start
 reported:
   kind: aws_ec2_instance
@@ -55,7 +55,7 @@ reported:
 Let us see how many EC2 instances we have grouped by `instance_type` using the `count` command:
 
 ```bash
-> query is(aws_ec2_instance) and instance_cores > 2 | count instance_type
+> search is(aws_ec2_instance) and instance_cores > 2 | count instance_type
 // highlight-start
 t3.2xlarge: 1
 m5.4xlarge: 15
@@ -73,7 +73,7 @@ When Resoto collects data on your cloud infrastructure, it creates an edge betwe
 ![Graph Structure](./img/graph_structure.svg)
 
 ```bash
-> query is(aws_ec2_instance) and instance_cores > 2 --> is(aws_elb)
+> search is(aws_ec2_instance) and instance_cores > 2 --> is(aws_elb)
 // highlight-start
 name=a5..., age=1y1M, account=sales, region=eu-central-1
 name=a3..., age=6M2w, account=staging, region=us-west-2
@@ -85,7 +85,7 @@ The `-->` arrow will take all matching EC2 instances and walk the graph "outboun
 It is also possible to reverse the last query to output all EC2 instances behind an ELB:
 
 ```bash
-> query is(aws_elb) <-- is(aws_ec2_instance) and instance_cores > 2
+> search is(aws_elb) <-- is(aws_ec2_instance) and instance_cores > 2
 // highlight-start
 id=i-0..., name=airgap, age=2M, account=staging, region=eu-central-1
 id=i-0..., name=flixer, age=1M3w, account=sales, region=us-west-2

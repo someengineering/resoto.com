@@ -38,6 +38,7 @@ Each grouping function can have an `as <name>` clause to give the function resul
 
 ```bash title="Count volumes in the system, grouped by kind"
 > search is(volume) | aggregate kind as kind: sum(1) as count
+// highlight-start
 group:
   kind: aws_ec2_volume
 count: 1799
@@ -45,10 +46,12 @@ count: 1799
 group:
   kind: gcp_disk
 count: 1100
+// highlight-end
 ```
 
 ```bash title="Count volumes and compute total volume size, grouped by kind"
 > search is(volume) | aggregate kind: sum(volume_size) as summed, sum(1) as count
+// highlight-start
 group:
   reported.kind: aws_ec2_volume
 summed: 130903
@@ -58,12 +61,15 @@ group:
   reported.kind: gcp_disk
 summed: 23930
 count: 1100
+// highlight-end
 ```
 
 ```bash title="Count volumes and compute total volume size"
 > search is(volume) | aggregate sum(volume_size) as summed, sum(1) as count
+// highlight-start
 summed: 154833
 count: 2899
+// highlight-end
 ```
 
 ## See Also

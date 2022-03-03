@@ -26,7 +26,7 @@ You can pipe commands using `|` and chain multiple commands using `;`.
 | [`head`](./head.md)                 | Return `n` first elements of the stream.                                            |
 | [`help`](./help.md)                 | Shows available commands, as well as help for any specific command.                 |
 | [`http`](./http.md)                 | Perform HTTP request with incoming data.                                            |
-| `jobs`                              | Manage all jobs.                                                                    |
+| [`jobs`](./jobs.md)                 | Manage all jobs.                                                                    |
 | [`jq`](./jq.md)                     | Filter and process JSON.                                                            |
 | `json`                              | Parse JSON and pass parsed objects to the output stream.                            |
 | `kind`                              | Retrieves information about the graph data kinds.                                   |
@@ -50,10 +50,10 @@ You can pipe commands using `|` and chain multiple commands using `;`.
 
 | Alias            | Command      | Description                              |
 | ---------------- | ------------ | ---------------------------------------- |
+| `https`          | `http`       | Perform HTTP request with incoming data. |
 | `match`          | `search`     | Search the graph.                        |
 | `query`          | `search`     | Search the graph.                        |
 | `start_workflow` | `start_task` | Start a task with the given name.        |
-| `https`          | `http`       | Perform HTTP request with incoming data. |
 
 ## Placeholder Strings
 

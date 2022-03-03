@@ -18,16 +18,23 @@ jq <filter>
 
 ## Examples
 
-```bash title="Query all AWS EC2 instances and select the reported.id"
-> search is(aws_ec2_instance) | jq '.reported.id'
-// highlight-next-line
-["id-1", "id-2"]
+```bash title="Query EC2 instances and extract only the name property"
+> search is(aws_ec2_instance) limit 2 | jq .name
+// highlight-start
+build-node-1
+prod-23
+// highlight-end
 ```
 
-```bash title="Query all AWS EC2 instances and select the reported.id as id and the revision as rev"
-> search is(aws_ec2_instance) | jq '. | {id: .reported.id, rev:.revision}'
-// highlight-next-line
-[{"id": "id-1", "rev": "1"}, {"id": "id-2", "rev": "5"}]
+```bash title="Query EC2 instances and create a new JSON object for each entry with name and owner"
+> search is(aws_ec2_instance) limit 2 | jq {name: .name, owner: .tags.owner}
+// highlight-start
+name: build-node-1
+owner: frosty
+---
+name: prod-23
+owner: bog-team
+// highlight-end
 ```
 
 ## See Also

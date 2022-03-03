@@ -18,16 +18,25 @@ chunk <size>
 
 ## Examples
 
-The result of the following command would be `[[1, 2], [3, 4], [5]]`:
-
-```bash
+```bash title="Chunking with size of 2"
 > json [1,2,3,4,5] | chunk 2
+// highlight-start
+[1, 2]
+[3, 4]
+[5]
+// highlight-end
 ```
 
-The next command would return `[[1, 2, 3, 4, 5]]`:
+```bash title="Chunking with size of 3"
+> json [1,2,3,4,5] | chunk 3
+// highlight-start
+[1, 2, 3]
+[4, 5]
+// highlight-end
+```
 
-```bash
-> json [1,2,3,4,5] | chunk
+```bash title="Chunking the output of a query (output omitted for brevity)"
+> search is(volume) limit 5 | chunk 3
 ```
 
 ## See Also

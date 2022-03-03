@@ -24,11 +24,11 @@ ancestors [--with-origin] <edge_type>
 
 ## Examples
 
-```bash title="Equivalent to query is(aws_region) <-[1:]-"
+```bash title="Equivalent to 'search is(aws_region) <-[1:]-'"
 > search is(aws_region) | ancestors
 ```
 
-```bash title="Equivalent to query is(aws_region) <-[0:]-"
+```bash title="Equivalent to 'search is(aws_region) <-[0:]-'"
 > search is(aws_region) | ancestors --with-origin
 ```
 

@@ -20,22 +20,16 @@ clean <reason>
 
 ## Examples
 
-```bash title="Mark query results for cleaning"
-> search isinstance("ec2") and atime<"-2d" | clean
+```bash title="Mark volumes that have not been accessed in the last month for cleanup, and list the ID and desired section for each"
+> search is(volume) and last_access>1month | clean "Volume not accessed for longer than 1 month" | list id, /desired
 // highlight-next-line
-[ { "id": "abc" "desired": { "clean": true }, "reported": { .. } }, . . { "id": "xyz" "desired": { "clean": true }, "reported": { .. } }, ]
+id=vol-123, clean=true
 ```
 
-```bash title="Mark objects with IDs id1 and id2 for cleaning"
-> json [{"id": "id1"}, {"id": "id2"}] | clean
+```bash title="Manually mark specific resources for cleanup"
+> json ["vol-123"] | clean | list id, /desired
 // highlight-next-line
-[ { "id": "id1", "desired": { "clean": true }, "reported": { .. } }, { "id": "id2", "desired": { "clean": true }, "reported": { .. } }, ]
-```
-
-```bash title="Mark objects with IDs id1 and id2 for cleaning"
-> json ["id1", "id2"] | clean
-// highlight-next-line
-[ { "id": "id1", "desired": { "clean": true }, "reported": { .. } }, { "id": "id2", "desired": { "clean": true }, "reported": { .. } }, ]
+id=vol-123, clean=true
 ```
 
 ```bash title="Mark all unused EBS volume older than 30 days that had no I/O during the past 7 days for cleaning"

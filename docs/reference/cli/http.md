@@ -49,19 +49,19 @@ http [--compress] [--timeout <seconds>] [--no-ssl-verify] [--no-body] [--nr-of-r
 
 ## Examples
 
-```bash
+```bash title="Look for unencrypted volumes and report them to the specified endpoint"
 > search is(volume) and reported.volume_encrypted==false | https my.node.org/handle_unencrypted
 // highlight-next-line
 3 requests with status 200 sent.
 ```
 
-```bash
+```bash title="Query all volumes and send chunks of 50 volumes per request to the specified handler"
 > search is(volume) | chunk 50 | https --compress my.node.org/handle
 // highlight-next-line
 2 requests with status 200 sent.
 ```
 
-```bash
+```bash title="Same as previous, but define special header and query parameter values"
 > search is(volume) | chunk 50 | https my.node.org/handle "greeting:hello from resotocore" type==volume
 // highlight-next-line
 2 requests with status 200 sent.

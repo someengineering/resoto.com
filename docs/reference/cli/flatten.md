@@ -10,16 +10,26 @@ flatten
 
 ## Examples
 
-The result of the following command would be `[1, 2, 3, 4, 5]`:
-
-```bash
-> json [1, 2, 3, 4, 5] | chunk 2 | flatten
-```
-
-The next command would also return `[1, 2, 3, 4, 5]`:
-
 ```bash
 > json [[1, 2], 3, [4, 5]] | flatten
+// highlight-start
+1
+2
+3
+4
+5
+// highlight-end
+```
+
+```bash title="An already flat stream of elements would be unchanged"
+> json [1, 2, 3, 4, 5] | flatten
+// highlight-start
+1
+2
+3
+4
+5
+// highlight-end
 ```
 
 ## See Also

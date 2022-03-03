@@ -16,8 +16,14 @@ echo <message>
 
 ## Example
 
-The result of the following command would be `["test"]`:
+```bash
+> echo Hello World
+// highlight-next-line
+Hello World
+```
 
 ```bash
-> echo "test"
+> echo The current time is @TIME@
+// highlight-next-line
+The current time is 09:16:18
 ```

@@ -120,7 +120,7 @@ We use the [`pytest`](https://pytest.org) framework. Prior to submitting your ch
 
 Lint and test your code:
 
-```shell
+```bash
 tox
 ```
 

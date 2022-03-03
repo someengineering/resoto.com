@@ -16,7 +16,7 @@ Let's further assume you want to automatically set the owner tag for such resour
 
 While this is already an improvement, it will only update resources without tags at the moment. Resources that are created in the future and do not have an owner tag would need to be processed in the same way again.
 
-Jobs allow you to take a defined CLI command and trigger it automatically either on a schedule (cron expression) or by an event.
+Jobs allow you to take a defined CLI command and trigger it automatically either on a schedule (`cron` expression) or by an event.
 
 Let us now assume that we want to ensure there will be never resources without owner tag again. We can use the command we have written above and turn it into a job:
 

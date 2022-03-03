@@ -20,20 +20,46 @@ count <property>
 
 ## Examples
 
-This command returns `[["total matched: 3", "total unmatched: 0"]]`:
-
 ```bash
-> json [{"a": 1}, {"a": 2}, {"b": 3}] | count
+> json [{"a": 1}, {"a": 2}, {"a": 1}] | count
+// highlight-start
+total matched: 3
+total unmatched: 0
+// highlight-end
 ```
 
-The next command would return `[["total matched: 2", "total unmatched: 1"]]`:
-
 ```bash
-> json [{"a": 1}, {"a": 2}, {"b": 3}] | count a
+> json [{"a": 1}, {"a": 2}, {"a": 1}] | count a
+// highlight-start
+2: 1
+1: 2
+total matched: 3
+total unmatched: 0
+// highlight-end
 ```
 
-And this last command results in `[["total matched: 1", "total unmatched: 2"]]`:
+```bash
+> json [{"a": 1}, {"a": 2}, {"a": 3}] | count b
+// highlight-start
+total matched: 0
+total unmatched: 3
+// highlight-end
+```
 
 ```bash
-> json [{"a": 1}, {"a": 2}, {"b": 3}] | count b
+> search all | count
+// highlight-start
+total matched: 142670
+total unmatched: 0
+// highlight-end
+```
+
+```bash
+> search all | count /ancestors.cloud.reported.name
+// highlight-start
+gcp: 42403
+aws: 93168
+total matched: 135571
+total unmatched: 0
+// highlight-end
 ```

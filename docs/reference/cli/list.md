@@ -25,14 +25,15 @@ list <properties>
 
 If no properties are provided, a predefined list of properties will be shown:
 
-- `reported.kind as kind`
-- `reported.id as id`
-- `reported.name as name`
-- `reported.age as age`
-- `ancestors.cloud.reported.name as cloud`
-- `ancestors.account.reported.name as account`
-- `ancestors.region.reported.name as region`
-- `ancestors.zone.reported.name as zone`
+- `/reported.kind as kind`
+- `/reported.id as id`
+- `/reported.name as name`
+- `/reported.age as age`
+- `/reported.last_update as last_update`
+- `/ancestors.cloud.reported.name as cloud`
+- `/ancestors.account.reported.name as account`
+- `/ancestors.region.reported.name as region`
+- `/ancestors.zone.reported.name as zone`
 
 If properties are provided, it will override the defaults and only show the defined properties. Property paths can be absolute (i.e., include a section name, such as `reported`, `desired`, or `metadata`). If the section is not defined, the `reported` section is assumed.
 
@@ -48,7 +49,7 @@ The `as` clause is important if the last part of the property path is not a uniq
 
 ## Examples
 
-```bash
+```bash title="If all parameters are omitted, the predefined list of properties are shown"
 > search is(aws_ec2_instance) limit 3 | list
 // highlight-start
 kind=aws_ec2_instance, id=1, name=sun, ctime=2020-09-10T13:24:45Z, cloud=aws, account=prod, region=us-west-2
@@ -57,16 +58,7 @@ kind=aws_ec2_instance, id=3, name=star, ctime=2021-09-25T23:28:40Z, cloud=aws, a
 // highlight-end
 ```
 
-```bash
-> search is(aws_ec2_instance) limit 3 | list reported.name
-// highlight-start
-name=sun
-name=moon
-name=star
-// highlight-end
-```
-
-```bash title="Section name is missing, reported is used automatically"
+```bash title="Explicitly define the properties to show without renaming them"
 > search is(aws_ec2_instance) limit 3 | list kind, name
 // highlight-start
 kind=aws_ec2_instance, name=sun
@@ -75,7 +67,7 @@ kind=aws_ec2_instance, name=star
 // highlight-end
 ```
 
-```bash
+```bash title="Same as previous, but with overridden property names"
 > search is(aws_ec2_instance) limit 3 | list kind as a, name as b
 // highlight-start
 a=aws_ec2_instance, b=sun
@@ -84,33 +76,12 @@ a=aws_ec2_instance, b=star
 // highlight-end
 ```
 
-```bash
+```bash title="Properties that do not exist are not printed"
 > search is(aws_ec2_instance) limit 3 | list kind as a, name as b, does_not_exist
 // highlight-start
 a=aws_ec2_instance, b=sun
 a=aws_ec2_instance, b=moon
 a=aws_ec2_instance, b=star
-// highlight-end
-```
-
-```bash
-> search is(aws_ec2_instance) limit 3 | list --csv kind as a, name as b, does_not_exist
-// highlight-start
-a,b,does_not_exist
-aws_ec2_instance,sun,
-aws_ec2_instance,moon,
-aws_ec2_instance,star,
-// highlight-end
-```
-
-```bash
-> search is(aws_ec2_instance) limit 3 | list --markdown kind as a, name as b, does_not_exist
-// highlight-start
-|a               |b   |does_not_exist|
-|----------------|----|--------------|
-|aws_ec2_instance|sun |None          |
-|aws_ec2_instance|moon|None          |
-|aws_ec2_instance|star|None          |
 // highlight-end
 ```
 

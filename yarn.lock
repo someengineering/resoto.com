@@ -1674,7 +1674,7 @@
     fs-extra "^10.0.1"
     tslib "^2.3.1"
 
-"@docusaurus/types@2.0.0-beta.17", "@docusaurus/types@^2.0.0-beta.15":
+"@docusaurus/types@2.0.0-beta.17", "@docusaurus/types@^2.0.0-beta.17":
   version "2.0.0-beta.17"
   resolved "https://registry.yarnpkg.com/@docusaurus/types/-/types-2.0.0-beta.17.tgz#582e3d961ce4409ed17454669b3f6a7a9f696cdd"
   integrity sha512-4o7TXu5sKlQpybfFFtsGUElBXwSpiXKsQyyWaRKj7DRBkvMtkDX6ITZNnZO9+EHfLbP/cfrokB8C/oO7mCQ5BQ==
@@ -1703,7 +1703,7 @@
     joi "^17.6.0"
     tslib "^2.3.1"
 
-"@docusaurus/utils@2.0.0-beta.17", "@docusaurus/utils@^2.0.0-beta.15":
+"@docusaurus/utils@2.0.0-beta.17", "@docusaurus/utils@^2.0.0-beta.17":
   version "2.0.0-beta.17"
   resolved "https://registry.yarnpkg.com/@docusaurus/utils/-/utils-2.0.0-beta.17.tgz#6a696e2ec5e50b2271f2d26d31562e9f3e2bc559"
   integrity sha512-yRKGdzSc5v6M/6GyQ4omkrAHCleevwKYiIrufCJgRbOtkhYE574d8mIjjirOuA/emcyLxjh+TLtqAA5TwhIryA==
@@ -4971,28 +4971,28 @@ doctrine@^3.0.0:
   dependencies:
     esutils "^2.0.2"
 
-docusaurus-plugin-redoc@^0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/docusaurus-plugin-redoc/-/docusaurus-plugin-redoc-0.7.0.tgz#a78d51d0a50ba70464e15f0ec69b24a4001f7248"
-  integrity sha512-+tq8Jl4H3zuuTHPGT4Yg6LJnDsBK2+qy2IpBK1D0nO0EVfYPKViRMlzwJ18XfWGsxeH1JQ+T/oiZ9AfQEMNR/g==
+docusaurus-plugin-redoc@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/docusaurus-plugin-redoc/-/docusaurus-plugin-redoc-0.9.0.tgz#d57a91f1868e588025e1b14f5eb5908338abc577"
+  integrity sha512-oW7R4NbrPTTEujAZliWDwLYpjgqfb7vt5zM/fb0VIiKnxWtaTVAqJ0pwW9Gapx6zesnAfvgVFYByFdTpkqFCUQ==
   dependencies:
-    "@docusaurus/types" "^2.0.0-beta.15"
-    "@docusaurus/utils" "^2.0.0-beta.15"
+    "@docusaurus/types" "^2.0.0-beta.17"
+    "@docusaurus/utils" "^2.0.0-beta.17"
     joi "^17.5.0"
     yaml "^1.10.2"
 
-docusaurus-theme-redoc@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/docusaurus-theme-redoc/-/docusaurus-theme-redoc-0.8.0.tgz#833a1ed6a9652072c128e2f816b5b5312116f082"
-  integrity sha512-0G3Fh5h4jqM+Vun9fICaBY7qUiAKGbwFC4fEitOFTKjmXMTzAlqOwenRweVNSihLykVIE4+wL3nILqu3aD5s8Q==
+docusaurus-theme-redoc@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/docusaurus-theme-redoc/-/docusaurus-theme-redoc-0.9.0.tgz#ec2998138cb5400ec5666a9fd07c60b4a2fb6251"
+  integrity sha512-ZV1TldgwDwuTU8WQwj5CDyTDKug/1Wy4hdTQ1wpfBxg2xY4uJZQ4WdkRpXWnX8he3KWF2Nz8nemk4FoHiJbiRQ==
   dependencies:
-    "@docusaurus/types" "^2.0.0-beta.15"
+    "@docusaurus/types" "^2.0.0-beta.17"
     clsx "^1.1.1"
     copyfiles "^2.4.1"
     lodash "^4.17.21"
     mobx "^6.3.13"
     node-polyfill-webpack-plugin "^1.1.4"
-    redoc "^2.0.0-rc.61"
+    redoc "^2.0.0-rc.64"
     styled-components "^5.3.3"
     to-arraybuffer "^1.0.1"
 
@@ -9217,7 +9217,7 @@ redent@^3.0.0:
     indent-string "^4.0.0"
     strip-indent "^3.0.0"
 
-redoc@^2.0.0-rc.61:
+redoc@^2.0.0-rc.64:
   version "2.0.0-rc.64"
   resolved "https://registry.yarnpkg.com/redoc/-/redoc-2.0.0-rc.64.tgz#6fc326092a826d6e0b631cde41980ba3bc8d7e73"
   integrity sha512-zrM/vcONpbmyDUOpk7Ai7R/yZrT7W1+8ANJUB3b5kzaLQUx4VbrDoT4D6HHHquOnKx+5We4nOPPAi8fi/cqa8g==
@@ -9246,14 +9246,14 @@ redoc@^2.0.0-rc.61:
     swagger2openapi "^7.0.6"
     url-template "^2.0.8"
 
-redocusaurus@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/redocusaurus/-/redocusaurus-0.8.0.tgz#4131ca39d6fce3bec271dcccaca5c41b71190449"
-  integrity sha512-ZudJjiUMr9iq8lKWbSu7xCwlKItiY5wch9XHXUadmp9C8pZ7R8fmk7CsghAtEg0tsGqXytygSVS7LSjmrFR7Rg==
+redocusaurus@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/redocusaurus/-/redocusaurus-0.9.0.tgz#862ab7f95e04afb0ac5971914840dc4d68615488"
+  integrity sha512-lodnv9WRTzsPeaXY1NBYb5m1dbl8p3SnL3RzZ2dIZCVaB1UMIk+c04PEuhpbOC2xlMyCfOrXjfisGUBBVIe4ig==
   dependencies:
-    "@docusaurus/types" "^2.0.0-beta.15"
-    docusaurus-plugin-redoc "^0.7.0"
-    docusaurus-theme-redoc "^0.8.0"
+    "@docusaurus/types" "^2.0.0-beta.17"
+    docusaurus-plugin-redoc "^0.9.0"
+    docusaurus-theme-redoc "^0.9.0"
 
 reftools@^1.1.9:
   version "1.1.9"

@@ -21,7 +21,7 @@ The following are examples of metrics we currently monitor based on this usage d
 
 - Number of started [`resotocore`](../concepts/components/core.md) instances
 - Number of long-running [`resotocore`](../concepts/components/core.md) instances (greater than one hour)
-- Number of executed [CLI commands](./cli/README.md)
+- Number of executed [CLI commands](./cli/index.md)
 - Number of executed [jobs](../concepts/automation/job.md)
 
 ### Error Reporting

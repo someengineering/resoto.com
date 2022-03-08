@@ -1,5 +1,5 @@
 ---
-pagination_prev: getting-started/README
+pagination_prev: getting-started/index
 pagination_next: getting-started/performing-searches
 ---
 

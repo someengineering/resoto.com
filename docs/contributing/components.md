@@ -15,7 +15,7 @@ The source code for Resoto lives in the [`someengineering/resoto` repository on 
 
 Contributions are made via [pull requests to the GitHub repository](https://github.com/someengineering/resoto/pulls). You will first need to [fork](https://docs.github.com/get-started/quickstart/fork-a-repo) the repository.
 
-Each Resoto [component](../concepts/components/README.md) is maintained as separate project, and pull requests should target a single component:
+Each Resoto [component](../concepts/components/index.md) is maintained as separate project, and pull requests should target a single component:
 
 - [Resoto Core (`resotocore`)](https://github.com/someengineering/resoto/tree/main/resotocore)
 - [Resoto Shell (`resotoshell`)](https://github.com/someengineering/resoto/tree/main/resotoshell)

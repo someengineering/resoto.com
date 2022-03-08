@@ -21,15 +21,15 @@ To help you find the information you need, the documentation is structured as fo
 
 - **[Getting Started](/docs/getting-started)** walks you through how to install and use Resoto, step by step. _Start here if you're new to Resoto._
 <!-- - **[How-To Guides](/docs/how-to)** provide guided instructions for specific use cases and scenarios. -->
-- **[Concepts](/docs/concepts)** describe key topics and ideas, and provide an overview of how Resoto works and its [components](./concepts/components/README.md).
-- **[Reference](/docs/reference)** is a manual describing the [command-line interface (CLI)](./reference/cli/README.md) and [data models](./reference/data-models/README.md). It is assumed that you already have a basic understanding of important concepts.
+- **[Concepts](/docs/concepts)** describe key topics and ideas, and provide an overview of how Resoto works and its [components](./concepts/components/index.md).
+- **[Reference](/docs/reference)** is a manual describing the [command-line interface (CLI)](./reference/cli/index.md) and [data models](./reference/data-models/index.md). It is assumed that you already have a basic understanding of important concepts.
 - **[Contributing](/docs/contributing)** lists instructions and guidelines for contributing to Resoto.
 
 ## What Is Resoto?
 
-Resoto indexes resources, captures dependencies, and maps out your infrastructure in an intuitive [graph](./concepts/graph/README.md). The graph contains metrics for each [resource](./reference/data-models/README.md).
+Resoto indexes resources, captures dependencies, and maps out your infrastructure in an intuitive [graph](./concepts/graph/index.md). The graph contains metrics for each [resource](./reference/data-models/index.md).
 
-Developers and SREs can [search the graph](./concepts/search/README.md) and create alerting and cleanup [workflows](./concepts/automation/workflow.md).
+Developers and SREs can [search the graph](./concepts/search/index.md) and create alerting and cleanup [workflows](./concepts/automation/workflow.md).
 
 Metrics can be aggregated and exported to a time-series database such as [Prometheus](https://prometheus.io).
 

@@ -1,5 +1,5 @@
 ---
-pagination_prev: getting-started/README
+pagination_prev: getting-started/index
 pagination_next: getting-started/performing-searches
 ---
 
@@ -77,7 +77,7 @@ By default, Resoto collects [anonymous statistics](../reference/telemetry.md) ab
 
 ### [Docker Compose](https://docs.docker.com/compose/reference) {#docker-compose-install}
 
-We publish an all-in-one Docker image (`somecr.io/someengineering/resoto`) in addition to Docker images for each individual Resoto [component](../concepts/components/README.md):
+We publish an all-in-one Docker image (`somecr.io/someengineering/resoto`) in addition to Docker images for each individual Resoto [component](../concepts/components/index.md):
 
 - `somecr.io/someengineering/resotocore`
 - `somecr.io/someengineering/resotoworker`

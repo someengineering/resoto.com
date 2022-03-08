@@ -11,7 +11,7 @@ Resoto maintains its collected data in a graph database. This graph can be acces
 
 :::tip
 
-Performing a search in the [Resoto Shell](../components/shell.md) [command-line interface (CLI)](../../reference/cli/README.md) is done using the [`search`](../../reference/cli/search.md) command.
+Performing a search in the [Resoto Shell](../components/shell.md) [command-line interface (CLI)](../../reference/cli/index.md) is done using the [`search`](../../reference/cli/search.md) command.
 
 ```bash
 > search is(aws_account)

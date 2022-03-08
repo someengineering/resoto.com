@@ -143,7 +143,7 @@ Let's break down the filter expression:
 
 - `reported.id` defines the property path in the target node (in this case, the account node). The path in this notation is always absolute.
 
-It is possible to access every property of every parent or child resource in this way. You can use this notation anywhere a property path is specified: in [filters](./filters.md), [aggregations](./aggregation.md), [`with` clauses](./with-clause.md), and [CLI commands](../../reference/cli/README.md). Resoto is clever enough to create nested searches on demand when it encocunters this notation.
+It is possible to access every property of every parent or child resource in this way. You can use this notation anywhere a property path is specified: in [filters](./filters.md), [aggregations](./aggregation.md), [`with` clauses](./with-clause.md), and [CLI commands](../../reference/cli/index.md). Resoto is clever enough to create nested searches on demand when it encocunters this notation.
 
 This is the nested search that is automatically created for the above example:
 
@@ -162,7 +162,7 @@ Resoto provides the following information as part of every resource node.
 - `/ancestors/region` the related region (if applicable) with reported `id` and `name`
 - `/ancestors/zone` the related zone (if applicable) with reported `id` and `name`
 
-The [command-line interface](../../reference/cli/README.md) uses `list` for outputs by default, which always prints the above data if available.
+The [command-line interface](../../reference/cli/index.md) uses `list` for outputs by default, which always prints the above data if available.
 
 :::note
 

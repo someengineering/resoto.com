@@ -28,16 +28,16 @@ You can pipe commands using `|` and chain multiple commands using `;`.
 | [`http`](./http.md)                 | Perform HTTP request with incoming data.                                            |
 | [`jobs`](./jobs/index.md)           | Manage all jobs.                                                                    |
 | [`jq`](./jq.md)                     | Filter and process JSON.                                                            |
-| `json`                              | Parse JSON and pass parsed objects to the output stream.                            |
-| `kind`                              | Retrieves information about the graph data kinds.                                   |
+| [`json`](./json.md)                 | Parse JSON and pass parsed objects to the output stream.                            |
+| [`kind`](./kind.md)                 | Retrieves information about the graph data kinds.                                   |
 | [`list`](./list.md)                 | Transform incoming objects as string with defined properties.                       |
 | [`predecessors`](./predecessors.md) | Select all predecessors of this node in the graph.                                  |
-| `protect`                           | Mark all incoming database objects as protected.                                    |
+| [`protect`](./protect.md)           | Mark all incoming database objects as protected.                                    |
 | [`search`](./search.md)             | Search the graph.                                                                   |
-| `set_desired`                       | Allows to set arbitrary properties as desired for all incoming database objects.    |
-| `set_metadata`                      | Allows to set arbitrary properties as metadata for all incoming database objects.   |
-| `sleep`                             | Suspend execution for an interval of time.                                          |
-| `start_task`                        | Start a task with the given name.                                                   |
+| [`set_desired`](./set_desired.md)   | Allows to set arbitrary properties as desired for all incoming database objects.    |
+| [`set_metadata`](./set_metadata.md) | Allows to set arbitrary properties as metadata for all incoming database objects.   |
+| [`sleep`](./sleep.md)               | Suspend execution for an interval of time.                                          |
+| [`start_task`](./start_task.md)     | Start a task with the given name.                                                   |
 | [`successors`](./successors.md)     | Select all successor of this node in the graph.                                     |
 | `system`                            | Access and manage system wide properties.                                           |
 | [`tag`](./tag.md)                   | Update a tag with provided value or delete a tag.                                   |

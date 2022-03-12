@@ -39,7 +39,7 @@ You can pipe commands using `|` and chain multiple commands using `;`.
 | [`sleep`](./sleep.md)               | Suspend execution for an interval of time.                                          |
 | [`start_task`](./start_task.md)     | Start a task with the given name.                                                   |
 | [`successors`](./successors.md)     | Select all successor of this node in the graph.                                     |
-| `system`                            | Access and manage system wide properties.                                           |
+| [`system`](./system/index.md)       | Access and manage system wide properties.                                           |
 | [`tag`](./tag.md)                   | Update a tag with provided value or delete a tag.                                   |
 | [`tail`](./tail.md)                 | Return `n` last elements of the stream.                                             |
 | `templates`                         | Access the query template library.                                                  |

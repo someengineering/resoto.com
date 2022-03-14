@@ -39,7 +39,7 @@ Have you ever…
 
 - had a standstill in your CI pipeline because a broken job leaked cloud resources and triggered a [quota limit](./concepts/search/examples.md#quota)?
 - wanted to find all expired [certificates](./concepts/search/examples.md#certificate)?
-- had to change the [tags](./reference/cli/tag.md) of thousands of EC2 instances?
+- had to change the [tags](./reference/cli/tag/index.md) of thousands of EC2 instances?
 - needed to delete all unused EBS [volumes](./concepts/search/examples.md#volume) with no I/O in the past month?
 - wished for an [aggregate](./concepts/search/aggregation.md) view of resource usage across all cloud services?
 - tediously created a report of the cost of a project across different accounts or cloud services?

@@ -40,11 +40,11 @@ You can pipe commands using `|` and chain multiple commands using `;`.
 | [`start_task`](./start_task.md)     | Start a task with the given name.                                                   |
 | [`successors`](./successors.md)     | Select all successor of this node in the graph.                                     |
 | [`system`](./system/index.md)       | Access and manage system wide properties.                                           |
-| [`tag`](./tag.md)                   | Update a tag with provided value or delete a tag.                                   |
+| [`tag`](./tag/index.md)             | Update a tag with provided value or delete a tag.                                   |
 | [`tail`](./tail.md)                 | Return `n` last elements of the stream.                                             |
-| `templates`                         | Access the query template library.                                                  |
-| `uniq`                              | Remove all duplicated objects from the stream.                                      |
-| `write`                             | Writes the incoming stream of data to a file in the defined format.                 |
+| [`templates`](./templates/index.md) | Access the query template library.                                                  |
+| [`uniq`](./uniq.md)                 | Remove all duplicated objects from the stream.                                      |
+| [`write`](./write.md)               | Writes the incoming stream of data to a file in the defined format.                 |
 
 ### Command Aliases
 
@@ -59,24 +59,24 @@ You can pipe commands using `|` and chain multiple commands using `;`.
 
 | Placeholder   | Example                |
 | ------------- | ---------------------- |
-| `@UTC@`       | `2022-01-21T03:58:19Z` |
-| `@NOW@`       | `2022-01-21T03:58:19Z` |
-| `@TODAY@`     | `2022-01-21`           |
-| `@TOMORROW@`  | `2022-01-22`           |
-| `@YESTERDAY@` | `2022-01-20`           |
+| `@DAY@`       | `16`                   |
+| `@FRIDAY@`    | `2022-02-18`           |
+| `@HOUR@`      | `15`                   |
+| `@MINUTE@`    | `23`                   |
+| `@MONDAY@`    | `2022-02-21`           |
+| `@MONTH@`     | `02`                   |
+| `@NOW@`       | `2022-02-16T15:23:31Z` |
+| `@SATURDAY@`  | `2022-02-19`           |
+| `@SECOND@`    | `31`                   |
+| `@SUNDAY@`    | `2022-02-20`           |
+| `@THURSDAY@`  | `2022-02-17`           |
+| `@TIME@`      | `15:23:31`             |
+| `@TODAY@`     | `2022-02-16`           |
+| `@TOMORROW@`  | `2022-02-17`           |
+| `@TUESDAY@`   | `2022-02-22`           |
+| `@TZ@`        | `CET`                  |
+| `@TZ_OFFSET@` | `+0100`                |
+| `@UTC@`       | `2022-02-16T14:23:31Z` |
+| `@WEDNESDAY@` | `2022-02-16`           |
 | `@YEAR@`      | `2022`                 |
-| `@MONTH@`     | `01`                   |
-| `@DAY@`       | `21`                   |
-| `@TIME@`      | `03:58:19`             |
-| `@HOUR@`      | `03`                   |
-| `@MINUTE@`    | `58`                   |
-| `@SECOND@`    | `19`                   |
-| `@TZ_OFFSET@` | `+0000`                |
-| `@TZ@`        | `UTC`                  |
-| `@MONDAY@`    | `2022-01-24`           |
-| `@TUESDAY@`   | `2022-01-25`           |
-| `@WEDNESDAY@` | `2022-01-26`           |
-| `@THURSDAY@`  | `2022-01-27`           |
-| `@FRIDAY@`    | `2022-01-21`           |
-| `@SATURDAY@`  | `2022-01-22`           |
-| `@SUNDAY@`    | `2022-01-23`           |
+| `@YESTERDAY@` | `2022-02-15`           |

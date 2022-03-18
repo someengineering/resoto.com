@@ -11,51 +11,43 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Resource Graph',
-    image: 'img/illustrations/sheep-professor.svg',
+    title: 'Search Infastructure',
+    image: 'img/illustrations/sheep-strong.svg',
     description: (
       <>
-        Resoto indexes resources, captures dependencies, and maps out your cloud
-        infrastructure in an intuitive{' '}
+        Resoto maps out your cloud infrastructure in a{' '}
         <strong>
           <Link to="/docs/concepts/graph">graph</Link>
-        </strong>
+        </strong>{' '}
+        and provides a simple{' '}
+        <strong>
+          <Link to="/docs/concepts/search">search syntax</Link>
+        </strong>{' '}
         .
       </>
     ),
   },
   {
-    title: 'Search and Automation',
+    title: 'Generate Reports',
+    image: 'img/illustrations/sheep-professor.svg',
+    description: (
+      <>
+        Resoto keeps track of and reports infastructure changes over time,
+        making it easy to audit resource usage and cleanup.
+      </>
+    ),
+  },
+  {
+    title: 'Automate Tasks',
     image: 'img/illustrations/sheep-airport.svg',
     description: (
       <>
-        Developers and SREs can{' '}
-        <strong>
-          <Link to="/docs/concepts/search">search</Link>
-        </strong>{' '}
-        the graph and create alerting and cleanup{' '}
+        Tedious tasks like rule enforcement, resource tagging, and cleanup can
+        be automated using{' '}
         <strong>
           <Link to="/docs/concepts/automation/workflow">workflows</Link>
         </strong>
         .
-      </>
-    ),
-  },
-  {
-    title: 'Metrics',
-    image: 'img/illustrations/sheep-strong.svg',
-    description: (
-      <>
-        Data can be aggregated and exported to a{' '}
-        <strong>time-series database</strong> such as{' '}
-        <a
-          href="https://prometheus.io"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Prometheus
-        </a>
-        !
       </>
     ),
   },

@@ -2,7 +2,7 @@ import requests
 from collections import defaultdict
 
 core = "http://localhost:8900"
-provider_names = ["aws", "gcp", "vsphere", "kubernetes"]
+provider_names = ["aws", "gcp", "vsphere", "kubernetes", "digitalocean"]
 
 by_provider = defaultdict(list)
 for name, kind in requests.get(f"{core}/model").json()["kinds"].items():
@@ -26,4 +26,4 @@ def print_md(provider: str):
 
 
 #export_images(".")
-#export_images("kubernetes")
+print_md("digitalocean")

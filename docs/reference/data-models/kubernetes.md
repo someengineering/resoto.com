@@ -26,6 +26,10 @@ Kubernetes support is still in alpha. Please [report any issues on GitHub](https
 
 ![kubernetes_deployment](./img/kubernetes/kubernetes_deployment.svg)
 
+## `kubernetes_horizontal_pod_autoscaler`
+
+![kubernetes_horizontal_pod_autoscaler](./img/kubernetes/kubernetes_horizontal_pod_autoscaler.svg)
+
 ## `kubernetes_namespace`
 
 ![kubernetes_namespace](./img/kubernetes/kubernetes_namespace.svg)

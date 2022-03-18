@@ -40,6 +40,10 @@ sidebar_label: Google Cloud Platform
 
 ![gcp_global_network_endpoint_group Resource Diagram](./img/gcp/gcp_global_network_endpoint_group.svg)
 
+## `gcp_gke_cluster`
+
+![gcp_gke_cluster Resource Diagram](./img/gcp/gcp_gke_cluster.svg)
+
 ## `gcp_health_check`
 
 ![gcp_health_check Resource Diagram](./img/gcp/gcp_health_check.svg)

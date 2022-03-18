@@ -1,6 +1,7 @@
 ---
 slug: metrics
 sidebar_position: 5
+sidebar_label: Metrics
 ---
 
 # Resoto Metrics

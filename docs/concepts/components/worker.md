@@ -1,6 +1,7 @@
 ---
 slug: worker
 sidebar_position: 2
+sidebar_label: Worker
 ---
 
 # Resoto Worker

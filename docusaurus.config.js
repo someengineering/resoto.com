@@ -32,6 +32,12 @@ const config = {
     [
       'redocusaurus',
       {
+        specs: [
+          {
+            id: 'resotocore',
+            spec: 'openapi/resotocore.yml',
+          },
+        ],
         theme: {
           primaryColor: '#762dd7',
         },

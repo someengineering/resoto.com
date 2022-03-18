@@ -4,24 +4,19 @@ sidebar_label: Documentation
 
 # Writing collector plugins
 
-Here we will try to understand what it takes to write a collector plugin.
+Collector plugins allow for importing of arbitrary resources into Resoto in graph form. The most common use case is to gather information about cloud accounts and/or resources. However, any data expressible is graph form can be collected—be it social media accounts, software dependency trees, network topology, steps for cooking your favorite food, etc.
 
-## What is a Collector Plugin?
+Once the graph data is collected and sent to [Resoto Core](../concepts/components/core.md), the power of Resoto's [search syntax](../concepts/search/index.md) is at your fingertips.
 
-The collector plugin allows importing arbitrary resources into Resoto in a graph form. It is mainly used for collecting information about clouds and resources, but it is in no way limited to only that. You can collect literally everything which can be expressed as a graph, be it social media accounts, a software dependency tree, a network topology, steps for cooking your favorite food, etc.
-
-Once the graph is collected and sent to resotocore, the power of resoto search syntax is at the tip of your fingers.
-
-## Plugin interface
+## Plugin Interface
 
 The plugin interface is defined by the following method:
 
 ```python
-    def collect(self) -> None:
-        """Collects all the Cloud Resources"""
-        account_graph = collect_account()
-        self.graph.merge(account_graph)
-
+def collect(self) -> None:
+  """Collects all the Cloud Resources"""
+  account_graph = collect_account()
+  self.graph.merge(account_graph)
 ```
 
 That's it. What usually happens in the `collect` method is:

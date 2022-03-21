@@ -10,10 +10,10 @@ search [--with-edges] [--explain] <query>
 
 ### Options
 
-| Option            | Description                                      |
-| ----------------- | ------------------------------------------------ |
+| Option         | Description                                      |
+| -------------- | ------------------------------------------------ |
 | `--with-edges` | Return edges in addition to nodes                |
-| `--explain`       | Instead of executing the query, analyze its cost |
+| `--explain`    | Instead of executing the query, analyze its cost |
 
 ### Parameters
 

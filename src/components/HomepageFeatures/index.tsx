@@ -5,6 +5,7 @@ import styles from './styles.module.css';
 
 type FeatureItem = {
   title: string;
+  link: string;
   image: string;
   description: JSX.Element;
 };
@@ -12,6 +13,7 @@ type FeatureItem = {
 const FeatureList: FeatureItem[] = [
   {
     title: 'Search Infastructure',
+    link: '/docs/concepts/search',
     image: 'img/illustrations/sheep-strong.svg',
     description: (
       <>
@@ -29,6 +31,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Generate Reports',
+    link: '/docs/concepts/search/aggregation',
     image: 'img/illustrations/sheep-professor.svg',
     description: (
       <>
@@ -39,13 +42,14 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Automate Tasks',
+    link: '/docs/concepts/automation/job',
     image: 'img/illustrations/sheep-airport.svg',
     description: (
       <>
         Tedious tasks like rule enforcement, resource tagging, and cleanup can
         be automated using{' '}
         <strong>
-          <Link to="/docs/concepts/automation/workflow">workflows</Link>
+          <Link to="/docs/concepts/automation/job">jobs</Link>
         </strong>
         .
       </>
@@ -53,14 +57,19 @@ const FeatureList: FeatureItem[] = [
   },
 ];
 
-function Feature({ title, image, description }: FeatureItem) {
+function Feature({ title, link, image, description }: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
-        <img className={styles.featureSvg} alt={title} src={image} />
+        <Link to={link}>
+          <img className={styles.featureSvg} alt={title} src={image} />
+        </Link>
       </div>
       <div className="text--center padding-horiz--md">
-        <h3>{title}</h3>
+        <Link to={link}>
+          <h3>{title}</h3>
+        </Link>
+
         <p>{description}</p>
       </div>
     </div>

@@ -5,70 +5,71 @@ import styles from './styles.module.css';
 
 type FeatureItem = {
   title: string;
+  link: string;
   image: string;
   description: JSX.Element;
 };
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Resource Graph',
-    image: 'img/illustrations/sheep-professor.svg',
-    description: (
-      <>
-        Resoto indexes resources, captures dependencies, and maps out your cloud
-        infrastructure in an intuitive{' '}
-        <strong>
-          <Link to="/docs/concepts/graph">graph</Link>
-        </strong>
-        .
-      </>
-    ),
-  },
-  {
-    title: 'Search and Automation',
-    image: 'img/illustrations/sheep-airport.svg',
-    description: (
-      <>
-        Developers and SREs can{' '}
-        <strong>
-          <Link to="/docs/concepts/search">search</Link>
-        </strong>{' '}
-        the graph and create alerting and cleanup{' '}
-        <strong>
-          <Link to="/docs/concepts/automation/workflow">workflows</Link>
-        </strong>
-        .
-      </>
-    ),
-  },
-  {
-    title: 'Metrics',
+    title: 'Search Infastructure',
+    link: '/docs/concepts/search',
     image: 'img/illustrations/sheep-strong.svg',
     description: (
       <>
-        Data can be aggregated and exported to a{' '}
-        <strong>time-series database</strong> such as{' '}
-        <a
-          href="https://prometheus.io"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Prometheus
-        </a>
-        !
+        Resoto maps out your cloud infrastructure in a{' '}
+        <strong>
+          <Link to="/docs/concepts/graph">graph</Link>
+        </strong>{' '}
+        and provides a simple{' '}
+        <strong>
+          <Link to="/docs/concepts/search">search syntax</Link>
+        </strong>{' '}
+        .
+      </>
+    ),
+  },
+  {
+    title: 'Generate Reports',
+    link: '/docs/concepts/search/aggregation',
+    image: 'img/illustrations/sheep-professor.svg',
+    description: (
+      <>
+        Resoto keeps track of and reports infastructure changes over time,
+        making it easy to audit resource usage and cleanup.
+      </>
+    ),
+  },
+  {
+    title: 'Automate Tasks',
+    link: '/docs/concepts/automation/job',
+    image: 'img/illustrations/sheep-airport.svg',
+    description: (
+      <>
+        Tedious tasks like rule enforcement, resource tagging, and cleanup can
+        be automated using{' '}
+        <strong>
+          <Link to="/docs/concepts/automation/job">jobs</Link>
+        </strong>
+        .
       </>
     ),
   },
 ];
 
-function Feature({ title, image, description }: FeatureItem) {
+function Feature({ title, link, image, description }: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
-        <img className={styles.featureSvg} alt={title} src={image} />
+        <Link to={link}>
+          <img className={styles.featureSvg} alt={title} src={image} />
+        </Link>
       </div>
       <div className="text--center padding-horiz--md">
-        <h3>{title}</h3>
+        <Link to={link}>
+          <h3>{title}</h3>
+        </Link>
+
         <p>{description}</p>
       </div>
     </div>

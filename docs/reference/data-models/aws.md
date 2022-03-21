@@ -28,6 +28,10 @@ sidebar_label: Amazon Web Services
 
 ![aws_cloudformation_stack Resource Diagram](./img/aws/aws_cloudformation_stack.svg)
 
+## `aws_cloudformation_stack_set`
+
+![aws_cloudformation_stack_set Resource Diagram](./img/aws/aws_cloudformation_stack_set.svg)
+
 ## `aws_cloudwatch_alarm`
 
 ![aws_cloudwatch_alarm Resource Diagram](./img/aws/aws_cloudwatch_alarm.svg)

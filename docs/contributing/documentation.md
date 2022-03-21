@@ -36,7 +36,7 @@ You will first need to [fork](https://docs.github.com/get-started/quickstart/for
 Then, creating a local [clone](https://docs.github.com/repositories/creating-and-managing-repositories/cloning-a-repository) of the repository is as simple as:
 
 ```bash
-git clone https://github.com/YOUR_GITHUB_USERNAME/resoto.com.git
+git clone https://github.com/<your_github_username>/resoto.com.git
 ```
 
 This will create a directory named `resoto.com` in your current working directory.
@@ -50,7 +50,7 @@ git remote add upstream https://github.com/someengineering/resoto.com.git
 We will now create a new [branch](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell) from `main` (it is recommended to give your branch a meaningful, descriptive name):
 
 ```bash
-git checkout -b YOUR_BRANCH_NAME main
+git checkout -b <branch_name> main
 ```
 
 #### Starting the Development Server
@@ -64,14 +64,17 @@ yarn start
 
 You will notice that `http://localhost:3000` has been opened in your browser, where you can see your changes reflected live.
 
-#### Pushing Your Changes
+#### Testing Your Changes
 
-After you are done authoring your changes, be sure to verify that they will pass our [lint](<https://en.wikipedia.org/wiki/Lint_(software)>) and build [continuous integration](https://docs.github.com/actions/automating-builds-and-tests/about-continuous-integration) checks.
+After you are done authoring your changes, be sure to format them with Prettier and verify they will pass our [lint](<https://en.wikipedia.org/wiki/Lint_(software)>) and build [continuous integration](https://docs.github.com/actions/automating-builds-and-tests/about-continuous-integration) checks:
 
 ```bash
+yarn format
 yarn lint
 yarn build
 ```
+
+#### Pushing Your Changes
 
 When you are ready to submit your changes for review, commit them to your local repository:
 
@@ -82,10 +85,18 @@ git commit
 Then, push them to your fork:
 
 ```bash
-git push --set-upstream origin YOUR_BRANCH_NAME
+git push --set-upstream origin <branch_name>
 ```
 
 You can now [submit your pull request on GitHub](https://github.com/someengineering/resoto.com/pulls)! You are welcome to [open your pull request as a draft](https://docs.github.com/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests#draft-pull-requests) for early feedback and review. Be sure to follow the pull request template!
+
+:::info
+
+Pull request titles should follow the [Conventional Commits](https://www.conventionalcommits.org) specification.
+
+However, do not worry too much about getting this right, as we will make any necessary adjustments prior to merging your changes.
+
+:::
 
 #### Keeping Your Branch Up-to-Date
 
@@ -99,6 +110,5 @@ git rebase upstream/main
 To update the branch in your fork, you will then need to force push:
 
 ```bash
-
-git push -f origin YOUR_BRANCH_NAME
+git push -f origin <branch_name>
 ```

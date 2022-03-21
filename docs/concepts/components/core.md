@@ -1,6 +1,7 @@
 ---
 slug: core
 sidebar_position: 1
+sidebar_label: Core
 ---
 
 # Resoto Core

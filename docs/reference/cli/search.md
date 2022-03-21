@@ -5,14 +5,14 @@ The `search` command allows you to search the graph using [filters](../../concep
 ## Usage
 
 ```bash
-search [--include-edges] [--explain] <query>
+search [--with-edges] [--explain] <query>
 ```
 
 ### Options
 
 | Option            | Description                                      |
 | ----------------- | ------------------------------------------------ |
-| `--include-edges` | Return edges in addition to nodes                |
+| `--with-edges` | Return edges in addition to nodes                |
 | `--explain`       | Instead of executing the query, analyze its cost |
 
 ### Parameters

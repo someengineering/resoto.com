@@ -103,4 +103,3 @@ sidebar_label: Digital Ocean
 ## `digitalocean_volume`
 
 ![digitalocean_volume](./img/digitalocean/digitalocean_volume.svg)
-

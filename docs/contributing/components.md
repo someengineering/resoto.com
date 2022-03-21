@@ -30,6 +30,30 @@ Each Resoto [component](../concepts/components/index.md) is maintained as separa
 - [ArangoDB](https://arangodb.com) 3.8.2+
 - [GNU Compiler Collection (GCC)](https://gcc.gnu.org) (depending on the host system, Python dependencies may need to be compiled from source)
 
+### Cloning the Repository
+
+You will first need to [fork](https://docs.github.com/get-started/quickstart/fork-a-repo) the repository.
+
+Then, creating a local [clone](https://docs.github.com/repositories/creating-and-managing-repositories/cloning-a-repository) of the repository is as simple as:
+
+```bash
+git clone https://github.com/<your_github_username>/resoto.git
+```
+
+This will create a directory named `resoto` in your current working directory.
+
+Next, add a remote pointing to the upstream repository (as opposted to your fork) named `upstream`:
+
+```bash
+git remote add upstream https://github.com/someengineering/resoto.git
+```
+
+We will now create a new [branch](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell) from `main` (it is recommended to give your branch a meaningful, descriptive name):
+
+```bash
+git checkout -b <branch_name> main
+```
+
 ### Setting Up a Virtual Environment
 
 We recommend using a [Python virtual environment](https://docs.python.org/3/tutorial/venv.html).
@@ -124,4 +148,36 @@ Lint and test your code:
 tox
 ```
 
+### Pushing Your Changes
+
+When you are ready to submit your changes for review, commit them to your local repository:
+
+```bash
+git commit
+```
+
+Then, push them to your fork:
+
+```bash
+git push --set-upstream origin <branch_name>
+```
+
 You can now [submit your pull request on GitHub](https://github.com/someengineering/resoto/pulls)! You are welcome to [open your pull request as a draft](https://docs.github.com/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests#draft-pull-requests) for early feedback and review. Be sure to follow the pull request template!
+
+:::info
+
+Pull request titles should follow the following format for correct parsing by the [changelog generator script](https://github.com/someengineering/resoto/blob/main/tools/release_notes.py):
+
+```
+[<scope>][<type>] <description>
+```
+
+| Placeholder     | Description               |
+| --------------- | ------------------------- |
+| `<scope>`       | Affected component        |
+| `<type>`        | `fix`, `feat`, or `chore` |
+| `<description>` | Description of changes    |
+
+However, do not worry too much about getting this right, as we will make any necessary adjustments prior to merging your changes.
+
+:::

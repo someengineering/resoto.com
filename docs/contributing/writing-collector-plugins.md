@@ -1,8 +1,8 @@
 ---
-sidebar_label: Documentation
+sidebar_label: Plugins
 ---
 
-# Writing collector plugins
+# Contributing to Plugins
 
 Collector plugins allow for importing of arbitrary resources into Resoto in graph form. The most common use case is to gather information about cloud accounts and/or resources. However, any data expressible is graph form can be collected—be it social media accounts, software dependency trees, network topology, steps for cooking your favorite food, etc.
 
@@ -10,7 +10,7 @@ Once the graph data is collected and sent to [Resoto Core](../concepts/component
 
 ## Plugin Interface
 
-The plugin interface is defined by the following method:
+The plugin interface is defined as follows:
 
 ```python
 def collect(self) -> None:

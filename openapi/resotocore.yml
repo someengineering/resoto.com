@@ -5,8 +5,8 @@ info:
   title: Resoto Core REST API
   version: V1
 tags:
-  - name: graph_query
-    description: Endpoints to query all sections of the graph.
+  - name: graph_search
+    description: Endpoints to search all sections of the graph.
   - name: graph_management
     description: Create, update wipe or delete a complete graph.
   - name: node_management
@@ -15,6 +15,8 @@ tags:
     description: Endpoints to maintain the schema and model of the entities inside a graph.
   - name: config
     description: Endpoints to maintain configuration data.
+  - name: config_validation
+    description: Endpoints to define how configs should be validated.
   - name: cli
     description: Endpoints to evaluate and execute cli commands.
   - name: subscriptions
@@ -27,47 +29,46 @@ tags:
     description: Endpoints to get information about the system.
   - name: debug
     description: Endpoints to debug the system.
-
 paths:
   # region model
   /model:
     get:
-      summary: 'Get the currently defined model.'
+      summary: "Get the currently defined model."
       tags:
         - model
       responses:
-        '200':
-          description: 'The list of all kinds.'
+        "200":
+          description: "The list of all kinds."
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Kind'
+                $ref: "#/components/schemas/Kind"
     patch:
-      summary: 'Add or update the current defined model.'
+      summary: "Add or update the current defined model."
       tags:
         - model
       requestBody:
-        description: 'Complete model or part of the model.'
+        description: "Complete model or part of the model."
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Kind'
+              $ref: "#/components/schemas/Kind"
       responses:
-        '200':
-          description: 'OK if the model is updated successfully'
+        "200":
+          description: "OK if the model is updated successfully"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Kind'
-        '400':
-          description: 'Message that explains the error'
+                $ref: "#/components/schemas/Kind"
+        "400":
+          description: "Message that explains the error"
           content:
             text/plain:
               schema:
                 type: string
   /model/uml:
     get:
-      summary: 'Get the currently defined model as svg uml image.'
+      summary: "Get the currently defined model as svg uml image."
       tags:
         - model
       parameters:
@@ -102,75 +103,75 @@ paths:
             type: boolean
             default: false
       responses:
-        '200':
-          description: 'Returns the model as uml diagram in svg format'
+        "200":
+          description: "Returns the model as uml diagram in svg format"
   # endregion
 
   # region graph management
   /graph:
     get:
-      summary: 'List all graphs'
+      summary: "List all graphs"
       tags:
         - graph_management
       responses:
-        '200':
-          description: 'The names of all graphs'
+        "200":
+          description: "The names of all graphs"
           content:
             application/json:
               schema:
                 type: array
                 items:
                   type: string
-                example: ['main', 'test']
+                example: ["main", "test"]
   /graph/{graph_id}:
     get:
-      summary: 'Get root of a specific graph'
+      summary: "Get root of a specific graph"
       tags:
         - graph_management
       parameters:
         - name: graph_id
           in: path
-          description: 'The identifier of the graph'
+          description: "The identifier of the graph"
           example: resoto
           required: true
           schema:
             type: string
       responses:
-        '200':
-          description: 'The graph with the root node'
+        "200":
+          description: "The graph with the root node"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Node'
-        '404':
-          description: 'The graph does not exist'
+                $ref: "#/components/schemas/Node"
+        "404":
+          description: "The graph does not exist"
     post:
-      summary: 'Create a new graph'
+      summary: "Create a new graph"
       tags:
         - graph_management
       parameters:
         - name: graph_id
           in: path
-          description: 'The identifier of the graph'
+          description: "The identifier of the graph"
           example: resoto
           required: true
           schema:
             type: string
       responses:
-        '200':
-          description: 'The created graph with the root node'
+        "200":
+          description: "The created graph with the root node"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Node'
+                $ref: "#/components/schemas/Node"
     delete:
-      summary: 'Delete an existing graph'
+      summary: "Delete an existing graph"
       tags:
         - graph_management
       parameters:
         - name: graph_id
           in: path
-          description: 'The identifier of the graph'
+          description: "The identifier of the graph"
           example: resoto
           required: true
           schema:
@@ -179,79 +180,48 @@ paths:
           in: query
           schema:
             type: boolean
-          description: 'If this parameter is set, leave the graph definition, but wipe the data.'
+          description: "If this parameter is set, leave the graph definition, but wipe the data."
       responses:
-        '200':
-          description: 'Ok when the delete operation was successful'
+        "200":
+          description: "Ok when the delete operation was successful"
           content:
             text/plain:
-              example: 'Graph deleted.'
-
+              example: "Graph deleted."
   /graph/{graph_id}/merge:
     post:
-      summary: 'Merge a given graph with the existing graph under marked merge nodes.'
+      summary: "Merge a given graph with the existing graph under marked merge nodes."
       tags:
         - graph_management
       parameters:
         - name: graph_id
           in: path
-          description: 'The identifier of the graph'
+          description: "The identifier of the graph"
           example: resoto
           required: true
           schema:
             type: string
       requestBody:
-        description: 'The graph is sent as newline delimited json, where each line holds a document, which is either a node or an edge.'
+        description: "The graph is sent as newline delimited json, where each line holds a document, which is either a node or an edge."
         required: true
         content:
           application/x-ndjson:
             schema:
               oneOf:
-                - $ref: '#/components/schemas/NodeInGraph'
-                - $ref: '#/components/schemas/Edge'
-            example:
+                - $ref: "#/components/schemas/NodeInGraph"
+                - $ref: "#/components/schemas/Edge"
+            example: [
               # TODO: is there a way to show ndjson instead of json?
-              [
-                {
-                  'id': 'a',
-                  'data':
-                    {
-                      'kind': 'loadbalancer',
-                      'ip': '1.2.3.4',
-                      'mathod': 'roundrobin',
-                    },
-                },
-                {
-                  'id': 'b',
-                  'data':
-                    {
-                      'kind': 'compute_instance',
-                      'machine_type': 'gt-5',
-                      'cores': 24,
-                    },
-                },
-                { 'from': 'a', 'to': 'b', 'edge_type': 'default' },
-                {
-                  'id': 'c',
-                  'data':
-                    {
-                      'kind': 'compute_instance',
-                      'machine_type': 'gt-5',
-                      'cores': 24,
-                    },
-                },
-                { 'from': 'a', 'to': 'c', 'edge_type': 'default' },
-              ]
+              {"id": "a", "data": {"kind": "loadbalancer", "ip": "1.2.3.4", "mathod": "roundrobin"}}, {"id": "b", "data": {"kind": "compute_instance", "machine_type": "gt-5", "cores": 24}}, {"from": "a", "to": "b", "edge_type": "default"}, {"id": "c", "data": {"kind": "compute_instance", "machine_type": "gt-5", "cores": 24}}, {"from": "a", "to": "c", "edge_type": "default"}]
       responses:
-        '200':
-          description: 'Return a summary of actions that has been applied.'
+        "200":
+          description: "Return a summary of actions that has been applied."
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GraphUpdate'
+                $ref: "#/components/schemas/GraphUpdate"
   /graph/{graph_id}/batch/merge:
     post:
-      summary: 'Merge a given graph with the existing graph under marked merge nodes as batch update.'
+      summary: "Merge a given graph with the existing graph under marked merge nodes as batch update."
       description: |
         **Experimental**: This API is not stable and might be subject of change.<br/>
         Merge a given graph with the existing graph under marked merge nodes as batch update.
@@ -260,7 +230,7 @@ paths:
       parameters:
         - name: graph_id
           in: path
-          description: 'The identifier of the graph'
+          description: "The identifier of the graph"
           example: resoto
           required: true
           schema:
@@ -268,65 +238,34 @@ paths:
         - name: batch_id
           in: query
           description: >
-            A batch identifier is a string that uniquely identifies the batch update.
-            If this parameter is omitted, a new batch identifier is created automatically.
-            The resulting batch identifier can be retrieved via the response message.
+            A batch identifier is a string that uniquely identifies the batch update. If this parameter is omitted, a new batch identifier is created automatically. The resulting batch identifier can be retrieved via the response message.
+
           required: false
           schema:
             default: null
             type: string
       requestBody:
-        description: 'The graph is sent as newline delimited json, where each line holds a document, which is either a node or an edge.'
+        description: "The graph is sent as newline delimited json, where each line holds a document, which is either a node or an edge."
         required: true
         content:
           application/x-ndjson:
             schema:
               oneOf:
-                - $ref: '#/components/schemas/NodeInGraph'
-                - $ref: '#/components/schemas/Edge'
-            example:
+                - $ref: "#/components/schemas/NodeInGraph"
+                - $ref: "#/components/schemas/Edge"
+            example: [
               # TODO: is there a way to show ndjson instead of json?
-              [
-                {
-                  'id': 'a',
-                  'data':
-                    {
-                      'kind': 'loadbalancer',
-                      'ip': '1.2.3.4',
-                      'mathod': 'roundrobin',
-                    },
-                },
-                {
-                  'id': 'b',
-                  'data':
-                    {
-                      'kind': 'compute_instance',
-                      'machine_type': 'gt-5',
-                      'cores': 24,
-                    },
-                },
-                { 'from': 'a', 'to': 'b', 'edge_type': 'default' },
-                {
-                  'id': 'c',
-                  'data':
-                    {
-                      'kind': 'compute_instance',
-                      'machine_type': 'gt-5',
-                      'cores': 24,
-                    },
-                },
-                { 'from': 'a', 'to': 'c', 'edge_type': 'default' },
-              ]
+              {"id": "a", "data": {"kind": "loadbalancer", "ip": "1.2.3.4", "mathod": "roundrobin"}}, {"id": "b", "data": {"kind": "compute_instance", "machine_type": "gt-5", "cores": 24}}, {"from": "a", "to": "b", "edge_type": "default"}, {"id": "c", "data": {"kind": "compute_instance", "machine_type": "gt-5", "cores": 24}}, {"from": "a", "to": "c", "edge_type": "default"}]
       responses:
-        '200':
-          description: 'Return a summary of actions that has been applied.'
+        "200":
+          description: "Return a summary of actions that has been applied."
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GraphUpdate'
+                $ref: "#/components/schemas/GraphUpdate"
   /graph/{graph_id}/batch:
     get:
-      summary: 'Get a list of all running batch updates'
+      summary: "Get a list of all running batch updates"
       description: |
         **Experimental**: This API is not stable and might be subject of change.<br/>
         Get a list of all running batch updates.
@@ -335,21 +274,21 @@ paths:
       parameters:
         - name: graph_id
           in: path
-          description: 'The identifier of the graph'
+          description: "The identifier of the graph"
           example: resoto
           required: true
           schema:
             type: string
       responses:
-        '200':
-          description: 'Ok message'
+        "200":
+          description: "Ok message"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BatchUpdate'
+                $ref: "#/components/schemas/BatchUpdate"
   /graph/{graph_id}/batch/{batch_id}:
     post:
-      summary: 'Commit a batch update'
+      summary: "Commit a batch update"
       description: |
         **Experimental**: This API is not stable and might be subject of change.<br/>
         Commit a batch update.
@@ -358,27 +297,27 @@ paths:
       parameters:
         - name: graph_id
           in: path
-          description: 'The identifier of the graph'
+          description: "The identifier of the graph"
           example: resoto
           required: true
           schema:
             type: string
         - name: batch_id
           in: path
-          description: 'A batch identifier is a string that uniquely identifies the batch update.'
+          description: "A batch identifier is a string that uniquely identifies the batch update."
           required: true
           schema:
             type: string
       responses:
-        '200':
-          description: 'Ok message'
+        "200":
+          description: "Ok message"
           content:
             application/json:
               schema:
                 type: string
-                example: 'Batch committed.'
+                example: "Batch committed."
     delete:
-      summary: 'Abort a batch update'
+      summary: "Abort a batch update"
       description: |
         **Experimental**: This API is not stable and might be subject of change.<br/>
         Abort a batch update.
@@ -387,31 +326,31 @@ paths:
       parameters:
         - name: graph_id
           in: path
-          description: 'The identifier of the graph'
+          description: "The identifier of the graph"
           example: resoto
           required: true
           schema:
             type: string
         - name: batch_id
           in: path
-          description: 'A batch identifier is a string that uniquely identifies the batch update.'
+          description: "A batch identifier is a string that uniquely identifies the batch update."
           required: true
           schema:
             type: string
       responses:
-        '200':
-          description: 'Ok message'
+        "200":
+          description: "Ok message"
           content:
             application/json:
               schema:
                 type: string
-                example: 'Batch aborted.'
+                example: "Batch aborted."
   # endregion
 
   # region node management
   /graph/{graph_id}/nodes:
     patch:
-      summary: 'Patch a list of nodes.'
+      summary: "Patch a list of nodes."
       description: |
         Apply a patch on existing nodes. Non existing nodes are not updated!
         Consider to stream the request body as new line delimited json (application/x-ndjson).
@@ -420,13 +359,13 @@ paths:
       parameters:
         - name: graph_id
           in: path
-          description: 'The identifier of the graph'
+          description: "The identifier of the graph"
           example: resoto
           required: true
           schema:
             type: string
       requestBody:
-        description: 'The partial object data to patch.'
+        description: "The partial object data to patch."
         content:
           application/x-ndjson:
             schema:
@@ -444,7 +383,6 @@ paths:
                 metadata:
                   type: object
                   additionalProperties: true
-
           application/json:
             schema:
               type: array
@@ -463,17 +401,16 @@ paths:
                   metadata:
                     type: object
                     additionalProperties: true
-
       responses:
-        '200':
-          description: 'Return the patched node'
+        "200":
+          description: "Return the patched node"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Node'
+                $ref: "#/components/schemas/Node"
   /graph/{graph_id}/node/{node_id}/under/{parent_node_id}:
     post:
-      summary: 'Create a new node under the given parent node'
+      summary: "Create a new node under the given parent node"
       description: |
         **Experimental**: This API is not stable and might be subject of change.<br/>
         Create a new node under the given parent node.
@@ -482,39 +419,39 @@ paths:
       parameters:
         - name: graph_id
           in: path
-          description: 'The identifier of the graph'
+          description: "The identifier of the graph"
           example: resoto
           required: true
           schema:
             type: string
         - name: node_id
           in: path
-          description: 'The identifier of the node'
+          description: "The identifier of the node"
           required: true
           schema:
             type: string
         - name: parent_node_id
           in: path
-          description: 'The identifier of the parent node'
+          description: "The identifier of the parent node"
           required: true
           schema:
             type: string
       requestBody:
-        description: 'The node document to create.'
+        description: "The node document to create."
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Node'
+              $ref: "#/components/schemas/Node"
       responses:
-        '200':
-          description: 'Return the created node'
+        "200":
+          description: "Return the created node"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Node'
+                $ref: "#/components/schemas/Node"
   /graph/{graph_id}/node/{node_id}:
     get:
-      summary: 'Get a node with the given node id'
+      summary: "Get a node with the given node id"
       description: |
         **Experimental**: This API is not stable and might be subject of change.<br/>
         Get a node with the given node id
@@ -523,26 +460,26 @@ paths:
       parameters:
         - name: graph_id
           in: path
-          description: 'The identifier of the graph'
+          description: "The identifier of the graph"
           example: resoto
           required: true
           schema:
             type: string
         - name: node_id
           in: path
-          description: 'The identifier of the node'
+          description: "The identifier of the node"
           required: true
           schema:
             type: string
       responses:
-        '200':
-          description: 'Return the defined node'
+        "200":
+          description: "Return the defined node"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Node'
+                $ref: "#/components/schemas/Node"
     patch:
-      summary: 'Update a node with the given node id'
+      summary: "Update a node with the given node id"
       description: |
         **Experimental**: This API is not stable and might be subject of change.<br/>
         Update a node with the given node id
@@ -551,33 +488,33 @@ paths:
       parameters:
         - name: graph_id
           in: path
-          description: 'The identifier of the graph'
+          description: "The identifier of the graph"
           example: resoto
           required: true
           schema:
             type: string
         - name: node_id
           in: path
-          description: 'The identifier of the node'
+          description: "The identifier of the node"
           required: true
           schema:
             type: string
       requestBody:
-        description: 'The partial object data to patch.'
+        description: "The partial object data to patch."
         content:
           application/json:
             schema:
               type: object
               additionalProperties: true
       responses:
-        '200':
-          description: 'Return the patched node'
+        "200":
+          description: "Return the patched node"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Node'
+                $ref: "#/components/schemas/Node"
     delete:
-      summary: 'Delete a node with the given node id.'
+      summary: "Delete a node with the given node id."
       description: |
         **Experimental**: This API is not stable and might be subject of change.<br/>
         Delete a node with the given node id.
@@ -586,23 +523,23 @@ paths:
       parameters:
         - name: graph_id
           in: path
-          description: 'The identifier of the graph'
+          description: "The identifier of the graph"
           example: resoto
           required: true
           schema:
             type: string
         - name: node_id
           in: path
-          description: 'The identifier of the node'
+          description: "The identifier of the node"
           required: true
           schema:
             type: string
       responses:
-        '204':
-          description: 'Node is deleted'
+        "204":
+          description: "Node is deleted"
   /graph/{graph_id}/node/{node_id}/section/{section}:
     patch:
-      summary: 'Patch a node with the given node id in given section'
+      summary: "Patch a node with the given node id in given section"
       description: |
         **Experimental**: This API is not stable and might be subject of change.<br/>
         Patch a node with the given node id in given section
@@ -611,20 +548,20 @@ paths:
       parameters:
         - name: graph_id
           in: path
-          description: 'The identifier of the graph'
+          description: "The identifier of the graph"
           example: resoto
           required: true
           schema:
             type: string
         - name: node_id
           in: path
-          description: 'The identifier of the node'
+          description: "The identifier of the node"
           required: true
           schema:
             type: string
         - name: section
           in: path
-          description: 'The identifier of the section'
+          description: "The identifier of the section"
           required: true
           schema:
             type: string
@@ -633,41 +570,41 @@ paths:
               - desired
               - metadata
       requestBody:
-        description: 'The partial object data to patch.'
+        description: "The partial object data to patch."
         content:
           application/json:
             schema:
               type: object
               additionalProperties: true
       responses:
-        '200':
-          description: 'Return the patched node'
+        "200":
+          description: "Return the patched node"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Node'
+                $ref: "#/components/schemas/Node"
   # endregion
 
-  # region query graph
-  /graph/{graph_id}/query/raw:
+  # region search graph
+  /graph/{graph_id}/search/raw:
     post:
-      summary: 'Transform the query into the raw database query'
+      summary: "Transform the search into the raw database search"
       description: |
         **Experimental**: This API is not stable and might be subject of change.<br/>
-        Show the underlying raw query.
+        Show the underlying raw search.
       tags:
         - debug
       parameters:
         - name: graph_id
           in: path
-          description: 'The identifier of the graph'
+          description: "The identifier of the graph"
           example: resoto
           required: true
           schema:
             type: string
         - name: section
           in: query
-          description: 'The name of the section used for all property paths. If not defined root is assumed.'
+          description: "The name of the section used for all property paths. If not defined root is assumed."
           required: false
           schema:
             type: string
@@ -676,39 +613,39 @@ paths:
               - desired
               - metadata
       requestBody:
-        description: 'The query to perform'
+        description: "The search to perform"
         content:
           text/plain:
             schema:
               type: string
               example: is(graph_root) and reported.name=="root" -->
       responses:
-        '200':
-          description: 'Returns the query as performed by the database.'
+        "200":
+          description: "Returns the search as performed by the database."
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RawQuery'
-  /graph/{graph_id}/query/list:
+                $ref: "#/components/schemas/RawQuery"
+  /graph/{graph_id}/search/list:
     post:
-      summary: 'Query the graph and return all nodes as list (this will not contain any edges)'
+      summary: "Search the graph and return all nodes as list (this will not contain any edges)"
       description: |
-        Query the graph and return the matching nodes as list.
+        Search the graph and return the matching nodes as list.
         A section can be defined (defaults to `/` == root) to interpret relative property paths.
         Example: is(volume) and (reported.age>23d or desired.clean==true or metadata.version==2)
       tags:
-        - graph_query
+        - graph_search
       parameters:
         - name: graph_id
           in: path
           example: resoto
-          description: 'The identifier of the graph'
+          description: "The identifier of the graph"
           required: true
           schema:
             type: string
         - name: section
           in: query
-          description: 'The name of the section used for all property paths. If not defined root is assumed.'
+          description: "The name of the section used for all property paths. If not defined root is assumed."
           required: false
           schema:
             type: string
@@ -718,30 +655,30 @@ paths:
               - metadata
         - name: count
           in: query
-          description: 'Optional parameter to get a Ck-Element-Count header which returns the number of returned json elements'
+          description: "Optional parameter to get a Ck-Element-Count header which returns the number of returned json elements"
           required: false
           schema:
             type: boolean
             default: true
       requestBody:
-        description: 'The query to perform'
+        description: "The search to perform"
         content:
           text/plain:
             schema:
               type: string
               example: is(graph_root) and reported.name=="root" -->
       responses:
-        '200':
-          description: 'The result of this query in the defined format'
+        "200":
+          description: "The result of this search in the defined format"
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Node'
+                  $ref: "#/components/schemas/Node"
             application/x-ndjson:
               schema:
-                $ref: '#/components/schemas/Node'
+                $ref: "#/components/schemas/Node"
               example: |
                 {"type": "node", "id": "root", "revision": "123", "reported": {"kind": "graph_root", "id": "root", "tags": {}, "name": "root"}}
                 {"type": "node", "id": "cloud_id",  "revision": "12", "reported": {"kind": "cloud", "id": "onelogin", "tags": {}, "name": "onelogin", "ctime": "2021-12-14T08:49:52Z", "age": "6d7h"}}
@@ -763,116 +700,114 @@ paths:
                 type: node
                 revision: _daGy-Bu---
                 reported:
-                  kind: graph_root
-                  id: root
-                  tags: { }
-                  name: root
+                    kind: graph_root
+                    id: root
+                    tags: { }
+                    name: root
                 metadata:
-                  python_type: resotolib.baseresources.GraphRoot
-                  cleaned: false
-                  phantom: true
-                  protected: false
+                    python_type: resotolib.baseresources.GraphRoot
+                    cleaned: false
+                    phantom: true
+                    protected: false
                 kinds:
-                  - graph_root
+                    - graph_root
                 ---
                 id: 2RZlTX9yzeBwTNT_H1KZVA
                 type: node
                 revision: _daGy-Bi---
                 reported:
-                  kind: cloud
-                  id: onelogin
-                  tags: { }
-                  name: onelogin
-                  ctime: '2021-12-14T08:49:52Z'
-                  age: 6d7h
+                    kind: cloud
+                    id: onelogin
+                    tags: { }
+                    name: onelogin
+                    ctime: '2021-12-14T08:49:52Z'
+                    age: 6d7h
                 metadata:
-                  python_type: resotolib.baseresources.Cloud
-                  cleaned: false
-                  phantom: false
-                  protected: false
-                  descendant_summary:
-                    onelogin_account: 1
-                    onelogin_region: 1
-                    onelogin_user: 1034
-                  descendant_count: 1036
+                    python_type: resotolib.baseresources.Cloud
+                    cleaned: false
+                    phantom: false
+                    protected: false
+                    descendant_summary:
+                        onelogin_account: 1
+                        onelogin_region: 1
+                        onelogin_user: 1034
+                    descendant_count: 1036
                 ancestors:
-                  cloud:
-                    reported:
-                      name: onelogin
-                      id: onelogin
+                    cloud:
+                        reported:
+                            name: onelogin
+                            id: onelogin
                 kinds:
-                  - cloud
-                  - base_cloud
-                  - resource
+                    - cloud
+                    - base_cloud
+                    - resource
                 ---
                 type: edge
                 from: root
                 to: 2RZlTX9yzeBwTNT_H1KZVA
                 edge_type: default
-
             application/vnd.graphml+xml:
               example: |
                 <graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
-                  <key id="d4" for="node" attr.name="age" attr.type="string"/>
-                  <key id="d3" for="node" attr.name="ctime" attr.type="string"/>
-                  <key id="d2" for="node" attr.name="name" attr.type="string"/>
-                  <key id="d1" for="node" attr.name="id" attr.type="string"/>
-                  <key id="d0" for="node" attr.name="kind" attr.type="string"/>
-                  <graph edgedefault="directed">
-                    <node id="root">
-                      <data key="d0">graph_root</data>
-                      <data key="d1">root</data>
-                      <data key="d2">root</data>
-                    </node>
-                    <node id="cloud_id">
-                      <data key="d0">cloud</data>
-                      <data key="d1">onelogin</data>
-                      <data key="d2">onelogin</data>
-                      <data key="d3">2021-12-14T08:49:52Z</data>
-                      <data key="d4">6d7h</data>
-                    </node>
-                    <edge source="root" target="cloud_id"/>
-                  </graph>
+                    <key id="d4" for="node" attr.name="age" attr.type="string"/>
+                    <key id="d3" for="node" attr.name="ctime" attr.type="string"/>
+                    <key id="d2" for="node" attr.name="name" attr.type="string"/>
+                    <key id="d1" for="node" attr.name="id" attr.type="string"/>
+                    <key id="d0" for="node" attr.name="kind" attr.type="string"/>
+                    <graph edgedefault="directed">
+                        <node id="root">
+                            <data key="d0">graph_root</data>
+                            <data key="d1">root</data>
+                            <data key="d2">root</data>
+                        </node>
+                        <node id="cloud_id">
+                            <data key="d0">cloud</data>
+                            <data key="d1">onelogin</data>
+                            <data key="d2">onelogin</data>
+                            <data key="d3">2021-12-14T08:49:52Z</data>
+                            <data key="d4">6d7h</data>
+                        </node>
+                        <edge source="root" target="cloud_id"/>
+                    </graph>
                 </graphml>
-
             application/vnd.cytoscape+json:
               example: |
                 {
-                  "data": [ ],
-                  "directed": true,
-                  "elements": {
-                    "edges": [
-                      {
-                        "data": {
-                          "source": "root",
-                          "target": "cloud_id"
-                        }
-                      }
-                    ],
-                    "nodes": [
-                      {
-                        "data": {
-                          "id": "root",
-                          "kind": "graph_root",
-                          "name": "root",
-                          "tags": { },
-                          "value": "root"
-                        }
-                      },
-                      {
-                        "data": {
-                          "age": "6d7h",
-                          "ctime": "2021-12-14T08:49:52Z",
-                          "id": "onelogin",
-                          "kind": "cloud",
-                          "name": "onelogin",
-                          "tags": { },
-                          "value": "cloud_id"
-                        }
-                      }
-                    ]
-                  },
-                  "multigraph": false
+                    "data": [ ],
+                    "directed": true,
+                    "elements": {
+                        "edges": [
+                            {
+                                "data": {
+                                    "source": "root",
+                                    "target": "cloud_id"
+                                }
+                            }
+                        ],
+                        "nodes": [
+                            {
+                                "data": {
+                                    "id": "root",
+                                    "kind": "graph_root",
+                                    "name": "root",
+                                    "tags": { },
+                                    "value": "root"
+                                }
+                            },
+                            {
+                                "data": {
+                                    "age": "6d7h",
+                                    "ctime": "2021-12-14T08:49:52Z",
+                                    "id": "onelogin",
+                                    "kind": "cloud",
+                                    "name": "onelogin",
+                                    "tags": { },
+                                    "value": "cloud_id"
+                                }
+                            }
+                        ]
+                    },
+                    "multigraph": false
                 }
             text/vnd.graphviz:
               example: |
@@ -886,32 +821,31 @@ paths:
                   "2RZlTX9yzeBwTNT_H1KZVA" [label="onelogin|cloud", style=filled fillcolor=2];
                   "root" -> "2RZlTX9yzeBwTNT_H1KZVA"
                   subgraph "graph_root" {
-                  "root"
-                  "2RZlTX9yzeBwTNT_H1KZVA"
+                    "root"
+                    "2RZlTX9yzeBwTNT_H1KZVA"
                   }
                 }
-
-  /graph/{graph_id}/query/graph:
+  /graph/{graph_id}/search/graph:
     post:
-      summary: 'Query the graph and return the resulting graph.'
+      summary: "Search the graph and return the resulting graph."
       description: |
-        Query the graph and return the matching nodes including the traversed edges.
+        Search the graph and return the matching nodes including the traversed edges.
         The resulting data can be interpreted as a graph.
         A section can be defined (defaults to `/` == root) to interpret relative property paths.
         Example: is(volume) and (reported.age>23d or desired.clean==true or metadata.version==2)
       tags:
-        - graph_query
+        - graph_search
       parameters:
         - name: graph_id
           in: path
-          description: 'The identifier of the graph'
+          description: "The identifier of the graph"
           example: resoto
           required: true
           schema:
             type: string
         - name: section
           in: query
-          description: 'The name of the section used for all property paths. If not defined root is assumed.'
+          description: "The name of the section used for all property paths. If not defined root is assumed."
           required: false
           schema:
             type: string
@@ -921,37 +855,37 @@ paths:
               - metadata
         - name: count
           in: query
-          description: 'Optional parameter to get a Ck-Element-Count header which returns the number of returned json elements'
+          description: "Optional parameter to get a Ck-Element-Count header which returns the number of returned json elements"
           required: false
           schema:
             type: boolean
             default: true
-        - name: query_timeout
+        - name: search_timeout
           in: query
-          description: 'Optional duration the query is allowed to run.'
+          description: "Optional duration the search is allowed to run."
           required: false
           schema:
             type: string
-            example: '30s'
+            example: "30s"
       requestBody:
-        description: 'The query to perform'
+        description: "The search to perform"
         content:
           text/plain:
             schema:
               type: string
               example: is(graph_root) and reported.name=="root" -->
       responses:
-        '200':
-          description: 'The result of this query in the defined format'
+        "200":
+          description: "The result of this search in the defined format"
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Node'
+                  $ref: "#/components/schemas/Node"
             application/x-ndjson:
               schema:
-                $ref: '#/components/schemas/Node'
+                $ref: "#/components/schemas/Node"
               example: |
                 {"type": "node", "id": "root", "revision": "123", "reported": {"kind": "graph_root", "id": "root", "tags": {}, "name": "root"}}
                 {"type": "node", "id": "cloud_id",  "revision": "12", "reported": {"kind": "cloud", "id": "onelogin", "tags": {}, "name": "onelogin", "ctime": "2021-12-14T08:49:52Z", "age": "6d7h"}}
@@ -973,116 +907,114 @@ paths:
                 type: node
                 revision: _daGy-Bu---
                 reported:
-                  kind: graph_root
-                  id: root
-                  tags: { }
-                  name: root
+                    kind: graph_root
+                    id: root
+                    tags: { }
+                    name: root
                 metadata:
-                  python_type: resotolib.baseresources.GraphRoot
-                  cleaned: false
-                  phantom: true
-                  protected: false
+                    python_type: resotolib.baseresources.GraphRoot
+                    cleaned: false
+                    phantom: true
+                    protected: false
                 kinds:
-                  - graph_root
+                    - graph_root
                 ---
                 id: 2RZlTX9yzeBwTNT_H1KZVA
                 type: node
                 revision: _daGy-Bi---
                 reported:
-                  kind: cloud
-                  id: onelogin
-                  tags: { }
-                  name: onelogin
-                  ctime: '2021-12-14T08:49:52Z'
-                  age: 6d7h
+                    kind: cloud
+                    id: onelogin
+                    tags: { }
+                    name: onelogin
+                    ctime: '2021-12-14T08:49:52Z'
+                    age: 6d7h
                 metadata:
-                  python_type: resotolib.baseresources.Cloud
-                  cleaned: false
-                  phantom: false
-                  protected: false
-                  descendant_summary:
-                    onelogin_account: 1
-                    onelogin_region: 1
-                    onelogin_user: 1034
-                  descendant_count: 1036
+                    python_type: resotolib.baseresources.Cloud
+                    cleaned: false
+                    phantom: false
+                    protected: false
+                    descendant_summary:
+                        onelogin_account: 1
+                        onelogin_region: 1
+                        onelogin_user: 1034
+                    descendant_count: 1036
                 ancestors:
-                  cloud:
-                    reported:
-                      name: onelogin
-                      id: onelogin
+                    cloud:
+                        reported:
+                            name: onelogin
+                            id: onelogin
                 kinds:
-                  - cloud
-                  - base_cloud
-                  - resource
+                    - cloud
+                    - base_cloud
+                    - resource
                 ---
                 type: edge
                 from: root
                 to: 2RZlTX9yzeBwTNT_H1KZVA
                 edge_type: default
-
             application/vnd.graphml+xml:
               example: |
                 <graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
-                  <key id="d4" for="node" attr.name="age" attr.type="string"/>
-                  <key id="d3" for="node" attr.name="ctime" attr.type="string"/>
-                  <key id="d2" for="node" attr.name="name" attr.type="string"/>
-                  <key id="d1" for="node" attr.name="id" attr.type="string"/>
-                  <key id="d0" for="node" attr.name="kind" attr.type="string"/>
-                  <graph edgedefault="directed">
-                    <node id="root">
-                      <data key="d0">graph_root</data>
-                      <data key="d1">root</data>
-                      <data key="d2">root</data>
-                    </node>
-                    <node id="cloud_id">
-                      <data key="d0">cloud</data>
-                      <data key="d1">onelogin</data>
-                      <data key="d2">onelogin</data>
-                      <data key="d3">2021-12-14T08:49:52Z</data>
-                      <data key="d4">6d7h</data>
-                    </node>
-                    <edge source="root" target="cloud_id"/>
-                  </graph>
+                    <key id="d4" for="node" attr.name="age" attr.type="string"/>
+                    <key id="d3" for="node" attr.name="ctime" attr.type="string"/>
+                    <key id="d2" for="node" attr.name="name" attr.type="string"/>
+                    <key id="d1" for="node" attr.name="id" attr.type="string"/>
+                    <key id="d0" for="node" attr.name="kind" attr.type="string"/>
+                    <graph edgedefault="directed">
+                        <node id="root">
+                            <data key="d0">graph_root</data>
+                            <data key="d1">root</data>
+                            <data key="d2">root</data>
+                        </node>
+                        <node id="cloud_id">
+                            <data key="d0">cloud</data>
+                            <data key="d1">onelogin</data>
+                            <data key="d2">onelogin</data>
+                            <data key="d3">2021-12-14T08:49:52Z</data>
+                            <data key="d4">6d7h</data>
+                        </node>
+                        <edge source="root" target="cloud_id"/>
+                    </graph>
                 </graphml>
-
             application/vnd.cytoscape+json:
               example: |
                 {
-                  "data": [ ],
-                  "directed": true,
-                  "elements": {
-                    "edges": [
-                      {
-                        "data": {
-                          "source": "root",
-                          "target": "cloud_id"
-                        }
-                      }
-                    ],
-                    "nodes": [
-                      {
-                        "data": {
-                          "id": "root",
-                          "kind": "graph_root",
-                          "name": "root",
-                          "tags": { },
-                          "value": "root"
-                        }
-                      },
-                      {
-                        "data": {
-                          "age": "6d7h",
-                          "ctime": "2021-12-14T08:49:52Z",
-                          "id": "onelogin",
-                          "kind": "cloud",
-                          "name": "onelogin",
-                          "tags": { },
-                          "value": "cloud_id"
-                        }
-                      }
-                    ]
-                  },
-                  "multigraph": false
+                    "data": [ ],
+                    "directed": true,
+                    "elements": {
+                        "edges": [
+                            {
+                                "data": {
+                                    "source": "root",
+                                    "target": "cloud_id"
+                                }
+                            }
+                        ],
+                        "nodes": [
+                            {
+                                "data": {
+                                    "id": "root",
+                                    "kind": "graph_root",
+                                    "name": "root",
+                                    "tags": { },
+                                    "value": "root"
+                                }
+                            },
+                            {
+                                "data": {
+                                    "age": "6d7h",
+                                    "ctime": "2021-12-14T08:49:52Z",
+                                    "id": "onelogin",
+                                    "kind": "cloud",
+                                    "name": "onelogin",
+                                    "tags": { },
+                                    "value": "cloud_id"
+                                }
+                            }
+                        ]
+                    },
+                    "multigraph": false
                 }
             text/vnd.graphviz:
               example: |
@@ -1096,31 +1028,30 @@ paths:
                   "2RZlTX9yzeBwTNT_H1KZVA" [label="onelogin|cloud", style=filled fillcolor=2];
                   "root" -> "2RZlTX9yzeBwTNT_H1KZVA"
                   subgraph "graph_root" {
-                  "root"
-                  "2RZlTX9yzeBwTNT_H1KZVA"
+                    "root"
+                    "2RZlTX9yzeBwTNT_H1KZVA"
                   }
                 }
-
-  /graph/{graph_id}/query/aggregate:
+  /graph/{graph_id}/search/aggregate:
     post:
-      summary: 'Query the aggregate function on the specified graph and return the aggregation result.'
+      summary: "Search the aggregate function on the specified graph and return the aggregation result."
       description: |
-        Query and aggregate the graph and return the resulting aggregated data.
+        Search and aggregate the graph and return the resulting aggregated data.
         A section can be defined (defaults to `/` == root) to interpret relative property paths.
         Example: is(volume) and (reported.age>23d or desired.clean==true or metadata.version==2)
       tags:
-        - graph_query
+        - graph_search
       parameters:
         - name: graph_id
           in: path
-          description: 'The identifier of the graph'
+          description: "The identifier of the graph"
           example: resoto
           required: true
           schema:
             type: string
         - name: section
           in: query
-          description: 'The name of the section used for all property paths. If not defined root is assumed.'
+          description: "The name of the section used for all property paths. If not defined root is assumed."
           required: false
           schema:
             type: string
@@ -1129,7 +1060,7 @@ paths:
               - desired
               - metadata
       requestBody:
-        description: 'The aggregation query to perform'
+        description: "The aggregation search to perform"
         content:
           text/plain:
             schema:
@@ -1137,36 +1068,35 @@ paths:
               example: |
                 aggregate(reported.kind: sum(1) as nodes): is(node)
       responses:
-        '200':
-          description: 'The result of this query in the defined format'
+        "200":
+          description: "The result of this search in the defined format"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Aggregated'
+                $ref: "#/components/schemas/Aggregated"
             application/x-ndjson:
               schema:
-                $ref: '#/components/schemas/Aggregated'
-  /graph/{graph_id}/query/explain:
+                $ref: "#/components/schemas/Aggregated"
+  /graph/{graph_id}/search/explain:
     post:
-      summary: 'Explain the query execution plan'
+      summary: "Explain the search execution plan"
       description: |
-        Explain the runtime characteristics of a query without performing the query.
+        Explain the runtime characteristics of a search without performing the search.
         A section can be defined (defaults to `/` == root) to interpret relative property paths.
         Example: is(volume) and (reported.age>23d or desired.clean==true or metadata.version==2)
-
       tags:
-        - graph_query
+        - graph_search
       parameters:
         - name: graph_id
           in: path
-          description: 'The identifier of the graph'
+          description: "The identifier of the graph"
           example: resoto
           required: true
           schema:
             type: string
         - name: section
           in: query
-          description: 'The name of the section used for all property paths. If not defined root is assumed.'
+          description: "The name of the section used for all property paths. If not defined root is assumed."
           required: false
           schema:
             type: string
@@ -1175,79 +1105,31 @@ paths:
               - desired
               - metadata
       requestBody:
-        description: 'The query to perform'
+        description: "The search to perform"
         content:
           text/plain:
             schema:
               type: string
               example: is(graph_root) and reported.name=="root" -->
       responses:
-        '200':
-          description: 'The execution plan of the database'
+        "200":
+          description: "The execution plan of the database"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EstimatedQueryCost'
-  /graph/{graph_id}/search:
-    get:
-      summary: 'Search the graph'
-      description: |
-        **Experimental**: This API is not stable and might be subject of change.<br/>
-        Search the graph.
-      tags:
-        - graph_query
-      parameters:
-        - name: graph_id
-          in: path
-          description: 'The identifier of the graph'
-          example: resoto
-          required: true
-          schema:
-            type: string
-        - name: section
-          in: query
-          description: 'The name of the section used for all property paths. If not defined root is assumed.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - reported
-              - desired
-              - metadata
-        - name: term
-          in: query
-          description: 'The term to search for'
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: 'All matching documents'
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Node'
-            application/x-ndjson:
-              schema:
-                $ref: '#/components/schemas/Node'
+                $ref: "#/components/schemas/EstimatedSearchCost"
   # endregion
 
   # region events
   /events:
     get:
-      summary: '[WebSocket] Register as event listener and receive all events.'
-      description:
-        ## WebSocket Endpoint
-        The client needs to send all the required headers for a ws connection
-        and has to handle the websocket protocol.<br/>
-        **Note this can not be tested from within swagger!**
-
+      summary: "[WebSocket] Register as event listener and receive all events."
+      description: The client needs to send all the required headers for a ws connection and has to handle the websocket protocol.<br/> **Note this can not be tested from within swagger!**
+      ## WebSocket Endpoint
       parameters:
         - name: show
           in: query
-          description: 'All events to show as a comma separated list'
+          description: "All events to show as a comma separated list"
           required: false
           explode: false
           schema:
@@ -1256,81 +1138,76 @@ paths:
         - system
       responses:
         default:
-          description: ''
+          description: ""
   # endregion
 
   # region subscriptions
-
   /subscribers:
     get:
-      summary: 'List all subscriptions'
-      description: 'Get all subscriptions of all subscribers in the system'
+      summary: "List all subscriptions"
+      description: "Get all subscriptions of all subscribers in the system"
       tags:
         - subscriptions
       responses:
-        '200':
-          description: 'The list of all subscribers with all subscriptions'
+        "200":
+          description: "The list of all subscribers with all subscriptions"
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Subscriber'
-
+                  $ref: "#/components/schemas/Subscriber"
   /subscribers/for/{event_type}:
     get:
-      summary: 'List all subscribers for a given event type'
-      description: 'Get all subscriptions of registered subscribers'
+      summary: "List all subscribers for a given event type"
+      description: "Get all subscriptions of registered subscribers"
       tags:
         - subscriptions
       parameters:
         - name: event_type
           in: path
-          description: 'The type of message'
+          description: "The type of message"
           required: true
           schema:
             type: string
-
       responses:
-        '200':
-          description: 'The list of all subscribers which are subscribed'
+        "200":
+          description: "The list of all subscribers which are subscribed"
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Subscriber'
-
+                  $ref: "#/components/schemas/Subscriber"
   /subscriber/{subscriber_id}:
     get:
-      summary: 'Get subscriber by id'
-      description: 'Get the subscriber with a defined id.'
+      summary: "Get subscriber by id"
+      description: "Get the subscriber with a defined id."
       tags:
         - subscriptions
       parameters:
         - name: subscriber_id
           in: path
-          description: 'The identifier of the subscriber'
+          description: "The identifier of the subscriber"
           required: true
           schema:
             type: string
-
       responses:
-        '200':
-          description: 'The subscriber'
+        "200":
+          description: "The subscriber"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Subscriber'
-        '404':
-          description: 'No subscriber found'
+                $ref: "#/components/schemas/Subscriber"
+        "404":
+          description: "No subscriber found"
           content:
             text/plain:
               schema:
                 type: string
                 example: No subscriber with this id
     put:
-      summary: 'Define subscriber with all subscriptions'
+      summary: "Define subscriber with all subscriptions"
       description: |
         Define or redefine a subscriber with all subscriptions.
         In case the subscriber does not exist, it is created.
@@ -1340,58 +1217,56 @@ paths:
       parameters:
         - name: subscriber_id
           in: path
-          description: 'The identifier of the subscriber'
+          description: "The identifier of the subscriber"
           required: true
           schema:
             type: string
       requestBody:
-        description: 'The list of all subscriptions.'
+        description: "The list of all subscriptions."
         content:
           application/json:
             schema:
               type: array
               items:
-                $ref: '#/components/schemas/Subscription'
+                $ref: "#/components/schemas/Subscription"
       responses:
-        '200':
-          description: 'The subscriber'
+        "200":
+          description: "The subscriber"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Subscriber'
+                $ref: "#/components/schemas/Subscriber"
     delete:
-      summary: 'Delete by id'
-      description: 'Delete the subscriber with a defined id.'
+      summary: "Delete by id"
+      description: "Delete the subscriber with a defined id."
       tags:
         - subscriptions
       parameters:
         - name: subscriber_id
           in: path
-          description: 'The identifier of the subscriber'
+          description: "The identifier of the subscriber"
           required: true
           schema:
             type: string
-
       responses:
-        '204':
-          description: 'no content'
-
+        "204":
+          description: "no content"
   /subscriber/{subscriber_id}/{event_type}:
     post:
-      summary: 'Add subscription to subscriber'
-      description: 'Add a specific subscription to a subscriber.'
+      summary: "Add subscription to subscriber"
+      description: "Add a specific subscription to a subscriber."
       tags:
         - subscriptions
       parameters:
         - name: subscriber_id
           in: path
-          description: 'The identifier of the subscriber'
+          description: "The identifier of the subscriber"
           required: true
           schema:
             type: string
         - name: event_type
           in: path
-          description: 'The action event type.'
+          description: "The action event type."
           required: true
           schema:
             type: string
@@ -1415,41 +1290,40 @@ paths:
             type: boolean
             default: true
       responses:
-        '200':
-          description: 'The subscriber'
+        "200":
+          description: "The subscriber"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Subscriber'
+                $ref: "#/components/schemas/Subscriber"
     delete:
-      summary: 'Delete a specific subscription from the subscriber.'
-      description: 'Delete a specific subscription from the subscriber.'
+      summary: "Delete a specific subscription from the subscriber."
+      description: "Delete a specific subscription from the subscriber."
       tags:
         - subscriptions
       parameters:
         - name: subscriber_id
           in: path
-          description: 'The identifier of the subscriber'
+          description: "The identifier of the subscriber"
           required: true
           schema:
             type: string
         - name: event_type
           in: path
-          description: 'The action event type.'
+          description: "The action event type."
           required: true
           schema:
             type: string
       responses:
-        '200':
-          description: 'The subscriber'
+        "200":
+          description: "The subscriber"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Subscriber'
-
+                $ref: "#/components/schemas/Subscriber"
   /subscriber/{subscriber_id}/handle:
     get:
-      summary: '[WebSocket] Listen to registered events of given subscriber'
+      summary: "[WebSocket] Listen to registered events of given subscriber"
       description: |
         ## WebSocket Endpoint
         The client needs to send all the required headers for a ws connection
@@ -1464,14 +1338,13 @@ paths:
       parameters:
         - name: subscriber_id
           in: path
-          description: 'The identifier of the subscriber'
+          description: "The identifier of the subscriber"
           required: true
           schema:
             type: string
-
       responses:
-        '404':
-          description: 'No subscriber found'
+        "404":
+          description: "No subscriber found"
           content:
             text/plain:
               schema:
@@ -1482,7 +1355,7 @@ paths:
   # region task queue
   /work/queue:
     get:
-      summary: '[WebSocket] Attach to the working queue'
+      summary: "[WebSocket] Attach to the working queue"
       description: |
         ## WebSocket Endpoint
         The client needs to send all the required headers for a ws connection
@@ -1499,10 +1372,9 @@ paths:
         Note: the server tries to spread the number of tasks evenly over the number of workers.
         This number is derived by the number of outstanding messages in the queue irrelevant which tasks
         are outstanding.
-
       parameters:
         - name: task
-          description: 'The name of all tasks that this worker is able to perform.'
+          description: "The name of all tasks that this worker is able to perform."
           in: query
           style: form
           explode: false
@@ -1521,36 +1393,35 @@ paths:
             (e.g. cloud=aws,gcp would match a task for cloud=aws).
 
             Example:
-                 The worker is able to perform tasks of type tag, but only for cloud AWS:
-                 cloud=aws
+                     The worker is able to perform tasks of type tag, but only for cloud AWS:
+                     cloud=aws
 
-                 The worker is able to perform tasks of type tag, for AWS and GCP:
-                 cloud=aws,gcp
+                     The worker is able to perform tasks of type tag, for AWS and GCP:
+                     cloud=aws,gcp
 
-                 Maybe the worker is only capable to perform the work in a specific account.
-                 cloud=aws&account=123 could be specified to only filter for tasks in this cloud in this
-                 account.
+                     Maybe the worker is only capable to perform the work in a specific account.
+                     cloud=aws&account=123 could be specified to only filter for tasks in this cloud in this
+                     account.
 
             In case there are multiple workers that match the task criteria, the most specific
             worker is taken.
 
             Example:
-                worker1: cloud=aws,gcp
-                worker2: cloud=aws account=123
+                    worker1: cloud=aws,gcp
+                    worker2: cloud=aws account=123
 
             If the task is for cloud=aws and account=123, then only worker2 would get the task to execute
             not worker1.
-
           in: query
           required: false
           schema:
             type: object
             additionalProperties: true
-            example: { 'cloud': 'aws', 'account': '123,124,125' }
+            example: {"cloud": "aws", "account": "123,124,125"}
       tags:
         - work_queue
       responses:
-        '200':
+        "200":
           description: When the connection is established.
           content:
             application/json:
@@ -1561,13 +1432,13 @@ paths:
                   additionalProperties: true
   /work/list:
     get:
-      summary: 'List all outstanding work items'
+      summary: "List all outstanding work items"
       description: |
         All work items that are initiated but not done are listed via this endpoint.
       tags:
         - work_queue
       responses:
-        '200':
+        "200":
           description: The list of all outstanding work items
           content:
             application/json:
@@ -1595,29 +1466,81 @@ paths:
                       type: integer
                     deadline:
                       type: string
-
   # endregion
 
   # region config
   /configs:
     get:
-      summary: 'Get all configuration data'
+      summary: "Get all configuration keys"
       description: |
         **Experimental**: This API is not stable and might be subject of change.<br/>
-        Get all configuration data in the system.
+        Get all configuration keys in the system.
       tags:
         - config
       responses:
-        '200':
-          description: All configuration objects by key.
+        "200":
+          description: All configuration keys.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Config'
-
+                type: array
+                items:
+                  type: string
+  /configs/model:
+    get:
+      summary: "Get the currently defined configuration model."
+      tags:
+        - config_validation
+      responses:
+        "200":
+          description: "The list of all kinds."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Kind"
+    patch:
+      summary: "Add or update the current defined configuration model."
+      tags:
+        - config_validation
+      requestBody:
+        description: "Complete model or part of the model."
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Kind"
+      responses:
+        "200":
+          description: "OK if the model is updated successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Kind"
+        "400":
+          description: "Message that explains the error"
+          content:
+            text/plain:
+              schema:
+                type: string
+  /configs/validation:
+    get:
+      summary: "Get all configuration keys that have a model defined."
+      description: |
+        **Experimental**: This API is not stable and might be subject of change.<br/>
+        Get all configuration keys that have a model defined.
+      tags:
+        - config_validation
+      responses:
+        "200":
+          description: All configuration keys that have a model.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
   /config/{config_id}:
     get:
-      summary: 'Get a configuration by its id'
+      summary: "Get a configuration by its id"
       description: |
         **Experimental**: This API is not stable and might be subject of change.<br/>
         Fetch a configuration by id.
@@ -1631,18 +1554,22 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: The configuration
+          headers:
+            Resoto-Config-Revision:
+              description: The revision of this config
+              schema:
+                type: string
           content:
             application/json:
               schema:
                 type: object
                 additionalProperties: true
-        '404':
+        "404":
           description: No configuration for this key.
-
     put:
-      summary: 'Replace a configuration with given id'
+      summary: "Replace a configuration with given id"
       description: |
         **Experimental**: This API is not stable and might be subject of change.<br/>
         Replace a configuration identified by id with provided value.
@@ -1655,6 +1582,14 @@ paths:
           description: the identifier of the config to get.
           schema:
             type: string
+        - name: validate
+          required: false
+          in: query
+          description: |
+            This parameter can be used to turn off config validation.
+            In case it is not defined or not set to false, every configuaration value is validated.
+          schema:
+            type: boolean
       requestBody:
         content:
           application/json:
@@ -1662,15 +1597,20 @@ paths:
               type: object
               additionalProperties: true
       responses:
-        '200':
+        "200":
           description: The configuration
+          headers:
+            Resoto-Config-Revision:
+              description: The revision of this config
+              schema:
+                type: string
           content:
             application/json:
               schema:
                 type: object
                 additionalProperties: true
     patch:
-      summary: 'Patch a configuration by its id'
+      summary: "Patch a configuration by its id"
       description: |
         **Experimental**: This API is not stable and might be subject of change.<br/>
         Patch a configuration identified by id with provided value.
@@ -1690,15 +1630,20 @@ paths:
               type: object
               additionalProperties: true
       responses:
-        '200':
+        "200":
           description: The configuration
+          headers:
+            Resoto-Config-Revision:
+              description: The revision of this config
+              schema:
+                type: string
           content:
             application/json:
               schema:
                 type: object
                 additionalProperties: true
     delete:
-      summary: 'Delete a configuration by its id'
+      summary: "Delete a configuration by its id"
       description: |
         **Experimental**: This API is not stable and might be subject of change.<br/>
         Delete a configuration identified by id with provided value.
@@ -1712,21 +1657,73 @@ paths:
           schema:
             type: string
       responses:
-        '204':
+        "204":
           description: Signals success of this operation.
-
+  /config/{config_id}/validation:
+    get:
+      summary: "Get a configuration by its id"
+      description: |
+        **Experimental**: This API is not stable and might be subject of change.<br/>
+        Fetch the model of a configuration by id.
+      tags:
+        - config_validation
+      parameters:
+        - name: config_id
+          required: true
+          in: path
+          description: the identifier of the config.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: The configuration model.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ConfigValidation"
+            application/yaml:
+              schema:
+                $ref: "#/components/schemas/ConfigValidation"
+        "404":
+          description: No configuration model for this key.
+    put:
+      summary: "Replace a configuration model with given id"
+      description: |
+        **Experimental**: This API is not stable and might be subject of change.<br/>
+        Replace a configuration model identified by id with provided value.
+      tags:
+        - config_validation
+      parameters:
+        - name: config_id
+          required: true
+          in: path
+          description: the identifier of the config to get.
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ConfigValidation"
+      responses:
+        "200":
+          description: The configuration model.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ConfigValidation"
   # endregion
 
   # region cli
   /cli/evaluate:
     post:
-      summary: 'Evaluate a cli command'
+      summary: "Evaluate a cli command"
       description: |
         This method can be used to analyze if the command can be interpreted without executing it.
         When this method returns a 200 OK, the command can be parsed and evaluated.
       parameters:
         - name: env
-          description: 'All query parameter form the environment passed to the CLI interpreter.'
+          description: "All search parameter form the environment passed to the CLI interpreter."
           in: query
           schema:
             type: object
@@ -1744,7 +1741,7 @@ paths:
       tags:
         - cli
       responses:
-        '200':
+        "200":
           description: When the command can be evaluated.
           content:
             application/json:
@@ -1753,23 +1750,22 @@ paths:
                 items:
                   type: object
                   additionalProperties: true
-        '300':
+        "300":
           description: When the command can not be evaluated.
           content:
             text/plain:
               schema:
                 type: string
-
   /cli/execute:
     post:
-      summary: 'Execute a cli command'
+      summary: "Execute a cli command"
       description: |
         The body defines the command to execute.
         The command is executed and the result is returned to the client.
         Request and execution are synchronized: the request is done, when the command is done.
       parameters:
         - name: env
-          description: 'All query parameter form the environment passed to the CLI interpreter.'
+          description: "All search parameter form the environment passed to the CLI interpreter."
           in: query
           schema:
             type: object
@@ -1787,7 +1783,7 @@ paths:
       tags:
         - cli
       responses:
-        '200':
+        "200":
           description: The result of the command.
           content:
             application/json:
@@ -1811,13 +1807,12 @@ paths:
       tags:
         - cli
       responses:
-        '200':
+        "200":
           description: name, information and help of available commands.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CLIInfo'
-
+                $ref: "#/components/schemas/CLIInfo"
   # endregion
 
   # region certificate
@@ -1828,8 +1823,8 @@ paths:
       tags:
         - certificate
       responses:
-        '200':
-          description: 'The certificate in PEM format.'
+        "200":
+          description: "The certificate in PEM format."
           content:
             application/x-pem-file:
               schema:
@@ -1883,8 +1878,8 @@ paths:
                 Mft1XSBtZDykb6SrTTz/lUfjn3XX+zqQ7g466HvglAwqUfX1
                 -----END CERTIFICATE REQUEST-----
       responses:
-        '200':
-          description: 'The certificate in PEM format.'
+        "200":
+          description: "The certificate in PEM format."
           content:
             application/x-pem-file:
               schema:
@@ -1911,6 +1906,7 @@ paths:
                   3da9fAZE2eZoDvssH6LAUcFjtP9SFb8ZOdHJ15l279vzgCvWsvU=
                   -----END CERTIFICATE-----
   # endregion
+
   # region system
   /system/ready:
     get:
@@ -1918,32 +1914,31 @@ paths:
       tags:
         - system
       responses:
-        '200':
-          description: 'This response code signals, that the system is ready.'
+        "200":
+          description: "This response code signals, that the system is ready."
           content:
             text/plain:
               schema:
                 type: string
-                example: '200: OK'
+                example: "200: OK"
   /system/ping:
     get:
       summary: Send a ping to the system and expect a pong.
       tags:
         - system
       responses:
-        '200':
-          description: 'The pong answer'
+        "200":
+          description: "The pong answer"
           content:
             text/plain:
               schema:
                 type: string
                 example: pong
-
-  # endregion
+                # endregion
 components:
   schemas:
     Config:
-      description: 'A config object'
+      description: "A config object"
       type: object
       properties:
         id:
@@ -1953,24 +1948,24 @@ components:
           type: object
           additionalProperties: true
     Subscriber:
-      description: 'A subscriber has a unique name and a list of subscriptions'
+      description: "A subscriber has a unique name and a list of subscriptions"
       type: object
       properties:
         id:
           type: string
-          description: 'The identifier of this subscriber'
+          description: "The identifier of this subscriber"
         subscriptions:
           type: object
-          description: 'The dictionary of subscriptions, where the key is the message type'
+          description: "The dictionary of subscriptions, where the key is the message type"
           additionalProperties:
-            $ref: '#/components/schemas/Subscription'
+            $ref: "#/components/schemas/Subscription"
     Subscription:
-      description: 'The definition of an action subscription'
+      description: "The definition of an action subscription"
       type: object
       properties:
         message_type:
           type: string
-          description: 'The name of the action to listen to'
+          description: "The name of the action to listen to"
         wait_for_completion:
           type: boolean
           description: |
@@ -1985,143 +1980,129 @@ components:
             After this time the sender assumes a failure and rejects the result of this actor.
           default: 60
     Aggregated:
-      description: 'The result of the aggregation. The properties depend on the aggregation function.'
+      description: "The result of the aggregation. The properties depend on the aggregation function."
       type: object
       additionalProperties: true
       example: |
         [
-          { "count": 60, "kind": "aws_ec2_instance_type", "mem_avg": 28.45, "mem_max": 64, "mem_min": 1, "mem_total": 1707 },
-          { "count": 105686, "kind": "gcp_machine_type", "mem_avg": 213.57744392143945, "mem_max": 3844, "mem_min": 0.599609375, "mem_total": 22572145.73828125 }
+            { "count": 60, "kind": "aws_ec2_instance_type", "mem_avg": 28.45, "mem_max": 64, "mem_min": 1, "mem_total": 1707 },
+            { "count": 105686, "kind": "gcp_machine_type", "mem_avg": 213.57744392143945, "mem_max": 3844, "mem_min": 0.599609375, "mem_total": 22572145.73828125 }
         ]
     BatchUpdate:
       type: object
       properties:
         id:
           type: string
-          description: 'the id of the change.'
+          description: "the id of the change."
         created:
           type: string
-          description: 'datetime in utc, when the batch update has been created'
+          description: "datetime in utc, when the batch update has been created"
         affected_nodes:
           type: array
           items:
             type: string
-          description: 'The root nodes of the subgraphs that will be changed during the update'
-      example:
-        [
-          {
-            'id': 'XYQaijCNJUVc',
-            'created': '2021-06-29T13:53:39.329Z',
-            'affected_nodes': ['sub_graph_root_1', 'sub_graph_root_2'],
-          },
-        ]
+          description: "The root nodes of the subgraphs that will be changed during the update"
+      example: [{"id": "XYQaijCNJUVc", "created": "2021-06-29T13:53:39.329Z", "affected_nodes": ["sub_graph_root_1", "sub_graph_root_2"]}]
     Node:
       type: object
       additionalProperties: true
       properties:
         kind:
           type: string
-          description: 'The kind of this node.'
-      example: { 'kind': 'test.person', 'name': 'Batman', 'city': 'Gotham' }
+          description: "The kind of this node."
+      example: {"kind": "test.person", "name": "Batman", "city": "Gotham"}
     NodeInGraph:
       type: object
       properties:
         id:
           type: string
-          description: 'The identifier of this node.'
+          description: "The identifier of this node."
         type:
           type: string
         reported:
-          $ref: '#/components/schemas/Node'
+          $ref: "#/components/schemas/Node"
         desired:
           type: object
           additionalProperties: true
         metadata:
           type: object
           additionalProperties: true
-      example:
-        {
-          'type': 'node',
-          'id': 'id-in-graph',
-          'reported':
-            { 'kind': 'test.person', 'name': 'Batman', 'city': 'Gotham' },
-          'desired': { 'clean': true },
-          'metadata': { 'version': 1 },
-        }
+      example: {"type": "node", "id": "id-in-graph", "reported": {"kind": "test.person", "name": "Batman", "city": "Gotham"}, "desired": {"clean": true}, "metadata": {"version": 1}}
     DesiredNode:
       type: object
       properties:
         reported:
-          $ref: '#/components/schemas/Node'
+          $ref: "#/components/schemas/Node"
         desired:
           type: object
-          description: 'The desired section does not contain a complete node, but only the desired changes.'
+          description: "The desired section does not contain a complete node, but only the desired changes."
           additionalProperties: true
-      example:
-        {
-          'reported':
-            { 'kind': 'test.person', 'name': 'Batman', 'city': 'Gotham' },
-          'desired': { 'name': 'Superman' },
-        }
+      example: {"reported": {"kind": "test.person", "name": "Batman", "city": "Gotham"}, "desired": {"name": "Superman"}}
     Edge:
       type: object
       properties:
         from:
-          description: 'The id of node to start from'
+          description: "The id of node to start from"
           type: string
         to:
-          description: 'The id of the node to go to'
+          description: "The id of the node to go to"
           type: string
         edge_type:
-          description: 'The type of this edge'
+          description: "The type of this edge"
           type: string
           enum:
             - default
             - delete
-      example:
-        {
-          'type': 'edge',
-          'from': 'node_id_of_a_in_graph',
-          'to': 'node_id_of_b_in_graph',
-          'edge_type': 'default',
-        }
+      example: {"type": "edge", "from": "node_id_of_a_in_graph", "to": "node_id_of_b_in_graph", "edge_type": "default"}
     Graph:
-      description: 'A graph is just an array of nodes and edges'
+      description: "A graph is just an array of nodes and edges"
       type: array
       items:
         discriminator:
-          propertyName: 'type'
+          propertyName: "type"
           mapping:
-            'node': '#/components/schemas/NodeInGraph'
-            'edge': '#/components/schemas/Edge'
+            "node": "#/components/schemas/NodeInGraph"
+            "edge": "#/components/schemas/Edge"
         oneOf:
-          - $ref: '#/components/schemas/NodeInGraph'
-          - $ref: '#/components/schemas/Edge'
+          - $ref: "#/components/schemas/NodeInGraph"
+          - $ref: "#/components/schemas/Edge"
     GraphUpdate:
-      description: 'Summary of a graph change action'
+      description: "Summary of a graph change action"
       type: object
       properties:
         nodes_created:
-          description: 'The number of nodes that have been created.'
+          description: "The number of nodes that have been created."
           type: integer
         nodes_updates:
-          description: 'The number of nodes that have been updated.'
+          description: "The number of nodes that have been updated."
           type: integer
         nodes_deleted:
-          description: 'The number of nodes that have been deleted.'
+          description: "The number of nodes that have been deleted."
           type: integer
         edges_created:
-          description: 'The number of edges that have been created.'
+          description: "The number of edges that have been created."
           type: integer
         edges_updated:
-          description: 'The number of edges that have been updated.'
+          description: "The number of edges that have been updated."
           type: integer
         edges_deleted:
-          description: 'The number of edges that have been deleted.'
+          description: "The number of edges that have been deleted."
           type: integer
-
+    ConfigValidation:
+      description: "The validation for this configuration value."
+      type: object
+      properties:
+        id:
+          description: The identifier of the related configuration.
+          type: string
+        external_validation:
+          description: |
+            True, if an external entity should validate a config change.
+            In this case resotocore is emitting a task on the task queue of type validate_config.
+            It expectes a listener to pickup this task and report back, if the configuration is valid or not.
+          type: boolean
     Kind:
-      description: 'Definition of a kind'
+      description: "Definition of a kind"
       type: array
       items:
         oneOf:
@@ -2133,70 +2114,13 @@ components:
           - $ref: '#/components/schemas/DateKind'
           - $ref: '#/components/schemas/ComplexKind'
           - $ref: '#/components/schemas/StringDictKind'
-      example:
-        [
-          {
-            'fqn': 'test.dice',
-            'runtime_kind': 'int32',
-            'description': 'A dice has 6 sides.',
-            'minimum': 1,
-            'maximum': 6,
-          },
-          {
-            'fqn': 'test.social_security_number',
-            'runtime_kind': 'string',
-            'description': 'A dice has 6 sides.',
-            'pattern': "^(?!666|000|9\\d{2})\\d{3}-(?!00)\\d{2}-(?!0{4})\\d{4}$",
-          },
-          {
-            'fqn': 'test.base',
-            'properties':
-              [
-                {
-                  'name': 'kind',
-                  'kind': 'string',
-                  'required': true,
-                  'description': 'The kind of this compound type.',
-                },
-                {
-                  'name': 'name',
-                  'kind': 'string',
-                  'description': 'The name of the resource.',
-                  'required': true,
-                },
-                {
-                  'name': 'tags',
-                  'kind': 'dictionary',
-                  'description': 'Tags that describe the resource.',
-                  'required': false,
-                },
-              ],
-          },
-          {
-            'fqn': 'test.person',
-            'properties':
-              [
-                {
-                  'name': 'fortune',
-                  'kind': 'test.dice',
-                  'description': 'The current dice value.',
-                  'required': true,
-                },
-                {
-                  'name': 'ssn',
-                  'kind': 'test.social_security_number',
-                  'description': 'The social security number of this person.',
-                  'required': true,
-                },
-              ],
-          },
-        ]
+      example: [{"fqn": "test.dice", "runtime_kind": "int32", "description": "A dice has 6 sides.", "minimum": 1, "maximum": 6}, {"fqn": "test.social_security_number", "runtime_kind": "string", "description": "A dice has 6 sides.", "pattern": "^(?!666|000|9\\d{2})\\d{3}-(?!00)\\d{2}-(?!0{4})\\d{4}$"}, {"fqn": "test.base", "properties": [{"name": "kind", "kind": "string", "required": true, "description": "The kind of this compound type."}, {"name": "name", "kind": "string", "description": "The name of the resource.", "required": true}, {"name": "tags", "kind": "dictionary[string, string]", "description": "Tags that describe the resource.", "required": false}]}, {"fqn": "test.person", "bases": ["test.base"], "properties": [{"name": "fortune", "kind": "test.dice", "description": "The current dice value.", "required": true}, {"name": "ssn", "kind": "test.social_security_number", "description": "The social security number of this person.", "required": true}]}]
     KindBase:
       type: object
       properties:
         fqn:
           type: string
-          description: 'The fully qualified name of the kind'
+          description: "The fully qualified name of the kind"
     SimpleKind:
       type: object
       allOf:
@@ -2204,15 +2128,14 @@ components:
       discriminator:
         propertyName: runtime_kind
         mapping:
-          string: '#/components/schemas/StringKind'
-          int32: '#/components/schemas/NumberKind'
-          int64: '#/components/schemas/NumberKind'
-          float: '#/components/schemas/NumberKind'
-          double: '#/components/schemas/NumberKind'
-          boolean: '#/components/schemas/BooleanKind'
-          date: '#/components/schemas/DateKind'
-          datetime: '#/components/schemas/DateTimeKind'
-
+          string: "#/components/schemas/StringKind"
+          int32: "#/components/schemas/NumberKind"
+          int64: "#/components/schemas/NumberKind"
+          float: "#/components/schemas/NumberKind"
+          double: "#/components/schemas/NumberKind"
+          boolean: "#/components/schemas/BooleanKind"
+          date: "#/components/schemas/DateKind"
+          datetime: "#/components/schemas/DateTimeKind"
       properties:
         runtime_kind:
           type: string
@@ -2225,7 +2148,7 @@ components:
             - boolean
             - date
             - datetime
-          description: 'The runtime kind of this kind'
+          description: "The runtime kind of this kind"
     StringKind:
       type: object
       allOf:
@@ -2233,18 +2156,18 @@ components:
       properties:
         min_length:
           type: string
-          description: 'The minimal length of this string'
+          description: "The minimal length of this string"
         max_length:
           type: string
-          description: 'The maximal length of this string'
+          description: "The maximal length of this string"
         pattern:
           type: string
-          description: 'The regexp pattern, that this string has to adhere to'
+          description: "The regexp pattern, that this string has to adhere to"
         enum:
           type: array
           items:
             type: string
-          description: 'The allowed values of this string enumerated here'
+          description: "The allowed values of this string enumerated here"
     NumberKind:
       type: object
       allOf:
@@ -2254,17 +2177,17 @@ components:
           oneOf:
             - type: integer
             - type: number
-          description: 'The minimal value of this number'
+          description: "The minimal value of this number"
         maximum:
           oneOf:
             - type: integer
             - type: number
-          description: 'The maximum value of this number'
+          description: "The maximum value of this number"
         enum:
           type: array
           items:
             type: integer
-          description: 'The allowed values of this number enumerated here'
+          description: "The allowed values of this number enumerated here"
     BooleanKind:
       type: object
       allOf:
@@ -2283,23 +2206,23 @@ components:
         - $ref: '#/components/schemas/KindBase'
       properties:
         inner:
-          $ref: '#/components/schemas/KindBase'
+          $ref: "#/components/schemas/KindBase"
     Property:
       type: object
       properties:
         name:
           type: string
-          description: 'The name of this property'
+          description: "The name of this property"
         kind:
           type: string
-          description: 'The fully qualified kind of this property'
+          description: "The fully qualified kind of this property"
         required:
           type: boolean
-          description: 'Defines if this property is required or not'
+          description: "Defines if this property is required or not"
           default: false
         description:
           type: string
-          description: 'Some human readable description of this property'
+          description: "Some human readable description of this property"
     ComplexKind:
       type: object
       allOf:
@@ -2307,42 +2230,40 @@ components:
       properties:
         base:
           type: string
-          description: 'In case of inheritance, this defines the base kind.'
+          description: "In case of inheritance, this defines the base kind."
         properties:
           type: array
-          description: 'Defines all properties of this complex kind'
+          description: "Defines all properties of this complex kind"
           items:
             $ref: '#/components/schemas/Property'
     StringDictKind:
       type: object
-      description: 'A simple dictionary where all keys and values are strings'
+      description: "A simple dictionary where all keys and values are strings"
       allOf:
         - $ref: '#/components/schemas/KindBase'
-
     RawQuery:
       type: object
-      description: 'The raw query as performed by the database'
+      description: "The raw query as performed by the database"
       properties:
         query:
           type: string
-          description: 'The string representation of the query'
+          description: "The string representation of the query"
         bind_vars:
           type: object
-          description: 'All binding variables for this query'
+          description: "All binding variables for this query"
           additionalProperties: true
-
-    EstimatedQueryCost:
+    EstimatedSearchCost:
       type: object
-      description: 'The estimated cost of a query'
+      description: "The estimated cost of a search"
       properties:
         estimated_cost:
           type: integer
-          description: Absolute number that shows the cost of this query. See rating for an interpreted number.
+          description: Absolute number that shows the cost of this search. See rating for an interpreted number.
         estimated_nr_items:
           type: integer
           description: |
-            This is the estimated number of items returned for this query.
-            Please note: it is computed based on query statistics and heuristics and does not reflect the real number.
+            This is the estimated number of items returned for this search.
+            Please note: it is computed based on search statistics and heuristics and does not reflect the real number.
         available_nr_items:
           type: integer
           description: This is the number of available nodes in the graph.
@@ -2350,19 +2271,18 @@ components:
           type: boolean
           description: |
             Indicates, if a full collection scan is required.
-            This means, that the query does not take advantage of any indexes!
+            This means, that the search does not take advantage of any indexes!
         rating:
           type: string
           description: |
-            The rating of this query.
-            A simple query is usually fine.
-            A complex query might be acceptable in certain cases. Maybe an index can be used to make this query simple?
-            A bad query is usually something where an index is missing or the query has to be rewritten.
+            The rating of this search.
+            A simple search is usually fine.
+            A complex search might be acceptable in certain cases. Maybe an index can be used to make this search simple?
+            A bad search is usually something where an index is missing or the search has to be rewritten.
           enum:
             - simple
             - complex
             - bad
-
     CLIInfo:
       type: object
       description: Information about the CLI

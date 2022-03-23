@@ -84,6 +84,7 @@ div[class^='announcementBar_'] .close {
   font-size: 0;
   background-color: var(--ifm-navbar-link-hover-color);
   --logo-text: url('/img/navbar-logotext.svg');
+  -webkit-mask-image: var(--logo-text);
   mask-image: var(--logo-text);
   mask-repeat: no-repeat;
 }

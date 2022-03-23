@@ -28,21 +28,20 @@ function HomepageHeader() {
       <div className={styles.heroInner}>
         <h1 className={styles.heroTitle}>{siteConfig.title}</h1>
         <div className={styles.heroSubtitle}>
-          <span>
-            Effortlessly manage your{' '}
-            <strong>
-              <Typewriter
-                words={[
-                  'Amazon Web Services',
-                  'Google Cloud Platform',
-                  'DigitalOcean',
-                  'Kubernetes',
-                  'VMware vSphere',
-                ]}
-              />
-            </strong>{' '}
-            infrastructure
-          </span>
+          Effortlessly manage your{' '}
+          <strong>
+            <Typewriter
+              words={[
+                'Amazon Web Services',
+                'Google Cloud Platform',
+                'DigitalOcean',
+                'Kubernetes',
+                'VMware vSphere',
+              ]}
+              cursorClassName={styles.cursor}
+            />
+          </strong>{' '}
+          infrastructure
         </div>
         <img
           className={styles.heroLogo}

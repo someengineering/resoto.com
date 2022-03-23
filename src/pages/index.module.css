@@ -34,8 +34,13 @@ html[data-theme='dark'] .hero {
   color: var(--ifm-color-primary) !important;
 }
 
-.heroSubtitle > span {
-  margin-right: 1rem;
+.cursor {
+  display: inline-block;
+  background-color: var(--ifm-color-primary-contrast-foreground);
+  margin-left: 0.1rem;
+  width: 3px;
+  -webkit-animation: tr-blink-type 1s infinite;
+  animation: tr-blink-type 1s infinite;
 }
 
 .heroButtons {

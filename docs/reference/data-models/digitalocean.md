@@ -1,8 +1,8 @@
 ---
-sidebar_label: Digital Ocean
+sidebar_label: DigitalOcean
 ---
 
-# Digital Ocean
+# DigitalOcean Resources
 
 ## `digitalocean_app`
 

@@ -39,8 +39,8 @@ html[data-theme='dark'] .hero {
   background-color: var(--ifm-color-primary-contrast-foreground);
   margin-left: 0.1rem;
   width: 3px;
-  -webkit-animation: tr-blink-type 1s infinite;
-  animation: tr-blink-type 1s infinite;
+  -webkit-animation: blink 1s infinite;
+  animation: blink 1s infinite;
 }
 
 .heroButtons {
@@ -162,5 +162,19 @@ html[data-theme='dark'] .hero {
 
   to {
     opacity: 1;
+  }
+}
+
+@keyframes blink {
+  from {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
   }
 }

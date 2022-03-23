@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 // @ts-check
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('./src/utils/prismDark.js');
 const a11yEmoji = require('@fec/remark-a11y-emoji');
 
 /** @type {import('@docusaurus/types').Config} */
@@ -106,7 +104,7 @@ const config = {
         {
           name: 'keywords',
           content:
-            'resoto, some engineering, sre, cloud, cloud services, cloud providers, aws, amazon web services, gcp, google cloud platform, azure, docker, kubernetes, k8s, devops, prometheus, infrastructure, resource tool, multicloud, metrics, python, terraform, vsphere, finops, risotto',
+            'resoto, some engineering, sre, cloud, cloud services, cloud providers, aws, amazon web services, gcp, google cloud platform, azure, digitalocean, digital ocean, docker, kubernetes, k8s, devops, prometheus, infrastructure, resource tool, multicloud, metrics, python, terraform, vmware, vsphere, finops, risotto',
         },
       ],
       tableOfContents: {
@@ -277,8 +275,8 @@ const config = {
         contextualSearch: true,
       },
       prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
+        theme: require('prism-react-renderer/themes/github'),
+        darkTheme: require('./src/utils/prismDark.js'),
         additionalLanguages: ['ini', 'powershell'],
       },
     }),

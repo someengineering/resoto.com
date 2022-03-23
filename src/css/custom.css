@@ -84,8 +84,8 @@ div[class^='announcementBar_'] .close {
   font-size: 0;
   background-color: var(--ifm-navbar-link-hover-color);
   --logo-text: url('/img/navbar-logotext.svg');
-  -webkit-mask-image: var(--logo-text);
   mask-image: var(--logo-text);
+  mask-repeat: no-repeat;
 }
 
 .navbar__item {
@@ -221,6 +221,12 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 
 .breadcrumbs__link:hover {
   text-decoration: var(--ifm-link-hover-decoration);
+}
+
+@media screen and (min-width: 996px) and (max-width: 1048px) {
+  .navbar__title {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 996px) {

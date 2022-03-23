@@ -6,6 +6,7 @@ import Layout from '@theme/Layout';
 import Emoji from 'a11y-react-emoji';
 import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
+import { Typewriter } from 'typewriting-react';
 import styles from './index.module.css';
 
 function HomepageHeader() {
@@ -28,36 +29,19 @@ function HomepageHeader() {
         <h1 className={styles.heroTitle}>{siteConfig.title}</h1>
         <div className={styles.heroSubtitle}>
           <span>
-            <strong>Find</strong> leaky resources, <strong>manage</strong> quota
-            limits, <strong>detect</strong> drift, and <strong>clean</strong>{' '}
-            up!
-          </span>
-          <span className={styles.heroButtons}>
-            {resotoVersion && (
-              <>
-                <a
-                  href={`https://github.com/someengineering/resoto/releases/tag/${resotoVersion}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="button button--primary button--lg"
-                >
-                  <GitHubLogo className={styles.buttonIcon} />
-                  {resotoVersion.startsWith('v')
-                    ? resotoVersion
-                    : `v${resotoVersion}`}
-                </a>
-                {!!githubStars && (
-                  <a
-                    href="https://github.com/someengineering/resoto/stargazers"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={clsx('button button--lg', styles.speechButton)}
-                  >
-                    {githubStars} <Emoji symbol="⭐" label="stars" />
-                  </a>
-                )}
-              </>
-            )}
+            Effortlessly manage your{' '}
+            <strong>
+              <Typewriter
+                words={[
+                  'Amazon Web Services',
+                  'Google Cloud Platform',
+                  'DigitalOcean',
+                  'Kubernetes',
+                  'VMware vSphere',
+                ]}
+              />
+            </strong>{' '}
+            infrastructure
           </span>
         </div>
         <img
@@ -65,6 +49,33 @@ function HomepageHeader() {
           src="/img/logo-lg.svg"
           alt="Resoto Logo"
         />
+      </div>
+      <div className={styles.heroButtons}>
+        {resotoVersion && (
+          <>
+            <a
+              href={`https://github.com/someengineering/resoto/releases/tag/${resotoVersion}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="button button--primary button--lg"
+            >
+              <GitHubLogo className={styles.buttonIcon} />
+              {resotoVersion.startsWith('v')
+                ? resotoVersion
+                : `v${resotoVersion}`}
+            </a>
+            {!!githubStars && (
+              <a
+                href="https://github.com/someengineering/resoto/stargazers"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={clsx('button button--lg', styles.speechButton)}
+              >
+                {githubStars} <Emoji symbol="⭐" label="stars" />
+              </a>
+            )}
+          </>
+        )}
       </div>
     </header>
   );

@@ -25,8 +25,8 @@ function HomepageHeader() {
 
   return (
     <header className={styles.hero}>
+      <h1 className={styles.heroTitle}>{siteConfig.title}</h1>
       <div className={styles.heroInner}>
-        <h1 className={styles.heroTitle}>{siteConfig.title}</h1>
         <div className={styles.heroSubtitle}>
           Effortlessly manage your{' '}
           <strong>

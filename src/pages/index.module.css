@@ -112,9 +112,14 @@ html[data-theme='dark'] .hero {
 }
 
 @media screen and (max-width: 996px) {
+  .hero {
+    padding: 24px;
+  }
+
   .heroSubtitle {
     font-size: 40px;
     text-align: center;
+    min-height: 96px;
   }
 
   .heroLogo {
@@ -127,21 +132,21 @@ html[data-theme='dark'] .hero {
   }
 }
 
-@media screen and (max-width: 5434px) {
-  .heroSubtitle {
-    min-height: 192px;
-  }
-}
-
-@media screen and (min-width: 545px) and (max-width: 699px) {
+@media screen and (max-width: 648px) {
   .heroSubtitle {
     min-height: 144px;
   }
 }
 
-@media screen and (min-width: 700px) and (max-width: 996px) {
+@media screen and (max-width: 472px) {
   .heroSubtitle {
-    min-height: 96px;
+    min-height: 192px;
+  }
+}
+
+@media screen and (max-width: 412px) {
+  .heroSubtitle {
+    min-height: 240px;
   }
 }
 

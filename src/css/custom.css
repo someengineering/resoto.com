@@ -224,6 +224,15 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   text-decoration: var(--ifm-link-hover-decoration);
 }
 
+.md-actions {
+  display: flex;
+  align-items: center;
+}
+
+.md-actions > * {
+  margin-right: 1rem;
+}
+
 @media screen and (min-width: 996px) and (max-width: 1048px) {
   .navbar__title {
     display: none;

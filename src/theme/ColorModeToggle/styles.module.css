@@ -1,5 +1,4 @@
 .toggle {
-  position: relative;
   height: 2em;
   width: 2em;
 }
@@ -9,23 +8,7 @@
   transition-duration: 75ms;
 }
 
-.toggleScreenReader {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  position: absolute;
-  width: 1px;
-}
-
-.toggleDisabled {
-  cursor: not-allowed;
-}
-
 .toggleButton {
-  cursor: pointer;
-  user-select: none;
   -webkit-tap-highlight-color: transparent;
   align-items: center;
   display: flex;
@@ -36,14 +19,14 @@
 }
 
 .toggleButton:hover {
-  background-color: #00000010;
-}
-
-[data-theme='dark'] .toggleButton:hover {
-  background-color: #ffffff20;
+  background: var(--ifm-color-emphasis-200);
 }
 
 [data-theme='light'] .darkToggleIcon,
 [data-theme='dark'] .lightToggleIcon {
   display: none;
+}
+
+.toggleButtonDisabled {
+  cursor: not-allowed;
 }

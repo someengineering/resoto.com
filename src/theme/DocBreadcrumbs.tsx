@@ -3,7 +3,6 @@ import { useSidebarBreadcrumbs } from '@docusaurus/theme-common';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import React, { type ReactNode } from 'react';
 
-// TODO move to design system folder
 function BreadcrumbsItemLink({
   children,
   href,
@@ -13,30 +12,43 @@ function BreadcrumbsItemLink({
 }): JSX.Element {
   const className = 'breadcrumbs__link';
   return href ? (
-    <Link className={className} href={href}>
-      {children}
+    <Link href={href} itemProp="item" className={className}>
+      <span itemProp="name">{children}</span>
     </Link>
   ) : (
-    <span className={className}>{children}</span>
+    <span itemProp="item name" className={className}>
+      {children}
+    </span>
   );
 }
 
-// TODO move to design system folder
 function BreadcrumbsItem({
   children,
+  index,
 }: {
   children: ReactNode;
-  active?: boolean;
+  index: number;
 }): JSX.Element {
-  return <li className="breadcrumbs__item">{children}</li>;
+  return (
+    <li
+      itemScope
+      itemProp="itemListElement"
+      itemType="https://schema.org/ListItem"
+      className="breadcrumbs__item"
+    >
+      {children}
+      <meta itemProp="position" content={String(index + 1)} />
+    </li>
+  );
 }
 
 function HomeBreadcrumbItem() {
-  const homeHref = useBaseUrl('/docs');
   return (
-    <BreadcrumbsItem>
-      <BreadcrumbsItemLink href={homeHref}>Documentation</BreadcrumbsItemLink>
-    </BreadcrumbsItem>
+    <li className="breadcrumbs__item">
+      <Link href={useBaseUrl('/docs')} className="breadcrumbs__link">
+        Documentation
+      </Link>
+    </li>
   );
 }
 
@@ -51,10 +63,14 @@ export default function DocBreadcrumbs(): JSX.Element | null {
 
   return (
     <nav aria-label="breadcrumbs">
-      <ul className="breadcrumbs breadcrumbs--sm">
+      <ul
+        itemScope
+        itemType="https://schema.org/BreadcrumbList"
+        className="breadcrumbs breadcrumbs--sm"
+      >
         <HomeBreadcrumbItem />
         {breadcrumbs.map((item, idx) => (
-          <BreadcrumbsItem key={idx}>
+          <BreadcrumbsItem key={idx} index={idx}>
             <BreadcrumbsItemLink href={item.href}>
               {item.label}
             </BreadcrumbsItemLink>

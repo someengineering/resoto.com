@@ -28,3 +28,14 @@ We will be showcasing new Resoto features, giving an overview of Resoto's [comma
 - want to meet the [Some Engineering](https://some.engineering) team
 
 This event is taking place **LIVE** on the [Some Engineering Discord server](https://discord.gg/TX4aw99M?event=956602735157989467) and will not be recorded.
+
+### Agenda
+
+- Resoto news and updates
+  - Improved system configuration method
+  - [DigitalOcean](/docs/reference/data-models/digitalocean) support
+- Learn how to…
+  - [search](/docs/concepts/search) and [aggregate](/docs/concepts/search/aggregation) data
+  - integrate Resoto into existing tools, such as [Discord](https://discord.com)
+  - export data in various formats
+- Q&A

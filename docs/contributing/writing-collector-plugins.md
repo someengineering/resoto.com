@@ -8,6 +8,10 @@ Collector plugins allow for importing of arbitrary resources into Resoto in grap
 
 Once the graph data is collected and sent to [Resoto Core](../concepts/components/core.md), the power of Resoto's [search syntax](../concepts/search/index.md) is at your fingertips.
 
+## Setting up the development environment
+
+Before you start, you'll need to set up your local development environment, so that you can compile and test the project. See the [Contributing to Components](../contributing/components.md) page for more information.
+
 ## Plugin Interface
 
 The plugin interface is defined as follows:

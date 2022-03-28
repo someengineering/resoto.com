@@ -114,7 +114,7 @@ const config = {
       announcementBar: {
         id: 'announcementBar-2', // Increment on change
         content:
-          '<span aria-label="sparkle" role="img" class="lg-screens-only">✨</span> <a href="https://discord.gg/TX4aw99M?event=956602735157989467" target="_blank" rel="noopener noreferrer">Join the Some Engineering team on Discord for our first-ever Community Hour on Thursday, March 31!</a> <span aria-label="sparkle" role="img" class="lg-screens-only">✨</span>',
+          '<span aria-label="sparkle" role="img" class="lg-screens-only">✨</span> <a href="https://resoto.com/news/2022/03/24/community-hour-event">Join the Some Engineering team on Discord for our first-ever Community Hour on Thursday, March 31!</a> <span aria-label="sparkle" role="img" class="lg-screens-only">✨</span>',
       },
       navbar: {
         hideOnScroll: true,

@@ -45,6 +45,10 @@ Resoto uses a thin wrapper on top of [networkx](https://networkx.org/) to operat
 
 The goal of the plugin creators is to build the graph with resources using those methods. As an example, one can look at the DigitalOcean plugin and the Example plugin.
 
+## Testing
+
+One easy way of testing is to launch resoto and trigger the collect action manually by executing `workflows run collect` in resotoshell. Once the collection is done, you can execute `search (<plugin_resource_type>)` to see the newly collected resources.
+
 ## Advice about writing a collector plugin
 
 - Resource properties types MUST be globally unique. If there is a property `status: str` defined by some other plugin, and you add a property called `status: int`, the collection will fail. The reason for such behavior is that later all resource properties will be indexed for search, and having the same name across several plugins will make the search easier.

@@ -35,6 +35,14 @@ All Digitalocean resources inherit from a digitalocean_resource class, and this 
 
 To delete a resource, pipe the search results to a cleanup command. For example, `search is(​​digitalocean_droplet) | cleanup` will mark all droplets to be cleaned up, and they will be removed the next time the cleanup workflow runs. You can also trigger the cleanup manually by calling `workflows run cleanup`.
 
+Also, it is possible to generate a dotfile with a graph of all resources:
+
+```
+search --with-edges is(digitalocean_team) <-[0:]-> | format --dot | write out.dot
+```
+
+The file out.dot can later be viewed in any graphviz viewer. One that I personally like is a VSCode extenstion called _Graphviz Interactive Preview_.
+
 For more, chech out the [resoto documentation on search](https://resoto.com/docs/concepts/search).
 
 ## Tagging

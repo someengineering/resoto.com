@@ -91,7 +91,7 @@ search is(digitalocean_droplet) and has_key(tags, tag_foo)
 
 Since DigitalOcean does not support tag values, you need to either specify an empty string as a tag value or use the `has_key` function.
 
-### Cleaning up
+## Cleaning up
 
 To delete a resource, pipe the search results to a cleanup command. For example,
 

@@ -29,7 +29,7 @@ After the collection is over, resoto is ready to use.
 
 <!--truncate-->
 
-## Searching the cloud graph
+## Searching the graph
 
 All Digitalocean resources inherit from a `digitalocean_resource` class, and this means that you can find all resources using `is(digitalocean_resource)` syntax. For a more specific search, it is also possible to find the resource by its type, e.g. `search is(​​digitalocean_droplet)`.
 
@@ -40,14 +40,6 @@ search is(digitalocean_project) and name=="foo" --> is(digitalocean_droplet)
 ```
 
 Here we first found all projects with name `foo`, and then we filtered the result to only contain droplets.
-
-### Cleaning up
-
-To delete a resource, pipe the search results to a cleanup command. For example,
-
-```
-search is(​​digitalocean_droplet) | cleanup
-```
 
 will mark all droplets to be cleaned up, and they will be removed the next time the cleanup workflow runs. You can also trigger the cleanup manually by calling `workflows run cleanup`.
 
@@ -97,7 +89,13 @@ search is(digitalocean_droplet) and has_key(tags, tag_foo)
 
 Since DigitalOcean does not support tag values, you need to either specify an empty string as a tag value or use the `has_key` function.
 
-## Jobs
+### Cleaning up
+
+To delete a resource, pipe the search results to a cleanup command. For example,
+
+```
+search is(​​digitalocean_droplet) | cleanup
+```
 
 Doing manual searches and cleanups is cool, but what if you could set up a cron job that cleans up the resources after your experiments? Resoto can do that as well.
 

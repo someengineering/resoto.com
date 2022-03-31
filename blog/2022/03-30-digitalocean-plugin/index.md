@@ -51,6 +51,8 @@ It is possible to generate a dotfile with a result of your search. For example, 
 search --with-edges is(digitalocean_team) <-[0:]-> | format --dot | write out.dot
 ```
 
+![graph](./img/graph.svg)
+
 The dotfile can later be viewed in any graphviz viewer. One that I personally like is a VSCode extenstion called _Graphviz Interactive Preview_.
 
 For more, chech out the [resoto documentation on search](https://resoto.com/docs/concepts/search).

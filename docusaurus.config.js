@@ -114,9 +114,9 @@ const config = {
         maxHeadingLevel: 5,
       },
       announcementBar: {
-        id: 'announcementBar-2', // Increment on change
+        id: 'announcementBar-3', // Increment on change
         content:
-          '<span aria-label="sparkle" role="img" class="lg-screens-only">✨</span> <a href="https://resoto.com/news/2022/03/24/community-hour-event">Join the Some Engineering team on Discord for our first-ever Community Hour on Thursday, March 31!</a> <span aria-label="sparkle" role="img" class="lg-screens-only">✨</span>',
+          '<span aria-label="star" role="img" class="lg-screens-only">⭐</span> If you like Resoto, please <a href="https://github.com/someengineering/resoto" target="_blank" rel="noopener noreferrer">star the project on GitHub</a> and <a href="https://www.linkedin.com/company/someengineering" target="_blank" rel="noopener noreferrer">follow Some Engineering Inc. on LinkedIn</a>. Thanks for your support! <span aria-label="heart" role="img" class="lg-screens-only">❤️</span>',
       },
       navbar: {
         hideOnScroll: true,

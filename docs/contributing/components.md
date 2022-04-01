@@ -9,19 +9,21 @@ import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
 
+Resoto is comprised of multiple [components](../concepts/components/index.md), each of which is maintained as separate project:
+
+- [Resoto Core](../concepts/components/core.md) [<span class="badge badge--secondary">View on GitHub</span>](https://github.com/someengineering/resoto/tree/main/resotocore)
+- [Resoto Shell](../concepts/components/shell.md) [<span class="badge badge--secondary">View on GitHub</span>](https://github.com/someengineering/resoto/tree/main/resotoshell)
+- [Resoto Worker](../concepts/components/worker.md) [<span class="badge badge--secondary">View on GitHub</span>](https://github.com/someengineering/resoto/tree/main/resotoworker)
+- [Resoto Metrics](../concepts/components/metrics.md) [<span class="badge badge--secondary">View on GitHub</span>](https://github.com/someengineering/resoto/tree/main/resotometrics)
+- [Resoto Library](../concepts/components/library.md) [<span class="badge badge--secondary">View on GitHub</span>](https://github.com/someengineering/resoto/tree/main/resotolib)
+
 The source code for Resoto lives in the [`someengineering/resoto` repository on GitHub](https://github.com/someengineering/resoto).
 
 ## Authoring Changes
 
 Contributions are made via [pull requests to the GitHub repository](https://github.com/someengineering/resoto/pulls). You will first need to [fork](https://docs.github.com/get-started/quickstart/fork-a-repo) the repository.
 
-Each Resoto [component](../concepts/components/index.md) is maintained as separate project, and pull requests should target a single component:
-
-- [Resoto Core (`resotocore`)](https://github.com/someengineering/resoto/tree/main/resotocore)
-- [Resoto Shell (`resotoshell`)](https://github.com/someengineering/resoto/tree/main/resotoshell)
-- [Resoto Worker (`resotoworker`)](https://github.com/someengineering/resoto/tree/main/resotoworker)
-- [Resoto Metrics (`resotometrics`)](https://github.com/someengineering/resoto/tree/main/resotometrics)
-- [Resoto Library (`resotolib`)](https://github.com/someengineering/resoto/tree/main/resotolib)
+Pull requests should target a single [component](../concepts/components/index.md).
 
 ### Prerequisites
 
@@ -174,7 +176,7 @@ Pull request titles should follow the following format for correct parsing by th
 
 | Placeholder     | Description               |
 | --------------- | ------------------------- |
-| `<scope>`       | Affected component        |
+| `<scope>`       | Affected/target component |
 | `<type>`        | `fix`, `feat`, or `chore` |
 | `<description>` | Description of changes    |
 

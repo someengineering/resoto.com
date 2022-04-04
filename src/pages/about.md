@@ -12,7 +12,7 @@ Metrics can be aggregated and exported to a time-series database such as [Promet
 
 ## Origin and Story
 
-[Lukas](https://github.com/lloesche) started developing "Cloudkeeper" (now known as **Resoto**) in late 2019 as an internal project at [D2iQ](https://d2iq.com) (formerly Mesosphere).
+[Lukas](https://github.com/lloesche) started developing Resoto in late 2019 as an internal project at [D2iQ](https://d2iq.com).
 
 At the time, [Lukas](https://github.com/lloesche) was a site reliability engineer (SRE) at [D2iQ](https://d2iq.com) and needed a tool to give him the big picture of all cloud resources running, automate their documentation, and reduce spend.
 
@@ -32,9 +32,9 @@ The scenario probably sounds familiar. And there were plenty of infrastructure t
 
 [Lukas](https://github.com/lloesche) wanted a tool that periodically collects a list of resources in cloud accounts, provides metrics about them, and can clean them up. Rather than creating yet another list with "rows and columns," he chose to store information in a graph. The graph reflects dependencies and also stores context.
 
-The first version of Cloudkeeper was deployed in early 2020. And it delivered. Within four weeks, cloud spend was cut in half! Another six months later, cloud spend had been reduced by a total of 70%. The entire infrastructure had become more resilient.
+The first version of Resoto was deployed in early 2020. And it delivered. Within four weeks, cloud spend was cut in half! Another six months later, cloud spend had been reduced by a total of 70%. The entire infrastructure had become more resilient.
 
-In 2020, [D2iQ](https://d2iq.com) open-sourced Cloudkeeper, and [Some Engineering Inc.](https://some.engineering) took over development in July 2021. In 2022, the Cloudkeeper project was rebranded as "Resoto."
+In 2020, [D2iQ](https://d2iq.com) open-sourced Resoto, and [Some Engineering Inc.](https://some.engineering) took over development in July 2021.
 
 ## Product Vision
 

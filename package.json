@@ -38,7 +38,7 @@
     "prism-react-renderer": "^1.3.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-moment": "^1.1.1",
+    "react-moment": "^1.1.2",
     "redocusaurus": "^1.0.1",
     "typewriting-react": "^1.0.8"
   },

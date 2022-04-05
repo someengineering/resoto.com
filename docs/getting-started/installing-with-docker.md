@@ -37,7 +37,7 @@ external_id = [...]
 credential_source = Ec2InstanceMetadata
 ```
 
-Note that the [role ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) must also be provided to the [worker](../concepts/components/worker.md) as `aws.role`. This role is assumed while fetching the list of resources in each sub-account when `aws.scrape_org=true`.
+Note that the [role ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) must also be provided to the [worker](../concepts/components/worker.md) as `aws.role`. This role is assumed while fetching the list of resources in each sub-account when `aws.scrape_org` is `true`.
 
 :::
 

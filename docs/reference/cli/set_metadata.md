@@ -9,14 +9,14 @@ This command assumes that all incoming elements are either objects coming from a
 ## Usage
 
 ```bash
-set_metadata <metadata_properties>
+set_metadata <properties>
 ```
 
 ### Parameters
 
-| Parameter             | Description                                                                          | Required? | Default Value |
-| --------------------- | ------------------------------------------------------------------------------------ | --------- | ------------- |
-| `metadata_properties` | Space-delimited list of property-value pairs, formatted as `<property_name>=<value>` | ✔️        | N/A           |
+| Parameter    | Description                                                                 | Required? | Default Value |
+| ------------ | --------------------------------------------------------------------------- | --------- | ------------- |
+| `properties` | Space-delimited list of property-value pairs, formatted as `<name>=<value>` | ✔️        | N/A           |
 
 ## Examples
 

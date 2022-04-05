@@ -37,13 +37,15 @@ external_id = [...]
 credential_source = Ec2InstanceMetadata
 ```
 
-Note that the [role ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) must also be provided to the [worker](../concepts/components/worker.md) as `RESOTOWORKER_AWS_ROLE`. This role is assumed while fetching the list of resources in each sub-account when `RESOTOWORKER_AWS_SCRAPE_ORG=true`.
+Note that the [role name](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) must also be provided to the [worker](../concepts/components/worker.md) as `aws.role`. This role is assumed while fetching the list of resources in each sub-account when `aws.scrape_org` is `true`.
 
 :::
 
 ## Installation
 
 There are multiple ways to get the Resoto Docker image up and running.
+Resoto consists of four components. `resotocore` maintains the infrastructure graph. `resotoworker` collects infrastructure data from the cloud provider APIs and sends it to the core. It is also responsible for performing cloud specific tasks like clean up of resources or tagging. `resotometrics` exports metrics in Prometheus format and `resotoshell (resh)` is the CLI used to interact with Resoto.
+Once the core is running all component configuration can be edited using the `config edit` command inside `resh`. For example `config edit resoto.worker`. Every configuration option can be overridden using CLI flags or environment variables using the `--override` flag or the `<COMPONENTNAME>_OVERRIDE` environment variable.
 
 ### [`docker run`](https://docs.docker.com/engine/reference/run) Command {#docker-run-install}
 
@@ -58,9 +60,9 @@ Then, start the container:
 ```bash
 docker run \
   --name resoto \
-  -e RESOTOWORKER_AWS_ACCESS_KEY_ID=YOUR_ACCESS_KEY_ID \
-  -e RESOTOWORKER_AWS_SECRET_ACCESS_KEY=YOUR_ACCESS_KEY \
-  -e RESOTOWORKER_COLLECT='aws example' \
+  -e RESOTOWORKER_OVERRIDE0 collect=aws,example
+  -e RESOTOWORKER_OVERRIDE1 aws.access_key_id=YOUR_ACCESS_KEY_ID \
+  -e RESOTOWORKER_OVERRIDE2 aws.secret_access_key=YOUR_SECRET_ACCESS_KEY \
   -p 8900:8900 \
   -v resoto-data:/data \
   --restart unless-stopped \
@@ -103,9 +105,9 @@ services:
     image: somecr.io/someengineering/resoto:{{latestRelease}}
     container_name: resoto
     environment:
-      RESOTOWORKER_AWS_ACCESS_KEY_ID: YOUR_ACCESS_KEY_ID
-      RESOTOWORKER_AWS_SECRET_ACCESS_KEY: YOUR_ACCESS_KEY
-      RESOTOWORKER_COLLECT: aws example
+      RESOTOWORKER_OVERRIDE0: collect=aws,example
+      RESOTOWORKER_OVERRIDE1: aws.access_key_id=YOUR_ACCESS_KEY_ID
+      RESOTOWORKER_OVERRIDE2: aws.secret_access_key=YOUR_ACCESS_KEY
     ports:
       - 8900:8900
     volumes:
@@ -144,10 +146,10 @@ services:
       - 8900:8900
     environment:
       PSK:
-      RESOTOCORE_HOST: resotocore
-      RESOTOCORE_START_COLLECT_ON_SUBSCRIBER_CONNECT: 'true'
       RESOTOCORE_GRAPHDB_SERVER: http://graphdb:8529
       RESOTOCORE_GRAPHDB_PASSWORD: changeme
+      RESOTOCORE_OVERRIDE0: resotocore.api.web_hosts=resotocore
+      RESOTOCORE_OVERRIDE1: resotocore.runtime.start_collect_on_subscriber_connect=true
     restart: unless-stopped
     stop_grace_period: 2m
 
@@ -160,11 +162,10 @@ services:
       - 9956:9956
     environment:
       PSK:
-      RESOTOWORKER_RESOTOCORE_URI: http://resotocore:8900
-      RESOTOWORKER_RESOTOCORE_WS_URI: ws://resotocore:8900
-      RESOTOWORKER_AWS_ACCESS_KEY_ID: YOUR_ACCESS_KEY_ID
-      RESOTOWORKER_AWS_SECRET_ACCESS_KEY: YOUR_ACCESS_KEY
-      RESOTOWORKER_COLLECT: aws example
+      RESOTOWORKER_RESOTOCORE_URI: https://resotocore:8900
+      RESOTOWORKER_OVERRIDE0: collect=aws,example
+      RESOTOWORKER_OVERRIDE1: aws.access_key_id=YOUR_ACCESS_KEY_ID
+      RESOTOWORKER_OVERRIDE2: aws.secret_access_key=YOUR_ACCESS_KEY
     restart: unless-stopped
     stop_grace_period: 2m
 
@@ -177,8 +178,7 @@ services:
       - 9955:9955
     environment:
       PSK:
-      RESOTOMETRICS_RESOTOCORE_URI: http://resotocore:8900
-      RESOTOMETRICS_RESOTOCORE_WS_URI: ws://resotocore:8900
+      RESOTOMETRICS_RESOTOCORE_URI: https://resotocore:8900
     restart: unless-stopped
     stop_grace_period: 2m
 
@@ -189,8 +189,7 @@ services:
       - resotocore
     environment:
       PSK:
-      RESOTOSHELL_RESOTOCORE_URI: http://resotocore:8900
-      RESOTOSHELL_RESOTOCORE_WS_URI: ws://resotocore:8900
+      RESOTOSHELL_RESOTOCORE_URI: https://resotocore:8900
     restart: unless-stopped
     stop_grace_period: 2m
 ```
@@ -208,7 +207,11 @@ Docker Compose will start the container, and a collect run will begin automatica
 
 :::note
 
-By default, Resoto collects [anonymous statistics](../reference/telemetry.md) about how the product is used. However, this telemetry can be [disabled](../reference/telemetry.md#disabling) by setting the `RESOTOCORE_ANALYTICS_OPT_OUT` environment variable.
+By default, Resoto collects [anonymous statistics](../reference/telemetry.md) about how the product is used. However, this telemetry can be [disabled](../reference/telemetry.md#disabling) by setting the `resotocore.runtime.analytics_opt_out=true` config variable.
+
+```bash
+> config set resoto.core resotocore.runtime.analytics_opt_out=true
+```
 
 :::
 
@@ -223,6 +226,7 @@ docker exec -it resoto resh
 ```
 
 Once Resoto has completed its first collect run, you can try [performing some searches](./performing-searches.md).
+To list and edit the configuration run `config list` and `config edit <config-name>` respectively.
 
 ## Updating
 

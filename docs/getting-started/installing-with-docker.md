@@ -209,6 +209,10 @@ Docker Compose will start the container, and a collect run will begin automatica
 
 By default, Resoto collects [anonymous statistics](../reference/telemetry.md) about how the product is used. However, this telemetry can be [disabled](../reference/telemetry.md#disabling) by setting the `resotocore.runtime.analytics_opt_out=true` config variable.
 
+```bash
+> config set resoto.core resotocore.runtime.analytics_opt_out=true
+```
+
 :::
 
 ## Launching the Resoto Command-Line Interface

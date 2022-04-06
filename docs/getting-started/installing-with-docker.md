@@ -148,8 +148,14 @@ services:
       PSK:
       RESOTOCORE_GRAPHDB_SERVER: http://graphdb:8529
       RESOTOCORE_GRAPHDB_PASSWORD: changeme
-      RESOTOCORE_OVERRIDE0: resotocore.api.web_hosts=resotocore
-      RESOTOCORE_OVERRIDE1: resotocore.runtime.start_collect_on_subscriber_connect=true
+    command:
+      - --override
+      - resotocore.api.web_hosts=resotocore
+      - resotocore.api.host_certificate.common_name=resotocore
+      - resotocore.api.host_certificate.san_dns_names=resotocore
+      - resotocore.api.tsdb_proxy_url=http://tsdb:9090
+      - resotocore.api.ui_path=/usr/local/resoto/ui/
+      - resotocore.runtime.start_collect_on_subscriber_connect=true
     restart: unless-stopped
     stop_grace_period: 2m
 

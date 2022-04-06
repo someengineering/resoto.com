@@ -43,9 +43,7 @@ Note that the [role name](https://docs.aws.amazon.com/general/latest/gr/aws-arns
 
 ## Installation
 
-There are multiple ways to get the Resoto Docker image up and running.
-Resoto consists of four components. `resotocore` maintains the infrastructure graph. `resotoworker` collects infrastructure data from the cloud provider APIs and sends it to the core. It is also responsible for performing cloud specific tasks like clean up of resources or tagging. `resotometrics` exports metrics in Prometheus format and `resotoshell (resh)` is the CLI used to interact with Resoto.
-Once the core is running all component configuration can be edited using the `config edit` command inside `resh`. For example `config edit resoto.worker`. Every configuration option can be overridden using CLI flags or environment variables using the `--override` flag or the `<COMPONENTNAME>_OVERRIDE` environment variable.
+There are multiple ways to get the Resoto Docker image up and running. Resoto consists of four components. `resotocore` maintains the infrastructure graph. `resotoworker` collects infrastructure data from the cloud provider APIs and sends it to the core. It is also responsible for performing cloud specific tasks like clean up of resources or tagging. `resotometrics` exports metrics in Prometheus format and `resotoshell (resh)` is the CLI used to interact with Resoto. Once the core is running all component configuration can be edited using the `config edit` command inside `resh`. For example `config edit resoto.worker`. Every configuration option can be overridden using CLI flags or environment variables using the `--override` flag or the `<COMPONENTNAME>_OVERRIDE` environment variable.
 
 ### [`docker run`](https://docs.docker.com/engine/reference/run) Command {#docker-run-install}
 
@@ -231,8 +229,7 @@ To access the [Resoto Shell](../concepts/components/shell.md) interface inside t
 docker exec -it resoto resh
 ```
 
-Once Resoto has completed its first collect run, you can try [performing some searches](./performing-searches.md).
-To list and edit the configuration run `config list` and `config edit <config-name>` respectively.
+Once Resoto has completed its first collect run, you can try [performing some searches](./performing-searches.md). To list and edit the configuration run `config list` and `config edit <config-name>` respectively.
 
 ## Updating
 

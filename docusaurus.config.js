@@ -13,9 +13,6 @@ const config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'throw',
   favicon: 'img/favicon.ico',
-  organizationName: 'someengineering',
-  projectName: 'resoto.com',
-  deploymentBranch: 'gh-pages',
   trailingSlash: false,
   stylesheets: [
     {

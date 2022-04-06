@@ -1,3 +1,8 @@
+---
+sidebar_position: 5
+pagination_prev: getting-started/performing-searches
+---
+
 # Pruning Resources
 
 :::danger

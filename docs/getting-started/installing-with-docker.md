@@ -1,6 +1,7 @@
 ---
+sidebar_position: 1
 pagination_prev: getting-started/index
-pagination_next: getting-started/performing-searches
+pagination_next: getting-started/configuring-resoto
 ---
 
 # Installing with Docker
@@ -12,8 +13,6 @@ import Tabs from '@theme/Tabs';
 ```
 
 [Docker](https://docker.com) provides the ability to run an application in a loosely isolated environment called a "[container](https://docs.docker.com/get-started/overview#containers)."
-
-Currently, all of the requirements and components of Resoto are packaged into a single Docker [image](https://docs.docker.com/get-started/overview#images).
 
 For more information on Docker, please see the [official Docker documentation](https://docs.docker.com).
 
@@ -41,43 +40,16 @@ Note that the [role name](https://docs.aws.amazon.com/general/latest/gr/aws-arns
 
 :::
 
-## Installation
+## Installing Resoto
 
-There are multiple ways to get the Resoto Docker image up and running. Resoto consists of four components. `resotocore` maintains the infrastructure graph. `resotoworker` collects infrastructure data from the cloud provider APIs and sends it to the core. It is also responsible for performing cloud specific tasks like clean up of resources or tagging. `resotometrics` exports metrics in Prometheus format and `resotoshell (resh)` is the CLI used to interact with Resoto. Once the core is running all component configuration can be edited using the `config edit` command inside `resh`. For example `config edit resoto.worker`. Every configuration option can be overridden using CLI flags or environment variables using the `--override` flag or the `<COMPONENTNAME>_OVERRIDE` environment variable.
+Resoto consists of four components:
 
-### [`docker run`](https://docs.docker.com/engine/reference/run) Command {#docker-run-install}
+1. [Resoto Core](../concepts/components/core.md) maintains the infrastructure graph.
+2. [Resoto Worker](../concepts/components/worker.md) collects infrastructure data from the cloud provider APIs and sends it to the [Core](../concepts/components/core.md). It is also responsible for performing cloud specific tasks like clean up of resources or tagging.
+3. [Resoto Metrics](../concepts/components/metrics.md) exports metrics in Prometheus format.
+4. [Resoto Shell](../concepts/components/shell.md) is the command-line interface (CLI) used to interact with Resoto.
 
-First, create a volume in which to persist data:
-
-```bash
-docker volume create resoto-data
-```
-
-Then, start the container:
-
-```bash
-docker run \
-  --name resoto \
-  -e RESOTOWORKER_OVERRIDE0 collect=aws,example
-  -e RESOTOWORKER_OVERRIDE1 aws.access_key_id=YOUR_ACCESS_KEY_ID \
-  -e RESOTOWORKER_OVERRIDE2 aws.secret_access_key=YOUR_SECRET_ACCESS_KEY \
-  -p 8900:8900 \
-  -v resoto-data:/data \
-  --restart unless-stopped \
-  somecr.io/someengineering/resoto:{{latestRelease}}
-```
-
-And just like that, you have Resoto running in Docker! A collect run will begin automatically. This first collect usually takes about 5 to 10 minutes, but the time is dependent on the size of your AWS account.
-
-:::note
-
-By default, Resoto collects [anonymous statistics](../reference/telemetry.md) about how the product is used. However, this telemetry can be [disabled](../reference/telemetry.md#disabling) by setting the `RESOTOCORE_ANALYTICS_OPT_OUT` environment variable.
-
-:::
-
-### [Docker Compose](https://docs.docker.com/compose/reference) {#docker-compose-install}
-
-We publish an all-in-one Docker image (`somecr.io/someengineering/resoto`) in addition to Docker images for each individual Resoto [component](../concepts/components/index.md):
+We publish Docker images for each individual Resoto [component](../concepts/components/index.md):
 
 - `somecr.io/someengineering/resotocore`
 - `somecr.io/someengineering/resotoworker`
@@ -87,34 +59,6 @@ We publish an all-in-one Docker image (`somecr.io/someengineering/resoto`) in ad
 The component images allow for greater flexibility in deploying Resoto with Docker Compose, and also make it possible to update each component independently.
 
 To install Resoto using Docker Compose, add volume and service definitions to a [`docker-compose.yml` file](https://docs.docker.com/compose/compose-file) according to your preference for either the all-in-one image or the component images:
-
-<Tabs>
-<TabItem value="all-in-one" label="All-in-One Image">
-
-```yml title="docker-compose.yml"
----
-version: '3'
-
-volumes:
-  resoto-data:
-
-services:
-  resoto:
-    image: somecr.io/someengineering/resoto:{{latestRelease}}
-    container_name: resoto
-    environment:
-      RESOTOWORKER_OVERRIDE0: collect=aws,example
-      RESOTOWORKER_OVERRIDE1: aws.access_key_id=YOUR_ACCESS_KEY_ID
-      RESOTOWORKER_OVERRIDE2: aws.secret_access_key=YOUR_ACCESS_KEY
-    ports:
-      - 8900:8900
-    volumes:
-      - resoto-data:/data
-    restart: unless-stopped
-```
-
-</TabItem>
-<TabItem value="components" label="Separate Component Images">
 
 ```yml title="docker-compose.yml"
 ---
@@ -198,9 +142,6 @@ services:
     stop_grace_period: 2m
 ```
 
-</TabItem>
-</Tabs>
-
 Then, run the following command from the directory containing the `docker-compose.yml` file:
 
 ```bash
@@ -208,6 +149,24 @@ docker-compose up -d
 ```
 
 Docker Compose will start the container, and a collect run will begin automatically. This first collect usually takes about 5 to 10 minutes, but the time is dependent on the size of your AWS account.
+
+## Launching the Command-Line Interface
+
+The `resh` command is used to interact with [Resoto Core](../concepts/components/core.md).
+
+To access the [Resoto Shell](../concepts/components/shell.md) interface, simply execute:
+
+```bash
+docker exec -it resoto resh
+```
+
+### Configuring Resoto
+
+Once the [Core](../concepts/components/core.md) is running, all component configuration can be edited using the [`config edit` command](../reference/cli/configs/edit.md) inside [Resoto Shell](../concepts/components/shell.md).
+
+Additionally, configuration properties can be overridden using the `--override` CLI flag or the appropriate `<COMPONENT_NAME>_OVERRIDE` environment variable.
+
+Please refer to the [Configuring Resoto](./configuring-resoto.md) tutorial for more details.
 
 :::note
 
@@ -219,36 +178,13 @@ By default, Resoto collects [anonymous statistics](../reference/telemetry.md) ab
 
 :::
 
-## Launching the Resoto Command-Line Interface
+### Performing Searches
 
-The `resh` command is used to interact with [`resotocore`](../concepts/components/core.md).
+Once Resoto has completed its first collect run, you can try [performing some searches](./performing-searches.md).
 
-To access the [Resoto Shell](../concepts/components/shell.md) interface inside the Docker container, simply execute:
+## Updating Resoto
 
-```bash
-docker exec -it resoto resh
-```
-
-Once Resoto has completed its first collect run, you can try [performing some searches](./performing-searches.md). To list and edit the configuration run `config list` and `config edit <config-name>` respectively.
-
-## Updating
-
-When a new version of Resoto is available, the update process is dependent on how Resoto was installed initially.
-
-### [`docker run`](https://docs.docker.com/engine/reference/run) Command {#docker-run-update}
-
-First, stop and remove the existing container:
-
-```bash
-docker stop resoto
-docker rm resoto
-```
-
-Next, recreate the container with the same parameters used previously, but updating the image tag (e.g., <LatestRelease />) to reflect the desired Resoto release.
-
-### [Docker Compose](https://docs.docker.com/compose/reference) {#docker-compose-update}
-
-Simply edit the image tag(s) (e.g., <LatestRelease />) specified in the `docker-compose.yml` file to reflect the desired Resoto release.
+When a new version of Resoto is available, simply edit the image tag(s) (e.g., <LatestRelease />) specified in the `docker-compose.yml` file to reflect the desired Resoto release.
 
 Then, run the following command from the directory containing the `docker-compose.yml` file:
 

@@ -1,17 +1,18 @@
 ---
+sidebar_position: 2
 pagination_prev: getting-started/index
-pagination_next: getting-started/performing-searches
+pagination_next: getting-started/configuring-resoto
 ---
 
 # Installing with Kubernetes
 
 ## Prerequisites
 
-- Helm (version 3 and above)
-- A Kubernetes cluster (kind or minikube should work as well)
-- AWS or GCP credentials with proper permissions.
+- [Helm](https://helm.sh) (version 3 or above)
+- Kubernetes cluster ([kind](https://kind.sigs.k8s.io) or [minikube](https://minikube.sigs.k8s.io) should work as well)
+- AWS or GCP credentials
 
-## Installation
+## Installing Resoto
 
 ### Prepare ArangoDB Database
 
@@ -171,5 +172,25 @@ To access the [Resoto Shell](../concepts/components/shell.md) interface, simply 
 ```bash
 kubectl exec -it <pod_name> -- resh
 ```
+
+### Configuring Resoto
+
+Once the [Core](../concepts/components/core.md) is running, all component configuration can be edited using the [`config edit` command](../reference/cli/configs/edit.md) inside [Resoto Shell](../concepts/components/shell.md).
+
+Additionally, configuration properties can be overridden using the `--override` CLI flag or the appropriate `<COMPONENT_NAME>_OVERRIDE` environment variable.
+
+Please refer to the [Configuring Resoto](./configuring-resoto.md) tutorial for more details.
+
+:::note
+
+By default, Resoto collects [anonymous statistics](../reference/telemetry.md) about how the product is used. However, this telemetry can be [disabled](../reference/telemetry.md#disabling) by setting the `resotocore.runtime.analytics_opt_out=true` config variable.
+
+```bash
+> config set resoto.core resotocore.runtime.analytics_opt_out=true
+```
+
+:::
+
+### Performing Searches
 
 Once Resoto has completed its first collect run, you can try [performing some searches](./performing-searches.md).

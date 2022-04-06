@@ -1,5 +1,6 @@
 ---
-pagination_prev: getting-started/index
+sidebar_position: 4
+pagination_prev: getting-started/configuring-resoto
 ---
 
 # Performing Searches

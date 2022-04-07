@@ -52,7 +52,7 @@ Adjust `resotocore` startup flags to use https and the new port
 For advanced users who would like to communicate with Resoto APIs here are some pointers of how to integrate with `resotocore` using the same transport encryption and authentication Resoto's components use when communicating with each other.
 
 ### Retrieving and validating the CA cert
-In a Python 3 REPL with [`resotolib`](components/library.md) installed execute
+In a Python 3 REPL with [`resotolib`](components/library.md) installed execute the following.
 ```python
 >>> from resotolib.core.ca import get_ca_cert
 >>> from resotolib.x509 import write_cert_to_file
@@ -60,7 +60,7 @@ In a Python 3 REPL with [`resotolib`](components/library.md) installed execute
 >>> write_cert_to_file(cert=ca_cert, cert_path="./resoto_ca.crt")
 ```
 
-Alternatively the CA cert can be retrieved without verifying it using:
+Alternatively the CA cert can be retrieved without verifying it.
 ```bash
 $ curl -k https://localhost:8900/ca/cert > resoto_ca.crt
 ```
@@ -75,7 +75,9 @@ The following will return http headers that contain a valid JWT for the provided
 ```
 
 
-### Make a curl request that executes a Resoto CLI command
+### Make a `curl` request that executes a Resoto CLI command
+Use the retrieved CA cert and generated http headers with `curl` in a shell to talk to the Resoto API.
+
 ```bash
 header="Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsInNhbHQiOiJuSVEzU3M5TGVNS1JHYUNQUEJxMnlBPT0ifQ.eyJleHAiOjE2NDkzNzI1MTR9.KXAmijfSsV-taO3890qJNzXKXng1u38eU6PTrDYTgVs"
 data="search is(resource) | count"

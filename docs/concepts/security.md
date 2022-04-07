@@ -3,7 +3,7 @@
 By default all Resoto components communicate with each other using TLS (https). The trust between components is established using a Pre-Shared-Key (PSK) that is used to derive a key which in turn is used to sign JWT tokens. `resotocore` is running a Public Key Infrastructure (PKI) including a Certificate Authority (CA). Upon start all components will request a certificate from the CA.
 
 ## Pre-Shared-Key (PSK)
-Every component takes a `--psk` flag (which can alternatively be supplied using the environment variables `RESOTOCORE_PSK`, `RESOTOWORKER_PSK`, `RESOTOMETRICS_PSK`, `RESOTOSHELL_PSK`). The value of the flag is a pre-shared key. A common passphrase that all components know about. From this passphrase [a 256 bit key is derived](https://github.com/someengineering/resoto/blob/main/resotolib/resotolib/jwt.py) using a random salt. This key is used to sign JWT tokens.
+Every component takes a `--psk` flag (which can alternatively be supplied using the environment variables `RESOTOCORE_PSK`, `RESOTOWORKER_PSK`, `RESOTOMETRICS_PSK`, `RESOTOSHELL_PSK`). The value of the flag is a pre-shared key. A common passphrase that all components know about. From this passphrase a 256 bit key is derived using PKCS#5 password-based key derivation function 2 with HMAC as its pseudo-random function (PBKDF2-HMAC) and a random salt. This derived key is then used to sign JWT tokens.
 
 ### JSON Web Tokens (JWT)
 If `--psk` was specified ever request that a component makes to `resotocore` must provide a valid `Authentication` header with a JWT signed using the PSK. This is true for encrypted https as well as unencrypted http requests. Meaning even if TLS is turned off (`--no-tls`) but a PSK was specified, the request will still be authenticated (but not encrypted!).

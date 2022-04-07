@@ -1,9 +1,9 @@
 # Security overview
 
-By default all Resoto components communicate with each other using TLS (https). The trust between components is established using a Pre-Shared-Key (PSK) that is used to derive a key which in turn is used to sign JWT tokens. `resotocore` is running a Public Key Infrastructure (PKI) including a Certificate Authority (CA). Upon start all components will request a certificate from the CA.
+By default all [Resoto components](components/index.md) communicate with each other using TLS (https). The trust between components is established using a Pre-Shared-Key (PSK) that is used to derive a key which in turn is used to sign JWT tokens. [Resoto Core](components/core.md) is running a Public Key Infrastructure (PKI) including a Certificate Authority (CA). Upon start all components will request a certificate from the CA.
 
 ## Pre-Shared-Key (PSK)
-Every component takes a `--psk` flag (which can alternatively be supplied using the environment variables `RESOTOCORE_PSK`, `RESOTOWORKER_PSK`, `RESOTOMETRICS_PSK`, `RESOTOSHELL_PSK`). The value of the flag is a pre-shared key. A common passphrase that all components know about. From this passphrase a 256 bit key is derived using PKCS#5 password-based key derivation function 2 with HMAC as its pseudo-random function (PBKDF2-HMAC) and a random salt. This derived key is then used to sign JWT tokens.
+Every component takes a `--psk` flag (which can alternatively be supplied using the environment variables `RESOTOCORE_PSK`, `RESOTOWORKER_PSK`, `RESOTOMETRICS_PSK` and `RESOTOSHELL_PSK`). The value of the flag is a pre-shared key. A common passphrase that all components know about. From this passphrase a 256 bit key is derived using PKCS#5 password-based key derivation function 2 with HMAC as its pseudo-random function (PBKDF2-HMAC) and a random salt. This derived key is then used to sign JWT tokens.
 
 ### JSON Web Tokens (JWT)
 If `--psk` was specified every request that a component makes to `resotocore` must provide a valid `Authentication` header with a JWT signed using the PSK. This is true for encrypted https as well as unencrypted http requests. Meaning even if TLS is turned off (`--no-tls`) but a PSK was specified, the request will still be authenticated (but not encrypted!).
@@ -21,7 +21,7 @@ Once the trust is established, each component will request a certificate from th
 
 
 ## Custom certificates
-The Resoto Shell (`resh`) can be used to create custom certificates. This is useful for securing the connection to other components like ArangoDB or Prometheus. To create a certificate open `resh` and execute e.g.
+The [Resoto Shell (`resh`)](components/shell.md) can be used to create custom certificates. This is useful for securing the connection to other components like ArangoDB or Prometheus. To create a certificate open `resh` and execute e.g.
 ```bash
 > certificate create --common-name arangodb.local --dns-names arangodb.local localhost --ip-addresses 127.0.0.1
 Received a file arangodb.key, which is stored to ./arangodb.key.

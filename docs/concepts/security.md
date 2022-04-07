@@ -21,7 +21,7 @@ Once the trust is established, each component will request a certificate from th
 
 
 ## Custom certificates
-The Resoto Shell (`resh`) can be used to create custom certificates. This is useful for securing other components like ArangoDB or Prometheus. To create a certificate open `resh` and execute e.g.
+The Resoto Shell (`resh`) can be used to create custom certificates. This is useful for securing the connection to other components like ArangoDB or Prometheus. To create a certificate open `resh` and execute e.g.
 ```bash
 > certificate create --common-name arangodb --dns-names arangodb localhost --ip-addresses 127.0.0.1
 Received a file arangodb.key, which is stored to ./arangodb.key.

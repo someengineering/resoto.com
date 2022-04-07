@@ -1,6 +1,6 @@
 # Security overview
 
-By default all [Resoto components](components/index.md) communicate with each other using TLS (https). The trust between components is established using a Pre-Shared-Key (PSK) that is used to derive a key which in turn is used to sign JWT tokens. [Resoto Core](components/core.md) is running a Public Key Infrastructure (PKI) including a Certificate Authority (CA). Upon start all components will request a certificate from the CA.
+By default all [Resoto components](components/index.md) communicate with each other via HTTPS using Transport Layer Security (TLS). The trust between components is established using a Pre-Shared-Key (PSK) that is used to derive a key which in turn is used to sign JWT tokens. [Resoto Core](components/core.md) is running a Public Key Infrastructure (PKI) including a Certificate Authority (CA). Upon start all components will request a certificate from the CA.
 
 ## Pre-Shared-Key (PSK)
 Every component takes a `--psk` flag (which can alternatively be supplied using the environment variables `RESOTOCORE_PSK`, `RESOTOWORKER_PSK`, `RESOTOMETRICS_PSK` and `RESOTOSHELL_PSK`). The value of the flag is a pre-shared key. A common passphrase that all components know about. From this passphrase a 256 bit key is derived using PKCS#5 password-based key derivation function 2 with HMAC as its pseudo-random function (PBKDF2-HMAC) and a random salt. This derived key is then used to sign JWT tokens.

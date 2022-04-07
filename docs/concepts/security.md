@@ -48,7 +48,7 @@ Adjust `resotocore` startup flags to use https and the new port
 --graphdb-server https://localhost:8530
 ```
 
-## Advanced integration
+## Advanced integration topics
 For advanced users who would like to communicate with Resoto APIs here are some pointers of how to integrate with `resotocore` using the same transport encryption and authentication Resoto's components use when communicating with each other.
 
 ### Retrieving and validating the CA cert

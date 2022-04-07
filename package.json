@@ -31,7 +31,7 @@
     "a11y-react-emoji": "^1.2.0",
     "clsx": "^1.1.1",
     "mdx-mermaid": "^1.2.2",
-    "mermaid": "^8.14.0",
+    "mermaid": "^9.0.0",
     "moment": "^2.29.2",
     "moment-timezone": "^0.5.34",
     "netlify-plugin-cache": "^1.0.3",

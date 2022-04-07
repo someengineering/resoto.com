@@ -6,7 +6,7 @@ sidebar_label: Worker
 
 # Resoto Worker
 
-Resoto Worker performs all of the collection and cleanup work in Resoto.
+[Resoto Worker (`resotoworker`)](https://github.com/someengineering/resoto/tree/main/resotoworker) performs all of the collection and cleanup work in Resoto.
 
 A worker is connected to [Resoto Core](./core.md) over a websocket connection and simply awaits instructions. By default, it subscribes to the `collect` and `cleanup` actions as well as `tag` tasks.
 

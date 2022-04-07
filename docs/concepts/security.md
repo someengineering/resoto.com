@@ -79,7 +79,7 @@ The following will return http headers that contain a valid JWT for the provided
 Use the retrieved CA cert and generated http headers with `curl` in a shell to talk to the Resoto API.
 
 ```bash
-header="Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsInNhbHQiOiJuSVEzU3M5TGVNS1JHYUNQUEJxMnlBPT0ifQ.eyJleHAiOjE2NDkzNzI1MTR9.KXAmijfSsV-taO3890qJNzXKXng1u38eU6PTrDYTgVs"
-data="search is(resource) | count"
-curl --cacert resoto_ca.crt -H "$header" -H "Content-Type: text/plain" -H "Accept: application/json" -X POST -d "$data" https://localhost:8900/cli/execute
+auth_header="Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsInNhbHQiOiJuSVEzU3M5TGVNS1JHYUNQUEJxMnlBPT0ifQ.eyJleHAiOjE2NDkzNzI1MTR9.KXAmijfSsV-taO3890qJNzXKXng1u38eU6PTrDYTgVs"
+resoto_command="search is(resource) | count"
+curl --cacert resoto_ca.crt -H "$auth_header" -H "Content-Type: text/plain" -H "Accept: application/json" -X POST -d "$resoto_command" https://localhost:8900/cli/execute
 ```

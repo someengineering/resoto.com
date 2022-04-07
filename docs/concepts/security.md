@@ -47,3 +47,36 @@ Adjust `resotocore` startup flags to use https and the new port
 ```bash
 --graphdb-server https://localhost:8530
 ```
+
+## Advanced integration
+For advanced users who would like to communicate with Resoto APIs here are some pointers of how to integrate with `resotocore` using the same transport encryption and authentication Resoto's components use when communicating with each other.
+
+### Retrieving and validating the CA cert
+```python
+>>> from resotolib.core.ca import get_ca_cert
+>>> from resotolib.x509 import write_cert_to_file
+>>> ca_cert = get_ca_cert(resotocore_uri="https://localhost:8900", psk="changeme")
+>>> write_cert_to_file(cert=ca_cert, cert_path="./resoto_ca.crt")
+```
+
+Alternatively the CA cert can be retrieved without verifying it using:
+```bash
+$ curl -k https://localhost:8900/ca/cert > resoto_ca.crt
+```
+
+### Generate a JWT
+The following will return http headers that contain a valid JWT for the provided PSK.
+
+```python
+>>> from resotolib.jwt import encode_jwt_to_headers
+>>> encode_jwt_to_headers(http_headers={}, payload={}, psk="changeme", expire_in=3600)
+{'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsInNhbHQiOiJuSVEzU3M5TGVNS1JHYUNQUEJxMnlBPT0ifQ.eyJleHAiOjE2NDkzNzI1MTR9.KXAmijfSsV-taO3890qJNzXKXng1u38eU6PTrDYTgVs'}
+```
+
+
+### Make a curl request that executes a Resoto CLI command
+```bash
+header="Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsInNhbHQiOiJuSVEzU3M5TGVNS1JHYUNQUEJxMnlBPT0ifQ.eyJleHAiOjE2NDkzNzI1MTR9.KXAmijfSsV-taO3890qJNzXKXng1u38eU6PTrDYTgVs"
+data="search is(resource) | count"
+curl --cacert resoto_ca.crt -H "$header" -H "Content-Type: text/plain" -H "Accept: application/json" -X POST -d "$data" https://localhost:8900/cli/execute
+```

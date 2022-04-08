@@ -17,7 +17,7 @@ By default the Resoto builtin CA will be used. Alternatively a custom CA cert an
 Any https requests between components and `resotocore` from this point forward are validated against the CA root certificate.
 
 ### Component certificates
-Once the trust is established, each component will request a certificate from the CA. To do so each component creates a private RSA key in memory and a Certificate Signing Request (CSR) using that key. The CSR is then sent to `/ca/sign` which returns a signed certificate. Like any other request this one includes a JWT signed with the PSK. This way the CA knows it can trust the requesting component before returning a signed certificate.
+Once the trust is established, each component will request a certificate from the CA. To do so each component creates a private RSA key in memory and a Certificate Signing Request (CSR) using that key. The CSR is then sent to `/ca/sign` which returns a signed certificate. Like any other request this one includes a JWT signed with the PSK. This way the CA knows it can trust the requesting component before returning a signed certificate. Components will automatically renew their certificates a day before they expire.
 
 
 ## Custom certificates

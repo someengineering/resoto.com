@@ -47,7 +47,7 @@ scrape_configs:
 ```
 
 ## Details
-Resoto core supports aggregated queries to produce metrics. Our common library [`resotolib`](../resotolib/) define a number of base resources that are common to a lot of cloud proviers, like say compute instances, subnets, routers, load balancers, and so on. All of those ship with a standard set of metrics specific to each resource.
+Resoto core supports aggregated queries to produce metrics. Our common library [`resotolib`](library.md) define a number of base resources that are common to a lot of cloud proviers, like say compute instances, subnets, routers, load balancers, and so on. All of those ship with a standard set of metrics specific to each resource.
 
 For example, instances have CPU cores and memory, so they define default metrics for those attributes. Right now metrics are hard coded and read from the base resources, but future versions of Resoto will allow you to define your own metrics in `resotocore` and have `resotometrics` export them.
 

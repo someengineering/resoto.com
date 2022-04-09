@@ -6,4 +6,4 @@ sidebar_label: Library
 
 # Resoto Library
 
-Any functionality that is shared by more than one of the Resoto components resides in Resoto Library (`resotolib`).
+Any functionality that is shared by more than one of the Resoto components resides in [Resoto Library (`resotolib`)](https://github.com/someengineering/resoto/tree/main/resotolib).

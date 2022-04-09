@@ -11,7 +11,9 @@ Resoto Metrics (`resotometrics`) takes [Resoto Core](./core.md) graph data and r
 The aggregated metrics are then exposed in a [Prometheus](https://prometheus.io)-compatible format.
 
 ## Usage
+
 `resotometrics` uses the following commandline arguments:
+
 ```
   --subscriber-id SUBSCRIBER_ID
                         Unique subscriber ID (default: resoto.metrics)
@@ -30,15 +32,14 @@ The aggregated metrics are then exposed in a [Prometheus](https://prometheus.io)
   --no-verify-certs     Turn off certificate verification
 ```
 
-ENV Prefix: `RESOTOMETRICS_`
-Every CLI arg can also be specified using ENV variables.
+ENV Prefix: `RESOTOMETRICS_` Every CLI arg can also be specified using ENV variables.
 
 For instance the boolean `--verbose` would become `RESOTOMETRICS_VERBOSE=true`.
 
-Once started `resotometrics` will register for `generate_metrics` core events. When such an event is received it will
-generate Resoto metrics and provide them at the `/metrics` endpoint.
+Once started `resotometrics` will register for `generate_metrics` core events. When such an event is received it will generate Resoto metrics and provide them at the `/metrics` endpoint.
 
 A prometheus config could look like this:
+
 ```
 scrape_configs:
   - job_name: "resotometrics"
@@ -47,6 +48,7 @@ scrape_configs:
 ```
 
 ## Details
+
 Resoto core supports aggregated queries to produce metrics. Our common library [`resotolib`](library.md) define a number of base resources that are common to a lot of cloud proviers, like say compute instances, subnets, routers, load balancers, and so on. All of those ship with a standard set of metrics specific to each resource.
 
 For example, instances have CPU cores and memory, so they define default metrics for those attributes. Right now metrics are hard coded and read from the base resources, but future versions of Resoto will allow you to define your own metrics in `resotocore` and have `resotometrics` export them.
@@ -55,14 +57,16 @@ For right now you can use the aggregate API at `{resotocore}:8900/graph/{graph}/
 
 In the following we will be using the Resoto shell `resh` and the `aggregate` command.
 
-
 ### Example
+
 Enter the following commands into `resh`
+
 ```
 search is(instance) | aggregate /ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account, /ancestors.region.reported.name as region, instance_type as type : sum(1) as instances_total, sum(instance_cores) as cores_total, sum(instance_memory*1024*1024*1024) as memory_bytes
 ```
 
 Here is the same query with line feeds for readability (can not be copy'pasted)
+
 ```
 search is(instance) |
   aggregate
@@ -76,6 +80,7 @@ search is(instance) |
 ```
 
 If your graph contains any compute instances the resulting output will look something like this
+
 ```
 ---
 group:
@@ -107,17 +112,19 @@ memory_bytes: 193273528320
 ```
 
 Let us dissect what we've written here:
+
 - `search is(instance)` fetch all the resources that inherit from base kind `instance`. This would be compute instances like `aws_ec2_instance` or `gcp_instance`.
 - `aggregate /ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account, /ancestors.region.reported.name as region, instance_type as type` aggregate the instance metrics by `cloud`, `account`, and `region` name as well as `instance_type` (think `GROUP_BY` in SQL).
 - `sum(1) as instances_total, sum(instance_cores) as cores_total, sum(instance_memory*1024*1024*1024) as memory_bytes` sum up the total number of instances, number of instance cores and memory. The later is stored in GB and here we convert it to bytes as is customary in Prometheus exporters.
 
-
 ### Taking it one step further
+
 ```
 search is(instance) and instance_status = running | aggregate /ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account, /ancestors.region.reported.name as region, instance_type as type : sum(/ancestors.instance_type.reported.ondemand_cost) as instances_hourly_cost_estimate
 ```
 
 Again the same query with line feeds for readability (can not be copy'pasted)
+
 ```
 search is(instance) and instance_status = running |
   aggregate
@@ -129,6 +136,7 @@ search is(instance) and instance_status = running |
 ```
 
 Outputs something like
+
 ```
 ---
 group:
@@ -144,6 +152,7 @@ What did we do here? We told Resoto to find all resource of type compute instanc
 Let us look at two things here. First, in the previous example we already aggregated by `instance_type`. However this was the string attribute called `instance_type` that is part of every instance resource and contains strings like `m5.xlarge` (AWS) or `n1-standard-4` (GCP).
 
 Example
+
 ```
 > search is(instance) | tail -1 | format {kind} {name} {instance_type}
 aws_ec2_instance i-039e06bb2539e5484 t2.micro
@@ -152,6 +161,7 @@ aws_ec2_instance i-039e06bb2539e5484 t2.micro
 What we did now was ask Resoto to go up the graph and find the directly connected resource of kind `instance_type`.
 
 An `instance_type` resource looks something like this
+
 ```
 > search is(instance_type) | tail -1 | dump
 reported:

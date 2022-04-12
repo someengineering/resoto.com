@@ -18,7 +18,6 @@ configs show <id>
 | --------- | ------------------------ | --------- | ------------- |
 | `id`      | Configuration identifier | ✔️        | N/A           |
 
-
 ## Examples
 
 ```bash
@@ -38,7 +37,7 @@ resotocore:
       san_ip_addresses: []
     # The url to the time series database. This path will be served under /tsdb/.
     tsdb_proxy_url: null
-    # The directory where the UI is installed. This directory will be served under 
+    # The directory where the UI is installed. This directory will be served under
     ui_path: null
     # TCP host(s) to bind on (default: ['localhost'])
     web_hosts:
@@ -76,4 +75,4 @@ resotocore:
   workflows:
     collect_and_cleanup:
       schedule: '0 * * * *'
-``` 
+```

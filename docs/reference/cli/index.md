@@ -11,10 +11,10 @@ You can pipe commands using `|` and chain multiple commands using `;`.
 ## Commands
 
 | Command                             | Description                                                                        |
-|-------------------------------------|------------------------------------------------------------------------------------|
+| ----------------------------------- | ---------------------------------------------------------------------------------- |
 | [`aggregate`](./aggregate.md)       | Aggregate this query by the provided specification                                 |
 | [`ancestors`](./ancestors.md)       | Select all ancestors of this node in the graph                                     |
-| [`certificate`](./certificate.md)   | Create TLS certificates                                                                             |
+| [`certificate`](./certificate.md)   | Create TLS certificates                                                            |
 | [`chunk`](./chunk.md)               | Chunk incoming elements in batches                                                 |
 | [`clean`](./clean.md)               | Mark all incoming database objects for cleaning                                    |
 | [`configs`](./configs/index.md)     | Manage configuration settings.                                                     |
@@ -47,7 +47,6 @@ You can pipe commands using `|` and chain multiple commands using `;`.
 | [`uniq`](./uniq.md)                 | Remove all duplicated objects from the stream                                      |
 | [`workflows`](./workflows/index.md) | Manage all workflows                                                               |
 | [`write`](./write.md)               | Writes the incoming stream of data to a file in the defined format                 |
-
 
 ## Placeholder Strings
 

@@ -15,8 +15,8 @@ workflows run <id>
 ### Parameters
 
 | Parameter | Description          | Required? | Default Value |
-| --------- |----------------------| --------- |-----------|
-| `id`      | Workflows identifier | ✔️        | N/A       |
+| --------- | -------------------- | --------- | ------------- |
+| `id`      | Workflows identifier | ✔️        | N/A           |
 
 ## Examples
 

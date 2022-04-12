@@ -1,14 +1,10 @@
 # `clean`
 
-The `clean` command marks resources for cleaning by setting `desired.clean=true` to the resources.
-Resources marked as such will be removed during the next cleanup step of the `collect_and_cleanup` workflow. 
-See [concept of workflows](/docs/concepts/automation/workflow) for reference. 
+The `clean` command marks resources for cleaning by setting `desired.clean=true` to the resources. Resources marked as such will be removed during the next cleanup step of the `collect_and_cleanup` workflow. See [concept of workflows](/docs/concepts/automation/workflow) for reference.
 
-Note: it is also possible to mark resources as protected, so they will never be cleaned up.
-See [protect](./protect.md) for more information.
+Note: it is also possible to mark resources as protected, so they will never be cleaned up. See [protect](./protect.md) for more information.
 
-The `clean` command expects query results (objects) or an array of object IDs to be piped as input.
-Optionally, you can provide a reason for marking the matched resources to be pruned during the next cleanup run. The reason is logged and can be useful in reviewing why a particular resource was deleted.
+The `clean` command expects query results (objects) or an array of object IDs to be piped as input. Optionally, you can provide a reason for marking the matched resources to be pruned during the next cleanup run. The reason is logged and can be useful in reviewing why a particular resource was deleted.
 
 ## Usage
 

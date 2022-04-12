@@ -14,8 +14,8 @@ workflows show <id>
 
 ### Parameters
 
-| Parameter | Description    | Required? | Default Value |
-| --------- | -------------- | --------- | ------------- |
+| Parameter | Description          | Required? | Default Value |
+| --------- | -------------------- | --------- | ------------- |
 | `id`      | Workflows identifier | ✔️        | N/A           |
 
 ## Examples

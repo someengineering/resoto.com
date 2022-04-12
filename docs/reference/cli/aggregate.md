@@ -53,12 +53,12 @@ count: 1100
 > search is(volume) | aggregate kind: sum(volume_size) as summed, sum(1) as count
 // highlight-start
 group:
-  reported.kind: aws_ec2_volume
+  kind: aws_ec2_volume
 summed: 130903
 count: 1799
 ---
 group:
-  reported.kind: gcp_disk
+  kind: gcp_disk
 summed: 23930
 count: 1100
 // highlight-end

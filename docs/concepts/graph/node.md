@@ -29,7 +29,7 @@ The `ancestors` section contains information about specific ancestors of a node.
 
 ## Kind
 
-Every node has a kind, which describes the structure of this node.
+Every node has a kind, which describes the structure of the reported section of this node.
 
 The model supports inheritance: every specific type is also an instance of every more general type of this specific type.
 

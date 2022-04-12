@@ -29,6 +29,7 @@ $ resh
 Resoto automatically creates the following configurations by default:
 
 - `resoto.core`
+- `resoto.core.commands`
 - `resoto.worker`
 - `resoto.metrics`
 

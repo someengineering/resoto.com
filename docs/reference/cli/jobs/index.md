@@ -16,4 +16,4 @@ The `jobs` command allows for the management of jobs.
 
 ## See Also
 
-- [`start_task`](../start_task.md)
+- [Concept of jobs](/docs/concepts/automation/job)

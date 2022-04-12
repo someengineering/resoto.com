@@ -12,6 +12,23 @@ help <command>
 
 ### Parameters
 
-| Parameter | Description  | Required? | Default Value |
-| --------- | ------------ | --------- | ------------- |
-| `command` | Command name | ❌        | N/A           |
+| Parameter      | Description                     | Required? |  Default Value |
+|----------------|---------------------------------|-----------|---------------|
+| `command`      | Command name                    | ❌         |            N/A |
+| placeholders   | Show all available placeholders | ❌         |            N/A |
+
+
+## Examples
+
+```bash title="Show all help options"
+> help
+```
+
+```bash title="Show help for the format command"
+> help format
+```
+
+
+```bash title="Show all available placeholders"
+> help placeholders
+```

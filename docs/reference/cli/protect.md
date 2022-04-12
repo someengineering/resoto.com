@@ -1,4 +1,4 @@
-# `kind`
+# `protect`
 
 The `protect` command marks all incoming database objects as protected.
 

@@ -11,11 +11,13 @@ You can pipe commands using `|` and chain multiple commands using `;`.
 ## Commands
 
 | Command                             | Description                                                                        |
-| ----------------------------------- | ---------------------------------------------------------------------------------- |
+|-------------------------------------|------------------------------------------------------------------------------------|
 | [`aggregate`](./aggregate.md)       | Aggregate this query by the provided specification                                 |
 | [`ancestors`](./ancestors.md)       | Select all ancestors of this node in the graph                                     |
+| [`certificate`](./certificate.md)   | Create TLS certificates                                                                             |
 | [`chunk`](./chunk.md)               | Chunk incoming elements in batches                                                 |
 | [`clean`](./clean.md)               | Mark all incoming database objects for cleaning                                    |
+| [`configs`](./configs/index.md)     | Manage configuration settings.                                                     |
 | [`count`](./count.md)               | Count incoming elements or sum defined property                                    |
 | [`descendants`](./descendants.md)   | Select all descendants of this node in the graph                                   |
 | [`dump`](./dump.md)                 | Dump all properties of incoming objects                                            |
@@ -37,23 +39,15 @@ You can pipe commands using `|` and chain multiple commands using `;`.
 | [`set_desired`](./set_desired.md)   | Allows to set arbitrary properties as desired for all incoming database objects    |
 | [`set_metadata`](./set_metadata.md) | Allows to set arbitrary properties as metadata for all incoming database objects   |
 | [`sleep`](./sleep.md)               | Suspend execution for an interval of time                                          |
-| [`start_task`](./start_task.md)     | Start a task with the given name                                                   |
 | [`successors`](./successors.md)     | Select all successor of this node in the graph                                     |
 | [`system`](./system/index.md)       | Access and manage system wide properties                                           |
 | [`tag`](./tag/index.md)             | Update a tag with provided value or delete a tag                                   |
 | [`tail`](./tail.md)                 | Return `n` last elements of the stream                                             |
 | [`templates`](./templates/index.md) | Access the query template library                                                  |
 | [`uniq`](./uniq.md)                 | Remove all duplicated objects from the stream                                      |
+| [`workflows`](./workflows/index.md) | Manage all workflows                                                               |
 | [`write`](./write.md)               | Writes the incoming stream of data to a file in the defined format                 |
 
-### Command Aliases
-
-| Alias            | Command      | Description                             |
-| ---------------- | ------------ | --------------------------------------- |
-| `https`          | `http`       | Perform HTTP request with incoming data |
-| `match`          | `search`     | Search the graph                        |
-| `query`          | `search`     | Search the graph                        |
-| `start_workflow` | `start_task` | Start a task with the given name        |
 
 ## Placeholder Strings
 

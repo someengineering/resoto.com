@@ -6,7 +6,7 @@ import DocCardList from '@theme/DocCardList';
 ```
 
 - [Protect Snowflakes](protect_snowflakes.md) Protects important resources.
-- [Tag Validator](tag_validator.md) Validates resources to contain mandatory tags.
+- [Tag Validator](tagvalidator.md) Validates resources to contain mandatory tags.
 - [Cleanup Expired](cleanup_expired.md) Cleanup expired resources.
 - [Cleanup Untagged](cleanup_untagged.md) Cleanup untagged resources.
 - [Cleanup AWS Alarms](cleanup_aws_alarms.md) Cleanup orphaned AWS CloudWatch instance alarms.

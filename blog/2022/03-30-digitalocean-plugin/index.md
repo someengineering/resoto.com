@@ -81,31 +81,37 @@ For more, chech out the [resoto documentation on search](https://resoto.com/docs
 Additionally, you can tag the resource (for those resources where DigitalOcean supports tagging):
 
 ```
-search is(digitalocean_droplet) | tag update tag_foo
+search is(digitalocean_droplet) | tag update foo bar
 ```
 
-This command will attach tag `tag_foo` to all droplets. Please note that DigitalOcean does not support tag values.
+This command will attach tag `foo` with the value `bar` to all droplets. Please note that since DigitalOcean does not support tag values, values are emulated by resoto using `--` as a separator, so you will see the tag `foo--bar` in the DigitalOcean console.
+
+It is also possible to not provide any value at all, e.g.
+
+```
+search is(digitalocean_droplet) | tag update foo
+```
 
 ### Removing tags
 
 To untag the resource, use the `tag delete` command:
 
 ```
-search is(digitalocean_droplet) | tag delete tag_foo
+search is(digitalocean_droplet) | tag delete foo
 ```
 
 ### Searching by tag
 
-If you want to get all resources with a tag `tag_foo`, you can use the following query:
+If you want to get all resources with a tag `foo` and value `bar`, you can use the following query:
 
 ```
-search is(digitalocean_droplet) and tags.tag_foo==""
+search is(digitalocean_droplet) and tags.foo==bar
 ```
 
-or
+If you're interested in all resources tagged `foo` regardless of the value, you can use the following query:
 
 ```
-search is(digitalocean_droplet) and has_key(tags, tag_foo)
+search is(digitalocean_droplet) and has_key(tags, foo)
 ```
 
 Since DigitalOcean does not support tag values, you need to either specify an empty string as a tag value or use the `has_key` function.

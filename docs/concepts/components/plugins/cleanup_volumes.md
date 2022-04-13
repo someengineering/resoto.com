@@ -1,3 +1,8 @@
+---
+sidebar_position: 8
+sidebar_label: Cleanup Volumes
+---
+
 Volume cleanup plugin
 
 This plugin cleans up storage volumes.

@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+sidebar_label: Protect Snowflakes
+---
+
 Protect Snowflakes Plugin
 
 This plugin protects important resources from deletion by Resoto.

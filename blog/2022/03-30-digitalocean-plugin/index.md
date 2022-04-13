@@ -11,10 +11,29 @@ Over the last few weeks, I worked on a plugin that allows collecting DigitalOcea
 
 ## Getting started
 
-To get started, launch resotoworker with the DigitalOcean API tokens provided via config or command line arguments. For example:
+To get started, set up the DigitalOcean API tokens via the config. To do that, launch `resh` and edit the worker config file using the `config edit resoto.worker` command:
+
+First, enable the DigitalOcean collector in the resotoworker session:
 
 ```
-resotoworker --digitalocean-api-tokens ACCESS_KEY_1 ACCESS_KEY_2 --digitalocean-spaces-access-keys SPACE_ACCESS_KEY_1:SPACE_ACCESS_SECRET_1 SPACE_ACCESS_KEY_2:SPACE_ACCESS_SECRET_2
+resotoworker:
+  collector:
+    - do
+```
+
+Second, in the digitalocean section, add the DigitalOcean API tokens and spaces access keys. Please note that the spaces access keys should correspond to the API tokens.
+
+```
+digitalocean:
+  # DigitalOcean API tokens for the teams to be collected
+  api_tokens:
+    - ACCESS_KEY_1
+    - ACCESS_KEY_2
+  # DigitalOcean Spaces access keys for the teams to be collected, separated by colons
+  spaces_access_keys:
+    - SPACE_ACCESS_KEY_1:SPACE_ACCESS_SECRET_1
+    - SPACE_ACCESS_KEY_2:SPACE_ACCESS_SECRET_2
+
 ```
 
 DigitalOcean collector also supports multiple teams. To collect several teams, provide multiple keys separated by space.

@@ -3,7 +3,7 @@ sidebar_position: 7
 sidebar_label: Cleanup AWS VPCs
 ---
 
-AWS VPC Cleanup Plugin
+# Cleanup AWS VPCs
 
 This plugin marks all VPC dependencies for cleanup. The VPC must have been previously marked for cleanup by another cleanup plugin.
 

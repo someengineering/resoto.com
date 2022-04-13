@@ -3,7 +3,7 @@ sidebar_position: 6
 sidebar_label: Cleanup AWS Load Balancers
 ---
 
-AWS Load Balancers Cleanup Plugin
+# Cleanup AWS Load Balancers
 
 This plugin cleans up AWS ALB/ELB load balancers with no instances attached to them.
 

@@ -6,7 +6,7 @@ image: ./img/banner-social.png
 
 # DigitalOcean Support
 
-Over the last few weeks, I worked on a plugin that allows collecting DigitalOcean resources. I'm happy to announce that Resoto now has DigitalOcean support!
+I worked on a plugin that allows collecting DigitalOcean resources over the past few weeks, and I'm happy to announce that Resoto now has DigitalOcean support!
 
 ![Sheep Sailing Through DigitalOcean](./img/banner.png)
 
@@ -58,21 +58,19 @@ Once the DigitalOcean plugin configuration has been updated, trigger a collect r
 
 ## Searching the Graph
 
-All Digitalocean resources inherit from a `digitalocean_resource` class, and this means that you can find all resources using `is(digitalocean_resource)` syntax. For a more specific search, it is also possible to find the resource by its type, e.g. `search is(​​digitalocean_droplet)`.
+All DigitalOcean resources inherit from the `digitalocean_resource` class, meaning that you can find resources using `search is(digitalocean_resource)`. It is also possible to search DigitalOcean resources by type with a query like `search is(​​digitalocean_droplet)`.
 
-Filtering is also possible. For example, to find all droplets under the project `foo`, you can use the following query:
+In addition, these search results can be filtered. For example, we can find all droplets under the project `foo`:
 
+```bash
+> search is(digitalocean_project) and name=="foo" --> is(digitalocean_droplet)
 ```
-search is(digitalocean_project) and name=="foo" --> is(digitalocean_droplet)
-```
 
-Here we first found all projects with name `foo`, and then we filtered the result to only contain droplets.
-
-will mark all droplets to be cleaned up, and they will be removed the next time the cleanup workflow runs. You can also trigger the cleanup manually by calling `workflows run cleanup`.
+For more details, please see the [search documentation](/docs/concepts/search).
 
 ### Visualizing the Graph
 
-It is possible to generate a dotfile with a result of your search. For example, to generate a dotfile for all available resources in your digitalocean cloud, you can use the following query:
+It is possible to generate a dotfile with a result of your search:
 
 ```bash
 > search --with-edges is(digitalocean_team) <-[0:]-> | format --dot | write out.dot
@@ -80,19 +78,23 @@ It is possible to generate a dotfile with a result of your search. For example, 
 
 ![graph](./img/graph.svg)
 
-The dotfile can be opened in any [Graphviz](https://graphviz.org) viewer. I personally like the [Graphviz Interactive Preview](https://marketplace.visualstudio.com/items?itemName=tintinweb.graphviz-interactive-preview) VSCode extenstion.
-
-For more, please see the [search documentation](/docs/concepts/search).
+The generated dotfile can be opened in any [Graphviz](https://graphviz.org) viewer. I personally like the [Graphviz Interactive Preview](https://marketplace.visualstudio.com/items?itemName=tintinweb.graphviz-interactive-preview) VSCode extenstion.
 
 ## Tagging
 
-Additionally, you can add tags for those resources where DigitalOcean supports tagging:
+Additionally, you can add tags to resources using the [`tag update` command](/docs/reference/cli/tag/update):
 
 ```bash
 > search is(digitalocean_droplet) | tag update foo bar
 ```
 
-This command will attach tag `foo` with the value `bar` to all droplets.
+This command will attach a tag `foo` with value `bar` to all droplets.
+
+It is also possible to omit the tag value:
+
+```bash
+> search is(digitalocean_droplet) | tag update foo
+```
 
 :::note
 
@@ -100,23 +102,17 @@ Since DigitalOcean does not support tag values, values are emulated by resoto us
 
 :::
 
-It is also possible to omit the value:
-
-```bash
-> search is(digitalocean_droplet) | tag update foo
-```
-
 ### Removing Tags
 
-To untag the resource, use the `tag delete` command:
+To untag the resource, use the [`tag delete` command](/docs/reference/cli/tag/delete):
 
 ```bash
 > search is(digitalocean_droplet) | tag delete foo
 ```
 
-### Searching by Tag
+### Searching Tags
 
-It is possible to find all resources with tag `foo` and value `bar`:
+We can find all resources with tag `foo` and value `bar` like so:
 
 ```bash
 > search is(digitalocean_droplet) and tags.foo==bar
@@ -136,20 +132,20 @@ Since DigitalOcean does not support tag values, it is necessary to either specif
 
 ## Cleaning Up
 
-To delete a resource, pipe the search results to a cleanup command. For example,
+To delete resources, pipe search results to the `cleanup` command:
 
 ```bash
 > search is(​​digitalocean_droplet) | cleanup
 ```
 
-Doing manual searches and cleanups is cool, but what if you could set up a cron job that cleans up the resources after your experiments? Resoto can do that as well.
+Doing manual searches and cleanups is cool, but what if you could set up a cron job that cleans up the resources after your experiments? Resoto makes it easy to accomplish this as well.
 
-For example, we can add a job that will cleanup the droplets older than 1 day for a specific digital ocean team at 04:00:
+For example, we can add a job that will clean up droplets in a specific DigitalOcean team that are more than a day old at 4 AM each day:
 
 ```bash
-> jobs add cleanup-after-experiments --schedule '0 4 * * *'  ‘search is(digitalocean_droplet) and /ancestors.account.reported.id=="1234567" and age > 1d | cleanup'
+> jobs add cleanup-after-experiments --schedule '0 4 * * *'  'search is(digitalocean_droplet) and /ancestors.account.reported.id=="1234567" and age > 1d | cleanup'
 ```
 
-This way, you can experiment all day long and your droplets will be cleaned up by the next day.
+Now, you can spin up new resources for testing without needing to worry about cleaning them up!
 
 For more, see the [jobs documentation](https://resoto.com/docs/concepts/automation/job).

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 sidebar_label: Filters
 ---
 
@@ -177,3 +177,32 @@ It is possible to negate a simple predicate or more complex term with `not`.
 ```
 
 :::
+
+## Selecting Nodes with a specific property key
+
+Nodes can be selected based on the fact that a specific property exists, no matter which value this property has.
+The `has_key(parent, property)` function will select all nodes where the property `parent` has property `property`.
+
+Example:
+We want to find all volumes that are tagged with the tag `owner`.
+
+```bash title="Select all volumes that are tagged with the tag owner"
+> search is(volume) and has_key(tags, owner)
+```
+
+Note: we could have used the search `search is(volume) and tags.owner!=null` instead.
+This would select all volumes with an owner tag, where the owner tag is not null.
+The `has_key` function ignores the value of the property and only returns if the property exists.
+
+## Selecting Nodes by IPV4 addresses in a certain subnet range
+
+For resources with IPV4 addresses, it is possible to select nodes in a specific subnet range.
+The function `in_subnet(ipv4_property, cidr)` will select all nodes where the property `ipv4_property` is in the 
+subnet range `cidr`.
+
+Example:
+We want to find all load balancer, where the public ipv4 address is in the subnet range `167.123.0.0/16`. 
+
+```bash title="Select all load balancers in a specific subnet range"
+> search is(load_balancer) and in_subnet(public_ip_address, "167.123.0.0/16")
+``` 

@@ -1,11 +1,9 @@
 ---
-sidebar_position: 6
+sidebar_position: 10
 sidebar_label: Examples
 ---
 
 # Search Examples
-
-The following are some common queries for Resoto, organized by [kind](../graph/node.md#kind).
 
 Do you need help writing search syntax? Join us on [Discord](https://discord.gg/someengineering) and we'll do our best to help!
 
@@ -20,13 +18,18 @@ All queries listed here are safe to try out, as they will _NOT_ modify your reso
 ## `aws_alb`
 
 ```bash title="Orphaned Load Balancers that have no active backend"
-> search is(aws_alb) and age > 7d and backends==[] with(empty, <-- is(aws_alb_target_group) and target_type = instance and age > 7d with(empty, <-- is(aws_ec2_instance) and instance_status != terminated)) <-[0:1]- is(aws_alb_target_group) or is(aws_alb)
+> search is(aws_alb) and age > 7d and backends==[]
+  with(empty, <-- is(aws_alb_target_group) and target_type = instance and age > 7d
+    with(empty, <-- is(aws_ec2_instance) and instance_status != terminated)
+  )
+  <-[0:1]- is(aws_alb_target_group) or is(aws_alb)
 ```
 
 ## `aws_iam_access_key`
 
 ```bash title="Ensure there is only one active access key available for any single IAM user"
-> search is(access_key) access_key_status = "Active" | aggregate user_name as user : sum(1) as number_of_keys
+> search is(access_key) and access_key_status = "Active" |
+  aggregate user_name as user : sum(1) as number_of_keys
 ```
 
 ## `certificate`

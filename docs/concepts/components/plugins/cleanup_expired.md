@@ -9,10 +9,11 @@ This plugin looks for resources with the tags `expiration` or `resoto:expires` a
 
 ## Tag format
 
-| Tag              | Format                      | Description                                          |
-| ---------------- | --------------------------- | ---------------------------------------------------- |
-| `resoto:expires` | `2019-09-05T10:40:11+00:00` | ISO 8601 Timestamp                                   |
-| `expiration`     | `24h`                       | A timedelta relative to the resource's creation time |
+| Tag                 | Format                      | Description                                          |
+| ------------------- | --------------------------- | ---------------------------------------------------- |
+| `resoto:expires`    | `2019-09-05T10:40:11+00:00` | ISO 8601 Timestamp                                   |
+| `resoto:expiration` | `24h`                       | A timedelta relative to the resource's creation time |
+| `expiration`        | `24h`                       | A timedelta relative to the resource's creation time |
 
 Example of valid units for the `expiration` tag:
 

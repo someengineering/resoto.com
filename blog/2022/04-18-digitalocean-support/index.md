@@ -6,7 +6,7 @@ image: ./img/banner-social.png
 
 # DigitalOcean Support
 
-I worked on a plugin that allows collecting DigitalOcean resources over the past few weeks, and I'm happy to announce that Resoto now has DigitalOcean support!
+I worked on a plugin that allows collecting DigitalOcean resources over the past few weeks, and I'm happy to announce that Resoto now has DigitalOcean support! 🌊
 
 ![Sheep Sailing Through DigitalOcean](./img/banner.png)
 
@@ -146,6 +146,6 @@ For example, we can add a job that will clean up droplets in a specific DigitalO
 > jobs add cleanup-after-experiments --schedule '0 4 * * *'  'search is(digitalocean_droplet) and /ancestors.account.reported.id=="1234567" and age > 1d | cleanup'
 ```
 
-Now, you can spin up new resources for testing without needing to worry about cleaning them up!
+Now, you can spin up new resources for testing without needing to worry about cleaning them up! 🎉
 
-For more, see the [jobs documentation](https://resoto.com/docs/concepts/automation/job).
+Check out the [jobs documentation](https://resoto.com/docs/concepts/automation/job) for more information. I hope that this blog post was informative, and that you will try out the new DigitalOcean plugin!

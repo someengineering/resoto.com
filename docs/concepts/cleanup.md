@@ -1,10 +1,12 @@
 # Resource Cleanup
 
+:::note
+
 By default, [`resotoworker`](components/worker.md) will _not_ delete resources marked for deletion. Resources marked with `| clean` will stay this way without getting deleted. To enable cleanup configure `resotoworker.cleanup: true` via `config edit resoto.worker`. See [the Getting Started section](../getting-started/cleanup.md) for details on getting started with cleanup.
 
 Cleanup can be performed manually on the [`resotoshell`](components/shell.md) or automatically using a [cleanup plugin](plugins/index.md) or via a scheduled [job](../reference/cli/jobs/index.md).
 
-## The basic concept of cleanup in Resoto
+:::
 
 The idea of cleanup is that Resoto is very good at helping you find problematic resources in your infrastructure. Sometimes you may only want to notify when such resources are found. But other times you may want to clean them up automatically.
 

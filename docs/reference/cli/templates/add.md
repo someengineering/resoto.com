@@ -30,3 +30,7 @@ Template filter_kind added to the query library.
 is({{kind}})
 // highlight-end
 ```
+
+## See Also
+
+See [Templates](/docs/reference/templates) for more information about templates.

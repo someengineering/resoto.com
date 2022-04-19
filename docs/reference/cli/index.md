@@ -48,6 +48,38 @@ You can pipe commands using `|` and chain multiple commands using `;`.
 | [`workflows`](./workflows/index.md) | Manage all workflows                                                               |
 | [`write`](./write.md)               | Writes the incoming stream of data to a file in the defined format                 |
 
+## Custom Commands
+
+It is possible to create your own commands by combining existing commands with your own logic. In resoto shell type `config edit resoto.core.commands`. This will open a file and show all available custom commands. Resoto ships with an example command called `discord`, that allows to send the result of a search to [Discord](https://discord.com) as notification.
+
+A custom command has the following properties:
+
+- `name`: The name of the custom command
+- `template`: a command template that will be executed when the command is called. A template can have template parameters. See [templates](/docs/reference/templates) to learn how to define them.
+- `info`: a short description of the command. This will be displayed to users when they call `help my-custom-command`
+- `parameters`: a list of placeholder parameters. All parameters need to be defined in order to use the command. If the parameter defines a default value, it is considered optional. If there is no default value, the parameter is required and needs to be defined by the user during execution time.
+
+```yaml title="Example custom command"
+info: 'Say Hi to the user.'
+name: 'hello'
+parameters:
+  - name: 'person'
+    default: 'world'
+    description: 'The person to greet.'
+template: 'echo Hello {{person}}.'
+```
+
+Once the configuration is updated, the command is available in the resoto shell. Note: custom commands are defined globally, so they can be used in any Resoto user.
+
+```bash title="Usage of the new hello command"
+> help hello
+# output omitted for brevity
+> hello
+Hello world.
+> hello person="John Doe"
+Hello John Doe.
+```
+
 ## Placeholder Strings
 
 | Placeholder   | Example                |

@@ -41,3 +41,7 @@ is({{kind}})
 // highlight-next-line
 kind=aws_ec2_volume, id=vol-1, name=dkl-3, age=2mo2d, cloud=aws, account=eng, region=us-west-2
 ```
+
+## See Also
+
+See [Templates](/docs/reference/templates) for more information about templates.

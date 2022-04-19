@@ -26,3 +26,7 @@ templates test <template_values> <template_name>
 // highlight-next-line
 is(volume)
 ```
+
+## See Also
+
+See [Templates](/docs/reference/templates) for more information about templates.

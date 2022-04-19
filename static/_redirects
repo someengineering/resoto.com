@@ -13,6 +13,8 @@ https://news.resoto.com/*                   https://resoto.com/news/:splat 301!
 
 /docs/concepts/search/basic-syntax          /docs/concepts/search/filters
 
+/docs/concepts/tags                         /docs/concepts/tagging
+
 /concepts/*                                 /docs/concepts/:splat
 
 /contribute/code                            /docs/contributing/components

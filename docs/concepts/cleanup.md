@@ -4,7 +4,7 @@
 
 By default, [`resotoworker`](components/worker.md) will _not_ delete resources marked for deletion. Resources marked with `| clean` will stay this way without getting deleted. To enable cleanup configure `resotoworker.cleanup: true` via `config edit resoto.worker`. See [the Getting Started section](../getting-started/cleanup.md) for details on getting started with cleanup.
 
-Cleanup can be performed manually on the [`resotoshell`](components/shell.md) or automatically using a [cleanup plugin](plugins/index.md) or via a scheduled [job](../reference/cli/jobs/index.md).
+Cleanup can be performed manually on the [`resotoshell`](components/shell.md) or automatically using a [cleanup plugin](components/plugins/index.md) or via a scheduled [job](automation/job.md).
 
 :::
 
@@ -18,7 +18,7 @@ The manual search and cleanup in this situation could look something like this:
 > search is(aws_ec2_instance) and name =~ "^jenkins-worker-.*" and age > 24h | clean "instance older than 24h"
 ```
 
-To automate things you could now create a job that runs whenever cleanup is planned and searches for compute instances with a certain name that are older than 24h and automatically deletes them.
+To automate things you could now create a [job](automation/job.md) that runs whenever cleanup is planned and searches for compute instances with a certain name that are older than 24h and automatically deletes them.
 
 The same search turned into an automated cleanup job:
 

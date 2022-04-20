@@ -32,6 +32,14 @@ Pull requests should target a single [component](../concepts/components/index.md
 - [ArangoDB](https://arangodb.com) 3.8.2+
 - [GNU Compiler Collection (GCC)](https://gcc.gnu.org) (depending on the host system, Python dependencies may need to be compiled from source)
 
+:::note
+
+On Apple Silicon (ARM) devices, like the M1 Macbooks, only versions of ArangoDB < 3.9 are supported. That is because ArangoDB 3.9+ is officially only available on x86 architecture and makes use of CPU instructions not emulated by MacOS' Rosetta 2.
+
+There are unofficial ARM builds of ArangoDB, like e.g. [`programmador/arangodb`](https://hub.docker.com/r/programmador/arangodb) but they have not been tested with Resoto.
+
+:::
+
 ### Cloning the Repository
 
 You will first need to [fork](https://docs.github.com/get-started/quickstart/fork-a-repo) the repository.

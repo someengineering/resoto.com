@@ -22,10 +22,10 @@ import Tabs from '@theme/Tabs';
 
 Resoto consists of multiple [components](../concepts/components/index.md) that are published as individual Docker images :
 
-1. [📦](https://github.com/someengineering/resoto/pkgs/container/resotocore) `somecr.io/someengineering/resotocore` maintains the infrastructure graph.
-2. [📦](https://github.com/someengineering/resoto/pkgs/container/resotoworker) `somecr.io/someengineering/resotoworker` collects infrastructure data from the cloud provider APIs.
-3. [📦](https://github.com/someengineering/resoto/pkgs/container/resotometrics) `somecr.io/someengineering/resotometrics` exports metrics in Prometheus format.
-4. [📦](https://github.com/someengineering/resoto/pkgs/container/resotoshell) `somecr.io/someengineering/resotoshell` is the command-line interface (CLI) used to interact with Resoto.
+1. [📦](https://hub.docker.com/repository/docker/someengineering/resotocore) `somecr.io/someengineering/resotocore` maintains the infrastructure graph.
+2. [📦](https://hub.docker.com/repository/docker/someengineering/resotoworker) `somecr.io/someengineering/resotoworker` collects infrastructure data from the cloud provider APIs.
+3. [📦](https://hub.docker.com/repository/docker/someengineering/resotometrics) `somecr.io/someengineering/resotometrics` exports metrics in Prometheus format.
+4. [📦](https://hub.docker.com/repository/docker/someengineering/resotoshell) `somecr.io/someengineering/resotoshell` is the command-line interface (CLI) used to interact with Resoto.
 
 To install Resoto using Docker Compose, download the [`docker-compose.yml`](https://raw.githubusercontent.com/someengineering/resoto/main/docker-compose.yaml) (or checkout the [repository](https://github.com/someengineering/resoto)) file and run:
 

@@ -29,7 +29,11 @@ Resoto consists of multiple [components](../concepts/components/index.md) that a
 
 To install Resoto using Docker Compose, download the [`docker-compose.yml`](https://raw.githubusercontent.com/someengineering/resoto/main/docker-compose.yaml) (or checkout the [repository](https://github.com/someengineering/resoto)) file and run:
 
-:::note Resoto publishes packages for x86 and ARM architectures for every proper release. Edge versions are only available for x86. People that try out Resoto on Apple Silicon or other ARM based machines should use a proper release (e.g. <LatestRelease />). :::
+:::note
+
+Resoto publishes packages for x86 and ARM architectures for every proper release. Edge versions are only available for x86. People that try out Resoto on Apple Silicon or other ARM based machines should use a proper release (e.g. <LatestRelease />).
+
+:::
 
 ```bash
 docker-compose up -d

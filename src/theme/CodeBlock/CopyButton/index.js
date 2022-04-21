@@ -16,9 +16,7 @@ export default function CopyButton({ code }) {
     copy(
       code
         .split('\n')
-        .map((str) =>
-          str.length && str.charAt(0) == '>' ? str.substr(1) : str
-        )
+        .map((str) => str.replace(/^[>$]\s*/, ''))
         .join('\n')
     );
     setIsCopied(true);

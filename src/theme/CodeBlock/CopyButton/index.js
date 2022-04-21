@@ -24,6 +24,7 @@ export default function CopyButton({ code }) {
         )
         .filter((str) => str)
         .join('\n')
+        .concat('\n')
     );
     setIsCopied(true);
     copyTimeout.current = window.setTimeout(() => {

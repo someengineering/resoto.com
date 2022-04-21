@@ -21,6 +21,7 @@ index 63a2728..ea0de6e 100644
 +        .split('\n')
 +        .map((str) =>
 +          str
++            .replace(/^>{3}\s*/, '')
 +            .replace(/^[>$]\s*/, '')
 +            .replace(/^\s+$/, '')
 +            .replace(/^\u200b.*/, '')

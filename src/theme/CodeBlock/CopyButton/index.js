@@ -18,6 +18,7 @@ export default function CopyButton({ code }) {
         .split('\n')
         .map((str) =>
           str
+            .replace(/^>{3}\s*/, '')
             .replace(/^[>$]\s*/, '')
             .replace(/^\s+$/, '')
             .replace(/^\u200b.*/, '')

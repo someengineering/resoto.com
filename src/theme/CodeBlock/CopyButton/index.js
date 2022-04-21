@@ -17,6 +17,7 @@ export default function CopyButton({ code }) {
       code
         .split('\n')
         .map((str) => str.replace(/^[>$]\s*/, '').replace(/^\u200b.*/, '')) // remove leading > and $ from copied code block
+        .filter((str) => str)
         .join('\n')
     );
     setIsCopied(true);

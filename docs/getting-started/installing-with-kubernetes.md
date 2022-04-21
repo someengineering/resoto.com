@@ -20,12 +20,12 @@ If you don't have ArangoDB, you can use the operator to install it. See more inf
 You can use the following commands to install the database:
 
 ```bash
-helm repo add arangodb https://arangodb.github.io/kube-arangodb
-helm repo update
-helm install kube-arangodb-crd arangodb/kube-arangodb-crd
-helm install kube-arangodb arangodb/kube-arangodb
+$ helm repo add arangodb https://arangodb.github.io/kube-arangodb
+$ helm repo update
+$ helm install kube-arangodb-crd arangodb/kube-arangodb-crd
+$ helm install kube-arangodb arangodb/kube-arangodb
 
-kubectl apply -f - <<EOF
+$ kubectl apply -f - <<EOF
 apiVersion: "database.arangodb.com/v1alpha"
 kind: "ArangoDeployment"
 metadata:
@@ -46,7 +46,7 @@ These instructions were tested with version 1.2.8 of the operator.
 Wait until the ArangoDB deployment is ready. You can check the conditions in the status to see that it is ready:
 
 ```bash
-kubectl wait --for=condition=ready arangodeployment/single-server
+$ kubectl wait --for=condition=ready arangodeployment/single-server
 ```
 
 ### Create Helm Values File
@@ -68,13 +68,13 @@ See [`values.yaml`](https://github.com/someengineering/resoto/blob/main/kubernet
 Clone the [`someengineering/resoto`](https://github.com/someengineering/resoto) repository:
 
 ```bash
-git clone https://github.com/someengineering/resoto
+$ git clone https://github.com/someengineering/resoto
 ```
 
 Next, install Resoto using Helm:
 
 ```bash
-helm install resoto ./resoto/kubernetes/chart --set image.tag={{latestRelease}} -f resoto-values.yaml
+$ helm install resoto ./resoto/kubernetes/chart --set image.tag={{latestRelease}} -f resoto-values.yaml
 ```
 
 And just like that, you have Resoto running in Kubernetes! A collect run will begin automatically. This first collect usually takes less than 3 minutes.
@@ -86,7 +86,7 @@ The `resh` command is used to interact with [`resotocore`](../concepts/component
 To access the [Resoto Shell](../concepts/components/shell.md) interface, simply execute:
 
 ```bash
-kubectl exec -it service/resoto-resotocore -- resh
+$ kubectl exec -it service/resoto-resotocore -- resh
 ```
 
 ### Configuring Resoto
@@ -106,7 +106,7 @@ Once Resoto has completed its first collect run, you can try [performing some se
 Some cloud providers like GCP provide a file to access resources. This file needs to be passed to the worker. You can use Helm values `resotoworker.volumes`, and `resotoworker.volumeMounts` to inject credentials and their configuration to [`resotoworker`](../concepts/components/worker.md).
 
 ```bash
-kubectl -n resoto create secret generic resoto-auth \
+$ kubectl -n resoto create secret generic resoto-auth \
   --from-file=GOOGLE_APPLICATION_CREDENTIALS=<PATH TO SERVICE ACCOUNT JSON CREDS>
 ```
 

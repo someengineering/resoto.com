@@ -36,7 +36,7 @@ Resoto publishes packages for x86 and ARM architectures for every proper release
 :::
 
 ```bash
-docker-compose up -d
+$ docker-compose up -d
 ```
 
 Docker Compose will start all components and set up the system. This process should not take more than 1-3 minutes depending on your machine and internet connection.
@@ -46,7 +46,7 @@ Docker Compose will start all components and set up the system. This process sho
 The `resh` command starts an interactive shell session with Resoto. To access the [Resoto Shell](../concepts/components/shell.md) interface, simply execute:
 
 ```bash
-docker-compose run resotoshell
+$ docker-compose run resotoshell
 ```
 
 ### Configuring Resoto
@@ -64,5 +64,5 @@ When a new version of Resoto is available, simply edit the container image tag (
 Then, run the following command from the directory containing the `docker-compose.yml` file:
 
 ```bash
-docker-compose up -d
+$ docker-compose up -d
 ```

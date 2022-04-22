@@ -30,8 +30,8 @@ The [Resoto Shell (`resh`)](components/shell.md) can be used to create custom ce
 
 ```
 > certificate create --common-name arangodb.local --dns-names arangodb.local localhost --ip-addresses 127.0.0.1
-Received a file arangodb.key, which is stored to ./arangodb.key.
-Received a file arangodb.crt, which is stored to ./arangodb.crt.
+​Received a file arangodb.key, which is stored to ./arangodb.key.
+​Received a file arangodb.crt, which is stored to ./arangodb.crt.
 ```
 
 See `help certificate` for details.
@@ -85,7 +85,7 @@ The following will return http headers that contain a valid JWT for the provided
 ```python
 >>> from resotolib.jwt import encode_jwt_to_headers
 >>> encode_jwt_to_headers(http_headers={}, payload={}, psk="changeme", expire_in=3600)
-{'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsInNhbHQiOiJuSVEzU3M5TGVNS1JHYUNQUEJxMnlBPT0ifQ.eyJleHAiOjE2NDkzNzI1MTR9.KXAmijfSsV-taO3890qJNzXKXng1u38eU6PTrDYTgVs'}
+​{'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsInNhbHQiOiJuSVEzU3M5TGVNS1JHYUNQUEJxMnlBPT0ifQ.eyJleHAiOjE2NDkzNzI1MTR9.KXAmijfSsV-taO3890qJNzXKXng1u38eU6PTrDYTgVs'}
 ```
 
 ### Executing Resoto CLI Commands with `curl`
@@ -93,7 +93,7 @@ The following will return http headers that contain a valid JWT for the provided
 Use the retrieved CA cert and generated http headers with `curl` in a shell to talk to the Resoto API.
 
 ```bash
-auth_header="Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsInNhbHQiOiJuSVEzU3M5TGVNS1JHYUNQUEJxMnlBPT0ifQ.eyJleHAiOjE2NDkzNzI1MTR9.KXAmijfSsV-taO3890qJNzXKXng1u38eU6PTrDYTgVs"
-resoto_command="search is(resource) | count"
-curl --cacert resoto_ca.crt -H "$auth_header" -H "Content-Type: text/plain" -H "Accept: application/json" -X POST -d "$resoto_command" https://localhost:8900/cli/execute
+$ auth_header="Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsInNhbHQiOiJuSVEzU3M5TGVNS1JHYUNQUEJxMnlBPT0ifQ.eyJleHAiOjE2NDkzNzI1MTR9.KXAmijfSsV-taO3890qJNzXKXng1u38eU6PTrDYTgVs"
+$ resoto_command="search is(resource) | count"
+$ curl --cacert resoto_ca.crt -H "$auth_header" -H "Content-Type: text/plain" -H "Accept: application/json" -X POST -d "$resoto_command" https://localhost:8900/cli/execute
 ```

@@ -12,8 +12,8 @@ Welcome to the Resoto documentation!
 ```bash title="Hello World in Resoto 👋🌎"
 > search is(resource) | count
 // highlight-start
-total matched: 459241
-total unmatched: 0
+​total matched: 459241
+​total unmatched: 0
 // highlight-end
 ```
 

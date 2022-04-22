@@ -1,0 +1,34 @@
+diff --git a/src/theme/CodeBlock/CopyButton/index.js b/src/theme/CodeBlock/CopyButton/index.js
+index 63a2728..ea0de6e 100644
+--- a/src/theme/CodeBlock/CopyButton/index.js
++++ b/src/theme/CodeBlock/CopyButton/index.js
+@@ -4,16 +4,27 @@
+  * This source code is licensed under the MIT license found in the
+  * LICENSE file in the root directory of this source tree.
+  */
+ import React, {useCallback, useState, useRef, useEffect} from 'react';
+ import clsx from 'clsx';
+ import copy from 'copy-text-to-clipboard';
+ import {translate} from '@docusaurus/Translate';
+ import styles from './styles.module.css';
+ export default function CopyButton({code}) {
+   const [isCopied, setIsCopied] = useState(false);
+   const copyTimeout = useRef(undefined);
+   const handleCopyCode = useCallback(() => {
+-    copy(code);
++    copy(
++      code
++        .split('\n')
++        .map((str) =>
++          str
++            .replace(/^>{3}\s*/, '')
++            .replace(/^[>$]\s*/, '')
++            .replace(/^\s+$/, '')
++            .replace(/^\u200b.*/, '')
++        )
++        .filter((str) => str)
++        .join('\n')
++    );
+     setIsCopied(true);
+     copyTimeout.current = window.setTimeout(() => {
+       setIsCopied(false);

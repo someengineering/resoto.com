@@ -17,9 +17,9 @@ configs list
 ```bash
 > configs list
 // highlight-start
-resoto.core
-resoto.worker.1
-resoto.worker.2
-resoto.metrics
+​resoto.core
+​resoto.worker.1
+​resoto.worker.2
+​resoto.metrics
 // highlight-end
 ```

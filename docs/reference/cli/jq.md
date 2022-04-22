@@ -31,19 +31,19 @@ It is possible to use the `--no-rewrite` option to turn off this rewriting. Reso
 ```bash title="Query EC2 instances and extract only the name property"
 > search is(aws_ec2_instance) limit 2 | jq .name
 // highlight-start
-build-node-1
-prod-23
+​build-node-1
+​prod-23
 // highlight-end
 ```
 
 ```bash title="Query EC2 instances and create a new JSON object for each entry with name and owner"
 > search is(aws_ec2_instance) limit 2 | jq {name: .name, owner: .tags.owner}
 // highlight-start
-name: build-node-1
-owner: frosty
----
-name: prod-23
-owner: bog-team
+​name: build-node-1
+​owner: frosty
+​---
+​name: prod-23
+​owner: bog-team
 // highlight-end
 ```
 

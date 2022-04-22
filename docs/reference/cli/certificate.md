@@ -24,8 +24,8 @@ certificate create --common-name <common-name>
 
 ```bash title="Chunking with size of 2"
 > certificate create --common-name example.com --dns-names example.com *.example.com --days-valid 365
-Received a file example.com.key, which is stored to ./example.com.key.
-Received a file example.com.crt, which is stored to ./example.com.crt.
+​Received a file example.com.key, which is stored to ./example.com.key.
+​Received a file example.com.crt, which is stored to ./example.com.crt.
 ```
 
 ## See Also

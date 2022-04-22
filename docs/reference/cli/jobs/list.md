@@ -17,9 +17,9 @@ jobs list
 ```bash
 > jobs list
 // highlight-start
-id: say-hello
-trigger:
-  cron_expression: '* * * * *'
-command: echo hello world
+​id: say-hello
+​trigger:
+​  cron_expression: '* * * * *'
+​command: echo hello world
 // highlight-end
 ```

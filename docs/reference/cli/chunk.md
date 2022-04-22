@@ -21,17 +21,17 @@ chunk <size>
 ```bash title="Chunking with size of 2"
 > json [1,2,3,4,5] | chunk 2
 // highlight-start
-[1, 2]
-[3, 4]
-[5]
+​[1, 2]
+​[3, 4]
+​[5]
 // highlight-end
 ```
 
 ```bash title="Chunking with size of 3"
 > json [1,2,3,4,5] | chunk 3
 // highlight-start
-[1, 2, 3]
-[4, 5]
+​[1, 2, 3]
+​[4, 5]
 // highlight-end
 ```
 

@@ -52,36 +52,36 @@ The `as` clause is important if the last part of the property path is not a uniq
 ```bash title="If all parameters are omitted, the predefined list of properties are shown"
 > search is(aws_ec2_instance) limit 3 | list
 // highlight-start
-kind=aws_ec2_instance, id=1, name=sun, ctime=2020-09-10T13:24:45Z, cloud=aws, account=prod, region=us-west-2
-kind=aws_ec2_instance, id=2, name=moon, ctime=2021-09-21T01:08:11Z, cloud=aws, account=dev, region=us-west-2
-kind=aws_ec2_instance, id=3, name=star, ctime=2021-09-25T23:28:40Z, cloud=aws, account=int, region=us-east-1
+​kind=aws_ec2_instance, id=1, name=sun, ctime=2020-09-10T13:24:45Z, cloud=aws, account=prod, region=us-west-2
+​kind=aws_ec2_instance, id=2, name=moon, ctime=2021-09-21T01:08:11Z, cloud=aws, account=dev, region=us-west-2
+​kind=aws_ec2_instance, id=3, name=star, ctime=2021-09-25T23:28:40Z, cloud=aws, account=int, region=us-east-1
 // highlight-end
 ```
 
 ```bash title="Explicitly define the properties to show without renaming them"
 > search is(aws_ec2_instance) limit 3 | list kind, name
 // highlight-start
-kind=aws_ec2_instance, name=sun
-kind=aws_ec2_instance, name=moon
-kind=aws_ec2_instance, name=star
+​kind=aws_ec2_instance, name=sun
+​kind=aws_ec2_instance, name=moon
+​kind=aws_ec2_instance, name=star
 // highlight-end
 ```
 
 ```bash title="Same as previous, but with overridden property names"
 > search is(aws_ec2_instance) limit 3 | list kind as a, name as b
 // highlight-start
-a=aws_ec2_instance, b=sun
-a=aws_ec2_instance, b=moon
-a=aws_ec2_instance, b=star
+​a=aws_ec2_instance, b=sun
+​a=aws_ec2_instance, b=moon
+​a=aws_ec2_instance, b=star
 // highlight-end
 ```
 
 ```bash title="Properties that do not exist are not printed"
 > search is(aws_ec2_instance) limit 3 | list kind as a, name as b, does_not_exist
 // highlight-start
-a=aws_ec2_instance, b=sun
-a=aws_ec2_instance, b=moon
-a=aws_ec2_instance, b=star
+​a=aws_ec2_instance, b=sun
+​a=aws_ec2_instance, b=moon
+​a=aws_ec2_instance, b=star
 // highlight-end
 ```
 

@@ -23,13 +23,13 @@ set_desired <properties>
 ```bash
 > query is(instance) limit 1 | set_desired a=b b="c" num=2 | list /id, /desired
 // highlight-next-line
-id=123, a=b, b=c, num=2
+​id=123, a=b, b=c, num=2
 ```
 
 ```bash
 > json ["id1", "id2"] | set_desired a=b | list /id /desired
 // highlight-start
-id=id1, a=b
-id=id2, a=b
+​id=id1, a=b
+​id=id2, a=b
 // highlight-end
 ```

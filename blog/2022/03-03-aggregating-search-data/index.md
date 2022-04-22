@@ -23,8 +23,8 @@ The simplest example of search aggregation in Resoto is the [`count` command](/d
 ```bash
 > search is(instance) | count
 // highlight-start
-total matched: 540
-total unmatched: 0
+​total matched: 540
+​total unmatched: 0
 // highlight-end
 ```
 
@@ -35,11 +35,11 @@ The `count` command also allows specifying a grouping value. The following searc
 ```bash
 > search is(instance) | count instance_status
 // highlight-start
-stopped: 48
-terminated: 151
-running: 341
-total matched: 540
-total unmatched: 0
+​stopped: 48
+​terminated: 151
+​running: 341
+​total matched: 540
+​total unmatched: 0
 // highlight-end
 ```
 
@@ -52,10 +52,10 @@ While [`count`](/docs/reference/cli/count) is often sufficient, the [`aggregate`
   sum(instance_memory) as sum_of_memory,
   max(instance_memory) as max_mem
 // highlight-start
-sum_of_cores: 3441
-max_cores: 16
-sum_of_memory: 12802.25
-max_mem: 64
+​sum_of_cores: 3441
+​max_cores: 16
+​sum_of_memory: 12802.25
+​max_mem: 64
 // highlight-end
 ```
 
@@ -68,17 +68,17 @@ We can further analyze this aggregated data using grouping variables, which we h
    instance_status as status:
    sum(instance_memory) as memory
 // highlight-start
-group:
- status: running
-memory: 8538
----
-group:
- status: stopped
-memory: 1345
----
-group:
- status: terminated
-memory: 2919.25
+​group:
+​ status: running
+​memory: 8538
+​---
+​group:
+​ status: stopped
+​memory: 1345
+​---
+​group:
+​ status: terminated
+​memory: 2919.25
 // highlight-end
 ```
 
@@ -97,7 +97,7 @@ The above diagram illustrates the relationship between compute instances. AWS re
 ```bash
 > search is(instance) | aggregate
   sum(/ancestors.instance_type.reported.ondemand_cost) as cost
-cost: 155.73
+​cost: 155.73
 ```
 
 This search selects all instances, then aggregates the on-demand cost of each element by traversing up to the instance type and selecting the `reported.ondemand_cost` property.
@@ -114,28 +114,28 @@ It is possible to walk the graph inbound with `ancestors`, and outbound using `d
   sum(instance_cores) as cores,
   sum(/ancestors.instance_type.reported.ondemand_cost) as cost
 // highlight-start
-group:
- account: sales
- region: us-west-2
-memory: 1936
-cores: 484
-cost: 23.232
----
-group:
- account: sales
- region: us-west1
-memory: 30
-cores: 8
-cost: 0.3799
----
-group:
- account: dev
- region: us-east-1
-memory: 576
-cores: 144
-cost: 7.2
-.
-.
+​group:
+​ account: sales
+​ region: us-west-2
+​memory: 1936
+​cores: 484
+​cost: 23.232
+​---
+​group:
+​ account: sales
+​ region: us-west1
+​memory: 30
+​cores: 8
+​cost: 0.3799
+​---
+​group:
+​ account: dev
+​ region: us-east-1
+​memory: 576
+​cores: 144
+​cost: 7.2
+​.
+​.
 // highlight-end
 ```
 

@@ -25,9 +25,9 @@ Let's try searching for all available EC2 instances. `is()` will match a specifi
 ```bash
 > search is(aws_ec2_instance) and instance_cores > 2
 // highlight-start
-id=i-a..., name=crmsec, age=2y2M, account=dev, region=us-east-1
-id=i-0..., name=airgap, age=2M, account=staging, region=eu-central-1
-id=i-0..., name=flixer, age=1M3w, account=sales, region=us-west-2
+​id=i-a..., name=crmsec, age=2y2M, account=dev, region=us-east-1
+​id=i-0..., name=airgap, age=2M, account=staging, region=eu-central-1
+​id=i-0..., name=flixer, age=1M3w, account=sales, region=us-west-2
 // highlight-end
 ```
 
@@ -36,19 +36,19 @@ The query found three instances in three accounts and three regions. The default
 ```bash
 > search is(aws_ec2_instance) and instance_cores > 2 limit 1 | dump
 // highlight-start
-reported:
-  kind: aws_ec2_instance
-  id: i-a...
-  tags:
-    aws:cloudformation:stack-name: lk-build-server
-    aws:cloudformation:stack-id: arn:aws:cloudformation:...
-    owner: team-proto
-  name: LKbuild
-  instance_cores: 4
-  instance_memory: 16
-  instance_type: t3.xlarge
-  instance_status: stopped
-  age: 1y10M
+​reported:
+​  kind: aws_ec2_instance
+​  id: i-a...
+​  tags:
+​    aws:cloudformation:stack-name: lk-build-server
+​    aws:cloudformation:stack-id: arn:aws:cloudformation:...
+​    owner: team-proto
+​  name: LKbuild
+​  instance_cores: 4
+​  instance_memory: 16
+​  instance_type: t3.xlarge
+​  instance_status: stopped
+​  age: 1y10M
 // highlight-end
 ```
 
@@ -57,10 +57,10 @@ Let us see how many EC2 instances we have grouped by `instance_type` using the `
 ```bash
 > search is(aws_ec2_instance) and instance_cores > 2 | count instance_type
 // highlight-start
-t3.2xlarge: 1
-m5.4xlarge: 15
-total matched: 16
-total unmatched: 0
+​t3.2xlarge: 1
+​m5.4xlarge: 15
+​total matched: 16
+​total unmatched: 0
 // highlight-end
 ```
 
@@ -75,8 +75,8 @@ When Resoto collects data on your cloud infrastructure, it creates an edge betwe
 ```bash
 > search is(aws_ec2_instance) and instance_cores > 2 --> is(aws_elb)
 // highlight-start
-name=a5..., age=1y1M, account=sales, region=eu-central-1
-name=a3..., age=6M2w, account=staging, region=us-west-2
+​name=a5..., age=1y1M, account=sales, region=eu-central-1
+​name=a3..., age=6M2w, account=staging, region=us-west-2
 // highlight-end
 ```
 
@@ -87,8 +87,8 @@ It is also possible to reverse the last query to output all EC2 instances behind
 ```bash
 > search is(aws_elb) <-- is(aws_ec2_instance) and instance_cores > 2
 // highlight-start
-id=i-0..., name=airgap, age=2M, account=staging, region=eu-central-1
-id=i-0..., name=flixer, age=1M3w, account=sales, region=us-west-2
+​id=i-0..., name=airgap, age=2M, account=staging, region=eu-central-1
+​id=i-0..., name=flixer, age=1M3w, account=sales, region=us-west-2
 // highlight-end
 ```
 

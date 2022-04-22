@@ -129,7 +129,7 @@ resotoworker:
 Other providers like AWS provide environment variables to gain access, which can also be passed to the worker.
 
 ```bash
-kubectl -n resoto create secret generic resoto-auth \
+$ kubectl -n resoto create secret generic resoto-auth \
   --from-literal=AWS_ACCESS_KEY_ID=<YOUR ACCESS KEY ID> \
   --from-literal=AWS_SECRET_ACCESS_KEY=<YOUR ACCESS KEY>
 ```

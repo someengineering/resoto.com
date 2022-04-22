@@ -23,5 +23,5 @@ jobs delete <id>
 ```bash
 > jobs delete say-hello
 // highlight-next-line
-Job say-hello deleted.
+​Job say-hello deleted.
 ```

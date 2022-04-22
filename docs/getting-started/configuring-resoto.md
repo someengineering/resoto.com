@@ -10,7 +10,7 @@ Resoto uses an internal configuration system to configure all [components](../co
 
 :::note
 
-In the code blocks below, `$` at the beginning of a line denotes that a command is to be run on the normal shell ([Bash](https://gnu.org/software/bash), [Zsh](https://zsh.org/), etc.).
+In the code blocks below, `$` at the beginning of a line denotes that a command is to be run on the normal shell (Bash, Zsh, etc.).
 
 Lines beginning with `>` should be executed inside [Resoto Shell (`resh`)](../concepts/components/shell.md).
 
@@ -18,9 +18,11 @@ Lines beginning with `>` should be executed inside [Resoto Shell (`resh`)](../co
 
 ## Listing Configurations
 
-```bash title="Start the Resoto Shell"
-$ resh
+```bash title="Start the Resoto Shell, e.g."
+$ resh --psk changeme --resotocore-uri https://resotocore.resoto.svc.cluster.local:8900
 ```
+
+<sub>Adjust PSK and Resoto Core URI to local values!</sub>
 
 ```bash title="List all available configurations"
 > configs list
@@ -35,11 +37,7 @@ Resoto automatically creates the following configurations by default:
 
 ## Editing Configuration
 
-```bash title="Start the Resoto Shell"
-$ resh
-```
-
-```bash title="Edit the Resoto Worker configuration"
+```title="Edit the Resoto Worker configuration"
 > config edit resoto.worker
 ```
 
@@ -94,11 +92,7 @@ This means that you will get an error if, for instance, you attempt to set the v
 
 Instead of editing a component's configuration in a text editor, it is also possible to set the values of specific properties using the [`config set` command](../reference/cli/configs/set.md).
 
-```bash title="Start the Resoto Shell"
-$ resh
-```
-
-```bash title="Modify a specific property of the Resoto Worker configuration"
+```title="Modify a specific property of the Resoto Worker configuration"
 > config set resoto.worker resotoworker.pool_size=5
 ```
 

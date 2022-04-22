@@ -30,31 +30,31 @@ We will evaluate the search before executing it for demonstration. We also intro
 ```bash title="Correct"
 > echo 'search is("resource") limit 1' | http :8900/cli/evaluate
 // highlight-start
-HTTP/1.1 200 OK
-Content-Length: 47
-Content-Type: application/json; charset=utf-8
-Date: Wed, 06 Oct 2021 15:13:08 GMT
-Server: Python/3.9 aiohttp/3.7.4.post0
+​HTTP/1.1 200 OK
+​Content-Length: 47
+​Content-Type: application/json; charset=utf-8
+​Date: Wed, 06 Oct 2021 15:13:08 GMT
+​Server: Python/3.9 aiohttp/3.7.4.post0
 
-[
-    {
-        "execute_query": "is(\"resource\") limit 1"
-    }
-]
+​[
+​    {
+​        "execute_query": "is(\"resource\") limit 1"
+​    }
+​]
 // highlight-end
 ```
 
 ```bash title="Typo"
 > echo 'graph=resoto search is("resource") limit1' | http :8900/cli/evaluate
 // highlight-start
-HTTP/1.1 400 Bad Request
-Content-Length: 151
-Content-Type: text/plain; charset=utf-8
-Date: Wed, 06 Oct 2021 15:13:33 GMT
-Server: Python/3.9 aiohttp/3.7.4.post0
+​HTTP/1.1 400 Bad Request
+​Content-Length: 151
+​Content-Type: text/plain; charset=utf-8
+​Date: Wed, 06 Oct 2021 15:13:33 GMT
+​Server: Python/3.9 aiohttp/3.7.4.post0
 
-Error: ParseError
-Message: expected one of '!=', '!~', '<', '<=', '=', '==', '=~', '>', '>=', '[A-Za-z][A-Za-z0-9_]*', '`', 'in', 'not in', '~' at 0:21
+​Error: ParseError
+​Message: expected one of '!=', '!~', '<', '<=', '=', '==', '=~', '>', '>=', '[A-Za-z][A-Za-z0-9_]*', '`', 'in', 'not in', '~' at 0:21
 // highlight-end
 ```
 
@@ -63,48 +63,48 @@ Message: expected one of '!=', '!~', '<', '<=', '=', '==', '=~', '>', '>=', '[A-
 ```bash title="Correct"
 > echo 'graph=resoto search is("resource") limit 1' | http :8900/cli/execute
 // highlight-start
-HTTP/1.1 200 OK
-Content-Type: application/json
-Date: Wed, 06 Oct 2021 15:08:10 GMT
-Server: Python/3.9 aiohttp/3.7.4.post0
-Transfer-Encoding: chunked
+​HTTP/1.1 200 OK
+​Content-Type: application/json
+​Date: Wed, 06 Oct 2021 15:08:10 GMT
+​Server: Python/3.9 aiohttp/3.7.4.post0
+​Transfer-Encoding: chunked
 
-[
-    {
-        "id": "06ee67f7c54124c019b80a7f53fa59b231b374fe61f94b91e0c26729440d095c",
-        "kinds": [
-            "base_cloud",
-            "cloud",
-            "resource"
-        ],
-        "metadata": {
-            "python_type": "resoto.baseresources.Cloud"
-        },
-        "reported": {
-            "ctime": "2021-09-25T23:49:38Z",
-            "id": "gcp",
-            "kind": "cloud",
-            "name": "gcp",
-            "tags": {}
-        },
-        "revision": "_d_7eKMa---",
-        "type": "node"
-    }
-]
+​[
+​    {
+​        "id": "06ee67f7c54124c019b80a7f53fa59b231b374fe61f94b91e0c26729440d095c",
+​        "kinds": [
+​            "base_cloud",
+​            "cloud",
+​            "resource"
+​        ],
+​        "metadata": {
+​            "python_type": "resoto.baseresources.Cloud"
+​        },
+​        "reported": {
+​            "ctime": "2021-09-25T23:49:38Z",
+​            "id": "gcp",
+​            "kind": "cloud",
+​            "name": "gcp",
+​            "tags": {}
+​        },
+​        "revision": "_d_7eKMa---",
+​        "type": "node"
+​    }
+​]
 // highlight-end
 ```
 
 ```bash title="Typo"
 > echo 'graph=resoto search is("resource") limit1' | http :8900/cli/execute
 // highlight-start
-HTTP/1.1 400 Bad Request
-Content-Length: 151
-Content-Type: text/plain; charset=utf-8
-Date: Wed, 06 Oct 2021 15:26:54 GMT
-Server: Python/3.9 aiohttp/3.7.4.post0
+​HTTP/1.1 400 Bad Request
+​Content-Length: 151
+​Content-Type: text/plain; charset=utf-8
+​Date: Wed, 06 Oct 2021 15:26:54 GMT
+​Server: Python/3.9 aiohttp/3.7.4.post0
 
-Error: ParseError
-Message: expected one of '!=', '!~', '<', '<=', '=', '==', '=~', '>', '>=', '[A-Za-z][A-Za-z0-9_]*', '`', 'in', 'not in', '~' at 0:21
+​Error: ParseError
+​Message: expected one of '!=', '!~', '<', '<=', '=', '==', '=~', '>', '>=', '[A-Za-z][A-Za-z0-9_]*', '`', 'in', 'not in', '~' at 0:21
 // highlight-end
 ```
 

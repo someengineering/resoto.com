@@ -34,17 +34,17 @@ jobs add [--id <id>] [--schedule <cron_expression>] [--wait-for-event <event_nam
 ```bash title="Print 'hello world' to the console every minute"
 > jobs add --id say-hello --schedule "* * * * *" echo hello world
 // highlight-next-line
-Job say-hello added.
+​Job say-hello added.
 ```
 
 ```bash title="At 4am each morning, wait for message of type collect_done and print a message"
 > jobs add --id early_hi --schedule "0 4 * * *" --wait-for-event collect_done 'match is("volume") | format id'
 // highlight-next-line
-Job early_hi added.
+​Job early_hi added.
 ```
 
 ```bash title="Wait for message of type collect_done and print a message"
 > jobs add --id wait_for_collect_done collect_done: echo hello world
 // highlight-next-line
-Job wait_for_collect_done added.
+​Job wait_for_collect_done added.
 ```

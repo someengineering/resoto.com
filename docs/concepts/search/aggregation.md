@@ -12,8 +12,8 @@ For example, the following search will select and count compute instances that a
 ```bash
 > search is(instance) and age > 3y | count
 // highlight-start
-total matched: 21
-total unmatched: 0
+​total matched: 21
+​total unmatched: 0
 // highlight-end
 ```
 
@@ -41,7 +41,7 @@ The above example using the [`count`](../../reference/cli/count.md) could also b
 ```bash
 > search is(instance) and age > 3y | aggregate sum(1) as count
 // highlight-start
-count: 21
+​count: 21
 // highlight-end
 ```
 
@@ -54,8 +54,8 @@ It is also possible to define multiple aggregation functions. Let's count both i
   sum(1) as count,
   sum(instance_cores) as cores
 // highlight-start
-count: 21
-cores: 66
+​count: 21
+​cores: 66
 // highlight-end
 ```
 
@@ -69,11 +69,11 @@ We could even compute the average, minimum, and maximum number of available core
   max(instance_cores) as max_cores,
   avg(instance_cores) as avg_cores
 // highlight-start
-count: 21
-cores: 66
-min_cores: 1
-max_cores: 4
-avg_cores: 3.14
+​count: 21
+​cores: 66
+​min_cores: 1
+​max_cores: 4
+​avg_cores: 3.14
 // highlight-end
 ```
 
@@ -88,17 +88,17 @@ For example, instances can be grouped by status:
 ```bash
 > search is(instance) and age > 3y | aggregate instance_status: sum(1) as count
 // highlight-start
-group:
-  instance_status: running
-count: 1
----
-group:
-  instance_status: stopped
-count: 15
----
-group:
-  instance_status: terminated
-count: 5
+​group:
+​  instance_status: running
+​count: 1
+​---
+​group:
+​  instance_status: stopped
+​count: 15
+​---
+​group:
+​  instance_status: terminated
+​count: 5
 // highlight-end
 ```
 
@@ -114,29 +114,29 @@ Additional aggregation functions also get applied on each group:
   max(instance_cores) as max_cores,
   avg(instance_cores) as avg_cores
 // highlight-start
-group:
-  status: running
-count: 1
-cores: 4
-min_cores: 4
-max_cores: 4
-avg_cores: 4
----
-  group:
-status: stopped
-count: 15
-cores: 51
-min_cores: 1
-max_cores: 4
-avg_cores: 3.4
----
-  group:
-status: terminated
-count: 5
-cores: 11
-min_cores: 1
-max_cores: 4
-avg_cores: 2.2
+​group:
+​  status: running
+​count: 1
+​cores: 4
+​min_cores: 4
+​max_cores: 4
+​avg_cores: 4
+​---
+​  group:
+​status: stopped
+​count: 15
+​cores: 51
+​min_cores: 1
+​max_cores: 4
+​avg_cores: 3.4
+​---
+​  group:
+​status: terminated
+​count: 5
+​cores: 11
+​min_cores: 1
+​max_cores: 4
+​avg_cores: 2.2
 // highlight-end
 ```
 
@@ -148,28 +148,28 @@ Groups can also be defined using multiple grouping variables:
   sum(1) as count,
   sum(instance_cores) as cores
 // highlight-start
-group:
-  status: running
-  type: n1-standard-4
-count: 1
-cores: 4
----
-group:
-  status: stopped
-  type: m5.xlarge
-count: 12
-cores: 48
----
-group:
-  status: stopped
-  type: t2.micro
-count: 3
-cores: 3
----
-group:
-  status: terminated
-  type: n1-standard-2
-count: 5
-cores: 11
+​group:
+​  status: running
+​  type: n1-standard-4
+​count: 1
+​cores: 4
+​---
+​group:
+​  status: stopped
+​  type: m5.xlarge
+​count: 12
+​cores: 48
+​---
+​group:
+​  status: stopped
+​  type: t2.micro
+​count: 3
+​cores: 3
+​---
+​group:
+​  status: terminated
+​  type: n1-standard-2
+​count: 5
+​cores: 11
 // highlight-end
 ```

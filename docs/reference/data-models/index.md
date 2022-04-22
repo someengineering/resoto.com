@@ -93,13 +93,13 @@ If you want to see all available kinds in the system, you can use the `kind` CLI
 ```bash
 > kind
 // highlight-start
-- access_key
-- account
-- any
-- autoscaling_group
-- aws_account
-  .
-  .
+​- access_key
+​- account
+​- any
+​- autoscaling_group
+​- aws_account
+​  .
+​  .
 // highlight-end
 ```
 
@@ -108,16 +108,16 @@ If you want to see the properties of a specific kind use `kind <name>`:
 ```bash
 > kind aws_ec2_volume
 // highlight-start
-name: aws_ec2_volume
-bases:
-- resource
-- volume
-- aws_ec2_volume
-properties:
-- name: id
-  kind: string
-  .
-  .
+​name: aws_ec2_volume
+​bases:
+​- resource
+​- volume
+​- aws_ec2_volume
+​properties:
+​- name: id
+​  kind: string
+​  .
+​  .
 // highlight-end
 ```
 

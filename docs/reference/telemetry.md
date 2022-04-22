@@ -36,7 +36,7 @@ Telemetry can be disabled using the `--analytics-opt-out` command-line flag or t
 <TabItem value="docker-run" label="docker run Command">
 
 ```bash
-docker run \
+$ docker run \
   --name resoto \
   [...]
   -e RESOTOCORE_ANALYTICS_OPT_OUT=true \

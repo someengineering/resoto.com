@@ -23,7 +23,7 @@ Let us now assume that we want to ensure there will be never resources without o
 ```bash
 > jobs add ensure-owner-tag --wait-for-event post_collect 'search is(resource) and tags.owner==null | tag update owner "John Doe"'
 // highlight-next-line
-Job ensure-owner-tag added.
+​Job ensure-owner-tag added.
 ```
 
 - `search` and `tag` are the same commands that we used before. To not conflict with the `jobs` command, the `job` command is wrapped in single quotes (if we would omit those, we would write: `jobs add ... | tag ...` which is not what we want).

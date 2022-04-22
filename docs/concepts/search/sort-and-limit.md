@@ -30,10 +30,10 @@ It is possible to define a limit on the search result. The limit is defined by a
 Example:
 
 ```bash
-# Limit to 10 results
+​# Limit to 10 results
 > search is(volume) limit 10
 
-# Limit to 5 results skipping the first 5
+​# Limit to 5 results skipping the first 5
 > search is(volume) limit 5, 5
 ```
 

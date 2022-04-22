@@ -34,7 +34,7 @@ A property path that starts with a slash is always interpreted absolute.
 In order to access properties outside of the reported section, use the `/` syntax:
 
 ```bash title="Find nodes where reported.cpu_count is greater than 3, and desired.clean is true"
-cpu_count>3 and /desired.clean==true
+> search cpu_count > 3 and /desired.clean==true
 ```
 
 The section that is used to interpret the property paths is defined by the environment parameter `section`. As stated earlier, this variable defaults to `reported`.
@@ -42,19 +42,19 @@ The section that is used to interpret the property paths is defined by the envir
 Since the CLI allows to define environment variables as part of the CLI command, this behaviour can be adjusted easily:
 
 ```bash
-section=reported query cpu_count>3 and /desired.clean==true
+> section=reported search cpu_count>3 and /desired.clean==true
 ```
 
 is semantically the same as this query, which interprets all paths from the root
 
 ```bash
-section=/ query reported.cpu_count>3 and desired.clean==true
+> section=/ search reported.cpu_count>3 and desired.clean==true
 ```
 
 is semantically the same as this query, which interprets all paths relative to the desired section
 
 ```bash
-section=desired query /reported.cpu_count>3 and clean==true
+> section=desired search /reported.cpu_count>3 and clean==true
 ```
 
 The examples above only illustrate the mechanics of property paths. We suggest to keep the default, as the examples below assume the default setting.
@@ -129,11 +129,11 @@ instance_cores > 2
 ```
 
 ```bash title="Select nodes where the name matches the regular expression sun.*"
-`name =~ "sun.*"`
+name =~ "sun.*"
 ```
 
 ```bash title="Select nodes where the name is either "sunset" or "sunrise""
-`name in ["sunset", "sunrise"]`
+name in ["sunset", "sunrise"]
 ```
 
 :::

@@ -71,19 +71,19 @@ Show all storage volumes not in use with a size of more than 10 GB
 Find volumes in cloud AWS that are in use
 
 ```
-search is(volume) and volume_status = in-use and /ancestors.cloud.reported.name = aws
+> search is(volume) and volume_status = in-use and /ancestors.cloud.reported.name = aws
 ```
 
 Alternatively instead of filtering for storage volumes of the generic `volume` kind we can also be more specific
 
 ```
-search is(aws_ec2_volume) and volume_status = in-use
+> search is(aws_ec2_volume) and volume_status = in-use
 ```
 
 Find unused AWS volumes older than 30 days with no I/O in the past 7 days
 
 ```
-search is(aws_ec2_volume) and volume_status = available and ctime < -30d and atime < -7d and mtime < -7d
+> search is(aws_ec2_volume) and volume_status = available and ctime < -30d and atime < -7d and mtime < -7d
 ```
 
 Find more usage examples in [the performing searches section](../../getting-started/performing-searches.md).

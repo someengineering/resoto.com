@@ -24,13 +24,13 @@ In this example, we search for nodes of kind `volume`. For every element that is
 ```bash
 > search is(volume) { account: <-[0:]- is(account) } limit 1 | dump
 // highlight-start
-reported:
-    .
-    .
-account:
-    reported:
-        .
-        .
+​reported:
+​    .
+​    .
+​account:
+​    reported:
+​        .
+​        .
 // highlight-end
 ```
 
@@ -59,16 +59,16 @@ The following search will traverse inbound on every element and collect all pred
 ```bash
 > search is(volume) { predecessors[]: <-- all } limit 1 | dump
 // highlight-start
-reported:
-    .
-    .
-predecessors:
-- reported:
-    .
-    .
-- reported:
-    .
-    .
+​reported:
+​    .
+​    .
+​predecessors:
+​- reported:
+​    .
+​    .
+​- reported:
+​    .
+​    .
 // highlight-end
 ```
 
@@ -83,17 +83,17 @@ As a result every node that is returned has two additional properties: `account`
 ```bash
 > search is(volume) { account: <-[0:]- is(account), region: <-[0:]- is(region) } limit 1 | dump
 // highlight-start
-reported:
-    .
-    .
-account:
-    reported:
-        .
-        .
-region:
-    reported:
-        .
-        .
+​reported:
+​    .
+​    .
+​account:
+​    reported:
+​        .
+​        .
+​region:
+​    reported:
+​        .
+​        .
 // highlight-end
 ```
 
@@ -106,6 +106,8 @@ A nested search can even be defined using nested searches:
 ```bash
 > search = <pre_filter> { <merge_name_1>: <query>, .., <merge_name_n>: <query> } <post_filter>
 ```
+
+:::
 
 :::note
 

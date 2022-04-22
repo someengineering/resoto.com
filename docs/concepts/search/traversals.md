@@ -139,15 +139,15 @@ graph LR;
 :::tip Examples
 
 ```bash title="Selects all instances, walk the default edge outbound, and filter on volumes; returns volumes that are attached to an instance"
-is(instance) -default-> is(volume)
+> search is(instance) -default-> is(volume)
 ```
 
 ```bash title="Blast radius of resources that are affected when volume foo would be deleted"
-is(volume) and name==foo -delete[1:]->
+> search is(volume) and name==foo -delete[1:]->
 ```
 
 ```bash title="Select all volumes and traverse one step using default/delete dependency; returns all resources that are found"
-is(volume) and name==foo -default,delete->
+> search is(volume) and name==foo -default,delete->
 ```
 
 :::

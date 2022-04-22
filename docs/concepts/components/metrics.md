@@ -62,7 +62,7 @@ In the following we will be using the Resoto shell `resh` and the `aggregate` co
 Enter the following commands into `resh`
 
 ```
-search is(instance) | aggregate /ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account, /ancestors.region.reported.name as region, instance_type as type : sum(1) as instances_total, sum(instance_cores) as cores_total, sum(instance_memory*1024*1024*1024) as memory_bytes
+> search is(instance) | aggregate /ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account, /ancestors.region.reported.name as region, instance_type as type : sum(1) as instances_total, sum(instance_cores) as cores_total, sum(instance_memory*1024*1024*1024) as memory_bytes
 ```
 
 Here is the same query with line feeds for readability (can not be copy'pasted)
@@ -120,7 +120,7 @@ Let us dissect what we've written here:
 ### Taking it one step further
 
 ```
-search is(instance) and instance_status = running | aggregate /ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account, /ancestors.region.reported.name as region, instance_type as type : sum(/ancestors.instance_type.reported.ondemand_cost) as instances_hourly_cost_estimate
+> search is(instance) and instance_status = running | aggregate /ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account, /ancestors.region.reported.name as region, instance_type as type : sum(/ancestors.instance_type.reported.ondemand_cost) as instances_hourly_cost_estimate
 ```
 
 Again the same query with line feeds for readability (can not be copy'pasted)
@@ -164,16 +164,16 @@ An `instance_type` resource looks something like this
 
 ```
 > search is(instance_type) | tail -1 | dump
-reported:
-  kind: aws_ec2_instance_type
-  id: t2.micro
-  tags: {}
-  name: t2.micro
-  instance_type: t2.micro
-  instance_cores: 1
-  instance_memory: 1
-  ondemand_cost: 0.0116
-  ctime: '2021-09-28T13:10:08Z'
+​reported:
+​  kind: aws_ec2_instance_type
+​  id: t2.micro
+​  tags: {}
+​  name: t2.micro
+​  instance_type: t2.micro
+​  instance_cores: 1
+​  instance_memory: 1
+​  ondemand_cost: 0.0116
+​  ctime: '2021-09-28T13:10:08Z'
 ```
 
 As you can see, the instance type resource has a float attribute called `ondemand_cost` which is the hourly cost a cloud provider charges for this particular type of compute instance. In our aggregation query we now sum up the hourly cost of all currently running compute instances and export them as a metric named `instances_hourly_cost_estimate`. If we now export this metric into a timeseries DB like Prometheus we are able to plot our instance cost over time.

@@ -62,4 +62,8 @@ When the collect workflow within resotocore is triggered (by either an event or 
 
 When a plugin or a user decides that a resource tag should be added, changed or removed, e.g. by running
 
-`search id = i-039e06bb2539e5484 | tag update owner lukas` [`resotocore`](core.md) will put this tagging task onto a task queue. This task is then consumed by a `resotoworker` that knows how to perform tagging for that particular resource and its particular cloud and account. In our example above where we are setting the tag `owner: lukas` for an AWS EC2 instance with ID `i-039e06bb2539e5484` the task would be given to a `resotoworker` that knows how to update AWS EC2 instance tags in that resources account.
+```
+> search id = i-039e06bb2539e5484 | tag update owner lukas
+```
+
+[`resotocore`](core.md) will put this tagging task onto a task queue. This task is then consumed by a `resotoworker` that knows how to perform tagging for that particular resource and its particular cloud and account. In our example above where we are setting the tag `owner: lukas` for an AWS EC2 instance with ID `i-039e06bb2539e5484` the task would be given to a `resotoworker` that knows how to update AWS EC2 instance tags in that resources account.

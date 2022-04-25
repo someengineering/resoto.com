@@ -1,17 +1,13 @@
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
 import { translate } from '@docusaurus/Translate';
+import type { Props } from '@theme/CodeBlock/CopyButton';
 import clsx from 'clsx';
 import copy from 'copy-text-to-clipboard';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './styles.module.css';
-export default function CopyButton({ code }) {
+
+export default function CopyButton({ code }: Props): JSX.Element {
   const [isCopied, setIsCopied] = useState(false);
-  const copyTimeout = useRef(undefined);
+  const copyTimeout = useRef<number | undefined>(undefined);
   const handleCopyCode = useCallback(() => {
     copy(
       code
@@ -31,7 +27,9 @@ export default function CopyButton({ code }) {
       setIsCopied(false);
     }, 1000);
   }, [code]);
+
   useEffect(() => () => window.clearTimeout(copyTimeout.current), []);
+
   return (
     <button
       type="button"

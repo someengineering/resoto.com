@@ -75,7 +75,7 @@ Resoto supports all the authentication mechanisms described in the [boto3 SDK do
 
 In `resh` run `config edit resoto.worker` and make sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null`.
 
-```yml title="resoto.worker"
+```yml title="config edit resoto.worker"
 resotoworker:
   [...]
   # List of collectors to run
@@ -106,9 +106,9 @@ external_id = a5eMybsyGIowimdZqpZWxxxxxxxxxxxx
 credential_source = Ec2InstanceMetadata
 ```
 
-In `resh` run `config edit resoto.worker` and make sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null`.
+In `resh` run `config edit resoto.worker` and make sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null`:
 
-```yml title="resoto.worker"
+```yml title="config edit resoto.worker"
 resotoworker:
   [...]
   # List of collectors to run
@@ -130,7 +130,7 @@ aws:
 
 Note: Using a static access key is only recommended for testing.
 
-```yml title="resoto.worker"
+```yml title="config edit resoto.worker"
 resotoworker:
   [...]
   # List of collectors to run
@@ -152,7 +152,7 @@ aws:
 
 Volume mount the service account JSON file to a path inside the resotoworker container, e.g. `/gcp` and configure:
 
-```yml title="resoto.worker"
+```yml title="config edit resoto.worker"
 resotoworker:
   [...]
   # List of collectors to run
@@ -174,7 +174,7 @@ gcp:
 
 Specify an empty string for the service account file and Resoto will automatically discover the service account and all the projects it has access to.
 
-```yml title="resoto.worker"
+```yml title="config edit resoto.worker"
 resotoworker:
   [...]
   # List of collectors to run
@@ -193,7 +193,7 @@ gcp:
 </TabItem>
 <TabItem value="digitalocean" label="DigitalOcean">
 
-```yml title="resoto.worker"
+```yml title="config edit resoto.worker"
 resotoworker:
   [...]
   # List of collectors to run

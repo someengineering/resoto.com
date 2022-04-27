@@ -38,7 +38,7 @@ $ docker compose up -d
 
 :::note
 
-When using the old Python versions of Docker Compose the command is `docker-compose` instead of `docker compose`.
+When using an old Python versions of Docker Compose the command is `docker-compose` instead of `docker compose`.
 
 :::
 
@@ -69,20 +69,11 @@ Run Resoto Shell (`resh`) as described in the previous step. In `resh` enter the
 ```
 
 <Tabs>
-<TabItem value="aws" label="AWS (instance profile)">
+<TabItem value="aws-env" label="AWS (environment)">
 
-Volume mount a file (or in Kubernetes a secret) `/home/resoto/.aws/config` into the `resotoworker` container containing the role ARN and external ID.
+Resoto supports all the authentication mechanisms described in the [boto3 SDK documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html). To get started on a local machine [configure AWS CLI](https://aws.amazon.com/cli/) and volume mount e.g. `$HOME/.aws/` to `/home/resoto/.aws/` inside the `resotoworker` container.
 
-```
-[default]
-region = us-west-2
-
-role_arn = arn:aws:iam::235059640852:role/Cloudkeeper
-external_id = a5eMybsyGIowimdZqpZWxxxxxxxxxxxx
-credential_source = Ec2InstanceMetadata
-```
-
-In `resh` run `config edit resoto.worker` and make sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null`. This causes Resoto.
+In `resh` run `config edit resoto.worker` and make sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null`.
 
 ```yml title="resoto.worker"
 resotoworker:
@@ -102,9 +93,42 @@ aws:
 ```
 
 </TabItem>
-<TabItem value="aws" label="AWS (access key)">
+<TabItem value="aws-instance_profile" label="AWS (instance profile)">
 
-Note: Using a static access key is not recommended and should only be used for testing.
+[Set up an instance profile](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html) and volume mount a file (or in Kubernetes a secret) `/home/resoto/.aws/config` into the `resotoworker` container, containing the role ARN and external ID.
+
+```
+[default]
+region = us-west-2
+
+role_arn = arn:aws:iam::235059640852:role/Cloudkeeper
+external_id = a5eMybsyGIowimdZqpZWxxxxxxxxxxxx
+credential_source = Ec2InstanceMetadata
+```
+
+In `resh` run `config edit resoto.worker` and make sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null`.
+
+```yml title="resoto.worker"
+resotoworker:
+  [...]
+  # List of collectors to run
+  collector:
+    - 'aws'
+  [...]
+aws:
+  # AWS Access Key ID (null to load from env - recommended)
+  access_key_id: null
+  [...]
+  # AWS Secret Access Key (null to load from env - recommended)
+  secret_access_key: null
+  [...]
+[...]
+```
+
+</TabItem>
+<TabItem value="aws-access_key" label="AWS (access key)">
+
+Note: Using a static access key is only recommended for testing.
 
 ```yml title="resoto.worker"
 resotoworker:
@@ -124,7 +148,7 @@ aws:
 ```
 
 </TabItem>
-<TabItem value="gcp" label="Google Cloud (service account JSON files)">
+<TabItem value="gcp-json" label="Google Cloud (service account JSON files)">
 
 Volume mount the service account JSON file to a path inside the resotoworker container, e.g. `/gcp` and configure:
 
@@ -146,7 +170,7 @@ gcp:
 ```
 
 </TabItem>
-<TabItem value="gcp" label="Google Cloud (auto discovery)">
+<TabItem value="gcp-env" label="Google Cloud (auto discovery)">
 
 Specify an empty string for the service account file and Resoto will automatically discover the service account and all the projects it has access to.
 
@@ -191,7 +215,7 @@ digitalocean:
 
 ::: note
 
-Instead of specifying the API tokens or access keys in the Resoto config they can also be specified using Resoto Worker's `--override` flag or the `RESOTOWORKER_OVERRIDE` environment variable. This is useful for e.g. Kubernetes environments where the token might be stored as a secret in a system like [Vault](https://www.vaultproject.io/).
+Instead of specifying the API tokens or secret access keys in the Resoto config they can also be specified using Resoto Worker's `--override` flag or the `RESOTOWORKER_OVERRIDE` environment variable. This is useful for environments where the token might be stored as a secret in a system like [Vault](https://www.vaultproject.io/).
 
 ```title="Example"
 RESOTOWORKER_OVERRIDE="digitalocean.api_tokens=dop_v1_e5c759260e6a43f003f3b53e2cfec79cxxxxxxxxxxxxxxxxxxxxxxxx"

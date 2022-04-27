@@ -215,7 +215,7 @@ digitalocean:
 
 :::note
 
-Instead of specifying the API tokens or secret access keys in the Resoto config they can also be specified using Resoto Worker's `--override` flag or the `RESOTOWORKER_OVERRIDE` environment variable. This is useful for environments where the token might be stored as a secret in a system like [Vault](https://www.vaultproject.io/).
+Instead of specifying the API tokens or secret access keys in the Resoto config they can also be specified using [Resoto Worker's `--override` flag or the `RESOTOWORKER_OVERRIDE` environment variable](configuring-resoto.md#overriding-individual-properties). This is useful for environments where the token might be stored as a secret in a system like [Vault](https://www.vaultproject.io/).
 
 ```title="Example"
 RESOTOWORKER_OVERRIDE="digitalocean.api_tokens=dop_v1_e5c759260e6a43f003f3b53e2cfec79cxxxxxxxxxxxxxxxxxxxxxxxx"

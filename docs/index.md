@@ -59,7 +59,9 @@ Support for the following is currently included out-of-the-box in Resoto:
 - [Kubernetes (K8s)](./reference/data-models/kubernetes.md)
 - [VMware Vsphere](./reference/data-models/vsphere.md)
 
-In addition to the above collector plugins, a [Slack](https://slack.com) plugin is also included for notifications of resource cleanups.
+See [Configuring Resoto Cloud Providers](./getting-started/configuring-resoto.md#configuring-cloud-providers) for more information on how to configure individual providers.
+
+In addition to the above collector plugins, various [tag validation and cleanup plugins](./concepts/components/plugins/index.md) are included.
 
 :::tip
 

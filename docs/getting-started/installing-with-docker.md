@@ -52,7 +52,7 @@ Resoto publishes packages for x86 and ARM architectures for every proper release
 
 ## Launching the Command-Line Interface
 
-The `resh` command starts an interactive shell session with Resoto. To access the [Resoto Shell](../concepts/components/shell.md) interface, simply execute:
+The `resh` command starts an interactive shell session with Resoto. To access the [Resoto Shell](../concepts/components/shell.md) interface using Docker compose, simply execute:
 
 ```bash
 $ docker compose run resotoshell
@@ -222,6 +222,16 @@ RESOTOWORKER_OVERRIDE="digitalocean.api_tokens=dop_v1_e5c759260e6a43f003f3b53e2c
 ```
 
 :::
+
+### Collecting Cloud Resources
+
+Once one or more cloud providers have been configured the `collect_and_cleanup` workflow can be run by executing:
+
+```
+> workflow run collect_and_cleanup
+```
+
+No worries, no cleanup will be performed as cleanup is disabled by default. It is just the name of the [workflow](../concepts/automation/workflow.md). Read [Resource Cleanup](cleanup.md) for details on how to enable cleanup.
 
 ### Performing Searches
 

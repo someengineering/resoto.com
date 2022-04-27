@@ -150,8 +150,6 @@ $ resotoworker
 
 ## Configuring Cloud Providers
 
-Run Resoto Shell (`resh`). In `resh` enter the following:
-
 ```
 > config edit resoto.worker
 ```

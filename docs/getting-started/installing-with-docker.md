@@ -27,19 +27,22 @@ Resoto consists of multiple [components](../concepts/components/index.md) that a
 3. [📦](https://hub.docker.com/repository/docker/someengineering/resotometrics) `somecr.io/someengineering/resotometrics` exports metrics in Prometheus format.
 4. [📦](https://hub.docker.com/repository/docker/someengineering/resotoshell) `somecr.io/someengineering/resotoshell` is the command-line interface (CLI) used to interact with Resoto.
 
-To install Resoto using Docker Compose, download the [`docker-compose.yml`](https://raw.githubusercontent.com/someengineering/resoto/main/docker-compose.yaml) (or checkout the [repository](https://github.com/someengineering/resoto)) file and run:
+To install Resoto using [Docker Compose](https://docs.docker.com/compose/install/), checkout the [repository](https://github.com/someengineering/resoto)) and run:
+
+```bash
+$ git clone https://github.com/someengineering/resoto.git
+$ cd resoto
+$ git checkout tags/<LatestRelease />
+$ docker compose up -d
+```
+
+Docker Compose will start all components and set up the system. This process should not take more than 1-3 minutes depending on your machine and internet connection.
 
 :::note
 
 Resoto publishes packages for x86 and ARM architectures for every proper release. Edge versions are only available for x86. People that try out Resoto on Apple Silicon or other ARM based machines should use a proper release (e.g. <LatestRelease />).
 
 :::
-
-```bash
-$ docker-compose up -d
-```
-
-Docker Compose will start all components and set up the system. This process should not take more than 1-3 minutes depending on your machine and internet connection.
 
 ## Launching the Command-Line Interface
 

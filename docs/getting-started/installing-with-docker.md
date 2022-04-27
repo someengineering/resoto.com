@@ -60,7 +60,144 @@ $ docker compose run resotoshell
 
 ### Configuring Resoto
 
-Please refer to the [Configuring Resoto](./configuring-resoto.md) tutorial for more details.
+Please refer to the [Configuring Resoto](./configuring-resoto.md) tutorial for details.
+
+Run Resoto Shell (`resh`) as described in the previous step. In `resh` enter the following:
+
+```
+> config edit resoto.worker
+```
+
+<Tabs>
+<TabItem value="aws" label="AWS (instance profile)">
+
+Volume mount a file (or in Kubernetes a secret) `/home/resoto/.aws/config` into the `resotoworker` container containing the role ARN and external ID.
+
+```
+[default]
+region = us-west-2
+
+role_arn = arn:aws:iam::235059640852:role/Cloudkeeper
+external_id = a5eMybsyGIowimdZqpZWxxxxxxxxxxxx
+credential_source = Ec2InstanceMetadata
+```
+
+In `resh` run `config edit resoto.worker` and make sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null`. This causes Resoto.
+
+```yml title="resoto.worker"
+resotoworker:
+  [...]
+  # List of collectors to run
+  collector:
+    - 'aws'
+  [...]
+aws:
+  # AWS Access Key ID (null to load from env - recommended)
+  access_key_id: null
+  [...]
+  # AWS Secret Access Key (null to load from env - recommended)
+  secret_access_key: null
+  [...]
+[...]
+```
+
+</TabItem>
+<TabItem value="aws" label="AWS (access key)">
+
+Note: Using a static access key is not recommended and should only be used for testing.
+
+```yml title="resoto.worker"
+resotoworker:
+  [...]
+  # List of collectors to run
+  collector:
+    - 'aws'
+  [...]
+aws:
+  # AWS Access Key ID (null to load from env - recommended)
+  access_key_id: 'AKIAZGZKXXXXXXXXXXXX'
+  [...]
+  # AWS Secret Access Key (null to load from env - recommended)
+  secret_access_key: 'vO51EW/8ILMGrSBV/Ia9Fov6xZnKxxxxxxxxxxxx'
+  [...]
+[...]
+```
+
+</TabItem>
+<TabItem value="gcp" label="Google Cloud (service account JSON files)">
+
+Volume mount the service account JSON file to a path inside the resotoworker container, e.g. `/gcp` and configure:
+
+```yml title="resoto.worker"
+resotoworker:
+  [...]
+  # List of collectors to run
+  collector:
+    - 'gcp'
+  [...]
+gcp:
+  [...]
+  # GCP service account file(s)
+  service_account:
+    - '/gcp/gcp0.json'
+    - '/gcp/gcp1.json'
+  [...]
+[...]
+```
+
+</TabItem>
+<TabItem value="gcp" label="Google Cloud (auto discovery)">
+
+Specify an empty string for the service account file and Resoto will automatically discover the service account and all the projects it has access to.
+
+```yml title="resoto.worker"
+resotoworker:
+  [...]
+  # List of collectors to run
+  collector:
+    - 'gcp'
+  [...]
+gcp:
+  [...]
+  # GCP service account file(s)
+  service_account:
+    - ''
+  [...]
+[...]
+```
+
+</TabItem>
+<TabItem value="digitalocean" label="DigitalOcean">
+
+```yml title="resoto.worker"
+resotoworker:
+  [...]
+  # List of collectors to run
+  collector:
+    - 'digitalocean'
+  [...]
+digitalocean:
+  # DigitalOcean API tokens for the teams to be collected
+  api_tokens:
+    - 'dop_v1_e5c759260e6a43f003f3b53e2cfec79cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+  [...]
+  # DigitalOcean Spaces access keys for the teams to be collected, separated by colons
+  spaces_access_keys: []
+[...]
+```
+
+</TabItem>
+</Tabs>
+
+::: note
+
+Instead of specifying the API tokens or access keys in the Resoto config they can also be specified using Resoto Worker's `--override` flag or the `RESOTOWORKER_OVERRIDE` environment variable. This is useful for e.g. Kubernetes environments where the token might be stored as a secret in a system like [Vault](https://www.vaultproject.io/).
+
+```title="Example"
+RESOTOWORKER_OVERRIDE="digitalocean.api_tokens=dop_v1_e5c759260e6a43f003f3b53e2cfec79cxxxxxxxxxxxxxxxxxxxxxxxx"
+```
+
+:::
 
 ### Performing Searches
 

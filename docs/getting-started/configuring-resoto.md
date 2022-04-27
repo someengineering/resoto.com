@@ -321,7 +321,7 @@ Resoto resource collection speed depends heavily on the number of CPU cores avai
 
 The following settings specify how many worker threads Resoto starts:
 
-```title="config edit resoto.worker"
+```yml title="config edit resoto.worker"
 resotoworker:
   [...]
   # How many cleanup threads to run in parallel

@@ -56,6 +56,7 @@ Support for the following is currently included out-of-the-box in Resoto:
 
 - [Amazon Web Services (AWS)](./reference/data-models/aws.md)
 - [Google Cloud Platform (GCP)](./reference/data-models/gcp.md)
+- [Digital Ocean](./reference/data-models/digitalocean.md)
 - [Kubernetes (K8s)](./reference/data-models/kubernetes.md)
 - [VMware Vsphere](./reference/data-models/vsphere.md)
 

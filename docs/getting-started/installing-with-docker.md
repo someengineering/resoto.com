@@ -27,7 +27,7 @@ Resoto consists of multiple [components](../concepts/components/index.md) that a
 3. [📦](https://hub.docker.com/repository/docker/someengineering/resotometrics) `somecr.io/someengineering/resotometrics` exports metrics in Prometheus format.
 4. [📦](https://hub.docker.com/repository/docker/someengineering/resotoshell) `somecr.io/someengineering/resotoshell` is the command-line interface (CLI) used to interact with Resoto.
 
-To install Resoto using [Docker Compose](https://docs.docker.com/compose/install/), checkout the [repository](https://github.com/someengineering/resoto)) and run:
+To install Resoto using [Docker Compose](https://docs.docker.com/compose/install/), checkout the [repository](https://github.com/someengineering/resoto) and run:
 
 ```bash
 $ git clone https://github.com/someengineering/resoto.git
@@ -213,7 +213,7 @@ digitalocean:
 </TabItem>
 </Tabs>
 
-::: note
+:::note
 
 Instead of specifying the API tokens or secret access keys in the Resoto config they can also be specified using Resoto Worker's `--override` flag or the `RESOTOWORKER_OVERRIDE` environment variable. This is useful for environments where the token might be stored as a secret in a system like [Vault](https://www.vaultproject.io/).
 

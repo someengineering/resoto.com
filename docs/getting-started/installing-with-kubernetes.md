@@ -95,7 +95,7 @@ Once the [Core](../concepts/components/core.md) is running, all component config
 
 Additionally, configuration properties can be overridden using the `overrides` section in the `resoto-values.yaml` file (see [`values.yaml`](https://github.com/someengineering/resoto/blob/main/kubernetes/chart/values.yaml) for reference).
 
-Please refer to the [Configuring Resoto](./configuring-resoto.md) tutorial for more details.
+Please refer to the [Configuring Resoto Cloud Providers](configuring-resoto.md#configuring-cloud-providers) tutorial for more details.
 
 ### Performing Searches
 

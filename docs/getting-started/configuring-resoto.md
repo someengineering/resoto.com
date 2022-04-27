@@ -6,6 +6,12 @@ pagination_next: getting-started/performing-searches
 
 # Configuring Resoto
 
+```mdx-code-block
+import LatestRelease from '@site/src/components/LatestRelease';
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+```
+
 Resoto uses an internal configuration system to configure all [components](../concepts/components/index.md). Configuration is maintained within [Resoto Core](../concepts/components/core.md) and can be edited using [Resoto Shell (`resh`)](../concepts/components/shell.md) using the [`config edit` command](../reference/cli/configs/edit.md).
 
 :::note
@@ -141,3 +147,205 @@ Default configurations can be restored simply by deleting the configuration and 
 ```bash title="Restart Resoto Worker"
 $ resotoworker
 ```
+
+## Configuring Cloud Providers
+
+Run Resoto Shell (`resh`). In `resh` enter the following:
+
+```
+> config edit resoto.worker
+```
+
+<Tabs>
+<TabItem value="aws-env" label="AWS (environment)">
+
+Resoto supports all the authentication mechanisms described in the [boto3 SDK documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html). To get started on a local machine [configure AWS CLI](https://aws.amazon.com/cli/) and volume mount e.g. `$HOME/.aws/` to `/home/resoto/.aws/` inside the `resotoworker` container.
+
+In `resh` run `config edit resoto.worker` and make sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null`.
+
+```yml title="config edit resoto.worker"
+resotoworker:
+  [...]
+  # List of collectors to run
+  collector:
+    - 'aws'
+  [...]
+aws:
+  # AWS Access Key ID (null to load from env - recommended)
+  access_key_id: null
+  [...]
+  # AWS Secret Access Key (null to load from env - recommended)
+  secret_access_key: null
+  [...]
+[...]
+```
+
+</TabItem>
+<TabItem value="aws-instance_profile" label="AWS (instance profile)">
+
+[Set up an instance profile](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html) and volume mount a file (or in Kubernetes a secret) `/home/resoto/.aws/config` into the `resotoworker` container, containing the role ARN and external ID.
+
+```
+[default]
+region = us-west-2
+
+role_arn = arn:aws:iam::235059640852:role/Cloudkeeper
+external_id = a5eMybsyGIowimdZqpZWxxxxxxxxxxxx
+credential_source = Ec2InstanceMetadata
+```
+
+In `resh` run `config edit resoto.worker` and make sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null`:
+
+```yml title="config edit resoto.worker"
+resotoworker:
+  [...]
+  # List of collectors to run
+  collector:
+    - 'aws'
+  [...]
+aws:
+  # AWS Access Key ID (null to load from env - recommended)
+  access_key_id: null
+  [...]
+  # AWS Secret Access Key (null to load from env - recommended)
+  secret_access_key: null
+  [...]
+[...]
+```
+
+</TabItem>
+<TabItem value="aws-access_key" label="AWS (access key)">
+
+Note: Using a static access key is only recommended for testing.
+
+```yml title="config edit resoto.worker"
+resotoworker:
+  [...]
+  # List of collectors to run
+  collector:
+    - 'aws'
+  [...]
+aws:
+  # AWS Access Key ID (null to load from env - recommended)
+  access_key_id: 'AKIAZGZKXXXXXXXXXXXX'
+  [...]
+  # AWS Secret Access Key (null to load from env - recommended)
+  secret_access_key: 'vO51EW/8ILMGrSBV/Ia9Fov6xZnKxxxxxxxxxxxx'
+  [...]
+[...]
+```
+
+</TabItem>
+<TabItem value="gcp-json" label="Google Cloud (service account JSON files)">
+
+Volume mount the service account JSON file to a path inside the resotoworker container, e.g. `/gcp` and configure:
+
+```yml title="config edit resoto.worker"
+resotoworker:
+  [...]
+  # List of collectors to run
+  collector:
+    - 'gcp'
+  [...]
+gcp:
+  [...]
+  # GCP service account file(s)
+  service_account:
+    - '/gcp/gcp0.json'
+    - '/gcp/gcp1.json'
+  [...]
+[...]
+```
+
+</TabItem>
+<TabItem value="gcp-env" label="Google Cloud (auto discovery)">
+
+Specify an empty string for the service account file and Resoto will automatically discover the service account and all the projects it has access to.
+
+```yml title="config edit resoto.worker"
+resotoworker:
+  [...]
+  # List of collectors to run
+  collector:
+    - 'gcp'
+  [...]
+gcp:
+  [...]
+  # GCP service account file(s)
+  service_account:
+    - ''
+  [...]
+[...]
+```
+
+</TabItem>
+<TabItem value="digitalocean" label="DigitalOcean">
+
+```yml title="config edit resoto.worker"
+resotoworker:
+  [...]
+  # List of collectors to run
+  collector:
+    - 'digitalocean'
+  [...]
+digitalocean:
+  # DigitalOcean API tokens for the teams to be collected
+  api_tokens:
+    - 'dop_v1_e5c759260e6a43f003f3b53e2cfec79cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+  [...]
+  # DigitalOcean Spaces access keys for the teams to be collected, separated by colons
+  spaces_access_keys: []
+[...]
+```
+
+</TabItem>
+</Tabs>
+
+:::note
+
+As described [above](#overriding-individual-properties), instead of specifying the API tokens or secret access keys in the Resoto config directly they can also be specified using Resoto Worker's `--override` flag or the `RESOTOWORKER_OVERRIDE` environment variable. This is useful for environments where the token might be stored as a secret in a system like [Vault](https://www.vaultproject.io/).
+
+```title="Example"
+RESOTOWORKER_OVERRIDE="digitalocean.api_tokens=dop_v1_e5c759260e6a43f003f3b53e2cfec79cxxxxxxxxxxxxxxxxxxxxxxxx"
+```
+
+:::
+
+Once one or more cloud providers have been configured the `collect_and_cleanup` workflow can be run by executing
+
+```
+> workflow run collect_and_cleanup
+```
+
+## Configuring Resoto Worker for many core machines
+
+Resoto resource collection speed depends heavily on the number of CPU cores available to the worker. When collecting hundreds of accounts `resotoworker` can easily saturate a 64 core machine.
+
+The following settings specify how many worker threads Resoto starts:
+
+```title="config edit resoto.worker"
+resotoworker:
+  [...]
+  # How many cleanup threads to run in parallel
+  cleanup_pool_size: 16
+  [...]
+  # Collector thread/process pool size
+  pool_size: 5
+  [...]
+aws:
+  [...]
+  # Account thread/process pool size
+  account_pool_size: 32
+  [...]
+  # Region thread pool size
+  region_pool_size: 20
+  [...]
+gcp:
+  [...]
+  # GCP project thread/process pool size
+  project_pool_size: 32
+  [...]
+[...]
+```
+
+The setting `resotoworker.pool_size` determines how many collectors (aws, gcp, digitalocean, k8s, etc.) are run concurrently. `aws.account_pool_size` and `gcp.project_pool_size` are used to determine how many accounts or projects respectively are collected concurrently. Within AWS the setting `aws.region_pool_size` is used to determine how many regions per account are collected concurrently.

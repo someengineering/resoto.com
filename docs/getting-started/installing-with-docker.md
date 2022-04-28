@@ -65,7 +65,7 @@ Docker Compose will start all components and set up the system. This process sho
 
 :::note
 
-Resoto publishes packages for x86 and ARM architectures for every proper release. Edge versions are only available for x86. People that try out Resoto on Apple Silicon or other ARM based machines should use a proper release (e.g. <LatestRelease />).
+Resoto publishes packages for x86 and ARM architectures for every proper release. Edge tagged versions (`edge`) are only available for x86. People that try out Resoto on Apple Silicon or other ARM based machines should use a proper release (e.g. <LatestRelease /> or `latest`).
 
 :::
 

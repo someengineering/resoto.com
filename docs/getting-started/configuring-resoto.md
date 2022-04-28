@@ -157,9 +157,20 @@ $ resotoworker
 <Tabs>
 <TabItem value="aws-env" label="AWS (environment)">
 
-Resoto supports all the authentication mechanisms described in the [boto3 SDK documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html). To get started on a local machine [configure AWS CLI](https://aws.amazon.com/cli/) and volume mount e.g. `$HOME/.aws/` to `/home/resoto/.aws/` inside the `resotoworker` container.
+Resoto supports all the authentication mechanisms described in the [boto3 SDK documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html). To get started on a local machine [configure AWS CLI](https://aws.amazon.com/cli/) and volume mount e.g. `$HOME/.aws/` to `/home/resoto/.aws/` inside the `resotoworker` container. If your configuration contains multiple profiles make sure to set `AWS_PROFILE` for the `resotoworker` container.
 
-In `resh` run `config edit resoto.worker` and make sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null`.
+[The shared credentials file](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html#shared-credentials-file) has a default location of `/home/resoto/.aws/credentials`. You can change the location of the shared credentials file by setting the `AWS_SHARED_CREDENTIALS_FILE` environment variable.
+
+```ini title="Minimal example of the shared credentials file."
+[default]
+aws_access_key_id=foo
+aws_secret_access_key=bar
+aws_session_token=baz
+```
+
+Boto3 can also [load credentials from `/home/resoto/.aws/config`](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html#aws-config-file). You can change this default location by setting the `AWS_CONFIG_FILE` environment variable.
+
+In `resh` run `config edit resoto.worker` and make sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null`. This causes Resoto to fall back to loading credentials from the environment/home directory.
 
 ```yml title="config edit resoto.worker"
 resotoworker:
@@ -177,6 +188,12 @@ aws:
   [...]
 [...]
 ```
+
+:::note
+
+Resoto supports all the same environment variables that [`aws cli`](https://aws.amazon.com/cli/) does. Namely `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_SESSION_TOKEN`, `AWS_ROLE_ARN`, `AWS_WEB_IDENTITY_TOKEN_FILE`, `AWS_ROLE_SESSION_NAME`, etc. However when using temporary credentials they should be written to the `credentials` or `config` file and updated out-of-band instead of using environment variables, because the `resotoworker` process starts once and then runs forever. I.e. it can not know about updated environment variables without being restarted.
+
+:::
 
 </TabItem>
 <TabItem value="aws-instance_profile" label="AWS (instance profile)">

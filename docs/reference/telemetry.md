@@ -32,25 +32,6 @@ Error reporting aids us in identifying and fixing bugs or issues in Resoto. This
 
 Telemetry can be disabled using the `--analytics-opt-out` command-line flag or the `RESOTOCORE_ANALYTICS_OPT_OUT` environment variable when starting [`resotocore`](../concepts/components/core.md):
 
-<Tabs>
-<TabItem value="docker-compose-all-in-one" label="Docker Compose (All-in-One Image)">
-
-```yml title="docker-compose.yml"
-[...]
-
-services:
-  resoto:
-    image: somecr.io/someengineering/resoto:{{latestRelease}}
-    container_name: resoto
-    environment:
-      [...]
-      RESOTOCORE_ANALYTICS_OPT_OUT: 'true'
-    [...]
-```
-
-</TabItem>
-<TabItem value="docker-compose-components" label="Docker Compose (Separate Component Images)">
-
 ```yml title="docker-compose.yml"
 [...]
 
@@ -68,6 +49,3 @@ services:
 
   [...]
 ```
-
-</TabItem>
-</Tabs>

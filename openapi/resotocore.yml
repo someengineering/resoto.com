@@ -2455,9 +2455,39 @@ components:
         name:
           type: string
           description: The name of the CLI command.
+        args:
+          oneOf:
+            - type: array
+              items:
+                $ref: '#/components/schemas/CLICommandArg'
+            - $ref: '#/components/schemas/CLICommandArg'
         info:
           type: string
           description: Short description.
         help:
           type: string
           description: Help text of the CLI command.
+        source:
+          type: boolean
+          description: Indicates, if the command is allowed in source position (first command in a chain).
+    CLICommandArg:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the CLI command argument.
+        expects_value:
+          type: boolean
+          description: Indicates, if the argument expects a value.
+        possible_values:
+          type: array
+          description: Possible values for this argument.
+        can_occur_multiple_times:
+          type: boolean
+          description: Indicates, if the argument can occur multiple times.
+        value_hint:
+          type: string
+          description: Hint for the value of this argument.
+        help_text:
+          type: string
+          description: Help text of the CLI command argument.

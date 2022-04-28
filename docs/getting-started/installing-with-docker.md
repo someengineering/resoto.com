@@ -17,6 +17,8 @@ import Tabs from '@theme/Tabs';
 ## Prerequisites
 
 - [Docker](https://docs.docker.com/get-started#download-and-install-docker) needs to be installed on your machine.
+- [Docker Compose](https://docs.docker.com/compose/install/) needs to be available on your machine.
+- At least two cores and eight gigabytes of RAM are required to run the Resoto stack. For a production setup we recommend at least four cores and 16 gigabytes of RAM. See [Configuring Resoto Worker on Many-Core Machines](./configuring-resoto.md#configuring-resoto-worker-for-many-core-machines) for more information.
 
 ## Installing Resoto
 
@@ -27,31 +29,67 @@ Resoto consists of multiple [components](../concepts/components/index.md) that a
 3. [📦](https://hub.docker.com/repository/docker/someengineering/resotometrics) `somecr.io/someengineering/resotometrics` exports metrics in Prometheus format.
 4. [📦](https://hub.docker.com/repository/docker/someengineering/resotoshell) `somecr.io/someengineering/resotoshell` is the command-line interface (CLI) used to interact with Resoto.
 
-To install Resoto using Docker Compose, download the [`docker-compose.yml`](https://raw.githubusercontent.com/someengineering/resoto/main/docker-compose.yaml) (or checkout the [repository](https://github.com/someengineering/resoto)) file and run:
+To install Resoto using [Docker Compose](https://docs.docker.com/compose/install/), checkout the required files (use the ⧉ button in the code block below for copy'paste ready text):
+
+<Tabs>
+<TabItem value="curl" label="Using curl">
+
+```bash
+$ mkdir -p resoto/dockerV2
+$ cd resoto
+$ curl -o docker-compose.yaml https://raw.githubusercontent.com/someengineering/resoto/{{latestRelease}}/docker-compose.yaml
+$ curl -o dockerV2/prometheus.yml https://raw.githubusercontent.com/someengineering/resoto/{{latestRelease}}/dockerV2/prometheus.yml
+$ docker compose up -d
+```
+
+</TabItem>
+<TabItem value="git" label="Using git">
+
+```bash
+$ git clone https://github.com/someengineering/resoto.git
+$ cd resoto
+$ git checkout tags/{{latestRelease}}
+$ docker compose up -d
+```
+
+</TabItem>
+</Tabs>
 
 :::note
 
-Resoto publishes packages for x86 and ARM architectures for every proper release. Edge versions are only available for x86. People that try out Resoto on Apple Silicon or other ARM based machines should use a proper release (e.g. <LatestRelease />).
+When using old versions of Docker Compose the command is `docker-compose` instead of `docker compose`.
 
 :::
 
-```bash
-$ docker-compose up -d
-```
-
 Docker Compose will start all components and set up the system. This process should not take more than 1-3 minutes depending on your machine and internet connection.
+
+:::note
+
+Resoto publishes packages for x86 and ARM architectures for every proper release. Edge tagged versions (`edge`) are only available for x86. People that try out Resoto on Apple Silicon or other ARM based machines should use a proper release (e.g. <LatestRelease /> or `latest`).
+
+:::
 
 ## Launching the Command-Line Interface
 
-The `resh` command starts an interactive shell session with Resoto. To access the [Resoto Shell](../concepts/components/shell.md) interface, simply execute:
+The `resh` command starts an interactive shell session with Resoto. To access the [Resoto Shell](../concepts/components/shell.md) interface using Docker compose, simply execute:
 
 ```bash
-$ docker-compose run resotoshell
+$ docker compose run resotoshell
 ```
 
 ### Configuring Resoto
 
-Please refer to the [Configuring Resoto](./configuring-resoto.md) tutorial for more details.
+Please refer to the [Configuring Resoto Cloud Providers](./configuring-resoto.md#configuring-cloud-providers) tutorial for details.
+
+### Collecting Cloud Resources
+
+Once one or more cloud providers have been configured the `collect_and_cleanup` workflow can be run by executing:
+
+```
+> workflow run collect_and_cleanup
+```
+
+No worries, no cleanup will be performed as cleanup is disabled by default. It is just the name of the [workflow](../concepts/automation/workflow.md). Read [Resource Cleanup](cleanup.md) for details on how to enable cleanup.
 
 ### Performing Searches
 
@@ -64,5 +102,5 @@ When a new version of Resoto is available, simply edit the container image tag (
 Then, run the following command from the directory containing the `docker-compose.yml` file:
 
 ```bash
-$ docker-compose up -d
+$ docker compose up -d
 ```

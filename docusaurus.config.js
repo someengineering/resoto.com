@@ -7,7 +7,7 @@ const a11yEmoji = require('@fec/remark-a11y-emoji');
 const config = {
   title: 'Resoto by Some Engineering Inc.',
   tagline:
-    'Find leaky resources, manage quota limits, detect drift, and clean up!',
+    'Automate tedious infrastructure tasks, remarkably fast!',
   url: 'https://resoto.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -258,13 +258,6 @@ const config = {
             ],
           },
         ],
-        logo: {
-          alt: 'Deploys by Netlify',
-          src: 'https://netlify.com/img/global/badges/netlify-color-accent.svg',
-          width: 114,
-          height: 51,
-          href: 'https://netlify.com',
-        },
         copyright: `<span aria-label="owl" role="img" class="lg-screens-only">🦉</span> Copyright © ${new Date().getFullYear()} <a href="https://some.engineering" target="_blank" rel="noopener noreferrer">Some Engineering Inc</a>. Built with <a href="https://docusaurus.io" target="_blank" rel="noopener noreferrer">Docusaurus</a>. <span aria-label="dinosaur" role="img" class="lg-screens-only">🦖</span>`,
       },
       algolia: {

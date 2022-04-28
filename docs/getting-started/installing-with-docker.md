@@ -28,7 +28,21 @@ Resoto consists of multiple [components](../concepts/components/index.md) that a
 3. [📦](https://hub.docker.com/repository/docker/someengineering/resotometrics) `somecr.io/someengineering/resotometrics` exports metrics in Prometheus format.
 4. [📦](https://hub.docker.com/repository/docker/someengineering/resotoshell) `somecr.io/someengineering/resotoshell` is the command-line interface (CLI) used to interact with Resoto.
 
-To install Resoto using [Docker Compose](https://docs.docker.com/compose/install/), checkout the [repository](https://github.com/someengineering/resoto) and run:
+To install Resoto using [Docker Compose](https://docs.docker.com/compose/install/), checkout the required files:
+
+<Tabs>
+<TabItem value="curl" label="Using curl">
+
+```bash
+$ mkdir -p resoto/dockerV2
+$ cd resoto
+$ curl -o docker-compose.yaml https://raw.githubusercontent.com/someengineering/resoto/{{latestRelease}}/docker-compose.yaml
+$ curl -o dockerV2/prometheus.yml https://raw.githubusercontent.com/someengineering/resoto/{{latestRelease}}/dockerV2/prometheus.yml
+$ docker compose up -d
+```
+
+</TabItem>
+<TabItem value="git" label="Using git">
 
 ```bash
 $ git clone https://github.com/someengineering/resoto.git
@@ -36,6 +50,9 @@ $ cd resoto
 $ git checkout tags/{{latestRelease}}
 $ docker compose up -d
 ```
+
+</TabItem>
+</Tabs>
 
 :::note
 

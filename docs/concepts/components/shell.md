@@ -40,7 +40,7 @@ somecr.io/someengineering/resotoshell:{{latestRelease}}
 
 ENV Prefix: `RESOTOSHELL_` Every CLI arg can also be specified using ENV variables.
 
-For instance `--resotocore-uri http://foobar.tld:8900` would become `RESOTOSHELL_RESOTOCORE_URI=http://foobar.tld:8900`.
+For instance `--resotocore-uri https://foobar.tld:8900` would become `RESOTOSHELL_RESOTOCORE_URI=https://foobar.tld:8900`.
 
 ## Examples
 

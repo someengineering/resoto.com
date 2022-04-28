@@ -30,22 +30,4 @@ Error reporting aids us in identifying and fixing bugs or issues in Resoto. This
 
 ## Disabling Telemetry Reporting {#disabling}
 
-Telemetry can be disabled using the `--analytics-opt-out` command-line flag or the `RESOTOCORE_ANALYTICS_OPT_OUT` environment variable when starting [`resotocore`](../concepts/components/core.md):
-
-```yml title="docker-compose.yml"
-[...]
-
-services:
-  [...]
-
-  resotocore:
-    image: somecr.io/someengineering/resotocore:{{latestRelease}}
-    container_name: resotocore
-    [...]
-    environment:
-      [...]
-      RESOTOCORE_ANALYTICS_OPT_OUT: 'true'
-    [...]
-
-  [...]
-```
+Telemetry can be disabled using the `resotocore.runtime.analytics_opt_out` [config option](../getting-started/configuring-resoto.md).

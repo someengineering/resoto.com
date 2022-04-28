@@ -16,6 +16,10 @@ There can be one or more workers in a Resoto deployment. A single worker can col
 
 Once a worker is started, you do not need to interact with it at all. It will simply wait for work and do its job.
 
+```bash title="Resoto Worker Docker image"
+somecr.io/someengineering/resotoworker:{{latestRelease}}
+```
+
 ## Usage
 
 `resotoworker` uses the following commandline arguments:

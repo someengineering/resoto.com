@@ -10,6 +10,10 @@ sidebar_label: Metrics
 
 The aggregated metrics are then exposed in a [Prometheus](https://prometheus.io)-compatible format.
 
+```bash title="Resoto Metrics Docker image"
+somecr.io/someengineering/resotometrics:{{latestRelease}}
+```
+
 ## Usage
 
 `resotometrics` uses the following commandline arguments:

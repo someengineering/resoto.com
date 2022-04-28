@@ -1,4 +1,4 @@
-# Components
+# Plugins
 
 ```mdx-code-block
 import { useCurrentSidebarCategory } from '@docusaurus/theme-common';

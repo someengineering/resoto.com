@@ -7,15 +7,7 @@ sidebar_position: 0
 
 # Overview
 
-Welcome to the Resoto documentation!
-
-```bash title="Hello World in Resoto 👋🌎"
-> search all | count
-// highlight-start
-​total matched: 459241
-​total unmatched: 0
-// highlight-end
-```
+Welcome to the Resoto documentation! 👋
 
 To help you find the information you need, the documentation is structured as follows:
 

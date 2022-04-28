@@ -10,7 +10,7 @@ sidebar_position: 0
 Welcome to the Resoto documentation!
 
 ```bash title="Hello World in Resoto 👋🌎"
-> search is(resource) | count
+> search all | count
 // highlight-start
 ​total matched: 459241
 ​total unmatched: 0
@@ -29,7 +29,7 @@ To help you find the information you need, the documentation is structured as fo
 
 Resoto indexes resources, captures dependencies, and maps out your infrastructure in an intuitive [graph](./concepts/graph/index.md). The graph contains metrics for each [resource](./reference/data-models/index.md).
 
-Developers and SREs can [search the graph](./concepts/search/index.md) and create alerting and cleanup [workflows](./concepts/automation/workflow.md).
+Developers and SREs can [search the graph](./concepts/search/index.md) and create alerting and cleanup [jobs](./concepts/automation/job.md).
 
 Metrics can be aggregated and exported to a time-series database such as [Prometheus](https://prometheus.io).
 

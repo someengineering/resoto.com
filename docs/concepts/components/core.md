@@ -10,9 +10,13 @@ sidebar_label: Core
 
 Within Resoto Core, there are workflows consisting of steps that result in actions like `collect`, `cleanup` or `generate_metrics`. These actions are received by components like [Resoto Worker](./worker.md) and [Resoto Metrics](./metrics.md).
 
+```bash title="Resoto Core Docker image"
+somecr.io/someengineering/resotocore:{{latestRelease}}
+```
+
 ## API
 
-The [Resoto Core API](../../reference/api.md) is exposed at `http://<resoto-address>:8900/api-doc`. You can also access it at [`https://resoto.com/docs/reference/api`](../../reference/api.md).
+The [Resoto Core API](../../reference/api.md) is exposed at `https://<resoto-address>:8900/api-doc`. You can also access it at [`https://resoto.com/docs/reference/api`](../../reference/api.md).
 
 Resoto Core has two [API](../../reference/api.md) endpoints to connect to for CLI purposes:
 
@@ -110,4 +114,4 @@ We will evaluate the search before executing it for demonstration. We also intro
 
 # More API Endpoints
 
-Resoto Core is the central hub for everything Resoto does. You can explore additional API endpoints at `http://<resoto-address>:8900/api-doc` or [`https://resoto.com/docs/reference/api`](../../reference/api.md).
+Resoto Core is the central hub for everything Resoto does. You can explore additional API endpoints at `https://<resoto-address>:8900/api-doc` or [`https://resoto.com/docs/reference/api`](../../reference/api.md).

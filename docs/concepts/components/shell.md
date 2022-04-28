@@ -12,6 +12,10 @@ Resoto Shell allows you to explore the graph, find resources of interest, mark t
 
 Please refer to the [Command-Line Interface (CLI) reference section](../../reference/cli/index.md) for details on how to use Resoto Shell.
 
+```bash title="Resoto Shell Docker image"
+somecr.io/someengineering/resotoshell:{{latestRelease}}
+```
+
 ## Usage
 
 `resh` uses the following commandline arguments:
@@ -36,7 +40,7 @@ Please refer to the [Command-Line Interface (CLI) reference section](../../refer
 
 ENV Prefix: `RESOTOSHELL_` Every CLI arg can also be specified using ENV variables.
 
-For instance `--resotocore-uri http://foobar.tld:8900` would become `RESOTOSHELL_RESOTOCORE_URI=http://foobar.tld:8900`.
+For instance `--resotocore-uri https://foobar.tld:8900` would become `RESOTOSHELL_RESOTOCORE_URI=https://foobar.tld:8900`.
 
 ## Examples
 

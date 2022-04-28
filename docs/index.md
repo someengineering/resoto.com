@@ -7,15 +7,7 @@ sidebar_position: 0
 
 # Overview
 
-Welcome to the Resoto documentation!
-
-```bash title="Hello World in Resoto 👋🌎"
-> search is(resource) | count
-// highlight-start
-​total matched: 459241
-​total unmatched: 0
-// highlight-end
-```
+Welcome to the Resoto documentation! 👋
 
 To help you find the information you need, the documentation is structured as follows:
 
@@ -29,7 +21,7 @@ To help you find the information you need, the documentation is structured as fo
 
 Resoto indexes resources, captures dependencies, and maps out your infrastructure in an intuitive [graph](./concepts/graph/index.md). The graph contains metrics for each [resource](./reference/data-models/index.md).
 
-Developers and SREs can [search the graph](./concepts/search/index.md) and create alerting and cleanup [workflows](./concepts/automation/workflow.md).
+Developers and SREs can [search the graph](./concepts/search/index.md) and create alerting and cleanup [jobs](./concepts/automation/job.md).
 
 Metrics can be aggregated and exported to a time-series database such as [Prometheus](https://prometheus.io).
 
@@ -56,10 +48,13 @@ Support for the following is currently included out-of-the-box in Resoto:
 
 - [Amazon Web Services (AWS)](./reference/data-models/aws.md)
 - [Google Cloud Platform (GCP)](./reference/data-models/gcp.md)
+- [Digital Ocean](./reference/data-models/digitalocean.md)
 - [Kubernetes (K8s)](./reference/data-models/kubernetes.md)
 - [VMware Vsphere](./reference/data-models/vsphere.md)
 
-In addition to the above collector plugins, a [Slack](https://slack.com) plugin is also included for notifications of resource cleanups.
+See [Configuring Resoto Cloud Providers](./getting-started/configuring-resoto.md#configuring-cloud-providers) for more information on how to configure individual providers.
+
+In addition to the above collector plugins, various [tag validation and cleanup plugins](./concepts/components/plugins/index.md) are included.
 
 :::tip
 

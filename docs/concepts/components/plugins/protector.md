@@ -1,9 +1,9 @@
 ---
 sidebar_position: 1
-sidebar_label: Protect Snowflakes
+sidebar_label: Protector
 ---
 
-Protect Snowflakes Plugin
+Protector Plugin
 
 This plugin protects important resources from deletion by Resoto.
 
@@ -18,27 +18,22 @@ In `resh` execute
 and find the following section
 
 ```
-plugin_protect_snowflakes:
+plugin_protector:
   # Configuration for the plugin
-  # See https://github.com/someengineering/resoto/tree/main/plugins/protect_snowflakes for syntax details
+  # Format:
+  #   cloud.id:
+  #     account.id:
+  #       region.id:
+  #         kind:
+  #           - resource.id
   config:
-    aws:
-      '110465657741':
-        us-east-1:
-          aws_ec2_instance:
-            - 'i-0fcbe8974615bfd37'
+    example:
+      Example Account:
+        us-west:
+          example_instance:
+            - 'someInstance1'
   # Enable plugin?
   enabled: false
-```
-
-The format of the `config` section is as follows:
-
-```
-cloud.id:
-  account.id:
-    region.id:
-      kind:
-        - resource.id
 ```
 
 ### Implementation details

@@ -33,7 +33,7 @@ To install Resoto using [Docker Compose](https://docs.docker.com/compose/install
 ```bash
 $ git clone https://github.com/someengineering/resoto.git
 $ cd resoto
-$ git checkout releases/2.0
+$ git checkout tags/{{latestRelease}}
 $ docker compose up -d
 ```
 

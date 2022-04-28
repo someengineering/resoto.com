@@ -57,7 +57,7 @@ $ docker compose up -d
 
 :::note
 
-When using an old Python versions of Docker Compose the command is `docker-compose` instead of `docker compose`.
+When using old versions of Docker Compose the command is `docker-compose` instead of `docker compose`.
 
 :::
 

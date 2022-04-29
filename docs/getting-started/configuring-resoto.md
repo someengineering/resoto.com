@@ -367,6 +367,8 @@ The setting `resotoworker.pool_size` determines how many collectors (aws, gcp, d
 
 ## Configuring logging
 
-Most Resoto components by default log in JSON format with the exception of Resoto Shell (`resh`). The thought behind this behavior is that Core, Worker and Metrics are likely running on something like a Kubernetes cluster in a data center and logs are ingested by a central logging system. Resoto Shell on the other hand is executed on a local machine and any potential log output consumed by a human.
+Resoto components produce logs in JSON format by default, with the exception of [Resoto Shell](../concepts/components/shell.md).
+
+The rationale behind this behavior is that [Core](../concepts/components/core.md), [Worker](../concepts/components/worker.md), and [Metrics](../concepts/components/metrics.md) are likely running on something like a Kubernetes cluster in a data center, with logs ingested by a central logging system. [Resoto Shell](../concepts/components/shell.md), on the other hand, is executed on a user's local machine so the log output is formatted for readability.
 
 If this behavior is undesired it can be turned off by setting the environment variable `RESOTO_LOG_TEXT=true`.

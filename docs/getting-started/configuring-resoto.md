@@ -371,4 +371,4 @@ Resoto components produce logs in JSON format by default, with the exception of 
 
 The rationale behind this behavior is that [Core](../concepts/components/core.md), [Worker](../concepts/components/worker.md), and [Metrics](../concepts/components/metrics.md) are likely running on something like a Kubernetes cluster in a data center, with logs ingested by a central logging system. [Resoto Shell](../concepts/components/shell.md), on the other hand, is executed on a user's local machine so the log output is formatted for readability.
 
-If this behavior is undesired it can be turned off by setting the environment variable `RESOTO_LOG_TEXT=true`.
+JSON-format logging can be disabled by setting environment variable `RESOTO_LOG_TEXT=true`.

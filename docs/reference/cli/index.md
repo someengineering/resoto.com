@@ -69,7 +69,7 @@ parameters:
 template: 'echo Hello {{person}}.'
 ```
 
-Once the configuration is updated, the command is available in the resoto shell. Note: custom commands are defined globally, so they can be used in any Resoto user.
+Once the configuration is updated, the command is available in the resoto shell.
 
 ```bash title="Usage of the new hello command"
 > help hello
@@ -79,6 +79,12 @@ Hello world.
 > hello person="John Doe"
 Hello John Doe.
 ```
+
+:::note
+
+Custom commands are defined globally, so they can be used by any Resoto user.
+
+:::
 
 ## Placeholder Strings
 

@@ -1,20 +1,20 @@
-# Resotoshell TAB completion
+# Resoto Shell Tab Completion
 
-Resoto comes with a command-line interface that is accessed via Resotoshell. The command lines that the user defines are not executed locally but get interpreted server-side. Nothing but Resotoshell is required on the client-side.
+Resoto has a [command-line interface](/docs/reference/cli) which is accessible via [Resoto Shell](/docs/concepts/components/shell). Commands are not executed locally, but interpreted on the server. As such, only [Resoto Shell](/docs/concepts/components/shell) is required client-side.
 
-Many of the commands that Resoto offers are old friends to shell users like `echo`, `tail` and `jq`, but there are more. While there is a good [command line reference](/docs/reference/cli), it is always easier to get the help exactly where the question arises, which is the prompt of the CLI.
+Resoto offers commands like [`echo`](/docs/reference/cli/echo), [`tail`](/docs/reference/cli/tail), and [`jq`](/docs/reference/cli/jq)—old friends to veteran shell users—but these commands only account for a small fraction of the possibilities in Resoto's [command-line interface](/docs/reference/cli).
 
-The latest version of Resotoshell comes with a tab-completion feature, that the user supports in almost all situations. When Resotoshell is started, you can list available commands by pressing the TAB key.
+Version 2.X of [Resoto Shell](/docs/concepts/components/shell) introduces tab completion, making the [command-line interface](/docs/reference/cli) easier to use than ever before! Press the tab key, and [Resoto Shell](/docs/concepts/components/shell) will present you with a list of available commands:
 
 ![List of commands](img/list_of_commands.png)
 
-Once you have selected a command, you can press the TAB key again to list all available options. In fact, you do not even need to press the TAB key at all, since all suggestions are shown automatically.
+The tab completion feature is context-aware and will even help you configure the options for a command:
 
 ![List of commands](img/jobs_add.png)
 
-## Support for search syntax
+## Search Syntax
 
-Resoto comes with a powerful [search syntax](/docs/concepts/search) that allows for many use cases. Everybody wants to use a powerful search capability - nobody wants to learn a new search syntax. Our approach to bridge this gap is also to provide typing support for the search syntax.
+Previous blog posts have touched upon the power and extensibility of Resoto's [search syntax](/docs/concepts/search), but learning the ins and outs of Resoto's [search syntax](/docs/concepts/search) has a rather steep learning curve. Never fear—the new tab completion feature also provides autocomplete for the [`search` command](/docs/reference/cli/search) to make Resoto's [search functionality](/docs/concepts/search) more accessible:
 
 ![Search in action](img/search.gif)
 
@@ -24,14 +24,14 @@ Filter expressions use the syntax `<field> <operator> <value>`. The list of all 
 
 A sort criteria also uses a property to sort - so the completer shows all available properties, as well as the possible sort order `asc` or `desc`.
 
-## Support for aggregations
+## Aggregation
 
-Not only search but also [aggregate](/docs/reference/cli/aggregate) uses special syntax to define aggregation expressions. An aggregation is always computed on the result of a search and defines a list of grouping variables, as well as a list of aggregation functions.
+The [`aggregate` command](/docs/reference/cli/aggregate) also uses special syntax to define aggregation expressions, and tab completion again can help:
 
 ![Aggregate in action](img/aggregate.gif)
 
-The completer helps in defining the grouping variables, by providing the list of all possible properties. Please also note the special support to define [`/ancestors`](/docs/concepts/search/merging-nodes#ancestors-and-descendants) grouping variables, which requires to define the kind of the ancestor as well as the property to group by.
+As you can see, the autocomplete feature lists possible properties. There is also support for defining [`/ancestors` grouping variables](/docs/concepts/search/merging-nodes#ancestors-and-descendants).
 
-It also knows about the possible aggregation functions and provides it as a list. Since every grouping variable and every aggregation function can be renamed, an optional `as` clause is suggested.
+As mentioned previously, [Resoto Shell](/docs/concepts/components/shell) is context-aware and will supply a list of possible aggregation functions. And since every grouping variable and every aggregation function can be renamed, the optional `as` clause is suggested as well.
 
-With the support of this feature, it is hopefully much simpler to use the CLI. Please find our [Getting Started Guide](/docs/getting-started) and give Resoto a spin!
+We hope that the new tab completion feature makes Resoto's [command-line interface](/docs/reference/cli) easier to use!

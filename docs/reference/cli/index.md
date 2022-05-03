@@ -82,7 +82,7 @@ Hello John Doe.
 
 :::note
 
-Custom commands are defined globally, so they can be used by any Resoto user.
+Custom commands are defined globally, so they can be executed by any Resoto user.
 
 :::
 

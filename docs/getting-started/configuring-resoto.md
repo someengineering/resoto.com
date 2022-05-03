@@ -364,3 +364,11 @@ gcp:
 ```
 
 The setting `resotoworker.pool_size` determines how many collectors (aws, gcp, digitalocean, k8s, etc.) are run concurrently. `aws.account_pool_size` and `gcp.project_pool_size` are used to determine how many accounts or projects respectively are collected concurrently. Within AWS the setting `aws.region_pool_size` is used to determine how many regions per account are collected concurrently.
+
+## Configuring Logging
+
+Resoto components produce logs in JSON format by default, with the exception of [Resoto Shell](../concepts/components/shell.md).
+
+The rationale behind this behavior is that [Core](../concepts/components/core.md), [Worker](../concepts/components/worker.md), and [Metrics](../concepts/components/metrics.md) are likely running on something like a Kubernetes cluster in a data center, with logs ingested by a central logging system. [Resoto Shell](../concepts/components/shell.md), on the other hand, is executed on a user's local machine so the log output is formatted for readability.
+
+JSON-format logging can be disabled by setting environment variable `RESOTO_LOG_TEXT=true`.

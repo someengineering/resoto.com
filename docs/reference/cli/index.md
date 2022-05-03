@@ -69,7 +69,7 @@ parameters:
 template: 'echo Hello {{person}}.'
 ```
 
-Once the configuration is updated, the command is available in the resoto shell.
+Once a custom command has been defined in the `resoto.core.commands` configuration, the command can be executed in [Resoto Shell](../../concepts/components/shell.md):
 
 ```bash title="Usage of the new hello command"
 > help hello

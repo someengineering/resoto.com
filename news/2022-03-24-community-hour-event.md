@@ -32,7 +32,7 @@ This event is taking place **LIVE** on the [Some Engineering Discord server](htt
 ### Agenda
 
 - Resoto news and updates
-  - Improved system configuration method
+  - improved system configuration method
   - [DigitalOcean](/docs/reference/data-models/digitalocean) support
 - Learn how to…
   - [search](/docs/concepts/search) and [aggregate](/docs/concepts/search/aggregation) data

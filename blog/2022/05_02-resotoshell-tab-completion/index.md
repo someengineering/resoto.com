@@ -18,12 +18,9 @@ Previous blog posts have touched upon the power and extensibility of Resoto's [s
 
 ![Search in action](img/search.gif)
 
-This guidance helps you with the general search syntax. Resources can be filtered by a specific kind via `is(<kind>)`. The list of possible kinds is available. The completion uses fuzzy search, so you can start in the middle of a word or just type the first letters. Example: `v_t<TAB>` will be completed to `volume_type`.
+[Resources can be filtered by kind using `is(<kind>)`](/docs/concepts/search/filters#selecting-nodes-by-kind) and the automated assistance uses fuzzy search, allowing you to simply type a portion of the desired text or even just the first letters. For example, `v_t` will yield the suggestion `volume_type`.
 
-Filter expressions use the syntax `<field> <operator> <value>`. The list of all possible fields is available as well as all available operators. Ideally the completer would only show properties, that are relevant for the selected kind. It is currently not smart enough and shows always all possible properties - something we want to improve in the future.
-
-A sort criteria also uses a property to sort - so the completer shows all available properties, as well as the possible sort order `asc` or `desc`.
-
+[Filter expressions use the syntax `<field> <operator> <value>`](/docs/concepts/search/filters#selecting-nodes-by-predicate), and possible fields and operators are presented as suggestions as well. The autocomplete feature ideally would only list properties that are relevant for the selected kind, but it is currently shows always all possible properties—we plan to address this in the future.
 ## Aggregation
 
 The [`aggregate` command](/docs/reference/cli/aggregate) also uses special syntax to define aggregation expressions, and tab completion again can help:

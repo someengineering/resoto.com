@@ -1,3 +1,7 @@
+---
+authors: [matthias]
+---
+
 # Resoto Shell Tab Completion
 
 Resoto has a [command-line interface](/docs/reference/cli) which is accessible via [Resoto Shell](/docs/concepts/components/shell). Commands are not executed locally, but interpreted on the server. As such, only [Resoto Shell](/docs/concepts/components/shell) is required client-side.
@@ -21,6 +25,7 @@ Previous blog posts have touched upon the power and extensibility of Resoto's [s
 [Resources can be filtered by kind using `is(<kind>)`](/docs/concepts/search/filters#selecting-nodes-by-kind) and the automated assistance uses fuzzy search, allowing you to simply type a portion of the desired text or even just the first letters. For example, `v_t` will yield the suggestion `volume_type`.
 
 [Filter expressions use the syntax `<field> <operator> <value>`](/docs/concepts/search/filters#selecting-nodes-by-predicate), and possible fields and operators are presented as suggestions as well. The autocomplete feature ideally would only list properties that are relevant for the selected kind, but it is currently shows always all possible properties—we plan to address this in the future.
+
 ## Aggregation
 
 The [`aggregate` command](/docs/reference/cli/aggregate) also uses special syntax to define aggregation expressions, and tab completion again can help:

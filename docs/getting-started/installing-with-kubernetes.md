@@ -112,7 +112,7 @@ $ kubectl -n resoto create secret generic resoto-auth \
 
 You would provide these values for [`resotoworker`](../concepts/components/worker.md) as file:
 
-```yaml
+```yml
 resotoworker:
   volumeMounts:
     - mountPath: /etc/tokens/
@@ -134,7 +134,7 @@ $ kubectl -n resoto create secret generic resoto-auth \
   --from-literal=AWS_SECRET_ACCESS_KEY=<YOUR ACCESS KEY>
 ```
 
-```yaml
+```yml
 resotoworker:
   extraEnv:
     - name: AWS_ACCESS_KEY_ID

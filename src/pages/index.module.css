@@ -30,6 +30,7 @@ html[data-theme='dark'] .hero {
   font-size: 55px;
   line-height: 1.2;
   margin: 0;
+  flex-grow: 1;
 }
 
 .heroSubtitle strong {

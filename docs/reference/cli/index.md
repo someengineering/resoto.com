@@ -59,7 +59,7 @@ A custom command has the following properties:
 - `info`: a short description of the command. This will be displayed to users when they call `help my-custom-command`
 - `parameters`: a list of placeholder parameters. All parameters need to be defined in order to use the command. If the parameter defines a default value, it is considered optional. If there is no default value, the parameter is required and needs to be defined by the user during execution time.
 
-```yaml title="Example custom command"
+```yml title="Example custom command"
 info: 'Say Hi to the user.'
 name: 'hello'
 parameters:

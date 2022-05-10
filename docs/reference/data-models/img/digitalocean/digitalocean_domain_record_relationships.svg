@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="252px" preserveAspectRatio="none" style="width:339px;height:252px;background:#00000000;" version="1.1" viewBox="0 0 339 252" width="339px" zoomAndPan="magnify"><defs/><g><!--MD5=[181ac5505ace071f881e57901786057e]
+class digitalocean_domain--><rect codeLine="17" fill="#3D176E" height="39.7891" id="digitalocean_domain" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="215" x="7" y="107"/><ellipse cx="22" cy="126.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M24.9688,132.5352 Q24.3906,132.832 23.75,132.9727 Q23.1094,133.1289 22.4063,133.1289 Q19.9063,133.1289 18.5781,131.4883 Q17.2656,129.832 17.2656,126.707 Q17.2656,123.582 18.5781,121.9258 Q19.9063,120.2695 22.4063,120.2695 Q23.1094,120.2695 23.75,120.4258 Q24.4063,120.582 24.9688,120.8789 L24.9688,123.5977 Q24.3438,123.0195 23.75,122.7539 Q23.1563,122.4727 22.5313,122.4727 Q21.1875,122.4727 20.5,123.5508 Q19.8125,124.6133 19.8125,126.707 Q19.8125,128.8008 20.5,129.8789 Q21.1875,130.9414 22.5313,130.9414 Q23.1563,130.9414 23.75,130.6758 Q24.3438,130.3945 24.9688,129.8164 L24.9688,132.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="173" x="41" y="132.7798">digitalocean_domain</text><!--MD5=[0010a72144aca5a68db321ae9eb12d5c]
+class digitalocean_domain_record--><rect codeLine="20" fill="#3D176E" height="39.7891" id="digitalocean_domain_record" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="276" x="56.5" y="207"/><ellipse cx="71.5" cy="226.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M74.4688,232.5352 Q73.8906,232.832 73.25,232.9727 Q72.6094,233.1289 71.9063,233.1289 Q69.4063,233.1289 68.0781,231.4883 Q66.7656,229.832 66.7656,226.707 Q66.7656,223.582 68.0781,221.9258 Q69.4063,220.2695 71.9063,220.2695 Q72.6094,220.2695 73.25,220.4258 Q73.9063,220.582 74.4688,220.8789 L74.4688,223.5977 Q73.8438,223.0195 73.25,222.7539 Q72.6563,222.4727 72.0313,222.4727 Q70.6875,222.4727 70,223.5508 Q69.3125,224.6133 69.3125,226.707 Q69.3125,228.8008 70,229.8789 Q70.6875,230.9414 72.0313,230.9414 Q72.6563,230.9414 73.25,230.6758 Q73.8438,230.3945 74.4688,229.8164 L74.4688,232.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="234" x="90.5" y="232.7798">digitalocean_domain_record</text><!--MD5=[c49d09fe9e8ef547b55e29c1e73e7f42]
+class digitalocean_team--><rect codeLine="23" fill="#3D176E" height="39.7891" id="digitalocean_team" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="196" x="96.5" y="7"/><ellipse cx="111.5" cy="26.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M114.4688,32.5352 Q113.8906,32.832 113.25,32.9727 Q112.6094,33.1289 111.9063,33.1289 Q109.4063,33.1289 108.0781,31.4883 Q106.7656,29.832 106.7656,26.707 Q106.7656,23.582 108.0781,21.9258 Q109.4063,20.2695 111.9063,20.2695 Q112.6094,20.2695 113.25,20.4258 Q113.9063,20.582 114.4688,20.8789 L114.4688,23.5977 Q113.8438,23.0195 113.25,22.7539 Q112.6563,22.4727 112.0313,22.4727 Q110.6875,22.4727 110,23.5508 Q109.3125,24.6133 109.3125,26.707 Q109.3125,28.8008 110,29.8789 Q110.6875,30.9414 112.0313,30.9414 Q112.6563,30.9414 113.25,30.6758 Q113.8438,30.3945 114.4688,29.8164 L114.4688,32.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="154" x="130.5" y="32.7798">digitalocean_team</text><!--MD5=[814d6c65cebb533b4b68a82e07b76c5d]
+link digitalocean_domain to digitalocean_domain_record--><path codeLine="26" d="M130.31,147.36 C143.23,163.2 161.57,185.66 175.33,202.52 " fill="none" id="digitalocean_domain-to-digitalocean_domain_record" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="178.73,206.68,176.142,197.1773,175.57,202.8051,169.9422,202.2332,178.73,206.68" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[f76f326118d33e1b0736f0feae392e96]
+link digitalocean_team to digitalocean_domain--><path codeLine="27" d="M178.69,47.36 C165.77,63.2 147.43,85.66 133.67,102.52 " fill="none" id="digitalocean_team-to-digitalocean_domain" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="130.27,106.68,139.0578,102.2332,133.43,102.8051,132.858,97.1773,130.27,106.68" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[c3117845599dc1278a936ad54f016a66]
+link digitalocean_team to digitalocean_domain_record--><path codeLine="28" d="M209.24,47.2 C219.98,62.47 233.64,84.88 239.5,107 C244.05,124.19 244.05,129.81 239.5,147 C234.19,167.05 222.47,187.33 212.33,202.32 " fill="none" id="digitalocean_team-to-digitalocean_domain_record" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="209.24,206.8,217.647,201.6695,212.0823,202.6865,211.0654,197.1218,209.24,206.8" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[caa1ab5ff1c646ffae9b1a6feffbbba7]
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class digitalocean_domain {
+
+}
+class digitalocean_domain_record {
+
+}
+class digitalocean_team {
+
+}
+digitalocean_domain -[#1A83AF]-> digitalocean_domain_record
+digitalocean_team -[#1A83AF]-> digitalocean_domain
+digitalocean_team -[#1A83AF]-> digitalocean_domain_record
+@enduml
+
+PlantUML version 1.2021.16(Wed Dec 08 17:25:22 UTC 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

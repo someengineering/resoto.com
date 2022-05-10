@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="152px" preserveAspectRatio="none" style="width:858px;height:152px;background:#00000000;" version="1.1" viewBox="0 0 858 152" width="858px" zoomAndPan="magnify"><defs/><g><!--MD5=[6cacedcd4c2effd6f4e2b3539316018b]
+class gcp_instance--><rect codeLine="17" fill="#3D176E" height="39.7891" id="gcp_instance" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="149" x="7" y="7"/><ellipse cx="22" cy="26.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M24.9688,32.5352 Q24.3906,32.832 23.75,32.9727 Q23.1094,33.1289 22.4063,33.1289 Q19.9063,33.1289 18.5781,31.4883 Q17.2656,29.832 17.2656,26.707 Q17.2656,23.582 18.5781,21.9258 Q19.9063,20.2695 22.4063,20.2695 Q23.1094,20.2695 23.75,20.4258 Q24.4063,20.582 24.9688,20.8789 L24.9688,23.5977 Q24.3438,23.0195 23.75,22.7539 Q23.1563,22.4727 22.5313,22.4727 Q21.1875,22.4727 20.5,23.5508 Q19.8125,24.6133 19.8125,26.707 Q19.8125,28.8008 20.5,29.8789 Q21.1875,30.9414 22.5313,30.9414 Q23.1563,30.9414 23.75,30.6758 Q24.3438,30.3945 24.9688,29.8164 L24.9688,32.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="107" x="41" y="32.7798">gcp_instance</text><!--MD5=[5003f8800f97b8086a6c1fc5270b4b45]
+class gcp_target_ssl_proxy--><rect codeLine="20" fill="#3D176E" height="39.7891" id="gcp_target_ssl_proxy" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="216" x="191.5" y="7"/><ellipse cx="206.5" cy="26.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M209.4688,32.5352 Q208.8906,32.832 208.25,32.9727 Q207.6094,33.1289 206.9063,33.1289 Q204.4063,33.1289 203.0781,31.4883 Q201.7656,29.832 201.7656,26.707 Q201.7656,23.582 203.0781,21.9258 Q204.4063,20.2695 206.9063,20.2695 Q207.6094,20.2695 208.25,20.4258 Q208.9063,20.582 209.4688,20.8789 L209.4688,23.5977 Q208.8438,23.0195 208.25,22.7539 Q207.6563,22.4727 207.0313,22.4727 Q205.6875,22.4727 205,23.5508 Q204.3125,24.6133 204.3125,26.707 Q204.3125,28.8008 205,29.8789 Q205.6875,30.9414 207.0313,30.9414 Q207.6563,30.9414 208.25,30.6758 Q208.8438,30.3945 209.4688,29.8164 L209.4688,32.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="174" x="225.5" y="32.7798">gcp_target_ssl_proxy</text><!--MD5=[f3c74ffc5f6ee5ea298d5a7abf6ee9d6]
+class gcp_target_https_proxy--><rect codeLine="23" fill="#3D176E" height="39.7891" id="gcp_target_https_proxy" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="238" x="442.5" y="7"/><ellipse cx="457.5" cy="26.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M460.4688,32.5352 Q459.8906,32.832 459.25,32.9727 Q458.6094,33.1289 457.9063,33.1289 Q455.4063,33.1289 454.0781,31.4883 Q452.7656,29.832 452.7656,26.707 Q452.7656,23.582 454.0781,21.9258 Q455.4063,20.2695 457.9063,20.2695 Q458.6094,20.2695 459.25,20.4258 Q459.9063,20.582 460.4688,20.8789 L460.4688,23.5977 Q459.8438,23.0195 459.25,22.7539 Q458.6563,22.4727 458.0313,22.4727 Q456.6875,22.4727 456,23.5508 Q455.3125,24.6133 455.3125,26.707 Q455.3125,28.8008 456,29.8789 Q456.6875,30.9414 458.0313,30.9414 Q458.6563,30.9414 459.25,30.6758 Q459.8438,30.3945 460.4688,29.8164 L460.4688,32.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="196" x="476.5" y="32.7798">gcp_target_https_proxy</text><!--MD5=[422996f95ba4170b567a74482f56b89b]
+class gcp_ssl_certificate--><rect codeLine="26" fill="#3D176E" height="39.7891" id="gcp_ssl_certificate" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="192" x="334.5" y="107"/><ellipse cx="349.5" cy="126.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M352.4688,132.5352 Q351.8906,132.832 351.25,132.9727 Q350.6094,133.1289 349.9063,133.1289 Q347.4063,133.1289 346.0781,131.4883 Q344.7656,129.832 344.7656,126.707 Q344.7656,123.582 346.0781,121.9258 Q347.4063,120.2695 349.9063,120.2695 Q350.6094,120.2695 351.25,120.4258 Q351.9063,120.582 352.4688,120.8789 L352.4688,123.5977 Q351.8438,123.0195 351.25,122.7539 Q350.6563,122.4727 350.0313,122.4727 Q348.6875,122.4727 348,123.5508 Q347.3125,124.6133 347.3125,126.707 Q347.3125,128.8008 348,129.8789 Q348.6875,130.9414 350.0313,130.9414 Q350.6563,130.9414 351.25,130.6758 Q351.8438,130.3945 352.4688,129.8164 L352.4688,132.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="150" x="368.5" y="132.7798">gcp_ssl_certificate</text><!--MD5=[cab11c6fb1c2871eb7d2e02e154ea8ef]
+class gcp_project--><rect codeLine="29" fill="#3D176E" height="39.7891" id="gcp_project" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="136" x="715.5" y="7"/><ellipse cx="730.5" cy="26.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M733.4688,32.5352 Q732.8906,32.832 732.25,32.9727 Q731.6094,33.1289 730.9063,33.1289 Q728.4063,33.1289 727.0781,31.4883 Q725.7656,29.832 725.7656,26.707 Q725.7656,23.582 727.0781,21.9258 Q728.4063,20.2695 730.9063,20.2695 Q731.6094,20.2695 732.25,20.4258 Q732.9063,20.582 733.4688,20.8789 L733.4688,23.5977 Q732.8438,23.0195 732.25,22.7539 Q731.6563,22.4727 731.0313,22.4727 Q729.6875,22.4727 729,23.5508 Q728.3125,24.6133 728.3125,26.707 Q728.3125,28.8008 729,29.8789 Q729.6875,30.9414 731.0313,30.9414 Q731.6563,30.9414 732.25,30.6758 Q732.8438,30.3945 733.4688,29.8164 L733.4688,32.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="94" x="749.5" y="32.7798">gcp_project</text><!--MD5=[c7056fdb1a7019b7c24c763cffd942f3]
+link gcp_instance to gcp_ssl_certificate--><path codeLine="32" d="M149.2,47.01 C209.07,63.82 296.18,88.28 357.57,105.52 " fill="none" id="gcp_instance-to-gcp_ssl_certificate" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="362.69,106.96,355.1129,100.6681,357.8776,105.6034,352.9423,108.368,362.69,106.96" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[762bd20424beb7a277261e211362420b]
+link gcp_target_ssl_proxy to gcp_ssl_certificate--><path codeLine="33" d="M325.07,47.13 C346.8,63.38 378.01,86.73 400.84,103.81 " fill="none" id="gcp_target_ssl_proxy-to-gcp_ssl_certificate" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="405,106.92,400.1853,98.3282,400.9949,103.9268,395.3963,104.7364,405,106.92" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[0102917521229ab08a8764ed90de8b1c]
+link gcp_target_https_proxy to gcp_ssl_certificate--><path codeLine="34" d="M535.93,47.13 C514.2,63.38 482.99,86.73 460.16,103.81 " fill="none" id="gcp_target_https_proxy-to-gcp_ssl_certificate" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="456,106.92,465.6037,104.7364,460.0051,103.9268,460.8147,98.3282,456,106.92" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[ee430f8f3dd09f562029de6d553a2ce1]
+link gcp_project to gcp_ssl_certificate--><path codeLine="35" d="M715.44,46.9 C654.83,63.72 566.38,88.28 504.14,105.56 " fill="none" id="gcp_project-to-gcp_ssl_certificate" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="498.95,107,508.6938,108.4348,503.7662,105.6566,506.5444,100.729,498.95,107" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[76b128cff3e0f099f1baa4eca35520d8]
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_instance {
+
+}
+class gcp_target_ssl_proxy {
+
+}
+class gcp_target_https_proxy {
+
+}
+class gcp_ssl_certificate {
+
+}
+class gcp_project {
+
+}
+gcp_instance -[#1A83AF]-> gcp_ssl_certificate
+gcp_target_ssl_proxy -[#1A83AF]-> gcp_ssl_certificate
+gcp_target_https_proxy -[#1A83AF]-> gcp_ssl_certificate
+gcp_project -[#1A83AF]-> gcp_ssl_certificate
+@enduml
+
+PlantUML version 1.2021.16(Wed Dec 08 17:25:22 UTC 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

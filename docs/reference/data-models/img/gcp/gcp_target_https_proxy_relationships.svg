@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="252px" preserveAspectRatio="none" style="width:532px;height:252px;background:#00000000;" version="1.1" viewBox="0 0 532 252" width="532px" zoomAndPan="magnify"><defs/><g><!--MD5=[ab9058ec27c645f87205675134a49065]
+class gcp_url_map--><rect codeLine="17" fill="#3D176E" height="39.7891" id="gcp_url_map" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="148" x="75" y="207"/><ellipse cx="90" cy="226.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M92.9688,232.5352 Q92.3906,232.832 91.75,232.9727 Q91.1094,233.1289 90.4063,233.1289 Q87.9063,233.1289 86.5781,231.4883 Q85.2656,229.832 85.2656,226.707 Q85.2656,223.582 86.5781,221.9258 Q87.9063,220.2695 90.4063,220.2695 Q91.1094,220.2695 91.75,220.4258 Q92.4063,220.582 92.9688,220.8789 L92.9688,223.5977 Q92.3438,223.0195 91.75,222.7539 Q91.1563,222.4727 90.5313,222.4727 Q89.1875,222.4727 88.5,223.5508 Q87.8125,224.6133 87.8125,226.707 Q87.8125,228.8008 88.5,229.8789 Q89.1875,230.9414 90.5313,230.9414 Q91.1563,230.9414 91.75,230.6758 Q92.3438,230.3945 92.9688,229.8164 L92.9688,232.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="106" x="109" y="232.7798">gcp_url_map</text><!--MD5=[f3c74ffc5f6ee5ea298d5a7abf6ee9d6]
+class gcp_target_https_proxy--><rect codeLine="20" fill="#3D176E" height="39.7891" id="gcp_target_https_proxy" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="238" x="132" y="107"/><ellipse cx="147" cy="126.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M149.9688,132.5352 Q149.3906,132.832 148.75,132.9727 Q148.1094,133.1289 147.4063,133.1289 Q144.9063,133.1289 143.5781,131.4883 Q142.2656,129.832 142.2656,126.707 Q142.2656,123.582 143.5781,121.9258 Q144.9063,120.2695 147.4063,120.2695 Q148.1094,120.2695 148.75,120.4258 Q149.4063,120.582 149.9688,120.8789 L149.9688,123.5977 Q149.3438,123.0195 148.75,122.7539 Q148.1563,122.4727 147.5313,122.4727 Q146.1875,122.4727 145.5,123.5508 Q144.8125,124.6133 144.8125,126.707 Q144.8125,128.8008 145.5,129.8789 Q146.1875,130.9414 147.5313,130.9414 Q148.1563,130.9414 148.75,130.6758 Q149.3438,130.3945 149.9688,129.8164 L149.9688,132.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="196" x="166" y="132.7798">gcp_target_https_proxy</text><!--MD5=[422996f95ba4170b567a74482f56b89b]
+class gcp_ssl_certificate--><rect codeLine="23" fill="#3D176E" height="39.7891" id="gcp_ssl_certificate" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="192" x="258" y="207"/><ellipse cx="273" cy="226.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M275.9688,232.5352 Q275.3906,232.832 274.75,232.9727 Q274.1094,233.1289 273.4063,233.1289 Q270.9063,233.1289 269.5781,231.4883 Q268.2656,229.832 268.2656,226.707 Q268.2656,223.582 269.5781,221.9258 Q270.9063,220.2695 273.4063,220.2695 Q274.1094,220.2695 274.75,220.4258 Q275.4063,220.582 275.9688,220.8789 L275.9688,223.5977 Q275.3438,223.0195 274.75,222.7539 Q274.1563,222.4727 273.5313,222.4727 Q272.1875,222.4727 271.5,223.5508 Q270.8125,224.6133 270.8125,226.707 Q270.8125,228.8008 271.5,229.8789 Q272.1875,230.9414 273.5313,230.9414 Q274.1563,230.9414 274.75,230.6758 Q275.3438,230.3945 275.9688,229.8164 L275.9688,232.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="150" x="292" y="232.7798">gcp_ssl_certificate</text><!--MD5=[3a125afeaaaf45c8ad94997c7293c783]
+class gcp_forwarding_rule--><rect codeLine="26" fill="#3D176E" height="39.7891" id="gcp_forwarding_rule" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="212" x="7" y="7"/><ellipse cx="22" cy="26.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M24.9688,32.5352 Q24.3906,32.832 23.75,32.9727 Q23.1094,33.1289 22.4063,33.1289 Q19.9063,33.1289 18.5781,31.4883 Q17.2656,29.832 17.2656,26.707 Q17.2656,23.582 18.5781,21.9258 Q19.9063,20.2695 22.4063,20.2695 Q23.1094,20.2695 23.75,20.4258 Q24.4063,20.582 24.9688,20.8789 L24.9688,23.5977 Q24.3438,23.0195 23.75,22.7539 Q23.1563,22.4727 22.5313,22.4727 Q21.1875,22.4727 20.5,23.5508 Q19.8125,24.6133 19.8125,26.707 Q19.8125,28.8008 20.5,29.8789 Q21.1875,30.9414 22.5313,30.9414 Q23.1563,30.9414 23.75,30.6758 Q24.3438,30.3945 24.9688,29.8164 L24.9688,32.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="170" x="41" y="32.7798">gcp_forwarding_rule</text><!--MD5=[d373685df770b1ed5a34d816c230813f]
+class gcp_global_forwarding_rule--><rect codeLine="29" fill="#3D176E" height="39.7891" id="gcp_global_forwarding_rule" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="271" x="254.5" y="7"/><ellipse cx="269.5" cy="26.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M272.4688,32.5352 Q271.8906,32.832 271.25,32.9727 Q270.6094,33.1289 269.9063,33.1289 Q267.4063,33.1289 266.0781,31.4883 Q264.7656,29.832 264.7656,26.707 Q264.7656,23.582 266.0781,21.9258 Q267.4063,20.2695 269.9063,20.2695 Q270.6094,20.2695 271.25,20.4258 Q271.9063,20.582 272.4688,20.8789 L272.4688,23.5977 Q271.8438,23.0195 271.25,22.7539 Q270.6563,22.4727 270.0313,22.4727 Q268.6875,22.4727 268,23.5508 Q267.3125,24.6133 267.3125,26.707 Q267.3125,28.8008 268,29.8789 Q268.6875,30.9414 270.0313,30.9414 Q270.6563,30.9414 271.25,30.6758 Q271.8438,30.3945 272.4688,29.8164 L272.4688,32.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="229" x="288.5" y="32.7798">gcp_global_forwarding_rule</text><!--MD5=[d6a66eb59fc7989bc2de498bb8c2db91]
+link gcp_target_https_proxy to gcp_url_map--><path codeLine="32" d="M230.85,147.36 C214.22,163.33 190.59,186.04 172.99,202.95 " fill="none" id="gcp_target_https_proxy-to-gcp_url_map" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="169.11,206.68,178.3718,203.3305,172.7161,203.2165,172.8301,197.5607,169.11,206.68" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[0102917521229ab08a8764ed90de8b1c]
+link gcp_target_https_proxy to gcp_ssl_certificate--><path codeLine="33" d="M271.35,147.36 C288.14,163.33 312,186.04 329.77,202.95 " fill="none" id="gcp_target_https_proxy-to-gcp_ssl_certificate" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="333.69,206.68,329.9332,197.5758,330.07,203.231,324.4148,203.3678,333.69,206.68" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[39bebb2cc52c7374db44ca6c66c26ee0]
+link gcp_forwarding_rule to gcp_target_https_proxy--><path codeLine="34" d="M139.94,47.13 C162.92,63.45 195.98,86.93 220.05,104.02 " fill="none" id="gcp_forwarding_rule-to-gcp_target_https_proxy" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="224.13,106.92,219.1201,98.4406,220.0575,104.0192,214.4788,104.9566,224.13,106.92" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[88c0f59f6577f0748de7bb139b6cd864]
+link gcp_global_forwarding_rule to gcp_target_https_proxy--><path codeLine="35" d="M362.87,47.13 C339.72,63.45 306.42,86.93 282.18,104.02 " fill="none" id="gcp_global_forwarding_rule-to-gcp_target_https_proxy" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="278.06,106.92,287.7189,104.9951,282.144,104.0355,283.1037,98.4606,278.06,106.92" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[63592c2b0dac74cade77af324184d74a]
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_url_map {
+
+}
+class gcp_target_https_proxy {
+
+}
+class gcp_ssl_certificate {
+
+}
+class gcp_forwarding_rule {
+
+}
+class gcp_global_forwarding_rule {
+
+}
+gcp_target_https_proxy -[#1A83AF]-> gcp_url_map
+gcp_target_https_proxy -[#1A83AF]-> gcp_ssl_certificate
+gcp_forwarding_rule -[#1A83AF]-> gcp_target_https_proxy
+gcp_global_forwarding_rule -[#1A83AF]-> gcp_target_https_proxy
+@enduml
+
+PlantUML version 1.2021.16(Wed Dec 08 17:25:22 UTC 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

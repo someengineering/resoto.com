@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="252px" preserveAspectRatio="none" style="width:307px;height:252px;background:#00000000;" version="1.1" viewBox="0 0 307 252" width="307px" zoomAndPan="magnify"><defs/><g><!--MD5=[0c8b414976a9a2e585b005b662babc37]
+class aws_ec2_volume--><rect codeLine="17" fill="#3D176E" height="39.7891" id="aws_ec2_volume" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="185" x="7" y="207"/><ellipse cx="22" cy="226.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M24.9688,232.5352 Q24.3906,232.832 23.75,232.9727 Q23.1094,233.1289 22.4063,233.1289 Q19.9063,233.1289 18.5781,231.4883 Q17.2656,229.832 17.2656,226.707 Q17.2656,223.582 18.5781,221.9258 Q19.9063,220.2695 22.4063,220.2695 Q23.1094,220.2695 23.75,220.4258 Q24.4063,220.582 24.9688,220.8789 L24.9688,223.5977 Q24.3438,223.0195 23.75,222.7539 Q23.1563,222.4727 22.5313,222.4727 Q21.1875,222.4727 20.5,223.5508 Q19.8125,224.6133 19.8125,226.707 Q19.8125,228.8008 20.5,229.8789 Q21.1875,230.9414 22.5313,230.9414 Q23.1563,230.9414 23.75,230.6758 Q24.3438,230.3945 24.9688,229.8164 L24.9688,232.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="143" x="41" y="232.7798">aws_ec2_volume</text><!--MD5=[ab1eae8f76718f629e325f873a4fb1f8]
+class aws_region--><rect codeLine="20" fill="#3D176E" height="39.7891" id="aws_region" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="137" x="31" y="7"/><ellipse cx="46" cy="26.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M48.9688,32.5352 Q48.3906,32.832 47.75,32.9727 Q47.1094,33.1289 46.4063,33.1289 Q43.9063,33.1289 42.5781,31.4883 Q41.2656,29.832 41.2656,26.707 Q41.2656,23.582 42.5781,21.9258 Q43.9063,20.2695 46.4063,20.2695 Q47.1094,20.2695 47.75,20.4258 Q48.4063,20.582 48.9688,20.8789 L48.9688,23.5977 Q48.3438,23.0195 47.75,22.7539 Q47.1563,22.4727 46.5313,22.4727 Q45.1875,22.4727 44.5,23.5508 Q43.8125,24.6133 43.8125,26.707 Q43.8125,28.8008 44.5,29.8789 Q45.1875,30.9414 46.5313,30.9414 Q47.1563,30.9414 47.75,30.6758 Q48.3438,30.3945 48.9688,29.8164 L48.9688,32.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="95" x="65" y="32.7798">aws_region</text><!--MD5=[519c36309e9b7d89b8d0db49119fa3d1]
+class aws_ec2_volume_type--><rect codeLine="23" fill="#3D176E" height="39.7891" id="aws_ec2_volume_type" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="231" x="69" y="107"/><ellipse cx="84" cy="126.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M86.9688,132.5352 Q86.3906,132.832 85.75,132.9727 Q85.1094,133.1289 84.4063,133.1289 Q81.9063,133.1289 80.5781,131.4883 Q79.2656,129.832 79.2656,126.707 Q79.2656,123.582 80.5781,121.9258 Q81.9063,120.2695 84.4063,120.2695 Q85.1094,120.2695 85.75,120.4258 Q86.4063,120.582 86.9688,120.8789 L86.9688,123.5977 Q86.3438,123.0195 85.75,122.7539 Q85.1563,122.4727 84.5313,122.4727 Q83.1875,122.4727 82.5,123.5508 Q81.8125,124.6133 81.8125,126.707 Q81.8125,128.8008 82.5,129.8789 Q83.1875,130.9414 84.5313,130.9414 Q85.1563,130.9414 85.75,130.6758 Q86.3438,130.3945 86.9688,129.8164 L86.9688,132.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="189" x="103" y="132.7798">aws_ec2_volume_type</text><!--MD5=[782d5b39c4f83cc0aa5ca29d918d3dce]
+link aws_region to aws_ec2_volume_type--><path codeLine="26" d="M116.29,47.36 C130.03,63.2 149.51,85.66 164.13,102.52 " fill="none" id="aws_region-to-aws_ec2_volume_type" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="167.74,106.68,164.8616,97.2611,164.4626,102.9039,158.8199,102.5049,167.74,106.68" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[711f4b27e8e8e5ad2731da89ce1411a6]
+link aws_region to aws_ec2_volume--><path codeLine="27" d="M83.79,47.04 C72.34,62.22 57.77,84.59 51.5,107 C46.71,124.12 46.71,129.88 51.5,147 C57.23,167.48 69.9,187.93 80.78,202.89 " fill="none" id="aws_region-to-aws_ec2_volume" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="83.79,206.96,81.6284,197.3513,80.806,202.948,75.2093,202.1257,83.79,206.96" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[2c4d17520e2e5931f802304e4cdfacad]
+link aws_ec2_volume_type to aws_ec2_volume--><path codeLine="28" d="M167.71,147.36 C153.97,163.2 134.49,185.66 119.87,202.52 " fill="none" id="aws_ec2_volume_type-to-aws_ec2_volume" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="116.26,206.68,125.1801,202.5049,119.5374,202.9039,119.1384,197.2611,116.26,206.68" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[6d5e778f92fb7f6d62efa5ff029bca44]
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ec2_volume {
+
+}
+class aws_region {
+
+}
+class aws_ec2_volume_type {
+
+}
+aws_region -[#1A83AF]-> aws_ec2_volume_type
+aws_region -[#1A83AF]-> aws_ec2_volume
+aws_ec2_volume_type -[#1A83AF]-> aws_ec2_volume
+@enduml
+
+PlantUML version 1.2021.16(Wed Dec 08 17:25:22 UTC 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

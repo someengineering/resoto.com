@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="452px" preserveAspectRatio="none" style="width:628px;height:452px;background:#00000000;" version="1.1" viewBox="0 0 628 452" width="628px" zoomAndPan="magnify"><defs/><g><!--MD5=[9f976896e726bb06dda64d66586df82b]
+class digitalocean_droplet--><rect codeLine="17" fill="#3D176E" height="39.7891" id="digitalocean_droplet" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="211" x="7" y="207"/><ellipse cx="22" cy="226.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M24.9688,232.5352 Q24.3906,232.832 23.75,232.9727 Q23.1094,233.1289 22.4063,233.1289 Q19.9063,233.1289 18.5781,231.4883 Q17.2656,229.832 17.2656,226.707 Q17.2656,223.582 18.5781,221.9258 Q19.9063,220.2695 22.4063,220.2695 Q23.1094,220.2695 23.75,220.4258 Q24.4063,220.582 24.9688,220.8789 L24.9688,223.5977 Q24.3438,223.0195 23.75,222.7539 Q23.1563,222.4727 22.5313,222.4727 Q21.1875,222.4727 20.5,223.5508 Q19.8125,224.6133 19.8125,226.707 Q19.8125,228.8008 20.5,229.8789 Q21.1875,230.9414 22.5313,230.9414 Q23.1563,230.9414 23.75,230.6758 Q24.3438,230.3945 24.9688,229.8164 L24.9688,232.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="169" x="41" y="232.7798">digitalocean_droplet</text><!--MD5=[dad5e1ebd3aa37ff3d390a3e1303e949]
+class digitalocean_snapshot--><rect codeLine="20" fill="#3D176E" height="39.7891" id="digitalocean_snapshot" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="227" x="238" y="407"/><ellipse cx="253" cy="426.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M255.9688,432.5352 Q255.3906,432.832 254.75,432.9727 Q254.1094,433.1289 253.4063,433.1289 Q250.9063,433.1289 249.5781,431.4883 Q248.2656,429.832 248.2656,426.707 Q248.2656,423.582 249.5781,421.9258 Q250.9063,420.2695 253.4063,420.2695 Q254.1094,420.2695 254.75,420.4258 Q255.4063,420.582 255.9688,420.8789 L255.9688,423.5977 Q255.3438,423.0195 254.75,422.7539 Q254.1563,422.4727 253.5313,422.4727 Q252.1875,422.4727 251.5,423.5508 Q250.8125,424.6133 250.8125,426.707 Q250.8125,428.8008 251.5,429.8789 Q252.1875,430.9414 253.5313,430.9414 Q254.1563,430.9414 254.75,430.6758 Q255.3438,430.3945 255.9688,429.8164 L255.9688,432.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="185" x="272" y="432.7798">digitalocean_snapshot</text><!--MD5=[3b09a27d5c2b379405c9ecb6cd9106d4]
+class digitalocean_volume--><rect codeLine="23" fill="#3D176E" height="39.7891" id="digitalocean_volume" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="215" x="164" y="307"/><ellipse cx="179" cy="326.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M181.9688,332.5352 Q181.3906,332.832 180.75,332.9727 Q180.1094,333.1289 179.4063,333.1289 Q176.9063,333.1289 175.5781,331.4883 Q174.2656,329.832 174.2656,326.707 Q174.2656,323.582 175.5781,321.9258 Q176.9063,320.2695 179.4063,320.2695 Q180.1094,320.2695 180.75,320.4258 Q181.4063,320.582 181.9688,320.8789 L181.9688,323.5977 Q181.3438,323.0195 180.75,322.7539 Q180.1563,322.4727 179.5313,322.4727 Q178.1875,322.4727 177.5,323.5508 Q176.8125,324.6133 176.8125,326.707 Q176.8125,328.8008 177.5,329.8789 Q178.1875,330.9414 179.5313,330.9414 Q180.1563,330.9414 180.75,330.6758 Q181.3438,330.3945 181.9688,329.8164 L181.9688,332.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="173" x="198" y="332.7798">digitalocean_volume</text><!--MD5=[c49d09fe9e8ef547b55e29c1e73e7f42]
+class digitalocean_team--><rect codeLine="26" fill="#3D176E" height="39.7891" id="digitalocean_team" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="196" x="251.5" y="7"/><ellipse cx="266.5" cy="26.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M269.4688,32.5352 Q268.8906,32.832 268.25,32.9727 Q267.6094,33.1289 266.9063,33.1289 Q264.4063,33.1289 263.0781,31.4883 Q261.7656,29.832 261.7656,26.707 Q261.7656,23.582 263.0781,21.9258 Q264.4063,20.2695 266.9063,20.2695 Q267.6094,20.2695 268.25,20.4258 Q268.9063,20.582 269.4688,20.8789 L269.4688,23.5977 Q268.8438,23.0195 268.25,22.7539 Q267.6563,22.4727 267.0313,22.4727 Q265.6875,22.4727 265,23.5508 Q264.3125,24.6133 264.3125,26.707 Q264.3125,28.8008 265,29.8789 Q265.6875,30.9414 267.0313,30.9414 Q267.6563,30.9414 268.25,30.6758 Q268.8438,30.3945 269.4688,29.8164 L269.4688,32.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="154" x="285.5" y="32.7798">digitalocean_team</text><!--MD5=[e57d6a85a60cb9d8733a2b39f4f9d4e9]
+class digitalocean_region--><rect codeLine="29" fill="#3D176E" height="39.7891" id="digitalocean_region" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="205" x="325" y="107"/><ellipse cx="340" cy="126.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M342.9688,132.5352 Q342.3906,132.832 341.75,132.9727 Q341.1094,133.1289 340.4063,133.1289 Q337.9063,133.1289 336.5781,131.4883 Q335.2656,129.832 335.2656,126.707 Q335.2656,123.582 336.5781,121.9258 Q337.9063,120.2695 340.4063,120.2695 Q341.1094,120.2695 341.75,120.4258 Q342.4063,120.582 342.9688,120.8789 L342.9688,123.5977 Q342.3438,123.0195 341.75,122.7539 Q341.1563,122.4727 340.5313,122.4727 Q339.1875,122.4727 338.5,123.5508 Q337.8125,124.6133 337.8125,126.707 Q337.8125,128.8008 338.5,129.8789 Q339.1875,130.9414 340.5313,130.9414 Q341.1563,130.9414 341.75,130.6758 Q342.3438,130.3945 342.9688,129.8164 L342.9688,132.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="163" x="359" y="132.7798">digitalocean_region</text><!--MD5=[ffdf0d5671c942e1fe442c5e0df01ebf]
+link digitalocean_droplet to digitalocean_snapshot--><path codeLine="32" d="M112.91,247.42 C114.48,273.31 120.98,319.09 146.5,347 C172.49,375.42 209.86,393.71 245.6,405.44 " fill="none" id="digitalocean_droplet-to-digitalocean_snapshot" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="250.4,406.98,243.0551,400.4185,245.6397,405.4504,240.6078,408.035,250.4,406.98" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[d85140b03ec821a57d94e9cb8bed1a79]
+link digitalocean_droplet to digitalocean_volume--><path codeLine="33" d="M143.53,247.13 C170.13,263.52 208.42,287.12 236.18,304.23 " fill="none" id="digitalocean_droplet-to-digitalocean_volume" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="240.54,306.92,234.9836,298.7882,236.2856,304.2931,230.7807,305.5952,240.54,306.92" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[434148c53af536ca0c90a9c747d96cdc]
+link digitalocean_volume to digitalocean_snapshot--><path codeLine="34" d="M287.31,347.36 C300.23,363.2 318.57,385.66 332.33,402.52 " fill="none" id="digitalocean_volume-to-digitalocean_snapshot" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="335.73,406.68,333.142,397.1773,332.57,402.8051,326.9422,402.2332,335.73,406.68" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[a347f9f52cea14269900904d6d6ac114]
+link digitalocean_team to digitalocean_droplet--><path codeLine="35" d="M322.98,47.23 C301.69,62.89 271.21,85.79 245.5,107 C206.32,139.32 162.78,179.05 136.53,203.44 " fill="none" id="digitalocean_team-to-digitalocean_droplet" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="132.78,206.92,142.0883,203.7021,136.4348,203.5079,136.629,197.8544,132.78,206.92" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[3f8f2b3b67cb50ff0d1977b4c4606b69]
+link digitalocean_team to digitalocean_region--><path codeLine="36" d="M364.91,47.36 C377.52,63.2 395.39,85.66 408.81,102.52 " fill="none" id="digitalocean_team-to-digitalocean_region" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="412.12,106.68,409.6467,97.1467,409.007,102.7673,403.3864,102.1276,412.12,106.68" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[790322483833dd56d229e9795f762d55]
+link digitalocean_team to digitalocean_snapshot--><path codeLine="37" d="M447.74,43.12 C485.43,54.24 524.82,73.53 547.5,107 C621.15,215.68 456.58,351.44 383.84,403.9 " fill="none" id="digitalocean_team-to-digitalocean_snapshot" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="379.61,406.93,389.2533,404.9281,383.6709,404.013,384.5861,398.4307,379.61,406.93" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[a2f1a8ab2434d115331506a44ac8e90c]
+link digitalocean_team to digitalocean_volume--><path codeLine="38" d="M337.12,47 C327.57,62.53 314.81,85.37 307.5,107 C284.44,175.26 275.86,260.65 272.91,301.73 " fill="none" id="digitalocean_team-to-digitalocean_volume" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="272.56,306.75,277.168,298.0456,272.903,301.7618,269.1869,297.4968,272.56,306.75" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[219715869ffb5c7cb3591b3e1250723b]
+link digitalocean_region to digitalocean_droplet--><path codeLine="39" d="M366.39,147.01 C312.47,163.79 234.05,188.19 178.66,205.42 " fill="none" id="digitalocean_region-to-digitalocean_droplet" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="173.71,206.96,183.4923,208.1035,178.4839,205.4735,181.1139,200.4652,173.71,206.96" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[64ae48f1aec8c2048ab832c7e0529528]
+link digitalocean_region to digitalocean_snapshot--><path codeLine="40" d="M427.19,147.01 C426.05,185.7 420.77,275.96 396.5,347 C389.75,366.76 377.95,387.2 368.14,402.34 " fill="none" id="digitalocean_region-to-digitalocean_snapshot" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="365.16,406.86,373.4469,401.5376,367.907,402.6822,366.7624,397.1424,365.16,406.86" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[232f762a5d844dd0ca33bb2701716730]
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class digitalocean_droplet {
+
+}
+class digitalocean_snapshot {
+
+}
+class digitalocean_volume {
+
+}
+class digitalocean_team {
+
+}
+class digitalocean_region {
+
+}
+digitalocean_droplet -[#1A83AF]-> digitalocean_snapshot
+digitalocean_droplet -[#1A83AF]-> digitalocean_volume
+digitalocean_volume -[#1A83AF]-> digitalocean_snapshot
+digitalocean_team -[#1A83AF]-> digitalocean_droplet
+digitalocean_team -[#1A83AF]-> digitalocean_region
+digitalocean_team -[#1A83AF]-> digitalocean_snapshot
+digitalocean_team -[#1A83AF]-> digitalocean_volume
+digitalocean_region -[#1A83AF]-> digitalocean_droplet
+digitalocean_region -[#1A83AF]-> digitalocean_snapshot
+@enduml
+
+PlantUML version 1.2021.16(Wed Dec 08 17:25:22 UTC 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

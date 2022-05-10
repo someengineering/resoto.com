@@ -6,180 +6,360 @@ sidebar_label: Amazon Web Services
 
 ## `aws_account`
 
-![aws_account Resource Diagram](./img/aws/aws_account.svg)
+![aws_account](./img/aws/aws_account.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_account`:**
+
+![aws_account](./img/aws/aws_account_relationships.svg)
 
 ## `aws_alb`
 
-![aws_alb Resource Diagram](./img/aws/aws_alb.svg)
+![aws_alb](./img/aws/aws_alb.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_alb`:**
+
+![aws_alb](./img/aws/aws_alb_relationships.svg)
 
 ## `aws_alb_quota`
 
-![aws_alb_quota Resource Diagram](./img/aws/aws_alb_quota.svg)
+![aws_alb_quota](./img/aws/aws_alb_quota.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_alb_quota`:**
+
+![aws_alb_quota](./img/aws/aws_alb_quota_relationships.svg)
 
 ## `aws_alb_target_group`
 
-![aws_alb_target_group Resource Diagram](./img/aws/aws_alb_target_group.svg)
+![aws_alb_target_group](./img/aws/aws_alb_target_group.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_alb_target_group`:**
+
+![aws_alb_target_group](./img/aws/aws_alb_target_group_relationships.svg)
 
 ## `aws_autoscaling_group`
 
-![aws_autoscaling_group Resource Diagram](./img/aws/aws_autoscaling_group.svg)
+![aws_autoscaling_group](./img/aws/aws_autoscaling_group.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_autoscaling_group`:**
+
+![aws_autoscaling_group](./img/aws/aws_autoscaling_group_relationships.svg)
 
 ## `aws_cloudformation_stack`
 
-![aws_cloudformation_stack Resource Diagram](./img/aws/aws_cloudformation_stack.svg)
+![aws_cloudformation_stack](./img/aws/aws_cloudformation_stack.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_cloudformation_stack`:**
+
+![aws_cloudformation_stack](./img/aws/aws_cloudformation_stack_relationships.svg)
 
 ## `aws_cloudformation_stack_set`
 
-![aws_cloudformation_stack_set Resource Diagram](./img/aws/aws_cloudformation_stack_set.svg)
+![aws_cloudformation_stack_set](./img/aws/aws_cloudformation_stack_set.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_cloudformation_stack_set`:**
+
+![aws_cloudformation_stack_set](./img/aws/aws_cloudformation_stack_set_relationships.svg)
 
 ## `aws_cloudwatch_alarm`
 
-![aws_cloudwatch_alarm Resource Diagram](./img/aws/aws_cloudwatch_alarm.svg)
+![aws_cloudwatch_alarm](./img/aws/aws_cloudwatch_alarm.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_cloudwatch_alarm`:**
+
+![aws_cloudwatch_alarm](./img/aws/aws_cloudwatch_alarm_relationships.svg)
 
 ## `aws_ec2_elastic_ip`
 
-![aws_ec2_elastic_ip Resource Diagram](./img/aws/aws_ec2_elastic_ip.svg)
+![aws_ec2_elastic_ip](./img/aws/aws_ec2_elastic_ip.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_ec2_elastic_ip`:**
+
+![aws_ec2_elastic_ip](./img/aws/aws_ec2_elastic_ip_relationships.svg)
 
 ## `aws_ec2_instance`
 
-![aws_ec2_instance Resource Diagram](./img/aws/aws_ec2_instance.svg)
+![aws_ec2_instance](./img/aws/aws_ec2_instance.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_ec2_instance`:**
+
+![aws_ec2_instance](./img/aws/aws_ec2_instance_relationships.svg)
 
 ## `aws_ec2_instance_quota`
 
-![aws_ec2_instance_quota Resource Diagram](./img/aws/aws_ec2_instance_quota.svg)
+![aws_ec2_instance_quota](./img/aws/aws_ec2_instance_quota.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_ec2_instance_quota`:**
+
+![aws_ec2_instance_quota](./img/aws/aws_ec2_instance_quota_relationships.svg)
 
 ## `aws_ec2_instance_type`
 
-![aws_ec2_instance_type Resource Diagram](./img/aws/aws_ec2_instance_type.svg)
+![aws_ec2_instance_type](./img/aws/aws_ec2_instance_type.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_ec2_instance_type`:**
+
+![aws_ec2_instance_type](./img/aws/aws_ec2_instance_type_relationships.svg)
 
 ## `aws_ec2_internet_gateway`
 
-![aws_ec2_internet_gateway Resource Diagram](./img/aws/aws_ec2_internet_gateway.svg)
+![aws_ec2_internet_gateway](./img/aws/aws_ec2_internet_gateway.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_ec2_internet_gateway`:**
+
+![aws_ec2_internet_gateway](./img/aws/aws_ec2_internet_gateway_relationships.svg)
 
 ## `aws_ec2_internet_gateway_quota`
 
-![aws_ec2_internet_gateway_quota Resource Diagram](./img/aws/aws_ec2_internet_gateway_quota.svg)
+![aws_ec2_internet_gateway_quota](./img/aws/aws_ec2_internet_gateway_quota.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_ec2_internet_gateway_quota`:**
+
+![aws_ec2_internet_gateway_quota](./img/aws/aws_ec2_internet_gateway_quota_relationships.svg)
 
 ## `aws_ec2_keypair`
 
-![aws_ec2_keypair Resource Diagram](./img/aws/aws_ec2_keypair.svg)
+![aws_ec2_keypair](./img/aws/aws_ec2_keypair.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_ec2_keypair`:**
+
+![aws_ec2_keypair](./img/aws/aws_ec2_keypair_relationships.svg)
 
 ## `aws_ec2_nat_gateway`
 
-![aws_ec2_nat_gateway Resource Diagram](./img/aws/aws_ec2_nat_gateway.svg)
+![aws_ec2_nat_gateway](./img/aws/aws_ec2_nat_gateway.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_ec2_nat_gateway`:**
+
+![aws_ec2_nat_gateway](./img/aws/aws_ec2_nat_gateway_relationships.svg)
 
 ## `aws_ec2_network_acl`
 
-![aws_ec2_network_acl Resource Diagram](./img/aws/aws_ec2_network_acl.svg)
+![aws_ec2_network_acl](./img/aws/aws_ec2_network_acl.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_ec2_network_acl`:**
+
+![aws_ec2_network_acl](./img/aws/aws_ec2_network_acl_relationships.svg)
 
 ## `aws_ec2_network_interface`
 
-![aws_ec2_network_interface Resource Diagram](./img/aws/aws_ec2_network_interface.svg)
+![aws_ec2_network_interface](./img/aws/aws_ec2_network_interface.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_ec2_network_interface`:**
+
+![aws_ec2_network_interface](./img/aws/aws_ec2_network_interface_relationships.svg)
 
 ## `aws_ec2_route_table`
 
-![aws_ec2_route_table Resource Diagram](./img/aws/aws_ec2_route_table.svg)
+![aws_ec2_route_table](./img/aws/aws_ec2_route_table.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_ec2_route_table`:**
+
+![aws_ec2_route_table](./img/aws/aws_ec2_route_table_relationships.svg)
 
 ## `aws_ec2_security_group`
 
-![aws_ec2_security_group Resource Diagram](./img/aws/aws_ec2_security_group.svg)
+![aws_ec2_security_group](./img/aws/aws_ec2_security_group.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_ec2_security_group`:**
+
+![aws_ec2_security_group](./img/aws/aws_ec2_security_group_relationships.svg)
 
 ## `aws_ec2_snapshot`
 
-![aws_ec2_snapshot Resource Diagram](./img/aws/aws_ec2_snapshot.svg)
+![aws_ec2_snapshot](./img/aws/aws_ec2_snapshot.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_ec2_snapshot`:**
+
+![aws_ec2_snapshot](./img/aws/aws_ec2_snapshot_relationships.svg)
 
 ## `aws_ec2_subnet`
 
-![aws_ec2_subnet Resource Diagram](./img/aws/aws_ec2_subnet.svg)
+![aws_ec2_subnet](./img/aws/aws_ec2_subnet.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_ec2_subnet`:**
+
+![aws_ec2_subnet](./img/aws/aws_ec2_subnet_relationships.svg)
 
 ## `aws_ec2_volume`
 
-![aws_ec2_volume Resource Diagram](./img/aws/aws_ec2_volume.svg)
+![aws_ec2_volume](./img/aws/aws_ec2_volume.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_ec2_volume`:**
+
+![aws_ec2_volume](./img/aws/aws_ec2_volume_relationships.svg)
 
 ## `aws_ec2_volume_type`
 
-![aws_ec2_volume_type Resource Diagram](./img/aws/aws_ec2_volume_type.svg)
+![aws_ec2_volume_type](./img/aws/aws_ec2_volume_type.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_ec2_volume_type`:**
+
+![aws_ec2_volume_type](./img/aws/aws_ec2_volume_type_relationships.svg)
 
 ## `aws_eks_cluster`
 
-![aws_eks_cluster Resource Diagram](./img/aws/aws_eks_cluster.svg)
+![aws_eks_cluster](./img/aws/aws_eks_cluster.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_eks_cluster`:**
+
+![aws_eks_cluster](./img/aws/aws_eks_cluster_relationships.svg)
 
 ## `aws_eks_nodegroup`
 
-![aws_eks_nodegroup Resource Diagram](./img/aws/aws_eks_nodegroup.svg)
+![aws_eks_nodegroup](./img/aws/aws_eks_nodegroup.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_eks_nodegroup`:**
+
+![aws_eks_nodegroup](./img/aws/aws_eks_nodegroup_relationships.svg)
 
 ## `aws_elb`
 
-![aws_elb Resource Diagram](./img/aws/aws_elb.svg)
+![aws_elb](./img/aws/aws_elb.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_elb`:**
+
+![aws_elb](./img/aws/aws_elb_relationships.svg)
 
 ## `aws_elb_quota`
 
-![aws_elb_quota Resource Diagram](./img/aws/aws_elb_quota.svg)
+![aws_elb_quota](./img/aws/aws_elb_quota.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_elb_quota`:**
+
+![aws_elb_quota](./img/aws/aws_elb_quota_relationships.svg)
 
 ## `aws_iam_access_key`
 
-![aws_iam_access_key Resource Diagram](./img/aws/aws_iam_access_key.svg)
+![aws_iam_access_key](./img/aws/aws_iam_access_key.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_iam_access_key`:**
+
+![aws_iam_access_key](./img/aws/aws_iam_access_key_relationships.svg)
 
 ## `aws_iam_group`
 
-![aws_iam_group Resource Diagram](./img/aws/aws_iam_group.svg)
+![aws_iam_group](./img/aws/aws_iam_group.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_iam_group`:**
+
+![aws_iam_group](./img/aws/aws_iam_group_relationships.svg)
 
 ## `aws_iam_instance_profile`
 
-![aws_iam_instance_profile Resource Diagram](./img/aws/aws_iam_instance_profile.svg)
+![aws_iam_instance_profile](./img/aws/aws_iam_instance_profile.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_iam_instance_profile`:**
+
+![aws_iam_instance_profile](./img/aws/aws_iam_instance_profile_relationships.svg)
 
 ## `aws_iam_policy`
 
-![aws_iam_policy Resource Diagram](./img/aws/aws_iam_policy.svg)
+![aws_iam_policy](./img/aws/aws_iam_policy.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_iam_policy`:**
+
+![aws_iam_policy](./img/aws/aws_iam_policy_relationships.svg)
 
 ## `aws_iam_role`
 
-![aws_iam_role Resource Diagram](./img/aws/aws_iam_role.svg)
+![aws_iam_role](./img/aws/aws_iam_role.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_iam_role`:**
+
+![aws_iam_role](./img/aws/aws_iam_role_relationships.svg)
 
 ## `aws_iam_server_certificate`
 
-![aws_iam_server_certificate Resource Diagram](./img/aws/aws_iam_server_certificate.svg)
+![aws_iam_server_certificate](./img/aws/aws_iam_server_certificate.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_iam_server_certificate`:**
+
+![aws_iam_server_certificate](./img/aws/aws_iam_server_certificate_relationships.svg)
 
 ## `aws_iam_server_certificate_quota`
 
-![aws_iam_server_certificate_quota Resource Diagram](./img/aws/aws_iam_server_certificate_quota.svg)
+![aws_iam_server_certificate_quota](./img/aws/aws_iam_server_certificate_quota.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_iam_server_certificate_quota`:**
+
+![aws_iam_server_certificate_quota](./img/aws/aws_iam_server_certificate_quota_relationships.svg)
 
 ## `aws_iam_user`
 
-![aws_iam_user Resource Diagram](./img/aws/aws_iam_user.svg)
+![aws_iam_user](./img/aws/aws_iam_user.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_iam_user`:**
+
+![aws_iam_user](./img/aws/aws_iam_user_relationships.svg)
 
 ## `aws_rds_instance`
 
-![aws_rds_instance Resource Diagram](./img/aws/aws_rds_instance.svg)
+![aws_rds_instance](./img/aws/aws_rds_instance.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_rds_instance`:**
+
+![aws_rds_instance](./img/aws/aws_rds_instance_relationships.svg)
 
 ## `aws_region`
 
-![aws_region Resource Diagram](./img/aws/aws_region.svg)
+![aws_region](./img/aws/aws_region.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_region`:**
+
+![aws_region](./img/aws/aws_region_relationships.svg)
 
 ## `aws_resource`
 
-![aws_resource Resource Diagram](./img/aws/aws_resource.svg)
+![aws_resource](./img/aws/aws_resource.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_resource`:**
+
+![aws_resource](./img/aws/aws_resource_relationships.svg)
 
 ## `aws_s3_bucket`
 
-![aws_s3_bucket Resource Diagram](./img/aws/aws_s3_bucket.svg)
+![aws_s3_bucket](./img/aws/aws_s3_bucket.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_s3_bucket`:**
+
+![aws_s3_bucket](./img/aws/aws_s3_bucket_relationships.svg)
 
 ## `aws_s3_bucket_quota`
 
-![aws_s3_bucket_quota Resource Diagram](./img/aws/aws_s3_bucket_quota.svg)
+![aws_s3_bucket_quota](./img/aws/aws_s3_bucket_quota.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_s3_bucket_quota`:**
+
+![aws_s3_bucket_quota](./img/aws/aws_s3_bucket_quota_relationships.svg)
 
 ## `aws_vpc`
 
-![aws_vpc Resource Diagram](./img/aws/aws_vpc.svg)
+![aws_vpc](./img/aws/aws_vpc.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_vpc`:**
+
+![aws_vpc](./img/aws/aws_vpc_relationships.svg)
 
 ## `aws_vpc_endpoint`
 
-![aws_vpc_endpoint Resource Diagram](./img/aws/aws_vpc_endpoint.svg)
+![aws_vpc_endpoint](./img/aws/aws_vpc_endpoint.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_vpc_endpoint`:**
+
+![aws_vpc_endpoint](./img/aws/aws_vpc_endpoint_relationships.svg)
 
 ## `aws_vpc_peering_connection`
 
-![aws_vpc_peering_connection Resource Diagram](./img/aws/aws_vpc_peering_connection.svg)
+![aws_vpc_peering_connection](./img/aws/aws_vpc_peering_connection.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_vpc_peering_connection`:**
+
+![aws_vpc_peering_connection](./img/aws/aws_vpc_peering_connection_relationships.svg)
 
 ## `aws_vpc_quota`
 
-![aws_vpc_quota Resource Diagram](./img/aws/aws_vpc_quota.svg)
+![aws_vpc_quota](./img/aws/aws_vpc_quota.svg)
+
+**Relationships in the graph that shows predecessors and successors of `aws_vpc_quota`:**
+
+![aws_vpc_quota](./img/aws/aws_vpc_quota_relationships.svg)

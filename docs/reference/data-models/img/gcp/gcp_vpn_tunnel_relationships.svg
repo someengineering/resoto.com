@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="252px" preserveAspectRatio="none" style="width:296px;height:252px;background:#00000000;" version="1.1" viewBox="0 0 296 252" width="296px" zoomAndPan="magnify"><defs/><g><!--MD5=[0934581ae09789f529834773e43c0213]
+class gcp_target_vpn_gateway--><rect codeLine="17" fill="#3D176E" height="39.7891" id="gcp_target_vpn_gateway" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="251" x="7" y="207"/><ellipse cx="22" cy="226.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M24.9688,232.5352 Q24.3906,232.832 23.75,232.9727 Q23.1094,233.1289 22.4063,233.1289 Q19.9063,233.1289 18.5781,231.4883 Q17.2656,229.832 17.2656,226.707 Q17.2656,223.582 18.5781,221.9258 Q19.9063,220.2695 22.4063,220.2695 Q23.1094,220.2695 23.75,220.4258 Q24.4063,220.582 24.9688,220.8789 L24.9688,223.5977 Q24.3438,223.0195 23.75,222.7539 Q23.1563,222.4727 22.5313,222.4727 Q21.1875,222.4727 20.5,223.5508 Q19.8125,224.6133 19.8125,226.707 Q19.8125,228.8008 20.5,229.8789 Q21.1875,230.9414 22.5313,230.9414 Q23.1563,230.9414 23.75,230.6758 Q24.3438,230.3945 24.9688,229.8164 L24.9688,232.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="209" x="41" y="232.7798">gcp_target_vpn_gateway</text><!--MD5=[53aed81847902f6f35e5b05e473466dd]
+class gcp_vpn_tunnel--><rect codeLine="20" fill="#3D176E" height="39.7891" id="gcp_vpn_tunnel" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="174" x="115.5" y="107"/><ellipse cx="130.5" cy="126.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M133.4688,132.5352 Q132.8906,132.832 132.25,132.9727 Q131.6094,133.1289 130.9063,133.1289 Q128.4063,133.1289 127.0781,131.4883 Q125.7656,129.832 125.7656,126.707 Q125.7656,123.582 127.0781,121.9258 Q128.4063,120.2695 130.9063,120.2695 Q131.6094,120.2695 132.25,120.4258 Q132.9063,120.582 133.4688,120.8789 L133.4688,123.5977 Q132.8438,123.0195 132.25,122.7539 Q131.6563,122.4727 131.0313,122.4727 Q129.6875,122.4727 129,123.5508 Q128.3125,124.6133 128.3125,126.707 Q128.3125,128.8008 129,129.8789 Q129.6875,130.9414 131.0313,130.9414 Q131.6563,130.9414 132.25,130.6758 Q132.8438,130.3945 133.4688,129.8164 L133.4688,132.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="132" x="149.5" y="132.7798">gcp_vpn_tunnel</text><!--MD5=[dfb342624abca34c7dd87f3bd9b67829]
+class gcp_region--><rect codeLine="23" fill="#3D176E" height="39.7891" id="gcp_region" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="132" x="66.5" y="7"/><ellipse cx="81.5" cy="26.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M84.4688,32.5352 Q83.8906,32.832 83.25,32.9727 Q82.6094,33.1289 81.9063,33.1289 Q79.4063,33.1289 78.0781,31.4883 Q76.7656,29.832 76.7656,26.707 Q76.7656,23.582 78.0781,21.9258 Q79.4063,20.2695 81.9063,20.2695 Q82.6094,20.2695 83.25,20.4258 Q83.9063,20.582 84.4688,20.8789 L84.4688,23.5977 Q83.8438,23.0195 83.25,22.7539 Q82.6563,22.4727 82.0313,22.4727 Q80.6875,22.4727 80,23.5508 Q79.3125,24.6133 79.3125,26.707 Q79.3125,28.8008 80,29.8789 Q80.6875,30.9414 82.0313,30.9414 Q82.6563,30.9414 83.25,30.6758 Q83.8438,30.3945 84.4688,29.8164 L84.4688,32.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="90" x="100.5" y="32.7798">gcp_region</text><!--MD5=[d608bbe482ad8d745792399d5eb29944]
+link gcp_vpn_tunnel to gcp_target_vpn_gateway--><path codeLine="26" d="M188.67,147.36 C177.36,163.2 161.32,185.66 149.27,202.52 " fill="none" id="gcp_vpn_tunnel-to-gcp_target_vpn_gateway" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="146.3,206.68,154.791,201.6898,149.2102,202.6142,148.2858,197.0334,146.3,206.68" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[d6368dd9369beaeecba763af33bf299f]
+link gcp_region to gcp_target_vpn_gateway--><path codeLine="27" d="M121.67,47.08 C113.48,62.64 102.93,85.5 98.5,107 C94.91,124.41 94.91,129.59 98.5,147 C102.51,166.48 111.56,187.08 119.31,202.36 " fill="none" id="gcp_region-to-gcp_target_vpn_gateway" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="121.67,206.92,121.1096,197.0871,119.3826,202.4739,113.9958,200.7469,121.67,206.92" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[3023c3c17abe7ebefe8240b46d4f3406]
+link gcp_region to gcp_vpn_tunnel--><path codeLine="28" d="M146.33,47.36 C157.64,63.2 173.68,85.66 185.73,102.52 " fill="none" id="gcp_region-to-gcp_vpn_tunnel" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="188.7,106.68,186.7142,97.0334,185.7898,102.6142,180.209,101.6898,188.7,106.68" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[5c4270293e02601513022f8ac23429fa]
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class gcp_target_vpn_gateway {
+
+}
+class gcp_vpn_tunnel {
+
+}
+class gcp_region {
+
+}
+gcp_vpn_tunnel -[#1A83AF]-> gcp_target_vpn_gateway
+gcp_region -[#1A83AF]-> gcp_target_vpn_gateway
+gcp_region -[#1A83AF]-> gcp_vpn_tunnel
+@enduml
+
+PlantUML version 1.2021.16(Wed Dec 08 17:25:22 UTC 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

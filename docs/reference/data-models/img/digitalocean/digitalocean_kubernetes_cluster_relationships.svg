@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="452px" preserveAspectRatio="none" style="width:767px;height:452px;background:#00000000;" version="1.1" viewBox="0 0 767 452" width="767px" zoomAndPan="magnify"><defs/><g><!--MD5=[9f976896e726bb06dda64d66586df82b]
+class digitalocean_droplet--><rect codeLine="17" fill="#3D176E" height="39.7891" id="digitalocean_droplet" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="211" x="385.5" y="407"/><ellipse cx="400.5" cy="426.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M403.4688,432.5352 Q402.8906,432.832 402.25,432.9727 Q401.6094,433.1289 400.9063,433.1289 Q398.4063,433.1289 397.0781,431.4883 Q395.7656,429.832 395.7656,426.707 Q395.7656,423.582 397.0781,421.9258 Q398.4063,420.2695 400.9063,420.2695 Q401.6094,420.2695 402.25,420.4258 Q402.9063,420.582 403.4688,420.8789 L403.4688,423.5977 Q402.8438,423.0195 402.25,422.7539 Q401.6563,422.4727 401.0313,422.4727 Q399.6875,422.4727 399,423.5508 Q398.3125,424.6133 398.3125,426.707 Q398.3125,428.8008 399,429.8789 Q399.6875,430.9414 401.0313,430.9414 Q401.6563,430.9414 402.25,430.6758 Q402.8438,430.3945 403.4688,429.8164 L403.4688,432.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="169" x="419.5" y="432.7798">digitalocean_droplet</text><!--MD5=[6d16b24c643eda89dd832355a56d9ee8]
+class digitalocean_network--><rect codeLine="20" fill="#3D176E" height="39.7891" id="digitalocean_network" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="222" x="7" y="207"/><ellipse cx="22" cy="226.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M24.9688,232.5352 Q24.3906,232.832 23.75,232.9727 Q23.1094,233.1289 22.4063,233.1289 Q19.9063,233.1289 18.5781,231.4883 Q17.2656,229.832 17.2656,226.707 Q17.2656,223.582 18.5781,221.9258 Q19.9063,220.2695 22.4063,220.2695 Q23.1094,220.2695 23.75,220.4258 Q24.4063,220.582 24.9688,220.8789 L24.9688,223.5977 Q24.3438,223.0195 23.75,222.7539 Q23.1563,222.4727 22.5313,222.4727 Q21.1875,222.4727 20.5,223.5508 Q19.8125,224.6133 19.8125,226.707 Q19.8125,228.8008 20.5,229.8789 Q21.1875,230.9414 22.5313,230.9414 Q23.1563,230.9414 23.75,230.6758 Q24.3438,230.3945 24.9688,229.8164 L24.9688,232.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="180" x="41" y="232.7798">digitalocean_network</text><!--MD5=[4166141e0510fbeb8b95e802a32eb9f5]
+class digitalocean_kubernetes_cluster--><rect codeLine="23" fill="#3D176E" height="39.7891" id="digitalocean_kubernetes_cluster" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="311" x="126.5" y="307"/><ellipse cx="141.5" cy="326.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M144.4688,332.5352 Q143.8906,332.832 143.25,332.9727 Q142.6094,333.1289 141.9063,333.1289 Q139.4063,333.1289 138.0781,331.4883 Q136.7656,329.832 136.7656,326.707 Q136.7656,323.582 138.0781,321.9258 Q139.4063,320.2695 141.9063,320.2695 Q142.6094,320.2695 143.25,320.4258 Q143.9063,320.582 144.4688,320.8789 L144.4688,323.5977 Q143.8438,323.0195 143.25,322.7539 Q142.6563,322.4727 142.0313,322.4727 Q140.6875,322.4727 140,323.5508 Q139.3125,324.6133 139.3125,326.707 Q139.3125,328.8008 140,329.8789 Q140.6875,330.9414 142.0313,330.9414 Q142.6563,330.9414 143.25,330.6758 Q143.8438,330.3945 144.4688,329.8164 L144.4688,332.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="269" x="160.5" y="332.7798">digitalocean_kubernetes_cluster</text><!--MD5=[c49d09fe9e8ef547b55e29c1e73e7f42]
+class digitalocean_team--><rect codeLine="26" fill="#3D176E" height="39.7891" id="digitalocean_team" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="196" x="340" y="7"/><ellipse cx="355" cy="26.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M357.9688,32.5352 Q357.3906,32.832 356.75,32.9727 Q356.1094,33.1289 355.4063,33.1289 Q352.9063,33.1289 351.5781,31.4883 Q350.2656,29.832 350.2656,26.707 Q350.2656,23.582 351.5781,21.9258 Q352.9063,20.2695 355.4063,20.2695 Q356.1094,20.2695 356.75,20.4258 Q357.4063,20.582 357.9688,20.8789 L357.9688,23.5977 Q357.3438,23.0195 356.75,22.7539 Q356.1563,22.4727 355.5313,22.4727 Q354.1875,22.4727 353.5,23.5508 Q352.8125,24.6133 352.8125,26.707 Q352.8125,28.8008 353.5,29.8789 Q354.1875,30.9414 355.5313,30.9414 Q356.1563,30.9414 356.75,30.6758 Q357.3438,30.3945 357.9688,29.8164 L357.9688,32.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="154" x="374" y="32.7798">digitalocean_team</text><!--MD5=[00b842336ab98a134dc94d4459cfc884]
+class digitalocean_project--><rect codeLine="29" fill="#3D176E" height="39.7891" id="digitalocean_project" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="209" x="490.5" y="207"/><ellipse cx="505.5" cy="226.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M508.4688,232.5352 Q507.8906,232.832 507.25,232.9727 Q506.6094,233.1289 505.9063,233.1289 Q503.4063,233.1289 502.0781,231.4883 Q500.7656,229.832 500.7656,226.707 Q500.7656,223.582 502.0781,221.9258 Q503.4063,220.2695 505.9063,220.2695 Q506.6094,220.2695 507.25,220.4258 Q507.9063,220.582 508.4688,220.8789 L508.4688,223.5977 Q507.8438,223.0195 507.25,222.7539 Q506.6563,222.4727 506.0313,222.4727 Q504.6875,222.4727 504,223.5508 Q503.3125,224.6133 503.3125,226.707 Q503.3125,228.8008 504,229.8789 Q504.6875,230.9414 506.0313,230.9414 Q506.6563,230.9414 507.25,230.6758 Q507.8438,230.3945 508.4688,229.8164 L508.4688,232.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="167" x="524.5" y="232.7798">digitalocean_project</text><!--MD5=[e57d6a85a60cb9d8733a2b39f4f9d4e9]
+class digitalocean_region--><rect codeLine="32" fill="#3D176E" height="39.7891" id="digitalocean_region" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="205" x="335.5" y="107"/><ellipse cx="350.5" cy="126.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M353.4688,132.5352 Q352.8906,132.832 352.25,132.9727 Q351.6094,133.1289 350.9063,133.1289 Q348.4063,133.1289 347.0781,131.4883 Q345.7656,129.832 345.7656,126.707 Q345.7656,123.582 347.0781,121.9258 Q348.4063,120.2695 350.9063,120.2695 Q351.6094,120.2695 352.25,120.4258 Q352.9063,120.582 353.4688,120.8789 L353.4688,123.5977 Q352.8438,123.0195 352.25,122.7539 Q351.6563,122.4727 351.0313,122.4727 Q349.6875,122.4727 349,123.5508 Q348.3125,124.6133 348.3125,126.707 Q348.3125,128.8008 349,129.8789 Q349.6875,130.9414 351.0313,130.9414 Q351.6563,130.9414 352.25,130.6758 Q352.8438,130.3945 353.4688,129.8164 L353.4688,132.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="163" x="369.5" y="132.7798">digitalocean_region</text><!--MD5=[9e2cd4696674f5a1ecaf5ab30938dd7a]
+link digitalocean_network to digitalocean_kubernetes_cluster--><path codeLine="35" d="M150.01,247.13 C177.44,263.52 216.94,287.12 245.57,304.23 " fill="none" id="digitalocean_network-to-digitalocean_kubernetes_cluster" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="250.07,306.92,244.3987,298.8679,245.7788,304.3538,240.2928,305.7339,250.07,306.92" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[5322e18106be37bf9ab7e590c50886f8]
+link digitalocean_network to digitalocean_droplet--><path codeLine="36" d="M109.17,247.32 C98.86,273.08 85.97,318.72 109,347 C142.7,388.38 279.66,408.75 379.99,418.3 " fill="none" id="digitalocean_network-to-digitalocean_droplet" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="385.04,418.77,376.4428,413.9649,380.0609,418.3135,375.7124,421.9315,385.04,418.77" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[a4d61ad4931a58a99a1f872eacb326c0]
+link digitalocean_kubernetes_cluster to digitalocean_droplet--><path codeLine="37" d="M322.79,347.13 C358.04,363.65 408.91,387.51 445.47,404.65 " fill="none" id="digitalocean_kubernetes_cluster-to-digitalocean_droplet" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="450.31,406.92,443.8664,399.4715,445.7849,404.7931,440.4633,406.7116,450.31,406.92" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[a347f9f52cea14269900904d6d6ac114]
+link digitalocean_team to digitalocean_droplet--><path codeLine="38" d="M502.61,47.05 C571.46,71.38 676.08,120.99 717,207 C760.04,297.46 625.5,370.68 545.67,404.95 " fill="none" id="digitalocean_team-to-digitalocean_droplet" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="540.97,406.95,550.8176,407.1072,545.5709,404.9925,547.6856,399.7458,540.97,406.95" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[f9867d1029e4f56f33fe8344a33e4fa6]
+link digitalocean_team to digitalocean_kubernetes_cluster--><path codeLine="39" d="M391.64,47.11 C365.85,60.16 335.52,80.01 318,107 C278.27,168.21 277.62,258.72 279.97,301.67 " fill="none" id="digitalocean_team-to-digitalocean_kubernetes_cluster" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="280.29,306.92,283.7438,297.6966,279.9905,301.929,275.7582,298.1757,280.29,306.92" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[1ab9659d40ec54788e58cdc83aaea089]
+link digitalocean_team to digitalocean_network--><path codeLine="40" d="M382.49,47.08 C345.28,61.05 295.97,81.91 256,107 C211.31,135.05 166.27,177.07 140.31,202.94 " fill="none" id="digitalocean_team-to-digitalocean_network" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="136.62,206.64,145.8124,203.1045,140.1555,203.1045,140.1555,197.4476,136.62,206.64" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[c730d8b7788dbb28b845905717421aaf]
+link digitalocean_team to digitalocean_project--><path codeLine="41" d="M481.26,47.13 C506.92,60.51 538.21,80.69 558,107 C579.25,135.25 588.45,175.91 592.32,201.63 " fill="none" id="digitalocean_team-to-digitalocean_project" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="593.07,206.89,595.7723,197.4191,592.3709,201.9391,587.8509,198.5377,593.07,206.89" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[3f8f2b3b67cb50ff0d1977b4c4606b69]
+link digitalocean_team to digitalocean_region--><path codeLine="42" d="M438,47.36 C438,62.93 438,84.9 438,101.66 " fill="none" id="digitalocean_team-to-digitalocean_region" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="438,106.68,442,97.68,438,101.68,434,97.68,438,106.68" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[c10b0726467fe3c83e9de84ba3086375]
+link digitalocean_project to digitalocean_droplet--><path codeLine="43" d="M584.84,247.35 C565.68,283.81 524.29,362.61 503.48,402.24 " fill="none" id="digitalocean_project-to-digitalocean_droplet" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="501.05,406.87,508.7716,400.7563,503.3716,402.4417,501.6863,397.0417,501.05,406.87" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[1171ef0dd5357bc1a5d85284a49bd767]
+link digitalocean_project to digitalocean_kubernetes_cluster--><path codeLine="44" d="M534.28,247.01 C480.7,263.79 402.77,288.19 347.74,305.42 " fill="none" id="digitalocean_project-to-digitalocean_kubernetes_cluster" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="342.82,306.96,352.6023,308.1035,347.5939,305.4735,350.2239,300.4652,342.82,306.96" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[219715869ffb5c7cb3591b3e1250723b]
+link digitalocean_region to digitalocean_droplet--><path codeLine="45" d="M441.4,147.09 C450.67,199.22 476.4,343.89 486.68,401.69 " fill="none" id="digitalocean_region-to-digitalocean_droplet" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="487.56,406.68,489.9271,397.1198,486.687,401.7568,482.05,398.5167,487.56,406.68" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[b24e4813d0175f22aca5b8e136af832a]
+link digitalocean_region to digitalocean_kubernetes_cluster--><path codeLine="46" d="M422.76,147.35 C393.91,183.96 331.44,263.25 300.34,302.72 " fill="none" id="digitalocean_region-to-digitalocean_kubernetes_cluster" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="297.07,306.87,305.7749,302.263,300.1585,302.9379,299.4836,297.3215,297.07,306.87" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[c7e65cf47a4a07a81df1a527f8ce2f2a]
+link digitalocean_region to digitalocean_network--><path codeLine="47" d="M375.92,147.01 C321.14,163.79 241.48,188.19 185.21,205.42 " fill="none" id="digitalocean_region-to-digitalocean_network" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="180.18,206.96,189.9549,208.1651,184.9632,205.5036,187.6247,200.512,180.18,206.96" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[e54170784b404b5655509e2889b8d676]
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class digitalocean_droplet {
+
+}
+class digitalocean_network {
+
+}
+class digitalocean_kubernetes_cluster {
+
+}
+class digitalocean_team {
+
+}
+class digitalocean_project {
+
+}
+class digitalocean_region {
+
+}
+digitalocean_network -[#1A83AF]-> digitalocean_kubernetes_cluster
+digitalocean_network -[#1A83AF]-> digitalocean_droplet
+digitalocean_kubernetes_cluster -[#1A83AF]-> digitalocean_droplet
+digitalocean_team -[#1A83AF]-> digitalocean_droplet
+digitalocean_team -[#1A83AF]-> digitalocean_kubernetes_cluster
+digitalocean_team -[#1A83AF]-> digitalocean_network
+digitalocean_team -[#1A83AF]-> digitalocean_project
+digitalocean_team -[#1A83AF]-> digitalocean_region
+digitalocean_project -[#1A83AF]-> digitalocean_droplet
+digitalocean_project -[#1A83AF]-> digitalocean_kubernetes_cluster
+digitalocean_region -[#1A83AF]-> digitalocean_droplet
+digitalocean_region -[#1A83AF]-> digitalocean_kubernetes_cluster
+digitalocean_region -[#1A83AF]-> digitalocean_network
+@enduml
+
+PlantUML version 1.2021.16(Wed Dec 08 17:25:22 UTC 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

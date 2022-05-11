@@ -18,12 +18,12 @@ def export_images(provider: str, path: str = "."):
     name = kind["fqn"]
     print(f"Exporting {name}")
     with open(f"{path}/{provider}/{name}.svg", "w+") as file:
-      image = requests.get(f"{core}/model/uml", params={"show": name}, verify=False)
+      image = requests.get(f"{core}/model/uml", params={"show": name, "link_classes": "true"}, verify=False)
       file.write(image.text)
     with open(f"{path}/{provider}/{name}_relationships.svg", "w+") as file:
       parms = {"show": name, "dependency": "default", "with_base_classes": "false",
                "with_subclasses": "false", "with_inheritance": "false", "with_predecessors": "true",
-               "with_successors": "true", "with_properties": "false"}
+               "with_successors": "true", "with_properties": "false", "link_classes": "true"}
       image = requests.get(f"{core}/model/uml", params=parms, verify=False)
       file.write(image.text)
 
@@ -36,7 +36,7 @@ def print_md(provider: str):
     print(f"![{name}](./img/{provider}/{name}_relationships.svg)\n")
 
 
-# export_images("aws")
-# export_images("digitalocean")
-# export_images("gcp")
-print_md("aws")
+export_images("aws")
+export_images("digitalocean")
+export_images("gcp")
+# print_md("aws")

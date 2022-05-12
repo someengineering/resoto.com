@@ -5,13 +5,13 @@ tags: [graph, search, digitalocean]
 
 # A walk in the graph
 
-Resoto uses a [directed graph](https://en.wikipedia.org/wiki/Directed_graph) to represent your infrastructure resources as nodes and relationships between them as edges. It even stores the data in a graph database, being able to query the graph efficiently. Why should I care, you ask? To answer this question, I would like to present an example that demonstrates the power of this approach.
+Resoto uses a [directed graph](https://en.wikipedia.org/wiki/Directed_graph) to represent your infrastructure resources as nodes and relationships between them as edges. It stores that resource data in a graph database, allowing you to search the graph efficiently. Why should I care, you ask? To answer this question, I would like to present an example that demonstrates the power of this approach.
 
-The following diagram shows an excerpt of the graph model for DigitalOcean droplets; the compute resource in DigitalOcean (similar to EC2 instance in AWS or Instance in GCP). The full model is available in our [reference section](/docs/reference/data-models/digitalocean). Please note that this example uses DigitalOcean, but all examples could be adapted and used also for [AWS](/docs/reference/data-models/aws) or [GCP](/docs/reference/data-models/gcp).
+The following diagram shows an excerpt of the graph model for DigitalOcean droplets. Droplets are the compute instances in DigitalOcean, similar to EC2 instances in AWS. The full model is available in our [reference section](/docs/reference/data-models/digitalocean). Please note that this example uses DigitalOcean, but the same also works on [AWS](/docs/reference/data-models/aws) or [Google Cloud](/docs/reference/data-models/gcp).
 
 ![DigitalOcean Droplet](img/digitalocean_droplet.svg)
 
-This diagram shows how the different kinds of resources are connected to each other in the graph. It does not mean that all of these resources have to be available - it only shows the static structure of a possible graph. A droplet, for example, can have volumes, snapshots, or floating IPs, which are direct successors of the node. If we want to know which volumes are attached to a droplet, we will walk the graph outbound precisely by one step. Since this could yield volumes, snapshots, and floating IPs, as seen in the diagram, we need to filter the resulting list to only keep the volumes. Let's assume we have a specific droplet with id `289061882`, where we want to know all attached volumes:
+This diagram shows how the different kinds of resources are connected to each other in the graph. This does not mean that all of these resources have to exist in your infrastructure. It only shows the structure of a possible graph. A droplet, for example, can have volumes, snapshots, or floating IPs, which are direct successors of the node. If we want to know which volumes are attached to a droplet, we will walk the graph outbound by one step. Since this could yield volumes, snapshots, and floating IPs, as seen in the diagram, we need to filter the resulting list to only keep the volumes. Let's assume we have a specific droplet with id `289061882`, where we want to know all attached volumes:
 
 ```bash
 > search is(digitalocean_droplet) and id=289061882 --> is(volume)
@@ -21,7 +21,7 @@ This diagram shows how the different kinds of resources are connected to each ot
 // highlight-end
 ```
 
-This search finds the DigitalOcean droplet with the related id and then walks the graph outbound by one step, as defined by `-->` , and filters the resulting volume list. Other resources are pointing towards our droplet. By looking at the graph structure, we see it could be load balancers, kubernetes clusters, firewalls, or images. To get all the resources that point to this resource, we need to walk the graph inbound - which means in the opposite direction of the arrow in the graph structure diagram. Resoto uses the reversed arrow `<--` to walk the graph inbound. We use the same filter as before - this time, we walk the graph inbound and count the number of resources by kind.
+This search finds the DigitalOcean droplet with the related id, then walks the graph outbound by one step, as defined by `-->` , and filters the resulting volume list. Other resources are pointing towards our droplet. By looking at the graph structure, we see it could be load balancers, kubernetes clusters, firewalls, or images. To get all the resources that point to this resource, we need to walk the graph inbound - which means in the opposite direction of the arrow in the graph structure diagram. Resoto uses the left facing arrow `<--` to walk the graph inbound. We use the same filter as before but this time, we walk the graph inbound and count the number of resources by kind.
 
 ```bash
 > search is(digitalocean_droplet) and id=289061882 <-- | count kind
@@ -48,7 +48,7 @@ The droplet belongs to a region inside a [VPC](https://docs.digitalocean.com/pro
 // highlight-end
 ```
 
-We start again at our droplet and walk the graph inbound to the VPC. From here, we walk one step outbound again to match all droplets attached to the same VPC. There are three droplets in this VPC, and one of them is the one we were starting from. It is possible to chain as many graph traversals as you like. We could have used the same technique to find all the droplets in the Kubernetes cluster or the ones behind the load balancer.
+We again start at our droplet and walk the graph inbound to the VPC. From there, we walk one step outbound to find all droplets attached to the same VPC. There are three droplets in this VPC, and one of them is the one we were starting from. It is possible to chain any number of graph traversals. We could have used the same technique to find all the droplets in the Kubernetes cluster or the ones behind the load balancer.
 
 Since this droplet is attached to a load balancer, we want to find out the public IP address. If multiple load balancers were attached to the same droplet, we would get the list of all IP addresses.
 
@@ -60,7 +60,7 @@ Since this droplet is attached to a load balancer, we want to find out the publi
 // highlight-end
 ```
 
-Resoto allows for walking not only one step but multiple steps. You can define a specific number of steps to walk and a range of steps. You can even specify the range as unlimited, which would traverse the graph to the root or leave, depending on the direction of the walk. The following query will select all DigitalOcean VPCs and then walk the graph outbound, returning all nodes that can be reached starting from the VPC up to two steps. This list would never include snapshots since snapshots can not be reached in two steps starting from the VPC.
+Resoto allows for walking not only one step but multiple steps. You can define a specific number of steps to walk and a range of steps. You can even specify the range as unlimited, which would traverse the graph to the root or leaf, depending on the direction of the walk. The following search will select all DigitalOcean VPCs and then walk the graph outbound, returning all nodes that can be reached starting from the VPC up to two steps. This list would never include snapshots since snapshots can not be reached in two steps starting from the VPC.
 
 ```bash
 > search is(digitalocean_vpc) -[0:2]-> | count kind
@@ -98,7 +98,7 @@ If we can walk outbound with `-->` and inbound with `<--`, there has to be an op
 // highlight-end
 ```
 
-The traversal definition `<-[0:]->` might look strange at first glance. It defines to walk inbound and outbound starting from the current node (`0`). Since the end of the walk is not specified, it will walk until there is no more node to traverse. It will walk to the graph root inbound and all possible leaves outbound. The result is counted by kind. To make this information even more helpful, we can create a graph diagram out of this query using [graphviz](https://www.graphviz.org/) and the [dot format](/docs/reference/cli/format). The same query as above is used while edges get included in the result.
+The traversal definition `<-[0:]->` might look strange at first glance. It defines to walk inbound and outbound starting from the current node (`0`). Since the end of the walk is not specified, it will walk until there are no more nodes to traverse. It will walk to the graph root inbound and all possible leafs outbound. The result is then counted by kind. To make this information even more helpful, we can create a graph diagram out of this search using [Graphviz](https://www.graphviz.org/) and the [dot format](/docs/reference/cli/format). The same search as above is used with edges included in the result.
 
 ```bash
 > search --with-edges is(digitalocean_droplet) and
@@ -112,7 +112,7 @@ We can now use Graphviz to render the graph or use one of the many online tools 
 
 ![DigitalOcean Droplet](img/droplet_surrounding.svg)
 
-This diagram reveals a lot of information that is also easy to grasp. We needed to define the droplet by id and do a couple of graph traversals. We directly see the related DigitalOcean team and project, its usage as a Kubernetes node in a cluster, know how to reach a service via a load balancer, and see the attached volumes.
+This diagram reveals a lot of useful information. It shows the related DigitalOcean team and project and the droplets usage as a node in a Kubernetes cluster and backend of a load balancer as well as its attached volumes.
 
 Modeling the resources as graph nodes and the relationships as edges is a natural way to capture this information. You can think of the graph as a digital twin of your infrastructure metadata. Resoto allows you to explore and extract meaningful information from your infrastructure with a simple search.
 

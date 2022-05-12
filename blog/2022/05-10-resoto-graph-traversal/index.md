@@ -54,7 +54,7 @@ Since this droplet is attached to a load balancer, we want to find out the publi
 
 ```bash
 > search is(digitalocean_droplet) and id=289061882 <-- is(load_balancer) |
-  jq .public_ip_address
+  format {public_ip_address}
 // highlight-start
 ​137.121.131.102
 // highlight-end

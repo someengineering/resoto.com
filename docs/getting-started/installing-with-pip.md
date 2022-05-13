@@ -27,28 +27,6 @@ Resoto is doing a lot of CPU intense graph operations. For a production setup we
 
 :::
 
-## Installing ArangoDB
-
-Follow [the ArangoDB installation instructions](https://www.arangodb.com/docs/stable/getting-started-installation.html) for your Linux distribution. Also read the [Linux Operating System Configuration](https://www.arangodb.com/docs/stable/installation-linux-osconfiguration.html) guide for optimal database performance.
-
-A copy'paste ready snipped that worked at the time of writing this documentation:
-
-```bash
-$ mkdir -p $HOME/resoto/arangodb $HOME/resoto/data
-$ cd ~/resoto
-$ echo $(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-20}) > .graphdb-password
-$ echo $(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-20}) > .pre-shared-key
-$ chmod 600 .graphdb-password
-$ curl -L -o arangodb3.tar.gz https://download.arangodb.com/arangodb39/Community/Linux/arangodb3-linux-3.9.1.tar.gz
-$ tar xzf arangodb3.tar.gz --strip-components=1 -C arangodb
-$ rm -f arangodb3.tar.gz
-$ arangodb/bin/arangod --database.directory $HOME/resoto/data
-```
-
-This will start ArangoDB on the current shell which is useful for testing. Once Resoto Core starts it will automatically secure the ArangoDB installation using the password provided in the `.graphdb-password` file (unless explicitly turned off using the `--graphdb-bootstrap-do-not-secure` flag).
-
-Read the section [Securing ArangoDB](../concepts/security.md#custom-certificates) for details on how to generate certificates and encrypt the connection between Resoto Core and the graph database.
-
 ## Installing Resoto
 
 Resoto consists of multiple [components](../concepts/components/index.md) that are published as individual Python packages:
@@ -62,13 +40,34 @@ Resoto consists of multiple [components](../concepts/components/index.md) that a
 ```bash title="Installing Resoto using pip"
 $ mkdir -p ~/resoto
 $ cd ~/resoto
-$ python3 -m venv resoto-venv
-$ source resoto-venv/bin/activate
-$ python -m ensurepip --upgrade
+$ python3 -m venv resoto-venv      # Create a virtual Python environment
+$ source resoto-venv/bin/activate  # activate the virtual Python environment
+$ python -m ensurepip --upgrade    # ensure pip is available
 $ pip install -U resotocore resotoworker resotometrics resotoshell resoto-plugins
+# Generate two random passphrases. One to secure the graph database and one to secure resotocore with.
+$ echo $(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-20}) > .graphdb-password
 $ echo $(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-20}) > .pre-shared-key
-$ chmod 600 .pre-shared-key
+$ chmod 600 .graphdb-password .pre-shared-key
 ```
+
+## Installing ArangoDB
+
+Follow [the ArangoDB installation instructions](https://www.arangodb.com/docs/stable/getting-started-installation.html) for your Linux distribution. Also read the [Linux Operating System Configuration](https://www.arangodb.com/docs/stable/installation-linux-osconfiguration.html) guide for optimal database performance.
+
+A copy'paste ready snipped that worked at the time of writing this documentation:
+
+```bash
+$ mkdir -p $HOME/resoto/arangodb $HOME/resoto/data
+$ cd ~/resoto
+$ curl -L -o arangodb3.tar.gz https://download.arangodb.com/arangodb39/Community/Linux/arangodb3-linux-3.9.1.tar.gz
+$ tar xzf arangodb3.tar.gz --strip-components=1 -C arangodb
+$ rm -f arangodb3.tar.gz
+$ arangodb/bin/arangod --database.directory $HOME/resoto/data
+```
+
+This will start ArangoDB on the current shell which is useful for testing. Once Resoto Core starts it will automatically secure the ArangoDB installation using the password provided in the `.graphdb-password` file (unless explicitly turned off using the `--graphdb-bootstrap-do-not-secure` flag).
+
+Read the section [Securing ArangoDB](../concepts/security.md#custom-certificates) for details on how to generate certificates and encrypt the connection between Resoto Core and the graph database.
 
 ## Running Resoto
 

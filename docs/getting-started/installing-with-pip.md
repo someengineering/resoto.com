@@ -38,7 +38,7 @@ $ mkdir -p $HOME/resoto/arangodb $HOME/resoto/data
 $ cd ~/resoto
 $ echo $(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-20}) > .graphdb-password
 $ echo $(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-20}) > .pre-shared-key
-$ chmod 600 .graphdb-password .pre-shared-key
+$ chmod 600 .graphdb-password
 $ curl -L -o arangodb3.tar.gz https://download.arangodb.com/arangodb39/Community/Linux/arangodb3-linux-3.9.1.tar.gz
 $ tar xzf arangodb3.tar.gz --strip-components=1 -C arangodb
 $ rm -f arangodb3.tar.gz
@@ -66,6 +66,8 @@ $ python3 -m venv resoto-venv
 $ source resoto-venv/bin/activate
 $ python -m ensurepip --upgrade
 $ pip install -U resotocore resotoworker resotometrics resotoshell resoto-plugins
+$ echo $(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-20}) > .pre-shared-key
+$ chmod 600 .pre-shared-key
 ```
 
 ## Running Resoto

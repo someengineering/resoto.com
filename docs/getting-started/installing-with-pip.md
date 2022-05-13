@@ -40,9 +40,9 @@ Resoto consists of multiple [components](../concepts/components/index.md) that a
 ```bash title="Installing Resoto using pip"
 $ mkdir -p ~/resoto
 $ cd ~/resoto
-$ python3 -m venv resoto-venv      # Create a virtual Python environment
-$ source resoto-venv/bin/activate  # activate the virtual Python environment
-$ python -m ensurepip --upgrade    # ensure pip is available
+$ python3 -m venv resoto-venv      # Create a virtual Python environment.
+$ source resoto-venv/bin/activate  # Activate the virtual Python environment.
+$ python -m ensurepip --upgrade    # Ensure pip is available.
 $ pip install -U resotocore resotoworker resotometrics resotoshell resoto-plugins
 # Generate two random passphrases. One to secure the graph database and one to secure resotocore with.
 $ echo $(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-20}) > .graphdb-password

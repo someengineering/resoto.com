@@ -41,7 +41,7 @@ function HomepageHeader() {
               cursorClassName={styles.cursor}
             />
           </strong>{' '}
-          tasks, fast!
+          tasks, remarkably fast!
         </div>
         <img
           className={styles.heroLogo}

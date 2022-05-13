@@ -12,7 +12,7 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Search Infastructure',
+    title: 'Search Infrastructure',
     link: '/docs/concepts/search',
     image: 'img/illustrations/sheep-strong.svg',
     description: (
@@ -35,7 +35,7 @@ const FeatureList: FeatureItem[] = [
     image: 'img/illustrations/sheep-professor.svg',
     description: (
       <>
-        Resoto keeps track of and reports infastructure changes over time,
+        Resoto keeps track of and reports infrastructure changes over time,
         making it easy to audit resource usage and cleanup.
       </>
     ),

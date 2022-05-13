@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 pagination_prev: getting-started/index
 pagination_next: getting-started/performing-searches
 ---

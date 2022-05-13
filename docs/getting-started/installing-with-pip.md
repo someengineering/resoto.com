@@ -102,6 +102,8 @@ $ source $HOME/resoto/resoto-venv/bin/activate
 $ resotometrics --resotocore-uri https://localhost:8900 --psk "$pre_shared_key"
 ```
 
+Resoto now exposes Prometheus metrics at `https://localhost:9955/metrics`. Follow [the Prometheus Getting Started guide](https://prometheus.io/docs/prometheus/latest/getting_started/) to install and configure a Prometheus server.
+
 </TabItem>
 </Tabs>
 

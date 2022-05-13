@@ -57,12 +57,12 @@ Follow [the ArangoDB installation instructions](https://www.arangodb.com/docs/st
 A copy'paste ready snipped that worked at the time of writing this documentation:
 
 ```bash
-$ mkdir -p $HOME/resoto/arangodb $HOME/resoto/data
+$ mkdir -p ~/resoto/arangodb ~/resoto/data
 $ cd ~/resoto
 $ curl -L -o arangodb3.tar.gz https://download.arangodb.com/arangodb39/Community/Linux/arangodb3-linux-3.9.1.tar.gz
 $ tar xzf arangodb3.tar.gz --strip-components=1 -C arangodb
 $ rm -f arangodb3.tar.gz
-$ arangodb/bin/arangod --database.directory $HOME/resoto/data
+$ arangodb/bin/arangod --database.directory ~/resoto/data
 ```
 
 This will start ArangoDB on the current shell which is useful for testing. Once Resoto Core starts it will automatically secure the ArangoDB installation using the password provided in the `.graphdb-password` file (unless explicitly turned off using the `--graphdb-bootstrap-do-not-secure` flag).
@@ -77,9 +77,9 @@ Create multiple shells/tabs and run each component in a separate shell:
 <TabItem value="resotocore" label="resotocore">
 
 ```bash
-$ graphdb_password=$(< $HOME/resoto/.graphdb-password)
-$ pre_shared_key=$(< $HOME/resoto/.pre-shared-key)
-$ source $HOME/resoto/resoto-venv/bin/activate
+$ graphdb_password=$(< ~/resoto/.graphdb-password)
+$ pre_shared_key=$(< ~/resoto/.pre-shared-key)
+$ source ~/resoto/resoto-venv/bin/activate
 $ resotocore --graphdb-password "$graphdb_password" --graphdb-server http://localhost:8529 --psk "$pre_shared_key"
 ```
 
@@ -87,8 +87,8 @@ $ resotocore --graphdb-password "$graphdb_password" --graphdb-server http://loca
 <TabItem value="resotoworker" label="resotoworker">
 
 ```bash
-$ pre_shared_key=$(< $HOME/resoto/.pre-shared-key)
-$ source $HOME/resoto/resoto-venv/bin/activate
+$ pre_shared_key=$(< ~/resoto/.pre-shared-key)
+$ source ~/resoto/resoto-venv/bin/activate
 $ resotoworker --resotocore-uri https://localhost:8900 --psk "$pre_shared_key"
 ```
 
@@ -96,8 +96,8 @@ $ resotoworker --resotocore-uri https://localhost:8900 --psk "$pre_shared_key"
 <TabItem value="resotometrics" label="resotometrics">
 
 ```bash
-$ pre_shared_key=$(< $HOME/resoto/.pre-shared-key)
-$ source $HOME/resoto/resoto-venv/bin/activate
+$ pre_shared_key=$(< ~/resoto/.pre-shared-key)
+$ source ~/resoto/resoto-venv/bin/activate
 $ resotometrics --resotocore-uri https://localhost:8900 --psk "$pre_shared_key"
 ```
 
@@ -111,8 +111,8 @@ Resoto now exposes Prometheus metrics at `https://localhost:9955/metrics`. Follo
 The `resh` command starts an interactive shell session with Resoto. To access the [Resoto Shell](../concepts/components/shell.md) interface, simply execute:
 
 ```bash
-$ pre_shared_key=$(< $HOME/resoto/.pre-shared-key)
-$ source $HOME/resoto/resoto-venv/bin/activate
+$ pre_shared_key=$(< ~/resoto/.pre-shared-key)
+$ source ~/resoto/resoto-venv/bin/activate
 $ resh --resotocore-uri https://localhost:8900 --psk "$pre_shared_key"
 ```
 

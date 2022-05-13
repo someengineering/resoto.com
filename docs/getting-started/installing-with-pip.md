@@ -63,6 +63,7 @@ $ mkdir -p ~/resoto
 $ cd ~/resoto
 $ python3 -m venv resoto-venv
 $ source resoto-venv/bin/activate
+$ python -m ensurepip --upgrade
 $ pip install -U resotocore resotoworker resotometrics resotoshell resoto-plugins
 ```
 

@@ -31,7 +31,7 @@ Resoto is doing a lot of CPU intense graph operations. For a production setup we
 
 Follow [the ArangoDB installation instructions](https://www.arangodb.com/docs/stable/getting-started-installation.html) for your Linux distribution. Also read the [Linux Operating System Configuration](https://www.arangodb.com/docs/stable/installation-linux-osconfiguration.html) guide for optimal database performance.
 
-A quick copy'paste ready snipped that worked at the time of writing this documentation:
+A copy'paste ready snipped that worked at the time of writing this documentation:
 
 ```bash
 $ mkdir -p $HOME/resoto/arangodb $HOME/resoto/data
@@ -40,7 +40,7 @@ $ echo $(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-20}) > .graphdb-passwo
 $ echo $(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-20}) > .pre-shared-key
 $ chmod 600 .graphdb-password .pre-shared-key
 $ curl -L -o arangodb3.tar.gz https://download.arangodb.com/arangodb39/Community/Linux/arangodb3-linux-3.9.1.tar.gz
-$ tar xvzf arangodb3.tar.gz --strip-components=1 -C arangodb
+$ tar xzf arangodb3.tar.gz --strip-components=1 -C arangodb
 $ rm -f arangodb3.tar.gz
 $ arangodb/bin/arangod --database.directory $HOME/resoto/data
 ```
@@ -57,6 +57,7 @@ Resoto consists of multiple [components](../concepts/components/index.md) that a
 2. [📦](https://pypi.org/project/resotoworker/) `resotoworker` collects infrastructure data from the cloud provider APIs.
 3. [📦](https://pypi.org/project/resotometrics/) `resotometrics` exports metrics in Prometheus format.
 4. [📦](https://pypi.org/project/resotoshell/) `resotoshell` is the command-line interface (CLI) used to interact with Resoto.
+5. [📦](https://pypi.org/project/resoto-plugins/) `resoto-plugins` a collection of worker plugins.
 
 ```bash title="Installing Resoto using pip"
 $ mkdir -p ~/resoto

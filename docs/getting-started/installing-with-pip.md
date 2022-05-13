@@ -1,5 +1,6 @@
 ---
 sidebar_position: 3
+sidebar_label: Installing with Python pip
 pagination_prev: getting-started/index
 pagination_next: getting-started/configuring-resoto
 ---
@@ -30,11 +31,14 @@ Resoto is doing a lot of CPU intense graph operations. For a production setup we
 
 Follow [the ArangoDB installation instructions](https://www.arangodb.com/docs/stable/getting-started-installation.html) for your Linux distribution. Also read the [Linux Operating System Configuration](https://www.arangodb.com/docs/stable/installation-linux-osconfiguration.html) guide for optimal database performance.
 
-A quick copy'paste ready snipped that worked at the writing of this documentation:
+A quick copy'paste ready snipped that worked at the time of writing this documentation:
 
 ```bash
 $ mkdir -p $HOME/resoto/arangodb $HOME/resoto/data
 $ cd ~/resoto
+$ echo $(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-20}) > .graphdb-password
+$ echo $(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-20}) > .pre-shared-key
+$ chmod 600 .graphdb-password .pre-shared-key
 $ curl -L -o arangodb3.tar.gz https://download.arangodb.com/arangodb39/Community/Linux/arangodb3-linux-3.9.1.tar.gz
 $ tar xvzf arangodb3.tar.gz --strip-components=1 -C arangodb
 $ rm -f arangodb3.tar.gz
@@ -62,27 +66,34 @@ $ pip install -U resotocore resotoworker resotometrics resotoshell resoto-plugin
 
 ## Running Resoto
 
-Create multiple shells and run each component in a separate shell:
+Create multiple shells/tabs and run each component in a separate shell:
 
 <Tabs>
 <TabItem value="resotocore" label="resotocore">
 
 ```bash
-$ resotocore --graphdb-password resoto --graphdb-server http://localhost:8529 --psk changeme
+$ graphdb_password=$(< $HOME/resoto/.graphdb-password)
+$ pre_shared_key=$(< $HOME/resoto/.pre-shared-key)
+$ source $HOME/resoto/resoto-venv/bin/activate
+$ resotocore --graphdb-password "$graphdb_password" --graphdb-server http://localhost:8529 --psk "$pre_shared_key"
 ```
 
 </TabItem>
 <TabItem value="resotoworker" label="resotoworker">
 
 ```bash
-$ resotoworker --resotocore-uri https://localhost:8900 --psk changeme
+$ pre_shared_key=$(< $HOME/resoto/.pre-shared-key)
+$ source $HOME/resoto/resoto-venv/bin/activate
+$ resotoworker --resotocore-uri https://localhost:8900 --psk "$pre_shared_key"
 ```
 
 </TabItem>
 <TabItem value="resotometrics" label="resotometrics">
 
 ```bash
-$ resotometrics --resotocore-uri https://localhost:8900 --psk changeme
+$ pre_shared_key=$(< $HOME/resoto/.pre-shared-key)
+$ source $HOME/resoto/resoto-venv/bin/activate
+$ resotometrics --resotocore-uri https://localhost:8900 --psk "$pre_shared_key"
 ```
 
 </TabItem>
@@ -93,7 +104,9 @@ $ resotometrics --resotocore-uri https://localhost:8900 --psk changeme
 The `resh` command starts an interactive shell session with Resoto. To access the [Resoto Shell](../concepts/components/shell.md) interface, simply execute:
 
 ```bash
-$ resh --resotocore-uri https://localhost:8900 --psk changeme
+$ pre_shared_key=$(< $HOME/resoto/.pre-shared-key)
+$ source $HOME/resoto/resoto-venv/bin/activate
+$ resh --resotocore-uri https://localhost:8900 --psk "$pre_shared_key"
 ```
 
 ### Configuring Resoto

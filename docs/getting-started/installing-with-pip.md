@@ -54,7 +54,7 @@ $ chmod 600 .graphdb-password .pre-shared-key
 
 Follow [the ArangoDB installation instructions](https://www.arangodb.com/docs/stable/getting-started-installation.html) for your Linux distribution. Also read the [Linux Operating System Configuration](https://www.arangodb.com/docs/stable/installation-linux-osconfiguration.html) guide for optimal database performance.
 
-A copy'paste ready snipped that worked at the time of writing this documentation:
+A copy'paste ready snippet that worked at the time of writing this documentation:
 
 ```bash
 $ mkdir -p ~/resoto/arangodb ~/resoto/data

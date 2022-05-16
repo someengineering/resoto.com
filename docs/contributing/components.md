@@ -28,9 +28,10 @@ Pull requests should target a single [component](../concepts/components/index.md
 ### Prerequisites
 
 - [Git](https://git-scm.com)
-- [Python](https://python.org) 3.8+ (3.10 is recommended)
-- [ArangoDB](https://arangodb.com) 3.8.2+
+- [Python](https://python.org) 3.9+ (3.10 is recommended)
+- [ArangoDB](https://arangodb.com) 3.8.4+
 - [GNU Compiler Collection (GCC)](https://gcc.gnu.org) (depending on the host system, Python dependencies may need to be compiled from source)
+- [Rust Compiler](https://www.rust-lang.org/tools/install) (depending on the host system, Python dependencies may need to be compiled from source)
 
 :::note
 

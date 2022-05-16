@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="352px" preserveAspectRatio="none" style="width:621px;height:352px;background:#00000000;" version="1.1" viewBox="0 0 621 352" width="621px" zoomAndPan="magnify"><defs/><g><!--MD5=[b092df8b8fb1f6f311aad85fb2df39d7]
+class aws_vpc--><a href="#aws_vpc" target="_top" title="#aws_vpc" xlink:actuate="onRequest" xlink:href="#aws_vpc" xlink:show="new" xlink:title="#aws_vpc" xlink:type="simple"><rect codeLine="17" fill="#3D176E" height="39.7891" id="aws_vpc" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="112" x="200.5" y="107"/><ellipse cx="215.5" cy="126.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M218.4688,132.5352 Q217.8906,132.832 217.25,132.9727 Q216.6094,133.1289 215.9063,133.1289 Q213.4063,133.1289 212.0781,131.4883 Q210.7656,129.832 210.7656,126.707 Q210.7656,123.582 212.0781,121.9258 Q213.4063,120.2695 215.9063,120.2695 Q216.6094,120.2695 217.25,120.4258 Q217.9063,120.582 218.4688,120.8789 L218.4688,123.5977 Q217.8438,123.0195 217.25,122.7539 Q216.6563,122.4727 216.0313,122.4727 Q214.6875,122.4727 214,123.5508 Q213.3125,124.6133 213.3125,126.707 Q213.3125,128.8008 214,129.8789 Q214.6875,130.9414 216.0313,130.9414 Q216.6563,130.9414 217.25,130.6758 Q217.8438,130.3945 218.4688,129.8164 L218.4688,132.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="70" x="234.5" y="132.7798">aws_vpc</text></a><!--MD5=[f3ba0b819851420cd825c172c4544ffa]
+class aws_rds_instance--><a href="#aws_rds_instance" target="_top" title="#aws_rds_instance" xlink:actuate="onRequest" xlink:href="#aws_rds_instance" xlink:show="new" xlink:title="#aws_rds_instance" xlink:type="simple"><rect codeLine="20" fill="#3D176E" height="39.7891" id="aws_rds_instance" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="188" x="233.5" y="307"/><ellipse cx="248.5" cy="326.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M251.4688,332.5352 Q250.8906,332.832 250.25,332.9727 Q249.6094,333.1289 248.9063,333.1289 Q246.4063,333.1289 245.0781,331.4883 Q243.7656,329.832 243.7656,326.707 Q243.7656,323.582 245.0781,321.9258 Q246.4063,320.2695 248.9063,320.2695 Q249.6094,320.2695 250.25,320.4258 Q250.9063,320.582 251.4688,320.8789 L251.4688,323.5977 Q250.8438,323.0195 250.25,322.7539 Q249.6563,322.4727 249.0313,322.4727 Q247.6875,322.4727 247,323.5508 Q246.3125,324.6133 246.3125,326.707 Q246.3125,328.8008 247,329.8789 Q247.6875,330.9414 249.0313,330.9414 Q249.6563,330.9414 250.25,330.6758 Q250.8438,330.3945 251.4688,329.8164 L251.4688,332.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="146" x="267.5" y="332.7798">aws_rds_instance</text></a><!--MD5=[8a02f6ab9fdb5af8377a24f6712ed122]
+class aws_ec2_subnet--><a href="#aws_ec2_subnet" target="_top" title="#aws_ec2_subnet" xlink:actuate="onRequest" xlink:href="#aws_ec2_subnet" xlink:show="new" xlink:title="#aws_ec2_subnet" xlink:type="simple"><rect codeLine="23" fill="#3D176E" height="39.7891" id="aws_ec2_subnet" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="179" x="7" y="207"/><ellipse cx="22" cy="226.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M24.9688,232.5352 Q24.3906,232.832 23.75,232.9727 Q23.1094,233.1289 22.4063,233.1289 Q19.9063,233.1289 18.5781,231.4883 Q17.2656,229.832 17.2656,226.707 Q17.2656,223.582 18.5781,221.9258 Q19.9063,220.2695 22.4063,220.2695 Q23.1094,220.2695 23.75,220.4258 Q24.4063,220.582 24.9688,220.8789 L24.9688,223.5977 Q24.3438,223.0195 23.75,222.7539 Q23.1563,222.4727 22.5313,222.4727 Q21.1875,222.4727 20.5,223.5508 Q19.8125,224.6133 19.8125,226.707 Q19.8125,228.8008 20.5,229.8789 Q21.1875,230.9414 22.5313,230.9414 Q23.1563,230.9414 23.75,230.6758 Q24.3438,230.3945 24.9688,229.8164 L24.9688,232.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="137" x="41" y="232.7798">aws_ec2_subnet</text></a><!--MD5=[38029ad49370857a6dd64e9fa137ed24]
+class aws_ec2_security_group--><a href="#aws_ec2_security_group" target="_top" title="#aws_ec2_security_group" xlink:actuate="onRequest" xlink:href="#aws_ec2_security_group" xlink:show="new" xlink:title="#aws_ec2_security_group" xlink:type="simple"><rect codeLine="26" fill="#3D176E" height="39.7891" id="aws_ec2_security_group" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="245" x="293" y="207"/><ellipse cx="308" cy="226.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M310.9688,232.5352 Q310.3906,232.832 309.75,232.9727 Q309.1094,233.1289 308.4063,233.1289 Q305.9063,233.1289 304.5781,231.4883 Q303.2656,229.832 303.2656,226.707 Q303.2656,223.582 304.5781,221.9258 Q305.9063,220.2695 308.4063,220.2695 Q309.1094,220.2695 309.75,220.4258 Q310.4063,220.582 310.9688,220.8789 L310.9688,223.5977 Q310.3438,223.0195 309.75,222.7539 Q309.1563,222.4727 308.5313,222.4727 Q307.1875,222.4727 306.5,223.5508 Q305.8125,224.6133 305.8125,226.707 Q305.8125,228.8008 306.5,229.8789 Q307.1875,230.9414 308.5313,230.9414 Q309.1563,230.9414 309.75,230.6758 Q310.3438,230.3945 310.9688,229.8164 L310.9688,232.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="203" x="327" y="232.7798">aws_ec2_security_group</text></a><!--MD5=[ab1eae8f76718f629e325f873a4fb1f8]
+class aws_region--><a href="#aws_region" target="_top" title="#aws_region" xlink:actuate="onRequest" xlink:href="#aws_region" xlink:show="new" xlink:title="#aws_region" xlink:type="simple"><rect codeLine="29" fill="#3D176E" height="39.7891" id="aws_region" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="137" x="276" y="7"/><ellipse cx="291" cy="26.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M293.9688,32.5352 Q293.3906,32.832 292.75,32.9727 Q292.1094,33.1289 291.4063,33.1289 Q288.9063,33.1289 287.5781,31.4883 Q286.2656,29.832 286.2656,26.707 Q286.2656,23.582 287.5781,21.9258 Q288.9063,20.2695 291.4063,20.2695 Q292.1094,20.2695 292.75,20.4258 Q293.4063,20.582 293.9688,20.8789 L293.9688,23.5977 Q293.3438,23.0195 292.75,22.7539 Q292.1563,22.4727 291.5313,22.4727 Q290.1875,22.4727 289.5,23.5508 Q288.8125,24.6133 288.8125,26.707 Q288.8125,28.8008 289.5,29.8789 Q290.1875,30.9414 291.5313,30.9414 Q292.1563,30.9414 292.75,30.6758 Q293.3438,30.3945 293.9688,29.8164 L293.9688,32.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="95" x="310" y="32.7798">aws_region</text></a><!--MD5=[c482800098e66854287e07a57efeaa97]
+link aws_vpc to aws_rds_instance--><path codeLine="32" d="M257.09,147.19 C258.38,171.27 262.48,213.45 275.5,247 C283.37,267.29 297.03,287.74 308.38,302.76 " fill="none" id="aws_vpc-to-aws_rds_instance" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="311.51,306.84,309.2114,297.2631,308.469,302.871,302.8611,302.1287,311.51,306.84" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[92c40850d440c54e1e3d0238e6f7d8c1]
+link aws_vpc to aws_ec2_subnet--><path codeLine="33" d="M225.27,147.13 C198.51,163.52 159.98,187.12 132.04,204.23 " fill="none" id="aws_vpc-to-aws_ec2_subnet" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="127.65,206.92,137.4125,205.6189,131.9107,204.3035,133.2261,198.8017,127.65,206.92" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[8d6a7a9bb3d319963af45f18a1825b6e]
+link aws_vpc to aws_ec2_security_group--><path codeLine="34" d="M287.53,147.13 C314.13,163.52 352.42,187.12 380.18,204.23 " fill="none" id="aws_vpc-to-aws_ec2_security_group" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="384.54,206.92,378.9836,198.7882,380.2856,204.2931,374.7807,205.5952,384.54,206.92" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[1939687fa380c6725751d1853bb283d5]
+link aws_ec2_subnet to aws_rds_instance--><path codeLine="35" d="M141.31,247.01 C180.4,263.59 237.03,287.62 277.56,304.81 " fill="none" id="aws_ec2_subnet-to-aws_rds_instance" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="282.42,306.87,275.7044,299.6658,277.8191,304.9125,272.5724,307.0272,282.42,306.87" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[d4fbf8b1e165946c17218319546abee4]
+link aws_ec2_security_group to aws_rds_instance--><path codeLine="36" d="M398.11,247.36 C383.77,263.33 363.38,286.04 348.2,302.95 " fill="none" id="aws_ec2_security_group-to-aws_rds_instance" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="344.85,306.68,353.8439,302.6662,348.1948,302.9635,347.8975,297.3145,344.85,306.68" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[318bd4a7e9fcdadd93262cab91e3d817]
+link aws_region to aws_vpc--><path codeLine="37" d="M327.11,47.36 C312.77,63.33 292.38,86.04 277.2,102.95 " fill="none" id="aws_region-to-aws_vpc" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="273.85,106.68,282.8439,102.6662,277.1948,102.9635,276.8975,97.3145,273.85,106.68" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[5aec1668ff58fda156f8b2ea7bcf5fbd]
+link aws_region to aws_rds_instance--><path codeLine="38" d="M389.1,47.01 C466.98,82.95 614.13,164.63 555.5,247 C526.2,288.16 473.9,308.07 426.78,317.62 " fill="none" id="aws_region-to-aws_rds_instance" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="421.65,318.62,431.2499,320.8204,426.5573,317.6614,429.7162,312.9688,421.65,318.62" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[93082a76e9e770434b49a56f3c2dd7cf]
+link aws_region to aws_ec2_subnet--><path codeLine="39" d="M289.16,47.09 C255.87,60.39 213.99,80.51 182.5,107 C150.18,134.19 123.67,176.03 108.99,202.17 " fill="none" id="aws_region-to-aws_ec2_subnet" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="106.39,206.86,114.2574,200.9352,108.8182,202.4892,107.2642,197.05,106.39,206.86" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[757bb94679117f93eab0e8ea72e31efe]
+link aws_region to aws_ec2_security_group--><path codeLine="40" d="M351.44,47.35 C364.46,83.67 392.54,161.97 406.8,201.75 " fill="none" id="aws_region-to-aws_ec2_security_group" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="408.64,206.87,409.3762,197.0487,406.9565,202.1619,401.8433,199.7423,408.64,206.87" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[1948a874bc105a81e263bc43dd8471d9]
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_vpc [[#aws_vpc]] {
+
+}
+class aws_rds_instance [[#aws_rds_instance]] {
+
+}
+class aws_ec2_subnet [[#aws_ec2_subnet]] {
+
+}
+class aws_ec2_security_group [[#aws_ec2_security_group]] {
+
+}
+class aws_region [[#aws_region]] {
+
+}
+aws_vpc -[#1A83AF]-> aws_rds_instance
+aws_vpc -[#1A83AF]-> aws_ec2_subnet
+aws_vpc -[#1A83AF]-> aws_ec2_security_group
+aws_ec2_subnet -[#1A83AF]-> aws_rds_instance
+aws_ec2_security_group -[#1A83AF]-> aws_rds_instance
+aws_region -[#1A83AF]-> aws_vpc
+aws_region -[#1A83AF]-> aws_rds_instance
+aws_region -[#1A83AF]-> aws_ec2_subnet
+aws_region -[#1A83AF]-> aws_ec2_security_group
+@enduml
+
+PlantUML version 1.2021.16(Wed Dec 08 17:25:22 UTC 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

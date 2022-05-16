@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 pagination_prev: getting-started/index
 pagination_next: getting-started/performing-searches
 ---
@@ -12,25 +12,29 @@ import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
 
-Resoto uses an internal configuration system to configure all [components](../concepts/components/index.md). Configuration is maintained within [Resoto Core](../concepts/components/core.md) and can be edited using [Resoto Shell (`resh`)](../concepts/components/shell.md) using the [`config edit` command](../reference/cli/configs/edit.md).
+Resoto uses an internal configuration system for its [components](../concepts/components/index.md). Configuration is maintained within [Resoto Core](../concepts/components/core.md) and can be edited using [Resoto Shell](../concepts/components/shell.md) using the [`config edit` command](../reference/cli/configs/edit.md).
 
 :::note
 
 In the code blocks below, `$` at the beginning of a line denotes that a command is to be run on the normal shell (Bash, Zsh, etc.).
 
-Lines beginning with `>` should be executed inside [Resoto Shell (`resh`)](../concepts/components/shell.md).
+Lines beginning with `>` should be executed inside [Resoto Shell](../concepts/components/shell.md).
 
 :::
 
 ## Listing Configurations
 
-```bash title="Start the Resoto Shell, e.g."
+```bash title="Start the Resoto Shell"
 $ resh --psk changeme --resotocore-uri https://resotocore.resoto.svc.cluster.local:8900
 ```
 
-<sub>Adjust PSK and Resoto Core URI to local values!</sub>
+:::note
 
-```bash title="List all available configurations"
+Be sure to adjust the above PSK and Resoto Core URI arguments to reflect your setup!
+
+:::
+
+```bash title="List available configurations"
 > configs list
 ```
 
@@ -43,7 +47,7 @@ Resoto automatically creates the following configurations by default:
 
 ## Editing Configuration
 
-```title="Edit the Resoto Worker configuration"
+```bash title="Edit the Resoto Worker configuration"
 > config edit resoto.worker
 ```
 
@@ -150,12 +154,10 @@ $ resotoworker
 
 ## Configuring Cloud Providers
 
-```
-> config edit resoto.worker
-```
+### Amazon Web Services
 
 <Tabs>
-<TabItem value="aws-env" label="AWS (environment)">
+<TabItem value="environment" label="Environment">
 
 Resoto supports all the authentication mechanisms described in the [boto3 SDK documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html). To get started on a local machine [configure AWS CLI](https://aws.amazon.com/cli/) and volume mount e.g. `$HOME/.aws/` to `/home/resoto/.aws/` inside the `resotoworker` container. If your configuration contains multiple profiles make sure to set `AWS_PROFILE` for the `resotoworker` container.
 
@@ -170,9 +172,9 @@ aws_session_token=baz
 
 Boto3 can also [load credentials from `/home/resoto/.aws/config`](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html#aws-config-file). You can change this default location by setting the `AWS_CONFIG_FILE` environment variable.
 
-In `resh` run `config edit resoto.worker` and make sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null`. This causes Resoto to fall back to loading credentials from the environment/home directory.
+Next, modify the [Resoto Worker](../concepts/components/worker.md) configuration as follows, making sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null` (Resoto will fall back to loading credentials from the environment/home directory):
 
-```yml title="config edit resoto.worker"
+```yml
 resotoworker:
   [...]
   # List of collectors to run
@@ -191,16 +193,20 @@ aws:
 
 :::note
 
-Resoto supports all the same environment variables that [`aws cli`](https://aws.amazon.com/cli/) does. Namely `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_SESSION_TOKEN`, `AWS_ROLE_ARN`, `AWS_WEB_IDENTITY_TOKEN_FILE`, `AWS_ROLE_SESSION_NAME`, etc. However when using temporary credentials they should be written to the `credentials` or `config` file and updated out-of-band instead of using environment variables, because the `resotoworker` process starts once and then runs forever. I.e. it can not know about updated environment variables without being restarted.
+Resoto is meant to run unattended on a server using a service account or instance profile. Resoto supports the same environment variables that the [AWS Command-Line Interface](https://aws.amazon.com/cli) does (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_SESSION_TOKEN`, `AWS_ROLE_ARN`, `AWS_WEB_IDENTITY_TOKEN_FILE`, `AWS_ROLE_SESSION_NAME`, etc.).
+
+When using temporary credentials, however, they should be written to the `credentials` or `config` file and updated out-of-band instead of using environment variables, because the `resotoworker` process starts once and then runs forever (updated environment variables are only reflected upon restart).
+
+You can specify a profile using `AWS_PROFILE` and for local testing SSO authentication would work as well. However when Resoto is running unattended in a production environment, SSO credentials that require opening a browser window would not work.
 
 :::
 
 </TabItem>
-<TabItem value="aws-instance_profile" label="AWS (instance profile)">
+<TabItem value="instance-profile" label="Instance Profile">
 
-[Set up an instance profile](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html) and volume mount a file (or in Kubernetes a secret) `/home/resoto/.aws/config` into the `resotoworker` container, containing the role ARN and external ID.
+First, [set up an instance profile](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html). Then, volume mount a file (or in Kubernetes, a secret) `/home/resoto/.aws/config` containing the role ARN and external ID into the `resotoworker` container.
 
-```
+```ini
 [default]
 region = us-west-2
 
@@ -209,9 +215,9 @@ external_id = a5eMybsyGIowimdZqpZWxxxxxxxxxxxx
 credential_source = Ec2InstanceMetadata
 ```
 
-In `resh` run `config edit resoto.worker` and make sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null`:
+Next, modify the [Resoto Worker](../concepts/components/worker.md) configuration as follows, making sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null`:
 
-```yml title="config edit resoto.worker"
+```yml
 resotoworker:
   [...]
   # List of collectors to run
@@ -229,11 +235,17 @@ aws:
 ```
 
 </TabItem>
-<TabItem value="aws-access_key" label="AWS (access key)">
+<TabItem value="access-key" label="Access Key">
 
-Note: Using a static access key is only recommended for testing.
+:::note
 
-```yml title="config edit resoto.worker"
+Using a static access key is only recommended for testing.
+
+:::
+
+Modify the [Resoto Worker](../concepts/components/worker.md) configuration as follows:
+
+```yml
 resotoworker:
   [...]
   # List of collectors to run
@@ -251,11 +263,16 @@ aws:
 ```
 
 </TabItem>
-<TabItem value="gcp-json" label="Google Cloud (service account JSON files)">
+</Tabs>
 
-Volume mount the service account JSON file to a path inside the resotoworker container, e.g. `/gcp` and configure:
+### Google Cloud Platform
 
-```yml title="config edit resoto.worker"
+<Tabs>
+<TabItem value="json" label="Service Account JSON Files">
+
+Volume mount the service account JSON file to a path inside the `resotoworker` container (e.g., `/gcp`) and modify the [Resoto Worker](../concepts/components/worker.md) configuration as follows:
+
+```yml
 resotoworker:
   [...]
   # List of collectors to run
@@ -273,11 +290,13 @@ gcp:
 ```
 
 </TabItem>
-<TabItem value="gcp-env" label="Google Cloud (auto discovery)">
+<TabItem value="auto-discovery" label="Automatic Discovery">
 
-Specify an empty string for the service account file and Resoto will automatically discover the service account and all the projects it has access to.
+Specify an empty string for the service account file, and Resoto will automatically discover the service account and all the projects it has access to.
 
-```yml title="config edit resoto.worker"
+Modify the [Resoto Worker](../concepts/components/worker.md) configuration as follows:
+
+```yml
 resotoworker:
   [...]
   # List of collectors to run
@@ -294,9 +313,13 @@ gcp:
 ```
 
 </TabItem>
-<TabItem value="digitalocean" label="DigitalOcean">
+</Tabs>
 
-```yml title="config edit resoto.worker"
+### DigitalOcean
+
+Modify the [Resoto Worker](../concepts/components/worker.md) configuration as follows:
+
+```yml
 resotoworker:
   [...]
   # List of collectors to run
@@ -313,32 +336,29 @@ digitalocean:
 [...]
 ```
 
-</TabItem>
-</Tabs>
-
 :::note
 
-As described [above](#overriding-individual-properties), instead of specifying the API tokens or secret access keys in the Resoto config directly they can also be specified using Resoto Worker's `--override` flag or the `RESOTOWORKER_OVERRIDE` environment variable. This is useful for environments where the token might be stored as a secret in a system like [Vault](https://www.vaultproject.io/).
+As described [above](#overriding-individual-properties), instead of specifying the API tokens or secret access keys in the Resoto config directly, they can also be specified using Resoto Worker's `--override` flag or the `RESOTOWORKER_OVERRIDE` environment variable. This is useful for environments where the token might be stored as a secret in a system like [Vault](https://www.vaultproject.io/).
 
-```title="Example"
+```bash title="Example"
 RESOTOWORKER_OVERRIDE="digitalocean.api_tokens=dop_v1_e5c759260e6a43f003f3b53e2cfec79cxxxxxxxxxxxxxxxxxxxxxxxx"
 ```
 
 :::
 
-Once one or more cloud providers have been configured the `collect_and_cleanup` [workflow](../concepts/automation/workflow.md) can be run by executing
+Once one or more cloud providers have been configured the `collect_and_cleanup` [workflow](../concepts/automation/workflow.md) can be run by executing:
 
-```
+```bash
 > workflow run collect_and_cleanup
 ```
 
-## Configuring Resoto Worker for many-core machines
+## Configuring Resoto Worker for Multi-Core Machines
 
 Resoto resource collection speed depends heavily on the number of CPU cores available to the worker. When collecting hundreds of accounts `resotoworker` can easily saturate 64 cores or more. The amount of RAM depends on the number of resources in each account. As a rule of thumb calculate with 512 MB of RAM and 0.5 CPU cores per account concurrently collected with a minimum of 4 cores and 16 GB for a production setup.
 
 The following settings specify how many worker threads Resoto starts:
 
-```yml title="config edit resoto.worker"
+```yml
 resotoworker:
   [...]
   # How many cleanup threads to run in parallel

@@ -25,7 +25,7 @@ In the text editor opened by [`config edit`](/docs/reference/cli/configs/edit), 
 ```yml
 resotoworker:
   collector:
-    - do
+    - digitalocean
     ...
 
 digitalocean:

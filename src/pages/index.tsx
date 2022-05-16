@@ -28,7 +28,7 @@ function HomepageHeader() {
       <h1 className={styles.heroTitle}>{siteConfig.title}</h1>
       <div className={styles.heroInner}>
         <div className={styles.heroSubtitle}>
-          Effortlessly manage your{' '}
+          Automate tedious{' '}
           <strong>
             <Typewriter
               words={[
@@ -41,7 +41,7 @@ function HomepageHeader() {
               cursorClassName={styles.cursor}
             />
           </strong>{' '}
-          infrastructure
+          tasks, remarkably fast!
         </div>
         <img
           className={styles.heroLogo}

@@ -16,24 +16,26 @@ function BreadcrumbsItemLink({
       <span itemProp="name">{children}</span>
     </Link>
   ) : (
-    <span itemProp="item name" className={className}>
-      {children}
-    </span>
+    <span className={className}>{children}</span>
   );
 }
 
 function BreadcrumbsItem({
   children,
   index,
+  addMicrodata,
 }: {
   children: ReactNode;
   index: number;
+  addMicrodata: boolean;
 }): JSX.Element {
   return (
     <li
-      itemScope
-      itemProp="itemListElement"
-      itemType="https://schema.org/ListItem"
+      {...(addMicrodata && {
+        itemScope: true,
+        itemProp: 'itemListElement',
+        itemType: 'https://schema.org/ListItem',
+      })}
       className="breadcrumbs__item"
     >
       {children}
@@ -70,7 +72,7 @@ export default function DocBreadcrumbs(): JSX.Element | null {
       >
         <HomeBreadcrumbItem />
         {breadcrumbs.map((item, idx) => (
-          <BreadcrumbsItem key={idx} index={idx}>
+          <BreadcrumbsItem key={idx} index={idx} addMicrodata={!!item.href}>
             <BreadcrumbsItemLink href={item.href}>
               {item.label}
             </BreadcrumbsItemLink>

@@ -132,14 +132,6 @@ sidebar_label: DigitalOcean
 
 ![digitalocean_load_balancer](./img/digitalocean/digitalocean_load_balancer_relationships.svg)
 
-## `digitalocean_network`
-
-![digitalocean_network](./img/digitalocean/digitalocean_network.svg)
-
-**Relationships in the graph that shows predecessors and successors of `digitalocean_network`:**
-
-![digitalocean_network](./img/digitalocean/digitalocean_network_relationships.svg)
-
 ## `digitalocean_project`
 
 ![digitalocean_project](./img/digitalocean/digitalocean_project.svg)
@@ -211,3 +203,12 @@ sidebar_label: DigitalOcean
 **Relationships in the graph that shows predecessors and successors of `digitalocean_volume`:**
 
 ![digitalocean_volume](./img/digitalocean/digitalocean_volume_relationships.svg)
+
+## `digitalocean_vpc`
+
+![digitalocean_vpc](./img/digitalocean/digitalocean_vpc.svg)
+
+**Relationships in the graph that shows predecessors and successors of `digitalocean_vpc`:**
+
+![digitalocean_vpc](./img/digitalocean/digitalocean_vpc_relationships.svg)
+

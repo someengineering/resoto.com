@@ -36,7 +36,7 @@ def print_md(provider: str):
     print(f"![{name}](./img/{provider}/{name}_relationships.svg)\n")
 
 
-export_images("aws")
-export_images("digitalocean")
+# export_images("aws")
+# export_images("digitalocean")
 export_images("gcp")
-# print_md("aws")
+# print_md("digitalocean")

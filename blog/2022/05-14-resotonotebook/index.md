@@ -3,7 +3,7 @@ authors: [nikita]
 tags: [jupyter, visualization]
 ---
 
-# Resoto meets Jupyter Nsotebook
+# Resoto meets Jupyter Notebook
 
 Recenty we released resotonotebook, a library to visualize and and explore the Resoto graph interactively, designed to be used together with [jupyter notebooks](https://docs.jupyter.org/en/latest/start/index.html).
 

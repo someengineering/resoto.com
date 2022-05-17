@@ -211,4 +211,3 @@ sidebar_label: DigitalOcean
 **Relationships in the graph that shows predecessors and successors of `digitalocean_vpc`:**
 
 ![digitalocean_vpc](./img/digitalocean/digitalocean_vpc_relationships.svg)
-

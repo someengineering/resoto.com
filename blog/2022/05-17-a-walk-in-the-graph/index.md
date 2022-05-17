@@ -1,16 +1,16 @@
 ---
 authors: [matthias]
 tags: [graph, search, digitalocean, aws, gcp]
-image: ./img/banner.png
+image: ./img/banner-social.png
 ---
 
-# A walk in the graph
+# A Walk in the Graph
 
 Resoto uses a [directed graph](https://en.wikipedia.org/wiki/Directed_graph) to represent your infrastructure resources as nodes and relationships between them as edges. A load balancer for example is represented as node with edges pointing to all target compute instances. The compute instance might have a volume attached, where we would see an edge between the instance node and the volume node.
 
 The nodes represent the actual resources. The edges define the relationship between the nodes. It is possible and highly likely, that one resource has multiple relationships to other resources.
 
-![Sheep Jumping on a Graph](img/banner_wide.png)
+![Sheep Jumping on a Graph](img/banner.png)
 
 <!--truncate-->
 
@@ -139,6 +139,6 @@ We can now use Graphviz to render the graph or use one of the many online tools 
 
 ![DigitalOcean Droplet](img/droplet_surrounding.svg)
 
-This diagram reveals a lot of useful information. It shows the related DigitalOcean team and project and the droplet usage as a node in a Kubernetes cluster and backend of a load balancer as well as its attached volumes. All of this information is available as is. The search syntax makes it extremely easy to walk this structure and reveal the information of interest.
+This diagram reveals a lot of useful information. It shows the related DigitalOcean team and project and the droplet usage as a node in a Kubernetes cluster and backend of a load balancer as well as its attached volumes. All of this information is available as-is. The search syntax makes it extremely easy to walk this structure and reveal the information of interest.
 
-Please hop over to our [Getting Started](/docs/getting-started) page and try it yourself!
+Please head over to the [Getting Started](/docs/getting-started) documentation and try it out yourself!

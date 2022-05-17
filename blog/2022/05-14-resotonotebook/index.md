@@ -1,11 +1,13 @@
 ---
 authors: [nikita]
-tags: [notebook, visualization]
+tags: [jupiter, visualization]
 ---
 
-# Resotonotebook
+# Resoto meets jupiter notebooks
 
-Recenty we released resotonotebook, a library to visualize and and explore the Resoto graph interactively, designed to be used together with jupyter notebooks. It is similar to resotoshell in a sense that you can execute your queries one by one, but, unlike resotoshell, the results are returned as [pandas](https://pandas.pydata.org/docs/user_guide/10min.html) dataframes, and you can use python too! This gives you much more flexibility for further filtering, aggregation, visualization and much more.
+Recenty we released resotonotebook, a library to visualize and and explore the Resoto graph interactively, designed to be used together with jupyter notebooks.
+
+It is similar to resotoshell in a sense that you can execute your queries one by one, but, unlike resotoshell, the results are returned as [pandas](https://pandas.pydata.org/docs/user_guide/10min.html) dataframes, and you can use python too! This gives you much more flexibility for further filtering, aggregation, visualization and much more.
 
 Let me take you for a tour:
 
@@ -19,9 +21,11 @@ Resotonotebook comes with a library called [plotly](https://plotly.com/python/),
 
 A useful example is a heatmap. It makes it easy to spot outliers, for example when someone played around with an expensive cluster and forgot to shut it down. Then you can easily clean it up using resoto.
 
-Here we will use the [heatmap](https://plotly.com/python/2D-Histogram/) to visualize now the number instances per core count per accunt looke like.
+Here we will use the [heatmap](https://plotly.com/python/2D-Histogram/) to visualize now the number instances per core count per accunt looke like:
 
 ![Heatmap](./img/plotly_heatmap.png)
+
+On the Y axis you see the number of cores per instance, and the X axis contains the account ids. The color of the heatmap cell indicates now many instances with a certain number of cores an account has. The brighter the color, the more instances.
 
 ### Graphs
 

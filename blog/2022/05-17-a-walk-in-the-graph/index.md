@@ -22,7 +22,7 @@ The following diagram shows an excerpt of the graph model for DigitalOcean dropl
 
 This diagram shows how the different kinds of possible resources are connected to each other in the graph. This does not mean that all of these resources have to exist in your infrastructure, it shows how they would be connected in case they exist.
 
-A droplet, for example, can have volumes, snapshots, or floating IPs, which are direct successors of the node. If we want to know which volumes are attached to a droplet, we will walk the graph outbound by one step. Since this could yield volumes, snapshots, and floating IPs, as seen in the diagram, we need to filter the resulting list to only keep the volumes. Let's assume we have a specific droplet with id `289061882`, where we want to know all attached volumes:
+A droplet, for example, can have volumes, snapshots, or floating IPs, which are direct successors of the node. If we want to know which volumes are attached to a droplet, we will traverse the graph outbound by one step. Since this could yield volumes, snapshots, and floating IPs, as seen in the diagram, we need to filter the resulting list to only keep the volumes. Let's assume we have a specific droplet with id `289061882`, where we want to know all attached volumes:
 
 ![Droplet to Volume](img/droplet-volume.svg)
 
@@ -34,9 +34,9 @@ A droplet, for example, can have volumes, snapshots, or floating IPs, which are 
 // highlight-end
 ```
 
-This search finds the DigitalOcean droplet with the related id, then walks the graph outbound by one step, as defined by `-->` , and filters the resulting volume list. Other resources are pointing towards our droplet. By looking at the graph structure, we see it could be load balancers, Kubernetes clusters, firewalls, or images.
+This search finds the DigitalOcean droplet with the specified ID, traverses the graph outbound one step (`-->`), and then filters the resulting list to return volumes only. Other resources point to our droplet, and we see from the graph structure that those resources could be load balancers, Kubernetes clusters, firewalls, or images.
 
-To get all the resources that point to this resource, we need to walk the graph inbound - which means in the opposite direction of the arrow in the graph structure diagram. Resoto uses the left facing arrow `<--` to walk the graph inbound. We use the same filter as before but this time, we walk the graph inbound and count the number of resources by kind.
+To get all the resources that point to this resource, we need to traverse the graph inbound - which means in the opposite direction of the arrow in the graph structure diagram. Resoto uses the left facing arrow `<--` to traverse the graph inbound. We use the same filter as before but this time, we traverse the graph inbound and count the number of resources by kind.
 
 ![Droplet Inbound](img/droplet_inbound.svg)
 
@@ -67,7 +67,7 @@ The droplet belongs to a region inside a [VPC](https://docs.digitalocean.com/pro
 // highlight-end
 ```
 
-We again start at our droplet and walk the graph inbound to the VPC. From there, we walk one step outbound to find all droplets attached to the same VPC. There are three droplets in this VPC, and one of them is the one we were starting from.
+We again start at our droplet and traverse the graph inbound to the VPC. From there, we traverse one step outbound to find all droplets attached to the same VPC. There are three droplets in this VPC, and one of them is the one we were starting from.
 
 It is possible to chain any number of graph traversals. We could have used the same technique to find all the droplets in the Kubernetes cluster or the ones behind the load balancer.
 
@@ -83,9 +83,9 @@ Since this droplet is attached to a load balancer, we want to find out the publi
 // highlight-end
 ```
 
-Resoto allows for walking not only one step but multiple steps. You can define a specific number of steps to walk (e.g. `-[4]->` walk exactly 4 steps outbound) and a range of steps (e.g. `<-[2:3]-` walk inbound and return everything during step 2 and 3). You can even specify the range as unlimited (e.g. `-[2:]->` walk outbound and return everything from step 2 and later), which would traverse the graph to the root or leaf, depending on the direction of the walk.
+Resoto allows for traverseing not only one step but multiple steps. You can define a specific number of steps to traverse (e.g. `-[4]->` traverse exactly 4 steps outbound) and a range of steps (e.g. `<-[2:3]-` traverse inbound and return everything during step 2 and 3). You can even specify the range as unlimited (e.g. `-[2:]->` traverse outbound and return everything from step 2 and later), which would traverse the graph to the root or leaf, depending on the direction of the traverse.
 
-The following search will select all DigitalOcean VPCs and then walk the graph outbound, returning all nodes that can be reached starting from the VPC up to two steps. This list would never include snapshots since snapshots can not be reached in two steps starting from the VPC.
+The following search will select all DigitalOcean VPCs and then traverse the graph outbound, returning all nodes that can be reached starting from the VPC up to two steps. This list would never include snapshots since snapshots can not be reached in two steps starting from the VPC.
 
 ![VPC 2 steps](img/vpc_2_steps.svg)
 
@@ -102,7 +102,7 @@ The following search will select all DigitalOcean VPCs and then walk the graph o
 // highlight-end
 ```
 
-If we can walk outbound with `-->` and inbound with `<--`, there has to be an option to walk in both directions. The combination of the two approaches is expressed with `<-->`. It is possible to get the list of all reachable resources starting from a specific node. We use the above droplet and ask for all attached resources.
+If we can traverse outbound with `-->` and inbound with `<--`, there has to be an option to traverse in both directions. The combination of the two approaches is expressed with `<-->`. It is possible to get the list of all reachable resources starting from a specific node. We use the above droplet and ask for all attached resources.
 
 ![Droplet Surrounding Structure](img/droplet_surrounding_structure.svg)
 
@@ -125,7 +125,7 @@ If we can walk outbound with `-->` and inbound with `<--`, there has to be an op
 // highlight-end
 ```
 
-The traversal definition `<-[0:]->` might look strange at first glance. It defines to walk inbound and outbound starting from the current node (`0`). Since the end of the walk is not specified, it will walk until there are no more nodes to traverse. It will walk to the graph root inbound and all possible leafs outbound. The result is then counted by kind. To make this information even more helpful, we can create a graph diagram out of this search using [Graphviz](https://www.graphviz.org/) and the [dot format](/docs/reference/cli/format). The same search as above is used with edges included in the result.
+The traversal definition `<-[0:]->` might look strange at first glance. It defines to traverse inbound and outbound starting from the current node (`0`). Since the end of the traverse is not specified, it will traverse until there are no more nodes to traverse. It will traverse to the graph root inbound and all possible leafs outbound. The result is then counted by kind. To make this information even more helpful, we can create a graph diagram out of this search using [Graphviz](https://www.graphviz.org/) and the [dot format](/docs/reference/cli/format). The same search as above is used with edges included in the result.
 
 ```bash
 > search --with-edges is(digitalocean_droplet) and
@@ -135,10 +135,10 @@ Received a file graph.dot, which is stored to ./graph.dot.
 // highlight-end
 ```
 
-We can now use Graphviz to render the graph or use one of the many online tools to visualize the graph. The final result is this graph.
+We can now use Graphviz to render the graph, or one of the many online tools to visualize the graph. The final result is the following:
 
 ![DigitalOcean Droplet](img/droplet_surrounding.svg)
 
-This diagram reveals a lot of useful information. It shows the related DigitalOcean team and project and the droplet usage as a node in a Kubernetes cluster and backend of a load balancer as well as its attached volumes. All of this information is available as-is. The search syntax makes it extremely easy to walk this structure and reveal the information of interest.
+This diagram reveals a lot of useful information. It shows the related DigitalOcean team and project and the droplet usage as a node in a Kubernetes cluster and backend of a load balancer as well as its attached volumes. All of this information is available as-is. The search syntax makes it extremely easy to traverse this structure and reveal the information of interest.
 
 Please head over to the [Getting Started](/docs/getting-started) documentation and try it out yourself!

@@ -1,5 +1,6 @@
 ---
 authors: [matthias]
+tags: [shell]
 ---
 
 # Resoto Shell Tab Completion
@@ -11,6 +12,8 @@ Resoto offers commands like [`echo`](/docs/reference/cli/echo), [`tail`](/docs/r
 Version 2.X of [Resoto Shell](/docs/concepts/components/shell) introduces tab completion, making the [command-line interface](/docs/reference/cli) easier to use than ever before! Press the tab key, and [Resoto Shell](/docs/concepts/components/shell) will present you with a list of available commands:
 
 ![List of commands](img/list_of_commands.png)
+
+<!--truncate-->
 
 The tab completion feature is context-aware and will even help you configure the options for a command:
 

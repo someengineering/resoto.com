@@ -34,7 +34,7 @@ A droplet, for example, can have volumes, snapshots, or floating IPs, which are 
 // highlight-end
 ```
 
-This search finds the DigitalOcean droplet with the related id, then traverses the graph outbound by one step, as defined by `-->` , and filters the resulting list for volumes. Other resources are pointing towards our droplet. By looking at the graph structure, we see it could be load balancers, Kubernetes clusters, firewalls, or images.
+This search finds the DigitalOcean droplet with the specified ID, traverses the graph outbound one step (`-->`), and then filters the resulting list to return volumes only. Other resources point to our droplet, and we see from the graph structure that those resources could be load balancers, Kubernetes clusters, firewalls, or images.
 
 To get all the resources that point to this resource, we need to traverse the graph inbound - which means in the opposite direction of the arrow in the graph structure diagram. Resoto uses the left facing arrow `<--` to traverse the graph inbound. We use the same filter as before but this time, we traverse the graph inbound and count the number of resources by kind.
 

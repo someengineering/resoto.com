@@ -3,7 +3,9 @@ authors: [lukas]
 tags: [metrics, graph, aggregation]
 ---
 
-# 1. Collect Resources, 2. Aggregate Metrics, 3. ......, 4. Profit!
+# 1. Collect , 2. Aggregate , 3. ......, 4. Profit!
+
+## Metrics in Resoto
 
 Let's begin with a question: Do you know how many compute instances are running in your infrastructure right now and what you are paying for them?
 

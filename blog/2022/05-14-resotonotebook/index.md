@@ -1,11 +1,11 @@
 ---
 authors: [nikita]
-tags: [jupiter, visualization]
+tags: [jupyter, visualization]
 ---
 
-# Resoto meets jupiter notebooks
+# Resoto meets Jupyter Nsotebook
 
-Recenty we released resotonotebook, a library to visualize and and explore the Resoto graph interactively, designed to be used together with jupyter notebooks.
+Recenty we released resotonotebook, a library to visualize and and explore the Resoto graph interactively, designed to be used together with [jupyter notebooks](https://docs.jupyter.org/en/latest/start/index.html).
 
 It is similar to resotoshell in a sense that you can execute your queries one by one, but, unlike resotoshell, the results are returned as [pandas](https://pandas.pydata.org/docs/user_guide/10min.html) dataframes, and you can use python too! This gives you much more flexibility for further filtering, aggregation, visualization and much more.
 

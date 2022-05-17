@@ -1,11 +1,16 @@
 ---
 authors: [matthias]
 tags: [graph, search, digitalocean]
+image: ./img/banner.png
 ---
 
 # A walk in the graph
 
 Resoto uses a [directed graph](https://en.wikipedia.org/wiki/Directed_graph) to represent your infrastructure resources as nodes and relationships between them as edges. A load balancer for example is represented as node with edges pointing to all target compute instances. The compute instance might have a volume attached, where we would see an edge between the instance node and the volume node.
+
+![Sheep Jumping on a Graph](img/banner_wide.png)
+
+<!--truncate-->
 
 The nodes represent the actual resources. The edges define the relationship between the nodes. It is possible and highly likely, that one resource has multiple relationships to other resources.
 

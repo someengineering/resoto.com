@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="252px" preserveAspectRatio="none" style="width:419px;height:252px;background:#00000000;" version="1.1" viewBox="0 0 419 252" width="419px" zoomAndPan="magnify"><defs/><g><!--MD5=[bd702a8755e5e5a80908d1a119284be8]
+class aws_iam_server_certificate--><a href="#aws_iam_server_certificate" target="_top" title="#aws_iam_server_certificate" xlink:actuate="onRequest" xlink:href="#aws_iam_server_certificate" xlink:show="new" xlink:title="#aws_iam_server_certificate" xlink:type="simple"><rect codeLine="17" fill="#3D176E" height="39.7891" id="aws_iam_server_certificate" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="269" x="7" y="207"/><ellipse cx="22" cy="226.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M24.9688,232.5352 Q24.3906,232.832 23.75,232.9727 Q23.1094,233.1289 22.4063,233.1289 Q19.9063,233.1289 18.5781,231.4883 Q17.2656,229.832 17.2656,226.707 Q17.2656,223.582 18.5781,221.9258 Q19.9063,220.2695 22.4063,220.2695 Q23.1094,220.2695 23.75,220.4258 Q24.4063,220.582 24.9688,220.8789 L24.9688,223.5977 Q24.3438,223.0195 23.75,222.7539 Q23.1563,222.4727 22.5313,222.4727 Q21.1875,222.4727 20.5,223.5508 Q19.8125,224.6133 19.8125,226.707 Q19.8125,228.8008 20.5,229.8789 Q21.1875,230.9414 22.5313,230.9414 Q23.1563,230.9414 23.75,230.6758 Q24.3438,230.3945 24.9688,229.8164 L24.9688,232.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="227" x="41" y="232.7798">aws_iam_server_certificate</text></a><!--MD5=[ab1eae8f76718f629e325f873a4fb1f8]
+class aws_region--><a href="#aws_region" target="_top" title="#aws_region" xlink:actuate="onRequest" xlink:href="#aws_region" xlink:show="new" xlink:title="#aws_region" xlink:type="simple"><rect codeLine="20" fill="#3D176E" height="39.7891" id="aws_region" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="137" x="73" y="7"/><ellipse cx="88" cy="26.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M90.9688,32.5352 Q90.3906,32.832 89.75,32.9727 Q89.1094,33.1289 88.4063,33.1289 Q85.9063,33.1289 84.5781,31.4883 Q83.2656,29.832 83.2656,26.707 Q83.2656,23.582 84.5781,21.9258 Q85.9063,20.2695 88.4063,20.2695 Q89.1094,20.2695 89.75,20.4258 Q90.4063,20.582 90.9688,20.8789 L90.9688,23.5977 Q90.3438,23.0195 89.75,22.7539 Q89.1563,22.4727 88.5313,22.4727 Q87.1875,22.4727 86.5,23.5508 Q85.8125,24.6133 85.8125,26.707 Q85.8125,28.8008 86.5,29.8789 Q87.1875,30.9414 88.5313,30.9414 Q89.1563,30.9414 89.75,30.6758 Q90.3438,30.3945 90.9688,29.8164 L90.9688,32.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="95" x="107" y="32.7798">aws_region</text></a><!--MD5=[552019ffe41fea5cb78274e58c2151ab]
+class aws_iam_server_certificate_quota--><a href="#aws_iam_server_certificate_quota" target="_top" title="#aws_iam_server_certificate_quota" xlink:actuate="onRequest" xlink:href="#aws_iam_server_certificate_quota" xlink:show="new" xlink:title="#aws_iam_server_certificate_quota" xlink:type="simple"><rect codeLine="23" fill="#3D176E" height="39.7891" id="aws_iam_server_certificate_quota" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="326" x="86.5" y="107"/><ellipse cx="101.5" cy="126.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M104.4688,132.5352 Q103.8906,132.832 103.25,132.9727 Q102.6094,133.1289 101.9063,133.1289 Q99.4063,133.1289 98.0781,131.4883 Q96.7656,129.832 96.7656,126.707 Q96.7656,123.582 98.0781,121.9258 Q99.4063,120.2695 101.9063,120.2695 Q102.6094,120.2695 103.25,120.4258 Q103.9063,120.582 104.4688,120.8789 L104.4688,123.5977 Q103.8438,123.0195 103.25,122.7539 Q102.6563,122.4727 102.0313,122.4727 Q100.6875,122.4727 100,123.5508 Q99.3125,124.6133 99.3125,126.707 Q99.3125,128.8008 100,129.8789 Q100.6875,130.9414 102.0313,130.9414 Q102.6563,130.9414 103.25,130.6758 Q103.8438,130.3945 104.4688,129.8164 L104.4688,132.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="284" x="120.5" y="132.7798">aws_iam_server_certificate_quota</text></a><!--MD5=[4e41495633a01de94d094ab97943c263]
+link aws_region to aws_iam_server_certificate_quota--><path codeLine="26" d="M162.58,47.13 C180.27,63.18 205.59,86.15 224.34,103.17 " fill="none" id="aws_region-to-aws_iam_server_certificate_quota" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="228.47,106.92,224.4943,97.9092,224.7677,103.5595,219.1175,103.8329,228.47,106.92" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[b62840297218b3b9ca6c11f8ec98f7c8]
+link aws_region to aws_iam_server_certificate--><path codeLine="27" d="M115.62,47.27 C98.67,61.61 77.96,82.83 68.5,107 C62.02,123.56 62.02,130.44 68.5,147 C77.22,169.28 95.5,189.05 111.59,203.24 " fill="none" id="aws_region-to-aws_iam_server_certificate" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="115.62,206.73,111.4257,197.8189,111.8368,203.4608,106.195,203.8719,115.62,206.73" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[0e7c3b512e6ab303b81abb80f7708b34]
+link aws_iam_server_certificate_quota to aws_iam_server_certificate--><path codeLine="28" d="M228.42,147.13 C210.73,163.18 185.41,186.15 166.66,203.17 " fill="none" id="aws_iam_server_certificate_quota-to-aws_iam_server_certificate" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="162.53,206.92,171.8825,203.8329,166.2323,203.5595,166.5057,197.9092,162.53,206.92" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[5e87105183c28643b52de611c8e6cd99]
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_iam_server_certificate [[#aws_iam_server_certificate]] {
+
+}
+class aws_region [[#aws_region]] {
+
+}
+class aws_iam_server_certificate_quota [[#aws_iam_server_certificate_quota]] {
+
+}
+aws_region -[#1A83AF]-> aws_iam_server_certificate_quota
+aws_region -[#1A83AF]-> aws_iam_server_certificate
+aws_iam_server_certificate_quota -[#1A83AF]-> aws_iam_server_certificate
+@enduml
+
+PlantUML version 1.2021.16(Wed Dec 08 17:25:22 UTC 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

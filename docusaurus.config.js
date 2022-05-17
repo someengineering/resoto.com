@@ -6,7 +6,7 @@ const a11yEmoji = require('@fec/remark-a11y-emoji');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Resoto by Some Engineering Inc.',
-  tagline: 'Automate tedious infrastructure tasks, fast!',
+  tagline: 'Automate tedious infrastructure tasks, remarkably fast!',
   url: 'https://resoto.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -97,7 +97,11 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      autoCollapseSidebarCategories: true,
+      docs: {
+        sidebar: {
+          autoCollapseCategories: true,
+        },
+      },
       metadata: [
         {
           name: 'keywords',

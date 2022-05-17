@@ -15,13 +15,13 @@ The examples below are taken from [example notebook](https://github.com/someengi
 
 ### Heatmaps
 
-Resotonotebook comes with a library called [plotly](https://plotly.com/python/), which is capable of visualizing data in a variety of ways. Here we will use the [heatmap](https://plotly.com/python/2D-Histogram/) to visualize instances.
+Resotonotebook comes with a library called [plotly](https://plotly.com/python/), which is capable of visualizing data in a variety of ways.
 
-Heatmaps are useful to see how the resources are clustered. Here is now a heatmap of the number of EC2 instances per core count per account looks like:
+A useful example is a heatmap. It makes it easy to spot outliers, for example when someone played around with an expensive cluster and forgot to shut it down. Then you can easily clean it up using resoto.
+
+Here we will use the [heatmap](https://plotly.com/python/2D-Histogram/) to visualize now the number instances per core count per accunt looke like.
 
 ![Heatmap](./img/plotly_heatmap.png)
-
-This heatmap makes it easy to spot outliers, for example when someone played around with an expensive cluster and forgot to shut it down. Then you can easily clean it up using resoto.
 
 ### Graphs
 
@@ -33,13 +33,13 @@ Let's make a graph of a cloud called `do` (DigitalOcean) and all its successor r
 
 ### Aggregations
 
-With resotonotebook, you can rely on the power of Pandas, a popular python package for data analysis. To make an example, let's aggregate the number of cores of running instances per account per region:
+With resotonotebook, you can rely on the power of Pandas, a popular python package for data analysis. Pandas allows you to use dataframe, a table-like object that allows you to easily query, filter and aggregate the data. To make an example, let's aggregate the number of cores of running instances per account per region:
 
 ![Aggregation](./img/aggregation-2.png)
 
 With this information, we can quickly identify the most expensive accounts to take cost reduction measures.
 
-I hope at this point resotonotebook whetted your appetite. Let's install it and start playing with it!
+I hope at this point resotonotebook has whetted your appetite. Let's install it and start playing with it!
 
 ## Installation
 

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="211px" preserveAspectRatio="none" style="width:525px;height:211px;background:#00000000;" version="1.1" viewBox="0 0 525 211" width="525px" zoomAndPan="magnify"><defs/><g><!--MD5=[9f976896e726bb06dda64d66586df82b]
+class digitalocean_droplet--><rect codeLine="23" fill="#3D176E" height="39.7891" id="digitalocean_droplet" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="211" x="7" y="91"/><ellipse cx="22" cy="110.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M24.9688,116.5352 Q24.3906,116.832 23.75,116.9727 Q23.1094,117.1289 22.4063,117.1289 Q19.9063,117.1289 18.5781,115.4883 Q17.2656,113.832 17.2656,110.707 Q17.2656,107.582 18.5781,105.9258 Q19.9063,104.2695 22.4063,104.2695 Q23.1094,104.2695 23.75,104.4258 Q24.4063,104.582 24.9688,104.8789 L24.9688,107.5977 Q24.3438,107.0195 23.75,106.7539 Q23.1563,106.4727 22.5313,106.4727 Q21.1875,106.4727 20.5,107.5508 Q19.8125,108.6133 19.8125,110.707 Q19.8125,112.8008 20.5,113.8789 Q21.1875,114.9414 22.5313,114.9414 Q23.1563,114.9414 23.75,114.6758 Q24.3438,114.3945 24.9688,113.8164 L24.9688,116.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="169" x="41" y="116.7798">digitalocean_droplet</text><!--MD5=[3b09a27d5c2b379405c9ecb6cd9106d4]
+class digitalocean_volume--><rect fill="#3D176E" height="39.7891" id="digitalocean_volume" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="215" x="290.5" y="16"/><ellipse cx="305.5" cy="35.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M308.4688,41.5352 Q307.8906,41.832 307.25,41.9727 Q306.6094,42.1289 305.9063,42.1289 Q303.4063,42.1289 302.0781,40.4883 Q300.7656,38.832 300.7656,35.707 Q300.7656,32.582 302.0781,30.9258 Q303.4063,29.2695 305.9063,29.2695 Q306.6094,29.2695 307.25,29.4258 Q307.9063,29.582 308.4688,29.8789 L308.4688,32.5977 Q307.8438,32.0195 307.25,31.7539 Q306.6563,31.4727 306.0313,31.4727 Q304.6875,31.4727 304,32.5508 Q303.3125,33.6133 303.3125,35.707 Q303.3125,37.8008 304,38.8789 Q304.6875,39.9414 306.0313,39.9414 Q306.6563,39.9414 307.25,39.6758 Q307.8438,39.3945 308.4688,38.8164 L308.4688,41.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="173" x="324.5" y="41.7798">digitalocean_volume</text><!--MD5=[2265ad14ddaf1ebc60f399a554a43384]
+class digitalocean_floating_ip--><rect fill="#3D176E" height="39.7891" id="digitalocean_floating_ip" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="240" x="278" y="91"/><ellipse cx="293" cy="110.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M295.9688,116.5352 Q295.3906,116.832 294.75,116.9727 Q294.1094,117.1289 293.4063,117.1289 Q290.9063,117.1289 289.5781,115.4883 Q288.2656,113.832 288.2656,110.707 Q288.2656,107.582 289.5781,105.9258 Q290.9063,104.2695 293.4063,104.2695 Q294.1094,104.2695 294.75,104.4258 Q295.4063,104.582 295.9688,104.8789 L295.9688,107.5977 Q295.3438,107.0195 294.75,106.7539 Q294.1563,106.4727 293.5313,106.4727 Q292.1875,106.4727 291.5,107.5508 Q290.8125,108.6133 290.8125,110.707 Q290.8125,112.8008 291.5,113.8789 Q292.1875,114.9414 293.5313,114.9414 Q294.1563,114.9414 294.75,114.6758 Q295.3438,114.3945 295.9688,113.8164 L295.9688,116.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="198" x="312" y="116.7798">digitalocean_floating_ip</text><!--MD5=[dad5e1ebd3aa37ff3d390a3e1303e949]
+class digitalocean_snapshot--><rect fill="#3D176E" height="39.7891" id="digitalocean_snapshot" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="227" x="284.5" y="166"/><ellipse cx="299.5" cy="185.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M302.4688,191.5352 Q301.8906,191.832 301.25,191.9727 Q300.6094,192.1289 299.9063,192.1289 Q297.4063,192.1289 296.0781,190.4883 Q294.7656,188.832 294.7656,185.707 Q294.7656,182.582 296.0781,180.9258 Q297.4063,179.2695 299.9063,179.2695 Q300.6094,179.2695 301.25,179.4258 Q301.9063,179.582 302.4688,179.8789 L302.4688,182.5977 Q301.8438,182.0195 301.25,181.7539 Q300.6563,181.4727 300.0313,181.4727 Q298.6875,181.4727 298,182.5508 Q297.3125,183.6133 297.3125,185.707 Q297.3125,187.8008 298,188.8789 Q298.6875,189.9414 300.0313,189.9414 Q300.6563,189.9414 301.25,189.6758 Q301.8438,189.3945 302.4688,188.8164 L302.4688,191.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="185" x="318.5" y="191.7798">digitalocean_snapshot</text><path d="M51,8.5 L51,53.7656 A2.5,2.5 0 0 0 53.5,56.2656 L171.5,56.2656 A2.5,2.5 0 0 0 174,53.7656 L174,16 L164,6 L53.5,6 A2.5,2.5 0 0 0 51,8.5 " fill="#D9B8FF" style="stroke:#000D19;stroke-width:1.0;"/><path d="M164,6 L164,14.75 A1.25,1.25 0 0 0 165.25,16 L174,16 L164,6 " fill="#D9B8FF" style="stroke:#000D19;stroke-width:1.0;"/><text fill="#1A83AF" font-family="Helvetica" font-size="13" font-weight="bold" lengthAdjust="spacing" text-decoration="line-through" textLength="5" x="62" y="28.0669">-</text><text fill="#1A83AF" font-family="Helvetica" font-size="13" font-weight="bold" lengthAdjust="spacing" text-decoration="line-through" textLength="5" x="67" y="28.0669">-</text><text fill="#1A83AF" font-family="Helvetica" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="20" x="72" y="28.0669">----</text><text fill="#3D176E" font-family="Helvetica" font-size="13" lengthAdjust="spacing" textLength="58" x="96" y="28.0669">structure</text><text fill="#FFAF37" font-family="Helvetica" font-size="13" font-weight="bold" lengthAdjust="spacing" text-decoration="line-through" textLength="5" x="62" y="43.1997">-</text><text fill="#FFAF37" font-family="Helvetica" font-size="13" font-weight="bold" lengthAdjust="spacing" text-decoration="line-through" textLength="5" x="67" y="43.1997">-</text><text fill="#FFAF37" font-family="Helvetica" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="20" x="72" y="43.1997">----</text><text fill="#3D176E" font-family="Helvetica" font-size="13" lengthAdjust="spacing" textLength="27" x="96" y="43.1997">walk</text><!--MD5=[d85140b03ec821a57d94e9cb8bed1a79]
+link digitalocean_droplet to digitalocean_volume--><path codeLine="26" d="M218.26,95.64 C264.15,84.5 315.6,69.99 351.48,57.7 " fill="none" id="digitalocean_droplet-to-digitalocean_volume" style="stroke:#FFAF37;stroke-width:2.0;"/><polygon fill="#FFAF37" points="356.21,56.06,346.395,55.2445,351.4885,57.7054,349.0276,62.7989,356.21,56.06" style="stroke:#FFAF37;stroke-width:2.0;"/><!--MD5=[d85140b03ec821a57d94e9cb8bed1a79]
+link digitalocean_droplet to digitalocean_volume--><path codeLine="29" d="M152.62,90.99 C186.84,78.7 238.26,63.9 285.12,52.37 " fill="none" id="digitalocean_droplet-to-digitalocean_volume-1" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="290.23,51.12,280.5381,49.3685,285.3726,52.3058,282.4354,57.1403,290.23,51.12" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[21d122cc917a880fa07141064d93837d]
+link digitalocean_droplet to digitalocean_floating_ip--><path codeLine="27" d="M218.26,123.36 C235.99,123.74 254.56,123.84 272.73,123.66 " fill="none" id="digitalocean_droplet-to-digitalocean_floating_ip" style="stroke:#FFAF37;stroke-width:2.0;"/><polygon fill="#FFAF37" points="277.85,123.6,268.8049,119.7031,272.8503,123.6571,268.8963,127.7026,277.85,123.6" style="stroke:#FFAF37;stroke-width:2.0;"/><!--MD5=[21d122cc917a880fa07141064d93837d]
+link digitalocean_droplet to digitalocean_floating_ip--><path codeLine="30" d="M218.26,97.92 C235.99,97.51 254.56,97.4 272.73,97.59 " fill="none" id="digitalocean_droplet-to-digitalocean_floating_ip-1" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="277.85,97.65,268.8963,93.5474,272.8503,97.5929,268.8049,101.5469,277.85,97.65" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[ffdf0d5671c942e1fe442c5e0df01ebf]
+link digitalocean_droplet to digitalocean_snapshot--><path codeLine="28" d="M154.12,131 C186.91,142.51 234.78,156.29 279.36,167.46 " fill="none" id="digitalocean_droplet-to-digitalocean_snapshot" style="stroke:#FFAF37;stroke-width:2.0;"/><polygon fill="#FFAF37" points="284.22,168.67,276.4462,162.6228,279.3668,167.4674,274.5221,170.388,284.22,168.67" style="stroke:#FFAF37;stroke-width:2.0;"/><!--MD5=[ffdf0d5671c942e1fe442c5e0df01ebf]
+link digitalocean_droplet to digitalocean_snapshot--><path codeLine="31" d="M218.26,125.63 C264.75,136.86 316.96,151.66 352.88,164.22 " fill="none" id="digitalocean_droplet-to-digitalocean_snapshot-1" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="357.62,165.9,350.4558,159.1417,352.9029,164.2419,347.8028,166.689,357.62,165.9" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[978fe056cee1c8dd29e73f43a0b23258]
+@startuml
+left to right direction
+hide empty members
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowColor #ffaf37
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class digitalocean_droplet {
+
+}
+digitalocean_droplet - -> digitalocean_volume
+  digitalocean_droplet - -> digitalocean_floating_ip
+  digitalocean_droplet - -> digitalocean_snapshot
+digitalocean_droplet -[#1A83AF]-> digitalocean_volume
+digitalocean_droplet -[#1A83AF]-> digitalocean_floating_ip
+digitalocean_droplet -[#1A83AF]-> digitalocean_snapshot
+  note as N1
+  <b><color:1A83AF>- - - - - - - - - - - - - -</color></b> structure
+  <b><color:ffaf37>- - - - - - - - - - - - - -</color></b> walk
+  end note
+@enduml
+
+PlantUML version 1.2021.16(Wed Dec 08 17:25:22 UTC 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

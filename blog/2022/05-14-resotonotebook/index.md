@@ -5,17 +5,19 @@ tags: [notebook, visualization]
 
 # Resotonotebook
 
-Today I'm happy to present resotonotebook, a tool for visualizing and exploring the Resoto graph.
+Recenty we released resotonotebook, a library to visualize and and explore the Resoto graph interactively, designed to be used together with jupyter notebooks. It is similar to resotoshell in a sense that you can execute your queries one by one, but, unlike resotoshell, the results are returned as [pandas](https://pandas.pydata.org/docs/user_guide/10min.html) dataframes, and you can use python too! This gives you much more flexibility for further filtering, aggregation, visualization and much more.
 
-With it, you can make heatmaps, build graphs, perform data aggregations, and much more.
+Let me take you for a tour:
 
-Let's dive into examples:
+## A tour of resotonotebook
 
-## Examples
+The examples below are taken from [example notebook](https://github.com/someengineering/resotonotebook/blob/main/examples/example.ipynb). I recommend to copy it and modify it for your own needs.
 
 ### Heatmaps
 
-Heatmaps are useful to see how resources are clustered. For instance, we can make a heatmap of the number of EC2 instances per core count per account:
+Resotonotebook comes with a library called [plotly](https://plotly.com/python/), which is capable of visualizing data in a variety of ways. Here we will use the [heatmap](https://plotly.com/python/2D-Histogram/) to visualize instances.
+
+Heatmaps are useful to see how the resources are clustered. Here is now a heatmap of the number of EC2 instances per core count per account looks like:
 
 ![Heatmap](./img/plotly_heatmap.png)
 

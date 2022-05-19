@@ -329,7 +329,7 @@ sum(avg_over_time(resoto_instances_total{cloud=~"$cloud", region=~"$region", acc
 
 ![Dashboard with second panel](img/grafana_second_panel_dashboard.png)
 
-## The end product
+## The final product
 
 If we repeat the above steps for [all the metrics we saw before](#how-metrics-are-made), we will get a dashboard that looks like this:
 

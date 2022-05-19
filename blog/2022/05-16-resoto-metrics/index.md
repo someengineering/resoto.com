@@ -95,7 +95,7 @@ This is where the before mentioned [aggregation](https://resoto.com/blog/2022/03
 ​  type: m5.4xlarge
 ​  status: stopped
 ​instances_total: 7
-...
+​...
 ```
 
 Now this is useful but what would be even more useful was if I could compare the current value to the one from an hour ago, a day ago, a month ago, a year ago, etc. This is where time series come into play.

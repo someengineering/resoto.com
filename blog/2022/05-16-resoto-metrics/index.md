@@ -25,7 +25,7 @@ Resoto comes with a handy dandy metrics component called [Resoto Metrics](https:
 
 If you already know what graph and time series databases, metrics, samples, labels, Prometheus and Grafana are you can [skip ahead to the next chapter](#getting-started). For anyone not deep into the cloud native metrics ecosystem let's get some concepts and terminology out of the way.
 
-Resoto creates an inventory of your cloud infrastructure by taking all the meta data of your cloud resources and storing them inside a graph database. This is what we call the `collect` [step](https://resoto.com/docs/concepts/automation/workflow). Every resource (like a compute instance, storage volume, etc.) is represented by a node in the graph. Nodes are connected to each other by edges. Edges represent the relationship between two nodes (please excuse my MS Paint skills).
+Resoto creates an inventory of your cloud infrastructure by taking all the meta data of your cloud resources and storing them inside a graph database. This is what we call the `collect` [step](https://resoto.com/docs/concepts/automation/workflow). Every resource (like a compute instance, storage volume, etc.) is represented by a node in the graph. Nodes are connected to each other by edges. Edges represent the relationship between two nodes as illustrated in this graph excerpt (please excuse my MS Paint skills).
 
 ![Graph visualization](img/graph_visualization.png)
 

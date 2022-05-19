@@ -331,7 +331,7 @@ If we repeat the above steps for [all the metrics we saw before](#how-metrics-ar
 
 ![Finished Dashboard](img/grafana_finished_dashboard.png)
 
-This is the actual production dashboard from a current Resoto user. It shows them the amount of compute and storage they are currently using, as well as the associated cost. It also graphs volumes that are not in use and will soon be automatically cleaned up by Resoto. They also have dashboards for quota limits and network related stats. Individual teams use these dashboards to monitor their cloud usage by exposing custom tags as Prometheus labels and filtering by team or project.
+This is the actual production dashboard from a current Resoto user. It shows them the amount of compute and storage they are currently using, as well as the associated cost. It also graphs volumes that are not in use and will soon be cleaned up by Resoto. They also have dashboards for quota limits and network related stats. Individual teams use these dashboards to monitor their cloud usage by exposing custom tags as Prometheus labels and filtering by team or project.
 
 They were nice enough to contribute [the Grafana dashboard templates](https://github.com/someengineering/resoto/tree/main/contrib/grafana-dashboards) so you don't have to create them yourself.
 

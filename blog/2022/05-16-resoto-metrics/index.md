@@ -66,7 +66,7 @@ Among other things Resoto then allows you to [search that meta data](http://loca
 ​...
 ```
 
-This would return a list of all the EC2 instances with more than 4 cores. That's neat if I want to do something with each individual instance, but sometimes I'm not interested in the details of individual resources. Sometimes I just want to know the sum of how many resources there are. Or, how many resources of a certain kind are running. Like the distribution of compute instances by instance type (e.g. how many m5.large, m5.2xlarge, etc.) or the current cost of compute plus storage grouped by team.
+This would return a list of all the EC2 instances with more than 4 cores. That's useful if I want to do something with each individual instance, but sometimes I'm not interested in the details of individual resources. Sometimes I just want to know the sum of how many resources there are. Or, how many resources of a certain kind are running. Like the distribution of compute instances by instance type (e.g. how many m5.large, m5.2xlarge, etc.) or the current cost of compute plus storage grouped by team.
 
 This is where the before mentioned [aggregation](https://resoto.com/blog/2022/03/03/aggregating-search-data) comes into play. It does just that; [aggregating resources and grouping the result](https://resoto.com/blog/2022/03/03/aggregating-search-data).
 
@@ -84,7 +84,7 @@ This is where the before mentioned [aggregation](https://resoto.com/blog/2022/03
 ​...
 ```
 
-Now this is also useful but what would be even neater was if I could compare the current value to the one from an hour ago, a day ago, a month ago, a year ago, etc. This is where time series come into play. A time series database like [Prometheus](https://prometheus.io/) does not store the details of an individual resource but instead stores the aggregated data over time. It then allows us to query that data and create charts to visualize the result. In the aggregated search above each of the results is what Prometheus calls a sample. A sample is a single value at a point in time in a time series. The `account` in each group is what's called a [label](https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels) in Prometheus. Labels are `key: value` pairs that allow us to group samples.
+Now this is useful but what would be even more useful was if I could compare the current value to the one from an hour ago, a day ago, a month ago, a year ago, etc. This is where time series come into play. A time series database like [Prometheus](https://prometheus.io/) does not store the details of an individual resource but instead stores the aggregated data over time. It then allows us to query that data and create charts to visualize the result. In the aggregated search above each of the results is what Prometheus calls a sample. A sample is a single value at a point in time in a time series. The `account` in each group is what's called a [label](https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels) in Prometheus. Labels are `key: value` pairs that allow us to group samples.
 
 Prometheus has some basic graphing capabilities but to build a dashboard we want to use a better suited tool like [Grafana](https://grafana.com/). It can visualize data from a variety of different sources in a variety of different chart types, like this stacked line chart.
 

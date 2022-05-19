@@ -25,9 +25,9 @@ Resoto comes with a handy dandy metrics component called [Resoto Metrics](https:
 
 If you already know what graph and time series databases, metrics, samples, labels, Prometheus and Grafana are you can [skip ahead to the next chapter](#getting-started). For anyone not deep into the cloud native metrics ecosystem let's get some concepts and terminology out of the way.
 
-### Collecting and searching
+#### Collecting
 
-Resoto creates an inventory of your cloud infrastructure by taking all the meta data of your cloud resources and storing them inside a graph database. This is what we call the `collect` [step](https://resoto.com/docs/concepts/automation/workflow). Every resource (like a compute instance, storage volume, etc.) is represented by a node in the graph. Nodes are connected to each other by edges. Edges represent the relationship between two nodes as illustrated in this graph excerpt (please excuse my MS Paint skills):
+Resoto creates an inventory of your cloud infrastructure by taking all the meta data of your cloud resources and storing them inside of a graph. This is what we call the `collect` [step](https://resoto.com/docs/concepts/automation/workflow). Every resource (like a compute instance, storage volume, etc.) is represented by a node in the graph. Nodes are connected to each other by edges. Edges represent the relationship between two nodes as illustrated in this graph excerpt (please excuse my MS Paint skills):
 
 ![Graph visualization](img/graph_visualization.png)
 
@@ -53,6 +53,8 @@ In Resoto a node is essentially an indexed JSON document that contains all the m
 }
 ```
 
+#### Searching
+
 Among other things Resoto then allows you to [search that meta data](http://localhost:3000/blog/2022/02/04/resoto-search-101). An example search could be
 
 ```
@@ -70,9 +72,9 @@ Among other things Resoto then allows you to [search that meta data](http://loca
 
 This would return a list of all the EC2 instances with more than 4 cores. That's useful if I want to do something with each individual instance, but sometimes I'm not interested in the details of individual resources. Sometimes I just want to know the sum of how many resources there are. Or, how many resources of a certain kind are running. Like the distribution of compute instances by instance type (e.g. how many m5.large, m5.2xlarge, etc.) or the current cost of compute plus storage grouped by team.
 
-### Aggregating
+#### Aggregating
 
-This is where the before mentioned [aggregation](https://resoto.com/blog/2022/03/03/aggregating-search-data) comes into play. It does just that; [aggregating resources and grouping the result](https://resoto.com/blog/2022/03/03/aggregating-search-data).
+This is where the before mentioned [aggregation](https://resoto.com/blog/2022/03/03/aggregating-search-data) comes into play. It does just that; [aggregating and grouping the results of a search](https://resoto.com/blog/2022/03/03/aggregating-search-data).
 
 ```
 > search aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account, /ancestors.region.reported.name as region, instance_type as type, instance_status as status: sum(1) as instances_total): is(instance)
@@ -98,7 +100,7 @@ This is where the before mentioned [aggregation](https://resoto.com/blog/2022/03
 
 Now this is useful but what would be even more useful was if I could compare the current value to the one from an hour ago, a day ago, a month ago, a year ago, etc. This is where time series come into play.
 
-### Time series
+#### Time series
 
 A time series database like [Prometheus](https://prometheus.io/) does not store the details of an individual resource but instead stores the aggregated data over time. It then allows us to query that data and create charts to visualize the result. In the aggregated search above each of the results is what Prometheus calls a sample. A sample is a single value at a point in time in a time series. The `account` in each group is what's called a [label](https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels) in Prometheus. Labels are `key: value` pairs that allow us to group samples.
 

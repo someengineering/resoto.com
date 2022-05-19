@@ -74,7 +74,7 @@ This would return a list of all the EC2 instances with more than 4 cores. That's
 
 #### Aggregating
 
-This is where the before mentioned [aggregation](https://resoto.com/blog/2022/03/03/aggregating-search-data) comes into play. It does just that; [aggregating and grouping the results of a search](https://resoto.com/blog/2022/03/03/aggregating-search-data).
+This is where the before mentioned [aggregation](https://resoto.com/blog/2022/03/03/aggregating-search-data) comes into play. It does just that; [aggregating and grouping the results of a search](https://resoto.com/blog/2022/03/03/aggregating-search-data). This is what creates the samples of a metric.
 
 ```
 > search aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account, /ancestors.region.reported.name as region, instance_type as type, instance_status as status: sum(1) as instances_total): is(instance)
@@ -102,13 +102,13 @@ Now this is useful but what would be even more useful was if I could compare the
 
 #### Time series
 
-A time series database like [Prometheus](https://prometheus.io/) does not store the details of an individual resource but instead stores the aggregated data over time. It then allows us to query that data and create charts to visualize the result. In the aggregated search above each of the results is what Prometheus calls a sample. A sample is a single value at a point in time in a time series. The `account` in each group is what's called a [label](https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels) in Prometheus. Labels are `key: value` pairs that allow us to group samples.
+A time series database like [Prometheus](https://prometheus.io/) does not store the details of an individual resource but instead stores the aggregated data over time. It then allows us to query that data and create charts to visualize the result. In the aggregated search above each of the results is what Prometheus calls a sample. A sample is a single value at a point in time in a time series. In our previous example the `cloud`, `account`, `region`, `type` and `status` in each group is what's called a [label](https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels) in Prometheus. Labels are `key: value` pairs that allow us to group samples.
 
-Prometheus has some basic graphing capabilities but to build a dashboard we want to use a better suited tool like [Grafana](https://grafana.com/). It can visualize data from a variety of different sources in a variety of different chart types, like this stacked line chart.
+Prometheus has some basic graphing capabilities but to build a dashboard we want to use a better suited tool like [Grafana](https://grafana.com/). It can visualize data from different sources in a variety of chart styles, like this stacked line chart.
 
 ![Instance cost over time](img/grafana_instances_total.png)
 
-So here's the plan. First we are going learn how to [configure Prometheus to fetch data from Resoto Metrics](#getting-started). Then how to [query that data inside Prometheus](#querying-a-metric). After that we explore from where Resoto retrieves its metrics configuration and how to [define our own custom metrics](#how-metrics-are-made). Finally we will use Grafana to [create a simple dashboard and visualize the data](#i-was-promised-a-metrics-dashboard).
+So here's the plan. First we will learn how to [configure Prometheus to fetch data from Resoto Metrics](#getting-started). Then how to [query that data inside Prometheus](#querying-a-metric). After that we explore from where Resoto retrieves its metrics configuration and how to [define our own metrics](#how-metrics-are-made). Finally we will use Grafana to [create a simple dashboard and visualize the data](#i-was-promised-a-metrics-dashboard).
 
 ## Getting Started
 
@@ -154,7 +154,7 @@ Here is one of those metrics from the list:
 resoto_instances_total{cloud="aws", account="eng-production", region="us-west-2", status="running", type="m5.xlarge", instance="localhost:9955", job="resotometrics"} 17
 ```
 
-The `key="value"` pairs inside those curly brackets are those previously mentioned [labels](https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels). To filter by label let us update the query to:
+The `key="value"` pairs inside those curly brackets are those [previously mentioned](#time-series) [labels](https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels). To filter by label let us update the query to:
 
 ```
 resoto_instances_total{status="running"}
@@ -162,9 +162,11 @@ resoto_instances_total{status="running"}
 
 Now we are only seeing compute instances that we are actually paying for at the moment.This information is a bit more interesting, but we could get the same from within the Resoto Shell. What would be really interesting, is how the number of compute instances has changed over the last week or two.
 
-Click on the `Graph` tab, choose a `2w` period and click the `Show stacked graph` button. We are getting closer to what we'd like to see. But what are these speckles? Why aren't we seeing solid lines?
+Click on the `Graph` tab, choose a `2w` period and click the `Show stacked graph` button.
 
 ![Prometheus raw graph data](img/prometheus_raw_graph.png)
+
+We are getting closer to what we'd like to see. But what are these speckles? Why aren't we seeing solid lines?
 
 By default Resoto collects data once per hour. Let's tell Prometheus to create an average over time over one hour by changing the query to:
 
@@ -184,7 +186,7 @@ sum(avg_over_time(resoto_instances_total{status="running"}[1h]))
 
 ![Prometheus summed metrics](img/prometheus_summed_metrics.png)
 
-Nice, now we see how the total number of compute instances has changed over time. However we lost absolutely all labels. No more accounts, region and instance type information. To get some information back, let's group the summed up averages by account.
+Nice, now we see how the total number of compute instances has changed over the last two weeks. However we lost absolutely all labels. No more accounts, region and instance type information. To get some information back, let's group the summed up averages by account.
 
 ```
 
@@ -200,7 +202,7 @@ Want to see how storage has changed over time? Just change `resoto_instances_tot
 
 ## How Metrics are made
 
-Now Prometheus' Web UI will provide syntax help and auto-complete for available metric names. However you might be wondering, how are you supposed to know which metrics exist? How do you know what other metrics there are and where something like `resoto_instances_total` is defined? Glad you asked. All Metrics are configured in the `resoto.metrics` [config](https://resoto.com/docs/getting-started/configuring-resoto). Within [Resoto Shell (`resh`)](https://resoto.com/docs/concepts/components/shell) run:
+Now Prometheus' Web UI will provide syntax help and auto-complete for available metric names. However you might be wondering, how are you supposed to know which metrics exist? How do you know what other metrics there are and where something like `resoto_instances_total` is defined? Glad you asked. All Metrics are configured in the `resoto.metrics` [config](https://resoto.com/docs/getting-started/configuring-resoto). Within [Resoto Shell (`resh`)](https://resoto.com/docs/concepts/components/shell) execute:
 
 ```
 
@@ -221,7 +223,7 @@ resotometrics:
 ...
 ```
 
-Here you can add your own metrics. As [previously explained](#aggregating), the `aggregate` expression in the `search` field is what creates the metric.
+Here you can add your own metrics. As [previously explained](#aggregating), the `aggregate` expression in the `search` field is what creates the samples of a metric.
 
 This config can be updated at runtime. Next time the `metrics` [workflow](https://resoto.com/docs/concepts/automation/workflow) is run Resoto Metrics will generate the new metric and from then on provide it to Prometheus.
 
@@ -229,7 +231,7 @@ This config can be updated at runtime. Next time the `metrics` [workflow](https:
 > workflow run metrics
 ```
 
-## I was promised a Metrics Dashboard!
+## Creating the Metrics Dashboard
 
 So now we have learned how to get metrics from Resoto into Prometheus, how to query them and how to create new ones. But what about the dashboard?
 
@@ -270,7 +272,7 @@ $ docker run -d -p 3000:3000 -v grafana-data:/var/lib/grafana -v grafana-etc:/et
 10. Repeat Step 9 for
 
 - Name `account`, Label `Account`, Query `label_values(account)` and
-- Name `region`, Label `Region`, Query `label_values(region)` with `Multi-value` and `Include All option` turned on.
+- Name `region`, Label `Region`, Query `label_values(region)` with `Multi-value` and `Include All option` turned on for all variables.
 
 ![Variables](img/grafana_variables.png)
 
@@ -329,6 +331,8 @@ If we repeat the above steps for [all the metrics we saw before](#how-metrics-ar
 
 ![Finished Dashboard](img/grafana_finished_dashboard.png)
 
-This is the actual production dashboard from a current Resoto user. They were nice enough to contribute [the Grafana dashboard templates](https://github.com/someengineering/resoto/tree/main/contrib/grafana-dashboards) so you don't have to create them yourself.
+This is the actual production dashboard from a current Resoto user. It shows them the amount of compute and storage they are currently using, as well as the associated cost. It also graphs volumes that are not in use and will soon be automatically cleaned up by Resoto. They also have dashboards for quota limits and network related stats. Individual teams use these dashboards to monitor their cloud usage by exposing custom tags as Prometheus labels and filtering by team or project.
+
+They were nice enough to contribute [the Grafana dashboard templates](https://github.com/someengineering/resoto/tree/main/contrib/grafana-dashboards) so you don't have to create them yourself.
 
 But if you want to customize them, now you know how!

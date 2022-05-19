@@ -25,6 +25,8 @@ Resoto comes with a handy dandy metrics component called [Resoto Metrics](https:
 
 If you already know what graph and time series databases, metrics, samples, labels, Prometheus and Grafana are you can [skip ahead to the next chapter](#getting-started). For anyone not deep into the cloud native metrics ecosystem let's get some concepts and terminology out of the way.
 
+### Collecting and searching
+
 Resoto creates an inventory of your cloud infrastructure by taking all the meta data of your cloud resources and storing them inside a graph database. This is what we call the `collect` [step](https://resoto.com/docs/concepts/automation/workflow). Every resource (like a compute instance, storage volume, etc.) is represented by a node in the graph. Nodes are connected to each other by edges. Edges represent the relationship between two nodes as illustrated in this graph excerpt (please excuse my MS Paint skills):
 
 ![Graph visualization](img/graph_visualization.png)
@@ -68,23 +70,37 @@ Among other things Resoto then allows you to [search that meta data](http://loca
 
 This would return a list of all the EC2 instances with more than 4 cores. That's useful if I want to do something with each individual instance, but sometimes I'm not interested in the details of individual resources. Sometimes I just want to know the sum of how many resources there are. Or, how many resources of a certain kind are running. Like the distribution of compute instances by instance type (e.g. how many m5.large, m5.2xlarge, etc.) or the current cost of compute plus storage grouped by team.
 
+### Aggregating
+
 This is where the before mentioned [aggregation](https://resoto.com/blog/2022/03/03/aggregating-search-data) comes into play. It does just that; [aggregating resources and grouping the result](https://resoto.com/blog/2022/03/03/aggregating-search-data).
 
 ```
-> search aggregate(/ancestors.account.reported.name as account: sum(1) as instances_total): is(aws_ec2_instance) and instance_status = running
-
+> search aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account, /ancestors.region.reported.name as region, instance_type as type, instance_status as status: sum(1) as instances_total): is(instance)
+​
 ​group:
+​  cloud: aws
 ​  account: eng-production
-​instances_total: 21
+​  region: us-west-2
+​  type: m5.xlarge
+​  status: running
+​instances_total: 13
 ​
 ​---
 ​group:
-​  account: eng-scaletesting
-​instances_total: 56
-​...
+​  cloud: aws
+​  account: eng-production
+​  region: us-west-2
+​  type: m5.4xlarge
+​  status: stopped
+​instances_total: 7
+...
 ```
 
-Now this is useful but what would be even more useful was if I could compare the current value to the one from an hour ago, a day ago, a month ago, a year ago, etc. This is where time series come into play. A time series database like [Prometheus](https://prometheus.io/) does not store the details of an individual resource but instead stores the aggregated data over time. It then allows us to query that data and create charts to visualize the result. In the aggregated search above each of the results is what Prometheus calls a sample. A sample is a single value at a point in time in a time series. The `account` in each group is what's called a [label](https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels) in Prometheus. Labels are `key: value` pairs that allow us to group samples.
+Now this is useful but what would be even more useful was if I could compare the current value to the one from an hour ago, a day ago, a month ago, a year ago, etc. This is where time series come into play.
+
+### Time series
+
+A time series database like [Prometheus](https://prometheus.io/) does not store the details of an individual resource but instead stores the aggregated data over time. It then allows us to query that data and create charts to visualize the result. In the aggregated search above each of the results is what Prometheus calls a sample. A sample is a single value at a point in time in a time series. The `account` in each group is what's called a [label](https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels) in Prometheus. Labels are `key: value` pairs that allow us to group samples.
 
 Prometheus has some basic graphing capabilities but to build a dashboard we want to use a better suited tool like [Grafana](https://grafana.com/). It can visualize data from a variety of different sources in a variety of different chart types, like this stacked line chart.
 
@@ -203,31 +219,7 @@ resotometrics:
 ...
 ```
 
-Here you can add your own metrics. The `aggregate` expression in the `search` field is what creates the metric.
-
-Try copying the above `search` into the `resh` shell and run it. You should see something like this:
-
-```
-> search aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account, /ancestors.region.reported.name as region, instance_type as type, instance_status as status: sum(1) as instances_total): is(instance)
-​
-​group:
-​  cloud: aws
-​  account: eng-production
-​  region: us-west-2
-​  type: m5.xlarge
-​  status: running
-​instances_total: 13
-​
-​---
-​group:
-​  cloud: aws
-​  account: eng-production
-​  region: us-west-2
-​  type: m5.4xlarge
-​  status: stopped
-​instances_total: 7
-...
-```
+Here you can add your own metrics. As [previously explained](#aggregating), the `aggregate` expression in the `search` field is what creates the metric.
 
 This config can be updated at runtime. Next time the `metrics` [workflow](https://resoto.com/docs/concepts/automation/workflow) is run Resoto Metrics will generate the new metric and from then on provide it to Prometheus.
 

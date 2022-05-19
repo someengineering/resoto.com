@@ -94,7 +94,7 @@ So here's the plan. First we are going learn how to [configure Prometheus to fet
 
 ## Getting Started
 
-If you are new to Resoto, [start the Resoto stack](https://resoto.com/docs/getting-started/installing-with-docker) and [configure it to collect some of your cloud accounts](https://resoto.com/docs/getting-started/configuring-resoto#configuring-cloud-providers).
+If you are new to Resoto, [start the Resoto stack](https://resoto.com/docs/getting-started/installation) and [configure it to collect some of your cloud accounts](https://resoto.com/docs/getting-started/configuring-resoto#configuring-cloud-providers).
 
 To check out the data Resoto Metrics generates open [`https://localhost:9955/metrics`](https://localhost:9955/metrics) in your browser (replacing `localhost` with the IP address or hostname of the machine where `resotometrics` is running). You should see an output similar to this:
 

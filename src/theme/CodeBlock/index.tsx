@@ -1,14 +1,11 @@
 import { getLatestRelease } from '@site/src/utils/githubHelper';
 import OriginalCodeBlock from '@theme-original/CodeBlock';
-import type { Props } from '@theme/CodeBlock';
+import type CodeBlockType from '@theme/CodeBlock';
 import React, { useEffect, useState } from 'react';
 
-export default function CodeBlock({
-  children,
-  className,
-  metastring,
-  title,
-}: Props): JSX.Element {
+type Props = ComponentProps<typeof CodeBlockType>;
+
+export default function CodeBlock(props: Props): JSX.Element {
   const [latestRelease, setLatestRelease] = useState(null);
 
   useEffect(() => {
@@ -20,12 +17,8 @@ export default function CodeBlock({
   }, []);
 
   return (
-    <OriginalCodeBlock
-      className={className}
-      metastring={metastring}
-      title={title}
-    >
-      {children.toString().replace(/{{latestRelease}}/g, latestRelease)}
+    <OriginalCodeBlock {...props}>
+      {props.children.toString().replace(/{{latestRelease}}/g, latestRelease)}
     </OriginalCodeBlock>
   );
 }

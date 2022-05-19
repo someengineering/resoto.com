@@ -16,9 +16,9 @@ workflows running
 
 ```bash
 > workflows running
-// highlight-start
+# highlight-start
 workflow: collect_and_cleanup
 started_at: '2022-04-12T07:22:29Z'
 task-id: 4feab068-ba31-11ec-abdf-dad780437c54
-// highlight-end
+# highlight-end
 ```

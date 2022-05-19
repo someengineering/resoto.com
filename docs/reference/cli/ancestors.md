@@ -34,7 +34,7 @@ ancestors [--with-origin] <edge_type>
 
 ```bash
 > search is(volume_type) limit 1 | ancestors
-// highlight-start
+# highlight-start
 ​kind=gcp_service_sku, id=D2, name=Storage PD Capacity, age=5d8h, cloud=gcp, account=sre
 ​kind=gcp_zone, id=2, name=us-central1-a, age=52yr1mo, cloud=gcp, account=sre, region=us-central1, zone=us-central1-a
 ​kind=gcp_region, id=1000, name=us-central1, age=52yr1mo, cloud=gcp, account=sre, region=us-central1
@@ -42,7 +42,7 @@ ancestors [--with-origin] <edge_type>
 ​kind=gcp_project, id=sre-tests, name=sre-tests, age=5d8h, cloud=gcp, account=sre
 ​kind=cloud, id=gcp, name=gcp, age=5d8h, cloud=gcp
 ​kind=graph_root, id=root, name=root
-// highlight-end
+# highlight-end
 ```
 
 ## See Also

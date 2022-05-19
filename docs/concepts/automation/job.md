@@ -22,7 +22,7 @@ Let us now assume that we want to ensure there will be never resources without o
 
 ```bash
 > jobs add ensure-owner-tag --wait-for-event post_collect 'search is(resource) and tags.owner==null | tag update owner "John Doe"'
-// highlight-next-line
+# highlight-next-line
 ​Job ensure-owner-tag added.
 ```
 

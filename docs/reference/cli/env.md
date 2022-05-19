@@ -14,19 +14,19 @@ env
 
 ```bash title="resotoshell will set the graph, section, and session ID"
 > env
-// highlight-start
+# highlight-start
 ​graph: resoto
 ​section: reported
 ​resoto_session_id: SHQF9MBUEJ
-// highlight-end
+# highlight-end
 ```
 
 ```bash title="Environment variables can be defined directly on the command line"
 > section=desired foo=bla env
-// highlight-start
+# highlight-start
 ​graph: resoto
 ​section: desired
 ​resoto_session_id: SHQF9MBUEJ
 ​foo: bla
-// highlight-end
+# highlight-end
 ```

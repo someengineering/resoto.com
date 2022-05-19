@@ -30,12 +30,12 @@ system backup create <name>
 
 ```bash title="Create a backup without an explicit name"
 > system backup create
-// highlight-next-line
+# highlight-next-line
 Received a file backup_20220202_1121, which is stored to ./backup_20220202_1121.
 ```
 
 ```bash title="Create a backup with a specific name"
 > system backup create bck_1234
-// highlight-next-line
+# highlight-next-line
 Received a file bck_1234, which is stored to ./bck_1234.
 ```

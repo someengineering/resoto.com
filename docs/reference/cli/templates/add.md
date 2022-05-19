@@ -25,10 +25,10 @@ templates add <template_name> <search_syntax>
 
 ```bash title="Add a simple template to the search template library"
 > templates add filter_kind is({{kind}})
-// highlight-start
+# highlight-start
 Template filter_kind added to the query library.
 is({{kind}})
-// highlight-end
+# highlight-end
 ```
 
 ## See Also

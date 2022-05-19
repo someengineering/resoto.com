@@ -5,21 +5,15 @@ import copy from 'copy-text-to-clipboard';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './styles.module.css';
 
-export default function CopyButton({ code }: Props): JSX.Element {
+export default function CopyButton({ code, className }: Props): JSX.Element {
   const [isCopied, setIsCopied] = useState(false);
   const copyTimeout = useRef<number | undefined>(undefined);
   const handleCopyCode = useCallback(() => {
     copy(
       code
         .split('\n')
-        .map((str) =>
-          str
-            .replace(/^>{3}\s*/, '')
-            .replace(/^[>$]\s*/, '')
-            .replace(/^\s+$/, '')
-            .replace(/^\u200b.*/, '')
-        )
-        .filter((str) => str)
+        .map((line) => line.replace(/^((>{3}|[>$])\s*|(\s+|\u200b.*)$)/, ''))
+        .filter((line) => line)
         .join('\n')
     );
     setIsCopied(true);
@@ -52,8 +46,9 @@ export default function CopyButton({ code }: Props): JSX.Element {
         description: 'The copy button label on code blocks',
       })}
       className={clsx(
-        styles.copyButton,
         'clean-btn',
+        className,
+        styles.copyButton,
         isCopied && styles.copyButtonCopied
       )}
       onClick={handleCopyCode}

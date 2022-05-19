@@ -14,7 +14,7 @@ dump
 
 ```bash
 > search is(volume) limit 1 | dump
-// highlight-start
+# highlight-start
 ​id: 0QcwZ5DHsS58A1tHEk5JRQ
 ​reported:
 ​​  kind: gcp_disk
@@ -51,7 +51,7 @@ dump
 ​    reported:
 ​      name: us-central1-c
 ​      id: '2002'
-// highlight-end
+# highlight-end
 ```
 
 ## See Also

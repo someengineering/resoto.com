@@ -29,6 +29,6 @@ tag update [--nowait] <tag_name> <tag_value>
 
 ```bash title="Update a tag using a format template"
 > query is(volume) and tags.owner == null limit 1 | tag update owner "gen_{/ancestors.account.reported.name}_{name}"
-// highlight-next-line
+# highlight-next-line
 kind=gcp_disk, id=123, name=gke-1, age=5mo27d, cloud=gcp, account=eng, region=us-central1, zone=us-central1-c
 ```

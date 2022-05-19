@@ -30,6 +30,7 @@
   --ifm-h5-font-size: 1rem;
   --ifm-h6-font-size: 0.875rem;
   --ifm-navbar-height: 4rem;
+  --docusaurus-highlighted-code-line-bg: rgb(0 0 0 / 10%);
 }
 
 html[data-theme='dark'] {
@@ -44,6 +45,7 @@ html[data-theme='dark'] {
   --ifm-link-color: #c38fff;
   --ifm-color-primary-contrast-background: #0a253f;
   --ifm-color-primary-contrast-foreground: var(--ifm-color-content);
+  --docusaurus-highlighted-code-line-bg: rgb(66 66 66 / 35%);
 }
 
 div[class^='announcementBar_'] {

@@ -22,7 +22,7 @@ workflows show <id>
 
 ```bash
 > workflows show collect_and_cleanup
-// highlight-start
+# highlight-start
 id: collect_and_cleanup
 name: collect_and_cleanup
 steps:
@@ -91,5 +91,5 @@ triggers:
   message_type: start_collect_and_cleanup_workflow
 - cron_expression: 0 * * * *
 on_surpass: Wait
-// highlight-end
+# highlight-end
 ```

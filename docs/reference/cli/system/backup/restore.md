@@ -32,8 +32,8 @@ system backup restore <path>
 
 ```bash
 > system backup restore bck_1234
-// highlight-start
+# highlight-start
 Database has been restored successfully!
 Since all data has changed in the database eventually, this service needs to be restarted!
-// highlight-end
+# highlight-end
 ```

@@ -22,10 +22,10 @@ The simplest example of search aggregation in Resoto is the [`count` command](/d
 
 ```bash
 > search is(instance) | count
-// highlight-start
+# highlight-start
 ​total matched: 540
 ​total unmatched: 0
-// highlight-end
+# highlight-end
 ```
 
 Compute instances are of [kind](/docs/concepts/graph/node#kind) `instance` regardless of cloud provider, so `is(instance)` selects both [`aws_ec2_instance`](/docs/reference/data-models/aws#aws_ec2_instance)s _and_ [`gcp_instance`](/docs/reference/data-models/gcp#gcp_instance)s. The [`count` command](/docs/reference/cli/count) then takes the results and returns the number of occurrences.
@@ -34,13 +34,13 @@ The `count` command also allows specifying a grouping value. The following searc
 
 ```bash
 > search is(instance) | count instance_status
-// highlight-start
+# highlight-start
 ​stopped: 48
 ​terminated: 151
 ​running: 341
 ​total matched: 540
 ​total unmatched: 0
-// highlight-end
+# highlight-end
 ```
 
 While [`count`](/docs/reference/cli/count) is often sufficient, the [`aggregate` command](/docs/reference/cli/aggregate) is required for more advanced use cases. For example, we could get CPU core and memory data using [`aggregate`](/docs/reference/cli/aggregate):
@@ -51,12 +51,12 @@ While [`count`](/docs/reference/cli/count) is often sufficient, the [`aggregate`
   max(instance_cores) as max_cores,
   sum(instance_memory) as sum_of_memory,
   max(instance_memory) as max_mem
-// highlight-start
+# highlight-start
 ​sum_of_cores: 3441
 ​max_cores: 16
 ​sum_of_memory: 12802.25
 ​max_mem: 64
-// highlight-end
+# highlight-end
 ```
 
 In this example, we have 3441 cores in total and each instance has a maximum of 16 cores. The same data is also available for provisioned memory: we have almost 13 TB of RAM with no instance having more than 64 GB.
@@ -67,7 +67,7 @@ We can further analyze this aggregated data using grouping variables, which we h
 > search is(instance) | aggregate
    instance_status as status:
    sum(instance_memory) as memory
-// highlight-start
+# highlight-start
 ​group:
 ​ status: running
 ​memory: 8538
@@ -79,7 +79,7 @@ We can further analyze this aggregated data using grouping variables, which we h
 ​group:
 ​ status: terminated
 ​memory: 2919.25
-// highlight-end
+# highlight-end
 ```
 
 This search returns multiple results, each of which has a `group` property. The grouping variable value for each result is a property of its `group` object. In this case, running compute instances have 8 TB of available memory altogether, while the remaining stopped or terminated instances have a total of 4 TB of allocated memory.
@@ -113,7 +113,7 @@ It is possible to walk the graph inbound with `ancestors`, and outbound using `d
   sum(instance_memory) as memory,
   sum(instance_cores) as cores,
   sum(/ancestors.instance_type.reported.ondemand_cost) as cost
-// highlight-start
+# highlight-start
 ​group:
 ​ account: sales
 ​ region: us-west-2
@@ -136,7 +136,7 @@ It is possible to walk the graph inbound with `ancestors`, and outbound using `d
 ​cost: 7.2
 ​.
 ​.
-// highlight-end
+# highlight-end
 ```
 
 As you can see, Resoto's search enables you to gather data about your infrastructure that would otherwise be extremely challenging and tedious to tabulate. This search result is also refreshed whenever the graph is updated (every hour by default), which enables the collection of data that is not feasible to manage manually.

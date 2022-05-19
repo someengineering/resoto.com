@@ -18,12 +18,12 @@ echo <message>
 
 ```bash
 > echo Hello World
-// highlight-next-line
+# highlight-next-line
 ​Hello World
 ```
 
 ```bash
 > echo The current time is @TIME@
-// highlight-next-line
+# highlight-next-line
 ​The current time is 09:16:18
 ```

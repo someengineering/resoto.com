@@ -97,7 +97,11 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      autoCollapseSidebarCategories: true,
+      docs: {
+        sidebar: {
+          autoCollapseCategories: true,
+        },
+      },
       metadata: [
         {
           name: 'keywords',
@@ -270,6 +274,13 @@ const config = {
         darkTheme: require('./src/utils/prismDark.js'),
         additionalLanguages: ['ini', 'powershell'],
       },
+      magicComments: [
+        {
+          className: 'theme-code-block-highlighted-line',
+          line: 'highlight-next-line',
+          block: { start: 'highlight-start', end: 'highlight-end' },
+        },
+      ],
     }),
 };
 

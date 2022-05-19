@@ -12,24 +12,24 @@ flatten
 
 ```bash
 > json [[1, 2], 3, [4, 5]] | flatten
-// highlight-start
+# highlight-start
 ​1
 ​2
 ​3
 ​4
 ​5
-// highlight-end
+# highlight-end
 ```
 
 ```bash title="An already flat stream of elements would be unchanged"
 > json [1, 2, 3, 4, 5] | flatten
-// highlight-start
+# highlight-start
 ​1
 ​2
 ​3
 ​4
 ​5
-// highlight-end
+# highlight-end
 ```
 
 ## See Also

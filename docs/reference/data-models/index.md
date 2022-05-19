@@ -92,7 +92,7 @@ If you want to see all available kinds in the system, you can use the `kind` CLI
 
 ```bash
 > kind
-// highlight-start
+# highlight-start
 ​- access_key
 ​- account
 ​- any
@@ -100,14 +100,14 @@ If you want to see all available kinds in the system, you can use the `kind` CLI
 ​- aws_account
 ​  .
 ​  .
-// highlight-end
+# highlight-end
 ```
 
 If you want to see the properties of a specific kind use `kind <name>`:
 
 ```bash
 > kind aws_ec2_volume
-// highlight-start
+# highlight-start
 ​name: aws_ec2_volume
 ​bases:
 ​- resource
@@ -118,7 +118,7 @@ If you want to see the properties of a specific kind use `kind <name>`:
 ​  kind: string
 ​  .
 ​  .
-// highlight-end
+# highlight-end
 ```
 
 ### Complex and Simple Kinds

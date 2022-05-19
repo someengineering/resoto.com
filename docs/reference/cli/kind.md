@@ -24,17 +24,17 @@ kind [-p <property_path>] <name>
 
 ```bash title="Show all available kinds"
 > kind
-// highlight-start
+# highlight-start
 ​access_key
 ​.
 ​.
 ​zone
-// highlight-end
+# highlight-end
 ```
 
 ```bash title="Show details about a specific kind"
 > kind graph_root
-// highlight-start
+# highlight-start
 ​name: graph_root
 ​bases:
 ​- graph_root
@@ -47,13 +47,13 @@ kind [-p <property_path>] <name>
 ​  kind: dictionary[string, string]
 ​  name: tags
 ​  required: false
-// highlight-end
+# highlight-end
 ```
 
 ```bash title="Look up the type of the given property path in the model"
 > kind -p reported.tags.owner
-// highlight-start
+# highlight-start
 ​name: string
 ​runtime_kind: string
-// highlight-end
+# highlight-end
 ```

@@ -22,11 +22,11 @@ jobs activate <id>
 
 ```bash
 > jobs activate say-hello
-// highlight-start
+# highlight-start
 ​id: say-hello
 ​command: echo hello world
 ​active: true
 ​trigger:
 ​  cron_expression: '* * * * *'
-// highlight-end
+# highlight-end
 ```

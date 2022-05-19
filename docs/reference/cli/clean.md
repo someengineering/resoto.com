@@ -22,13 +22,13 @@ clean <reason>
 
 ```bash title="Mark volumes that have not been accessed in the last month for cleanup, and list the ID and desired section for each"
 > search is(volume) and last_access>1month | clean "Volume not accessed for longer than 1 month" | list id, /desired
-// highlight-next-line
+# highlight-next-line
 ​id=vol-123, clean=true
 ```
 
 ```bash title="Manually mark specific resources for cleanup"
 > json ["vol-123"] | clean | list id, /desired
-// highlight-next-line
+# highlight-next-line
 ​id=vol-123, clean=true
 ```
 

@@ -22,44 +22,44 @@ count <property>
 
 ```bash
 > json [{"a": 1}, {"a": 2}, {"a": 1}] | count
-// highlight-start
+# highlight-start
 ​total matched: 3
 ​total unmatched: 0
-// highlight-end
+# highlight-end
 ```
 
 ```bash
 > json [{"a": 1}, {"a": 2}, {"a": 1}] | count a
-// highlight-start
+# highlight-start
 ​2: 1
 ​1: 2
 ​total matched: 3
 ​total unmatched: 0
-// highlight-end
+# highlight-end
 ```
 
 ```bash
 > json [{"a": 1}, {"a": 2}, {"a": 3}] | count b
-// highlight-start
+# highlight-start
 ​total matched: 0
 ​total unmatched: 3
-// highlight-end
+# highlight-end
 ```
 
 ```bash
 > search all | count
-// highlight-start
+# highlight-start
 ​total matched: 142670
 ​total unmatched: 0
-// highlight-end
+# highlight-end
 ```
 
 ```bash
 > search all | count /ancestors.cloud.reported.name
-// highlight-start
+# highlight-start
 ​gcp: 42403
 ​aws: 93168
 ​total matched: 135571
 ​total unmatched: 0
-// highlight-end
+# highlight-end
 ```

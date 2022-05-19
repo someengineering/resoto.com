@@ -28,10 +28,10 @@ A droplet, for example, can have volumes, snapshots, or floating IPs, which are 
 
 ```bash
 > search is(digitalocean_droplet) and id=289061882 --> is(volume)
-// highlight-start
+# highlight-start
 ​kind=digitalocean_volume, name=pv2, age=2mo7d, account=10225075, region=Amsterdam 3
 ​kind=digitalocean_volume, name=pv1, age=2mo7d, account=10225075, region=Amsterdam 3
-// highlight-end
+# highlight-end
 ```
 
 This search finds the DigitalOcean droplet with the specified ID, traverses the graph outbound one step (`-->`), and then filters the resulting list to return volumes only. Other resources point to our droplet, and we see from the graph structure that those resources could be load balancers, Kubernetes clusters, firewalls, or images.
@@ -42,7 +42,7 @@ To get all the resources that point to this resource, we need to traverse the gr
 
 ```bash
 > search is(digitalocean_droplet) and id=289061882 <-- | count kind
-// highlight-start
+# highlight-start
 ​digitalocean_region: 1
 ​digitalocean_image: 1
 ​digitalocean_vpc: 1
@@ -50,7 +50,7 @@ To get all the resources that point to this resource, we need to traverse the gr
 ​digitalocean_load_balancer: 1
 ​total matched: 5
 ​total unmatched: 0
-// highlight-end
+# highlight-end
 ```
 
 The droplet belongs to a region inside a [VPC](https://docs.digitalocean.com/products/networking/vpc/). It is the target of a load balancer and part of a Kubernetes cluster. Let's find out which other instances exist in the same VPC:
@@ -60,11 +60,11 @@ The droplet belongs to a region inside a [VPC](https://docs.digitalocean.com/pro
 ```bash
 > search is(digitalocean_droplet) and id=289061882
   <-- is(digitalocean_vpc) --> is(digitalocean_droplet)
-// highlight-start
+# highlight-start
 ​id=289061882, name=dev-1, age=2mo7d, account=10225075, region=Amsterdam 3
 ​id=289061881, name=dev-3, age=2mo7d, account=10225075, region=Amsterdam 3
 ​id=289061880, name=dev-2, age=2mo7d, account=10225075, region=Amsterdam 3
-// highlight-end
+# highlight-end
 ```
 
 We again start at our droplet and traverse the graph inbound to the VPC. From there, we traverse one step outbound to find all droplets attached to the same VPC. There are three droplets in this VPC, and one of them is the one we were starting from.
@@ -78,9 +78,9 @@ Since this droplet is attached to a load balancer, we want to find out the publi
 ```bash
 > search is(digitalocean_droplet) and id=289061882 <-- is(load_balancer) |
   format {public_ip_address}
-// highlight-start
+# highlight-start
 ​137.121.131.102
-// highlight-end
+# highlight-end
 ```
 
 Resoto allows for traverseing not only one step but multiple steps. You can define a specific number of steps to traverse (e.g. `-[4]->` traverse exactly 4 steps outbound) and a range of steps (e.g. `<-[2:3]-` traverse inbound and return everything during step 2 and 3). You can even specify the range as unlimited (e.g. `-[2:]->` traverse outbound and return everything from step 2 and later), which would traverse the graph to the root or leaf, depending on the direction of the traverse.
@@ -91,7 +91,7 @@ The following search will select all DigitalOcean VPCs and then traverse the gra
 
 ```bash
 > search is(digitalocean_vpc) -[0:2]-> | count kind
-// highlight-start
+# highlight-start
 ​digitalocean_load_balancer: 2
 ​digitalocean_kubernetes_cluster: 2
 ​digitalocean_vpc: 2
@@ -99,7 +99,7 @@ The following search will select all DigitalOcean VPCs and then traverse the gra
 ​digitalocean_droplet: 6
 ​total matched: 18
 ​total unmatched: 0
-// highlight-end
+# highlight-end
 ```
 
 If we can traverse outbound with `-->` and inbound with `<--`, there has to be an option to traverse in both directions. The combination of the two approaches is expressed with `<-->`. It is possible to get the list of all reachable resources starting from a specific node. We use the above droplet and ask for all attached resources.
@@ -108,7 +108,7 @@ If we can traverse outbound with `-->` and inbound with `<--`, there has to be a
 
 ```bash
 > search is(digitalocean_droplet) and id=289061882 <-[0:]-> | count kind
-// highlight-start
+# highlight-start
 ​digitalocean_droplet: 1
 ​digitalocean_load_balancer: 1
 ​digitalocean_kubernetes_cluster: 1
@@ -122,7 +122,7 @@ If we can traverse outbound with `-->` and inbound with `<--`, there has to be a
 ​digitalocean_volume: 2
 ​total matched: 12
 ​total unmatched: 0
-// highlight-end
+# highlight-end
 ```
 
 The traversal definition `<-[0:]->` might look strange at first glance. It defines to traverse inbound and outbound starting from the current node (`0`). Since the end of the traverse is not specified, it will traverse until there are no more nodes to traverse. It will traverse to the graph root inbound and all possible leafs outbound. The result is then counted by kind. To make this information even more helpful, we can create a graph diagram out of this search using [Graphviz](https://www.graphviz.org/) and the [dot format](/docs/reference/cli/format). The same search as above is used with edges included in the result.
@@ -130,9 +130,9 @@ The traversal definition `<-[0:]->` might look strange at first glance. It defin
 ```bash
 > search --with-edges is(digitalocean_droplet) and
 id=289061882 <-[0:]-> | format --dot | write graph.dot
-// highlight-start
+# highlight-start
 Received a file graph.dot, which is stored to ./graph.dot.
-// highlight-end
+# highlight-end
 ```
 
 We can now use Graphviz to render the graph, or one of the many online tools to visualize the graph. The final result is the following:

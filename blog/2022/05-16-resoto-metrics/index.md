@@ -337,4 +337,4 @@ If we repeat the above steps for [all the metrics we saw before](#how-metrics-ar
 
 This is the actual production dashboard from a current Resoto user. They were nice enough to contribute [the Grafana dashboard templates](https://github.com/someengineering/resoto/tree/main/contrib/grafana-dashboards) so you don't have to create them yourself.
 
-But now you know how!
+But if you want to customize them, now you know how!

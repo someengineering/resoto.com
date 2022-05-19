@@ -11,7 +11,7 @@ Let's begin with a question: At this very moment, do you know how many compute i
 
 If the answer is "No, not exactly", then my next question would be: Why not? Compute and storage are typically the most expensive items on your cloud bill. Compute and storage are also the most critical pieces of infrastructure for most businesses.
 
-With Resoto we give you a picture of the current state of your cloud infrastructure. You can search that state and have Resoto automatically react to state changes. Resoto also lets you [aggregate this data](https://resoto.com/blog/2022/03/03/aggregating-search-data) as my Co-Founder Matthias explained in [his March Blog post](https://resoto.com/blog/2022/03/03/aggregating-search-data).
+With Resoto we give you a picture of the current state of your cloud infrastructure. You can search that state and have Resoto automatically react to state changes. Resoto also lets you [aggregate this data](https://resoto.com/blog/2022/03/03/aggregating-search-data) as my Co-Founder Matthias explained in [his March blog post](https://resoto.com/blog/2022/03/03/aggregating-search-data).
 
 Building on that knowledge, we can take the aggregated data and ingest it into a time series database like Prometheus. We can then use this information to build diagrams to show the evolution of cloud resources like compute instances and storage over time. We can also [alert on trends](https://prometheus.io/docs/alerting/latest/alertmanager/), like if we are going to run out of quota or about to hit a spend limit.
 

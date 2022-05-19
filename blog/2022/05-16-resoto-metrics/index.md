@@ -98,7 +98,7 @@ This is where the before mentioned [aggregation](https://resoto.com/blog/2022/03
 ​...
 ```
 
-Now this is useful but what would be even more useful was if I could compare the current value to the one from an hour ago, a day ago, a month ago, a year ago, etc. This is where time series come into play.
+Now this is useful but what would be even more useful was if I could compare the current values to the ones from an hour ago, a day ago, a month ago, a year ago, etc. This is where time series come into play.
 
 #### Time series
 

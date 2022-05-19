@@ -1,41 +1,34 @@
 ---
-authors: [nikita]
-tags: [visualization, analysis]
+sidebar_label: Notebook
 ---
 
-# Resotonotebook
+# Resoto Notebook
 
-Resotonotebook is a library that allows you to interact with a resotocore using a [jupyter notebook](https://jupyter.org/). Jupyter notebook is a web-based interactive python shell. It is a powerful tool for interactive data analysis and visualization.
-
-Let's dive in!
+Resoto Notebook is a library that allows you to interact with [Resoto Core](../../concepts/components/core.md) using [Jupyter](https://jupyter.org) Notebook, a web-based interactive [Python](https://python.org) shell. It is a powerful tool for interactive data analysis and visualization.
 
 ## Installation
 
-Before we get started, I assume that you have access to a running resotocore. If you don't, please follow the [getting started instructions](https://resoto.com/docs/getting-started) first.
-
-Once the resotocore is up and running, we can install the resotonotebook together with jupyter notebook:
+Simply install the `resotonotebook` package and [Jupyter](https://jupyter.org)'s `notebook` package using [pip](https://pip.pypa.io):
 
 ```bash
 pip install notebook resotonotebook
 ```
 
-Start the jupyter notebook:
+Then, start [Jupyter](https://jupyter.org) Notebook:
 
 ```bash
 jupyter notebook
 ```
 
-And that's it!
+## Usage
 
-## Usage examples
+## Setup
 
-Now let's dive in and see what can be done using resoto notebook.
+First, create a new notebook by clicking `New` &rarr; `Python 3`:
 
-First, we should create a new notebook by clicking `New` -> `Python 3` in the jupyper tab:
+![Create a new notebook](./img/create_new_notebook.png)
 
-![new_notebook](./img/create_new_notebook.png)
-
-Then, we need an instance of the `ResotoNotebook` object, which needs a URL of resotocore and optionally a PSK if it was configured:
+Then, instantiate the `ResotoNotebook` object with the URL and PSK (if configured) of your [Resoto Core](../../concepts/components/core.md) instance:
 
 ```python
 from resotonotebook import ResotoNotebook
@@ -73,7 +66,7 @@ px.density_heatmap(data, x="account_id", y="instance_cores")
 
 ![heatmap](./img/plotly_heatmap.png)
 
-### Full text search:
+### Full-Text Search
 
 Search all resources for a properties with values `digitalocean` and `foobar`. Full text search is useful when you have a keyword, e.g. e-mail address or name, and you want to find all resources related to it:
 
@@ -93,7 +86,7 @@ rnb.search("is(instance)").groupby(["kind"])["kind"].count()
 
 ![count](./img/count.png)
 
-### Searching by kind
+### Searching by Kind
 
 Get list of all the DigitalOcean droplets:
 
@@ -103,7 +96,7 @@ rnb.search("is(digitalocean_droplet)")
 
 ![search_by_kind](./img/search_by_kind.png)
 
-### Selecting properties
+### Selecting Properties
 
 Get list of name, type, cores, and memory for each instance:
 
@@ -151,7 +144,7 @@ rnb.search("is(instance) and instance_status == running") \
 
 ![aggregation-2](./img/aggregation-2.png)
 
-## Next steps
+## Next Steps
 
 You can find the examples from this page in the [resotonotebook repository](https://github.com/someengineering/resotonotebook/blob/main/examples/example.ipynb).
 

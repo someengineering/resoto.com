@@ -1,10 +1,12 @@
 ---
-sidebar_position: 2
+sidebar_label: Kubernetes
 pagination_prev: getting-started/index
 pagination_next: getting-started/configuring-resoto
 ---
 
 # Installing with Kubernetes
+
+[Kubernetes](https://kubernetes.io) is an open-source system for automating deployment, scaling, and management of containerized applications.
 
 ## Prerequisites
 
@@ -15,7 +17,7 @@ pagination_next: getting-started/configuring-resoto
 
 ### Prepare ArangoDB Database
 
-If you don't have ArangoDB, you can use the operator to install it. See more info here: https://www.arangodb.com/docs/stable/tutorials-kubernetes.html
+If you don't have ArangoDB, you can use the operator to install it. See more info [here](https://arangodb.com/docs/stable/tutorials-kubernetes.html).
 
 You can use the following commands to install the database:
 
@@ -57,7 +59,7 @@ resotocore:
     server: http://single-server:8529
 ```
 
-This is the minimum configuration, which points to an empty arangoDB database with default username and password.
+This is the minimum configuration, which points to an empty ArangoDB database with default username and password.
 
 The installation will create a separate database and password and secure the database installation with a generated password. You can find the generated database password in the secret `arango-user`.
 
@@ -81,9 +83,9 @@ And just like that, you have Resoto running in Kubernetes! A collect run will be
 
 ## Launching the Resoto Command-Line Interface
 
-The `resh` command is used to interact with [`resotocore`](../concepts/components/core.md).
+The `resh` command is used to interact with [`resotocore`](../../concepts/components/core.md).
 
-To access the [Resoto Shell](../concepts/components/shell.md) interface, simply execute:
+To access the [Resoto Shell](../../concepts/components/shell.md) interface, simply execute:
 
 ```bash
 $ kubectl exec -it service/resoto-resotocore -- resh
@@ -91,26 +93,26 @@ $ kubectl exec -it service/resoto-resotocore -- resh
 
 ### Configuring Resoto
 
-Once the [Core](../concepts/components/core.md) is running, all component configuration can be edited using the [`config edit` command](../reference/cli/configs/edit.md) inside [Resoto Shell](../concepts/components/shell.md).
+Once the [Core](../../concepts/components/core.md) is running, all component configuration can be edited using the [`config edit` command](../../reference/cli/configs/edit.md) inside [Resoto Shell](../../concepts/components/shell.md).
 
 Additionally, configuration properties can be overridden using the `overrides` section in the `resoto-values.yaml` file (see [`values.yaml`](https://github.com/someengineering/resoto/blob/main/kubernetes/chart/values.yaml) for reference).
 
-Please refer to the [Configuring Resoto Cloud Providers](configuring-resoto.md#configuring-cloud-providers) tutorial for more details.
+Please refer to the [Configuring Resoto Cloud Providers](../configuring-resoto.md#configuring-cloud-providers) tutorial for more details.
 
 ### Performing Searches
 
-Once Resoto has completed its first collect run, you can try [performing some searches](./performing-searches.md).
+Once Resoto has completed its first collect run, you can try [performing some searches](../performing-searches.md).
 
 ## Configure Cloud Credentials (optional)
 
-Some cloud providers like GCP provide a file to access resources. This file needs to be passed to the worker. You can use Helm values `resotoworker.volumes`, and `resotoworker.volumeMounts` to inject credentials and their configuration to [`resotoworker`](../concepts/components/worker.md).
+Some cloud providers like GCP provide a file to access resources. This file needs to be passed to the worker. You can use Helm values `resotoworker.volumes`, and `resotoworker.volumeMounts` to inject credentials and their configuration to [`resotoworker`](../../concepts/components/worker.md).
 
 ```bash
 $ kubectl -n resoto create secret generic resoto-auth \
   --from-file=GOOGLE_APPLICATION_CREDENTIALS=<PATH TO SERVICE ACCOUNT JSON CREDS>
 ```
 
-You would provide these values for [`resotoworker`](../concepts/components/worker.md) as file:
+You would provide these values for [`resotoworker`](../../concepts/components/worker.md) as file:
 
 ```yml
 resotoworker:

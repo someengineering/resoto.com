@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_label: Docker
 pagination_prev: getting-started/index
 pagination_next: getting-started/configuring-resoto
 ---
@@ -18,11 +18,11 @@ import Tabs from '@theme/Tabs';
 
 - [Docker](https://docs.docker.com/get-started#download-and-install-docker) needs to be installed on your machine.
 - [Docker Compose](https://docs.docker.com/compose/install/) needs to be available on your machine.
-- At least two cores and eight gigabytes of RAM are required to run the Resoto stack. For a production setup we recommend at least four cores and 16 gigabytes of RAM. See [Configuring Resoto Worker for Multi-Core Machines](./configuring-resoto.md#configuring-resoto-worker-for-multi-core-machines) for more information.
+- At least two cores and eight gigabytes of RAM are required to run the Resoto stack. For a production setup we recommend at least four cores and 16 gigabytes of RAM. See [Configuring Resoto Worker for Multi-Core Machines](../configuring-resoto.md#configuring-resoto-worker-for-multi-core-machines) for more information.
 
 ## Installing Resoto
 
-Resoto consists of multiple [components](../concepts/components/index.md) that are published as individual Docker images :
+Resoto consists of multiple [components](../../concepts/components/index.md) that are published as individual Docker images :
 
 1. [📦](https://hub.docker.com/repository/docker/someengineering/resotocore) `somecr.io/someengineering/resotocore` maintains the infrastructure graph.
 2. [📦](https://hub.docker.com/repository/docker/someengineering/resotoworker) `somecr.io/someengineering/resotoworker` collects infrastructure data from the cloud provider APIs.
@@ -71,7 +71,7 @@ Resoto publishes packages for x86 and ARM architectures for every proper release
 
 ## Launching the Command-Line Interface
 
-The `resh` command starts an interactive shell session with Resoto. To access the [Resoto Shell](../concepts/components/shell.md) interface using Docker compose, simply execute:
+The `resh` command starts an interactive shell session with Resoto. To access the [Resoto Shell](../../concepts/components/shell.md) interface using Docker compose, simply execute:
 
 ```bash
 $ docker compose run --rm resotoshell
@@ -79,7 +79,7 @@ $ docker compose run --rm resotoshell
 
 ### Configuring Resoto
 
-Please refer to the [Configuring Resoto Cloud Providers](./configuring-resoto.md#configuring-cloud-providers) tutorial for details.
+Please refer to the [Configuring Resoto Cloud Providers](../configuring-resoto.md#configuring-cloud-providers) tutorial for details.
 
 ### Collecting Cloud Resources
 
@@ -89,11 +89,11 @@ Once one or more cloud providers have been configured the `collect_and_cleanup` 
 > workflow run collect_and_cleanup
 ```
 
-No worries, no cleanup will be performed as cleanup is disabled by default. It is just the name of the [workflow](../concepts/automation/workflow.md). Read [Resource Cleanup](cleanup.md) for details on how to enable cleanup.
+No worries, no cleanup will be performed as cleanup is disabled by default. It is just the name of the [workflow](../../concepts/automation/workflow.md). See the [Cleaning Resources](../cleaning-resources.md) tutorial for details on how to enable cleanup.
 
 ### Performing Searches
 
-Once Resoto has completed its first collect run, you can try [performing some searches](./performing-searches.md).
+Once Resoto has completed its first collect run, you can try [performing some searches](../performing-searches.md).
 
 ## Updating Resoto
 

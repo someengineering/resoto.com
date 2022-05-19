@@ -1,10 +1,14 @@
-# Getting Started
+---
+sidebar_position: 1
+---
+
+# Installation
 
 ```mdx-code-block
 import { useCurrentSidebarCategory } from '@docusaurus/theme-common';
 import DocCardList from '@theme/DocCardList';
 ```
 
-This section of the documentation walks you through how to install and use Resoto, step by step. Start here if you are new to Resoto.
+Resoto can currently be installed using [Docker](./docker.md), [Kubernetes](./kubernetes.md), or [pip](./pip.md).
 
 <DocCardList items={useCurrentSidebarCategory().items}/>

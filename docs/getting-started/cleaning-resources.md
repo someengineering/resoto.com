@@ -1,9 +1,9 @@
 ---
-sidebar_position: 5
+sidebar_position: 4
 pagination_prev: getting-started/performing-searches
 ---
 
-# Resource Cleanup
+# Cleaning Resources
 
 :::danger
 
@@ -13,17 +13,17 @@ If you run `search is(aws_ec2_volume) | clean`, it marks _all_ `aws_ec2_volume` 
 
 :::
 
-By default, [`resotoworker`](../concepts/components/worker.md) will _not_ delete resources marked for deletion. Resources marked with `| clean` will stay this way without deleting them.
+By default, [Resoto Worker](../concepts/components/worker.md) will _not_ delete resources marked for deletion. Resources marked with `| clean` will stay this way without deleting them.
 
-[`resotoworker`](../concepts/components/worker.md) will only delete marked resources when `cleanup: true` is configured. To enable cleanup in `resh` run
+[Resoto Worker](../concepts/components/worker.md) will only delete marked resources when `cleanup: true` is configured. To enable cleanup, execute the following in [Resoto Shell](../concepts/components/shell.md):
 
-```
+```bash
 > config edit resoto.worker
 ```
 
-and find the section
+Then, edit this section of the displayed configuration as follows:
 
-```
+```yaml
 resotoworker:
   # Enable cleanup of resources
   cleanup: false
@@ -45,7 +45,7 @@ To remove clean markers from all resources, you can use `search /desired.clean =
 
 Deletion of resources via Resoto is done in two phases:
 
-## Mark Resources for Deletion
+## Marking Resources for Deletion
 
 Marking resources for deletion is very easy. Just pipe your matched resources to the `clean` command.
 
@@ -57,12 +57,12 @@ Optionally, you can provide a reason for marking the matched resources for the n
 > search is(aws_ec2_volume) and volume_status = available and age > 30d and last_access > 7d and last_update > 7d | clean "older than 30d with more then 7d of not being used"
 ```
 
-## Prune Resources Marked for Deletion
+## Pruning Resources Marked for Deletion
 
 Resources in Resoto will only be deleted if you started a [`resotoworker`](../concepts/components/worker.md) with the `cleanup: true` config. If done so, there will be an automatic cleanup whenever the `collect_and_cleanup` [workflow](../concepts/automation/workflow.md) runs (by default every full hour).
 
 Instant cleanup can alternatively be triggered via starting the corresponding [workflow](../concepts/automation/workflow.md).
 
-```
+```bash
 > workflow run cleanup
 ```

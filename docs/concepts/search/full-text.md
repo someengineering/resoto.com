@@ -1,11 +1,10 @@
 ---
 sidebar_position: 1
-sidebar_label: Fulltext Search
 ---
 
-# Fulltext Search
+# Full-Text Search
 
-Every property value of any resource is indexed automatically and can be used in a search. A fulltext search criteria is always placed in double quotes.
+Each resource property value is indexed and searchable by Resoto. Full-text search criteria is always enclosed in double quotes.
 
 ```bash
 > search "167.123.13.102"
@@ -32,7 +31,7 @@ but allows for any other combination.
 
 ## Combine with other filters
 
-Fulltext search queries can be combined with other [filters](./filters) to narrow down the search results. Take following example as inspiration, that uses a [kind filter](./filters#selecting-nodes-by-kind) and [predicates](./filters#selecting-nodes-by-predicate) in combination with a fulltext search term.
+Full-text search queries can be combined with other [filters](./filters) to narrow down the search results. Take following example as inspiration, that uses a [kind filter](./filters#selecting-nodes-by-kind) and [predicates](./filters#selecting-nodes-by-predicate) in combination with a full-text search term.
 
 ```bash
 > search "167.123.13.102" and is(load_balancer) and age>3w and nr_nodes>0

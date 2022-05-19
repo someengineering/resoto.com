@@ -1,11 +1,10 @@
 ---
-sidebar_position: 3
-sidebar_label: Installing with Python pip
+sidebar_label: pip
 pagination_prev: getting-started/index
 pagination_next: getting-started/configuring-resoto
 ---
 
-# Installing with Python `pip`
+# Installing with pip
 
 ```mdx-code-block
 import LatestRelease from '@site/src/components/LatestRelease';
@@ -13,7 +12,7 @@ import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
 
-We are going to install Resoto manually on a Linux server using [Python `pip`](https://pip.pypa.io/). Pip is the package installer for Python.
+[pip](https://pip.pypa.io) is the package installer for [Python](https://www.python.org) and allows for easy installation of [Python](https://www.python.org) packages in Linux environments.
 
 ## Prerequisites
 
@@ -23,13 +22,13 @@ We are going to install Resoto manually on a Linux server using [Python `pip`](h
 
 :::note
 
-Resoto is doing a lot of CPU intense graph operations. For a production setup we recommend running `resotocore` using [the PyPy Python interpreter](https://www.pypy.org/). On average, PyPy is 4.5 times faster than CPython (the reference Python implementation). When using Resoto in Docker we are already shipping it with PyPy by default.
+Resoto is doing a lot of CPU-intense graph operations. For a production setup we recommend running `resotocore` using [the PyPy Python interpreter](https://www.pypy.org/). On average, PyPy is 4.5 times faster than CPython (the reference Python implementation). When using Resoto in Docker we are already shipping it with PyPy by default.
 
 :::
 
 ## Installing Resoto
 
-Resoto consists of multiple [components](../concepts/components/index.md) that are published as individual Python packages:
+Resoto consists of multiple [components](../../concepts/components/index.md) that are published as individual Python packages:
 
 1. [📦](https://pypi.org/project/resotocore/) `resotocore` maintains the infrastructure graph.
 2. [📦](https://pypi.org/project/resotoworker/) `resotoworker` collects infrastructure data from the cloud provider APIs.
@@ -67,7 +66,7 @@ $ arangodb/bin/arangod --database.directory ~/resoto/data
 
 This will start ArangoDB on the current shell which is useful for testing. Once Resoto Core starts it will automatically secure the ArangoDB installation using the password provided in the `.graphdb-password` file (unless explicitly turned off using the `--graphdb-bootstrap-do-not-secure` flag).
 
-Read the section [Securing ArangoDB](../concepts/security.md#custom-certificates) for details on how to generate certificates and encrypt the connection between Resoto Core and the graph database.
+Read the section [Securing ArangoDB](../../concepts/security.md#custom-certificates) for details on how to generate certificates and encrypt the connection between Resoto Core and the graph database.
 
 ## Running Resoto
 
@@ -108,7 +107,7 @@ Resoto now exposes Prometheus metrics at `https://localhost:9955/metrics`. Follo
 
 ## Launching the Command-Line Interface
 
-The `resh` command starts an interactive shell session with Resoto. To access the [Resoto Shell](../concepts/components/shell.md) interface, simply execute:
+The `resh` command starts an interactive shell session with Resoto. To access the [Resoto Shell](../../concepts/components/shell.md) interface, simply execute:
 
 ```bash
 $ pre_shared_key=$(< ~/resoto/.pre-shared-key)
@@ -118,7 +117,7 @@ $ resh --resotocore-uri https://localhost:8900 --psk "$pre_shared_key"
 
 ### Configuring Resoto
 
-Please refer to the [Configuring Resoto Cloud Providers](./configuring-resoto.md#configuring-cloud-providers) tutorial for details.
+Please refer to the [Configuring Resoto Cloud Providers](../configuring-resoto.md#configuring-cloud-providers) tutorial for details.
 
 ### Collecting Cloud Resources
 
@@ -128,11 +127,11 @@ Once one or more cloud providers have been configured the `collect_and_cleanup` 
 > workflow run collect_and_cleanup
 ```
 
-No worries, no cleanup will be performed as cleanup is disabled by default. It is just the name of the [workflow](../concepts/automation/workflow.md). Read [Resource Cleanup](cleanup.md) for details on how to enable cleanup.
+No worries, no cleanup will be performed as cleanup is disabled by default. It is just the name of the [workflow](../../concepts/automation/workflow.md). See the [Cleaning Resources](../cleaning-resources.md) tutorial for details on how to enable cleanup.
 
 ### Performing Searches
 
-Once Resoto has completed its first collect run, you can try [performing some searches](./performing-searches.md).
+Once Resoto has completed its first collect run, you can try [performing some searches](../performing-searches.md).
 
 ## Updating Resoto
 

@@ -251,7 +251,7 @@ $ docker run -d -p 3000:3000 -v grafana-data:/var/lib/grafana -v grafana-etc:/et
 
 3. Login as `admin` with password `admin` and set a new password.
 
-4. Go to Settings > Data Sources > Add Data Source > Prometheus
+4. On the left go to Settings > Data Sources > Add Data Source > Prometheus
 
 5. In the URL field, enter the Prometheus URL e.g. `http://tsdb.docker.internal:9090`
 
@@ -261,29 +261,80 @@ $ docker run -d -p 3000:3000 -v grafana-data:/var/lib/grafana -v grafana-etc:/et
 
 ![Save Data Source](img/grafana_setup2.png)
 
-7. On the left click on the `+` button and select `Create Dashboard`.
+7. On the left click on the `+` button and select `Create Dashboard`, then click the `Save` button in the top menu bar.
 
-8. On the top click on `Settings` > `Variables` and `Add variable`.
+![Save dashboard](img/grafana_save_dashboard.png)
+
+8. On the top click on `Dashboard settings` > `Variables` and `Add variable`.
 
 ![Add Variable](img/grafana_add_variable.png)
 
-9. As Name choose `cloud`, as Label `Cloud`, as Query enter `label_values(resoto_instances_total, cloud)` and select `Multi-value` and `Include All option`. Make sure that the `Preview of values` shows the available clouds and click `Update`.
+9. As Name choose `cloud`, as Label `Cloud`, as Query enter `label_values(cloud)` and select `Multi-value` and `Include All option`. Make sure that the `Preview of values` shows the available clouds and click `Update`.
 
 ![Configure Variable](img/grafana_configure_variable.png)
 
 10. Repeat Step 9 for
 
-- Name `account`, Label `Account`, Query `label_values(resoto_instances_total, account)` and
-- Name `region`, Label `Region`, Query `label_values(resoto_instances_total, region)`.
+- Name `account`, Label `Account`, Query `label_values(account)` and
+- Name `region`, Label `Region`, Query `label_values(region)` with `Multi-value` and `Include All option` turned on.
 
-11. Hit `ESC` and on the top of the page click on `Add a new panel`.
+![Variables](img/grafana_variables.png)
+
+11. Hit `ESC` on your keyboard to go back and on the top of the page click on `Add new panel`.
 
 ![Add a new panel](img/grafana_add_new_panel.png)
 
-12. On the right in `Panel Options` enter Title `Instances Total`.
+12. Apply the following Settings then click `Save` in the top right.
 
-13.
+- In the query field next to "Metrics browser" enter
+
+```
+sum(avg_over_time(resoto_instances_total{cloud=~"$cloud", account=~"$account", region=~"$region", status="running"}[$__interval])) by (cloud, account)
+```
+
+- On the right in `Panel Options` enter Title `Instances Total - running`.
+- Legend > Legend mode: Hidden
+- Graph styles > Line width: 4
+- Graph styles > Fill opacity: 40
+- Graph styles > Connect null values: Always
+- Graph styles > Stack series: Normal
+
+![Setup of a new panel](img/grafana_setup_panel.png)
+
+- Click `Apply` in the top left.
+
+13. Congratulations this is the start of your Resoto dashboard!
+
+![Initial dashboard](img/grafana_initial_dashboard.png)
+
+Do not forget to press the `Save` button whenever you make changes to the dashboard!
+
+14. Next let's add a second panel with the following settings.
+
+- In the query field next to "Metrics browser" enter
 
 ```
 sum(avg_over_time(resoto_instances_total{cloud=~"$cloud", region=~"$region", account=~"$account", status="running"}[$__interval]))
 ```
+
+- In the top right of the panel page instead of `Time series` choose `Stats` from the dropdown menu.
+- Panel options > Title: `Instances $cloud - running`
+- Value Options > Calulation: Last\*
+- Stat styles > Color mode: None
+- Stat styles > Graph mode: None
+
+![Setup of a second panel](img/grafana_second_panel.png)
+
+15. On the dashboard page reduce the size of the new panel a bit. Congratulations, the dashboard now shows two panels. One with the number of currently running instances, the other shows the history of the number of instances.
+
+![Dashboard with second panel](img/grafana_second_panel_dashboard.png)
+
+## The end product
+
+If we repeat the above steps for [all the metrics we saw before](#how-metrics-are-made), we will get a dashboard that looks like this:
+
+![Finished Dashboard](img/grafana_finished_dashboard.png)
+
+This is the actual production dashboard from a current Resoto user. They were nice enough to contribute [the Grafana dashboard templates](https://github.com/someengineering/resoto/tree/main/contrib/grafana-dashboards) so you don't have to create them yourself.
+
+But now you know how!

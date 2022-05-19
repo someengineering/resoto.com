@@ -136,7 +136,7 @@ Here is one of those metrics from the list:
 resoto_instances_total{cloud="aws", account="eng-production", region="us-west-2", status="running", type="m5.xlarge", instance="localhost:9955", job="resotometrics"} 17
 ```
 
-The key=value pairs inside those curly brackets are called labels. We can filter by label. Update the query to:
+The `key="value"` pairs inside those curly brackets are called labels. We can filter by label. Update the query to:
 
 ```
 resoto_instances_total{status="running"}

@@ -94,7 +94,7 @@ export default function Home(): JSX.Element {
               provides deep <strong>visibility</strong>, and reacts to{' '}
               <strong>changes</strong> in your infrastructure.
             </p>
-            <p>Free and open-source, forever.</p>
+            <p>Open-source, self-managed, always free.</p>
           </div>
         </section>
         <section className={styles.section}>

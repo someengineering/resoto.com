@@ -121,7 +121,7 @@ There are two ways to overriding configuration properties:
 - `<COMPONENT_NAME>_OVERRIDE` environment variable
 
   ```bash
-  $ export RESOTOWORKER_OVERRIDE=resoto.worker.pool_size=5
+  $ export RESOTOWORKER_OVERRIDE=resotoworker.pool_size=5
   $ resotoworker
   ```
 
@@ -138,6 +138,20 @@ Alternatively, if a value contains a space, it is also possible to use separate,
 $ export RESOTOWORKER_OVERRIDE0=resotoworker.pool_size=5
 $ export RESOTOWORKER_OVERRIDE1=resotoworker.cleanup_pool_size=20
 $ resotoworker
+```
+
+### Overriding List Type Properties
+
+If the property type is a list/an array, it is possible to specifying multiple values as a comma-separated list of values:
+
+```bash
+  $ resotocore --override resotocore.api.web_hosts 127.0.0.1,10.0.0.1
+```
+
+or
+
+```bash
+  $ export RESOTOCORE_OVERRIDE=resotocore.api.web_hosts=127.0.0.1,10.0.0.1
 ```
 
 ## Restoring the Default Configuration

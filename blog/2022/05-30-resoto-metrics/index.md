@@ -11,13 +11,13 @@ Let's begin with a question: At this very moment, do you know how many compute i
 
 If the answer is "No, not exactly", then my next question would be: Why not? Compute and storage are typically the most expensive items on your cloud bill. Compute and storage are also the most critical pieces of infrastructure for most businesses.
 
-With Resoto we give you a picture of the current state of your cloud infrastructure. You can search that state and have Resoto automatically react to state changes. Resoto also lets you [aggregate this data](https://resoto.com/blog/2022/03/03/aggregating-search-data) as my Co-Founder Matthias explained in [his March blog post](https://resoto.com/blog/2022/03/03/aggregating-search-data).
+With Resoto we give you a picture of the current state of your cloud infrastructure. You can search that state and have Resoto automatically react to state changes. Resoto also lets you [aggregate this data](/blog/2022/03/03/aggregating-search-data) as my Co-Founder Matthias explained in [his March blog post](/blog/2022/03/03/aggregating-search-data).
 
 Building on that knowledge, we can take the aggregated data and ingest it into a time series database like Prometheus. We can then use this information to build diagrams to show the evolution of cloud resources like compute instances and storage over time. We can also [alert on trends](https://prometheus.io/docs/alerting/latest/alertmanager/), like if we are going to run out of quota or about to hit a spend limit.
 
 ![Metrics Overview](img/metrics_overview.png)
 
-Resoto comes with a handy dandy metrics component called [Resoto Metrics](https://resoto.com/docs/concepts/components/metrics). It takes aggregation results and exports them to [Prometheus](https://prometheus.io/). In this post we will show you how to build a simple metrics dashboard using [Resoto Metrics](https://resoto.com/docs/concepts/components/metrics), [Prometheus](https://prometheus.io/) and [Grafana](https://grafana.com/).
+Resoto comes with a handy dandy metrics component called [Resoto Metrics](/docs/concepts/components/metrics). It takes aggregation results and exports them to [Prometheus](https://prometheus.io/). In this post we will show you how to build a simple metrics dashboard using [Resoto Metrics](/docs/concepts/components/metrics), [Prometheus](https://prometheus.io/) and [Grafana](https://grafana.com/).
 
 <!--truncate-->
 
@@ -27,7 +27,7 @@ If you already know what graph and time series databases, metrics, samples, labe
 
 #### Collecting
 
-Resoto creates an inventory of your cloud infrastructure by taking all the meta data of your cloud resources and storing them inside of a graph. This is what we call the `collect` [step](https://resoto.com/docs/concepts/automation/workflow). Every resource (like a compute instance, storage volume, etc.) is represented by a node in the graph. Nodes are connected to each other by edges. Edges represent the relationship between two nodes as illustrated in this graph excerpt (please excuse my MS Paint skills):
+Resoto creates an inventory of your cloud infrastructure by taking all the meta data of your cloud resources and storing them inside of a graph. This is what we call the `collect` [step](/docs/concepts/automation/workflow). Every resource (like a compute instance, storage volume, etc.) is represented by a node in the graph. Nodes are connected to each other by edges. Edges represent the relationship between two nodes as illustrated in this graph excerpt (please excuse my MS Paint skills):
 
 ![Graph visualization](img/graph_visualization.png)
 
@@ -55,7 +55,7 @@ In Resoto a node is essentially an indexed JSON document that contains all the m
 
 #### Searching
 
-Among other things Resoto then allows you to [search that meta data](http://localhost:3000/blog/2022/02/04/resoto-search-101). An example search could be
+Among other things Resoto then allows you to [search that meta data](/blog/2022/02/04/resoto-search-101). An example search could be
 
 ```
 > search is(aws_ec2_instance) and instance_cores > 4
@@ -74,7 +74,7 @@ This would return a list of all the EC2 instances with more than 4 cores. That's
 
 #### Aggregating
 
-This is where the before mentioned [aggregation](https://resoto.com/blog/2022/03/03/aggregating-search-data) comes into play. It does just that; [aggregating and grouping the results of a search](https://resoto.com/blog/2022/03/03/aggregating-search-data). This is what creates the samples of a metric.
+This is where the before mentioned [aggregation](/blog/2022/03/03/aggregating-search-data) comes into play. It does just that; [aggregating and grouping the results of a search](/blog/2022/03/03/aggregating-search-data). This is what creates the samples of a metric.
 
 ```
 > search aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account, /ancestors.region.reported.name as region, instance_type as type, instance_status as status: sum(1) as instances_total): is(instance)
@@ -112,9 +112,9 @@ So here's the plan. First we will learn how to [configure Prometheus to fetch da
 
 ## Getting Started
 
-If you are new to Resoto, [start the Resoto stack](https://resoto.com/docs/getting-started/installation) and [configure it to collect some of your cloud accounts](https://resoto.com/docs/getting-started/configuring-resoto#configuring-cloud-providers).
+If you are new to Resoto, [start the Resoto stack](/docs/getting-started/installation) and [configure it to collect some of your cloud accounts](/docs/getting-started/configuring-resoto#configuring-cloud-providers).
 
-To check out the data Resoto Metrics generates open [`https://localhost:9955/metrics`](https://localhost:9955/metrics) in your browser (replacing `localhost` with the IP address or hostname of the machine where `resotometrics` is running). You should see an output similar to this:
+To check out the data Resoto Metrics generates open [`https://localhost:9955/metrics`](https://localhost:9955/metrics) in your browser (replacing `localhost` with the IP address or hostname of the machine where `resotometrics` is running). This data is updated [whenever Resoto runs the collection workflow](/docs/getting-started/configuration/core#workflow-schedules). You should see an output similar to this:
 
 ![List of metrics](img/resotometrics_browser.png)
 
@@ -130,7 +130,7 @@ scrape_configs:
       - targets: ["localhost:9955"]
 ```
 
-Instead of skipping verification of the TLS certificate, you can also [download the Resoto CA certificate](https://resoto.com/docs/concepts/security#retrieving-and-validating-the-ca-certificate) and [configure Prometheus to use it](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#tls_config).
+Instead of skipping verification of the TLS certificate, you can also [download the Resoto CA certificate](/docs/concepts/security#retrieving-and-validating-the-ca-certificate) and [configure Prometheus to use it](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#tls_config).
 
 ## Querying a Metric
 
@@ -202,7 +202,7 @@ Want to see how storage has changed over time? Just change `resoto_instances_tot
 
 ## How Metrics are made
 
-Now Prometheus' Web UI will provide syntax help and auto-complete for available metric names. However you might be wondering, how are you supposed to know which metrics exist? How do you know what other metrics there are and where something like `resoto_instances_total` is defined? Glad you asked. All Metrics are configured in the `resoto.metrics` [config](https://resoto.com/docs/getting-started/configuring-resoto). Within [Resoto Shell (`resh`)](https://resoto.com/docs/concepts/components/shell) execute:
+Now Prometheus' Web UI will provide syntax help and auto-complete for available metric names. However you might be wondering, how are you supposed to know which metrics exist? How do you know what other metrics there are and where something like `resoto_instances_total` is defined? Glad you asked. All Metrics are configured in the `resoto.metrics` [config](/docs/getting-started/configuring-resoto). Within [Resoto Shell (`resh`)](/docs/concepts/components/shell) execute:
 
 ```
 
@@ -225,7 +225,7 @@ resotometrics:
 
 Here you can add your own metrics. As [previously explained](#aggregating), the `aggregate` expression in the `search` field is what creates the samples of a metric.
 
-This config can be updated at runtime. Next time the `metrics` [workflow](https://resoto.com/docs/concepts/automation/workflow) is run Resoto Metrics will generate the new metric and from then on provide it to Prometheus.
+This config can be updated at runtime. Next time the `metrics` [workflow](/docs/concepts/automation/workflow) is run Resoto Metrics will generate the new metric and from then on provide it to Prometheus.
 
 ```
 > workflow run metrics

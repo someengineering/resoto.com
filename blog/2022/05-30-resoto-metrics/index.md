@@ -13,9 +13,11 @@ If the answer is "No, not exactly", then my next question would be: Why not? Com
 
 With Resoto we give you a picture of the current state of your cloud infrastructure. You can search that state and have Resoto automatically react to state changes. Resoto also lets you [aggregate this data](/blog/2022/03/03/aggregating-search-data) as my Co-Founder Matthias explained in [his March blog post](/blog/2022/03/03/aggregating-search-data).
 
-Building on that knowledge, we can take the aggregated data and ingest it into a time series database like Prometheus. We can then use this information to build diagrams to show the evolution of cloud resources like compute instances and storage over time. We can also [alert on trends](https://prometheus.io/docs/alerting/latest/alertmanager/), like if we are going to run out of quota or about to hit a spend limit.
+Building on that knowledge, we can take the aggregated data and ingest it into a time series database like Prometheus. We can then use this information to build diagrams to show the evolution of cloud resources like compute instances and storage over time.
 
 ![Metrics Overview](img/metrics_overview.png)
+
+This then allows you to [alert on trends](https://prometheus.io/docs/alerting/latest/alertmanager/), like if we are going to run out of quota or about to hit a spend limit. Another use case is to quickly [identify anomalies](https://prometheus.io/docs/prometheus/latest/querying/functions/#aggregation_over_time) using [the 3σ rule](https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule). If somebody in the organization leaked their cloud API credentials or an automated system is going haywire, you will immediately see a spike and not only know about it when your next cloud bill arrives. Best of all it works across multiple clouds and accounts.
 
 Resoto comes with a handy dandy metrics component called [Resoto Metrics](/docs/concepts/components/metrics). It takes aggregation results and exports them to [Prometheus](https://prometheus.io/). In this post we will show you how to build a simple metrics dashboard using [Resoto Metrics](/docs/concepts/components/metrics), [Prometheus](https://prometheus.io/) and [Grafana](https://grafana.com/).
 
@@ -333,6 +335,6 @@ If we repeat the above steps for [all the metrics we saw before](#how-metrics-ar
 
 This is the actual production dashboard from a current Resoto user. It shows them the amount of compute and storage they are currently using, as well as the associated cost. It also graphs volumes that are not in use and will soon be cleaned up by Resoto. They also have dashboards for quota limits and network related stats. Individual teams use these dashboards to monitor their cloud usage by exposing custom tags as Prometheus labels and filtering by team or project.
 
-They were nice enough to contribute [the Grafana dashboard templates](https://github.com/someengineering/resoto/tree/main/contrib/grafana-dashboards) so you don't have to create them yourself.
+They were nice enough to contribute [the Grafana dashboard templates](https://github.com/someengineering/resoto/tree/main/contrib/grafana-dashboards) so you don't have to create them yourself. But if you want to customize them, now you know how!
 
-But if you want to customize them, now you know how!
+[Install Resoto](/docs/getting-started/installation) and build your own dashboard today!

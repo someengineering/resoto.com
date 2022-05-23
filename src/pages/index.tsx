@@ -134,8 +134,8 @@ export default function Home(): JSX.Element {
             <blockquote className={styles.quotation}>
               <div>
                 <p>
-                  I built Resoto to &hellip; get a handle on the infrastructure
-                  at{' '}
+                  I built the first version of Resoto to get a handle on the
+                  infrastructure at{' '}
                   <a
                     href="https://d2iq.com"
                     target="_blank"
@@ -143,11 +143,13 @@ export default function Home(): JSX.Element {
                   >
                     D2iQ
                   </a>
-                  . We had over{' '}
-                  <strong>two hundred engineers spinning up resources</strong>{' '}
-                  however they wanted&mdash;but our small,{' '}
-                  <strong>three-person SRE team was responsible</strong> for all
-                  that usage.
+                  . We had around{' '}
+                  <strong>
+                    two hundred engineers able to spin up resources
+                  </strong>{' '}
+                  but only a small,{' '}
+                  <strong>three-person SRE team responsible</strong> for all
+                  cloud usage.
                 </p>
                 <footer>
                   <strong>Lukas Lösche</strong>, Co-Founder at{' '}

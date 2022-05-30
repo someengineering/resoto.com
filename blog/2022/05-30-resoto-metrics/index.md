@@ -124,7 +124,7 @@ So here's the plan. First we will learn how to [configure Prometheus to fetch da
 
 ## Getting Started
 
-If you are new to Resoto, [start the Resoto stack](/docs/getting-started/installation) and [configure it to collect some of your cloud accounts](/docs/getting-started/configuring-resoto#configuring-cloud-providers).
+If you are new to Resoto, [start the Resoto stack](/docs/getting-started/installation) and [configure it to collect some of your cloud accounts](/docs/getting-started/configuration/worker#cloud-providers).
 
 To check out the data Resoto Metrics generates open [`https://localhost:9955/metrics`](https://localhost:9955/metrics) in your browser (replacing `localhost` with the IP address or hostname of the machine where `resotometrics` is running). This data is updated [whenever Resoto runs the collection workflow](/docs/getting-started/configuration/core#workflow-schedules). You should see an output similar to this:
 

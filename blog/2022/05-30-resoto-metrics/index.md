@@ -31,7 +31,7 @@ This blog post will describe how to build a simple metrics dashboard using [Reso
 
 ## Concepts and Terminology
 
-If you already know what graph and time series databases, metrics, samples, labels, Prometheus and Grafana are you can [skip ahead to the next chapter](#getting-started). For anyone not deep into the cloud native metrics ecosystem let's get some concepts and terminology out of the way.
+If you are already familiar with graph and time series databases, metrics, samples, labels, Prometheus, and Grafana, please feel free to [skip ahead](#getting-started). For those new to the cloud-native metrics ecosystem, let's get some concepts and terminology out of the way!
 
 ### Collect
 

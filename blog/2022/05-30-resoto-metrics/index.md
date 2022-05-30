@@ -3,9 +3,12 @@ authors: [lukas]
 tags: [metrics, graph, aggregation]
 ---
 
-# 1. Collect , 2. Aggregate , 3. ..., 4. Profit!
+# Cloud Infrastructure Metrics
 
-## Cloud Infrastructure Metrics
+1. Collect.
+2. Aggregate.
+3. …
+4. Profit!
 
 At this very moment, do you know how many compute instances are running in your infrastructure and what you are paying for them?
 
@@ -35,7 +38,7 @@ If you are already familiar with graph and time series databases, metrics, sampl
 
 ### Collect
 
-Resoto creates an inventory of your cloud infrastructure by taking all the meta data of your cloud resources and storing them inside of a graph. This is what we call the `collect` [step](/docs/concepts/automation/workflow). Every resource (like a compute instance, storage volume, etc.) is represented by a node in the graph. Nodes are connected to each other by edges. Edges represent the relationship between two nodes as illustrated in this graph excerpt (please excuse my MS Paint skills):
+Resoto creates an inventory of your cloud infrastructure by storing the metadata of your cloud resources inside of a [graph](/docs/concepts/graph). This is what we call the `collect` [step](/docs/concepts/automation/workflow). Each resource (e.g., compute instance, storage volume, etc.) is represented by a graph [node](/docs/concepts/graph/node). [Nodes](/docs/concepts/graph/node) are connected via [edges](/docs/concepts/graph/edge). [Edges](/docs/concepts/graph/edge) represent the relationship between two [nodes](/docs/concepts/graph/node), like so (please excuse my MS Paint skills):
 
 ![Graph visualization](img/graph_visualization.png)
 
@@ -63,11 +66,11 @@ A [node](/docs/concepts/graph/node) is essentially an indexed JSON document cont
 
 ### Search
 
-Among other things Resoto then allows you to [search that meta data](/blog/2022/02/04/resoto-search-101). An example search could be
+Among other things, Resoto allows you to [search this metadata](/blog/2022/02/04/resoto-search-101). Here's an example:
 
-```
+```bash
 > search is(aws_ec2_instance) and instance_cores > 4
-​
+​# highlight-start
 ​kind=aws_ec2_instance, id=i-065af67d77cd5a272, name=16ca1.prod1, instance_cores=16, age=3yr2mo, cloud=aws, account=eng-production, region=us-west-2
 ​kind=aws_ec2_instance, id=i-019f3f3a2a8d1990e, name=16ca2.prod1, instance_cores=16, age=3yr2mo, cloud=aws, account=eng-production, region=us-west-2
 ​kind=aws_ec2_instance, id=i-0667dc8de49a4319e, name=16ca3.prod1, instance_cores=16, age=3yr2mo, cloud=aws, account=eng-production, region=us-west-2
@@ -76,17 +79,18 @@ Among other things Resoto then allows you to [search that meta data](/blog/2022/
 ​kind=aws_ec2_instance, id=i-04e09d3c714048c4d, name=16ca6.prod1, instance_cores=16, age=3yr2mo, cloud=aws, account=eng-production, region=us-west-2
 ​kind=aws_ec2_instance, id=i-0d2dfda13e02b2b20, name=16ca7.prod1, instance_cores=16, age=2yr9mo, cloud=aws, account=eng-production, region=us-west-2
 ​...
+# highlight-end
 ```
 
-This would return a list of all the EC2 instances with more than 4 cores. That's useful if I want to do something with each individual instance, but sometimes I'm not interested in the details of individual resources. Sometimes I just want to know the sum of how many resources there are. Or, how many resources of a certain kind are running. Like the distribution of compute instances by instance type (e.g. how many m5.large, m5.2xlarge, etc.) or the current cost of compute plus storage grouped by team.
+The search returned a list of all EC2 instances with more than 4 cores. There are times when you may not be interested in the details of individual resources, but simply want to do something with each individual instance. You may want to know the total number of resources, or the number of running resources of a particular kind. You may be interested in the distribution of compute instances by instance type (e.g., `m5.large`, `m5.2xlarge`, etc.), or the current cost of compute and storage grouped by team.
 
 ### Aggregation
 
 [Aggregating and grouping the results of a search](/blog/2022/03/03/aggregating-search-data) creates the samples of a metric.
 
-```
+```bash
 > search aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account, /ancestors.region.reported.name as region, instance_type as type, instance_status as status: sum(1) as instances_total): is(instance)
-​
+​# highlight-start
 ​group:
 ​  cloud: aws
 ​  account: eng-production
@@ -94,7 +98,6 @@ This would return a list of all the EC2 instances with more than 4 cores. That's
 ​  type: m5.xlarge
 ​  status: running
 ​instances_total: 13
-​
 ​---
 ​group:
 ​  cloud: aws
@@ -104,6 +107,7 @@ This would return a list of all the EC2 instances with more than 4 cores. That's
 ​  status: stopped
 ​instances_total: 7
 ​...
+# highlight-end
 ```
 
 This is useful, but the ability to compare current values to those from an hour, day, month, year, etc. ago would be even more useful. This brings us to the next concept, time series.
@@ -124,7 +128,7 @@ So here's the plan. First we will learn how to [configure Prometheus to fetch da
 
 ## Getting Started
 
-If you are new to Resoto, [start the Resoto stack](/docs/getting-started/installation) and [configure it to collect some of your cloud accounts](/docs/getting-started/configuration/worker#cloud-providers).
+If you are new to Resoto, [start the Resoto stack](/docs/getting-started/installation) and [configure it to collect your cloud accounts](/docs/getting-started/configuration/worker#cloud-providers).
 
 To check out the data Resoto Metrics generates open [`https://localhost:9955/metrics`](https://localhost:9955/metrics) in your browser (replacing `localhost` with the IP address or hostname of the machine where `resotometrics` is running). This data is updated [whenever Resoto runs the collection workflow](/docs/getting-started/configuration/core#workflow-schedules). You should see an output similar to this:
 
@@ -315,7 +319,7 @@ Right, fasten your seatbelt. This will go fast.
 
     Do not forget to press the `Save` button whenever you make changes to the dashboard!
 
-14. Next let's add a second panel with the following settings.
+14. Next, let's add a second panel:
 
     - In the query field next to "Metrics browser," enter:
 
@@ -335,7 +339,7 @@ Right, fasten your seatbelt. This will go fast.
 
 ![Dashboard with second panel](img/grafana_second_panel_dashboard.png)
 
-## The final product
+## The Final Product
 
 If we repeat the above steps for [all the metrics we saw before](#how-metrics-are-made), we will get a dashboard that looks like this:
 

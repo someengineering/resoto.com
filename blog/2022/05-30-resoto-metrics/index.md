@@ -313,7 +313,7 @@ Right, fasten your seatbelt. This will go fast.
 
     ![Initial dashboard](img/grafana_initial_dashboard.png)
 
-Do not forget to press the `Save` button whenever you make changes to the dashboard!
+    Do not forget to press the `Save` button whenever you make changes to the dashboard!
 
 14. Next let's add a second panel with the following settings.
 

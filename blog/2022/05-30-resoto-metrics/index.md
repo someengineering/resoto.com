@@ -317,19 +317,19 @@ Right, fasten your seatbelt. This will go fast.
 
 14. Next let's add a second panel with the following settings.
 
-- In the query field next to "Metrics browser" enter
+    - In the query field next to "Metrics browser," enter:
 
-```
-sum(avg_over_time(resoto_instances_total{cloud=~"$cloud", region=~"$region", account=~"$account", status="running"}[$__interval]))
-```
+    ```bash
+    sum(avg_over_time(resoto_instances_total{cloud=~"$cloud", region=~"$region", account=~"$account", status="running"}[$__interval]))
+    ```
 
-- In the top right of the panel page instead of `Time series` choose `Stats` from the dropdown menu.
-- Panel options > Title: `Instances $cloud - running`
-- Value Options > Calulation: Last\*
-- Stat styles > Color mode: None
-- Stat styles > Graph mode: None
+    - At the top right of the panel page, select "Stats" from the dropdown menu.
+    - Panel options > Title: `Instances $cloud - running`
+    - Value Options > Calulation: Last\*
+    - Stat styles > Color mode: None
+    - Stat styles > Graph mode: None
 
-![Setup of a second panel](img/grafana_second_panel.png)
+    ![Setup of a second panel](img/grafana_second_panel.png)
 
 15. On the dashboard page reduce the size of the new panel a bit. Congratulations, the dashboard now shows two panels. One with the number of currently running instances, the other shows the history of the number of instances.
 

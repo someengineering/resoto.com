@@ -108,7 +108,7 @@ This would return a list of all the EC2 instances with more than 4 cores. That's
 
 This is useful, but the ability to compare current values to those from an hour, day, month, year, etc. ago would be even more useful. This brings us to the next concept, time series.
 
-#### Time series
+### Time Series
 
 Time series databases such as [Prometheus](https://prometheus.io) do not store details of individual resources, but aggregated data over time—allowing us to query aggregate data and create charts to visualize the results.
 

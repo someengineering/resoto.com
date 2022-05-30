@@ -15,7 +15,7 @@ Compute and storage are typically the most expensive items on your cloud bill. T
 
 With Resoto we give you a picture of the current state of your cloud infrastructure. You can search that state and have Resoto automatically react to state changes. Resoto also lets you [aggregate this data](/blog/2022/03/03/aggregating-search-data) as my Co-Founder Matthias explained in [his March blog post](/blog/2022/03/03/aggregating-search-data).
 
-Building on that knowledge, we can take the aggregated data and ingest it into a time series database like Prometheus. We can then use this information to build diagrams to show the evolution of cloud resources like compute instances and storage over time.
+We can ingest this aggregated data and into a time series database, such as Prometheus. This information can then be used to build diagrams of cloud resources (e.g., compute instances and storage) over time.
 
 ![Metrics Overview](img/metrics_overview.png)
 

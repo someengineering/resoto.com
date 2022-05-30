@@ -273,7 +273,7 @@ Right, fasten your seatbelt. This will go fast.
 
 8. On the top click on `Dashboard settings` > `Variables` and `Add variable`.
 
-![Add Variable](img/grafana_add_variable.png)
+   ![Add Variable](img/grafana_add_variable.png)
 
 9. As Name choose `cloud`, as Label `Cloud`, as Query enter `label_values(cloud)` and select `Multi-value` and `Include All option`. Make sure that the `Preview of values` shows the available clouds and click `Update`.
 

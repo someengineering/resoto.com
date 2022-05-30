@@ -82,7 +82,7 @@ This would return a list of all the EC2 instances with more than 4 cores. That's
 
 #### Aggregating
 
-This is where the before mentioned [aggregation](/blog/2022/03/03/aggregating-search-data) comes into play. It does just that; [aggregating and grouping the results of a search](/blog/2022/03/03/aggregating-search-data). This is what creates the samples of a metric.
+[Aggregating and grouping the results of a search](/blog/2022/03/03/aggregating-search-data) creates the samples of a metric.
 
 ```
 > search aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account, /ancestors.region.reported.name as region, instance_type as type, instance_status as status: sum(1) as instances_total): is(instance)

@@ -33,7 +33,7 @@ This blog post will describe how to build a simple metrics dashboard using [Reso
 
 If you already know what graph and time series databases, metrics, samples, labels, Prometheus and Grafana are you can [skip ahead to the next chapter](#getting-started). For anyone not deep into the cloud native metrics ecosystem let's get some concepts and terminology out of the way.
 
-#### Collecting
+### Collect
 
 Resoto creates an inventory of your cloud infrastructure by taking all the meta data of your cloud resources and storing them inside of a graph. This is what we call the `collect` [step](/docs/concepts/automation/workflow). Every resource (like a compute instance, storage volume, etc.) is represented by a node in the graph. Nodes are connected to each other by edges. Edges represent the relationship between two nodes as illustrated in this graph excerpt (please excuse my MS Paint skills):
 

@@ -311,7 +311,7 @@ Right, fasten your seatbelt. This will go fast.
 
 13. Congratulations this is the start of your Resoto dashboard!
 
-![Initial dashboard](img/grafana_initial_dashboard.png)
+    ![Initial dashboard](img/grafana_initial_dashboard.png)
 
 Do not forget to press the `Save` button whenever you make changes to the dashboard!
 

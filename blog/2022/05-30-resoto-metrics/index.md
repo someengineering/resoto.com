@@ -265,7 +265,7 @@ Right, fasten your seatbelt. This will go fast.
 
 6. Scroll down and click `Save & test`. Make sure it replies with "Data source is working".
 
-![Save Data Source](img/grafana_setup2.png)
+   ![Save Data Source](img/grafana_setup2.png)
 
 7. On the left click on the `+` button and select `Create Dashboard`, then click the `Save` button in the top menu bar.
 

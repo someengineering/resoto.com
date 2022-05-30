@@ -21,7 +21,9 @@ We can ingest this aggregated data and into a time series database, such as Prom
 
 This then allows you to [alert on trends](https://prometheus.io/docs/alerting/latest/alertmanager/), like if we are going to run out of quota or about to hit a spend limit. Another use case is to quickly [identify anomalies](https://prometheus.io/docs/prometheus/latest/querying/functions/#aggregation_over_time) using [the 3σ rule](https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule). If somebody in the organization leaked their cloud API credentials or an automated system is going haywire, you will immediately see a spike and not only know about it when your next cloud bill arrives. Best of all it works across multiple clouds and accounts.
 
-Resoto comes with a handy dandy metrics component called [Resoto Metrics](/docs/concepts/components/metrics). It takes aggregation results and exports them to [Prometheus](https://prometheus.io/). In this post we will show you how to build a simple metrics dashboard using [Resoto Metrics](/docs/concepts/components/metrics), [Prometheus](https://prometheus.io/) and [Grafana](https://grafana.com/).
+Resoto comes with a handy metrics component, [Resoto Metrics](/docs/concepts/components/metrics). [Resoto Metrics](/docs/concepts/components/metrics) takes aggregation results and exports them to [Prometheus](https://prometheus.io).
+
+This blog post will describe how to build a simple metrics dashboard using [Resoto Metrics](/docs/concepts/components/metrics), [Prometheus](https://prometheus.io), and [Grafana](https://grafana.com).
 
 <!--truncate-->
 

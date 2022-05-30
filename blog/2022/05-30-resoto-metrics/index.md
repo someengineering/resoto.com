@@ -249,9 +249,9 @@ Right, fasten your seatbelt. This will go fast.
 
 1. Run the Grafana Docker container
 
-```
-$ docker run -d -p 3000:3000 -v grafana-data:/var/lib/grafana -v grafana-etc:/etc/grafana grafana/grafana-oss
-```
+   ```bash
+   $ docker run -d -p 3000:3000 -v grafana-data:/var/lib/grafana -v grafana-etc:/etc/grafana grafana/grafana-oss
+   ```
 
 2. Open up the Grafana UI (e.g. [http://localhost:3000](http://localhost:3000))
 

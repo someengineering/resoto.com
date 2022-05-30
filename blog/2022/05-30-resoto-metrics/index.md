@@ -288,7 +288,7 @@ Right, fasten your seatbelt. This will go fast.
 
 11. Hit `ESC` on your keyboard to go back and on the top of the page click on `Add new panel`.
 
-![Add a new panel](img/grafana_add_new_panel.png)
+    ![Add a new panel](img/grafana_add_new_panel.png)
 
 12. Apply the following Settings then click `Save` in the top right.
 

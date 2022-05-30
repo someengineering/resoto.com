@@ -19,7 +19,9 @@ We can ingest this aggregated data and into a time series database, such as Prom
 
 ![Metrics Overview](img/metrics_overview.png)
 
-This then allows you to [alert on trends](https://prometheus.io/docs/alerting/latest/alertmanager/), like if we are going to run out of quota or about to hit a spend limit. Another use case is to quickly [identify anomalies](https://prometheus.io/docs/prometheus/latest/querying/functions/#aggregation_over_time) using [the 3σ rule](https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule). If somebody in the organization leaked their cloud API credentials or an automated system is going haywire, you will immediately see a spike and not only know about it when your next cloud bill arrives. Best of all it works across multiple clouds and accounts.
+This allows you to [alert on trends](https://prometheus.io/docs/alerting/latest/alertmanager), like if you are projected to reach a quota or spend limit.
+
+Another use case is to quickly [identify anomalies](https://prometheus.io/docs/prometheus/latest/querying/functions/#aggregation_over_time) using [the 3σ rule](https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule). If cloud API credentials are leaked or an automated system is goes haywire, you would immediately see a spike instead of receiving an unpleasant surprise on your next cloud bill. Best of all, it works across multiple clouds and accounts!
 
 Resoto comes with a handy metrics component, [Resoto Metrics](/docs/concepts/components/metrics). [Resoto Metrics](/docs/concepts/components/metrics) takes aggregation results and exports them to [Prometheus](https://prometheus.io).
 

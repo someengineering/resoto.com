@@ -261,7 +261,7 @@ Right, fasten your seatbelt. This will go fast.
 
 5. In the URL field, enter the Prometheus URL e.g. `http://tsdb.docker.internal:9090`
 
-![Add Prometheus Data Source to Grafana](img/grafana_setup1.png)
+   ![Add Prometheus Data Source to Grafana](img/grafana_setup1.png)
 
 6. Scroll down and click `Save & test`. Make sure it replies with "Data source is working".
 

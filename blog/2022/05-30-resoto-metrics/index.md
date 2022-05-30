@@ -212,7 +212,7 @@ Neat, we see how the number of compute instances has changed over time for each 
 
 Want to see how storage has changed over time? Just change `resoto_instances_total` to `resoto_volume_bytes`. Want to see $$$ spent per hour? `resoto_instances_hourly_cost_estimate` is the metric you are looking for.
 
-## How Metrics are made
+## How Metrics Are Made
 
 Now Prometheus' Web UI will provide syntax help and auto-complete for available metric names. However you might be wondering, how are you supposed to know which metrics exist? How do you know what other metrics there are and where something like `resoto_instances_total` is defined? Glad you asked. All Metrics are configured in the `resoto.metrics` [config](/docs/getting-started/configuring-resoto). Within [Resoto Shell (`resh`)](/docs/concepts/components/shell) execute:
 

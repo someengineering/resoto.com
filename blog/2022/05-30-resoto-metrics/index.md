@@ -39,7 +39,7 @@ Resoto creates an inventory of your cloud infrastructure by taking all the meta 
 
 ![Graph visualization](img/graph_visualization.png)
 
-In Resoto a node is essentially an indexed JSON document that contains all the meta data of a resource. The `aws_ec2_instance` from the graph picture above would look something like this:
+A [node](/docs/concepts/graph/node) is essentially an indexed JSON document containing the metadata of a resource. The `aws_ec2_instance` from the graph picture above would look something like this:
 
 ```json
 {

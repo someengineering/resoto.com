@@ -237,7 +237,7 @@ Here you can add your own metrics. As [previously explained](#aggregating), the 
 
 This config can be updated at runtime. Next time the `metrics` [workflow](/docs/concepts/automation/workflow) is run Resoto Metrics will generate the new metric and from then on provide it to Prometheus.
 
-```
+```bash
 > workflow run metrics
 ```
 

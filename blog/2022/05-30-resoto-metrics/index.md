@@ -292,22 +292,20 @@ Right, fasten your seatbelt. This will go fast.
 
 12. Apply the following Settings then click `Save` in the top right.
 
-- In the query field next to "Metrics browser" enter
+    - In the query field next to "Metrics browser," enter:
+      ```bash
+      sum(avg_over_time(resoto_instances_total{cloud=~"$cloud", account=~"$account", region=~"$region", status="running"}[$__interval])) by (cloud, account)
+      ```
+    - On the right in `Panel Options` enter Title `Instances Total - running`.
+    - Legend > Legend mode: Hidden
+    - Graph styles > Line width: 4
+    - Graph styles > Fill opacity: 40
+    - Graph styles > Connect null values: Always
+    - Graph styles > Stack series: Normal
 
-```
-sum(avg_over_time(resoto_instances_total{cloud=~"$cloud", account=~"$account", region=~"$region", status="running"}[$__interval])) by (cloud, account)
-```
+    ![Setup of a new panel](img/grafana_setup_panel.png)
 
-- On the right in `Panel Options` enter Title `Instances Total - running`.
-- Legend > Legend mode: Hidden
-- Graph styles > Line width: 4
-- Graph styles > Fill opacity: 40
-- Graph styles > Connect null values: Always
-- Graph styles > Stack series: Normal
-
-![Setup of a new panel](img/grafana_setup_panel.png)
-
-- Click `Apply` in the top left.
+    Click `Apply` in the top left.
 
 13. Congratulations this is the start of your Resoto dashboard!
 

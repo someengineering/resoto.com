@@ -7,7 +7,7 @@ tags: [metrics, graph, aggregation]
 
 ## Cloud Infrastructure Metrics
 
-Let's begin with a question: At this very moment, do you know how many compute instances are running in your infrastructure and what you are paying for them?
+At this very moment, do you know how many compute instances are running in your infrastructure and what you are paying for them?
 
 If the answer is "No, not exactly", then my next question would be: Why not? Compute and storage are typically the most expensive items on your cloud bill. Compute and storage are also the most critical pieces of infrastructure for most businesses.
 

@@ -13,7 +13,7 @@ If the answer is, "No, not exactly," then my next question for you is, "Why not?
 
 Compute and storage are typically the most expensive items on your cloud bill. They are also the most critical pieces of infrastructure for most businesses.
 
-With Resoto we give you a picture of the current state of your cloud infrastructure. You can search that state and have Resoto automatically react to state changes. Resoto also lets you [aggregate this data](/blog/2022/03/03/aggregating-search-data) as my Co-Founder Matthias explained in [his March blog post](/blog/2022/03/03/aggregating-search-data).
+Resoto gives a snapshot of the current state of your cloud infrastructure. You can search that snapshot and have Resoto automatically react to state changes. Resoto also lets you [aggregate](/docs/concepts/search/aggregation) this data as my co-founder Matthias described in a [March blog post](/blog/2022/03/03/aggregating-search-data).
 
 We can ingest this aggregated data and into a time series database, such as Prometheus. This information can then be used to build diagrams of cloud resources (e.g., compute instances and storage) over time.
 

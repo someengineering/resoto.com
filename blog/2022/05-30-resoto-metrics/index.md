@@ -61,7 +61,7 @@ A [node](/docs/concepts/graph/node) is essentially an indexed JSON document cont
 }
 ```
 
-#### Searching
+### Search
 
 Among other things Resoto then allows you to [search that meta data](/blog/2022/02/04/resoto-search-101). An example search could be
 

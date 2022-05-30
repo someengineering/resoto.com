@@ -106,7 +106,7 @@ This would return a list of all the EC2 instances with more than 4 cores. That's
 ​...
 ```
 
-Now this is useful but what would be even more useful was if I could compare the current values to the ones from an hour ago, a day ago, a month ago, a year ago, etc. This is where time series come into play.
+This is useful, but the ability to compare current values to those from an hour, day, month, year, etc. ago would be even more useful. This brings us to the next concept, time series.
 
 #### Time series
 

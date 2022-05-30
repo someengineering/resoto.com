@@ -277,7 +277,7 @@ Right, fasten your seatbelt. This will go fast.
 
 9. As Name choose `cloud`, as Label `Cloud`, as Query enter `label_values(cloud)` and select `Multi-value` and `Include All option`. Make sure that the `Preview of values` shows the available clouds and click `Update`.
 
-![Configure Variable](img/grafana_configure_variable.png)
+   ![Configure Variable](img/grafana_configure_variable.png)
 
 10. Repeat Step 9 for
 

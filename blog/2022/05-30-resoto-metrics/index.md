@@ -110,7 +110,11 @@ Now this is useful but what would be even more useful was if I could compare the
 
 #### Time series
 
-A time series database like [Prometheus](https://prometheus.io/) does not store the details of an individual resource but instead stores the aggregated data over time. It then allows us to query that data and create charts to visualize the result. In the aggregated search above each of the results is what Prometheus calls a sample. A sample is a single value at a point in time in a time series. In our previous example the `cloud`, `account`, `region`, `type` and `status` in each group is what's called a [label](https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels) in Prometheus. Labels are `key: value` pairs that allow us to group samples.
+Time series databases such as [Prometheus](https://prometheus.io) do not store details of individual resources, but aggregated data over time—allowing us to query aggregate data and create charts to visualize the results.
+
+In the aggregated search above, each result is what [Prometheus](https://prometheus.io) calls a [sample](https://prometheus.io/docs/concepts/data_model#samples). A [sample](https://prometheus.io/docs/concepts/data_model#samples) is a single value at a specific point in time.
+
+Looking again at the same example, `cloud`, `account`, `region`, `type`, and `status` in each group are [labels](https://prometheus.io/docs/concepts/data_model#metric-names-and-labels). [Labels](https://prometheus.io/docs/concepts/data_model#metric-names-and-labels) are `key: value` pairs that allow us to group [samples](https://prometheus.io/docs/concepts/data_model#samples).
 
 Prometheus has some basic graphing capabilities but to build a dashboard we want to use a better suited tool like [Grafana](https://grafana.com/). It can visualize data from different sources in a variety of chart styles, like this stacked line chart.
 

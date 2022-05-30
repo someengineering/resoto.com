@@ -260,8 +260,6 @@ html[data-theme='dark'] .quotation {
 .quotation::after {
   content: '”';
   align-self: flex-end;
-  /* transform: scale(1, -1); */
-  /* margin: -200px -20px -20px -20px; */
   margin: -45px -10px -80px -20px;
 }
 

@@ -281,10 +281,10 @@ Right, fasten your seatbelt. This will go fast.
 
 10. Repeat Step 9 for
 
-- Name `account`, Label `Account`, Query `label_values(account)` and
-- Name `region`, Label `Region`, Query `label_values(region)` with `Multi-value` and `Include All option` turned on for all variables.
+    - Name `account`, Label `Account`, Query `label_values(account)` and
+    - Name `region`, Label `Region`, Query `label_values(region)` with `Multi-value` and `Include All option` turned on for all variables.
 
-![Variables](img/grafana_variables.png)
+    ![Variables](img/grafana_variables.png)
 
 11. Hit `ESC` on your keyboard to go back and on the top of the page click on `Add new panel`.
 

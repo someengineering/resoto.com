@@ -269,7 +269,7 @@ Right, fasten your seatbelt. This will go fast.
 
 7. On the left click on the `+` button and select `Create Dashboard`, then click the `Save` button in the top menu bar.
 
-![Save dashboard](img/grafana_save_dashboard.png)
+   ![Save dashboard](img/grafana_save_dashboard.png)
 
 8. On the top click on `Dashboard settings` > `Variables` and `Add variable`.
 

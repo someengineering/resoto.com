@@ -116,7 +116,7 @@ In the aggregated search above, each result is what [Prometheus](https://prometh
 
 Looking again at the same example, `cloud`, `account`, `region`, `type`, and `status` in each group are [labels](https://prometheus.io/docs/concepts/data_model#metric-names-and-labels). [Labels](https://prometheus.io/docs/concepts/data_model#metric-names-and-labels) are `key: value` pairs that allow us to group [samples](https://prometheus.io/docs/concepts/data_model#samples).
 
-Prometheus has some basic graphing capabilities but to build a dashboard we want to use a better suited tool like [Grafana](https://grafana.com/). It can visualize data from different sources in a variety of chart styles, like this stacked line chart.
+Prometheus has basic graphing capabilities, but [Grafana](https://grafana.com) allows you to build a dashboard visualizing data from different sources in a variety of chart styles, like this stacked line chart:
 
 ![Instance cost over time](img/grafana_instances_total.png)
 

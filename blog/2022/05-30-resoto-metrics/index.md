@@ -5,20 +5,19 @@ tags: [metrics, graph, aggregation]
 
 # Cloud Infrastructure Metrics
 
-1. Collect.
-2. Aggregate.
-3. …
-4. Profit!
-
 At this very moment, do you know how many compute instances are running in your infrastructure and what you are paying for them?
 
 If the answer is, "No, not exactly," then my next question for you is, "Why not?"
 
 Compute and storage are typically the most expensive items on your cloud bill. They are also the most critical pieces of infrastructure for most businesses.
 
-Resoto gives a snapshot of the current state of your cloud infrastructure. You can search that snapshot and have Resoto automatically react to state changes. Resoto also lets you [aggregate](/docs/concepts/search/aggregation) this data as my co-founder Matthias described in a [March blog post](/blog/2022/03/03/aggregating-search-data).
+Resoto gives a snapshot of the current state of your cloud infrastructure. You can [search](/docs/concepts/search) that snapshot and have Resoto [automatically react to state changes](/docs/concepts/automation).
 
-We can ingest this aggregated data and into a time series database, such as Prometheus. This information can then be used to build diagrams of cloud resources (e.g., compute instances and storage) over time.
+Resoto also lets you [aggregate](/docs/concepts/search/aggregation) and [visualize](/docs/reference/notebook) this data as my colleagues Matthias and Nikita described in their [March](/blog/2022/03/03/aggregating-search-data) and [May blog posts](/blog/2022/05/14/resotonotebook). Below is an example of a heatmap that allows you to immediately see outliers, like when an account suddenly starts using a large number of expensive, high core count instances.
+
+![Instance use heatmap](img/resotonotebook_heatmap.png)
+
+We can ingest this aggregated data into a time series database, such as Prometheus. This information can then be used to build diagrams of cloud resources (e.g., compute instances and storage) over time.
 
 ![Metrics Overview](img/metrics_overview.png)
 

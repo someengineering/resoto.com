@@ -22,10 +22,10 @@ jobs show <id>
 
 ```bash
 > jobs show say-hello
-// highlight-start
+# highlight-start
 ​id: say-hello
 ​trigger:
 ​  cron_expression: '* * * * *'
 ​command: echo hello world
-// highlight-end
+# highlight-end
 ```

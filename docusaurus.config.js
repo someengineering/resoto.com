@@ -6,7 +6,7 @@ const a11yEmoji = require('@fec/remark-a11y-emoji');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Resoto by Some Engineering Inc.',
-  tagline: 'Automate tedious infrastructure tasks, fast!',
+  tagline: 'Automate tedious infrastructure tasks, remarkably fast.',
   url: 'https://resoto.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -97,7 +97,11 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      autoCollapseSidebarCategories: true,
+      docs: {
+        sidebar: {
+          autoCollapseCategories: true,
+        },
+      },
       metadata: [
         {
           name: 'keywords',
@@ -112,7 +116,7 @@ const config = {
       announcementBar: {
         id: 'announcementBar-3', // Increment on change
         content:
-          '<span aria-label="star" role="img" class="lg-screens-only">⭐</span> If you like Resoto, please <a href="https://github.com/someengineering/resoto" target="_blank" rel="noopener noreferrer">star the project on GitHub</a> and <a href="https://www.linkedin.com/company/someengineering" target="_blank" rel="noopener noreferrer">follow Some Engineering Inc. on LinkedIn</a>. Thanks for your support! <span aria-label="heart" role="img" class="lg-screens-only">❤️</span>',
+          '<span aria-label="star" role="img" class="lg-screens-only">⭐</span> If you like Resoto, please <a href="https://github.com/someengineering/resoto" target="_blank" rel="noopener noreferrer">star the project on GitHub</a> and <a href="https://linkedin.com/company/someengineering" target="_blank" rel="noopener noreferrer">follow Some Engineering Inc. on LinkedIn</a>. Thanks for your support! <span aria-label="heart" role="img" class="lg-screens-only">❤️</span>',
       },
       navbar: {
         hideOnScroll: true,
@@ -128,29 +132,28 @@ const config = {
             to: '/docs',
             label: 'Documentation',
             position: 'left',
-            // type: 'dropdown',
-            // items: [
-            //   {
-            //     label: 'Getting Started',
-            //     to: '/docs/getting-started',
-            //   },
-            //   {
-            //     label: 'Concepts',
-            //     to: '/docs/concepts',
-            //   },
-            //   {
-            //     label: 'Reference',
-            //     to: '/docs/reference',
-            //   },
-            //   {
-            //     label: 'Contributing',
-            //     to: '/docs/contributing',
-            //   },
-            // ],
+            type: 'dropdown',
+            items: [
+              {
+                label: 'Getting Started',
+                to: '/docs/getting-started',
+              },
+              {
+                label: 'Concepts',
+                to: '/docs/concepts',
+              },
+              {
+                label: 'Reference',
+                to: '/docs/reference',
+              },
+              {
+                label: 'Contributing',
+                to: '/docs/contributing',
+              },
+            ],
           },
           { to: '/news', label: 'News', position: 'left' },
           { to: '/blog', label: 'Blog', position: 'left' },
-          { to: '/support', label: 'Support', position: 'left' },
           {
             label: 'GitHub',
             href: 'https://github.com/someengineering/resoto',
@@ -160,18 +163,11 @@ const config = {
           },
           {
             label: 'LinkedIn',
-            href: 'https://www.linkedin.com/company/someengineering',
+            href: 'https://linkedin.com/company/someengineering',
             position: 'right',
             className: 'header-icon-link header-linkedin-link',
             'aria-label': 'LinkedIn',
           },
-          // {
-          //   label: 'Twitter',
-          //   href: 'https://twitter.com/someengineering',
-          //   position: 'right',
-          //   className: 'header-icon-link header-twitter-link',
-          //   'aria-label': 'Twitter',
-          // },
           {
             label: 'Discord',
             href: 'https://discord.gg/someengineering',
@@ -213,18 +209,26 @@ const config = {
                 to: '/code-of-conduct',
               },
               {
+                label: 'GitHub',
+                href: 'https://github.com/someengineering',
+              },
+              {
                 label: 'Discord',
                 href: 'https://discord.gg/someengineering',
               },
               {
                 label: 'LinkedIn',
-                href: 'https://www.linkedin.com/company/someengineering',
+                href: 'https://linkedin.com/company/someengineering',
               },
             ],
           },
           {
             title: 'More',
             items: [
+              {
+                label: 'About',
+                to: '/about',
+              },
               {
                 label: 'News',
                 to: '/news',
@@ -234,13 +238,13 @@ const config = {
                 to: '/blog',
               },
               {
-                label: 'GitHub',
-                href: 'https://github.com/someengineering',
+                label: 'Support',
+                to: '/support',
               },
-              // {
-              //   label: 'Twitter',
-              //   href: 'https://twitter.com/someengineering',
-              // },
+              {
+                label: 'Logos',
+                to: '/logos',
+              },
             ],
           },
           {
@@ -270,6 +274,13 @@ const config = {
         darkTheme: require('./src/utils/prismDark.js'),
         additionalLanguages: ['ini', 'powershell'],
       },
+      magicComments: [
+        {
+          className: 'theme-code-block-highlighted-line',
+          line: 'highlight-next-line',
+          block: { start: 'highlight-start', end: 'highlight-end' },
+        },
+      ],
     }),
 };
 

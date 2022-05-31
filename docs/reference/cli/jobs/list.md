@@ -16,10 +16,10 @@ jobs list
 
 ```bash
 > jobs list
-// highlight-start
+# highlight-start
 ​id: say-hello
 ​trigger:
 ​  cron_expression: '* * * * *'
 ​command: echo hello world
-// highlight-end
+# highlight-end
 ```

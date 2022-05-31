@@ -1,5 +1,4 @@
 ---
-slug: worker
 sidebar_position: 2
 sidebar_label: Worker
 ---
@@ -8,7 +7,7 @@ sidebar_label: Worker
 
 [Resoto Worker (`resotoworker`)](https://github.com/someengineering/resoto/tree/main/resotoworker) performs all of the collection and cleanup work in Resoto.
 
-A worker is connected to [Resoto Core](core.md) over a websocket connection and simply awaits instructions. By default, it subscribes to the `collect` and `cleanup` actions as well as `tag` tasks.
+A worker is connected to [Resoto Core](./core.md) over a websocket connection and simply awaits instructions. By default, it subscribes to the `collect` and `cleanup` actions as well as `tag` tasks.
 
 Resoto Worker loads collector plugins like AWS, GCP, Slack, Onelogin, etc. Only those plugins have knowledge about how to communicate with each cloud, how to collect resources, and how to clean them up.
 
@@ -22,7 +21,7 @@ somecr.io/someengineering/resotoworker:{{latestRelease}}
 
 ## Usage
 
-`resotoworker` uses the following commandline arguments:
+Resoto Worker uses the following commandline arguments:
 
 ```
   --subscriber-id SUBSCRIBER_ID
@@ -48,7 +47,7 @@ For instance the boolean `--fork` would become `RESOTOWORKER_FORK=true`.
 
 ## Details
 
-The following are details on how `resotoworker` works internally and how it integrates with [`resotocore`](core.md).
+The following are details on how Resoto Worker works internally and how it integrates with [Resoto Core](./core.md).
 
 ### Plugins
 
@@ -60,7 +59,7 @@ Think of actions and tasks like topics and queues in a messaging system. Actions
 
 ### Actions
 
-When the collect workflow within resotocore is triggered (by either an event or a schedule or because the user manually triggered it), resotocore will broadcast a "start collecting all the cloud accounts you know about" message to all the subscribed workers. Once all the workers finish collecting and sent their graph to the core, the workflow will proceed to the next step which would be plan_cleanup. This one tells anyone interested to start planing their cleanup based on the just collected graph data. Once everyone has planed their cleanup and flagged resources that should get cleaned up with the desired.clean = true flag, the workflow proceeds to the cleanup step which again notifies anyone subscribed to now perform cleanup of those flagged resources. Because the cleaner within resotoworker has knowledge of all dependencies in the graph, it will ensure that resources are cleaned up in the right order.
+When the collect workflow within resotocore is triggered (by either an event or a schedule or because the user manually triggered it), resotocore will broadcast a "start collecting all the cloud accounts you know about" message to all the subscribed workers. Once all the workers finish collecting and sent their graph to the core, the workflow will proceed to the next step which would be plan_cleanup. This one tells anyone interested to start planing their cleanup based on the just collected graph data. Once everyone has planed their cleanup and flagged resources that should get cleaned up with the desired.clean = true flag, the workflow proceeds to the cleanup step which again notifies anyone subscribed to now perform cleanup of those flagged resources. Because the cleaner within Resoto Worker has knowledge of all dependencies in the graph, it will ensure that resources are cleaned up in the right order.
 
 ### Tasks
 
@@ -70,4 +69,4 @@ When a plugin or a user decides that a resource tag should be added, changed or 
 > search id = i-039e06bb2539e5484 | tag update owner lukas
 ```
 
-[`resotocore`](core.md) will put this tagging task onto a task queue. This task is then consumed by a `resotoworker` that knows how to perform tagging for that particular resource and its particular cloud and account. In our example above where we are setting the tag `owner: lukas` for an AWS EC2 instance with ID `i-039e06bb2539e5484` the task would be given to a `resotoworker` that knows how to update AWS EC2 instance tags in that resources account.
+[Resoto Core](./core.md) will put this tagging task onto a task queue. This task is then consumed by a Resoto Worker that knows how to perform tagging for that particular resource and its particular cloud and account. In our example above where we are setting the tag `owner: lukas` for an AWS EC2 instance with ID `i-039e06bb2539e5484` the task would be given to a Resoto Worker that knows how to update AWS EC2 instance tags in that resources account.

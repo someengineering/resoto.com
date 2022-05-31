@@ -2,7 +2,7 @@
 
 Resoto comes with a powerful search engine.
 
-It allows to perform a [full text search](./search/fulltext-search) to find resources without having to know the exact name of the property. You can filter results using powerful [filter criterias](./search/filters) and traverse the graph using [graph traversals](./search/traversals). Make sure to read how to [sort and limit](./search/sort-and-limit) the results.
+It allows you to perform a [full-text search](./search/full-text) to find resources without having to know the exact name of the property. You can filter results using powerful [filter criterias](./search/filters) and traverse the graph using [graph traversals](./search/traversals). Make sure to read how to [sort and limit](./search/sort-and-limit) the results.
 
 The result of a search can be [aggregated](./search/aggregation), so valuable insights can be created from the underlying resource data.
 

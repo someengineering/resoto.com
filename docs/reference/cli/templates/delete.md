@@ -22,6 +22,6 @@ templates delete <template_name>
 
 ```bash
 > templates delete filter_kind
-// highlight-next-line
+# highlight-next-line
 Template filter_kind deleted from the query library.
 ```

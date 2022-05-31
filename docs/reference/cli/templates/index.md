@@ -26,19 +26,19 @@ templates <template_name>
 
 ```bash title="List all templates"
 > templates
-// highlight-next-line
+# highlight-next-line
 filter_kind: is({{kind}})
 ```
 
 ```bash title="Display the filter_kind template"
 > templates filter_kind
-// highlight-next-line
+# highlight-next-line
 is({{kind}})
 ```
 
 ```bash title="Use the filter_kind template"
 > query expand(filter_kind, kind=volume) and name=~dkl
-// highlight-next-line
+# highlight-next-line
 kind=aws_ec2_volume, id=vol-1, name=dkl-3, age=2mo2d, cloud=aws, account=eng, region=us-west-2
 ```
 

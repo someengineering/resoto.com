@@ -28,6 +28,6 @@ Tags are a useful way to organize and categorize resources. Resoto allows for ve
 
 ## How Tagging Is Performed
 
-When a resource is tagged on the [Resoto Shell](components/shell.md), [Resoto Core](components/core.md) creates a tagging task that is dispatched to a [Worker](components/worker.md).
+When a resource is tagged on the [Resoto Shell](./components/shell.md), [Resoto Core](./components/core.md) creates a tagging task that is dispatched to a [Worker](./components/worker.md).
 
 By default the `tag` command waits for that task to complete and returns the result of the tagging operation (success/failure). If the `--nowait` flag is given, the command will return immediately.

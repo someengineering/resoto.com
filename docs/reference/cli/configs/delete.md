@@ -22,6 +22,6 @@ configs delete <id>
 
 ```bash
 > configs delete config_test
-// highlight-next-line
+# highlight-next-line
 ​Config config_test has been deleted.
 ```

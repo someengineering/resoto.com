@@ -22,6 +22,6 @@ workflows run <id>
 
 ```bash title="Run a workflow directly without waiting for its triggers"
 > workflows run collect_and_cleanup
-// highlight-next-line
+# highlight-next-line
 Workflow collect_and_cleanup started with id b84257ac-ba30-11ec-abdf-dad780437c54.
 ```

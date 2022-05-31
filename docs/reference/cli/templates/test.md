@@ -23,7 +23,7 @@ templates test <template_values> <template_name>
 
 ```bash
 > templates test kind=volume is({{kind}})
-// highlight-next-line
+# highlight-next-line
 is(volume)
 ```
 

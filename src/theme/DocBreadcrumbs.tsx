@@ -1,5 +1,6 @@
 import Link from '@docusaurus/Link';
 import { useSidebarBreadcrumbs } from '@docusaurus/theme-common';
+import { translate } from '@docusaurus/Translate';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import React, { type ReactNode } from 'react';
 
@@ -8,7 +9,7 @@ function BreadcrumbsItemLink({
   href,
 }: {
   children: ReactNode;
-  href?: string;
+  href: string | undefined;
 }): JSX.Element {
   const className = 'breadcrumbs__link';
   return href ? (
@@ -20,6 +21,7 @@ function BreadcrumbsItemLink({
   );
 }
 
+// TODO move to design system folder
 function BreadcrumbsItem({
   children,
   index,
@@ -47,7 +49,16 @@ function BreadcrumbsItem({
 function HomeBreadcrumbItem() {
   return (
     <li className="breadcrumbs__item">
-      <Link href={useBaseUrl('/docs')} className="breadcrumbs__link">
+      <Link
+        href={useBaseUrl('/docs')}
+        className="breadcrumbs__link"
+        aria-label={translate({
+          id: 'theme.docs.breadcrumbs.home',
+          message: 'Documentation',
+          description:
+            'The ARIA label for the docs home page in the breadcrumbs',
+        })}
+      >
         Documentation
       </Link>
     </li>
@@ -64,7 +75,13 @@ export default function DocBreadcrumbs(): JSX.Element | null {
   breadcrumbs.pop();
 
   return (
-    <nav aria-label="breadcrumbs">
+    <nav
+      aria-label={translate({
+        id: 'theme.docs.breadcrumbs.navAriaLabel',
+        message: 'Breadcrumbs',
+        description: 'The ARIA label for the breadcrumbs',
+      })}
+    >
       <ul
         itemScope
         itemType="https://schema.org/BreadcrumbList"

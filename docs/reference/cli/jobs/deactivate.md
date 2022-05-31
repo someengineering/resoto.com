@@ -22,11 +22,11 @@ jobs deactivate <id>
 
 ```bash
 > jobs deactivate say-hello
-// highlight-start
+# highlight-start
 ​id: say-hello
 ​command: echo hello world
 ​active: false
 ​trigger:
 ​  cron_expression: '* * * * *'
-// highlight-end
+# highlight-end
 ```

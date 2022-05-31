@@ -1,6 +1,6 @@
 ---
-sidebar_position: 3
-pagination_prev: getting-started/index
+sidebar_position: 2
+pagination_prev: getting-started/installation/index
 pagination_next: getting-started/performing-searches
 ---
 
@@ -121,7 +121,7 @@ There are two ways to overriding configuration properties:
 - `<COMPONENT_NAME>_OVERRIDE` environment variable
 
   ```bash
-  $ export RESOTOWORKER_OVERRIDE=resoto.worker.pool_size=5
+  $ export RESOTOWORKER_OVERRIDE=resotoworker.pool_size=5
   $ resotoworker
   ```
 
@@ -138,6 +138,20 @@ Alternatively, if a value contains a space, it is also possible to use separate,
 $ export RESOTOWORKER_OVERRIDE0=resotoworker.pool_size=5
 $ export RESOTOWORKER_OVERRIDE1=resotoworker.cleanup_pool_size=20
 $ resotoworker
+```
+
+### Overriding List Type Properties
+
+If the property type is a list/an array, it is possible to specifying multiple values as a comma-separated list of values:
+
+```bash
+  $ resotocore --override resotocore.api.web_hosts 127.0.0.1,10.0.0.1
+```
+
+or
+
+```bash
+  $ export RESOTOCORE_OVERRIDE=resotocore.api.web_hosts=127.0.0.1,10.0.0.1
 ```
 
 ## Restoring the Default Configuration
@@ -193,9 +207,11 @@ aws:
 
 :::note
 
-Resoto supports the same environment variables that the [AWS Command-Line Interface](https://aws.amazon.com/cli) does (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_SESSION_TOKEN`, `AWS_ROLE_ARN`, `AWS_WEB_IDENTITY_TOKEN_FILE`, `AWS_ROLE_SESSION_NAME`, etc.).
+Resoto is meant to run unattended on a server using a service account or instance profile. Resoto supports the same environment variables that the [AWS Command-Line Interface](https://aws.amazon.com/cli) does (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_SESSION_TOKEN`, `AWS_ROLE_ARN`, `AWS_WEB_IDENTITY_TOKEN_FILE`, `AWS_ROLE_SESSION_NAME`, etc.).
 
 When using temporary credentials, however, they should be written to the `credentials` or `config` file and updated out-of-band instead of using environment variables, because the `resotoworker` process starts once and then runs forever (updated environment variables are only reflected upon restart).
+
+You can specify a profile using `AWS_PROFILE` and for local testing SSO authentication would work as well. However when Resoto is running unattended in a production environment, SSO credentials that require opening a browser window would not work.
 
 :::
 

@@ -25,7 +25,7 @@ configs set <id> <properties>
 
 ```bash
 > config set test prop_a=test, prop_b=2, array_prop=[1,2,3,4]
-// highlight-start
+# highlight-start
 ​array_prop:
 ​- 1
 ​- 2
@@ -33,12 +33,12 @@ configs set <id> <properties>
 ​- 4
 ​prop_a: test
 ​prop_b: 2
-// highlight-end
+# highlight-end
 ```
 
 ```bash
 > config set test prop_a="some other value"
-// highlight-start
+# highlight-start
 ​array_prop:
 ​- 1
 ​- 2
@@ -46,5 +46,5 @@ configs set <id> <properties>
 ​- 4
 ​prop_a: some other value
 ​prop_b: 2
-// highlight-end
+# highlight-end
 ```

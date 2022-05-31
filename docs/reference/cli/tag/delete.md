@@ -28,12 +28,12 @@ tag delete [--nowait] <tag_name>
 
 ```bash title="Make sure there is no resource that is tagged with 'foo'"
 > query is(resource) and tags.foo!=null | tag delete foo
-// highlight-next-line
+# highlight-next-line
 kind=aws_ec2_keypair, id=key-0, name=default, age=1yr8mo, cloud=aws, account=eng-sre, region=us-west-2
 ```
 
 ```bash title="Manually select the resources to tag by ID"
 > json["key-0"] | tag delete foo
-// highlight-next-line
+# highlight-next-line
 kind=aws_ec2_keypair, id=key-0, name=default, age=1yr8mo, cloud=aws, account=eng-sre, region=us-west-2
 ```

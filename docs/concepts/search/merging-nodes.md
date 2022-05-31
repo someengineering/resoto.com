@@ -23,7 +23,7 @@ In this example, we search for nodes of kind `volume`. For every element that is
 
 ```bash
 > search is(volume) { account: <-[0:]- is(account) } limit 1 | dump
-// highlight-start
+# highlight-start
 ​reported:
 ​    .
 ​    .
@@ -31,7 +31,7 @@ In this example, we search for nodes of kind `volume`. For every element that is
 ​    reported:
 ​        .
 ​        .
-// highlight-end
+# highlight-end
 ```
 
 The result of this nested search is merged with the volume node on root level under the name account.
@@ -58,7 +58,7 @@ The following search will traverse inbound on every element and collect all pred
 
 ```bash
 > search is(volume) { predecessors[]: <-- all } limit 1 | dump
-// highlight-start
+# highlight-start
 ​reported:
 ​    .
 ​    .
@@ -69,7 +69,7 @@ The following search will traverse inbound on every element and collect all pred
 ​- reported:
 ​    .
 ​    .
-// highlight-end
+# highlight-end
 ```
 
 :::
@@ -82,7 +82,7 @@ As a result every node that is returned has two additional properties: `account`
 
 ```bash
 > search is(volume) { account: <-[0:]- is(account), region: <-[0:]- is(region) } limit 1 | dump
-// highlight-start
+# highlight-start
 ​reported:
 ​    .
 ​    .
@@ -94,7 +94,7 @@ As a result every node that is returned has two additional properties: `account`
 ​    reported:
 ​        .
 ​        .
-// highlight-end
+# highlight-end
 ```
 
 ![Example Merge Diagram](./img/merge_nodes.png)

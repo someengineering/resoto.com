@@ -18,6 +18,6 @@ sleep <seconds>
 
 ```bash title="Print the string '6 seconds later...' after 6 seconds have elapsed"
 > sleep 6; echo 6 seconds later...
-// highlight-next-line
+# highlight-next-line
 ​6 seconds later...
 ```

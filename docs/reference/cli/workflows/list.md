@@ -16,10 +16,10 @@ workflows list
 
 ```bash
 > workflows list
-// highlight-start
+# highlight-start
 collect
 cleanup
 metrics
 collect_and_cleanup
-// highlight-end
+# highlight-end
 ```

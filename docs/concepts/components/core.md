@@ -1,5 +1,4 @@
 ---
-slug: core
 sidebar_position: 1
 sidebar_label: Core
 ---
@@ -33,7 +32,7 @@ We will evaluate the search before executing it for demonstration. We also intro
 
 ```bash title="Correct"
 > echo 'search is("resource") limit 1' | http :8900/cli/evaluate
-// highlight-start
+# highlight-start
 ​HTTP/1.1 200 OK
 ​Content-Length: 47
 ​Content-Type: application/json; charset=utf-8
@@ -45,12 +44,12 @@ We will evaluate the search before executing it for demonstration. We also intro
 ​        "execute_query": "is(\"resource\") limit 1"
 ​    }
 ​]
-// highlight-end
+# highlight-end
 ```
 
 ```bash title="Typo"
 > echo 'graph=resoto search is("resource") limit1' | http :8900/cli/evaluate
-// highlight-start
+# highlight-start
 ​HTTP/1.1 400 Bad Request
 ​Content-Length: 151
 ​Content-Type: text/plain; charset=utf-8
@@ -59,14 +58,14 @@ We will evaluate the search before executing it for demonstration. We also intro
 
 ​Error: ParseError
 ​Message: expected one of '!=', '!~', '<', '<=', '=', '==', '=~', '>', '>=', '[A-Za-z][A-Za-z0-9_]*', '`', 'in', 'not in', '~' at 0:21
-// highlight-end
+# highlight-end
 ```
 
 ## Execute
 
 ```bash title="Correct"
 > echo 'graph=resoto search is("resource") limit 1' | http :8900/cli/execute
-// highlight-start
+# highlight-start
 ​HTTP/1.1 200 OK
 ​Content-Type: application/json
 ​Date: Wed, 06 Oct 2021 15:08:10 GMT
@@ -95,12 +94,12 @@ We will evaluate the search before executing it for demonstration. We also intro
 ​        "type": "node"
 ​    }
 ​]
-// highlight-end
+# highlight-end
 ```
 
 ```bash title="Typo"
 > echo 'graph=resoto search is("resource") limit1' | http :8900/cli/execute
-// highlight-start
+# highlight-start
 ​HTTP/1.1 400 Bad Request
 ​Content-Length: 151
 ​Content-Type: text/plain; charset=utf-8
@@ -109,7 +108,7 @@ We will evaluate the search before executing it for demonstration. We also intro
 
 ​Error: ParseError
 ​Message: expected one of '!=', '!~', '<', '<=', '=', '==', '=~', '>', '>=', '[A-Za-z][A-Za-z0-9_]*', '`', 'in', 'not in', '~' at 0:21
-// highlight-end
+# highlight-end
 ```
 
 # More API Endpoints

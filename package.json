@@ -22,9 +22,9 @@
     "write-translations": "docusaurus write-translations"
   },
   "dependencies": {
-    "@docusaurus/core": "2.0.0-beta.20",
-    "@docusaurus/plugin-sitemap": "2.0.0-beta.20",
-    "@docusaurus/preset-classic": "2.0.0-beta.20",
+    "@docusaurus/core": "2.0.0-beta.21",
+    "@docusaurus/plugin-sitemap": "2.0.0-beta.21",
+    "@docusaurus/preset-classic": "2.0.0-beta.21",
     "@fec/remark-a11y-emoji": "^3.1.0",
     "@heroicons/react": "^1.0.6",
     "@mdx-js/react": "^1.6.22",
@@ -40,15 +40,15 @@
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-moment": "^1.1.2",
-    "redocusaurus": "^1.0.2"
+    "redocusaurus": "^1.1.2"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.0.1",
-    "@commitlint/config-conventional": "^17.0.0",
-    "@docusaurus/module-type-aliases": "2.0.0-beta.20",
+    "@commitlint/cli": "^17.0.2",
+    "@commitlint/config-conventional": "^17.0.2",
+    "@docusaurus/module-type-aliases": "2.0.0-beta.21",
     "@tsconfig/docusaurus": "^1.0.5",
-    "@typescript-eslint/eslint-plugin": "^5.26.0",
-    "@typescript-eslint/parser": "^5.26.0",
+    "@typescript-eslint/eslint-plugin": "^5.27.0",
+    "@typescript-eslint/parser": "^5.27.0",
     "commitizen": "^4.2.4",
     "eslint": "^8.16.0",
     "eslint-config-prettier": "^8.5.0",
@@ -57,7 +57,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.30.0",
     "husky": "^8.0.1",
-    "lint-staged": "^12.4.2",
+    "lint-staged": "^13.0.0",
     "prettier": "^2.6.2",
     "typescript": "^4.7.2"
   },

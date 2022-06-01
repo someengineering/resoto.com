@@ -82,6 +82,8 @@ $ source ~/resoto/resoto-venv/bin/activate
 $ resotocore --graphdb-password "$graphdb_password" --graphdb-server http://localhost:8529 --psk "$pre_shared_key"
 ```
 
+By default `resotocore` listens on `localhost:8900`. If desired you can [make it listen on all interfaces](../configuring-resoto#make-resoto-core-listen-on-multiple-interfaces).
+
 </TabItem>
 <TabItem value="resotoworker" label="resotoworker">
 

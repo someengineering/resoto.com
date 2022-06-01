@@ -366,6 +366,66 @@ Once one or more cloud providers have been configured the `collect_and_cleanup` 
 > workflow run collect_and_cleanup
 ```
 
+## Make Resoto Core Listen on Multiple Interfaces
+
+For security reasons `resotocore` by default only listens on the loopback interface. This can be changed using the `resotocore.api.web_hosts` option of the `resoto.core` config.
+
+In `resh` enter:
+
+```
+> config edit resoto.core
+```
+
+```yml title="Make Resoto Core listen on all IPv6 and IPv4 interfaces"
+resotocore:
+  # API related properties.
+  api:
+    # TCP host(s) to bind on (default: ['localhost'])
+    web_hosts:
+      - '::'
+      - '0.0.0.0'
+    # TCP port to bind on (default: 8900)
+    web_port: 8900
+[...]
+```
+
+Alternatively:
+
+```
+> config set resoto.core resotocore.api.web_hosts=["::", "0.0.0.0"]
+```
+
+## Add additional DNS names to the Resoto Core TLS certificate
+
+By default Resoto tries to find all local IP addresses and hostnames and adds them to the subject alternative names (SAN) list of the x509 certificate. If the system you are running Resoto on has additional DNS names you can add them to the SAN list using the `resotocore.api.host_certificate.san_dns_names` option of the `resoto.core` config.
+
+In `resh` enter:
+
+```
+> config edit resoto.core
+```
+
+```yml title="Adding additional DNS names to the SAN list"
+resotocore:
+  # API related properties.
+  api:
+    [...]
+    # The certificate configuration for this server.
+    host_certificate:
+      # The common name of the certificate
+      common_name: 'some.engineering'
+      # Include loopback in certificate
+      include_loopback: true
+      # List of DNS names to include in CSR
+      san_dns_names:
+        - 'some.engineering'
+        - 'resoto.some.engineering'
+        - '*.some.engineering'
+      # List of IP addresses to include in CSR
+      san_ip_addresses: []
+[...]
+```
+
 ## Configuring Resoto Worker for Multi-Core Machines
 
 Resoto resource collection speed depends heavily on the number of CPU cores available to the worker. When collecting hundreds of accounts `resotoworker` can easily saturate 64 cores or more. The amount of RAM depends on the number of resources in each account. As a rule of thumb calculate with 512 MB of RAM and 0.5 CPU cores per account concurrently collected with a minimum of 4 cores and 16 GB for a production setup.

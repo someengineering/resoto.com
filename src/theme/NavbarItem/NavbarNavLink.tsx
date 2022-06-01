@@ -6,8 +6,6 @@ import IconExternalLink from '@theme/IconExternalLink';
 import type { Props } from '@theme/NavbarItem/NavbarNavLink';
 import React from 'react';
 
-const dropdownLinkActiveClass = 'dropdown__link--active';
-
 export default function NavbarNavLink({
   activeBasePath,
   activeBaseRegex,
@@ -15,7 +13,7 @@ export default function NavbarNavLink({
   href,
   label,
   html,
-  activeClassName = '',
+  isDropdownLink,
   prependBaseUrlToHref,
   ...props
 }: Props): JSX.Element {
@@ -25,7 +23,6 @@ export default function NavbarNavLink({
   const activeBaseUrl = useBaseUrl(activeBasePath);
   const normalizedHref = useBaseUrl(href, { forcePrependBaseUrl: true });
   const isExternalLink = label && href && !isInternalUrl(href);
-  const isDropdownLink = activeClassName === dropdownLinkActiveClass;
 
   // Link content is set through html XOR label
   const linkContentProps = html
@@ -57,9 +54,6 @@ export default function NavbarNavLink({
     <Link
       to={toUrl}
       isNavLink
-      activeClassName={
-        !props.className?.includes(activeClassName) ? activeClassName : ''
-      }
       {...((activeBasePath || activeBaseRegex) && {
         isActive: (_match, location) =>
           activeBaseRegex

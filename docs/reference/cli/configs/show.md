@@ -35,7 +35,7 @@ configs show <id>
 ​    web_path: '/'
 ​    # The url to the time series database. This path will be served under /tsdb/.
 ​    tsdb_proxy_url: null
-​    # The directory where the UI is installed. This directory will be served under 
+​    # The directory where the UI is installed. This directory will be served under
 ​    ui_path: null
 ​    # The certificate configuration for this server.
 ​    host_certificate:

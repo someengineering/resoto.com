@@ -10,7 +10,7 @@ import moment from 'moment/moment';
 import 'moment-timezone';
 ```
 
-Join the [Some Engineering](https://some.engineering) team tomorrow for our second **Community Hour** event!
+Join the [Some Engineering](https://some.engineering) team tomorrow for our third **Community Hour** event!
 
 ## Event Details
 

@@ -1,10 +1,10 @@
 ---
 sidebar_label: pip
 pagination_prev: getting-started/index
-pagination_next: getting-started/configuring-resoto
+pagination_next: getting-started/configuration/index
 ---
 
-# Installing with pip
+# Installing Resoto with pip
 
 ```mdx-code-block
 import LatestRelease from '@site/src/components/LatestRelease';
@@ -82,7 +82,7 @@ $ source ~/resoto/resoto-venv/bin/activate
 $ resotocore --graphdb-password "$graphdb_password" --graphdb-server http://localhost:8529 --psk "$pre_shared_key"
 ```
 
-[Resoto Core](../../concepts/components/core.md) only listens on `localhost:8900` by default. [Resoto Core](../../concepts/components/core.md) can be [configured to listen on all interfaces](../configuring-resoto.md#configuring-resoto-core-network-interfaces) if desired.
+[Resoto Core](../../concepts/components/core.md) only listens on `localhost:8900` by default. [Resoto Core](../../concepts/components/core.md) can be [configured to listen on all interfaces](../configuration/core.md#network-interfaces) if desired.
 
 </TabItem>
 <TabItem value="resotoworker" label="resotoworker">
@@ -119,7 +119,7 @@ $ resh --resotocore-uri https://localhost:8900 --psk "$pre_shared_key"
 
 ### Configuring Resoto
 
-Please refer to the [Configuring Resoto Cloud Providers](../configuring-resoto.md#configuring-cloud-providers) tutorial for details.
+Please refer to the [Configuring Resoto Cloud Providers](../configuration/worker.md#cloud-providers) tutorial for details.
 
 ### Collecting Cloud Resources
 
@@ -129,11 +129,11 @@ Once one or more cloud providers have been configured the `collect_and_cleanup` 
 > workflow run collect_and_cleanup
 ```
 
-No worries, no cleanup will be performed as cleanup is disabled by default. It is just the name of the [workflow](../../concepts/automation/workflow.md). See the [Cleaning Resources](../cleaning-resources.md) tutorial for details on how to enable cleanup.
+No worries, no cleanup will be performed as cleanup is disabled by default. It is just the name of the [workflow](../../concepts/automation/workflow.md). See the [Cleaning Resources](../usage/cleanup.md) tutorial for details on how to enable cleanup.
 
 ### Performing Searches
 
-Once Resoto has completed its first collect run, you can try [performing some searches](../performing-searches.md).
+Once Resoto has completed its first collect run, you can try [performing some searches](../usage/search.md).
 
 ## Updating Resoto
 

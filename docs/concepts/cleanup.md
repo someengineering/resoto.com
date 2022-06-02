@@ -2,7 +2,7 @@
 
 :::note
 
-By default, [Resoto Worker](./components/worker.md) will _not_ delete resources marked for deletion. Resources marked with `| clean` will stay this way without getting deleted. To enable cleanup, configure `resotoworker.cleanup: true` via `config edit resoto.worker`. See the [Cleaning Resources](../getting-started/cleaning-resources.md) tutorial for details on performing cleanup.
+By default, [Resoto Worker](./components/worker.md) will _not_ delete resources marked for deletion. Resources marked with `| clean` will stay this way without getting deleted. To enable cleanup, configure `resotoworker.cleanup: true` via `config edit resoto.worker`. See the [Cleaning Resources](../getting-started/usage/cleanup.md) tutorial for details on performing cleanup.
 
 Cleanup can be performed manually in [Resoto Shell](./components/shell.md), automatically using a [cleanup plugin](./components/plugins/index.md), or via a scheduled [job](./automation/job.md).
 

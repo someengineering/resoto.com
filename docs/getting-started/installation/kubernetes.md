@@ -1,10 +1,10 @@
 ---
 sidebar_label: Kubernetes
 pagination_prev: getting-started/index
-pagination_next: getting-started/configuring-resoto
+pagination_next: getting-started/configuration/index
 ---
 
-# Installing with Kubernetes
+# Installing Resoto with Kubernetes
 
 [Kubernetes](https://kubernetes.io) is an open-source system for automating deployment, scaling, and management of containerized applications.
 
@@ -53,7 +53,7 @@ $ kubectl wait --for=condition=ready arangodeployment/single-server
 
 ### Create Helm Values File
 
-```yml title="resoto-values.yaml"
+```yaml title="resoto-values.yaml"
 resotocore:
   graphdb:
     server: http://single-server:8529
@@ -97,11 +97,11 @@ Once the [Core](../../concepts/components/core.md) is running, all component con
 
 Additionally, configuration properties can be overridden using the `overrides` section in the `resoto-values.yaml` file (see [`values.yaml`](https://github.com/someengineering/resoto/blob/main/kubernetes/chart/values.yaml) for reference).
 
-Please refer to the [Configuring Resoto Cloud Providers](../configuring-resoto.md#configuring-cloud-providers) tutorial for more details.
+Please refer to the [Configuring Resoto Cloud Providers](../configuration/worker.md#cloud-providers) tutorial for more details.
 
 ### Performing Searches
 
-Once Resoto has completed its first collect run, you can try [performing some searches](../performing-searches.md).
+Once Resoto has completed its first collect run, you can try [performing some searches](../usage/search.md).
 
 ## Configure Cloud Credentials (optional)
 
@@ -114,7 +114,7 @@ $ kubectl -n resoto create secret generic resoto-auth \
 
 You would provide these values for [`resotoworker`](../../concepts/components/worker.md) as file:
 
-```yml
+```yaml
 resotoworker:
   volumeMounts:
     - mountPath: /etc/tokens/
@@ -136,7 +136,7 @@ $ kubectl -n resoto create secret generic resoto-auth \
   --from-literal=AWS_SECRET_ACCESS_KEY=<YOUR ACCESS KEY>
 ```
 
-```yml
+```yaml
 resotoworker:
   extraEnv:
     - name: AWS_ACCESS_KEY_ID

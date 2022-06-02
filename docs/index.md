@@ -48,11 +48,11 @@ Support for the following is currently included out-of-the-box in Resoto:
 
 - [Amazon Web Services (AWS)](./reference/data-models/aws.md)
 - [Google Cloud Platform (GCP)](./reference/data-models/gcp.md)
-- [Digital Ocean](./reference/data-models/digitalocean.md)
+- [DigitalOcean](./reference/data-models/digitalocean.md)
 - [Kubernetes (K8s)](./reference/data-models/kubernetes.md)
 - [VMware Vsphere](./reference/data-models/vsphere.md)
 
-See [Configuring Resoto Cloud Providers](./getting-started/configuring-resoto.md#configuring-cloud-providers) for more information on how to configure individual providers.
+See [Configuring Resoto Cloud Providers](./getting-started/configuration/worker.md#cloud-providers) for more information on how to configure individual providers.
 
 In addition to the above collector plugins, various [tag validation and cleanup plugins](./concepts/components/plugins/index.md) are included.
 

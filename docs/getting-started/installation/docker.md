@@ -1,10 +1,10 @@
 ---
 sidebar_label: Docker
 pagination_prev: getting-started/index
-pagination_next: getting-started/configuring-resoto
+pagination_next: getting-started/configuration/index
 ---
 
-# Installing with Docker
+# Installing Resoto with Docker
 
 ```mdx-code-block
 import LatestRelease from '@site/src/components/LatestRelease';
@@ -18,7 +18,7 @@ import Tabs from '@theme/Tabs';
 
 - [Docker](https://docs.docker.com/get-started#download-and-install-docker) needs to be installed on your machine.
 - [Docker Compose](https://docs.docker.com/compose/install/) needs to be available on your machine.
-- At least two cores and eight gigabytes of RAM are required to run the Resoto stack. For a production setup we recommend at least four cores and 16 gigabytes of RAM. See [Configuring Resoto Worker for Multi-Core Machines](../configuring-resoto.md#configuring-resoto-worker-for-multi-core-machines) for more information.
+- At least two cores and eight gigabytes of RAM are required to run the Resoto stack. For a production setup we recommend at least four cores and 16 gigabytes of RAM. See [Configuring Resoto Worker](../configuration/worker.md#multi-core-machines) for more information.
 
 ## Installing Resoto
 
@@ -79,7 +79,7 @@ $ docker compose run --rm resotoshell
 
 ### Configuring Resoto
 
-Please refer to the [Configuring Resoto Cloud Providers](../configuring-resoto.md#configuring-cloud-providers) tutorial for details.
+Please refer to the [Configuring Resoto Cloud Providers](../configuration/worker.md#cloud-providers) tutorial for details.
 
 ### Collecting Cloud Resources
 
@@ -89,11 +89,11 @@ Once one or more cloud providers have been configured the `collect_and_cleanup` 
 > workflow run collect_and_cleanup
 ```
 
-No worries, no cleanup will be performed as cleanup is disabled by default. It is just the name of the [workflow](../../concepts/automation/workflow.md). See the [Cleaning Resources](../cleaning-resources.md) tutorial for details on how to enable cleanup.
+No worries, no cleanup will be performed as cleanup is disabled by default. It is just the name of the [workflow](../../concepts/automation/workflow.md). See the [Cleaning Resources](../usage/cleanup.md) tutorial for details on how to enable cleanup.
 
 ### Performing Searches
 
-Once Resoto has completed its first collect run, you can try [performing some searches](../performing-searches.md).
+Once Resoto has completed its first collect run, you can try [performing some searches](../usage/search.md).
 
 ## Updating Resoto
 

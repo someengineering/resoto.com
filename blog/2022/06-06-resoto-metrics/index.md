@@ -332,7 +332,7 @@ Alright, fasten your seatbelts! This will go fast. 🏎️💨
 
 15. On the dashboard page reduce the size of the new panel a bit. Congratulations, the dashboard now shows two panels. One with the number of currently running instances, the other shows the history of the number of instances.
 
-   ![Dashboard with second panel](img/grafana_second_panel_dashboard.png)
+![Dashboard with second panel](img/grafana_second_panel_dashboard.png)
 
 ## The Final Product
 

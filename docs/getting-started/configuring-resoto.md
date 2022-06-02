@@ -366,17 +366,17 @@ Once one or more cloud providers have been configured the `collect_and_cleanup` 
 > workflow run collect_and_cleanup
 ```
 
-## Make Resoto Core Listen on Multiple Interfaces
+## Configuring Resoto Core Network Interfaces
 
-For security reasons `resotocore` by default only listens on the loopback interface. This can be changed using the `resotocore.api.web_hosts` option of the `resoto.core` config.
+For security reasons, [Resoto Core](../concepts/components/core.md) only listens on the loopback interface by default. This can be changed via the `resotocore.api.web_hosts` option in the `resoto.core` configuration.
 
-In `resh` enter:
+Execute the following command in [Resoto Shell](../concepts/components/shell.md) to open the relevant configuration for editing:
 
 ```
 > config edit resoto.core
 ```
 
-```yml title="Make Resoto Core listen on all IPv6 and IPv4 interfaces"
+```yaml title="Resoto Core configuration to listen on all IPv6 and IPv4 interfaces"
 resotocore:
   # API related properties.
   api:
@@ -389,23 +389,23 @@ resotocore:
 [...]
 ```
 
-Alternatively:
+Alternatively, you can use the [`config set` command](../reference/cli/configs/set.md):
 
 ```
 > config set resoto.core resotocore.api.web_hosts=["::", "0.0.0.0"]
 ```
 
-## Add additional DNS names to the Resoto Core TLS certificate
+## Adding DNS Names to the Resoto Core TLS Certificate
 
-By default Resoto tries to find all local IP addresses and hostnames and adds them to the subject alternative names (SAN) list of the x509 certificate. If the system you are running Resoto on has additional DNS names you can add them to the SAN list using the `resotocore.api.host_certificate.san_dns_names` option of the `resoto.core` config.
+Resoto attempts to find all local IP addresses and hostnames and add them to the subject alternative names (SAN) list of the x509 certificate. If your system has additional DNS names, you can add them to the SAN list via the `resotocore.api.host_certificate.san_dns_names` option in the `resoto.core` configuration.
 
-In `resh` enter:
+Execute the following command in [Resoto Shell](../concepts/components/shell.md) to open the relevant configuration for editing:
 
 ```
 > config edit resoto.core
 ```
 
-```yml title="Adding additional DNS names to the SAN list"
+```yaml title="Resoto Core configuration with additional DNS names on SAN list"
 resotocore:
   # API related properties.
   api:
@@ -423,7 +423,7 @@ resotocore:
         - '*.some.engineering'
       # List of IP addresses to include in CSR
       san_ip_addresses: []
-[...]
+  [...]
 ```
 
 ## Configuring Resoto Worker for Multi-Core Machines

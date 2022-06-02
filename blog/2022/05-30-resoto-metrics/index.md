@@ -19,17 +19,15 @@ Here is an example of a heatmap that allows you to immediately see outliers (lik
 
 ![Instance use heatmap](img/resotonotebook_heatmap.png)
 
-We can ingest this aggregated data into a time series database, such as Prometheus. This information can then be used to build diagrams of cloud resources (e.g., compute instances and storage) over time.
+We can ingest this aggregated data into a time series database, such as [Prometheus](https://prometheus.io). This information can then be used to build diagrams illustrating cloud resources (e.g., compute instances and storage) over time.
 
 ![Metrics Overview](img/metrics_overview.png)
 
-This allows you to [alert on trends](https://prometheus.io/docs/alerting/latest/alertmanager), like if you are projected to reach a quota or spend limit.
+This allows you to [alert on trends](https://prometheus.io/docs/alerting/latest/alertmanager)—for example, if you are projected to exceed a quota or spend limit.
 
-Another use case is to quickly [identify anomalies](https://prometheus.io/docs/prometheus/latest/querying/functions/#aggregation_over_time) using [the 3σ rule](https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule). If cloud API credentials are leaked or an automated system is goes haywire, you would immediately see a spike instead of receiving an unpleasant surprise on your next cloud bill. Best of all, it works across multiple clouds and accounts!
+Another use case is to quickly [identify anomalies](https://prometheus.io/docs/prometheus/latest/querying/functions/#aggregation_over_time) using [the 3σ rule](https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule). If cloud API credentials are leaked or an automated system goes haywire, you would immediately see the spike instead of receiving an unpleasant surprise on your next cloud bill. Best of all, it works across multiple clouds and accounts!
 
-Resoto comes with a handy metrics component, [Resoto Metrics](/docs/concepts/components/metrics). [Resoto Metrics](/docs/concepts/components/metrics) takes aggregation results and exports them to [Prometheus](https://prometheus.io).
-
-This blog post will describe how to build a simple metrics dashboard using [Resoto Metrics](/docs/concepts/components/metrics), [Prometheus](https://prometheus.io), and [Grafana](https://grafana.com).
+Resoto comes with a handy metrics component, [Resoto Metrics](/docs/concepts/components/metrics), which takes aggregation results and exports them to [Prometheus](https://prometheus.io). This blog post describes how to build a simple metrics dashboard using [Resoto Metrics](/docs/concepts/components/metrics), [Prometheus](https://prometheus.io), and [Grafana](https://grafana.com).
 
 <!--truncate-->
 
@@ -196,9 +194,7 @@ avg_over_time(resoto_instances_total{status="running"}[1h])
 Good, the data points are connected and averaged over time. However the amount of labels is a bit overwhelming. Right now we are seeing one stacked chart per unique label combination. Let's try to reduce the amount of labels by summing them all up.
 
 ```
-
 sum(avg_over_time(resoto_instances_total{status="running"}[1h]))
-
 ```
 
 ![Prometheus summed metrics](img/prometheus_summed_metrics.png)
@@ -206,9 +202,7 @@ sum(avg_over_time(resoto_instances_total{status="running"}[1h]))
 Nice, now we see how the total number of compute instances has changed over the last two weeks. However we lost absolutely all labels. No more accounts, region and instance type information. To get some information back, let's group the summed up averages by account.
 
 ```
-
 sum(avg_over_time(resoto_instances_total{status="running"}[1h])) by (account)
-
 ```
 
 ![Prometheus summed metrics by account](img/prometheus_summed_metrics_by_account.png)
@@ -219,9 +213,9 @@ Want to see how storage has changed over time? Just change `resoto_instances_tot
 
 ## How Metrics Are Made
 
-Now, the Prometheus web UI will provide syntax help and auto-complete for available metric names. However, you might be wondering—how are you supposed to know which metrics exist? How do you know what other metrics there are and where something like `resoto_instances_total` is defined?
+The [Prometheus](https://prometheus.io) web UI provides syntax help and autocomplete for available metric names. However, you may be wondering—how are you supposed to know which metrics exist? How do you find what other metrics exist and where a value (for example, `resoto_instances_total`) is defined?
 
-Metrics are configured in the `resoto.metrics` [configuration](/docs/getting-started/configuring-resoto). Within [Resoto Shell (`resh`)](/docs/concepts/components/shell), simply execute:
+Metrics are defined in the `resoto.metrics` [configuration](/docs/getting-started/configuring-resoto). To edit metrics definitions, execute the following command in [Resoto Shell](/docs/concepts/components/shell):
 
 ```bash
 > config edit resoto.metrics
@@ -240,45 +234,45 @@ resotometrics:
 ...
 ```
 
-Here you can add your own metrics. As [previously explained](#aggregating), the `aggregate` expression in the `search` field is what creates the samples of a metric.
+As [described above](#aggregating), the `aggregate` expression in the `search` field is what creates the samples of a metric.
 
-This config can be updated at runtime. Next time the `metrics` [workflow](/docs/concepts/automation/workflow) is run Resoto Metrics will generate the new metric and from then on provide it to Prometheus.
+Metrics configuration can be updated at runtime. When the `metrics` [workflow](/docs/concepts/automation/workflow) is run, [Resoto Metrics](/docs/concepts/components/metrics) will generate the new metric for [Prometheus](https://prometheus.io) to consume.
 
 ```bash
 > workflow run metrics
 ```
 
-## Creating the Metrics Dashboard
+## Creating a Metrics Dashboard
 
-So now we have learned how to get metrics from Resoto into Prometheus, how to query them and how to create new ones. But what about the dashboard?
+Now that we've learned how to get metrics from Resoto into [Prometheus](https://prometheus.io), query metrics, and define new metrics, we can create the dashboard.
 
-Right, fasten your seatbelt. This will go fast.
+Alright, fasten your seatbelts! This will go fast. 🏎️💨
 
-1. Run the Grafana Docker container
+1. Start the [Grafana Docker container](https://hub.docker.com/r/grafana/grafana-oss):
 
    ```bash
    $ docker run -d -p 3000:3000 -v grafana-data:/var/lib/grafana -v grafana-etc:/etc/grafana grafana/grafana-oss
    ```
 
-2. Open up the Grafana UI (e.g. [http://localhost:3000](http://localhost:3000))
+2. Open the Grafana UI (e.g., [http://localhost:3000](http://localhost:3000)).
 
 3. Login as `admin` with password `admin` and set a new password.
 
-4. On the left go to Settings > Data Sources > Add Data Source > Prometheus
+4. On the left, open **Settings > Data Sources > Add Data Source > Prometheus**.
 
 5. In the URL field, enter the Prometheus URL e.g. `http://tsdb.docker.internal:9090`
 
    ![Add Prometheus Data Source to Grafana](img/grafana_setup1.png)
 
-6. Scroll down and click `Save & test`. Make sure it replies with "Data source is working".
+6. Scroll down and click the **Save & test** button. Make sure that the result is "Data source is working":
 
    ![Save Data Source](img/grafana_setup2.png)
 
-7. On the left click on the `+` button and select `Create Dashboard`, then click the `Save` button in the top menu bar.
+7. Click the **+** button on the left, select **Create Dashboard**, and then click the **Save** button in the top menu bar.
 
    ![Save dashboard](img/grafana_save_dashboard.png)
 
-8. On the top click on `Dashboard settings` > `Variables` and `Add variable`.
+8. Select **Dashboard settings > Variables** and click the **Add variable** button:
 
    ![Add Variable](img/grafana_add_variable.png)
 
@@ -338,7 +332,7 @@ Right, fasten your seatbelt. This will go fast.
 
 15. On the dashboard page reduce the size of the new panel a bit. Congratulations, the dashboard now shows two panels. One with the number of currently running instances, the other shows the history of the number of instances.
 
-![Dashboard with second panel](img/grafana_second_panel_dashboard.png)
+   ![Dashboard with second panel](img/grafana_second_panel_dashboard.png)
 
 ## The Final Product
 

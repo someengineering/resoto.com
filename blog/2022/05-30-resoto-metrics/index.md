@@ -13,7 +13,9 @@ Compute and storage are typically the most expensive items on your cloud bill. T
 
 Resoto gives a snapshot of the current state of your cloud infrastructure. You can [search](/docs/concepts/search) that snapshot and have Resoto [automatically react to state changes](/docs/concepts/automation).
 
-Resoto also lets you [aggregate](/docs/concepts/search/aggregation) and [visualize](/docs/reference/notebook) this data as my colleagues Matthias and Nikita described in their [March](/blog/2022/03/03/aggregating-search-data) and [May blog posts](/blog/2022/05/14/resotonotebook). Below is an example of a heatmap that allows you to immediately see outliers, like when an account suddenly starts using a large number of expensive, high core count instances.
+Resoto also lets you [aggregate](/docs/concepts/search/aggregation) and [visualize](/docs/reference/notebook) this data, as my colleagues [Matthias](https://github.com/aquamatthias) and [Nikita](https://github.com/meln1k) described in previous [blog](/blog/2022/03/03/aggregating-search-data) [posts](/blog/2022/05/31/resoto-meets-jupyter-notebook).
+
+Here is an example of a heatmap that allows you to immediately see outliers (like when an account suddenly starts using a large number of expensive, high-core-count instances):
 
 ![Instance use heatmap](img/resotonotebook_heatmap.png)
 

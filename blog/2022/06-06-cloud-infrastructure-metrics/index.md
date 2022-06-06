@@ -215,7 +215,7 @@ Want to see how storage has changed over time? Just change `resoto_instances_tot
 
 The [Prometheus](https://prometheus.io) web UI provides syntax help and autocomplete for available metric names. However, you may be wondering—how are you supposed to know which metrics exist? How do you find what other metrics exist and where a value (for example, `resoto_instances_total`) is defined?
 
-Metrics are defined in the `resoto.metrics` [configuration](/docs/getting-started/configuring-resoto). To edit metrics definitions, execute the following command in [Resoto Shell](/docs/concepts/components/shell):
+Metrics are defined in the `resoto.metrics` [configuration](/docs/getting-started/configuration). To edit metrics definitions, execute the following command in [Resoto Shell](/docs/concepts/components/shell):
 
 ```bash
 > config edit resoto.metrics

@@ -123,7 +123,7 @@ Prometheus has basic graphing capabilities, but [Grafana](https://grafana.com) a
 
 ![Instance cost over time](./img/grafana_instances_total.png)
 
-So here's the plan. First we will learn how to [configure Prometheus to fetch data from Resoto Metrics](#getting-started). Then how to [query that data inside Prometheus](#querying-a-metric). After that we explore from where Resoto retrieves its metrics configuration and how to [define our own metrics](#how-metrics-are-made). Finally we will use Grafana to [create a simple dashboard and visualize the data](#i-was-promised-a-metrics-dashboard).
+So here's the plan. First we will learn how to [configure Prometheus to fetch data from Resoto Metrics](#getting-started). Then how to [query that data inside Prometheus](#querying-a-metric). After that we explore from where Resoto retrieves its metrics configuration and how to [define our own metrics](#how-metrics-are-made). Finally we will use Grafana to [create a simple dashboard and visualize the data](#creating-a-metrics-dashboard).
 
 ## Getting Started
 
@@ -235,7 +235,7 @@ resotometrics:
   [...]
 ```
 
-As [described above](#aggregating), the `aggregate` expression in the `search` field is what creates the samples of a metric.
+As [described above](#aggregation), the `aggregate` expression in the `search` field is what creates the samples of a metric.
 
 Metrics configuration can be updated at runtime. When the `metrics` [workflow](/docs/concepts/automation/workflow) is run, [Resoto Metrics](/docs/concepts/components/metrics) will generate the new metric for [Prometheus](https://prometheus.io) to consume.
 

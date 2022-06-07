@@ -63,8 +63,6 @@ For advanced users who would like to communicate with Resoto APIs here are some 
 
 ### Retrieving and Validating the CA Certificate
 
-The Resoto CA certificate can be retrieved at [https://localhost:8900/ca/cert](https://localhost:8900/ca/cert) (replace `localhost` with the hostname or IP where `resotocore` is running).
-
 In a Python 3 REPL with [`resotolib`](components/library.md) installed execute the following.
 
 ```python

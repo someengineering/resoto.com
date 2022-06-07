@@ -10,7 +10,7 @@ For security reasons, [Resoto Core](../../concepts/components/core.md) only list
 
 Execute the following command in [Resoto Shell](../../concepts/components/shell.md) to open the relevant configuration for editing:
 
-```bash
+```
 > config edit resoto.core
 ```
 
@@ -24,13 +24,12 @@ resotocore:
       - '0.0.0.0'
     # TCP port to bind on (default: 8900)
     web_port: 8900
-    [...]
-  [...]
+[...]
 ```
 
 Alternatively, you can use the [`config set` command](../../reference/cli/configs/set.md):
 
-```bash
+```
 > config set resoto.core resotocore.api.web_hosts=["::", "0.0.0.0"]
 ```
 
@@ -40,7 +39,7 @@ Resoto attempts to find all local IP addresses and hostnames and add them to the
 
 Execute the following command in [Resoto Shell](../../concepts/components/shell.md) to open the relevant configuration for editing:
 
-```bash
+```
 > config edit resoto.core
 ```
 
@@ -63,31 +62,4 @@ resotocore:
       # List of IP addresses to include in CSR
       san_ip_addresses: []
   [...]
-```
-
-## Workflow Schedules
-
-By default, the `collect_and_cleanup` workflow runs at the start of each hour. This setting can be configured using [standard cron syntax](https://en.wikipedia.org/wiki/Cron).
-
-Execute the following command in [Resoto Shell](../../concepts/components/shell.md) to open the relevant configuration for editing:
-
-```bash
-> config edit resoto.core
-```
-
-```yaml
-resotocore:
-  [...]
-  # Workflow related properties.
-  workflows:
-    collect_and_cleanup:
-      # Cron expression as schedule for the workflow to run.
-      schedule: '0 * * * *'
-    [...]
-```
-
-Alternatively, you can use the [`config set` command](../../reference/cli/configs/set.md):
-
-```bash title="Configure the collect_and_cleanup workflow to run twice per hour"
-> config set resoto.core resotocore.workflows.collect_and_cleanup.schedule="0,30 * * * *"
 ```

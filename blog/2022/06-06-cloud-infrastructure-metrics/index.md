@@ -305,6 +305,8 @@ Alright, fasten your seatbelts! This will go fast. 🏎️💨
     | Setting                                | Value                       |
     | -------------------------------------- | --------------------------- |
     | **Panel options > Title**              | `Instances Total - running` |
+    | **Tooltip > Tooltip mode**             | All                         |
+    | **Tooltip > Values sort order**        | Descending                  |
     | **Legend > Legend mode**               | Hidden                      |
     | **Graph styles > Line width**          | 4                           |
     | **Graph styles > Fill opacity**        | 40                          |
@@ -333,14 +335,14 @@ Alright, fasten your seatbelts! This will go fast. 🏎️💨
     sum(avg_over_time(resoto_instances_total{cloud=~"$cloud", region=~"$region", account=~"$account", status="running"}[$__interval]))
     ```
 
-    Select "Stats" in the dropdown at the top right. Then, configure the settings underneath as follows:
+    Select **Stats** in the panel type dropdown at the top right. Then, configure the settings underneath as follows:
 
-    | Setting                      | Value                        |
-    | ---------------------------- | ---------------------------- |
-    | **Panel options > Title**    | `Instances $cloud - running` |
-    | **Value options > Title**    | Calulation: Last \*          |
-    | **Stat styles > Color mode** | None                         |
-    | **Stat styles > Graph mode** | None                         |
+    | Setting                        | Value                        |
+    | ------------------------------ | ---------------------------- |
+    | **Panel options > Title**      | `Instances $cloud - running` |
+    | **Value options > Calulation** | Last \*                      |
+    | **Stat styles > Color mode**   | None                         |
+    | **Stat styles > Graph mode**   | None                         |
 
     Click the **Save** button, then the **Apply** button.
 

@@ -1,16 +1,16 @@
 ---
 authors: [lukas]
-tags: [metrics, graph, aggregation]
+tags: [inventory, metrics, graph, aggregation]
 image: ./img/banner-social.png
 ---
 
 # How to build actionable Cloud Infrastructure Metrics
 
-**Understanding what's running in your cloud infrastructure is important for a number of reasons - for example security, compliance or cost.**
+**Understanding what's running in your cloud infrastructure is important** for a number of reasons - for example security, compliance or cost. But **sometimes the cloud feels more like a black box** that you're feeding with cash, and in turn it performs the work that makes your business run.
 
 ![Looking inside the black box](./img/banner.png)
 
-But **sometimes the cloud feels more like a black box** that you're feeding with cash, and in turn it performs the work that makes your business run. Even the people spinning up cloud resources might only be aware of their slice of the pie. With hundreds of thousands of interconnected resources, it's really hard to know what's going on!
+Even the people spinning up cloud resources might only be aware of their slice of the pie. With hundreds of thousands of interconnected resources, it's really hard to know what's going on!
 
 Cloud inventory has become a new type of technical debt where organizations lose track of their infrastructure, and how it relates to the business. **Resoto helps to break open that black box and eliminate the inventory debt.**
 

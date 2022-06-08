@@ -33,8 +33,8 @@ Example:
 ​# Limit to 10 results
 > search is(volume) limit 10
 
-​# Limit to 5 results skipping the first 5
-> search is(volume) limit 5, 5
+​# Limit to 5 results skipping the first 3
+> search is(volume) limit 3, 5
 ```
 
 :::tip While experimenting with a specific search or exploring the cloud you should always define a meaningful limit. This will reduce the search result to a number that can be digested easily. :::

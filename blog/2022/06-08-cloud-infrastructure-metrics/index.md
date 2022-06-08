@@ -28,7 +28,7 @@ This allows you to [alert on trends](https://prometheus.io/docs/alerting/latest/
 
 Another use case is to quickly [identify anomalies](https://prometheus.io/docs/prometheus/latest/querying/functions/#aggregation_over_time) using [the 3σ rule](https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule). If cloud API credentials are leaked or an automated system goes haywire, you would immediately see the spike instead of receiving an unpleasant surprise on your next cloud bill. Best of all, it works across multiple clouds and accounts!
 
-Resoto comes with a handy metrics component, [Resoto Metrics](/docs/concepts/components/metrics), which takes aggregation results and exports them to [Prometheus](https://prometheus.io). This blog post describes how to build a simple metrics dashboard using [Resoto Metrics](/docs/concepts/components/metrics), [Prometheus](https://prometheus.io), and [Grafana](https://grafana.com).
+Resoto comes with a handy metrics component, [Resoto Metrics](/docs/concepts/components/metrics), which takes aggregation results and exports them to [Prometheus](https://prometheus.io). This blog post describes how to define your own metrics, write some [PromQL queries](https://prometheus.io/docs/prometheus/latest/querying/basics/) and build a simple metrics dashboard using [Resoto Metrics](/docs/concepts/components/metrics), [Prometheus](https://prometheus.io), and [Grafana](https://grafana.com).
 
 <!--truncate-->
 

@@ -4,19 +4,21 @@ tags: [inventory, metrics, graph, aggregation]
 image: ./img/banner-social.png
 ---
 
-# How to build actionable Cloud Infrastructure Metrics
+# Building Actionable Cloud Infrastructure Metrics
 
-**Understanding what's running in your cloud infrastructure is important** for a number of reasons - for example security, compliance or cost. But **sometimes the cloud feels more like a black box** that you're feeding with cash, and in turn it performs the work that makes your business run.
+Understanding what's running in your cloud infrastructure is important for a number of reasons—for example, security, compliance, and cost.
 
-![Looking inside the black box](./img/banner.png)
+**But sometimes, the cloud feels more like a black box that you're feeding with cash.**
 
-Even the people spinning up cloud resources might only be aware of their slice of the pie. With hundreds of thousands of interconnected resources, it's really hard to know what's going on!
+![Sheep looking inside a black box](./img/banner.png)
 
-Cloud inventory has become a new type of technical debt where organizations lose track of their infrastructure, and how it relates to the business. **Resoto helps to break open that black box and eliminate the inventory debt.**
+Furthermore, those spinning up cloud resources might only be aware of their small slice of the pie. With hundreds of thousands of interconnected resources, it is really hard to know what's going on!
 
-It provides a snapshot of the current state of your cloud infrastructure. You can [search](/docs/concepts/search) that snapshot and have Resoto [automatically react to state changes](/docs/concepts/automation). Resoto also lets you [aggregate](/docs/concepts/search/aggregation) and [visualize](/docs/reference/notebook) this data, as my colleagues [Matthias](https://github.com/aquamatthias) and [Nikita](https://github.com/meln1k) described in previous [blog](/blog/2022/03/03/aggregating-search-data) [posts](/blog/2022/05/31/resoto-meets-jupyter-notebook).
+Cloud inventory has become a new type of technical debt, where organizations lose track of their infrastructure and how it relates to the business. **Resoto helps to break open the aforementioned black box and eliminate inventory debt.**
 
-Here is an example of a heatmap that allows you to immediately see outliers (like when an account suddenly starts using a large number of expensive, high-core-count instances):
+Resoto provides a [searchable](/docs/concepts/search) snapshot of the current state of your cloud infrastructure, and can [automatically react to state changes](/docs/concepts/automation). Resoto also allows you to [aggregate](/docs/concepts/search/aggregation) and [visualize](/docs/reference/notebook) this data, as my colleagues [Matthias](https://github.com/aquamatthias) and [Nikita](https://github.com/meln1k) described in previous [blog](/blog/2022/03/03/aggregating-search-data) [posts](/blog/2022/05/31/resoto-meets-jupyter-notebook).
+
+Here's an example of a heatmap that allows you to immediately see outliers (like when an account suddenly starts using a large number of expensive, high-core-count instances):
 
 ![Instance use heatmap](./img/resotonotebook_heatmap.png)
 
@@ -57,10 +59,10 @@ A [node](/docs/concepts/graph/node) is essentially an indexed JSON document cont
     "instance_cores": 4,
     "instance_memory": 16,
     "instance_type": "t2.xlarge",
-    "instance_status": "running"
-    ...
-  }
-  ...
+    "instance_status": "running",
+    [...]
+  },
+  [...]
 }
 ```
 
@@ -68,8 +70,9 @@ A [node](/docs/concepts/graph/node) is essentially an indexed JSON document cont
 
 Among other things, Resoto allows you to [search this metadata](/blog/2022/02/04/resoto-search-101). Here's an example:
 
-```
+```bash
 > search is(aws_ec2_instance) and instance_cores > 4
+# highlight-start
 ​kind=aws_ec2_instance, id=i-065af67d77cd5a272, name=16ca1.prod1, instance_cores=16, age=3yr2mo, cloud=aws, account=eng-production, region=us-west-2
 ​kind=aws_ec2_instance, id=i-019f3f3a2a8d1990e, name=16ca2.prod1, instance_cores=16, age=3yr2mo, cloud=aws, account=eng-production, region=us-west-2
 ​kind=aws_ec2_instance, id=i-0667dc8de49a4319e, name=16ca3.prod1, instance_cores=16, age=3yr2mo, cloud=aws, account=eng-production, region=us-west-2
@@ -77,7 +80,8 @@ Among other things, Resoto allows you to [search this metadata](/blog/2022/02/04
 ​kind=aws_ec2_instance, id=i-074fcfe526f95c9fd, name=16ca5.prod1, instance_cores=16, age=3yr2mo, cloud=aws, account=eng-production, region=us-west-2
 ​kind=aws_ec2_instance, id=i-04e09d3c714048c4d, name=16ca6.prod1, instance_cores=16, age=3yr2mo, cloud=aws, account=eng-production, region=us-west-2
 ​kind=aws_ec2_instance, id=i-0d2dfda13e02b2b20, name=16ca7.prod1, instance_cores=16, age=2yr9mo, cloud=aws, account=eng-production, region=us-west-2
-​...
+[...]
+# highlight-end
 ```
 
 The search returned a list of all EC2 instances with more than 4 cores. There are times when you may not be interested in the details of individual resources, but simply want to do something with each individual instance. You may want to know the total number of resources, or the number of running resources of a particular kind. You may be interested in the distribution of compute instances by instance type (e.g., `m5.large`, `m5.2xlarge`, etc.), or the current cost of compute and storage grouped by team.
@@ -86,8 +90,9 @@ The search returned a list of all EC2 instances with more than 4 cores. There ar
 
 [Aggregating and grouping the results of a search](/blog/2022/03/03/aggregating-search-data) creates the samples of a metric.
 
-```
+```bash
 > search aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account, /ancestors.region.reported.name as region, instance_type as type, instance_status as status: sum(1) as instances_total): is(instance)
+# highlight-start
 ​group:
 ​  cloud: aws
 ​  account: eng-production
@@ -103,7 +108,8 @@ The search returned a list of all EC2 instances with more than 4 cores. There ar
 ​  type: m5.4xlarge
 ​  status: stopped
 ​instances_total: 7
-​...
+[...]
+# highlight-end
 ```
 
 This is useful, but the ability to compare current values to those from an hour, day, month, year, etc. ago would be even more useful. This brings us to the next concept, time series.
@@ -132,7 +138,7 @@ To check out the data Resoto Metrics generates open [`https://localhost:9955/met
 
 That is the raw metrics data Prometheus will ingest. If you are using our Docker stack you do not have to do anything, Prometheus is already pre-configured. If you are using your own Prometheus installation, [configure it to scrape](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config) this metrics endpoint. The config will look something like this:
 
-```yml title="prometheus.yml"
+```yaml title="prometheus.yml"
 scrape_configs:
   - job_name: "resotometrics"
     scheme: https

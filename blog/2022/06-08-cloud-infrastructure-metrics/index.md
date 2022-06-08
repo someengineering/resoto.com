@@ -4,17 +4,17 @@ tags: [metrics, graph, aggregation]
 image: ./img/banner-social.png
 ---
 
-# Cloud Infrastructure Metrics
+# How to build actionable Cloud Infrastructure Metrics
 
-**At this very moment, do you really know what is going on in your cloud infrastructure? Or does it feel more like a black box that you're feeding with cash and in turn it performs the work that makes your business run?**
+**Understanding what's running in your cloud infrastructure is important for a number of reasons - for example security, compliance or cost.**
 
 ![Looking inside the black box](./img/banner.png)
 
-Even the people spinning up cloud resources might only be aware of their slice of the pie. With hundreds of thousands of interconnected resources, it's really hard to know what's going on!
+But **sometimes the cloud feels more like a black box** that you're feeding with cash, and in turn it performs the work that makes your business run. Even the people spinning up cloud resources might only be aware of their slice of the pie. With hundreds of thousands of interconnected resources, it's really hard to know what's going on!
 
-Resoto helps to break open that black box. It provides a snapshot of the current state of your cloud infrastructure. You can [search](/docs/concepts/search) that snapshot and have Resoto [automatically react to state changes](/docs/concepts/automation).
+Cloud inventory has become a new type of technical debt where organizations lose track of their infrastructure, and how it relates to the business. **Resoto helps to break open that black box and eliminate the inventory debt.**
 
-Resoto also lets you [aggregate](/docs/concepts/search/aggregation) and [visualize](/docs/reference/notebook) this data, as my colleagues [Matthias](https://github.com/aquamatthias) and [Nikita](https://github.com/meln1k) described in previous [blog](/blog/2022/03/03/aggregating-search-data) [posts](/blog/2022/05/31/resoto-meets-jupyter-notebook).
+It provides a snapshot of the current state of your cloud infrastructure. You can [search](/docs/concepts/search) that snapshot and have Resoto [automatically react to state changes](/docs/concepts/automation). Resoto also lets you [aggregate](/docs/concepts/search/aggregation) and [visualize](/docs/reference/notebook) this data, as my colleagues [Matthias](https://github.com/aquamatthias) and [Nikita](https://github.com/meln1k) described in previous [blog](/blog/2022/03/03/aggregating-search-data) [posts](/blog/2022/05/31/resoto-meets-jupyter-notebook).
 
 Here is an example of a heatmap that allows you to immediately see outliers (like when an account suddenly starts using a large number of expensive, high-core-count instances):
 
@@ -24,11 +24,11 @@ We can ingest this aggregated data into a time series database, such as [Prometh
 
 ![Metrics Overview](./img/metrics_overview.png)
 
-This allows you to [alert on trends](https://prometheus.io/docs/alerting/latest/alertmanager)—for example, if you are projected to exceed a quota or spend limit.
+This allows you to [alert](https://prometheus.io/docs/alerting/latest/alertmanager) on [trends](https://prometheus.io/docs/prometheus/latest/querying/functions/#predict_linear)—for example, if you are projected to exceed a quota or spend limit.
 
 Another use case is to quickly [identify anomalies](https://prometheus.io/docs/prometheus/latest/querying/functions/#aggregation_over_time) using [the 3σ rule](https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule). If cloud API credentials are leaked or an automated system goes haywire, you would immediately see the spike instead of receiving an unpleasant surprise on your next cloud bill. Best of all, it works across multiple clouds and accounts!
 
-Resoto comes with a handy metrics component, [Resoto Metrics](/docs/concepts/components/metrics), which takes aggregation results and exports them to [Prometheus](https://prometheus.io). This blog post describes how to define your own metrics, write some [PromQL queries](https://prometheus.io/docs/prometheus/latest/querying/basics/) and build a simple metrics dashboard using [Resoto Metrics](/docs/concepts/components/metrics), [Prometheus](https://prometheus.io), and [Grafana](https://grafana.com).
+Resoto comes with a handy metrics component, [Resoto Metrics](/docs/concepts/components/metrics), which takes aggregation results and exports them to [Prometheus](https://prometheus.io). This blog post describes how to [define your own metrics](#how-metrics-are-made), write some [PromQL queries](https://prometheus.io/docs/prometheus/latest/querying/basics/) and build a simple metrics dashboard using [Resoto Metrics](/docs/concepts/components/metrics), [Prometheus](https://prometheus.io), and [Grafana](https://grafana.com).
 
 <!--truncate-->
 

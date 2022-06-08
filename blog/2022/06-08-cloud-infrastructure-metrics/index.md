@@ -38,7 +38,7 @@ If you are already familiar with graph and time series databases, metrics, sampl
 
 ### Collect
 
-Resoto creates an inventory of your cloud infrastructure by storing the metadata of your cloud resources inside of a [graph](/docs/concepts/graph). This is what we call the `collect` [step](/docs/concepts/automation/workflow). Each resource (e.g., compute instance, storage volume, etc.) is represented by a graph [node](/docs/concepts/graph/node). [Nodes](/docs/concepts/graph/node) are connected via [edges](/docs/concepts/graph/edge). [Edges](/docs/concepts/graph/edge) represent the relationship between two [nodes](/docs/concepts/graph/node), like so (please excuse my MS Paint skills):
+Resoto creates an inventory of your cloud infrastructure by storing the metadata of your cloud resources inside of a [graph](/docs/concepts/graph). This is what we call the `collect` [step](/docs/concepts/automation/workflow). Each resource (e.g., compute instance, storage volume, security group, etc.) is represented by a graph [node](/docs/concepts/graph/node). [Nodes](/docs/concepts/graph/node) are connected via [edges](/docs/concepts/graph/edge). [Edges](/docs/concepts/graph/edge) represent the relationship between two [nodes](/docs/concepts/graph/node), like so (please excuse my MS Paint skills):
 
 ![Graph visualization](./img/graph_visualization.png)
 

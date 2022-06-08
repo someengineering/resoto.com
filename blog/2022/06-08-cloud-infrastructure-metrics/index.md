@@ -1,17 +1,18 @@
 ---
 authors: [lukas]
 tags: [metrics, graph, aggregation]
+image: ./img/banner-social.png
 ---
 
 # Cloud Infrastructure Metrics
 
-**At this very moment, do you know how many compute instances are running in your infrastructure and how much you are paying for them?**
+**At this very moment, do you really know what is going on in your cloud infrastructure? Or does it feel more like a black box that you're feeding with cash and in turn it performs the work that makes your business run?**
 
-If the answer is, "No, not exactly," then my next question for you is, "Why not?"
+![Looking inside the black box](./img/banner.png)
 
-Compute and storage are typically the most expensive items on your cloud bill. They are also the most critical pieces of infrastructure for most businesses.
+Even the people spinning up cloud resources might only be aware of their slice of the pie. With hundreds of thousands of interconnected resources, it's really hard to know what's going on!
 
-Resoto gives a snapshot of the current state of your cloud infrastructure. You can [search](/docs/concepts/search) that snapshot and have Resoto [automatically react to state changes](/docs/concepts/automation).
+Resoto helps to break open that black box. It provides a snapshot of the current state of your cloud infrastructure. You can [search](/docs/concepts/search) that snapshot and have Resoto [automatically react to state changes](/docs/concepts/automation).
 
 Resoto also lets you [aggregate](/docs/concepts/search/aggregation) and [visualize](/docs/reference/notebook) this data, as my colleagues [Matthias](https://github.com/aquamatthias) and [Nikita](https://github.com/meln1k) described in previous [blog](/blog/2022/03/03/aggregating-search-data) [posts](/blog/2022/05/31/resoto-meets-jupyter-notebook).
 

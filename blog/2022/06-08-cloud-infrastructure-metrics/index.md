@@ -68,9 +68,8 @@ A [node](/docs/concepts/graph/node) is essentially an indexed JSON document cont
 
 Among other things, Resoto allows you to [search this metadata](/blog/2022/02/04/resoto-search-101). Here's an example:
 
-```bash
+```
 > search is(aws_ec2_instance) and instance_cores > 4
-​# highlight-start
 ​kind=aws_ec2_instance, id=i-065af67d77cd5a272, name=16ca1.prod1, instance_cores=16, age=3yr2mo, cloud=aws, account=eng-production, region=us-west-2
 ​kind=aws_ec2_instance, id=i-019f3f3a2a8d1990e, name=16ca2.prod1, instance_cores=16, age=3yr2mo, cloud=aws, account=eng-production, region=us-west-2
 ​kind=aws_ec2_instance, id=i-0667dc8de49a4319e, name=16ca3.prod1, instance_cores=16, age=3yr2mo, cloud=aws, account=eng-production, region=us-west-2
@@ -79,7 +78,6 @@ Among other things, Resoto allows you to [search this metadata](/blog/2022/02/04
 ​kind=aws_ec2_instance, id=i-04e09d3c714048c4d, name=16ca6.prod1, instance_cores=16, age=3yr2mo, cloud=aws, account=eng-production, region=us-west-2
 ​kind=aws_ec2_instance, id=i-0d2dfda13e02b2b20, name=16ca7.prod1, instance_cores=16, age=2yr9mo, cloud=aws, account=eng-production, region=us-west-2
 ​...
-# highlight-end
 ```
 
 The search returned a list of all EC2 instances with more than 4 cores. There are times when you may not be interested in the details of individual resources, but simply want to do something with each individual instance. You may want to know the total number of resources, or the number of running resources of a particular kind. You may be interested in the distribution of compute instances by instance type (e.g., `m5.large`, `m5.2xlarge`, etc.), or the current cost of compute and storage grouped by team.
@@ -88,9 +86,8 @@ The search returned a list of all EC2 instances with more than 4 cores. There ar
 
 [Aggregating and grouping the results of a search](/blog/2022/03/03/aggregating-search-data) creates the samples of a metric.
 
-```bash
+```
 > search aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account, /ancestors.region.reported.name as region, instance_type as type, instance_status as status: sum(1) as instances_total): is(instance)
-​# highlight-start
 ​group:
 ​  cloud: aws
 ​  account: eng-production
@@ -107,7 +104,6 @@ The search returned a list of all EC2 instances with more than 4 cores. There ar
 ​  status: stopped
 ​instances_total: 7
 ​...
-# highlight-end
 ```
 
 This is useful, but the ability to compare current values to those from an hour, day, month, year, etc. ago would be even more useful. This brings us to the next concept, time series.
@@ -218,7 +214,7 @@ The [Prometheus](https://prometheus.io) web UI provides syntax help and autocomp
 
 Metrics are defined in the `resoto.metrics` [configuration](/docs/getting-started/configuration). To edit metrics definitions, execute the following command in [Resoto Shell](/docs/concepts/components/shell):
 
-```bash
+```
 > config edit resoto.metrics
 ```
 
@@ -240,7 +236,7 @@ As [described above](#aggregation), the `aggregate` expression in the `search` f
 
 Metrics configuration can be updated at runtime. When the `metrics` [workflow](/docs/concepts/automation/workflow) is run, [Resoto Metrics](/docs/concepts/components/metrics) will generate the new metric for [Prometheus](https://prometheus.io) to consume.
 
-```bash
+```
 > workflow run metrics
 ```
 
@@ -297,7 +293,7 @@ Alright, fasten your seatbelts! This will go fast. 🏎️💨
 
 12. Copy the following into the text box to the right of **Metrics browser >** in the **Query** tab:
 
-    ```bash
+    ```
     sum(avg_over_time(resoto_instances_total{cloud=~"$cloud", account=~"$account", region=~"$region", status="running"}[$__interval])) by (cloud, account)
     ```
 
@@ -332,7 +328,7 @@ Alright, fasten your seatbelts! This will go fast. 🏎️💨
 
     Copy the following into the text box to the right of **Metrics browser >** in the **Query** tab:
 
-    ```bash
+    ```
     sum(avg_over_time(resoto_instances_total{cloud=~"$cloud", region=~"$region", account=~"$account", status="running"}[$__interval]))
     ```
 

@@ -84,8 +84,8 @@ resotoworker:
   web_path: /
   # Web server tcp port to listen on
   web_port: 9956
-  ...
-...
+  [...]
+[...]
 ```
 
 :::note

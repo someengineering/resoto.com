@@ -8,11 +8,11 @@ image: ./img/banner-social.png
 
 Understanding what's running in your cloud infrastructure is important for a number of reasons—for example, security, compliance, and cost.
 
-**But sometimes, the cloud feels more like a black box that you're feeding with cash.**
+**But sometimes, the cloud feels more like a black box that you're feeding with cash, and in turn it performs the work that makes your business run.**
 
 ![Sheep looking inside a black box](./img/banner.png)
 
-Furthermore, those spinning up cloud resources might only be aware of their small slice of the pie. With hundreds of thousands of interconnected resources, it is really hard to know what's going on!
+Even those spinning up cloud resources might only be aware of their small slice of the pie. With hundreds of thousands of interconnected resources, it is really hard to know what's going on!
 
 Cloud inventory has become a new type of technical debt, where organizations lose track of their infrastructure and how it relates to the business. **Resoto helps to break open the aforementioned black box and eliminate inventory debt.**
 

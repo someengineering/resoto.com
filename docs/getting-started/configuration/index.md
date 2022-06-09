@@ -143,7 +143,7 @@ $ resotoworker
 If the property type is a list/an array, it is possible to specifying multiple values as a comma-separated list of values:
 
 ```bash
-  $ resotocore --override resotocore.api.web_hosts 127.0.0.1,10.0.0.1
+  $ resotocore --override resotocore.api.web_hosts=127.0.0.1,10.0.0.1
 ```
 
 or

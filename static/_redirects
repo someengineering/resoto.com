@@ -7,6 +7,7 @@ https://news.resoto.com/*                         https://resoto.com/news/:splat
 /blog/2022/02/04/resoto-query-language-101        /blog/2022/02/04/resoto-search-101
 /blog/2022/02/04/resoto-search-syntax-101         /blog/2022/02/04/resoto-search-101
 /blog/2022/05/31/resotonotebook                   /blog/2022/05/31/resoto-meets-jupyter-notebook
+/blog/2022/06/06/cloud-infrastructure-metrics     /blog/2022/06/09/building-actionable-cloud-infrastructure-metrics
 
 /docs/concepts/components/resotolib               /docs/concepts/components/library
 /docs/concepts/components/resh                    /docs/concepts/components/shell

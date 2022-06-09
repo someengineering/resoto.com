@@ -65,26 +65,26 @@ In the following we will be using the Resoto shell `resh` and the `aggregate` co
 Enter the following commands into `resh`
 
 ```
-> search is(instance) | aggregate /ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account, /ancestors.region.reported.name as region, instance_type as type : sum(1) as instances_total, sum(instance_cores) as cores_total, sum(instance_memory*1024*1024*1024) as memory_bytes
+> search aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account, /ancestors.region.reported.name as region, instance_type as type : sum(1) as instances_total, sum(instance_cores) as cores_total, sum(instance_memory*1024*1024*1024) as memory_bytes): is(instance)
 ```
 
 Here is the same query with line feeds for readability (can not be copy'pasted)
 
 ```
-search is(instance) |
-  aggregate
+search aggregate(
     /ancestors.cloud.reported.name as cloud,
     /ancestors.account.reported.name as account,
     /ancestors.region.reported.name as region,
     instance_type as type :
   sum(1) as instances_total,
   sum(instance_cores) as cores_total,
-  sum(instance_memory*1024*1024*1024) as memory_bytes
+  sum(instance_memory*1024*1024*1024) as memory_bytes):
+  is(instance)
 ```
 
 If your graph contains any compute instances the resulting output will look something like this
 
-```
+```yaml
 ---
 group:
   cloud: aws
@@ -114,33 +114,33 @@ cores_total: 48
 memory_bytes: 193273528320
 ```
 
-Let us dissect what we've written here:
+Let us dissect the `search` we've written here:
 
-- `search is(instance)` fetch all the resources that inherit from base kind `instance`. This would be compute instances like `aws_ec2_instance` or `gcp_instance`.
-- `aggregate /ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account, /ancestors.region.reported.name as region, instance_type as type` aggregate the instance metrics by `cloud`, `account`, and `region` name as well as `instance_type` (think `GROUP_BY` in SQL).
-- `sum(1) as instances_total, sum(instance_cores) as cores_total, sum(instance_memory*1024*1024*1024) as memory_bytes` sum up the total number of instances, number of instance cores and memory. The later is stored in GB and here we convert it to bytes as is customary in Prometheus exporters.
+- `aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account, /ancestors.region.reported.name as region, instance_type as type` aggregate the instance metrics by `cloud`, `account`, and `region` name as well as `instance_type` (think `GROUP_BY` in SQL).
+- `sum(1) as instances_total, sum(instance_cores) as cores_total, sum(instance_memory*1024*1024*1024) as memory_bytes):` sum up the total number of instances, number of instance cores and memory. The later is stored in GB and here we convert it to bytes as is customary in Prometheus exporters.
+- `is(instance)` search all the resources that inherit from base kind `instance`. This would be compute instances like `aws_ec2_instance` or `gcp_instance`.
 
 ### Taking it one step further
 
 ```
-> search is(instance) and instance_status = running | aggregate /ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account, /ancestors.region.reported.name as region, instance_type as type : sum(/ancestors.instance_type.reported.ondemand_cost) as instances_hourly_cost_estimate
+> search aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account, /ancestors.region.reported.name as region, instance_type as type : sum(/ancestors.instance_type.reported.ondemand_cost) as instances_hourly_cost_estimate): is(instance) and instance_status = running
 ```
 
 Again the same query with line feeds for readability (can not be copy'pasted)
 
 ```
-search is(instance) and instance_status = running |
-  aggregate
+search aggregate(
     /ancestors.cloud.reported.name as cloud,
     /ancestors.account.reported.name as account,
     /ancestors.region.reported.name as region,
     instance_type as type :
-  sum(/ancestors.instance_type.reported.ondemand_cost) as instances_hourly_cost_estimate
+  sum(/ancestors.instance_type.reported.ondemand_cost) as instances_hourly_cost_estimate):
+  is(instance) and instance_status = running
 ```
 
 Outputs something like
 
-```
+```yaml
 ---
 group:
   cloud: gcp
@@ -150,7 +150,7 @@ group:
 instances_hourly_cost_estimate: 0.949995
 ```
 
-What did we do here? We told Resoto to find all resource of type compute instance (`search is(instance)`) with a status of `running` and then merge the result with ancestors (parents and parent parents) of type `cloud`, `account`, `region` and now also `instance_type`.
+What did we do here? We told Resoto to find all resource of type compute instance (`is(instance)`) with a status of `running` and then merge the result with ancestors (parents and parent parents) of type `cloud`, `account`, `region` and now also `instance_type`.
 
 Let us look at two things here. First, in the previous example we already aggregated by `instance_type`. However this was the string attribute called `instance_type` that is part of every instance resource and contains strings like `m5.xlarge` (AWS) or `n1-standard-4` (GCP).
 

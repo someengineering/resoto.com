@@ -22,7 +22,7 @@ To get started, add your DigitalOcean API tokens to [Resoto Worker](/docs/concep
 
 In the text editor opened by [`config edit`](/docs/reference/cli/configs/edit), modify the configuration as follows:
 
-```yml
+```yaml
 resotoworker:
   collector:
     - digitalocean

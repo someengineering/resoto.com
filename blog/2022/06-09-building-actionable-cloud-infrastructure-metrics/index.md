@@ -84,7 +84,7 @@ Among other things, Resoto allows you to [search this metadata](/blog/2022/02/04
 # highlight-end
 ```
 
-The search returned a list of all EC2 instances with more than 4 cores. There are times when you may not be interested in the details of individual resources, but simply want to do something with each individual instance. You may want to know the total number of resources, or the number of running resources of a particular kind. You may be interested in the distribution of compute instances by instance type (e.g., `m5.large`, `m5.2xlarge`, etc.), or the current cost of compute and storage grouped by team.
+The search returned a list of all EC2 instances with more than 4 cores. There are times when you may not be interested in the details of individual resources, but simply want to aggregate them. You may want to know the total number of resources, or the number of running resources of a particular kind. You may be interested in the distribution of compute instances by instance type (e.g., `m5.large`, `m5.2xlarge`, etc.), or the current cost of compute and storage grouped by team.
 
 ### Aggregation
 

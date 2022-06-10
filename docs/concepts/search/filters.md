@@ -23,13 +23,37 @@ In order to filter for specific attributes of a node, it is possible to define p
 
 The `property_path` is the path to the property in the JSON structure.
 
-A nested attribute is accessed via the dot (`.`). A nested property could be accessed via `some.deeply.nested.property`.
+A nested property can be accessed by defining the path in the object structure separated by dot (`.`). The path `some.nested.prop` points to 42 in this json structure:
 
-Since most of the properties in question are defined in the reported section, the CLI interprets all defined property paths relative to the reported section by default (behaviour can be configured and adjusted). Thus, the path to property `reported.name` can simply be written as `name`.
+```json
+{ "some": { "nested": { "prop": 42 } } }
+```
 
-If all relative paths are interpreted relative to `reported`, we need a way to target properties not in the reported section. This is possible by using the absolute path syntax via the `/` (slash).
+In case a part of the path is not a valid json path, it can be escaped with backticks `` some.`non.compliant.key`.prop ``.
 
-A property path that starts with a slash is always interpreted absolute.
+```json
+{ "some": { "non.compliant.key": { "prop": 42 } } }
+```
+
+In case the nested property is an array, we are able to access the specific element by using the index notation.
+
+```json
+{ "some": { "nested": [1, 2, 3] } }
+```
+
+We can use the path `some.nested[0]` to access the first element of the array, and `some.nested[2]` to access the third element.
+
+If the array contains objects, we can access the specific element by using the index notation: `some.nested[0].prop`.
+
+```json
+{ "some": { "nested": [{ "prop": 1 }, { "prop": 2 }, { "prop": 3 }] } }
+```
+
+In order to select elements, where the first nested prop is bigger than 2, we can use the path `some.nested[0].prop > 2`. If we want to select elements that have any nested prop bigger than 2, we can use the path `some.nested[*].prop > 2`. The `*` wildcard is used to perform the filter criteria on all elements of the array, where only one match would be sufficient to match.
+
+### Property sections
+
+Most of the properties are defined in the reported section. The CLI interprets all defined property paths relative to the reported section by default. Thus, the path to property `reported.name` can simply be written as `name`. When every path is interpreted relative to `reported`, we need a way to target properties not in the reported section. This is possible by using the absolute path syntax via the `/` (slash). A property path that starts with a slash is always interpreted absolute.
 
 In order to access properties outside of the reported section, use the `/` syntax:
 

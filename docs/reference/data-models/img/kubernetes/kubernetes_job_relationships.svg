@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="352px" preserveAspectRatio="none" style="width:402px;height:352px;background:#00000000;" version="1.1" viewBox="0 0 402 352" width="402px" zoomAndPan="magnify"><defs/><g><!--MD5=[5167f24a7730df9ab6778a64ba15a1e8]
+class kubernetes_pod--><a href="#kubernetes_pod" target="_top" title="#kubernetes_pod" xlink:actuate="onRequest" xlink:href="#kubernetes_pod" xlink:show="new" xlink:title="#kubernetes_pod" xlink:type="simple"><rect codeLine="23" fill="#3D176E" height="39.7891" id="kubernetes_pod" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="175" x="37" y="307"/><ellipse cx="52" cy="326.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M54.9688,332.5352 Q54.3906,332.832 53.75,332.9727 Q53.1094,333.1289 52.4063,333.1289 Q49.9063,333.1289 48.5781,331.4883 Q47.2656,329.832 47.2656,326.707 Q47.2656,323.582 48.5781,321.9258 Q49.9063,320.2695 52.4063,320.2695 Q53.1094,320.2695 53.75,320.4258 Q54.4063,320.582 54.9688,320.8789 L54.9688,323.5977 Q54.3438,323.0195 53.75,322.7539 Q53.1563,322.4727 52.5313,322.4727 Q51.1875,322.4727 50.5,323.5508 Q49.8125,324.6133 49.8125,326.707 Q49.8125,328.8008 50.5,329.8789 Q51.1875,330.9414 52.5313,330.9414 Q53.1563,330.9414 53.75,330.6758 Q54.3438,330.3945 54.9688,329.8164 L54.9688,332.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="133" x="71" y="332.7798">kubernetes_pod</text></a><!--MD5=[49b5e0085868cc925cb4054f277efc7e]
+class kubernetes_job--><a href="#kubernetes_job" target="_top" title="#kubernetes_job" xlink:actuate="onRequest" xlink:href="#kubernetes_job" xlink:show="new" xlink:title="#kubernetes_job" xlink:type="simple"><rect codeLine="26" fill="#3D176E" height="39.7891" id="kubernetes_job" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="170" x="108.5" y="207"/><ellipse cx="123.5" cy="226.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M126.4688,232.5352 Q125.8906,232.832 125.25,232.9727 Q124.6094,233.1289 123.9063,233.1289 Q121.4063,233.1289 120.0781,231.4883 Q118.7656,229.832 118.7656,226.707 Q118.7656,223.582 120.0781,221.9258 Q121.4063,220.2695 123.9063,220.2695 Q124.6094,220.2695 125.25,220.4258 Q125.9063,220.582 126.4688,220.8789 L126.4688,223.5977 Q125.8438,223.0195 125.25,222.7539 Q124.6563,222.4727 124.0313,222.4727 Q122.6875,222.4727 122,223.5508 Q121.3125,224.6133 121.3125,226.707 Q121.3125,228.8008 122,229.8789 Q122.6875,230.9414 124.0313,230.9414 Q124.6563,230.9414 125.25,230.6758 Q125.8438,230.3945 126.4688,229.8164 L126.4688,232.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="128" x="142.5" y="232.7798">kubernetes_job</text></a><!--MD5=[3420e666a7711531140e2a6955d848c5]
+class kubernetes_cron_job--><a href="#kubernetes_cron_job" target="_top" title="#kubernetes_cron_job" xlink:actuate="onRequest" xlink:href="#kubernetes_cron_job" xlink:show="new" xlink:title="#kubernetes_cron_job" xlink:type="simple"><rect codeLine="29" fill="#3D176E" height="39.7891" id="kubernetes_cron_job" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="215" x="180" y="107"/><ellipse cx="195" cy="126.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M197.9688,132.5352 Q197.3906,132.832 196.75,132.9727 Q196.1094,133.1289 195.4063,133.1289 Q192.9063,133.1289 191.5781,131.4883 Q190.2656,129.832 190.2656,126.707 Q190.2656,123.582 191.5781,121.9258 Q192.9063,120.2695 195.4063,120.2695 Q196.1094,120.2695 196.75,120.4258 Q197.4063,120.582 197.9688,120.8789 L197.9688,123.5977 Q197.3438,123.0195 196.75,122.7539 Q196.1563,122.4727 195.5313,122.4727 Q194.1875,122.4727 193.5,123.5508 Q192.8125,124.6133 192.8125,126.707 Q192.8125,128.8008 193.5,129.8789 Q194.1875,130.9414 195.5313,130.9414 Q196.1563,130.9414 196.75,130.6758 Q197.3438,130.3945 197.9688,129.8164 L197.9688,132.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="173" x="214" y="132.7798">kubernetes_cron_job</text></a><!--MD5=[8c64e07c6674772649ac4806bcd31052]
+class kubernetes_namespace--><a href="#kubernetes_namespace" target="_top" title="#kubernetes_namespace" xlink:actuate="onRequest" xlink:href="#kubernetes_namespace" xlink:show="new" xlink:title="#kubernetes_namespace" xlink:type="simple"><rect codeLine="32" fill="#3D176E" height="39.7891" id="kubernetes_namespace" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="239" x="7" y="7"/><ellipse cx="22" cy="26.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M24.9688,32.5352 Q24.3906,32.832 23.75,32.9727 Q23.1094,33.1289 22.4063,33.1289 Q19.9063,33.1289 18.5781,31.4883 Q17.2656,29.832 17.2656,26.707 Q17.2656,23.582 18.5781,21.9258 Q19.9063,20.2695 22.4063,20.2695 Q23.1094,20.2695 23.75,20.4258 Q24.4063,20.582 24.9688,20.8789 L24.9688,23.5977 Q24.3438,23.0195 23.75,22.7539 Q23.1563,22.4727 22.5313,22.4727 Q21.1875,22.4727 20.5,23.5508 Q19.8125,24.6133 19.8125,26.707 Q19.8125,28.8008 20.5,29.8789 Q21.1875,30.9414 22.5313,30.9414 Q23.1563,30.9414 23.75,30.6758 Q24.3438,30.3945 24.9688,29.8164 L24.9688,32.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="197" x="41" y="32.7798">kubernetes_namespace</text></a><!--MD5=[0412af83ba7c1693bbe694c8bca19db5]
+link kubernetes_job to kubernetes_pod--><path codeLine="35" d="M179.87,247.36 C168.72,263.2 152.91,285.66 141.03,302.52 " fill="none" id="kubernetes_job-to-kubernetes_pod" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="138.1,306.68,146.5594,301.6363,140.9845,302.596,140.0249,297.0211,138.1,306.68" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[d93093e2199b33bf6abdeff8dbc118f6]
+link kubernetes_cron_job to kubernetes_job--><path codeLine="36" d="M268.93,147.36 C253.61,163.33 231.83,186.04 215.61,202.95 " fill="none" id="kubernetes_cron_job-to-kubernetes_job" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="212.03,206.68,221.1416,202.9411,215.4861,203.0668,215.3604,197.4113,212.03,206.68" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[278d472954b92b41e3aacf6cb8380960]
+link kubernetes_namespace to kubernetes_pod--><path codeLine="37" d="M118.86,47.13 C104.63,85.3 76.78,173.57 91.5,247 C95.39,266.42 104.17,287.02 111.69,302.31 " fill="none" id="kubernetes_namespace-to-kubernetes_pod" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="113.98,306.88,113.5454,297.0407,111.7497,302.405,106.3854,300.6093,113.98,306.88" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[feda384ffa44c124500287e1786bd436]
+link kubernetes_namespace to kubernetes_job--><path codeLine="38" d="M131.77,47.11 C138.41,70.75 150.41,112.13 162.5,147 C168.98,165.67 177.18,186.46 183.51,202.03 " fill="none" id="kubernetes_namespace-to-kubernetes_job" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="185.42,206.68,185.7027,196.8352,183.5213,202.0545,178.3019,199.8732,185.42,206.68" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[903d3ae4b2cd82deee66f3514d6a0de7]
+link kubernetes_namespace to kubernetes_cron_job--><path codeLine="39" d="M157.92,47.13 C184.85,63.52 223.63,87.12 251.74,104.23 " fill="none" id="kubernetes_namespace-to-kubernetes_cron_job" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="256.15,106.92,250.542,98.8237,251.879,104.3203,246.3824,105.6573,256.15,106.92" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[ea4466ae4e1c9082a8f64c85bb34a39f]
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class kubernetes_pod [[#kubernetes_pod]] {
+
+}
+class kubernetes_job [[#kubernetes_job]] {
+
+}
+class kubernetes_cron_job [[#kubernetes_cron_job]] {
+
+}
+class kubernetes_namespace [[#kubernetes_namespace]] {
+
+}
+kubernetes_job -[#1A83AF]-> kubernetes_pod
+kubernetes_cron_job -[#1A83AF]-> kubernetes_job
+kubernetes_namespace -[#1A83AF]-> kubernetes_pod
+kubernetes_namespace -[#1A83AF]-> kubernetes_job
+kubernetes_namespace -[#1A83AF]-> kubernetes_cron_job
+@enduml
+
+PlantUML version 1.2021.16(Wed Dec 08 17:25:22 UTC 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

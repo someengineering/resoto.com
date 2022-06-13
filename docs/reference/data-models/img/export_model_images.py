@@ -7,8 +7,8 @@ provider_names = ["aws", "gcp", "vsphere", "kubernetes", "digitalocean"]
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 by_provider = defaultdict(list)
-for name, kind in requests.get(f"{core}/model", verify=False).json()["kinds"].items():
-  groups = [a for a in provider_names if name.startswith(f"{a}_")]
+for kind in requests.get(f"{core}/model", verify=False).json():
+  groups = [a for a in provider_names if kind["fqn"].startswith(f"{a}_") and kind.get("aggregate_root", False)]
   if groups:
     by_provider[groups[0]].append(kind)
 
@@ -38,5 +38,6 @@ def print_md(provider: str):
 
 # export_images("aws")
 # export_images("digitalocean")
-export_images("gcp")
-# print_md("digitalocean")
+# export_images("gcp")
+# export_images("kubernetes")
+print_md("kubernetes")

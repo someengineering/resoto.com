@@ -10,7 +10,7 @@ For security reasons, [Resoto Core](../../concepts/components/core.md) only list
 
 Execute the following command in [Resoto Shell](../../concepts/components/shell.md) to open the relevant configuration for editing:
 
-```
+```bash
 > config edit resoto.core
 ```
 
@@ -40,7 +40,7 @@ Resoto attempts to find all local IP addresses and hostnames and add them to the
 
 Execute the following command in [Resoto Shell](../../concepts/components/shell.md) to open the relevant configuration for editing:
 
-```
+```bash
 > config edit resoto.core
 ```
 
@@ -71,7 +71,7 @@ By default, the `collect_and_cleanup` workflow runs at the start of each hour. T
 
 Execute the following command in [Resoto Shell](../../concepts/components/shell.md) to open the relevant configuration for editing:
 
-```
+```bash
 > config edit resoto.core
 ```
 

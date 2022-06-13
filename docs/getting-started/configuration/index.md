@@ -49,7 +49,7 @@ Resoto automatically creates the following configurations by default:
 > config edit resoto.worker
 ```
 
-Upon execution of the above command, [Resoto Shell](../../concepts/components/shell.md) presents the specified configuration in [YAML format](https://yaml.org) using the local text editor as defined by the `EDITOR` environment variable.
+Upon execution of the above command, [Resoto Shell](../../concepts/components/shell.md) presents the specified configuration in [YAML format](https://yaml.org) using the local text editor as defined by the [`EDITOR` environment variable](#text-editor).
 
 ```yaml title="Example Resoto Worker configuration"
 resotoworker:
@@ -166,10 +166,24 @@ $ resotoworker
 
 ## Environment Variables
 
-### Configuring Logging
+### Text Editor
+
+The text editor opened by [Resoto Shell](../../concepts/components/shell.md) can be configured via the `EDITOR` environment variable.
+
+For [Docker installs](../installation/docker.md), the default text editor is [nano](https://nano-editor.org).
+
+```bash
+$ export EDITOR=nano
+```
+
+### Logging Format
 
 Resoto components produce logs in JSON format by default, with the exception of [Resoto Shell](../../concepts/components/shell.md).
 
 The rationale behind this behavior is that [Core](../../concepts/components/core.md), [Worker](../../concepts/components/worker.md), and [Metrics](../../concepts/components/metrics.md) are likely running on something like a Kubernetes cluster in a data center, with logs ingested by a central logging system. [Resoto Shell](../../concepts/components/shell.md), on the other hand, is executed on a user's local machine so the log output is formatted for readability.
 
-JSON-format logging can be disabled by setting environment variable `RESOTO_LOG_TEXT=true`.
+JSON-format logging can be disabled via the `RESOTO_LOG_TEXT` environment variable:
+
+```bash
+$ export RESOTO_LOG_TEXT=true
+```

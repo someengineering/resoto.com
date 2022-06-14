@@ -23,27 +23,36 @@ In order to filter for specific attributes of a node, it is possible to define p
 
 The `property_path` is the path to the property in the JSON structure.
 
-A nested property can be accessed by defining the path in the object structure separated by dot (`.`). The path `some.nested.prop` points to 42 in this json structure:
+A nested property can be accessed by defining its dot-delimited path in the object structure. For example, `some.nested.prop` has the value `42` in the following JSON structure:
 
 ```json
 { "some": { "nested": { "prop": 42 } } }
 ```
 
-In case a part of the path is not a valid json path, it can be escaped with backticks `` some.`non.compliant.key`.prop ``.
+#### Noncompliant Keys
 
+If the path contains special characters (e.g., `.`) or is otherwise noncompliant, the affected portion(s) of the path should be surrounded by backticks.
+
+For example, the path ``some.`non.compliant.key`.prop`` is used to access the property with value `42` in the below JSON structure:
+
+  ``some.`non.compliant.key`.prop``.
 ```json
 { "some": { "non.compliant.key": { "prop": 42 } } }
 ```
 
-In case the nested property is an array, we are able to access the specific element by using the index notation.
+#### Arrays
+
+If a property is an array, specific elements can be accessed using index notation.
+
+In the below JSON, the path `some.nested[0]` references first element of the array with path `some.nested`, and `some.nested[2]` points to the third (and last) element:
 
 ```json
 { "some": { "nested": [1, 2, 3] } }
 ```
 
-We can use the path `some.nested[0]` to access the first element of the array, and `some.nested[2]` to access the third element.
+In arrays of objects, object elements can also be accessed using index notation.
 
-If the array contains objects, we can access the specific element by using the index notation: `some.nested[0].prop`.
+`some.nested[0].prop` has a value of `1` here:
 
 ```json
 { "some": { "nested": [{ "prop": 1 }, { "prop": 2 }, { "prop": 3 }] } }
@@ -51,11 +60,11 @@ If the array contains objects, we can access the specific element by using the i
 
 In order to select elements, where the first nested prop is bigger than 2, we can use the path `some.nested[0].prop > 2`. If we want to select elements that have any nested prop bigger than 2, we can use the path `some.nested[*].prop > 2`. The `*` wildcard is used to perform the filter criteria on all elements of the array, where only one match would be sufficient to match.
 
-### Property sections
+### Property Sections
 
-Most of the properties are defined in the reported section. The CLI interprets all defined property paths relative to the reported section by default. Thus, the path to property `reported.name` can simply be written as `name`. When every path is interpreted relative to `reported`, we need a way to target properties not in the reported section. This is possible by using the absolute path syntax via the `/` (slash). A property path that starts with a slash is always interpreted absolute.
+Most properties are defined in the `reported` section, and the CLI interprets property paths relative to the `reported` section by default. Thus, the path to property `reported.name` can simply be written as `name`.
 
-In order to access properties outside of the reported section, use the `/` syntax:
+To target properties not in the `reported` section, prefix the property path with a slash (`/`) for it to be interpreted as an absolute path:
 
 ```bash title="Find nodes where reported.cpu_count is greater than 3, and desired.clean is true"
 > search cpu_count > 3 and /desired.clean==true

@@ -14,7 +14,6 @@ import {
   TerminalIcon,
   TruckIcon,
 } from '@heroicons/react/outline';
-import GitHubLogo from '@site/src/assets/github.svg';
 import AirportSheepIllustration from '@site/src/assets/sheep-airport.svg';
 import ConfusedSheepIllustration from '@site/src/assets/sheep-confused.svg';
 import DeveloperSheepIllustration from '@site/src/assets/sheep-developer.svg';
@@ -23,80 +22,48 @@ import ProfessorSheepIllustration from '@site/src/assets/sheep-professor.svg';
 import SreSheepIllustration from '@site/src/assets/sheep-sre.svg';
 import StrongSheepIllustration from '@site/src/assets/sheep-strong.svg';
 import WinningSheepIllustration from '@site/src/assets/sheep-winning.svg';
-import { getGithubStars, getLatestRelease } from '@site/src/utils/githubHelper';
 import Layout from '@theme/Layout';
-import Emoji from 'a11y-react-emoji';
 import clsx from 'clsx';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from './index.module.css';
 
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
-  const [resotoVersion, setResotoVersion] = useState<string | null>(null);
-  const [githubStars, setGithubStars] = useState<number | null>(null);
-
-  useEffect(() => {
-    const getGithubData = async () => {
-      setResotoVersion(await getLatestRelease('someengineering', 'resoto'));
-      setGithubStars(await getGithubStars('someengineering', 'resoto'));
-    };
-
-    getGithubData();
-  }, []);
 
   return (
     <Layout>
       <header className={styles.hero}>
         <h1 className={styles.heroTitle}>{siteConfig.title}</h1>
         <div className={styles.heroInner}>
-          <div className={styles.heroSubtitle}>
-            {siteConfig.tagline}
-            <div className={styles.heroButtons}>
-              {resotoVersion && (
-                <>
-                  <a
-                    href={`https://github.com/someengineering/resoto/releases/tag/${resotoVersion}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="button button--primary button--lg"
-                  >
-                    <GitHubLogo className={styles.buttonIcon} />
-                    {resotoVersion.startsWith('v')
-                      ? resotoVersion
-                      : `v${resotoVersion}`}
-                  </a>
-                  {!!githubStars && (
-                    <a
-                      href="https://github.com/someengineering/resoto/stargazers"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={clsx('button button--lg', styles.speechButton)}
-                    >
-                      {githubStars} <Emoji symbol="⭐" label="stars" />
-                    </a>
-                  )}
-                </>
-              )}
-            </div>
-          </div>
-          <img
-            className={styles.heroLogo}
-            src="/img/logo-lg.svg"
-            alt="Resoto Logo"
-          />
-        </div>
-      </header>
-      <main>
-        <section className={clsx(styles.section, styles.sectionAlt)}>
-          <div className={clsx(styles.sectionFeatureText, 'text--center')}>
-            <p>
+          <div className={styles.heroText}>
+            <div className={styles.tagline}>{siteConfig.tagline}</div>
+            <div>
               Resoto creates an <strong>inventory</strong> of your cloud,
               provides deep <strong>visibility</strong>, and reacts to{' '}
               <strong>changes</strong> in your infrastructure.
-            </p>
-            <p>Open-source, self-managed, always free.</p>
+            </div>
+            <div className={styles.cta}>
+              <Link
+                to="/docs/getting-started/installation"
+                className="button button--primary button--lg"
+              >
+                Install Now
+              </Link>
+              <ul>
+                <li>Open-source</li>
+                <li>Self-hosted</li>
+                <li>Always free</li>
+              </ul>
+            </div>
           </div>
-        </section>
+          {/* <img
+            className={styles.heroLogo}
+            src="/img/logo-lg.svg"
+            alt="Resoto Logo"
+          /> */}
+        </div>
+      </header>
+      <main>
         <section className={styles.section}>
           <div className={styles.sectionContainer}>
             <div className={styles.flexContainer}>
@@ -227,25 +194,25 @@ export default function Home(): JSX.Element {
                 </p>
               </li>
             </ul>
-            {/*<blockquote className={styles.quotation}>*/}
-            {/*  <div>*/}
-            {/*    <p>*/}
-            {/*      Since deploying Resoto, our{' '}*/}
-            {/*      <strong>cloud bill dropped by over seventy percent</strong>*/}
-            {/*      &mdash;saving us millions every year.*/}
-            {/*    </p>*/}
-            {/*    <footer>*/}
-            {/*      <strong>Tobi Knaup</strong>, CEO at{' '}*/}
-            {/*      <a*/}
-            {/*        href="https://d2iq.com"*/}
-            {/*        target="_blank"*/}
-            {/*        rel="noopener noreferrer"*/}
-            {/*      >*/}
-            {/*        D2iQ*/}
-            {/*      </a>*/}
-            {/*    </footer>*/}
-            {/*  </div>*/}
-            {/*</blockquote>*/}
+            {/* <blockquote className={styles.quotation}>
+              <div>
+                <p>
+                  Since deploying Resoto, our{' '}
+                  <strong>cloud bill dropped by over seventy percent</strong>
+                  &mdash;saving us millions every year.
+                </p>
+                <footer>
+                  <strong>Tobi Knaup</strong>, CEO at{' '}
+                  <a
+                    href="https://d2iq.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    D2iQ
+                  </a>
+                </footer>
+              </div>
+            </blockquote> */}
           </div>
         </section>
         <section className={styles.section}>
@@ -317,26 +284,26 @@ export default function Home(): JSX.Element {
                 </p>
               </li>
             </ul>
-            {/*<blockquote className={styles.quotation}>*/}
-            {/*  <div>*/}
-            {/*    <p>*/}
-            {/*      Resoto is useful &hellip; for <strong>ad-hoc queries</strong>{' '}*/}
-            {/*      and for the ability to extend it to{' '}*/}
-            {/*      <strong>answer questions</strong> that we can&rsquo;t*/}
-            {/*      currently answer.*/}
-            {/*    </p>*/}
-            {/*    <footer>*/}
-            {/*      <strong>Tai Dickerson</strong>, Production Engineering at{' '}*/}
-            {/*      <a*/}
-            {/*        href="https://shopify.com"*/}
-            {/*        target="_blank"*/}
-            {/*        rel="noopener noreferrer"*/}
-            {/*      >*/}
-            {/*        Shopify*/}
-            {/*      </a>*/}
-            {/*    </footer>*/}
-            {/*  </div>*/}
-            {/*</blockquote>*/}
+            {/* <blockquote className={styles.quotation}>
+              <div>
+                <p>
+                  Resoto is useful &hellip; for <strong>ad-hoc queries</strong>{' '}
+                  and for the ability to extend it to{' '}
+                  <strong>answer questions</strong> that we can&rsquo;t
+                  currently answer.
+                </p>
+                <footer>
+                  <strong>Tai Dickerson</strong>, Production Engineering at{' '}
+                  <a
+                    href="https://shopify.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Shopify
+                  </a>
+                </footer>
+              </div>
+            </blockquote> */}
           </div>
         </section>
         <section className={clsx(styles.section, styles.sectionAlt)}>
@@ -446,25 +413,25 @@ export default function Home(): JSX.Element {
                 </p>
               </li>
             </ul>
-            {/*<blockquote className={styles.quotation}>*/}
-            {/*  <div>*/}
-            {/*    <p>*/}
-            {/*      I installed Resoto. <strong>Super cool CLI experience</strong>*/}
-            {/*      , and I love the <strong>app configuration</strong>&mdash;much*/}
-            {/*      better than YAML hunting.*/}
-            {/*    </p>*/}
-            {/*    <footer>*/}
-            {/*      <strong>Justyn Roberts</strong>, Solutions Engineering at{' '}*/}
-            {/*      <a*/}
-            {/*        href="https://pagerduty.com"*/}
-            {/*        target="_blank"*/}
-            {/*        rel="noopener noreferrer"*/}
-            {/*      >*/}
-            {/*        PagerDuty*/}
-            {/*      </a>*/}
-            {/*    </footer>*/}
-            {/*  </div>*/}
-            {/*</blockquote>*/}
+            {/* <blockquote className={styles.quotation}>
+              <div>
+                <p>
+                  I installed Resoto. <strong>Super cool CLI experience</strong>
+                  , and I love the <strong>app configuration</strong>&mdash;much
+                  better than YAML hunting.
+                </p>
+                <footer>
+                  <strong>Justyn Roberts</strong>, Solutions Engineering at{' '}
+                  <a
+                    href="https://pagerduty.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    PagerDuty
+                  </a>
+                </footer>
+              </div>
+            </blockquote> */}
           </div>
         </section>
         <section className={styles.section}>

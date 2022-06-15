@@ -4,6 +4,10 @@ sidebar_label: Amazon Web Services
 
 # Amazon Web Services Resources
 
+## Configuration
+
+See [configuration section](/docs/getting-started/configuration/worker#amazon-web-services) to learn how to configure Resoto to collect AWS resources.
+
 ## `aws_account`
 
 ![aws_account](./img/aws/aws_account.svg)

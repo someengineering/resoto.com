@@ -204,6 +204,98 @@ Once one or more cloud providers have been configured the `collect_and_cleanup` 
 > workflow run collect_and_cleanup
 ```
 
+### Kubernetes
+
+The Kubernetes plugin is configured as part of the [Resoto Worker](../../concepts/components/worker.md) configuration. In ResotoShell you can [edit configuration](docs/getting-started/configuration#editing-configuration) via:
+
+```bash title="Edit the Resoto Worker configuration"
+> config edit resoto.worker
+```
+
+To enable the plugin, you need to add `k8s` to the list of collectors,
+
+```yaml
+resotoworker:
+  collector:
+    - 'k8s'
+```
+
+and then define access in the `k8s` section.
+
+The plugin allows two methods to authenticate with Kubernetes either via kubeconfig files or direct configuration. Both config mechanisms can be mixed.
+
+#### Access via kubeconfig files
+
+This is the easiest way to configure access to Kubernetes. Resotoworker needs to have access to this file. If your installation makes it difficult to access the file, we recommend the [direct configuration](#define-access-directly) method.
+
+```yaml
+k8s:
+  config_files:
+    - path: "/path/to/kubeconfig"
+      all_contexts: false
+      contexts: ["context1", "context2"]
+    - path: "/path/to/kubeconfig2"
+      all_contexts: true
+```
+
+Multiple configuration files can be used. If one configuration file holds multiple contexts, it is possible to restrict the contexts to be used by specifying them. The easiest way is to set `all_contexts` to `true` which will not filter and take all contexts found.
+
+#### Define access directly
+
+The information provided in the kubeconfig file is defined here in the `configs` section directly. Following properties can be looked up in the kubeconfig file:
+
+- certificate-authority-data: `clusters.cluster.certificate-authority-data`
+- server: `clusters.cluster.server`
+- token: `users.user.token`
+- name: user defined name of this cluster
+
+```yaml
+k8s:
+  configs:
+    - name: 'dev'
+      certificate_authority_data: 'xxx'
+      server: 'https://k8s-cluster-server.example.com'
+      token: 'token'
+```
+
+Multiple k8s clusters can be defined.
+
+#### Other config options
+
+The kubernetes collector has a couple of other config options. They allow to fine tune the behaviour - it is safe to leave them as they are. Default options look like this:
+
+```yaml
+k8s:
+  collect: []
+  no_collect: []
+  pool_size: 8
+  fork_process: false
+```
+
+- `collect`: whitelist of resources to collect. Default: all resources get collected.
+- `no_collect`: blacklist of resources to not collect. Default: no resource is blacklisted.
+- `pool_size`: number of workers to use. Default: 8.
+- `fork_process`: whether to fork a process for each worker or use a thread pool. Default: false.
+
+Here is one complete configuration example:
+
+```yaml
+k8s:
+  configs:
+    - name: 'dev'
+      certificate_authority_data: 'LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURKekNDQWcrZ0F3SUJBZ0lDQm5Vd0RRWUpLb1pJaHZjTkFRRUxCUUF3TXpFVk1CTUdBMVVFQ2hNTVJHbG4KYVhSaGJFOWpaV0Z1TVJvd0dBWURWUVFERXhGck9ITmhZWE1nUTJ4MWMzUmxjaUJEUVRBZUZ3MHlNVEV4TWpZeApNREl6TVRCYUZ3MDBNVEV4TWpZeE1ESXpNVEJhTURNeEZUQVRCZ05WQkFvVERFUnBaMmwwWVd4UFkyVmhiakVhCk1CZ0dBMVVFQXhNUmF6aHpZV0Z6SUVOc2RYTjBaWElnUTBFd2dnRWlNQTBHQ1NxR1NJYjNEUUVCQVFVQUE0SUIKRHdBd2dnRUtBb0lCQVFEY294aGhXeElEUi91MUJ6Z2ZsMmZkRkRxMkFnR0tkK3VGMVRRNTl6anZRYlNPa04xZApZQ2VoZXVFbHNrc3IreEtkZWZkRGdUTWZneXhOeUN5ZUVwVXE3WjlZMkVaTFBBbU9OR0ljWkN4aEN4NVlzRkxlCjQzK0UzaVArR1F5NVp5RzlDbzlYQzA5a0lmTzlUSEo3WFFEUTNCS3pyRUZNTVhuSm1MNE8xTlZFa1BGNmZTZzYKVFdRQ0xSazZLVEdaWVRYb2hoelgxUE5WVWNFS3hHZnM2NGRHVzAyblAyb0oxU0s2ZVoxSWp0L2hIMXljZ08xdgoyNytNYjdiT0RDMHJCbmZ4Z05qdDRGU2dXKzVad0tyWlVWaFZQQUN5ZENSWkRHallYeksrV2lWbWdBb2wrQ2RlCkFRQTFMR1IxdUNCMmFqZFRBdmZXdnBObDV6WHBkZit6UmZHZkFnTUJBQUdqUlRCRE1BNEdBMVVkRHdFQi93UUUKQXdJQmhqQVNCZ05WSFJNQkFmOEVDREFHQVFIL0FnRUFNQjBHQTFVZERnUVdCQlJVcDg4M040SHJiS1FRUElCdgpHMFhqOUlGZ2x6QU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUF0ODB4TlhjTnZEekQ0MFRBK0JuUnRQNWxwTm5ICkJuZGJ5N0hlZUF4YmxvdVVEcGV1eWV0aGJiUW4zMFB4MldDVXVEampucjV4Sk5PU1VKWjRzY2RBOHJsai93LzQKSGRuWGM0L3JtZzN6WklwdStMZ2tyWU1PcHlRZ3dRZEFxSWVFQnFTVUJ5YTQwU25mTTJBWW9pNVQzQVVlSzJOOAozeUU0ZnYySW5nSDdGTUNLeDVzVFNEaTR4UklDNjVqS1NNeExhOEFsbjFEZTVIN0lwRTU3cGhFeHBaellURVRVCjljU0kyZmsxOW4zdjBycUVGM0duQjBqVUc2R1duZFBGN1lsY28xeVJRQ3RDVWxyUmxYaGJlOG96REtwTHd3MkYKanhXckQ4dmpreDM2OThBWlg0THlmOWo3YVFibzJnWllrSnkvck5YS0pCbUNQNjVQREZOL1dxV3FxZz09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K'
+      server: 'https://foo.k8s.ondigitalocean.com'
+      token: '234cace23514e919601bb1797caca800f09c01dee73d458eebc9a34fe29dfffb'
+  config_files:
+    - path: "/path/to/kubeconfig"
+      all_contexts: true
+      contexts: [ ]
+  collect: [ ]
+  no_collect: [ ]
+  pool_size: 8
+  fork_process: false
+```
+
 ## Multi-Core Machines
 
 Resoto resource collection speed depends heavily on the number of CPU cores available to the worker. When collecting hundreds of accounts, [Resoto Worker](../../concepts/components/worker.md) can easily saturate 64 cores or more.

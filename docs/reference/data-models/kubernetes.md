@@ -4,6 +4,10 @@ sidebar_label: Kubernetes
 
 # Kubernetes Resources
 
+## Configuration
+
+See [configuration section](/docs/getting-started/configuration/worker#kubernetes) to learn how to configure Resoto to collect Kubernetes resources.
+
 ## `kubernetes_cluster`
 
 ![kubernetes_cluster](./img/kubernetes/kubernetes_cluster.svg)

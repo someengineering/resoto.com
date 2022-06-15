@@ -4,6 +4,10 @@ sidebar_label: DigitalOcean
 
 # DigitalOcean Resources
 
+## Configuration
+
+See [configuration section](/docs/getting-started/configuration/worker#digitalocean) to learn how to configure Resoto to collect DigitalOcean resources.
+
 ## `digitalocean_alert_policy`
 
 ![digitalocean_alert_policy](./img/digitalocean/digitalocean_alert_policy.svg)

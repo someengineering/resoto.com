@@ -244,10 +244,10 @@ Multiple configuration files can be used. If one configuration file holds multip
 
 The information provided in the kubeconfig file is defined here in the `configs` section directly. Following properties can be looked up in the kubeconfig file:
 
-- certificate-authority-data: `clusters.cluster.certificate-authority-data`
+- name: user defined name of this cluster
 - server: `clusters.cluster.server`
 - token: `users.user.token`
-- name: user defined name of this cluster
+- certificate-authority-data: `clusters.cluster.certificate-authority-data`. This property is only required, if the server is using a self-signed certificate.
 
 ```yaml
 k8s:

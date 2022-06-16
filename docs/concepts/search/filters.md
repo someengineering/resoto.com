@@ -23,15 +23,67 @@ In order to filter for specific attributes of a node, it is possible to define p
 
 The `property_path` is the path to the property in the JSON structure.
 
-A nested attribute is accessed via the dot (`.`). A nested property could be accessed via `some.deeply.nested.property`.
+A nested property can be accessed by defining its dot-delimited path in the object structure. For example, `some.nested.prop` has the value `42` in the following JSON structure:
 
-Since most of the properties in question are defined in the reported section, the CLI interprets all defined property paths relative to the reported section by default (behaviour can be configured and adjusted). Thus, the path to property `reported.name` can simply be written as `name`.
+```json
+{ "some": { "nested": { "prop": 42 } } }
+```
 
-If all relative paths are interpreted relative to `reported`, we need a way to target properties not in the reported section. This is possible by using the absolute path syntax via the `/` (slash).
+#### Noncompliant Keys
 
-A property path that starts with a slash is always interpreted absolute.
+If the path contains special characters (e.g., `.`) or is otherwise noncompliant, the affected portion(s) of the path should be surrounded by backticks.
 
-In order to access properties outside of the reported section, use the `/` syntax:
+For example, the path `` some.`non.compliant.key`.prop `` is used to access the property with value `42` in the below JSON structure: `` some.`non.compliant.key`.prop ``.
+
+```json
+{ "some": { "non.compliant.key": { "prop": 42 } } }
+```
+
+#### Arrays
+
+If a property is an array, specific elements can be accessed using index notation.
+
+In the below JSON, the path `some.nested[0]` references first element of the array with path `some.nested`, and `some.nested[2]` points to the third (and last) element:
+
+```json
+{ "some": { "nested": [1, 2, 3] } }
+```
+
+In arrays of objects, object elements can also be accessed using index notation.
+
+The path `some.nested[0].prop` has a value of `1` here:
+
+```json
+{ "some": { "nested": [{ "prop": 1 }, { "prop": 2 }, { "prop": 3 }] } }
+```
+
+It is also possible to define filters based on object element properties. For example, the path `some.nested[0].prop > 2` matches if the first array element has a `prop` value greater than 2.
+
+We can also check if _any_ array element has a `prop` value greater than 2. To do so, we would use the path `some.nested[*].prop > 2`. The `*` wildcard symbol indicates that all elements of the array should be checked, and that any single element satisfying the defined condition is sufficient for a match.
+
+Take the following example:
+
+```json
+{
+  "some": {
+    "nested": [
+      {  "prop": 1  },
+      {  "prop": 2  },
+      {  "prop": 3  }
+    ]
+  }
+}
+```
+
+- `some.nested[*].prop==2` matches because the second element has a `prop` value of 2.
+- `some.nested[*].prop>1` matches because one or more elements has a `prop` value greater than 1.
+- `some.nested[*].prop>3` does not match because there is no element with a `prop` value greater than 3.
+
+### Property Sections
+
+Most properties are defined in the `reported` section, and the CLI interprets property paths relative to the `reported` section by default. Thus, the path to property `reported.name` can simply be written as `name`.
+
+To target properties not in the `reported` section, prefix the property path with a slash (`/`) for it to be interpreted as an absolute path:
 
 ```bash title="Find nodes where reported.cpu_count is greater than 3, and desired.clean is true"
 > search cpu_count > 3 and /desired.clean==true

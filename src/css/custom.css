@@ -30,6 +30,7 @@
   --ifm-h5-font-size: 1rem;
   --ifm-h6-font-size: 0.875rem;
   --ifm-navbar-height: 4rem;
+  --ifm-container-width: 1100px;
   --docusaurus-highlighted-code-line-bg: rgb(0 0 0 / 10%);
 }
 

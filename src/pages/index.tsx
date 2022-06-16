@@ -14,6 +14,10 @@ import {
   TerminalIcon,
   TruckIcon,
 } from '@heroicons/react/outline';
+import AwsLogo from '@site/src/assets/aws.svg';
+import DigitalOceanLogo from '@site/src/assets/digitalocean.svg';
+import GoogleCloudLogo from '@site/src/assets/google-cloud.svg';
+import KubernetesLogo from '@site/src/assets/kubernetes.svg';
 import AirportSheepIllustration from '@site/src/assets/sheep-airport.svg';
 import ConfusedSheepIllustration from '@site/src/assets/sheep-confused.svg';
 import DeveloperSheepIllustration from '@site/src/assets/sheep-developer.svg';
@@ -22,6 +26,7 @@ import ProfessorSheepIllustration from '@site/src/assets/sheep-professor.svg';
 import SreSheepIllustration from '@site/src/assets/sheep-sre.svg';
 import StrongSheepIllustration from '@site/src/assets/sheep-strong.svg';
 import WinningSheepIllustration from '@site/src/assets/sheep-winning.svg';
+import VmwareLogo from '@site/src/assets/vmware.svg';
 import Layout from '@theme/Layout';
 import clsx from 'clsx';
 import React from 'react';
@@ -36,7 +41,7 @@ export default function Home(): JSX.Element {
         <h1 className={styles.heroTitle}>{siteConfig.title}</h1>
         <div className={styles.heroInner}>
           <div className={styles.heroText}>
-            <div className={styles.tagline}>{siteConfig.tagline}</div>
+            <h2 className={styles.tagline}>{siteConfig.tagline}</h2>
             <div>
               Resoto creates an <strong>inventory</strong> of your cloud,
               provides deep <strong>visibility</strong>, and reacts to{' '}
@@ -64,6 +69,49 @@ export default function Home(): JSX.Element {
         </div>
       </header>
       <main>
+        <section className={clsx(styles.section, styles.sectionAlt)}>
+          <h3 className="text--center">
+            Resoto is a meta layer on top of your infrastructure, with support
+            for&hellip;
+          </h3>
+          <div className={styles.sectionLogoContainer}>
+            <a
+              href="https://aws.amazon.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <AwsLogo />
+            </a>
+            <a
+              href="https://digitalocean.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <DigitalOceanLogo />
+            </a>
+            <a
+              href="https://kubernetes.io"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <KubernetesLogo />
+            </a>
+            <a
+              href="https://cloud.google.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <GoogleCloudLogo />
+            </a>
+            <a
+              href="https://vmware.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <VmwareLogo />
+            </a>
+          </div>
+        </section>
         <section className={styles.section}>
           <div className={styles.sectionContainer}>
             <div className={styles.flexContainer}>

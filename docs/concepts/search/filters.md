@@ -33,9 +33,8 @@ A nested property can be accessed by defining its dot-delimited path in the obje
 
 If the path contains special characters (e.g., `.`) or is otherwise noncompliant, the affected portion(s) of the path should be surrounded by backticks.
 
-For example, the path ``some.`non.compliant.key`.prop`` is used to access the property with value `42` in the below JSON structure:
+For example, the path `` some.`non.compliant.key`.prop `` is used to access the property with value `42` in the below JSON structure: `` some.`non.compliant.key`.prop ``.
 
-  ``some.`non.compliant.key`.prop``.
 ```json
 { "some": { "non.compliant.key": { "prop": 42 } } }
 ```
@@ -52,13 +51,33 @@ In the below JSON, the path `some.nested[0]` references first element of the arr
 
 In arrays of objects, object elements can also be accessed using index notation.
 
-`some.nested[0].prop` has a value of `1` here:
+The path `some.nested[0].prop` has a value of `1` here:
 
 ```json
 { "some": { "nested": [{ "prop": 1 }, { "prop": 2 }, { "prop": 3 }] } }
 ```
 
-In order to select elements, where the first nested prop is bigger than 2, we can use the path `some.nested[0].prop > 2`. If we want to select elements that have any nested prop bigger than 2, we can use the path `some.nested[*].prop > 2`. The `*` wildcard is used to perform the filter criteria on all elements of the array, where only one match would be sufficient to match.
+It is also possible to define filters based on object element properties. For example, the path `some.nested[0].prop > 2` matches if the first array element has a `prop` value greater than 2.
+
+We can also check if _any_ array element has a `prop` value greater than 2. To do so, we would use the path `some.nested[*].prop > 2`. The `*` wildcard symbol indicates that all elements of the array should be checked, and that any single element satisfying the defined condition is sufficient for a match.
+
+Take the following example:
+
+```json
+{
+  "some": {
+    "nested": [
+      {  "prop": 1  },
+      {  "prop": 2  },
+      {  "prop": 3  }
+    ]
+  }
+}
+```
+
+- `some.nested[*].prop==2` matches because the second element has a `prop` value of 2.
+- `some.nested[*].prop>1` matches because one or more elements has a `prop` value greater than 1.
+- `some.nested[*].prop>3` does not match because there is no element with a `prop` value greater than 3.
 
 ### Property Sections
 

@@ -40,7 +40,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-moment": "^1.1.2",
-    "redocusaurus": "^1.2.1"
+    "redocusaurus": "^1.2.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.2",
@@ -50,16 +50,16 @@
     "@typescript-eslint/eslint-plugin": "^5.28.0",
     "@typescript-eslint/parser": "^5.28.0",
     "commitizen": "^4.2.4",
-    "eslint": "^8.17.0",
+    "eslint": "^8.18.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-formatjs": "^3.1.5",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.30.0",
     "husky": "^8.0.1",
-    "lint-staged": "^13.0.1",
-    "prettier": "^2.7.0",
-    "typescript": "^4.7.3"
+    "lint-staged": "^13.0.2",
+    "prettier": "^2.7.1",
+    "typescript": "^4.7.4"
   },
   "browserslist": {
     "production": [

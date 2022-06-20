@@ -6,7 +6,11 @@ sidebar_label: Amazon Web Services
 
 ## Configuration
 
-See [configuration section](/docs/getting-started/configuration/worker#amazon-web-services) to learn how to configure Resoto to collect AWS resources.
+:::info
+
+Please refer to [Configuring Resoto Worker](../../getting-started/configuration/worker/cloud-providers/aws.md) for details on how to set up Resoto to collect [Amazon Web Services (AWS)](https://aws.amazon.com) resources.
+
+:::
 
 ## `aws_account`
 

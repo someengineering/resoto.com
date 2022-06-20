@@ -6,7 +6,11 @@ sidebar_label: DigitalOcean
 
 ## Configuration
 
-See [configuration section](/docs/getting-started/configuration/worker#digitalocean) to learn how to configure Resoto to collect DigitalOcean resources.
+:::info
+
+Please refer to [Configuring Resoto Worker](../../getting-started/configuration/worker/cloud-providers/digitalocean.md) for details on how to set up Resoto to collect [DigitalOcean](https://digitalocean.com) resources.
+
+:::
 
 ## `digitalocean_alert_policy`
 

@@ -16,16 +16,19 @@ Execute the following command in [Resoto Shell](../../concepts/components/shell.
 
 ```yaml title="Configuration to listen on all IPv6 and IPv4 interfaces"
 resotocore:
+  ...
   # API related properties.
   api:
+    ...
+# highlight-start
     # TCP host(s) to bind on (default: ['localhost'])
     web_hosts:
       - '::'
       - '0.0.0.0'
     # TCP port to bind on (default: 8900)
     web_port: 8900
-    [...]
-  [...]
+# highlight-end
+...
 ```
 
 Alternatively, you can use the [`config set` command](../../reference/cli/configs/set.md):
@@ -46,9 +49,11 @@ Execute the following command in [Resoto Shell](../../concepts/components/shell.
 
 ```yaml title="Configuration with additional DNS names on SAN list"
 resotocore:
+  ...
   # API related properties.
   api:
-    [...]
+    ...
+# highlight-start
     # The certificate configuration for this server.
     host_certificate:
       # The common name of the certificate
@@ -62,7 +67,8 @@ resotocore:
         - '*.some.engineering'
       # List of IP addresses to include in CSR
       san_ip_addresses: []
-  [...]
+# highlight-end
+...
 ```
 
 ## Workflow Schedules
@@ -77,13 +83,16 @@ Execute the following command in [Resoto Shell](../../concepts/components/shell.
 
 ```yaml
 resotocore:
-  [...]
+  ...
   # Workflow related properties.
   workflows:
+    ...
     collect_and_cleanup:
+# highlight-start
       # Cron expression as schedule for the workflow to run.
       schedule: '0 * * * *'
-    [...]
+# highlight-end
+...
 ```
 
 Alternatively, you can use the [`config set` command](../../reference/cli/configs/set.md):

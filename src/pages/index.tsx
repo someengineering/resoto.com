@@ -75,41 +75,17 @@ export default function Home(): JSX.Element {
             for&hellip;
           </h3>
           <div className={styles.sectionLogoContainer}>
-            <a
-              href="https://aws.amazon.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Link to="/docs/getting-started/configuration/worker#amazon-web-services">
               <AwsLogo />
-            </a>
-            <a
-              href="https://digitalocean.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            </Link>
+            <Link to="/docs/getting-started/configuration/worker#digitalocean">
               <DigitalOceanLogo />
-            </a>
-            <a
-              href="https://kubernetes.io"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <KubernetesLogo />
-            </a>
-            <a
-              href="https://cloud.google.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            </Link>
+            <KubernetesLogo />
+            <Link to="/docs/getting-started/configuration/worker#google-cloud-platform">
               <GoogleCloudLogo />
-            </a>
-            <a
-              href="https://vmware.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <VmwareLogo />
-            </a>
+            </Link>
+            <VmwareLogo />
           </div>
         </section>
         <section className={styles.section}>

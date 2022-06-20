@@ -186,7 +186,7 @@ html[data-theme='dark'] .sectionAlt {
   align-items: flex-end;
 }
 
-.sectionLogoContainer > a {
+.sectionLogoContainer > * {
   color: var(--ifm-font-color-base);
   height: 2.5rem;
   max-width: 10rem;

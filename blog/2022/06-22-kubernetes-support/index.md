@@ -7,7 +7,7 @@ image: ./img/banner-social.png
 
 # Kubernetes Support
 
-I'm happy to announce that Resoto now has support for Kubernetes resources!
+Kubernetes is the de-facto standard to orchestrate containerized applications. It is the go-to solution, no matter where your infrastructure is running on. Resoto can already collect resources in AWS, GCP, and DigitalOcean - all of them support Kubernetes. I'm happy to announce that Resoto now has support for Kubernetes resources!
 
 ![Kubernetes](./img/banner.png)
 

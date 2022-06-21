@@ -4,6 +4,14 @@ sidebar_label: Google Cloud Platform
 
 # Google Cloud Platform Resources
 
+## Configuration
+
+:::info
+
+Please refer to [Configuring Resoto Worker](../../getting-started/configuration/worker/cloud-providers/gcp.md) for details on how to set up Resoto to collect [Google Cloud Platform (GCP)](https://cloud.google.com) resources.
+
+:::
+
 ## `gcp_autoscaler`
 
 ![gcp_autoscaler](./img/gcp/gcp_autoscaler.svg)

@@ -60,9 +60,9 @@ A [node](/docs/concepts/graph/node) is essentially an indexed JSON document cont
     "instance_memory": 16,
     "instance_type": "t2.xlarge",
     "instance_status": "running",
-    [...]
+    ...
   },
-  [...]
+  ...
 }
 ```
 
@@ -80,7 +80,7 @@ Among other things, Resoto allows you to [search this metadata](/blog/2022/02/04
 ​kind=aws_ec2_instance, id=i-074fcfe526f95c9fd, name=16ca5.prod1, instance_cores=16, age=3yr2mo, cloud=aws, account=eng-production, region=us-west-2
 ​kind=aws_ec2_instance, id=i-04e09d3c714048c4d, name=16ca6.prod1, instance_cores=16, age=3yr2mo, cloud=aws, account=eng-production, region=us-west-2
 ​kind=aws_ec2_instance, id=i-0d2dfda13e02b2b20, name=16ca7.prod1, instance_cores=16, age=2yr9mo, cloud=aws, account=eng-production, region=us-west-2
-[...]
+...
 # highlight-end
 ```
 
@@ -108,7 +108,7 @@ The search returned a list of all EC2 instances with more than 4 cores. There ar
 ​  type: m5.4xlarge
 ​  status: stopped
 ​instances_total: 7
-[...]
+...
 # highlight-end
 ```
 
@@ -152,7 +152,7 @@ Instead of skipping verification of the TLS certificate, you can also [download 
 
 ## Querying a Metric
 
-Open up your Prometheus installation (in our Docker stack it is running at [`http://localhost:9090`](http://localhost:9090)) and you should see the following:
+Open up your [Prometheus](https://prometheus.io) installation (in our Docker stack it is running at [`http://localhost:9090`](http://localhost:9090)) and you should see the following:
 
 ![Empty Prometheus](./img/empty_prometheus.png)
 
@@ -234,8 +234,8 @@ resotometrics:
       search: 'aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account, /ancestors.region.reported.name as region, instance_type as type, instance_status as status: sum(1) as instances_total): is(instance)'
       # Type of metric (gauge or counter)
       type: 'gauge'
-    [...]
-  [...]
+    ...
+  ...
 ```
 
 As [described above](#aggregation), the `aggregate` expression in the `search` field is what creates the samples of a metric.

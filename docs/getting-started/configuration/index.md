@@ -8,10 +8,7 @@ pagination_next: getting-started/usage/search
 
 ```mdx-code-block
 import { useCurrentSidebarCategory } from '@docusaurus/theme-common';
-import LatestRelease from '@site/src/components/LatestRelease';
 import DocCardList from '@theme/DocCardList';
-import TabItem from '@theme/TabItem';
-import Tabs from '@theme/Tabs';
 ```
 
 ## Internal Configuration
@@ -84,8 +81,8 @@ resotoworker:
   web_path: /
   # Web server tcp port to listen on
   web_port: 9956
-  [...]
-[...]
+  ...
+...
 ```
 
 :::note
@@ -110,18 +107,18 @@ Resoto also has support for overriding configuration. Overrides allow for values
 
 There are two ways to overriding configuration properties:
 
-- `--override` flag
+1. `--override` flag
 
-  ```bash
-  $ resotoworker --override resotoworker.pool_size=5 resotoworker.cleanup_pool_size=20
-  ```
+   ```bash
+   $ resotoworker --override resotoworker.pool_size=5 resotoworker.cleanup_pool_size=20
+   ```
 
-- `<COMPONENT_NAME>_OVERRIDE` environment variable
+2. `<COMPONENT_NAME>_OVERRIDE` environment variable
 
-  ```bash
-  $ export RESOTOWORKER_OVERRIDE=resotoworker.pool_size=5
-  $ resotoworker
-  ```
+   ```bash
+   $ export RESOTOWORKER_OVERRIDE=resotoworker.pool_size=5
+   $ resotoworker
+   ```
 
 It is possible to override multiple values by delimiting them with a space:
 

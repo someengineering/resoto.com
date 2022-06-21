@@ -1,10 +1,5 @@
 # Telemetry
 
-```mdx-code-block
-import TabItem from '@theme/TabItem';
-import Tabs from '@theme/Tabs';
-```
-
 Resoto collects anonymized telemetry data to inform product development. Telemetry data helps pinpoint roadblocks or issues, and also helps to identify how we can help users get more value out of Resoto.
 
 All data collected is anonymous—**we do not capture or store any personally identifiable information (PII)**. There are no unique identifiers that allow us to correlate a Resoto installation back to an actual person.
@@ -30,4 +25,4 @@ Error reporting aids us in identifying and fixing bugs or issues in Resoto. This
 
 ## Disabling Telemetry Reporting {#disabling}
 
-Telemetry can be disabled using the `resotocore.runtime.usage_metrics` [config option](../getting-started/configuration/index.md).
+Telemetry can be disabled via the `resotocore.runtime.usage_metrics` [Resoto Core configuration](../getting-started/configuration/core.md) option.

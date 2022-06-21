@@ -75,14 +75,16 @@ export default function Home(): JSX.Element {
             for&hellip;
           </h3>
           <div className={styles.sectionLogoContainer}>
-            <Link to="/docs/getting-started/configuration/worker#amazon-web-services">
+            <Link to="/docs/getting-started/configuration/worker/cloud-providers/aws">
               <AwsLogo />
             </Link>
-            <Link to="/docs/getting-started/configuration/worker#digitalocean">
+            <Link to="/docs/getting-started/configuration/worker/cloud-providers/digitalocean">
               <DigitalOceanLogo />
             </Link>
-            <KubernetesLogo />
-            <Link to="/docs/getting-started/configuration/worker#google-cloud-platform">
+            <Link to="/docs/getting-started/configuration/worker/cloud-providers/kubernetes">
+              <KubernetesLogo />
+            </Link>
+            <Link to="/docs/getting-started/configuration/worker/cloud-providers/gcp">
               <GoogleCloudLogo />
             </Link>
             <VmwareLogo />
@@ -356,29 +358,17 @@ export default function Home(): JSX.Element {
                     open source
                   </a>{' '}
                   and completely free to use, with out-of-the-box support for{' '}
-                  <a
-                    href="https://aws.amazon.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <Link to="/docs/getting-started/configuration/worker/cloud-providers/aws">
                     Amazon Web Services
-                  </a>
+                  </Link>
                   ,{' '}
-                  <a
-                    href="https://cloud.google.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <Link to="/docs/getting-started/configuration/worker/cloud-providers/gcp">
                     Google Cloud Platform
-                  </a>
+                  </Link>
                   , and{' '}
-                  <a
-                    href="https://digitalocean.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <Link to="/docs/getting-started/configuration/worker/cloud-providers/digitalocean">
                     DigitalOcean
-                  </a>
+                  </Link>
                   .
                 </p>
                 <p>

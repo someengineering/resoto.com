@@ -7,7 +7,6 @@ pagination_next: getting-started/configuration/index
 # Installing Resoto with pip
 
 ```mdx-code-block
-import LatestRelease from '@site/src/components/LatestRelease';
 import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
@@ -119,7 +118,7 @@ $ resh --resotocore-uri https://localhost:8900 --psk "$pre_shared_key"
 
 ### Configuring Resoto
 
-Please refer to the [Configuring Resoto Cloud Providers](../configuration/worker.md#cloud-providers) tutorial for details.
+Please refer to the [Configuring Resoto Worker](../configuration/worker/index.md#cloud-providers) tutorial for details.
 
 ### Collecting Cloud Resources
 

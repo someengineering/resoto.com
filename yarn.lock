@@ -2395,6 +2395,11 @@
   resolved "https://registry.yarnpkg.com/@types/parse5/-/parse5-5.0.3.tgz#e7b5aebbac150f8b5fdd4a46e7f0bd8e65e19109"
   integrity sha512-kUNnecmtkunAoQ3CnjmMkzNU/gtxG8guhi+Fk2U/kOpIKjIMKnXGp4IJCgQJrXSgMsWYimYG4TGjz/UzbGEBTw==
 
+"@types/picomatch@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@types/picomatch/-/picomatch-2.3.0.tgz#75db5e75a713c5a83d5b76780c3da84a82806003"
+  integrity sha512-O397rnSS9iQI4OirieAtsDqvCj4+3eY1J+EPdNTKuHuRWIfUoGyzX294o8C4KJYaLqgSrd2o60c5EqCU8Zv02g==
+
 "@types/prop-types@*":
   version "15.7.5"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.5.tgz#5f19d2b85a98e9558036f6a3cacc8819420f05cf"
@@ -5030,16 +5035,18 @@ eslint-config-prettier@^8.5.0:
   resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-8.5.0.tgz#5a81680ec934beca02c7b1a61cf8ca34b66feab1"
   integrity sha512-obmWKLUNCnhtQRKc+tmnYuQl0pFU1ibYJQ5BGhTVB08bHe9wC8qUeG7c08dj9XX+AuPj1YSGSQIHl1pnDHZR0Q==
 
-eslint-plugin-formatjs@^3.1.5:
-  version "3.1.5"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-formatjs/-/eslint-plugin-formatjs-3.1.5.tgz#2f86ceabfa3f1a3a2e240c0a869d6dce4834468b"
-  integrity sha512-FZM7mS7bCMHrbjB6XTH13N39jSIrDZPmFjYWVXSoVbMilOhd1YPbyLCRPm/MWuW00P8MVHW2NPsIXEt/v4xE7Q==
+eslint-plugin-formatjs@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-formatjs/-/eslint-plugin-formatjs-4.0.1.tgz#0ea113804d89095f16dca8b5347f34a116d17109"
+  integrity sha512-Dz5OhxwI/kfwsSvBeyrgITtwHW8qeynScrlQug2XSMVpQ7dCoJfCLlfV+Qvu7s++5c9yFk91/jCHpHkxfqdKJA==
   dependencies:
     "@formatjs/icu-messageformat-parser" "2.1.3"
     "@formatjs/ts-transformer" "3.9.8"
     "@types/eslint" "7 || 8"
+    "@types/picomatch" "^2.3.0"
     "@typescript-eslint/typescript-estree" "^5.9.1"
     emoji-regex "^10.0.0"
+    picomatch "^2.3.1"
     tslib "2.4.0"
     typescript "^4.5"
 

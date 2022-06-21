@@ -118,7 +118,7 @@ $ resh --resotocore-uri https://localhost:8900 --psk "$pre_shared_key"
 
 ### Configuring Resoto
 
-Please refer to the [Configuring Resoto Worker](../configuration/worker/index.md#cloud-providers) tutorial for details.
+Please refer to [Configuring Resoto](../configuration/index.md) for details.
 
 ### Collecting Cloud Resources
 

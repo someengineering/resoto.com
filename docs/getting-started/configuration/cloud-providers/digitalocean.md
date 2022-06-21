@@ -4,7 +4,7 @@ sidebar_label: DigitalOcean
 
 # Configuring DigitalOcean Resource Collection
 
-The [DigitalOcean](../../../../reference/data-models/digitalocean.md) collector is configured within the [Resoto Worker configuration](../index.md).
+The [DigitalOcean](../../../reference/data-models/digitalocean.md) collector is configured within the [Resoto Worker configuration](../index.md).
 
 Add `digitalocean` to the list of collectors and define API tokens and/or access keys by modifying the [Resoto Worker configuration](../index.md) as follows:
 
@@ -40,7 +40,7 @@ This is especially useful in cases where tokens are stored as secrets in a syste
 
 :::
 
-Once one or more cloud providers have been configured the `collect_and_cleanup` [workflow](../../../../concepts/automation/workflow.md) can be run by executing:
+Once one or more cloud providers have been configured the `collect_and_cleanup` [workflow](../../../concepts/automation/workflow.md) can be run by executing:
 
 ```bash
 > workflow run collect_and_cleanup

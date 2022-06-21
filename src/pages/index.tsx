@@ -75,16 +75,16 @@ export default function Home(): JSX.Element {
             for&hellip;
           </h3>
           <div className={styles.sectionLogoContainer}>
-            <Link to="/docs/getting-started/configuration/worker/cloud-providers/aws">
+            <Link to="/docs/getting-started/configuration/cloud-providers/aws">
               <AwsLogo />
             </Link>
-            <Link to="/docs/getting-started/configuration/worker/cloud-providers/digitalocean">
+            <Link to="/docs/getting-started/configuration/cloud-providers/digitalocean">
               <DigitalOceanLogo />
             </Link>
-            <Link to="/docs/getting-started/configuration/worker/cloud-providers/kubernetes">
+            <Link to="/docs/getting-started/configuration/cloud-providers/kubernetes">
               <KubernetesLogo />
             </Link>
-            <Link to="/docs/getting-started/configuration/worker/cloud-providers/gcp">
+            <Link to="/docs/getting-started/configuration/cloud-providers/gcp">
               <GoogleCloudLogo />
             </Link>
             <VmwareLogo />
@@ -358,15 +358,15 @@ export default function Home(): JSX.Element {
                     open source
                   </a>{' '}
                   and completely free to use, with out-of-the-box support for{' '}
-                  <Link to="/docs/getting-started/configuration/worker/cloud-providers/aws">
+                  <Link to="/docs/getting-started/configuration/cloud-providers/aws">
                     Amazon Web Services
                   </Link>
                   ,{' '}
-                  <Link to="/docs/getting-started/configuration/worker/cloud-providers/gcp">
+                  <Link to="/docs/getting-started/configuration/cloud-providers/gcp">
                     Google Cloud Platform
                   </Link>
                   , and{' '}
-                  <Link to="/docs/getting-started/configuration/worker/cloud-providers/digitalocean">
+                  <Link to="/docs/getting-started/configuration/cloud-providers/digitalocean">
                     DigitalOcean
                   </Link>
                   .

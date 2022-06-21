@@ -4,7 +4,7 @@ sidebar_label: Amazon Web Services
 
 # Configuring Amazon Web Services Resource Collection
 
-The [Amazon Web Services (AWS)](../../../../reference/data-models/aws.md) collector is configured within the [Resoto Worker configuration](../index.md).
+The [Amazon Web Services (AWS)](../../../reference/data-models/aws.md) collector is configured within the [Resoto Worker configuration](../index.md).
 
 Add `k8s` to the list of collectors by modifying the [Resoto Worker configuration](../index.md) as follows:
 
@@ -38,7 +38,7 @@ aws_session_token=baz
 
 Boto3 can also [load credentials from `/home/resoto/.aws/config`](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html#aws-config-file). You can change this default location by setting the `AWS_CONFIG_FILE` environment variable.
 
-Next, modify the [Resoto Worker](../../../../concepts/components/worker.md) configuration as follows, making sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null` (Resoto will fall back to loading credentials from the environment/home directory):
+Next, modify the [Resoto Worker](../../../concepts/components/worker.md) configuration as follows, making sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null` (Resoto will fall back to loading credentials from the environment/home directory):
 
 ```yaml title="Resoto Worker configuration"
 resotoworker:
@@ -77,7 +77,7 @@ external_id = a5eMybsyGIowimdZqpZWxxxxxxxxxxxx
 credential_source = Ec2InstanceMetadata
 ```
 
-Next, modify the [Resoto Worker](../../../../concepts/components/worker.md) configuration as follows, making sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null`:
+Next, modify the [Resoto Worker](../../../concepts/components/worker.md) configuration as follows, making sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null`:
 
 ```yaml title="Resoto Worker configuration"
 resotoworker:
@@ -101,7 +101,7 @@ Using a static access key is only recommended for testing.
 
 :::
 
-Modify the [Resoto Worker](../../../../concepts/components/worker.md) configuration as follows:
+Modify the [Resoto Worker](../../../concepts/components/worker.md) configuration as follows:
 
 ```yaml title="Resoto Worker configuration"
 resotoworker:

@@ -12,11 +12,13 @@ html[data-theme='dark'] .hero {
   margin: 0 auto;
   max-width: var(--ifm-container-width);
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
-.heroInner > * {
-  margin-right: 1.5rem;
+.hero .flexContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
 }
 
 .heroTitle {
@@ -41,45 +43,43 @@ html[data-theme='dark'] .hero {
   margin-bottom: 1rem;
 }
 
-.heroText .cta {
+.hero .cta {
   margin: 1.5rem 0 0;
   display: flex;
   align-items: center;
 }
 
-.heroText ul {
+.hero ul {
   list-style: none;
   margin: 0 0 0 1.5em;
   padding: 0;
   display: flex;
-  font-size: 65%;
+  font-size: 20px;
   font-weight: 900;
 }
 
-.heroText ul li {
+.hero ul li {
   margin-right: 1em;
 }
 
-.heroText ul li:before {
+.hero ul li:before {
   content: '✓';
   margin-right: 0.25em;
   font-weight: 900;
   color: var(--ifm-color-primary);
 }
 
-.heroLogo {
-  height: 198px;
+.heroAnimation {
+  height: 300px;
   width: auto;
   flex-shrink: 0;
-  animation-duration: 2s;
-  animation-name: logo-animation;
-  margin-left: 30px;
+  margin: 0 0 -72px 24px !important;
 }
 
 .section {
   background-color: var(--ifm-color-primary-contrast-background);
   color: var(--ifm-color-primary-contrast-foreground);
-  padding: 60px 48px;
+  padding: 48px;
   margin: 0 auto;
   line-height: 1.45;
   text-align: left;
@@ -162,6 +162,17 @@ html[data-theme='dark'] .sectionAlt {
   margin: 0.75rem 0 0 auto;
 }
 
+.section .cta {
+  text-align: center;
+  margin: 36px 0 0;
+}
+
+.section .cta p {
+  font-size: 110%;
+  font-weight: bold;
+  margin: 0.25rem auto 0 0;
+}
+
 .sectionImage {
   height: 150px;
   width: 150px;
@@ -203,7 +214,7 @@ html[data-theme='dark'] .sectionAlt {
 }
 
 .sectionLogoContainer > * + * {
-  margin: 0 0 1rem 3rem;
+  margin: 0 0 0 3rem;
 }
 
 .sectionImageContainer > * {
@@ -311,8 +322,25 @@ html[data-theme='dark'] .quotation {
 }
 
 @media screen and (max-width: 996px) {
-  .hero {
-    padding: 24px;
+  .hero,
+  .section {
+    padding: 36px 24px;
+  }
+
+  .heroInner {
+    flex-direction: column;
+  }
+
+  .heroInner > * {
+    margin-right: 0;
+  }
+
+  .hero .flexContainer {
+    flex-direction: column !important;
+  }
+
+  .hero .flexContainer > * + * {
+    margin: 20px 0 0 !important;
   }
 
   .heroText {
@@ -320,17 +348,18 @@ html[data-theme='dark'] .quotation {
     margin: 0 auto;
   }
 
-  .heroText .cta {
+  .hero .cta {
     flex-direction: column-reverse;
-    margin: 1rem 0 0 0;
+    margin: 20px 0 0 0;
   }
 
-  .heroText ul {
+  .hero ul {
     margin: 0 0 1rem 0;
   }
 
-  .heroLogo {
-    display: none;
+  .heroAnimation {
+    margin: 30px auto 0 !important;
+    width: 100%;
   }
 
   .heroButtons {
@@ -339,18 +368,25 @@ html[data-theme='dark'] .quotation {
 
   .flexContainer {
     width: 100%;
+    text-align: center;
+    flex-direction: column-reverse !important;
+  }
+
+  .flexContainer div {
+    flex-direction: column;
   }
 
   .flexContainer > * + * {
-    margin: 0;
-  }
-
-  .sectionImage {
-    display: none;
+    margin: 0 0 24px !important;
   }
 
   .sectionImageContainer {
     width: 80%;
+  }
+
+  .section .cta {
+    text-align: center;
+    margin: 24px 0 0;
   }
 
   .quotation {

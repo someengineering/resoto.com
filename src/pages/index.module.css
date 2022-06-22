@@ -297,6 +297,10 @@ html[data-theme='dark'] .quotation {
   background-color: var(--ifm-card-background-color);
 }
 
+html[data-theme='dark'] .sectionItems li {
+  --ifm-card-background-color: #000d19;
+}
+
 .sectionItems h3 {
   display: flex;
   align-items: center;

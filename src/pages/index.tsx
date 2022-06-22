@@ -222,6 +222,11 @@ export default function Home(): JSX.Element {
                 down development.
               </p>
             </div>
+            <img
+              src="img/illustrations/leverage-for-cloud-engineers.png"
+              alt=""
+              className={clsx(styles.sectionImage, styles.overlappedImage)}
+            />
             <ul className={styles.sectionItems}>
               <li>
                 <Link to="/docs/concepts/search">

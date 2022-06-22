@@ -161,7 +161,7 @@ html[data-theme='dark'] .sectionAlt {
   width: auto;
   max-width: 100%;
   max-height: 18rem;
-  margin: 1.5rem 0 0;
+  margin: 1.5rem auto 0;
 }
 
 .fadingImage {
@@ -169,6 +169,11 @@ html[data-theme='dark'] .sectionAlt {
   margin: max(-5em, -7.5vw) auto max(-12rem, -18vw);
   z-index: -50;
   position: relative;
+}
+
+.overlappedImage {
+  max-height: 20rem;
+  margin: 1.5rem auto max(-9rem, -15vw);
 }
 
 .sectionLogoContainer {

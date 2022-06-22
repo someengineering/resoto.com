@@ -27,14 +27,10 @@ html[data-theme='dark'] .hero {
 
 .heroText {
   color: var(--ifm-color-primary-contrast-foreground);
-  font-size: 30px;
+  font-size: 32px;
   line-height: 1.2;
   margin: 0;
   flex-grow: 1;
-}
-
-.heroText strong {
-  color: var(--ifm-color-primary) !important;
 }
 
 .heroText .tagline {
@@ -72,10 +68,10 @@ html[data-theme='dark'] .hero {
 }
 
 .heroAnimation {
-  height: 400px;
+  height: 450px;
   width: auto;
   flex-shrink: 0;
-  margin: -48px -48px -120px -24px !important;
+  margin: -60px -60px -132px -60px !important;
   overflow: visible;
 }
 
@@ -342,6 +338,11 @@ html[data-theme='dark'] .sectionItems li {
   .heroText {
     text-align: center;
     margin: 0 auto;
+    font-size: 24px;
+  }
+
+  .heroText .tagline {
+    font-size: 48px;
   }
 
   .hero .cta {

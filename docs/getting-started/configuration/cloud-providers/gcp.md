@@ -21,6 +21,8 @@ resotoworker:
 
 ## Authentication
 
+You can authenticate with [Google Cloud Platform](../../../reference/data-models/gcp.md) via [service account JSON files](#service-account-json-files) or [automatic discovery](#automatic-discovery).
+
 ### Service Account JSON Files
 
 Volume mount the service account JSON file to a path inside the `resotoworker` container (e.g., `/gcp`) and modify the [Resoto Worker](../../../concepts/components/worker.md) configuration as follows:

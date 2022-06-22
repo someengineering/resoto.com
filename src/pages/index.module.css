@@ -38,7 +38,8 @@ html[data-theme='dark'] .hero {
 }
 
 .heroText .tagline {
-  font-size: 50px;
+  color: var(--ifm-color-primary);
+  font-size: 54px;
   font-weight: 700;
   margin-bottom: 1rem;
 }
@@ -142,7 +143,6 @@ html[data-theme='dark'] .sectionAlt {
   margin-bottom: 5px;
 }
 
-.tagline,
 .sectionTitle,
 .section h2,
 .section h3 {
@@ -202,9 +202,10 @@ html[data-theme='dark'] .sectionAlt {
 .sectionLogoContainer > * {
   color: var(--ifm-font-color-base);
   height: 2.5rem;
-  max-width: 10rem;
+  max-width: 12rem;
   display: flex;
   flex-shrink: 1;
+  margin: 0 1.5rem;
 }
 
 .sectionLogoContainer > a:hover {
@@ -215,16 +216,9 @@ html[data-theme='dark'] .sectionAlt {
   height: 100%;
 }
 
-.sectionLogoContainer > * + * {
-  margin: 0 0 0 3rem;
-}
-
 .sectionImageContainer > * {
   height: 10rem;
-}
-
-.sectionImageContainer > * + * {
-  margin: 0 0 0 1rem;
+  margin: 0 0.5rem;
 }
 
 .quotation {

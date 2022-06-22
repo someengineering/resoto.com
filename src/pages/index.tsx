@@ -23,7 +23,6 @@ import HappySheepIllustration from '@site/src/assets/sheep-happy.svg';
 import ProfessorSheepIllustration from '@site/src/assets/sheep-professor.svg';
 import StrongSheepIllustration from '@site/src/assets/sheep-strong.svg';
 import WinningSheepIllustration from '@site/src/assets/sheep-winning.svg';
-import VmwareLogo from '@site/src/assets/vmware.svg';
 import Layout from '@theme/Layout';
 import clsx from 'clsx';
 import lottie from 'lottie-web';
@@ -52,9 +51,8 @@ export default function Home(): JSX.Element {
             <div className={styles.heroText}>
               <h2 className={styles.tagline}>{siteConfig.tagline}</h2>
               <div>
-                Resoto creates an <strong>inventory</strong> of your cloud,
-                provides deep <strong>visibility</strong>, and reacts to{' '}
-                <strong>changes</strong> in your infrastructure.
+                Resoto creates an inventory of your cloud, provides deep
+                visibility, and reacts to changes in your infrastructure.
               </div>
             </div>
             <div id="heroAnimation" className={styles.heroAnimation} />
@@ -93,7 +91,6 @@ export default function Home(): JSX.Element {
             <Link to="/docs/getting-started/configuration/cloud-providers/gcp">
               <GoogleCloudLogo />
             </Link>
-            <VmwareLogo />
           </div>
         </section>
         <section className={styles.section}>
@@ -239,7 +236,7 @@ export default function Home(): JSX.Element {
                 </Link>
                 <p>
                   Write ad-hoc queries with full-text metadata search across all
-                  your cloud accounts or projects using the{' '}
+                  your cloud accounts using the{' '}
                   <Link to="/docs/reference/cli">command-line interface</Link>.
                 </p>
               </li>
@@ -252,9 +249,9 @@ export default function Home(): JSX.Element {
                 </Link>
                 <p>
                   Turn your <Link to="/docs/concepts/search">searches</Link>{' '}
-                  into regular reports, with fleet-wide metrics you can export
-                  to your existing tools and share with colleagues in Product or
-                  Finance.
+                  into regular reports with fleet-wide, actionable metrics that
+                  you can export to popular tools and share with colleagues in
+                  Product or Finance.
                 </p>
               </li>
               <li>
@@ -265,9 +262,10 @@ export default function Home(): JSX.Element {
                   </h3>
                 </Link>
                 <p>
-                  With <Link to="/docs/concepts/automation/job">jobs</Link>, you
-                  can schedule recurring tasks such as identifying non-compliant
-                  resources or enforcing{' '}
+                  Automate your work with{' '}
+                  <Link to="/docs/concepts/automation/job">jobs</Link> that
+                  execute recurring tasks, such as identifying and cleaning up
+                  orphaned resources and enforcing{' '}
                   <Link to="/docs/concepts/tagging">tag</Link> structures.
                 </p>
               </li>

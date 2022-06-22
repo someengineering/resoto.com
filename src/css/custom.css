@@ -172,6 +172,17 @@ div[class^='announcementBar_'] .close {
   border-right: 0.75em solid var(--ifm-button-background-color);
 }
 
+.footer__items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer__item {
+  margin: 0 0.75em;
+}
+
 .theme-doc-sidebar-container {
   background-color: #d9b8ff22;
   border: none !important;

@@ -18,11 +18,6 @@ import AwsLogo from '@site/src/assets/aws.svg';
 import DigitalOceanLogo from '@site/src/assets/digitalocean.svg';
 import GoogleCloudLogo from '@site/src/assets/google-cloud.svg';
 import KubernetesLogo from '@site/src/assets/kubernetes.svg';
-import AirportSheepIllustration from '@site/src/assets/sheep-airport.svg';
-import HappySheepIllustration from '@site/src/assets/sheep-happy.svg';
-import ProfessorSheepIllustration from '@site/src/assets/sheep-professor.svg';
-import StrongSheepIllustration from '@site/src/assets/sheep-strong.svg';
-import WinningSheepIllustration from '@site/src/assets/sheep-winning.svg';
 import Layout from '@theme/Layout';
 import clsx from 'clsx';
 import lottie from 'lottie-web';
@@ -95,30 +90,29 @@ export default function Home(): JSX.Element {
         </section>
         <section className={styles.section}>
           <div className={styles.sectionContainer}>
-            <div className={styles.flexContainer}>
-              <HappySheepIllustration className={styles.sectionImage} />
-              <div>
-                <span
-                  className={clsx(
-                    styles.sectionBadge,
-                    'badge badge--primary badge--lg'
-                  )}
-                >
-                  Why Resoto?
-                </span>
-                <h2 className={styles.sectionTitle}>
-                  If you don&rsquo;t know what is running in your cloud, it will
-                  cost you. (Literally.)
-                </h2>
-                <p>
-                  Resoto allows you to give your engineers liberal permissions
-                  without losing control of your cloud infrastructure.
-                </p>
-              </div>
+            <div>
+              <span
+                className={clsx(
+                  styles.sectionBadge,
+                  'badge badge--primary badge--lg'
+                )}
+              >
+                Why Resoto?
+              </span>
+              <h2 className={styles.sectionTitle}>
+                If you don&rsquo;t know what is running in your cloud, it will
+                cost you. (Literally.)
+              </h2>
+              <p>
+                Resoto allows you to give your engineers liberal permissions
+                without losing control of your cloud infrastructure.
+              </p>
             </div>
-            <div className={styles.sectionImageContainer}>
-              <img src="img/illustrations/why-resoto.png" alt="" />
-            </div>
+            <img
+              src="img/illustrations/why-resoto.png"
+              alt=""
+              className={styles.sectionImage}
+            />
             <div className={styles.cta}>
               <Link
                 to="/docs/getting-started/installation"
@@ -132,27 +126,24 @@ export default function Home(): JSX.Element {
         </section>
         <section className={clsx(styles.section, styles.sectionAlt)}>
           <div className={styles.sectionContainer}>
-            <div className={styles.flexContainer}>
-              <StrongSheepIllustration className={styles.sectionImage} />
-              <div>
-                <span
-                  className={clsx(
-                    styles.sectionBadge,
-                    'badge badge--primary badge--lg'
-                  )}
-                >
-                  Take Control
-                </span>
-                <h2 className={styles.sectionTitle}>
-                  Build infrastructure that moves your company forward.
-                </h2>
-                <p>
-                  Resoto collects resource metadata and stores that data in a
-                  directed graph. You get visibility into resources in different
-                  clouds, organizations, regions, sub-accounts, etc.&mdash;all
-                  from a single place.
-                </p>
-              </div>
+            <div>
+              <span
+                className={clsx(
+                  styles.sectionBadge,
+                  'badge badge--primary badge--lg'
+                )}
+              >
+                Take Control
+              </span>
+              <h2 className={styles.sectionTitle}>
+                Build infrastructure that moves your company forward.
+              </h2>
+              <p>
+                Resoto collects resource metadata and stores that data in a
+                directed graph. You get visibility into resources in different
+                clouds, organizations, regions, sub-accounts, etc.&mdash;all
+                from a single place.
+              </p>
             </div>
             <ul className={styles.sectionItems}>
               <li>
@@ -207,27 +198,24 @@ export default function Home(): JSX.Element {
         </section>
         <section className={styles.section}>
           <div className={styles.sectionContainer}>
-            <div className={styles.flexContainer}>
-              <AirportSheepIllustration className={styles.sectionImage} />
-              <div>
-                <span
-                  className={clsx(
-                    styles.sectionBadge,
-                    'badge badge--primary badge--lg'
-                  )}
-                >
-                  Leverage for Cloud Engineers
-                </span>
-                <h2 className={styles.sectionTitle}>
-                  Resoto keeps track of your infrastructure and puts all the
-                  data at your fingertips.
-                </h2>
-                <p>
-                  Understand who is running what, answer questions about your
-                  infrastructure, and ensure efficiency at scale without slowing
-                  down development.
-                </p>
-              </div>
+            <div>
+              <span
+                className={clsx(
+                  styles.sectionBadge,
+                  'badge badge--primary badge--lg'
+                )}
+              >
+                Leverage for Cloud Engineers
+              </span>
+              <h2 className={styles.sectionTitle}>
+                Resoto keeps track of your infrastructure and puts all the data
+                at your fingertips.
+              </h2>
+              <p>
+                Understand who is running what, answer questions about your
+                infrastructure, and ensure efficiency at scale without slowing
+                down development.
+              </p>
             </div>
             <ul className={styles.sectionItems}>
               <li>
@@ -286,48 +274,45 @@ export default function Home(): JSX.Element {
         </section>
         <section className={clsx(styles.section, styles.sectionAlt)}>
           <div className={styles.sectionContainer}>
-            <div className={styles.flexContainer}>
-              <ProfessorSheepIllustration className={styles.sectionImage} />
-              <div>
-                <span
-                  className={clsx(
-                    styles.sectionBadge,
-                    'badge badge--primary badge--lg'
-                  )}
+            <div>
+              <span
+                className={clsx(
+                  styles.sectionBadge,
+                  'badge badge--primary badge--lg'
+                )}
+              >
+                Say Goodbye to Busywork
+              </span>
+              <h2 className={styles.sectionTitle}>
+                It&rsquo;s time to automate your infrastructure tasks.
+              </h2>
+              <p>
+                Resoto is{' '}
+                <a
+                  href="https://github.com/someengineering/resoto/blob/main/LICENSE"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  Say Goodbye to Busywork
-                </span>
-                <h2 className={styles.sectionTitle}>
-                  It&rsquo;s time to automate your infrastructure tasks.
-                </h2>
-                <p>
-                  Resoto is{' '}
-                  <a
-                    href="https://github.com/someengineering/resoto/blob/main/LICENSE"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    open source
-                  </a>{' '}
-                  and completely free to use, with out-of-the-box support for{' '}
-                  <Link to="/docs/getting-started/configuration/cloud-providers/aws">
-                    Amazon Web Services
-                  </Link>
-                  ,{' '}
-                  <Link to="/docs/getting-started/configuration/cloud-providers/gcp">
-                    Google Cloud Platform
-                  </Link>
-                  ,{' '}
-                  <Link to="/docs/getting-started/configuration/cloud-providers/digitalocean">
-                    DigitalOcean
-                  </Link>
-                  , and{' '}
-                  <Link to="/docs/getting-started/configuration/cloud-providers/kubernetes">
-                    Kubernetes
-                  </Link>
-                  .
-                </p>
-              </div>
+                  open source
+                </a>{' '}
+                and completely free to use, with out-of-the-box support for{' '}
+                <Link to="/docs/getting-started/configuration/cloud-providers/aws">
+                  Amazon Web Services
+                </Link>
+                ,{' '}
+                <Link to="/docs/getting-started/configuration/cloud-providers/gcp">
+                  Google Cloud Platform
+                </Link>
+                ,{' '}
+                <Link to="/docs/getting-started/configuration/cloud-providers/digitalocean">
+                  DigitalOcean
+                </Link>
+                , and{' '}
+                <Link to="/docs/getting-started/configuration/cloud-providers/kubernetes">
+                  Kubernetes
+                </Link>
+                .
+              </p>
             </div>
             <ul className={styles.sectionItems}>
               <li>
@@ -393,25 +378,22 @@ export default function Home(): JSX.Element {
         </section>
         <section className={styles.section}>
           <div className={styles.sectionContainer}>
-            <div className={styles.flexContainer}>
-              <WinningSheepIllustration className={styles.sectionImage} />
-              <div>
-                <span
-                  className={clsx(
-                    styles.sectionBadge,
-                    'badge badge--primary badge--lg'
-                  )}
-                >
-                  Connect and Learn
-                </span>
-                <h2 className={styles.sectionTitle}>
-                  Join us on the forefront of infrastructure intelligence.
-                </h2>
-                <p>
-                  Keep up to date with the latest Resoto news, features, events,
-                  and articles.
-                </p>
-              </div>
+            <div>
+              <span
+                className={clsx(
+                  styles.sectionBadge,
+                  'badge badge--primary badge--lg'
+                )}
+              >
+                Connect and Learn
+              </span>
+              <h2 className={styles.sectionTitle}>
+                Join us on the forefront of infrastructure intelligence.
+              </h2>
+              <p>
+                Keep up to date with the latest Resoto news, features, events,
+                and articles.
+              </p>
             </div>
             <ul className={styles.sectionItems}>
               <li>

@@ -281,6 +281,10 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   margin-right: 1rem;
 }
 
+.lottie-dark-purple {
+  fill: var(--ifm-color-primary);
+}
+
 @media screen and (max-width: 996px) {
   .navbar__items .navbar-icon-link > .navLinklabel {
     display: none;

@@ -54,6 +54,7 @@ html[data-theme='dark'] .hero {
   margin: 0 0 0 1.5em;
   padding: 0;
   display: flex;
+  flex-wrap: wrap;
   font-size: 20px;
   font-weight: 900;
 }
@@ -70,10 +71,11 @@ html[data-theme='dark'] .hero {
 }
 
 .heroAnimation {
-  height: 300px;
+  height: 400px;
   width: auto;
   flex-shrink: 0;
-  margin: 0 0 -72px 24px !important;
+  margin: -48px -48px -120px -24px !important;
+  overflow: visible;
 }
 
 .section {
@@ -339,10 +341,6 @@ html[data-theme='dark'] .quotation {
     flex-direction: column !important;
   }
 
-  .hero .flexContainer > * + * {
-    margin: 20px 0 0 !important;
-  }
-
   .heroText {
     text-align: center;
     margin: 0 auto;
@@ -350,16 +348,12 @@ html[data-theme='dark'] .quotation {
 
   .hero .cta {
     flex-direction: column-reverse;
-    margin: 20px 0 0 0;
+    margin: 24px 0 0 0;
   }
 
   .hero ul {
     margin: 0 0 1rem 0;
-  }
-
-  .heroAnimation {
-    margin: 30px auto 0 !important;
-    width: 100%;
+    justify-content: center;
   }
 
   .heroButtons {
@@ -377,7 +371,12 @@ html[data-theme='dark'] .quotation {
   }
 
   .flexContainer > * + * {
-    margin: 0 0 24px !important;
+    margin: 0 0 24px;
+  }
+
+  .heroAnimation {
+    margin: -18px auto -48px !important;
+    width: 100%;
   }
 
   .sectionImageContainer {

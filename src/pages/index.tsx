@@ -116,6 +116,9 @@ export default function Home(): JSX.Element {
                 </p>
               </div>
             </div>
+            <div className={styles.sectionImageContainer}>
+              <img src="img/illustrations/why-resoto.png" alt="" />
+            </div>
             <div className={styles.cta}>
               <Link
                 to="/docs/getting-started/installation"

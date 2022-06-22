@@ -82,14 +82,14 @@ export default function Home(): JSX.Element {
             <Link to="/docs/getting-started/configuration/cloud-providers/aws">
               <AwsLogo />
             </Link>
+            <Link to="/docs/getting-started/configuration/cloud-providers/gcp">
+              <GoogleCloudLogo />
+            </Link>
             <Link to="/docs/getting-started/configuration/cloud-providers/digitalocean">
               <DigitalOceanLogo />
             </Link>
             <Link to="/docs/getting-started/configuration/cloud-providers/kubernetes">
               <KubernetesLogo />
-            </Link>
-            <Link to="/docs/getting-started/configuration/cloud-providers/gcp">
-              <GoogleCloudLogo />
             </Link>
           </div>
         </section>
@@ -317,9 +317,13 @@ export default function Home(): JSX.Element {
                   <Link to="/docs/getting-started/configuration/cloud-providers/gcp">
                     Google Cloud Platform
                   </Link>
-                  , and{' '}
+                  ,{' '}
                   <Link to="/docs/getting-started/configuration/cloud-providers/digitalocean">
                     DigitalOcean
+                  </Link>
+                  , and{' '}
+                  <Link to="/docs/getting-started/configuration/cloud-providers/kubernetes">
+                    Kubernetes
                   </Link>
                   .
                 </p>

@@ -71,7 +71,7 @@ html[data-theme='dark'] .hero {
   height: 450px;
   width: auto;
   flex-shrink: 0;
-  margin: -60px -60px -132px -60px !important;
+  margin: -55px -60px -132px -60px !important;
   overflow: visible;
 }
 

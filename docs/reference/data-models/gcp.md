@@ -8,7 +8,7 @@ sidebar_label: Google Cloud Platform
 
 :::info
 
-Please refer to [Configuring Resoto Worker](../../getting-started/configuration/worker/cloud-providers/gcp.md) for details on how to set up Resoto to collect [Google Cloud Platform (GCP)](https://cloud.google.com) resources.
+Please refer to [Configuring Google Cloud Platform Resource Collection](../../getting-started/configuration/cloud-providers/gcp.md) for details on how to set up Resoto to collect [Google Cloud Platform (GCP)](https://cloud.google.com) resources.
 
 :::
 

@@ -35,6 +35,7 @@ export default function Home(): JSX.Element {
       loop: true,
       autoplay: true,
     });
+    lottie.setSpeed(0.5);
   });
 
   return (

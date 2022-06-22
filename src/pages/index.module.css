@@ -159,7 +159,7 @@ html[data-theme='dark'] .sectionAlt {
 
 .sectionImage {
   width: auto;
-  max-width: 70%;
+  max-width: 100%;
   max-height: 18rem;
   margin: 1.5rem 0 0;
 }
@@ -326,7 +326,7 @@ html[data-theme='dark'] .sectionItems li {
   }
 
   .heroAnimation {
-    margin: -30px auto -60px !important;
+    margin: -15px auto -45px !important;
     width: 100%;
     max-height: 75vw;
   }

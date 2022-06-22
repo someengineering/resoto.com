@@ -145,6 +145,11 @@ export default function Home(): JSX.Element {
                 from a single place.
               </p>
             </div>
+            <img
+              src="img/illustrations/take-control.png"
+              alt=""
+              className={clsx(styles.sectionImage, styles.fadingImage)}
+            />
             <ul className={styles.sectionItems}>
               <li>
                 <h3>

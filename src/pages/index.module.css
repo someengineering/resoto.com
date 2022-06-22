@@ -158,9 +158,17 @@ html[data-theme='dark'] .sectionAlt {
 }
 
 .sectionImage {
+  width: auto;
   max-width: 70%;
   max-height: 18rem;
-  margin: 1.5rem 0.5rem 0;
+  margin: 1.5rem 0 0;
+}
+
+.fadingImage {
+  max-height: 32rem;
+  margin: max(-5em, -7.5vw) auto max(-12rem, -18vw);
+  z-index: -50;
+  position: relative;
 }
 
 .sectionLogoContainer {
@@ -349,10 +357,6 @@ html[data-theme='dark'] .sectionItems li {
 
   .section .flexContainer > * + * {
     margin: 0;
-  }
-
-  .sectionImage {
-    width: 85%;
   }
 
   .section .cta {

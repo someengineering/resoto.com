@@ -151,7 +151,7 @@ total matched: 70
 total unmatched: 0
 ```
 
-You want to see details? Let us get the information that has been collected about a Kubernetes service with name `resotocore`:
+You want to see details? Let's retrieve the information that has been collected about a Kubernetes service with name `resotocore`:
 
 ```yaml
 > search is(kubernetes_service) and name~resotocore | dump

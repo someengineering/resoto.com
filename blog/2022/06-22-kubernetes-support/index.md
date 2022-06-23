@@ -7,7 +7,9 @@ image: ./img/banner-social.png
 
 # Kubernetes Support
 
-Kubernetes is the de-facto standard to orchestrate containerized applications. It is the go-to solution, no matter where your infrastructure is running on. Resoto can already collect resources in AWS, GCP, and DigitalOcean - all of them support Kubernetes. I'm happy to announce that Resoto now has support for Kubernetes resources!
+[Kubernetes](https://kubernetes.io) is the de-facto standard for orchestrating containerized applications. It is the go-to solution no matter where your infrastructure is running. Resoto can already collect resources in [Amazon Web Services](/docs/getting-started/configuration/cloud-providers/aws), [Google Cloud Platform](/docs/getting-started/configuration/cloud-providers/gcp), and [DigitalOcean](/docs/getting-started/configuration/cloud-providers/digitalocean), all of which support [Kubernetes](https://kubernetes.io).
+
+**I'm happy to announce that Resoto now has support for collecting [Kubernetes](/docs/reference/data-models/kubernetes) resources!**
 
 ![Kubernetes](./img/banner.png)
 
@@ -15,7 +17,7 @@ Kubernetes is the de-facto standard to orchestrate containerized applications. I
 
 ## Getting Started
 
-To get started, configure Resoto to use your [kubeconfig file](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) or copy the relevant sections as described in the [documentation](/docs/getting-started/configuration/worker#kubernetes).
+To get started, configure Resoto to use your [kubeconfig file](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig) or copy the relevant sections as described in [Configuring Kubernetes Resource Collection](/docs/getting-started/configuration/cloud-providers/kubernetes).
 
 ```bash
 > config edit resoto.worker
@@ -26,13 +28,15 @@ In the text editor opened by [`config edit`](/docs/reference/cli/configs/edit), 
 ```yaml
 resotoworker:
   collector:
+# highlight-next-line
     - k8s
     ...
-
+...
+# highlight-start
 k8s:
   config_files:
     - path: "/home/resoto/.kube/config"
-...
+# highlight-end
 ```
 
 Alternatively, you can also copy & paste the relevant fields directly to the configuration in case the ResotoWorker is running on a machine that does not have access to the file. An example configuration might look like this:
@@ -40,9 +44,11 @@ Alternatively, you can also copy & paste the relevant fields directly to the con
 ```yaml
 resotoworker:
   collector:
+# highlight-next-line
     - k8s
     ...
-
+...
+# highlight-start
 k8s:
   configs:
       - # The name of the kubernetes cluster.
@@ -53,7 +59,7 @@ k8s:
       token: '7632083ca514e919601bb1797caca80XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
       # The optional CA certificate string.
       certificate_authority_data: 'LS0tLS1CRUd...'
-...
+# highlight-end
 ```
 
 The Kubernetes collector can collect multiple Kubernetes clusters by defining multiple entries in the `configs` or `config_files` section.
@@ -80,7 +86,7 @@ Kubernetes has its own way of describing a resource, which is available in Resot
 
 Both sections are unique to the resource type. Since Resoto allows searching on any resource property, we made the `spec` and `status` section unique to the resource type. So a `Pod` in Resoto has a `pod_spec` and `pod_status` section, while a `Deployment` has a `deployment_spec` and `deployment_status` section. The relevant spec and status sections have the same specific data model as the Kubernetes resource.
 
-You can find a complete reference in our [resource reference](/docs/reference/data-models/kubernetes).
+You can find a complete reference at [Kubernetes Resources](/docs/reference/data-models/kubernetes).
 
 ## Searching the Graph
 
@@ -88,7 +94,7 @@ Since all Kubernetes resources share the same base kind `kubernetes_resource`, w
 
 ```bash
 > search is(kubernetes_resource) | count kind
-
+# highlight-start
 kubernetes_job: 1
 kubernetes_ingress: 1
 kubernetes_ingress_class: 1
@@ -125,22 +131,24 @@ kubernetes_cluster_role_binding: 166
 kubernetes_cluster_role: 193
 total matched: 1234
 total unmatched: 0
+# highlight-end
 ```
 
 Can we reveal general information about the Kubernetes clusters? This query shows all available clusters including version and server URL:
 
 ```bash
 > search is(kubernetes_cluster) | list cluster_info
-
+# highlight-start
 major=1, minor=21, platform=linux/amd64, server_url=https://31e9afd3-xxxxx.k8s.ondigitalocean.com
 major=1, minor=21, platform=linux/amd64, server_url=https://9a3ac2b5-xxxxx.k8s.ondigitalocean.com
+# highlight-end
 ```
 
 Now we can start asking questions about the state of our Kubernetes infrastructure. For example, how many pods are running on each node in the cluster?
 
 ```bash
 > search is(kubernetes_pod) | count /ancestors.kubernetes_node.reported.name
-
+# highlight-start
 helm2-cjhg9: 7
 analytics-u1wtx: 11
 helm2-cjhgz: 11
@@ -149,13 +157,14 @@ analytics-u1wto: 15
 helm2-cjhg1: 15
 total matched: 70
 total unmatched: 0
+# highlight-end
 ```
 
 You want to see details? Let's retrieve the information that has been collected about a Kubernetes service with name `resotocore`:
 
-```yaml
+```bash
 > search is(kubernetes_service) and name~resotocore | dump
-
+# highlight-start
 id: AS-E-YjvAftQUcuUmNC52g
 reported:
   ctime: '2022-04-20T14:52:58Z'
@@ -200,32 +209,36 @@ reported:
     meta.helm.sh/release-namespace: resoto
   kind: kubernetes_service
   age: 1mo29d
+# highlight-end
 ```
 
 Resoto ships with the ability to search for a value everywhere, no matter where this value is defined. We call this feature full-text search - you can read about all the details here [full-text search](/docs/concepts/search/full-text) Let us use this feature, to search an IP address that we found in the resoto core service. We expect it will find exactly the same ResotoCore service:
 
 ```bash
 > search "10.245.133.206"
-
+# highlight-start
 kind=kubernetes_service, id=df8f6c37-5542-4e17-b2f4-bb6caaa2ba17, name=resoto-resotocore, age=2mo1d, cloud=k8s, account=dev, region=resoto
+# highlight-end
 ```
 
 Let us find all secrets inside Kubernetes, that are shared between more than one pod. Such queries might be useful to find resources, that have a defined relationship in the graph:
 
 ```bash
 > search is(kubernetes_secret) and namespace=resoto with(count>1, <-- is(kubernetes_pod))
-
+# highlight-start
 kind=kubernetes_secret, id=af1495e4, name=resoto-psk, namespace=resoto, age=2mo1d, cloud=k8s, account=dev, region=resoto
+# highlight-end
 ```
 
 There is more than one secret in this namespace, but only one is shared: the resoto-psk secret holds the private shared key. If we want to see the attached pods, we can use the same query again and list the resources. We will see that ResotoCore, ResotoWorker and ResotoMetrics use the secret resoto-psk. Please note: the secrets that are collected do not sensitive data fields.
 
 ```bash
 > search is(kubernetes_secret) and namespace=resoto with(count>1, <-- is(kubernetes_pod)) <-- is(kubernetes_pod) | list name
-
+# highlight-start
 name=resoto-resotocore-67858dbc49-x5vgq
 name=resoto-resotometrics-6c557bd666-n2t22
 name=resoto-resotoworker-dc6bd998f-xpnb7
+# highlight-end
 ```
 
 Render a graph of all services that are deployed in the `resoto` namespace on the `dev` cluster. Please note: we are looking at a cluster where we have deployed `resoto` as a Helm chart as described in [getting started](/docs/getting-started/installation/kubernetes).
@@ -248,50 +261,55 @@ Let's tag all pods with the name `resoto` in it with the tag `owner`. Please not
 
 ```bash
 > search is(kubernetes_pod) and name~resoto | tag update owner matthias | list name, tags
-
+# highlight-start
 name=resoto-resotocore-67858dbc49-kzh7l, owner=matthias
 name=resoto-resotoworker-dc6bd998f-tvhkw, owner=matthias
 name=resoto-resotometrics-6c557bd666-m9qzm, owner=matthias
+# highlight-end
 ```
 
 To make sure the existing resources in the cluster have changed:
 
 ```bash
 $ kubectl get pods resoto-resotocore-67858dbc49-kzh7l -o json | jq .metadata.annotations
+# highlight-start
 {
   "owner": "matthias"
 }
+# highlight-end
 ```
 
 Tags can be updated and deleted again:
 
 ```bash
 > search is(kubernetes_pod) and name~resoto | tag delete owner | list name, tags
-
+# highlight-start
 name=resoto-resotometrics-6c557bd666-m9qzm,
 name=resoto-resotocore-67858dbc49-kzh7l,
 name=resoto-resotoworker-dc6bd998f-tvhkw,
+# highlight-end
 ```
 
-## Cleaning up
+## Cleaning Up
 
 To delete resources, pipe search results to the [`clean`](/docs/reference/cli/clean) command. Let us find volume claims that are not bound to any kubernetes pod and clean them up:
 
 ```bash
 > search is(kubernetes_persistent_volume_claim) with(empty, <-- is(kubernetes_pod)) -[0:1]-> | clean
-
+# highlight-start
 kind=kubernetes_persistent_volume_claim, id=079affbf, name=single-tvhrrqmm, age=6mo23d, cloud=k8s, account=dev, region=test
 kind=kubernetes_persistent_volume, id=c299101c, name=pvc-079affbf, age=6mo23d, cloud=k8s, account=dev, region=test
+# highlight-end
 ```
+
 This query selects all volume claims that have no pod attached and then also select the related volume. The clean command marks the resources for cleanup. The resources will be deleted once the `collect_and_cleanup` workflow runs (default: every hour).
 
-## Future work
+## Future Work
 
-We are currently working on the way to connect resources found in Kubernetes to resources found in the underlying cloud provider. Let's assume you have a Kubernetes cluster running on `AWS`, `GCP` or `DigitalOcean`, we want to show the underlying persistent volume provided by the related cloud provider. This would show which compute instance a pod runs on or which underlying volume is provided.
+We are currently working on the way to connect resources found in Kubernetes to resources found in the underlying cloud provider. Let's assume you have a Kubernetes cluster running on [Amazon Web Services](https://aws.amazon.com), [Google Cloud Platform](https://cloud.google.com), or [DigitalOcean](https://digitalocean.com) and we want to show the underlying persistent volume provided by the related cloud provider. This would show which compute instance a pod runs on or which underlying volume is provided.
 
-## References
+## Further Reading
 
-- [Configure the Kubernetes plugin](/docs/getting-started/configuration/worker#kubernetes)
-- [Kubernetes Resource Reference](/docs/reference/data-models/kubernetes)
-- [Install Resoto ob Kubernetes](/docs/getting-started/installation/kubernetes)
-- [Resoto documentation](/docs)
+- [Installing Resoto with Kubernetes](/docs/getting-started/installation/kubernetes)
+- [Configuring Kubernetes Resource Collection](/docs/getting-started/configuration/cloud-providers/kubernetes)
+- [Kubernetes Resources](/docs/reference/data-models/kubernetes)

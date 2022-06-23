@@ -4,30 +4,28 @@ tags: [release notes]
 
 # v2.3.1
 
-![Kubernetes](img/2.3/kubernetes.png)
-
 ## Highlights
 
 ### Support for Kubernetes
 
-Kubernetes is the de-facto standard to orchestrate containerized applications. It is the go-to solution, no matter where your infrastructure is running on. This release adds support for Kubernetes resources. All standard Kubernetes resources are supported and fully covered.
+[Kubernetes](https://kubernetes.io) is the de-facto standard for orchestrating containerized applications. It is the go-to solution no matter where your infrastructure is running. This release adds support for Kubernetes resources. All standard Kubernetes resources are supported and fully covered.
 
-See [Kubernetes Blog Post](/blog/2022/06/22/kubernetes-support).
+![Kubernetes](./img/kubernetes.png)
 
-References:
+#### Further Reading
 
-- [Configure the Kubernetes plugin](/docs/getting-started/configuration/worker#kubernetes)
-- [Kubernetes Resource Reference](/docs/reference/data-models/kubernetes)
-- [Install Resoto ob Kubernetes](/docs/getting-started/installation/kubernetes)
-- [Resoto documentation](/docs)
+- [Kubernetes Support](/blog/2022/06/22/kubernetes-support)
+- [Installing Resoto with Kubernetes](/docs/getting-started/installation/kubernetes)
+- [Configuring Kubernetes Resource Collection](/docs/getting-started/configuration/cloud-providers/kubernetes)
+- [Kubernetes Resources](/docs/reference/data-models/kubernetes)
 
-### UI to configure Resoto
+### UI to Configure Resoto
 
 This version ships with a UI bundled to ResotoCore. It is possible to do the configuration of Resoto via this user interface.
 
 In case you are running Resoto locally via [docker](/docs/getting-started/installation/docker) you can reach the UI via [https://localhost:8900/ui](https://localhost:8900/ui)
 
-![Config UI](img/2.3/ui_config.png)
+![Config UI](./img/ui_config.png)
 
 ### Complex Model Handling
 
@@ -35,17 +33,17 @@ Resoto had limited support to handle complex models. This release adds the abili
 
 ResotoShell now provides better suggestions since it knows which type is expected in which position.
 
-![Complex Kind](img/2.3/kind_is_complex.png)
+![Complex Kind](./img/kind_is_complex.png)
 
 It also is able to suggest deeply nested properties since it knows the complete model structure.
 
-![Complex Kind](img/2.3/kind_nested_property_suggestions.png)
+![Complex Kind](./img/kind_nested_property_suggestions.png)
 
-The `kinds` command can be used to lookup the model behind a nested property path. ![Complex Kind](img/2.3/kind_lookup_type.png)
+The `kinds` command can be used to lookup the model behind a nested property path. ![Complex Kind](./img/kind_lookup_type.png)
 
 And last but not least the uml model endpoint can generate diagrams with complex models
 
-### Support for graph edges between clouds
+### Support for Graph Edges Between Clouds
 
 Resoto uses collectors to retrieve data from a specific cloud provider. Those collectors are not only able to collect the resource data, but also to define the relationships between the resources. Some relationships can not be resolved inside the collector, since the relationship points to resources that are not part of this cloud.
 
@@ -55,6 +53,8 @@ Examples:
 - A load balancer in AWS that points to compute resources in Google Cloud. The AWS collector does not know anything about GCP.
 
 Resoto now has support for creating edges that can not be resolved during the phase of collecting the data, but are resolved when all collectors delivered their current snapshot. We will extend our list of collectors to provide relationships across cloud providers.
+
+<!--truncate-->
 
 ## What's Changed
 
@@ -137,8 +137,6 @@ Resoto now has support for creating edges that can not be resolved during the ph
 - [`b2736cf`](https://github.com/someengineering/resoto/commit/b2736cf) <span class="badge badge--secondary">resoto</span> Update README ([#867](https://github.com/someengineering/resoto/pull/867))
 - [`637c4ee`](https://github.com/someengineering/resoto/commit/637c4ee) <span class="badge badge--secondary">resoto</span> Bump 2.3.0a0 ([#864](https://github.com/someengineering/resoto/pull/864))
 - [`c017e45`](https://github.com/someengineering/resoto/commit/c017e45) <span class="badge badge--secondary">k8s</span> Add reference to configmap and secret from env ([#932](https://github.com/someengineering/resoto/pull/932))
-
-<!--truncate-->
 
 ## Docker Images
 

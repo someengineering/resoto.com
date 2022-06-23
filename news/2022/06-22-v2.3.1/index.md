@@ -4,6 +4,62 @@ tags: [release notes]
 
 # v2.3.1
 
+## Highlights
+
+### Support for Kubernetes
+
+[Kubernetes](https://kubernetes.io) is the de-facto standard for orchestrating containerized applications. It is the go-to solution no matter where your infrastructure is running. This release adds support for Kubernetes resources. All standard Kubernetes resources are supported and fully covered.
+
+![Kubernetes](./img/kubernetes.png)
+
+#### Further Reading
+
+- [Kubernetes Support](/blog/2022/06/22/kubernetes-support)
+- [Installing Resoto with Kubernetes](/docs/getting-started/installation/kubernetes)
+- [Configuring Kubernetes Resource Collection](/docs/getting-started/configuration/cloud-providers/kubernetes)
+- [Kubernetes Resources](/docs/reference/data-models/kubernetes)
+
+### UI to Configure Resoto
+
+We now ship a user interface (UI) in [Resoto Core](/docs/concepts/components/core), from which it is possible to configure Resoto.
+
+If you are running Resoto locally via [Docker](/docs/getting-started/installation/docker), the UI is accessible via [https://localhost:8900/ui](https://localhost:8900/ui):
+
+![Config UI](./img/ui_config.png)
+
+### Complex Model Handling
+
+Resoto had limited support to handle complex models. This release adds the ability to handle any deeply structured type while also introspecting them.
+
+[Resoto Shell](/docs/concepts/components/shell) now provides better, type-aware suggestions:
+
+![Complex Kind](./img/kind_is_complex.png)
+
+[Resoto Shell](/docs/concepts/components/shell) is also able to suggest deeply nested properties, since it knows the complete model structure:
+
+![Complex Kind](./img/kind_nested_property_suggestions.png)
+
+The `kinds` command can be used to lookup the model behind a nested property path:
+
+![Complex Kind](./img/kind_lookup_type.png)
+
+And last but not least, the UML model endpoint can generate diagrams with complex models.
+
+### Support for Graph Edges Between Clouds
+
+Resoto uses collectors to retrieve data from a specific cloud provider. Those collectors are not only able to collect the resource data, but also define the relationships between the resources. Some relationships cannot be resolved inside the collector, since the relationship points to resources that are not part of this cloud.
+
+:::tip Examples
+
+- A [Kubernetes](/docs/reference/data-models/kubernetes) node is running on an [AWS](/docs/reference/data-models/aws) EC2 instance. The [Kubernetes](/docs/reference/data-models/kubernetes) collector is unable to resolve the reference, since it points to a resource provided by [AWS](/docs/reference/data-models/aws).
+- A load balancer in [AWS](/docs/reference/data-models/aws) that points to compute resources in [Google Cloud](/docs/reference/data-models/gcp). The [AWS](/docs/reference/data-models/aws) collector does not know anything about [GCP](/docs/reference/data-models/gcp).
+
+:::
+
+Resoto now has support for creating edges that cannot be resolved during the phase of collecting the data but are resolved once all collectors have delivered their current snapshot. Going forward, we will continue extend our collectors to provide insights into relationships across cloud providers.
+
+<!--truncate-->
+
 ## What's Changed
 
 ### Features
@@ -85,8 +141,6 @@ tags: [release notes]
 - [`b2736cf`](https://github.com/someengineering/resoto/commit/b2736cf) <span class="badge badge--secondary">resoto</span> Update README ([#867](https://github.com/someengineering/resoto/pull/867))
 - [`637c4ee`](https://github.com/someengineering/resoto/commit/637c4ee) <span class="badge badge--secondary">resoto</span> Bump 2.3.0a0 ([#864](https://github.com/someengineering/resoto/pull/864))
 - [`c017e45`](https://github.com/someengineering/resoto/commit/c017e45) <span class="badge badge--secondary">k8s</span> Add reference to configmap and secret from env ([#932](https://github.com/someengineering/resoto/pull/932))
-
-<!--truncate-->
 
 ## Docker Images
 

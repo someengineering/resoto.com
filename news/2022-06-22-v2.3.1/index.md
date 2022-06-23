@@ -56,7 +56,7 @@ Resoto uses collectors to retrieve data from a specific cloud provider. Those co
 
 :::
 
-Resoto now has support for creating edges that cannot be resolved during the phase of collecting the data but are resolved once all collectors have delivered their current snapshot. Going forward, we will continue extend our list of collectors to provide relationships across cloud providers.
+Resoto now has support for creating edges that cannot be resolved during the phase of collecting the data but are resolved once all collectors have delivered their current snapshot. Going forward, we will continue extend our collectors to provide insights into relationships across cloud providers.
 
 <!--truncate-->
 

@@ -66,7 +66,7 @@ Once this is done, Resoto will start collecting data from all configured cluster
 
 ## Kubernetes Resource Data Model
 
-Every resource found in Kubernetes is represented by a node in the graph. Almost all resource properties are captured and available to filter and automate.
+Every resource found in Kubernetes is represented by a node in the graph. Available resource properties are captured and available to filter and automate.
 
 ![PersistentVolume](./img/persistent_volume.svg)
 
@@ -145,7 +145,7 @@ major=1, minor=21, platform=linux/amd64, server_url=https://31e9afd3-xxxxx.k8s.o
 major=1, minor=21, platform=linux/amd64, server_url=https://9a3ac2b5-xxxxx.k8s.ondigitalocean.com
 ```
 
-Show detailed information about the ResotoCore service:
+Show detailed information about a Kubernetes service with name `resotocore`:
 
 ```yaml
 > search is(kubernetes_service) and name~resotocore | dump
@@ -196,6 +196,14 @@ reported:
   age: 1mo29d
 ```
 
+Use fulltext search to find resources, that match any property no matter where it is defined:
+
+```bash
+> search "10.245.133.206"
+
+kind=kubernetes_service, id=df8f6c37-5542-4e17-b2f4-bb6caaa2ba17, name=resoto-resotocore, age=2mo1d, cloud=k8s, account=dev, region=resoto
+```
+
 Render a graph of all services that are deployed in the `resoto` namespace on the `dev` cluster. Please note: we are looking at a cluster where we have deployed `resoto` as a Helm chart as described in [getting started](/docs/getting-started/installation/kubernetes).
 
 ```bash
@@ -212,7 +220,7 @@ You can see the list of services as successors of the namespace node. Each servi
 
 All annotations in Kubernetes are available as tags. Resoto allows to update tags via ResotoShell, as well as delete tags.
 
-Let's tag all pods with the name `resoto` in it with the tag `owner`. Please note: this tag will be ephemeral and goes away once the pod is deleted. If you want a more permanent tag, you would need to adjust the related Kubernetes deployment spec.
+Let's tag all pods with the name `resoto` in it with the tag `owner`. Please note: this tag will be temporary and goes away once the pod is deleted since a pod is only a template instance in Kubernetes. If we wanted a more permanent tag, we would need to adjust the related pod template - the deployment in this case.
 
 ```bash
 > search is(kubernetes_pod) and name~resoto | tag update owner matthias | list name, tags
@@ -253,13 +261,13 @@ name=resoto-resotocore-67858dbc49-kzh7l
 name=resoto-resotoworker-dc6bd998f-tvhkw
 ```
 
-This will mark the resoto pods for cleanup. The pods will be deleted once the `collect_and_cleanup` workflow runs (default: every hour). Once the pods are removed, Kubernetes will take care of and restart new pods as defined by the deployment. All resources can be cleaned this way.
+This will mark the resoto pods for cleanup. The pods will be deleted once the `collect_and_cleanup` workflow runs (default: every hour). Once the pods are removed, Kubernetes will take care and restart new pods as defined by the deployment. All resources can be cleaned this way.
 
 ## Future work
 
 We are currently working on the way to connect resources found in Kubernetes to resources found in the underlying cloud provider. Let's assume you have a Kubernetes cluster running on `AWS`, `GCP` or `DigitalOcean`, we want to show the underlying persistent volume provided by the related cloud provider. This would show which compute instance a pod runs on or which underlying volume is provided.
 
-### References
+## References
 
 - [Configure the Kubernetes plugin](/docs/getting-started/configuration/worker#kubernetes)
 - [Kubernetes Resource Reference](/docs/reference/data-models/kubernetes)

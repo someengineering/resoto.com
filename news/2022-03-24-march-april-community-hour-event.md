@@ -2,7 +2,7 @@
 tags: [events]
 ---
 
-# Community Hour Event
+# March/April Community Hour Event
 
 ```mdx-code-block
 import Moment from 'react-moment';
@@ -21,7 +21,7 @@ Join [Matthias Veit](https://github.com/aquamatthias) and the rest of the [Some 
 
 :::info
 
-This event has concluded, but we hope you'll join us for the [next Community Hour event on **<Moment local format="LL" tz={moment.tz.guess()}>2022-05-04T18:00+0200</Moment>**](/news/2022/05/03/community-hour-event)!
+This event has concluded, but we hope you'll join us for the [next Community Hour event on **<Moment local format="LL" tz={moment.tz.guess()}>2022-05-04T18:00+0200</Moment>**](/news/2022/05/03/may-community-hour-event)!
 
 :::
 

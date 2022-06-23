@@ -34,22 +34,6 @@ There are currently 2 deployment options for Resoto: [Docker](/docs/getting-star
 
 <!--truncate-->
 
-## What's Changed
-
-### Features
-
-- [`d865c02`](https://github.com/someengineering/resoto/commit/d865c02) <span class="badge badge--secondary">plugins/digitalocean</span> Support key/value tags ([#784](https://github.com/someengineering/resoto/pull/784))
-- [`b7f56c9`](https://github.com/someengineering/resoto/commit/b7f56c9) <span class="badge badge--secondary">resotocore</span> Allow configuration of workflow schedules ([#783](https://github.com/someengineering/resoto/pull/783))
-
-### Fixes
-
-- [`b8b0bd8`](https://github.com/someengineering/resoto/commit/b8b0bd8) <span class="badge badge--secondary">resotocore</span> Allow secure access to arangodb ([#782](https://github.com/someengineering/resoto/pull/782))
-
-### Chores
-
-- [`e91021a`](https://github.com/someengineering/resoto/commit/e91021a) <span class="badge badge--secondary">resoto</span> Bump 2.0.0 ([#785](https://github.com/someengineering/resoto/pull/785))
-- [`007043f`](https://github.com/someengineering/resoto/commit/007043f) <span class="badge badge--secondary">resoto</span> Bump 2.0.0rc3 ([#781](https://github.com/someengineering/resoto/pull/781))
-
 ## Docker Images
 
 - `somecr.io/someengineering/resotocore:2.0.0`

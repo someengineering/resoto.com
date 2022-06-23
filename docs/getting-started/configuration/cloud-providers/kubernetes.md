@@ -4,7 +4,7 @@ sidebar_label: Kubernetes
 
 # Configuring Kubernetes Resource Collection
 
-The [Kubernetes](../../../../reference/data-models/kubernetes.md) collector is configured within the [Resoto Worker configuration](../index.md).
+The [Kubernetes](../../../reference/data-models/kubernetes.md) collector is configured within the [Resoto Worker configuration](../index.md).
 
 Add `k8s` to the list of collectors by modifying the [Resoto Worker configuration](../index.md) as follows:
 

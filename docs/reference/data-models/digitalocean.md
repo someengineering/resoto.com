@@ -8,7 +8,7 @@ sidebar_label: DigitalOcean
 
 :::info
 
-Please refer to [Configuring Resoto Worker](../../getting-started/configuration/worker/cloud-providers/digitalocean.md) for details on how to set up Resoto to collect [DigitalOcean](https://digitalocean.com) resources.
+Please refer to [Configuring DigitalOcean Resource Collection](../../getting-started/configuration/cloud-providers/digitalocean.md) for details on how to set up Resoto to collect [DigitalOcean](https://digitalocean.com) resources.
 
 :::
 

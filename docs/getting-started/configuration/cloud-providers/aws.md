@@ -4,7 +4,7 @@ sidebar_label: Amazon Web Services
 
 # Configuring Amazon Web Services Resource Collection
 
-The [Amazon Web Services (AWS)](../../../../reference/data-models/aws.md) collector is configured within the [Resoto Worker configuration](../index.md).
+The [Amazon Web Services (AWS)](../../../reference/data-models/aws.md) collector is configured within the [Resoto Worker configuration](../index.md).
 
 Add `k8s` to the list of collectors by modifying the [Resoto Worker configuration](../index.md) as follows:
 
@@ -21,11 +21,13 @@ resotoworker:
 
 ## Authentication
 
-Resoto supports all the authentication mechanisms described in the [boto3 SDK documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html).
+You can authenticate with [Amazon Web Services](../../../reference/data-models/aws.md) via [environment](#environment), [instance profile](#instance-profile), or [access key](#access-key).
 
 ### Environment
 
-[Configure AWS CLI](https://aws.amazon.com/cli) and volume mount e.g. `$HOME/.aws/` to `/home/resoto/.aws/` inside the `resotoworker` container. If your configuration contains multiple profiles, make sure to set `AWS_PROFILE` for the `resotoworker` container.
+Resoto supports all the authentication mechanisms described in the [boto3 SDK documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html).
+
+Configure the [<abbr title="Amazon Web Services">AWS</abbr> Command-Line Interface](https://aws.amazon.com/cli) and volume mount e.g. `$HOME/.aws/` to `/home/resoto/.aws/` inside the `resotoworker` container. If your configuration contains multiple profiles, make sure to set `AWS_PROFILE` for the `resotoworker` container.
 
 [The shared credentials file](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html#shared-credentials-file) has a default location of `/home/resoto/.aws/credentials`. You can change the location of the shared credentials file by setting the `AWS_SHARED_CREDENTIALS_FILE` environment variable.
 
@@ -38,7 +40,7 @@ aws_session_token=baz
 
 Boto3 can also [load credentials from `/home/resoto/.aws/config`](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html#aws-config-file). You can change this default location by setting the `AWS_CONFIG_FILE` environment variable.
 
-Next, modify the [Resoto Worker](../../../../concepts/components/worker.md) configuration as follows, making sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null` (Resoto will fall back to loading credentials from the environment/home directory):
+Next, modify the [Resoto Worker](../../../concepts/components/worker.md) configuration as follows, making sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null` (Resoto will fall back to loading credentials from the environment/home directory):
 
 ```yaml title="Resoto Worker configuration"
 resotoworker:
@@ -56,7 +58,7 @@ aws:
 
 :::note
 
-Resoto is meant to run unattended on a server using a service account or instance profile. Resoto supports the same environment variables that the [AWS Command-Line Interface](https://aws.amazon.com/cli) does (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_SESSION_TOKEN`, `AWS_ROLE_ARN`, `AWS_WEB_IDENTITY_TOKEN_FILE`, `AWS_ROLE_SESSION_NAME`, etc.).
+Resoto is meant to run unattended on a server using a service account or instance profile. Resoto supports the same environment variables that the [<abbr title="Amazon Web Services">AWS</abbr> Command-Line Interface](https://aws.amazon.com/cli) does (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_SESSION_TOKEN`, `AWS_ROLE_ARN`, `AWS_WEB_IDENTITY_TOKEN_FILE`, `AWS_ROLE_SESSION_NAME`, etc.).
 
 When using temporary credentials, however, they should be written to the `credentials` or `config` file and updated out-of-band instead of using environment variables, because the `resotoworker` process starts once and then runs forever (updated environment variables are only reflected upon restart).
 
@@ -77,7 +79,7 @@ external_id = a5eMybsyGIowimdZqpZWxxxxxxxxxxxx
 credential_source = Ec2InstanceMetadata
 ```
 
-Next, modify the [Resoto Worker](../../../../concepts/components/worker.md) configuration as follows, making sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null`:
+Next, modify the [Resoto Worker](../../../concepts/components/worker.md) configuration as follows, making sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null`:
 
 ```yaml title="Resoto Worker configuration"
 resotoworker:
@@ -101,7 +103,7 @@ Using a static access key is only recommended for testing.
 
 :::
 
-Modify the [Resoto Worker](../../../../concepts/components/worker.md) configuration as follows:
+Modify the [Resoto Worker](../../../concepts/components/worker.md) configuration as follows:
 
 ```yaml title="Resoto Worker configuration"
 resotoworker:

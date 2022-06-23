@@ -1,5 +1,6 @@
 ---
 sidebar_label: Core
+sidebar_position: 1
 ---
 
 # Configuring Resoto Core

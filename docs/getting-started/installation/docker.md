@@ -18,7 +18,7 @@ import Tabs from '@theme/Tabs';
 
 - [Docker](https://docs.docker.com/get-started#download-and-install-docker) needs to be installed on your machine.
 - [Docker Compose](https://docs.docker.com/compose/install/) needs to be available on your machine.
-- At least two cores and eight gigabytes of RAM are required to run the Resoto stack. For a production setup we recommend at least four cores and 16 gigabytes of RAM. See [Configuring Resoto Worker](../configuration/worker/index.md#multi-core-machines) for more information.
+- At least two cores and eight gigabytes of RAM are required to run the Resoto stack. For a production setup we recommend at least four cores and 16 gigabytes of RAM. See [Configuring Resoto Worker](../configuration/worker.md#multi-core-machines) for more information.
 
 ## Installing Resoto
 
@@ -79,7 +79,7 @@ $ docker compose run --rm resotoshell
 
 ### Configuring Resoto
 
-Please refer to the [Configuring Resoto Worker](../configuration/worker/index.md#cloud-providers) tutorial for details.
+Please refer to [Configuring Resoto](../configuration/index.md) for details.
 
 ### Collecting Cloud Resources
 

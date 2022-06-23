@@ -97,22 +97,67 @@ export default function Home(): JSX.Element {
                   'badge badge--primary badge--lg'
                 )}
               >
-                Why Resoto?
+                Leverage for Cloud Engineers
               </span>
               <h2 className={styles.sectionTitle}>
-                If you don&rsquo;t know what is running in your cloud, it will
-                cost you. (Literally.)
+                Resoto keeps track of your infrastructure and puts all the data
+                at your fingertips.
               </h2>
               <p>
-                Resoto allows you to give your engineers liberal permissions
-                without losing control of your cloud infrastructure.
+                Understand who is running what, answer questions about your
+                infrastructure, and ensure efficiency at scale without slowing
+                down development.
               </p>
             </div>
             <img
-              src="img/illustrations/why-resoto.png"
+              src="img/illustrations/leverage-for-cloud-engineers.png"
               alt=""
-              className={styles.sectionImage}
+              className={clsx(styles.sectionImage, styles.overlappedImage)}
             />
+            <ul className={styles.sectionItems}>
+              <li>
+                <Link to="/docs/concepts/search">
+                  <h3>
+                    <SearchIcon className={styles.sectionItemIcon} />
+                    <span>Search</span>
+                  </h3>
+                </Link>
+                <p>
+                  Write ad-hoc queries with full-text metadata search across all
+                  your cloud accounts using the{' '}
+                  <Link to="/docs/reference/cli">command-line interface</Link>.
+                </p>
+              </li>
+              <li>
+                <Link to="/docs/concepts/search/aggregation">
+                  <h3>
+                    <ChartSquareBarIcon className={styles.sectionItemIcon} />
+                    <span>Report</span>
+                  </h3>
+                </Link>
+                <p>
+                  Turn your <Link to="/docs/concepts/search">searches</Link>{' '}
+                  into regular reports with fleet-wide, actionable metrics that
+                  you can export to popular tools and share with colleagues in
+                  Product or Finance.
+                </p>
+              </li>
+              <li>
+                <Link to="/docs/concepts/automation">
+                  <h3>
+                    <CogIcon className={styles.sectionItemIcon} />
+                    <span>Automate</span>
+                  </h3>
+                </Link>
+                <p>
+                  Automate your work with{' '}
+                  <Link to="/docs/concepts/automation/job">jobs</Link> that
+                  execute recurring tasks, such as identifying and cleaning up
+                  orphaned resources and enforcing{' '}
+                  <Link to="/docs/concepts/tagging">tag</Link> structures.
+                </p>
+              </li>
+            </ul>
             <div className={styles.cta}>
               <Link
                 to="/docs/getting-started/installation"
@@ -210,67 +255,22 @@ export default function Home(): JSX.Element {
                   'badge badge--primary badge--lg'
                 )}
               >
-                Leverage for Cloud Engineers
+                Why Resoto?
               </span>
               <h2 className={styles.sectionTitle}>
-                Resoto keeps track of your infrastructure and puts all the data
-                at your fingertips.
+                If you don&rsquo;t know what is running in your cloud, it will
+                cost you. (Literally.)
               </h2>
               <p>
-                Understand who is running what, answer questions about your
-                infrastructure, and ensure efficiency at scale without slowing
-                down development.
+                Resoto allows you to give your engineers liberal permissions
+                without losing control of your cloud infrastructure.
               </p>
             </div>
             <img
-              src="img/illustrations/leverage-for-cloud-engineers.png"
+              src="img/illustrations/why-resoto.png"
               alt=""
-              className={clsx(styles.sectionImage, styles.overlappedImage)}
+              className={styles.sectionImage}
             />
-            <ul className={styles.sectionItems}>
-              <li>
-                <Link to="/docs/concepts/search">
-                  <h3>
-                    <SearchIcon className={styles.sectionItemIcon} />
-                    <span>Search</span>
-                  </h3>
-                </Link>
-                <p>
-                  Write ad-hoc queries with full-text metadata search across all
-                  your cloud accounts using the{' '}
-                  <Link to="/docs/reference/cli">command-line interface</Link>.
-                </p>
-              </li>
-              <li>
-                <Link to="/docs/concepts/search/aggregation">
-                  <h3>
-                    <ChartSquareBarIcon className={styles.sectionItemIcon} />
-                    <span>Report</span>
-                  </h3>
-                </Link>
-                <p>
-                  Turn your <Link to="/docs/concepts/search">searches</Link>{' '}
-                  into regular reports with fleet-wide, actionable metrics that
-                  you can export to popular tools and share with colleagues in
-                  Product or Finance.
-                </p>
-              </li>
-              <li>
-                <Link to="/docs/concepts/automation">
-                  <h3>
-                    <CogIcon className={styles.sectionItemIcon} />
-                    <span>Automate</span>
-                  </h3>
-                </Link>
-                <p>
-                  Automate your work with{' '}
-                  <Link to="/docs/concepts/automation/job">jobs</Link> that
-                  execute recurring tasks, such as identifying and cleaning up
-                  orphaned resources and enforcing{' '}
-                  <Link to="/docs/concepts/tagging">tag</Link> structures.
-                </p>
-              </li>
-            </ul>
             <div className={styles.cta}>
               <Link
                 to="/docs/getting-started/installation"

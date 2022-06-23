@@ -18,54 +18,53 @@ import AwsLogo from '@site/src/assets/aws.svg';
 import DigitalOceanLogo from '@site/src/assets/digitalocean.svg';
 import GoogleCloudLogo from '@site/src/assets/google-cloud.svg';
 import KubernetesLogo from '@site/src/assets/kubernetes.svg';
-import AirportSheepIllustration from '@site/src/assets/sheep-airport.svg';
-import ConfusedSheepIllustration from '@site/src/assets/sheep-confused.svg';
-import DeveloperSheepIllustration from '@site/src/assets/sheep-developer.svg';
-import HappySheepIllustration from '@site/src/assets/sheep-happy.svg';
-import ProfessorSheepIllustration from '@site/src/assets/sheep-professor.svg';
-import SreSheepIllustration from '@site/src/assets/sheep-sre.svg';
-import StrongSheepIllustration from '@site/src/assets/sheep-strong.svg';
-import WinningSheepIllustration from '@site/src/assets/sheep-winning.svg';
-import VmwareLogo from '@site/src/assets/vmware.svg';
 import Layout from '@theme/Layout';
 import clsx from 'clsx';
-import React from 'react';
+import lottie from 'lottie-web';
+import React, { useEffect } from 'react';
 import styles from './index.module.css';
 
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
+
+  useEffect(() => {
+    lottie.loadAnimation({
+      container: document.getElementById('heroAnimation'),
+      path: 'lottie/heroAnimation.json',
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+    });
+  });
 
   return (
     <Layout>
       <header className={styles.hero}>
         <h1 className={styles.heroTitle}>{siteConfig.title}</h1>
         <div className={styles.heroInner}>
-          <div className={styles.heroText}>
-            <h2 className={styles.tagline}>{siteConfig.tagline}</h2>
-            <div>
-              Resoto creates an <strong>inventory</strong> of your cloud,
-              provides deep <strong>visibility</strong>, and reacts to{' '}
-              <strong>changes</strong> in your infrastructure.
+          <div className={styles.flexContainer}>
+            <div className={styles.heroText}>
+              <h2 className={styles.tagline}>{siteConfig.tagline}</h2>
+              <div>
+                Resoto creates an inventory of your cloud, provides deep
+                visibility, and reacts to changes in your infrastructure.
+              </div>
             </div>
-            <div className={styles.cta}>
-              <Link
-                to="/docs/getting-started/installation"
-                className="button button--primary button--lg"
-              >
-                Install Now
-              </Link>
-              <ul>
-                <li>Open-source</li>
-                <li>Self-hosted</li>
-                <li>Always free</li>
-              </ul>
-            </div>
+            <div id="heroAnimation" className={styles.heroAnimation} />
           </div>
-          {/* <img
-            className={styles.heroLogo}
-            src="/img/logo-lg.svg"
-            alt="Resoto Logo"
-          /> */}
+          <div className={styles.cta}>
+            <Link
+              to="/docs/getting-started/installation"
+              className="button button--primary button--lg"
+            >
+              Install Now
+            </Link>
+            <ul>
+              <li>Open-source</li>
+              <li>Self-hosted</li>
+              <li>Always free</li>
+            </ul>
+          </div>
         </div>
       </header>
       <main>
@@ -78,108 +77,124 @@ export default function Home(): JSX.Element {
             <Link to="/docs/getting-started/configuration/cloud-providers/aws">
               <AwsLogo />
             </Link>
+            <Link to="/docs/getting-started/configuration/cloud-providers/gcp">
+              <GoogleCloudLogo />
+            </Link>
             <Link to="/docs/getting-started/configuration/cloud-providers/digitalocean">
               <DigitalOceanLogo />
             </Link>
             <Link to="/docs/getting-started/configuration/cloud-providers/kubernetes">
               <KubernetesLogo />
             </Link>
-            <Link to="/docs/getting-started/configuration/cloud-providers/gcp">
-              <GoogleCloudLogo />
-            </Link>
-            <VmwareLogo />
           </div>
         </section>
         <section className={styles.section}>
           <div className={styles.sectionContainer}>
-            <div className={styles.flexContainer}>
-              <HappySheepIllustration className={styles.sectionImage} />
-              <div>
-                <span
-                  className={clsx(
-                    styles.sectionBadge,
-                    'badge badge--primary badge--lg'
-                  )}
-                >
-                  Why Resoto?
-                </span>
-                <h2 className={styles.sectionTitle}>
-                  If you don&rsquo;t know what is running in your cloud, it will
-                  cost you.
-                </h2>
-                <p>
-                  At some point, you <strong>lose track</strong> of where people
-                  put stuff. Spinning up new resources carries little risk, but{' '}
-                  cleaning up can have <strong>unforeseen consequences</strong>.
-                </p>
-                <p>It is no surprise that resource usage tends to grow.</p>
-              </div>
+            <div>
+              <span
+                className={clsx(
+                  styles.sectionBadge,
+                  'badge badge--primary badge--lg'
+                )}
+              >
+                Leverage for Cloud Engineers
+              </span>
+              <h2 className={styles.sectionTitle}>
+                Resoto keeps track of your infrastructure and puts all the data
+                at your fingertips.
+              </h2>
+              <p>
+                Understand who is running what, answer questions about your
+                infrastructure, and ensure efficiency at scale without slowing
+                down development.
+              </p>
             </div>
-            <div className={styles.sectionImageContainer}>
-              <DeveloperSheepIllustration />
-              <SreSheepIllustration />
-              <ConfusedSheepIllustration />
-            </div>
-            {/* <p>
-              Resoto allows you to give your engineers liberal permissions
-              without losing control of your cloud infrastructure.
-            </p> */}
-            <blockquote className={styles.quotation}>
-              <div>
+            <img
+              src="img/illustrations/leverage-for-cloud-engineers.png"
+              alt=""
+              className={clsx(styles.sectionImage, styles.overlappedImage)}
+            />
+            <ul className={styles.sectionItems}>
+              <li>
+                <Link to="/docs/concepts/search">
+                  <h3>
+                    <SearchIcon className={styles.sectionItemIcon} />
+                    <span>Search</span>
+                  </h3>
+                </Link>
                 <p>
-                  I built the first version of Resoto to get a handle on the
-                  infrastructure at{' '}
-                  <a
-                    href="https://d2iq.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    D2iQ
-                  </a>
-                  . We had around{' '}
-                  <strong>
-                    two hundred engineers able to spin up resources
-                  </strong>{' '}
-                  but only a small,{' '}
-                  <strong>three-person SRE team responsible</strong> for all
-                  cloud usage.
+                  Write ad-hoc queries with full-text metadata search across all
+                  your cloud accounts using the{' '}
+                  <Link to="/docs/reference/cli">command-line interface</Link>.
                 </p>
-                <footer>
-                  <strong>Lukas Lösche</strong>, Co-Founder at{' '}
-                  <a
-                    href="https://some.engineering"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Some Engineering
-                  </a>
-                </footer>
-              </div>
-            </blockquote>
+              </li>
+              <li>
+                <Link to="/docs/concepts/search/aggregation">
+                  <h3>
+                    <ChartSquareBarIcon className={styles.sectionItemIcon} />
+                    <span>Report</span>
+                  </h3>
+                </Link>
+                <p>
+                  Turn your <Link to="/docs/concepts/search">searches</Link>{' '}
+                  into regular reports with fleet-wide, actionable metrics that
+                  you can export to popular tools and share with colleagues in
+                  Product or Finance.
+                </p>
+              </li>
+              <li>
+                <Link to="/docs/concepts/automation">
+                  <h3>
+                    <CogIcon className={styles.sectionItemIcon} />
+                    <span>Automate</span>
+                  </h3>
+                </Link>
+                <p>
+                  Automate your work with{' '}
+                  <Link to="/docs/concepts/automation/job">jobs</Link> that
+                  execute recurring tasks, such as identifying and cleaning up
+                  orphaned resources and enforcing{' '}
+                  <Link to="/docs/concepts/tagging">tag</Link> structures.
+                </p>
+              </li>
+            </ul>
+            <div className={styles.cta}>
+              <Link
+                to="/docs/getting-started/installation"
+                className="button button--primary button--lg"
+              >
+                Install Now
+              </Link>
+              <p>Resoto is open source and free to use.</p>
+            </div>
           </div>
         </section>
         <section className={clsx(styles.section, styles.sectionAlt)}>
           <div className={styles.sectionContainer}>
-            <div className={styles.flexContainer}>
-              <StrongSheepIllustration className={styles.sectionImage} />
-              <div>
-                <span
-                  className={clsx(
-                    styles.sectionBadge,
-                    'badge badge--primary badge--lg'
-                  )}
-                >
-                  Take Control
-                </span>
-                <h2 className={styles.sectionTitle}>
-                  Build infrastructure that moves your company forward.
-                </h2>
-                <p>
-                  No more custom scripts or cron jobs that disappear when your
-                  engineers move on to new roles.
-                </p>
-              </div>
+            <div>
+              <span
+                className={clsx(
+                  styles.sectionBadge,
+                  'badge badge--primary badge--lg'
+                )}
+              >
+                Take Control
+              </span>
+              <h2 className={styles.sectionTitle}>
+                Build infrastructure that moves your company forward.
+              </h2>
+              <p>
+                Resoto collects resource metadata and stores that data in a
+                directed graph. You get visibility into resources in different
+                clouds, organizations, regions, sub-accounts, etc.&mdash;all
+                from a single place.
+              </p>
             </div>
+            <img
+              src="img/illustrations/take-control.png"
+              alt=""
+              className={clsx(styles.sectionImage, styles.fadingImage)}
+            />
             <ul className={styles.sectionItems}>
               <li>
                 <h3>
@@ -220,161 +235,94 @@ export default function Home(): JSX.Element {
                 </p>
               </li>
             </ul>
-            {/* <blockquote className={styles.quotation}>
-              <div>
-                <p>
-                  Since deploying Resoto, our{' '}
-                  <strong>cloud bill dropped by over seventy percent</strong>
-                  &mdash;saving us millions every year.
-                </p>
-                <footer>
-                  <strong>Tobi Knaup</strong>, CEO at{' '}
-                  <a
-                    href="https://d2iq.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    D2iQ
-                  </a>
-                </footer>
-              </div>
-            </blockquote> */}
+            <div className={styles.cta}>
+              <Link
+                to="/docs/getting-started/installation"
+                className="button button--primary button--lg"
+              >
+                Install Now
+              </Link>
+              <p>Resoto is open source and free to use.</p>
+            </div>
           </div>
         </section>
         <section className={styles.section}>
           <div className={styles.sectionContainer}>
-            <div className={styles.flexContainer}>
-              <AirportSheepIllustration className={styles.sectionImage} />
-              <div>
-                <span
-                  className={clsx(
-                    styles.sectionBadge,
-                    'badge badge--primary badge--lg'
-                  )}
-                >
-                  Leverage for Cloud Engineers
-                </span>
-                <h2 className={styles.sectionTitle}>
-                  Resoto keeps track of your infrastructure and puts all the
-                  data at your fingertips.
-                </h2>
-                <p>
-                  <strong>Understand</strong> who is running what,{' '}
-                  <strong>answer questions</strong> about your infrastructure,
-                  and <strong>ensure efficiency</strong> at scale without
-                  slowing down development.
-                </p>
-                <p>Resoto is like a map when exploring an unfamiliar city.</p>
-              </div>
+            <div>
+              <span
+                className={clsx(
+                  styles.sectionBadge,
+                  'badge badge--primary badge--lg'
+                )}
+              >
+                Why Resoto?
+              </span>
+              <h2 className={styles.sectionTitle}>
+                If you don&rsquo;t know what is running in your cloud, it will
+                cost you. (Literally.)
+              </h2>
+              <p>
+                Resoto allows you to give your engineers liberal permissions
+                without losing control of your cloud infrastructure.
+              </p>
             </div>
-            <ul className={styles.sectionItems}>
-              <li>
-                <Link to="/docs/concepts/search">
-                  <h3>
-                    <SearchIcon className={styles.sectionItemIcon} />
-                    <span>Find</span>
-                  </h3>
-                </Link>
-                <p>
-                  Write ad-hoc queries with full-text metadata search across all
-                  your cloud accounts or projects using the{' '}
-                  <Link to="/docs/reference/cli">command-line interface</Link>.
-                </p>
-              </li>
-              <li>
-                <Link to="/docs/concepts/search/aggregation">
-                  <h3>
-                    <ChartSquareBarIcon className={styles.sectionItemIcon} />
-                    <span>Report</span>
-                  </h3>
-                </Link>
-                <p>
-                  Turn your <Link to="/docs/concepts/search">searches</Link>{' '}
-                  into regular reports, with fleet-wide metrics you can export
-                  to your existing tools and share with colleagues in Product or
-                  Finance.
-                </p>
-              </li>
-              <li>
-                <Link to="/docs/concepts/automation">
-                  <h3>
-                    <CogIcon className={styles.sectionItemIcon} />
-                    <span>Automate</span>
-                  </h3>
-                </Link>
-                <p>
-                  With <Link to="/docs/concepts/automation/job">jobs</Link>, you
-                  can schedule recurring tasks such as identifying non-compliant
-                  resources or enforcing{' '}
-                  <Link to="/docs/concepts/tagging">tag</Link> structures.
-                </p>
-              </li>
-            </ul>
-            {/* <blockquote className={styles.quotation}>
-              <div>
-                <p>
-                  Resoto is useful &hellip; for <strong>ad-hoc queries</strong>{' '}
-                  and for the ability to extend it to{' '}
-                  <strong>answer questions</strong> that we can&rsquo;t
-                  currently answer.
-                </p>
-                <footer>
-                  <strong>Tai Dickerson</strong>, Production Engineering at{' '}
-                  <a
-                    href="https://shopify.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Shopify
-                  </a>
-                </footer>
-              </div>
-            </blockquote> */}
+            <img
+              src="img/illustrations/why-resoto.png"
+              alt=""
+              className={styles.sectionImage}
+            />
+            <div className={styles.cta}>
+              <Link
+                to="/docs/getting-started/installation"
+                className="button button--primary button--lg"
+              >
+                Install Now
+              </Link>
+              <p>Resoto is open source and free to use.</p>
+            </div>
           </div>
         </section>
         <section className={clsx(styles.section, styles.sectionAlt)}>
           <div className={styles.sectionContainer}>
-            <div className={styles.flexContainer}>
-              <ProfessorSheepIllustration className={styles.sectionImage} />
-              <div>
-                <span
-                  className={clsx(
-                    styles.sectionBadge,
-                    'badge badge--primary badge--lg'
-                  )}
+            <div>
+              <span
+                className={clsx(
+                  styles.sectionBadge,
+                  'badge badge--primary badge--lg'
+                )}
+              >
+                Say Goodbye to Busywork
+              </span>
+              <h2 className={styles.sectionTitle}>
+                It&rsquo;s time to automate your infrastructure tasks.
+              </h2>
+              <p>
+                Resoto is{' '}
+                <a
+                  href="https://github.com/someengineering/resoto/blob/main/LICENSE"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  Say Goodbye to Busywork
-                </span>
-                <h2 className={styles.sectionTitle}>
-                  It&rsquo;s time to automate your infrastructure tasks.
-                </h2>
-                <p>
-                  Resoto is{' '}
-                  <a
-                    href="https://github.com/someengineering/resoto/blob/main/LICENSE"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    open source
-                  </a>{' '}
-                  and completely free to use, with out-of-the-box support for{' '}
-                  <Link to="/docs/getting-started/configuration/cloud-providers/aws">
-                    Amazon Web Services
-                  </Link>
-                  ,{' '}
-                  <Link to="/docs/getting-started/configuration/cloud-providers/gcp">
-                    Google Cloud Platform
-                  </Link>
-                  , and{' '}
-                  <Link to="/docs/getting-started/configuration/cloud-providers/digitalocean">
-                    DigitalOcean
-                  </Link>
-                  .
-                </p>
-                <p>
-                  In the future, we plan to release a managed cloud solution.
-                </p>
-              </div>
+                  open source
+                </a>{' '}
+                and completely free to use, with out-of-the-box support for{' '}
+                <Link to="/docs/getting-started/configuration/cloud-providers/aws">
+                  Amazon Web Services
+                </Link>
+                ,{' '}
+                <Link to="/docs/getting-started/configuration/cloud-providers/gcp">
+                  Google Cloud Platform
+                </Link>
+                ,{' '}
+                <Link to="/docs/getting-started/configuration/cloud-providers/digitalocean">
+                  DigitalOcean
+                </Link>
+                , and{' '}
+                <Link to="/docs/getting-started/configuration/cloud-providers/kubernetes">
+                  Kubernetes
+                </Link>
+                .
+              </p>
             </div>
             <ul className={styles.sectionItems}>
               <li>
@@ -427,48 +375,35 @@ export default function Home(): JSX.Element {
                 </p>
               </li>
             </ul>
-            {/* <blockquote className={styles.quotation}>
-              <div>
-                <p>
-                  I installed Resoto. <strong>Super cool CLI experience</strong>
-                  , and I love the <strong>app configuration</strong>&mdash;much
-                  better than YAML hunting.
-                </p>
-                <footer>
-                  <strong>Justyn Roberts</strong>, Solutions Engineering at{' '}
-                  <a
-                    href="https://pagerduty.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    PagerDuty
-                  </a>
-                </footer>
-              </div>
-            </blockquote> */}
+            <div className={styles.cta}>
+              <Link
+                to="/docs/getting-started/installation"
+                className="button button--primary button--lg"
+              >
+                Install Now
+              </Link>
+              <p>Resoto is open source and free to use.</p>
+            </div>
           </div>
         </section>
         <section className={styles.section}>
           <div className={styles.sectionContainer}>
-            <div className={styles.flexContainer}>
-              <WinningSheepIllustration className={styles.sectionImage} />
-              <div>
-                <span
-                  className={clsx(
-                    styles.sectionBadge,
-                    'badge badge--primary badge--lg'
-                  )}
-                >
-                  Connect and Learn
-                </span>
-                <h2 className={styles.sectionTitle}>
-                  Join us on the forefront of infrastructure intelligence.
-                </h2>
-                <p>
-                  Keep up to date with the latest Resoto news, features, events,
-                  and articles.
-                </p>
-              </div>
+            <div>
+              <span
+                className={clsx(
+                  styles.sectionBadge,
+                  'badge badge--primary badge--lg'
+                )}
+              >
+                Connect and Learn
+              </span>
+              <h2 className={styles.sectionTitle}>
+                Join us on the forefront of infrastructure intelligence.
+              </h2>
+              <p>
+                Keep up to date with the latest Resoto news, features, events,
+                and articles.
+              </p>
             </div>
             <ul className={styles.sectionItems}>
               <li>

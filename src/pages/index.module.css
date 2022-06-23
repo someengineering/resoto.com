@@ -12,11 +12,13 @@ html[data-theme='dark'] .hero {
   margin: 0 auto;
   max-width: var(--ifm-container-width);
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
-.heroInner > * {
-  margin-right: 1.5rem;
+.hero .flexContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
 }
 
 .heroTitle {
@@ -25,64 +27,61 @@ html[data-theme='dark'] .hero {
 
 .heroText {
   color: var(--ifm-color-primary-contrast-foreground);
-  font-size: 30px;
+  font-size: 32px;
   line-height: 1.2;
   margin: 0;
   flex-grow: 1;
 }
 
-.heroText strong {
-  color: var(--ifm-color-primary) !important;
-}
-
 .heroText .tagline {
-  font-size: 50px;
+  color: var(--ifm-color-primary);
+  font-size: 54px;
   font-weight: 700;
   margin-bottom: 1rem;
 }
 
-.heroText .cta {
+.hero .cta {
   margin: 1.5rem 0 0;
   display: flex;
   align-items: center;
 }
 
-.heroText ul {
+.hero ul {
   list-style: none;
   margin: 0 0 0 1.5em;
   padding: 0;
   display: flex;
-  font-size: 65%;
+  flex-wrap: wrap;
+  font-size: 20px;
   font-weight: 900;
 }
 
-.heroText ul li {
+.hero ul li {
   margin-right: 1em;
 }
 
-.heroText ul li:before {
+.hero ul li:before {
   content: '✓';
   margin-right: 0.25em;
   font-weight: 900;
   color: var(--ifm-color-primary);
 }
 
-.heroLogo {
-  height: 198px;
+.heroAnimation {
+  height: 450px;
   width: auto;
   flex-shrink: 0;
-  animation-duration: 2s;
-  animation-name: logo-animation;
-  margin-left: 30px;
+  margin: -55px -60px -132px -60px !important;
+  overflow: visible;
 }
 
 .section {
   background-color: var(--ifm-color-primary-contrast-background);
   color: var(--ifm-color-primary-contrast-foreground);
-  padding: 60px 48px;
+  padding: 48px;
   margin: 0 auto;
   line-height: 1.45;
-  text-align: left;
+  text-align: center;
 }
 
 .section:last-child {
@@ -93,7 +92,6 @@ html[data-theme='dark'] .hero {
 .sectionAlt {
   background-color: transparent;
   color: var(--ifm-font-color-base);
-  text-align: right;
 }
 
 html[data-theme='dark'] .section {
@@ -112,22 +110,13 @@ html[data-theme='dark'] .sectionAlt {
 .flexContainer {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   margin: 0 auto;
 }
 
-.sectionAlt .flexContainer {
-  flex-direction: row-reverse;
-  justify-content: flex-end;
-}
-
 .flexContainer > * + * {
   margin: 0 0 0 20px;
-}
-
-.sectionAlt .flexContainer > * + * {
-  margin: 0 20px 0 0;
 }
 
 .flexContainer > div > p + p {
@@ -137,10 +126,9 @@ html[data-theme='dark'] .sectionAlt {
 .sectionBadge {
   text-transform: uppercase;
   font-size: 110%;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
-.tagline,
 .sectionTitle,
 .section h2,
 .section h3 {
@@ -155,43 +143,55 @@ html[data-theme='dark'] .sectionAlt {
 
 .section p {
   font-size: 1.375rem;
-  margin: 0.75rem auto 0 0;
+  margin: 0.75rem auto 0;
 }
 
-.sectionAlt p {
-  margin: 0.75rem 0 0 auto;
+.section .cta {
+  text-align: center;
+  margin: 36px 0 0;
+}
+
+.section .cta p {
+  font-size: 110%;
+  font-weight: bold;
+  margin: 0.25rem auto 0;
 }
 
 .sectionImage {
-  height: 150px;
-  width: 150px;
-  flex-shrink: 0;
+  width: auto;
+  max-width: 100%;
+  max-height: 18rem;
+  margin: 1.5rem auto 0;
 }
 
-.sectionLogoContainer,
-.sectionImageContainer {
+.fadingImage {
+  max-height: 32rem;
+  margin: max(-5em, -7.5vw) auto max(-12rem, -18vw);
+  z-index: -50;
+  position: relative;
+}
+
+.overlappedImage {
+  max-height: 20rem;
+  margin: 1.5rem auto max(-9rem, -15vw);
+}
+
+.sectionLogoContainer {
   margin: 1.5rem auto 0;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
 
-.sectionLogoContainer {
-  flex-wrap: wrap;
-}
-
-.sectionImageContainer {
-  width: 50%;
-  align-items: flex-end;
-}
-
 .sectionLogoContainer > * {
   color: var(--ifm-font-color-base);
   height: 2.5rem;
-  max-width: 10rem;
+  max-width: 12rem;
   display: flex;
   flex-shrink: 1;
+  margin: 0 1.5rem;
 }
 
 .sectionLogoContainer > a:hover {
@@ -200,18 +200,6 @@ html[data-theme='dark'] .sectionAlt {
 
 .sectionLogoContainer > a > * {
   height: 100%;
-}
-
-.sectionLogoContainer > * + * {
-  margin: 0 0 1rem 3rem;
-}
-
-.sectionImageContainer > * {
-  height: 10rem;
-}
-
-.sectionImageContainer > * + * {
-  margin: 0 0 0 1rem;
 }
 
 .quotation {
@@ -290,6 +278,10 @@ html[data-theme='dark'] .quotation {
   background-color: var(--ifm-card-background-color);
 }
 
+html[data-theme='dark'] .sectionItems li {
+  --ifm-card-background-color: #000d19;
+}
+
 .sectionItems h3 {
   display: flex;
   align-items: center;
@@ -311,26 +303,47 @@ html[data-theme='dark'] .quotation {
 }
 
 @media screen and (max-width: 996px) {
-  .hero {
-    padding: 24px;
+  .hero,
+  .section {
+    padding: 36px 24px;
+  }
+
+  .heroInner {
+    flex-direction: column;
+  }
+
+  .heroInner > * {
+    margin-right: 0;
+  }
+
+  .hero .flexContainer {
+    flex-direction: column !important;
   }
 
   .heroText {
     text-align: center;
     margin: 0 auto;
+    font-size: 24px;
   }
 
-  .heroText .cta {
+  .heroText .tagline {
+    font-size: 40px;
+  }
+
+  .heroAnimation {
+    margin: -15px auto -45px !important;
+    width: 100%;
+    max-height: 75vw;
+  }
+
+  .hero .cta {
     flex-direction: column-reverse;
-    margin: 1rem 0 0 0;
+    margin: 24px 0 0 0;
   }
 
-  .heroText ul {
+  .hero ul {
     margin: 0 0 1rem 0;
-  }
-
-  .heroLogo {
-    display: none;
+    justify-content: center;
   }
 
   .heroButtons {
@@ -339,18 +352,21 @@ html[data-theme='dark'] .quotation {
 
   .flexContainer {
     width: 100%;
+    text-align: center;
+    flex-direction: column-reverse !important;
   }
 
-  .flexContainer > * + * {
+  .flexContainer div {
+    flex-direction: column;
+  }
+
+  .section .flexContainer > * + * {
     margin: 0;
   }
 
-  .sectionImage {
-    display: none;
-  }
-
-  .sectionImageContainer {
-    width: 80%;
+  .section .cta {
+    text-align: center;
+    margin: 24px 0 0;
   }
 
   .quotation {

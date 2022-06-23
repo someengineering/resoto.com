@@ -270,6 +270,10 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   margin-right: 1rem;
 }
 
+.lottie-dark-purple {
+  fill: var(--ifm-color-primary);
+}
+
 @media screen and (max-width: 996px) {
   .navbar__items .navbar-icon-link > .navLinklabel {
     display: none;
@@ -289,6 +293,17 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 
   .footer__links {
     text-align: center;
+  }
+
+  .footer__items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .footer__item {
+    margin: 0 0.75em;
   }
 
   .lg-screens-only {

@@ -21,9 +21,9 @@ tags: [release notes]
 
 ### UI to Configure Resoto
 
-This version ships with a UI bundled to ResotoCore. It is possible to do the configuration of Resoto via this user interface.
+We now ship a user interface (UI) in [Resoto Core](/docs/concepts/components/core), from which it is possible to configure Resoto.
 
-In case you are running Resoto locally via [docker](/docs/getting-started/installation/docker) you can reach the UI via [https://localhost:8900/ui](https://localhost:8900/ui)
+If you are running Resoto locally via [Docker](/docs/getting-started/installation/docker), the UI is accessible via [https://localhost:8900/ui](https://localhost:8900/ui):
 
 ![Config UI](./img/ui_config.png)
 
@@ -31,28 +31,32 @@ In case you are running Resoto locally via [docker](/docs/getting-started/instal
 
 Resoto had limited support to handle complex models. This release adds the ability to handle any deeply structured type while also introspecting them.
 
-ResotoShell now provides better suggestions since it knows which type is expected in which position.
+[Resoto Shell](/docs/concepts/components/shell) now provides better, type-aware suggestions:
 
 ![Complex Kind](./img/kind_is_complex.png)
 
-It also is able to suggest deeply nested properties since it knows the complete model structure.
+[Resoto Shell](/docs/concepts/components/shell) is also able to suggest deeply nested properties, since it knows the complete model structure:
 
 ![Complex Kind](./img/kind_nested_property_suggestions.png)
 
-The `kinds` command can be used to lookup the model behind a nested property path. ![Complex Kind](./img/kind_lookup_type.png)
+The `kinds` command can be used to lookup the model behind a nested property path:
 
-And last but not least the uml model endpoint can generate diagrams with complex models
+![Complex Kind](./img/kind_lookup_type.png)
+
+And last but not least, the UML model endpoint can generate diagrams with complex models.
 
 ### Support for Graph Edges Between Clouds
 
-Resoto uses collectors to retrieve data from a specific cloud provider. Those collectors are not only able to collect the resource data, but also to define the relationships between the resources. Some relationships can not be resolved inside the collector, since the relationship points to resources that are not part of this cloud.
+Resoto uses collectors to retrieve data from a specific cloud provider. Those collectors are not only able to collect the resource data, but also define the relationships between the resources. Some relationships cannot be resolved inside the collector, since the relationship points to resources that are not part of this cloud.
 
-Examples:
+:::tip Examples
 
-- A Kubernetes node is running on an AWS EC2 instance. The Kubernetes collector is not able to resolve the reference, since it points to a resource provided by AWS.
-- A load balancer in AWS that points to compute resources in Google Cloud. The AWS collector does not know anything about GCP.
+- A [Kubernetes](/docs/reference/data-models/kubernetes) node is running on an [AWS](/docs/reference/data-models/aws) EC2 instance. The [Kubernetes](/docs/reference/data-models/kubernetes) collector is unable to resolve the reference, since it points to a resource provided by [AWS](/docs/reference/data-models/aws).
+- A load balancer in [AWS](/docs/reference/data-models/aws) that points to compute resources in [Google Cloud](/docs/reference/data-models/gcp). The [AWS](/docs/reference/data-models/aws) collector does not know anything about [GCP](/docs/reference/data-models/gcp).
 
-Resoto now has support for creating edges that can not be resolved during the phase of collecting the data, but are resolved when all collectors delivered their current snapshot. We will extend our list of collectors to provide relationships across cloud providers.
+:::
+
+Resoto now has support for creating edges that cannot be resolved during the phase of collecting the data but are resolved once all collectors have delivered their current snapshot. Going forward, we will continue extend our list of collectors to provide relationships across cloud providers.
 
 <!--truncate-->
 

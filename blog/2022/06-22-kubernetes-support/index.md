@@ -70,15 +70,21 @@ Every resource found in Kubernetes is represented by a node in the graph. Availa
 
 ![PersistentVolume](./img/persistent_volume.svg)
 
-Resoto has a common data model for resources that abstracts from the underlying provider. Every resource inherits the properties from the base `resource`, which defines properties like `id`, `name`, `age`, `last_update`, `tags` etc. Every resource in Kubernetes is also of type `kubernetes_resource`, which brings in additional properties like a `resource_version`, `labels`, and an optional `namespace` property, which is defined for all namespaced resources. Annotations of a Kubernetes resource are available as `tags` and can be modified via the [`tag`](/docs/reference/cli/tag) command. Common abstractions apply as well. A [PersistentVolume](/docs/reference/data-models/kubernetes#kubernetes_persistent_volume) is of base type `volume`. So it shares the same kind and properties with other volumes of other cloud providers, e.g. an [`EBSVolume`](/docs/reference/data-models/aws#aws_ec2_volume) in AWS or a [`Disk`](/docs/reference/data-models/gcp#gcp_disk) in GCP. The same idea applies to a Kubernetes [node](/docs/reference/data-models/kubernetes#kubernetes_node) which is of base type `instance` etc.
+Resoto has a common data model for resources that abstracts from the underlying provider. Every resource inherits the properties from the base `resource`, which defines properties like `id`, `name`, `age`, `last_update`, `tags` etc.
 
-Kubernetes has its own way of describing a resource, which is available in Resoto as well. The three main sections `metadata`, `spec`, and `status` can be found in almost any resource. The data in the `metadata` section is basically covered by the base `resource` properties (`id`, `name`, `tags`, etc.). The `spec` section usually holds the desired state, while the `status` section holds the current state. Both sections are unique to the resource type. Since Resoto allows searching on any resource property, we made the `spec` and `status` section unique to the resource type. So a `Pod` in Resoto has a `pod_spec` and `pod_status` section, while a `Deployment` has a `deployment_spec` and `deployment_status` section. The relevant spec and status sections have the same specific data model as the Kubernetes resource.
+Every resource in Kubernetes is also of type `kubernetes_resource`, which brings in additional properties like a `resource_version`, `labels`, and an optional `namespace` property, which is defined for all namespaced resources. Annotations of a Kubernetes resource are available as `tags` and can be modified via the [`tag`](/docs/reference/cli/tag) command.
+
+Common abstractions apply as well. A [PersistentVolume](/docs/reference/data-models/kubernetes#kubernetes_persistent_volume) is of base type `volume`. So it shares the same kind and properties with other volumes of other cloud providers, e.g. an [`EBSVolume`](/docs/reference/data-models/aws#aws_ec2_volume) in AWS or a [`Disk`](/docs/reference/data-models/gcp#gcp_disk) in GCP. The same idea applies to a Kubernetes [node](/docs/reference/data-models/kubernetes#kubernetes_node) which is of base type `instance` etc.
+
+Kubernetes has its own way of describing a resource, which is available in Resoto as well. The three main sections `metadata`, `spec`, and `status` can be found in almost any resource. The data in the `metadata` section is basically covered by the base `resource` properties (`id`, `name`, `tags`, etc.). The `spec` section usually holds the desired state, while the `status` section holds the current state.
+
+Both sections are unique to the resource type. Since Resoto allows searching on any resource property, we made the `spec` and `status` section unique to the resource type. So a `Pod` in Resoto has a `pod_spec` and `pod_status` section, while a `Deployment` has a `deployment_spec` and `deployment_status` section. The relevant spec and status sections have the same specific data model as the Kubernetes resource.
 
 You can find a complete reference in our [resource reference](/docs/reference/data-models/kubernetes).
 
 ## Searching the Graph
 
-Since all Kubernetes resources share the same base kind `kubernetes_resource`, we can filter the graph by this resource type. This is the output for the 2 clusters we have configured:
+Since all Kubernetes resources share the same base kind `kubernetes_resource`, we can filter the graph by this resource type. We will count the number of Kubernetes resources by its kind. This will print the kind of the resource and the number of occurrences in ascending order. This is the output for the 2 clusters we have configured:
 
 ```bash
 > search is(kubernetes_resource) | count kind
@@ -121,7 +127,16 @@ total matched: 1234
 total unmatched: 0
 ```
 
-How many pods are running on each node in the cluster?
+Can we reveal general information about the Kubernetes clusters? This query shows all available clusters including version and server URL:
+
+```bash
+> search is(kubernetes_cluster) | list cluster_info
+
+major=1, minor=21, platform=linux/amd64, server_url=https://31e9afd3-xxxxx.k8s.ondigitalocean.com
+major=1, minor=21, platform=linux/amd64, server_url=https://9a3ac2b5-xxxxx.k8s.ondigitalocean.com
+```
+
+Now we can start asking questions about the state of our Kubernetes infrastructure. For example, how many pods are running on each node in the cluster?
 
 ```bash
 > search is(kubernetes_pod) | count /ancestors.kubernetes_node.reported.name
@@ -136,16 +151,7 @@ total matched: 70
 total unmatched: 0
 ```
 
-Reveal general information about the Kubernetes clusters, including version and server URL:
-
-```bash
-> search is(kubernetes_cluster) | list cluster_info
-
-major=1, minor=21, platform=linux/amd64, server_url=https://31e9afd3-xxxxx.k8s.ondigitalocean.com
-major=1, minor=21, platform=linux/amd64, server_url=https://9a3ac2b5-xxxxx.k8s.ondigitalocean.com
-```
-
-Show detailed information about a Kubernetes service with name `resotocore`:
+You want to see details? Let us get the information that has been collected about a Kubernetes service with name `resotocore`:
 
 ```yaml
 > search is(kubernetes_service) and name~resotocore | dump
@@ -196,12 +202,30 @@ reported:
   age: 1mo29d
 ```
 
-Use fulltext search to find resources, that match any property no matter where it is defined:
+Resoto ships with the ability to search for a value everywhere, no matter where this value is defined. We call this feature full-text search - you can read about all the details here [full-text search](/docs/concepts/search/full-text) Let us use this feature, to search an IP address that we found in the resoto core service. We expect it will find exactly the same ResotoCore service:
 
 ```bash
 > search "10.245.133.206"
 
 kind=kubernetes_service, id=df8f6c37-5542-4e17-b2f4-bb6caaa2ba17, name=resoto-resotocore, age=2mo1d, cloud=k8s, account=dev, region=resoto
+```
+
+Let us find all secrets inside Kubernetes, that are shared between more than one pod. Such queries might be useful to find resources, that have a defined relationship in the graph:
+
+```bash
+> search is(kubernetes_secret) and namespace=resoto with(count>1, <-- is(kubernetes_pod))
+
+kind=kubernetes_secret, id=af1495e4, name=resoto-psk, namespace=resoto, age=2mo1d, cloud=k8s, account=dev, region=resoto
+```
+
+There is more than one secret in this namespace, but only one is shared: the resoto-psk secret holds the private shared key. If we want to see the attached pods, we can use the same query again and list the resources. We will see that ResotoCore, ResotoWorker and ResotoMetrics use the secret resoto-psk. Please note: the secrets that are collected do not sensitive data fields.
+
+```bash
+> search is(kubernetes_secret) and namespace=resoto with(count>1, <-- is(kubernetes_pod)) <-- is(kubernetes_pod) | list name
+
+name=resoto-resotocore-67858dbc49-x5vgq
+name=resoto-resotometrics-6c557bd666-n2t22
+name=resoto-resotoworker-dc6bd998f-xpnb7
 ```
 
 Render a graph of all services that are deployed in the `resoto` namespace on the `dev` cluster. Please note: we are looking at a cluster where we have deployed `resoto` as a Helm chart as described in [getting started](/docs/getting-started/installation/kubernetes).
@@ -251,17 +275,15 @@ name=resoto-resotoworker-dc6bd998f-tvhkw,
 
 ## Cleaning up
 
-To delete resources, pipe search results to the [`clean`](/docs/reference/cli/clean) command:
+To delete resources, pipe search results to the [`clean`](/docs/reference/cli/clean) command. Let us find volume claims that are not bound to any kubernetes pod and clean them up:
 
 ```bash
-> search is(kubernetes_pod) and name~resoto | clean | list name
+> search is(kubernetes_persistent_volume_claim) with(empty, <-- is(kubernetes_pod)) -[0:1]-> | clean
 
-name=resoto-resotometrics-6c557bd666-m9qzm
-name=resoto-resotocore-67858dbc49-kzh7l
-name=resoto-resotoworker-dc6bd998f-tvhkw
+kind=kubernetes_persistent_volume_claim, id=079affbf, name=single-tvhrrqmm, age=6mo23d, cloud=k8s, account=dev, region=test
+kind=kubernetes_persistent_volume, id=c299101c, name=pvc-079affbf, age=6mo23d, cloud=k8s, account=dev, region=test
 ```
-
-This will mark the resoto pods for cleanup. The pods will be deleted once the `collect_and_cleanup` workflow runs (default: every hour). Once the pods are removed, Kubernetes will take care and restart new pods as defined by the deployment. All resources can be cleaned this way.
+This query selects all volume claims that have no pod attached and then also select the related volume. The clean command marks the resources for cleanup. The resources will be deleted once the `collect_and_cleanup` workflow runs (default: every hour).
 
 ## Future work
 

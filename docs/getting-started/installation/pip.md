@@ -43,8 +43,8 @@ $ source resoto-venv/bin/activate  # Activate the virtual Python environment.
 $ python -m ensurepip --upgrade    # Ensure pip is available.
 $ pip install -U resotocore resotoworker resotometrics resotoshell resoto-plugins
 # Generate two random passphrases. One to secure the graph database and one to secure resotocore with.
-$ echo $(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-20}) > .graphdb-password
-$ echo $(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-20}) > .pre-shared-key
+$ echo $(LC_CTYPE=C tr -dc _A-Z-a-z-0-9 < /dev/urandom | head -c 20) > .graphdb-password
+$ echo $(LC_CTYPE=C tr -dc _A-Z-a-z-0-9 < /dev/urandom | head -c 20) > .pre-shared-key
 $ chmod 600 .graphdb-password .pre-shared-key
 ```
 

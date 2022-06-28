@@ -3,6 +3,11 @@
 
 const a11yEmoji = require('@fec/remark-a11y-emoji');
 
+const isProd =
+  process.env.NODE_ENV !== 'development' &&
+  !!process.env.NETLIFY &&
+  process.env.CONTEXT !== 'deploy-preview';
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Resoto by Some Engineering Inc.',
@@ -22,6 +27,15 @@ const config = {
       crossorigin: true,
     },
   ],
+  scripts: isProd
+    ? [
+        {
+          src: 'https://plausible.io/js/script.js',
+          defer: true,
+          'data-domain': 'resoto.com',
+        },
+      ]
+    : [],
   presets: [
     [
       'redocusaurus',

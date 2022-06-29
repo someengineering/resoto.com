@@ -30,7 +30,7 @@ const config = {
   scripts: isProd
     ? [
         {
-          src: 'https://plausible.io/js/script.js',
+          src: 'https://resoto.com/js/script.js',
           defer: true,
           'data-domain': 'resoto.com',
         },

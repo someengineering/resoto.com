@@ -4,6 +4,9 @@ https://blog.resoto.com/*                                     https://resoto.com
 https://docs.resoto.com/*                                     https://resoto.com/docs/:splat 301!
 https://news.resoto.com/*                                     https://resoto.com/news/:splat 301!
 
+/js/script.js                                                 https://plausible.io/js/script.js 200
+/api/event                                                    https://plausible.io/api/event 200
+
 /blog/2022/02/04/resoto-query-language-101                    /blog/2022/02/04/resoto-search-101
 /blog/2022/02/04/resoto-search-syntax-101                     /blog/2022/02/04/resoto-search-101
 /blog/2022/05/31/resotonotebook                               /blog/2022/05/31/resoto-meets-jupyter-notebook

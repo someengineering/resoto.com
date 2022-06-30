@@ -274,6 +274,10 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   fill: var(--ifm-color-primary);
 }
 
+.api-info {
+  display: none;
+}
+
 @media screen and (max-width: 996px) {
   .navbar__items .navbar-icon-link > .navLinklabel {
     display: none;

@@ -96,8 +96,6 @@ venv\Scripts\activate.bat
 
 ### Starting the Database
 
-Start ArangoDB (using `systemctl` on Linux, by clicking the application icon in macOS, etc.).
-
 Start [ArangoDB](https://arangodb.com) (using `systemctl` on Linux, by clicking the application icon in macOS, etc.).
 
 Depending on the installation method used for [ArangoDB](https://arangodb.com), [authentication may or may not be enabled on the built-in `root` user account](https://www.arangodb.com/docs/stable/getting-started-installation.html#securing-the-installation). The installation process either prompted for the `root` password (Debian, Windows), configured a random password (Red Hat), or set the password to an empty string.

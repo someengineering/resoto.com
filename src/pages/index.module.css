@@ -124,15 +124,18 @@ html[data-theme='dark'] .sectionAlt {
 }
 
 .sectionBadge {
+  color: var(--ifm-color-primary);
   text-transform: uppercase;
-  font-size: 110%;
-  margin-bottom: 10px;
+  font-size: 1.25rem;
+  letter-spacing: 0.125em;
+  font-weight: bold;
 }
 
 .sectionTitle,
 .section h2,
 .section h3 {
   color: var(--ifm-font-color-base);
+  margin: 1rem auto;
 }
 
 .sectionAlt .sectionTitle,
@@ -285,7 +288,7 @@ html[data-theme='dark'] .sectionItems li {
 .sectionItems h3 {
   display: flex;
   align-items: center;
-  margin-bottom: calc(var(--ifm-heading-margin-bottom) / 2);
+  margin: 0 0 calc(var(--ifm-heading-margin-bottom) / 2);
 }
 
 .sectionItems p {

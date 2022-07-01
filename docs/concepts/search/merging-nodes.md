@@ -126,7 +126,7 @@ Resoto provides the `ancestors` and `descendants` section as part of every resou
 If we want to filter resources in a specific account by their identifiers, we can simply add a filter expression:
 
 ```bash
-> search is(volume) and /ancestors/account/reported/id==dev limit 1
+> search is(volume) and /ancestors.account.reported.id==dev limit 1
 ```
 
 Let's break down the filter expression:

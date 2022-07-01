@@ -111,6 +111,7 @@ export default function Home(): JSX.Element {
             </div>
             <img
               src="img/illustrations/leverage-for-cloud-engineers.png"
+              loading="lazy"
               alt=""
               className={clsx(styles.sectionImage, styles.overlappedImage)}
             />
@@ -192,6 +193,7 @@ export default function Home(): JSX.Element {
             </div>
             <img
               src="img/illustrations/take-control.png"
+              loading="lazy"
               alt=""
               className={clsx(styles.sectionImage, styles.fadingImage)}
             />
@@ -268,6 +270,7 @@ export default function Home(): JSX.Element {
             </div>
             <img
               src="img/illustrations/why-resoto.png"
+              loading="lazy"
               alt=""
               className={styles.sectionImage}
             />

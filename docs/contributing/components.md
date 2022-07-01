@@ -53,7 +53,7 @@ git clone https://github.com/<your_github_username>/resoto.git
 
 This will create a directory named `resoto` in your current working directory.
 
-Next, add a remote pointing to the upstream repository (as opposted to your fork) named `upstream`:
+Next, add a remote pointing to the upstream repository (as opposed to your fork) named `upstream`:
 
 ```bash
 git remote add upstream https://github.com/someengineering/resoto.git
@@ -96,9 +96,7 @@ venv\Scripts\activate.bat
 
 ### Starting the Database
 
-Start ArangoDB (using `systemctl` on Linux, by clicking the application icon in macOS, etc.).
-
-Start [ArangoDB](https://arangodb.com) (using `systemctl` on Linux, by clicking the application icon in macOS, etc.).
+Start [ArangoDB](https://arangodb.com) (using `systemctl` on Linux, by clicking the application icon in macOS, etc.). If you used [Homebrew to install ArangoDB](https://arangodb.com/docs/stable/installation-mac-osx.html#homebrew), run `/usr/local/Cellar/arangodb/<VERSION>/sbin/arangod &`.
 
 Depending on the installation method used for [ArangoDB](https://arangodb.com), [authentication may or may not be enabled on the built-in `root` user account](https://www.arangodb.com/docs/stable/getting-started-installation.html#securing-the-installation). The installation process either prompted for the `root` password (Debian, Windows), configured a random password (Red Hat), or set the password to an empty string.
 
@@ -119,7 +117,7 @@ You can now start each of the Resoto components:
 
 ```bash
 cd resotocore
-python -m core
+python -m resotocore
 ```
 
 </TabItem>

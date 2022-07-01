@@ -117,7 +117,7 @@ You can now start each of the Resoto components:
 
 ```bash
 cd resotocore
-python -m core
+python -m resotocore
 ```
 
 </TabItem>

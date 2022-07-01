@@ -53,7 +53,7 @@ git clone https://github.com/<your_github_username>/resoto.git
 
 This will create a directory named `resoto` in your current working directory.
 
-Next, add a remote pointing to the upstream repository (as opposted to your fork) named `upstream`:
+Next, add a remote pointing to the upstream repository (as opposed to your fork) named `upstream`:
 
 ```bash
 git remote add upstream https://github.com/someengineering/resoto.git

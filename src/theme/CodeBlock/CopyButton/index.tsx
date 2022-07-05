@@ -1,6 +1,6 @@
 import { translate } from '@docusaurus/Translate';
 import type { Props } from '@theme/CodeBlock/CopyButton';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import copy from 'copy-text-to-clipboard';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './styles.module.css';

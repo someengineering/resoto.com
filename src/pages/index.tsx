@@ -19,7 +19,7 @@ import DigitalOceanLogo from '@site/src/assets/digitalocean.svg';
 import GoogleCloudLogo from '@site/src/assets/google-cloud.svg';
 import KubernetesLogo from '@site/src/assets/kubernetes.svg';
 import Layout from '@theme/Layout';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import lottie from 'lottie-web';
 import React, { useEffect } from 'react';
 import styles from './index.module.css';
@@ -91,17 +91,11 @@ export default function Home(): JSX.Element {
         <section className={styles.section}>
           <div className={styles.sectionContainer}>
             <div>
-              <span
-                className={clsx(
-                  styles.sectionBadge,
-                  'badge badge--primary badge--lg'
-                )}
-              >
+              <span className={styles.sectionBadge}>
                 Leverage for Cloud Engineers
               </span>
               <h2 className={styles.sectionTitle}>
-                Resoto keeps track of your infrastructure and puts all the data
-                at your fingertips.
+                Resoto puts infrastructure data at your fingertips.
               </h2>
               <p>
                 Understand who is running what, answer questions about your
@@ -173,14 +167,7 @@ export default function Home(): JSX.Element {
         <section className={clsx(styles.section, styles.sectionAlt)}>
           <div className={styles.sectionContainer}>
             <div>
-              <span
-                className={clsx(
-                  styles.sectionBadge,
-                  'badge badge--primary badge--lg'
-                )}
-              >
-                Take Control
-              </span>
+              <span className={styles.sectionBadge}>Take Control</span>
               <h2 className={styles.sectionTitle}>
                 Build infrastructure that moves your company forward.
               </h2>
@@ -251,14 +238,7 @@ export default function Home(): JSX.Element {
         <section className={styles.section}>
           <div className={styles.sectionContainer}>
             <div>
-              <span
-                className={clsx(
-                  styles.sectionBadge,
-                  'badge badge--primary badge--lg'
-                )}
-              >
-                Why Resoto?
-              </span>
+              <span className={styles.sectionBadge}>Why Resoto?</span>
               <h2 className={styles.sectionTitle}>
                 If you don&rsquo;t know what is running in your cloud, it will
                 cost you. (Literally.)
@@ -288,12 +268,7 @@ export default function Home(): JSX.Element {
         <section className={clsx(styles.section, styles.sectionAlt)}>
           <div className={styles.sectionContainer}>
             <div>
-              <span
-                className={clsx(
-                  styles.sectionBadge,
-                  'badge badge--primary badge--lg'
-                )}
-              >
+              <span className={styles.sectionBadge}>
                 Say Goodbye to Busywork
               </span>
               <h2 className={styles.sectionTitle}>
@@ -392,14 +367,7 @@ export default function Home(): JSX.Element {
         <section className={styles.section}>
           <div className={styles.sectionContainer}>
             <div>
-              <span
-                className={clsx(
-                  styles.sectionBadge,
-                  'badge badge--primary badge--lg'
-                )}
-              >
-                Connect and Learn
-              </span>
+              <span className={styles.sectionBadge}>Connect and Learn</span>
               <h2 className={styles.sectionTitle}>
                 Join us on the forefront of infrastructure intelligence.
               </h2>

@@ -6,7 +6,7 @@ sidebar_label: Amazon Web Services
 
 The [Amazon Web Services (AWS)](../../../reference/data-models/aws.md) collector is configured within the [Resoto Worker configuration](../index.md).
 
-Add `k8s` to the list of collectors by modifying the [Resoto Worker configuration](../index.md) as follows:
+Add `aws` to the list of collectors by modifying the [Resoto Worker configuration](../index.md) as follows:
 
 ```yaml
 resotoworker:

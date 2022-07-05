@@ -19,7 +19,7 @@ import DigitalOceanLogo from '@site/src/assets/digitalocean.svg';
 import GoogleCloudLogo from '@site/src/assets/google-cloud.svg';
 import KubernetesLogo from '@site/src/assets/kubernetes.svg';
 import Layout from '@theme/Layout';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import lottie from 'lottie-web';
 import React, { useEffect } from 'react';
 import styles from './index.module.css';

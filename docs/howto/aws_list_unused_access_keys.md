@@ -20,7 +20,7 @@ Find and delete IAM access keys that have not been used for a period of time.
 
 ## Steps to follow
 
-List all users with access keys that have not been used for a specific period of time. The following query will give you the list of users together with the number of access keys that have not been used in the last 30 days. If you know users where this is expected, you can define a whitelist of users, which will be ignored. This example uses a period of 90 days to mark an access key as unused and whitelists `jenkins` and `ci`.
+List all users with access keys that have not been used for a specific period of time. The following query will give you the list of users together with the number of access keys that have not been used in the last 90 days. If you know users where this is expected, you can define a whitelist of users, which will be ignored. This example uses a period of 90 days to mark an access key as unused and whitelists `jenkins` and `ci`.
 
 ```shell title="List users with unused access keys older than a certain age"
 > search is(access_key) and last_access > 90days <-- is(user) and

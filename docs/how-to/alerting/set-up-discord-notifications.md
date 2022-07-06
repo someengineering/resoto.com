@@ -28,7 +28,7 @@ You will also need the **Manage Webhooks** permission for the target text channe
 
    :::
 
-2. Define search criteria that will trigger an alert. For example, let's say we have a test account `test-account`, and instances with more than 4GB of RAM are not permitted:
+2. Define search criteria that will trigger an alert. For example, let's say we have a test account `test-account` where instances with more than 4GB of RAM are not permitted:
 
    ```bash
    > search is(instance) and instance_memory>4 and /ancestors.account.reported.name==test-account

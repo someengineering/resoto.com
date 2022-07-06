@@ -154,6 +154,10 @@ const config = {
                 to: '/docs/getting-started',
               },
               {
+                label: 'How-To Guides',
+                to: '/docs/how-to',
+              },
+              {
                 label: 'Concepts',
                 to: '/docs/concepts',
               },
@@ -199,6 +203,10 @@ const config = {
               {
                 label: 'Getting Started',
                 to: '/docs/getting-started',
+              },
+              {
+                label: 'How-To Guides',
+                to: '/docs/how-to',
               },
               {
                 label: 'Concepts',

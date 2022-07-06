@@ -30,7 +30,7 @@
     "@mdx-js/react": "^1.6.22",
     "@octokit/core": "^3.6.0",
     "a11y-react-emoji": "^1.2.0",
-    "clsx": "^1.2.0",
+    "clsx": "^1.2.1",
     "lottie-web": "^5.9.6",
     "mdx-mermaid": "^1.2.3",
     "mermaid": "^9.1.3",

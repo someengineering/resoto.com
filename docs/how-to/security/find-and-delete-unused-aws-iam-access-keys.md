@@ -14,7 +14,7 @@ With Resoto, it is easy to find and delete AWS IAM access keys that have not bee
 
 ## Prerequisites
 
-This guide assumes that you have already [configured Resoto to collect AWS resources](../../getting-started/configuration/cloud-providers/aws.md).
+This guide assumes that you have already [installed](../../getting-started/installation/index.md) and configured Resoto to [collect AWS resources](../../getting-started/configuration/cloud-providers/aws.md).
 
 ## Finding Unused Access Keys
 
@@ -23,15 +23,15 @@ The following query will return the number of access keys that have not been use
 ```bash
 > search is(access_key) and last_access > 90days <-- is(user) | count name
 # highlight-start
-​ccm-sa: 1
-​nancy: 1
-​db-runner: 3
-​packer-ami: 9
-​test-max: 12
-jenkins: 1
-ci: 2
-​total matched: 26
-​total unmatched: 0
+​​ccm-sa: 1
+​​nancy: 1
+​​db-runner: 3
+​​packer-ami: 9
+​​test-max: 12
+​jenkins: 1
+​ci: 2
+​​total matched: 26
+​​total unmatched: 0
 # highlight-end
 ```
 
@@ -40,13 +40,13 @@ It is also possible to exclude specific users' keys from these results. Below is
 ```bash
 > search is(access_key) and last_access > 90days <-- is(user) and name not in [jenkins, ci] | count name
 # highlight-start
-​ccm-sa: 1
-​nancy: 1
-​db-runner: 3
-​packer-ami: 9
-​test-max: 12
-​total matched: 26
-​total unmatched: 0
+​​ccm-sa: 1
+​​nancy: 1
+​​db-runner: 3
+​​packer-ami: 9
+​​test-max: 12
+​​total matched: 26
+​​total unmatched: 0
 # highlight-end
 ```
 
@@ -59,5 +59,5 @@ We can use the above query to automate deletion of unused access keys by creatin
   'search is(access_key) and last_access > 90days and
   /ancestors.user.reported.name not in [jenkins, ci] | clean'
 # highlight-next-line
-​Job clean_outdated_access_keys added.
+​​Job clean_outdated_access_keys added.
 ```

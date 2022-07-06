@@ -154,12 +154,12 @@ const config = {
                 to: '/docs/getting-started',
               },
               {
-                label: 'Concepts',
-                to: '/docs/concepts',
-              },
-              {
                 label: 'How-To Guides',
                 to: '/docs/how-to',
+              },
+              {
+                label: 'Concepts',
+                to: '/docs/concepts',
               },
               {
                 label: 'Reference',

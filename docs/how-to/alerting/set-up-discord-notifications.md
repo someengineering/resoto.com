@@ -14,7 +14,7 @@ One way to receive these notifications is via [Discord](https://discord.com). In
 
 ## Prerequisites
 
--
+A Discord server and the privilege to create a webhook in Discord is required.
 
 ## Sending Alerts
 
@@ -41,5 +41,3 @@ The next step is automating this command as [Job](/docs/concepts/automation/job)
 ​
 ​Job notify_big_instances_in_test_account added.
 ```
-
-See this tutorial as [video](https://www.loom.com/share/d19133bec53241aebe7b6e1f2e759285) in action.

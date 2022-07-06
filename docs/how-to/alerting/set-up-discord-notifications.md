@@ -1,23 +1,22 @@
 ---
-sidebar_label: Discord Notification
+sidebar_label: Set Up Discord Notifications
+sidebar_custom_props:
+  tags: [Discord]
 ---
 
-# Notify via Discord
+# How to Set Up Discord Notifications
 
-## Tags:
+## Introduction
 
-- Cloud provider independent
-- Notification
+Resoto constantly monitors your infrastructure, and can alert you to any detected issues.
 
-## Problem Description
+One way to receive these notifications is via [Discord](https://discord.com). In this guide, we will configure Resoto to send alerts to a Discord text channel.
 
-Resoto is able to actively search for issues in your cloud. You need a communication channel to inform people about issues that popped up.
+## Prerequisites
 
-## Provided Solution
+-
 
-Send the result of a query to a dedicated Discord channel. Refine message and content to be sent.
-
-## Steps to follow
+## Sending Alerts
 
 Resoto ships with a custom command called `discord` which is able to send the result of a search to a Discord channel. In order to use this command you need to set up a Discord webhook in the [Integrations Section](https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks) and copy the webhook URL.
 

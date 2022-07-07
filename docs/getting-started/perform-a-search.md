@@ -1,10 +1,10 @@
 ---
-sidebar_label: "3. Performing Searches"
+sidebar_label: "3. Perform a Search"
 sidebar_position: 3
-pagination_prev: getting-started/configuring-resource-collection/index
+pagination_prev: getting-started/configure-resource-collection/index
 ---
 
-# Performing Searches
+# Perform a Search
 
 Resoto's search syntax is quite powerful and has many features. Once Resoto has finished its first collect run, we suggest trying these example queries:
 

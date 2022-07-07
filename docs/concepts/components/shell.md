@@ -89,4 +89,4 @@ Find unused AWS volumes older than 30 days with no I/O in the past 7 days
 > search is(aws_ec2_volume) and volume_status = available and ctime < -30d and atime < -7d and mtime < -7d
 ```
 
-Find more usage examples in [Performing Searches](../../getting-started/performing-searches.md).
+Find more usage examples in [Perform a Search](../../getting-started/perform-a-search.md).

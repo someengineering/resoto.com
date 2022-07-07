@@ -1,9 +1,9 @@
 ---
-sidebar_label: "1. Installing Resoto"
+sidebar_label: "1. Install Resoto"
 sidebar_position: 1
 ---
 
-# Installing Resoto
+# Install Resoto
 
 ```mdx-code-block
 import { useCurrentSidebarCategory } from '@docusaurus/theme-common';

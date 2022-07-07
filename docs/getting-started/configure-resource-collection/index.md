@@ -1,10 +1,10 @@
 ---
-sidebar_label: "2. Configuring Resource Collection"
+sidebar_label: "2. Configure Resource Collection"
 sidebar_position: 2
-pagination_prev: getting-started/installing-resoto/index
+pagination_prev: getting-started/install-resoto/index
 ---
 
-# Configuring Resource Collection
+# Configure Resource Collection
 
 ```mdx-code-block
 import { useCurrentSidebarCategory } from '@docusaurus/theme-common';

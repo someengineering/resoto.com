@@ -1,7 +1,7 @@
 ---
 sidebar_label: pip
 pagination_prev: getting-started/index
-pagination_next: getting-started/configuring-resource-collection/index
+pagination_next: getting-started/configure-resource-collection/index
 ---
 
 # Installing Resoto with pip
@@ -118,7 +118,7 @@ $ resh --resotocore-uri https://localhost:8900 --psk "$pre_shared_key"
 
 ### Configuring Resource Collection
 
-Please refer to [Configuring Resource Collection](../configuring-resource-collection/index.md) for details on how to authenticate with supported cloud providers.
+Please refer to [Configuring Resource Collection](../configure-resource-collection/index.md) for details on how to authenticate with supported cloud providers.
 
 ### Collecting Resources
 
@@ -128,11 +128,11 @@ Once one or more cloud providers have been configured, the `collect_and_cleanup`
 > workflow run collect_and_cleanup
 ```
 
-No worries, no cleanup will be performed as cleanup is disabled by default. It is just the name of the [workflow](../../concepts/automation/workflow.md). See [Cleaning Resources](../cleaning-resources.md) for details on how to enable cleanup.
+No worries, no cleanup will be performed as cleanup is disabled by default. It is just the name of the [workflow](../../concepts/automation/workflow.md). See [Clean Resources](../../getting-started/clean-resources.md) for details on how to enable cleanup.
 
 ### Performing Searches
 
-Once Resoto has completed its first collect run, you can try [performing some searches](../performing-searches.md).
+Once Resoto has completed its first collect run, you can try [performing some searches](../perform-a-search.md).
 
 ## Updating Resoto
 

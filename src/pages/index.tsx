@@ -54,7 +54,7 @@ export default function Home(): JSX.Element {
           </div>
           <div className={styles.cta}>
             <Link
-              to="/docs/getting-started/installing-resoto"
+              to="/docs/getting-started/install-resoto"
               className="button button--primary button--lg"
             >
               Install Now
@@ -74,16 +74,16 @@ export default function Home(): JSX.Element {
             for&hellip;
           </h3>
           <div className={styles.sectionLogoContainer}>
-            <Link to="/docs/getting-started/configuring-resource-collection/aws">
+            <Link to="/docs/getting-started/configure-resource-collection/aws">
               <AwsLogo />
             </Link>
-            <Link to="/docs/getting-started/configuring-resource-collection/gcp">
+            <Link to="/docs/getting-started/configure-resource-collection/gcp">
               <GoogleCloudLogo />
             </Link>
-            <Link to="/docs/getting-started/configuring-resource-collection/digitalocean">
+            <Link to="/docs/getting-started/configure-resource-collection/digitalocean">
               <DigitalOceanLogo />
             </Link>
-            <Link to="/docs/getting-started/configuring-resource-collection/kubernetes">
+            <Link to="/docs/getting-started/configure-resource-collection/kubernetes">
               <KubernetesLogo />
             </Link>
           </div>
@@ -158,7 +158,7 @@ export default function Home(): JSX.Element {
             </ul>
             <div className={styles.cta}>
               <Link
-                to="/docs/getting-started/installing-resoto"
+                to="/docs/getting-started/install-resoto"
                 className="button button--primary button--lg"
               >
                 Install Now
@@ -231,7 +231,7 @@ export default function Home(): JSX.Element {
             </ul>
             <div className={styles.cta}>
               <Link
-                to="/docs/getting-started/installing-resoto"
+                to="/docs/getting-started/install-resoto"
                 className="button button--primary button--lg"
               >
                 Install Now
@@ -260,7 +260,7 @@ export default function Home(): JSX.Element {
             />
             <div className={styles.cta}>
               <Link
-                to="/docs/getting-started/installing-resoto"
+                to="/docs/getting-started/install-resoto"
                 className="button button--primary button--lg"
               >
                 Install Now
@@ -288,19 +288,19 @@ export default function Home(): JSX.Element {
                   open source
                 </a>{' '}
                 and completely free to use, with out-of-the-box support for{' '}
-                <Link to="/docs/getting-started/configuring-resource-collection/aws">
+                <Link to="/docs/getting-started/configure-resource-collection/aws">
                   Amazon Web Services
                 </Link>
                 ,{' '}
-                <Link to="/docs/getting-started/configuring-resource-collection/gcp">
+                <Link to="/docs/getting-started/configure-resource-collection/gcp">
                   Google Cloud Platform
                 </Link>
                 ,{' '}
-                <Link to="/docs/getting-started/configuring-resource-collection/digitalocean">
+                <Link to="/docs/getting-started/configure-resource-collection/digitalocean">
                   DigitalOcean
                 </Link>
                 , and{' '}
-                <Link to="/docs/getting-started/configuring-resource-collection/kubernetes">
+                <Link to="/docs/getting-started/configure-resource-collection/kubernetes">
                   Kubernetes
                 </Link>
                 .
@@ -308,7 +308,7 @@ export default function Home(): JSX.Element {
             </div>
             <ul className={styles.sectionItems}>
               <li>
-                <Link to="/docs/getting-started/installing-resoto">
+                <Link to="/docs/getting-started/install-resoto">
                   <h3>
                     <DownloadIcon className={styles.sectionItemIcon} />
                     <span>Install Resoto</span>
@@ -316,17 +316,15 @@ export default function Home(): JSX.Element {
                 </Link>
                 <p>
                   Get started with Resoto using{' '}
-                  <Link to="/docs/getting-started/installing-resoto/docker">
+                  <Link to="/docs/getting-started/install-resoto/docker">
                     Docker
                   </Link>
                   ,{' '}
-                  <Link to="/docs/getting-started/installing-resoto/kubernetes">
+                  <Link to="/docs/getting-started/install-resoto/kubernetes">
                     Kubernetes
                   </Link>
                   , or{' '}
-                  <Link to="/docs/getting-started/installing-resoto/pip">
-                    pip
-                  </Link>{' '}
+                  <Link to="/docs/getting-started/install-resoto/pip">pip</Link>{' '}
                   in just five minutes!
                 </p>
               </li>
@@ -363,7 +361,7 @@ export default function Home(): JSX.Element {
             </ul>
             <div className={styles.cta}>
               <Link
-                to="/docs/getting-started/installing-resoto"
+                to="/docs/getting-started/install-resoto"
                 className="button button--primary button--lg"
               >
                 Install Now

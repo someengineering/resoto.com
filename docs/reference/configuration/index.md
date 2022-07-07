@@ -161,7 +161,7 @@ $ resotoworker
 
 The text editor opened by [Resoto Shell](../../concepts/components/shell.md) can be configured via the `EDITOR` environment variable.
 
-For [Docker installs](../../getting-started/installing-resoto/docker.md), the default text editor is [nano](https://nano-editor.org).
+For [Docker installs](../../getting-started/install-resoto/docker.md), the default text editor is [nano](https://nano-editor.org).
 
 ```bash
 $ export EDITOR=nano

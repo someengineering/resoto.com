@@ -1,10 +1,10 @@
 ---
-sidebar_label: "4. Cleaning Resources"
+sidebar_label: "Clean Resources"
 sidebar_position: 4
-pagination_prev: getting-started/performing-searches
+pagination_prev: getting-started/perform-a-search
 ---
 
-# Cleaning Resources
+# Clean Resources
 
 :::danger
 

@@ -130,7 +130,7 @@ So here's the plan. First we will learn how to [configure Prometheus to fetch da
 
 ## Getting Started
 
-If you are new to Resoto, [start the Resoto stack](/docs/getting-started/installing-resoto) and [configure it to collect your cloud accounts](/docs/getting-started/configuring-resource-collection).
+If you are new to Resoto, [start the Resoto stack](/docs/getting-started/install-resoto) and [configure it to collect your cloud accounts](/docs/getting-started/configure-resource-collection).
 
 To check out the data Resoto Metrics generates open [`https://localhost:9955/metrics`](https://localhost:9955/metrics) in your browser (replacing `localhost` with the IP address or hostname of the machine where `resotometrics` is running). This data is updated [whenever Resoto runs the collection workflow](/docs/reference/configuration/core#workflow-schedules). You should see an output similar to this:
 
@@ -367,4 +367,4 @@ The dashboard shows the amount of compute and storage currently in use, as well 
 
 This user even [contributed their Grafana dashboard templates to our GitHub repository](https://github.com/someengineering/resoto/tree/main/contrib/grafana-dashboards), so you don't have to create them yourself. But if you want to customize it, you now know how!
 
-[Install Resoto](/docs/getting-started/installing-resoto) and build your own dashboard today! ✨
+[Install Resoto](/docs/getting-started/install-resoto) and build your own dashboard today! ✨

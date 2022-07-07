@@ -6,7 +6,7 @@ image: ./img/banner-social.png
 
 # Kubernetes Support
 
-[Kubernetes](https://kubernetes.io) is the de-facto standard for orchestrating containerized applications. It is the go-to solution no matter where your infrastructure is running. Resoto can already collect resources in [Amazon Web Services](/docs/getting-started/configuring-resource-collection/aws), [Google Cloud Platform](/docs/getting-started/configuring-resource-collection/gcp), and [DigitalOcean](/docs/getting-started/configuring-resource-collection/digitalocean), all of which support [Kubernetes](https://kubernetes.io).
+[Kubernetes](https://kubernetes.io) is the de-facto standard for orchestrating containerized applications. It is the go-to solution no matter where your infrastructure is running. Resoto can already collect resources in [Amazon Web Services](/docs/getting-started/configure-resource-collection/aws), [Google Cloud Platform](/docs/getting-started/configure-resource-collection/gcp), and [DigitalOcean](/docs/getting-started/configure-resource-collection/digitalocean), all of which support [Kubernetes](https://kubernetes.io).
 
 **I'm happy to announce that Resoto now has support for collecting [Kubernetes](/docs/reference/data-models/kubernetes) resources!**
 
@@ -16,7 +16,7 @@ image: ./img/banner-social.png
 
 ## Getting Started
 
-To get started, configure Resoto to use your [kubeconfig file](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig) or copy the relevant sections as described in [Configuring Kubernetes Resource Collection](/docs/getting-started/configuring-resource-collection/kubernetes).
+To get started, configure Resoto to use your [kubeconfig file](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig) or copy the relevant sections as described in [Configuring Kubernetes Resource Collection](/docs/getting-started/configure-resource-collection/kubernetes).
 
 ```bash
 > config edit resoto.worker
@@ -240,7 +240,7 @@ name=resoto-resotoworker-dc6bd998f-xpnb7
 # highlight-end
 ```
 
-Render a graph of all services that are deployed in the `resoto` namespace on the `dev` cluster. Please note: we are looking at a cluster where we have deployed `resoto` as a Helm chart as described in [getting started](/docs/getting-started/installing-resoto/kubernetes).
+Render a graph of all services that are deployed in the `resoto` namespace on the `dev` cluster. Please note: we are looking at a cluster where we have deployed `resoto` as a Helm chart as described in [getting started](/docs/getting-started/install-resoto/kubernetes).
 
 ```bash
 search --with-edges is(kubernetes_service) and namespace=resoto <-[0:]-> | format --dot | write service.dot
@@ -309,6 +309,6 @@ We are currently working on the way to connect resources found in Kubernetes to 
 
 ## Further Reading
 
-- [Installing Resoto with Kubernetes](/docs/getting-started/installing-resoto/kubernetes)
-- [Configuring Kubernetes Resource Collection](/docs/getting-started/configuring-resource-collection/kubernetes)
+- [Installing Resoto with Kubernetes](/docs/getting-started/install-resoto/kubernetes)
+- [Configuring Kubernetes Resource Collection](/docs/getting-started/configure-resource-collection/kubernetes)
 - [Kubernetes Resources](/docs/reference/data-models/kubernetes)

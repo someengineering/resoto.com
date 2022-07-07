@@ -30,7 +30,7 @@ Please check out the [Getting Started](/docs/getting-started) section of our doc
 
 ## Deployment Options
 
-There are currently 2 deployment options for Resoto: [Docker](/docs/getting-started/installation/docker) and [Kubernetes](/docs/getting-started/installation/kubernetes).
+There are currently 2 deployment options for Resoto: [Docker](/docs/getting-started/installing-resoto/docker) and [Kubernetes](/docs/getting-started/installing-resoto/kubernetes).
 
 <!--truncate-->
 

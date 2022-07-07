@@ -19,10 +19,13 @@ https://news.resoto.com/*                                     https://resoto.com
 /docs/concepts/components/resh                                /docs/concepts/components/shell
 /docs/concepts/components/resoto*                             /docs/concepts/components/:splat
 
+/docs/concepts/cleanup                                        /docs/concepts/resource-management/cleanup
+/docs/concepts/protection                                     /docs/concepts/resource-management/protection
+/docs/concepts/tagging                                        /docs/concepts/resource-management/tagging
+/docs/concepts/tags                                           /docs/concepts/resource-management/tagging
+
 /docs/concepts/search/basic-syntax                            /docs/concepts/search/filters
 /docs/concepts/search/fulltext-search                         /docs/concepts/search/full-text
-
-/docs/concepts/tags                                           /docs/concepts/tagging
 
 /concepts/*                                                   /docs/concepts/:splat
 
@@ -38,30 +41,37 @@ https://news.resoto.com/*                                     https://resoto.com
 /contributing/docs                                            /docs/contributing/documentation
 /contributing/*                                               /docs/contributing/:splat
 
-/docs/getting-started/docker                                  /docs/getting-started/installation/docker
-/docs/getting-started/installing-with-docker                  /docs/getting-started/installation/docker
-/docs/getting-started/kubernetes                              /docs/getting-started/installation/kubernetes
-/docs/getting-started/k8s                                     /docs/getting-started/installation/kubernetes
-/docs/getting-started/installing-with-kubernetes              /docs/getting-started/installation/kubernetes
-/docs/getting-started/installing-with-k8s                     /docs/getting-started/installation/kubernetes
-/docs/getting-started/pip                                     /docs/getting-started/installation/pip
-/docs/getting-started/python                                  /docs/getting-started/installation/pip
-/docs/getting-started/installing-with-pip                     /docs/getting-started/installation/pip
-/docs/getting-started/installing-with-python                  /docs/getting-started/installation/pip
-/docs/getting-started/configuring-resoto                      /docs/getting-started/configuration
+/docs/getting-started/installation/docker                     /docs/getting-started/installing-resoto/docker
+/docs/getting-started/docker                                  /docs/getting-started/installing-resoto/docker
+/docs/getting-started/installing-with-docker                  /docs/getting-started/installing-resoto/docker
+/docs/getting-started/installation/kubernetes                 /docs/getting-started/installing-resoto/kubernetes
+/docs/getting-started/kubernetes                              /docs/getting-started/installing-resoto/kubernetes
+/docs/getting-started/k8s                                     /docs/getting-started/installing-resoto/kubernetes
+/docs/getting-started/installing-with-kubernetes              /docs/getting-started/installing-resoto/kubernetes
+/docs/getting-started/installing-with-k8s                     /docs/getting-started/installing-resoto/kubernetes
+/docs/getting-started/installation/pip                        /docs/getting-started/installing-resoto/pip
+/docs/getting-started/pip                                     /docs/getting-started/installing-resoto/pip
+/docs/getting-started/python                                  /docs/getting-started/installing-resoto/pip
+/docs/getting-started/installing-with-pip                     /docs/getting-started/installing-resoto/pip
+/docs/getting-started/installing-with-python                  /docs/getting-started/installing-resoto/pip
 
-/docs/getting-started/configuration/worker/cloud-providers/*  /docs/getting-started/configuration/cloud-providers/:splat
+/docs/getting-started/configuration/core                      /docs/reference/configuration/core
+/docs/getting-started/configuration/worker                    /docs/reference/configuration/worker
+/docs/getting-started/configuration                           /docs/getting-started/configuring-resource-collection
+/docs/getting-started/configuring-resoto                      /docs/getting-started/configuring-resource-collection
+/docs/getting-started/configuration/cloud-providers/*         /docs/getting-started/configuring-resource-collection/:splat
+/docs/getting-started/configuration/worker/cloud-providers/*  /docs/getting-started/configuring-resource-collection/:splat
 
-/docs/getting-started/queries                                 /docs/getting-started/usage/search
-/docs/getting-started/query                                   /docs/getting-started/usage/search
-/docs/getting-started/performing-queries                      /docs/getting-started/usage/search
-/docs/getting-started/performing-searches                     /docs/getting-started/usage/search
-/docs/getting-started/search                                  /docs/getting-started/usage/search
-/docs/getting-started/searches                                /docs/getting-started/usage/search
+/docs/getting-started/queries                                 /docs/getting-started/performing-searches
+/docs/getting-started/query                                   /docs/getting-started/performing-searches
+/docs/getting-started/performing-queries                      /docs/getting-started/performing-searches
+/docs/getting-started/search                                  /docs/getting-started/performing-searches
+/docs/getting-started/searches                                /docs/getting-started/performing-searches
+/docs/getting-started/usage/search                            /docs/getting-started/performing-searches
 
-/docs/getting-started/cleaning-resources                      /docs/getting-started/usage/cleanup
-/docs/getting-started/cleanup                                 /docs/getting-started/usage/cleanup
-/docs/getting-started/pruning-resources                       /docs/getting-started/usage/cleanup
+/docs/getting-started/cleanup                                 /docs/getting-started/cleaning-resources
+/docs/getting-started/pruning-resources                       /docs/getting-started/cleaning-resources
+/docs/getting-started/usage/cleanup                           /docs/getting-started/cleaning-resources
 
 /docs/getting-started/resotonotebook                          /docs/reference/notebook
 /docs/getting-started/resoto-notebook                         /docs/reference/notebook

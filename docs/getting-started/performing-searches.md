@@ -1,6 +1,6 @@
 ---
-sidebar_position: 1
-pagination_prev: getting-started/configuration/index
+sidebar_position: 3
+pagination_prev: getting-started/configuring-resource-collection/index
 ---
 
 # Performing Searches
@@ -65,4 +65,4 @@ Resoto's search syntax is quite powerful and has many features. Once Resoto has 
   instance_type as type: sum(/ancestors.instance_type.reported.ondemand_cost) as instances_hourly_cost_estimate
 ```
 
-The above examples only highlight some of what is possible with Resoto's search syntax. For more in-depth explanations and additional examples, please refer to the [search documentation](../../concepts/search/index.md).
+The above examples only highlight some of what is possible with Resoto's search syntax. For more in-depth explanations and additional examples, please refer to the [search documentation](../concepts/search/index.md).

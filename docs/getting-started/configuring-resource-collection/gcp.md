@@ -4,9 +4,9 @@ sidebar_label: Google Cloud Platform
 
 # Configuring Google Cloud Platform Resource Collection
 
-The [Google Cloud Platform (GCP)](../../../reference/data-models/gcp.md) collector is configured within the [Resoto Worker configuration](../index.md).
+The [Google Cloud Platform (GCP)](../../reference/data-models/gcp.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md).
 
-Add `gcp` to the list of collectors by modifying the [Resoto Worker configuration](../index.md) as follows:
+Add `gcp` to the list of collectors by modifying the [Resoto Worker configuration](../../reference/configuration/index.md) as follows:
 
 ```yaml title="Resoto Worker configuration"
 resotoworker:
@@ -21,11 +21,11 @@ resotoworker:
 
 ## Authentication
 
-You can authenticate with [Google Cloud Platform](../../../reference/data-models/gcp.md) via [service account JSON files](#service-account-json-files) or [automatic discovery](#automatic-discovery).
+You can authenticate with [Google Cloud Platform](../../reference/data-models/gcp.md) via [service account JSON files](#service-account-json-files) or [automatic discovery](#automatic-discovery).
 
 ### Service Account JSON Files
 
-Volume mount the service account JSON file to a path inside the `resotoworker` container (e.g., `/gcp`) and modify the [Resoto Worker](../../../concepts/components/worker.md) configuration as follows:
+Volume mount the service account JSON file to a path inside the `resotoworker` container (e.g., `/gcp`) and modify the [Resoto Worker configuration](../../reference/configuration/index.md) as follows:
 
 ```yaml title="Resoto Worker configuration"
 resotoworker:
@@ -45,7 +45,7 @@ gcp:
 
 Specify an empty string for the service account file, and Resoto will automatically discover the service account and all the projects it has access to.
 
-Modify the [Resoto Worker](../../../concepts/components/worker.md) configuration as follows:
+Modify the [Resoto Worker configuration](../../reference/configuration/index.md) as follows:
 
 ```yaml title="Resoto Worker configuration"
 resotoworker:

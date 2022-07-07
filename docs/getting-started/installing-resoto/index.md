@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Installation
+# Installing Resoto
 
 ```mdx-code-block
 import { useCurrentSidebarCategory } from '@docusaurus/theme-common';

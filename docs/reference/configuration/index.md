@@ -1,9 +1,3 @@
----
-sidebar_position: 2
-pagination_prev: getting-started/installation/index
-pagination_next: getting-started/usage/search
----
-
 # Configuration
 
 ```mdx-code-block
@@ -13,7 +7,7 @@ import DocCardList from '@theme/DocCardList';
 
 ## Internal Configuration
 
-Resoto uses an internal configuration system for its [components](../../concepts/components/index.md). Configuration is maintained within [Resoto Core](../../concepts/components/core.md) and can be edited using [Resoto Shell](../../concepts/components/shell.md) using the [`config edit` command](../../reference/cli/configs/edit.md).
+Resoto uses an internal configuration system for its [components](../../concepts/components/index.md). Configuration is maintained within [Resoto Core](../../concepts/components/core.md) and can be edited using [Resoto Shell](../../concepts/components/shell.md) using the [`config edit` command](../cli/configs/edit.md).
 
 ### Listing Configurations
 
@@ -95,7 +89,7 @@ This means that you will get an error if, for instance, you attempt to set the v
 
 ### Setting Individual Properties
 
-Instead of editing a component's configuration in a text editor, it is also possible to set the values of specific properties using the [`config set` command](../../reference/cli/configs/set.md).
+Instead of editing a component's configuration in a text editor, it is also possible to set the values of specific properties using the [`config set` command](../cli/configs/set.md).
 
 ```title="Modify a specific property of the Resoto Worker configuration"
 > config set resoto.worker resotoworker.pool_size=5
@@ -167,7 +161,7 @@ $ resotoworker
 
 The text editor opened by [Resoto Shell](../../concepts/components/shell.md) can be configured via the `EDITOR` environment variable.
 
-For [Docker installs](../installation/docker.md), the default text editor is [nano](https://nano-editor.org).
+For [Docker installs](../../getting-started/installing-resoto/docker.md), the default text editor is [nano](https://nano-editor.org).
 
 ```bash
 $ export EDITOR=nano

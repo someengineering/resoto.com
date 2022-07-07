@@ -14,7 +14,7 @@ With Resoto, it is easy to find and delete AWS IAM access keys that have not bee
 
 ## Prerequisites
 
-This guide assumes that you have already [installed](../../getting-started/installation/index.md) and configured Resoto to [collect AWS resources](../../getting-started/configuration/cloud-providers/aws.md).
+This guide assumes that you have already [installed](../../getting-started/installing-resoto/index.md) and configured Resoto to [collect AWS resources](../../getting-started/configuring-resource-collection/aws.md).
 
 ## Finding Unused Access Keys
 

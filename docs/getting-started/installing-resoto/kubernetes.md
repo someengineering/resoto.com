@@ -1,7 +1,7 @@
 ---
 sidebar_label: Kubernetes
 pagination_prev: getting-started/index
-pagination_next: getting-started/configuration/index
+pagination_next: getting-started/configuring-resource-collection/index
 ---
 
 # Installing Resoto with Kubernetes
@@ -91,19 +91,11 @@ To access the [Resoto Shell](../../concepts/components/shell.md) interface, simp
 $ kubectl exec -it service/resoto-resotocore -- resh
 ```
 
-### Configuring Resoto
+### Configuring Resource Collection
 
-Once the [Core](../../concepts/components/core.md) is running, all component configuration can be edited using the [`config edit` command](../../reference/cli/configs/edit.md) inside [Resoto Shell](../../concepts/components/shell.md).
+Please refer to [Configuring Resource Collection](../configuring-resource-collection/index.md) for details on how to authenticate with supported cloud providers.
 
-Additionally, configuration properties can be overridden using the `overrides` section in the `resoto-values.yaml` file (see [`values.yaml`](https://github.com/someengineering/resoto/blob/main/kubernetes/chart/values.yaml) for reference).
-
-Please refer to [Configuring Resoto](../configuration/index.md) for details.
-
-### Performing Searches
-
-Once Resoto has completed its first collect run, you can try [performing some searches](../usage/search.md).
-
-## Configure Cloud Credentials (optional)
+:::note
 
 Some cloud providers like GCP provide a file to access resources. This file needs to be passed to the worker. You can use Helm values `resotoworker.volumes`, and `resotoworker.volumeMounts` to inject credentials and their configuration to [`resotoworker`](../../concepts/components/worker.md).
 
@@ -150,3 +142,19 @@ resotoworker:
           name: resoto-auth
           key: AWS_SECRET_ACCESS_KEY
 ```
+
+:::
+
+### Collecting Resources
+
+Once one or more cloud providers have been configured, the `collect_and_cleanup` [workflow](../../concepts/automation/workflow.md) can be run by executing:
+
+```bash
+> workflow run collect_and_cleanup
+```
+
+No worries, no cleanup will be performed as cleanup is disabled by default. It is just the name of the [workflow](../../concepts/automation/workflow.md). See [Cleaning Resources](../cleaning-resources.md) for details on how to enable cleanup.
+
+### Performing Searches
+
+Once Resoto has completed its first collect run, you can try [performing some searches](../performing-searches.md).

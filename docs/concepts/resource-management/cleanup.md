@@ -2,9 +2,9 @@
 
 :::note
 
-By default, [Resoto Worker](./components/worker.md) will _not_ delete resources marked for deletion. Resources marked with `| clean` will stay this way without getting deleted. To enable cleanup, configure `resotoworker.cleanup: true` via `config edit resoto.worker`. See the [Cleaning Resources](../getting-started/usage/cleanup.md) tutorial for details on performing cleanup.
+By default, [Resoto Worker](../components/worker.md) will _not_ delete resources marked for deletion. Resources marked with `| clean` will stay this way without getting deleted. To enable cleanup, configure `resotoworker.cleanup: true` via `config edit resoto.worker`. See the [Cleaning Resources](../../getting-started/cleaning-resources.md) tutorial for details on performing cleanup.
 
-Cleanup can be performed manually in [Resoto Shell](./components/shell.md), automatically using a [cleanup plugin](./components/plugins/index.md), or via a scheduled [job](./automation/job.md).
+Cleanup can be performed manually in [Resoto Shell](../components/shell.md), automatically using a [cleanup plugin](../components/plugins/index.md), or via a scheduled [job](../automation/job.md).
 
 :::
 
@@ -18,7 +18,7 @@ The manual search and cleanup in this situation could look something like this:
 > search is(aws_ec2_instance) and name =~ "^jenkins-worker-.*" and age > 24h | clean "instance older than 24h"
 ```
 
-To automate things you could now create a [job](./automation/job.md) that runs whenever cleanup is planned and searches for compute instances with a certain name that are older than 24h and automatically deletes them.
+To automate things you could now create a [job](../automation/job.md) that runs whenever cleanup is planned and searches for compute instances with a certain name that are older than 24h and automatically deletes them.
 
 The same search turned into an automated cleanup job:
 
@@ -30,4 +30,4 @@ Additional search criteria like `and /ancestors.account.reported.id = "1234567"`
 
 ## When cleanup is performed
 
-When a resource is marked for cleanup it is not immediately deleted. Instead, it is flagged and will be deleted when the `collect_and_cleanup` [workflow](./automation/workflow.md) runs (by default every full hour). It can only be cleaned up if it is not [protected](./protection.md). Meaning the `/metadata.protected` field is not set to `true`.
+When a resource is marked for cleanup it is not immediately deleted. Instead, it is flagged and will be deleted when the `collect_and_cleanup` [workflow](../automation/workflow.md) runs (by default every full hour). It can only be cleaned up if it is not [protected](./protection.md). Meaning the `/metadata.protected` field is not set to `true`.

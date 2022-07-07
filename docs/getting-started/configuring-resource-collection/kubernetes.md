@@ -4,9 +4,9 @@ sidebar_label: Kubernetes
 
 # Configuring Kubernetes Resource Collection
 
-The [Kubernetes](../../../reference/data-models/kubernetes.md) collector is configured within the [Resoto Worker configuration](../index.md).
+The [Kubernetes](../../reference/data-models/kubernetes.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md).
 
-Add `k8s` to the list of collectors by modifying the [Resoto Worker configuration](../index.md) as follows:
+Add `k8s` to the list of collectors by modifying the [Resoto Worker configuration](../../reference/configuration/index.md) as follows:
 
 ```yaml title="Resoto Worker configuration"
 resotoworker:
@@ -27,7 +27,7 @@ You can authenticate with Kubernetes via [kubeconfig files](https://kubernetes.i
 
 The easiest way to configure access to Kubernetes is to give Resoto Worker access to [kubeconfig files](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig).
 
-Modify the [Resoto Worker configuration](../index.md) as follows:
+Modify the [Resoto Worker configuration](../../reference/configuration/index.md) as follows:
 
 ```yaml title="Resoto Worker configuration"
 resotoworker:
@@ -58,7 +58,7 @@ The required values can be found in the [kubeconfig file](https://kubernetes.io/
 | `token`                      | `users.user.token`                                                                                                               |
 | `certificate_authority_data` | `clusters.cluster.certificate-authority-data` (This property is only required if the server is using a self-signed certificate.) |
 
-Modify the [Resoto Worker configuration](../index.md) as follows:
+Modify the [Resoto Worker configuration](../../reference/configuration/index.md) as follows:
 
 ```yaml title="Resoto Worker configuration"
 resotoworker:

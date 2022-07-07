@@ -8,7 +8,7 @@ sidebar_label: Amazon Web Services
 
 :::info
 
-Please refer to [Configuring Amazon Web Services Resource Collection](../../getting-started/configuration/cloud-providers/aws.md) for details on how to set up Resoto to collect [Amazon Web Services (AWS)](https://aws.amazon.com) resources.
+Please refer to [Configuring Amazon Web Services Resource Collection](../../getting-started/configuring-resource-collection/aws.md) for details on how to set up Resoto to collect [Amazon Web Services (AWS)](https://aws.amazon.com) resources.
 
 :::
 

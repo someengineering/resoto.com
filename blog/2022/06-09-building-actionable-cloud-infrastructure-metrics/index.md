@@ -130,9 +130,9 @@ So here's the plan. First we will learn how to [configure Prometheus to fetch da
 
 ## Getting Started
 
-If you are new to Resoto, [start the Resoto stack](/docs/getting-started/installation) and [configure it to collect your cloud accounts](/docs/getting-started/configuration/cloud-providers).
+If you are new to Resoto, [start the Resoto stack](/docs/getting-started/installing-resoto) and [configure it to collect your cloud accounts](/docs/getting-started/configuring-resource-collection).
 
-To check out the data Resoto Metrics generates open [`https://localhost:9955/metrics`](https://localhost:9955/metrics) in your browser (replacing `localhost` with the IP address or hostname of the machine where `resotometrics` is running). This data is updated [whenever Resoto runs the collection workflow](/docs/getting-started/configuration/core#workflow-schedules). You should see an output similar to this:
+To check out the data Resoto Metrics generates open [`https://localhost:9955/metrics`](https://localhost:9955/metrics) in your browser (replacing `localhost` with the IP address or hostname of the machine where `resotometrics` is running). This data is updated [whenever Resoto runs the collection workflow](/docs/reference/configuration/core#workflow-schedules). You should see an output similar to this:
 
 ![List of metrics](./img/resotometrics_browser.png)
 
@@ -218,9 +218,9 @@ Want to see how storage has changed over time? Just change `resoto_instances_tot
 
 The [Prometheus](https://prometheus.io) web UI provides syntax help and autocomplete for available metric names. However, you may be wondering—how are you supposed to know which metrics exist? How do you find what other metrics exist and where a value (for example, `resoto_instances_total`) is defined?
 
-Metrics are defined in the `resoto.metrics` [configuration](/docs/getting-started/configuration). To edit metrics definitions, execute the following command in [Resoto Shell](/docs/concepts/components/shell):
+Metrics are defined in the `resoto.metrics` [configuration](/docs/reference/configuration). To edit metrics definitions, execute the following command in [Resoto Shell](/docs/concepts/components/shell):
 
-```
+```bash
 > config edit resoto.metrics
 ```
 
@@ -242,7 +242,7 @@ As [described above](#aggregation), the `aggregate` expression in the `search` f
 
 Metrics configuration can be updated at runtime. When the `metrics` [workflow](/docs/concepts/automation/workflow) is run, [Resoto Metrics](/docs/concepts/components/metrics) will generate the new metric for [Prometheus](https://prometheus.io) to consume.
 
-```
+```bash
 > workflow run metrics
 ```
 
@@ -367,4 +367,4 @@ The dashboard shows the amount of compute and storage currently in use, as well 
 
 This user even [contributed their Grafana dashboard templates to our GitHub repository](https://github.com/someengineering/resoto/tree/main/contrib/grafana-dashboards), so you don't have to create them yourself. But if you want to customize it, you now know how!
 
-[Install Resoto](/docs/getting-started/installation) and build your own dashboard today! ✨
+[Install Resoto](/docs/getting-started/installing-resoto) and build your own dashboard today! ✨

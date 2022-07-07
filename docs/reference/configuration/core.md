@@ -1,9 +1,8 @@
 ---
 sidebar_label: Core
-sidebar_position: 1
 ---
 
-# Configuring Resoto Core
+# Resoto Core Configuration
 
 ## Network Interfaces
 
@@ -32,7 +31,7 @@ resotocore:
 ...
 ```
 
-Alternatively, you can use the [`config set` command](../../reference/cli/configs/set.md):
+Alternatively, you can use the [`config set` command](../cli/configs/set.md):
 
 ```bash
 > config set resoto.core resotocore.api.web_hosts=["::", "0.0.0.0"]
@@ -96,7 +95,7 @@ resotocore:
 ...
 ```
 
-Alternatively, you can use the [`config set` command](../../reference/cli/configs/set.md):
+Alternatively, you can use the [`config set` command](../cli/configs/set.md):
 
 ```bash title="Configure the collect_and_cleanup workflow to run twice per hour"
 > config set resoto.core resotocore.workflows.collect_and_cleanup.schedule="0,30 * * * *"

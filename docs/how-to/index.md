@@ -18,3 +18,7 @@ This section of the documentation provides instructions for specific use cases a
 ## Security
 
 <DocListWithTags items={useCurrentSidebarCategory().items.find((i) => i.type === 'category' && i.label === 'Security')?.items} />
+
+## Automation
+
+<DocListWithTags items={useCurrentSidebarCategory().items.find((i) => i.type === 'category' && i.label === 'Automation')?.items} />

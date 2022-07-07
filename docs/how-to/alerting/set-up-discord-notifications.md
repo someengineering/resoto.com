@@ -42,7 +42,9 @@ You will also need the **Manage Webhooks** permission for the target text channe
    > search is(instance) and instance_memory>4 and /ancestors.account.reported.name==test-account | discord title="Large instances found in test-account" webhook="https://discord.com/api/webhooks/..."
    ```
 
-If the defined condition is currently true, you should see a new message in the specified Discord text channel.
+If the defined condition is currently true, you should see a new message in the specified Discord text channel:
+
+![Example Discord alert](./img/discord_alert.png)
 
 4. Finally, we want to automate checking of the defined alert trigger and send alerts to Discord whenever the result is true. We can accomplish this by creating a [job](/docs/concepts/automation/job):
 

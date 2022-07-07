@@ -14,7 +14,7 @@ Resoto constantly monitors your infrastructure, and can alert you to any detecte
 
 This guide assumes that you have already [installed](../../getting-started/installation/index.md) and configured Resoto to [collect your cloud resources](../../getting-started/configuration/cloud-providers/index.md).
 
-We will create a custom command for Alertmanager to send alerts. It is highly recommended to read the [how to create a custom command](..//automation/create-a-custom-command) guide first.
+We will create a custom command for Alertmanager to send alerts. It is highly recommended to read the [how to create a custom command](../automation/create-a-custom-command) guide first.
 
 You will also need a running installation of Alertmanager.
 

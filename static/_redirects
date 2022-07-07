@@ -90,5 +90,7 @@ https://news.resoto.com/*                                     https://resoto.com
 /news/2022/05/03/community-hour-event                         /news/2022/05/03/may-community-hour-event
 /news/2022/06/01/community-hour-event                         /news/2022/06/01/june-community-hour-event
 
+/img/logo.svg                                                  /img/navbar-logo.svg
+
 /release/*                                                    /news/:splat
 /releases/*                                                   /news/:splat

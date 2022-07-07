@@ -1,4 +1,5 @@
 ---
+sidebar_label: "4. Cleaning Resources"
 sidebar_position: 4
 pagination_prev: getting-started/performing-searches
 ---

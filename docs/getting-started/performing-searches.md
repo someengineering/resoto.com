@@ -1,4 +1,5 @@
 ---
+sidebar_label: "3. Performing Searches"
 sidebar_position: 3
 pagination_prev: getting-started/configuring-resource-collection/index
 ---

@@ -1,4 +1,5 @@
 ---
+sidebar_label: "1. Installing Resoto"
 sidebar_position: 1
 ---
 

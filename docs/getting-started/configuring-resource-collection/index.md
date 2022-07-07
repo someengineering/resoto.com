@@ -1,5 +1,6 @@
 ---
-sidebar_position: 3
+sidebar_label: "2. Configuring Resource Collection"
+sidebar_position: 2
 pagination_prev: getting-started/installing-resoto/index
 ---
 

@@ -45,9 +45,3 @@ Kubernetes resources are abstracted away from the underlying cloud provider. The
 This new feature provides insights across multi-cloud infrastructure. Since we see a lot of multi-cloud deployments in the enterprise, we will continue to extend our collectors to provide additional insights into relationships across clouds.
 
 Read more about nested properties and multi-cloud graph edges in the [release notes](/news/2022/06/22/v2.3.1).
-
-## Community Hour
-
-We'll be hosting a [Community Hour event on <Moment local format="LLLL z" tz={moment.tz.guess()}>2022-07-07T18:00+0200</Moment>](/news/2022/06/23/july-community-hour-event) where you can ask questions about or discuss anything Resoto, and also get help with deploying or using Resoto.
-
-We hope you'll join us! You can RSVP for the event on [Discord](https://discord.gg/tQhs9Dcs?event=989562956398342196).

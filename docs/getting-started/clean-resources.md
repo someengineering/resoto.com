@@ -1,5 +1,5 @@
 ---
-sidebar_label: "Clean Resources"
+sidebar_label: "4. Clean Resources"
 sidebar_position: 4
 pagination_prev: getting-started/perform-a-search
 ---

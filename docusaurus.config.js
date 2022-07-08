@@ -136,7 +136,7 @@ const config = {
         hideOnScroll: true,
         title: 'Resoto',
         logo: {
-          alt: 'Resoto Logo',
+          alt: '',
           src: 'img/navbar-logo.svg',
         },
         items: [

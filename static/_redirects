@@ -2,6 +2,7 @@ https://resoto.netlify.app/*                                  https://resoto.com
 
 https://blog.resoto.com/*                                     https://resoto.com/blog/:splat 301!
 https://docs.resoto.com/*                                     https://resoto.com/docs/:splat 301!
+https://documentation.resoto.com/*                            https://resoto.com/docs/:splat 301!
 https://news.resoto.com/*                                     https://resoto.com/news/:splat 301!
 
 /js/script.js                                                 https://plausible.io/js/script.js 200
@@ -11,6 +12,8 @@ https://news.resoto.com/*                                     https://resoto.com
 /blog/2022/02/04/resoto-search-syntax-101                     /blog/2022/02/04/resoto-search-101
 /blog/2022/05/31/resotonotebook                               /blog/2022/05/31/resoto-meets-jupyter-notebook
 /blog/2022/06/06/cloud-infrastructure-metrics                 /blog/2022/06/09/building-actionable-cloud-infrastructure-metrics
+
+/documentation/*                                              /docs/:splat
 
 /docs/concepts/components/resotolib                           /docs/concepts/components/library
 /docs/concepts/components/resh                                /docs/concepts/components/shell
@@ -64,7 +67,19 @@ https://news.resoto.com/*                                     https://resoto.com
 /docs/getting-started/resoto-notebook                         /docs/reference/notebook
 /docs/reference/resotonotebook                                /docs/reference/notebook
 
+/docs/tutorial/*                                              /docs/getting-started/:splat
+/docs/tutorials/*                                             /docs/getting-started/:splat
 /getting-started/*                                            /docs/getting-started/:splat
+/tutorial/*                                                   /docs/getting-started/:splat
+/tutorials/*                                                  /docs/getting-started/:splat
+
+/docs/how-to/alerting/set-up-discord-notifications            /docs/how-to-/alerting/send-discord-notifications
+
+/docs/how-to-guides/*                                         /docs/how-to/:splat
+/docs/guides/*                                                /docs/how-to/:splat
+/how-to/*                                                     /docs/how-to/:splat
+/how-to-guides/*                                              /docs/how-to/:splat
+/guides/*                                                     /docs/how-to/:splat
 
 /docs/reference/cli/ancestor                                  /docs/reference/cli/ancestors
 /docs/reference/cli/descendant                                /docs/reference/cli/descendants

@@ -1,5 +1,5 @@
 import Link from '@docusaurus/Link';
-import { useSidebarBreadcrumbs } from '@docusaurus/theme-common';
+import { useSidebarBreadcrumbs } from '@docusaurus/theme-common/internal';
 import { translate } from '@docusaurus/Translate';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import React, { type ReactNode } from 'react';

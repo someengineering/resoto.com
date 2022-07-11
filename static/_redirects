@@ -73,7 +73,7 @@ https://news.resoto.com/*                                     https://resoto.com
 /tutorial/*                                                   /docs/getting-started/:splat
 /tutorials/*                                                  /docs/getting-started/:splat
 
-/docs/how-to/alerting/set-up-discord-notifications            /docs/how-to-/alerting/send-discord-notifications
+/docs/how-to/alerting/set-up-discord-notifications            /docs/how-to/alerting/send-discord-notifications
 
 /docs/how-to-guides/*                                         /docs/how-to/:splat
 /docs/guides/*                                                /docs/how-to/:splat

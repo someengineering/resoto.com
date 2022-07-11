@@ -8,7 +8,7 @@ sidebar_label: DigitalOcean
 
 :::info
 
-Please refer to [Configuring DigitalOcean Resource Collection](../../getting-started/configure-resource-collection/digitalocean.md) for details on how to set up Resoto to collect [DigitalOcean](https://digitalocean.com) resources.
+Please refer to [Configure DigitalOcean Resource Collection](../../getting-started/configure-cloud-resource-collection/digitalocean.md) for details on how to set up Resoto to collect [DigitalOcean](https://digitalocean.com) resources.
 
 :::
 

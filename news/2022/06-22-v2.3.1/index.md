@@ -15,8 +15,8 @@ tags: [release notes]
 #### Further Reading
 
 - [Kubernetes Support](/blog/2022/06/22/kubernetes-support)
-- [Installing Resoto with Kubernetes](/docs/getting-started/install-resoto/kubernetes)
-- [Configuring Kubernetes Resource Collection](/docs/getting-started/configure-resource-collection/kubernetes)
+- [Install Resoto with Kubernetes](/docs/getting-started/install-resoto/kubernetes)
+- [Configure Kubernetes Resource Collection](/docs/getting-started/configure-cloud-resource-collection/kubernetes)
 - [Kubernetes Resources](/docs/reference/data-models/kubernetes)
 
 ### UI to Configure Resoto

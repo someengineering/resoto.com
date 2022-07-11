@@ -1,10 +1,10 @@
 ---
 sidebar_label: Kubernetes
 pagination_prev: getting-started/index
-pagination_next: getting-started/configure-resource-collection/index
+pagination_next: getting-started/configure-cloud-resource-collection/index
 ---
 
-# Installing Resoto with Kubernetes
+# Install Resoto with Kubernetes
 
 [Kubernetes](https://kubernetes.io) is an open-source system for automating deployment, scaling, and management of containerized applications.
 
@@ -65,6 +65,62 @@ The installation will create a separate database and password and secure the dat
 
 See [`values.yaml`](https://github.com/someengineering/resoto/blob/main/kubernetes/chart/values.yaml) for a list of configurable values.
 
+:::note
+
+Some cloud providers (e.g., [Google Cloud Platform](../configure-cloud-resource-collection/gcp.md)) provide a file for authentication. You can use Helm values `resotoworker.volumes`, and `resotoworker.volumeMounts` to inject credentials and their configuration to [Resoto Worker](../../concepts/components/worker.md):
+
+```bash
+$ kubectl -n resoto create secret generic resoto-auth \
+  --from-file=GOOGLE_APPLICATION_CREDENTIALS=<path to JSON credentials file>
+```
+
+Then, update the [Resoto Worker configuration](../../reference/configuration/index.md) as follows:
+
+```yaml
+resotoworker:
+# highlight-start
+  volumeMounts:
+    - mountPath: /etc/tokens/
+      name: auth-secret
+  volumes:
+    - name: auth-secret
+      secret:
+        secretName: resoto-auth
+        items:
+          - key: GOOGLE_APPLICATION_CREDENTIALS
+            path: gcp-service-account.json
+# highlight-end
+```
+
+Other cloud providers (e.g., [Amazon Web Services](../configure-cloud-resource-collection/aws.md)) may use environment variables for authentication:
+
+```bash
+$ kubectl -n resoto create secret generic resoto-auth \
+  --from-literal=AWS_ACCESS_KEY_ID=<YOUR ACCESS KEY ID> \
+  --from-literal=AWS_SECRET_ACCESS_KEY=<YOUR ACCESS KEY>
+```
+
+In this case, we would update the [Resoto Worker configuration](../../reference/configuration/index.md) as follows:
+
+```yaml
+resotoworker:
+# highlight-start
+  extraEnv:
+    - name: AWS_ACCESS_KEY_ID
+      valueFrom:
+        secretKeyRef:
+          name: resoto-auth
+          key: AWS_ACCESS_KEY_ID
+    - name: AWS_SECRET_ACCESS_KEY
+      valueFrom:
+        secretKeyRef:
+          name: resoto-auth
+          key: AWS_SECRET_ACCESS_KEY
+# highlight-end
+```
+
+:::
+
 ### Install Helm Chart
 
 Clone the [`someengineering/resoto`](https://github.com/someengineering/resoto) repository:
@@ -90,71 +146,3 @@ To access the [Resoto Shell](../../concepts/components/shell.md) interface, simp
 ```bash
 $ kubectl exec -it service/resoto-resotocore -- resh
 ```
-
-### Configuring Resource Collection
-
-Please refer to [Configuring Resource Collection](../configure-resource-collection/index.md) for details on how to authenticate with supported cloud providers.
-
-:::note
-
-Some cloud providers like GCP provide a file to access resources. This file needs to be passed to the worker. You can use Helm values `resotoworker.volumes`, and `resotoworker.volumeMounts` to inject credentials and their configuration to [`resotoworker`](../../concepts/components/worker.md).
-
-```bash
-$ kubectl -n resoto create secret generic resoto-auth \
-  --from-file=GOOGLE_APPLICATION_CREDENTIALS=<PATH TO SERVICE ACCOUNT JSON CREDS>
-```
-
-You would provide these values for [`resotoworker`](../../concepts/components/worker.md) as file:
-
-```yaml
-resotoworker:
-  volumeMounts:
-    - mountPath: /etc/tokens/
-      name: auth-secret
-  volumes:
-    - name: auth-secret
-      secret:
-        secretName: resoto-auth
-        items:
-          - key: GOOGLE_APPLICATION_CREDENTIALS
-            path: gcp-service-account.json
-```
-
-Other providers like AWS provide environment variables to gain access, which can also be passed to the worker.
-
-```bash
-$ kubectl -n resoto create secret generic resoto-auth \
-  --from-literal=AWS_ACCESS_KEY_ID=<YOUR ACCESS KEY ID> \
-  --from-literal=AWS_SECRET_ACCESS_KEY=<YOUR ACCESS KEY>
-```
-
-```yaml
-resotoworker:
-  extraEnv:
-    - name: AWS_ACCESS_KEY_ID
-      valueFrom:
-        secretKeyRef:
-          name: resoto-auth
-          key: AWS_ACCESS_KEY_ID
-    - name: AWS_SECRET_ACCESS_KEY
-      valueFrom:
-        secretKeyRef:
-          name: resoto-auth
-          key: AWS_SECRET_ACCESS_KEY
-```
-
-:::
-
-### Collecting Resources
-
-Once one or more cloud providers have been configured, the `collect_and_cleanup` [workflow](../../concepts/automation/workflow.md) can be run by executing:
-
-```bash
-> workflow run collect_and_cleanup
-```
-
-No worries, no cleanup will be performed as cleanup is disabled by default. It is just the name of the [workflow](../../concepts/automation/workflow.md). See [Clean Resources](../../getting-started/clean-resources.md) for details on how to enable cleanup.
-
-### Performing Searches
-
-Once Resoto has completed its first collect run, you can try [performing some searches](../perform-a-search.md).

@@ -2,7 +2,7 @@
 sidebar_label: Amazon Web Services
 ---
 
-# Configuring Amazon Web Services Resource Collection
+# Configure Amazon Web Services Resource Collection
 
 The [Amazon Web Services (AWS)](../../reference/data-models/aws.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md).
 

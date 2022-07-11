@@ -2,7 +2,7 @@
 sidebar_label: Google Cloud Platform
 ---
 
-# Configuring Google Cloud Platform Resource Collection
+# Configure Google Cloud Platform Resource Collection
 
 The [Google Cloud Platform (GCP)](../../reference/data-models/gcp.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md).
 

@@ -1,10 +1,10 @@
 ---
 sidebar_label: pip
 pagination_prev: getting-started/index
-pagination_next: getting-started/configure-resource-collection/index
+pagination_next: getting-started/configure-cloud-resource-collection/index
 ---
 
-# Installing Resoto with pip
+# Install Resoto with pip
 
 ```mdx-code-block
 import TabItem from '@theme/TabItem';
@@ -115,24 +115,6 @@ $ pre_shared_key=$(< ~/resoto/.pre-shared-key)
 $ source ~/resoto/resoto-venv/bin/activate
 $ resh --resotocore-uri https://localhost:8900 --psk "$pre_shared_key"
 ```
-
-### Configuring Resource Collection
-
-Please refer to [Configuring Resource Collection](../configure-resource-collection/index.md) for details on how to authenticate with supported cloud providers.
-
-### Collecting Resources
-
-Once one or more cloud providers have been configured, the `collect_and_cleanup` [workflow](../../concepts/automation/workflow.md) can be run by executing:
-
-```bash
-> workflow run collect_and_cleanup
-```
-
-No worries, no cleanup will be performed as cleanup is disabled by default. It is just the name of the [workflow](../../concepts/automation/workflow.md). See [Clean Resources](../../getting-started/clean-resources.md) for details on how to enable cleanup.
-
-### Performing Searches
-
-Once Resoto has completed its first collect run, you can try [performing some searches](../perform-a-search.md).
 
 ## Updating Resoto
 

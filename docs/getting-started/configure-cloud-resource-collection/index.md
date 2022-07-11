@@ -1,10 +1,10 @@
 ---
-sidebar_label: "2. Configure Resource Collection"
+sidebar_label: "2. Configure Cloud Resource Collection"
 sidebar_position: 2
 pagination_prev: getting-started/install-resoto/index
 ---
 
-# Configure Resource Collection
+# Configure Cloud Resource Collection
 
 ```mdx-code-block
 import { useCurrentSidebarCategory } from '@docusaurus/theme-common';

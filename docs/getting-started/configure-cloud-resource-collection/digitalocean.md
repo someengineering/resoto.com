@@ -2,7 +2,7 @@
 sidebar_label: DigitalOcean
 ---
 
-# Configuring DigitalOcean Resource Collection
+# Configure DigitalOcean Resource Collection
 
 The [DigitalOcean](../../reference/data-models/digitalocean.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md).
 

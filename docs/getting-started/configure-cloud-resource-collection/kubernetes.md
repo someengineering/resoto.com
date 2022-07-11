@@ -2,7 +2,7 @@
 sidebar_label: Kubernetes
 ---
 
-# Configuring Kubernetes Resource Collection
+# Configure Kubernetes Resource Collection
 
 The [Kubernetes](../../reference/data-models/kubernetes.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md).
 

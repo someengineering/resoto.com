@@ -82,11 +82,11 @@ The [`help` command](../../reference/cli/help.md) can also be used to access thi
    > search is(kubernetes_pod) and pod_status.container_statuses[*].restart_count > 20 and last_update<1h | alertmanager name=pod-restart-alert
    ```
 
-   If the defined condition is currently true, you should see a new message in the specified Discord text channel:
+   If the defined condition is currently true, you should see a new alert in [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager):
 
    ![Example Alertmanager alert](./img/alertmanager_alert.png)
 
-3. Finally, we want to automate checking of the defined alert trigger and send alerts to Alertmanager whenever the result is true. We can accomplish this by creating a [job](/docs/concepts/automation/job):
+3. Finally, we want to automate checking of the defined alert trigger and send alerts to [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager) whenever the result is true. We can accomplish this by creating a [job](/docs/concepts/automation/job):
 
    ```bash
    > jobs add --id alert_on_pod_failure--wait-for-event post_collect 'search is(kubernetes_pod) and pod_status.container_statuses[*].restart_count > 20 and last_update<1h | alertmanager name=pod-restart-alert'

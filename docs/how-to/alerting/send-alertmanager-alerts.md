@@ -1,14 +1,14 @@
 ---
-sidebar_label: Set Up Prometheus Alertmanager Alerts
+sidebar_label: Send Prometheus Alertmanager Alerts
 sidebar_custom_props:
   tags: [Prometheus, Alertmanager]
 ---
 
-# How to Set Up Prometheus Alertmanager Alerts
+# How to Send Prometheus Alertmanager Alerts
 
 ## Introduction
 
-Resoto constantly monitors your infrastructure, and can alert you to any detected issues. [Prometheus Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager) is a tool to manage and escalate alerts. In this guide, we will configure Resoto to send alerts to Alertmanager.
+Resoto constantly monitors your infrastructure, and can alert you to any detected issues. [Prometheus Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager) is a tool to manage and escalate alerts. In this guide, we will configure Resoto to send alerts to Alertmanager with a [custom command](../../reference/cli/index.md).
 
 ## Prerequisites
 
@@ -37,7 +37,7 @@ You will also need a running installation of [Alertmanager](https://prometheus.i
              description: 'Alert duration'
              default: '3h'
            - name: 'description'
-             description: 'User-defined alert message'
+             description: 'Alert message'
              default: 'Resoto Alert'
            - name: 'name'
              description: 'Globally unique alert name'
@@ -51,21 +51,20 @@ You will also need a running installation of [Alertmanager](https://prometheus.i
 
 3. Save and quit the editing interface.
 
-We now have a custom command `alertmanager` with the following parameters: |Parameter|Description|Default Value| |--|--| |`duration`|Every alert in Alertmanager will be automatically removed after this duration. The default value is `3h`.
+We now have a custom command `alertmanager` with the following parameters:
 
-- `description`: The description of the alert. This description is visible in Alertmanager.
-- `alertmanager_url`: The complete url to alertmanager.
-- `name`: The name of the alert. This name has to be unique in Alertmanager. This is the only mandatory property a user needs to specify explicitly, since all other properties have default values.
+| Parameter          | Description                | Default Value           |
+| ------------------ | -------------------------- | ----------------------- |
+| `name`             | Globally unique alert name | `null`                  |
+| `description`      | Alert description          | `Resoto Alert`          |
+| `duration`         | Alert duration             | `3h`                    |
+| `alertmanager_url` | Alertmanager URL           | `http://localhost:9093` |
 
-The [`help` command](../../reference/cli/help.md)
+The [`help` command](../../reference/cli/help.md) can also be used to access this information in the [command-line interface](../../reference/cli/index.md):
 
 ```bash
 > help alertmanager
 ```
-
-Will give you an explanation and usage of our new command.
-
-Let's revisit the properties that we have just created. Please note: all default values of our command can be overridden explicitly while the `alertmanager` command is invoked:
 
 ## Sending Alerts
 

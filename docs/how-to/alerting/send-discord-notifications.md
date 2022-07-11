@@ -1,10 +1,10 @@
 ---
-sidebar_label: Set Up Discord Notifications
+sidebar_label: Send Discord Notifications
 sidebar_custom_props:
   tags: [Discord]
 ---
 
-# How to Set Up Discord Notifications
+# How to Send Discord Notifications
 
 ## Introduction
 

@@ -84,7 +84,7 @@ The [`help` command](../../reference/cli/help.md) can also be used to access thi
 
    If the defined condition is currently true, you should see a new alert in [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager):
 
-   ![Example Alertmanager alert](./img/alertmanager_alert.png)
+   ![Example Alertmanager alert](./img/alertmanager-alert.png)
 
 3. Finally, we want to automate checking of the defined alert trigger and send alerts to [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager) whenever the result is true. We can accomplish this by creating a [job](/docs/concepts/automation/job):
 

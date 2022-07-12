@@ -27,8 +27,8 @@ You will also need a running installation of [Alertmanager](https://prometheus.i
 2. Add the following command definition to the configuration, replacing `http://localhost:9093` with the URL of your [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager) instance:
 
    ```yaml
-   custom_commands:
-     commands:
+   ​custom_commands:
+   ​  commands:
    # highlight-start
        - info: 'Send result of a search to alertmanager'
          name: 'alertmanager'

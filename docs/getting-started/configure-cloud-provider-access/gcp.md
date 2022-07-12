@@ -2,11 +2,15 @@
 sidebar_label: Google Cloud Platform
 ---
 
-# Configure Google Cloud Platform Resource Collection
+# Configure Google Cloud Platform Access
 
-The [Google Cloud Platform (GCP)](../../reference/data-models/gcp.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md).
+The [Google Cloud Platform (GCP)](../../reference/data-models/gcp.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](/docs/reference/cli/configs) in [Resoto Shell](/docs/concepts/components/shell):
 
-Add `gcp` to the list of collectors by modifying the [Resoto Worker configuration](../../reference/configuration/index.md) as follows:
+```bash
+> config edit resoto.worker
+```
+
+Add `gcp` to the list of collectors by modifying the configuration as follows:
 
 ```yaml title="Resoto Worker configuration"
 resotoworker:

@@ -1,7 +1,7 @@
 ---
 sidebar_label: Kubernetes
 pagination_prev: getting-started/index
-pagination_next: getting-started/configure-cloud-resource-collection/index
+pagination_next: getting-started/configure-cloud-provider-access/index
 ---
 
 # Install Resoto with Kubernetes
@@ -67,7 +67,7 @@ See [`values.yaml`](https://github.com/someengineering/resoto/blob/main/kubernet
 
 :::note
 
-Some cloud providers (e.g., [Google Cloud Platform](../configure-cloud-resource-collection/gcp.md)) provide a file for authentication. You can use Helm values `resotoworker.volumes`, and `resotoworker.volumeMounts` to inject credentials and their configuration to [Resoto Worker](../../concepts/components/worker.md):
+Some cloud providers (e.g., [Google Cloud Platform](../configure-cloud-provider-access/gcp.md)) provide a file for authentication. You can use Helm values `resotoworker.volumes`, and `resotoworker.volumeMounts` to inject credentials and their configuration to [Resoto Worker](../../concepts/components/worker.md):
 
 ```bash
 $ kubectl -n resoto create secret generic resoto-auth \
@@ -92,7 +92,7 @@ resotoworker:
 # highlight-end
 ```
 
-Other cloud providers (e.g., [Amazon Web Services](../configure-cloud-resource-collection/aws.md)) may use environment variables for authentication:
+Other cloud providers (e.g., [Amazon Web Services](../configure-cloud-provider-access/aws.md)) may use environment variables for authentication:
 
 ```bash
 $ kubectl -n resoto create secret generic resoto-auth \

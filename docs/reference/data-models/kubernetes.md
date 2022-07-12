@@ -8,7 +8,7 @@ sidebar_label: Kubernetes
 
 :::info
 
-Please refer to [Configure Kubernetes Resource Collection](../../getting-started/configure-cloud-resource-collection/kubernetes.md) for details on how to set up Resoto to collect [Kuberenetes](https://kubernetes.io) resources.
+Please refer to [Configure Kubernetes Access](../../getting-started/configure-cloud-provider-access/kubernetes.md) for details on how to set up Resoto to collect [Kuberenetes](https://kubernetes.io) resources.
 
 :::
 

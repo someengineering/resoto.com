@@ -74,16 +74,16 @@ export default function Home(): JSX.Element {
             for&hellip;
           </h3>
           <div className={styles.sectionLogoContainer}>
-            <Link to="/docs/getting-started/configure-cloud-resource-collection/aws">
+            <Link to="/docs/getting-started/configure-cloud-provider-access/aws">
               <AwsLogo />
             </Link>
-            <Link to="/docs/getting-started/configure-cloud-resource-collection/gcp">
+            <Link to="/docs/getting-started/configure-cloud-provider-access/gcp">
               <GoogleCloudLogo />
             </Link>
-            <Link to="/docs/getting-started/configure-cloud-resource-collection/digitalocean">
+            <Link to="/docs/getting-started/configure-cloud-provider-access/digitalocean">
               <DigitalOceanLogo />
             </Link>
-            <Link to="/docs/getting-started/configure-cloud-resource-collection/kubernetes">
+            <Link to="/docs/getting-started/configure-cloud-provider-access/kubernetes">
               <KubernetesLogo />
             </Link>
           </div>
@@ -288,19 +288,19 @@ export default function Home(): JSX.Element {
                   open source
                 </a>{' '}
                 and completely free to use, with out-of-the-box support for{' '}
-                <Link to="/docs/getting-started/configure-cloud-resource-collection/aws">
+                <Link to="/docs/getting-started/configure-cloud-provider-access/aws">
                   Amazon Web Services
                 </Link>
                 ,{' '}
-                <Link to="/docs/getting-started/configure-cloud-resource-collection/gcp">
+                <Link to="/docs/getting-started/configure-cloud-provider-access/gcp">
                   Google Cloud Platform
                 </Link>
                 ,{' '}
-                <Link to="/docs/getting-started/configure-cloud-resource-collection/digitalocean">
+                <Link to="/docs/getting-started/configure-cloud-provider-access/digitalocean">
                   DigitalOcean
                 </Link>
                 , and{' '}
-                <Link to="/docs/getting-started/configure-cloud-resource-collection/kubernetes">
+                <Link to="/docs/getting-started/configure-cloud-provider-access/kubernetes">
                   Kubernetes
                 </Link>
                 .

@@ -1,7 +1,7 @@
 ---
 sidebar_label: "3. Perform a Search"
 sidebar_position: 3
-pagination_prev: getting-started/configure-cloud-resource-collection/index
+pagination_prev: getting-started/configure-cloud-provider-access/index
 ---
 
 # Perform a Search

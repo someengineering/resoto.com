@@ -14,7 +14,7 @@ I worked on a plugin that allows collecting DigitalOcean resources over the past
 
 ## Getting Started
 
-To get started, add your DigitalOcean API tokens to [Resoto Worker](/docs/concepts/components/worker)via the [`config` command](/docs/reference/cli/configs) in [Resoto Shell](/docs/concepts/components/shell):
+To get started, add your DigitalOcean API tokens to [Resoto Worker](/docs/concepts/components/worker) via the [`config` command](/docs/reference/cli/configs) in [Resoto Shell](/docs/concepts/components/shell):
 
 ```bash
 > config edit resoto.worker

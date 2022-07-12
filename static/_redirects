@@ -57,10 +57,10 @@ https://news.resoto.com/*                                     https://resoto.com
 
 /docs/getting-started/configuration/core                      /docs/reference/configuration/core
 /docs/getting-started/configuration/worker                    /docs/reference/configuration/worker
-/docs/getting-started/configuration                           /docs/getting-started/configure-cloud-resource-collection
-/docs/getting-started/configuring-resoto                      /docs/getting-started/configure-cloud-resource-collection
-/docs/getting-started/configuration/cloud-providers/*         /docs/getting-started/configure-cloud-resource-collection/:splat
-/docs/getting-started/configuration/worker/cloud-providers/*  /docs/getting-started/configure-cloud-resource-collection/:splat
+/docs/getting-started/configuration                           /docs/getting-started/configure-cloud-provider-access
+/docs/getting-started/configuring-resoto                      /docs/getting-started/configure-cloud-provider-access
+/docs/getting-started/configuration/cloud-providers/*         /docs/getting-started/configure-cloud-provider-access/:splat
+/docs/getting-started/configuration/worker/cloud-providers/*  /docs/getting-started/configure-cloud-provider-access/:splat
 
 /docs/getting-started/queries                                 /docs/getting-started/perform-a-search
 /docs/getting-started/query                                   /docs/getting-started/perform-a-search

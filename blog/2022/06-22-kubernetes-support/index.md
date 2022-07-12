@@ -6,7 +6,7 @@ image: ./img/banner-social.png
 
 # Kubernetes Support
 
-[Kubernetes](https://kubernetes.io) is the de-facto standard for orchestrating containerized applications. It is the go-to solution no matter where your infrastructure is running. Resoto can already collect resources in [Amazon Web Services](/docs/getting-started/configure-cloud-resource-collection/aws), [Google Cloud Platform](/docs/getting-started/configure-cloud-resource-collection/gcp), and [DigitalOcean](/docs/getting-started/configure-cloud-resource-collection/digitalocean), all of which support [Kubernetes](https://kubernetes.io).
+[Kubernetes](https://kubernetes.io) is the de-facto standard for orchestrating containerized applications. It is the go-to solution no matter where your infrastructure is running. Resoto can already collect resources in [Amazon Web Services](/docs/getting-started/configure-cloud-provider-access/aws), [Google Cloud Platform](/docs/getting-started/configure-cloud-provider-access/gcp), and [DigitalOcean](/docs/getting-started/configure-cloud-provider-access/digitalocean), all of which support [Kubernetes](https://kubernetes.io).
 
 **I'm happy to announce that Resoto now has support for collecting [Kubernetes](/docs/reference/data-models/kubernetes) resources!**
 
@@ -16,7 +16,7 @@ image: ./img/banner-social.png
 
 ## Getting Started
 
-To get started, configure Resoto to use your [kubeconfig file](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig) or copy the relevant sections as described in [Configure Kubernetes Resource Collection](/docs/getting-started/configure-cloud-resource-collection/kubernetes).
+To get started, configure Resoto to use your [kubeconfig file](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig) or copy the relevant sections as described in [Configure Kubernetes Access](/docs/getting-started/configure-cloud-provider-access/kubernetes).
 
 ```bash
 > config edit resoto.worker
@@ -310,5 +310,5 @@ We are currently working on the way to connect resources found in Kubernetes to 
 ## Further Reading
 
 - [Install Resoto with Kubernetes](/docs/getting-started/install-resoto/kubernetes)
-- [Configure Kubernetes Resource Collection](/docs/getting-started/configure-cloud-resource-collection/kubernetes)
+- [Configure Kubernetes Access](/docs/getting-started/configure-cloud-provider-access/kubernetes)
 - [Kubernetes Resources](/docs/reference/data-models/kubernetes)

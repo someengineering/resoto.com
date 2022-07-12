@@ -2,11 +2,15 @@
 sidebar_label: DigitalOcean
 ---
 
-# Configure DigitalOcean Resource Collection
+# Configure DigitalOcean Access
 
-The [DigitalOcean](../../reference/data-models/digitalocean.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md).
+The [DigitalOcean](../../reference/data-models/digitalocean.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](/docs/reference/cli/configs) in [Resoto Shell](/docs/concepts/components/shell):
 
-Add `digitalocean` to the list of collectors and define API tokens and/or access keys by modifying the [Resoto Worker configuration](../../reference/configuration/index.md) as follows:
+```bash
+> config edit resoto.worker
+```
+
+Add `digitalocean` to the list of collectors and define API tokens and/or access keys by modifying the configuration as follows:
 
 ```yaml
 resotoworker:

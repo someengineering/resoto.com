@@ -1,7 +1,7 @@
 ---
 sidebar_label: pip
 pagination_prev: getting-started/index
-pagination_next: getting-started/configure-cloud-resource-collection/index
+pagination_next: getting-started/configure-cloud-provider-access/index
 ---
 
 # Install Resoto with pip

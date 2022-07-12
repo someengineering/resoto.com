@@ -2,11 +2,15 @@
 sidebar_label: Kubernetes
 ---
 
-# Configure Kubernetes Resource Collection
+# Configure Kubernetes Access
 
-The [Kubernetes](../../reference/data-models/kubernetes.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md).
+The [Kubernetes](../../reference/data-models/kubernetes.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](/docs/reference/cli/configs) in [Resoto Shell](/docs/concepts/components/shell):
 
-Add `k8s` to the list of collectors by modifying the [Resoto Worker configuration](../../reference/configuration/index.md) as follows:
+```bash
+> config edit resoto.worker
+```
+
+Add `k8s` to the list of collectors by modifying the configuration as follows:
 
 ```yaml title="Resoto Worker configuration"
 resotoworker:

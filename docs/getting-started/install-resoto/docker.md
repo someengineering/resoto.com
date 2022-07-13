@@ -1,10 +1,10 @@
 ---
 sidebar_label: Docker
 pagination_prev: getting-started/index
-pagination_next: getting-started/configuration/index
+pagination_next: getting-started/configure-cloud-provider-access/index
 ---
 
-# Installing Resoto with Docker
+# Install Resoto with Docker
 
 ```mdx-code-block
 import LatestRelease from '@site/src/components/LatestRelease';
@@ -18,7 +18,7 @@ import Tabs from '@theme/Tabs';
 
 - [Docker](https://docs.docker.com/get-started#download-and-install-docker) needs to be installed on your machine.
 - [Docker Compose](https://docs.docker.com/compose/install/) needs to be available on your machine.
-- At least two cores and eight gigabytes of RAM are required to run the Resoto stack. For a production setup we recommend at least four cores and 16 gigabytes of RAM. See [Configuring Resoto Worker](../configuration/worker.md#multi-core-machines) for more information.
+- At least two cores and eight gigabytes of RAM are required to run the Resoto stack. For a production setup we recommend at least four cores and 16 gigabytes of RAM. See [Configuring Resoto Worker](../../reference/configuration/worker.md#multi-core-machines) for more information.
 
 ## Installing Resoto
 
@@ -76,24 +76,6 @@ The `resh` command starts an interactive shell session with Resoto. To access th
 ```bash
 $ docker compose run --rm resotoshell
 ```
-
-### Configuring Resoto
-
-Please refer to [Configuring Resoto](../configuration/index.md) for details.
-
-### Collecting Cloud Resources
-
-Once one or more cloud providers have been configured the `collect_and_cleanup` workflow can be run by executing:
-
-```
-> workflow run collect_and_cleanup
-```
-
-No worries, no cleanup will be performed as cleanup is disabled by default. It is just the name of the [workflow](../../concepts/automation/workflow.md). See the [Cleaning Resources](../usage/cleanup.md) tutorial for details on how to enable cleanup.
-
-### Performing Searches
-
-Once Resoto has completed its first collect run, you can try [performing some searches](../usage/search.md).
 
 ## Updating Resoto
 

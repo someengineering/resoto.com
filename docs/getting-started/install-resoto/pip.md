@@ -1,10 +1,10 @@
 ---
 sidebar_label: pip
 pagination_prev: getting-started/index
-pagination_next: getting-started/configuration/index
+pagination_next: getting-started/configure-cloud-provider-access/index
 ---
 
-# Installing Resoto with pip
+# Install Resoto with pip
 
 ```mdx-code-block
 import TabItem from '@theme/TabItem';
@@ -81,7 +81,7 @@ $ source ~/resoto/resoto-venv/bin/activate
 $ resotocore --graphdb-password "$graphdb_password" --graphdb-server http://localhost:8529 --psk "$pre_shared_key"
 ```
 
-[Resoto Core](../../concepts/components/core.md) only listens on `localhost:8900` by default. [Resoto Core](../../concepts/components/core.md) can be [configured to listen on all interfaces](../configuration/core.md#network-interfaces) if desired.
+[Resoto Core](../../concepts/components/core.md) only listens on `localhost:8900` by default. [Resoto Core](../../concepts/components/core.md) can be [configured to listen on all interfaces](../../reference/configuration/core.md#network-interfaces) if desired.
 
 </TabItem>
 <TabItem value="resotoworker" label="resotoworker">
@@ -115,24 +115,6 @@ $ pre_shared_key=$(< ~/resoto/.pre-shared-key)
 $ source ~/resoto/resoto-venv/bin/activate
 $ resh --resotocore-uri https://localhost:8900 --psk "$pre_shared_key"
 ```
-
-### Configuring Resoto
-
-Please refer to [Configuring Resoto](../configuration/index.md) for details.
-
-### Collecting Cloud Resources
-
-Once one or more cloud providers have been configured the `collect_and_cleanup` workflow can be run by executing:
-
-```
-> workflow run collect_and_cleanup
-```
-
-No worries, no cleanup will be performed as cleanup is disabled by default. It is just the name of the [workflow](../../concepts/automation/workflow.md). See the [Cleaning Resources](../usage/cleanup.md) tutorial for details on how to enable cleanup.
-
-### Performing Searches
-
-Once Resoto has completed its first collect run, you can try [performing some searches](../usage/search.md).
 
 ## Updating Resoto
 

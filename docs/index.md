@@ -46,13 +46,13 @@ Resoto collects data using simple plugins written in [Python](https://www.python
 
 Support for the following is currently included out-of-the-box in Resoto:
 
-- [Amazon Web Services (AWS)](./getting-started/configuration/cloud-providers/aws.md)
-- [Google Cloud Platform (GCP)](./getting-started/configuration/cloud-providers/gcp.md)
-- [DigitalOcean](./getting-started/configuration/cloud-providers/digitalocean.md)
-- [Kubernetes (K8s)](./getting-started/configuration/cloud-providers/kubernetes.md)
+- [Amazon Web Services (AWS)](./getting-started/configure-cloud-provider-access/aws.md)
+- [Google Cloud Platform (GCP)](./getting-started/configure-cloud-provider-access/gcp.md)
+- [DigitalOcean](./getting-started/configure-cloud-provider-access/digitalocean.md)
+- [Kubernetes (K8s)](./getting-started/configure-cloud-provider-access/kubernetes.md)
 - [VMware Vsphere](./reference/data-models/vsphere.md)
 
-See [Configuring Cloud Providers](./getting-started/configuration/cloud-providers/index.md) for more information on how to configure individual providers.
+See [Configure Cloud Provider Access](./getting-started/configure-cloud-provider-access/index.md) for more information on how to configure individual providers.
 
 In addition to the above collector plugins, various [tag validation and cleanup plugins](./concepts/components/plugins/index.md) are included.
 

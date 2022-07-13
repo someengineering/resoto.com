@@ -25,4 +25,4 @@ Error reporting aids us in identifying and fixing bugs or issues in Resoto. This
 
 ## Disabling Telemetry Reporting {#disabling}
 
-Telemetry can be disabled via the `resotocore.runtime.usage_metrics` [Resoto Core configuration](../getting-started/configuration/core.md) option.
+Telemetry can be disabled via the `resotocore.runtime.usage_metrics` [Resoto Core configuration](./configuration/core.md) option.

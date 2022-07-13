@@ -15,15 +15,15 @@ tags: [release notes]
 #### Further Reading
 
 - [Kubernetes Support](/blog/2022/06/22/kubernetes-support)
-- [Installing Resoto with Kubernetes](/docs/getting-started/installation/kubernetes)
-- [Configuring Kubernetes Resource Collection](/docs/getting-started/configuration/cloud-providers/kubernetes)
+- [Install Resoto with Kubernetes](/docs/getting-started/install-resoto/kubernetes)
+- [Configure Kubernetes Access](/docs/getting-started/configure-cloud-provider-access/kubernetes)
 - [Kubernetes Resources](/docs/reference/data-models/kubernetes)
 
 ### UI to Configure Resoto
 
 We now ship a user interface (UI) in [Resoto Core](/docs/concepts/components/core), from which it is possible to configure Resoto.
 
-If you are running Resoto locally via [Docker](/docs/getting-started/installation/docker), the UI is accessible via [https://localhost:8900/ui](https://localhost:8900/ui):
+If you are running Resoto locally via [Docker](/docs/getting-started/install-resoto/docker), the UI is accessible via [https://localhost:8900/ui](https://localhost:8900/ui):
 
 ![Config UI](./img/ui_config.png)
 

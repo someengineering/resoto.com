@@ -1,9 +1,10 @@
 ---
-sidebar_position: 2
-pagination_prev: getting-started/usage/search
+sidebar_label: "4. Clean Resources"
+sidebar_position: 4
+pagination_prev: getting-started/perform-a-search
 ---
 
-# Cleaning Resources
+# Clean Resources
 
 :::danger
 
@@ -13,9 +14,9 @@ If you run `search is(aws_ec2_volume) | clean`, it marks _all_ `aws_ec2_volume` 
 
 :::
 
-By default, [Resoto Worker](../../concepts/components/worker.md) will _not_ delete resources marked for deletion. Resources marked with `| clean` will stay this way without deleting them.
+By default, [Resoto Worker](../concepts/components/worker.md) will _not_ delete resources marked for deletion. Resources marked with `| clean` will stay this way without deleting them.
 
-[Resoto Worker](../../concepts/components/worker.md) will only delete marked resources when `cleanup: true` is configured. To enable cleanup, execute the following in [Resoto Shell](../../concepts/components/shell.md):
+[Resoto Worker](../concepts/components/worker.md) will only delete marked resources when `cleanup: true` is configured. To enable cleanup, execute the following in [Resoto Shell](../concepts/components/shell.md):
 
 ```bash
 > config edit resoto.worker
@@ -33,7 +34,7 @@ resotoworker:
   cleanup_pool_size: 16
 ```
 
-When started with cleanup enabled, marked resources will be cleaned whenever the `collect_and_cleanup` [workflow](../../concepts/automation/workflow.md) runs (by default every full hour).
+When started with cleanup enabled, marked resources will be cleaned whenever the `collect_and_cleanup` [workflow](../concepts/automation/workflow.md) runs (by default every full hour).
 
 You can provide `cleanup_dry_run: true` to output the resources that would be deleted (without actually performing the deletion).
 
@@ -59,9 +60,9 @@ Optionally, you can provide a reason for marking the matched resources for the n
 
 ## Pruning Resources Marked for Deletion
 
-Resources in Resoto will only be deleted if you started a [`resotoworker`](../../concepts/components/worker.md) with the `cleanup: true` config. If done so, there will be an automatic cleanup whenever the `collect_and_cleanup` [workflow](../../concepts/automation/workflow.md) runs (by default every full hour).
+Resources in Resoto will only be deleted if you started a [`resotoworker`](../concepts/components/worker.md) with the `cleanup: true` config. If done so, there will be an automatic cleanup whenever the `collect_and_cleanup` [workflow](../concepts/automation/workflow.md) runs (by default every full hour).
 
-Instant cleanup can alternatively be triggered via starting the corresponding [workflow](../../concepts/automation/workflow.md).
+Instant cleanup can alternatively be triggered via starting the corresponding [workflow](../concepts/automation/workflow.md).
 
 ```bash
 > workflow run cleanup

@@ -1,9 +1,8 @@
 ---
 sidebar_label: Worker
-sidebar_position: 2
 ---
 
-# Configuring Resoto Worker
+# Resoto Worker Configuration
 
 ## Multi-Core Machines
 

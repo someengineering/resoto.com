@@ -54,7 +54,7 @@ export default function Home(): JSX.Element {
           </div>
           <div className={styles.cta}>
             <Link
-              to="/docs/getting-started/installation"
+              to="/docs/getting-started/install-resoto"
               className="button button--primary button--lg"
             >
               Install Now
@@ -74,16 +74,16 @@ export default function Home(): JSX.Element {
             for&hellip;
           </h3>
           <div className={styles.sectionLogoContainer}>
-            <Link to="/docs/getting-started/configuration/cloud-providers/aws">
+            <Link to="/docs/getting-started/configure-cloud-provider-access/aws">
               <AwsLogo />
             </Link>
-            <Link to="/docs/getting-started/configuration/cloud-providers/gcp">
+            <Link to="/docs/getting-started/configure-cloud-provider-access/gcp">
               <GoogleCloudLogo />
             </Link>
-            <Link to="/docs/getting-started/configuration/cloud-providers/digitalocean">
+            <Link to="/docs/getting-started/configure-cloud-provider-access/digitalocean">
               <DigitalOceanLogo />
             </Link>
-            <Link to="/docs/getting-started/configuration/cloud-providers/kubernetes">
+            <Link to="/docs/getting-started/configure-cloud-provider-access/kubernetes">
               <KubernetesLogo />
             </Link>
           </div>
@@ -149,13 +149,16 @@ export default function Home(): JSX.Element {
                   <Link to="/docs/concepts/automation/job">jobs</Link> that
                   execute recurring tasks, such as identifying and cleaning up
                   orphaned resources and enforcing{' '}
-                  <Link to="/docs/concepts/tagging">tag</Link> structures.
+                  <Link to="/docs/concepts/resource-management/tagging">
+                    tag
+                  </Link>{' '}
+                  structures.
                 </p>
               </li>
             </ul>
             <div className={styles.cta}>
               <Link
-                to="/docs/getting-started/installation"
+                to="/docs/getting-started/install-resoto"
                 className="button button--primary button--lg"
               >
                 Install Now
@@ -206,10 +209,12 @@ export default function Home(): JSX.Element {
                 <p>
                   Resoto reverses your cost curve by{' '}
                   <Link to="/docs/concepts/search">finding</Link> and{' '}
-                  <Link to="/docs/concepts/cleanup">cleaning up</Link> orphaned
-                  resources. Resoto also alerts you about expensive resources
-                  when they are deployed, so there are no surprises in your
-                  cloud bill.
+                  <Link to="/docs/concepts/resource-management/cleanup">
+                    cleaning up
+                  </Link>{' '}
+                  orphaned resources. Resoto also alerts you about expensive
+                  resources when they are deployed, so there are no surprises in
+                  your cloud bill.
                 </p>
               </li>
               <li>
@@ -226,7 +231,7 @@ export default function Home(): JSX.Element {
             </ul>
             <div className={styles.cta}>
               <Link
-                to="/docs/getting-started/installation"
+                to="/docs/getting-started/install-resoto"
                 className="button button--primary button--lg"
               >
                 Install Now
@@ -240,8 +245,7 @@ export default function Home(): JSX.Element {
             <div>
               <span className={styles.sectionBadge}>Why Resoto?</span>
               <h2 className={styles.sectionTitle}>
-                If you don&rsquo;t know what is running in your cloud, it will
-                cost you. (Literally.)
+                Know what&rsquo;s running in your cloud, or it will cost you.
               </h2>
               <p>
                 Resoto allows you to give your engineers liberal permissions
@@ -256,7 +260,7 @@ export default function Home(): JSX.Element {
             />
             <div className={styles.cta}>
               <Link
-                to="/docs/getting-started/installation"
+                to="/docs/getting-started/install-resoto"
                 className="button button--primary button--lg"
               >
                 Install Now
@@ -284,19 +288,19 @@ export default function Home(): JSX.Element {
                   open source
                 </a>{' '}
                 and completely free to use, with out-of-the-box support for{' '}
-                <Link to="/docs/getting-started/configuration/cloud-providers/aws">
+                <Link to="/docs/getting-started/configure-cloud-provider-access/aws">
                   Amazon Web Services
                 </Link>
                 ,{' '}
-                <Link to="/docs/getting-started/configuration/cloud-providers/gcp">
+                <Link to="/docs/getting-started/configure-cloud-provider-access/gcp">
                   Google Cloud Platform
                 </Link>
                 ,{' '}
-                <Link to="/docs/getting-started/configuration/cloud-providers/digitalocean">
+                <Link to="/docs/getting-started/configure-cloud-provider-access/digitalocean">
                   DigitalOcean
                 </Link>
                 , and{' '}
-                <Link to="/docs/getting-started/configuration/cloud-providers/kubernetes">
+                <Link to="/docs/getting-started/configure-cloud-provider-access/kubernetes">
                   Kubernetes
                 </Link>
                 .
@@ -304,7 +308,7 @@ export default function Home(): JSX.Element {
             </div>
             <ul className={styles.sectionItems}>
               <li>
-                <Link to="/docs/getting-started/installation">
+                <Link to="/docs/getting-started/install-resoto">
                   <h3>
                     <DownloadIcon className={styles.sectionItemIcon} />
                     <span>Install Resoto</span>
@@ -312,15 +316,15 @@ export default function Home(): JSX.Element {
                 </Link>
                 <p>
                   Get started with Resoto using{' '}
-                  <Link to="/docs/getting-started/installation/docker">
+                  <Link to="/docs/getting-started/install-resoto/docker">
                     Docker
                   </Link>
                   ,{' '}
-                  <Link to="/docs/getting-started/installation/kubernetes">
+                  <Link to="/docs/getting-started/install-resoto/kubernetes">
                     Kubernetes
                   </Link>
                   , or{' '}
-                  <Link to="/docs/getting-started/installation/pip">pip</Link>{' '}
+                  <Link to="/docs/getting-started/install-resoto/pip">pip</Link>{' '}
                   in just five minutes!
                 </p>
               </li>
@@ -348,14 +352,16 @@ export default function Home(): JSX.Element {
                   Set up a recurring{' '}
                   <Link to="/docs/concepts/automation/job">job</Link> and allow
                   Resoto to take care of resource{' '}
-                  <Link to="/docs/concepts/cleanup">cleanup</Link> going
-                  forward.
+                  <Link to="/docs/concepts/resource-management/cleanup">
+                    cleanup
+                  </Link>{' '}
+                  going forward.
                 </p>
               </li>
             </ul>
             <div className={styles.cta}>
               <Link
-                to="/docs/getting-started/installation"
+                to="/docs/getting-started/install-resoto"
                 className="button button--primary button--lg"
               >
                 Install Now

@@ -14,7 +14,7 @@ One way to receive these notifications is via [Discord](https://discord.com). In
 
 ## Prerequisites
 
-This guide assumes that you have already [installed](../../getting-started/installation/index.md) and configured Resoto to [collect your cloud resources](../../getting-started/configuration/cloud-providers/index.md).
+This guide assumes that you have already [installed](../../getting-started/install-resoto/index.md) and configured Resoto to [collect your cloud resources](../../getting-started/configure-cloud-provider-access/index.md).
 
 You will also need the **Manage Webhooks** permission for the target text channel in your Discord server.
 

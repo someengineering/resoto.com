@@ -44,7 +44,7 @@ Here we see properties that are common to every resource, no matter the resource
 
   :::note
 
-  This this time is not available on all resources for all cloud providers. Resoto tries to do its best to synthesize the last access time based on the resource type.
+  This time is not available on all resources for all cloud providers. Resoto tries to do its best to synthesize the last access time based on the resource type.
 
   :::
 
@@ -54,7 +54,7 @@ Here we see properties that are common to every resource, no matter the resource
 
   :::note
 
-  This this time is not available on all resources for all cloud providers. Resoto tries to do its best to synthesize the last modification time based on the resource type.
+  This time is not available on all resources for all cloud providers. Resoto tries to do its best to synthesize the last modification time based on the resource type.
 
   :::
 

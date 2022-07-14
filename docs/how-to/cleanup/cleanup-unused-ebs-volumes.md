@@ -12,7 +12,7 @@ Sometimes when EC2 instances are removed their storage volumes are left behind. 
 
 ## Prerequisites
 
-This guide assumes that you have already [installed](../../getting-started/installation/index.md) and configured Resoto for [cleanup](../../concepts/cleanup.md).
+This guide assumes that you have already [installed](../../getting-started/install-resoto/index.md) and configured Resoto for [cleanup](../../getting-started/clean-resources.md).
 
 ## Cleaning up
 

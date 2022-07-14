@@ -8,7 +8,7 @@ sidebar_custom_props:
 
 ## Prerequisites
 
-This guide assumes that you have already [installed](../../getting-started/installation/index.md) and configured Resoto for [cleanup](../../concepts/cleanup.md).
+This guide assumes that you have already [installed](../../getting-started/install-resoto/index.md) and configured Resoto for [cleanup](../../getting-started/clean-resources.md).
 
 ## Introduction
 

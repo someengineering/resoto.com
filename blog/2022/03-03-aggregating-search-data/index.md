@@ -92,7 +92,7 @@ Wouldn't it be great if we could aggregate over not only the data of a single no
 
 ![Instance Relationships](./img/carz_structure.svg)
 
-The above diagram illustrates the relationship between compute instances. AWS resources are attached to a region, while GCP resources are associated with a zone. Each instance also has a `instance_type` predecessor node. To access properties of ancestor nodes of a given kind, we can use the following notation:
+The above diagram illustrates the relationship between compute instances. <abbr title="Amazon Web Services">AWS</abbr> resources are attached to a region, while <abbr title="Google Cloud Platform">GCP</abbr> resources are associated with a zone. Each instance also has a `instance_type` predecessor node. To access properties of ancestor nodes of a given kind, we can use the following notation:
 
 ```bash
 > search is(instance) | aggregate

@@ -33,3 +33,15 @@ nikita:
   title: Some Engineer
   image_url: https://github.com/meln1k.png
   url: https://github.com/meln1k
+
+pablo:
+  name: Pablo Fonovich
+  title: Some Engineer
+  image_url: https://github.com/azagaya.png
+  url: https://github.com/azagaya
+
+anja:
+  name: Anja Freihube
+  title: Some Engineer
+  image_url: https://github.com/anjafr.png
+  url: https://github.com/anjafr

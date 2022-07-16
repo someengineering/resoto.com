@@ -8,12 +8,59 @@ sidebar_custom_props:
 
 ## Introduction
 
-The final result of this how-to is a chart showing us which cloud account has the most storage allocated. ![Import data](img/google_sheets-00_goal.png)
+The final result of this how-to is a chart showing which cloud account has what proportion of our total storage allocated. ![Import data](img/google_sheets-00_goal.png)
 
-## Writing a CSV file for export
+## Steps
+
+- We first perform a search that aggregates all storage volumes across all clouds and accounts and returns the total size of all volumes per account.
+- We then pipe the aggregated result into the `format` command to flatten the data into rows and columns and export those as a CSV file.
+- Lastly we import the CSV into Google Sheets and create a pie chart showing the distribution of storage across accounts.
+
+## Performing the search
+
+In [Resoto Shell](../../concepts/components/shell.md) execute the following [aggregate search](../../reference/cli/aggregate.md):
 
 ```
-> search aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account: sum(volume_size * 1024 * 1024 * 1024) as volume_bytes): is(volume) | format {/group.cloud},{/group.account},{/volume_bytes} | write storage.csv
+> search aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account: sum(volume_size * 1024 * 1024 * 1024) as volume_bytes): is(volume)
+```
+
+The resulting output looks similar to this:
+
+```
+---
+group:
+  cloud: aws
+  account: sales-demo
+volume_bytes: 2123861327872
+
+---
+group:
+  cloud: aws
+  account: eng-scaletesting
+volume_bytes: 10733123272704
+
+---
+group:
+  cloud: aws
+  account: general-support
+volume_bytes: 6096706076672
+```
+
+## Formating the data and writing a CSV file
+
+Next we pipe the complex data structure into the command `format {/group.cloud} {/group.account},{/volume_bytes}` to flatten it into rows and columns, resulting in an output like this:
+
+```
+aws sales-demo,2123861327872
+aws eng-scaletesting,10733123272704
+aws general-support,6096706076672
+```
+
+Using the `write storage.csv` command we then write the output to a CSV file on our local disk.
+
+```bash title="Execute in Resoto Shell (use this code box's copy button ⧉)"
+> search aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account: sum(volume_size * 1024 * 1024 * 1024) as volume_bytes): is(volume) | format {/group.cloud} {/group.account},{/volume_bytes} | write storage.csv
+# highlight-next-line
 ​Received a file storage.csv, which is stored to ./storage.csv.
 ```
 

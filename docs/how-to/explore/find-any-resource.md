@@ -18,7 +18,7 @@ Examples where this approach might be helpful:
 
 ## Prerequisites
 
-This guide assumes that you have already [installed](../../getting-started/installation/index.md) and configured Resoto to [collect your cloud resources](../../getting-started/configuration/cloud-providers/index.md).
+This guide assumes that you have already [installed](../../getting-started/install-resoto) and configured Resoto to [collect your cloud resources](../../getting-started/configure-cloud-provider-access).
 
 ## Finding resources
 

@@ -8,9 +8,9 @@ sidebar_custom_props:
 
 ## Introduction
 
-Resoto maintains an asset inventory of your infrastructure metadata. It is equipped with a full-text search index that can be leveraged to find any resource, no matter which cloud provider, account, region or service the resource belongs to.
+Resoto builds a cloud asset inventory by collecting metadata from your infrastructure. It is equipped with a full-text search index to discover, monitor, and analyze from a single place - no matter which cloud provider, account, region or service the resource belongs to.
 
-Examples where this approach might be helpful:
+Here are three examples where full-text search is helpful:
 
 - Finding resources with a certain name or tag or label
 - Lookup resources by a provider specific ID

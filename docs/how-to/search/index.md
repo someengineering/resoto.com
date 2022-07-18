@@ -1,8 +1,8 @@
 ---
-sidebar_label: Explore
+sidebar_label: Search
 ---
 
-# Get the information you are looking for
+# Search How-To Guides
 
 ```mdx-code-block
 import { useCurrentSidebarCategory } from '@docusaurus/theme-common';

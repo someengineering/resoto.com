@@ -15,6 +15,10 @@ This section of the documentation provides instructions for specific use cases a
 
 <DocListWithTags items={useCurrentSidebarCategory().items.find((i) => i.type === 'category' && i.label === 'Alerting')?.items} />
 
+## Search
+
+<DocListWithTags items={useCurrentSidebarCategory().items.find((i) => i.type === 'category' && i.label === 'Search')?.items} />
+
 ## Security
 
 <DocListWithTags items={useCurrentSidebarCategory().items.find((i) => i.type === 'category' && i.label === 'Security')?.items} />

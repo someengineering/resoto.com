@@ -50,6 +50,8 @@ You will also need the **Manage Webhooks** permission for the target text channe
    > jobs add --id notify_large_test_instances --wait-for-event post_collect 'search is(instance) and instance_memory>4 and /ancestors.account.reported.name==test-account | discord title="Large instances found in test-account" webhook="https://discord.com/api/webhooks/..."'
    ```
 
-## Considerations
+:::tip
 
-If you have a default webhook to send notifications to, you can also define it as default value for webhook url in the custom command configuration. This way you can simply call `discord title="..."`. It is still possible to specify the `webhook` parameter explicitly to send the message to another channel.
+A default webhook URL can be specified in the `discord` custom command configuration, so that you can simply execute `discord title="..."`.
+
+:::

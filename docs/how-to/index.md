@@ -11,10 +11,6 @@ import DocListWithTags from '@site/src/components/DocListWithTags';
 
 This section of the documentation provides instructions for specific use cases and scenarios.
 
-## Explore
-
-<DocListWithTags items={useCurrentSidebarCategory().items.find((i) => i.type === 'category' && i.label === 'Explore')?.items} />
-
 ## Alerting
 
 <DocListWithTags items={useCurrentSidebarCategory().items.find((i) => i.type === 'category' && i.label === 'Alerting')?.items} />

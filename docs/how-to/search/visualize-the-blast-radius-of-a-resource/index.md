@@ -12,7 +12,7 @@ Resoto builds a cloud asset inventory by collecting resource metadata and relati
 
 Resoto uses resource relationship data to traverse not only the direct dependencies of a resource, but also transitive dependencies (the dependencies of dependent resources).
 
-Transitive dependencies show the the "blast radius" of a resource, giving an overview how a resource is connected to other resources. In the event that a resource becomes compromised, the blast radius can provide a complete view of affected resources.
+Transitive dependencies show the "blast radius" of a resource, giving an overview how a resource is connected to other resources. In the event that a resource becomes compromised, the blast radius can provide a complete view of affected resources.
 
 ## Prerequisites
 

@@ -125,7 +125,7 @@ If we can traverse outbound with `-->` and inbound with `<--`, there has to be a
 # highlight-end
 ```
 
-The traversal definition `<-[0:]->` might look strange at first glance. It defines to traverse inbound and outbound starting from the current node (`0`). Since the end of the traverse is not specified, it will traverse until there are no more nodes to traverse. It will traverse to the graph root inbound and all possible leafs outbound. The result is then counted by kind. To make this information even more helpful, we can create a graph diagram out of this search using [Graphviz](https://www.graphviz.org/) and the [dot format](/docs/reference/cli/format). The same search as above is used with edges included in the result.
+The traversal definition `<-[0:]->` might look strange at first glance. It defines to traverse inbound and outbound starting from the current node (`0`). Since the end of the traverse is not specified, it will traverse until there are no more nodes to traverse. It will traverse to the graph root inbound and all possible leafs outbound. The result is then counted by kind. To make this information even more helpful, we can create a graph diagram out of this search in [Graphviz DOT format](https://graphviz.org/doc/info/lang.html). The same search as above is used with edges included in the result.
 
 ```bash
 > search --with-edges is(digitalocean_droplet) and

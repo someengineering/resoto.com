@@ -14,7 +14,7 @@ One way to receive these notifications is via [Discord](https://discord.com). In
 
 ## Prerequisites
 
-This guide assumes that you have already [installed](../../getting-started/install-resoto/index.md) and configured Resoto to [collect your cloud resources](../../getting-started/configure-cloud-provider-access/index.md).
+This guide assumes that you have already [installed](../../../getting-started/install-resoto/index.md) and configured Resoto to [collect your cloud resources](../../../getting-started/configure-cloud-provider-access/index.md).
 
 You will also need the **Manage Webhooks** permission for the target text channel in your Discord server.
 
@@ -34,7 +34,7 @@ You will also need the **Manage Webhooks** permission for the target text channe
    > search is(instance) and instance_memory>4 and /ancestors.account.reported.name==test-account
    ```
 
-3. Now that we've defined the alert trigger, we will simply pipe the result of the search query to the `discord` [custom command](../../reference/cli/index.md#custom-commands), replacing the `title` with your desired alert text and `webhook` with your Discord webhook URL:
+3. Now that we've defined the alert trigger, we will simply pipe the result of the search query to the `discord` [custom command](../../../reference/cli/index.md#custom-commands), replacing the `title` with your desired alert text and `webhook` with your Discord webhook URL:
 
    ```bash
    > search is(instance) and instance_memory>4 and /ancestors.account.reported.name==test-account | discord title="Large instances found in test-account" webhook="https://discord.com/api/webhooks/..."
@@ -42,7 +42,7 @@ You will also need the **Manage Webhooks** permission for the target text channe
 
    If the defined condition is currently true, you should see a new message in the specified Discord text channel:
 
-   ![Example Discord alert](./img/discord-alert.png)
+   ![Example Discord alert](./img/example-alert.png)
 
 4. Finally, we want to automate checking of the defined alert trigger and send alerts to Discord whenever the result is true. We can accomplish this by creating a [job](/docs/concepts/automation/job):
 

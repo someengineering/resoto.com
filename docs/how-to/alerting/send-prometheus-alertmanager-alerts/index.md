@@ -8,17 +8,17 @@ sidebar_custom_props:
 
 ## Introduction
 
-Resoto constantly monitors your infrastructure, and can alert you to any detected issues. [Prometheus Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager) is a tool to manage and escalate alerts. In this guide, we will configure Resoto to send alerts to Alertmanager with a [custom command](../../reference/cli/index.md).
+Resoto constantly monitors your infrastructure, and can alert you to any detected issues. [Prometheus Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager) is a tool to manage and escalate alerts. In this guide, we will configure Resoto to send alerts to Alertmanager with a [custom command](../../../reference/cli/index.md).
 
 ## Prerequisites
 
-This guide assumes that you have already [installed](../../getting-started/install-resoto/index.md) and configured Resoto to [collect your cloud resources](../../getting-started/configure-cloud-provider-access/index.md).
+This guide assumes that you have already [installed](../../../getting-started/install-resoto/index.md) and configured Resoto to [collect your cloud resources](../../../getting-started/configure-cloud-provider-access/index.md).
 
 You will also need a running installation of [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager).
 
 ## Creating a Custom Command
 
-1. Open the `resoto.core.commands` configuration by executing the following command in [Resoto Shell](../../concepts/components/shell.md):
+1. Open the `resoto.core.commands` configuration by executing the following command in [Resoto Shell](../../../concepts/components/shell.md):
 
    ```bash
    > config edit resoto.core.commands
@@ -60,7 +60,7 @@ We now have a custom command `alertmanager` with the following parameters:
 | `duration`         | Alert duration             | `3h`                    |
 | `alertmanager_url` | Alertmanager URL           | `http://localhost:9093` |
 
-The [`help` command](../../reference/cli/help.md) can also be used to access this information in the [command-line interface](../../reference/cli/index.md):
+The [`help` command](../../../reference/cli/help.md) can also be used to access this information in the [command-line interface](../../../reference/cli/index.md):
 
 ```bash
 > help alertmanager
@@ -84,7 +84,7 @@ The [`help` command](../../reference/cli/help.md) can also be used to access thi
 
    If the defined condition is currently true, you should see a new alert in [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager):
 
-   ![Example Alertmanager alert](./img/alertmanager-alert.png)
+   ![Example Alertmanager alert](./img/example-alert.png)
 
 3. Finally, we want to automate checking of the defined alert trigger and send alerts to [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager) whenever the result is true. We can accomplish this by creating a [job](/docs/concepts/automation/job):
 

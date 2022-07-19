@@ -1,3 +1,7 @@
+---
+sidebar_label: Cleanup
+---
+
 # Resource Cleanup
 
 :::note

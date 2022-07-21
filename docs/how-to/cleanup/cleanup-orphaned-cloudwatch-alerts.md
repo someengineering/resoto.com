@@ -1,7 +1,7 @@
 ---
 sidebar_label: Orphaned CloudWatch alarms
 sidebar_custom_props:
-  tags: [AWS]
+  tags: [AWS, cleanup, cloudwatch]
 ---
 
 # Clean up orphaned CloudWatch alarms

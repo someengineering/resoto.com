@@ -1,7 +1,7 @@
 ---
 sidebar_label: Google Sheets
 sidebar_custom_props:
-  tags: [AWS]
+  tags: [export, Google Sheets]
 ---
 
 # Exporting data from Resoto to Google Sheets

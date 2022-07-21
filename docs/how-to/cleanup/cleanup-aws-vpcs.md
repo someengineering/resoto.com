@@ -1,7 +1,7 @@
 ---
 sidebar_label: AWS VPCs
 sidebar_custom_props:
-  tags: [AWS]
+  tags: [AWS, cleanup, VPC]
 ---
 
 # Clean up AWS VPCs

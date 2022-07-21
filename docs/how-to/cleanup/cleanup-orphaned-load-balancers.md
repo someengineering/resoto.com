@@ -1,7 +1,7 @@
 ---
 sidebar_label: Orphaned load balancers
 sidebar_custom_props:
-  tags: [AWS]
+  tags: [AWS, cleanup, ELB, ALB]
 ---
 
 # Clean up orphaned load balancers

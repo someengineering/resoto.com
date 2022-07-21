@@ -48,6 +48,7 @@ const config = {
         ],
         theme: {
           primaryColor: '#762dd7',
+          primaryColorDark: '#af62f5',
         },
       },
     ],

@@ -1,3 +1,7 @@
+---
+sidebar_label: Tagging
+---
+
 # Resource Tagging
 
 Resoto is able to create, update, and delete tags for resources that support tags.

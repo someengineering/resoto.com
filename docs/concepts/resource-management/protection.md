@@ -1,3 +1,7 @@
+---
+sidebar_label: Protection
+---
+
 # Resource Protection
 
 Resoto has a concept of resource protection. The idea being that some resources in an account are important and should never be touched by Resoto even if a user, a plugin or an automated job has flagged them for cleanup.

@@ -76,7 +76,7 @@ The job functionality can be used to automate actions. Here is a list of possibl
 
 - **Generate up-to-date diagrams.**
 
-  Did you know that Resoto can provide graph diagrams in dot format?
+  Did you know that Resoto can provide graph diagrams in [Graphviz DOT format](https://graphviz.org/doc/info/lang.html)?
 
   Try this in [Resoto Shell (`resh`)](../components/shell.md):
 
@@ -86,7 +86,7 @@ The job functionality can be used to automate actions. Here is a list of possibl
 
   This will search the graph from the root and traverse it 2 levels deep and will also emit all edges.
 
-  The resulting graph will be formatted in `Graphviz <https://graphviz.org>` dot format and written to file `out.dot`.
+  The resulting graph will be formatted in [Graphviz DOT format](https://graphviz.org/doc/info/lang.html) and written to file `out.dot`.
 
   If you have graphviz installed, you can now create a diagram from the dot specification, for example with: `sfdp -Tsvg -o out.svg out.dot`.
 

@@ -1,7 +1,7 @@
 ---
 sidebar_label: Untagged resources
 sidebar_custom_props:
-  tags: [AWS]
+  tags: [cleanup, tagging]
 ---
 
 # Clean up untagged resources

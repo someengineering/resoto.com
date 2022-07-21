@@ -1,7 +1,7 @@
 ---
 sidebar_label: Expired resources
 sidebar_custom_props:
-  tags: [AWS]
+  tags: [cleanup]
 ---
 
 # Clean up expired resources

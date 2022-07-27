@@ -37,7 +37,7 @@ An asset can be a resource such as a virtual machine, database, or storage bucke
 
 If anything, companies have adopted new processes to iterate more quickly. Continuous integration (CI) and infrastructure-as-code (IaC) have enabled development teams to deploy more, faster. A startup with a hundred employees can easily have hundreds of thousands of resources, and larger enterprises millions.
 
-## New Operational Challenges
+### New Operational Challenges
 
 Platform teams responsible for infrastructure today deal with three new challenges:
 
@@ -71,7 +71,7 @@ A cloud asset inventory is different. A cloud asset inventory takes periodical s
 
 A cloud asset inventory is a meta layer that allows platform teams to analyze their infrastructure and track asset changes. It's different because it offers search features while being generic and extensible. Rather than supporting a single core use case like XOps tools, a cloud asset inventory prioritizes flexibility and exploration.
 
-## Building a Cloud Asset Inventory
+### Building a Cloud Asset Inventory
 
 A cloud asset inventory should include two types of data:
 
@@ -92,7 +92,7 @@ Modern cloud asset inventories use a graph-based data model, as it's better suit
 
 Dependencies are often nested and can run many levels deep. A graph-based asset inventory is particularly strong at exposing the hidden relationships between resources.
 
-### How A Cloud Asset Inventory Accelerates Growth
+### Cloud Asset Inventory Accelerates Growth
 
 With an inventory in place, all teams now benefit from exploring the graph, either ad-hoc or by continuously running queries, to support a variety of use cases:
 
@@ -143,7 +143,7 @@ Then, adding a [job](/docs/concepts/automation/job) to automate cleanup after ea
 
 And just like that, the team has automated the work of enforcing the new cost policy.
 
-## Start Now
+### Start Now
 
 Resoto enables platform teams to create measurable <abbr title="key performance indicator">KPI</abbr>s they can track over time, build fleet-wide monitoring, and automate tedious infrastructure work.
 

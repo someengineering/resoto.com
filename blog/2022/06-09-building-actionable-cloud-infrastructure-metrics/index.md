@@ -16,6 +16,8 @@ Even those spinning up cloud resources might only be aware of their small slice 
 
 Cloud inventory has become a new type of technical debt, where organizations lose track of their infrastructure and how it relates to the business. **Resoto helps to break open the aforementioned black box and eliminate inventory debt.**
 
+<!--truncate-->
+
 Resoto provides a [searchable](/docs/concepts/search) snapshot of the current state of your cloud infrastructure, and can [automatically react to state changes](/docs/concepts/automation). Resoto also allows you to [aggregate](/docs/concepts/search/aggregation) and [visualize](/docs/reference/notebook) this data, as my colleagues [Matthias](https://github.com/aquamatthias) and [Nikita](https://github.com/meln1k) described in previous [blog](/blog/2022/03/03/aggregating-search-data) [posts](/blog/2022/05/31/resoto-meets-jupyter-notebook).
 
 Here's an example of a heatmap that allows you to immediately see outliers (like when an account suddenly starts using a large number of expensive, high-core-count instances):
@@ -31,8 +33,6 @@ This allows you to [alert](https://prometheus.io/docs/alerting/latest/alertmanag
 Another use case is to quickly [identify anomalies](https://prometheus.io/docs/prometheus/latest/querying/functions/#aggregation_over_time) using [the 3σ rule](https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule). If cloud API credentials are leaked or an automated system goes haywire, you would immediately see the spike instead of receiving an unpleasant surprise on your next cloud bill. Best of all, it works across multiple clouds and accounts!
 
 Resoto comes with a handy metrics component, [Resoto Metrics](/docs/concepts/components/metrics), which takes aggregation results and exports them to [Prometheus](https://prometheus.io). This blog post describes how to [define your own metrics](#how-metrics-are-made), write some [PromQL queries](https://prometheus.io/docs/prometheus/latest/querying/basics/) and build a simple metrics dashboard using [Resoto Metrics](/docs/concepts/components/metrics), [Prometheus](https://prometheus.io), and [Grafana](https://grafana.com).
-
-<!--truncate-->
 
 ## Concepts and Terminology
 

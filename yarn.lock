@@ -7281,10 +7281,10 @@ merge@^2.1.1:
   resolved "https://registry.yarnpkg.com/merge/-/merge-2.1.1.tgz#59ef4bf7e0b3e879186436e8481c06a6c162ca98"
   integrity sha512-jz+Cfrg9GWOZbQAnDQ4hlVnQky+341Yk5ru8bZSe6sIDTCIg8n9i/u7hSQGSVOF3C7lH6mGtqjkiT9G4wFLL0w==
 
-mermaid@^9.1.4:
-  version "9.1.4"
-  resolved "https://registry.yarnpkg.com/mermaid/-/mermaid-9.1.4.tgz#05113b14dabe6b2ce5abd7452d10d4309cc0467f"
-  integrity sha512-QgQTpIIzJfV/Ob7FZTDzxmWjFzCciij4C8RbbQbamsadf2gHrNrfqAoWLF6ALfQlW5ZqOefvlogDdWcFZRnifg==
+mermaid@^9.1.5:
+  version "9.1.5"
+  resolved "https://registry.yarnpkg.com/mermaid/-/mermaid-9.1.5.tgz#9be3efb6b54942ab4f08bf3dd30a2ba77cfbdad7"
+  integrity sha512-XoikwsOTTwsf/bKrTKjE5vCWXuhrOocA+/v3ynmdb0PIO1UEdfRLUNb70Cssz4TxTADX6HzeWYsUBCATBi7F1w==
   dependencies:
     "@braintree/sanitize-url" "^6.0.0"
     d3 "^7.0.0"
@@ -7293,7 +7293,7 @@ mermaid@^9.1.4:
     dompurify "2.3.10"
     graphlib "^2.1.8"
     khroma "^2.0.0"
-    moment-mini "^2.24.0"
+    moment-mini "2.24.0"
     stylis "^4.0.10"
 
 methods@~1.1.2:
@@ -7435,10 +7435,10 @@ mobx@^6.5.0:
   resolved "https://registry.yarnpkg.com/mobx/-/mobx-6.6.1.tgz#70ee6aa82f25aeb7e7d522bd621207434e509318"
   integrity sha512-7su3UZv5JF+ohLr2opabjbUAERfXstMY+wiBtey8yNAPoB8H187RaQXuhFjNkH8aE4iHbDWnhDFZw0+5ic4nGQ==
 
-moment-mini@^2.24.0:
-  version "2.29.4"
-  resolved "https://registry.yarnpkg.com/moment-mini/-/moment-mini-2.29.4.tgz#cbbcdc58ce1b267506f28ea6668dbe060a32758f"
-  integrity sha512-uhXpYwHFeiTbY9KSgPPRoo1nt8OxNVdMVoTBYHfSEKeRkIkwGpO+gERmhuhBtzfaeOyTkykSrm2+noJBgqt3Hg==
+moment-mini@2.24.0:
+  version "2.24.0"
+  resolved "https://registry.yarnpkg.com/moment-mini/-/moment-mini-2.24.0.tgz#fa68d98f7fe93ae65bf1262f6abb5fb6983d8d18"
+  integrity sha512-9ARkWHBs+6YJIvrIp0Ik5tyTTtP9PoV0Ssu2Ocq5y9v8+NOOpWiRshAp8c4rZVWTOe+157on/5G+zj5pwIQFEQ==
 
 moment-timezone@^0.5.34:
   version "0.5.34"

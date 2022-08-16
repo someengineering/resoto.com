@@ -8,7 +8,6 @@ tags: [release notes]
 
 ### Features
 
-- [`8b6fb111`](https://github.com/someengineering/resoto/commit/8b6fb111) <span class="badge badge--secondary">resoto</span> [resoto] bump 2.4 release
 - [`5d4db2e6`](https://github.com/someengineering/resoto/commit/5d4db2e6) <span class="badge badge--secondary">resoto</span> Incompatible attribute type ([#1071](https://github.com/someengineering/resoto/pull/1071))
 - [`1beefaf4`](https://github.com/someengineering/resoto/commit/1beefaf4) <span class="badge badge--secondary">plugins/aws</span> Add redshift collection support ([#1067](https://github.com/someengineering/resoto/pull/1067))
 - [`8323da64`](https://github.com/someengineering/resoto/commit/8323da64) <span class="badge badge--secondary">plugins/aws</span> Add edge from Beanstalk resource to SQS Queue ([#1070](https://github.com/someengineering/resoto/pull/1070))
@@ -55,6 +54,7 @@ tags: [release notes]
 - [`892be14c`](https://github.com/someengineering/resoto/commit/892be14c) <span class="badge badge--secondary">aws</span> Integrate cloudwatch and use it for atime and mtime ([#1019](https://github.com/someengineering/resoto/pull/1019))
 - [`a7166dc0`](https://github.com/someengineering/resoto/commit/a7166dc0) <span class="badge badge--secondary">aws</span> Add Elb ([#1017](https://github.com/someengineering/resoto/pull/1017))
 - [`51ceeb4c`](https://github.com/someengineering/resoto/commit/51ceeb4c) <span class="badge badge--secondary">aws</span> Add quota limits ([#1015](https://github.com/someengineering/resoto/pull/1015))
+- [`41ecec4a`](https://github.com/someengineering/resoto/commit/41ecec4a) <span class="badge badge--secondary">aws</span> Add support for RDS ([#1012](https://github.com/someengineering/resoto/pull/1012))
 - [`1c8c96ba`](https://github.com/someengineering/resoto/commit/1c8c96ba) <span class="badge badge--secondary">plugins/aws</span> Add support for AWS profiles ([#990](https://github.com/someengineering/resoto/pull/990))
 - [`b35e6134`](https://github.com/someengineering/resoto/commit/b35e6134) <span class="badge badge--secondary">resoto</span> build arm64 docker images ([#1002](https://github.com/someengineering/resoto/pull/1002))
 - [`45894393`](https://github.com/someengineering/resoto/commit/45894393) <span class="badge badge--secondary">aws</span> Define remaining AWS EC2 resources ([#1007](https://github.com/someengineering/resoto/pull/1007))
@@ -62,10 +62,12 @@ tags: [release notes]
 - [`a8e3addf`](https://github.com/someengineering/resoto/commit/a8e3addf) <span class="badge badge--secondary">aws</span> Add cloud formation stack + stack set ([#999](https://github.com/someengineering/resoto/pull/999))
 - [`1c24bec9`](https://github.com/someengineering/resoto/commit/1c24bec9) <span class="badge badge--secondary">resoto</span> Allow plural for month in duration strings ([#1003](https://github.com/someengineering/resoto/pull/1003))
 - [`36a9a469`](https://github.com/someengineering/resoto/commit/36a9a469) <span class="badge badge--secondary">plugin/aws</span> Add support for CloudWatch alarms ([#1004](https://github.com/someengineering/resoto/pull/1004))
+- [`03ad8421`](https://github.com/someengineering/resoto/commit/03ad8421) <span class="badge badge--secondary">aws</span> Add S3 Service ([#998](https://github.com/someengineering/resoto/pull/998))
 - [`8c97c503`](https://github.com/someengineering/resoto/commit/8c97c503) <span class="badge badge--secondary">resoto</span> Pin latest cattrs ([#997](https://github.com/someengineering/resoto/pull/997))
 - [`2d0ca35e`](https://github.com/someengineering/resoto/commit/2d0ca35e) <span class="badge badge--secondary">aws</span> Add autoscaling AutoScalingGroup ([#996](https://github.com/someengineering/resoto/pull/996))
 - [`1ae165d0`](https://github.com/someengineering/resoto/commit/1ae165d0) <span class="badge badge--secondary">aws</span> Add elbv2 Alb + TargetGroup ([#993](https://github.com/someengineering/resoto/pull/993))
 - [`fccd3560`](https://github.com/someengineering/resoto/commit/fccd3560) <span class="badge badge--secondary">aws</span> IAM: use get-account-authorization-details API call ([#991](https://github.com/someengineering/resoto/pull/991))
+- [`3e6d41f8`](https://github.com/someengineering/resoto/commit/3e6d41f8) <span class="badge badge--secondary">aws</span> Add Route53 Service ([#984](https://github.com/someengineering/resoto/pull/984))
 - [`daa1ddf4`](https://github.com/someengineering/resoto/commit/daa1ddf4) <span class="badge badge--secondary">plugins/digitalocean</span> Collect droplet pricing information ([#985](https://github.com/someengineering/resoto/pull/985))
 - [`319d4e67`](https://github.com/someengineering/resoto/commit/319d4e67) <span class="badge badge--secondary">plugins/digitalocean</span> Collect volume pricing information ([#986](https://github.com/someengineering/resoto/pull/986))
 - [`549fd0c6`](https://github.com/someengineering/resoto/commit/549fd0c6) <span class="badge badge--secondary">resoto</span> Bump paramiko 2.11.0 ([#981](https://github.com/someengineering/resoto/pull/981))
@@ -103,6 +105,7 @@ tags: [release notes]
 - [`c59c6026`](https://github.com/someengineering/resoto/commit/c59c6026) <span class="badge badge--secondary">resotocore</span> Allow for empty Discord alert message & move to embed description ([#976](https://github.com/someengineering/resoto/pull/976))
 - [`df04f7f5`](https://github.com/someengineering/resoto/commit/df04f7f5) <span class="badge badge--secondary">resotolib</span> Process actions messages in threadpool ([#980](https://github.com/someengineering/resoto/pull/980))
 - [`64a1476d`](https://github.com/someengineering/resoto/commit/64a1476d) <span class="badge badge--secondary">resoto</span> Remove Optional from fields that are not optional ([#979](https://github.com/someengineering/resoto/pull/979))
+- [`a6f8f937`](https://github.com/someengineering/resoto/commit/a6f8f937) <span class="badge badge--secondary">resotolib</span> Fix enum model export ([#975](https://github.com/someengineering/resoto/pull/975))
 - [`cd1b630a`](https://github.com/someengineering/resoto/commit/cd1b630a) <span class="badge badge--secondary">resotolib</span> Use str as enum value ([#977](https://github.com/someengineering/resoto/pull/977))
 - [`408546c2`](https://github.com/someengineering/resoto/commit/408546c2) <span class="badge badge--secondary">k8s</span> Use proper enumeration type. ([#973](https://github.com/someengineering/resoto/pull/973))
 - [`4a870462`](https://github.com/someengineering/resoto/commit/4a870462) <span class="badge badge--secondary">resotocore</span> Fix typo ([#960](https://github.com/someengineering/resoto/pull/960))
@@ -110,12 +113,15 @@ tags: [release notes]
 - [`4fa57f09`](https://github.com/someengineering/resoto/commit/4fa57f09) <span class="badge badge--secondary">resotocore</span> Fix outer edge merge handler ([#956](https://github.com/someengineering/resoto/pull/956))
 - [`3d3e9936`](https://github.com/someengineering/resoto/commit/3d3e9936) <span class="badge badge--secondary">resoto</span> Fix the broken resotobundle job ([#954](https://github.com/someengineering/resoto/pull/954))
 - [`f6e913e8`](https://github.com/someengineering/resoto/commit/f6e913e8) <span class="badge badge--secondary">resotoworker</span> Add a timeout to post_collect collectors ([#951](https://github.com/someengineering/resoto/pull/951))
+- [`54019b1c`](https://github.com/someengineering/resoto/commit/54019b1c) <span class="badge badge--secondary">resotocore</span> use proper datetime ([#953](https://github.com/someengineering/resoto/pull/953))
+- [`1c61b997`](https://github.com/someengineering/resoto/commit/1c61b997) <span class="badge badge--secondary">resotocore</span> Redirect to UI ([#952](https://github.com/someengineering/resoto/pull/952))
 - [`9017ffc0`](https://github.com/someengineering/resoto/commit/9017ffc0) <span class="badge badge--secondary">resoto</span> Fix release notes generator ([#948](https://github.com/someengineering/resoto/pull/948))
 - [`fde2141f`](https://github.com/someengineering/resoto/commit/fde2141f) <span class="badge badge--secondary">docker</span> Only build amd images ([#947](https://github.com/someengineering/resoto/pull/947))
 - [`c8a176f6`](https://github.com/someengineering/resoto/commit/c8a176f6) <span class="badge badge--secondary">resotoworker</span> Improve type correctness in resotoworker ([#944](https://github.com/someengineering/resoto/pull/944))
 
 ### Chores
 
+- [`8b6fb111`](https://github.com/someengineering/resoto/commit/8b6fb111) <span class="badge badge--secondary">resoto</span> [resoto] bump 2.4 release
 - [`15e2ef11`](https://github.com/someengineering/resoto/commit/15e2ef11) <span class="badge badge--secondary">resotolib, resotoworker, plugins/digitalocean</span> Refactor tag operations ([#1016](https://github.com/someengineering/resoto/pull/1016))
 - [`a5d599d7`](https://github.com/someengineering/resoto/commit/a5d599d7) <span class="badge badge--secondary">resoto</span> make baseresource kwargs only ([#1008](https://github.com/someengineering/resoto/pull/1008))
 - [`da942de7`](https://github.com/someengineering/resoto/commit/da942de7) <span class="badge badge--secondary">resoto</span> Use attrs instead of dataclasses ([#972](https://github.com/someengineering/resoto/pull/972))
@@ -128,21 +134,6 @@ tags: [release notes]
 - [`2666acce`](https://github.com/someengineering/resoto/commit/2666acce) <span class="badge badge--secondary">ci</span> Create preleases for non-stable versions ([#955](https://github.com/someengineering/resoto/pull/955))
 - [`0f7dbe93`](https://github.com/someengineering/resoto/commit/0f7dbe93) <span class="badge badge--secondary">resoto</span> Move the plugin bundle into the main package bundle ([#949](https://github.com/someengineering/resoto/pull/949))
 - [`91f65458`](https://github.com/someengineering/resoto/commit/91f65458) <span class="badge badge--secondary">resoto</span> Bump next release version. ([#945](https://github.com/someengineering/resoto/pull/945))
-
-### aws
-
-- [`41ecec4a`](https://github.com/someengineering/resoto/commit/41ecec4a) <span class="badge badge--secondary">feat</span> Add support for RDS ([#1012](https://github.com/someengineering/resoto/pull/1012))
-- [`03ad8421`](https://github.com/someengineering/resoto/commit/03ad8421) <span class="badge badge--secondary">feat</span> Add S3 Service ([#998](https://github.com/someengineering/resoto/pull/998))
-- [`3e6d41f8`](https://github.com/someengineering/resoto/commit/3e6d41f8) <span class="badge badge--secondary">feat</span> Add Route53 Service ([#984](https://github.com/someengineering/resoto/pull/984))
-
-### resotolib
-
-- [`a6f8f937`](https://github.com/someengineering/resoto/commit/a6f8f937) <span class="badge badge--secondary">fix</span> Fix enum model export ([#975](https://github.com/someengineering/resoto/pull/975))
-
-### resotocore
-
-- [`54019b1c`](https://github.com/someengineering/resoto/commit/54019b1c) <span class="badge badge--secondary">fix</span> use proper datetime ([#953](https://github.com/someengineering/resoto/pull/953))
-- [`1c61b997`](https://github.com/someengineering/resoto/commit/1c61b997) <span class="badge badge--secondary">fix</span> Redirect to UI ([#952](https://github.com/someengineering/resoto/pull/952))
 
 <!--truncate-->
 

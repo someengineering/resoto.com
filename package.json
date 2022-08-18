@@ -33,7 +33,7 @@
     "clsx": "^1.2.1",
     "lottie-web": "^5.9.6",
     "mdx-mermaid": "^1.2.3",
-    "mermaid": "^9.1.5",
+    "mermaid": "^9.1.6",
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.34",
     "netlify-plugin-cache": "^1.0.3",

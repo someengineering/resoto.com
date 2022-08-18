@@ -1,9 +1,8 @@
 ---
-sidebar_position: 3
-sidebar_label: Cleanup Expired
+sidebar_label: cleanup_expired
 ---
 
-# Cleanup Expired
+# `cleanup_expired` Plugin
 
 This plugin looks for resources with the tags `expiration` or `resoto:expires` and flags them for cleanup if they are expired.
 

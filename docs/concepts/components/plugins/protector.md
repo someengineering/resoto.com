@@ -1,9 +1,8 @@
 ---
-sidebar_position: 1
-sidebar_label: Protector
+sidebar_label: protector
 ---
 
-Protector Plugin
+# `protector` Plugin
 
 This plugin protects important resources from deletion by Resoto.
 

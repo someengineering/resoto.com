@@ -6,8 +6,6 @@ sidebar_custom_props:
 
 # How to Find a Resource
 
-## Introduction
-
 Resoto builds a cloud asset inventory by collecting resource metadata and is equipped with a full-text search index that allows you to discover, monitor, and analyze resources.
 
 Resoto's search can find resources by name, tag, label, ID, or other metadata such as IP address or DNS name.
@@ -16,7 +14,7 @@ Resoto's search can find resources by name, tag, label, ID, or other metadata su
 
 This guide assumes that you have already [installed](../../getting-started/install-resoto/index.md) and configured Resoto to [collect your cloud resources](../../getting-started/configure-cloud-provider-access/index.md).
 
-## Finding Resources
+## Directions
 
 1. Execute the [`search` command](../../reference/cli/search.md) in [Resoto Shell](../../concepts/components/shell.md) with your search term in double quotes:
 
@@ -60,5 +58,5 @@ This guide assumes that you have already [installed](../../getting-started/insta
 ## Further Reading
 
 - [Search](../../concepts/search/index.md)
-- [Command-Line Interface](/docs/reference/cli)
-- [Resource Data Models](/docs/reference/data-models)
+- [Command-Line Interface](../../reference/cli/index.md)
+- [Resource Data Models](../../reference/data-models/index.md)

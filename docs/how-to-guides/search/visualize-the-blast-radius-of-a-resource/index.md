@@ -6,8 +6,6 @@ sidebar_custom_props:
 
 # How to Visualize the Blast Radius of a Resource
 
-## Introduction
-
 Resoto builds a cloud asset inventory by collecting resource metadata and relationships.
 
 Resoto uses resource relationship data to traverse not only the direct dependencies of a resource, but also transitive dependencies (the dependencies of dependent resources).
@@ -18,7 +16,7 @@ Transitive dependencies show the "blast radius" of a resource, giving an overvie
 
 This guide assumes that you have already [installed](../../../getting-started/install-resoto/index.md) and configured Resoto to [collect your cloud resources](../../../getting-started/configure-cloud-provider-access/index.md).
 
-## Visualizing Blast Radius
+## Directions
 
 1. Execute the [`search` command](../../../reference/cli/search.md) in [Resoto Shell](../../../concepts/components/shell.md) to get the resource for which we want to see the blast radius:
 
@@ -71,3 +69,8 @@ This guide assumes that you have already [installed](../../../getting-started/in
    The above outputs an image in SVG format:
 
    ![Diagram illustrating blast radius](./img/blast-radius.svg)
+
+## Further Reading
+
+- [Search](../../../concepts/search/index.md)
+- [Command-Line Interface](../../../reference/cli/index.md)

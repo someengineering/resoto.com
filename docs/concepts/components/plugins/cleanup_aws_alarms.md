@@ -1,9 +1,8 @@
 ---
-sidebar_position: 5
-sidebar_label: Cleanup AWS CloudWatch Alarms
+sidebar_label: cleanup_aws_alarms
 ---
 
-# Cleanup AWS CloudWatch Alarms
+# `cleanup_aws_alarms` Plugin
 
 This plugin marks all orphaned AWS CloudWatch instance alarms for cleanup. I.e. alarms associated with an EC2 instance that no longer exists.
 

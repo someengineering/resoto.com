@@ -6,8 +6,6 @@ sidebar_custom_props:
 
 # How to Send Discord Notifications
 
-## Introduction
-
 Resoto constantly monitors your infrastructure, and can alert you to any detected issues.
 
 One way to receive these notifications is via [Discord](https://discord.com). In this guide, we will configure Resoto to send alerts to a Discord text channel.
@@ -18,7 +16,7 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
 You will also need the **Manage Webhooks** permission for the target text channel in your Discord server.
 
-## Sending Alerts
+## Directions
 
 1. [Create a webhook](https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks) in your Discord server. Be sure to select the channel to which you want Resoto to send alerts.
 
@@ -55,3 +53,9 @@ You will also need the **Manage Webhooks** permission for the target text channe
 A default webhook URL can be specified in the `discord` custom command configuration, so that you can simply execute `discord title="..."`.
 
 :::
+
+## Further Reading
+
+- [Search](../../../concepts/search/index.md)
+- [Job](../../../concepts/automation/job.md)
+- [Command-Line Interface](../../../reference/cli/index.md)

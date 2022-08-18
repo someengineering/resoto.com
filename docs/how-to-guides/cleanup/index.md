@@ -1,8 +1,8 @@
 ---
-sidebar_label: Data export
+sidebar_label: Cleanup
 ---
 
-# Exporting data from Resoto
+# Cleanup How-To Guides
 
 ```mdx-code-block
 import { useCurrentSidebarCategory } from '@docusaurus/theme-common';

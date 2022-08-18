@@ -12,9 +12,9 @@ Cleanup can be performed manually in [Resoto Shell](../components/shell.md), aut
 
 :::
 
-The idea of cleanup is that Resoto is very good at helping you find problematic resources in your infrastructure. Sometimes you may only want to notify when such resources are found. But other times you may want to clean them up automatically.
+Resoto is very good at helping you find problematic resources in your infrastructure. Sometimes, you only want to notify when such resources are found; but other times, you may wish to clean them up.
 
-Say for instance you have a CI account where your CI system is allowed to automatically create worker compute instances. You might have a rule that says "CI worker compute instances in this account may not live longer than 24 hours". Usually your CI system will shut down instances by itself. But sometimes things go wrong, the cloud API might return an error when trying to shut down the instance, the IaC code that does the teardown could be intermittently broken, the API credentials might be expired or temporarily unavailable, etc. In these situations Resoto can act as a safety net.
+Let's say that you have a CI account where your CI system is allowed to automatically create worker compute instances. You might have a rule that says, "CI worker compute instances in this account may not live longer than 24 hours." Your CI system usually shuts down long-running instances, but sometimes things go wrong. The cloud API could return an error when trying to shut down the instance, the IaC tool could abort halfway through its run, the API credentials might be expired or unavailable, etc. In these situations, Resoto can serve as a safety net.
 
 The manual search and cleanup in this situation could look something like this:
 
@@ -32,6 +32,6 @@ The same search turned into an automated cleanup job:
 
 Additional search criteria like `and /ancestors.account.reported.id = "1234567"` to further restrict the search could be given.
 
-## When cleanup is performed
+## When Cleanup Is Performed
 
-When a resource is marked for cleanup it is not immediately deleted. Instead, it is flagged and will be deleted when the `collect_and_cleanup` [workflow](../automation/workflow.md) runs (by default every full hour). It can only be cleaned up if it is not [protected](./protection.md). Meaning the `/metadata.protected` field is not set to `true`.
+When a resource is marked for cleanup, it is not immediately deleted. Rather, it is flagged for deletion during the next `collect_and_cleanup` [workflow](../automation/workflow.md) runs (by default every full hour). Resources can only be cleaned up if they are not [protected](./protection.md).

@@ -156,7 +156,7 @@ const config = {
               },
               {
                 label: 'How-To Guides',
-                to: '/docs/how-to',
+                to: '/docs/how-to-guides',
               },
               {
                 label: 'Concepts',
@@ -207,7 +207,7 @@ const config = {
               },
               {
                 label: 'How-To Guides',
-                to: '/docs/how-to',
+                to: '/docs/how-to-guides',
               },
               {
                 label: 'Concepts',
@@ -294,7 +294,7 @@ const config = {
       prism: {
         theme: require('prism-react-renderer/themes/github'),
         darkTheme: require('./src/utils/prismDark.js'),
-        additionalLanguages: ['ini', 'powershell'],
+        additionalLanguages: ['csv', 'ini', 'powershell'],
       },
       magicComments: [
         {

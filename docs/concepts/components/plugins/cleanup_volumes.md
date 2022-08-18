@@ -1,9 +1,8 @@
 ---
-sidebar_position: 8
-sidebar_label: Cleanup Volumes
+sidebar_label: cleanup_volumes
 ---
 
-# Cleanup Volumes
+# `cleanup_volumes` Plugin
 
 This plugin cleans up unused storage volumes.
 

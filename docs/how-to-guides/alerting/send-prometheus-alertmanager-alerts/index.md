@@ -6,8 +6,6 @@ sidebar_custom_props:
 
 # How to Send Prometheus Alertmanager Alerts
 
-## Introduction
-
 Resoto constantly monitors your infrastructure, and can alert you to any detected issues. [Prometheus Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager) is a tool to manage and escalate alerts. In this guide, we will configure Resoto to send alerts to Alertmanager with a [custom command](../../../reference/cli/index.md).
 
 ## Prerequisites
@@ -16,7 +14,7 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
 You will also need a running installation of [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager).
 
-## Creating a Custom Command
+## Directions
 
 1. Open the `resoto.core.commands` configuration by executing the following command in [Resoto Shell](../../../concepts/components/shell.md):
 
@@ -51,24 +49,22 @@ You will also need a running installation of [Alertmanager](https://prometheus.i
 
 3. Save and quit the editing interface.
 
-We now have a custom command `alertmanager` with the following parameters:
+   We now have a custom command `alertmanager` with the following parameters:
 
-| Parameter          | Description                | Default Value           |
-| ------------------ | -------------------------- | ----------------------- |
-| `name`             | Globally unique alert name | `null`                  |
-| `description`      | Alert description          | `Resoto Alert`          |
-| `duration`         | Alert duration             | `3h`                    |
-| `alertmanager_url` | Alertmanager URL           | `http://localhost:9093` |
+   | Parameter          | Description                | Default Value           |
+   | ------------------ | -------------------------- | ----------------------- |
+   | `name`             | Globally unique alert name | `null`                  |
+   | `description`      | Alert description          | `Resoto Alert`          |
+   | `duration`         | Alert duration             | `3h`                    |
+   | `alertmanager_url` | Alertmanager URL           | `http://localhost:9093` |
 
-The [`help` command](../../../reference/cli/help.md) can also be used to access this information in the [command-line interface](../../../reference/cli/index.md):
+   The [`help` command](../../../reference/cli/help.md) can also be used to access this information in the [command-line interface](../../../reference/cli/index.md):
 
-```bash
-> help alertmanager
-```
+   ```bash
+   > help alertmanager
+   ```
 
-## Sending Alerts
-
-1. Define search criteria that will trigger an alert. For example, let's say we want to send alerts whenever we find a [Kubernetes Pod](https://kubernetes.io/docs/concepts/workloads/pods) updated in the last hour with a restart count greater than 20:
+4. Define search criteria that will trigger an alert. For example, let's say we want to send alerts whenever we find a [Kubernetes Pod](https://kubernetes.io/docs/concepts/workloads/pods) updated in the last hour with a restart count greater than 20:
 
    ```bash
    > search is(kubernetes_pod) and pod_status.container_statuses[*].restart_count > 20 and last_update<1h
@@ -76,7 +72,7 @@ The [`help` command](../../../reference/cli/help.md) can also be used to access 
    ​kind=kubernetes_pod, name=db-operator-mcd4g, restart_count=[42], age=2mo5d, last_update=23m, cloud=k8s, account=prod, region=kube-system
    ```
 
-2. Now that we've defined the alert trigger, we will simply pipe the result of the search query to the `alertmanager` command, replacing the `name` with your desired alert name:
+5. Now that we've defined the alert trigger, we will simply pipe the result of the search query to the `alertmanager` command, replacing the `name` with your desired alert name:
 
    ```bash
    > search is(kubernetes_pod) and pod_status.container_statuses[*].restart_count > 20 and last_update<1h | alertmanager name=pod-restart-alert
@@ -86,8 +82,14 @@ The [`help` command](../../../reference/cli/help.md) can also be used to access 
 
    ![Example Alertmanager alert](./img/example-alert.png)
 
-3. Finally, we want to automate checking of the defined alert trigger and send alerts to [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager) whenever the result is true. We can accomplish this by creating a [job](/docs/concepts/automation/job):
+6. Finally, we want to automate checking of the defined alert trigger and send alerts to [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager) whenever the result is true. We can accomplish this by creating a [job](/docs/concepts/automation/job):
 
    ```bash
    > jobs add --id alert_on_pod_failure--wait-for-event post_collect 'search is(kubernetes_pod) and pod_status.container_statuses[*].restart_count > 20 and last_update<1h | alertmanager name=pod-restart-alert'
    ```
+
+## Further Reading
+
+- [Search](../../../concepts/search/index.md)
+- [Job](../../../concepts/automation/job.md)
+- [Command-Line Interface](../../../reference/cli/index.md)

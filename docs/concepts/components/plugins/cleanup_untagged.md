@@ -1,9 +1,8 @@
 ---
-sidebar_position: 4
-sidebar_label: Cleanup Untagged
+sidebar_label: cleanup_untagged
 ---
 
-# Cleanup Untagged
+# `cleanup_untagged` Plugin
 
 This plugin deletes cloud resources that are missing mandatory tags after a certain amount of time has passed since their creation.
 

@@ -1,8 +1,8 @@
 ---
-sidebar_label: Security
+sidebar_label: Data Export
 ---
 
-# Security How-To Guides
+# Data Export How-To Guides
 
 ```mdx-code-block
 import { useCurrentSidebarCategory } from '@docusaurus/theme-common';

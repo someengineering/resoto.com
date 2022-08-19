@@ -22,14 +22,16 @@ import Tabs from '@theme/Tabs';
 
 ## Installing Resoto
 
-Resoto consists of multiple [components](../../concepts/components/index.md) that are published as individual Docker images :
+https://youtu.be/U5L4z71WI-w
 
-1. [📦](https://hub.docker.com/repository/docker/someengineering/resotocore) `somecr.io/someengineering/resotocore` maintains the infrastructure graph.
-2. [📦](https://hub.docker.com/repository/docker/someengineering/resotoworker) `somecr.io/someengineering/resotoworker` collects infrastructure data from the cloud provider APIs.
-3. [📦](https://hub.docker.com/repository/docker/someengineering/resotometrics) `somecr.io/someengineering/resotometrics` exports metrics in Prometheus format.
-4. [📦](https://hub.docker.com/repository/docker/someengineering/resotoshell) `somecr.io/someengineering/resotoshell` is the command-line interface (CLI) used to interact with Resoto.
+Resoto consists of multiple [components](../../concepts/components/index.md) published as individual Docker images:
 
-To install Resoto using [Docker Compose](https://docs.docker.com/compose/install/), checkout the required files (use the ⧉ button in the code block below for copy'paste ready text):
+1. [`somecr.io/someengineering/resotocore`](https://hub.docker.com/repository/docker/someengineering/resotocore) maintains the infrastructure graph.
+2. [`somecr.io/someengineering/resotoworker`](https://hub.docker.com/repository/docker/someengineering/resotoworker) collects infrastructure data from the cloud provider APIs.
+3. [`somecr.io/someengineering/resotometrics`](https://hub.docker.com/repository/docker/someengineering/resotometrics) exports metrics in Prometheus format.
+4. [`somecr.io/someengineering/resotoshell`](https://hub.docker.com/repository/docker/someengineering/resotoshell) provides the [command-line interface](../../reference/cli/index.md) used to interact with Resoto.
+
+To install Resoto using [Docker Compose](https://docs.docker.com/compose), first fetch the required files from the [`someengineering/resoto` GitHub repository](https://github.com/someengineering/resoto):
 
 <Tabs>
 <TabItem value="curl" label="Using curl">
@@ -55,17 +57,19 @@ $ docker compose up -d
 </TabItem>
 </Tabs>
 
+Upon execution of `docker compose up -d`, Docker Compose will start all components and set up the system. This process may take approximately 1-3 minutes, depending on your machine and internet connection.
+
 :::note
 
-When using old versions of Docker Compose the command is `docker-compose` instead of `docker compose`.
+In older versions of Docker Compose, the command is `docker-compose` instead of `docker compose`.
 
 :::
 
-Docker Compose will start all components and set up the system. This process should not take more than 1-3 minutes depending on your machine and internet connection.
+:::info
 
-:::note
+Resoto publishes packages for both x86 and ARM architectures for stable releases, but `edge` versions are only available for x86.
 
-Resoto publishes packages for x86 and ARM architectures for every proper release. Edge tagged versions (`edge`) are only available for x86. People that try out Resoto on Apple Silicon or other ARM based machines should use a proper release (e.g. <LatestRelease /> or `latest`).
+If you have an Apple Silicon or other ARM-based machine, please use the latest stable release (<LatestRelease /> or `latest`).
 
 :::
 

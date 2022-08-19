@@ -2,6 +2,8 @@
 // @ts-check
 
 const a11yEmoji = require('@fec/remark-a11y-emoji');
+const oembed = require('remark-plugin-oembed');
+const mdxMermaid = require('mdx-mermaid');
 
 const isProd =
   process.env.NODE_ENV !== 'development' &&
@@ -61,7 +63,7 @@ const config = {
           editUrl: 'https://github.com/someengineering/resoto.com/edit/main',
           showLastUpdateAuthor: false,
           showLastUpdateTime: true,
-          remarkPlugins: [a11yEmoji, require('mdx-mermaid')],
+          remarkPlugins: [a11yEmoji, oembed, mdxMermaid],
         },
         blog: {
           blogTitle: 'Blog',

@@ -4,6 +4,8 @@ sidebar_label: Amazon Web Services
 
 # Configure Amazon Web Services Access
 
+https://youtu.be/6_nxUM0iFx4
+
 The [Amazon Web Services (AWS)](../../reference/data-models/aws.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](/docs/reference/cli/configs) in [Resoto Shell](/docs/concepts/components/shell):
 
 ```bash

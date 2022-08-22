@@ -27,7 +27,7 @@ resotoworker:
 
 ## Authentication
 
-You can authenticate with [Amazon Web Services](../../reference/data-models/aws.md) via [environment](#environment), [instance profile](#instance-profile), [access key](#access-key) or [profiles](#profiles).
+You can authenticate with [Amazon Web Services](../../reference/data-models/aws.md) via [environment](#environment), [instance profile](#instance-profile), [access key](#access-key), or [profiles](#profiles).
 
 ### Environment
 
@@ -52,14 +52,14 @@ Next, modify the [Resoto Worker configuration](../../reference/configuration/ind
 resotoworker:
   ...
 ...
-# highlight-start
 aws:
+# highlight-start
   # AWS Access Key ID (null to load from env - recommended)
   access_key_id: null
   # AWS Secret Access Key (null to load from env - recommended)
   secret_access_key: null
-  ...
 # highlight-end
+  ...
 ```
 
 :::note
@@ -91,14 +91,14 @@ Next, modify the [Resoto Worker configuration](../../reference/configuration/ind
 resotoworker:
   ...
 ...
-# highlight-start
 aws:
+# highlight-start
   # AWS Access Key ID (null to load from env - recommended)
   access_key_id: null
   # AWS Secret Access Key (null to load from env - recommended)
   secret_access_key: null
-  ...
 # highlight-end
+  ...
 ```
 
 ### Access Key
@@ -115,37 +115,40 @@ Modify the [Resoto Worker configuration](../../reference/configuration/index.md)
 resotoworker:
   ...
 ...
-# highlight-start
 aws:
+# highlight-start
   # AWS Access Key ID (null to load from env - recommended)
   access_key_id: 'AKIAZGZKXXXXXXXXXXXX'
   # AWS Secret Access Key (null to load from env - recommended)
   secret_access_key: 'vO51EW/8ILMGrSBV/Ia9Fov6xZnKxxxxxxxxxxxx'
-  ...
 # highlight-end
+  ...
 ```
 
 ### Profiles
 
-Configure the [<abbr title="Amazon Web Services">AWS</abbr> Command-Line Interface](https://aws.amazon.com/cli) and volume mount e.g. `$HOME/.aws/` to `/home/resoto/.aws/` inside the `resotoworker` container.
+Configure the [<abbr title="Amazon Web Services">AWS</abbr> Command-Line Interface](https://aws.amazon.com/cli) and volume mount your `.aws` directory to `/home/resoto/.aws/` inside the `resotoworker` container.
 
-Modify the [Resoto Worker configuration](../../reference/configuration/index.md) and add one or more profile names:
+Then, modify the [Resoto Worker configuration](../../reference/configuration/index.md) as follows, adding one or more profile names from your `~/.aws/credentials` file:
 
 ```yaml title="Resoto Worker configuration"
 resotoworker:
   ...
 ...
-# highlight-start
 aws:
+# highlight-start
   profiles:
     - production
     - test
     - dev
-  # List of AWS Account ID(s) to collect (null for all if scrape_org is true)
-  ...
 # highlight-end
+  ...
 ```
 
-Replacing strings `production`, `test` and `dev` with the profile names from your `~/.aws/credentials` file. Profiles can be combined with other AWS options like `aws.role` and `aws.scrape_org`.
+Profiles can be combined with other <abbr title="Amazon Web Services">AWS</abbr> options, such as `aws.role` and `aws.scrape_org`.
 
-When switching from profiles back to one of the other authentication options, make sure to set the value of `aws.profiles` back to `null`.
+:::note
+
+When switching from profiles to another authentication option, be sure to set the value of `aws.profiles` as `null`.
+
+:::

@@ -129,7 +129,7 @@ aws:
 
 Configure the [<abbr title="Amazon Web Services">AWS</abbr> Command-Line Interface](https://aws.amazon.com/cli) and volume mount e.g. `$HOME/.aws/` to `/home/resoto/.aws/` inside the `resotoworker` container.
 
-Modify the [Resoto Worker configuration](../../reference/configuration/index.md) as follows:
+Modify the [Resoto Worker configuration](../../reference/configuration/index.md) and add one or more profile names:
 
 ```yaml title="Resoto Worker configuration"
 resotoworker:
@@ -146,4 +146,6 @@ aws:
 # highlight-end
 ```
 
-Replacing with strings `production`, `test` and `dev` with the profile names from you `~/.aws/credentials` file. Profiles can be combined with other AWS options like `aws.role` and `aws.scrape_org`.
+Replacing strings `production`, `test` and `dev` with the profile names from your `~/.aws/credentials` file. Profiles can be combined with other AWS options like `aws.role` and `aws.scrape_org`.
+
+When switching from profiles back to one of the other authentication options, make sure to set the value of `aws.profiles` back to `null`.

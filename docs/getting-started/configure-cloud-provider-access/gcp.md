@@ -29,7 +29,15 @@ You can authenticate with [Google Cloud Platform](../../reference/data-models/gc
 
 ### Service Account JSON Files
 
-Volume mount the service account JSON file to a path inside the `resotoworker` container (e.g., `/gcp`) and modify the [Resoto Worker configuration](../../reference/configuration/index.md) as follows:
+First, volume mount the service account JSON file to a path inside the `resotoworker` container (e.g., `/gcp`).
+
+Next, open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/configs) in [Resoto Shell](../../concepts/components/shell):
+
+```bash
+> config edit resoto.worker
+```
+
+Finally, modify the `gcp` section of the configuration as follows, adding the paths to your service account JSON files:
 
 ```yaml title="Resoto Worker configuration"
 resotoworker:
@@ -47,9 +55,15 @@ gcp:
 
 ### Automatic Discovery
 
-Specify an empty string for the service account file, and Resoto will automatically discover the service account and all the projects it has access to.
+You can specify an empty string for the service account file, and Resoto will automatically discover the service account and all the projects it has access to.
 
-Modify the [Resoto Worker configuration](../../reference/configuration/index.md) as follows:
+Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/configs) in [Resoto Shell](../../concepts/components/shell):
+
+```bash
+> config edit resoto.worker
+```
+
+Then, modify the `gcp` section of the configuration as follows:
 
 ```yaml title="Resoto Worker configuration"
 resotoworker:

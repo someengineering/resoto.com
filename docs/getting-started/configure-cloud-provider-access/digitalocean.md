@@ -25,7 +25,13 @@ resotoworker:
 
 ## Authentication
 
-To authenticate with DigitalOcean, simply add API tokens and/or access keys to the `digitalocean` section of the [Resoto Worker configuration](../../reference/configuration/index.md):
+Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/configs) in [Resoto Shell](../../concepts/components/shell):
+
+```bash
+> config edit resoto.worker
+```
+
+Modify the `digitalocean` section of the configuration as follows, adding your API tokens and/or access keys:
 
 ```yaml
 digitalocean:

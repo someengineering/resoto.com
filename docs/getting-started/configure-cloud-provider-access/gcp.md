@@ -64,3 +64,17 @@ gcp:
   ...
 # highlight-end
 ```
+
+## Resource Collection
+
+By default, Resoto performs resource collection each hour. To immediately trigger a collect run, use the [`workflow run` command](../../reference/cli/workflows/run.md) in [Resoto Shell](../../concepts/components/shell):
+
+```bash
+> workflow run collect
+```
+
+Once the collect run completes, you can view a summary of collected <abbr title="Google Cloud Platform">GCP</abbr> resources using the following search:
+
+```bash
+> search is(gcp_resource) | count kind
+```

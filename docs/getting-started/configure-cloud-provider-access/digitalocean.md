@@ -10,7 +10,7 @@ The [DigitalOcean](../../reference/data-models/digitalocean.md) collector is con
 > config edit resoto.worker
 ```
 
-Add `digitalocean` to the list of collectors and define API tokens and/or access keys by modifying the configuration as follows:
+Add `digitalocean` to the list of collectors by modifying the configuration as follows:
 
 ```yaml
 resotoworker:
@@ -21,8 +21,15 @@ resotoworker:
     - 'digitalocean'
     ...
 ...
-# highlight-start
+```
+
+## Authentication
+
+To authenticate with DigitalOcean, simply add API tokens and/or access keys to the `digitalocean` section of the [Resoto Worker configuration](../../reference/configuration/index.md):
+
+```yaml
 digitalocean:
+# highlight-start
   # DigitalOcean API tokens for the teams to be collected
   api_tokens:
     - 'dop_v1_e5c759260e6a43f003f3b53e2cfec79cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
@@ -44,8 +51,16 @@ This is especially useful in cases where tokens are stored as secrets in a syste
 
 :::
 
-Once one or more cloud providers have been configured the `collect_and_cleanup` [workflow](../../concepts/automation/workflow.md) can be run by executing:
+## Resource Collection
+
+By default, Resoto performs resource collection each hour. To immediately trigger a collect run, use the [`workflow run` command](../../reference/cli/workflows/run.md) in [Resoto Shell](../../concepts/components/shell):
 
 ```bash
-> workflow run collect_and_cleanup
+> workflow run collect
+```
+
+Once the collect run completes, you can view a summary of collected DigitalOcean resources using the following search:
+
+```bash
+> search is(digitalocean_resource) | count kind
 ```

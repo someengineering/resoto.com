@@ -80,7 +80,7 @@ k8s:
 
 Multiple k8s clusters can be defined by adding multiple sets of values.
 
-## Options
+## Configuration
 
 The Kubernetes collector has additional options that allow for fine-tuning of the collector's behavior:
 
@@ -129,3 +129,17 @@ k8s:
 ```
 
 :::
+
+## Resource Collection
+
+By default, Resoto performs resource collection each hour. To immediately trigger a collect run, use the [`workflow run` command](../../reference/cli/workflows/run.md) in [Resoto Shell](../../concepts/components/shell):
+
+```bash
+> workflow run collect
+```
+
+Once the collect run completes, you can view a summary of collected Kubernetes resources using the following search:
+
+```bash
+> search is(kubernetes_resource) | count kind
+```

@@ -6,7 +6,7 @@ sidebar_label: Amazon Web Services
 
 https://youtu.be/6_nxUM0iFx4
 
-The [Amazon Web Services (AWS)](../../reference/data-models/aws.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](/docs/reference/cli/configs) in [Resoto Shell](/docs/concepts/components/shell):
+The [Amazon Web Services (AWS)](../../reference/data-models/aws.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/configs) in [Resoto Shell](../../concepts/components/shell):
 
 ```bash
 > config edit resoto.worker
@@ -27,7 +27,7 @@ resotoworker:
 
 ## Authentication
 
-You can authenticate with [Amazon Web Services](../../reference/data-models/aws.md) via [environment](#environment), [instance profile](#instance-profile), [access key](#access-key), or [profiles](#profiles).
+You can authenticate with [<abbr title="Amazon Web Services">AWS</abbr>](../../reference/data-models/aws.md) via [environment](#environment), [instance profile](#instance-profile), [access key](#access-key), or [profiles](#profiles).
 
 ### Environment
 
@@ -152,3 +152,17 @@ Profiles can be combined with other <abbr title="Amazon Web Services">AWS</abbr>
 When switching from profiles to another authentication option, be sure to set the value of `aws.profiles` as `null`.
 
 :::
+
+## Resource Collection
+
+By default, Resoto performs resource collection each hour. To immediately trigger a collect run, use the [`workflow run` command](../../reference/cli/workflows/run.md) in [Resoto Shell](../../concepts/components/shell):
+
+```bash
+> workflow run collect
+```
+
+Once the collect run completes, you can view a summary of collected <abbr title="Amazon Web Services">AWS</abbr> resources using the following search:
+
+```bash
+> search is(aws_resource) | count kind
+```

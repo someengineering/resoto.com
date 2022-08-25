@@ -6,7 +6,7 @@ sidebar_label: Amazon Web Services
 
 https://youtu.be/6_nxUM0iFx4
 
-The [Amazon Web Services (AWS)](../../reference/data-models/aws.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](/docs/reference/cli/configs) in [Resoto Shell](/docs/concepts/components/shell):
+The [Amazon Web Services (AWS)](../../reference/data-models/aws.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/configs) in [Resoto Shell](../../concepts/components/shell):
 
 ```bash
 > config edit resoto.worker
@@ -27,15 +27,21 @@ resotoworker:
 
 ## Authentication
 
-You can authenticate with [Amazon Web Services](../../reference/data-models/aws.md) via [environment](#environment), [instance profile](#instance-profile), [access key](#access-key), or [profiles](#profiles).
+You can authenticate with [<abbr title="Amazon Web Services">AWS</abbr>](../../reference/data-models/aws.md) via [environment](#environment), [instance profile](#instance-profile), [access key](#access-key), or [profiles](#profiles).
 
 ### Environment
 
 Resoto supports all the authentication mechanisms described in the [boto3 SDK documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html).
 
-Configure the [<abbr title="Amazon Web Services">AWS</abbr> Command-Line Interface](https://aws.amazon.com/cli) and volume mount e.g. `$HOME/.aws/` to `/home/resoto/.aws/` inside the `resotoworker` container. If your configuration contains multiple profiles, make sure to set `AWS_PROFILE` for the `resotoworker` container.
+[Configure the <abbr title="Amazon Web Services">AWS</abbr> Command-Line Interface](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html). The <abbr title="Amazon Web Services">AWS</abbr> <abbr title="Command-Line Interface">CLI</abbr> will store your credentials in a folder named `.aws` in your home directory.
 
-[The shared credentials file](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html#shared-credentials-file) has a default location of `/home/resoto/.aws/credentials`. You can change the location of the shared credentials file by setting the `AWS_SHARED_CREDENTIALS_FILE` environment variable.
+:::note
+
+If you installed Resoto using [Docker](../install-resoto/docker.md) or [Kubernetes](../configure-cloud-provider-access/kubernetes.md), you will need to volume mount `$HOME/.aws` to `/home/resoto/.aws` inside the `resotoworker` container. If your configuration contains multiple profiles, be sure to also set `AWS_PROFILE` for the `resotoworker` container.
+
+:::
+
+Resoto expects to find the [shared credentials file](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html#shared-credentials-file) at `/home/resoto/.aws/credentials`, but you can change this location using the `AWS_SHARED_CREDENTIALS_FILE` environment variable.
 
 ```ini title="Minimal example of the shared credentials file."
 [default]
@@ -44,9 +50,15 @@ aws_secret_access_key=bar
 aws_session_token=baz
 ```
 
-Boto3 can also [load credentials from `/home/resoto/.aws/config`](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html#aws-config-file). You can change this default location by setting the `AWS_CONFIG_FILE` environment variable.
+Boto3 can also [load credentials from `/home/resoto/.aws/config`](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html#aws-config-file). You can also change this default location with the `AWS_CONFIG_FILE` environment variable.
 
-Next, modify the [Resoto Worker configuration](../../reference/configuration/index.md) as follows, making sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null` (Resoto will fall back to loading credentials from the environment/home directory):
+Next, open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/configs) in [Resoto Shell](../../concepts/components/shell):
+
+```bash
+> config edit resoto.worker
+```
+
+Modify the `aws` section of the configuration as follows, making sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null` (Resoto will fall back to loading credentials from the environment/home directory):
 
 ```yaml title="Resoto Worker configuration"
 resotoworker:
@@ -85,7 +97,13 @@ external_id = a5eMybsyGIowimdZqpZWxxxxxxxxxxxx
 credential_source = Ec2InstanceMetadata
 ```
 
-Next, modify the [Resoto Worker configuration](../../reference/configuration/index.md) as follows, making sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null`:
+Next, open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/configs) in [Resoto Shell](../../concepts/components/shell):
+
+```bash
+> config edit resoto.worker
+```
+
+Modify the `aws` section of the configuration as follows, making sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null`:
 
 ```yaml title="Resoto Worker configuration"
 resotoworker:
@@ -109,7 +127,13 @@ Using a static access key is only recommended for testing.
 
 :::
 
-Modify the [Resoto Worker configuration](../../reference/configuration/index.md) as follows:
+Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/configs) in [Resoto Shell](../../concepts/components/shell):
+
+```bash
+> config edit resoto.worker
+```
+
+Modify the `aws` section of the configuration as follows:
 
 ```yaml title="Resoto Worker configuration"
 resotoworker:
@@ -127,9 +151,21 @@ aws:
 
 ### Profiles
 
-Configure the [<abbr title="Amazon Web Services">AWS</abbr> Command-Line Interface](https://aws.amazon.com/cli) and volume mount your `.aws` directory to `/home/resoto/.aws/` inside the `resotoworker` container.
+[Configure the <abbr title="Amazon Web Services">AWS</abbr> Command-Line Interface](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html). The <abbr title="Amazon Web Services">AWS</abbr> <abbr title="Command-Line Interface">CLI</abbr> will store your credentials in a folder named `.aws` in your home directory.
 
-Then, modify the [Resoto Worker configuration](../../reference/configuration/index.md) as follows, adding one or more profile names from your `~/.aws/credentials` file:
+:::note
+
+If you installed Resoto using [Docker](../install-resoto/docker.md) or [Kubernetes](../configure-cloud-provider-access/kubernetes.md), you will need to volume mount `$HOME/.aws` to `/home/resoto/.aws` inside the `resotoworker` container.
+
+:::
+
+Next, open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/configs) in [Resoto Shell](../../concepts/components/shell):
+
+```bash
+> config edit resoto.worker
+```
+
+Modify the `aws` section of the configuration as follows, adding one or more profile names from your `~/.aws/credentials` file:
 
 ```yaml title="Resoto Worker configuration"
 resotoworker:
@@ -152,3 +188,17 @@ Profiles can be combined with other <abbr title="Amazon Web Services">AWS</abbr>
 When switching from profiles to another authentication option, be sure to set the value of `aws.profiles` as `null`.
 
 :::
+
+## Resource Collection
+
+By default, Resoto performs resource collection each hour. To immediately trigger a collect run, use the [`workflow run` command](../../reference/cli/workflows/run.md) in [Resoto Shell](../../concepts/components/shell):
+
+```bash
+> workflow run collect
+```
+
+Once the collect run completes, you can view a summary of collected <abbr title="Amazon Web Services">AWS</abbr> resources using the following search:
+
+```bash
+> search is(aws_resource) | count kind
+```

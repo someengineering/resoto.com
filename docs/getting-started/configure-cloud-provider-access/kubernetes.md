@@ -31,7 +31,15 @@ You can authenticate with Kubernetes via [kubeconfig files](https://kubernetes.i
 
 The easiest way to configure access to Kubernetes is to give Resoto Worker access to [kubeconfig files](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig).
 
-Modify the [Resoto Worker configuration](../../reference/configuration/index.md) as follows:
+Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/configs) in [Resoto Shell](../../concepts/components/shell):
+
+```bash
+> config edit resoto.worker
+```
+
+Modify the `k8s` section of the configuration as follows, defining the path and contexts of each of your kubeconfig files:
+
+````yaml title="Resoto Worker configuration"
 
 ```yaml title="Resoto Worker configuration"
 resotoworker:
@@ -46,7 +54,7 @@ k8s:
     - path: "/path/to/kubeconfig2"
       all_contexts: true
 # highlight-end
-```
+````
 
 Multiple [kubeconfig files](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig) can be specified. If a single [kubeconfig file](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig) holds multiple contexts, it is possible to restrict the contexts to be used by defining them explicitly. Setting `all_contexts` to `true` will not filter, resulting in taking all found contexts.
 
@@ -62,7 +70,13 @@ The required values can be found in the [kubeconfig file](https://kubernetes.io/
 | `token`                      | `users.user.token`                                                                                                               |
 | `certificate_authority_data` | `clusters.cluster.certificate-authority-data` (This property is only required if the server is using a self-signed certificate.) |
 
-Modify the [Resoto Worker configuration](../../reference/configuration/index.md) as follows:
+Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/configs) in [Resoto Shell](../../concepts/components/shell):
+
+```bash
+> config edit resoto.worker
+```
+
+Modify the `k8s` section of the configuration as follows:
 
 ```yaml title="Resoto Worker configuration"
 resotoworker:
@@ -80,7 +94,7 @@ k8s:
 
 Multiple k8s clusters can be defined by adding multiple sets of values.
 
-## Options
+## Configuration
 
 The Kubernetes collector has additional options that allow for fine-tuning of the collector's behavior:
 
@@ -129,3 +143,17 @@ k8s:
 ```
 
 :::
+
+## Resource Collection
+
+By default, Resoto performs resource collection each hour. To immediately trigger a collect run, use the [`workflow run` command](../../reference/cli/workflows/run.md) in [Resoto Shell](../../concepts/components/shell):
+
+```bash
+> workflow run collect
+```
+
+Once the collect run completes, you can view a summary of collected Kubernetes resources using the following search:
+
+```bash
+> search is(kubernetes_resource) | count kind
+```

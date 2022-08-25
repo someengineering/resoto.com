@@ -62,18 +62,18 @@ https://news.resoto.com/*                                         https://resoto
 /docs/getting-started/configuration/cloud-providers/*             /docs/getting-started/configure-cloud-provider-access/:splat
 /docs/getting-started/configuration/worker/cloud-providers/*      /docs/getting-started/configure-cloud-provider-access/:splat
 
-/docs/getting-started/queries                                     /docs/getting-started/perform-a-search
-/docs/getting-started/query                                       /docs/getting-started/perform-a-search
-/docs/getting-started/performing-queries                          /docs/getting-started/perform-a-search
-/docs/getting-started/performing-searches                         /docs/getting-started/perform-a-search
-/docs/getting-started/search                                      /docs/getting-started/perform-a-search
-/docs/getting-started/searches                                    /docs/getting-started/perform-a-search
-/docs/getting-started/usage/search                                /docs/getting-started/perform-a-search
+/docs/getting-started/queries                                     /docs/how-to-guides/search
+/docs/getting-started/query                                       /docs/how-to-guides/search
+/docs/getting-started/performing-queries                          /docs/how-to-guides/search
+/docs/getting-started/performing-searches                         /docs/how-to-guides/search
+/docs/getting-started/search                                      /docs/how-to-guides/search
+/docs/getting-started/searches                                    /docs/how-to-guides/search
+/docs/getting-started/usage/search                                /docs/how-to-guides/search
 
-/docs/getting-started/cleanup                                     /docs/getting-started/clean-resources
-/docs/getting-started/cleaning-resources                          /docs/getting-started/clean-resources
-/docs/getting-started/pruning-resources                           /docs/getting-started/clean-resources
-/docs/getting-started/usage/cleanup                               /docs/getting-started/clean-resources
+/docs/getting-started/cleanup                                     /docs/how-to-guides/cleanup
+/docs/getting-started/cleaning-resources                          /docs/how-to-guides/cleanup
+/docs/getting-started/pruning-resources                           /docs/how-to-guides/cleanup
+/docs/getting-started/usage/cleanup                               /docs/how-to-guides/cleanup
 
 /docs/getting-started/resotonotebook                              /docs/reference/notebook
 /docs/getting-started/resoto-notebook                             /docs/reference/notebook

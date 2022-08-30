@@ -4,7 +4,7 @@ pagination_prev: getting-started/index
 pagination_next: getting-started/configure-cloud-provider-access/index
 ---
 
-# Install Resoto with Kubernetes
+# Install Resoto with Kubernetes(Helm Chart)
 
 [Kubernetes](https://kubernetes.io) is an open-source system for automating deployment, scaling, and management of containerized applications.
 
@@ -51,7 +51,7 @@ Wait until the ArangoDB deployment is ready. You can check the conditions in the
 $ kubectl wait --for=condition=ready arangodeployment/single-server
 ```
 
-### Create Helm Values File
+### Configure Helm Values File
 
 ```yaml title="resoto-values.yaml"
 resotocore:
@@ -59,11 +59,11 @@ resotocore:
     server: http://single-server:8529
 ```
 
-This is the minimum configuration, which points to an empty ArangoDB database with default username and password.
+By default in the values.yaml file, this is the minimum configuration, which points to an empty ArangoDB database with default username and password.
 
 The installation will create a separate database and password and secure the database installation with a generated password. You can find the generated database password in the secret `arango-user`.
 
-See [`values.yaml`](https://github.com/someengineering/resoto/blob/main/kubernetes/chart/values.yaml) for a list of configurable values.
+See [`helm-chart`](https://github.com/someengineering/helm-charts/tree/main/charts/resoto) for a list of configurable values.
 
 :::note
 
@@ -123,19 +123,19 @@ resotoworker:
 
 ### Install Helm Chart
 
-Clone the [`someengineering/resoto`](https://github.com/someengineering/resoto) repository:
+Add the resoto helm repository:
 
 ```bash
-$ git clone https://github.com/someengineering/resoto
+$ helm repo add resoto https://helm.resoto.com
 ```
 
 Next, install Resoto using Helm:
 
 ```bash
-$ helm install resoto ./resoto/kubernetes/chart --set image.tag={{latestRelease}} -f resoto-values.yaml
+$ helm install resoto resoto/resoto -f <values.yaml>
 ```
 
-And just like that, you have Resoto running in Kubernetes! A collect run will begin automatically. This first collect usually takes less than 3 minutes.
+And just like that, you have Resoto running in your Kubernetes cluster! A collect run will begin automatically. This first collect usually takes less than 3 minutes.
 
 ## Launching the Resoto Command-Line Interface
 

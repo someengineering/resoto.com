@@ -63,7 +63,7 @@ This is the minimum configuration, which points to an empty ArangoDB database wi
 
 The installation will create a separate database and password and secure the database installation with a generated password. You can find the generated database password in the secret `arango-user`.
 
-See [`values.yaml`](https://github.com/someengineering/resoto/blob/main/kubernetes/chart/values.yaml) for a list of configurable values.
+See the [`someengineering/helm-chart` GitHub repository](https://github.com/someengineering/helm-charts/tree/main/charts/resoto) for a list of configurable values.
 
 :::note
 
@@ -123,19 +123,19 @@ resotoworker:
 
 ### Install Helm Chart
 
-Clone the [`someengineering/resoto`](https://github.com/someengineering/resoto) repository:
+Add the Resoto Helm chart repository:
 
 ```bash
-$ git clone https://github.com/someengineering/resoto
+$ helm repo add resoto https://helm.resoto.com
 ```
 
 Next, install Resoto using Helm:
 
 ```bash
-$ helm install resoto ./resoto/kubernetes/chart --set image.tag={{latestRelease}} -f resoto-values.yaml
+$ helm install resoto resoto/resoto --set image.tag={{latestRelease}} -f resoto-values.yaml
 ```
 
-And just like that, you have Resoto running in Kubernetes! A collect run will begin automatically. This first collect usually takes less than 3 minutes.
+And just like that, you have Resoto running in a Kubernetes cluster! A collect run will begin automatically. This first collect usually takes less than 3 minutes.
 
 ## Launching the Resoto Command-Line Interface
 

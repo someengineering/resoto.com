@@ -123,7 +123,7 @@ resotoworker:
 
 ### Install Helm Chart
 
-Add the resoto helm repository:
+Add the Resoto Helm chart repository:
 
 ```bash
 $ helm repo add resoto https://helm.resoto.com

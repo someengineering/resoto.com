@@ -59,7 +59,7 @@ resotocore:
     server: http://single-server:8529
 ```
 
-By default in the values.yaml file, this is the minimum configuration, which points to an empty ArangoDB database with default username and password.
+This is the minimum configuration, which points to an empty ArangoDB database with default username and password.
 
 The installation will create a separate database and password and secure the database installation with a generated password. You can find the generated database password in the secret `arango-user`.
 

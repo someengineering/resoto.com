@@ -63,7 +63,7 @@ By default in the values.yaml file, this is the minimum configuration, which poi
 
 The installation will create a separate database and password and secure the database installation with a generated password. You can find the generated database password in the secret `arango-user`.
 
-See [`helm-chart`](https://github.com/someengineering/helm-charts/tree/main/charts/resoto) for a list of configurable values.
+See the [`someengineering/helm-chart` GitHub repository](https://github.com/someengineering/helm-charts/tree/main/charts/resoto) for a list of configurable values.
 
 :::note
 

@@ -6,11 +6,11 @@ image: ./img/banner-social.png
 
 # Discover Kubernetes Resources
 
-Kubernetes has dramatically improved the way we manage our workloads. It has become the de facto standard for deploying and managing containers.
+Kubernetes has dramatically improved the way we manage our workloads. It has become the de facto standard for deploying and managing containers, which is available in all major cloud providers.
 
 A typical setup uses different Kubernetes clusters for different application stages (dev, test, prod) or one cluster per tenant. A Kubernetes cluster shared between different users and teams usually uses namespaces and roles to control access. Deploying a single application to a Kubernetes cluster usually consists of 10s to 100s of resources to deploy (deployments, services, configmaps, secrets, ingresses, etc.).
 
-What starts simple in the beginning becomes tedious quite fast since the number of resources is vast and the view of a single user is limited.
+What starts simple in the beginning becomes tedious quite fast since the number of resources is vast and the view of a single user is limited to certain clusters in certain namespaces. A human can lose track easily in such a setup.  
 
 ![Kubernetes](./img/banner.png)
 
@@ -18,11 +18,18 @@ What starts simple in the beginning becomes tedious quite fast since the number 
 
 ## Resoto Overview
 
-Resoto can provide a consistent view of all resources in all Kubernetes clusters in all namespaces by continuously scraping the Kubernetes API of all configured clusters. The collected information can be accessed using [ResotoShell](/docs/concepts/components/shell), [ResotoNotebook](https://resoto.com/docs/reference/notebook) or ResotoUI.
+Kubernetes provides an API to gather information about resources deployed in the cluster.
+Resoto can provide a consistent view of all resources in all Kubernetes clusters in all namespaces of all configured clusters.
+It is doing this continuously on a configurable interval which is set to one hour by default.
+The collected information can be accessed using [ResotoShell](/docs/concepts/components/shell), [ResotoNotebook](https://resoto.com/docs/reference/notebook) or ResotoUI.
 
 ![Resoto Overview](img/resoto_overview.png)
 
-:::note The examples that I will present in this blog post are also available as a separate notebook [here](https://github.com/someengineering/resotonotebook/blob/main/examples/resoto_kubernetes.ipynb), so you can play with your Kubernetes cluster once you have installed Resoto. :::
+:::note 
+
+The examples that I will present in this blog post are also available as a separate notebook [here](https://github.com/someengineering/resotonotebook/blob/main/examples/resoto_kubernetes.ipynb), so you can play with your Kubernetes cluster once you have installed Resoto. 
+
+:::
 
 ## Full-text search
 
@@ -33,7 +40,7 @@ A simple and powerful way of finding resources in your cluster is by using the f
 kind=kubernetes_service, id=377f0, name=test-service, age=6d23h, cloud=k8s, account=dev, region=test
 ```
 
-This search for an IPv4 address returned one resource of kind `kubernetes_service`. To see all properties of this service, we need to pipe the search into the `dump` command. Here we can see the IPv4 address as the cluster IP we searched.
+This search for an IPv4 address returned one resource of kind `kubernetes_service`. To see all properties of this service, we need to pipe the search into the [`dump`](/docs/reference/cli/dump) command. Here we can see the IPv4 address as the cluster IP we searched.
 
 ```shell
 > search "10.245.11.204" | dump
@@ -138,7 +145,7 @@ The result of this search is the same as the previous one since we were starting
 
 ## Use the ~~Force~~ Graph, Luke!
 
-The ability to walk the relationships of a resource graph is a powerful feature and can reveal a lot of exciting information. Let me show you a couple of more examples.
+The ability to walk the relationships of a resource graph is a powerful feature and can reveal a lot of exciting information. I have written a separate blog post about this topic [A walk in the graph](/blog/2022/05/17/a-walk-in-the-graph), which I recommend to read. Let me show you a couple of more examples.
 
 We have a specific pod and want to know the memory and CPU cores that are available on the node running this pod:
 

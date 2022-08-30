@@ -4,7 +4,7 @@ pagination_prev: getting-started/index
 pagination_next: getting-started/configure-cloud-provider-access/index
 ---
 
-# Install Resoto with Kubernetes(Helm Chart)
+# Install Resoto with Kubernetes
 
 [Kubernetes](https://kubernetes.io) is an open-source system for automating deployment, scaling, and management of containerized applications.
 

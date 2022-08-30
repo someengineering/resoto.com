@@ -132,7 +132,7 @@ $ helm repo add resoto https://helm.resoto.com
 Next, install Resoto using Helm:
 
 ```bash
-$ helm install resoto resoto/resoto -f <values.yaml>
+$ helm install resoto resoto/resoto --set image.tag={{latestRelease}} -f resoto-values.yaml
 ```
 
 And just like that, you have Resoto running in a Kubernetes cluster! A collect run will begin automatically. This first collect usually takes less than 3 minutes.

@@ -51,7 +51,7 @@ Wait until the ArangoDB deployment is ready. You can check the conditions in the
 $ kubectl wait --for=condition=ready arangodeployment/single-server
 ```
 
-### Configure Helm Values File
+### Create Helm Values File
 
 ```yaml title="resoto-values.yaml"
 resotocore:

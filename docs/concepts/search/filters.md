@@ -5,7 +5,7 @@ sidebar_label: Filters
 
 # Search Filters
 
-## Selecting Nodes by [Kind](../graph/node.md#kind)
+## Selecting Nodes by [Kind](../graph/node.md#kind) {#selecting-nodes-by-kind}
 
 In order to select nodes by a specific type, the search syntax supports the `is(<kind>)` function. The term `is(instance)` would select the EC2 instance above, but also all other instances, e.g. Google Cloud instances, while the term `is(aws_ec2_instance)` would select only EC2 instances from AWS.
 

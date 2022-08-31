@@ -91,22 +91,22 @@ Since Resoto itself can be installed on a Kubernets cluster using the [Helm char
 # highlight-end
 ```
 
-## Finding Services and Pods
+## Finding Services of Pods
 
 Kubernetes uses labels and selectors to define the relationship between a service and a pod. It is valid to expose the same pod via different services. To reveal which service exposes a pod, we need to understand the selector syntax and check all pods for matching labels. Thankfully, Resoto analyzes the relationships between resources, providing this information as edges between nodes and revealing a directed acyclic graph.
 
-To understand the concept of a graph a bit better, let me show you two examples that we enter into our Jupyter notebook:
+To understand the concept of a graph a bit better, let me show you two examples that we present in our Jupyter notebook via `display_svg(rnb.graph(...))`:
 
-```bash
-> search is(kubernetes_service) and name=test-service -[0:2]->
+```python
+is(kubernetes_service) and name=test-service -[0:2]->
 ```
 
 ![Outbound Dependencies](./img/test_service_outbound.svg)
 
 We are searching for a specific Kubernetes service with the name `test-service` and asking to traverse all outgoing dependencies from the service to a maximum depth of two. The result is a graph that shows the service and three pods behind this service, that all reference the same configmap.
 
-```bash
-> search is(kubernetes_service) and name=test-service <-[0:2]-
+```python
+is(kubernetes_service) and name=test-service <-[0:2]-
 ```
 
 ![Inbound Dependencies](./img/test_service_inbound.svg)
@@ -115,6 +115,8 @@ We can do the same query, but this time reverse the direction of the arrow, show
 
 With this knowledge at hand, it is easy to get the services that expose a specific pod: we filter for the pod in question, walk the dependencies inbound by one step and then filter the resulting list of incoming dependencies for services.
 
+![Services that expose a pod](./img/pod_traverse_inbound.svg)
+
 ```bash
 > is(kubernetes_pod) and name=~bbw7m <-- is(kubernetes_service)
 # highlight-next-line
@@ -122,6 +124,8 @@ With this knowledge at hand, it is easy to get the services that expose a specif
 ```
 
 We can list the pods that are exposed by a specific service the same way: we filter for the service, walk the graph one step outbound and filter the result list of resources to return only pods:
+
+![Pods behind a service](./img/service_outbound.svg)
 
 ```bash
 > search is(kubernetes_service) and name=~test --> is(kubernetes_pod)
@@ -133,6 +137,8 @@ We can list the pods that are exposed by a specific service the same way: we fil
 ```
 
 Getting the list of pods behind a service is also possible when we start from a specific pod. We need to combine two walks: find the pod and walk inbound to the service, then walk outbound from the service to all pods of this service. As you can see, traversals in the graph can be chained together. You can chain as many traversals as you want.
+
+![Pods behind a service starting from pod](./img/pod_treverse_inoutbound.svg)
 
 ```bash
 > search is(kubernetes_pod) and name=~bbw7m <-- is(kubernetes_service) --> is(kubernetes_pod)
@@ -257,6 +263,8 @@ The following table shows the results of the aggregation:
 | `dev-7u12z`       | 11          | 2        | 1       |
 | `dev-7u129`       | 10          | 2        | 1       |
 | `dev-7u121`       | 9           | 2        | 1       |
+
+While aggregation can be helpful for adhoc queries, we can also turn this data into a time series and watch the values over time. Please find the blog post about [Actionable Cloud Infrastructure Metrics](/blog/2022/06/09/building-actionable-cloud-infrastructure-metrics) for more details.
 
 ## Heatmaps
 

@@ -91,7 +91,7 @@ Since Resoto itself can be installed on a Kubernets cluster using the [Helm char
 # highlight-end
 ```
 
-## Finding Services of Pods
+## Finding the Services of a Pod
 
 Kubernetes uses labels and selectors to define the relationship between a service and a pod. It is valid to expose the same pod via different services. To reveal which service exposes a pod, we need to understand the selector syntax and check all pods for matching labels. Thankfully, Resoto analyzes the relationships between resources, providing this information as edges between nodes and revealing a directed acyclic graph.
 
@@ -268,7 +268,7 @@ While aggregation can be helpful for adhoc queries, we can also turn this data i
 
 ## Heatmaps
 
-Jupyter Notebooks make it very easy to visualize data. One of the options that are available out of the box is heatmaps. Let's assume you have not only two but many clusters and want to see where most compute instances are running. You can use the heatmap visualization to get precisely this information.
+[Jupyter](https://jupyter.org) Notebook, a web-based interactive [Python](https://python.org) shell, makes it easy to visualize data. One option available out-of-the-box is heatmaps. Imagine that you have many clusters and want to see where compute instances are running. Heatmaps provide a clear visuzalization of this data:
 
 ```python
 import plotly.express as px
@@ -278,15 +278,15 @@ px.density_heatmap(data, x="account_id", y="instance_cores")
 
 ![Heatmap](./img/heatmap.png)
 
-This heatmap will show all accounts (and every Kubernetes cluster is represented as one account here) on the x-axis and the number of cores on the y-axis, representing a specific machine type. Every point in this coordinate system is color coded and shows the count of nodes of that type in this account. You can see with one view that the cluster with id=142729851518581 uses the most compute instances.
+The heatmap shows accounts on the x-axis (each Kubernetes cluster is represented as an account) and the number of cores on the y-axis. Each square in the grid is color-coded to reflect the node count. It is clear at first glance that the cluster with ID `142729851518581` uses the most compute instances.
 
-## Interface with Other Systems
+## Alerting
 
-Resoto makes it very easy to interface with other systems. It ships with a custom command to talk to [discord](/docs/how-to-guides/alerting/send-discord-notifications) while there is also a howto that describes how to interface with other systems using the example of [`alertmanager`](/docs/how-to-guides/alerting/send-prometheus-alertmanager-alerts).
+It is easy to integrate Resoto with other systems and services for custom alerting. Resoto ships with a `discord` custom command to [send notifications to a Discord channel](/docs/how-to-guides/alerting/send-discord-notifications). It is also possible to configure alerts to be sent to other services, such as [Prometheus Alertmanager](/docs/how-to-guides/alerting/send-prometheus-alertmanager-alerts).
 
-Let's assume we want to get a notification in case a pod is restarting too often.
+One scenario where it is desirable to send alert notifications is when a pod is restarting too often.
 
-First, let's create a search that matches our rule of a pod that has is restarting too often:
+To configure alerts for this scenario, we first need to define a search query to find such pods:
 
 ```bash
 > search is(kubernetes_pod) and pod_status.container_statuses[*].restart_count>42
@@ -294,9 +294,9 @@ First, let's create a search that matches our rule of a pod that has is restarti
 ​kind=kubernetes_pod, id=3f16abea, name=posthog-worker-mtw8r, restart_count=[1], age=14d2h, cloud=k8s, account=posthog, region=posthog
 ```
 
-The property `restart_count` is part of the container status. A pod can have several containers. Since we do not care which container in the pod has been restarted very often, we use the wildcard `*` to match all container statuses. As we can see, one pod has been restarted too often.
+A pod can have several containers, and `restart_count` is property of each container status. Since we do not care _which_ container is restarting too often, we use the wildcard `*` to match all container statuses. The above search found a single pod that meets this criteria.
 
-We use the discord command shipped with Resoto to send a notification. Since the `webhook` parameter has been defined in the configuration, we only need to pipe the search into the `discord` command and specify the message's title.
+Now that we've defined the search criteria, all we need to do is pipe the results to the `discord` custom command with the desired message title:
 
 ```bash
 > search is(kubernetes_pod) and pod_status.container_statuses[*].restart_count>42 | discord title="This pod is restarted to often, PTAL!"
@@ -304,11 +304,9 @@ We use the discord command shipped with Resoto to send a notification. Since the
 ​1 requests with status 204 sent.
 ```
 
-This command line will result in a notification in Discord:
-
 ![Discord](./img/discord_notification.png)
 
-The whole idea of the notification makes sense if Resoto knows about my rule and sends me the notification when it happens, not when I search for it. To achieve this, we need to create a job that executes this command line whenever the latest data is available from all Kubernetes clusters. We can achieve this with the [`job`](/docs/reference/cli/jobs) command:
+However, the above command only executes a single time. We would like for Resoto to constantly monitor for pods that are restarting too often and send a notification whenever such pods are found. To do so, we can create a job using the [`job` command](/docs/reference/cli/jobs):
 
 ```bash
 > jobs add --id pod_restarted_too_often --wait-for-event post_collect 'search is(kubernetes_pod) and pod_status.container_statuses[*].restart_count>0 | discord title="This pod is restarted too often, PTAL!"'
@@ -316,8 +314,8 @@ The whole idea of the notification makes sense if Resoto knows about my rule and
 ​Job pod_restarted_too_often added.
 ```
 
-Since we register this job with the `post_collect` event, it will be executed automatically by Resoto whenever new data has been collected. If there is a pod that restarts very often in the future, we will get a notification on Discord.
+We registered this job with the `post_collect` event, so it will be executed automatically whenever new data has been collected.
 
-## Kubernetes and More
+## Kubernetes… and More!
 
-Resoto is not only able to collect resource metadata from Kubernetes but also other cloud providers like AWS, GCP, and DigitalOcean. Resoto is [open source](https://github.com/someengineering/resoto/blob/main/LICENSE) and free to use. [Install Resoto](/docs/getting-started/install-resoto) today!
+Resoto is not only able to collect resource metadata from Kubernetes, but also other cloud providers as well. Resoto is [open source](https://github.com/someengineering/resoto/blob/main/LICENSE) and free to use, and currently supports [<abbr title="Amazon Web Services">AWS</abbr>](/docs/getting-started/configure-cloud-provider-access/aws), [<abbr title="Google Cloud Platform">GCP</abbr>](/docs/getting-started/configure-cloud-provider-access/gcp), and [DigitalOcean](/docs/getting-started/configure-cloud-provider-access/digitalocean). [Install Resoto](/docs/getting-started/install-resoto) today!

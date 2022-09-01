@@ -299,7 +299,7 @@ A pod can have several containers, and `restart_count` is property of each conta
 Now that we've defined the search criteria, all we need to do is pipe the results to the `discord` custom command with the desired message title:
 
 ```bash
-> search is(kubernetes_pod) and pod_status.container_statuses[*].restart_count>42 | discord title="This pod is restarted to often, PTAL!"
+> search is(kubernetes_pod) and pod_status.container_statuses[*].restart_count>42 | discord title="This pod is restarted too often, PTAL!"
 # highlight-next-line
 ​1 requests with status 204 sent.
 ```

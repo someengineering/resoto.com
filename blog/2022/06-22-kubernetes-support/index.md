@@ -10,7 +10,7 @@ image: ./img/banner-social.png
 
 **I'm happy to announce that Resoto now has support for collecting [Kubernetes](/docs/reference/data-models/kubernetes) resources!**
 
-![Kubernetes](./img/banner.png)
+![](./img/banner.png)
 
 <!--truncate-->
 

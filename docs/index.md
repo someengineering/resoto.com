@@ -7,57 +7,62 @@ sidebar_position: 0
 
 # Overview
 
-Welcome to the Resoto documentation! 👋
+**Welcome to the Resoto documentation!** 👋
 
-To help you find the information you need, the documentation is structured as follows:
+To help you find the information you need, the Resoto documentation is structured as follows:
 
-- **[Getting Started](/docs/getting-started)** walks you through how to install and use Resoto, step by step. _Start here if you're new to Resoto._
-- **[How-To Guides](/docs/how-to-guides)** provide instructions for specific use cases and scenarios.
-- **[Concepts](/docs/concepts)** describe key topics and ideas, and provide an overview of how Resoto works and its [components](./concepts/components/index.md).
-- **[Reference](/docs/reference)** is a manual describing the [command-line interface (CLI)](./reference/cli/index.md) and [data models](./reference/data-models/index.md). It is assumed that you already have a basic understanding of important concepts.
-- **[Contributing](/docs/contributing)** lists instructions and guidelines for contributing to Resoto.
+- **[Getting Started](./getting-started/index.md)** walks you through how to install and use Resoto, step by step. _Start here if you're new to Resoto._
+- **[How-To Guides](./how-to-guides/index.md)** provide instructions for specific use cases and scenarios.
+- **[Concepts](./concepts/index.md)** describe key topics and ideas, and provide an overview of how Resoto works and its [components](./concepts/components/index.md).
+- **[Reference](./reference/index.md)** is a manual describing the [command-line interface (CLI)](./reference/cli/index.md) and [data models](./reference/data-models/index.md). It is assumed that you already have a basic understanding of important concepts.
+- **[Contributing](./contributing/index.md)** lists instructions and guidelines for contributing to Resoto.
 
 ## What Is Resoto?
 
-Resoto indexes resources, captures dependencies, and maps out your infrastructure in an intuitive [graph](./concepts/graph/index.md). The graph contains metrics for each [resource](./reference/data-models/index.md).
+**Resoto is an [open-source](https://github.com/someengineering/resoto/blob/main/LICENSE) cloud asset inventory tool for infrastructure engineers.**
 
-Developers and SREs can [search the graph](./concepts/search/index.md) and create alerting and cleanup [jobs](./concepts/automation/job.md).
+Resoto allows you to search, explore, and manage your cloud resources. Resoto also automatically tags and cleans up resources based on custom rules and logic, so you can write code to react to changes in your infrastructure.
 
-Metrics can be aggregated and exported to a time-series database such as [Prometheus](https://prometheus.io).
+At Resoto's core is a graph-based data model, which is better suited to capture the resource dependencies in cloud-native infrastructure than a traditional relational model.
 
-## Why Resoto?
+### Why Cloud Asset Inventory?
 
-Have you ever…
+**Cloud-native infrastructure today has an inventory problem.** It's a new type of technical debt, where you lose track of the assets running in your infrastructure and how they relate to the business.
 
-- had a standstill in your CI pipeline because a broken job leaked cloud resources and triggered a [quota limit](./concepts/search/examples.md#quota)?
-- wanted to find all expired [certificates](./concepts/search/examples.md#certificate)?
-- had to change the [tags](./reference/cli/tag/index.md) of thousands of EC2 instances?
-- needed to delete all unused EBS [volumes](./concepts/search/examples.md#volume) with no I/O in the past month?
-- wished for an [aggregate](./concepts/search/aggregation.md) view of resource usage across all cloud services?
-- tediously created a report of the cost of a project across different accounts or cloud services?
-- manually cleaned up orphaned [load balancers](./concepts/search/examples.md#aws_alb) that had no active backends?
-- wanted to [automate](./concepts/automation/workflow.md) any of the above?
+The inventory problem is the result of two trends:
 
-If you answered **yes** to any of the above, then Resoto was built to make _your_ life easier!
+1. Resource proliferation by cloud providers. With containers and serverless functions, services have become more abstract and the size of the individual deliverable has become smaller.
+2. Automated deployment of new resources through infrastructure-as-code (IaC) technologies such as Terraform or the Kubernetes [Cluster API](https://cluster-api.sigs.k8s.io), coupled with <abbr title="continuous integration">CI</abbr>/<abbr title="continuous deployment">CD</abbr> pipelines.
 
-## Supported Cloud Providers and Integrations
+Your inventory becomes large and is constantly changing. Not every resource that gets spun up gets torn down. Deployment processes fail, leaving systems in a half-configured state that leaks resources.
 
-Resoto collects data using simple plugins written in [Python](https://www.python.org).
+When engineers encounter a resource they are unfamiliar with, they are unlikely to delete it. Creating new cloud resources is low-risk, but deleting them can trigger unintended side effects. Over time, resources accumulate across cloud accounts and lead to growing inventory debt. This inventory debt compounds over time and results in outages, vulnerabilities, and cost problems.
 
-Support for the following is currently included out-of-the-box in Resoto:
+An asset inventory gives you a complete and up-to-date view of the resources that comprise your infrastructure. Coupled with search functionality, you can query and slice this resource data in almost any imaginable way.
+
+## How Does Resoto Work?
+
+Resoto builds an inventory of your cloud by collecting the following data from your infrastructure:
+
+1. **Resource data** including but not limited to:
+   - General resource information (e.g., name, ID, timestamp, tags),
+   - Hierarchy information (e.g., region, account), and
+   - Resource-specific information (e.g., CPU, memory, price, utilization, policy).
+2. **Dependency data** that represents the relationship between different resources.
+
+![](./img/data-collection.png)
+
+By default, Resoto collects this data and creates an inventory snapshot every hour.
+
+### Supported Cloud Providers
+
+With the help of the open-source community, Resoto currently supports over [300 resource types](./reference/data-models/index.md) that enable you to track and manage assets across the following cloud providers:
 
 - [Amazon Web Services (AWS)](./getting-started/configure-cloud-provider-access/aws.md)
 - [Google Cloud Platform (GCP)](./getting-started/configure-cloud-provider-access/gcp.md)
 - [DigitalOcean](./getting-started/configure-cloud-provider-access/digitalocean.md)
 - [Kubernetes (K8s)](./getting-started/configure-cloud-provider-access/kubernetes.md)
-- [VMware Vsphere](./reference/data-models/vsphere.md)
 
-See [Configure Cloud Provider Access](./getting-started/configure-cloud-provider-access/index.md) for more information on how to configure individual providers.
+See [Configure Cloud Provider Access](./getting-started/configure-cloud-provider-access/index.md) for more information on how to configure these providers.
 
-In addition to the above collector plugins, various [tag validation and cleanup plugins](./concepts/components/plugins/index.md) are included.
-
-:::tip
-
-It is possible to write your own collector plugins! Please refer to the [example plugin in our GitHub repository](https://github.com/someengineering/resoto/tree/main/plugins/example_collector), and feel free to reach out on [Discord](https://discord.gg/someengineering) if we can be of any assistance.
-
-:::
+In addition to the above collector plugins, various [tag validation and cleanup plugins](./concepts/components/plugins/index.md) are also included for effortless handling of common use cases and tasks.

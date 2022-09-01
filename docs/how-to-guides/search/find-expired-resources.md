@@ -19,12 +19,12 @@ This guide assumes that you have already [installed](../../getting-started/insta
 Execute the following search in [Resoto Shell](../../concepts/components/shell.md) to list all expired resources:
 
 ```bash
-> search /metadata.expires < "@now@"
+> search /metadata.expires < "@utc@"
 ```
 
 :::note
 
-This search finds all resources that have an `expires` property that is less than the current time. Resoto automatically expands `@now@` to the current date and time. See `help placeholders` for more information on placeholder strings.
+This search finds all resources that have an `expires` property that is less than the current time. Resoto automatically expands `@utc@` to the current date and time. See `help placeholders` for more information on placeholder strings.
 
 :::
 

@@ -32,7 +32,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
    :::note
 
-   Searches are case-insensitive.
+   Search is generally case-sensitive. The fulltext search is merciful and ignore the case.
 
    :::
 

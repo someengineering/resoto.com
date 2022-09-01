@@ -88,26 +88,28 @@ Custom commands are defined globally, so they can be executed by any Resoto user
 
 ## Placeholder Strings
 
-| Placeholder   | Example                |
-| ------------- | ---------------------- |
-| `@DAY@`       | `16`                   |
-| `@FRIDAY@`    | `2022-02-18`           |
-| `@HOUR@`      | `15`                   |
-| `@MINUTE@`    | `23`                   |
-| `@MONDAY@`    | `2022-02-21`           |
-| `@MONTH@`     | `02`                   |
-| `@NOW@`       | `2022-02-16T15:23:31Z` |
-| `@SATURDAY@`  | `2022-02-19`           |
-| `@SECOND@`    | `31`                   |
-| `@SUNDAY@`    | `2022-02-20`           |
-| `@THURSDAY@`  | `2022-02-17`           |
-| `@TIME@`      | `15:23:31`             |
-| `@TODAY@`     | `2022-02-16`           |
-| `@TOMORROW@`  | `2022-02-17`           |
-| `@TUESDAY@`   | `2022-02-22`           |
-| `@TZ@`        | `CET`                  |
-| `@TZ_OFFSET@` | `+0100`                |
-| `@UTC@`       | `2022-02-16T14:23:31Z` |
-| `@WEDNESDAY@` | `2022-02-16`           |
-| `@YEAR@`      | `2022`                 |
-| `@YESTERDAY@` | `2022-02-15`           |
+Placeholders are not case sensitive. You can use `@utc@` or `@UTC@` and will get the same result.
+
+| Placeholder   | Example                    |
+| ------------- | -------------------------- |
+| `@UTC@`       | `2022-02-16T14:23:31Z`     |
+| `@NOW@`       | `2022-02-16T15:23:31+0200` |
+| `@DAY@`       | `16`                       |
+| `@FRIDAY@`    | `2022-02-18`               |
+| `@HOUR@`      | `15`                       |
+| `@MINUTE@`    | `23`                       |
+| `@MONDAY@`    | `2022-02-21`               |
+| `@MONTH@`     | `02`                       |
+| `@SATURDAY@`  | `2022-02-19`               |
+| `@SECOND@`    | `31`                       |
+| `@SUNDAY@`    | `2022-02-20`               |
+| `@THURSDAY@`  | `2022-02-17`               |
+| `@TIME@`      | `15:23:31`                 |
+| `@TODAY@`     | `2022-02-16`               |
+| `@TOMORROW@`  | `2022-02-17`               |
+| `@TUESDAY@`   | `2022-02-22`               |
+| `@TZ@`        | `CET`                      |
+| `@TZ_OFFSET@` | `+0100`                    |
+| `@WEDNESDAY@` | `2022-02-16`               |
+| `@YEAR@`      | `2022`                     |
+| `@YESTERDAY@` | `2022-02-15`               |

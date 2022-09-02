@@ -32,7 +32,7 @@ At Resoto's core is a graph-based data model, which is better suited to capture 
 The inventory problem is the result of two trends:
 
 1. Resource proliferation by cloud providers. With containers and serverless functions, services have become more abstract and the size of the individual deliverable has become smaller.
-2. Automated deployment of new resources through infrastructure-as-code (IaC) technologies such as Terraform or the Kubernetes [Cluster API](https://cluster-api.sigs.k8s.io), coupled with <abbr title="continuous integration">CI</abbr>/<abbr title="continuous deployment">CD</abbr> pipelines.
+2. Automated deployment of new resources through infrastructure-as-code (IaC) technologies such as Terraform or the Kubernetes Cluster API, coupled with <abbr title="continuous integration">CI</abbr>/<abbr title="continuous deployment">CD</abbr> pipelines.
 
 Your inventory becomes large and is constantly changing. Not every resource that gets spun up gets torn down. Deployment processes fail, leaving systems in a half-configured state that leaks resources.
 

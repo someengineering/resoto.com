@@ -1,7 +1,6 @@
 # Configuration
 
 ```mdx-code-block
-import { useCurrentSidebarCategory } from '@docusaurus/theme-common';
 import DocCardList from '@theme/DocCardList';
 ```
 
@@ -32,7 +31,7 @@ Resoto automatically creates the following configurations by default:
 - `resoto.worker`
 - `resoto.metrics`
 
-<DocCardList items={useCurrentSidebarCategory().items}/>
+<DocCardList />
 
 ### Editing Configuration
 

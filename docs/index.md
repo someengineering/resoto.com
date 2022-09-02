@@ -7,23 +7,23 @@ sidebar_position: 0
 
 # Overview
 
-**Welcome to the Resoto documentation!** 👋
+**Resoto is an [open-source](https://github.com/someengineering/resoto/blob/main/LICENSE) cloud asset inventory tool for infrastructure engineers.**
 
-To help you find the information you need, the Resoto documentation is structured as follows:
+Resoto allows you to search, explore, and manage your cloud resources. Resoto also automatically [tags](./concepts/resource-management/tagging.md) and [cleans up](./concepts/resource-management/cleanup.md) resources based on custom rules and logic, so you can write code to react to changes in your infrastructure.
 
-- **[Getting Started](./getting-started/index.md)** walks you through how to install and use Resoto, step by step. _Start here if you're new to Resoto._
+At Resoto's core is a graph-based data model, which is better suited to capture the resource dependencies in cloud-native infrastructure than a traditional relational model.
+
+:::info
+
+To help you find the information you need, the Resoto documentation is organized as follows:
+
+- **[Getting Started](./getting-started/index.md)** walks you through how to install and use Resoto, step by step.** _Start here if you're new to Resoto._**
 - **[How-To Guides](./how-to-guides/index.md)** provide instructions for specific use cases and scenarios.
 - **[Concepts](./concepts/index.md)** describe key topics and ideas, and provide an overview of how Resoto works and its [components](./concepts/components/index.md).
 - **[Reference](./reference/index.md)** is a manual describing the [command-line interface (CLI)](./reference/cli/index.md) and [data models](./reference/data-models/index.md). It is assumed that you already have a basic understanding of important concepts.
 - **[Contributing](./contributing/index.md)** lists instructions and guidelines for contributing to Resoto.
 
-## What Is Resoto?
-
-**Resoto is an [open-source](https://github.com/someengineering/resoto/blob/main/LICENSE) cloud asset inventory tool for infrastructure engineers.**
-
-Resoto allows you to search, explore, and manage your cloud resources. Resoto also automatically tags and cleans up resources based on custom rules and logic, so you can write code to react to changes in your infrastructure.
-
-At Resoto's core is a graph-based data model, which is better suited to capture the resource dependencies in cloud-native infrastructure than a traditional relational model.
+:::
 
 ### Why Cloud Asset Inventory?
 
@@ -31,14 +31,14 @@ At Resoto's core is a graph-based data model, which is better suited to capture 
 
 The inventory problem is the result of two trends:
 
-1. Resource proliferation by cloud providers. With containers and serverless functions, services have become more abstract and the size of the individual deliverable has become smaller.
-2. Automated deployment of new resources through infrastructure-as-code (IaC) technologies such as Terraform or the Kubernetes [Cluster API](https://cluster-api.sigs.k8s.io), coupled with <abbr title="continuous integration">CI</abbr>/<abbr title="continuous deployment">CD</abbr> pipelines.
+1. **Resource proliferation in the cloud.** With containers and serverless functions, services have become more abstract and the size of the individual deliverable has become smaller.
+2. **Automated deployment of new resources.** Infrastructure-as-code (IaC) technologies like [Terraform](https://terraform.io) and the Kubernetes [Cluster API](https://cluster-api.sigs.k8s.io), coupled with <abbr title="continuous integration">CI</abbr>/<abbr title="continuous deployment">CD</abbr> pipelines, have made it easier than ever to spin up new resources.
 
 Your inventory becomes large and is constantly changing. Not every resource that gets spun up gets torn down. Deployment processes fail, leaving systems in a half-configured state that leaks resources.
 
 When engineers encounter a resource they are unfamiliar with, they are unlikely to delete it. Creating new cloud resources is low-risk, but deleting them can trigger unintended side effects. Over time, resources accumulate across cloud accounts and lead to growing inventory debt. This inventory debt compounds over time and results in outages, vulnerabilities, and cost problems.
 
-An asset inventory gives you a complete and up-to-date view of the resources that comprise your infrastructure. Coupled with search functionality, you can query and slice this resource data in almost any imaginable way.
+**An asset inventory gives you a complete and up-to-date view of the resources that comprise your infrastructure.** Coupled with search functionality, you can query and slice this resource data in almost any imaginable way.
 
 ## How Does Resoto Work?
 
@@ -54,9 +54,9 @@ Resoto builds an inventory of your cloud by collecting the following data from y
 
 By default, Resoto collects this data and creates an inventory snapshot every hour.
 
-### Supported Cloud Providers
+## Supported Cloud Providers
 
-With the help of the open-source community, Resoto currently supports over [300 resource types](./reference/data-models/index.md) that enable you to track and manage assets across the following cloud providers:
+With the help of our community, Resoto currently supports over [300 resource types](./reference/data-models/index.md) that enable you to track and manage assets across the following cloud providers:
 
 - [Amazon Web Services (AWS)](./getting-started/configure-cloud-provider-access/aws.md)
 - [Google Cloud Platform (GCP)](./getting-started/configure-cloud-provider-access/gcp.md)
@@ -66,3 +66,9 @@ With the help of the open-source community, Resoto currently supports over [300 
 See [Configure Cloud Provider Access](./getting-started/configure-cloud-provider-access/index.md) for more information on how to configure these providers.
 
 In addition to the above collector plugins, various [tag validation and cleanup plugins](./concepts/components/plugins/index.md) are also included for effortless handling of common use cases and tasks.
+
+:::info
+
+**Interested in contributing to Resoto's components, plugins, or documentation?** Check out the [contribution guide](./contributing/index.md) for guidelines and information.
+
+:::

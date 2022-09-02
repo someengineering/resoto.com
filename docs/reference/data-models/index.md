@@ -1,7 +1,6 @@
 # Resource Data Models
 
 ```mdx-code-block
-import { useCurrentSidebarCategory } from '@docusaurus/theme-common';
 import DocCardList from '@theme/DocCardList';
 ```
 
@@ -82,9 +81,9 @@ The model makes it easy to query conceptually common data and also to retrieve a
 
 ### Supported Resource Types
 
-Resoto has built-in support for resource types from some cloud providers:
+Resoto has built-in support for resource types from the following cloud providers:
 
-<DocCardList items={useCurrentSidebarCategory().items}/>
+<DocCardList />
 
 ## Kinds
 

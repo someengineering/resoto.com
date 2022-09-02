@@ -16,9 +16,15 @@ import Tabs from '@theme/Tabs';
 
 ## Prerequisites
 
-- [Docker](https://docs.docker.com/get-started#download-and-install-docker) needs to be installed on your machine.
-- [Docker Compose](https://docs.docker.com/compose/install/) needs to be available on your machine.
-- At least two cores and eight gigabytes of RAM are required to run the Resoto stack. For a production setup we recommend at least four cores and 16 gigabytes of RAM. See [Configuring Resoto Worker](../../reference/configuration/worker.md#multi-core-machines) for more information.
+- [Docker](https://docs.docker.com/get-started#download-and-install-docker)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+- At least 2 CPU cores and 8 GB of RAM
+
+:::note
+
+Resoto performs CPU-intensive graph operations. In a production setup, we recommend at least four cores and 16 gigabytes of RAM. See [Configuring Resoto Worker](../../reference/configuration/worker.md#multi-core-machines) for more information.
+
+:::
 
 ## Installing Resoto
 
@@ -57,17 +63,19 @@ $ docker compose up -d
 </TabItem>
 </Tabs>
 
-Upon execution of `docker compose up -d`, Docker Compose will start all components and set up the system. This process may take approximately 1-3 minutes, depending on your machine and internet connection. You can execute this command:
+Upon execution of `docker compose up -d`, Docker Compose will start all components and set up the system. This process takes approximately 1-3 minutes, depending on your machine and internet connection.
+
+The following command will wait for Resoto Core's initialization process to complete and display a message when the Resoto API is ready for use:
 
 ```bash
 $ docker compose logs --since 15m -f resotocore | grep "Initialization done. Starting API."
 ```
 
-which will wait until the initialization is done and the API is ready to be used.
-
 :::note
 
-In older versions of Docker Compose, the command is `docker-compose` instead of `docker compose`. In order to run the composition in background, you can add the `-d` flag to the command: `docker-compose up -d`.
+[Docker Compose V2 integrated compose functions in to the Docker platform.](https://docs.docker.com/compose/#compose-v2-and-the-new-docker-compose-command)
+
+In Docker Compose V1, the command is `docker-compose` (with a hyphen) instead of `docker compose`.
 
 :::
 

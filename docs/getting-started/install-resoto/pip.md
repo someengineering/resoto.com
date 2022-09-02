@@ -18,10 +18,11 @@ import Tabs from '@theme/Tabs';
 - [Python](https://python.org) 3.9+ (3.10 is recommended)
 - [ArangoDB](https://arangodb.com) 3.8.4+
 - [Prometheus](https://prometheus.io) 2.35.0+
+- At least 2 CPU cores and 8 GB of RAM
 
 :::note
 
-Resoto is doing a lot of CPU-intense graph operations. For a production setup we recommend running `resotocore` using [the PyPy Python interpreter](https://www.pypy.org/). On average, PyPy is 4.5 times faster than CPython (the reference Python implementation). When using Resoto in Docker we are already shipping it with PyPy by default.
+Resoto performs CPU-intensive graph operations. In a production setup, we recommend running `resotocore` using [the PyPy Python interpreter](https://www.pypy.org/). On average, PyPy is 4.5 times faster than CPython (the reference Python implementation). When using Resoto in Docker we are already shipping it with PyPy by default.
 
 :::
 

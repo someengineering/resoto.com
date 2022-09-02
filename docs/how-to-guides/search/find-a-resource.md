@@ -32,7 +32,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
    :::note
 
-   Searches are case-insensitive.
+   Search in Resoto is generally case-sensitive, but full-text search terms are case-insensitive.
 
    :::
 

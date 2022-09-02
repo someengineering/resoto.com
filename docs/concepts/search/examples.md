@@ -63,8 +63,8 @@ Resoto's search syntax is quite powerful and has many features. We suggest tryin
 > search is(access_key) and access_key_status = "Active" | aggregate user_name as user : sum(1) as number_of_keys
 ```
 
-```bash title="Find expired SSL certificates currently in use"
-> search is(certificate) and expires < @NOW@ <--
+```bash title="Find expired SSL certificates"
+> search is(certificate) and expires < @UTC@
 ```
 
 ```bash title="Find current quota consumption to prevent service interruptions"

@@ -41,7 +41,7 @@ $ mkdir -p resoto/dockerV2
 $ cd resoto
 $ curl -o docker-compose.yaml https://raw.githubusercontent.com/someengineering/resoto/{{latestRelease}}/docker-compose.yaml
 $ curl -o dockerV2/prometheus.yml https://raw.githubusercontent.com/someengineering/resoto/{{latestRelease}}/dockerV2/prometheus.yml
-$ docker compose up
+$ docker compose up -d
 ```
 
 </TabItem>
@@ -51,13 +51,19 @@ $ docker compose up
 $ git clone https://github.com/someengineering/resoto.git
 $ cd resoto
 $ git checkout tags/{{latestRelease}}
-$ docker compose up
+$ docker compose up -d
 ```
 
 </TabItem>
 </Tabs>
 
-Upon execution of `docker compose up`, Docker Compose will start all components and set up the system. This process may take approximately 1-3 minutes, depending on your machine and internet connection. If you see a log message `Initialization done. Starting API.` it is safe to proceed.
+Upon execution of `docker compose up -d`, Docker Compose will start all components and set up the system. This process may take approximately 1-3 minutes, depending on your machine and internet connection. You can execute this command:
+
+```bash
+$ docker compose logs --since 15m -f resotocore | grep "Initialization done. Starting API."
+```
+
+which will wait until the initialization is done and the API is ready to be used.
 
 :::note
 
@@ -88,5 +94,5 @@ When a new version of Resoto is available, simply edit the container image tag (
 Then, run the following command from the directory containing the `docker-compose.yml` file:
 
 ```bash
-$ docker compose up
+$ docker compose up -d
 ```

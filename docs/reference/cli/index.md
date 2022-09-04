@@ -8,6 +8,28 @@ You can pipe commands using `|` and chain multiple commands using `;`.
 
 :::
 
+## Keyboard Shortcuts
+
+Resoto Shell supports most common Unix shell keyboard shortcuts.
+
+| Shortcut                                                 | Description                                                        |
+| -------------------------------------------------------- | ------------------------------------------------------------------ |
+| CTRL+D on an empty line quits the shell (same as `quit`) |
+| CTRL+L                                                   | Clear the entire terminal but not the current line (redraw)        |
+| CTRL+C                                                   | Cancel input for the current line                                  |
+| CTRL+U                                                   | Clears from cursor to beginning of line                            |
+| CTRL+K                                                   | Clears from cursor to end of line                                  |
+| CTRL+H                                                   | Clears one character to the left of the cursor (same as BACKSPACE) |
+| CTRL+D                                                   | Clears one character to the right of the cursor                    |
+| ESC+BACKSPACE                                            | Clears one word to the left of the cursor                          |
+| ESC+D                                                    | Clears one word to the right of the cursor                         |
+| ALT+LEFT/RIGHT                                           | Jumps to the beginning of the previous/next word                   |
+| CTRL+A                                                   | Jumps to start of line                                             |
+| CTRL+E                                                   | Jumps to end of line                                               |
+| CTRL+R                                                   | Reverse search your history                                        |
+| UP                                                       | Step backwards in history                                          |
+| DOWN                                                     | Step forward in history                                            |
+
 ## Commands
 
 | Command                             | Description                                                                        |

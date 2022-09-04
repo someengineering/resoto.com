@@ -8,6 +8,28 @@ You can pipe commands using `|` and chain multiple commands using `;`.
 
 :::
 
+## Keyboard Shortcuts
+
+Resoto Shell supports most common Unix shell keyboard shortcuts.
+
+| Shortcut                | Description                                                       |
+| ----------------------- | ----------------------------------------------------------------- |
+| CTRL+D on an empty line | Exit the shell (same as `quit`)                                   |
+| CTRL+L                  | Clear the entire terminal but not the current line (redraw)       |
+| CTRL+C                  | Cancel input for the current line                                 |
+| CTRL+U                  | Clear from cursor to beginning of line                            |
+| CTRL+K                  | Clear from cursor to end of line                                  |
+| CTRL+H                  | Clear one character to the left of the cursor (same as BACKSPACE) |
+| CTRL+D                  | Clear one character to the right of the cursor                    |
+| ESC+BACKSPACE           | Clear one word to the left of the cursor                          |
+| ESC+D                   | Clear one word to the right of the cursor                         |
+| ALT+LEFT/RIGHT          | Jump to the beginning of the previous/next word                   |
+| CTRL+A                  | Jump to start of line                                             |
+| CTRL+E                  | Jump to end of line                                               |
+| CTRL+R                  | Reverse search history                                            |
+| UP                      | Step backwards in history                                         |
+| DOWN                    | Step forward in history                                           |
+
 ## Commands
 
 | Command                             | Description                                                                        |

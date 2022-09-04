@@ -14,7 +14,7 @@ Resoto Shell supports most common Unix shell keyboard shortcuts.
 
 | Shortcut                | Description                                                        |
 | ----------------------- | ------------------------------------------------------------------ |
-| CTRL+D on an empty line | quits the shell (same as `quit`)                                   |
+| CTRL+D on an empty line | Exit the shell (same as `quit`)                                    |
 | CTRL+L                  | Clear the entire terminal but not the current line (redraw)        |
 | CTRL+C                  | Cancel input for the current line                                  |
 | CTRL+U                  | Clears from cursor to beginning of line                            |

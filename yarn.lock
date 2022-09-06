@@ -5127,10 +5127,10 @@ eslint-config-prettier@8.5.0:
   resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-8.5.0.tgz#5a81680ec934beca02c7b1a61cf8ca34b66feab1"
   integrity sha512-obmWKLUNCnhtQRKc+tmnYuQl0pFU1ibYJQ5BGhTVB08bHe9wC8qUeG7c08dj9XX+AuPj1YSGSQIHl1pnDHZR0Q==
 
-eslint-plugin-formatjs@4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-formatjs/-/eslint-plugin-formatjs-4.3.0.tgz#b3acee53722878b2a7fa836471ba78e530afdad5"
-  integrity sha512-cIGuQzjgWbQPVOafSuna9A4IWr9JCcjLHg1c568YAFhWRtXAhH6bROTfMfArJO+XFmlaZU32n8zNMffU/wuz4g==
+eslint-plugin-formatjs@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-formatjs/-/eslint-plugin-formatjs-4.3.1.tgz#8219d9109e714e9e255f30ed90f9f7ff125e5b16"
+  integrity sha512-Hjjo5/jCrLj3DURzn1YBXps7VcTjejQ7nxJDuI15PCnJUUWBIOs1cquEUo89n8ikbLogBu1r+DWtpmTWDSCMTg==
   dependencies:
     "@formatjs/icu-messageformat-parser" "2.1.7"
     "@formatjs/ts-transformer" "3.10.0"

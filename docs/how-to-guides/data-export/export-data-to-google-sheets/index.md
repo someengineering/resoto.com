@@ -10,7 +10,7 @@ This how-to guide creates a chart in Google Sheets depicting the distribution of
 
 ![Import data](./img/00_goal.png)
 
-We will first perform a search that aggregates all storage volumes across all clouds and accounts and returns the total size of all volumes per account. We will then pipe the aggregated result into the [`format` command](../../../reference/cli/format.md) to flatten the data into rows and columns, and export the data as a CSV file. Finally, we will import the CSV-format data into Google Sheets and create a pie chart.
+We will first perform a search that aggregates all storage volumes across all clouds and accounts and returns the total size of all volumes per account. We will then pipe the aggregated result into the [`format` command](../../../reference/cli/format-commands/format.md) to flatten the data into rows and columns, and export the data as a CSV file. Finally, we will import the CSV-format data into Google Sheets and create a pie chart.
 
 ## Prerequisites
 
@@ -55,7 +55,7 @@ This guide assumes that you have already [installed](../../../getting-started/in
    # highlight-end
    ```
 
-3. Then, use the [`write` command](.././../../reference/cli/write.md) to output the data to a CSV file on our local disk:
+3. Then, use the [`write` command](.././../../reference/cli/miscellaneous-commands/write.md) to output the data to a CSV file on our local disk:
 
    ```bash
    > search aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account: sum(volume_size * 1024 * 1024 * 1024) as volume_bytes): is(volume) | format {/group.cloud} {/group.account},{/volume_bytes} | write storage.csv

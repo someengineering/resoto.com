@@ -22,8 +22,8 @@ Resoto currently supports the following cloud providers:
 - Report infrastructure changes over time with out-of-the-box [metrics](https://github.com/someengineering/resoto/tree/main/resotometrics), and aggregation of any data points for custom metrics.
 - [Automate](/docs/concepts/automation) tedious tasks. Define rules for your infrastructure that are checked against existing resources, no matter how they were created. Rules are applied automatically whenever infrastructure changes.
 - [Command line interface](/docs/reference/cli) to interact with Resoto.
-- Ability to [clean](/docs/reference/cli/clean) up your infrastructure in a user defined and reliable way.
-- Allows for manipulating [tags](/docs/reference/cli/tag).
+- Ability to [clean](/docs/reference/cli/action-commands/clean) up your infrastructure in a user defined and reliable way.
+- Allows for manipulating [tags](/docs/reference/cli/action-commands/tag).
 - [API](/docs/reference/api) to interact with Resoto from your own code.
 
 Please check out the [Getting Started](/docs/getting-started) section of our documentation to give it a spin.

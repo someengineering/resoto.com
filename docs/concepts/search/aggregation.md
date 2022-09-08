@@ -17,7 +17,7 @@ For example, the following search will select and count compute instances that a
 # highlight-end
 ```
 
-The [`count` command](../../reference/cli/count.md) is actually a special type of aggregation.
+The [`count` command](../../reference/cli/search-commands/count.md) is actually a special type of aggregation.
 
 ## Aggregation Functions
 
@@ -34,9 +34,9 @@ Each grouping function can have an `as <name>` clause to give the function resul
 
 Example: `min(memory)`, `sum(1) as count`, `avg(instance_cores) as average_cores`.
 
-The [`aggregate` command](../../reference/cli/aggregate.md) tells Resoto to aggregate the search results based on the defined criteria. Each result of the search is then passed to the defined aggregation function(s).
+The [`aggregate` command](../../reference/cli/search-commands/aggregate.md) tells Resoto to aggregate the search results based on the defined criteria. Each result of the search is then passed to the defined aggregation function(s).
 
-The above example using the [`count`](../../reference/cli/count.md) could also be rewritten with `aggregate` like so:
+The above example using the [`count`](../../reference/cli/search-commands/count.md) could also be rewritten with `aggregate` like so:
 
 ```bash
 > search is(instance) and age > 3y | aggregate sum(1) as count

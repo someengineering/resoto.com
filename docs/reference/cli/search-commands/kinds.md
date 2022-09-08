@@ -1,11 +1,11 @@
-# `kind`
+# `kinds`
 
-The `kind` command retrieves information about the graph data kinds.
+The `kinds` command retrieves information about the graph data kinds.
 
 ## Usage
 
 ```bash
-kind [-p <property_path>] <name>
+kinds [-p <property_path>] <name>
 ```
 
 ### Options
@@ -23,7 +23,7 @@ kind [-p <property_path>] <name>
 ## Examples
 
 ```bash title="Show all available kinds"
-> kind
+> kinds
 # highlight-start
 ​access_key
 ​.
@@ -33,7 +33,7 @@ kind [-p <property_path>] <name>
 ```
 
 ```bash title="Show details about a specific kind"
-> kind graph_root
+> kinds graph_root
 # highlight-start
 ​name: graph_root
 ​bases:

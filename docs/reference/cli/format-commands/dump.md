@@ -58,4 +58,4 @@ dump
 
 - [`format`](./format.md)
 - [`list`](./list.md)
-- [`jq`](./jq.md)
+- [`jq`](../miscellaneous-commands/jq.md)

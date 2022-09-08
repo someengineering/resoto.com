@@ -64,6 +64,17 @@ const config = {
           showLastUpdateAuthor: false,
           showLastUpdateTime: true,
           remarkPlugins: [a11yEmoji, oembed, mdxMermaid],
+          sidebarItemsGenerator: ({
+            defaultSidebarItemsGenerator,
+            ...args
+          }) => {
+            return defaultSidebarItemsGenerator({
+              ...args,
+              isCategoryIndex(doc) {
+                return doc.fileName.toLowerCase() === 'index';
+              },
+            });
+          },
         },
         blog: {
           blogTitle: 'Blog',

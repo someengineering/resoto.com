@@ -76,7 +76,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
    # highlight-end
    ```
 
-4. Now that we've defined the search for unused IAM access keys, simply pipe the result of the search query to the [`clean` command](../../reference/cli/clean.md) instead of the [`count` command](../../reference/cli/count.md):
+4. Now that we've defined the search for unused IAM access keys, simply pipe the result of the search query to the [`clean` command](../../reference/cli/action-commands/clean.md) instead of the [`count` command](../../reference/cli/search-commands/count.md):
 
    ```bash
    > search is(access_key) and last_access > 90days and /ancestors.user.reported.name not in [jenkins, ci] | clean
@@ -84,7 +84,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
    :::note
 
-   The [`clean` command](../../reference/cli/clean.md) flags a resource for cleanup. Cleanup is performed whenever the `collect_and_cleanup` [workflow](../../concepts/automation/workflow.md) runs. The workflow runs every hour by default, but can also be manually triggered using the `workflow run cleanup` command.
+   The [`clean` command](../../reference/cli/action-commands/clean.md) flags a resource for cleanup. Cleanup is performed whenever the `collect_and_cleanup` [workflow](../../concepts/automation/workflow.md) runs. The workflow runs every hour by default, but can also be manually triggered using the `workflow run cleanup` command.
 
    :::
 

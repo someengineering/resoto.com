@@ -4,7 +4,7 @@ sidebar_label: Kubernetes
 
 # Configure Kubernetes Access
 
-The [Kubernetes](../../reference/data-models/kubernetes.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](/docs/reference/cli/configs) in [Resoto Shell](/docs/concepts/components/shell):
+The [Kubernetes](../../reference/data-models/kubernetes.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](/docs/reference/cli/setup-commands/configs) in [Resoto Shell](/docs/concepts/components/shell):
 
 ```bash
 > config edit resoto.worker
@@ -31,7 +31,7 @@ You can authenticate with Kubernetes via [kubeconfig files](https://kubernetes.i
 
 The easiest way to configure access to Kubernetes is to give Resoto Worker access to [kubeconfig files](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig).
 
-Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/configs) in [Resoto Shell](../../concepts/components/shell):
+Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../concepts/components/shell):
 
 ```bash
 > config edit resoto.worker
@@ -70,7 +70,7 @@ The required values can be found in the [kubeconfig file](https://kubernetes.io/
 | `token`                      | `users.user.token`                                                                                                               |
 | `certificate_authority_data` | `clusters.cluster.certificate-authority-data` (This property is only required if the server is using a self-signed certificate.) |
 
-Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/configs) in [Resoto Shell](../../concepts/components/shell):
+Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../concepts/components/shell):
 
 ```bash
 > config edit resoto.worker
@@ -146,7 +146,7 @@ k8s:
 
 ## Resource Collection
 
-By default, Resoto performs resource collection each hour. To immediately trigger a collect run, use the [`workflow run` command](../../reference/cli/workflows/run.md) in [Resoto Shell](../../concepts/components/shell):
+By default, Resoto performs resource collection each hour. To immediately trigger a collect run, use the [`workflow run` command](../../reference/cli/action-commands/workflows/run.md) in [Resoto Shell](../../concepts/components/shell):
 
 ```bash
 > workflow run collect

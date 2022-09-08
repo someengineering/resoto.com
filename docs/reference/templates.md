@@ -1,6 +1,6 @@
 # Templates
 
-Resoto allows to use templates to define [custom commands](/docs/reference/cli#custom-commands) as well as [search templates](/docs/reference/cli/templates).
+Resoto allows to use templates to define [custom commands](/docs/reference/cli#custom-commands) as well as [search templates](/docs/reference/cli/search-commands/templates).
 
 It uses the well known [mustache](https://mustache.github.io/) templating engine to render templates.
 

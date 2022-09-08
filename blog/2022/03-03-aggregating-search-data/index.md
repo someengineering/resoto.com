@@ -18,7 +18,7 @@ Resoto's search allows for resources to be selected using [filters](/docs/concep
 
 <!--truncate-->
 
-The simplest example of search aggregation in Resoto is the [`count` command](/docs/reference/cli/count), which enables you to count objects or the occurrences of a specific property. Let's say we are interested in the number of compute instances we maintain:
+The simplest example of search aggregation in Resoto is the [`count` command](/docs/reference/cli/search-commands/count), which enables you to count objects or the occurrences of a specific property. Let's say we are interested in the number of compute instances we maintain:
 
 ```bash
 > search is(instance) | count
@@ -28,7 +28,7 @@ The simplest example of search aggregation in Resoto is the [`count` command](/d
 # highlight-end
 ```
 
-Compute instances are of [kind](/docs/concepts/graph/node#kind) `instance` regardless of cloud provider, so `is(instance)` selects both [`aws_ec2_instance`](/docs/reference/data-models/aws#aws_ec2_instance)s _and_ [`gcp_instance`](/docs/reference/data-models/gcp#gcp_instance)s. The [`count` command](/docs/reference/cli/count) then takes the results and returns the number of occurrences.
+Compute instances are of [kind](/docs/concepts/graph/node#kind) `instance` regardless of cloud provider, so `is(instance)` selects both [`aws_ec2_instance`](/docs/reference/data-models/aws#aws_ec2_instance)s _and_ [`gcp_instance`](/docs/reference/data-models/gcp#gcp_instance)s. The [`count` command](/docs/reference/cli/search-commands/count) then takes the results and returns the number of occurrences.
 
 The `count` command also allows specifying a grouping value. The following search would return counts by `instance_status`:
 
@@ -43,7 +43,7 @@ The `count` command also allows specifying a grouping value. The following searc
 # highlight-end
 ```
 
-While [`count`](/docs/reference/cli/count) is often sufficient, the [`aggregate` command](/docs/reference/cli/aggregate) is required for more advanced use cases. For example, we could get CPU core and memory data using [`aggregate`](/docs/reference/cli/aggregate):
+While [`count`](/docs/reference/cli/search-commands/count) is often sufficient, the [`aggregate` command](/docs/reference/cli/search-commands/aggregate) is required for more advanced use cases. For example, we could get CPU core and memory data using [`aggregate`](/docs/reference/cli/search-commands/aggregate):
 
 ```bash
 > search is(instance) | aggregate
@@ -61,7 +61,7 @@ While [`count`](/docs/reference/cli/count) is often sufficient, the [`aggregate`
 
 In this example, we have 3441 cores in total and each instance has a maximum of 16 cores. The same data is also available for provisioned memory: we have almost 13 TB of RAM with no instance having more than 64 GB.
 
-We can further analyze this aggregated data using grouping variables, which we have already seen in an above example of the [`count` command](/docs/reference/cli/count). Let's try aggregating the available memory by instance status:
+We can further analyze this aggregated data using grouping variables, which we have already seen in an above example of the [`count` command](/docs/reference/cli/search-commands/count). Let's try aggregating the available memory by instance status:
 
 ```bash
 > search is(instance) | aggregate

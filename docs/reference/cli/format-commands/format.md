@@ -1,3 +1,7 @@
+---
+slug: /reference/cli/format-commands/format
+---
+
 # `format`
 
 The `format` command creates a string from the JSON input based on the provided format string.
@@ -67,4 +71,4 @@ This command writes the result of `search all` in JSON format to a file named `o
 
 - [`dump`](./dump.md)
 - [`list`](./list.md)
-- [`jq`](./jq.md)
+- [`jq`](../miscellaneous-commands/jq.md)

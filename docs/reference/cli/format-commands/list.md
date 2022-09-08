@@ -89,4 +89,4 @@ The `as` clause is important if the last part of the property path is not a uniq
 
 - [`dump`](./dump.md)
 - [`format`](./format.md)
-- [`jq`](./jq.md)
+- [`jq`](../miscellaneous-commands/jq.md)

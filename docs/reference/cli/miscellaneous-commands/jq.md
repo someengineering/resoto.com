@@ -49,6 +49,6 @@ It is possible to use the `--no-rewrite` option to turn off this rewriting. Reso
 
 ## See Also
 
-- [`dump`](./dump.md)
-- [`format`](./format.md)
-- [`list`](./list.md)
+- [`dump`](../format-commands/dump.md)
+- [`format`](../format-commands/format.md)
+- [`list`](../format-commands/list.md)

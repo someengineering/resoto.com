@@ -2,11 +2,11 @@
 
 The `http` command sends objects in a payload to the defined HTTP(S) endpoint.
 
-The shape and format of the object can be adjusted with commands such as [`list`](./list.md), [`format`](./format.md), [`jq`](./jq.md), etc.
+The shape and format of the object can be adjusted with commands such as [`list`](../format-commands/list.md), [`format`](../format-commands/format.md), [`jq`](../miscellaneous-commands/jq.md), etc.
 
 :::tip
 
-You can use the [`chunk`](./chunk.md) command to send chunks of objects:
+You can use the [`chunk`](../miscellaneous-commands/chunk.md) command to send chunks of objects:
 
 ```bash title="Perform up to 3 requests, where every request will contain up to 10 elements"
 > search is(volume) limit 30 | chunk 10 | http test.foo.org

@@ -54,7 +54,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
    > search is(aws_ec2_volume) and /ancestors.account.reported.name in [eng-jenkins,eng-development] and volume_status = available and age > 30d and last_access > 7d
    ```
 
-5. Now that we've defined the search for unused EBS volumes, simply pipe the result of the search query to the [`clean` command](../../reference/cli/clean.md):
+5. Now that we've defined the search for unused EBS volumes, simply pipe the result of the search query to the [`clean` command](../../reference/cli/action-commands/clean.md):
 
    ```bash
    > search is(aws_ec2_volume) and /ancestors.account.reported.name in [eng-jenkins,eng-development] and volume_status = available and age > 30d and last_access > 7d | clean
@@ -62,7 +62,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
    :::note
 
-   The [`clean` command](../../reference/cli/clean.md) flags a resource for cleanup. Cleanup is performed whenever the `collect_and_cleanup` [workflow](../../concepts/automation/workflow.md) runs. The workflow runs every hour by default, but can also be manually triggered using the `workflow run cleanup` command.
+   The [`clean` command](../../reference/cli/action-commands/clean.md) flags a resource for cleanup. Cleanup is performed whenever the `collect_and_cleanup` [workflow](../../concepts/automation/workflow.md) runs. The workflow runs every hour by default, but can also be manually triggered using the `workflow run cleanup` command.
 
    :::
 

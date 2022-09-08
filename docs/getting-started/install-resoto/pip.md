@@ -117,10 +117,4 @@ $ source ~/resoto/resoto-venv/bin/activate
 $ resh --resotocore-uri https://localhost:8900 --psk "$pre_shared_key"
 ```
 
-## Updating Resoto
-
-When a new version of Resoto is available, simply run `pip install --upgrade`:
-
-```bash
-$ pip install --upgrade resotocore resotoworker resotometrics resotoshell resoto-plugins
-```
+![Resoto Shell](img/resoto-shell.png)

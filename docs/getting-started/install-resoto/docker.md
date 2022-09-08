@@ -95,12 +95,4 @@ The `resh` command starts an interactive shell session with Resoto. To access th
 $ docker compose run --rm resotoshell
 ```
 
-## Updating Resoto
-
-When a new version of Resoto is available, simply edit the container image tag (e.g., <LatestRelease />) specified in the `docker-compose.yml` file to reflect the desired Resoto release.
-
-Then, run the following command from the directory containing the `docker-compose.yml` file:
-
-```bash
-$ docker compose up -d
-```
+![Resoto Shell](img/resoto-shell.png)

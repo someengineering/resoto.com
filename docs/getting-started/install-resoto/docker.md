@@ -65,12 +65,6 @@ $ docker compose up -d
 
 Upon execution of `docker compose up -d`, Docker Compose will start all components and set up the system. This process takes approximately 1-3 minutes, depending on your machine and internet connection.
 
-The following command will wait for Resoto Core's initialization process to complete and display a message when the Resoto API is ready for use:
-
-```bash
-$ docker compose logs --since 15m -f resotocore | grep "Initialization done. Starting API."
-```
-
 :::note
 
 [Docker Compose V2 integrated compose functions in to the Docker platform.](https://docs.docker.com/compose/#compose-v2-and-the-new-docker-compose-command)

@@ -153,3 +153,5 @@ To access the [Resoto Shell](../../concepts/components/shell.md) interface, simp
 ```bash
 $ kubectl exec -it service/resoto-resotocore -- resh
 ```
+
+![Resoto Shell](../img/resoto-shell.png)

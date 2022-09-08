@@ -32,6 +32,6 @@ flatten
 # highlight-end
 ```
 
-## See Also
+## Related Commands
 
 - [`chunk`](./chunk.md)

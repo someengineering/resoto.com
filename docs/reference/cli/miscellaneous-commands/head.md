@@ -34,6 +34,6 @@ head <n>
 # highlight-end
 ```
 
-## See Also
+## Related Commands
 
 - [`tail`](./tail.md)

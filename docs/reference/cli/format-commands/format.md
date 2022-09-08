@@ -63,7 +63,7 @@ This command writes the result of `search all` in JSON format to a file named `o
 > search all | format --json | write out.json
 ```
 
-## See Also
+## Related Commands
 
 - [`dump`](./dump.md)
 - [`list`](./list.md)

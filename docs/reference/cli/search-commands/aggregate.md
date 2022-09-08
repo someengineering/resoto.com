@@ -72,6 +72,6 @@ Each grouping function can have an `as <name>` clause to give the function resul
 # highlight-end
 ```
 
-## See Also
+## Related Commands
 
 - [`search`](./search.md)

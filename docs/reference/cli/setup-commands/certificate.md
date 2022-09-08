@@ -28,6 +28,6 @@ certificate create --common-name <common-name>
 ​Received a file example.com.crt, which is stored to ./example.com.crt.
 ```
 
-## See Also
+## Further Reading
 
-See our [Security](/docs/concepts/security) overview to understand the basic building blocks to secure a Resoto stack.
+- [Security](../../../concepts/security.md)

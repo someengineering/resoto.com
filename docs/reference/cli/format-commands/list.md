@@ -85,7 +85,7 @@ The `as` clause is important if the last part of the property path is not a uniq
 # highlight-end
 ```
 
-## See Also
+## Related Commands
 
 - [`dump`](./dump.md)
 - [`format`](./format.md)

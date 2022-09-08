@@ -47,7 +47,7 @@ It is possible to use the `--no-rewrite` option to turn off this rewriting. Reso
 # highlight-end
 ```
 
-## See Also
+## Related Commands
 
 - [`dump`](../format-commands/dump.md)
 - [`format`](../format-commands/format.md)

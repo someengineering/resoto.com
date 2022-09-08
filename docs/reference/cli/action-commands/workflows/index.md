@@ -9,6 +9,10 @@ The `workflows` command allows for the management of workflows.
 | [`workflows running`](./running.md) | List all currently running workflows |
 | [`workflows show`](./show.md)       | Show the definition of a workflow    |
 
-## See Also
+### Aliases
 
-- [Concept of workflows](/docs/concepts/automation/workflow)
+- `workflow`
+
+## Further Reading
+
+- [Workflow](../../../../concepts/automation/workflow.md)

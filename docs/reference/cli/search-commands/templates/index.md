@@ -42,6 +42,6 @@ is({{kind}})
 kind=aws_ec2_volume, id=vol-1, name=dkl-3, age=2mo2d, cloud=aws, account=eng, region=us-west-2
 ```
 
-## See Also
+## Further Reading
 
-See [Templates](/docs/reference/templates) for more information about templates.
+- [Templates](../../../templates.md)

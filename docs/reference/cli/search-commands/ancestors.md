@@ -45,7 +45,7 @@ ancestors [--with-origin] <edge_type>
 # highlight-end
 ```
 
-## See Also
+## Related Commands
 
 - [`descendants`](./descendants.md)
 - [`predecessors`](./predecessors.md)

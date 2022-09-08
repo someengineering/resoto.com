@@ -31,6 +31,6 @@ is({{kind}})
 # highlight-end
 ```
 
-## See Also
+## Further Reading
 
-See [Templates](/docs/reference/templates) for more information about templates.
+- [Templates](../../../templates.md)

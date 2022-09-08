@@ -20,6 +20,10 @@ kinds [-p <property_path>] <name>
 | --------- | ----------- | --------- | ------------- |
 | `name`    | Kind name   | ❌        | N/A           |
 
+### Aliases
+
+- `kind`
+
 ## Examples
 
 ```bash title="Show all available kinds"

@@ -14,6 +14,10 @@ The `jobs` command allows for the management of jobs.
 | [`jobs show`](./show.md)             | Show the definition of a job                                                               |
 | [`jobs update`](./update.md)         | Update a job                                                                               |
 
-## See Also
+### Aliases
 
-- [Concept of jobs](/docs/concepts/automation/job)
+- `job`
+
+## Further Reading
+
+- [Job](../../../../concepts/automation/job.md)

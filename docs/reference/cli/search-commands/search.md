@@ -52,6 +52,6 @@ search [--with-edges] [--explain] <query>
 > search is(aws_account) and age>2w sort users desc limit 3
 ```
 
-## See Also
+## Related Commands
 
 - [`aggregate`](./aggregate.md)

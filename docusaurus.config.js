@@ -62,7 +62,8 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/someengineering/resoto.com/edit/main',
+          editUrl: ({ versionDocsDirPath, docPath }) =>
+            `https://github.com/someengineering/resoto.com/edit/main/${versionDocsDirPath}/${docPath}`,
           showLastUpdateAuthor: false,
           showLastUpdateTime: true,
           remarkPlugins: [a11yEmoji, oembed, mdxMermaid],

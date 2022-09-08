@@ -72,7 +72,7 @@ The job functionality can be used to automate actions. Here is a list of possibl
 
   If additional data besides metrics are relevant to you, create a job that gathers and publishes the data.
 
-  You would use [search aggregation](../search/aggregation.md) and [`http`](../../reference/cli/http.md) to implement this functionality.
+  You would use [search aggregation](../search/aggregation.md) and [`http`](../../reference/cli/action-commands/http.md) to implement this functionality.
 
 - **Generate up-to-date diagrams.**
 

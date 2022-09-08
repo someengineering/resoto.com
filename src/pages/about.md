@@ -6,7 +6,7 @@ title: About
 
 **Resoto** indexes resources, captures dependencies, and maps out your infrastructure in an understandable [graph](/docs/concepts/graph). The graph contains metrics for each [resource](/docs/reference/data-models).
 
-Developers and SREs can search the graph with a [search syntax](/docs/reference/cli/search), and create alerting and cleanup [workflows](/docs/concepts/automation/workflow).
+Developers and SREs can search the graph with a [search syntax](/docs/concepts/search), and create alerting and cleanup [workflows](/docs/concepts/automation/workflow).
 
 Metrics can be aggregated and exported to a time-series database such as [Prometheus](https://prometheus.io).
 

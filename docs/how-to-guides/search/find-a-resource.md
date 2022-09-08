@@ -16,7 +16,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
 ## Directions
 
-1. Execute the [`search` command](../../reference/cli/search.md) in [Resoto Shell](../../concepts/components/shell.md) with your search term in double quotes:
+1. Execute the [`search` command](../../reference/cli/search-commands/search.md) in [Resoto Shell](../../concepts/components/shell.md) with your search term in double quotes:
 
    ```bash
    > search "poweruser"
@@ -36,7 +36,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
    :::
 
-2. To view resource details, use the [`dump` command](../../reference/cli/dump.md):
+2. To view resource details, use the [`dump` command](../../reference/cli/format-commands/dump.md):
 
    ```bash
    > search "poweruser" | dump

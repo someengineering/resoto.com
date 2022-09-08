@@ -18,7 +18,7 @@ We created Resoto to allow the user to effortlessly [search resources](/docs/con
 
 Graph data is not relational, so SQL was not a good fit. And existing graph query languages like [Cypher](https://neo4j.com/developer/cypher), [Gremlin](https://tinkerpop.apache.org/gremlin.html), or [GSQL](https://tigergraph.com/gsql) have steep learning curves and are unnecessarily complex for this use case.
 
-And so, we developed our own search syntax tailored specifically to Resoto. The [Resoto Shell](/docs/concepts/components/shell) allows you to interact with your Resoto installation. In particular, it provides a [`search`](/docs/reference/cli/search) command.
+And so, we developed our own search syntax tailored specifically to Resoto. The [Resoto Shell](/docs/concepts/components/shell) allows you to interact with your Resoto installation. In particular, it provides a [`search`](/docs/reference/cli/search-commands/search) command.
 
 Let's try searching for all available EC2 instances. `is()` will match a specific or abstract type in a polymorphic fashion, checking all types and subtypes of the provided type. The `instance_cores` filter will limit results to only those instances with more than two cores. The query will automagically search your entire infrastructure, regardless of account or region!
 

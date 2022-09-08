@@ -2,75 +2,98 @@
 
 The [Resoto Shell](/concepts/components/shell.md) CLI supports various commands that allow you to access the graph database.
 
+## Keyboard Shortcuts
+
+Resoto Shell supports most common Unix shell keyboard shortcuts.
+
+| Shortcut                                        | Description                                                       |
+| ----------------------------------------------- | ----------------------------------------------------------------- |
+| <kbd>Ctrl</kbd> + <kbd>D</kbd> on an empty line | Exit the shell (same as `quit`)                                   |
+| <kbd>Ctrl</kbd> + <kbd>L</kbd>                  | Clear the entire terminal but not the current line (redraw)       |
+| <kbd>Ctrl</kbd> + <kbd>C</kbd>                  | Cancel input for the current line                                 |
+| <kbd>Ctrl</kbd> + <kbd>U</kbd>                  | Clear from cursor to beginning of line                            |
+| <kbd>Ctrl</kbd> + <kbd>K</kbd>                  | Clear from cursor to end of line                                  |
+| <kbd>Ctrl</kbd> + <kbd>H</kbd>                  | Clear one character to the left of the cursor (same as BACKSPACE) |
+| <kbd>Ctrl</kbd> + <kbd>D</kbd>                  | Clear one character to the right of the cursor                    |
+| <kbd>Esc</kbd> + <kbd>Backspace</kbd>           | Clear one word to the left of the cursor                          |
+| <kbd>Esc</kbd> + <kbd>D</kbd>                   | Clear one word to the right of the cursor                         |
+| <kbd>Alt</kbd> + <kbd>←</kbd>                   | Jump to the beginning of the previous word                        |
+| <kbd>Alt</kbd> + <kbd>→</kbd>                   | Jump to the beginning of the next word                            |
+| <kbd>Ctrl</kbd> + <kbd>A</kbd>                  | Jump to start of line                                             |
+| <kbd>Ctrl</kbd> + <kbd>E</kbd>                  | Jump to end of line                                               |
+| <kbd>Ctrl</kbd> + <kbd>R</kbd>                  | Reverse search history                                            |
+| <kbd>↑</kbd>                                    | Step backwards in history                                         |
+| <kbd>↓</kbd>                                    | Step forward in history                                           |
+
+## Commands
+
 :::tip
 
 You can pipe commands using `|` and chain multiple commands using `;`.
 
 :::
 
-## Keyboard Shortcuts
+### Search Commands
 
-Resoto Shell supports most common Unix shell keyboard shortcuts.
+| Command                                             | Description                                        |
+| --------------------------------------------------- | -------------------------------------------------- |
+| [`aggregate`](./search-commands/aggregate.md)       | Aggregate this query by the provided specification |
+| [`ancestors`](./search-commands/ancestors.md)       | Select all ancestors of this node in the graph     |
+| [`count`](./search-commands/count.md)               | Count incoming elements or sum defined property    |
+| [`descendants`](./search-commands/descendants.md)   | Select all descendants of this node in the graph   |
+| [`kinds`](./search-commands/kinds.md)               | Retrieves information about the graph data kinds   |
+| [`predecessors`](./search-commands/predecessors.md) | Select all predecessors of this node in the graph  |
+| [`search`](./search-commands/search.md)             | Search the graph                                   |
+| [`successors`](./search-commands/successors.md)     | Select all successor of this node in the graph     |
+| [`templates`](./search-commands/templates/index.md) | Access the query template library                  |
 
-| Shortcut                | Description                                                       |
-| ----------------------- | ----------------------------------------------------------------- |
-| CTRL+D on an empty line | Exit the shell (same as `quit`)                                   |
-| CTRL+L                  | Clear the entire terminal but not the current line (redraw)       |
-| CTRL+C                  | Cancel input for the current line                                 |
-| CTRL+U                  | Clear from cursor to beginning of line                            |
-| CTRL+K                  | Clear from cursor to end of line                                  |
-| CTRL+H                  | Clear one character to the left of the cursor (same as BACKSPACE) |
-| CTRL+D                  | Clear one character to the right of the cursor                    |
-| ESC+BACKSPACE           | Clear one word to the left of the cursor                          |
-| ESC+D                   | Clear one word to the right of the cursor                         |
-| ALT+LEFT/RIGHT          | Jump to the beginning of the previous/next word                   |
-| CTRL+A                  | Jump to start of line                                             |
-| CTRL+E                  | Jump to end of line                                               |
-| CTRL+R                  | Reverse search history                                            |
-| UP                      | Step backwards in history                                         |
-| DOWN                    | Step forward in history                                           |
+### Format Commands
 
-## Commands
+| Command                                 | Description                                                  |
+| --------------------------------------- | ------------------------------------------------------------ |
+| [`dump`](./format-commands/dump.md)     | Dump all properties of incoming objects                      |
+| [`format`](./format-commands/format.md) | Transform incoming objects as string with a defined format   |
+| [`list`](./format-commands/list.md)     | Transform incoming objects as string with defined properties |
 
-| Command                             | Description                                                                        |
-| ----------------------------------- | ---------------------------------------------------------------------------------- |
-| [`aggregate`](./aggregate.md)       | Aggregate this query by the provided specification                                 |
-| [`ancestors`](./ancestors.md)       | Select all ancestors of this node in the graph                                     |
-| [`certificate`](./certificate.md)   | Create TLS certificates                                                            |
-| [`chunk`](./chunk.md)               | Chunk incoming elements in batches                                                 |
-| [`clean`](./clean.md)               | Mark all incoming database objects for cleaning                                    |
-| [`configs`](./configs/index.md)     | Manage configuration settings.                                                     |
-| [`count`](./count.md)               | Count incoming elements or sum defined property                                    |
-| [`descendants`](./descendants.md)   | Select all descendants of this node in the graph                                   |
-| [`dump`](./dump.md)                 | Dump all properties of incoming objects                                            |
-| [`echo`](./echo.md)                 | Send the provided message to downstream                                            |
-| [`env`](./env.md)                   | Retrieve the environment and pass it to the output stream                          |
-| [`flatten`](./flatten.md)           | Take incoming batches of elements and flattens them to a stream of single elements |
-| [`format`](./format.md)             | Transform incoming objects as string with a defined format                         |
-| [`head`](./head.md)                 | Return `n` first elements of the stream                                            |
-| [`help`](./help.md)                 | Shows available commands, as well as help for any specific command                 |
-| [`http`](./http.md)                 | Perform HTTP request with incoming data                                            |
-| [`jobs`](./jobs/index.md)           | Manage all jobs                                                                    |
-| [`jq`](./jq.md)                     | Filter and process JSON                                                            |
-| [`json`](./json.md)                 | Parse JSON and pass parsed objects to the output stream                            |
-| [`kind`](./kind.md)                 | Retrieves information about the graph data kinds                                   |
-| [`list`](./list.md)                 | Transform incoming objects as string with defined properties                       |
-| [`predecessors`](./predecessors.md) | Select all predecessors of this node in the graph                                  |
-| [`protect`](./protect.md)           | Mark all incoming database objects as protected                                    |
-| [`search`](./search.md)             | Search the graph                                                                   |
-| [`set_desired`](./set_desired.md)   | Allows to set arbitrary properties as desired for all incoming database objects    |
-| [`set_metadata`](./set_metadata.md) | Allows to set arbitrary properties as metadata for all incoming database objects   |
-| [`sleep`](./sleep.md)               | Suspend execution for an interval of time                                          |
-| [`successors`](./successors.md)     | Select all successor of this node in the graph                                     |
-| [`system`](./system/index.md)       | Access and manage system wide properties                                           |
-| [`tag`](./tag/index.md)             | Update a tag with provided value or delete a tag                                   |
-| [`tail`](./tail.md)                 | Return `n` last elements of the stream                                             |
-| [`templates`](./templates/index.md) | Access the query template library                                                  |
-| [`uniq`](./uniq.md)                 | Remove all duplicated objects from the stream                                      |
-| [`workflows`](./workflows/index.md) | Manage all workflows                                                               |
-| [`write`](./write.md)               | Writes the incoming stream of data to a file in the defined format                 |
+### Action Commands
 
-## Custom Commands
+| Command                                             | Description                                                                      |
+| --------------------------------------------------- | -------------------------------------------------------------------------------- |
+| [`clean`](./action-commands/clean.md)               | Mark all incoming database objects for cleaning                                  |
+| [`http`](./action-commands/http.md)                 | Perform HTTP request with incoming data                                          |
+| [`jobs`](./action-commands/jobs/index.md)           | Manage all jobs                                                                  |
+| [`protect`](./action-commands/protect.md)           | Mark all incoming database objects as protected                                  |
+| [`set_desired`](./action-commands/set_desired.md)   | Allows to set arbitrary properties as desired for all incoming database objects  |
+| [`set_metadata`](./action-commands/set_metadata.md) | Allows to set arbitrary properties as metadata for all incoming database objects |
+| [`tag`](./action-commands/tag/index.md)             | Update a tag with provided value or delete a tag                                 |
+| [`workflows`](./action-commands/workflows/index.md) | Manage all workflows                                                             |
+
+### Setup Commands
+
+| Command                                          | Description                              |
+| ------------------------------------------------ | ---------------------------------------- |
+| [`certificate`](./setup-commands/certificate.md) | Create TLS certificates                  |
+| [`configs`](./setup-commands/configs/index.md)   | Manage configuration settings.           |
+| [`system`](./setup-commands/system/index.md)     | Access and manage system wide properties |
+
+### Miscellaneous Commands
+
+| Command                                          | Description                                                                        |
+| ------------------------------------------------ | ---------------------------------------------------------------------------------- |
+| [`chunk`](./miscellaneous-commands/chunk.md)     | Chunk incoming elements in batches                                                 |
+| [`echo`](./miscellaneous-commands/echo.md)       | Send the provided message to downstream                                            |
+| [`env`](./miscellaneous-commands/env.md)         | Retrieve the environment and pass it to the output stream                          |
+| [`flatten`](./miscellaneous-commands/flatten.md) | Take incoming batches of elements and flattens them to a stream of single elements |
+| [`head`](./miscellaneous-commands/head.md)       | Return `n` first elements of the stream                                            |
+| [`help`](./miscellaneous-commands/help.md)       | Shows available commands, as well as help for any specific command                 |
+| [`jq`](./miscellaneous-commands/jq.md)           | Filter and process JSON                                                            |
+| [`json`](./miscellaneous-commands/json.md)       | Parse JSON and pass parsed objects to the output stream                            |
+| [`sleep`](./miscellaneous-commands/sleep.md)     | Suspend execution for an interval of time                                          |
+| [`tail`](./miscellaneous-commands/tail.md)       | Return `n` last elements of the stream                                             |
+| [`uniq`](./miscellaneous-commands/uniq.md)       | Remove all duplicated objects from the stream                                      |
+| [`write`](./miscellaneous-commands/write.md)     | Writes the incoming stream of data to a file in the defined format                 |
+
+### Custom Commands
 
 It is possible to create your own commands by combining existing commands with your own logic. In resoto shell type `config edit resoto.core.commands`. This will open a file and show all available custom commands. Resoto ships with an example command called `discord`, that allows to send the result of a search to [Discord](https://discord.com) as notification.
 

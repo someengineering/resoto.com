@@ -1,15 +1,12 @@
 # Templates
 
-Resoto allows to use templates to define [custom commands](/docs/reference/cli#custom-commands) as well as [search templates](/docs/reference/cli/templates).
+[{{ mustache }}](https://mustache.github.io) templates can be used to define [custom commands](./cli/index.md#custom-commands) and [search templates](./cli/search-commands/templates/index.md).
 
-It uses the well known [mustache](https://mustache.github.io/) templating engine to render templates.
-
-The `templates` command also has the ability to test templates. We use this functionality here to illustrate how to use templates.
+The [`templates test` command](./cli/search-commands/templates/test.md) offers a way to test templates. We use this functionality below to illustrate template usage.
 
 ## Template Parameter
 
-A template parameter has a name and is surrounded by curly braces `{{name}}`.  
-The parameter with the curly braces gets replaced by the value of the parameter when the template is rendered.
+A template parameter has a name and is surrounded by curly braces `{{name}}`. The parameter with the curly braces gets replaced by the value of the parameter when the template is rendered.
 
 ```bash title="A template parameter exmaple"
 # template definition: Hello {{name}} - I feel {{mood}}.

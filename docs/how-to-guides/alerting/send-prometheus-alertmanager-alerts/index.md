@@ -58,7 +58,7 @@ You will also need a running installation of [Alertmanager](https://prometheus.i
    | `duration`         | Alert duration             | `3h`                    |
    | `alertmanager_url` | Alertmanager URL           | `http://localhost:9093` |
 
-   The [`help` command](../../../reference/cli/help.md) can also be used to access this information in the [command-line interface](../../../reference/cli/index.md):
+   The [`help` command](../../../reference/cli/miscellaneous-commands/help.md) can also be used to access this information in the [command-line interface](../../../reference/cli/index.md):
 
    ```bash
    > help alertmanager

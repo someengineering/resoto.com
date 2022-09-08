@@ -18,7 +18,7 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
 ## Directions
 
-1. Execute the [`search` command](../../../reference/cli/search.md) in [Resoto Shell](../../../concepts/components/shell.md) to get the resource for which we want to see the blast radius:
+1. Execute the [`search` command](../../../reference/cli/search-commands/search.md) in [Resoto Shell](../../../concepts/components/shell.md) to get the resource for which we want to see the blast radius:
 
    ```bash
    > search is(aws_ec2_instance) and name=teamcity-production

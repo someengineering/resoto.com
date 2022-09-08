@@ -8,7 +8,7 @@ Resoto is able to create, update, and delete tags for resources that support tag
 
 Tags are key-value pairs that allow for the addition of arbitrary metadata to a resource. In clouds where tags are a list of strings, Resoto encodes given values into the string using double dashes.
 
-To tag resources, simply pipe the result of a [search](../search/index.md) into [the `tag` command](../../reference/cli/tag/index.md).
+To tag resources, simply pipe the result of a [search](../search/index.md) into [the `tag` command](../../reference/cli/action-commands/tag/index.md).
 
 ## Concept
 

@@ -30,7 +30,7 @@ The examples presented in this blog post are available in the [`someengineering/
 
 ## Full-Text Search
 
-One of the simplest ways to find resources in your cluster is using Resoto's full-text search. Resoto indexes the properties of all services in every namespace in each cluster. To perform a full-text search, simply provide your search term to the [`search` command](/docs/reference/cli/search) enclosed in double quotes:
+One of the simplest ways to find resources in your cluster is using Resoto's full-text search. Resoto indexes the properties of all services in every namespace in each cluster. To perform a full-text search, simply provide your search term to the [`search` command](/docs/reference/cli/search-commands/search) enclosed in double quotes:
 
 ```bash
 > search "10.245.11.204"
@@ -38,7 +38,7 @@ One of the simplest ways to find resources in your cluster is using Resoto's ful
 ​kind=kubernetes_service, id=377f0, name=test-service, age=6d23h, cloud=k8s, account=dev, region=test
 ```
 
-The searches for IPv4 address `10.245.11.204` returned a single resource of kind `kubernetes_service`. To see _all_ properties of this service, pipe the result of the search to the [`dump` command](/docs/reference/cli/dump):
+The searches for IPv4 address `10.245.11.204` returned a single resource of kind `kubernetes_service`. To see _all_ properties of this service, pipe the result of the search to the [`dump` command](/docs/reference/cli/format-commands/dump):
 
 ```bash
 > search "10.245.11.204" | dump
@@ -193,7 +193,7 @@ The red nodes in the lower right corner of the above graph represent the three p
 
 ## Counting Resources
 
-Resoto can count resources or properties with the [`count` command](/docs/reference/cli/count).
+Resoto can count resources or properties with the [`count` command](/docs/reference/cli/search-commands/count).
 
 The following counts the number of pods in all clusters:
 
@@ -245,7 +245,7 @@ The same approach can be used for counting the number of pods in each deployment
 
 ## Aggregation
 
-[`count`](/docs/reference/cli/count) is actually an [aggregation](/docs/concepts/search/aggregation). Aggregations apply functions like `min`, `max`, `avg`, and `sum` on the a resource's property values.
+[`count`](/docs/reference/cli/search-commands/count) is actually an [aggregation](/docs/concepts/search/aggregation). Aggregations apply functions like `min`, `max`, `avg`, and `sum` on the a resource's property values.
 
 Here, we combine some of the above searches to count the number of pods in each node, in addition to getting the amount of memory and CPU cores available on each node:
 
@@ -306,7 +306,7 @@ Now that we've defined the search criteria, all we need to do is pipe the result
 
 ![Discord](./img/discord_notification.png)
 
-However, the above command only executes a single time. We would like for Resoto to constantly monitor for pods that are restarting too often and send a notification whenever such pods are found. To do so, we can create a job using the [`job` command](/docs/reference/cli/jobs):
+However, the above command only executes a single time. We would like for Resoto to constantly monitor for pods that are restarting too often and send a notification whenever such pods are found. To do so, we can create a job using the [`job` command](/docs/reference/cli/action-commands/jobs):
 
 ```bash
 > jobs add --id pod_restarted_too_often --wait-for-event post_collect 'search is(kubernetes_pod) and pod_status.container_statuses[*].restart_count>0 | discord title="This pod is restarted too often, PTAL!"'

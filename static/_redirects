@@ -127,16 +127,21 @@ https://news.resoto.com/*                                         https://resoto
 
 /docs/reference/cli/aggregate                                     /docs/reference/cli/search-commands/aggregate
 /docs/reference/cli/ancestor                                      /docs/reference/cli/search-commands/ancestors
+/docs/reference/cli/search-commands/ancestor                      /docs/reference/cli/search-commands/ancestors
 /docs/reference/cli/ancestors                                     /docs/reference/cli/search-commands/ancestors
 /docs/reference/cli/count                                         /docs/reference/cli/search-commands/count
 /docs/reference/cli/descendant                                    /docs/reference/cli/search-commands/descendants
+/docs/reference/cli/search-commands/descendant                    /docs/reference/cli/search-commands/descendants
 /docs/reference/cli/descendants                                   /docs/reference/cli/search-commands/descendants
 /docs/reference/cli/kind                                          /docs/reference/cli/search-commands/kinds
+/docs/reference/cli/search-commands/kind                          /docs/reference/cli/search-commands/kinds
 /docs/reference/cli/kinds                                         /docs/reference/cli/search-commands/kinds
 /docs/reference/cli/predecessor                                   /docs/reference/cli/search-commands/predecessors
+/docs/reference/cli/search-commands/predecessor                   /docs/reference/cli/search-commands/predecessors
 /docs/reference/cli/predecessors                                  /docs/reference/cli/search-commands/predecessors
 /docs/reference/cli/search                                        /docs/reference/cli/search-commands/search
 /docs/reference/cli/successor                                     /docs/reference/cli/search-commands/successors
+/docs/reference/cli/search-commands/successor                     /docs/reference/cli/search-commands/successors
 /docs/reference/cli/successors                                    /docs/reference/cli/search-commands/successors
 /docs/reference/cli/template/*                                    /docs/reference/cli/search-commands/templates/:splat
 /docs/reference/cli/search-commands/template/*                    /docs/reference/cli/search-commands/templates/:splat

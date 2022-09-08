@@ -1,3 +1,4 @@
+import { useDocsVersion } from '@docusaurus/theme-common/internal';
 import { getLatestRelease } from '@site/src/utils/githubHelper';
 import OriginalCodeBlock from '@theme-original/CodeBlock';
 import type CodeBlockType from '@theme/CodeBlock';
@@ -7,18 +8,26 @@ type Props = ComponentProps<typeof CodeBlockType>;
 
 export default function CodeBlock(props: Props): JSX.Element {
   const [latestRelease, setLatestRelease] = useState(null);
+  const versionMetadata = useDocsVersion();
 
   useEffect(() => {
-    const getGithubData = async () => {
-      setLatestRelease(await getLatestRelease('someengineering', 'resoto'));
-    };
+    if (versionMetadata.version === 'current') {
+      setLatestRelease(null);
+    } else {
+      const getGithubData = async () => {
+        setLatestRelease(await getLatestRelease('someengineering', 'resoto'));
+      };
 
-    getGithubData();
-  }, []);
+      getGithubData();
+    }
+  }, [versionMetadata]);
 
   return (
     <OriginalCodeBlock {...props}>
-      {props.children.toString().replace(/{{latestRelease}}/g, latestRelease)}
+      {props.children
+        .toString()
+        .replace(/{{imageTag}}/g, latestRelease ?? 'edge')
+        .replace(/{{repoBranch}}/g, latestRelease ?? 'main')}
     </OriginalCodeBlock>
   );
 }

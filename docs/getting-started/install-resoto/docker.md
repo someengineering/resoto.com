@@ -45,8 +45,8 @@ To install Resoto using [Docker Compose](https://docs.docker.com/compose), first
 ```bash
 $ mkdir -p resoto/dockerV2
 $ cd resoto
-$ curl -o docker-compose.yaml https://raw.githubusercontent.com/someengineering/resoto/{{latestRelease}}/docker-compose.yaml
-$ curl -o dockerV2/prometheus.yml https://raw.githubusercontent.com/someengineering/resoto/{{latestRelease}}/dockerV2/prometheus.yml
+$ curl -o docker-compose.yaml https://raw.githubusercontent.com/someengineering/resoto/{{repoBranch}}/docker-compose.yaml
+$ curl -o dockerV2/prometheus.yml https://raw.githubusercontent.com/someengineering/resoto/{{repoBranch}}/dockerV2/prometheus.yml
 $ docker compose up -d
 ```
 
@@ -56,7 +56,7 @@ $ docker compose up -d
 ```bash
 $ git clone https://github.com/someengineering/resoto.git
 $ cd resoto
-$ git checkout tags/{{latestRelease}}
+$ git checkout tags/{{repoBranch}}
 $ docker compose up -d
 ```
 

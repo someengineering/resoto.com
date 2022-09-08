@@ -5,6 +5,8 @@ const a11yEmoji = require('@fec/remark-a11y-emoji');
 const oembed = require('remark-plugin-oembed');
 const mdxMermaid = require('mdx-mermaid');
 
+const versions = require('./versions.json');
+
 const isProd =
   process.env.NODE_ENV !== 'development' &&
   !!process.env.NETLIFY &&
@@ -64,6 +66,18 @@ const config = {
           showLastUpdateAuthor: false,
           showLastUpdateTime: true,
           remarkPlugins: [a11yEmoji, oembed, mdxMermaid],
+          onlyIncludeVersions: (() =>
+            isProd ? undefined : ['current', ...versions.slice(0, 2)])(),
+          versions: {
+            current: {
+              label: 'edge 🚧',
+              path: '/edge',
+              banner: 'unreleased',
+            },
+            '2.X': {
+              label: '2.4.1',
+            },
+          },
         },
         blog: {
           blogTitle: 'Blog',
@@ -194,6 +208,11 @@ const config = {
             position: 'left',
             className: 'navbar-icon-link navbar-linkedin-link',
             'aria-label': 'LinkedIn',
+          },
+          {
+            type: 'docsVersionDropdown',
+            position: 'right',
+            dropdownActiveClassDisabled: true,
           },
         ],
       },

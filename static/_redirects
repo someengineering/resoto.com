@@ -169,6 +169,8 @@ https://news.resoto.com/*                                         https://resoto
 
 /reference/*                                                      /docs/reference/:splat
 
+/news/:year/:month/:date/v*                                       /news/:year/:month/:date/:splat
+
 /news/2022/03/24/community-hour-event                             /news/2022/03/24/march-april-community-hour-event
 /news/2022/05/03/community-hour-event                             /news/2022/05/03/may-community-hour-event
 /news/2022/06/01/community-hour-event                             /news/2022/06/01/june-community-hour-event

@@ -1,7 +1,3 @@
----
-slug: /reference/cli/search-commands/search
----
-
 # `search`
 
 The `search` command allows you to search the graph using [filters](../../../concepts/search/filters.md), [traversals](../../../concepts/search/traversals.md), and [functions](../../../concepts/search/aggregation.md).

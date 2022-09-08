@@ -1,7 +1,3 @@
----
-slug: /reference/cli/format-commands/format
----
-
 # `format`
 
 The `format` command creates a string from the JSON input based on the provided format string.

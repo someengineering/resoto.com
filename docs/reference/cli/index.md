@@ -6,24 +6,24 @@ The [Resoto Shell](/concepts/components/shell.md) CLI supports various commands 
 
 Resoto Shell supports most common Unix shell keyboard shortcuts.
 
-| Shortcut                                        | Description                                                       |
-| ----------------------------------------------- | ----------------------------------------------------------------- |
-| <kbd>Ctrl</kbd> + <kbd>D</kbd> on an empty line | Exit the shell (same as `quit`)                                   |
-| <kbd>Ctrl</kbd> + <kbd>L</kbd>                  | Clear the entire terminal but not the current line (redraw)       |
-| <kbd>Ctrl</kbd> + <kbd>C</kbd>                  | Cancel input for the current line                                 |
-| <kbd>Ctrl</kbd> + <kbd>U</kbd>                  | Clear from cursor to beginning of line                            |
-| <kbd>Ctrl</kbd> + <kbd>K</kbd>                  | Clear from cursor to end of line                                  |
-| <kbd>Ctrl</kbd> + <kbd>H</kbd>                  | Clear one character to the left of the cursor (same as BACKSPACE) |
-| <kbd>Ctrl</kbd> + <kbd>D</kbd>                  | Clear one character to the right of the cursor                    |
-| <kbd>Esc</kbd> + <kbd>Backspace</kbd>           | Clear one word to the left of the cursor                          |
-| <kbd>Esc</kbd> + <kbd>D</kbd>                   | Clear one word to the right of the cursor                         |
-| <kbd>Alt</kbd> + <kbd>←</kbd>                   | Jump to the beginning of the previous word                        |
-| <kbd>Alt</kbd> + <kbd>→</kbd>                   | Jump to the beginning of the next word                            |
-| <kbd>Ctrl</kbd> + <kbd>A</kbd>                  | Jump to start of line                                             |
-| <kbd>Ctrl</kbd> + <kbd>E</kbd>                  | Jump to end of line                                               |
-| <kbd>Ctrl</kbd> + <kbd>R</kbd>                  | Reverse search history                                            |
-| <kbd>↑</kbd>                                    | Step backwards in history                                         |
-| <kbd>↓</kbd>                                    | Step forward in history                                           |
+| Shortcut                                        | Description                                                                  |
+| ----------------------------------------------- | ---------------------------------------------------------------------------- |
+| <kbd>Ctrl</kbd> + <kbd>D</kbd> on an empty line | Exit the shell (same as `quit`)                                              |
+| <kbd>Ctrl</kbd> + <kbd>L</kbd>                  | Clear the entire terminal but not the current line (redraw)                  |
+| <kbd>Ctrl</kbd> + <kbd>C</kbd>                  | Cancel input for the current line                                            |
+| <kbd>Ctrl</kbd> + <kbd>U</kbd>                  | Clear from cursor to beginning of line                                       |
+| <kbd>Ctrl</kbd> + <kbd>K</kbd>                  | Clear from cursor to end of line                                             |
+| <kbd>Ctrl</kbd> + <kbd>H</kbd>                  | Clear one character to the left of the cursor (same as <kbd>Backspace</kbd>) |
+| <kbd>Ctrl</kbd> + <kbd>D</kbd>                  | Clear one character to the right of the cursor                               |
+| <kbd>Esc</kbd> + <kbd>Backspace</kbd>           | Clear one word to the left of the cursor                                     |
+| <kbd>Esc</kbd> + <kbd>D</kbd>                   | Clear one word to the right of the cursor                                    |
+| <kbd>Alt</kbd> + <kbd>←</kbd>                   | Jump to the beginning of the previous word                                   |
+| <kbd>Alt</kbd> + <kbd>→</kbd>                   | Jump to the beginning of the next word                                       |
+| <kbd>Ctrl</kbd> + <kbd>A</kbd>                  | Jump to start of line                                                        |
+| <kbd>Ctrl</kbd> + <kbd>E</kbd>                  | Jump to end of line                                                          |
+| <kbd>Ctrl</kbd> + <kbd>R</kbd>                  | Reverse search history                                                       |
+| <kbd>↑</kbd>                                    | Step backwards in history                                                    |
+| <kbd>↓</kbd>                                    | Step forward in history                                                      |
 
 ## Commands
 

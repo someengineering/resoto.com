@@ -95,4 +95,4 @@ The `resh` command starts an interactive shell session with Resoto. To access th
 $ docker compose run --rm resotoshell
 ```
 
-![Resoto Shell](img/resoto-shell.png)
+![Resoto Shell](../img/resoto-shell.png)

@@ -117,4 +117,4 @@ $ source ~/resoto/resoto-venv/bin/activate
 $ resh --resotocore-uri https://localhost:8900 --psk "$pre_shared_key"
 ```
 
-![Resoto Shell](img/resoto-shell.png)
+![Resoto Shell](../img/resoto-shell.png)

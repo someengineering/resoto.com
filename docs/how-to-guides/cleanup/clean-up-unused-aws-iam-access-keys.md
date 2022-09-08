@@ -88,7 +88,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
    :::
 
-5. Finally, let's automate flagging unused access keys for cleanup by creating a [job](/docs/concepts/automation/job):
+5. Finally, let's automate flagging unused access keys for cleanup by creating a [job](../../concepts/automation/job.md):
 
    ```bash
    > jobs add --id clean_outdated_access_keys --wait-for-event post_collect 'search is(access_key) and last_access > 90days and /ancestors.user.reported.name not in [jenkins, ci] | clean'

@@ -66,7 +66,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
    :::
 
-6. Finally, let's automate flagging unused EBS volumes for cleanup by creating a [job](/docs/concepts/automation/job):
+6. Finally, let's automate flagging unused EBS volumes for cleanup by creating a [job](../../concepts/automation/job.md):
 
    ```bash
    > jobs add --id cleanup-unused-volumes --wait-for-event cleanup_plan 'search is(aws_ec2_volume) and /ancestors.account.reported.name in [eng-jenkins,eng-development] and volume_status = available and age > 30d and last_access > 7d | clean'

@@ -1,6 +1,6 @@
 # `clean`
 
-The `clean` command marks resources for cleaning by setting `desired.clean=true` to the resources. Resources marked as such will be removed during the next cleanup step of the `collect_and_cleanup` workflow. See [concept of workflows](/docs/concepts/automation/workflow) for reference.
+The `clean` command marks resources for cleaning by setting `desired.clean=true` to the resources. Resources marked as such will be removed during the next cleanup step of the `collect_and_cleanup` workflow. See [concept of workflows](../../../concepts/automation/workflow.md) for reference.
 
 Note: it is also possible to mark resources as protected, so they will never be cleaned up. See [protect](./protect.md) for more information.
 

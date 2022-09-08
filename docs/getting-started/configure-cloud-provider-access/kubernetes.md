@@ -4,7 +4,7 @@ sidebar_label: Kubernetes
 
 # Configure Kubernetes Access
 
-The [Kubernetes](../../reference/data-models/kubernetes.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](/docs/reference/cli/setup-commands/configs) in [Resoto Shell](/docs/concepts/components/shell):
+The [Kubernetes](../../reference/data-models/kubernetes.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs/index.md) in [Resoto Shell](../../concepts/components/shell.md):
 
 ```bash
 > config edit resoto.worker

@@ -100,7 +100,7 @@ It is possible to create your own commands by combining existing commands with y
 A custom command has the following properties:
 
 - `name`: The name of the custom command
-- `template`: a command template that will be executed when the command is called. A template can have template parameters. See [templates](/docs/reference/templates) to learn how to define them.
+- `template`: a command template that will be executed when the command is called. A template can have template parameters. See [templates](../templates.md) to learn how to define them.
 - `info`: a short description of the command. This will be displayed to users when they call `help my-custom-command`
 - `parameters`: a list of placeholder parameters. All parameters need to be defined in order to use the command. If the parameter defines a default value, it is considered optional. If there is no default value, the parameter is required and needs to be defined by the user during execution time.
 

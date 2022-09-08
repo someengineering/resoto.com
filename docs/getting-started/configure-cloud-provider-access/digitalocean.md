@@ -4,7 +4,7 @@ sidebar_label: DigitalOcean
 
 # Configure DigitalOcean Access
 
-The [DigitalOcean](../../reference/data-models/digitalocean.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](/docs/reference/cli/setup-commands/configs) in [Resoto Shell](/docs/concepts/components/shell):
+The [DigitalOcean](../../reference/data-models/digitalocean.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs/index.md) in [Resoto Shell](../../concepts/components/shell.md):
 
 ```bash
 > config edit resoto.worker

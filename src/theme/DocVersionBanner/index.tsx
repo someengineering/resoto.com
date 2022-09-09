@@ -74,12 +74,12 @@ function LatestVersionSuggestionLabel({
   versionLabel: string;
 }) {
   return (
-    <Link to={to} onClick={onClick}>
-      <strong>
+    <strong>
+      <Link to={to} onClick={onClick}>
         Click here to view documentation for the latest stable release (
         {<code>{versionLabel}</code>}).
-      </strong>
-    </Link>
+      </Link>
+    </strong>
   );
 }
 

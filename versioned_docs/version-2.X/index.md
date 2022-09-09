@@ -17,9 +17,9 @@ At Resoto's core is a graph-based data model, which is better suited to capture 
 
 To help you find the information you need, the Resoto documentation is organized as follows:
 
-- **[Getting Started](./getting-started/index.md)** walks you through how to install and use Resoto, step by step.** _Start here if you're new to Resoto._**
-- **[How-To Guides](./how-to-guides/index.md)** provide instructions for specific use cases and scenarios.
-- **[Concepts](./concepts/index.md)** describe key topics and ideas, and provide an overview of how Resoto works and its [components](./concepts/components/index.md).
+- **[Getting Started](./getting-started/index.md)** walks you through how to install and configure Resoto, step by step.** _Start here if you're new to Resoto._**
+- **[How-To Guides](./how-to-guides/index.md)** provide step-by-step instructions for performing various tasks within Resoto, such as [search](./how-to-guides/search/index.md), [cleanup](./how-to-guides/cleanup/index.md), [alerting](./how-to-guides/alerting/index.md), and [data export](./how-to-guides/data-export/index.md).
+- **[Concepts](./concepts/index.md)** describe key topics and ideas, and provide an overview of how Resoto works.
 - **[Reference](./reference/index.md)** is a manual describing the [command-line interface (CLI)](./reference/cli/index.md) and [data models](./reference/data-models/index.md). It is assumed that you already have a basic understanding of important concepts.
 - **[Contributing](./contributing/index.md)** lists instructions and guidelines for contributing to Resoto.
 

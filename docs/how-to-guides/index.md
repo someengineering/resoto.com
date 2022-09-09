@@ -9,7 +9,7 @@ import { useCurrentSidebarCategory } from '@docusaurus/theme-common';
 import DocListWithTags from '@site/src/components/DocListWithTags';
 ```
 
-This section of the documentation provides instructions for specific use cases and scenarios.
+This section of the documentation provides step-by-step instructions for performing various tasks within Resoto.
 
 ## Alerting
 

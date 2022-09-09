@@ -8,6 +8,8 @@ sidebar_position: 4
 import DocCardList from '@theme/DocCardList';
 ```
 
-This section of the documentation is a manual describing the [command-line interface (CLI)](./cli/index.md) and [data models](./data-models/index.md). It is assumed that you already have a basic understanding of important concepts.
+This section of the documentation is a manual describing Resoto's [command-line interface (CLI)](./cli/index.md), [API](./api.md), [data models](./data-models/index.md), and other components in detail.
+
+It is assumed that you have already [installed Resoto](../getting-started/install-resoto/index.md) and have a basic understanding of important [concepts](../concepts/index.md).
 
 <DocCardList />

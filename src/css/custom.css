@@ -291,7 +291,17 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   display: none;
 }
 
+@media screen and (min-width: 997px) {
+  .sm-screens-only {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 996px) {
+  .version-selector .navbar__item {
+    display: inline-block;
+  }
+
   .navbar__items .navbar-icon-link > .navLinklabel {
     display: none;
   }

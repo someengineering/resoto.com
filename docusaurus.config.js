@@ -83,7 +83,6 @@ const config = {
             },
             '2.X': {
               label: latestRelease.startsWith('2.') ? latestRelease : '2.X',
-              badge: false,
             },
           },
         },
@@ -152,11 +151,11 @@ const config = {
         minHeadingLevel: 2,
         maxHeadingLevel: 5,
       },
-      announcementBar: {
-        id: 'announcementBar-3', // Increment on change
-        content:
-          '<span aria-label="star" role="img" class="lg-screens-only">⭐</span> If you like Resoto, please <a href="https://github.com/someengineering/resoto" target="_blank" rel="noopener noreferrer">star the project on GitHub</a> and <a href="https://linkedin.com/company/someengineering" target="_blank" rel="noopener noreferrer">follow Some Engineering Inc. on LinkedIn</a>. Thanks for your support! <span aria-label="heart" role="img" class="lg-screens-only">❤️</span>',
-      },
+      // announcementBar: {
+      //   id: 'announcementBar-3', // Increment on change
+      //   content:
+      //     '<span aria-label="star" role="img" class="lg-screens-only">⭐</span> If you like Resoto, please <a href="https://github.com/someengineering/resoto" target="_blank" rel="noopener noreferrer">star the project on GitHub</a> and <a href="https://linkedin.com/company/someengineering" target="_blank" rel="noopener noreferrer">follow Some Engineering Inc. on LinkedIn</a>. Thanks for your support! <span aria-label="heart" role="img" class="lg-screens-only">❤️</span>',
+      // },
       navbar: {
         hideOnScroll: true,
         title: 'Resoto',

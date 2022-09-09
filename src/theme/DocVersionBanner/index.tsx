@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import Link from '@docusaurus/Link';
 import type {
   PropVersionMetadata,
@@ -13,54 +14,40 @@ import {
   useDocsPreferredVersion,
   useDocsVersion,
 } from '@docusaurus/theme-common/internal';
-import Translate from '@docusaurus/Translate';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import type { Props } from '@theme/DocVersionBanner';
 import clsx from 'clsx';
 import React, { type ComponentType } from 'react';
 
 type BannerLabelComponentProps = {
-  siteTitle: string;
   versionMetadata: PropVersionMetadata;
 };
 
 function UnreleasedVersionLabel({
-  siteTitle,
   versionMetadata,
 }: BannerLabelComponentProps) {
   return (
-    <Translate
-      id="theme.docs.versions.unreleasedVersionLabel"
-      description="The label used to tell the user that they are browsing an unreleased doc version"
-      values={{
-        siteTitle,
-        versionLabel: <b>{versionMetadata.label}</b>,
-      }}
-    >
-      {
-        'This is unreleased documentation for the {versionLabel} version of Resoto.'
-      }
-    </Translate>
+    <>
+      You are currently viewing documentation for the{' '}
+      <code>
+        {versionMetadata.label.startsWith('edge')
+          ? 'edge'
+          : versionMetadata.label}
+      </code>{' '}
+      version of Resoto. This documentation may reflect changes that have yet to
+      be released.
+    </>
   );
 }
 
 function UnmaintainedVersionLabel({
-  siteTitle,
   versionMetadata,
 }: BannerLabelComponentProps) {
   return (
-    <Translate
-      id="theme.docs.versions.unmaintainedVersionLabel"
-      description="The label used to tell the user that they are browsing an unmaintained doc version"
-      values={{
-        siteTitle,
-        versionLabel: <b>{versionMetadata.label}</b>,
-      }}
-    >
-      {
-        'This is documentation for version {versionLabel} of {siteTitle}, which is no longer actively maintained.'
-      }
-    </Translate>
+    <>
+      You are currently viewing documentation for version{' '}
+      <code>{versionMetadata.label}</code> of Resoto. This documentation is no
+      longer actively maintained.
+    </>
   );
 }
 
@@ -87,29 +74,12 @@ function LatestVersionSuggestionLabel({
   versionLabel: string;
 }) {
   return (
-    <Translate
-      id="theme.docs.versions.latestVersionSuggestionLabel"
-      description="The label used to tell the user to check the latest version"
-      values={{
-        versionLabel,
-        latestVersionLink: (
-          <b>
-            <Link to={to} onClick={onClick}>
-              <Translate
-                id="theme.docs.versions.latestVersionLinkLabel"
-                description="The label used for the latest version suggestion link label"
-              >
-                here
-              </Translate>
-            </Link>
-          </b>
-        ),
-      }}
-    >
-      {
-        'Documentation for the latest stable release ({versionLabel}) is available {latestVersionLink}.'
-      }
-    </Translate>
+    <Link to={to} onClick={onClick}>
+      <strong>
+        Click here to view documentation for the latest stable release (
+        {<code>{versionLabel}</code>}).
+      </strong>
+    </Link>
   );
 }
 
@@ -119,9 +89,6 @@ function DocVersionBannerEnabled({
 }: Props & {
   versionMetadata: PropVersionMetadata;
 }): JSX.Element {
-  const {
-    siteConfig: { title: siteTitle },
-  } = useDocusaurusContext();
   const { pluginId } = useActivePlugin({ failfast: true })!;
 
   const getVersionMainDoc = (version: GlobalVersion) =>
@@ -147,7 +114,7 @@ function DocVersionBannerEnabled({
       role="alert"
     >
       <div>
-        <BannerLabel siteTitle={siteTitle} versionMetadata={versionMetadata} />
+        <BannerLabel versionMetadata={versionMetadata} />
       </div>
       <div className="margin-top--md">
         <LatestVersionSuggestionLabel

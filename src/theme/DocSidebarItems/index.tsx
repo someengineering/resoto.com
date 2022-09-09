@@ -11,22 +11,24 @@ type Props = WrapperProps<typeof DocSidebarItemsType>;
 export default function DocSidebarItemsWrapper(props: Props): JSX.Element {
   return (
     <>
-      <li
-        className={clsx(
-          ThemeClassNames.docs.docSidebarItemLink,
-          'theme-doc-sidebar-item-link-level-1',
-          'version-selector',
-          'shadow--lw',
-          'margin-bottom--md'
-        )}
-      >
-        <span>Version:</span>
-        <NavbarItem
-          type="docsVersionDropdown"
-          dropdownItemsBefore={[]}
-          dropdownItemsAfter={[]}
-        />
-      </li>
+      {props.level === 1 ? (
+        <li
+          className={clsx(
+            ThemeClassNames.docs.docSidebarItemLink,
+            'theme-doc-sidebar-item-link-level-1',
+            'version-selector',
+            'shadow--lw',
+            'margin-bottom--md'
+          )}
+        >
+          <span>Version:</span>
+          <NavbarItem
+            type="docsVersionDropdown"
+            dropdownItemsBefore={[]}
+            dropdownItemsAfter={[]}
+          />
+        </li>
+      ) : null}
       <DocSidebarItems {...props} />
     </>
   );

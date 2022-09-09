@@ -37,7 +37,9 @@ function UnreleasedVersionLabel({
         versionLabel: <b>{versionMetadata.label}</b>,
       }}
     >
-      {'This is unreleased documentation for version {versionLabel} of Resoto.'}
+      {
+        'This is unreleased documentation for the {versionLabel} version of Resoto.'
+      }
     </Translate>
   );
 }
@@ -97,7 +99,7 @@ function LatestVersionSuggestionLabel({
                 id="theme.docs.versions.latestVersionLinkLabel"
                 description="The label used for the latest version suggestion link label"
               >
-                latest version
+                here
               </Translate>
             </Link>
           </b>
@@ -105,7 +107,7 @@ function LatestVersionSuggestionLabel({
       }}
     >
       {
-        'For current documentation, please see the {latestVersionLink} ({versionLabel}).'
+        'Documentation for the latest stable release ({versionLabel}) is available {latestVersionLink}.'
       }
     </Translate>
   );

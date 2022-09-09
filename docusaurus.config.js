@@ -210,11 +210,6 @@ const config = {
             className: 'navbar-icon-link navbar-linkedin-link',
             'aria-label': 'LinkedIn',
           },
-          {
-            type: 'docsVersionDropdown',
-            position: 'right',
-            dropdownActiveClassDisabled: true,
-          },
         ],
       },
       footer: {

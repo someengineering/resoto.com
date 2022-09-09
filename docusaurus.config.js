@@ -49,6 +49,10 @@ const config = {
             id: 'resotocore',
             spec: 'openapi/resotocore.yml',
           },
+          {
+            id: 'resotocore-edge',
+            spec: 'openapi/resotocore-edge.yml',
+          },
         ],
         theme: {
           primaryColor: '#762dd7',

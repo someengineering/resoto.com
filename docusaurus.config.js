@@ -74,9 +74,11 @@ const config = {
               label: 'edge 🚧',
               path: '/edge',
               banner: 'unreleased',
+              badge: false,
             },
             '2.X': {
               label: '2.4.1',
+              badge: false,
             },
           },
         },

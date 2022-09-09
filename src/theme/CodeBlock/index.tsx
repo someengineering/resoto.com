@@ -1,14 +1,13 @@
 import type { PropVersionMetadata } from '@docusaurus/plugin-content-docs';
 import { useDocsVersion } from '@docusaurus/theme-common/internal';
-import { getLatestRelease } from '@site/src/utils/githubHelper';
+import latestRelease from '@site/latestRelease.json';
 import OriginalCodeBlock from '@theme-original/CodeBlock';
 import type CodeBlockType from '@theme/CodeBlock';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 type Props = ComponentProps<typeof CodeBlockType>;
 
 export default function CodeBlock(props: Props): JSX.Element {
-  const [latestRelease, setLatestRelease] = useState(null);
   let versionMetadata: PropVersionMetadata;
 
   try {
@@ -17,24 +16,15 @@ export default function CodeBlock(props: Props): JSX.Element {
     versionMetadata = null;
   }
 
-  useEffect(() => {
-    if (versionMetadata?.version === 'current') {
-      setLatestRelease(null);
-    } else {
-      const getGithubData = async () => {
-        setLatestRelease(await getLatestRelease('someengineering', 'resoto'));
-      };
-
-      getGithubData();
-    }
-  }, [versionMetadata]);
+  const versionTag =
+    versionMetadata?.version === 'current' ? null : latestRelease;
 
   return (
     <OriginalCodeBlock {...props}>
       {props.children
         .toString()
-        .replace(/{{imageTag}}/g, latestRelease ?? 'edge')
-        .replace(/{{repoBranch}}/g, latestRelease ?? 'main')}
+        .replace(/{{imageTag}}/g, versionTag ?? 'edge')
+        .replace(/{{repoBranch}}/g, versionTag ?? 'main')}
     </OriginalCodeBlock>
   );
 }

@@ -5,6 +5,7 @@ const a11yEmoji = require('@fec/remark-a11y-emoji');
 const oembed = require('remark-plugin-oembed');
 const mdxMermaid = require('mdx-mermaid');
 
+const latestRelease = require('./latestRelease.json');
 const versions = require('./versions.json');
 
 const isProd =
@@ -81,7 +82,7 @@ const config = {
               badge: false,
             },
             '2.X': {
-              label: '2.4.1',
+              label: latestRelease.startsWith('2.') ? latestRelease : '2.X',
               badge: false,
             },
           },

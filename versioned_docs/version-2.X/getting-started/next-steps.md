@@ -7,8 +7,15 @@ pagination_next: how-to-guides/index
 
 # Next Steps
 
-**Congratulations! You have successfully installed Resoto and configured access to the cloud providers you would like to index.**
+**Congratulations!** 🎉 You have successfully installed Resoto and configured access to cloud providers.
 
-The [How-To Guides](../how-to-guides/index.md) section of our documentation provides step-by-step instructions for performing various tasks within Resoto, such as [search](../how-to-guides/search/index.md), [cleanup](../how-to-guides/cleanup/index.md), [alerting](../how-to-guides/alerting/index.md), and [data export](../how-to-guides/data-export/index.md).
+Not sure what to do next? Here are some suggestions:
 
-If you would like to learn more about Resoto's inner workings and more advanced use cases, the [Concepts](../concepts/index.md) section describes key topics and ideas, and provides an overview of how Resoto works and its [components](../concepts/components/index.md).
+- **[How-To Guides](../how-to-guides/index.md)** provide step-by-step instructions for performing various tasks within Resoto, such as [search](../how-to-guides/search/index.md), [cleanup](../how-to-guides/cleanup/index.md), [alerting](../how-to-guides/alerting/index.md), and [data export](../how-to-guides/data-export/index.md).
+- If you would like to learn more about Resoto's inner workings and more advanced use cases, the **[Concepts](../concepts/index.md)** section describes key topics and ideas, providing an overview of how Resoto works.
+
+If you want to stay up to date with the latest Resoto news:
+
+- Watch the [`someengineering/resoto` GitHub repository](https://github.com/someengineering/resoto) and be the first to know about new features and releases.
+- You can get help with Resoto and connect with a growing community of cloud engineers in the [Some Engineering Discord server](https://discord.gg/someengineering).
+- Follow [Some Engineering on LinkedIn](https://linkedin.com/company/someengineering) for updates, insights, podcast episodes, sneak peeks, and more!

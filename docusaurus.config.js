@@ -5,6 +5,9 @@ const a11yEmoji = require('@fec/remark-a11y-emoji');
 const oembed = require('remark-plugin-oembed');
 const mdxMermaid = require('mdx-mermaid');
 
+const latestRelease = require('./latestRelease.json');
+const versions = require('./versions.json');
+
 const isProd =
   process.env.NODE_ENV !== 'development' &&
   !!process.env.NETLIFY &&
@@ -47,6 +50,10 @@ const config = {
             id: 'resotocore',
             spec: 'openapi/resotocore.yml',
           },
+          {
+            id: 'resotocore-edge',
+            spec: 'openapi/resotocore-edge.yml',
+          },
         ],
         theme: {
           primaryColor: '#762dd7',
@@ -60,10 +67,24 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/someengineering/resoto.com/edit/main',
+          editUrl: ({ versionDocsDirPath, docPath }) =>
+            `https://github.com/someengineering/resoto.com/edit/main/${versionDocsDirPath}/${docPath}`,
           showLastUpdateAuthor: false,
           showLastUpdateTime: true,
           remarkPlugins: [a11yEmoji, oembed, mdxMermaid],
+          onlyIncludeVersions: (() =>
+            isProd ? undefined : ['current', ...versions.slice(0, 2)])(),
+          versions: {
+            current: {
+              label: 'edge 🚧',
+              path: '/edge',
+              banner: 'unreleased',
+              badge: false,
+            },
+            '2.X': {
+              label: latestRelease.startsWith('2.') ? latestRelease : '2.X',
+            },
+          },
         },
         blog: {
           blogTitle: 'Blog',
@@ -130,11 +151,11 @@ const config = {
         minHeadingLevel: 2,
         maxHeadingLevel: 5,
       },
-      announcementBar: {
-        id: 'announcementBar-3', // Increment on change
-        content:
-          '<span aria-label="star" role="img" class="lg-screens-only">⭐</span> If you like Resoto, please <a href="https://github.com/someengineering/resoto" target="_blank" rel="noopener noreferrer">star the project on GitHub</a> and <a href="https://linkedin.com/company/someengineering" target="_blank" rel="noopener noreferrer">follow Some Engineering Inc. on LinkedIn</a>. Thanks for your support! <span aria-label="heart" role="img" class="lg-screens-only">❤️</span>',
-      },
+      // announcementBar: {
+      //   id: 'announcementBar-3', // Increment on change
+      //   content:
+      //     '<span aria-label="star" role="img" class="lg-screens-only">⭐</span> If you like Resoto, please <a href="https://github.com/someengineering/resoto" target="_blank" rel="noopener noreferrer">star the project on GitHub</a> and <a href="https://linkedin.com/company/someengineering" target="_blank" rel="noopener noreferrer">follow Some Engineering Inc. on LinkedIn</a>. Thanks for your support! <span aria-label="heart" role="img" class="lg-screens-only">❤️</span>',
+      // },
       navbar: {
         hideOnScroll: true,
         title: 'Resoto',

@@ -8,7 +8,7 @@ import 'moment-timezone';
 
 Hello everyone, here's an update for July!
 
-In June, we released [Resoto 2.3.2](/news/2022/06/24/v2.3.2). The key update that we shipped is a feature that a lot of users have asked for—[support for Kubernetes](#kubernetes-support)! 😎
+In June, we released [Resoto 2.3.2](/news/2022/06/24/2.3.2). The key update that we shipped is a feature that a lot of users have asked for—[support for Kubernetes](#kubernetes-support)! 😎
 
 ## Configuration UI
 
@@ -44,4 +44,4 @@ Kubernetes resources are abstracted away from the underlying cloud provider. The
 
 This new feature provides insights across multi-cloud infrastructure. Since we see a lot of multi-cloud deployments in the enterprise, we will continue to extend our collectors to provide additional insights into relationships across clouds.
 
-Read more about nested properties and multi-cloud graph edges in the [release notes](/news/2022/06/22/v2.3.1).
+Read more about nested properties and multi-cloud graph edges in the [release notes](/news/2022/06/22/2.3.1).

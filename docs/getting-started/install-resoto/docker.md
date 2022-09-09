@@ -45,8 +45,8 @@ To install Resoto using [Docker Compose](https://docs.docker.com/compose), first
 ```bash
 $ mkdir -p resoto/dockerV2
 $ cd resoto
-$ curl -o docker-compose.yaml https://raw.githubusercontent.com/someengineering/resoto/{{latestRelease}}/docker-compose.yaml
-$ curl -o dockerV2/prometheus.yml https://raw.githubusercontent.com/someengineering/resoto/{{latestRelease}}/dockerV2/prometheus.yml
+$ curl -o docker-compose.yaml https://raw.githubusercontent.com/someengineering/resoto/{{repoBranch}}/docker-compose.yaml
+$ curl -o dockerV2/prometheus.yml https://raw.githubusercontent.com/someengineering/resoto/{{repoBranch}}/dockerV2/prometheus.yml
 $ docker compose up -d
 ```
 
@@ -56,7 +56,7 @@ $ docker compose up -d
 ```bash
 $ git clone https://github.com/someengineering/resoto.git
 $ cd resoto
-$ git checkout tags/{{latestRelease}}
+$ git checkout tags/{{repoBranch}}
 $ docker compose up -d
 ```
 
@@ -86,7 +86,15 @@ If you have an Apple Silicon or other ARM-based machine, please use the latest s
 The `resh` command starts an interactive shell session with Resoto. To access the [Resoto Shell](../../concepts/components/shell.md) interface using Docker compose, simply execute:
 
 ```bash
-$ docker exec -it resoto-resotoshell-server-1 resh
+$ docker compose exec -it resotoshell resh
 ```
 
-![Resoto Shell](../img/resoto-shell.png)
+:::note
+
+[Docker Compose V2 integrated compose functions in to the Docker platform.](https://docs.docker.com/compose/#compose-v2-and-the-new-docker-compose-command)
+
+In Docker Compose V1, the command is `docker-compose` (with a hyphen) instead of `docker compose`.
+
+:::
+
+![Resoto Shell](./img/resoto-shell.png)

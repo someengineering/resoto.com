@@ -10,6 +10,8 @@ Once the graph data is collected and sent to [Resoto Core](../concepts/component
 
 The plugin source code lives in the [`plugins` directory within the `someengineering/resoto` repository on GitHub](https://github.com/someengineering/resoto/tree/main/plugins). Each plugin is maintained as separate project.
 
+See [AWS Resources](./aws.md) for a more in-depth guide on how to collect AWS Resources.
+
 ## Authoring Changes
 
 Contributions are made via [pull requests to the GitHub repository](https://github.com/someengineering/resoto/pulls). You will first need to [fork](https://docs.github.com/get-started/quickstart/fork-a-repo) the repository.

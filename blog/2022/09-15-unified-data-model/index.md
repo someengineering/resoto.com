@@ -1,6 +1,7 @@
 ---
 authors: [matthias]
 tags: [graph, search, cloud]
+image: ./img/banner-social.png
 ---
 
 # Unified Data Model
@@ -13,6 +14,10 @@ Today's world of cloud computing is complex. There are many different cloud prov
 
 Any application built on such a cloud infrastructure usually uses many provided services like computing, storage, databases, networking, etc. Every service offered by any cloud provider is unique, so it is not surprising that each service's data model is different.
 
+![Banner](./img/banner.png)
+
+<!--truncate-->
+
 ## Unification Step 1: Everything is a Resource
 
 Let us assume we have an application deployed on AWS, and we want to get my application's EC2 instances and SQS queues ordered by the time of creation. We can use the AWS CLI to query the data using the [describe-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html) and a combination of [list-queues](https://docs.aws.amazon.com/cli/latest/reference/sqs/list-queues) and [get-queue-attributes](https://docs.aws.amazon.com/cli/latest/reference/sqs/get-queue-attributes) for every queue that is returned by the list call. The output of each command returns a list of resources with a specific data model, which is also described in the documentation of the AWS CLI commands.
@@ -21,13 +26,15 @@ To sort the list of resources by the time of creation, we need to know which pro
 
 The example I presented might be a bit artificial, but it shows the problem that you face when you want to get data out of your cloud infrastructure: You need to deeply understand each service's data model and how to get to the data. To select or combine data from different services, you need to use the same abstraction level and the same units of measurement.
 
-Resoto collects data from different services and different cloud providers. We could have made our life easy and just collected the data as the cloud provider provides - but we decided against it to make your life easier. While Resoto makes all the data available that the cloud provider provides for every service, it also abstracts and unifies it simultaneously. The first basic building block I want to present is the `Resource` abstraction:
+Resoto collects data from different services and different cloud providers. We could have made our life easy and just collected the data as the cloud provider provides - but we decided against it to make your life easier. While Resoto makes all the data available that the cloud provider provides for every service, it also abstracts and unifies it simultaneously. The first basic building block I want to present is the `resource` abstraction:
 
 ![Resource](./img/resource.svg)
 
 Every resource that Resoto collects provides this set of properties. A resource is of a specific `kind` and provides this information as property. A resource `kind` could be something like `aws_ec2_instance` or `aws_sqs_queue`. The `id` is a synthetic property created by Resoto as a globally unique identifier across providers. Resoto tries its best to retrieve the `name` from the underlying resource. If the resource does not provide a name, Resoto will look for a tag named `Name` and use the value if defined. Most cloud providers allow attaching arbitrary information to resources as key-value pairs. This information is also provided for every resource called `tags`.
 
-There are three attributes that you can define for every resource: when has it been created (`ctime`), when has it been modified (`mtime`), and when has it been accessed the last time (`atime`). Resoto makes sure to transform available properties to one base unit, the ISO 8601 time string in the UTC timezone. Of course, this information is not always available for every resource. Either Resoto can map a meaningful value to the attribute, or it tries to get the data from other systems. For the time of creation, the default is mapping an existing property, as we have seen for the EC2 instances and SQS queues. If this information is unavailable, Resoto will remember the time it has seen the resource for the first time and uses it as `ctime`. By default, Resoto scrapes your infrastructure every hour, so this might be a sane fallback value. If there is no meaningful access or modification time, it might be possible to retrieve this information elsewhere. AWS, for example, provides time series data via the CloudWatch service. Resoto can use this data to provide meaningful values for the `atime` and `mtime` attributes for specific resources. Let's take AWS RDS databases or EC2 volumes as an example, where we can retrieve meaningful values for the `atime` and `mtime` attributes. The process of retrieving and merging the data is fully transparent to the user since it happens during collection time. You can access, filter, and sort the data as you like.
+There are three attributes that you can define for every resource: when has it been created (`ctime`), when has it been modified (`mtime`), and when has it been accessed the last time (`atime`). Resoto makes sure to transform available properties to one base unit, the ISO 8601 time string in the UTC timezone. Of course, this information is not always available for every resource. Either Resoto can map a meaningful value to the attribute, or it tries to get the data from other systems. For the time of creation, the default is mapping an existing property, as we have seen for the EC2 instances and SQS queues. If this information is unavailable, Resoto will remember the time it has seen the resource for the first time and uses it as `ctime`. By default, Resoto scrapes your infrastructure every hour, so this might be a sane fallback value. 
+
+If there is no meaningful access or modification time, it might be possible to retrieve this information elsewhere. AWS, for example, provides time series data via the CloudWatch service. Resoto can use this data to provide meaningful values for the `atime` and `mtime` attributes for specific resources. Let's take AWS RDS databases or EC2 volumes as an example, where we can retrieve meaningful values for the `atime` and `mtime` attributes. The process of retrieving and merging the data is fully transparent to the user since it happens during collection time. You can access, filter, and sort the data as you like.
 
 While `ctime`, `mtime` and `atime` are timestamps, you often want to display and query by duration. This is where `age`, `last_update` and `last_access` come into play. Those properties are calculated from the timestamp attributes and are displayed as human-readable durations. The same is true for searching those properties, which is possible in the same human-readable format, like: `14d`, `1h30m`, `23s`.
 
@@ -76,7 +83,9 @@ Show resources that are older than one year and have not been accessed in the la
 - Kubernetes
 - DigitalOcean
 
-This section is most relevant for Resoto users with more than one resource provider. You should definitely read on if you can tick more than one of the boxes above. :::
+This section is most relevant for Resoto users with more than one resource provider. You should definitely read on if you can tick more than one of the boxes above. 
+
+:::
 
 The unification of the base properties is only the first step. There are other entities for every cloud provider that can be abstracted and unified. For example, let's take the representation of a volume in Resoto:
 

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="614px" preserveAspectRatio="none" style="width:817px;height:614px;background:#00000000;" version="1.1" viewBox="0 0 817 614" width="817px" zoomAndPan="magnify"><defs/><g><!--MD5=[62feba95c454080ece180dc52d22d73f]
+class aws_alb--><rect codeLine="24" fill="#3D176E" height="70.5938" id="aws_alb" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="168" x="590.5" y="7"/><ellipse cx="632.05" cy="26.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M635.0188,32.5352 Q634.4406,32.832 633.8,32.9727 Q633.1594,33.1289 632.4563,33.1289 Q629.9563,33.1289 628.6281,31.4883 Q627.3156,29.832 627.3156,26.707 Q627.3156,23.582 628.6281,21.9258 Q629.9563,20.2695 632.4563,20.2695 Q633.1594,20.2695 633.8,20.4258 Q634.4563,20.582 635.0188,20.8789 L635.0188,23.5977 Q634.3938,23.0195 633.8,22.7539 Q633.2063,22.4727 632.5813,22.4727 Q631.2375,22.4727 630.55,23.5508 Q629.8625,24.6133 629.8625,26.707 Q629.8625,28.8008 630.55,29.8789 Q631.2375,30.9414 632.5813,30.9414 Q633.2063,30.9414 633.8,30.6758 Q634.3938,30.3945 635.0188,29.8164 L635.0188,32.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="67" x="656.95" y="32.7798">aws_alb</text><line style="stroke:#000D19;stroke-width:1.5;" x1="591.5" x2="757.5" y1="46.7891" y2="46.7891"/><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="146" x="601.5" y="65.9995">Props omitted for brevity.</text><!--MD5=[61564e47c5395d8392ea8ab706bb3a91]
+class aws_elb--><rect codeLine="27" fill="#3D176E" height="70.5938" id="aws_elb" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="168" x="590.5" y="113"/><ellipse cx="632.05" cy="132.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M635.0188,138.5352 Q634.4406,138.832 633.8,138.9727 Q633.1594,139.1289 632.4563,139.1289 Q629.9563,139.1289 628.6281,137.4883 Q627.3156,135.832 627.3156,132.707 Q627.3156,129.582 628.6281,127.9258 Q629.9563,126.2695 632.4563,126.2695 Q633.1594,126.2695 633.8,126.4258 Q634.4563,126.582 635.0188,126.8789 L635.0188,129.5977 Q634.3938,129.0195 633.8,128.7539 Q633.2063,128.4727 632.5813,128.4727 Q631.2375,128.4727 630.55,129.5508 Q629.8625,130.6133 629.8625,132.707 Q629.8625,134.8008 630.55,135.8789 Q631.2375,136.9414 632.5813,136.9414 Q633.2063,136.9414 633.8,136.6758 Q634.3938,136.3945 635.0188,135.8164 L635.0188,138.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="67" x="656.95" y="138.7798">aws_elb</text><line style="stroke:#000D19;stroke-width:1.5;" x1="591.5" x2="757.5" y1="152.7891" y2="152.7891"/><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="146" x="601.5" y="171.9995">Props omitted for brevity.</text><!--MD5=[7f0ecf5f554433d3f2e1213379ac821c]
+class resource--><rect codeLine="33" fill="#3D176E" height="39.7891" id="resource" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="113" x="7" y="287.5"/><ellipse cx="22" cy="307.3945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M24.9688,313.0352 Q24.3906,313.332 23.75,313.4727 Q23.1094,313.6289 22.4063,313.6289 Q19.9063,313.6289 18.5781,311.9883 Q17.2656,310.332 17.2656,307.207 Q17.2656,304.082 18.5781,302.4258 Q19.9063,300.7695 22.4063,300.7695 Q23.1094,300.7695 23.75,300.9258 Q24.4063,301.082 24.9688,301.3789 L24.9688,304.0977 Q24.3438,303.5195 23.75,303.2539 Q23.1563,302.9727 22.5313,302.9727 Q21.1875,302.9727 20.5,304.0508 Q19.8125,305.1133 19.8125,307.207 Q19.8125,309.3008 20.5,310.3789 Q21.1875,311.4414 22.5313,311.4414 Q23.1563,311.4414 23.75,311.1758 Q24.3438,310.8945 24.9688,310.3164 L24.9688,313.0352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="71" x="41" y="313.2798">resource</text><!--MD5=[3a125afeaaaf45c8ad94997c7293c783]
+class gcp_forwarding_rule--><rect codeLine="35" fill="#3D176E" height="70.5938" id="gcp_forwarding_rule" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="212" x="568.5" y="219"/><ellipse cx="583.5" cy="238.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M586.4688,244.5352 Q585.8906,244.832 585.25,244.9727 Q584.6094,245.1289 583.9063,245.1289 Q581.4063,245.1289 580.0781,243.4883 Q578.7656,241.832 578.7656,238.707 Q578.7656,235.582 580.0781,233.9258 Q581.4063,232.2695 583.9063,232.2695 Q584.6094,232.2695 585.25,232.4258 Q585.9063,232.582 586.4688,232.8789 L586.4688,235.5977 Q585.8438,235.0195 585.25,234.7539 Q584.6563,234.4727 584.0313,234.4727 Q582.6875,234.4727 582,235.5508 Q581.3125,236.6133 581.3125,238.707 Q581.3125,240.8008 582,241.8789 Q582.6875,242.9414 584.0313,242.9414 Q584.6563,242.9414 585.25,242.6758 Q585.8438,242.3945 586.4688,241.8164 L586.4688,244.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="170" x="602.5" y="244.7798">gcp_forwarding_rule</text><line style="stroke:#000D19;stroke-width:1.5;" x1="569.5" x2="779.5" y1="258.7891" y2="258.7891"/><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="146" x="579.5" y="277.9995">Props omitted for brevity.</text><!--MD5=[d373685df770b1ed5a34d816c230813f]
+class gcp_global_forwarding_rule--><rect codeLine="38" fill="#3D176E" height="70.5938" id="gcp_global_forwarding_rule" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="271" x="539" y="325"/><ellipse cx="554" cy="344.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M556.9688,350.5352 Q556.3906,350.832 555.75,350.9727 Q555.1094,351.1289 554.4063,351.1289 Q551.9063,351.1289 550.5781,349.4883 Q549.2656,347.832 549.2656,344.707 Q549.2656,341.582 550.5781,339.9258 Q551.9063,338.2695 554.4063,338.2695 Q555.1094,338.2695 555.75,338.4258 Q556.4063,338.582 556.9688,338.8789 L556.9688,341.5977 Q556.3438,341.0195 555.75,340.7539 Q555.1563,340.4727 554.5313,340.4727 Q553.1875,340.4727 552.5,341.5508 Q551.8125,342.6133 551.8125,344.707 Q551.8125,346.8008 552.5,347.8789 Q553.1875,348.9414 554.5313,348.9414 Q555.1563,348.9414 555.75,348.6758 Q556.3438,348.3945 556.9688,347.8164 L556.9688,350.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="229" x="573" y="350.7798">gcp_global_forwarding_rule</text><line style="stroke:#000D19;stroke-width:1.5;" x1="540" x2="809" y1="364.7891" y2="364.7891"/><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="146" x="550" y="383.9995">Props omitted for brevity.</text><!--MD5=[4df524631ca7ede0c092c36ce9c69fc7]
+class digitalocean_load_balancer--><rect codeLine="43" fill="#3D176E" height="70.5938" id="digitalocean_load_balancer" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="267" x="541" y="431"/><ellipse cx="556" cy="450.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M558.9688,456.5352 Q558.3906,456.832 557.75,456.9727 Q557.1094,457.1289 556.4063,457.1289 Q553.9063,457.1289 552.5781,455.4883 Q551.2656,453.832 551.2656,450.707 Q551.2656,447.582 552.5781,445.9258 Q553.9063,444.2695 556.4063,444.2695 Q557.1094,444.2695 557.75,444.4258 Q558.4063,444.582 558.9688,444.8789 L558.9688,447.5977 Q558.3438,447.0195 557.75,446.7539 Q557.1563,446.4727 556.5313,446.4727 Q555.1875,446.4727 554.5,447.5508 Q553.8125,448.6133 553.8125,450.707 Q553.8125,452.8008 554.5,453.8789 Q555.1875,454.9414 556.5313,454.9414 Q557.1563,454.9414 557.75,454.6758 Q558.3438,454.3945 558.9688,453.8164 L558.9688,456.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="225" x="575" y="456.7798">digitalocean_load_balancer</text><line style="stroke:#000D19;stroke-width:1.5;" x1="542" x2="807" y1="470.7891" y2="470.7891"/><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="146" x="552" y="489.9995">Props omitted for brevity.</text><!--MD5=[86833b7771fd646511791fafeadda016]
+class load_balancer--><rect codeLine="47" fill="#3D176E" height="116.2031" id="load_balancer" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="177" x="241" y="249.5"/><ellipse cx="265" cy="269.3945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M267.9688,275.0352 Q267.3906,275.332 266.75,275.4727 Q266.1094,275.6289 265.4063,275.6289 Q262.9063,275.6289 261.5781,273.9883 Q260.2656,272.332 260.2656,269.207 Q260.2656,266.082 261.5781,264.4258 Q262.9063,262.7695 265.4063,262.7695 Q266.1094,262.7695 266.75,262.9258 Q267.4063,263.082 267.9688,263.3789 L267.9688,266.0977 Q267.3438,265.5195 266.75,265.2539 Q266.1563,264.9727 265.5313,264.9727 Q264.1875,264.9727 263.5,266.0508 Q262.8125,267.1133 262.8125,269.207 Q262.8125,271.3008 263.5,272.3789 Q264.1875,273.4414 265.5313,273.4414 Q266.1563,273.4414 266.75,273.1758 Q267.3438,272.8945 267.9688,272.3164 L267.9688,275.0352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="115" x="286" y="275.2798">load_balancer</text><line style="stroke:#000D19;stroke-width:1.5;" x1="242" x2="417" y1="289.2891" y2="289.2891"/><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="46" x="252" y="308.4995">lb_type</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="41" x="298" y="308.4995">: string</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="114" x="252" y="331.3042">public_ip_address</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="41" x="366" y="331.3042">: string</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="61" x="252" y="354.1089">backends</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="49" x="313" y="354.1089">: string[]</text><!--MD5=[e501922bed99a7fc9eb5a1b5e47f1557]
+class kubernetes_ingress--><rect codeLine="52" fill="#3D176E" height="70.5938" id="kubernetes_ingress" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="204" x="572.5" y="537"/><ellipse cx="587.5" cy="556.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M590.4688,562.5352 Q589.8906,562.832 589.25,562.9727 Q588.6094,563.1289 587.9063,563.1289 Q585.4063,563.1289 584.0781,561.4883 Q582.7656,559.832 582.7656,556.707 Q582.7656,553.582 584.0781,551.9258 Q585.4063,550.2695 587.9063,550.2695 Q588.6094,550.2695 589.25,550.4258 Q589.9063,550.582 590.4688,550.8789 L590.4688,553.5977 Q589.8438,553.0195 589.25,552.7539 Q588.6563,552.4727 588.0313,552.4727 Q586.6875,552.4727 586,553.5508 Q585.3125,554.6133 585.3125,556.707 Q585.3125,558.8008 586,559.8789 Q586.6875,560.9414 588.0313,560.9414 Q588.6563,560.9414 589.25,560.6758 Q589.8438,560.3945 590.4688,559.8164 L590.4688,562.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="162" x="606.5" y="562.7798">kubernetes_ingress</text><line style="stroke:#000D19;stroke-width:1.5;" x1="573.5" x2="775.5" y1="576.7891" y2="576.7891"/><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="146" x="583.5" y="595.9995">Props omitted for brevity.</text><!--MD5=[7ae4202cf6425dd1e68e0fcc5f98176b]
+reverse link load_balancer to aws_alb--><path codeLine="56" d="M389.13,233.78 C427.83,188.99 481.81,133.34 539,95.5 C554.7,85.11 572.74,76.26 590.41,68.94 " fill="none" id="load_balancer-backto-aws_alb" style="stroke:#FFAF37;stroke-width:2.0;"/><polygon fill="none" points="394.38,238.41,376.1,249.13,383.71,229.35,394.38,238.41" style="stroke:#FFAF37;stroke-width:2.0;"/><!--MD5=[37c159f9d5afa7ce6cbc81b089abe504]
+reverse link load_balancer to aws_elb--><path codeLine="57" d="M436.34,251.24 C468.95,234.57 505.18,216.72 539,201.5 C555.48,194.08 573.33,186.65 590.47,179.79 " fill="none" id="load_balancer-backto-aws_elb" style="stroke:#FFAF37;stroke-width:2.0;"/><polygon fill="none" points="439.11,257.69,418.12,260.62,432.7,245.24,439.11,257.69" style="stroke:#FFAF37;stroke-width:2.0;"/><!--MD5=[b1d604fc1a0c1a6cb6ae60ae65a3e80e]
+reverse link load_balancer to gcp_forwarding_rule--><path codeLine="58" d="M438.26,290.85 C479.8,284.43 527.16,277.11 568.44,270.73 " fill="none" id="load_balancer-backto-gcp_forwarding_rule" style="stroke:#FFAF37;stroke-width:2.0;"/><polygon fill="none" points="439.22,297.78,418.39,293.92,437.08,283.95,439.22,297.78" style="stroke:#FFAF37;stroke-width:2.0;"/><!--MD5=[3dcb5108797327ab920954e40b7378c4]
+reverse link load_balancer to gcp_global_forwarding_rule--><path codeLine="59" d="M438.27,324.15 C470.16,329.08 505.48,334.54 538.84,339.69 " fill="none" id="load_balancer-backto-gcp_global_forwarding_rule" style="stroke:#FFAF37;stroke-width:2.0;"/><polygon fill="none" points="437.08,331.05,418.39,321.08,439.22,317.22,437.08,331.05" style="stroke:#FFAF37;stroke-width:2.0;"/><!--MD5=[8d3f691ed3bcb4d1b12f7a1a0d8a7f06]
+reverse link load_balancer to digitalocean_load_balancer--><path codeLine="60" d="M436.34,363.76 C468.95,380.43 505.18,398.28 539,413.5 C552.05,419.37 565.95,425.25 579.68,430.85 " fill="none" id="load_balancer-backto-digitalocean_load_balancer" style="stroke:#FFAF37;stroke-width:2.0;"/><polygon fill="none" points="432.7,369.76,418.12,354.38,439.11,357.31,432.7,369.76" style="stroke:#FFAF37;stroke-width:2.0;"/><!--MD5=[0344b77bad72b42f01cb7db15a535890]
+reverse link resource to load_balancer--><path codeLine="61" d="M140.45,307.5 C171.85,307.5 208.44,307.5 240.96,307.5 " fill="none" id="resource-backto-load_balancer" style="stroke:#FFAF37;stroke-width:2.0;"/><polygon fill="none" points="140.17,314.5,120.17,307.5,140.16,300.5,140.17,314.5" style="stroke:#FFAF37;stroke-width:2.0;"/><!--MD5=[e306e1d781f03769b64ee05bbb6ed3a4]
+reverse link load_balancer to kubernetes_ingress--><path codeLine="62" d="M389.13,381.22 C427.83,426.01 481.81,481.66 539,519.5 C549.36,526.36 560.74,532.54 572.37,538.06 " fill="none" id="load_balancer-backto-kubernetes_ingress" style="stroke:#FFAF37;stroke-width:2.0;"/><polygon fill="none" points="383.71,385.65,376.1,365.87,394.38,376.59,383.71,385.65" style="stroke:#FFAF37;stroke-width:2.0;"/><!--MD5=[ab00c23e49da91134cd54aa843a1b73d]
+@startuml
+left to right direction
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_alb {
+Props omitted for brevity.
+}
+class aws_elb {
+Props omitted for brevity.
+
+}
+
+
+class resource {
+}
+class gcp_forwarding_rule {
+Props omitted for brevity.
+}
+class gcp_global_forwarding_rule {
+Props omitted for brevity.
+}
+
+
+class digitalocean_load_balancer {
+Props omitted for brevity.
+
+}
+class load_balancer {
+**lb_type**: string
+**public_ip_address**: string
+**backends**: string[]
+}
+class kubernetes_ingress {
+Props omitted for brevity.
+
+}
+load_balancer <|- - - aws_alb
+load_balancer <|- - - aws_elb
+load_balancer <|- - - gcp_forwarding_rule
+load_balancer <|- - - gcp_global_forwarding_rule
+load_balancer <|- - - digitalocean_load_balancer
+resource <|- - - load_balancer
+load_balancer <|- - - kubernetes_ingress
+@enduml
+
+PlantUML version 1.2021.16(Wed Dec 08 17:25:22 UTC 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

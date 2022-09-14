@@ -59,7 +59,7 @@ Please refer to the [example collector plugin](https://github.com/someengineerin
 
 ### Testing Plugins
 
-To test a plugin, simply launch Resoto and trigger the collect action manually by executing `workflows run collect` in the [shell](docs/concepts/components/shell.md). Once the collection is complete, you execute `search (<plugin_resource_type>)` to see the newly collected resources.
+To test a plugin, simply launch Resoto and trigger the collect action manually by executing `workflows run collect` in the [shell](../../concepts/components/shell.md). Once the collection is complete, you execute `search (<plugin_resource_type>)` to see the newly collected resources.
 
 ### Tips
 

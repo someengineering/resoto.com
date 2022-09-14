@@ -34,169 +34,168 @@ You can authenticate with Kubernetes via [kubeconfig files](https://kubernetes.i
 
 ### kubeconfig Files
 
-The easiest way to configure access to Kubernetes is to give Resoto Worker access to [kubeconfig files](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig). Providing the files depends on your installation method:
+The easiest way to configure access to Kubernetes is to give Resoto Worker access to [kubeconfig files](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig).
 
-<Tabs groupId="install-method">
-<TabItem value="docker" label="Docker">
+1. Make your kubeconfig file(s) available to Resoto at `/home/resoto/.kube`:
 
-- Add the following volume definition to the `resotoworker` service in `docker-compose.yaml`:
+   <Tabs groupId="install-method">
+   <TabItem value="docker" label="Docker">
 
-  ```yaml title="docker-compose.yaml"
-  services:
-    ...
-    resotoworker:
-      image: somecr.io/someengineering/resotoworker:{{imageTag}}
-      container_name: resotoworker
-      ...
-  # highlight-start
-      volumes:
-        - $HOME/.kube:/home/resoto/.kube
-  # highlight-end
-    ...
-  ...
-  ```
+   - Add volume definition(s) for each kubeconfig file to the `resotoworker` service in `docker-compose.yaml`:
 
-- Recreate the `resotoworker` container with the updated service definition:
+     ```yaml title="docker-compose.yaml"
+     services:
+       ...
+       resotoworker:
+         image: somecr.io/someengineering/resotoworker:{{imageTag}}
+         ...
+     # highlight-start
+         volumes:
+           - <PATH TO kubeconfig FILE>:/home/resoto/.kube/config_1
+           - <PATH TO ANOTHER kubeconfig FILE>:/home/resoto/.kube/config_2
+     # highlight-end
+       ...
+     ...
+     ```
 
-  ```bash
-  $ docker compose up -d
-  ```
+   - Recreate the `resotoworker` container with the updated service definition:
 
-</TabItem>
-<TabItem value="k8s" label="Kubernetes">
+     ```bash
+     $ docker compose up -d
+     ```
 
-Use Helm values `resotoworker.volumes`, and `resotoworker.volumeMounts` to make the service account kubeconfig file(s) available within the `resotoworker` container.
+   </TabItem>
+   <TabItem value="k8s" label="Kubernetes">
 
-- Create a secret:
+   - Create a secret with the path(s) to your kubeconfig file(s):
 
-  ```bash
-  $ kubectl -n resoto create secret generic kubernetes-auth \
-    --from-file=config=<path to kube config>
-    --from-file=config_2=<path to a second kube config>
-  ```
+     ```bash
+     $ kubectl -n resoto create secret generic kubernetes-auth \
+       --from-file=config_1=<PATH TO kubeconfig FILE>
+       --from-file=config_2=<PATH TO ANOTHER kubeconfig FILE>
+     ```
 
-- Update the `resoto-values.yaml` file as follows:
+   - Update the Helm `resoto-values.yaml` file as follows:
 
-  ```yaml title="resoto-values.yaml"
-  ...
-  resotoworker:
-    ...
-  # highlight-start
-    volumeMounts:
-      - mountPath: /home/resoto/.kube
-        name: kubeconfig-files
-    volumes:
-      - name: kubeconfig-files
-        secret:
-          secretName: kubernetes-auth
-  # highlight-end
-  ...
-  ```
+     ```yaml title="resoto-values.yaml"
+     ...
+     resotoworker:
+       ...
+     # highlight-start
+       volumeMounts:
+         - mountPath: /home/resoto/.kube
+           name: kubeconfig-files
+       volumes:
+         - name: kubeconfig-files
+           secret:
+             secretName: kubernetes-auth
+     # highlight-end
+     ...
+     ```
 
-- Deploy these changes:
+   - Deploy these changes with Helm:
 
-  ```bash
-  $ helm upgrade resoto resoto/resoto --set image.tag={{imageTag}} -f resoto-values.yaml
-  ```
+     ```bash
+     $ helm upgrade resoto resoto/resoto --set image.tag={{imageTag}} -f resoto-values.yaml
+     ```
 
-</TabItem>
-<TabItem value="pip" label="pip">
+   </TabItem>
+   <TabItem value="pip" label="pip">
 
-Resoto is running on the local machine and can access the files directly. No further setup is required.
+   - Simply move or copy your kubeconfig file(s) to the `~/.kube` directory. (Since Resoto is running on your local machine, it can access the file(s) directly.)
 
-</TabItem>
-</Tabs>
+   :::note
 
-Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../concepts/components/shell):
+   The following steps assume that the file(s) are named `config_1`, `config_2`, etc.
 
-```bash
-> config edit resoto.worker
-```
+   :::
 
-Modify the `k8s` section of the configuration as follows, defining the path and contexts of each of your kubeconfig files:
+   </TabItem>
+   </Tabs>
 
-````yaml title="Resoto Worker configuration"
+2. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../concepts/components/shell):
 
-```yaml title="Resoto Worker configuration"
-resotoworker:
-  ...
-...
-# highlight-start
-k8s:
-  config_files:
-    - path: "/home/resoto/.kube/config"
-      all_contexts: false
-      contexts: ["context1", "context2"]
-    - path: "/home/resoto/.kube/config_2"
-      all_contexts: true
-# highlight-end
-````
+   ```bash
+   > config edit resoto.worker
+   ```
 
-Multiple [kubeconfig files](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig) can be specified. If a single [kubeconfig file](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig) holds multiple contexts, it is possible to restrict the contexts to be used by defining them explicitly. Setting `all_contexts` to `true` will not filter, resulting in taking all found contexts.
+3. Modify the `k8s` section of the configuration as follows, defining `path` and `contexts` for each file:
+
+   ```yaml title="Resoto Worker configuration"
+   resotoworker:
+     ...
+   ...
+   # highlight-start
+   k8s:
+     config_files:
+       - path: "/home/resoto/.kube/config_1"
+         all_contexts: false
+         contexts: ["context1", "context2"]
+       - path: "/home/resoto/.kube/config_2"
+         all_contexts: true
+   # highlight-end
+   ```
+
+   :::info
+
+   If a single [kubeconfig file](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig) holds multiple contexts, it is possible to restrict the contexts to be used by defining them explicitly. Setting `all_contexts` to `true` will not filter, resulting in taking all found contexts.
+
+   :::
 
 ### Manual Configuration
 
-Instead of exposing a [kubeconfig file](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig) to Resoto Worker, you can alternatively supply the required credentials manually.
+Instead of exposing a [kubeconfig file](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig) to Resoto Worker, you can alternatively supply credentials manually.
 
 The required values can be found in the [kubeconfig file](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig):
 
-| Option                       | kubeconfig Property                                                                                                              |
-| ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `server`                     | `clusters.cluster.server`                                                                                                        |
-| `token`                      | `users.user.token`                                                                                                               |
-| `certificate_authority_data` | `clusters.cluster.certificate-authority-data` (This property is only required if the server is using a self-signed certificate.) |
+| Option                       | kubeconfig Property                                                                                                 |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `server`                     | `clusters.cluster.server`                                                                                           |
+| `token`                      | `users.user.token`                                                                                                  |
+| `certificate_authority_data` | `clusters.cluster.certificate-authority-data`<br />(only required if the server is using a self-signed certificate) |
 
-Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../concepts/components/shell):
+1. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../concepts/components/shell):
 
-```bash
-> config edit resoto.worker
-```
+   ```bash
+   > config edit resoto.worker
+   ```
 
-Modify the `k8s` section of the configuration as follows:
+2. Modify the `k8s` section of the configuration as follows:
 
-```yaml title="Resoto Worker configuration"
-resotoworker:
-  ...
-...
-# highlight-start
-k8s:
-  configs:
-    - name: 'dev'
-      certificate_authority_data: 'xxx'
-      server: 'https://k8s-cluster-server.example.com'
-      token: 'token'
-# highlight-end
-```
+   ```yaml title="Resoto Worker configuration"
+   resotoworker:
+     ...
+   ...
+   # highlight-start
+   k8s:
+     configs:
+       - name: 'dev'
+         certificate_authority_data: 'xxx'
+         server: 'https://k8s-cluster-server.example.com'
+         token: 'token'
+   # highlight-end
+   ```
 
-Multiple k8s clusters can be defined by adding multiple sets of values.
+   :::info
+
+   Multiple k8s clusters can be defined by adding multiple sets of values.
+
+   :::
 
 ## Configuration
 
 The Kubernetes collector has additional options that allow for fine-tuning of the collector's behavior:
 
-```yaml title="Resoto Worker configuration"
-resotoworker:
-  ...
-...
-# highlight-start
-k8s:
-  collect: []
-  no_collect: []
-  pool_size: 8
-  fork_process: false
-# highlight-end
-```
+| Option         | Description                                                                         | Default Value |
+| -------------- | ----------------------------------------------------------------------------------- | ------------- |
+| `collect`      | Resources to collect<br />(all resources are collected by default)                  | []            |
+| `no_collect`   | Resources to ignore<br />(no resources are blocked from being collected by default) | []            |
+| `pool_size`    | Number of workers to utilize                                                        | `8`           |
+| `fork_process` | Whether to fork a process for each worker                                           | `false`       |
 
-| Option         | Description                                                                                                 | Default Value |
-| -------------- | ----------------------------------------------------------------------------------------------------------- | ------------- |
-| `collect`      | List of resources to collect. (By default, all resources are collected.)                                    | []            |
-| `no_collect`   | List of resources to ignore during collection. (By default, no resources are blocked from being collected.) | []            |
-| `pool_size`    | Number of workers to utilize.                                                                               | `8`           |
-| `fork_process` | Fork a process for each worker.                                                                             | `false`       |
+Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../concepts/components/shell) to configure these options.
 
-:::tip Example
-
-```yaml title="Resoto Worker configuration"
+```yaml title="Example Resoto Worker configuration"
 resotoworker:
   ...
 ...
@@ -217,8 +216,6 @@ k8s:
   fork_process: false
 # highlight-end
 ```
-
-:::
 
 ## Resource Collection
 

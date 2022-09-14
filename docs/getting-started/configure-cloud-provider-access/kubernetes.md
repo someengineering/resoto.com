@@ -104,11 +104,11 @@ The easiest way to configure access to Kubernetes is to give Resoto Worker acces
 
    - Simply move or copy your kubeconfig file(s) to the `~/.kube` directory. (Since Resoto is running on your local machine, it can access the file(s) directly.)
 
-   :::note
+     :::note
 
-   The following steps assume that the file(s) are named `config_1`, `config_2`, etc.
+     The following steps assume that the file(s) are named `config_1`, `config_2`, etc.
 
-   :::
+     :::
 
    </TabItem>
    </Tabs>
@@ -125,8 +125,8 @@ The easiest way to configure access to Kubernetes is to give Resoto Worker acces
    resotoworker:
      ...
    ...
-   # highlight-start
    k8s:
+   # highlight-start
      config_files:
        - path: "/home/resoto/.kube/config_1"
          all_contexts: false
@@ -166,8 +166,8 @@ The required values can be found in the [kubeconfig file](https://kubernetes.io/
    resotoworker:
      ...
    ...
-   # highlight-start
    k8s:
+   # highlight-start
      configs:
        - name: 'dev'
          certificate_authority_data: 'xxx'

@@ -82,7 +82,9 @@ const config = {
               badge: false,
             },
             '2.X': {
-              label: latestRelease.startsWith('2.') ? latestRelease : '2.X',
+              label: latestRelease.version.startsWith('2.')
+                ? latestRelease.version
+                : '2.X',
             },
           },
         },
@@ -151,11 +153,10 @@ const config = {
         minHeadingLevel: 2,
         maxHeadingLevel: 5,
       },
-      // announcementBar: {
-      //   id: 'announcementBar-3', // Increment on change
-      //   content:
-      //     '<span aria-label="star" role="img" class="lg-screens-only">⭐</span> If you like Resoto, please <a href="https://github.com/someengineering/resoto" target="_blank" rel="noopener noreferrer">star the project on GitHub</a> and <a href="https://linkedin.com/company/someengineering" target="_blank" rel="noopener noreferrer">follow Some Engineering Inc. on LinkedIn</a>. Thanks for your support! <span aria-label="heart" role="img" class="lg-screens-only">❤️</span>',
-      // },
+      announcementBar: {
+        id: `announcementBar-${latestRelease.version}`, // Increment on change
+        content: `<span aria-label="star-struck" role="img">🤩</span> <a href="${latestRelease.link}">Check out what's new in Resoto ${latestRelease.version}</a>, and don't forget to <a href="https://github.com/someengineering/resoto" target="_blank" rel="noopener noreferrer">star the project on GitHub</a>! <span aria-label="sparkles" role="img">✨</span>`,
+      },
       navbar: {
         hideOnScroll: true,
         title: 'Resoto',
@@ -306,7 +307,7 @@ const config = {
             ],
           },
         ],
-        copyright: `<span aria-label="owl" role="img" class="lg-screens-only">🦉</span> Copyright © ${new Date().getFullYear()} <a href="https://some.engineering" target="_blank" rel="noopener noreferrer">Some Engineering Inc</a>. Built with <a href="https://docusaurus.io" target="_blank" rel="noopener noreferrer">Docusaurus</a>. <span aria-label="dinosaur" role="img" class="lg-screens-only">🦖</span>`,
+        copyright: `<span aria-label="owl" role="img">🦉</span> Copyright © ${new Date().getFullYear()} <a href="https://some.engineering" target="_blank" rel="noopener noreferrer">Some Engineering Inc</a>. Built with <a href="https://docusaurus.io" target="_blank" rel="noopener noreferrer">Docusaurus</a>. <span aria-label="dinosaur" role="img">🦖</span>`,
       },
       algolia: {
         appId: 'DOGNENB96P',

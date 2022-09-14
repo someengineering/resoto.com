@@ -3,7 +3,7 @@ import { useDocsVersion } from '@docusaurus/theme-common/internal';
 import latestRelease from '@site/latestRelease.json';
 import OriginalCodeBlock from '@theme-original/CodeBlock';
 import type CodeBlockType from '@theme/CodeBlock';
-import React from 'react';
+import React, { ComponentProps } from 'react';
 
 type Props = ComponentProps<typeof CodeBlockType>;
 
@@ -17,7 +17,7 @@ export default function CodeBlock(props: Props): JSX.Element {
   }
 
   const versionTag =
-    versionMetadata?.version === 'current' ? null : latestRelease;
+    versionMetadata?.version === 'current' ? null : latestRelease.version;
 
   return (
     <OriginalCodeBlock {...props}>

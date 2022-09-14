@@ -71,9 +71,8 @@ Use Helm values `resotoworker.volumes`, and `resotoworker.volumeMounts` to make 
 
   ```bash
   $ kubectl -n resoto create secret generic kubernetes-auth \
-    --from-file=kubeconfig_1=<path to kube config>
-    --from-file=kubeconfig_2=<path to a second kube config>
-    --from-file=kubeconfig_2=<path to a third kube config>
+    --from-file=config=<path to kube config>
+    --from-file=config_2=<path to a second kube config>
   ```
 
 - Update the `resoto-values.yaml` file as follows:
@@ -125,10 +124,10 @@ resotoworker:
 # highlight-start
 k8s:
   config_files:
-    - path: "/path/to/kubeconfig"
+    - path: "/home/resoto/.kube/config"
       all_contexts: false
       contexts: ["context1", "context2"]
-    - path: "/path/to/kubeconfig2"
+    - path: "/home/resoto/.kube/config_2"
       all_contexts: true
 # highlight-end
 ````

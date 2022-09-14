@@ -264,11 +264,9 @@ Setting up AWS with credentials files is only required for specific authenticati
 
 :::
 
-[Configure the <abbr title="Amazon Web Services">AWS</abbr> Command-Line Interface](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html). The <abbr title="Amazon Web Services">AWS</abbr> <abbr title="Command-Line Interface">CLI</abbr> will store your credentials in a folder named `.aws` in your home directory. You can change this location using the `AWS_CONFIG_FILE` environment variable.
+The [<abbr title="Amazon Web Services Command Line Interface">AWS</abbr> CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html), will store your credentials in a folder named `.aws` in your home directory and can load a [shared credentials file](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html#shared-credentials-file) named `credentials`.
 
-Resoto will also try to load a [shared credentials file](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html#shared-credentials-file) - the default location is `/home/resoto/.aws/credentials`. You can change this location using the `AWS_SHARED_CREDENTIALS_FILE` environment variable.
-
-Depending on your installation method, there are different ways to provide this folder and files to Resoto.
+Depending on your installation method, there are different ways to provide this file to Resoto.
 
 <Tabs groupId="install-method">
 <TabItem value="docker" label="Docker">
@@ -301,7 +299,7 @@ Inside docker the home directory is `/home/resoto` - so the default location for
 </TabItem>
 <TabItem value="k8s" label="Kubernetes">
 
-Use Helm values `resotoworker.volumes`, and `resotoworker.volumeMounts` to make your `$HOME/.aws` directory available within the `resotoworker` container.
+The home directory is `/home/resoto` - so the default location for the `.aws` folder is `/home/resoto/.aws`. Use Helm values `resotoworker.volumes`, and `resotoworker.volumeMounts` to make your `$HOME/.aws` directory available within the `resotoworker` container.
 
 - Create a secret:
 
@@ -337,7 +335,10 @@ Use Helm values `resotoworker.volumes`, and `resotoworker.volumeMounts` to make 
 </TabItem>
 <TabItem value="pip" label="pip">
 
-`pip` is running on the local machine and can directly access your local `.aws` folder. No further setup is required. </TabItem> </Tabs>
+`pip` is running on the local machine and can directly access your local `.aws` folder. No further setup is required.
+
+</TabItem>
+</Tabs>
 
 ## Resource Collection
 

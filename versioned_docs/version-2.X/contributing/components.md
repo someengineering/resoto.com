@@ -77,7 +77,7 @@ A script is provided to simplify the process of configuring the virtual environm
 
 Activate the virtual environment:
 
-<Tabs>
+<Tabs groupId="operating-system">
 <TabItem value="linux" label="Linux/macOS">
 
 ```bash

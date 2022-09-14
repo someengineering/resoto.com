@@ -9,7 +9,7 @@ import DocCardList from '@theme/DocCardList';
 
 Collector plugins allow for importing of arbitrary resources into Resoto in graph form. The most common use case is to gather information about cloud accounts and/or resources. However, any data expressible is graph form can be collected—be it social media accounts, software dependency trees, network topology, steps for cooking your favorite food, etc.
 
-Once the graph data is collected and sent to [Resoto Core](docs/concepts/components/core.md), the power of Resoto's [search syntax](docs/concepts/search/index.md) is at your fingertips.
+Once the graph data is collected and sent to [Resoto Core](../../concepts/components/core.md), the power of Resoto's [search syntax](../../concepts/search/index.md) is at your fingertips.
 
 The plugin source code lives in the [`plugins` directory within the `someengineering/resoto` repository on GitHub](https://github.com/someengineering/resoto/tree/main/plugins). Each plugin is maintained as separate project.
 

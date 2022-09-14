@@ -96,6 +96,10 @@ div[class^='announcementBar_'] .close {
   margin: 0 0.125rem;
 }
 
+.navbar__link {
+  white-space: nowrap;
+}
+
 .navbar__link--active {
   background: var(--ifm-menu-color-background-active);
   border-radius: var(--ifm-global-radius);
@@ -181,13 +185,24 @@ div[class^='announcementBar_'] .close {
   background-color: var(--ifm-navbar-background-color);
   padding: var(--ifm-menu-link-padding-vertical)
     var(--ifm-menu-link-padding-horizontal);
-  align-items: center;
   display: flex;
+  flex-direction: row;
+  align-items: center;
   border-radius: 0.5rem;
 }
 
-.version-selector > span {
-  font-weight: var(--ifm-font-weight-bold);
+.version-selector .navbar__item {
+  margin: 0;
+}
+
+.version-selector > a.button {
+  padding: calc(
+      var(--ifm-button-padding-vertical) * var(--ifm-button-size-multiplier)
+    )
+    calc(
+      var(--ifm-button-padding-horizontal) * var(--ifm-button-size-multiplier) /
+        2
+    );
 }
 
 html[data-theme='dark'] .theme-doc-sidebar-container {

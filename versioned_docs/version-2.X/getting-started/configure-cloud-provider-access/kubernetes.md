@@ -4,6 +4,11 @@ sidebar_label: Kubernetes
 
 # Configure Kubernetes Access
 
+```mdx-code-block
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+```
+
 The [Kubernetes](../../reference/data-models/kubernetes.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs/index.md) in [Resoto Shell](../../concepts/components/shell.md):
 
 ```bash
@@ -29,7 +34,79 @@ You can authenticate with Kubernetes via [kubeconfig files](https://kubernetes.i
 
 ### kubeconfig Files
 
-The easiest way to configure access to Kubernetes is to give Resoto Worker access to [kubeconfig files](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig).
+The easiest way to configure access to Kubernetes is to give Resoto Worker access to [kubeconfig files](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig). Providing the files depends on your installation method:
+
+<Tabs groupId="install-method">
+<TabItem value="docker" label="Docker">
+
+- Add the following volume definition to the `resotoworker` service in `docker-compose.yaml`:
+
+  ```yaml title="docker-compose.yaml"
+  services:
+    ...
+    resotoworker:
+      image: somecr.io/someengineering/resotoworker:{{imageTag}}
+      container_name: resotoworker
+      ...
+  # highlight-start
+      volumes:
+        - $HOME/.kube:/home/resoto/.kube
+  # highlight-end
+    ...
+  ...
+  ```
+
+- Recreate the `resotoworker` container with the updated service definition:
+
+  ```bash
+  $ docker compose up -d
+  ```
+
+</TabItem>
+<TabItem value="k8s" label="Kubernetes">
+
+Use Helm values `resotoworker.volumes`, and `resotoworker.volumeMounts` to make the service account kubeconfig file(s) available within the `resotoworker` container.
+
+- Create a secret:
+
+  ```bash
+  $ kubectl -n resoto create secret generic kubernetes-auth \
+    --from-file=kubeconfig_1=<path to kube config>
+    --from-file=kubeconfig_2=<path to a second kube config>
+    --from-file=kubeconfig_2=<path to a third kube config>
+  ```
+
+- Update the `resoto-values.yaml` file as follows:
+
+  ```yaml title="resoto-values.yaml"
+  ...
+  resotoworker:
+    ...
+  # highlight-start
+    volumeMounts:
+      - mountPath: /home/resoto/.kube
+        name: kubeconfig-files
+    volumes:
+      - name: kubeconfig-files
+        secret:
+          secretName: kubernetes-auth
+  # highlight-end
+  ...
+  ```
+
+- Deploy these changes:
+
+  ```bash
+  $ helm upgrade resoto resoto/resoto --set image.tag={{imageTag}} -f resoto-values.yaml
+  ```
+
+</TabItem>
+<TabItem value="pip" label="pip">
+
+Resoto is running on the local machine and can access the files directly. No further setup is required.
+
+</TabItem>
+</Tabs>
 
 Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../concepts/components/shell):
 

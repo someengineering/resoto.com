@@ -34,87 +34,86 @@ You can authenticate with [Google Cloud Platform](../../reference/data-models/gc
 
 ### Service Account JSON Files
 
-:::note
+1. Provide the files to Resoto based on your installation method.
 
-If you installed Resoto via [Docker](../install-resoto/docker.md) or [Kubernetes](../install-resoto/kubernetes.md), your service account JSON file first needs to be mounted to the `resotoworker` container:
+  <Tabs groupId="install-method">
+  <TabItem value="docker" label="Docker">
 
-<Tabs groupId="install-method">
-<TabItem value="docker" label="Docker">
+    - Add the following volume definition to the `resotoworker` service in `docker-compose.yaml`:
 
-- Add the following volume definition to the `resotoworker` service in `docker-compose.yaml`:
-
-  ```yaml title="docker-compose.yaml"
-  services:
-    ...
-    resotoworker:
-      image: somecr.io/someengineering/resotoworker:{{imageTag}}
-      container_name: resotoworker
+      ```yaml title="docker-compose.yaml"
+      services:
+        ...
+        resotoworker:
+          image: somecr.io/someengineering/resotoworker:{{imageTag}}
+          container_name: resotoworker
+          ...
+      # highlight-start
+          volumes:
+            - <path to service account JSON file>:/home/resoto/.gcp/service-account.json
+      # highlight-end
+        ...
       ...
-  # highlight-start
-      volumes:
-        - <path to service account JSON file>:/etc/tokens/gcp-service-account.json
-  # highlight-end
-    ...
-  ...
-  ```
+      ```
 
-- Recreate the `resotoworker` container with the updated service definition:
+    - Recreate the `resotoworker` container with the updated service definition:
 
-  ```bash
-  $ docker compose up -d
-  ```
+      ```bash
+      $ docker compose up -d
+      ```
 
-</TabItem>
-<TabItem value="k8s" label="Kubernetes">
+  </TabItem>
+  <TabItem value="k8s" label="Kubernetes">
 
-Use Helm values `resotoworker.volumes`, and `resotoworker.volumeMounts` to make the service account JSON file(s) available within the `resotoworker` container.
+    Use Helm values `resotoworker.volumes`, and `resotoworker.volumeMounts` to make the service account JSON file(s) available within the `resotoworker` container.
 
-- Create a secret:
+    - Create a secret. You can add as many secret files as you need by defining multiple `--from-file` arguments.
 
-  ```bash
-  $ kubectl -n resoto create secret generic resoto-auth \
-    --from-file=GOOGLE_APPLICATION_CREDENTIALS=<path to service account JSON file>
-  ```
+      ```bash
+      $ kubectl -n resoto create secret generic resoto-auth \
+        --from-file=service-account.json=<path to service account JSON file>
+      ```
 
-- Update the `resoto-values.yaml` file as follows:
+    - Update the `resoto-values.yaml` file as follows:
 
-  ```yaml title="resoto-values.yaml"
-  ...
-  resotoworker:
-    ...
-  # highlight-start
-    volumeMounts:
-      - mountPath: /etc/tokens
-        name: auth-secret
-    volumes:
-      - name: auth-secret
-        secret:
-          secretName: resoto-auth
-          items:
-            - key: GOOGLE_APPLICATION_CREDENTIALS
-              path: gcp-service-account.json
-  # highlight-end
-  ...
-  ```
+      ```yaml title="resoto-values.yaml"
+      ...
+      resotoworker:
+        ...
+      # highlight-start
+        volumeMounts:
+          - mountPath: /home/resoto/.gcp`
+            name: auth-secret
+        volumes:
+          - name: auth-secret
+            secret:
+              secretName: resoto-auth
+      # highlight-end
+      ...
+      ```
 
-- Deploy these changes:
+    - Deploy these changes:
 
-  ```bash
-  $ helm upgrade resoto resoto/resoto --set image.tag={{imageTag}} -f resoto-values.yaml
-  ```
+      ```bash
+      $ helm upgrade resoto resoto/resoto --set image.tag={{imageTag}} -f resoto-values.yaml
+      ```
 
-</TabItem>
-</Tabs>
+  </TabItem>
+  <TabItem value="pip" label="pip">
+  
+    Move the files to the `~/.gcp` directory.
+    Resoto is running on the local machine and can access the files directly. No further setup is required.
 
-:::
+  </TabItem>
+  </Tabs>
 
-1. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../concepts/components/shell):
+2. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../concepts/components/shell):
 
    ```bash
    > config edit resoto.worker
    ```
 
-2. Modify the `gcp` section of the configuration as follows, adding the paths to your service account JSON file:
+3. Modify the `gcp` section of the configuration as follows, adding the paths to your service account JSON file:
 
    ```yaml title="Resoto Worker configuration"
    resotoworker:
@@ -124,7 +123,7 @@ Use Helm values `resotoworker.volumes`, and `resotoworker.volumeMounts` to make 
    gcp:
      # GCP service account file(s)
      service_account:
-       - /etc/tokens/gcp-service-account.json
+       - /home/resoto/.gcp/service-account.json
      ...
    # highlight-end
    ```

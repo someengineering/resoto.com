@@ -75,7 +75,7 @@ The easiest way to configure access to Kubernetes is to give Resoto Worker acces
        --from-file=config_2=<PATH TO ANOTHER kubeconfig FILE>
      ```
 
-   - Update the Helm `resoto-values.yaml` file as follows:
+   - Update `resoto-values.yaml` as follows:
 
      ```yaml title="resoto-values.yaml"
      ...

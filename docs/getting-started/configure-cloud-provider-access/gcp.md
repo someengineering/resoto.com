@@ -73,7 +73,7 @@ You can authenticate with [Google Cloud Platform](../../reference/data-models/gc
        --from-file=service-account-2.json=<PATH TO ANOTHER SERVICE ACCOUNT JSON>
      ```
 
-   - Update the Helm `resoto-values.yaml` file as follows:
+   - Update `resoto-values.yaml` as follows:
 
      ```yaml title="resoto-values.yaml"
      ...

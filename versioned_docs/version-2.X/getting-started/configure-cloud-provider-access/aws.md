@@ -32,7 +32,7 @@ resotoworker:
 
 ## Authentication
 
-**Resoto supports the authentication mechanisms described in the [Boto3 SDK documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html).** You can authenticate with [<abbr title="Amazon Web Services">AWS</abbr>](../../reference/data-models/aws.md) via [environment](#environment), [instance profile](#instance-profile), [access key](#access-key), or [instance profile](#instance-profiles).
+**Resoto supports the authentication mechanisms described in the [Boto3 SDK documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html).** You can authenticate with [<abbr title="Amazon Web Services">AWS</abbr>](../../reference/data-models/aws.md) via the [environment](#environment), an [instance profile](#instance-profile), an [access key](#access-key), or [profiles](#profiles).
 
 ### Environment
 
@@ -67,6 +67,7 @@ You can specify a profile using `AWS_PROFILE` and, for local testing, SSO authen
      ```
 
    - Recreate the `resotoworker` container with the updated service definition:
+
      ```bash
      $ docker compose up -d
      ```
@@ -82,7 +83,7 @@ You can specify a profile using `AWS_PROFILE` and, for local testing, SSO authen
        --from-literal=AWS_SECRET_ACCESS_KEY=vO51EW/8ILMGrSBV/Ia9Fov6xZnKxxxxxxxxxxxx
      ```
 
-   - Update the Helm `resoto-values.yaml` file as follows:
+   - Update `resoto-values.yaml` as follows:
 
      ```yaml title="resoto-values.yaml"
      ...
@@ -105,6 +106,7 @@ You can specify a profile using `AWS_PROFILE` and, for local testing, SSO authen
      ```
 
    - Deploy these changes with Helm:
+
      ```bash
      $ helm upgrade resoto resoto/resoto --set image.tag={{imageTag}} -f resoto-values.yaml
      ```
@@ -112,14 +114,14 @@ You can specify a profile using `AWS_PROFILE` and, for local testing, SSO authen
    </TabItem>
    <TabItem value="pip" label="pip">
 
-   Export the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` environment variables:
+   - Export the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` environment variables:
 
-   ```bash
-   $ export AWS_ACCESS_KEY_ID=AKIAZGZKXXXXXXXXXXXX
-   $ export AWS_SECRET_ACCESS_KEY=vO51EW/8ILMGrSBV/Ia9Fov6xZnKxxxxxxxxxxxx
-   ```
+     ```bash
+     $ export AWS_ACCESS_KEY_ID=AKIAZGZKXXXXXXXXXXXX
+     $ export AWS_SECRET_ACCESS_KEY=vO51EW/8ILMGrSBV/Ia9Fov6xZnKxxxxxxxxxxxx
+     ```
 
-   and restart the `resotoworker` process.
+   - Restart the `resotoworker` process.
 
    </TabItem> 
    </Tabs>
@@ -152,7 +154,7 @@ You can define an access key directly in the Resoto configuration.
 
 :::note
 
-The configuration is visible to anyone with access to Resoto. You can also pass the keys via the [environment](#environment).
+The configuration is visible to anyone with access to Resoto. You can alternatively define an access key via [environment variables](#environment).
 
 :::
 
@@ -231,7 +233,7 @@ The configuration is visible to anyone with access to Resoto. You can also pass 
        --from-file=credentials=$HOME/.aws/credentials
      ```
 
-   - Update the Helm `resoto-values.yaml` file as follows:
+   - Update `resoto-values.yaml` as follows:
 
      ```yaml title="resoto-values.yaml"
      ...

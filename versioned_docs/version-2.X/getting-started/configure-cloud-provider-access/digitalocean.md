@@ -30,103 +30,105 @@ resotoworker:
 
 ## Authentication
 
-DigitalOcean uses [access tokens](https://cloud.digitalocean.com/account/api/tokens) to authenticate API requests. You can provide your access tokens to Resoto via configuration or environment variables.
+DigitalOcean uses [access tokens](https://cloud.digitalocean.com/account/api/tokens) to authenticate API requests. You can provide access tokens to Resoto via [configuration](#configuration) or [environment](#environment).
 
-### Using Resoto Configuration
+### Configuration
 
-Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../concepts/components/shell):
+1. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../concepts/components/shell):
 
-```bash
-> config edit resoto.worker
-```
+   ```bash
+   > config edit resoto.worker
+   ```
 
-Modify the `digitalocean` section of the configuration as follows, adding your API tokens and/or access keys:
+2. Modify the `digitalocean` section of the configuration as follows, adding your API tokens and/or access keys:
 
-```yaml
-digitalocean:
-# highlight-start
-  # DigitalOcean API tokens for the teams to be collected
-  api_tokens:
-    - 'dop_v1_e5c759260e6a43f003f3b53e2cfec79cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-  # DigitalOcean Spaces access keys for the teams to be collected, separated by colons
-  spaces_access_keys: []
-  ...
-# highlight-end
-```
+   ```yaml
+   digitalocean:
+   # highlight-start
+     # DigitalOcean API tokens for the teams to be collected
+     api_tokens:
+       - 'dop_v1_e5c759260e6a43f003f3b53e2cfec79cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+     # DigitalOcean Spaces access keys for the teams to be collected, separated by colons
+     spaces_access_keys: []
+     ...
+   # highlight-end
+   ```
 
-### Using Environment Variables
+### Environment
 
-Instead of specifying API tokens or secret access keys in the [Resoto Worker configuration](../../reference/configuration/index.md) directly, it is possible to define them using the [`--override` flag or `RESOTOWORKER_OVERRIDE` environment variable](../../index.md#overriding-individual-properties):
+Instead of specifying API tokens or secret access keys in the [Resoto Worker configuration](../../reference/configuration/index.md) directly, it is possible to define them using the [`--override` flag or `RESOTOWORKER_OVERRIDE` environment variable](../../reference/configuration/index.md#overriding-individual-properties).
 
-<Tabs groupId="install-method">
-<TabItem value="docker" label="Docker">
+1. Set the `RESOTOWORKER_OVERRIDE` environment variable:
 
-- Add environment variable definitions to the `resotoworker` service in `docker-compose.yaml`:
+   <Tabs groupId="install-method">
+   <TabItem value="docker" label="Docker">
 
-```yaml title="docker-compose.yaml"
-services:
-  ...
-  resotoworker:
-# highlight-start
-    environment:
-      - RESOTOWORKER_OVERRIDE="digitalocean.api_tokens=dop_v1_e5c759260e6a43f003f3b53e2cfec79cxxxxxxxxxxxxxxxxxxxxxxxx"
-# highlight-end
-  ...
-...
-```
+   - Add a environment variable definition to the `resotoworker` service in `docker-compose.yaml`:
 
-- Recreate the `resotoworker` container with the updated service definition:
+     ```yaml title="docker-compose.yaml"
+     services:
+       ...
+       resotoworker:
+     # highlight-start
+         environment:
+           - RESOTOWORKER_OVERRIDE="digitalocean.api_tokens=dop_v1_e5c759260e6a43f003f3b53e2cfec79cxxxxxxxxxxxxxxxxxxxxxxxx"
+     # highlight-end
+       ...
+     ...
+     ```
 
-```bash
-$ docker compose up -d
-```
+   - Recreate the `resotoworker` container with the updated service definition:
 
-</TabItem>
-<TabItem value="k8s" label="Kubernetes">
+     ```bash
+     $ docker compose up -d
+     ```
 
-- Create a secret:
+   </TabItem>
+   <TabItem value="k8s" label="Kubernetes">
 
-```bash
-$ kubectl -n resoto create secret generic resoto-auth \
-  --from-literal=RESOTOWORKER_OVERRIDE="digitalocean.api_tokens=dop_v1_e5c759260e6a43f003f3b53e2cfec79cxxxxxxxxxxxxxxxxxxxxxxxx"
-```
+   - Create a secret:
 
-- Update the Helm `resoto-values.yaml` file as follows:
+     ```bash
+     $ kubectl -n resoto create secret generic resoto-auth \
+       --from-literal=RESOTOWORKER_OVERRIDE="digitalocean.api_tokens=dop_v1_e5c759260e6a43f003f3b53e2cfec79cxxxxxxxxxxxxxxxxxxxxxxxx"
+     ```
 
-```yaml title="resoto-values.yaml"
-...
-resotoworker:
-  ...
-# highlight-start
-  extraEnv:
-    - name: RESOTOWORKER_OVERRIDE
-      valueFrom:
-        secretKeyRef:
-          name: resoto-auth
-          key: RESOTOWORKER_OVERRIDE
-# highlight-end
-...
-```
+   - Update `resoto-values.yaml` as follows:
 
-- Deploy these changes with Helm:
+     ```yaml title="resoto-values.yaml"
+     ...
+     resotoworker:
+       ...
+     # highlight-start
+       extraEnv:
+         - name: RESOTOWORKER_OVERRIDE
+           valueFrom:
+             secretKeyRef:
+               name: resoto-auth
+               key: RESOTOWORKER_OVERRIDE
+     # highlight-end
+     ...
+     ```
 
-```bash
-$ helm upgrade resoto resoto/resoto --set image.tag={{imageTag}} -f resoto-values.yaml
-```
+   - Deploy these changes with Helm:
 
-</TabItem>
-<TabItem value="pip" label="pip">
+     ```bash
+     $ helm upgrade resoto resoto/resoto --set image.tag={{imageTag}} -f resoto-values.yaml
+     ```
 
-Export the `RESOTOWORKER_OVERRIDE` environment variable:
+   </TabItem>
+   <TabItem value="pip" label="pip">
 
-```bash
-$ export RESOTOWORKER_OVERRIDE="digitalocean.api_tokens=dop_v1_e5c759260e6a43f003f3b53e2cfec79cxxxxxxxxxxxxxxxxxxxxxxxx"
-```
+   - Export the `RESOTOWORKER_OVERRIDE` environment variable:
 
-and restart the `resotoworker` process.
+     ```bash
+     $ export RESOTOWORKER_OVERRIDE="digitalocean.api_tokens=dop_v1_e5c759260e6a43f003f3b53e2cfec79cxxxxxxxxxxxxxxxxxxxxxxxx"
+     ```
 
-</TabItem> 
-</Tabs>
+   - Restart the `resotoworker` process.
+
+   </TabItem>
+   </Tabs>
 
 ## Resource Collection
 

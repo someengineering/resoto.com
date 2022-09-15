@@ -119,6 +119,8 @@ You can specify a profile using `AWS_PROFILE` and, for local testing, SSO authen
    $ export AWS_SECRET_ACCESS_KEY=vO51EW/8ILMGrSBV/Ia9Fov6xZnKxxxxxxxxxxxx
    ```
 
+   and restart the `resotoworker` process.
+
    </TabItem> 
    </Tabs>
 
@@ -150,7 +152,7 @@ You can define an access key directly in the Resoto configuration.
 
 :::note
 
-Using a static access key is only recommended for testing.
+The configuration is visible to anyone with access to Resoto. You can also pass the keys via the [environment](#environment).
 
 :::
 
@@ -190,12 +192,6 @@ Using a static access key is only recommended for testing.
    external_id = a5eMybsyGIowimdZqpZWxxxxxxxxxxxx
    credential_source = Ec2InstanceMetadata
    ```
-
-   :::tip
-
-   You can manually create/edit this file or generate it by [configuring the <abbr title="Amazon Web Services">AWS</abbr> Command-Line Interface](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
-
-   :::
 
 3. Make your `credentials` file available to Resoto at `/home/resoto/.aws`:
 
@@ -309,12 +305,6 @@ Using a static access key is only recommended for testing.
 
    ...
    ```
-
-   :::tip
-
-   You can manually create/edit this file or generate it by [configuring the <abbr title="Amazon Web Services">AWS</abbr> Command-Line Interface](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
-
-   :::
 
 2. Make your `credentials` file available to Resoto at `/home/resoto/.aws`:
 

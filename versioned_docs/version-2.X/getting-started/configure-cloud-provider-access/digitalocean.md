@@ -4,6 +4,11 @@ sidebar_label: DigitalOcean
 
 # Configure DigitalOcean Access
 
+```mdx-code-block
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+```
+
 The [DigitalOcean](../../reference/data-models/digitalocean.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs/index.md) in [Resoto Shell](../../concepts/components/shell.md):
 
 ```bash
@@ -25,37 +30,105 @@ resotoworker:
 
 ## Authentication
 
-Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../concepts/components/shell):
+DigitalOcean uses [access tokens](https://cloud.digitalocean.com/account/api/tokens) to authenticate API requests. You can provide access tokens to Resoto via [configuration](#configuration) or [environment](#environment).
 
-```bash
-> config edit resoto.worker
-```
+### Configuration
 
-Modify the `digitalocean` section of the configuration as follows, adding your API tokens and/or access keys:
+1. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../concepts/components/shell):
 
-```yaml
-digitalocean:
-# highlight-start
-  # DigitalOcean API tokens for the teams to be collected
-  api_tokens:
-    - 'dop_v1_e5c759260e6a43f003f3b53e2cfec79cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-  # DigitalOcean Spaces access keys for the teams to be collected, separated by colons
-  spaces_access_keys: []
-  ...
-# highlight-end
-```
+   ```bash
+   > config edit resoto.worker
+   ```
 
-:::note
+2. Modify the `digitalocean` section of the configuration as follows, adding your API tokens and/or access keys:
 
-Instead of specifying API tokens or secret access keys in the [Resoto Worker configuration](../../reference/configuration/index.md) directly, it is possible to define them using the [`--override` flag or `RESOTOWORKER_OVERRIDE` environment variable](../../index.md#overriding-individual-properties):
+   ```yaml
+   digitalocean:
+   # highlight-start
+     # DigitalOcean API tokens for the teams to be collected
+     api_tokens:
+       - 'dop_v1_e5c759260e6a43f003f3b53e2cfec79cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+     # DigitalOcean Spaces access keys for the teams to be collected, separated by colons
+     spaces_access_keys: []
+     ...
+   # highlight-end
+   ```
 
-```bash title="Example"
-RESOTOWORKER_OVERRIDE="digitalocean.api_tokens=dop_v1_e5c759260e6a43f003f3b53e2cfec79cxxxxxxxxxxxxxxxxxxxxxxxx"
-```
+### Environment
 
-This is especially useful in cases where tokens are stored as secrets in a system such as [Vault](https://vaultproject.io).
+Instead of specifying API tokens or secret access keys in the [Resoto Worker configuration](../../reference/configuration/index.md) directly, it is possible to define them using the [`--override` flag or `RESOTOWORKER_OVERRIDE` environment variable](../../reference/configuration/index.md#overriding-individual-properties).
 
-:::
+1. Set the `RESOTOWORKER_OVERRIDE` environment variable:
+
+   <Tabs groupId="install-method">
+   <TabItem value="docker" label="Docker">
+
+   - Add a environment variable definition to the `resotoworker` service in `docker-compose.yaml`:
+
+     ```yaml title="docker-compose.yaml"
+     services:
+       ...
+       resotoworker:
+     # highlight-start
+         environment:
+           - RESOTOWORKER_OVERRIDE="digitalocean.api_tokens=dop_v1_e5c759260e6a43f003f3b53e2cfec79cxxxxxxxxxxxxxxxxxxxxxxxx"
+     # highlight-end
+       ...
+     ...
+     ```
+
+   - Recreate the `resotoworker` container with the updated service definition:
+
+     ```bash
+     $ docker compose up -d
+     ```
+
+   </TabItem>
+   <TabItem value="k8s" label="Kubernetes">
+
+   - Create a secret:
+
+     ```bash
+     $ kubectl -n resoto create secret generic resoto-auth \
+       --from-literal=RESOTOWORKER_OVERRIDE="digitalocean.api_tokens=dop_v1_e5c759260e6a43f003f3b53e2cfec79cxxxxxxxxxxxxxxxxxxxxxxxx"
+     ```
+
+   - Update `resoto-values.yaml` as follows:
+
+     ```yaml title="resoto-values.yaml"
+     ...
+     resotoworker:
+       ...
+     # highlight-start
+       extraEnv:
+         - name: RESOTOWORKER_OVERRIDE
+           valueFrom:
+             secretKeyRef:
+               name: resoto-auth
+               key: RESOTOWORKER_OVERRIDE
+     # highlight-end
+     ...
+     ```
+
+   - Deploy these changes with Helm:
+
+     ```bash
+     $ helm upgrade resoto resoto/resoto --set image.tag={{imageTag}} -f resoto-values.yaml
+     ```
+
+   </TabItem>
+   <TabItem value="pip" label="pip">
+
+   - Export the `RESOTOWORKER_OVERRIDE` environment variable:
+
+     ```bash
+     $ export RESOTOWORKER_OVERRIDE="digitalocean.api_tokens=dop_v1_e5c759260e6a43f003f3b53e2cfec79cxxxxxxxxxxxxxxxxxxxxxxxx"
+     ```
+
+   - Restart the `resotoworker` process.
+
+   </TabItem>
+   </Tabs>
 
 ## Resource Collection
 

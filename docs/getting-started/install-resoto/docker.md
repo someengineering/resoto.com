@@ -40,7 +40,7 @@ Resoto consists of multiple [components](../../concepts/components/index.md) pub
 To install Resoto using [Docker Compose](https://docs.docker.com/compose), first fetch the required files from the [`someengineering/resoto` GitHub repository](https://github.com/someengineering/resoto):
 
 <Tabs>
-<TabItem value="curl" label="Using curl">
+<TabItem value="curl" label="curl">
 
 ```bash
 $ mkdir -p resoto/dockerV2
@@ -51,7 +51,7 @@ $ docker compose up -d
 ```
 
 </TabItem>
-<TabItem value="git" label="Using git">
+<TabItem value="git" label="git">
 
 ```bash
 $ git clone https://github.com/someengineering/resoto.git

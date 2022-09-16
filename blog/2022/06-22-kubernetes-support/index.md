@@ -10,7 +10,7 @@ image: ./img/banner-social.png
 
 **I'm happy to announce that Resoto now has support for collecting [Kubernetes](/docs/reference/data-models/kubernetes) resources!**
 
-![Kubernetes](./img/banner.png)
+![](./img/banner.png)
 
 <!--truncate-->
 
@@ -22,7 +22,7 @@ To get started, configure Resoto to use your [kubeconfig file](https://kubernete
 > config edit resoto.worker
 ```
 
-In the text editor opened by [`config edit`](/docs/reference/cli/configs/edit), modify the configuration and define the location of your kubeconfig file. By default, Resoto will collect all contexts that are found in the kubeconfig file. It is possible to restrict the contexts to be used by setting the `contexts` property and turning `all_contexts` off.
+In the text editor opened by [`config edit`](/docs/reference/cli/setup-commands/configs/edit), modify the configuration and define the location of your kubeconfig file. By default, Resoto will collect all contexts that are found in the kubeconfig file. It is possible to restrict the contexts to be used by setting the `contexts` property and turning `all_contexts` off.
 
 ```yaml
 resotoworker:
@@ -77,9 +77,9 @@ Every resource found in Kubernetes is represented by a node in the graph. Availa
 
 Resoto has a common data model for resources that abstracts from the underlying provider. Every resource inherits the properties from the base `resource`, which defines properties like `id`, `name`, `age`, `last_update`, `tags` etc.
 
-Every resource in Kubernetes is also of type `kubernetes_resource`, which brings in additional properties like a `resource_version`, `labels`, and an optional `namespace` property, which is defined for all namespaced resources. Annotations of a Kubernetes resource are available as `tags` and can be modified via the [`tag`](/docs/reference/cli/tag) command.
+Every resource in Kubernetes is also of type `kubernetes_resource`, which brings in additional properties like a `resource_version`, `labels`, and an optional `namespace` property, which is defined for all namespaced resources. Annotations of a Kubernetes resource are available as `tags` and can be modified via the [`tag`](/docs/reference/cli/action-commands/tag) command.
 
-Common abstractions apply as well. A [PersistentVolume](/docs/reference/data-models/kubernetes#kubernetes_persistent_volume) is of base type `volume`. So it shares the same kind and properties with other volumes of other cloud providers, e.g. an [`EBSVolume`](/docs/reference/data-models/aws#aws_ec2_volume) in AWS or a [`Disk`](/docs/reference/data-models/gcp#gcp_disk) in GCP. The same idea applies to a Kubernetes [node](/docs/reference/data-models/kubernetes#kubernetes_node) which is of base type `instance` etc.
+Common abstractions apply as well. A [PersistentVolume](/docs/reference/data-models/kubernetes#kubernetes_persistent_volume) is of base type `volume`. So it shares the same kind and properties with other volumes of other cloud providers, e.g. an [`EBSVolume`](/docs/reference/data-models/aws#aws_ec2_volume) in <abbr title="Amazon Web Services">AWS</abbr> or a [`Disk`](/docs/reference/data-models/gcp#gcp_disk) in <abbr title="Google Cloud Platform">GCP</abbr>. The same idea applies to a Kubernetes [node](/docs/reference/data-models/kubernetes#kubernetes_node) which is of base type `instance` etc.
 
 Kubernetes has its own way of describing a resource, which is available in Resoto as well. The three main sections `metadata`, `spec`, and `status` can be found in almost any resource. The data in the `metadata` section is basically covered by the base `resource` properties (`id`, `name`, `tags`, etc.). The `spec` section usually holds the desired state, while the `status` section holds the current state.
 
@@ -291,7 +291,7 @@ name=resoto-resotoworker-dc6bd998f-tvhkw,
 
 ## Cleaning Up
 
-To delete resources, pipe search results to the [`clean`](/docs/reference/cli/clean) command. Let us find volume claims that are not bound to any kubernetes pod and clean them up:
+To delete resources, pipe search results to the [`clean`](/docs/reference/cli/action-commands/clean) command. Let us find volume claims that are not bound to any kubernetes pod and clean them up:
 
 ```bash
 > search is(kubernetes_persistent_volume_claim) with(empty, <-- is(kubernetes_pod)) -[0:1]-> | clean

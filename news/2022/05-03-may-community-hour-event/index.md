@@ -38,7 +38,7 @@ This event is taking place **LIVE** on the [Some Engineering Discord server](htt
 ### Agenda
 
 - Resoto news and updates
-  - releases of versions [2.0](/news/2022/04/12/v2.0.0), [2.1](/news/2022/04/28/v2.1.0)
+  - releases of versions [2.0](/news/2022/04/12/2.0.0), [2.1](/news/2022/04/28/2.1.0)
   - documentation improvements
   - planned/upcoming UI work
 - Learn how to…

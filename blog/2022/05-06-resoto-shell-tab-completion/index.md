@@ -7,7 +7,7 @@ tags: [shell]
 
 Resoto has a [command-line interface](/docs/reference/cli) which is accessible via [Resoto Shell](/docs/concepts/components/shell). Commands are not executed locally, but interpreted on the server. As such, only [Resoto Shell](/docs/concepts/components/shell) is required client-side.
 
-Resoto offers commands like [`echo`](/docs/reference/cli/echo), [`tail`](/docs/reference/cli/tail), and [`jq`](/docs/reference/cli/jq)—old friends to veteran shell users—but these commands only account for a small fraction of the possibilities in Resoto's [command-line interface](/docs/reference/cli).
+Resoto offers commands like [`echo`](/docs/reference/cli/miscellaneous-commands/echo), [`tail`](/docs/reference/cli/miscellaneous-commands/tail), and [`jq`](/docs/reference/cli/miscellaneous-commands/jq)—old friends to veteran shell users—but these commands only account for a small fraction of the possibilities in Resoto's [command-line interface](/docs/reference/cli).
 
 Version 2.X of [Resoto Shell](/docs/concepts/components/shell) introduces tab completion, making the [command-line interface](/docs/reference/cli) easier to use than ever before! Press the tab key, and [Resoto Shell](/docs/concepts/components/shell) will present you with a list of available commands:
 
@@ -21,7 +21,7 @@ The tab completion feature is context-aware and will even help you configure the
 
 ## Search Syntax
 
-Previous blog posts have touched upon the power and extensibility of Resoto's [search syntax](/docs/concepts/search), but learning the ins and outs of Resoto's [search syntax](/docs/concepts/search) has a rather steep learning curve. Never fear—the new tab completion feature also provides autocomplete for the [`search` command](/docs/reference/cli/search) to make Resoto's [search functionality](/docs/concepts/search) more accessible:
+Previous blog posts have touched upon the power and extensibility of Resoto's [search syntax](/docs/concepts/search), but learning the ins and outs of Resoto's [search syntax](/docs/concepts/search) has a rather steep learning curve. Never fear—the new tab completion feature also provides autocomplete for the [`search` command](/docs/reference/cli/search-commands/search) to make Resoto's [search functionality](/docs/concepts/search) more accessible:
 
 ![Search in action](./img/search.gif)
 
@@ -31,7 +31,7 @@ Previous blog posts have touched upon the power and extensibility of Resoto's [s
 
 ## Aggregation
 
-The [`aggregate` command](/docs/reference/cli/aggregate) also uses special syntax to define aggregation expressions, and tab completion again can help:
+The [`aggregate` command](/docs/reference/cli/search-commands/aggregate) also uses special syntax to define aggregation expressions, and tab completion again can help:
 
 ![Aggregate in action](./img/aggregate.gif)
 

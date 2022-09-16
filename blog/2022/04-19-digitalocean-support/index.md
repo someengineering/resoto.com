@@ -14,13 +14,13 @@ I worked on a plugin that allows collecting DigitalOcean resources over the past
 
 ## Getting Started
 
-To get started, add your DigitalOcean API tokens to [Resoto Worker](/docs/concepts/components/worker) via the [`config` command](/docs/reference/cli/configs) in [Resoto Shell](/docs/concepts/components/shell):
+To get started, add your DigitalOcean API tokens to [Resoto Worker](/docs/concepts/components/worker) via the [`config` command](/docs/reference/cli/setup-commands/configs) in [Resoto Shell](/docs/concepts/components/shell):
 
 ```bash
 > config edit resoto.worker
 ```
 
-In the text editor opened by [`config edit`](/docs/reference/cli/configs/edit), modify the configuration as follows:
+In the text editor opened by [`config edit`](/docs/reference/cli/setup-commands/configs/edit), modify the configuration as follows:
 
 ```yaml
 resotoworker:
@@ -82,7 +82,7 @@ The generated dotfile can be opened in any [Graphviz](https://graphviz.org) view
 
 ## Tagging
 
-Additionally, you can add tags to resources using the [`tag update` command](/docs/reference/cli/tag/update):
+Additionally, you can add tags to resources using the [`tag update` command](/docs/reference/cli/action-commands/tag/update):
 
 ```bash
 > search is(digitalocean_droplet) | tag update foo bar
@@ -104,7 +104,7 @@ Since DigitalOcean does not support tag values, values are emulated by resoto us
 
 ### Removing Tags
 
-To untag the resource, use the [`tag delete` command](/docs/reference/cli/tag/delete):
+To untag the resource, use the [`tag delete` command](/docs/reference/cli/action-commands/tag/delete):
 
 ```bash
 > search is(digitalocean_droplet) | tag delete foo

@@ -61,6 +61,7 @@ div[class^='announcementBar_'] {
     var(--stripe-color2) 10px,
     var(--stripe-color2) 40px
   );
+  z-index: auto;
 }
 
 html[data-theme='dark'] div[class^='announcementBar_'] {
@@ -304,6 +305,14 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 
 .api-info {
   display: none;
+}
+
+section.row > article {
+  margin-bottom: 0 !important;
+}
+
+section.row > article + article {
+  margin-bottom: 2rem !important;
 }
 
 @media screen and (min-width: 997px) {

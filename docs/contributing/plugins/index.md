@@ -1,20 +1,25 @@
----
-sidebar_label: Plugins
----
+# Plugins
+
+```mdx-code-block
+import { useCurrentSidebarCategory } from '@docusaurus/theme-common';
+import DocCardList from '@theme/DocCardList';
+```
 
 # Contributing to Plugins
 
 Collector plugins allow for importing of arbitrary resources into Resoto in graph form. The most common use case is to gather information about cloud accounts and/or resources. However, any data expressible is graph form can be collected—be it social media accounts, software dependency trees, network topology, steps for cooking your favorite food, etc.
 
-Once the graph data is collected and sent to [Resoto Core](../concepts/components/core.md), the power of Resoto's [search syntax](../concepts/search/index.md) is at your fingertips.
+Once the graph data is collected and sent to [Resoto Core](../../concepts/components/core.md), the power of Resoto's [search syntax](../../concepts/search/index.md) is at your fingertips.
 
 The plugin source code lives in the [`plugins` directory within the `someengineering/resoto` repository on GitHub](https://github.com/someengineering/resoto/tree/main/plugins). Each plugin is maintained as separate project.
+
+See [AWS Resources](./aws.md) for a more in-depth guide on how to collect AWS Resources.
 
 ## Authoring Changes
 
 Contributions are made via [pull requests to the GitHub repository](https://github.com/someengineering/resoto/pulls). You will first need to [fork](https://docs.github.com/get-started/quickstart/fork-a-repo) the repository.
 
-Pull requests should target a single plugin. Please refer to the [Components contribution guide](./components.md) for details on how to clone the repository, set up a virtual environment, start Resoto, and submit your changes for review.
+Pull requests should target a single plugin. Please refer to the [Components contribution guide](../components.md) for details on how to clone the repository, set up a virtual environment, start Resoto, and submit your changes for review.
 
 ### Plugin Interface
 
@@ -54,10 +59,12 @@ Please refer to the [example collector plugin](https://github.com/someengineerin
 
 ### Testing Plugins
 
-To test a plugin, simply launch Resoto and trigger the collect action manually by executing `workflows run collect` in the [shell](../concepts/components/shell.md). Once the collection is complete, you execute `search (<plugin_resource_type>)` to see the newly collected resources.
+To test a plugin, simply launch Resoto and trigger the collect action manually by executing `workflows run collect` in the [shell](../../concepts/components/shell.md). Once the collection is complete, you execute `search (<plugin_resource_type>)` to see the newly collected resources.
 
 ### Tips
 
 - **Resource properties types must be globally unique.** For example, if there is a property `status: str` defined by some other plugin and you add a property `status: int`, the collection will fail. The reason for such behavior is that all resource properties are indexed for search.
 - **Try to not introduce unique property names.** Only do it in event that types are not compatible with existing properties. For example, use `status: str` instead of `plugin_name_resource_name_status: int`.
 - **Don't forget to call `sanitize(graph)` before checking its properties in tests.** Please refer to the [DigitalOcean plugin](https://github.com/someengineering/resoto/tree/main/plugins/digitalocean) as an example.
+
+<DocCardList items={useCurrentSidebarCategory().items}/>

@@ -4,19 +4,23 @@ tags: [graph, search, cloud]
 image: ./img/banner-social.png
 ---
 
-# Unified Data Model
+# Cloud Resources, They Have a Lot in Common
 
-Today's world of cloud computing is complex. There are many different cloud providers, each with its own set of services. If we take the most popular cloud providers, we can see this picture according to [Map the Cloud](https://mapthe.cloud)
+Today's world of cloud computing is complex. There are many different cloud providers, each with its own set of services. Getting insights out of your infrastructure requires understanding the diverse data you get from every service.
+
+Properties in different services might have different names but the same meaning, or it could be the other way around. To interpret properties, we need to ensure that the values have a defined unit of measurement and one base unit. You can see the challenge if you think of the many ways you can specify the size of a volume, the number of CPU cores, or even timestamps.
+
+![Banner](./img/banner.png)
+
+<!--truncate-->
+
+If we take the most popular cloud providers, we can see this picture according to [Map the Cloud](https://mapthe.cloud)
 
 - AWS: 324 services
 - Azure: 222 services
 - GCP: 52 services
 
 Any application built on such a cloud infrastructure usually uses many provided services like computing, storage, databases, networking, etc. Every service offered by any cloud provider is unique, so it is not surprising that each service's data model is different.
-
-![Banner](./img/banner.png)
-
-<!--truncate-->
 
 ## Unification Step 1: Everything is a Resource
 
@@ -32,7 +36,7 @@ Resoto collects data from different services and different cloud providers. We c
 
 Every resource that Resoto collects provides this set of properties. A resource is of a specific `kind` and provides this information as property. A resource `kind` could be something like `aws_ec2_instance` or `aws_sqs_queue`. The `id` is a synthetic property created by Resoto as a globally unique identifier across providers. Resoto tries its best to retrieve the `name` from the underlying resource. If the resource does not provide a name, Resoto will look for a tag named `Name` and use the value if defined. Most cloud providers allow attaching arbitrary information to resources as key-value pairs. This information is also provided for every resource called `tags`.
 
-There are three attributes that you can define for every resource: when has it been created (`ctime`), when has it been modified (`mtime`), and when has it been accessed the last time (`atime`). Resoto makes sure to transform available properties to one base unit, the ISO 8601 time string in the UTC timezone. Of course, this information is not always available for every resource. Either Resoto can map a meaningful value to the attribute, or it tries to get the data from other systems. For the time of creation, the default is mapping an existing property, as we have seen for the EC2 instances and SQS queues. If this information is unavailable, Resoto will remember the time it has seen the resource for the first time and uses it as `ctime`. By default, Resoto scrapes your infrastructure every hour, so this might be a sane fallback value. 
+There are three attributes that you can define for every resource: when has it been created (`ctime`), when has it been modified (`mtime`), and when has it been accessed the last time (`atime`). Resoto makes sure to transform available properties to one base unit, the ISO 8601 time string in the UTC timezone. Of course, this information is not always available for every resource. Either Resoto can map a meaningful value to the attribute, or it tries to get the data from other systems. For the time of creation, the default is mapping an existing property, as we have seen for the EC2 instances and SQS queues. If this information is unavailable, Resoto will remember the time it has seen the resource for the first time and uses it as `ctime`. By default, Resoto scrapes your infrastructure every hour, so this might be a sane fallback value.
 
 If there is no meaningful access or modification time, it might be possible to retrieve this information elsewhere. AWS, for example, provides time series data via the CloudWatch service. Resoto can use this data to provide meaningful values for the `atime` and `mtime` attributes for specific resources. Let's take AWS RDS databases or EC2 volumes as an example, where we can retrieve meaningful values for the `atime` and `mtime` attributes. The process of retrieving and merging the data is fully transparent to the user since it happens during collection time. You can access, filter, and sort the data as you like.
 
@@ -83,7 +87,7 @@ Show resources that are older than one year and have not been accessed in the la
 - Kubernetes
 - DigitalOcean
 
-This section is most relevant for Resoto users with more than one resource provider. You should definitely read on if you can tick more than one of the boxes above. 
+This section is most relevant for Resoto users with more than one resource provider. You should definitely read on if you can tick more than one of the boxes above.
 
 :::
 
@@ -126,3 +130,7 @@ We have a [data model reference](/docs/reference/data-models) for all resources 
 - [GCP Reference](/docs/reference/data-models/gcp)
 - [Kubernetes Reference](/docs/reference/data-models/kubernetes)
 - [DigitalOcean Reference](/docs/reference/data-models/digitalocean)
+
+## Why is this useful?
+
+Unifying the base properties and the common abstractions allow you to search, sort, aggregate and act on a higher level of abstraction. This is not possible with the raw data from the cloud providers. You would need to gather the data, transform it into common names, ensuring the same unit of measurement and base unit, and then you can work with it. Providing such abstraction ad-hoc is a lot of effort and error-prone. Resoto does all of this for you out of the box!

@@ -109,7 +109,9 @@ Resoto now exposes Prometheus metrics at `https://localhost:9955/metrics`. Follo
 
 ## Launching the Command-Line Interface
 
-The `resh` command starts an interactive shell session with Resoto. To access the [Resoto Shell](../../concepts/components/shell.md) interface, simply execute:
+The `resh` command is used to interact with [`resotocore`](../../concepts/components/core.md).
+
+Simply execute the following to access the [Resoto Shell](../../concepts/components/shell.md) interface:
 
 ```bash
 $ pre_shared_key=$(< ~/resoto/.pre-shared-key)

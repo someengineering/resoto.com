@@ -83,7 +83,9 @@ If you have an Apple Silicon or other ARM-based machine, please use the latest s
 
 ## Launching the Command-Line Interface
 
-The `resh` command starts an interactive shell session with Resoto. To access the [Resoto Shell](../../concepts/components/shell.md) interface using Docker compose, simply execute:
+The `resh` command is used to interact with [`resotocore`](../../concepts/components/core.md).
+
+Simply execute the following to access the [Resoto Shell](../../concepts/components/shell.md) interface:
 
 ```bash
 $ docker compose exec -it resotoshell resh

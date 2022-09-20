@@ -115,6 +115,98 @@ $ sudo apt install python3 python3-pip
 </TabItem>
 </Tabs>
 
+### 4 Minute Python Crash Course
+
+In the next four minutes we'll give you a quick overview of the Python language. If you are already familiar with Python, you can skip this section. Use the code boxes copy button ⧉, to copy the commands to your clipboard.
+
+#### Starting the REPL
+
+Start Python by running the following command:
+
+```bash
+$ python3
+​Python 3.10.4 (v3.10.4:9d38120e33, Mar 23 2022, 17:29:05) [Clang 13.0.0 (clang-1300.0.29.30)] on darwin
+​Type "help", "copyright", "credits" or "license" for more information.
+​>>>
+```
+
+This is the REPL, the Python Read-Eval-Print-Loop. It is a great way to quickly test out some code. You can type in a command and press enter to execute it. The result will be printed to the screen. If you want to exit the REPL, type `exit()` and press enter.
+
+#### Variables and Functions
+
+_Variables_ are used to store values. They are created by assigning a value to a name. The name can be any combination of letters, numbers, and underscores, but it must start with a letter or underscore.
+
+_Functions_ are used to group code into a single unit. Functions can be called by using the function name followed by a list of arguments in parentheses. In the following code we will assign the value `Monday` to a variable named `today` and then use the `print()` function to print the value of the variable to the screen.
+
+```python
+>>> today = "Monday"
+>>> print(today)
+​Monday
+```
+
+##### Types of Variables
+
+There are different types of variables. The most common are _strings_, _integers_, and _floats_. Strings are used to store text. Integers are used to store whole numbers. Floats are used to store decimal numbers. There are also _booleans_, which can be either `True` or `False`, and _lists_ and _dictionaries_ which are used to store multiple values. Dictionaries are similar to lists, but instead of using a number to access a value, you can use a string. Lists are created by using square brackets `[]` and dictionaries are created by using curly brackets `{}`.
+
+Let's quickly go through some examples of each type of variable.
+
+```python
+>>> greeting = "Hello there! 👋"
+>>> number_of_colleagues = 7
+>>> current_temperature = 74.6
+>>> window_closed = True
+>>> pancake_ingredients = ["flour", "eggs", "milk", "salt", "baking powder"]
+>>> capital_cities = {
+...   "England": "London",
+...   "Germany": "Berlin",
+...   "USA": "Washington DC",
+...   "Lebanon": "Beirut",
+...   "Nepal": "Kathmandu",
+...   "Spain": "Madrid"
+... }
+>>> type(greeting)
+<class 'str'>
+>>> type(number_of_colleagues)
+<class 'int'>
+>>> type(current_temperature)
+<class 'float'>
+>>> type(window_closed)
+<class 'bool'>
+>>> type(pancake_ingredients)
+<class 'list'>
+>>> type(capital_cities)
+<class 'dict'>
+```
+
+##### if Statements
+
+Sometimes we want to take different actions depending on the value of a variable. We can do this with an `if` statement. The following code will print a different message depending on the value of the `window_closed` variable.
+
+```python
+>>> if window_closed:
+...   print("The window is closed.")
+... else:
+...   print("The window is open.")
+​The window is closed.
+```
+
+##### Ways to access and print variables
+
+Lets look at how to access and print the values of variables.
+
+```python
+>>> print(current_temperature)
+74.6
+>>> print(f"The current temperature is {current_temperature}F")
+The current temperature is 74.6F
+>>> pancake_ingredients[0]
+'flour'
+>>> pancake_ingredients[3]
+'salt'
+>>> print(f"The capital city of England is {capital_cities['England']}")
+The capital city of England is London
+```
+
 ### Resoto
 
 If you are new to Resoto, [start the Resoto stack](/docs/getting-started/install-resoto) and [configure it to collect your cloud accounts](/docs/getting-started/configure-cloud-provider-access).

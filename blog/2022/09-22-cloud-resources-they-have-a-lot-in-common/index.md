@@ -35,7 +35,7 @@ This brings us to the first basic building block, the `resource` abstraction:
 Every resource that Resoto collects provides the above set of properties:
 
 - Each resource is of a specific `kind` and provides this information as a property. A resource `kind` could be `aws_ec2_instance`, `aws_sqs_queue`, etc.
-- The `id` is a synthetic property created by Resoto as a globally unique identifier across providers.
+- The `id` is provided by the cloud provider and identifies a resource. There is no guarantee that this `id` is unique across all cloud providers. This is the reason Resoto introduces a global unique identifier to each resource on the node level.  
 - Resoto tries its best to retrieve the `name` from the underlying resource. If the resource does not provide a name, Resoto will look for a `Name` tag and, if found, use its value.
 - Most cloud providers allow attaching arbitrary information to resources as key-value pairs. This information is also provided for every resource called `tags`.
 
@@ -51,13 +51,13 @@ So to complete the example I started in the beginning: this is the Resoto search
 > search is(aws_ec2_instance, aws_sqs_queue) sort age | list --markdown kind, name, age
 ```
 
-| `kind`             | `name`       | `age`    |
-| ------------------ | ------------ | -------- |
-| `aws_ec2_instance` | `ganymed`    | `3mo5d`  |
-| `aws_sqs_queue`    | `styx`       | `1mo5d`  |
-| `aws_ec2_instance` | `bardolin-1` | `1mo14d` |
-| `aws_ec2_instance` | `bardolin-2` | `17d`    |
-| `aws_sqs_queue`    | `jordan`     | `5d3h`   |
+| kind             | name       | age    |
+|------------------|------------|--------|
+| aws_ec2_instance | ganymed    | 3mo5d  |
+| aws_sqs_queue    | styx       | 2mo1d  |
+| aws_ec2_instance | bardolin-1 | 1mo14d |
+| aws_ec2_instance | bardolin-2 | 17d    |
+| aws_sqs_queue    | jordan     | 5d3h   |
 
 We select the resources by kind and sort them by age. The output is a table with the resources' kind, name, and age. This kind of query can be done with any resource from any service and any cloud provider since we rely only on properties of the `resource` abstraction. Please note what you don't see: you don't need to collect data from different accounts or regions, know anything about the specific resource, don't need to know the unit of measurement or the property name. Instead, you can select and sort by any base property.
 
@@ -114,11 +114,11 @@ As an example, we will search all volumes and aggregate data by volume type, cou
 $ search is(volume) | aggregate volume_type: sum(volume_size) as total_size, sum(1) as count
 ```
 
-| `volume_type`      | `count` | `volume_size` |
-| ------------------ | ------- | ------------- |
-| `gp3`              | 5405    | 1448160       |
-| `pd-ssd`           | 937     | 20944         |
-| `do-block-storage` | 3       | 108           |
+| volume_type      | count | volume_size |
+|------------------|-------|-------------|
+| gp3              | 5405  | 1448160     |
+| pd-ssd           | 937   | 20944       |
+| do-block-storage | 3     | 108         |
 
 The general idea of a volume is available in all cloud providers, but the specific implementation is different. Resoto provides a set of properties with the same name and meaning, no matter which cloud provider you use.
 

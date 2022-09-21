@@ -23,7 +23,7 @@ If you are familiar with Python and just want the finished product, install the 
 
 ## Prerequisites
 
-The only things we need are [Python 3.8+](https://www.python.org/), [`pip` the Python package installer](https://pip.pypa.io/), and of course [Resoto](https://www.resoto.com/), as well as a text editor of choice. Personally I use [Visual Studio Code](https://code.visualstudio.com/).
+The only things we need are [Python 3.8+](https://www.python.org/), [`pip` the Python package installer](https://pip.pypa.io/), and of course [Resoto](https://www.resoto.com/), as well as a text editor of choice. Personally I use [Visual Studio Code](https://code.visualstudio.com/). If you already have Python and pip installed and you know your way around Python jump straight to [Getting Started](#getting-started).
 
 ### Installing Python 3.8+ and Pip
 
@@ -115,9 +115,15 @@ $ sudo apt install python3 python3-pip
 </TabItem>
 </Tabs>
 
-### 4 Minute Python Crash Course
+### Python Crash Course
 
-In the next four minutes we'll give you a quick overview of the Python language. If you are already familiar with Python, you can skip this section. Use the code boxes copy button ⧉, to copy the commands to your clipboard.
+In the next couple of minutes we'll give you a quick overview of the Python programming language. If you are already familiar with Python, you can [skip this section](#getting-started).
+
+:::info
+
+The `$`, `>>>` or `...` in front of the line must not be entered into the terminal. It just indicates that the following command is to be entered into the terminal. When using the code boxes' copy button ⧉, the code will be copied without those characters, ready to be pasted into the terminal.
+
+:::
 
 #### Starting the REPL
 
@@ -146,7 +152,7 @@ _Functions_ are used to group code into a single unit. Functions can be called b
 
 ##### Types of Variables
 
-There are different types of variables. The most common are _strings_, _integers_, and _floats_. Strings are used to store text. Integers are used to store whole numbers. Floats are used to store decimal numbers. There are also _booleans_, which can be either `True` or `False`, and _lists_ and _dictionaries_ which are used to store multiple values. Dictionaries are similar to lists, but instead of using a number to access a value, you can use a string. Lists are created by using square brackets `[]` and dictionaries are created by using curly brackets `{}`.
+There are different types of variables. The most common are _strings_, _integers_, and _floats_. Strings are used to store text. Integers are used to store whole numbers. Floats are used to store decimal numbers. There are also _booleans_, which can be either `True` or `False`, and _lists_ and _dictionaries_ which are used to store multiple values. To access a value in a list we use an index, which is a number that starts at 0, 0 being the first element of a list. Dictionaries are similar to lists, but instead of using a number to access a value, you can use a string. Lists are created by using square brackets `[]` and dictionaries are created by using curly brackets `{}`.
 
 Let's quickly go through some examples of each type of variable.
 
@@ -165,20 +171,55 @@ Let's quickly go through some examples of each type of variable.
 ...   "Spain": "Madrid"
 ... }
 >>> type(greeting)
-<class 'str'>
+​<class 'str'>
 >>> type(number_of_colleagues)
-<class 'int'>
+​<class 'int'>
 >>> type(current_temperature)
-<class 'float'>
+​<class 'float'>
 >>> type(window_closed)
-<class 'bool'>
+​<class 'bool'>
 >>> type(pancake_ingredients)
-<class 'list'>
+​<class 'list'>
 >>> type(capital_cities)
-<class 'dict'>
+​<class 'dict'>
 ```
 
-##### if Statements
+##### Ways to access and print variables
+
+Let us look at ways to access and print the values of variables.
+
+```python
+>>> print(current_temperature)
+​74.6
+>>> print(f"The current temperature is {current_temperature}F")
+​The current temperature is 74.6F
+>>> pancake_ingredients[0]
+​'flour'
+>>> pancake_ingredients[3]
+​'salt'
+>>> {capital_cities['USA']}
+​{'Washington DC'}
+>>> print(f"The capital city of England is {capital_cities['England']}")
+​The capital city of England is London
+```
+
+##### Changing the value of a variable
+
+Variables can be changed by assigning a new value to them.
+
+```python
+>>> current_temperature = 75.2
+>>> print(f"The current temperature is {current_temperature}F")
+​The current temperature is 75.2F
+>>> current_temperature = current_temperature + 5
+>>> print(f"The current temperature is {current_temperature}F")
+​The current temperature is 80.2F
+>>> current_temperature += 10
+>>> print(f"The current temperature is {current_temperature}F")
+​The current temperature is 90.2F
+```
+
+##### Decision Making
 
 Sometimes we want to take different actions depending on the value of a variable. We can do this with an `if` statement. The following code will print a different message depending on the value of the `window_closed` variable.
 
@@ -190,21 +231,28 @@ Sometimes we want to take different actions depending on the value of a variable
 ​The window is closed.
 ```
 
-##### Ways to access and print variables
-
-Lets look at how to access and print the values of variables.
+It is also possible to chain multiple `if` statements together using `elif` (short for else if). The following code will print a different message depending on the value of the `current_temperature` variable.
 
 ```python
->>> print(current_temperature)
-74.6
->>> print(f"The current temperature is {current_temperature}F")
-The current temperature is 74.6F
->>> pancake_ingredients[0]
-'flour'
->>> pancake_ingredients[3]
-'salt'
->>> print(f"The capital city of England is {capital_cities['England']}")
-The capital city of England is London
+>>> if current_temperature < 50:
+...   print("It's cold outside.")
+... elif current_temperature < 70:
+...   print("It's warm outside.")
+... else:
+...   print("It's hot outside.")
+​It's hot outside.
+```
+
+Multiple conditions can be checked using the `and` and `or` operators.
+
+```python
+>>> if current_temperature < 50 and window_closed:
+...   print("It's cold and the window is closed.")
+... elif current_temperature < 50 or window_closed:
+...   print("It's cold or the window is closed.")
+... else:
+...   print("It's warm and the window is open.")
+​It's warm and the window is open.
 ```
 
 ### Resoto
@@ -300,6 +348,18 @@ $ pip install -r requirements.txt
 
 ## Creating the app
 
+So what should the app look like? I am mostly interested in compute and storage as they are the most expensive resources on my bill. If you are interested in different resources, you can easily adapt the code to your needs.
+
+At the top of the app I'd like to see a summary of the current amount of compute instances, CPU cores and memory across all my cloud accounts in AWS and GCP. Next to that we will display similar statistics for storage volumes.
+
+Then I would like a world map showing where in the world those instances are running. That way if anyone starts compute instances in a region we don't typically use, I can easily spot it.
+
+For compute it could also be useful to see which account is currently spending the most money as well as the age distribution per account. What I mean by that is the average age of the compute instances per account. If a development account has a lot of old instances, it might be a good idea to look into that as they are typically short lived.
+
+For storage it would be great to have a sunburst chart showing the distribution of storage volumes by cloud and account. Just to see at a glance if a account suddenly has a lot more storage than usual.
+
+Finally I'd like to see a heatmap of instance type distribution by account. This allows us to easily spot outliers. For example if an account suddenly has a lot of instances of a high-core count type.
+
 ### First steps
 
 Now that we've set up our project, we can start creating our infrastructure app.
@@ -357,7 +417,7 @@ These two lines import the `streamlit` and `resotoclient` libraries into our pro
 resoto = ResotoClient(url="https://localhost:8900", psk="changeme")
 ```
 
-Here we initialize a new instance of the Resoto Client and assign it to the variable `resoto`. We pass the URL of our Resoto Core and the pre-shared-key (PSK) as arguments. The PSK is used to authenticate the client against the Resoto Core.
+Here we initialize a new instance of the Resoto Client and assign it to the [variable](#v) `resoto`. We pass the URL of our Resoto Core and the pre-shared-key (PSK) as arguments. The PSK is used to authenticate the client against the Resoto Core.
 
 ```python
 st.set_page_config(page_title="Cloud Dashboard", page_icon=":cloud:", layout="wide")

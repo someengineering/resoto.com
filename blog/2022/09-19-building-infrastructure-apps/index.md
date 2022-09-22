@@ -142,7 +142,9 @@ This is the REPL, the Python Read-Eval-Print-Loop. It is a great way to quickly 
 
 _Variables_ are used to store values. They are created by assigning a value to a name. The name can be any combination of letters, numbers, and underscores, but it must start with a letter or underscore.
 
-_Functions_ are used to group code into a single unit. Functions can be called by using the function name followed by a list of arguments in parentheses. In the following code we will assign the value `Monday` to a variable named `today` and then use the `print()` function to print the value of the variable to the screen.
+_Functions_ are used to group code into a single unit. Functions can be called by using the function name followed by a list of arguments in parentheses. For this app we won't write any functions ourselves but we will call existing functions.
+
+In the following code we assign the value `Monday` to a variable named `today` and then use the `print()` function to print the value of the variable to the screen.
 
 ```python
 >>> today = "Monday"
@@ -364,6 +366,8 @@ Finally I'd like to see a heatmap of instance type distribution by account. This
 
 Now that we've set up our project, we can start creating our infrastructure app.
 
+Let's start with a very short 7 lines demo app, just to test that our environment is set up correctly. When we've got that working, we'll add the code for our infrastructure app.
+
 In your text editor create a new file called `app.py` inside the `resoto-app` directory and add the following lines:
 
 ```python
@@ -378,6 +382,8 @@ st.title("Cloud Dashboard")
 df = resoto.dataframe("is(instance)")
 st.dataframe(df)
 ```
+
+Adjust the `url` and `psk` values to match your local Resoto Core URL and pre-shared-key. The settings above are the default values for a Docker compose setup.
 
 Save the file and switch back to the Terminal.
 
@@ -411,7 +417,7 @@ import streamlit as st
 from resotoclient import ResotoClient
 ```
 
-These two lines import the `streamlit` and `resotoclient` libraries into our project. In our first import we use the `as` keyword to give Streamlit a shorter name. This way we can use `st` instead of `streamlit`. In the second line instead of importing all of `resotoclient` we tell Python to only import the `ResotoClient` class.
+This is the import section of our app. In it we import libraries that other people have written and made available to us. Imports typically happen at the beginning of a file. These two lines import the `streamlit` and `resotoclient` libraries into our project. In our first import we use the `as` keyword to give Streamlit a shorter name. This way we can use `st` instead of `streamlit`. In the second line instead of importing all of `resotoclient` we tell Python to only import the `ResotoClient` class.
 
 ```python
 resoto = ResotoClient(url="https://localhost:8900", psk="changeme")
@@ -431,7 +437,13 @@ df = resoto.dataframe("is(instance)")
 st.dataframe(df)
 ```
 
-Here we ask Resoto to search for everything that is a compute instance and return it as a [Pandas dataframe](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html). We then pass the dataframe to Streamlit's `st.dataframe` function to display it as a table in our app. Think of dataframes as an Excel spreadsheet. They are a great way to work with tabular data and popular in the data science and ML community. Resoto stores all of its data in a large [graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph). `resoto.dataframe()` allows us to query the graph and flatten the result into a dataframe that can be directly consumed by Streamlit.
+For right now these two lines are only here for demo purposes. Here we ask Resoto to search for everything that is a compute instance and return it as a [Pandas dataframe](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html). We then pass the dataframe to Streamlit's `st.dataframe` function to display it as a table in our app. Think of dataframes as an Excel spreadsheet. They are a great way to work with tabular data and popular in the data science and ML community. Resoto stores all of its data in a large [graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph). `resoto.dataframe()` allows us to search the graph and flatten the result into a dataframe that can be directly consumed by Streamlit.
+
+### Adding more data
+
+Now that we have a basic app up and running, let's remove those last two lines of demo code and add the data we actually want to display. Namely the instance and volume details.
+
+Switch back to your text editor, remove the last two lines of code from `app.py` (the ones starting with `df =` and `st.dataframe`) and add the following code:
 
 ## The complete app
 
@@ -444,37 +456,33 @@ import plotly.express as px
 from resotoclient import ResotoClient
 from resotolib.utils import iec_size_format
 from resotodata.cloud import regions as cloud_regions
-from resotoclient import ResotoClient
+
 
 resoto = ResotoClient(url="https://localhost:8900", psk="changeme")
 
+# Page config
 st.set_page_config(page_title="Cloud Dashboard", page_icon=":cloud:", layout="wide")
-
-
 st.title("Cloud Dashboard")
 
-col_instances, col_volumes = st.columns(2)
+# Page layout
+col_instance_metrics, col_volume_metrics = st.columns(2)
+col_instance_details, col_storage = st.columns(2)
+map_tab, top10_tab, age_tab = col_instance_details.tabs(["Locations", "Top 10", "Age"])
 
+# Instance metrics
 resoto_search = "aggregate(sum(1) as instances_total, sum(instance_cores) as cores_total, sum(instance_memory*1024*1024*1024) as memory_total): is(instance)"
 instances_info = list(resoto.search_aggregate(resoto_search))[0]
-instances_total = instances_info["instances_total"]
-cores_total = instances_info["cores_total"]
-memory_total = iec_size_format(instances_info["memory_total"])
-col_instances.metric("Instances", instances_total)
-col_instances.metric("Cores", cores_total)
-col_instances.metric("Memory", memory_total)
+col_instance_metrics.metric("Instances", instances_info["instances_total"])
+col_instance_metrics.metric("Cores", instances_info["cores_total"])
+col_instance_metrics.metric("Memory", iec_size_format(instances_info["memory_total"]))
 
+# Volume metrics
 resoto_search = "aggregate(sum(1) as volumes_total, sum(volume_size*1024*1024*1024) as volumes_size): is(volume)"
 volumes_info = list(resoto.search_aggregate(resoto_search))[0]
-volumes_total = volumes_info["volumes_total"]
-volumes_size = iec_size_format(volumes_info["volumes_size"])
-col_volumes.metric("Volumes", volumes_total)
-col_volumes.metric("Size", volumes_size)
+col_volume_metrics.metric("Volumes", volumes_info["volumes_total"])
+col_volume_metrics.metric("Size", iec_size_format(volumes_info["volumes_size"]))
 
-col_map, col_storage = st.columns(2)
-
-map_tab, top_tab, age_tab = col_map.tabs(["Locations", "Top 10", "Age"])
-
+# World map of instance locations
 resoto_search = "aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.region.reported.name as region: sum(1) as instances_total): is(aws_ec2_instance) or is(gcp_instance)"
 df = resoto.dataframe(resoto_search)
 df["latitude"], df["longitude"] = 0, 0
@@ -514,7 +522,8 @@ map_tab.pydeck_chart(
     )
 )
 
-top_tab.header("Top 10 accounts and regions")
+# Top 10 accounts and regions by ondemand cost
+top10_tab.header("Top 10 accounts and regions")
 resoto_search = "aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account, /ancestors.region.reported.id as region: sum(/ancestors.instance_type.reported.ondemand_cost) as ondemand_cost): is(instance)"
 df = (
     resoto.dataframe(resoto_search)
@@ -522,9 +531,9 @@ df = (
     .sort_values(by=["ondemand_cost"], ascending=False)
     .reset_index(drop=True)
 )
+top10_tab.table(df.style.format({"ondemand_cost": "${:.2f}/h"}))
 
-top_tab.table(df.style.format({"ondemand_cost": "${:.2f}/h"}))
-
+# Sunburst of storage distribution
 resoto_search = "aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account: sum(volume_size*1024*1024*1024) as volume_size): is(volume)"
 df = resoto.dataframe(resoto_search)
 df["volume_size_human"] = df["volume_size"].apply(iec_size_format)
@@ -537,6 +546,7 @@ fig = px.sunburst(
 fig.update_traces(hoverinfo="label+percent entry", textinfo="label+percent entry")
 col_storage.plotly_chart(fig)
 
+# Heatmap of instance types
 st.header("Instance Types")
 resoto_search = "aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account_name, instance_type as instance_type, instance_cores as instance_cores: sum(1) as instances): is(instance)"
 df = resoto.dataframe(resoto_search).sort_values(by=["instance_cores"])
@@ -549,6 +559,7 @@ fig = px.density_heatmap(
 )
 st.plotly_chart(fig, use_container_width=True)
 
+# Age distribution of instances
 resoto_search = "is(instance)"
 df = resoto.dataframe(resoto_search)
 df["age_days"] = (pd.Timestamp.utcnow() - df["ctime"]).dt.days

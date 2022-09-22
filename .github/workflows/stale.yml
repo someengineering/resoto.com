@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Close stale issues/PRs
-        uses: actions/stale@v5
+        uses: actions/stale@v6
         with:
           days-before-stale: 90
           days-before-close: 14

@@ -221,6 +221,18 @@ Variables can be changed by assigning a new value to them.
 ​The current temperature is 90.2F
 ```
 
+##### Assigning multiple variables at once
+
+Multiple variables can be assigned at once by separating the variable names and values with commas.
+
+```python
+>>> name, age, city = "John", 36, "New York"
+>>> print(f"My name is {name}, I am {age} years old, and I live in {city}.")
+​My name is John, I am 36 years old, and I live in New York.
+```
+
+Some functions also return multiple values. In that case, the values can be assigned to multiple variables at once.
+
 ##### Decision Making
 
 Sometimes we want to take different actions depending on the value of a variable. We can do this with an `if` statement. The following code will print a different message depending on the value of the `window_closed` variable.
@@ -293,8 +305,9 @@ The `$` in front of the line must not be entered into the terminal. It just indi
 In your Powershell create a new directory for your project, create a new virtual environment and activate it by running the following commands:
 
 ```powershell title="Enter this into Powershell"
-md %userprofile%\Documents\resoto-app
-cd %userprofile%\Documents\resoto-app
+$documents = [Environment]::GetFolderPath("MyDocuments")
+md $documents\resoto-app
+cd $documents\resoto-app
 python -m venv venv
 source venv\Scripts\activate
 ```
@@ -344,9 +357,40 @@ Here is a quick overview of the packages we are using:
 
 Now we can install the dependencies with the following command:
 
+<Tabs>
+<TabItem value="venv-macoslinux" label="macOS/Linux">
+
 ```bash
 $ pip install -r requirements.txt
 ```
+
+![Install dependencies on macOS/Linux](img/pip-macoslinux.png)
+
+</TabItem>
+<TabItem value="venv-windows" label="Windows">
+
+```powershell
+pip install -r requirements.txt
+```
+
+![Install dependencies on Windows](img/pip-windows-success.png)
+
+:::info
+
+If you are getting the following error message:
+
+![Install dependencies on Windows error](img/pip-windows-error.png)
+
+Follow [the link from the error message](https://visualstudio.microsoft.com/visual-cpp-build-tools/) to download Visual Studio Build Tools and install them. Then try installing the dependencies again using the `pip install -r requirements.txt` command.
+
+Make sure to select the following option during the installation:
+
+![Install Visual Studio](img/visual_studio-install.png)
+
+:::
+
+</TabItem>
+</Tabs>
 
 ## Creating the app
 
@@ -391,22 +435,30 @@ Save the file and switch back to the Terminal.
 
 In the Terminal run Streamlit with the following command:
 
+<Tabs>
+<TabItem value="venv-macoslinux" label="macOS/Linux">
+
 ```bash
 $ streamlit run app.py
-​
-# highlight-start
-​  You can now view your Streamlit app in your browser.
-​
-​  Local URL: http://localhost:8501
-​  Network URL: http://xxx.xxx.xxx.xxx:8501
-# highlight-end
 ```
 
-Your browser should open automatically and show something like the following page:
+</TabItem>
+<TabItem value="venv-windows" label="Windows">
+
+```powershell
+streamlit run app.py
+```
+
+</TabItem>
+</Tabs>
+
+Your browser should open [http://localhost:8501](http://localhost:8501) and show something like the following page:
 
 ![Our first infrastructure app](img/infraapp-simple-table.png)
 
 Congratulations, you've just created your first infrastructure app!
+
+From now on whenever we change code all we need to do is reload the browser page to see the changes.
 
 #### Line by line details
 
@@ -439,11 +491,29 @@ st.dataframe(df)
 
 For right now these two lines are only here for demo purposes. Here we ask Resoto to search for everything that is a compute instance and return it as a [Pandas dataframe](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html). We then pass the dataframe to Streamlit's `st.dataframe` function to display it as a table in our app. Think of dataframes as an Excel spreadsheet. They are a great way to work with tabular data and popular in the data science and ML community. Resoto stores all of its data in a large [graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph). `resoto.dataframe()` allows us to search the graph and flatten the result into a dataframe that can be directly consumed by Streamlit.
 
-### Adding more data
+### Creating the app layout
 
-Now that we have a basic app up and running, let's remove those last two lines of demo code and add the data we actually want to display. Namely the instance and volume details.
+Now that we have a basic app up and running, let's **remove those last two lines of demo code** and create the layout we actually want to see.
 
-Switch back to your text editor, remove the last two lines of code from `app.py` (the ones starting with `df =` and `st.dataframe`) and add the following code:
+Switch back to your text editor, remove the last two lines of code from `app.py` (the ones starting with `df =` and `st.dataframe`).
+
+Then add the following code:
+
+```python
+col_instance_metrics, col_volume_metrics = st.columns(2)
+col_instance_details, col_storage = st.columns(2)
+map_tab, top10_tab, age_tab = col_instance_details.tabs(["Locations", "Top 10", "Age"])
+```
+
+This gives us seven new variables. The first two (`col_instance_metrics` and `col_volume_metrics`) are columns. Columns are a way to split the screen horizontally. The `st.columns()` function takes a number as an argument and returns that many columns. In our case we want two columns so we pass the number `2` as an argument. These two columns is where we will add our instance an volume metrics later.
+
+The next two variables (`col_instance_details` and `col_storage`) are also columns. The former is where we will add our instance details, like the world map, the top 10 and the instance age distribution and the latter is where we will add our sunburst chart that shows how storage is distributed among clouds and accounts.
+
+The last three variables (`map_tab`, `top10_tab` and `age_tab`) are tabs. Tabs are a way to switch between different views. The `st.tabs()` function takes a list of tab names as an argument and returns that many tabs.
+
+When we reload the app it should look like this:
+
+![App layout](img/app-layout.png)
 
 ## The complete app
 

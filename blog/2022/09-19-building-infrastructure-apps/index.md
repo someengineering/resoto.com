@@ -375,7 +375,7 @@ pip install -r requirements.txt
 
 ![Install dependencies on Windows](img/pip-windows-success.png)
 
-:::info
+:::note
 
 If you are getting the following error message:
 
@@ -383,7 +383,7 @@ If you are getting the following error message:
 
 Follow [the link from the error message](https://visualstudio.microsoft.com/visual-cpp-build-tools/) to download Visual Studio Build Tools and install them. Then try installing the dependencies again using the `pip install -r requirements.txt` command.
 
-Make sure to select the following option during the installation:
+Make sure to select the following option during installation:
 
 ![Install Visual Studio](img/visual_studio-install.png)
 
@@ -408,7 +408,7 @@ Finally I'd like to see a heatmap of instance type distribution by account. This
 
 ### First steps
 
-Now that we've set up our project, we can start creating our infrastructure app.
+Now that we've set up our project environment and thought about what we would like to build, we can start creating our infrastructure app.
 
 Let's start with a very short 7 lines demo app, just to test that our environment is set up correctly. When we've got that working, we'll add the code for our infrastructure app.
 
@@ -442,12 +442,26 @@ In the Terminal run Streamlit with the following command:
 $ streamlit run app.py
 ```
 
+![Run Streamlit on macOS/Linux](img/streamlit_run-macoslinux.png)
+
 </TabItem>
 <TabItem value="venv-windows" label="Windows">
 
 ```powershell
 streamlit run app.py
 ```
+
+![Run Streamlit on Windows](img/streamlit_run-windows.png)
+
+:::note
+
+The first time you run Streamlit on Windows you might get the following firewall notice:
+
+![Windows firewall notice](img/streamlit_run-windows-firewall.png)
+
+Click on `Allow access` so your browser can access the Streamlit web server.
+
+:::
 
 </TabItem>
 </Tabs>

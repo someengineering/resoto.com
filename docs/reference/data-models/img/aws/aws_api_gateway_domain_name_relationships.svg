@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="152px" preserveAspectRatio="none" style="width:443px;height:152px;background:#00000000;" version="1.1" viewBox="0 0 443 152" width="443px" zoomAndPan="magnify"><defs/><g><!--MD5=[c670797378b826949b7404488034b380]
+class aws_vpc_endpoint--><a href="#aws_vpc_endpoint" target="_top" title="#aws_vpc_endpoint" xlink:actuate="onRequest" xlink:href="#aws_vpc_endpoint" xlink:show="new" xlink:title="#aws_vpc_endpoint" xlink:type="simple"><rect codeLine="23" fill="#3D176E" height="39.7891" id="aws_vpc_endpoint" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="195" x="7" y="107"/><ellipse cx="22" cy="126.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M24.9688,132.5352 Q24.3906,132.832 23.75,132.9727 Q23.1094,133.1289 22.4063,133.1289 Q19.9063,133.1289 18.5781,131.4883 Q17.2656,129.832 17.2656,126.707 Q17.2656,123.582 18.5781,121.9258 Q19.9063,120.2695 22.4063,120.2695 Q23.1094,120.2695 23.75,120.4258 Q24.4063,120.582 24.9688,120.8789 L24.9688,123.5977 Q24.3438,123.0195 23.75,122.7539 Q23.1563,122.4727 22.5313,122.4727 Q21.1875,122.4727 20.5,123.5508 Q19.8125,124.6133 19.8125,126.707 Q19.8125,128.8008 20.5,129.8789 Q21.1875,130.9414 22.5313,130.9414 Q23.1563,130.9414 23.75,130.6758 Q24.3438,130.3945 24.9688,129.8164 L24.9688,132.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="153" x="41" y="132.7798">aws_vpc_endpoint</text></a><!--MD5=[59e6d5a8edfa428884b02a1c30c7272a]
+class aws_api_gateway_domain_name--><a href="#aws_api_gateway_domain_name" target="_top" title="#aws_api_gateway_domain_name" xlink:actuate="onRequest" xlink:href="#aws_api_gateway_domain_name" xlink:show="new" xlink:title="#aws_api_gateway_domain_name" xlink:type="simple"><rect codeLine="26" fill="#3D176E" height="39.7891" id="aws_api_gateway_domain_name" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="319" x="61" y="7"/><ellipse cx="76" cy="26.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M78.9688,32.5352 Q78.3906,32.832 77.75,32.9727 Q77.1094,33.1289 76.4063,33.1289 Q73.9063,33.1289 72.5781,31.4883 Q71.2656,29.832 71.2656,26.707 Q71.2656,23.582 72.5781,21.9258 Q73.9063,20.2695 76.4063,20.2695 Q77.1094,20.2695 77.75,20.4258 Q78.4063,20.582 78.9688,20.8789 L78.9688,23.5977 Q78.3438,23.0195 77.75,22.7539 Q77.1563,22.4727 76.5313,22.4727 Q75.1875,22.4727 74.5,23.5508 Q73.8125,24.6133 73.8125,26.707 Q73.8125,28.8008 74.5,29.8789 Q75.1875,30.9414 76.5313,30.9414 Q77.1563,30.9414 77.75,30.6758 Q78.3438,30.3945 78.9688,29.8164 L78.9688,32.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="277" x="95" y="32.7798">aws_api_gateway_domain_name</text></a><!--MD5=[e08ede34392ec911b0c0495804464765]
+class aws_route53_zone--><a href="#aws_route53_zone" target="_top" title="#aws_route53_zone" xlink:actuate="onRequest" xlink:href="#aws_route53_zone" xlink:show="new" xlink:title="#aws_route53_zone" xlink:type="simple"><rect codeLine="29" fill="#3D176E" height="39.7891" id="aws_route53_zone" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="199" x="237" y="107"/><ellipse cx="252" cy="126.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M254.9688,132.5352 Q254.3906,132.832 253.75,132.9727 Q253.1094,133.1289 252.4063,133.1289 Q249.9063,133.1289 248.5781,131.4883 Q247.2656,129.832 247.2656,126.707 Q247.2656,123.582 248.5781,121.9258 Q249.9063,120.2695 252.4063,120.2695 Q253.1094,120.2695 253.75,120.4258 Q254.4063,120.582 254.9688,120.8789 L254.9688,123.5977 Q254.3438,123.0195 253.75,122.7539 Q253.1563,122.4727 252.5313,122.4727 Q251.1875,122.4727 250.5,123.5508 Q249.8125,124.6133 249.8125,126.707 Q249.8125,128.8008 250.5,129.8789 Q251.1875,130.9414 252.5313,130.9414 Q253.1563,130.9414 253.75,130.6758 Q254.3438,130.3945 254.9688,129.8164 L254.9688,132.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="157" x="271" y="132.7798">aws_route53_zone</text></a><!--MD5=[0808ac489ca5250365a568b2472a5343]
+link aws_api_gateway_domain_name to aws_route53_zone--><path codeLine="32" d="M243.14,47.13 C262.3,63.32 289.79,86.54 309.98,103.6 " fill="none" id="aws_api_gateway_domain_name-to-aws_route53_zone" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="313.92,106.92,309.6348,98.0523,310.1036,103.6896,304.4662,104.1585,313.92,106.92" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[0c61a6539d760019ecd8b1b2c7ab5e0e]
+link aws_api_gateway_domain_name to aws_vpc_endpoint--><path codeLine="33" d="M197.86,47.13 C178.7,63.32 151.21,86.54 131.02,103.6 " fill="none" id="aws_api_gateway_domain_name-to-aws_vpc_endpoint" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="127.08,106.92,136.5338,104.1585,130.8964,103.6896,131.3652,98.0523,127.08,106.92" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[dbc90be0d3b7ed415e6397b8528ffdbe]
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_vpc_endpoint [[#aws_vpc_endpoint]] {
+
+}
+class aws_api_gateway_domain_name [[#aws_api_gateway_domain_name]] {
+
+}
+class aws_route53_zone [[#aws_route53_zone]] {
+
+}
+aws_api_gateway_domain_name -[#1A83AF]-> aws_route53_zone
+aws_api_gateway_domain_name -[#1A83AF]-> aws_vpc_endpoint
+@enduml
+
+PlantUML version 1.2021.16(Wed Dec 08 17:25:22 UTC 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

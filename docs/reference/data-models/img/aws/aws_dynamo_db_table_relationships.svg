@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="152px" preserveAspectRatio="none" style="width:416px;height:152px;background:#00000000;" version="1.1" viewBox="0 0 416 152" width="416px" zoomAndPan="magnify"><defs/><g><!--MD5=[f250f102843f04823a5b58db07d1b5df]
+class aws_kms_key--><a href="#aws_kms_key" target="_top" title="#aws_kms_key" xlink:actuate="onRequest" xlink:href="#aws_kms_key" xlink:show="new" xlink:title="#aws_kms_key" xlink:type="simple"><rect codeLine="23" fill="#3D176E" height="39.7891" id="aws_kms_key" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="158" x="7" y="107"/><ellipse cx="22" cy="126.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M24.9688,132.5352 Q24.3906,132.832 23.75,132.9727 Q23.1094,133.1289 22.4063,133.1289 Q19.9063,133.1289 18.5781,131.4883 Q17.2656,129.832 17.2656,126.707 Q17.2656,123.582 18.5781,121.9258 Q19.9063,120.2695 22.4063,120.2695 Q23.1094,120.2695 23.75,120.4258 Q24.4063,120.582 24.9688,120.8789 L24.9688,123.5977 Q24.3438,123.0195 23.75,122.7539 Q23.1563,122.4727 22.5313,122.4727 Q21.1875,122.4727 20.5,123.5508 Q19.8125,124.6133 19.8125,126.707 Q19.8125,128.8008 20.5,129.8789 Q21.1875,130.9414 22.5313,130.9414 Q23.1563,130.9414 23.75,130.6758 Q24.3438,130.3945 24.9688,129.8164 L24.9688,132.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="116" x="41" y="132.7798">aws_kms_key</text></a><!--MD5=[9d41164944076dd4ba19889badcba70d]
+class aws_dynamo_db_table--><a href="#aws_dynamo_db_table" target="_top" title="#aws_dynamo_db_table" xlink:actuate="onRequest" xlink:href="#aws_dynamo_db_table" xlink:show="new" xlink:title="#aws_dynamo_db_table" xlink:type="simple"><rect codeLine="26" fill="#3D176E" height="39.7891" id="aws_dynamo_db_table" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="232" x="79" y="7"/><ellipse cx="94" cy="26.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M96.9688,32.5352 Q96.3906,32.832 95.75,32.9727 Q95.1094,33.1289 94.4063,33.1289 Q91.9063,33.1289 90.5781,31.4883 Q89.2656,29.832 89.2656,26.707 Q89.2656,23.582 90.5781,21.9258 Q91.9063,20.2695 94.4063,20.2695 Q95.1094,20.2695 95.75,20.4258 Q96.4063,20.582 96.9688,20.8789 L96.9688,23.5977 Q96.3438,23.0195 95.75,22.7539 Q95.1563,22.4727 94.5313,22.4727 Q93.1875,22.4727 92.5,23.5508 Q91.8125,24.6133 91.8125,26.707 Q91.8125,28.8008 92.5,29.8789 Q93.1875,30.9414 94.5313,30.9414 Q95.1563,30.9414 95.75,30.6758 Q96.3438,30.3945 96.9688,29.8164 L96.9688,32.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="190" x="113" y="32.7798">aws_dynamo_db_table</text></a><!--MD5=[2e3851a88cc8354ba6705c36861ba97b]
+class aws_kinesis_stream--><a href="#aws_kinesis_stream" target="_top" title="#aws_kinesis_stream" xlink:actuate="onRequest" xlink:href="#aws_kinesis_stream" xlink:show="new" xlink:title="#aws_kinesis_stream" xlink:type="simple"><rect codeLine="29" fill="#3D176E" height="39.7891" id="aws_kinesis_stream" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="209" x="200.5" y="107"/><ellipse cx="215.5" cy="126.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M218.4688,132.5352 Q217.8906,132.832 217.25,132.9727 Q216.6094,133.1289 215.9063,133.1289 Q213.4063,133.1289 212.0781,131.4883 Q210.7656,129.832 210.7656,126.707 Q210.7656,123.582 212.0781,121.9258 Q213.4063,120.2695 215.9063,120.2695 Q216.6094,120.2695 217.25,120.4258 Q217.9063,120.582 218.4688,120.8789 L218.4688,123.5977 Q217.8438,123.0195 217.25,122.7539 Q216.6563,122.4727 216.0313,122.4727 Q214.6875,122.4727 214,123.5508 Q213.3125,124.6133 213.3125,126.707 Q213.3125,128.8008 214,129.8789 Q214.6875,130.9414 216.0313,130.9414 Q216.6563,130.9414 217.25,130.6758 Q217.8438,130.3945 218.4688,129.8164 L218.4688,132.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="167" x="234.5" y="132.7798">aws_kinesis_stream</text></a><!--MD5=[1fc9574ea61edf2b77fe0f2f585104db]
+link aws_dynamo_db_table to aws_kms_key--><path codeLine="32" d="M173.72,47.13 C155.87,63.18 130.32,86.15 111.4,103.17 " fill="none" id="aws_dynamo_db_table-to-aws_kms_key" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="107.22,106.92,116.5855,103.8725,110.9365,103.5752,111.2338,97.9261,107.22,106.92" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[48874d7be2b9500f72f7a2109e044031]
+link aws_dynamo_db_table to aws_kinesis_stream--><path codeLine="33" d="M216.47,47.13 C234.49,63.18 260.27,86.15 279.37,103.17 " fill="none" id="aws_dynamo_db_table-to-aws_kinesis_stream" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="283.58,106.92,279.5108,97.9511,279.843,103.5982,274.1959,103.9304,283.58,106.92" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[837b5a5056805a0258c36923ab0d89a3]
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_kms_key [[#aws_kms_key]] {
+
+}
+class aws_dynamo_db_table [[#aws_dynamo_db_table]] {
+
+}
+class aws_kinesis_stream [[#aws_kinesis_stream]] {
+
+}
+aws_dynamo_db_table -[#1A83AF]-> aws_kms_key
+aws_dynamo_db_table -[#1A83AF]-> aws_kinesis_stream
+@enduml
+
+PlantUML version 1.2021.16(Wed Dec 08 17:25:22 UTC 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

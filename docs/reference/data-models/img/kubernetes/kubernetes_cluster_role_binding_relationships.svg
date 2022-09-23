@@ -1,1 +1,44 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="327" height="152" contentScriptType="application/ecmascript" contentStyleType="text/css" style="width:327px;height:152px;background:#00000000" preserveAspectRatio="none" version="1.1" viewBox="0 0 327 152" zoomAndPan="magnify"><g><a href="#kubernetes_cluster" target="_top" title="#kubernetes_cluster" xlink:actuate="onRequest" xlink:href="#kubernetes_cluster" xlink:show="new" xlink:title="#kubernetes_cluster" xlink:type="simple"><rect id="kubernetes_cluster" width="201" height="39.789" x="63" y="7" fill="#3D176E" codeLine="23" rx="2.5" ry="2.5" style="stroke:#000d19;stroke-width:1.5"/><ellipse cx="78" cy="26.895" fill="#E98DF7" rx="11" ry="11" style="stroke:#000d19;stroke-width:1"/><path fill="#000" d="M80.9688,32.5352 Q80.3906,32.832 79.75,32.9727 Q79.1094,33.1289 78.4063,33.1289 Q75.9063,33.1289 74.5781,31.4883 Q73.2656,29.832 73.2656,26.707 Q73.2656,23.582 74.5781,21.9258 Q75.9063,20.2695 78.4063,20.2695 Q79.1094,20.2695 79.75,20.4258 Q80.4063,20.582 80.9688,20.8789 L80.9688,23.5977 Q80.3438,23.0195 79.75,22.7539 Q79.1563,22.4727 78.5313,22.4727 Q77.1875,22.4727 76.5,23.5508 Q75.8125,24.6133 75.8125,26.707 Q75.8125,28.8008 76.5,29.8789 Q77.1875,30.9414 78.5313,30.9414 Q79.1563,30.9414 79.75,30.6758 Q80.3438,30.3945 80.9688,29.8164 L80.9688,32.5352 Z"/><text x="97" y="32.78" fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="159">kubernetes_cluster</text></a><a href="#kubernetes_cluster_role_binding" target="_top" title="#kubernetes_cluster_role_binding" xlink:actuate="onRequest" xlink:href="#kubernetes_cluster_role_binding" xlink:show="new" xlink:title="#kubernetes_cluster_role_binding" xlink:type="simple"><rect id="kubernetes_cluster_role_binding" width="313" height="39.789" x="7" y="107" fill="#3D176E" codeLine="26" rx="2.5" ry="2.5" style="stroke:#000d19;stroke-width:1.5"/><ellipse cx="22" cy="126.894" fill="#E98DF7" rx="11" ry="11" style="stroke:#000d19;stroke-width:1"/><path fill="#000" d="M24.9688,132.5352 Q24.3906,132.832 23.75,132.9727 Q23.1094,133.1289 22.4063,133.1289 Q19.9063,133.1289 18.5781,131.4883 Q17.2656,129.832 17.2656,126.707 Q17.2656,123.582 18.5781,121.9258 Q19.9063,120.2695 22.4063,120.2695 Q23.1094,120.2695 23.75,120.4258 Q24.4063,120.582 24.9688,120.8789 L24.9688,123.5977 Q24.3438,123.0195 23.75,122.7539 Q23.1563,122.4727 22.5313,122.4727 Q21.1875,122.4727 20.5,123.5508 Q19.8125,124.6133 19.8125,126.707 Q19.8125,128.8008 20.5,129.8789 Q21.1875,130.9414 22.5313,130.9414 Q23.1563,130.9414 23.75,130.6758 Q24.3438,130.3945 24.9688,129.8164 L24.9688,132.5352 Z"/><text x="41" y="132.78" fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="271">kubernetes_cluster_role_binding</text></a><path id="kubernetes_cluster-to-kubernetes_cluster_role_binding" fill="none" d="M163.5,47.36 C163.5,62.93 163.5,84.9 163.5,101.66" codeLine="29" style="stroke:#1a83af;stroke-width:2"/><polygon fill="#1A83AF" points="163.5 106.68 167.5 97.68 163.5 101.68 159.5 97.68 163.5 106.68" style="stroke:#1a83af;stroke-width:2"/></g></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="152px" preserveAspectRatio="none" style="width:327px;height:152px;background:#00000000;" version="1.1" viewBox="0 0 327 152" width="327px" zoomAndPan="magnify"><defs/><g><!--MD5=[6e172c68e12a8a9ddfe7479e909b3a96]
+class kubernetes_cluster_role_binding--><a href="#kubernetes_cluster_role_binding" target="_top" title="#kubernetes_cluster_role_binding" xlink:actuate="onRequest" xlink:href="#kubernetes_cluster_role_binding" xlink:show="new" xlink:title="#kubernetes_cluster_role_binding" xlink:type="simple"><rect codeLine="23" fill="#3D176E" height="39.7891" id="kubernetes_cluster_role_binding" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="313" x="7" y="107"/><ellipse cx="22" cy="126.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M24.9688,132.5352 Q24.3906,132.832 23.75,132.9727 Q23.1094,133.1289 22.4063,133.1289 Q19.9063,133.1289 18.5781,131.4883 Q17.2656,129.832 17.2656,126.707 Q17.2656,123.582 18.5781,121.9258 Q19.9063,120.2695 22.4063,120.2695 Q23.1094,120.2695 23.75,120.4258 Q24.4063,120.582 24.9688,120.8789 L24.9688,123.5977 Q24.3438,123.0195 23.75,122.7539 Q23.1563,122.4727 22.5313,122.4727 Q21.1875,122.4727 20.5,123.5508 Q19.8125,124.6133 19.8125,126.707 Q19.8125,128.8008 20.5,129.8789 Q21.1875,130.9414 22.5313,130.9414 Q23.1563,130.9414 23.75,130.6758 Q24.3438,130.3945 24.9688,129.8164 L24.9688,132.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="271" x="41" y="132.7798">kubernetes_cluster_role_binding</text></a><!--MD5=[8ad22837692235593b0abb01d0470065]
+class kubernetes_cluster--><a href="#kubernetes_cluster" target="_top" title="#kubernetes_cluster" xlink:actuate="onRequest" xlink:href="#kubernetes_cluster" xlink:show="new" xlink:title="#kubernetes_cluster" xlink:type="simple"><rect codeLine="26" fill="#3D176E" height="39.7891" id="kubernetes_cluster" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="201" x="63" y="7"/><ellipse cx="78" cy="26.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M80.9688,32.5352 Q80.3906,32.832 79.75,32.9727 Q79.1094,33.1289 78.4063,33.1289 Q75.9063,33.1289 74.5781,31.4883 Q73.2656,29.832 73.2656,26.707 Q73.2656,23.582 74.5781,21.9258 Q75.9063,20.2695 78.4063,20.2695 Q79.1094,20.2695 79.75,20.4258 Q80.4063,20.582 80.9688,20.8789 L80.9688,23.5977 Q80.3438,23.0195 79.75,22.7539 Q79.1563,22.4727 78.5313,22.4727 Q77.1875,22.4727 76.5,23.5508 Q75.8125,24.6133 75.8125,26.707 Q75.8125,28.8008 76.5,29.8789 Q77.1875,30.9414 78.5313,30.9414 Q79.1563,30.9414 79.75,30.6758 Q80.3438,30.3945 80.9688,29.8164 L80.9688,32.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="159" x="97" y="32.7798">kubernetes_cluster</text></a><!--MD5=[eedf435ca5c35dd0ac5e5ac98778bb28]
+link kubernetes_cluster to kubernetes_cluster_role_binding--><path codeLine="29" d="M163.5,47.36 C163.5,62.93 163.5,84.9 163.5,101.66 " fill="none" id="kubernetes_cluster-to-kubernetes_cluster_role_binding" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="163.5,106.68,167.5,97.68,163.5,101.68,159.5,97.68,163.5,106.68" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[61c2912c9f96a1d998c51d8cd42e7dc4]
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class kubernetes_cluster_role_binding [[#kubernetes_cluster_role_binding]] {
+
+}
+class kubernetes_cluster [[#kubernetes_cluster]] {
+
+}
+kubernetes_cluster -[#1A83AF]-> kubernetes_cluster_role_binding
+@enduml
+
+PlantUML version 1.2021.16(Wed Dec 08 17:25:22 UTC 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

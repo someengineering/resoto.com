@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="856px" preserveAspectRatio="none" style="width:344px;height:856px;background:#00000000;" version="1.1" viewBox="0 0 344 856" width="344px" zoomAndPan="magnify"><defs/><g><!--MD5=[c069b88079f3e36515859a1683f3923c]
+class aws_resource--><a href="#aws_resource" target="_top" title="#aws_resource" xlink:actuate="onRequest" xlink:href="#aws_resource" xlink:show="new" xlink:title="#aws_resource" xlink:type="simple"><rect codeLine="23" fill="#3D176E" height="70.5938" id="aws_resource" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="155" x="94.5" y="404"/><ellipse cx="109.5" cy="423.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M112.4688,429.5352 Q111.8906,429.832 111.25,429.9727 Q110.6094,430.1289 109.9063,430.1289 Q107.4063,430.1289 106.0781,428.4883 Q104.7656,426.832 104.7656,423.707 Q104.7656,420.582 106.0781,418.9258 Q107.4063,417.2695 109.9063,417.2695 Q110.6094,417.2695 111.25,417.4258 Q111.9063,417.582 112.4688,417.8789 L112.4688,420.5977 Q111.8438,420.0195 111.25,419.7539 Q110.6563,419.4727 110.0313,419.4727 Q108.6875,419.4727 108,420.5508 Q107.3125,421.6133 107.3125,423.707 Q107.3125,425.8008 108,426.8789 Q108.6875,427.9414 110.0313,427.9414 Q110.6563,427.9414 111.25,427.6758 Q111.8438,427.3945 112.4688,426.8164 L112.4688,429.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="113" x="128.5" y="429.7798">aws_resource</text><line style="stroke:#000D19;stroke-width:1.5;" x1="95.5" x2="248.5" y1="443.7891" y2="443.7891"/><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="21" x="105.5" y="462.9995">arn</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="41" x="126.5" y="462.9995">: string</text></a><!--MD5=[7f0ecf5f554433d3f2e1213379ac821c]
+class resource--><a href="#resource" target="_top" title="#resource" xlink:actuate="onRequest" xlink:href="#resource" xlink:show="new" xlink:title="#resource" xlink:type="simple"><rect codeLine="26" fill="#3D176E" height="275.8359" id="resource" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="195" x="74.5" y="7"/><ellipse cx="127.25" cy="26.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M130.2188,32.5352 Q129.6406,32.832 129,32.9727 Q128.3594,33.1289 127.6563,33.1289 Q125.1563,33.1289 123.8281,31.4883 Q122.5156,29.832 122.5156,26.707 Q122.5156,23.582 123.8281,21.9258 Q125.1563,20.2695 127.6563,20.2695 Q128.3594,20.2695 129,20.4258 Q129.6563,20.582 130.2188,20.8789 L130.2188,23.5977 Q129.5938,23.0195 129,22.7539 Q128.4063,22.4727 127.7813,22.4727 Q126.4375,22.4727 125.75,23.5508 Q125.0625,24.6133 125.0625,26.707 Q125.0625,28.8008 125.75,29.8789 Q126.4375,30.9414 127.7813,30.9414 Q128.4063,30.9414 129,30.6758 Q129.5938,30.3945 130.2188,29.8164 L130.2188,32.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="71" x="152.75" y="32.7798">resource</text><line style="stroke:#000D19;stroke-width:1.5;" x1="75.5" x2="268.5" y1="46.7891" y2="46.7891"/><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="12" x="85.5" y="65.9995">id</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="41" x="97.5" y="65.9995">: string</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="28" x="85.5" y="88.8042">tags</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="145" x="113.5" y="88.8042">: dictionary[string, string]</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="35" x="85.5" y="111.6089">name</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="41" x="120.5" y="111.6089">: string</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="35" x="85.5" y="134.4136">ctime</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="58" x="120.5" y="134.4136">: datetime</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="24" x="85.5" y="157.2183">age</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="55" x="109.5" y="157.2183">: duration</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="39" x="85.5" y="180.0229">mtime</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="58" x="124.5" y="180.0229">: datetime</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="75" x="85.5" y="202.8276">last_update</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="55" x="160.5" y="202.8276">: duration</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="36" x="85.5" y="225.6323">atime</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="58" x="121.5" y="225.6323">: datetime</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="74" x="85.5" y="248.437">last_access</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="55" x="159.5" y="248.437">: duration</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="27" x="85.5" y="271.2417">kind</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="41" x="112.5" y="271.2417">: string</text></a><!--MD5=[b20a092fa8fe455a624a048fb0d784db]
+class aws_api_gateway_authorizer--><a href="#aws_api_gateway_authorizer" target="_top" title="#aws_api_gateway_authorizer" xlink:actuate="onRequest" xlink:href="#aws_api_gateway_authorizer" xlink:show="new" xlink:title="#aws_api_gateway_authorizer" xlink:type="simple"><rect codeLine="38" fill="#3D176E" height="253.0313" id="aws_api_gateway_authorizer" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="330" x="7" y="596"/><ellipse cx="42.25" cy="615.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M45.2188,621.5352 Q44.6406,621.832 44,621.9727 Q43.3594,622.1289 42.6563,622.1289 Q40.1563,622.1289 38.8281,620.4883 Q37.5156,618.832 37.5156,615.707 Q37.5156,612.582 38.8281,610.9258 Q40.1563,609.2695 42.6563,609.2695 Q43.3594,609.2695 44,609.4258 Q44.6563,609.582 45.2188,609.8789 L45.2188,612.5977 Q44.5938,612.0195 44,611.7539 Q43.4063,611.4727 42.7813,611.4727 Q41.4375,611.4727 40.75,612.5508 Q40.0625,613.6133 40.0625,615.707 Q40.0625,617.8008 40.75,618.8789 Q41.4375,619.9414 42.7813,619.9414 Q43.4063,619.9414 44,619.6758 Q44.5938,619.3945 45.2188,618.8164 L45.2188,621.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="243" x="65.75" y="621.7798">aws_api_gateway_authorizer</text><line style="stroke:#000D19;stroke-width:1.5;" x1="8" x2="336" y1="635.7891" y2="635.7891"/><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="100" x="18" y="654.9995">authorizer_type</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="41" x="118" y="654.9995">: string</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="159" x="18" y="677.8042">authorizer_provider_arns</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="49" x="177" y="677.8042">: string[]</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="135" x="18" y="700.6089">authorizer_auth_type</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="41" x="153" y="700.6089">: string</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="89" x="18" y="723.4136">authorizer_uri</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="41" x="107" y="723.4136">: string</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="144" x="18" y="746.2183">authorizer_credentials</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="41" x="162" y="746.2183">: string</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="170" x="18" y="769.0229">authorizer_identity_source</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="41" x="188" y="769.0229">: string</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="267" x="18" y="791.8276">authorizer_identity_validation_expression</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="41" x="285" y="791.8276">: string</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="206" x="18" y="814.6323">authorizer_result_ttl_in_seconds</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="36" x="224" y="814.6323">: int64</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="49" x="18" y="837.437">api_link</text><text fill="#D9B8FF" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="41" x="67" y="837.437">: string</text></a><!--MD5=[8b1f63dc1854e41195795ccdf7ec5e00]
+reverse link resource to aws_resource--><path codeLine="49" d="M172,303.43 C172,341.36 172,378.27 172,403.9 " fill="none" id="resource-backto-aws_resource" style="stroke:#FFAF37;stroke-width:2.0;"/><polygon fill="none" points="165,303.26,172,283.26,179,303.26,165,303.26" style="stroke:#FFAF37;stroke-width:2.0;"/><!--MD5=[1e2e66342ad01ed45efe4d182649b705]
+reverse link aws_resource to aws_api_gateway_authorizer--><path codeLine="50" d="M172,495.55 C172,524.27 172,560.66 172,595.81 " fill="none" id="aws_resource-backto-aws_api_gateway_authorizer" style="stroke:#FFAF37;stroke-width:2.0;"/><polygon fill="none" points="165,495.24,172,475.24,179,495.24,165,495.24" style="stroke:#FFAF37;stroke-width:2.0;"/><!--MD5=[1379b4abc63174e42767b52320ba2c4e]
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
+}
+class aws_api_gateway_authorizer [[#aws_api_gateway_authorizer]] {
+**authorizer_type**: string
+**authorizer_provider_arns**: string[]
+**authorizer_auth_type**: string
+**authorizer_uri**: string
+**authorizer_credentials**: string
+**authorizer_identity_source**: string
+**authorizer_identity_validation_expression**: string
+**authorizer_result_ttl_in_seconds**: int64
+**api_link**: string
+}
+resource <|- - - aws_resource
+aws_resource <|- - - aws_api_gateway_authorizer
+@enduml
+
+PlantUML version 1.2021.16(Wed Dec 08 17:25:22 UTC 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

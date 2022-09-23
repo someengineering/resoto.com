@@ -100,6 +100,14 @@ Please refer to [Configure DigitalOcean Access](../../getting-started/configure-
 
 ![digitalocean_droplet](./img/digitalocean/digitalocean_droplet_relationships.svg)
 
+## `digitalocean_droplet_size`
+
+![digitalocean_droplet_size](./img/digitalocean/digitalocean_droplet_size.svg)
+
+**Relationships in the graph that shows predecessors and successors of `digitalocean_droplet_size`:**
+
+![digitalocean_droplet_size](./img/digitalocean/digitalocean_droplet_size_relationships.svg)
+
 ## `digitalocean_firewall`
 
 ![digitalocean_firewall](./img/digitalocean/digitalocean_firewall.svg)

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="352px" preserveAspectRatio="none" style="width:476px;height:352px;background:#00000000;" version="1.1" viewBox="0 0 476 352" width="476px" zoomAndPan="magnify"><defs/><g><!--MD5=[a2d9a5ef847a35dfa7637ecc48de43ea]
+class aws_lambda_function--><a href="#aws_lambda_function" target="_top" title="#aws_lambda_function" xlink:actuate="onRequest" xlink:href="#aws_lambda_function" xlink:show="new" xlink:title="#aws_lambda_function" xlink:type="simple"><rect codeLine="23" fill="#3D176E" height="39.7891" id="aws_lambda_function" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="224" x="97.02" y="307"/><ellipse cx="112.02" cy="326.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M114.9888,332.5352 Q114.4106,332.832 113.77,332.9727 Q113.1294,333.1289 112.4263,333.1289 Q109.9263,333.1289 108.5981,331.4883 Q107.2856,329.832 107.2856,326.707 Q107.2856,323.582 108.5981,321.9258 Q109.9263,320.2695 112.4263,320.2695 Q113.1294,320.2695 113.77,320.4258 Q114.4263,320.582 114.9888,320.8789 L114.9888,323.5977 Q114.3638,323.0195 113.77,322.7539 Q113.1763,322.4727 112.5513,322.4727 Q111.2075,322.4727 110.52,323.5508 Q109.8325,324.6133 109.8325,326.707 Q109.8325,328.8008 110.52,329.8789 Q111.2075,330.9414 112.5513,330.9414 Q113.1763,330.9414 113.77,330.6758 Q114.3638,330.3945 114.9888,329.8164 L114.9888,332.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="182" x="131.02" y="332.7798">aws_lambda_function</text></a><!--MD5=[b20a092fa8fe455a624a048fb0d784db]
+class aws_api_gateway_authorizer--><a href="#aws_api_gateway_authorizer" target="_top" title="#aws_api_gateway_authorizer" xlink:actuate="onRequest" xlink:href="#aws_api_gateway_authorizer" xlink:show="new" xlink:title="#aws_api_gateway_authorizer" xlink:type="simple"><rect codeLine="26" fill="#3D176E" height="39.7891" id="aws_api_gateway_authorizer" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="285" x="66.52" y="207"/><ellipse cx="81.52" cy="226.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M84.4888,232.5352 Q83.9106,232.832 83.27,232.9727 Q82.6294,233.1289 81.9263,233.1289 Q79.4263,233.1289 78.0981,231.4883 Q76.7856,229.832 76.7856,226.707 Q76.7856,223.582 78.0981,221.9258 Q79.4263,220.2695 81.9263,220.2695 Q82.6294,220.2695 83.27,220.4258 Q83.9263,220.582 84.4888,220.8789 L84.4888,223.5977 Q83.8638,223.0195 83.27,222.7539 Q82.6763,222.4727 82.0513,222.4727 Q80.7075,222.4727 80.02,223.5508 Q79.3325,224.6133 79.3325,226.707 Q79.3325,228.8008 80.02,229.8789 Q80.7075,230.9414 82.0513,230.9414 Q82.6763,230.9414 83.27,230.6758 Q83.8638,230.3945 84.4888,229.8164 L84.4888,232.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="243" x="100.52" y="232.7798">aws_api_gateway_authorizer</text></a><!--MD5=[d034fcc95c6e1a94d448ba83cd2cb21f]
+class aws_api_gateway_resource--><a href="#aws_api_gateway_resource" target="_top" title="#aws_api_gateway_resource" xlink:actuate="onRequest" xlink:href="#aws_api_gateway_resource" xlink:show="new" xlink:title="#aws_api_gateway_resource" xlink:type="simple"><rect codeLine="29" fill="#3D176E" height="39.7891" id="aws_api_gateway_resource" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="270" x="199.02" y="107"/><ellipse cx="214.02" cy="126.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M216.9888,132.5352 Q216.4106,132.832 215.77,132.9727 Q215.1294,133.1289 214.4263,133.1289 Q211.9263,133.1289 210.5981,131.4883 Q209.2856,129.832 209.2856,126.707 Q209.2856,123.582 210.5981,121.9258 Q211.9263,120.2695 214.4263,120.2695 Q215.1294,120.2695 215.77,120.4258 Q216.4263,120.582 216.9888,120.8789 L216.9888,123.5977 Q216.3638,123.0195 215.77,122.7539 Q215.1763,122.4727 214.5513,122.4727 Q213.2075,122.4727 212.52,123.5508 Q211.8325,124.6133 211.8325,126.707 Q211.8325,128.8008 212.52,129.8789 Q213.2075,130.9414 214.5513,130.9414 Q215.1763,130.9414 215.77,130.6758 Q216.3638,130.3945 216.9888,129.8164 L216.9888,132.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="228" x="233.02" y="132.7798">aws_api_gateway_resource</text></a><!--MD5=[7e91c5a2b120fa16646b28465929a223]
+class aws_api_gateway_rest_api--><a href="#aws_api_gateway_rest_api" target="_top" title="#aws_api_gateway_rest_api" xlink:actuate="onRequest" xlink:href="#aws_api_gateway_rest_api" xlink:show="new" xlink:title="#aws_api_gateway_rest_api" xlink:type="simple"><rect codeLine="32" fill="#3D176E" height="39.7891" id="aws_api_gateway_rest_api" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="265" x="13.52" y="7"/><ellipse cx="28.52" cy="26.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M31.4888,32.5352 Q30.9106,32.832 30.27,32.9727 Q29.6294,33.1289 28.9263,33.1289 Q26.4263,33.1289 25.0981,31.4883 Q23.7856,29.832 23.7856,26.707 Q23.7856,23.582 25.0981,21.9258 Q26.4263,20.2695 28.9263,20.2695 Q29.6294,20.2695 30.27,20.4258 Q30.9263,20.582 31.4888,20.8789 L31.4888,23.5977 Q30.8638,23.0195 30.27,22.7539 Q29.6763,22.4727 29.0513,22.4727 Q27.7075,22.4727 27.02,23.5508 Q26.3325,24.6133 26.3325,26.707 Q26.3325,28.8008 27.02,29.8789 Q27.7075,30.9414 29.0513,30.9414 Q29.6763,30.9414 30.27,30.6758 Q30.8638,30.3945 31.4888,29.8164 L31.4888,32.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="223" x="47.52" y="32.7798">aws_api_gateway_rest_api</text></a><!--MD5=[d534da33f4c439f133f1c0bfddd7e2d3]
+link aws_api_gateway_authorizer to aws_lambda_function--><path codeLine="35" d="M209.02,247.36 C209.02,262.93 209.02,284.9 209.02,301.66 " fill="none" id="aws_api_gateway_authorizer-to-aws_lambda_function" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="209.02,306.68,213.02,297.68,209.02,301.68,205.02,297.68,209.02,306.68" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[eeba591acdfae5126c2e60edc47c070e]
+link aws_api_gateway_resource to aws_api_gateway_authorizer--><path codeLine="36" d="M309.62,147.13 C288.89,163.38 259.11,186.73 237.33,203.81 " fill="none" id="aws_api_gateway_resource-to-aws_api_gateway_authorizer" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="233.36,206.92,242.9085,204.5064,237.2921,203.8315,237.967,198.2151,233.36,206.92" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[578f2050d53ad01b5a2325218211f7f9]
+link aws_api_gateway_resource to aws_lambda_function--><path codeLine="37" d="M348.58,147.01 C365.52,171.64 388.8,215.18 369.02,247 C351.71,274.85 321.37,293.17 291.72,305.09 " fill="none" id="aws_api_gateway_resource-to-aws_lambda_function" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="286.98,306.95,296.8193,307.384,291.6341,305.1226,293.8955,299.9374,286.98,306.95" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[cc83eeca56e28ad15f873f15dba89bbc]
+link aws_api_gateway_rest_api to aws_lambda_function--><path codeLine="38" d="M125.44,47.04 C85.71,86.18 6,177.78 49.02,247 C66.33,274.85 96.67,293.17 126.32,305.09 " fill="none" id="aws_api_gateway_rest_api-to-aws_lambda_function" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="131.06,306.95,124.1445,299.9374,126.4059,305.1226,121.2207,307.384,131.06,306.95" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[13a43d3a4653e9345de3fa2d554a5596]
+link aws_api_gateway_rest_api to aws_api_gateway_authorizer--><path codeLine="39" d="M151.55,47.03 C158.44,70.57 170.71,111.87 182.02,147 C187.97,165.47 195.08,186.22 200.51,201.82 " fill="none" id="aws_api_gateway_rest_api-to-aws_api_gateway_authorizer" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="202.28,206.91,203.1048,197.0957,200.6391,202.1869,195.5479,199.7212,202.28,206.91" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[f0f8c9d82b9c42e3535dff206641cea4]
+link aws_api_gateway_rest_api to aws_api_gateway_resource--><path codeLine="40" d="M182.71,47.13 C214.29,63.59 259.81,87.32 292.67,104.44 " fill="none" id="aws_api_gateway_rest_api-to-aws_api_gateway_resource" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="297.42,106.92,291.2765,99.2221,292.9827,104.6155,287.5893,106.3217,297.42,106.92" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[c22e5865b625293b31302d777bbed7f0]
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_lambda_function [[#aws_lambda_function]] {
+
+}
+class aws_api_gateway_authorizer [[#aws_api_gateway_authorizer]] {
+
+}
+class aws_api_gateway_resource [[#aws_api_gateway_resource]] {
+
+}
+class aws_api_gateway_rest_api [[#aws_api_gateway_rest_api]] {
+
+}
+aws_api_gateway_authorizer -[#1A83AF]-> aws_lambda_function
+aws_api_gateway_resource -[#1A83AF]-> aws_api_gateway_authorizer
+aws_api_gateway_resource -[#1A83AF]-> aws_lambda_function
+aws_api_gateway_rest_api -[#1A83AF]-> aws_lambda_function
+aws_api_gateway_rest_api -[#1A83AF]-> aws_api_gateway_authorizer
+aws_api_gateway_rest_api -[#1A83AF]-> aws_api_gateway_resource
+@enduml
+
+PlantUML version 1.2021.16(Wed Dec 08 17:25:22 UTC 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

@@ -4,8 +4,6 @@ sidebar_label: Kubernetes
 
 # Kubernetes Resources
 
-## Configuration
-
 :::info
 
 Please refer to [Configure Kubernetes Access](../../getting-started/configure-cloud-provider-access/kubernetes.md) for details on how to set up Resoto to collect [Kuberenetes](https://kubernetes.io) resources.

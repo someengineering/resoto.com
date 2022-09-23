@@ -4,8 +4,6 @@ sidebar_label: Google Cloud Platform
 
 # Google Cloud Platform Resources
 
-## Configuration
-
 :::info
 
 Please refer to [Configure Google Cloud Platform Access](../../getting-started/configure-cloud-provider-access/gcp.md) for details on how to set up Resoto to collect [Google Cloud Platform (GCP)](https://cloud.google.com) resources.

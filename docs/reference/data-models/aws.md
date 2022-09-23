@@ -4,8 +4,6 @@ sidebar_label: Amazon Web Services
 
 # Amazon Web Services Resources
 
-## Configuration
-
 :::info
 
 Please refer to [Configure Amazon Web Services Access](../../getting-started/configure-cloud-provider-access/aws.md) for details on how to set up Resoto to collect [Amazon Web Services (AWS)](https://aws.amazon.com) resources.

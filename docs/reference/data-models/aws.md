@@ -611,4 +611,3 @@ Please refer to [Configure Amazon Web Services Access](../../getting-started/con
 **Relationships in the graph that shows predecessors and successors of `aws_vpc_peering_connection`:**
 
 ![aws_vpc_peering_connection](./img/aws/aws_vpc_peering_connection_relationships.svg)
-

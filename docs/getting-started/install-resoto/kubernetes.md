@@ -78,13 +78,13 @@ See the [`someengineering/helm-chart` GitHub repository](https://github.com/some
 Add the Resoto Helm chart repository:
 
 ```bash
-$ helm repo add resoto https://helm.resoto.com
+$ helm repo add someengineering https://helm.some.engineering
 ```
 
 Next, install Resoto using Helm:
 
 ```bash
-$ helm install resoto resoto/resoto --set image.tag={{imageTag}} -f resoto-values.yaml
+$ helm install resoto someengineering/resoto --set image.tag={{imageTag}} -f resoto-values.yaml
 ```
 
 And just like that, you have Resoto running in a Kubernetes cluster! A collect run will begin automatically. This first collect usually takes less than 3 minutes.

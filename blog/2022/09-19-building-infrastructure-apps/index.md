@@ -4,14 +4,14 @@ tags: [infrastructure, apps]
 image: ./img/banner-social.png
 ---
 
-# Building Infrastructure Apps with Resoto
+# Building Infrastructure Apps with Resoto and Streamlit
 
 ```mdx-code-block
 import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
 
-Last time we talked about [building actionable cloud infrastructure metrics](../06-09-building-actionable-cloud-infrastructure-metrics/index.md) and learned how to create metrics, export them into a time series database, and visualize them with Grafana. This time we'll take a look at how to take the next step. Instead of just clicking together a dashboard, limited by the components Grafana provides, we'll write some Python code to build our own infrastructure app.
+Last time we talked about [building actionable cloud infrastructure metrics](../06-09-building-actionable-cloud-infrastructure-metrics/index.md) and learned how to create metrics, export them into a time series database, and visualize them with Grafana. This time we'll take a look at how to take the next step. Instead of just clicking together a dashboard, limited by the components Grafana provides, we'll write some Python code to build our own infrastructure app using [Streamlit](https://streamlit.io/), a framework to turn data into web apps.
 
 ![Sheep looking inside a black box](./img/banner.png)
 
@@ -509,7 +509,7 @@ For right now these two lines are only here for demo purposes. Here we ask Resot
 
 Now that we have a basic app up and running, let's **remove those last two lines of demo code** and create the layout we actually want to see.
 
-Switch back to your text editor, remove the last two lines of code from `app.py` (the ones starting with `df =` and `st.dataframe`).
+Switch back to your text editor, delete the last two lines of code from `app.py` (the ones starting with `df =` and `st.dataframe`).
 
 Then add the following code:
 
@@ -525,9 +525,145 @@ The next two variables (`col_instance_details` and `col_storage`) are also colum
 
 The last three variables (`map_tab`, `top10_tab` and `age_tab`) are tabs. Tabs are a way to switch between different views. The `st.tabs()` function takes a list of tab names as an argument and returns that many tabs.
 
-When we reload the app it should look like this:
+When we reload the browser it should now look like this:
 
 ![App layout](img/app-layout.png)
+
+### Adding instance metrics
+
+Let's start by adding the instance metrics.
+
+Add the following code to the import section:
+
+```python
+from resotolib.utils import iec_size_format
+```
+
+and the following code at the end of the file:
+
+```python
+# Instance metrics
+resoto_search = "aggregate(sum(1) as instances_total, sum(instance_cores) as cores_total, sum(instance_memory*1024*1024*1024) as memory_total): is(instance)"
+instances_info = list(resoto.search_aggregate(resoto_search))[0]
+col_instance_metrics.metric("Instances", instances_info["instances_total"])
+col_instance_metrics.metric("Cores", instances_info["cores_total"])
+col_instance_metrics.metric("Memory", iec_size_format(instances_info["memory_total"]))
+```
+
+### Adding volume metrics
+
+```python
+resoto_search = "aggregate(sum(1) as volumes_total, sum(volume_size*1024*1024*1024) as volumes_size): is(volume)"
+volumes_info = list(resoto.search_aggregate(resoto_search))[0]
+col_volume_metrics.metric("Volumes", volumes_info["volumes_total"])
+col_volume_metrics.metric("Size", iec_size_format(volumes_info["volumes_size"]))
+```
+
+### Adding the world map
+
+```python
+resoto_search = "aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.region.reported.name as region: sum(1) as instances_total): is(aws_ec2_instance) or is(gcp_instance)"
+df = resoto.dataframe(resoto_search)
+df["latitude"], df["longitude"] = 0, 0
+for x, y in df.iterrows():
+    location = cloud_regions.get(y["cloud"], {}).get(y["region"], {})
+    df.at[x, "latitude"] = location.get("latitude", 0)
+    df.at[x, "longitude"] = location.get("longitude", 0)
+midpoint = (np.average(df["latitude"]), np.average(df["longitude"]))
+map_tab.pydeck_chart(
+    pdk.Deck(
+        map_style=None,
+        initial_view_state=pdk.ViewState(
+            latitude=midpoint[0], longitude=midpoint[1], zoom=2, pitch=50
+        ),
+        tooltip={
+            "html": "<b>{instances_total}</b> instances running in {region} ({cloud})",
+            "style": {
+                "background": "grey",
+                "color": "white",
+                "font-family": '"Helvetica Neue", Arial',
+                "z-index": "10000",
+            },
+        },
+        layers=[
+            pdk.Layer(
+                "ColumnLayer",
+                data=df,
+                get_position=["longitude", "latitude"],
+                get_elevation="instances_total",
+                get_fill_color="cloud == 'aws' ? [217, 184, 255, 150] : [255, 231, 151, 150]",
+                elevation_scale=10000,
+                radius=100000,
+                pickable=True,
+                auto_highlight=True,
+            )
+        ],
+    )
+)
+```
+
+### Adding Top 10 accounts and regions by ondemand cost
+
+```python
+top10_tab.header("Top 10 accounts and regions")
+resoto_search = "aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account, /ancestors.region.reported.id as region: sum(/ancestors.instance_type.reported.ondemand_cost) as ondemand_cost): is(instance)"
+df = (
+    resoto.dataframe(resoto_search)
+    .nlargest(n=10, columns=["ondemand_cost"])
+    .sort_values(by=["ondemand_cost"], ascending=False)
+    .reset_index(drop=True)
+)
+top10_tab.table(df.style.format({"ondemand_cost": "${:.2f}/h"}))
+```
+
+### Adding Sunburst chart of storage distribution
+
+```python
+resoto_search = "aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account: sum(volume_size*1024*1024*1024) as volume_size): is(volume)"
+df = resoto.dataframe(resoto_search)
+df["volume_size_human"] = df["volume_size"].apply(iec_size_format)
+fig = px.sunburst(
+    df,
+    path=["cloud", "account"],
+    values="volume_size",
+    hover_data=["cloud", "account", "volume_size_human"],
+)
+fig.update_traces(hoverinfo="label+percent entry", textinfo="label+percent entry")
+col_storage.plotly_chart(fig)
+```
+
+### Adding heatmap of instance types
+
+```python
+st.header("Instance Types")
+resoto_search = "aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account_name, instance_type as instance_type, instance_cores as instance_cores: sum(1) as instances): is(instance)"
+df = resoto.dataframe(resoto_search).sort_values(by=["instance_cores"])
+fig = px.density_heatmap(
+    df,
+    x="instance_type",
+    y="account_name",
+    z="instances",
+    color_continuous_scale="purples",
+)
+st.plotly_chart(fig, use_container_width=True)
+```
+
+### Adding instance age distribution
+
+```python
+resoto_search = "is(instance)"
+df = resoto.dataframe(resoto_search)
+df["age_days"] = (pd.Timestamp.utcnow() - df["ctime"]).dt.days
+fig = px.histogram(
+    df,
+    x="age_days",
+    nbins=50,
+    title="Instance Age Distribution",
+    labels={"age_days": "age in days"},
+    color="account_name",
+)
+age_tab.plotly_chart(fig, use_container_width=True)
+```
 
 ## The complete app
 

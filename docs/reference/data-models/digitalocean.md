@@ -4,8 +4,6 @@ sidebar_label: DigitalOcean
 
 # DigitalOcean Resources
 
-## Configuration
-
 :::info
 
 Please refer to [Configure DigitalOcean Access](../../getting-started/configure-cloud-provider-access/digitalocean.md) for details on how to set up Resoto to collect [DigitalOcean](https://digitalocean.com) resources.

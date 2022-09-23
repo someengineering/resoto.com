@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="352px" preserveAspectRatio="none" style="width:712px;height:352px;background:#00000000;" version="1.1" viewBox="0 0 712 352" width="712px" zoomAndPan="magnify"><defs/><g><!--MD5=[f250f102843f04823a5b58db07d1b5df]
+class aws_kms_key--><a href="#aws_kms_key" target="_top" title="#aws_kms_key" xlink:actuate="onRequest" xlink:href="#aws_kms_key" xlink:show="new" xlink:title="#aws_kms_key" xlink:type="simple"><rect codeLine="23" fill="#3D176E" height="39.7891" id="aws_kms_key" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="158" x="221.03" y="307"/><ellipse cx="236.03" cy="326.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M238.9987,332.5352 Q238.4206,332.832 237.78,332.9727 Q237.1394,333.1289 236.4362,333.1289 Q233.9362,333.1289 232.6081,331.4883 Q231.2956,329.832 231.2956,326.707 Q231.2956,323.582 232.6081,321.9258 Q233.9362,320.2695 236.4362,320.2695 Q237.1394,320.2695 237.78,320.4258 Q238.4362,320.582 238.9987,320.8789 L238.9987,323.5977 Q238.3737,323.0195 237.78,322.7539 Q237.1862,322.4727 236.5612,322.4727 Q235.2175,322.4727 234.53,323.5508 Q233.8425,324.6133 233.8425,326.707 Q233.8425,328.8008 234.53,329.8789 Q235.2175,330.9414 236.5612,330.9414 Q237.1862,330.9414 237.78,330.6758 Q238.3737,330.3945 238.9987,329.8164 L238.9987,332.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="116" x="255.03" y="332.7798">aws_kms_key</text></a><!--MD5=[7a6bb659f38c463d7e93194eedee472b]
+class aws_redshift_cluster--><a href="#aws_redshift_cluster" target="_top" title="#aws_redshift_cluster" xlink:actuate="onRequest" xlink:href="#aws_redshift_cluster" xlink:show="new" xlink:title="#aws_redshift_cluster" xlink:type="simple"><rect codeLine="26" fill="#3D176E" height="39.7891" id="aws_redshift_cluster" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="213" x="193.53" y="207"/><ellipse cx="208.53" cy="226.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M211.4987,232.5352 Q210.9206,232.832 210.28,232.9727 Q209.6394,233.1289 208.9362,233.1289 Q206.4362,233.1289 205.1081,231.4883 Q203.7956,229.832 203.7956,226.707 Q203.7956,223.582 205.1081,221.9258 Q206.4362,220.2695 208.9362,220.2695 Q209.6394,220.2695 210.28,220.4258 Q210.9362,220.582 211.4987,220.8789 L211.4987,223.5977 Q210.8737,223.0195 210.28,222.7539 Q209.6862,222.4727 209.0612,222.4727 Q207.7175,222.4727 207.03,223.5508 Q206.3425,224.6133 206.3425,226.707 Q206.3425,228.8008 207.03,229.8789 Q207.7175,230.9414 209.0612,230.9414 Q209.6862,230.9414 210.28,230.6758 Q210.8737,230.3945 211.4987,229.8164 L211.4987,232.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="171" x="227.53" y="232.7798">aws_redshift_cluster</text></a><!--MD5=[38029ad49370857a6dd64e9fa137ed24]
+class aws_ec2_security_group--><a href="#aws_ec2_security_group" target="_top" title="#aws_ec2_security_group" xlink:actuate="onRequest" xlink:href="#aws_ec2_security_group" xlink:show="new" xlink:title="#aws_ec2_security_group" xlink:type="simple"><rect codeLine="29" fill="#3D176E" height="39.7891" id="aws_ec2_security_group" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="245" x="54.53" y="107"/><ellipse cx="69.53" cy="126.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M72.4988,132.5352 Q71.9206,132.832 71.28,132.9727 Q70.6394,133.1289 69.9363,133.1289 Q67.4363,133.1289 66.1081,131.4883 Q64.7956,129.832 64.7956,126.707 Q64.7956,123.582 66.1081,121.9258 Q67.4363,120.2695 69.9363,120.2695 Q70.6394,120.2695 71.28,120.4258 Q71.9363,120.582 72.4988,120.8789 L72.4988,123.5977 Q71.8738,123.0195 71.28,122.7539 Q70.6863,122.4727 70.0613,122.4727 Q68.7175,122.4727 68.03,123.5508 Q67.3425,124.6133 67.3425,126.707 Q67.3425,128.8008 68.03,129.8789 Q68.7175,130.9414 70.0613,130.9414 Q70.6863,130.9414 71.28,130.6758 Q71.8738,130.3945 72.4988,129.8164 L72.4988,132.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="203" x="88.53" y="132.7798">aws_ec2_security_group</text></a><!--MD5=[8a02f6ab9fdb5af8377a24f6712ed122]
+class aws_ec2_subnet--><a href="#aws_ec2_subnet" target="_top" title="#aws_ec2_subnet" xlink:actuate="onRequest" xlink:href="#aws_ec2_subnet" xlink:show="new" xlink:title="#aws_ec2_subnet" xlink:type="simple"><rect codeLine="32" fill="#3D176E" height="39.7891" id="aws_ec2_subnet" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="179" x="334.53" y="107"/><ellipse cx="349.53" cy="126.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M352.4988,132.5352 Q351.9206,132.832 351.28,132.9727 Q350.6394,133.1289 349.9363,133.1289 Q347.4363,133.1289 346.1081,131.4883 Q344.7956,129.832 344.7956,126.707 Q344.7956,123.582 346.1081,121.9258 Q347.4363,120.2695 349.9363,120.2695 Q350.6394,120.2695 351.28,120.4258 Q351.9363,120.582 352.4988,120.8789 L352.4988,123.5977 Q351.8738,123.0195 351.28,122.7539 Q350.6863,122.4727 350.0613,122.4727 Q348.7175,122.4727 348.03,123.5508 Q347.3425,124.6133 347.3425,126.707 Q347.3425,128.8008 348.03,129.8789 Q348.7175,130.9414 350.0613,130.9414 Q350.6863,130.9414 351.28,130.6758 Q351.8738,130.3945 352.4988,129.8164 L352.4988,132.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="137" x="368.53" y="132.7798">aws_ec2_subnet</text></a><!--MD5=[dd6f315a6e7ddad885d23d64bcb1b317]
+class aws_iam_role--><a href="#aws_iam_role" target="_top" title="#aws_iam_role" xlink:actuate="onRequest" xlink:href="#aws_iam_role" xlink:show="new" xlink:title="#aws_iam_role" xlink:type="simple"><rect codeLine="35" fill="#3D176E" height="39.7891" id="aws_iam_role" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="157" x="548.53" y="107"/><ellipse cx="563.53" cy="126.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M566.4988,132.5352 Q565.9206,132.832 565.28,132.9727 Q564.6394,133.1289 563.9363,133.1289 Q561.4363,133.1289 560.1081,131.4883 Q558.7956,129.832 558.7956,126.707 Q558.7956,123.582 560.1081,121.9258 Q561.4363,120.2695 563.9363,120.2695 Q564.6394,120.2695 565.28,120.4258 Q565.9363,120.582 566.4988,120.8789 L566.4988,123.5977 Q565.8738,123.0195 565.28,122.7539 Q564.6863,122.4727 564.0613,122.4727 Q562.7175,122.4727 562.03,123.5508 Q561.3425,124.6133 561.3425,126.707 Q561.3425,128.8008 562.03,129.8789 Q562.7175,130.9414 564.0613,130.9414 Q564.6863,130.9414 565.28,130.6758 Q565.8738,130.3945 566.4988,129.8164 L566.4988,132.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="115" x="582.53" y="132.7798">aws_iam_role</text></a><!--MD5=[b092df8b8fb1f6f311aad85fb2df39d7]
+class aws_vpc--><a href="#aws_vpc" target="_top" title="#aws_vpc" xlink:actuate="onRequest" xlink:href="#aws_vpc" xlink:show="new" xlink:title="#aws_vpc" xlink:type="simple"><rect codeLine="38" fill="#3D176E" height="39.7891" id="aws_vpc" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="112" x="121.03" y="7"/><ellipse cx="136.03" cy="26.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M138.9988,32.5352 Q138.4206,32.832 137.78,32.9727 Q137.1394,33.1289 136.4363,33.1289 Q133.9363,33.1289 132.6081,31.4883 Q131.2956,29.832 131.2956,26.707 Q131.2956,23.582 132.6081,21.9258 Q133.9363,20.2695 136.4363,20.2695 Q137.1394,20.2695 137.78,20.4258 Q138.4363,20.582 138.9988,20.8789 L138.9988,23.5977 Q138.3738,23.0195 137.78,22.7539 Q137.1863,22.4727 136.5613,22.4727 Q135.2175,22.4727 134.53,23.5508 Q133.8425,24.6133 133.8425,26.707 Q133.8425,28.8008 134.53,29.8789 Q135.2175,30.9414 136.5613,30.9414 Q137.1863,30.9414 137.78,30.6758 Q138.3738,30.3945 138.9988,29.8164 L138.9988,32.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="70" x="155.03" y="32.7798">aws_vpc</text></a><!--MD5=[2ed281196e943e7267ea76bd8dc51ef5]
+link aws_redshift_cluster to aws_kms_key--><path codeLine="41" d="M300.03,247.36 C300.03,262.93 300.03,284.9 300.03,301.66 " fill="none" id="aws_redshift_cluster-to-aws_kms_key" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="300.03,306.68,304.03,297.68,300.03,301.68,296.03,297.68,300.03,306.68" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[7555ca12f147cfe73e3f6d44eb39a71f]
+link aws_ec2_security_group to aws_redshift_cluster--><path codeLine="42" d="M201.04,147.13 C221.36,163.32 250.51,186.54 271.91,203.6 " fill="none" id="aws_ec2_security_group-to-aws_redshift_cluster" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="276.09,206.92,271.5531,198.1783,272.1829,203.8,266.5612,204.4297,276.09,206.92" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[3182bcdc7b77160dda46afcbab214b7e]
+link aws_ec2_subnet to aws_redshift_cluster--><path codeLine="43" d="M399.83,147.13 C379.26,163.38 349.72,186.73 328.11,203.81 " fill="none" id="aws_ec2_subnet-to-aws_redshift_cluster" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="324.18,206.92,333.7188,204.4681,328.0996,203.8158,328.752,198.1966,324.18,206.92" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[b464936ee9ec2eeda1610b312b6f4222]
+link aws_iam_role to aws_redshift_cluster--><path codeLine="44" d="M563.6,147.01 C507.51,163.82 425.88,188.28 368.37,205.52 " fill="none" id="aws_iam_role-to-aws_redshift_cluster" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="363.57,206.96,373.3381,208.2186,368.3611,205.5298,371.0498,200.5528,363.57,206.96" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[8d6a7a9bb3d319963af45f18a1825b6e]
+link aws_vpc to aws_ec2_security_group--><path codeLine="45" d="M177.03,47.36 C177.03,62.93 177.03,84.9 177.03,101.66 " fill="none" id="aws_vpc-to-aws_ec2_security_group" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="177.03,106.68,181.03,97.68,177.03,101.68,173.03,97.68,177.03,106.68" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[92c40850d440c54e1e3d0238e6f7d8c1]
+link aws_vpc to aws_ec2_subnet--><path codeLine="46" d="M224.95,47.01 C266.91,63.66 327.79,87.81 371.16,105.02 " fill="none" id="aws_vpc-to-aws_ec2_subnet" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="375.83,106.87,368.9332,99.8391,371.1808,105.0303,365.9896,107.2779,375.83,106.87" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[a93ef9f30e56f4a4657d6a93e6eed0ed]
+link aws_vpc to aws_redshift_cluster--><path codeLine="47" d="M122.74,47.19 C71.25,68.44 6,105.28 37.03,147 C55.86,172.31 125.47,192.56 188.35,206.22 " fill="none" id="aws_vpc-to-aws_redshift_cluster" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="193.25,207.27,185.2995,201.4571,188.3631,206.2126,183.6076,209.2762,193.25,207.27" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[43fd8c159fdc88389f31ba1046adf0fe]
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_kms_key [[#aws_kms_key]] {
+
+}
+class aws_redshift_cluster [[#aws_redshift_cluster]] {
+
+}
+class aws_ec2_security_group [[#aws_ec2_security_group]] {
+
+}
+class aws_ec2_subnet [[#aws_ec2_subnet]] {
+
+}
+class aws_iam_role [[#aws_iam_role]] {
+
+}
+class aws_vpc [[#aws_vpc]] {
+
+}
+aws_redshift_cluster -[#1A83AF]-> aws_kms_key
+aws_ec2_security_group -[#1A83AF]-> aws_redshift_cluster
+aws_ec2_subnet -[#1A83AF]-> aws_redshift_cluster
+aws_iam_role -[#1A83AF]-> aws_redshift_cluster
+aws_vpc -[#1A83AF]-> aws_ec2_security_group
+aws_vpc -[#1A83AF]-> aws_ec2_subnet
+aws_vpc -[#1A83AF]-> aws_redshift_cluster
+@enduml
+
+PlantUML version 1.2021.16(Wed Dec 08 17:25:22 UTC 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

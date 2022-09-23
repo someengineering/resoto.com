@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="352px" preserveAspectRatio="none" style="width:649px;height:352px;background:#00000000;" version="1.1" viewBox="0 0 649 352" width="649px" zoomAndPan="magnify"><defs/><g><!--MD5=[ec118965783bd07d3c54c576f9f6fac3]
+class aws_autoscaling_group--><a href="#aws_autoscaling_group" target="_top" title="#aws_autoscaling_group" xlink:actuate="onRequest" xlink:href="#aws_autoscaling_group" xlink:show="new" xlink:title="#aws_autoscaling_group" xlink:type="simple"><rect codeLine="23" fill="#3D176E" height="39.7891" id="aws_autoscaling_group" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="236" x="7" y="207"/><ellipse cx="22" cy="226.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M24.9688,232.5352 Q24.3906,232.832 23.75,232.9727 Q23.1094,233.1289 22.4063,233.1289 Q19.9063,233.1289 18.5781,231.4883 Q17.2656,229.832 17.2656,226.707 Q17.2656,223.582 18.5781,221.9258 Q19.9063,220.2695 22.4063,220.2695 Q23.1094,220.2695 23.75,220.4258 Q24.4063,220.582 24.9688,220.8789 L24.9688,223.5977 Q24.3438,223.0195 23.75,222.7539 Q23.1563,222.4727 22.5313,222.4727 Q21.1875,222.4727 20.5,223.5508 Q19.8125,224.6133 19.8125,226.707 Q19.8125,228.8008 20.5,229.8789 Q21.1875,230.9414 22.5313,230.9414 Q23.1563,230.9414 23.75,230.6758 Q24.3438,230.3945 24.9688,229.8164 L24.9688,232.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="194" x="41" y="232.7798">aws_autoscaling_group</text></a><!--MD5=[ad426748b963a212e0be50aea909f6f6]
+class aws_sqs_queue--><a href="#aws_sqs_queue" target="_top" title="#aws_sqs_queue" xlink:actuate="onRequest" xlink:href="#aws_sqs_queue" xlink:show="new" xlink:title="#aws_sqs_queue" xlink:type="simple"><rect codeLine="26" fill="#3D176E" height="39.7891" id="aws_sqs_queue" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="171" x="278.5" y="207"/><ellipse cx="293.5" cy="226.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M296.4688,232.5352 Q295.8906,232.832 295.25,232.9727 Q294.6094,233.1289 293.9063,233.1289 Q291.4063,233.1289 290.0781,231.4883 Q288.7656,229.832 288.7656,226.707 Q288.7656,223.582 290.0781,221.9258 Q291.4063,220.2695 293.9063,220.2695 Q294.6094,220.2695 295.25,220.4258 Q295.9063,220.582 296.4688,220.8789 L296.4688,223.5977 Q295.8438,223.0195 295.25,222.7539 Q294.6563,222.4727 294.0313,222.4727 Q292.6875,222.4727 292,223.5508 Q291.3125,224.6133 291.3125,226.707 Q291.3125,228.8008 292,229.8789 Q292.6875,230.9414 294.0313,230.9414 Q294.6563,230.9414 295.25,230.6758 Q295.8438,230.3945 296.4688,229.8164 L296.4688,232.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="129" x="312.5" y="232.7798">aws_sqs_queue</text></a><!--MD5=[62feba95c454080ece180dc52d22d73f]
+class aws_alb--><a href="#aws_alb" target="_top" title="#aws_alb" xlink:actuate="onRequest" xlink:href="#aws_alb" xlink:show="new" xlink:title="#aws_alb" xlink:type="simple"><rect codeLine="29" fill="#3D176E" height="39.7891" id="aws_alb" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="109" x="484.5" y="207"/><ellipse cx="499.5" cy="226.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M502.4688,232.5352 Q501.8906,232.832 501.25,232.9727 Q500.6094,233.1289 499.9063,233.1289 Q497.4063,233.1289 496.0781,231.4883 Q494.7656,229.832 494.7656,226.707 Q494.7656,223.582 496.0781,221.9258 Q497.4063,220.2695 499.9063,220.2695 Q500.6094,220.2695 501.25,220.4258 Q501.9063,220.582 502.4688,220.8789 L502.4688,223.5977 Q501.8438,223.0195 501.25,222.7539 Q500.6563,222.4727 500.0313,222.4727 Q498.6875,222.4727 498,223.5508 Q497.3125,224.6133 497.3125,226.707 Q497.3125,228.8008 498,229.8789 Q498.6875,230.9414 500.0313,230.9414 Q500.6563,230.9414 501.25,230.6758 Q501.8438,230.3945 502.4688,229.8164 L502.4688,232.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="67" x="518.5" y="232.7798">aws_alb</text></a><!--MD5=[69416a41745e6b5b40c8f66fa84b518b]
+class aws_beanstalk_environment--><a href="#aws_beanstalk_environment" target="_top" title="#aws_beanstalk_environment" xlink:actuate="onRequest" xlink:href="#aws_beanstalk_environment" xlink:show="new" xlink:title="#aws_beanstalk_environment" xlink:type="simple"><rect codeLine="32" fill="#3D176E" height="39.7891" id="aws_beanstalk_environment" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="283" x="309.5" y="107"/><ellipse cx="324.5" cy="126.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M327.4688,132.5352 Q326.8906,132.832 326.25,132.9727 Q325.6094,133.1289 324.9063,133.1289 Q322.4063,133.1289 321.0781,131.4883 Q319.7656,129.832 319.7656,126.707 Q319.7656,123.582 321.0781,121.9258 Q322.4063,120.2695 324.9063,120.2695 Q325.6094,120.2695 326.25,120.4258 Q326.9063,120.582 327.4688,120.8789 L327.4688,123.5977 Q326.8438,123.0195 326.25,122.7539 Q325.6563,122.4727 325.0313,122.4727 Q323.6875,122.4727 323,123.5508 Q322.3125,124.6133 322.3125,126.707 Q322.3125,128.8008 323,129.8789 Q323.6875,130.9414 325.0313,130.9414 Q325.6563,130.9414 326.25,130.6758 Q326.8438,130.3945 327.4688,129.8164 L327.4688,132.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="241" x="343.5" y="132.7798">aws_beanstalk_environment</text></a><!--MD5=[a78a17b35dcf435f0eee6761f15e83c6]
+class aws_ec2_instance--><a href="#aws_ec2_instance" target="_top" title="#aws_ec2_instance" xlink:actuate="onRequest" xlink:href="#aws_ec2_instance" xlink:show="new" xlink:title="#aws_ec2_instance" xlink:type="simple"><rect codeLine="35" fill="#3D176E" height="39.7891" id="aws_ec2_instance" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="192" x="290" y="307"/><ellipse cx="305" cy="326.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M307.9688,332.5352 Q307.3906,332.832 306.75,332.9727 Q306.1094,333.1289 305.4063,333.1289 Q302.9063,333.1289 301.5781,331.4883 Q300.2656,329.832 300.2656,326.707 Q300.2656,323.582 301.5781,321.9258 Q302.9063,320.2695 305.4063,320.2695 Q306.1094,320.2695 306.75,320.4258 Q307.4063,320.582 307.9688,320.8789 L307.9688,323.5977 Q307.3438,323.0195 306.75,322.7539 Q306.1563,322.4727 305.5313,322.4727 Q304.1875,322.4727 303.5,323.5508 Q302.8125,324.6133 302.8125,326.707 Q302.8125,328.8008 303.5,329.8789 Q304.1875,330.9414 305.5313,330.9414 Q306.1563,330.9414 306.75,330.6758 Q307.3438,330.3945 307.9688,329.8164 L307.9688,332.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="150" x="324" y="332.7798">aws_ec2_instance</text></a><!--MD5=[0ac919e606be62a763d1132f8c447053]
+class aws_beanstalk_application--><a href="#aws_beanstalk_application" target="_top" title="#aws_beanstalk_application" xlink:actuate="onRequest" xlink:href="#aws_beanstalk_application" xlink:show="new" xlink:title="#aws_beanstalk_application" xlink:type="simple"><rect codeLine="38" fill="#3D176E" height="39.7891" id="aws_beanstalk_application" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="265" x="318.5" y="7"/><ellipse cx="333.5" cy="26.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M336.4688,32.5352 Q335.8906,32.832 335.25,32.9727 Q334.6094,33.1289 333.9063,33.1289 Q331.4063,33.1289 330.0781,31.4883 Q328.7656,29.832 328.7656,26.707 Q328.7656,23.582 330.0781,21.9258 Q331.4063,20.2695 333.9063,20.2695 Q334.6094,20.2695 335.25,20.4258 Q335.9063,20.582 336.4688,20.8789 L336.4688,23.5977 Q335.8438,23.0195 335.25,22.7539 Q334.6563,22.4727 334.0313,22.4727 Q332.6875,22.4727 332,23.5508 Q331.3125,24.6133 331.3125,26.707 Q331.3125,28.8008 332,29.8789 Q332.6875,30.9414 334.0313,30.9414 Q334.6563,30.9414 335.25,30.6758 Q335.8438,30.3945 336.4688,29.8164 L336.4688,32.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="223" x="352.5" y="32.7798">aws_beanstalk_application</text></a><!--MD5=[977cfcfde02c981318209557020edac2]
+link aws_autoscaling_group to aws_ec2_instance--><path codeLine="41" d="M175.63,247.01 C219.97,263.66 284.3,287.81 330.13,305.02 " fill="none" id="aws_autoscaling_group-to-aws_ec2_instance" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="335.06,306.87,328.0445,299.9575,330.3801,305.1097,325.228,307.4453,335.06,306.87" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[56018204e88820e853cc3ff88de9112e]
+link aws_beanstalk_environment to aws_autoscaling_group--><path codeLine="42" d="M387.76,147.01 C331.95,163.79 250.79,188.19 193.47,205.42 " fill="none" id="aws_beanstalk_environment-to-aws_autoscaling_group" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="188.34,206.96,198.1115,208.1918,193.1272,205.5167,195.8023,200.5323,188.34,206.96" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[d6f1ba90a3194954950ea5cbaa2c2245]
+link aws_beanstalk_environment to aws_sqs_queue--><path codeLine="43" d="M433.81,147.36 C419.75,163.2 399.82,185.66 384.85,202.52 " fill="none" id="aws_beanstalk_environment-to-aws_sqs_queue" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="381.15,206.68,390.1112,202.5938,384.4647,202.9367,384.1218,197.2902,381.15,206.68" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[4d6fd24b913a08f998ff4f56c7e63884]
+link aws_beanstalk_environment to aws_alb--><path codeLine="44" d="M468.39,147.36 C482.73,163.33 503.12,186.04 518.3,202.95 " fill="none" id="aws_beanstalk_environment-to-aws_alb" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="521.65,206.68,518.6025,197.3145,518.3052,202.9635,512.6561,202.6662,521.65,206.68" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[687d123ea85cf46f86bf20bd73c9de46]
+link aws_beanstalk_environment to aws_ec2_instance--><path codeLine="45" d="M516.48,147.06 C573.62,167.17 642.78,202.16 611,247 C582.76,286.84 532.78,306.74 487.09,316.61 " fill="none" id="aws_beanstalk_environment-to-aws_ec2_instance" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="482.11,317.65,491.7352,319.7371,487.0056,316.6337,490.109,311.9041,482.11,317.65" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[0ab3577ffb5d43147746ea75455401a5]
+link aws_beanstalk_application to aws_beanstalk_environment--><path codeLine="46" d="M451,47.36 C451,62.93 451,84.9 451,101.66 " fill="none" id="aws_beanstalk_application-to-aws_beanstalk_environment" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="451,106.68,455,97.68,451,101.68,447,97.68,451,106.68" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[7ba2ac1c42e84d99406e2cd22d39b2d2]
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_autoscaling_group [[#aws_autoscaling_group]] {
+
+}
+class aws_sqs_queue [[#aws_sqs_queue]] {
+
+}
+class aws_alb [[#aws_alb]] {
+
+}
+class aws_beanstalk_environment [[#aws_beanstalk_environment]] {
+
+}
+class aws_ec2_instance [[#aws_ec2_instance]] {
+
+}
+class aws_beanstalk_application [[#aws_beanstalk_application]] {
+
+}
+aws_autoscaling_group -[#1A83AF]-> aws_ec2_instance
+aws_beanstalk_environment -[#1A83AF]-> aws_autoscaling_group
+aws_beanstalk_environment -[#1A83AF]-> aws_sqs_queue
+aws_beanstalk_environment -[#1A83AF]-> aws_alb
+aws_beanstalk_environment -[#1A83AF]-> aws_ec2_instance
+aws_beanstalk_application -[#1A83AF]-> aws_beanstalk_environment
+@enduml
+
+PlantUML version 1.2021.16(Wed Dec 08 17:25:22 UTC 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

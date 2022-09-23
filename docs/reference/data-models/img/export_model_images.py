@@ -40,4 +40,4 @@ def print_md(provider: str):
 # export_images("digitalocean")
 # export_images("gcp")
 # export_images("kubernetes")
-print_md("kubernetes")
+print_md("digitalocean")

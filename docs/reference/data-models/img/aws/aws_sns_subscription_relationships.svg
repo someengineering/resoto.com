@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="152px" preserveAspectRatio="none" style="width:366px;height:152px;background:#00000000;" version="1.1" viewBox="0 0 366 152" width="366px" zoomAndPan="magnify"><defs/><g><!--MD5=[dda2542ca2b85683980bf3a34ba43e0c]
+class aws_sns_topic--><a href="#aws_sns_topic" target="_top" title="#aws_sns_topic" xlink:actuate="onRequest" xlink:href="#aws_sns_topic" xlink:show="new" xlink:title="#aws_sns_topic" xlink:type="simple"><rect codeLine="23" fill="#3D176E" height="39.7891" id="aws_sns_topic" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="160" x="7" y="7"/><ellipse cx="22" cy="26.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M24.9688,32.5352 Q24.3906,32.832 23.75,32.9727 Q23.1094,33.1289 22.4063,33.1289 Q19.9063,33.1289 18.5781,31.4883 Q17.2656,29.832 17.2656,26.707 Q17.2656,23.582 18.5781,21.9258 Q19.9063,20.2695 22.4063,20.2695 Q23.1094,20.2695 23.75,20.4258 Q24.4063,20.582 24.9688,20.8789 L24.9688,23.5977 Q24.3438,23.0195 23.75,22.7539 Q23.1563,22.4727 22.5313,22.4727 Q21.1875,22.4727 20.5,23.5508 Q19.8125,24.6133 19.8125,26.707 Q19.8125,28.8008 20.5,29.8789 Q21.1875,30.9414 22.5313,30.9414 Q23.1563,30.9414 23.75,30.6758 Q24.3438,30.3945 24.9688,29.8164 L24.9688,32.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="118" x="41" y="32.7798">aws_sns_topic</text></a><!--MD5=[dd6f315a6e7ddad885d23d64bcb1b317]
+class aws_iam_role--><a href="#aws_iam_role" target="_top" title="#aws_iam_role" xlink:actuate="onRequest" xlink:href="#aws_iam_role" xlink:show="new" xlink:title="#aws_iam_role" xlink:type="simple"><rect codeLine="26" fill="#3D176E" height="39.7891" id="aws_iam_role" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="157" x="202.5" y="7"/><ellipse cx="217.5" cy="26.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M220.4688,32.5352 Q219.8906,32.832 219.25,32.9727 Q218.6094,33.1289 217.9063,33.1289 Q215.4063,33.1289 214.0781,31.4883 Q212.7656,29.832 212.7656,26.707 Q212.7656,23.582 214.0781,21.9258 Q215.4063,20.2695 217.9063,20.2695 Q218.6094,20.2695 219.25,20.4258 Q219.9063,20.582 220.4688,20.8789 L220.4688,23.5977 Q219.8438,23.0195 219.25,22.7539 Q218.6563,22.4727 218.0313,22.4727 Q216.6875,22.4727 216,23.5508 Q215.3125,24.6133 215.3125,26.707 Q215.3125,28.8008 216,29.8789 Q216.6875,30.9414 218.0313,30.9414 Q218.6563,30.9414 219.25,30.6758 Q219.8438,30.3945 220.4688,29.8164 L220.4688,32.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="115" x="236.5" y="32.7798">aws_iam_role</text></a><!--MD5=[6fd4edb2fbab47fb0da171e5cceae27d]
+class aws_sns_subscription--><a href="#aws_sns_subscription" target="_top" title="#aws_sns_subscription" xlink:actuate="onRequest" xlink:href="#aws_sns_subscription" xlink:show="new" xlink:title="#aws_sns_subscription" xlink:type="simple"><rect codeLine="29" fill="#3D176E" height="39.7891" id="aws_sns_subscription" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="220" x="74" y="107"/><ellipse cx="89" cy="126.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M91.9688,132.5352 Q91.3906,132.832 90.75,132.9727 Q90.1094,133.1289 89.4063,133.1289 Q86.9063,133.1289 85.5781,131.4883 Q84.2656,129.832 84.2656,126.707 Q84.2656,123.582 85.5781,121.9258 Q86.9063,120.2695 89.4063,120.2695 Q90.1094,120.2695 90.75,120.4258 Q91.4063,120.582 91.9688,120.8789 L91.9688,123.5977 Q91.3438,123.0195 90.75,122.7539 Q90.1563,122.4727 89.5313,122.4727 Q88.1875,122.4727 87.5,123.5508 Q86.8125,124.6133 86.8125,126.707 Q86.8125,128.8008 87.5,129.8789 Q88.1875,130.9414 89.5313,130.9414 Q90.1563,130.9414 90.75,130.6758 Q91.3438,130.3945 91.9688,129.8164 L91.9688,132.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="178" x="108" y="132.7798">aws_sns_subscription</text></a><!--MD5=[0961cfbcf4671a492bf0c9fb808c224d]
+link aws_sns_topic to aws_sns_subscription--><path codeLine="32" d="M106.16,47.36 C121.97,63.33 144.45,86.04 161.18,102.95 " fill="none" id="aws_sns_topic-to-aws_sns_subscription" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="164.88,106.68,161.3816,97.4734,161.3588,103.1302,155.7019,103.1074,164.88,106.68" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[c4a4fa95ad8522e7d55ff7dff4e49b8d]
+link aws_iam_role to aws_sns_subscription--><path codeLine="33" d="M261.84,47.36 C246.03,63.33 223.55,86.04 206.82,102.95 " fill="none" id="aws_iam_role-to-aws_sns_subscription" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="203.12,106.68,212.2981,103.1074,206.6412,103.1302,206.6184,97.4734,203.12,106.68" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[cde136f873688b8fe0714fdceb3ccb98]
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_sns_topic [[#aws_sns_topic]] {
+
+}
+class aws_iam_role [[#aws_iam_role]] {
+
+}
+class aws_sns_subscription [[#aws_sns_subscription]] {
+
+}
+aws_sns_topic -[#1A83AF]-> aws_sns_subscription
+aws_iam_role -[#1A83AF]-> aws_sns_subscription
+@enduml
+
+PlantUML version 1.2021.16(Wed Dec 08 17:25:22 UTC 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="252px" preserveAspectRatio="none" style="width:302px;height:252px;background:#00000000;" version="1.1" viewBox="0 0 302 252" width="302px" zoomAndPan="magnify"><defs/><g><!--MD5=[58ee60c5cf3ebebd1a9cfd88382c20fa]
+class aws_ecs_task--><a href="#aws_ecs_task" target="_top" title="#aws_ecs_task" xlink:actuate="onRequest" xlink:href="#aws_ecs_task" xlink:show="new" xlink:title="#aws_ecs_task" xlink:type="simple"><rect codeLine="23" fill="#3D176E" height="39.7891" id="aws_ecs_task" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="154" x="8.5" y="207"/><ellipse cx="23.5" cy="226.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M26.4688,232.5352 Q25.8906,232.832 25.25,232.9727 Q24.6094,233.1289 23.9063,233.1289 Q21.4063,233.1289 20.0781,231.4883 Q18.7656,229.832 18.7656,226.707 Q18.7656,223.582 20.0781,221.9258 Q21.4063,220.2695 23.9063,220.2695 Q24.6094,220.2695 25.25,220.4258 Q25.9063,220.582 26.4688,220.8789 L26.4688,223.5977 Q25.8438,223.0195 25.25,222.7539 Q24.6563,222.4727 24.0313,222.4727 Q22.6875,222.4727 22,223.5508 Q21.3125,224.6133 21.3125,226.707 Q21.3125,228.8008 22,229.8789 Q22.6875,230.9414 24.0313,230.9414 Q24.6563,230.9414 25.25,230.6758 Q25.8438,230.3945 26.4688,229.8164 L26.4688,232.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="112" x="42.5" y="232.7798">aws_ecs_task</text></a><!--MD5=[dd6f315a6e7ddad885d23d64bcb1b317]
+class aws_iam_role--><a href="#aws_iam_role" target="_top" title="#aws_iam_role" xlink:actuate="onRequest" xlink:href="#aws_iam_role" xlink:show="new" xlink:title="#aws_iam_role" xlink:type="simple"><rect codeLine="26" fill="#3D176E" height="39.7891" id="aws_iam_role" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="157" x="7" y="7"/><ellipse cx="22" cy="26.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M24.9688,32.5352 Q24.3906,32.832 23.75,32.9727 Q23.1094,33.1289 22.4063,33.1289 Q19.9063,33.1289 18.5781,31.4883 Q17.2656,29.832 17.2656,26.707 Q17.2656,23.582 18.5781,21.9258 Q19.9063,20.2695 22.4063,20.2695 Q23.1094,20.2695 23.75,20.4258 Q24.4063,20.582 24.9688,20.8789 L24.9688,23.5977 Q24.3438,23.0195 23.75,22.7539 Q23.1563,22.4727 22.5313,22.4727 Q21.1875,22.4727 20.5,23.5508 Q19.8125,24.6133 19.8125,26.707 Q19.8125,28.8008 20.5,29.8789 Q21.1875,30.9414 22.5313,30.9414 Q23.1563,30.9414 23.75,30.6758 Q24.3438,30.3945 24.9688,29.8164 L24.9688,32.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="115" x="41" y="32.7798">aws_iam_role</text></a><!--MD5=[ae27474bef0c24d81ed6f2c2da7b3b1d]
+class aws_ecs_task_definition--><a href="#aws_ecs_task_definition" target="_top" title="#aws_ecs_task_definition" xlink:actuate="onRequest" xlink:href="#aws_ecs_task_definition" xlink:show="new" xlink:title="#aws_ecs_task_definition" xlink:type="simple"><rect codeLine="29" fill="#3D176E" height="39.7891" id="aws_ecs_task_definition" rx="2.5" ry="2.5" style="stroke:#000D19;stroke-width:1.5;" width="243" x="52" y="107"/><ellipse cx="67" cy="126.8945" fill="#E98DF7" rx="11" ry="11" style="stroke:#000D19;stroke-width:1.0;"/><path d="M69.9688,132.5352 Q69.3906,132.832 68.75,132.9727 Q68.1094,133.1289 67.4063,133.1289 Q64.9063,133.1289 63.5781,131.4883 Q62.2656,129.832 62.2656,126.707 Q62.2656,123.582 63.5781,121.9258 Q64.9063,120.2695 67.4063,120.2695 Q68.1094,120.2695 68.75,120.4258 Q69.4063,120.582 69.9688,120.8789 L69.9688,123.5977 Q69.3438,123.0195 68.75,122.7539 Q68.1563,122.4727 67.5313,122.4727 Q66.1875,122.4727 65.5,123.5508 Q64.8125,124.6133 64.8125,126.707 Q64.8125,128.8008 65.5,129.8789 Q66.1875,130.9414 67.5313,130.9414 Q68.1563,130.9414 68.75,130.6758 Q69.3438,130.3945 69.9688,129.8164 L69.9688,132.5352 Z " fill="#000000"/><text fill="#D9B8FF" font-family="Helvetica" font-size="17" lengthAdjust="spacing" textLength="201" x="86" y="132.7798">aws_ecs_task_definition</text></a><!--MD5=[e109cf926ad6a202cf81bf3c73bfaca0]
+link aws_iam_role to aws_ecs_task_definition--><path codeLine="32" d="M102.89,47.36 C117.23,63.33 137.62,86.04 152.8,102.95 " fill="none" id="aws_iam_role-to-aws_ecs_task_definition" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="156.15,106.68,153.1025,97.3145,152.8052,102.9635,147.1561,102.6662,156.15,106.68" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[04b7916d25acf115c394a7406fb6d051]
+link aws_iam_role to aws_ecs_task--><path codeLine="33" d="M68.57,47.18 C56.45,62.27 41.15,84.45 34.5,107 C29.47,124.05 29.47,129.95 34.5,147 C40.57,167.61 53.89,187.91 65.38,202.77 " fill="none" id="aws_iam_role-to-aws_ecs_task" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="68.57,206.82,66.1564,197.2715,65.4815,202.8879,59.8651,202.213,68.57,206.82" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[185160fd294cc2ca354d07dd1911f359]
+link aws_ecs_task_definition to aws_ecs_task--><path codeLine="34" d="M156.11,147.36 C141.77,163.33 121.38,186.04 106.2,202.95 " fill="none" id="aws_ecs_task_definition-to-aws_ecs_task" style="stroke:#1A83AF;stroke-width:2.0;"/><polygon fill="#1A83AF" points="102.85,206.68,111.8439,202.6662,106.1948,202.9635,105.8975,197.3145,102.85,206.68" style="stroke:#1A83AF;stroke-width:2.0;"/><!--MD5=[3954f19bee043398c4376ab0024c7130]
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class aws_ecs_task [[#aws_ecs_task]] {
+
+}
+class aws_iam_role [[#aws_iam_role]] {
+
+}
+class aws_ecs_task_definition [[#aws_ecs_task_definition]] {
+
+}
+aws_iam_role -[#1A83AF]-> aws_ecs_task_definition
+aws_iam_role -[#1A83AF]-> aws_ecs_task
+aws_ecs_task_definition -[#1A83AF]-> aws_ecs_task
+@enduml
+
+PlantUML version 1.2021.16(Wed Dec 08 17:25:22 UTC 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

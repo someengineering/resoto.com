@@ -570,7 +570,7 @@ When we reload the browser we should now see the instance metrics on the left si
 
 Let's go through the code again.
 
-In the first line we define a variable `resoto_search` which contains [a Resoto aggregate search](../docs/concepts/search/aggregation). You can copy and paste the search into the Resoto Shell to see what it does. In short it searches for all instances (`is(instance)`) and returns the total number of instances (`sum(1) as instances_total`), the total number of CPU cores (`sum(instance_cores) as cores_total`) and the total amount of memory (`sum(instance_memory*1024*1024*1024) as memory_total`). Instance memory is stored in GB in Resoto but we need it in bytes so we multiply it by 1024\*1024\*1024 to get the number of bytes.
+In the first line we define a variable `resoto_search` which contains [a Resoto aggregate search](/docs/concepts/search/aggregation). You can copy and paste the search into the Resoto Shell to see what it does. In short it searches for all instances (`is(instance)`) and returns the total number of instances (`sum(1) as instances_total`), the total number of CPU cores (`sum(instance_cores) as cores_total`) and the total amount of memory (`sum(instance_memory*1024*1024*1024) as memory_total`). Instance memory is stored in GB in Resoto but we need it in bytes so we multiply it by 1024\*1024\*1024 to get the number of bytes.
 
 In the second line we execute the search and store the result in the variable `instances_info`. The `list()` function is used to convert the result into a list. The result is a generator and we need to convert it into a list so we can access it by index. We know that our aggregate search only returns a single result so we can access it by index `0`.
 

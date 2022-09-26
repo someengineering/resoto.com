@@ -11,11 +11,11 @@ import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
 
-Last time we talked about [building actionable cloud infrastructure metrics](../06-09-building-actionable-cloud-infrastructure-metrics/index.md) and learned how to create metrics, export them into a time series database, and visualize them with Grafana. This time we'll take a look at how to take the next step. Instead of just clicking together a dashboard, limited by the components Grafana provides, we'll write some Python code to build our own infrastructure app using [Streamlit](https://streamlit.io/), a framework to turn data into web apps.
+Last time we talked about [building actionable cloud infrastructure metrics](../06-09-building-actionable-cloud-infrastructure-metrics/index.md) and learned how to create metrics, export them into a time series database, and visualize them with Grafana. This time we'll take a look at how to take the next step. We'll write some Python code to build our own infrastructure app using [Streamlit](https://streamlit.io/), a framework to turn data into web apps.
 
 ![Sheep looking inside a black box](./img/banner.png)
 
-If you are not familiar with Python, don't worry. We'll keep it simple and under 100 lines of code. In the Prerequisites we'll show you how to install Python and give a brief overview of the few coding techniques that we are going to apply. Looking at the code ahead, the only thing we're going to do is some variable assignment and function calls. If you have ever written even a simple shell or batch script, you will be able to follow along.
+If you are not familiar with Python, don't worry. We'll keep it simple and under 100 lines of code. In the [prerequisites](#prerequisites) we'll show you how to install Python and give a brief overview of the few coding techniques that we are going to apply. Looking at the code ahead, the only thing we're going to do is some variable assignment and function calls. If you have ever written even a simple shell or batch script or done some slightly complex Excel calculations, you will be able to follow along.
 
 <!--truncate-->
 
@@ -203,6 +203,12 @@ Let us look at ways to access and print the values of variables.
 ​{'Washington DC'}
 >>> print(f"The capital city of England is {capital_cities['England']}")
 ​The capital city of England is London
+>>> capital_cities.get("USA")
+​'Washington DC'
+>>> capital_cities.get("USA", "Unknown")
+​'Washington DC'
+>>> capital_cities.get("USAwoiuebcroiuw", "Unknown")
+​'Unknown'
 ```
 
 ##### Changing the value of a variable
@@ -299,29 +305,35 @@ The `$` in front of the line must not be entered into the terminal. It just indi
 
 ![Create venv on macOS/Linux](img/venv-macoslinux.png)
 
+:::info
+
+When you close your Terminal and come back to it later, you will need to activate the virtual environment again. You can do this by switching to the `resoto-app` folder using the `cd` command followed by the `source` command. You do not have to enter the `mkdir` and `python3` commands again.
+
+:::
+
 </TabItem>
 <TabItem value="venv-windows" label="Windows">
 
-In your Powershell create a new directory for your project, create a new virtual environment and activate it by running the following commands:
+In your PowerShell create a new directory for your project, create a new virtual environment and activate it by running the following commands:
 
-```powershell title="Enter this into Powershell"
+```powershell title="Enter this into PowerShell"
 $documents = [Environment]::GetFolderPath("MyDocuments")
 md $documents\resoto-app
 cd $documents\resoto-app
 python -m venv venv
-source venv\Scripts\activate
+venv\Scripts\activate
 ```
 
 ![Create venv on Windows](img/venv-windows.png)
 
-</TabItem>
-</Tabs>
-
 :::info
 
-When you close your Terminal and come back to it later, you will need to activate the virtual environment again. You can do this by switching to the `resoto-app` folder using the `cd` command followed by the `source` command. You do not have to enter the `mkdir/md` and `python` commands again.
+When you close your Terminal and come back to it later, you will need to activate the virtual environment again. You can do this by switching to the `resoto-app` folder using the `cd` command followed by the `venv\Scripts\activate` command. You do not have to enter the `md` and `python` commands again.
 
 :::
+
+</TabItem>
+</Tabs>
 
 ### Creating a requirements.txt file
 
@@ -396,7 +408,7 @@ Make sure to select the following option during installation:
 
 So what should the app look like? I am mostly interested in compute and storage as they are the most expensive resources on my bill. If you are interested in different resources, you can easily adapt the code to your needs.
 
-At the top of the app I'd like to see a summary of the current amount of compute instances, CPU cores and memory across all my cloud accounts in AWS and GCP. Next to that we will display similar statistics for storage volumes.
+At the top of the app I'd like to see a summary of the current number of compute instances, CPU cores and memory across all my cloud accounts in AWS and GCP. Next to that we will display similar statistics for storage volumes.
 
 Then I would like a world map showing where in the world those instances are running. That way if anyone starts compute instances in a region we don't typically use, I can easily spot it.
 
@@ -468,7 +480,7 @@ Click on `Allow access` so your browser can access the Streamlit web server.
 
 Your browser should open [http://localhost:8501](http://localhost:8501) and show something like the following page:
 
-![Our first infrastructure app](img/infraapp-simple-table.png)
+![Our first infrastructure app](img/app-simple-table.png)
 
 Congratulations, you've just created your first infrastructure app!
 
@@ -539,7 +551,9 @@ Add the following code to the import section:
 from resotolib.utils import iec_size_format
 ```
 
-and the following code at the end of the file:
+This line imports a function `iec_size_format()` that we will use to format the instance metrics. It turns bytes into human readable GiB, TiB, etc.
+
+Then add the following code at the end of the file:
 
 ```python
 # Instance metrics
@@ -550,7 +564,40 @@ col_instance_metrics.metric("Cores", instances_info["cores_total"])
 col_instance_metrics.metric("Memory", iec_size_format(instances_info["memory_total"]))
 ```
 
+When we reload the browser we should now see the instance metrics on the left side of our layout:
+
+![Instance metrics](img/app-instance_metrics.png)
+
+Let's go through the code again.
+
+In the first line we define a variable `resoto_search` which contains [a Resoto aggregate search](../docs/concepts/search/aggregation). You can copy and paste the search into the Resoto Shell to see what it does. In short it searches for all instances (`is(instance)`) and returns the total number of instances (`sum(1) as instances_total`), the total number of CPU cores (`sum(instance_cores) as cores_total`) and the total amount of memory (`sum(instance_memory*1024*1024*1024) as memory_total`). Instance memory is stored in GB in Resoto but we need it in bytes so we multiply it by 1024\*1024\*1024 to get the number of bytes.
+
+In the second line we execute the search and store the result in the variable `instances_info`. The `list()` function is used to convert the result into a list. The result is a generator and we need to convert it into a list so we can access it by index. We know that our aggregate search only returns a single result so we can access it by index `0`.
+
+The resulting content of `instances_info` looks something like this:
+
+```json
+{
+  "cores_total": 3158,
+  "instances_total": 536,
+  "memory_total": 13202410860544
+}
+```
+
+When we use the `iec_size_format()` function on the `memory_total` value we get a human readable string:
+
+```python
+>>> iec_size_format(instances_info["memory_total"])
+​'12.01 TiB'
+```
+
+The last three lines of code use the `st.metric()` function to display the instance metrics. The `st.metric()` function takes three arguments: a label, a value and an optional delta. The delta is the difference between the current value and the previous value. We don't have a previous value so we don't use it.
+
+Because we don't want the metrics to be appended at the end of the page we apply the `metric()` function on the `col_instance_metrics` variable we created earlier. This tells Streamlit to display the metrics in the appropriate column.
+
 ### Adding volume metrics
+
+This is going to be quick. Add the following code at the end of the file:
 
 ```python
 resoto_search = "aggregate(sum(1) as volumes_total, sum(volume_size*1024*1024*1024) as volumes_size): is(volume)"
@@ -559,7 +606,25 @@ col_volume_metrics.metric("Volumes", volumes_info["volumes_total"])
 col_volume_metrics.metric("Size", iec_size_format(volumes_info["volumes_size"]))
 ```
 
+Reload the browser and you should now see the volume metrics on the right side of our layout:
+
+![Volume metrics](img/app-volume_metrics.png)
+
+The code is the same as for the instance metrics except that we search for volumes instead of instances.
+
 ### Adding the world map
+
+Next we are going to add one of the most complex elements of our app: the world map.
+
+In the import section add the following line:
+
+```python
+import pydeck as pdk
+import numpy as np
+from resotodata.cloud import regions as cloud_regions
+```
+
+Add the following code at the end of the file:
 
 ```python
 resoto_search = "aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.region.reported.name as region: sum(1) as instances_total): is(aws_ec2_instance) or is(gcp_instance)"
@@ -602,7 +667,69 @@ map_tab.pydeck_chart(
 )
 ```
 
+When we reload the browser we should now see the world map, displaying where our instances are running:
+
+![World map](img/app-world_map.png)
+
+Let's go through the code again. First the three imports. The `pydeck` library is used to create the world map. The `numpy` library is used to calculate the midpoint of the map. The `resotodata.cloud` library is used to get the latitude and longitude of the cloud provider regions.
+
+We then do an aggregate search to get the number of instances per region. The search is similar to the one we used for the instance metrics. The only difference is that we also return the cloud provider and region name. We store the result in the variable `df` which is a [Pandas DataFrame](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html). The `resoto.dataframe()` function is used to convert the result into a DataFrame.
+
+The contents of the DataFrame look something like this:
+
+```python
+>>> df
+   instances_total cloud        region
+0                7   aws  eu-central-1
+1               55   aws     us-east-1
+2                2   aws     us-east-2
+3              405   aws     us-west-2
+4               12   gcp   us-central1
+```
+
+We then add two new columns to the DataFrame: `latitude` and `longitude`. We use the `resotodata` library to get the latitude and longitude of the cloud provider regions. We store the result in the `latitude` and `longitude` columns.
+
+When we look at the structure of the `cloud_regions` variable we see that it is a dictionary with the cloud provider name as key and a dictionary with the region name as key. The value of the region dictionary is another dictionary with the latitude and longitude as keys. We use this structure to get the latitude and longitude of the region.
+
+```python
+>>> pprint(cloud_regions)
+​{'aws': {'af-south-1': {'latitude': -33.928992,
+​                        'long_name': 'Africa (Cape Town)',
+​                        'longitude': 18.417396,
+​                        'short_name': 'af-south-1'},
+​         'ap-east-1': {'latitude': 22.2793278,
+​                       'long_name': 'Asia Pacific (Hong Kong)',
+​                       'longitude': 114.1628131,
+​                       'short_name': 'ap-east-1'},
+​...
+```
+
+The `midpoint` variable is used to center the map. We use the `numpy` library to calculate the average latitude and longitude of the DataFrame. We then use the `pydeck` library to create the map. The `pydeck` library is used to create interactive maps in Python. The `pydeck` library is built on top of the [Deck.gl](https://deck.gl/) library which is used to create interactive maps in JavaScript.
+
+We are using the ColumnLayer to create the map. The ColumnLayer is used to create 3D columns. We use the latitude and longitude columns to position the columns. We use the `instances_total` dataframe column to set the height of the columns. We use the cloud column to set the color of the columns. This is done in the line:
+
+```python
+get_fill_color="cloud == 'aws' ? [217, 184, 255, 150] : [255, 231, 151, 150]",
+```
+
+The code can be read as:
+
+```python
+if cloud == 'aws':
+    get_fill_color = [217, 184, 255, 150]
+else:
+    get_fill_color = [255, 231, 151, 150]
+```
+
+The elements of the `get_fill_color` list are the red, green, blue and alpha values of the column color. The alpha value is used to set the transparency of the color.
+
+See the [pydeck documentation](https://deckgl.readthedocs.io/en/latest/gallery/column_layer.html) for more information about the ColumnLayer.
+
 ### Adding Top 10 accounts and regions by ondemand cost
+
+This is going to be an easy one. It's almost like our demo app just that instead of just displaying the dataframe unchanged we are going to use some of Panda's built-in functions to display the top 10 accounts and regions by ondemand cost.
+
+Add the following code at the end of the file:
 
 ```python
 top10_tab.header("Top 10 accounts and regions")
@@ -616,7 +743,41 @@ df = (
 top10_tab.table(df.style.format({"ondemand_cost": "${:.2f}/h"}))
 ```
 
+Reload the browser, select the "Top 10" tab and you should see the following:
+
+![Top 10 accounts and regions](img/app-top10.png)
+
+The dataframe looks like this:
+
+```python
+>>> resoto.dataframe(resoto_search)
+​    ondemand_cost         cloud                                            account                                region
+​0        0.166400           aws                                        eng-devprod                             us-east-1
+​1        0.768000           aws                                        eng-devprod                             us-west-2
+​2        7.104000           aws                                eng-sphere-insights                             us-west-2
+​3        0.192000           aws                                eng-sphere-platform                             us-east-1
+​4       26.304000           aws                                eng-sphere-platform                             us-west-2
+​5        3.648000           aws                                   eng-ksphere-soak                             us-east-1
+​6        6.460800           aws                                   eng-ksphere-soak                             us-west-2
+​7        0.166400           aws                                  eng-qualification                             us-east-1
+​...
+```
+
+We then ask Pandas to sort the DataFrame by the `ondemand_cost` column and to only show the top 10 rows. We then use the `top10_tab.table()` function to display the DataFrame as a table.
+
+We use the `style.format()` function to format the `ondemand_cost` column. Using the [Python string format function](https://docs.python.org/3/library/string.html#format-string-syntax) to format the column. The `:.2f` means that we want to format the column as a floating point number with two decimals.
+
 ### Adding Sunburst chart of storage distribution
+
+Add the following code to the import section:
+
+```python
+import plotly.express as px
+```
+
+We use the `plotly.express` library to create the sunburst chart. The `plotly.express` library is a wrapper around the `plotly` library. The `plotly` library is used to create interactive charts in Python. The `plotly` library in turn is built on top of the [Plotly.js](https://plotly.com/javascript/) library which is used to create interactive charts in JavaScript.
+
+Add the following code at the end of the file:
 
 ```python
 resoto_search = "aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account: sum(volume_size*1024*1024*1024) as volume_size): is(volume)"
@@ -632,7 +793,35 @@ fig.update_traces(hoverinfo="label+percent entry", textinfo="label+percent entry
 col_storage.plotly_chart(fig)
 ```
 
+Reload the browser and you should see something like this:
+
+![Sunburst chart of storage distribution](img/app-sunburst.png)
+
+This aggregate search returns a dataframe that looks like this:
+
+```python
+>>> resoto.dataframe(resoto_search)
+​       volume_size         cloud                                        account
+​0     223338299392           aws                                    eng-devprod
+​1    2940978855936           aws                            eng-sphere-insights
+​2       2147483648           aws                                eng-sphere-kudo
+​3   11857330962432           aws                            eng-sphere-platform
+​4    5625333415936           aws                                eng-sphere-soak
+​5    4778151116800           aws                                         eng-ds
+​...
+```
+
+The line `df["volume_size_human"] = df["volume_size"].apply(iec_size_format)` adds a new column to the dataframe. The new column is called `volume_size_human` and it contains the volume size in human readable format by asking Pandas to apply the `iec_size_format` function to the `volume_size` column.
+
+`px.sunburst()` creates a sunburst chart from the dataframe. The `path` argument tells the function which columns to use for the different levels of the sunburst chart. The `values` argument tells the function which column to use for the size of the slices. The `hover_data` argument tells the function which columns to show when hovering over a slice.
+
+`fig.update_traces()` updates the properties of the slices. The `hoverinfo` argument tells the function which information to show when hovering over a slice. The `textinfo` argument tells the function which information to show in the center of the sunburst chart.
+
 ### Adding heatmap of instance types
+
+This will be similar to the sunburst chart. We will use the `plotly.express` library to create a heatmap of the instance types. This heatmap is pretty useful to quickly detect outliers.
+
+Add the following code at the end of the file:
 
 ```python
 st.header("Instance Types")
@@ -648,7 +837,25 @@ fig = px.density_heatmap(
 st.plotly_chart(fig, use_container_width=True)
 ```
 
+Reload the browser and you should see something like this:
+
+![Heatmap of instance types](img/app-heatmap.png)
+
+I feel like by now you should be able to understand what is going on.
+
 ### Adding instance age distribution
+
+Lastly we will add a histogram of the instance age distribution. This is again useful to quickly detect outliers. For instance, if in a development you see a lot of instances that are older than 1 year, you might want to investigate why.
+
+We add this last because it takes a while to load.
+
+Add the following code to the import section:
+
+```python
+import pandas as pd
+```
+
+Add the following code at the end of the file:
 
 ```python
 resoto_search = "is(instance)"
@@ -664,6 +871,12 @@ fig = px.histogram(
 )
 age_tab.plotly_chart(fig, use_container_width=True)
 ```
+
+Reload the browser and you should see something like this:
+
+![Histogram of instance age distribution](img/app-age.png)
+
+The different colors in the histogram represent the different accounts. We are creating a new `age_days` column which is calculated by subtracting the `ctime` column from the current time and then use that `age_days` column as the basis for the x-axis of the histogram. `ctime` is the time when an instance was created. `nbins` is the number of bins to use for the histogram. All instances within a certain age range are grouped together in a bin.
 
 ## The complete app
 

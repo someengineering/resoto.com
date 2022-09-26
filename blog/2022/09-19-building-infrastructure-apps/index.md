@@ -880,6 +880,8 @@ The different colors in the histogram represent the different accounts. We are c
 
 ## The complete app
 
+For convenience, here is the complete app:
+
 ```python
 import streamlit as st
 import pydeck as pdk
@@ -1006,3 +1008,7 @@ fig = px.histogram(
 )
 age_tab.plotly_chart(fig, use_container_width=True)
 ```
+
+## What's next?
+
+This time we've covered the basics of building an infrastructure app with Resoto and Streamlit. Right now we are only displaying data. In the next post we will add some interactivity to the app. We will use some of the same elements we've seen in this post and we'll introduce input widgets.

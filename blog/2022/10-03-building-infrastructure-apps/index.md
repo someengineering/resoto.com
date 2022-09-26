@@ -39,8 +39,6 @@ You can download the latest version from [python.org](https://www.python.org/dow
 
 ![Download Python from python.org](img/download-python-windows.png)
 
-TODO: insert information about path length and PATH
-
 </TabItem>
 <TabItem value="windows-chocolatey" label="Chocolatey">
 

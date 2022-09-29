@@ -17,7 +17,7 @@ You can use the [`chunk`](../miscellaneous-commands/chunk.md) command to send ch
 ## Usage
 
 ```bash
-http [--compress] [--timeout <seconds>] [--no-ssl-verify] [--no-body] [--nr-of-retries <num>] <http_method> <url> <headers> <query_params>
+http [--compress] [--timeout <seconds>] [--no-ssl-verify] [--no-body] [--nr-of-retries <num>] [--auth <username>:<password>] <http_method> <url> <headers> <query_params>
 ```
 
 ### Options
@@ -29,6 +29,7 @@ http [--compress] [--timeout <seconds>] [--no-ssl-verify] [--no-body] [--nr-of-r
 | `--no-ssl-verify`     | Disable SSL certificate verification                                               |
 | `--no-body`           | Send with empty request body                                                       |
 | `--nr-of-retries`     | Maximum number of retries for unsuccessful requests (non-2XX HTTP status codes) \* |
+| `--auth`              | Basic authentication username and password                                         |
 
 \* By default, requests are retried three times. There is an exponential backoff between retries.
 

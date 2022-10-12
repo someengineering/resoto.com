@@ -46,7 +46,9 @@ Except, of course, you’re using Resoto - because Resoto provides consistent da
 
 We briefly touched on resource tagging before. If done diligently, tagging strategies can make a real difference to infrastructure sprawl. Tagging AWS Resources can follow a plethora of patterns though.
 
-“tag-resource”, “tag-queue”, “add-tags-to-resource”, “create-or-update-tags”, “update-tags-for-resource” et cetera, et cetera… the options are almost as numerous as the services. Do you have to provide the tags as an array or as a hashmap? Can you do multiple tags at once or is it one-by-one only? The workload of tagging existing resources can blow out of proportion really quickly because all the services do their own thing. At this point I’m sure you’re guessing it already: You don’t have to worry about any of this when you use Resoto to apply tags:
+“tag-resource”, “tag-queue”, “add-tags-to-resource”, “create-or-update-tags”, “update-tags-for-resource” et cetera, et cetera… the options are almost as numerous as the services. Do you have to provide the tags as an array or as a hashmap? Can you do multiple tags at once or is it one-by-one only? The workload of tagging existing resources can blow out of proportion really quickly because all the services do their own thing. At this point I’m sure you’re guessing it already: You don’t have to worry about any of this when you use Resoto to apply tags.
+
+See below two examples each of adding a tag `owner: jenkins` to an EC2 Instance and to an SQS Queue:
 
 ### 😒 Tagging in AWS CLI
 

@@ -32,13 +32,32 @@ You can use the following commands to install the database:
 $ helm repo add arangodb https://arangodb.github.io/kube-arangodb
 $ helm repo update
 $ helm install kube-arangodb-crd arangodb/kube-arangodb-crd
+$ helm install kube-arangodb arangodb/kube-arangodb
+
+$ kubectl apply -f - <<EOF
+apiVersion: "database.arangodb.com/v1alpha"
+kind: "ArangoDeployment"
+metadata:
+  name: "single-server"
+spec:
+  mode: Single
+  image: arangodb/arangodb:3.8.7
+  tls:
+    caSecretName: None
+EOF
 ```
 
 :::note
 
-These instructions were tested with version 1.2.18 of the operator.
+These instructions were tested with version 1.2.15 of the operator.
 
 :::
+
+Then, wait until the ArangoDB deployment is ready:
+
+```bash
+$ kubectl wait --for=condition=ready arangodeployment/single-server
+```
 
 ### Create Helm Values File
 

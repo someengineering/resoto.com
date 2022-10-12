@@ -8,7 +8,7 @@ sidebar_custom_props:
 
 Resoto constantly monitors your infrastructure, and can alert you to any detected issues.
 
-One way to receive these notifications is via [Discord](https://discord.com). In this guide, we will configure Resoto to send alerts to a Discord text channel.
+One way to receive these alerts is via [Discord](https://discord.com). In this guide, we will configure Resoto to send alerts to a Discord text channel.
 
 ## Prerequisites
 

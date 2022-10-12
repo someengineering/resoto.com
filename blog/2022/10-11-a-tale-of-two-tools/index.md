@@ -48,26 +48,25 @@ We briefly touched on resource tagging before. If done diligently, tagging strat
 
 “tag-resource”, “tag-queue”, “add-tags-to-resource”, “create-or-update-tags”, “update-tags-for-resource” et cetera, et cetera… the options are almost as numerous as the services. Do you have to provide the tags as an array or as a hashmap? Can you do multiple tags at once or is it one-by-one only? The workload of tagging existing resources can blow out of proportion really quickly because all the services do their own thing. At this point I’m sure you’re guessing it already: You don’t have to worry about any of this when you use Resoto to apply tags:
 
-<table>
-<thead>
-  <tr>
-    <th>Tagging in AWS CLI</th>
-    <th>Tagging in Resoto</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td><pre><code>aws ec2 create-tags –resources jenkins-master –tags Key=owner,Value=jenkins</code></pre></td>
-    <td><pre><code>
-    search is(aws_ec2_instance) and name = jenkins-master | tag update owner jenkins
-    </code></pre></td>
-  </tr>
-  <tr>
-    <td><pre><code>aws sqs tag-queue –queue-url https://sqs.us-west-2.amazonaws.com/123456789012/MyQueue –tags owner=jenkins</code></pre></td>
-    <td><pre><code>search is(aws_sqs_queue) and sqs_queue_url = https://sqs.us-west-2.amazonaws.com/123456789012/MyQueue | tag update owner jenkins</code></pre></td>
-  </tr>
-</tbody>
-</table>
+### 😒 Tagging in AWS CLI
+
+```
+aws ec2 create-tags –resources jenkins-master –tags Key=owner,Value=jenkins
+```
+
+```
+aws sqs tag-queue –queue-url https://sqs.us-west-2.amazonaws.com/123456789012/MyQueue –tags owner=jenkins
+```
+
+### 💜 Tagging in Resoto
+
+```
+> search is(aws_ec2_instance) and name = jenkins-master | tag update owner jenkins
+```
+
+```
+> search is(aws_sqs_queue) and sqs_queue_url = https://sqs.us-west-2.amazonaws.com/123456789012/MyQueue | tag update owner jenkins
+```
 
 ## TL;DR
 

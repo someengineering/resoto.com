@@ -52,21 +52,21 @@ See below two examples each of adding a tag `owner: jenkins` to an EC2 Instance 
 
 ### 😒 Tagging in AWS CLI
 
-```
-aws ec2 create-tags –resources jenkins-master –tags Key=owner,Value=jenkins
+```markdown title="add an owner tag to an EC2 Instance in AWS CLI"
+> aws ec2 create-tags –resources jenkins-master –tags Key=owner,Value=jenkins
 ```
 
-```
-aws sqs tag-queue –queue-url https://sqs.us-west-2.amazonaws.com/123456789012/MyQueue –tags owner=jenkins
+```markdown title="add an owner tag to an SQS Queue in AWS CLI"
+> aws sqs tag-queue –queue-url https://sqs.us-west-2.amazonaws.com/123456789012/MyQueue –tags owner=jenkins
 ```
 
 ### 💜 Tagging in Resoto
 
-```
+```markdown title="add an owner tag to an EC2 Instance in Resoto"
 > search is(aws_ec2_instance) and name = jenkins-master | tag update owner jenkins
 ```
 
-```
+```markdown title="add an owner tag to an SQS Queue in Resoto"
 > search is(aws_sqs_queue) and sqs_queue_url = https://sqs.us-west-2.amazonaws.com/123456789012/MyQueue | tag update owner jenkins
 ```
 

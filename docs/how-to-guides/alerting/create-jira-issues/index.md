@@ -24,12 +24,6 @@ This guide assumes that you have already [installed](../../../getting-started/in
    > search is(instance) and age>4yr
    ```
 
-:::note
-
-If the results from your defined search exceed 1000 items, more than one Jira issue will be created.
-
-:::
-
 3. Now that we've defined the alert trigger, we will simply pipe the result of the search query to the `jira` [custom command](../../../reference/cli/index.md#custom-commands), replacing the `title` with your desired issue title and `url` with your Jira URL. You also need to provide your credentials (username and API token), the project ID, and the reporting user ID:
 
    ```bash

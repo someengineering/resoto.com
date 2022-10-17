@@ -6,6 +6,7 @@ sidebar_position: 3
 
 | Command                             | Description                                                                      |
 | ----------------------------------- | -------------------------------------------------------------------------------- |
+| [`aws`](./aws.md)                   | Execute commands on AWS resources                                                |
 | [`clean`](./clean.md)               | Mark all incoming database objects for cleaning                                  |
 | [`http`](./http.md)                 | Perform HTTP request with incoming data                                          |
 | [`jobs`](./jobs/index.md)           | Manage all jobs                                                                  |

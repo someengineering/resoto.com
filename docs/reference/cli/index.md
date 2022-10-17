@@ -59,6 +59,7 @@ You can pipe commands using `|` and chain multiple commands using `;`.
 
 | Command                                             | Description                                                                      |
 | --------------------------------------------------- | -------------------------------------------------------------------------------- |
+| [`aws`](./action-commands/aws.md)                   | Execute commands on AWS resources                                                |
 | [`clean`](./action-commands/clean.md)               | Mark all incoming database objects for cleaning                                  |
 | [`http`](./action-commands/http.md)                 | Perform HTTP request with incoming data                                          |
 | [`jobs`](./action-commands/jobs/index.md)           | Manage all jobs                                                                  |

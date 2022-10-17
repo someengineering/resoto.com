@@ -24,7 +24,7 @@ And so the order came down from the CEO and the CFO to reduce cloud spend, and b
 
 The scenario probably sounds familiar. And there were plenty of infrastructure tools out there at the time that promised a solution. But they all had the same drawbacks:
 
-- **Rule-based.** The tools assume that you know what your problem is, and that you know what you're looking for. And they work well in that situation. But not so much if the tool didn't create the resource. You just don't see it in your inventory. You can establish rules for tagging, etc.—but if you have 200 engineers, automated systems, something will aways fall by the way-side and the rules don't work.
+- **Rule-based.** The tools assume that you know what your problem is, and that you know what you're looking for. And they work well in that situation. But not so much if the tool didn't create the resource. You just don't see it in your inventory. You can establish rules for tagging, etc.—but if you have 200 engineers, automated systems, something will always fall by the way-side and the rules don't work.
 
 - **"Rows & columns."** The tools produce a long list of resources, sometimes in a pretty UI, but don't show any dependencies. You couldn't really understand a resource's "blast radius" if you wanted to delete it.
 
@@ -144,7 +144,7 @@ In the example of the valves and the fertilizer plant, the plant operator retrof
 
 Now, it's the valve manufacturers themselves who standardize and expose attributes of their valves, write the Resoto plug-ins, and define standard workflow templates. A workflow template could be a maintenance alert and dispatch when the valve achieves a certain age or total lifetime throughput.
 
-Instead of "just" selling valves, a manufacturer bundles valve, [Raspberry Pi](https://raspberrypi.org), Keepercore, plug-in and workflow templates into a subscription for a "digital valve" or a "valve cloud" that carries the manufacturer's own brand. The valve manufacturer also maintains connectivity to all valves across its customer base, collecting the aggregate data set. Because Resoto is open, standardized and abstracted, the "valve cloud" is plug-and-play and integrates with a plant operators' existing digital / cloud infrastructure. The valves and [Raspberry Pis](https://raspberrypi.org) again become searchable, discoverable and programmable.
+Instead of "just" selling valves, a manufacturer bundles valve, [Raspberry Pi](https://raspberrypi.org), Resoto Core, plug-in and workflow templates into a subscription for a "digital valve" or a "valve cloud" that carries the manufacturer's own brand. The valve manufacturer also maintains connectivity to all valves across its customer base, collecting the aggregate data set. Because Resoto is open, standardized and abstracted, the "valve cloud" is plug-and-play and integrates with a plant operators' existing digital / cloud infrastructure. The valves and [Raspberry Pis](https://raspberrypi.org) again become searchable, discoverable and programmable.
 
 By turning a physical product into a programmable infrastructure resource, companies open up new types of business models and income streams, such as subscription revenue. There are benefits for all parties. With the subscription, the plant operator has the benefit of turning upfront Capex into an operating expense. As the maintainers of the project, [Some Engineering](https://some.engineering) contributes with certifications, training, and support.
 

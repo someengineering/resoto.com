@@ -69,7 +69,7 @@ You can specify a profile using `AWS_PROFILE` and, for local testing, SSO authen
    - Recreate the `resotoworker` container with the updated service definition:
 
      ```bash
-     $ docker compose up -d
+     $ docker-compose up -d
      ```
 
    </TabItem>
@@ -220,7 +220,7 @@ The configuration is visible to anyone with access to Resoto. You can alternativ
    - Recreate the `resotoworker` container with the updated service definition:
 
      ```bash
-     $ docker compose up -d
+     $ docker-compose up -d
      ```
 
    </TabItem>
@@ -332,7 +332,7 @@ The configuration is visible to anyone with access to Resoto. You can alternativ
    - Recreate the `resotoworker` container with the updated service definition:
 
      ```bash
-     $ docker compose up -d
+     $ docker-compose up -d
      ```
 
    </TabItem>

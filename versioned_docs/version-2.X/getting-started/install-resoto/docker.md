@@ -47,7 +47,7 @@ $ mkdir -p resoto/dockerV2
 $ cd resoto
 $ curl -o docker-compose.yaml https://raw.githubusercontent.com/someengineering/resoto/{{repoBranch}}/docker-compose.yaml
 $ curl -o dockerV2/prometheus.yml https://raw.githubusercontent.com/someengineering/resoto/{{repoBranch}}/dockerV2/prometheus.yml
-$ docker compose up -d
+$ docker-compose up -d
 ```
 
 </TabItem>
@@ -57,21 +57,13 @@ $ docker compose up -d
 $ git clone https://github.com/someengineering/resoto.git
 $ cd resoto
 $ git checkout tags/{{repoBranch}}
-$ docker compose up -d
+$ docker-compose up -d
 ```
 
 </TabItem>
 </Tabs>
 
-Upon execution of `docker compose up -d`, Docker Compose will start all components and set up the system. This process takes approximately 1-3 minutes, depending on your machine and internet connection.
-
-:::note
-
-[Docker Compose V2 integrated compose functions in to the Docker platform.](https://docs.docker.com/compose/#compose-v2-and-the-new-docker-compose-command)
-
-In Docker Compose V1, the command is `docker-compose` (with a hyphen) instead of `docker compose`.
-
-:::
+Upon execution of `docker-compose up -d`, Docker Compose will start all components and set up the system. This process takes approximately 1-3 minutes, depending on your machine and internet connection.
 
 :::info
 
@@ -88,7 +80,7 @@ The `resh` command is used to interact with [`resotocore`](../../concepts/compon
 Simply execute the following to access the [Resoto Shell](../../concepts/components/shell.md) interface:
 
 ```bash
-$ docker exec -it resoto-resotoshell-server-1 resh
+$ docker-compose exec -it resotoshell resh
 ```
 
 ![Resoto Shell](./img/resoto-shell.png)

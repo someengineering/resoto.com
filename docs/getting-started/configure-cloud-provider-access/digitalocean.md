@@ -80,7 +80,7 @@ Instead of specifying API tokens or secret access keys in the [Resoto Worker con
    - Recreate the `resotoworker` container with the updated service definition:
 
      ```bash
-     $ docker compose up -d
+     $ docker-compose up -d
      ```
 
    </TabItem>

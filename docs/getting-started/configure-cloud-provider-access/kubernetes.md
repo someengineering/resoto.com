@@ -61,7 +61,7 @@ The easiest way to configure access to Kubernetes is to give Resoto Worker acces
    - Recreate the `resotoworker` container with the updated service definition:
 
      ```bash
-     $ docker compose up -d
+     $ docker-compose up -d
      ```
 
    </TabItem>

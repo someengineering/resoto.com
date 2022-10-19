@@ -59,7 +59,7 @@ You can authenticate with [Google Cloud Platform](../../reference/data-models/gc
    - Recreate the `resotoworker` container with the updated service definition:
 
      ```bash
-     $ docker compose up -d
+     $ docker-compose up -d
      ```
 
    </TabItem>

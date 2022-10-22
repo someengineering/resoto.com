@@ -121,7 +121,7 @@ tags: [release notes]
 
 ### Chores
 
-- [`8b6fb111`](https://github.com/someengineering/resoto/commit/8b6fb111) <span class="badge badge--secondary">resoto</span> [resoto] bump 2.4 release
+- [`8b6fb111`](https://github.com/someengineering/resoto/commit/8b6fb111) <span class="badge badge--secondary">resoto</span> bump 2.4 release
 - [`15e2ef11`](https://github.com/someengineering/resoto/commit/15e2ef11) <span class="badge badge--secondary">resotolib, resotoworker, plugins/digitalocean</span> Refactor tag operations ([#1016](https://github.com/someengineering/resoto/pull/1016))
 - [`a5d599d7`](https://github.com/someengineering/resoto/commit/a5d599d7) <span class="badge badge--secondary">resoto</span> make baseresource kwargs only ([#1008](https://github.com/someengineering/resoto/pull/1008))
 - [`da942de7`](https://github.com/someengineering/resoto/commit/da942de7) <span class="badge badge--secondary">resoto</span> Use attrs instead of dataclasses ([#972](https://github.com/someengineering/resoto/pull/972))

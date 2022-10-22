@@ -9,7 +9,6 @@ tags: [release notes]
 ### Features
 
 - [`3d140cee`](https://github.com/someengineering/resoto/commit/3d140cee) <span class="badge badge--secondary">resoto</span> pin the client version
-- [`91d2d2ca`](https://github.com/someengineering/resoto/commit/91d2d2ca) <span class="badge badge--secondary">resoto</span> bump 2.4.3
 - [`20c80278`](https://github.com/someengineering/resoto/commit/20c80278) <span class="badge badge--secondary">plugins/digitalocean</span> fix cleanup in DigitalOcean plugin (#1213)
 
 ### Fixes
@@ -18,6 +17,7 @@ tags: [release notes]
 
 ### Chores
 
+- [`91d2d2ca`](https://github.com/someengineering/resoto/commit/91d2d2ca) <span class="badge badge--secondary">resoto</span> bump 2.4.3
 - [`c1b33cab`](https://github.com/someengineering/resoto/commit/c1b33cab) <span class="badge badge--secondary">ci</span> Fix release notes generation (#1217)
 - [`8427afde`](https://github.com/someengineering/resoto/commit/8427afde) <span class="badge badge--secondary">ci</span> Correct link for release notes (#1214)
 

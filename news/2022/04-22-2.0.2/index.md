@@ -15,9 +15,9 @@ tags: [release notes]
 
 ### Fixes
 
-- [`fb209b6`](https://github.com/someengineering/resoto/commit/fb209b6) <span class="badge badge--secondary">resotoshell</span> [resotoshell][fix] Fix rich dependency
+- [`fb209b6`](https://github.com/someengineering/resoto/commit/fb209b6) <span class="badge badge--secondary">resotoshell</span> Fix rich dependency
 - [`6ffc7f4`](https://github.com/someengineering/resoto/commit/6ffc7f4) <span class="badge badge--secondary">docker</span> Add cache version to cache key for easy invalidation ([#810](https://github.com/someengineering/resoto/pull/810))
-- [`3692fcf`](https://github.com/someengineering/resoto/commit/3692fcf) <span class="badge badge--secondary">resotocore</span> [resotocore][fix] Fix rich dependency
+- [`3692fcf`](https://github.com/someengineering/resoto/commit/3692fcf) <span class="badge badge--secondary">resotocore</span> Fix rich dependency
 - [`82e64d0`](https://github.com/someengineering/resoto/commit/82e64d0) <span class="badge badge--secondary">docker</span> copy ArangoDB dump/restore client binaries ([#806](https://github.com/someengineering/resoto/pull/806))
 - [`81fc02d`](https://github.com/someengineering/resoto/commit/81fc02d) <span class="badge badge--secondary">docker</span> Add vi and nano to Docker images ([#804](https://github.com/someengineering/resoto/pull/804))
 - [`b087485`](https://github.com/someengineering/resoto/commit/b087485) <span class="badge badge--secondary">resotolib</span> Update TLS certificate files on disk after a certain time has passed ([#803](https://github.com/someengineering/resoto/pull/803))
@@ -33,9 +33,9 @@ tags: [release notes]
 
 ### Chores
 
+- [`e4aa797`](https://github.com/someengineering/resoto/commit/e4aa797) <span class="badge badge--secondary">resoto</span> Bump 2.0.2
 - [`2f1c040`](https://github.com/someengineering/resoto/commit/2f1c040) <span class="badge badge--secondary">resoto</span> use version 2.0 as docker version in compose
 - [`1763105`](https://github.com/someengineering/resoto/commit/1763105) <span class="badge badge--secondary">resoto</span> Add documentation as release note section ([#792](https://github.com/someengineering/resoto/pull/792))
-- [`e4aa797`](https://github.com/someengineering/resoto/commit/e4aa797) <span class="badge badge--secondary">resoto</span> [resoto][chore] Bump 2.0.2
 
 <!--truncate-->
 

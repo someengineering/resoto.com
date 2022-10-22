@@ -8,7 +8,6 @@ tags: [release notes]
 
 ### Features
 
-- [`e878522`](https://github.com/someengineering/resoto/commit/e878522) <span class="badge badge--secondary">resoto</span> Bump 2.1.0
 - [`0aad50b`](https://github.com/someengineering/resoto/commit/0aad50b) <span class="badge badge--secondary">resotoshell</span> Add aggregate completer ([#825](https://github.com/someengineering/resoto/pull/825))
 - [`2d0aa6a`](https://github.com/someengineering/resoto/commit/2d0aa6a) <span class="badge badge--secondary">resoto</span> Use json as logging output format ([#824](https://github.com/someengineering/resoto/pull/824))
 - [`f6aea4a`](https://github.com/someengineering/resoto/commit/f6aea4a) <span class="badge badge--secondary">resotoshell</span> Use resotoclient in resotoshell ([#822](https://github.com/someengineering/resoto/pull/822))
@@ -52,6 +51,7 @@ tags: [release notes]
 
 ### Chores
 
+- [`e878522`](https://github.com/someengineering/resoto/commit/e878522) <span class="badge badge--secondary">resoto</span> Bump 2.1.0
 - [`74533b3`](https://github.com/someengineering/resoto/commit/74533b3) <span class="badge badge--secondary">resoto</span> Add documentation as release note section ([#792](https://github.com/someengineering/resoto/pull/792))
 - [`9d57191`](https://github.com/someengineering/resoto/commit/9d57191) <span class="badge badge--secondary">ci</span> remove individual Docker images from generated release notes ([#791](https://github.com/someengineering/resoto/pull/791))
 - [`0a27e8a`](https://github.com/someengineering/resoto/commit/0a27e8a) <span class="badge badge--secondary">docker</span> Update compose file for 2.0.0 ([#788](https://github.com/someengineering/resoto/pull/788))

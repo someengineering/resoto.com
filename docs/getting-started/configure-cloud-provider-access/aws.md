@@ -72,6 +72,14 @@ You can specify a profile using `AWS_PROFILE` and, for local testing, SSO authen
      $ docker-compose up -d
      ```
 
+     :::note
+
+     [Docker Compose V2 integrated compose functions in to the Docker platform.](https://docs.docker.com/compose/#compose-v2-and-the-new-docker-compose-command)
+
+     In Docker Compose V2, the command is `docker compose` (no hyphen) instead of `docker-compose`.
+
+     :::
+
    </TabItem>
    <TabItem value="k8s" label="Kubernetes">
 
@@ -223,6 +231,14 @@ The configuration is visible to anyone with access to Resoto. You can alternativ
      $ docker-compose up -d
      ```
 
+     :::note
+
+     [Docker Compose V2 integrated compose functions in to the Docker platform.](https://docs.docker.com/compose/#compose-v2-and-the-new-docker-compose-command)
+
+     In Docker Compose V2, the command is `docker compose` (no hyphen) instead of `docker-compose`.
+
+     :::
+
    </TabItem>
    <TabItem value="k8s" label="Kubernetes">
 
@@ -334,6 +350,14 @@ The configuration is visible to anyone with access to Resoto. You can alternativ
      ```bash
      $ docker-compose up -d
      ```
+
+     :::note
+
+     [Docker Compose V2 integrated compose functions in to the Docker platform.](https://docs.docker.com/compose/#compose-v2-and-the-new-docker-compose-command)
+
+     In Docker Compose V2, the command is `docker compose` (no hyphen) instead of `docker-compose`.
+
+     :::
 
    </TabItem>
    <TabItem value="k8s" label="Kubernetes">

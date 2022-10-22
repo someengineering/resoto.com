@@ -64,6 +64,14 @@ The easiest way to configure access to Kubernetes is to give Resoto Worker acces
      $ docker-compose up -d
      ```
 
+     :::note
+
+     [Docker Compose V2 integrated compose functions in to the Docker platform.](https://docs.docker.com/compose/#compose-v2-and-the-new-docker-compose-command)
+
+     In Docker Compose V2, the command is `docker compose` (no hyphen) instead of `docker-compose`.
+
+     :::
+
    </TabItem>
    <TabItem value="k8s" label="Kubernetes">
 

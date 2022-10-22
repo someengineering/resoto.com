@@ -80,7 +80,7 @@ The `resh` command is used to interact with [`resotocore`](../../concepts/compon
 Simply execute the following to access the [Resoto Shell](../../concepts/components/shell.md) interface:
 
 ```bash
-$ docker-compose exec -it resotoshell resh
+$ docker exec -it resotoshell resh
 ```
 
 ![Resoto Shell](./img/resoto-shell.png)

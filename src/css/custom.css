@@ -307,12 +307,44 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   display: none;
 }
 
+.tabs-container > .margin-top--md {
+  margin-top: -3px !important;
+  padding: var(--ifm-alert-padding-vertical) var(--ifm-alert-padding-horizontal);
+  border: 1px solid var(--ifm-toc-border-color);
+  border-radius: var(--ifm-alert-border-radius);
+  box-shadow: var(--ifm-alert-shadow);
+}
+
+.tabs {
+  overflow-x: visible;
+  margin-left: var(--ifm-tabs-padding-horizontal);
+}
+
+.tabs__item {
+  padding: calc(var(--ifm-tabs-padding-vertical) / 2)
+    var(--ifm-tabs-padding-horizontal);
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.tabs__item:not(.tabs__item--active):hover {
+  border-bottom-color: var(--ifm-toc-border-color);
+}
+
 section.row > article {
   margin-bottom: 0 !important;
 }
 
 section.row > article + article {
   margin-bottom: 2rem !important;
+}
+
+.row > aside {
+  --ifm-col-width: calc(2 / 12 * 100%) !important;
+}
+
+.row > main {
+  --ifm-col-width: calc(8 / 12 * 100%) !important;
 }
 
 @media screen and (min-width: 997px) {

@@ -12,7 +12,9 @@ export default function CopyButton({ code, className }: Props): JSX.Element {
     copy(
       code
         .split('\n')
-        .map((line) => line.replace(/^((>{3}|[>$])\s*|(\s+|\u200b.*)$)/, ''))
+        .map((line) =>
+          line.replace(/^((>{3}|\.{3}|[>$])\s*|(\s+|\u200b.*)$)/, '')
+        )
         .filter((line) => line)
         .join('\n')
     );

@@ -4,30 +4,30 @@ tags: [infrastructure, apps]
 image: ./img/banner-social.png
 ---
 
-# Building Infrastructure Apps with Resoto and Streamlit
+# Building an Infrastructure App with Resoto and Streamlit
 
 ```mdx-code-block
 import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
 
-In my last post, we discussed [building actionable cloud infrastructure metrics](../06-09-building-actionable-cloud-infrastructure-metrics/index.md) and learned how to create metrics, export them into a time series database, and finally visualize them with Grafana. **This time, we'll take a look at how to build our own infrastructure app using [Streamlit](https://streamlit.io), a framework that turns data into web apps.**
+In my last post, we discussed [building actionable cloud infrastructure metrics](../06-09-building-actionable-cloud-infrastructure-metrics/index.md) and how to create metrics, export them into a time series database, and visualize them with Grafana. **Today, we'll take a look at how to build an infrastructure app using [Streamlit](https://streamlit.io), a framework that turns data into web apps.**
 
 ![Sheep looking inside a black box](./img/banner.png)
 
-If you are not familiar with Python, don't worry. We're going to keep it simple and under 100 lines of code. In [Prerequisites](#prerequisites), we will first install Python and go over the coding techniques that we'll utilize in this project.
+If you are not familiar with [Python](https://python.org), don't worry—we're going to keep it simple! In [Prerequisites](#prerequisites), we'll go over installing Python and the coding techniques utilized in this project.
 
 <!--truncate-->
 
 :::info
 
-If you are familiar with Python and just want the finished product, you can follow the steps in [Environment Setup](#environment-setup) and jump straight to [The Final Product](#the-final-product). Then, see [Running the App](#running-the-app) for instructions on how to start the app.
+If you're already comfortable with [Python](https://python.org) and just want the finished product, you can follow the steps in [Environment Setup](#environment-setup) and jump straight to [The Final Product](#the-final-product). Then, see [Running the App](#running-the-app) for instructions on how to start the app.
 
 :::
 
 :::tip
 
-The below instructions include commands to be executed in a terminal. The `$`, `>`, `>>>`, or `...` at the beginning of each line indicates the prompt. **You should not type or copy these characters.**
+Many of the instructions below include commands to be executed in a terminal. The `$`, `>`, `>>>`, or `...` at the beginning of each line indicates the prompt. **You should not type or copy these characters.**
 
 When hovering over the upper right corner of a code block, you will see a copy button. You can use this to copy the commands within the code block to your clipboard without these prompts.
 
@@ -35,13 +35,14 @@ When hovering over the upper right corner of a code block, you will see a copy b
 
 ## Prerequisites
 
-You will need [Python 3.8+](https://python.org), [`pip`](https://pip.pypa.io) (the Python package installer), and [Resoto](https://resoto.com).
-
-You will also need a text editor (I personally use [Visual Studio Code](https://code.visualstudio.com)).
+- A text editor (I personally use [Visual Studio Code](https://code.visualstudio.com))
+- [Python](https://python.org) 3.8+
+- [`pip`](https://pip.pypa.io) (the Python package installer)
+- [Resoto](https://resoto.com) 😉
 
 :::note
 
-If you already have Python and `pip` installed and know your way around Python, you can skip ahead to [Environment Setup](#environment-setup).
+If you already these prerequisites installed, you can skip ahead to [Environment Setup](#environment-setup).
 
 :::
 
@@ -50,7 +51,7 @@ If you already have Python and `pip` installed and know your way around Python, 
 <Tabs groupId="operating-system">
 <TabItem value="linux" label="Linux">
 
-On Linux, there is a good chance your distribution already comes with a version of Python 3.x installed. If you are not sure, you can check with the following command:
+On Linux, there is a good chance the distro already comes with a version of Python 3.x installed. If you are not sure, you can check with the following command:
 
 ```bash
 $ python3 --version
@@ -59,7 +60,7 @@ $ python3 --version
 # highlight-end
 ```
 
-If the command returns an error, you can install both Python and `pip` using your distribution's package manager:
+If the command returns an error, you can install Python and `pip` using your distro's package manager:
 
 <Tabs>
 <TabItem value="linux-fedora" label="Fedora/CentOS">
@@ -81,9 +82,16 @@ $ sudo apt install python3 python3-pip
 </TabItem>
 <TabItem value="macos" label="macOS">
 <Tabs>
+<TabItem value="macos-download" label="Download">
+
+You can download the latest version of Python for macOS from [Python.org](https://python.org/downloads):
+
+![Screenshot of python.org](./img/download-python-macos.png)
+
+</TabItem>
 <TabItem value="macos-homebrew" label="Homebrew">
 
-If you have [Homebrew](https://brew.sh) installed, you can install Python by executing the following command in the **Terminal** app:
+With [Homebrew](https://brew.sh), you can install Python by executing the following command in the **Terminal** app:
 
 ```bash
 $ brew install python
@@ -98,27 +106,20 @@ The **Terminal** app can be found under **Utilities** within the **Applications*
 :::
 
 </TabItem>
-<TabItem value="macos-download" label="Download">
-
-You can download the latest version of Python for macOS from [python.org](https://www.python.org/downloads):
-
-![Screenshot of python.org](./img/download-python-macos.png)
-
-</TabItem>
 </Tabs>
 </TabItem>
 <TabItem value="windows" label="Windows">
 <Tabs>
 <TabItem value="windows-download" label="Download">
 
-You can download the latest version of Python for Windows from [python.org](https://python.org/downloads):
+You can download the latest version of Python for Windows from [Python.org](https://python.org/downloads):
 
 ![Screenshot of python.org](./img/download-python-windows.png)
 
 </TabItem>
 <TabItem value="windows-chocolatey" label="Chocolatey">
 
-If you have [Chocolatey](https://chocolatey.org) installed, you can install Python by executing the following command:
+With [Chocolatey](https://chocolatey.org), you can install Python by executing the following command:
 
 ```powershell
 choco install python
@@ -133,7 +134,7 @@ choco install python
 <summary>Python Basics</summary>
 <div>
 
-<h4>Starting the REPL</h4>
+<h4 id="starting-the-repl">Starting the REPL</h4>
 
 Start Python by running the following command:
 
@@ -146,15 +147,17 @@ $ python3
 ​>>>
 ```
 
-This is the REPL, the Python Read-Eval-Print-Loop. It is a great way to quickly test out some code. You can type in a command and press enter to execute it. The result will be printed to the screen. If you want to exit the REPL, type `exit()` and press enter.
+This is the Python <abbr title="Read-Eval-Print-Loop">REPL</abbr>. The REPL is a great way to quickly test code. You can type in a command, execute it by pressing the <kbd>Enter</kbd> key, and see the result printed to the screen.
 
-<h4>Variables and Functions</h4>
+To exit the REPL, simply type `exit()` and press <kbd>Enter</kbd>.
 
-_Variables_ are used to store values. They are created by assigning a value to a name. The name can be any combination of letters, numbers, and underscores, but it must start with a letter or underscore.
+<h4 id="variables-and-functions">Variables and Functions</h4>
 
-_Functions_ are used to group code into a single unit. Functions can be called by using the function name followed by a list of arguments in parentheses. For this app we won't write any functions ourselves but we will call existing functions.
+_Variables_ store values. They are created by assigning a value to a name. The name can be any combination of letters, numbers, and underscores, but it must start with a letter or underscore.
 
-In the following code we assign the value `Monday` to a variable named `today` and then use the `print()` function to print the value of the variable to the screen.
+_Functions_ group code into a single unit. Functions can be called by using the function name followed by a list of arguments in parentheses. For this app we won't write any functions ourselves but we will call existing functions.
+
+In the following code, we assign the value `"Monday"` to a variable named `today` and then use the `print()` function to output the value of the variable.
 
 ```python
 >>> today = "Monday"
@@ -163,7 +166,7 @@ In the following code we assign the value `Monday` to a variable named `today` a
 ​Monday
 ```
 
-<h5>Types of Variables</h5>
+<h5 id="types-of-variables">Types of Variables</h5>
 
 There are different types of variables. The most common are _strings_, _integers_, and _floats_. Strings are used to store text. Integers are used to store whole numbers. Floats are used to store decimal numbers. There are also _booleans_, which can be either `True` or `False`, and _lists_ and _dictionaries_ which are used to store multiple values. To access a value in a list we use an index, which is a number that starts at 0, 0 being the first element of a list. Dictionaries are similar to lists, but instead of using a number to access a value, you can use a string. Lists are created by using square brackets `[]` and dictionaries are created by using curly brackets `{}`.
 
@@ -203,9 +206,9 @@ Let's quickly go through some examples of each type of variable.
 ​<class 'dict'>
 ```
 
-<h5>Accessing and Printing Variable Values</h5>
+<h5 id="accessing-and-printing-variables">Accessing and Printing Variables</h5>
 
-Let us look at ways to access and print the values of variables.
+Let's look at some examples illustrating how to access and print variable values:
 
 ```python
 >>> print(current_temperature)
@@ -237,9 +240,9 @@ Let us look at ways to access and print the values of variables.
 ​'Unknown'
 ```
 
-<h5>Modifying Variable Values</h5>
+<h5 id="modifying-variables">Modifying Variables</h5>
 
-Variables can be changed by assigning a new value to them.
+Variables can be changed by assigning a new value:
 
 ```python
 >>> current_temperature = 75.2
@@ -256,7 +259,7 @@ Variables can be changed by assigning a new value to them.
 ​The current temperature is 90.2F
 ```
 
-<h5>Multiple Assignment</h5>
+<h5 id="multiple-assignment">Multiple Assignment</h5>
 
 Multiple variables can be assigned in a single line by comma-delimiting the variable names and values:
 
@@ -269,9 +272,11 @@ Multiple variables can be assigned in a single line by comma-delimiting the vari
 
 Some functions also return multiple values. In such cases, the values can be assigned to multiple variables in the same fashion.
 
-<h5>Conditionals</h5>
+<h5 id="conditionals">Conditionals</h5>
 
-Sometimes we want to take different actions depending on the value of a variable. We can accomplish this using an `if` statement. The following code will print a different message depending on the value of the `window_closed` variable:
+Sometimes, we want to take different actions depending on the value of a variable. We can define this logic using an `if` statement.
+
+The following code will print a different message depending on the value of `window_closed`:
 
 ```python
 >>> if window_closed:
@@ -282,7 +287,9 @@ Sometimes we want to take different actions depending on the value of a variable
 ​The window is closed.
 ```
 
-It is also possible to chain multiple `if` statements together using `elif` (short for else if). The following code will print a different message depending on the value of the `current_temperature` variable.
+It is also possible to chain multiple `if` statements together using `elif` (short for "else if").
+
+The following code will print a different message depending on the value of `current_temperature`:
 
 ```python
 >>> if current_temperature < 50:
@@ -295,7 +302,7 @@ It is also possible to chain multiple `if` statements together using `elif` (sho
 ​It's hot outside.
 ```
 
-Multiple conditions can be checked using the `and` and `or` operators.
+Multiple conditions can be checked using the `and` and `or` operators:
 
 ```python
 >>> if current_temperature < 50 and window_closed:
@@ -337,14 +344,14 @@ If you are interested in different resource types or metrics, you can easily ada
 
 ### Environment Setup
 
-We are going to use a [Python virtual environment](https://docs.python.org/3/library/venv.html) to keep the project isolated from the rest of the system. (This is not strictly necessary, but is good practice to keep your system clean and avoid conflicts with other projects.)
+**We are going to use a [Python virtual environment](https://docs.python.org/3/library/venv.html) to keep the project isolated from the rest of the system.** (This is not strictly necessary, but is good practice to keep your system clean and avoid conflicts with other projects.)
 
 1. Create a new project directory to store source code and the virtual environment.
 
    <Tabs groupId="operating-system">
    <TabItem value="linux" label="Linux/macOS">
 
-   In the Terminal, create a new directory for your project, create a new virtual environment and activate it by running the following commands:
+   In the Terminal app, create a new directory for your project, create a new virtual environment and activate it by running the following commands:
 
    ```bash
    $ mkdir ~/resoto-app        # create a new directory named resoto-app inside the home directory
@@ -401,7 +408,7 @@ We are going to use a [Python virtual environment](https://docs.python.org/3/lib
    </TabItem>
    </Tabs>
 
-2. We will use the `pip` package manager to install the dependencies for this project. In your text editor, create a new file named `requirements.txt` inside the `resoto-app` directory:
+2. In your text editor, create a new file named `requirements.txt` inside the `resoto-app` directory:
 
    ```python title="requirements.txt"
    resotoclient[extras]
@@ -426,10 +433,10 @@ We are going to use a [Python virtual environment](https://docs.python.org/3/lib
    | [`resotoclient`](https://github.com/someengineering/resotoclient-python) | The Resoto Python client library, used to connect to the Resoto API to retrieve infrastructure data as [Pandas dataframes](https://pandas.pydata.org) and [JSON](https://json.org) |
    | [`resotodata`](https://github.com/someengineering/resotodata) | Contains static data, like the locations of cloud data centers. |
    | [`resotolib`](https://github.com/someengineering/resoto/tree/main/resotolib) | A collection of helper functions for Resoto. (The one we'll be using converts bytes into human-readable units like GiB, TiB, etc.) |
-   | [`pydeck`](https://deckgl.readthedocs.io) | A library for making spatial visualizations. We'll use it to display the locations of our cloud resources on a map. |
+   | [`pydeck`](https://deckgl.readthedocs.io) | A library for making spatial visualizations. We'll use it to display the locations of cloud resources on a map. |
    | [`numpy`](https://numpy.org) | A math library for working with the data Resoto returns. |
 
-3. Now, we can install dependencies using `pip`:
+3. Now, we can install the dependencies listed in `requirements.txt` using `pip`:
 
    <Tabs groupId="operating-system">
    <TabItem value="linux" label="Linux/macOS">
@@ -468,9 +475,9 @@ We are going to use a [Python virtual environment](https://docs.python.org/3/lib
 
 ### Creating a Demo App
 
-Now that we've set up our project environment and thought about what we would like to build, we can start creating our infrastructure app.
+Now that we've set up the project environment, we can start creating the infrastructure app.
 
-Let's start with a very short 7-line demo app to verify that our environment is set up correctly. Once that's working, we'll add the code for our infrastructure app.
+**Let's start with a simple demo app to verify that the environment is set up correctly.**
 
 1. Create a file `app.py` inside the `resoto-app` directory:
 
@@ -491,20 +498,23 @@ Let's start with a very short 7-line demo app to verify that our environment is 
    <summary>Code Explanation</summary>
    <div>
 
-   Let's take a look at what is going on here and what the meaning of each line of the above code.
+   Let's take a look at the meaning of each line of the above code.
 
    ```python
    import streamlit as st
    from resotoclient import ResotoClient
    ```
 
-   This is the import section of our app. In it we import libraries that other people have written and made available to us. Imports typically happen at the beginning of a file. These two lines import the `streamlit` and `resotoclient` libraries into our project. In our first import we use the `as` keyword to give Streamlit a shorter name. This way we can use `st` instead of `streamlit`. In the second line instead of importing all of `resotoclient` we tell Python to only import the `ResotoClient` class.
+   This is the import section of the app. In it we import libraries that other people have written and made available to us. Imports typically happen at the beginning of a file. These two lines import the `streamlit` and `resotoclient` libraries into the project.
+
+   - In the first import we use the `as` keyword to assign `streamlit` a shorter name.
+   - In the second line, instead of importing all of `resotoclient` we tell Python to only import the `ResotoClient` class.
 
    ```python
    resoto = ResotoClient(url="https://localhost:8900", psk="changeme")
    ```
 
-   Here we initialize a new instance of the Resoto Client and assign it to the variable `resoto`. We pass the URL of our Resoto Core and the pre-shared-key (PSK) as arguments. The PSK is used to authenticate the client against the Resoto Core.
+   Here we initialize a new instance of the Resoto Client and assign it to the variable `resoto`, passing a Resoto Core URL and pre-shared key (PSK) as arguments. The PSK is used to authenticate the client against the Resoto Core.
 
    ```python
    st.set_page_config(page_title="Cloud Dashboard", page_icon=":cloud:", layout="wide")
@@ -518,20 +528,20 @@ Let's start with a very short 7-line demo app to verify that our environment is 
    st.dataframe(df)
    ```
 
-   For now, these two lines are only here for demo purposes. We ask Resoto to search for everything that is a compute instance and return it as a [Pandas dataframe](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html). We then pass the dataframe to Streamlit's `st.dataframe` function to display it as a table in our app.
+   For now, these two lines are only here for demo purposes. We ask Resoto to search for everything that is a compute instance and return it as a [Pandas DataFrame](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html). We then pass the DataFrame to [Streamlit](https://streamlit.io)'s `st.dataframe` function to display it as a table in the app.
 
-   Think of dataframes as an Excel spreadsheet. Resoto stores all of its data in a [graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph), and `resoto.dataframe()` allows us to search that graph and flatten the result into a dataframe that can be consumed by Streamlit.
+   Think of dataframes as an Excel spreadsheet. Resoto stores all of its data in a [graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph), and `resoto.dataframe()` allows us to search that graph and flatten the result into a DataFrame that can be consumed by [Streamlit](https://streamlit.io).
 
    </div>
    </details>
 
 2. Modify the `url` and `psk` values to match your local Resoto Core URL and pre-shared key. The above reflects the default values for a [Docker Compose install](/docs/getting-started/install-resoto/docker).
 
-3. Save the file and switch back to the Terminal.
+3. Save the file and switch back to the terminal.
 
 ### Running the App
 
-1. Run Streamlit by executing following command:
+1. Run [Streamlit](https://streamlit.io) by executing following command:
 
    <Tabs groupId="operating-system">
    <TabItem value="linux" label="Linux/macOS">
@@ -540,7 +550,7 @@ Let's start with a very short 7-line demo app to verify that our environment is 
    $ streamlit run app.py
    ```
 
-   ![Run Streamlit on macOS/Linux](./img/streamlit_run-macoslinux.png)
+   ![Screenshot of running Streamlit on macOS](./img/streamlit_run-macoslinux.png)
 
    </TabItem>
    <TabItem value="windows" label="Windows">
@@ -549,30 +559,28 @@ Let's start with a very short 7-line demo app to verify that our environment is 
    streamlit run app.py
    ```
 
-   ![Run Streamlit on Windows](./img/streamlit_run-windows.png)
+   ![Screenshot of running Streamlit on Windows](./img/streamlit_run-windows.png)
 
    :::note
 
-   The first time you run Streamlit on Windows you might get the following firewall notice:
+   The first time you run [Streamlit](https://streamlit.io) on Windows, you may see the following Windows Defender Firewall alert:
 
-   ![Windows firewall notice](./img/streamlit_run-windows-firewall.png)
+   ![Windows Defender Firewall alert](./img/streamlit_run-windows-firewall.png)
 
-   Click on `Allow access` so your browser can access the Streamlit web server.
+   Click the **Allow access** button to allow your browser to access the local [Streamlit](https://streamlit.io) web server.
 
    :::
 
    </TabItem>
    </Tabs>
 
-2. Your browser should open [http://localhost:8501](http://localhost:8501) and show something like the following page:
+2. Your browser should open [`http://localhost:8501`](http://localhost:8501) and display the following page:
 
-   ![Our first infrastructure app](./img/app-simple-table.png)
-
-**Congratulations, you've just created your first infrastructure app!** 🎉
+   ![Screenshot of running Streamlit app](./img/app-simple-table.png)
 
 ### Defining the App Layout
 
-Now that we have a basic app up and running, let's remove those =two lines of demo code and add the layout we actually want.
+Now that we have a basic app up and running, let's define the final desired layout.
 
 1. Delete the last two lines of code from `app.py`:
 
@@ -591,9 +599,9 @@ Now that we have a basic app up and running, let's remove those =two lines of de
 
    This gives us seven new variables:
 
-   - The first two (`col_instance_metrics` and `col_volume_metrics`) are columns. Columns are a way to split the screen horizontally. The `st.columns()` function takes a number as an argument and returns that many columns. We want two columns, so we pass the number `2` as the argument. These two columns are where we will add the instance and volume metrics.
-   - The next two variables (`col_instance_details` and `col_storage`) are also columns. The former is where we will add instance details and the latter is where we will add a sunburst chart.
-   - The last three variables (`map_tab`, `top10_tab` and `age_tab`) are tabs. Tabs provide a way to switch between different views. The `st.tabs()` function takes a list of tab names as an argument.
+   - `col_instance_metrics` and `col_volume_metrics` are columns. **Columns split the screen horizontally.** The `st.columns()` function takes a number as an argument and returns that many columns. We want two columns, so we pass the number `2` as the argument. These two columns are where we will add the instance and volume metrics.
+   - `col_instance_details` and `col_storage` are also columns. The former is where we will add instance details and the latter is where we will add a sunburst chart.
+   - `map_tab`, `top10_tab` and `age_tab` are tabs. **Tabs provide a way to switch between different views.** The `st.tabs()` function takes a list of tab names as an argument.
 
 3. When you reload the app in your browser, it should now look like this:
 
@@ -601,11 +609,11 @@ Now that we have a basic app up and running, let's remove those =two lines of de
 
 ### Adding Data
 
-Now that the layout is in place, let's add some data to it!
+Now that the layout is in place, let's add some data!
 
 #### Instance Metrics
 
-We'll begin by adding the instance metrics.
+We'll begin with instance metrics.
 
 1. Add the following import at the top of `app.py`:
 
@@ -617,8 +625,7 @@ We'll begin by adding the instance metrics.
 
 2. Append the following code to the end of `app.py`:
 
-   ```python
-   # Instance metrics
+   ```python showLineNumbers
    resoto_search = "aggregate(sum(1) as instances_total, sum(instance_cores) as cores_total, sum(instance_memory*1024*1024*1024) as memory_total): is(instance)"
    instances_info = list(resoto.search_aggregate(resoto_search))[0]
    col_instance_metrics.metric("Instances", instances_info["instances_total"])
@@ -630,35 +637,39 @@ We'll begin by adding the instance metrics.
    <summary>Code Explanation</summary>
    <div>
 
-   In the first line we define a variable `resoto_search` which contains [a Resoto aggregate search](/docs/concepts/search/aggregation). You can copy and paste the search into the Resoto Shell to see what it does. In short it searches for all instances (`is(instance)`) and returns the total number of instances (`sum(1) as instances_total`), the total number of CPU cores (`sum(instance_cores) as cores_total`) and the total amount of memory (`sum(instance_memory*1024*1024*1024) as memory_total`). Instance memory is stored in GB in Resoto but we need it in bytes so we multiply it by 1024\*1024\*1024 to get the number of bytes.
+   - In the first line, we define a variable `resoto_search` which contains [an aggregate search](/docs/concepts/search/aggregation). You can copy and paste the search into the Resoto Shell to see what it does.
 
-   In the second line we execute the search and store the result in the variable `instances_info`. The `list()` function is used to convert the result into a list. The result is a generator and we need to convert it into a list so we can access it by index. We know that our aggregate search only returns a single result so we can access it by index `0`.
+     In short, it searches for all instances (`is(instance)`) and returns the total number of instances (`sum(1) as instances_total`), the total number of CPU cores (`sum(instance_cores) as cores_total`) and the total amount of memory (`sum(instance_memory*1024*1024*1024) as memory_total`). (Instance memory is stored in GB in Resoto, but we need it in bytes so we multiply it by 1024\*1024\*1024 for the number of bytes.)
 
-   The resulting content of `instances_info` looks something like this:
+   - In the second line, we execute the search and store the result in the variable `instances_info`.
 
-   ```json
-   {
-     "cores_total": 3158,
-     "instances_total": 536,
-     "memory_total": 13202410860544
-   }
-   ```
+     The `list()` function is used to convert the result into a list. The result is a generator, so we convert it into a list so we can access it by index. Since the aggregate search only returns a single result, we can access it at index `0`.
 
-   When we use the `iec_size_format()` function on the `memory_total` value we get a human readable string:
+     The resulting content of `instances_info` looks like this:
 
-   ```python
-   >>> iec_size_format(instances_info["memory_total"])
-   ​'12.01 TiB'
-   ```
+     ```json
+     {
+       "cores_total": 3158,
+       "instances_total": 536,
+       "memory_total": 13202410860544
+     }
+     ```
 
-   The last three lines of code use the `st.metric()` function to display the instance metrics. The `st.metric()` function takes three arguments: a label, a value and an optional delta. The delta is the difference between the current value and the previous value. We don't have a previous value so we don't use it.
+     When we use the `iec_size_format()` function on the `memory_total` value, we get a human readable string:
 
-   Because we don't want the metrics to be appended at the end of the page we apply the `metric()` function on the `col_instance_metrics` variable we created earlier. This tells Streamlit to display the metrics in the appropriate column.
+     ```python
+     >>> iec_size_format(instances_info["memory_total"])
+     ​'12.01 TiB'
+     ```
+
+   - The final three lines of code use the `st.metric()` function to display the instance metrics. The `st.metric()` function takes three arguments: a label, a value and an optional delta. The delta is the difference between the current value and the previous value. We don't have a previous value so we don't use it.
+
+     Because we don't want the metrics to be appended at the end of the page we apply the `metric()` function on the `col_instance_metrics` variable we created earlier. This tells [Streamlit](https://streamlit.io) to display the metrics in the appropriate column.
 
    </div>
-    </details>
+   </details>
 
-3. When we reload the browser we should now see the instance metrics on the left side of our layout:
+3. Reload the browser tab. You should see the instance metrics on the left side:
 
    ![Instance metrics](./img/app-instance_metrics.png)
 
@@ -675,13 +686,13 @@ We'll begin by adding the instance metrics.
 
    The code is the same as for the instance metrics except that we search for volumes instead of instances.
 
-2. Reload the browser and you should now see the volume metrics on the right side of our layout:
+2. Reload the browser tab. You should see volume metrics on the right side:
 
    ![Volume metrics](./img/app-volume_metrics.png)
 
 #### World Map
 
-Next, we are going to add one of the most complex elements of our app: the world map.
+Next, we are going to add the most complex element of the app: a world map.
 
 1. Add the following imports at the top of `app.py`:
 
@@ -693,7 +704,7 @@ Next, we are going to add one of the most complex elements of our app: the world
 
 2. Append the following code to the end of `app.py`:
 
-   ```python
+   ```python showLineNumbers
    resoto_search = "aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.region.reported.name as region: sum(1) as instances_total): is(aws_ec2_instance) or is(gcp_instance)"
    df = resoto.dataframe(resoto_search)
    df["latitude"], df["longitude"] = 0, 0
@@ -738,78 +749,82 @@ Next, we are going to add one of the most complex elements of our app: the world
    <summary>Code Explanation</summary>
    <div>
 
-   First, the three imports:
+   - First, the three imports:
 
-   1. `pydeck` is used to create the world map.
-   2. `numpy` is used to calculate the midpoint of the map.
-   3. `resotodata.cloud` is used to get the latitude and longitude of the cloud provider regions.
+     1. `pydeck` is used to create the world map.
+     2. `numpy` is used to calculate the midpoint of the map.
+     3. `resotodata.cloud` is used to get the latitude and longitude of the cloud provider regions.
 
-   We then do an aggregate search to get the number of instances per region. The search is similar to the one we used for the instance metrics. The only difference is that we also return the cloud provider and region name. We store the result in the variable `df`, which is a [Pandas `DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html). The `resoto.dataframe()` function is used to convert the result into a `DataFrame`.
+   - We then do an aggregate search to get the number of instances per region. The search is similar to the one we used for the instance metrics. The only difference is that we also return the cloud provider and region name. We store the result in the variable `df`, which is a [Pandas `DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html). The `resoto.dataframe()` function is used to convert the result into a `DataFrame`.
 
-   The contents of the `DataFrame` look something like this:
+     The contents of the `DataFrame` look something like this:
 
-   ```python
-   >>> df
-     instances_total cloud        region
-   0                7   aws  eu-central-1
-   1               55   aws     us-east-1
-   2                2   aws     us-east-2
-   3              405   aws     us-west-2
-   4               12   gcp   us-central1
-   ```
+     ```python
+     >>> df
+       instances_total cloud        region
+     0                7   aws  eu-central-1
+     1               55   aws     us-east-1
+     2                2   aws     us-east-2
+     3              405   aws     us-west-2
+     4               12   gcp   us-central1
+     ```
 
-   We then add two new columns to the DataFrame: `latitude` and `longitude`. We use the `resotodata` library to get the latitude and longitude of the cloud provider regions. We store the result in the `latitude` and `longitude` columns.
+   - Next, we add two new columns to the DataFrame: `latitude` and `longitude`. We use the `resotodata` library to get the latitude and longitude of the cloud provider regions. We store the result in the `latitude` and `longitude` columns.
 
-   When we look at the structure of the `cloud_regions` variable we see that it is a dictionary with the cloud provider name as key and a dictionary with the region name as key. The value of the region dictionary is another dictionary with the latitude and longitude as keys. We use this structure to get the latitude and longitude of the region.
+     When we look at the structure of `cloud_regions`, we see that it is a dictionary with the cloud provider names as keys. The value of each entry is _another_ dictionary with region names as keys. The value of this region dictionary is an object containing `latitude` and `longitude` properties:
 
-   ```python
-   >>> pprint(cloud_regions)
-   ​{'aws': {'af-south-1': {'latitude': -33.928992,
-   ​                        'long_name': 'Africa (Cape Town)',
-   ​                        'longitude': 18.417396,
-   ​                        'short_name': 'af-south-1'},
-   ​         'ap-east-1': {'latitude': 22.2793278,
-   ​                       'long_name': 'Asia Pacific (Hong Kong)',
-   ​                       'longitude': 114.1628131,
-   ​                       'short_name': 'ap-east-1'},
-   ​...
-   ```
+     ```python
+     >>> print(cloud_regions)
+     ​{'aws': {'af-south-1': {'latitude': -33.928992,
+     ​                        'long_name': 'Africa (Cape Town)',
+     ​                        'longitude': 18.417396,
+     ​                        'short_name': 'af-south-1'},
+     ​         'ap-east-1': {'latitude': 22.2793278,
+     ​                       'long_name': 'Asia Pacific (Hong Kong)',
+     ​                       'longitude': 114.1628131,
+     ​                       'short_name': 'ap-east-1'},
+     ​...
+     ```
 
-   The `midpoint` variable is used to center the map. We use the `numpy` library to calculate the average latitude and longitude of the DataFrame. We then use the `pydeck` library to create the map. The `pydeck` library is used to create interactive maps in Python. The `pydeck` library is built on top of the [Deck.gl](https://deck.gl) library which is used to create interactive maps in JavaScript.
+   - The `midpoint` variable is used to center the map. We use the `numpy` library to calculate the average latitude and longitude of the DataFrame.
 
-   We are using the ColumnLayer to create the map. The ColumnLayer is used to create 3D columns. We use the latitude and longitude columns to position the columns. We use the `instances_total` dataframe column to set the height of the columns. We use the cloud column to set the color of the columns. This is done in the line:
+   - We then use the `pydeck` library to create the map. The `pydeck` library is used to create interactive maps in Python.
 
-   ```python
-   get_fill_color="cloud == 'aws' ? [217, 184, 255, 150] : [255, 231, 151, 150]",
-   ```
+     We use `ColumnLayer` to create the map. `ColumnLayer` is used to create 3-D columns. We use the `latitude` and `longitude` columns to position the columns and the `instances_total` column to set the height.
 
-   The code can be read as:
+     The tertiary operator (`?`) is used to set the color based on the value of the `cloud` column:
 
-   ```python
-   if cloud == 'aws':
-       get_fill_color = [217, 184, 255, 150]
-   else:
-       get_fill_color = [255, 231, 151, 150]
-   ```
+     ```python
+     get_fill_color="cloud == 'aws' ? [217, 184, 255, 150] : [255, 231, 151, 150]",
+     ```
 
-   The elements of the `get_fill_color` list are the red, green, blue and alpha values of the column color. The alpha value is used to set the transparency of the color.
+     This has the same result as the following code:
 
-   See the [`pydeck` documentation](https://deckgl.readthedocs.io/en/latest/gallery/column_layer.html) for more information about the ColumnLayer.
+     ```python
+     if cloud == 'aws':
+         get_fill_color = [217, 184, 255, 150]
+     else:
+         get_fill_color = [255, 231, 151, 150]
+     ```
+
+     The four elements of the `get_fill_color` list are the red, green, blue, and alpha values. The alpha value defines the transparency of the color.
+
+     See the [`pydeck` documentation](https://deckgl.readthedocs.io/en/latest/gallery/column_layer.html) for more information about `ColumnLayer`.
 
    </div>
    </details>
 
-3. When we reload the browser we should now see the world map, displaying where our instances are running:
+3. Reload the browser tab. You should see a world map displaying where your instances are running:
 
    ![World map](./img/app-world_map.png)
 
 #### Top 10
 
-This is going to be an easy one. It's almost like the [demo app](#creating-a-demo-app), but instead of displaying the dataframe unchanged we are going to use some of Panda's built-in functions to display the top 10 accounts and regions by on-demand cost.
+This is an easy one. It's similar to the [demo app](#creating-a-demo-app), but instead of displaying the dataframe unchanged we use some of Panda's built-in functions to display the top 10 accounts and regions by on-demand cost.
 
 1. Append the following code to the end of `app.py`:
 
-   ```python
+   ```python showLineNumbers
    top10_tab.header("Top 10 accounts and regions")
    resoto_search = "aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account, /ancestors.region.reported.id as region: sum(/ancestors.instance_type.reported.ondemand_cost) as ondemand_cost): is(instance)"
    df = (
@@ -825,28 +840,28 @@ This is going to be an easy one. It's almost like the [demo app](#creating-a-dem
    <summary>Code Explanation</summary>
    <div>
 
-   The dataframe looks like this:
+   The DataFrame looks like this:
 
    ```python
    >>> resoto.dataframe(resoto_search)
-   ​    ondemand_cost     cloud                      account              region
-   ​0        0.166400       aws                  eng-devprod           us-east-1
-   ​1        0.768000       aws                  eng-devprod           us-west-2
-   ​2        7.104000       aws          eng-sphere-insights           us-west-2
-   ​3        0.192000       aws          eng-sphere-platform           us-east-1
-   ​4       26.304000       aws          eng-sphere-platform           us-west-2
-   ​5        3.648000       aws             eng-ksphere-soak           us-east-1
-   ​6        6.460800       aws             eng-ksphere-soak           us-west-2
-   ​7        0.166400       aws            eng-qualification           us-east-1
+   ​    ondemand_cost     cloud                    account          region
+   ​0        0.166400       aws                eng-devprod       us-east-1
+   ​1        0.768000       aws                eng-devprod       us-west-2
+   ​2        7.104000       aws        eng-sphere-insights       us-west-2
+   ​3        0.192000       aws        eng-sphere-platform       us-east-1
+   ​4       26.304000       aws        eng-sphere-platform       us-west-2
+   ​5        3.648000       aws           eng-ksphere-soak       us-east-1
+   ​6        6.460800       aws           eng-ksphere-soak       us-west-2
+   ​7        0.166400       aws          eng-qualification       us-east-1
    ​...
    ```
 
-   We then ask Pandas to sort the DataFrame by the `ondemand_cost` column and to only show the top 10 rows. We then use the `top10_tab.table()` function to display the DataFrame as a table.
+   We then sort the DataFrame by the `ondemand_cost` column and only show the top 10 rows. We use the `top10_tab.table()` function to display the DataFrame as a table.
 
-   We use the `style.format()` function to format the `ondemand_cost` column with a [Python format string](https://docs.python.org/3/library/string.html#format-string-syntax). The `:.2f` means that we want to format the column as a floating-point number with two decimal places.
+   The `style.format()` function formats the `ondemand_cost` column with a [Python format string](https://docs.python.org/3/library/string.html#format-string-syntax). `:.2f` means that we want a floating-point number with two decimal places.
 
    </div>
-    </details>
+   </details>
 
 2. Reload the browser, select the "Top 10" tab and you should see the following:
 
@@ -860,11 +875,11 @@ This is going to be an easy one. It's almost like the [demo app](#creating-a-dem
    import plotly.express as px
    ```
 
-   We use the `plotly.express` library to create the sunburst chart. The `plotly.express` library is a wrapper around the `plotly` library. The `plotly` library is used to create interactive charts in Python. The `plotly` library in turn is built on top of the [Plotly.js](https://plotly.com/javascript/) library which is used to create interactive charts in JavaScript.
+   We use the `plotly.express` library to create the sunburst chart. The `plotly` library is used to create interactive charts in Python.
 
 2. Append the following code to the end of `app.py`:
 
-   ```python
+   ```python showLineNumbers
    resoto_search = "aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account: sum(volume_size*1024*1024*1024) as volume_size): is(volume)"
    df = resoto.dataframe(resoto_search)
    df["volume_size_human"] = df["volume_size"].apply(iec_size_format)
@@ -882,40 +897,40 @@ This is going to be an easy one. It's almost like the [demo app](#creating-a-dem
    <summary>Code Explanation</summary>
    <div>
 
-   This aggregate search returns a dataframe that looks like this:
+   This aggregate search returns a DataFrame that looks like this:
 
    ```python
    >>> resoto.dataframe(resoto_search)
-   ​       volume_size         cloud                                        account
-   ​0     223338299392           aws                                    eng-devprod
-   ​1    2940978855936           aws                            eng-sphere-insights
-   ​2       2147483648           aws                                eng-sphere-kudo
-   ​3   11857330962432           aws                            eng-sphere-platform
-   ​4    5625333415936           aws                                eng-sphere-soak
-   ​5    4778151116800           aws                                         eng-ds
+   ​       volume_size         cloud                        account
+   ​0     223338299392           aws                    eng-devprod
+   ​1    2940978855936           aws            eng-sphere-insights
+   ​2       2147483648           aws                eng-sphere-kudo
+   ​3   11857330962432           aws            eng-sphere-platform
+   ​4    5625333415936           aws                eng-sphere-soak
+   ​5    4778151116800           aws                         eng-ds
    ​...
    ```
 
-   `df["volume_size_human"] = df["volume_size"].apply(iec_size_format)` adds a new column to the dataframe. The new column is called `volume_size_human` and it contains the volume size in human readable format by asking Pandas to apply the `iec_size_format` function to the `volume_size` column.
+   - `df["volume_size_human"] = df["volume_size"].apply(iec_size_format)` adds a new column to the DataFrame. The new column is called `volume_size_human` and it contains the volume size in human readable format by asking Pandas to apply the `iec_size_format` function to the `volume_size` column.
 
-   `px.sunburst()` creates a sunburst chart from the dataframe. The `path` argument tells the function which columns to use for the different levels of the sunburst chart. The `values` argument tells the function which column to use for the size of the slices. The `hover_data` argument tells the function which columns to show when hovering over a slice.
+   - `px.sunburst()` creates a sunburst chart from the DataFrame. The `path` argument tells the function which columns to use for the different levels of the sunburst chart. The `values` argument tells the function which column to use for the size of the slices. The `hover_data` argument tells the function which columns to show when hovering over a slice.
 
-   `fig.update_traces()` updates the properties of the slices. The `hoverinfo` argument tells the function which information to show when hovering over a slice. The `textinfo` argument tells the function which information to show in the center of the sunburst chart.
+   - `fig.update_traces()` updates the properties of the slices. The `hoverinfo` argument tells the function which information to show when hovering over a slice. The `textinfo` argument tells the function which information to show in the center of the sunburst chart.
 
    </div>
-    </details>
+   </details>
 
-3. Reload the browser and you should see something like this:
+3. Reload the browser and you should see a sunburst chart:
 
    ![Sunburst chart of storage distribution](./img/app-sunburst.png)
 
 #### Heatmap
 
-This will be similar to the sunburst chart. We will use the `plotly.express` library to create a heatmap of the instance types. This heatmap is pretty useful to quickly detect outliers.
+This will be quite similar to the sunburst chart; we're again using the `plotly.express` library.
 
 1. Append the following code to the end of `app.py`:
 
-   ```python
+   ```python showLineNumbers
    st.header("Instance Types")
    resoto_search = "aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account_name, instance_type as instance_type, instance_cores as instance_cores: sum(1) as instances): is(instance)"
    df = resoto.dataframe(resoto_search).sort_values(by=["instance_cores"])
@@ -929,15 +944,13 @@ This will be similar to the sunburst chart. We will use the `plotly.express` lib
    st.plotly_chart(fig, use_container_width=True)
    ```
 
-2. Reload the browser and you should see something like this:
+2. Reload the browser and you should see a heatmap:
 
    ![Heatmap of instance types](./img/app-heatmap.png)
 
 #### Instance Age Distribution
 
-Lastly we will add a histogram of the instance age distribution. This is again useful to quickly detect outliers. For instance, if in a development you see a lot of instances that are older than 1 year, you might want to investigate why.
-
-We add this last because it takes a while to load.
+Finally, we will add a histogram of the instance age distribution. (We're adding this last because it can take a while to load.)
 
 1. Add the following import at the top of `app.py`:
 
@@ -947,7 +960,7 @@ We add this last because it takes a while to load.
 
 2. Append the following code to the end of `app.py`:
 
-   ```python
+   ```python showLineNumbers
    resoto_search = "is(instance)"
    df = resoto.dataframe(resoto_search)
    df["age_days"] = (pd.Timestamp.utcnow() - df["ctime"]).dt.days
@@ -962,11 +975,20 @@ We add this last because it takes a while to load.
    age_tab.plotly_chart(fig, use_container_width=True)
    ```
 
-3. Reload the browser and you should see something like this:
+   <details>
+   <summary>Code Explanation</summary>
+   <div>
+
+   - We create a new `age_days` column, calculated by subtracting the `ctime` column from the current time, and use it as the basis for the x-axis of the histogram.
+   - `ctime` is the time when an instance was created.
+   - `nbins` is the number of bins to use for the histogram. All instances within a certain age range are grouped together in a bin.
+
+   </div>
+   </details>
+
+3. Reload the browser and you should see a histogram, with different colors representing different accounts:
 
    ![Histogram of instance age distribution](./img/app-age.png)
-
-   The different colors in the histogram represent the different accounts. We are creating a new `age_days` column which is calculated by subtracting the `ctime` column from the current time and then use that `age_days` column as the basis for the x-axis of the histogram. `ctime` is the time when an instance was created. `nbins` is the number of bins to use for the histogram. All instances within a certain age range are grouped together in a bin.
 
 ### The Final Product
 
@@ -1105,4 +1127,4 @@ age_tab.plotly_chart(fig, use_container_width=True)
 
 ## What's Next?
 
-We've covered the basics of building an infrastructure app with Resoto and Streamlit. Currently, we are only displaying data, but in my next post we will introduce input widgets to add interactive functions to the app.
+We've covered the basics of building an infrastructure app with Resoto and [Streamlit](https://streamlit.io). Currently, we are only displaying data, but in my next post we will introduce input widgets to add interactive functions to the app.

@@ -5,11 +5,11 @@ tags: [aws, cdk, installation]
 
 # Resoto AWS CDK construct
 
-We recently released a [AWS CDK construct](https://eu-central-1.console.aws.amazon.com/cloudformation/home?region=eu-central-1#/stacks/create/review?templateURL=https://resoto-cdk.s3.eu-central-1.amazonaws.com/Resoto_EKS.template&stackName=ResotoEKS), which simplifies the deployement of Resoto to AWS.
+We recently released a [AWS CDK construct](https://eu-central-1.console.aws.amazon.com/cloudformation/home?region=eu-central-1#/stacks/create/review?templateURL=https://resoto-cdk.s3.eu-central-1.amazonaws.com/Resoto_EKS.template&stackName=ResotoEKS), which simplifies the deployment of Resoto to AWS.
 
-## Getting stared
+## Getting started
 
-The CDK construct is simple to start with. All you need is a recent version of Node.js (we tested it on 18.x.x) and installed git. If you don't have the Node.js intalled in your system, we can recomment using [nvm](https://github.com/nvm-sh/nvm).
+The CDK construct is simple to start with. All you need is a recent version of Node.js (we tested it on 18.x.x) and installed git. If you don't have Node.js installed in your system, we can recommend using [nvm](https://github.com/nvm-sh/nvm).
 
 Once you have Node.js installed, you can deploy the CDK construct with the following commands:
 
@@ -38,6 +38,6 @@ The following parameters can be customized:
 - `MngDesiredSize`: The desired number of instances in the k8s managed node group. The default value is 1.
 - `MngInstanceType`: The instance type of the k8s managed node group. The default value is t3.medium.
 
-## There is more
+## There are more
 
-The CDK construct is just a starting point. Soon we will provide a one click install method for AWS, which will allow you to deploy Resoto in a single click. Stay tuned!
+The CDK construct is just a starting point. Soon we will provide a one-click install method for AWS, allowing you to deploy Resoto in a single click. Stay tuned!

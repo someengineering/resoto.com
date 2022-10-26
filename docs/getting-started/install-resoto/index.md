@@ -9,7 +9,7 @@ sidebar_position: 1
 import DocCardList from '@theme/DocCardList';
 ```
 
-Resoto can currently be installed using [Docker](./docker.md), [Kubernetes](./kubernetes.md), or [pip](./pip.md).
+Resoto can currently be installed using [AWS](./aws.md), [Docker](./docker.md), [Kubernetes](./kubernetes.md), or [pip](./pip.md).
 
 :::info
 

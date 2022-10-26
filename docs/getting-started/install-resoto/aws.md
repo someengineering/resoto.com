@@ -6,12 +6,6 @@ pagination_next: getting-started/configure-cloud-provider-access/index
 
 # Install Resoto on AWS
 
-```mdx-code-block
-import LatestRelease from '@site/src/components/LatestRelease';
-import TabItem from '@theme/TabItem';
-import Tabs from '@theme/Tabs';
-```
-
 We support two ways of installing resoto in AWS. The first is using the AWS CloudFormation template via the [quick create link](https://eu-central-1.console.aws.amazon.com/cloudformation/home?region=eu-central-1#/stacks/create/review?templateURL=https://resoto-cdk.s3.eu-central-1.amazonaws.com/Resoto_EKS.template&stackName=ResotoEKS). This is the most direct way to get a production-grade setup. The second is to use the [Resoto CDK Construct](https://github.com/someengineering/resoto-cdk). It is a bit more involved but gives you more control over the setup.
 
 Let's start with the CloudFormation template.

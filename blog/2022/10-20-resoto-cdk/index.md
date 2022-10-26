@@ -7,8 +7,6 @@ tags: [aws, cdk, installation]
 
 We recently released a [AWS CDK construct](https://eu-central-1.console.aws.amazon.com/cloudformation/home?region=eu-central-1#/stacks/create/review?templateURL=https://resoto-cdk.s3.eu-central-1.amazonaws.com/Resoto_EKS.template&stackName=ResotoEKS), which simplifies the deployment of Resoto to AWS.
 
-## Getting started
-
 The CDK construct is simple to start with. All you need is a recent version of Node.js (we tested it on 18.x.x) and installed git. If you don't have Node.js installed in your system, we can recommend using [nvm](https://github.com/nvm-sh/nvm).
 
 Once you have Node.js installed, you can deploy the CDK construct with the following commands:

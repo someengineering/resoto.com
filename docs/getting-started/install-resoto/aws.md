@@ -6,7 +6,7 @@ pagination_next: getting-started/configure-cloud-provider-access/index
 
 # Install Resoto on AWS
 
-We support two ways of installing resoto in AWS. The first is using the AWS CloudFormation template via the [quick create link](https://eu-central-1.console.aws.amazon.com/cloudformation/home?region=eu-central-1#/stacks/create/review?templateURL=https://resoto-cdk.s3.eu-central-1.amazonaws.com/Resoto_EKS.template&stackName=ResotoEKS). This is the most direct way to get a production-grade setup. The second is to use the [Resoto CDK Construct](https://github.com/someengineering/resoto-cdk). It is a bit more involved but gives you more control over the setup.
+We support two ways of installing Resoto in AWS. The first is using the AWS CloudFormation template via the [quick create link](https://eu-central-1.console.aws.amazon.com/cloudformation/home?region=eu-central-1#/stacks/create/review?templateURL=https://resoto-cdk.s3.eu-central-1.amazonaws.com/Resoto_EKS.template&stackName=ResotoEKS). This is the most direct way to get a production-grade setup. The second is to use the [Resoto CDK Construct](https://github.com/someengineering/resoto-cdk). It is a bit more involved but gives you more control over the setup.
 
 Let's start with the CloudFormation template.
 
@@ -17,7 +17,7 @@ Let's start with the CloudFormation template.
 - [AWS account](https://aws.amazon.com/) (it must have permission to IAM roles)
 - [Kubectl](https://kubernetes.io/docs/tasks/tools/)
 
-### Deploying resoto to AWS
+### Deploying Resoto to AWS
 
 To get started with AWS quick setup, you need to have an AWS account and be logged into the AWS Management Console. Once you're logged in, follow the [quick setup link](https://eu-central-1.console.aws.amazon.com/cloudformation/home?region=eu-central-1#/stacks/create/review?templateURL=https://resoto-cdk.s3.eu-central-1.amazonaws.com/Resoto_EKS.template&stackName=ResotoEKS).
 
@@ -25,7 +25,7 @@ You will see the quick create form:
 
 ![CF Quick Create form](./img/quick-setup-form.png)
 
-Here you can configure the stack name, number, and types of nodes for the nodes for Resoto EKS cluster, and the version of resoto to install.
+Here you can configure the stack name, number, and types of nodes for the nodes for Resoto EKS cluster, and the version of Resoto to install.
 
 :::note
 
@@ -65,13 +65,13 @@ kubectl exec -it service/resoto-resotocore -- resh
 
 ### Destroying the stack
 
-If you want to completely remove the resoto deployment and all the resources associated with it, you can delete the CloudFormation stack. To do that, open the CloudFormation console and select the stack you created. Then click on the "Delete" button:
+If you want to completely remove the Resoto deployment and all the resources associated with it, you can delete the CloudFormation stack. To do that, open the CloudFormation console and select the stack you created. Then click on the "Delete" button:
 
 ![Delete Resoto stack](./img/delete-resoto-stack.png)
 
 :::warning
 
-Deleting the resoto stack will delete all the data stored in the resoto database. Make sure you have a backup of the data before deleting the stack.
+Deleting the Resoto stack will delete all the data stored in the Resoto database. Make sure you have a backup of the data before deleting the stack.
 
 :::
 
@@ -94,9 +94,9 @@ cd resoto-cdk
 npm ci
 ```
 
-### Deploying resoto to AWS using CDK
+### Deploying Resoto to AWS using CDK
 
-To deploy resoto to AWS, run the following command:
+To deploy Resoto to AWS, run the following command:
 
 ```bash
 npm run cdk deploy
@@ -162,10 +162,10 @@ kubectl exec -it service/resoto-resotocore -- resh
 
 ### Destroying the stack
 
-If you want to completely remove the resoto deployment and all the resources associated with it, you can delete the CloudFormation stack. To do that, run `cdk destroy` command in your terminal.
+If you want to completely remove the Resoto deployment and all the resources associated with it, you can delete the CloudFormation stack. To do that, run `cdk destroy` command in your terminal.
 
 :::warning
 
-Deleting the resoto stack will delete all the data stored in the resoto database. Make sure you have a backup of the data before deleting the stack.
+Deleting the Resoto stack will delete all the data stored in the Resoto database. Make sure you have a backup of the data before deleting the stack.
 
 :::

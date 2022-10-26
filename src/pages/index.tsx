@@ -315,17 +315,22 @@ export default function Home(): JSX.Element {
                   </h3>
                 </Link>
                 <p>
-                  Get started with Resoto using{' '}
-                  <Link to="/docs/getting-started/install-resoto/docker">
+                  <Link to="/docs/getting-started/install-resoto/aws">
+                    Deploy Resoto to Amazon Web Services
+                  </Link>{' '}
+                  or install Resoto locally using{' '}
+                  <Link to="/docs/getting-started/install-resoto/local/docker">
                     Docker
                   </Link>
                   ,{' '}
-                  <Link to="/docs/getting-started/install-resoto/kubernetes">
+                  <Link to="/docs/getting-started/install-resoto/local/kubernetes">
                     Kubernetes
                   </Link>
                   , or{' '}
-                  <Link to="/docs/getting-started/install-resoto/pip">pip</Link>{' '}
-                  in just five minutes!
+                  <Link to="/docs/getting-started/install-resoto/local/pip">
+                    pip
+                  </Link>
+                  !
                 </p>
               </li>
               <li>

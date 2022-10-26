@@ -28,9 +28,9 @@ Resoto currently supports the following cloud providers:
 
 Please check out the [Getting Started](/docs/getting-started) section of our documentation to give it a spin.
 
-## Deployment Options
+## Installation Options
 
-There are currently 2 deployment options for Resoto: [Docker](/docs/getting-started/install-resoto/docker) and [Kubernetes](/docs/getting-started/install-resoto/kubernetes).
+There are currently two installation options for Resoto: [Docker](/docs/getting-started/install-resoto/local/docker) and [Kubernetes](/docs/getting-started/install-resoto/local/kubernetes).
 
 <!--truncate-->
 

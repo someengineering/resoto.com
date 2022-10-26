@@ -78,7 +78,7 @@ Resoto is an expert tool for engineers that runs on top of the [Resoto Core](/do
 
 - We keep their cloud infrastructure _permanently_ clean.
 
-- The [Resoto search syntax](/docs/concepts/search) offers an abstraction layer for engineers to query and collect metrics from their infrastructure. Think `> match is(instance) and tags.owner ~ jane`, for example, to find all compute instances across [AWS](https://aws.amazon.com) and [GCP](https://console.cloud.google.com) owned by Jane.
+- The [Resoto search syntax](/docs/reference/search) offers an abstraction layer for engineers to query and collect metrics from their infrastructure. Think `> match is(instance) and tags.owner ~ jane`, for example, to find all compute instances across [AWS](https://aws.amazon.com) and [GCP](https://console.cloud.google.com) owned by Jane.
 
 - We collect bare-metal information. Hardware specifications differ, even for the same type of instance. Pre-deployment we give developers estimates about the fastest and/or cheapest hardware per region, and once they have the instance let them know exactly what they got.
 

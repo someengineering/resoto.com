@@ -12,7 +12,7 @@ This blog post is the second in a series about Resoto's powerful search function
 
 :::
 
-Resoto's search allows for resources to be selected using [filters](/docs/concepts/search/filters), [combinators](/docs/concepts/search/filters#combining-selections), and [traversals](/docs/concepts/search/traversals). Search results can be combined, grouped, and [aggregated](/docs/concepts/search/aggregation).
+Resoto's search allows for resources to be selected using [filters](/docs/reference/search/filters), [combinators](/docs/reference/search/filters#combining-selections), and [traversals](/docs/reference/search/traversals). Search results can be combined, grouped, and [aggregated](/docs/reference/search/aggregation).
 
 ![Left: Sheep Finding a Diamond in a Gold Mine](./img/banner.png)
 
@@ -143,4 +143,4 @@ As you can see, Resoto's search enables you to gather data about your infrastruc
 
 Now, imagine feeding results of an aggregation search into a [Prometheus](https://prometheus.io) time series database and being able to visualize the data in a [Grafana](https://grafana.com) dashboard. [Resoto Metrics](https://github.com/someengineering/resoto/tree/main/resotometrics) serves this exact purpose, feeding robust aggregation metrics into a time series database.
 
-Please refer to our [documentation](/docs/concepts/search/aggregation) for more details about supported aggregation capabilities. I hope the examples presented here clearly illustrate the power of Resoto's search aggregation. If you're new to Resoto, we hope you will [try it out](/docs/getting-started)! ✨
+Please refer to our [documentation](/docs/reference/search/aggregation) for more details about supported aggregation capabilities. I hope the examples presented here clearly illustrate the power of Resoto's search aggregation. If you're new to Resoto, we hope you will [try it out](/docs/getting-started)! ✨

@@ -117,7 +117,7 @@ In addition, Resoto adds unique capabilities that solve the three major problems
 
 1. **Gaining Visibility**
 
-   Often, you don't even know what resources exist. There is no single place to search resources across all accounts. Resoto offers [full-text search](/docs/concepts/search/full-text), which allows you to find resources that contain a specified string, with [filters](/docs/concepts/search/filters) to refine your search. The experience is like googling your infrastructure.
+   Often, you don't even know what resources exist. There is no single place to search resources across all accounts. Resoto offers [full-text search](/docs/reference/search/full-text), which allows you to find resources that contain a specified string, with [filters](/docs/reference/search/filters) to refine your search. The experience is like googling your infrastructure.
 
 2. **Tracking Changes**
 
@@ -129,7 +129,7 @@ In addition, Resoto adds unique capabilities that solve the three major problems
 
 Consider a scenario where a platform team announces a new cost policy. The policy requires that any <abbr title="Amazon Web Services">AWS</abbr> compute instance older than 24 hours with more than 32 cores be cleaned up.
 
-Finding the instances that violate the policy is easy with Resoto's [search](/docs/concepts/search):
+Finding the instances that violate the policy is easy with Resoto's [search](/docs/reference/search):
 
 ```bash
 > search is(aws_ec2_instance) and instance_cores > 32 and age > 24h

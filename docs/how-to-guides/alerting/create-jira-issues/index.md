@@ -48,6 +48,6 @@ For all parameters mentioned above you can specify defaults in the `jira` custom
 
 ## Further Reading
 
-- [Search](../../../concepts/search/index.md)
+- [Search](../../../reference/search/index.md)
 - [Job](../../../concepts/automation/job.md)
 - [Command-Line Interface](../../../reference/cli/index.md)

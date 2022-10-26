@@ -90,6 +90,6 @@ You will also need a running installation of [Alertmanager](https://prometheus.i
 
 ## Further Reading
 
-- [Search](../../../concepts/search/index.md)
+- [Search](../../../reference/search/index.md)
 - [Job](../../../concepts/automation/job.md)
 - [Command-Line Interface](../../../reference/cli/index.md)

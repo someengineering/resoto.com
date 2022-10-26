@@ -2,7 +2,7 @@
 
 The `ancestors` command selects all ancestors of nodes returned in a query.
 
-Please refer to the [concept guide](../../../concepts/search/traversals.md#by-depth) for a detailed explanation of search traversals.
+Please refer to the [Search Traversals](../../search/traversals.md#by-depth) for a detailed explanation of traversals.
 
 ## Usage
 

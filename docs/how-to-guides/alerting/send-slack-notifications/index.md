@@ -48,6 +48,6 @@ A default webhook URL can be specified in the `slack` custom command configurati
 
 ## Further Reading
 
-- [Search](../../../concepts/search/index.md)
+- [Search](../../../reference/search/index.md)
 - [Job](../../../concepts/automation/job.md)
 - [Command-Line Interface](../../../reference/cli/index.md)

@@ -66,7 +66,7 @@ In addition, these search results can be filtered. For example, we can find all 
 > search is(digitalocean_project) and name=="foo" --> is(digitalocean_droplet)
 ```
 
-For more details, please see the [search documentation](/docs/concepts/search).
+For more details, please see the [search documentation](/docs/reference/search).
 
 ### Visualizing the Graph
 

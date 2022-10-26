@@ -16,7 +16,7 @@ jq <filter>
 | -------------- | ----------------------------------------------------------------------------------------------- |
 | `--no-rewrite` | When this option is enabled, the jq filter is not preprocessed by Resoto and given as is to jq. |
 
-By default, a `jq` filter expression is rewritten to match the currently defined section (see [Property Path](../../../concepts/search/filters.md#property-path)). A filter expression like `.foo.bar` will be rewritten to `.reported.foo.bar`. In order to access a property via an absolute path like `/metadata.protected`, you would need to write `./metadata.protected`.
+By default, a `jq` filter expression is rewritten to match the currently defined section (see [Property Path](../../search/filters.md#property-path)). A filter expression like `.foo.bar` will be rewritten to `.reported.foo.bar`. In order to access a property via an absolute path like `/metadata.protected`, you would need to write `./metadata.protected`.
 
 It is possible to use the `--no-rewrite` option to turn off this rewriting. Resoto will not rewrite the filter expression, sou you would need to pass: `{bar: .reported.foo.bar, protected: .metadata.protected}`.
 

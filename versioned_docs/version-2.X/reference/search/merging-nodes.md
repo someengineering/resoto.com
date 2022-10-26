@@ -15,7 +15,7 @@ The nested search is executed for every node in the result. The result of the ne
 
 :::tip Example
 
-Most cloud resources are maintained in an account. Accounts are modeled as [nodes](../graph/node.md) in Resoto.
+Most cloud resources are maintained in an account. Accounts are modeled as [nodes](../../concepts/graph/node.md) in Resoto.
 
 Resources reference the region node, while the region node references the account node. In order to retrieve the account, the graph has to be traversed inbound from the resource node until the account node is found. While this is possible, it might be more convenient to get the account information as part of the node!
 

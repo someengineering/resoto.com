@@ -76,7 +76,7 @@ The job will now run each time Resoto emits the `cleanup_plan` event. The `clean
 
 ## Further Reading
 
-- [Search](../../concepts/search/index.md)
+- [Search](../../reference/search/index.md)
 - [Job](../../concepts/automation/job.md)
 - [Workflow](../../concepts/automation/job.md)
 - [Command-Line Interface](../../reference/cli/index.md)

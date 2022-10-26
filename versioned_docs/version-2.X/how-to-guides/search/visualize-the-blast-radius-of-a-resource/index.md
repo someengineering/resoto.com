@@ -72,5 +72,5 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
 ## Further Reading
 
-- [Search](../../../concepts/search/index.md)
+- [Search](../../../reference/search/index.md)
 - [Command-Line Interface](../../../reference/cli/index.md)

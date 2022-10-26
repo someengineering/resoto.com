@@ -637,7 +637,7 @@ We'll begin with instance metrics.
    <summary>Code Explanation</summary>
    <div>
 
-   - In the first line, we define a variable `resoto_search` which contains [an aggregate search](/docs/concepts/search/aggregation). You can copy and paste the search into the Resoto Shell to see what it does.
+   - In the first line, we define a variable `resoto_search` which contains [an aggregate search](/docs/reference/search/aggregation). You can copy and paste the search into the Resoto Shell to see what it does.
 
      In short, it searches for all instances (`is(instance)`) and returns the total number of instances (`sum(1) as instances_total`), the total number of CPU cores (`sum(instance_cores) as cores_total`) and the total amount of memory (`sum(instance_memory*1024*1024*1024) as memory_total`). (Instance memory is stored in GB in Resoto, but we need it in bytes so we multiply it by 1024\*1024\*1024 for the number of bytes.)
 

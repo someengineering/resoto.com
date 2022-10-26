@@ -10,7 +10,7 @@ Please refer to the [list of available services](https://awscli.amazonaws.com/v2
 
 There are two modes of operation:
 
-1. Pipe the result of a [search](../../../concepts/search/index.md) to the `aws` command. The command will be invoked on each resource returned by the search. You can template parameters to define the exact invocation arguments.
+1. Pipe the result of a [search](../../../concepts/search.md) to the `aws` command. The command will be invoked on each resource returned by the search. You can template parameters to define the exact invocation arguments.
 2. Call the `aws` command directly (without passing a resource) to interact with AWS directly.
 
 ## Usage

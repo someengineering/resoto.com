@@ -16,7 +16,7 @@ The Resoto CloudFormation template is the most direct way to get a production-gr
 ## Prerequisites
 
 - [<abbr title="Amazon Web Services">AWS</abbr>](https://aws.amazon.com) account with IAM role permissions
-- [`kubectl`](https://kubernetes.io/docs/reference/kubectl) command-line tool(https://kubernetes.io/docs/reference/kubectl)
+- [`kubectl`](https://kubernetes.io/docs/reference/kubectl) command-line tool
 
 ## Deploying Resoto
 

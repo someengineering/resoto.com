@@ -12,7 +12,7 @@ The Resoto Cloud Development Kit (CDK) construct gives more control over the set
 
 - [Git](https://git-scm.com)
 - [<abbr title="Amazon Web Services">AWS</abbr>](https://aws.amazon.com) account with IAM role permissions
-- [`kubectl`](https://kubernetes.io/docs/reference/kubectl) command-line tool(https://kubernetes.io/docs/reference/kubectl)
+- [`kubectl`](https://kubernetes.io/docs/reference/kubectl) command-line tool
 - [Node.js](https://nodejs.org)
 
 ## Deploying Resoto

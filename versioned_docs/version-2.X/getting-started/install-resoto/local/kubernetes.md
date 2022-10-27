@@ -16,7 +16,7 @@ pagination_next: getting-started/configure-cloud-provider-access/index
 
 :::note
 
-Resoto performs CPU-intensive graph operations. In a production setup, we recommend at least four cores and 16 gigabytes of RAM. See [Configuring Resoto Worker](../../reference/configuration/worker.md#multi-core-machines) for more information.
+Resoto performs CPU-intensive graph operations. In a production setup, we recommend at least four cores and 16 gigabytes of RAM. See [Configuring Resoto Worker](../../../reference/configuration/worker.md#multi-core-machines) for more information.
 
 :::
 
@@ -91,7 +91,7 @@ And just like that, you have Resoto running in a Kubernetes cluster! A collect r
 
 ## Launching the Resoto Command-Line Interface
 
-The `resh` command is used to interact with [`resotocore`](../../concepts/components/core.md).
+The `resh` command is used to interact with [`resotocore`](../../../concepts/components/core.md).
 
 We need to first make sure that the deployment is available:
 
@@ -99,10 +99,10 @@ We need to first make sure that the deployment is available:
 $ kubectl wait --for=condition=available deployment/resoto-resotocore
 ```
 
-Then, simply execute the following to access the [Resoto Shell](../../concepts/components/shell.md) interface:
+Then, simply execute the following to access the [Resoto Shell](../../../concepts/components/shell.md) interface:
 
 ```bash
 $ kubectl exec -it service/resoto-resotocore -- resh
 ```
 
-![Resoto Shell](./img/resoto-shell.png)
+![Resoto Shell](../img/resoto-shell.png)

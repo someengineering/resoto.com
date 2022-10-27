@@ -331,14 +331,6 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   border-bottom-color: var(--ifm-toc-border-color);
 }
 
-section.row > article {
-  margin-bottom: 0 !important;
-}
-
-section.row > article + article {
-  margin-bottom: 2rem !important;
-}
-
 .row > aside {
   --ifm-col-width: calc(2 / 12 * 100%) !important;
 }
@@ -350,6 +342,14 @@ section.row > article + article {
 @media screen and (min-width: 997px) {
   .sm-screens-only {
     display: none;
+  }
+
+  section.row > article {
+    margin-bottom: 0 !important;
+  }
+
+  section.row > article + article {
+    margin-bottom: 2rem !important;
   }
 }
 

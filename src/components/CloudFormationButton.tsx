@@ -22,7 +22,7 @@ export default function CloudFormationButton(): JSX.Element {
       rel="noopener noreferrer"
       className="button button--primary"
     >
-      Create Resoto Stack ({versionTag})
+      Deploy Resoto {versionTag} to AWS
     </a>
   );
 }

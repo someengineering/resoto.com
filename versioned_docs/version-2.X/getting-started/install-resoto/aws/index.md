@@ -14,7 +14,7 @@ We offer two ways of deploying Resoto to [Amazon Web Services (AWS)](https://aws
 
 :::tip
 
-The [CloudFormation template](./cloudformation.md) is the most direct way to get a production-grade setup, whereas the [CDK construct](./cdk.md) is a bit more involved but gives you more control over the setup.
+The [CloudFormation template](./cloudformation.md) is the easiest way to get a production-grade setup, whereas the [CDK construct](./cdk.md) is a bit more involved but gives you more control over the setup.
 
 :::
 

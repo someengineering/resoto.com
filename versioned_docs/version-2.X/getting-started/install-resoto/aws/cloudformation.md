@@ -11,7 +11,7 @@ pagination_next: getting-started/configure-cloud-provider-access/index
 import CloudFormationButton from '@site/src/components/CloudFormationButton';
 ```
 
-The Resoto CloudFormation template is the most direct way to get a production-grade setup.
+The Resoto CloudFormation template is the easiest way to get a production-grade setup.
 
 ## Prerequisites
 

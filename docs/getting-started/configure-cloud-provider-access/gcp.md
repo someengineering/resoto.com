@@ -9,30 +9,35 @@ import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
 
-The [Google Cloud Platform (GCP)](../../reference/data-models/gcp.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs/index.md) in [Resoto Shell](../../concepts/components/shell.md):
+The [Google Cloud Platform (GCP)](../../reference/data-models/gcp.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs/index.md) in [Resoto Shell](../../concepts/components/shell.md).
 
-```bash
-> config edit resoto.worker
-```
+## Enabling the Collector
 
-Add `gcp` to the list of collectors by modifying the configuration as follows:
+1. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../concepts/components/shell):
 
-```yaml title="Resoto Worker configuration"
-resotoworker:
-  ...
-  # List of collectors to run
-  collector:
-# highlight-next-line
-    - 'gcp'
-    ...
-...
-```
+   ```bash
+   > config edit resoto.worker
+   ```
+
+2. Add `gcp` to the list of collectors by modifying the configuration as follows:
+
+   ```yaml title="Resoto Worker configuration"
+   resotoworker:
+     ...
+     # List of collectors to run
+     collector:
+   # highlight-next-line
+       - 'gcp'
+       ...
+   ...
+   ```
 
 ## Authentication
 
-You can authenticate with [Google Cloud Platform](../../reference/data-models/gcp.md) via [service account JSON files](#service-account-json-files) or [automatic discovery](#automatic-discovery).
+**You can authenticate with [Google Cloud Platform](../../reference/data-models/gcp.md) via service account JSON files or automatic discovery.**
 
-### Service Account JSON Files
+<Tabs>
+<TabItem value="service-account-json-files" label="Service Account JSON Files">
 
 1. Make your service account JSON file(s) available to Resoto at `/home/resoto/.gcp`:
 
@@ -142,7 +147,8 @@ You can authenticate with [Google Cloud Platform](../../reference/data-models/gc
    ...
    ```
 
-### Automatic Discovery
+</TabItem>
+<TabItem value="automatic-discovery" label="Automatic Discovery">
 
 You can specify an empty string for the service account file, and Resoto will automatically discover the service account and all the projects it has access to.
 
@@ -167,6 +173,9 @@ You can specify an empty string for the service account file, and Resoto will au
    # highlight-end
    ...
    ```
+
+</TabItem>
+</Tabs>
 
 ## Resource Collection
 

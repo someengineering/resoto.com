@@ -19,7 +19,7 @@ The following are examples of metrics we currently monitor based on this usage d
 - Number of executed [CLI commands](./cli/index.md)
 - Number of executed [jobs](../concepts/automation/job.md)
 - Number and type of [configured cloud providers](../getting-started/configure-cloud-provider-access/index.md) as well as with configuration change events
-- Type of [installation method](../getting-started/install-resoto/index.md)
+- [Installation method](../getting-started/install-resoto/index.md)
 
 ### Error Reporting
 

@@ -49,12 +49,13 @@ The Resoto Cloud Development Kit (CDK) construct gives more control over the set
    $ npm run cdk deploy -- --parameters ResotoTag={{imageTag}} --parameters MngInstanceType=t3.large
    ```
 
-   | Parameter         | Description                                                   | Default Value |
-   | ----------------- | ------------------------------------------------------------- | ------------- |
-   | `MngMaxSize`      | The maximum number of instances in the k8s managed node group | `3`           |
-   | `MngMinSize`      | The minimum number of instances in the k8s managed node group | `1`           |
-   | `MngDesiredSize`  | The desired number of instances in the k8s managed node group | `1`           |
-   | `MngInstanceType` | The instance type of the k8s managed node group               | `t3.medium`   |
+   | Parameter         | Description                                                   | Default Value     |
+   | ----------------- | ------------------------------------------------------------- | ----------------- |
+   | `ResotoTag`       | The Resoto image tag to use                                   | <LatestRelease /> |
+   | `MngMaxSize`      | The maximum number of instances in the k8s managed node group | `3`               |
+   | `MngMinSize`      | The minimum number of instances in the k8s managed node group | `1`               |
+   | `MngDesiredSize`  | The desired number of instances in the k8s managed node group | `1`               |
+   | `MngInstanceType` | The instance type of the k8s managed node group               | `t3.medium`       |
 
    :::
 

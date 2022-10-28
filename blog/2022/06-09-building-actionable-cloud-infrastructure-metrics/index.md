@@ -18,7 +18,7 @@ Cloud inventory has become a new type of technical debt, where organizations los
 
 <!--truncate-->
 
-Resoto provides a [searchable](/docs/concepts/search) snapshot of the current state of your cloud infrastructure, and can [automatically react to state changes](/docs/concepts/automation). Resoto also allows you to [aggregate](/docs/concepts/search/aggregation) and [visualize](/docs/reference/notebook) this data, as my colleagues [Matthias](https://github.com/aquamatthias) and [Nikita](https://github.com/meln1k) described in previous [blog](/blog/2022/03/03/aggregating-search-data) [posts](/blog/2022/05/31/resoto-meets-jupyter-notebook).
+Resoto provides a [searchable](/docs/concepts/search) snapshot of the current state of your cloud infrastructure, and can [automatically react to state changes](/docs/concepts/automation). Resoto also allows you to [aggregate](/docs/reference/search/aggregation) and [visualize](/docs/reference/notebook) this data, as my colleagues [Matthias](https://github.com/aquamatthias) and [Nikita](https://github.com/meln1k) described in previous [blog](/blog/2022/03/03/aggregating-search-data) [posts](/blog/2022/05/31/resoto-meets-jupyter-notebook).
 
 Here's an example of a heatmap that allows you to immediately see outliers (like when an account suddenly starts using a large number of expensive, high-core-count instances):
 

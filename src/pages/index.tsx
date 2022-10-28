@@ -124,7 +124,7 @@ export default function Home(): JSX.Element {
                 </p>
               </li>
               <li>
-                <Link to="/docs/concepts/search/aggregation">
+                <Link to="/docs/reference/search/aggregation">
                   <h3>
                     <ChartSquareBarIcon className={styles.sectionItemIcon} />
                     <span>Report</span>
@@ -334,7 +334,7 @@ export default function Home(): JSX.Element {
                 </p>
               </li>
               <li>
-                <Link to="/docs/concepts/search">
+                <Link to="/docs/reference/search">
                   <h3>
                     <TerminalIcon className={styles.sectionItemIcon} />
                     <span>Perform a Search</span>
@@ -342,8 +342,8 @@ export default function Home(): JSX.Element {
                 </Link>
                 <p>
                   Check out the Resoto documentation for{' '}
-                  <Link to="/docs/concepts/search">explanations</Link> and{' '}
-                  <Link to="/docs/concepts/search/examples">examples</Link>.
+                  <Link to="/docs/reference/search">explanations</Link> and{' '}
+                  <Link to="/docs/reference/search/examples">examples</Link>.
                 </p>
               </li>
               <li>

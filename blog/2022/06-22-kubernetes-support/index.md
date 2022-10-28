@@ -211,7 +211,7 @@ reported:
 # highlight-end
 ```
 
-Resoto ships with the ability to search for a value everywhere, no matter where this value is defined. We call this feature full-text search - you can read about all the details here [full-text search](/docs/concepts/search/full-text) Let us use this feature, to search an IP address that we found in the resoto core service. We expect it will find exactly the same ResotoCore service:
+Resoto ships with the ability to search for a value everywhere, no matter where this value is defined. We call this feature full-text search - you can read about all the details here [full-text search](/docs/reference/search/full-text) Let us use this feature, to search an IP address that we found in the resoto core service. We expect it will find exactly the same ResotoCore service:
 
 ```bash
 > search "10.245.133.206"

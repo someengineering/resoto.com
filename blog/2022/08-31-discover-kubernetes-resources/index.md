@@ -78,7 +78,7 @@ The searches for IPv4 address `10.245.11.204` returned a single resource of kind
 
 ## Filtering Resources
 
-While Resoto's full-text search is a convenient way to find resources, you often want to specify additional criteria to filter the results. For example, we may want the results to [only include resources of a specific kind](/docs/concepts/search/filters#selecting-nodes-by-kind) or [filter for nodes with specific attributes](/docs/concepts/search/filters#selecting-nodes-by-predicate).
+While Resoto's full-text search is a convenient way to find resources, you often want to specify additional criteria to filter the results. For example, we may want the results to [only include resources of a specific kind](/docs/reference/search/filters#selecting-nodes-by-kind) or [filter for nodes with specific attributes](/docs/reference/search/filters#selecting-nodes-by-predicate).
 
 Since Resoto itself can be installed on a Kubernets cluster using the [Helm chart](https://github.com/someengineering/helm-charts/tree/main/charts/resoto), we can search for pods with names containing "resoto":
 
@@ -173,7 +173,7 @@ Next, consider a scenario where we may have secrets no longer read by any Kubern
 ​kind=kubernetes_secret, id=cb3fdf32, name=nginx-letsencrypt-test, age=5mo24d, cloud=k8s, account=dev, region=test
 ```
 
-The [`with` clause](/docs/concepts/search/with-clause) allows us to find resources with specific relationships to other resources. Here, we searched for secrets without incoming relationships to resources aside from the owning namespace.
+The [`with` clause](/docs/reference/search/with-clause) allows us to find resources with specific relationships to other resources. Here, we searched for secrets without incoming relationships to resources aside from the owning namespace.
 
 Finally, we'll find all incoming and outgoing dependencies of pods with name containing "resoto." As seen earlier, there are three such pods in the cluster. We can find the transitive dependencies of these resources using the `<-[0:]->` traversal, which follows both incoming (`<--`) and outgoing (`-->`) dependencies until it reaches either a leaf or the graph root:
 
@@ -221,7 +221,7 @@ The following counts the number of pods in all clusters:
 
 The results reveal that there are four namespaces: `test`, `resoto`, `posthog` and `kube-system`. Most of the pods are running in the `kube-system` namespace.
 
-Now, let's try to count the number of pods running on every node. Doing so is a bit more complicated since this information is not a property of the pod. However, we can get the node data by extracting the data from the graph. Resoto provides a special syntax to access the [ancestors and descendants](/docs/concepts/search/merging-nodes#ancestors-and-descendants) of a resource:
+Now, let's try to count the number of pods running on every node. Doing so is a bit more complicated since this information is not a property of the pod. However, we can get the node data by extracting the data from the graph. Resoto provides a special syntax to access the [ancestors and descendants](/docs/reference/search/merging-nodes#ancestors-and-descendants) of a resource:
 
 ```bash
 > search is(kubernetes_pod) | count /ancestors.kubernetes_node.reported.name
@@ -245,7 +245,7 @@ The same approach can be used for counting the number of pods in each deployment
 
 ## Aggregation
 
-[`count`](/docs/reference/cli/search-commands/count) is actually an [aggregation](/docs/concepts/search/aggregation). Aggregations apply functions like `min`, `max`, `avg`, and `sum` on the a resource's property values.
+[`count`](/docs/reference/cli/search-commands/count) is actually an [aggregation](/docs/reference/search/aggregation). Aggregations apply functions like `min`, `max`, `avg`, and `sum` on the a resource's property values.
 
 Here, we combine some of the above searches to count the number of pods in each node, in addition to getting the amount of memory and CPU cores available on each node:
 

@@ -29,5 +29,5 @@ Execute the following search in [Resoto Shell](../../concepts/components/shell.m
 ## Further Reading
 
 - [Resource Tagging](../../concepts/resource-management/tagging.md)
-- [Search](../../concepts/search/index.md)
+- [Search](../../reference/search/index.md)
 - [Command-Line Interface](../../reference/cli/index.md)

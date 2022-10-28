@@ -9,30 +9,35 @@ import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
 
-The [DigitalOcean](../../reference/data-models/digitalocean.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs/index.md) in [Resoto Shell](../../concepts/components/shell.md):
+The [DigitalOcean](../../reference/data-models/digitalocean.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs/index.md) in [Resoto Shell](../../concepts/components/shell.md).
 
-```bash
-> config edit resoto.worker
-```
+## Enabling the Collector
 
-Add `digitalocean` to the list of collectors by modifying the configuration as follows:
+1. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../concepts/components/shell):
 
-```yaml
-resotoworker:
-  ...
-  # List of collectors to run
-  collector:
-# highlight-next-line
-    - 'digitalocean'
-    ...
-...
-```
+   ```bash
+   > config edit resoto.worker
+   ```
+
+2. Add `digitalocean` to the list of collectors by modifying the configuration as follows:
+
+   ```yaml
+   resotoworker:
+     ...
+     # List of collectors to run
+     collector:
+   # highlight-next-line
+       - 'digitalocean'
+       ...
+   ...
+   ```
 
 ## Authentication
 
-DigitalOcean uses [access tokens](https://cloud.digitalocean.com/account/api/tokens) to authenticate API requests. You can provide access tokens to Resoto via [configuration](#configuration) or [environment](#environment).
+**DigitalOcean uses [access tokens](https://cloud.digitalocean.com/account/api/tokens) to authenticate API requests.** You can provide access tokens to Resoto via the Resoto Worker configuration or environment variables.
 
-### Configuration
+<Tabs groupId="auth-method">
+<TabItem value="configuration" label="Resoto Worker Configuration">
 
 1. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../concepts/components/shell):
 
@@ -54,9 +59,10 @@ DigitalOcean uses [access tokens](https://cloud.digitalocean.com/account/api/tok
    # highlight-end
    ```
 
-### Environment
+</TabItem>
+<TabItem value="environment" label="Environment Variables">
 
-Instead of specifying API tokens or secret access keys in the [Resoto Worker configuration](../../reference/configuration/index.md) directly, it is possible to define them using the [`--override` flag or `RESOTOWORKER_OVERRIDE` environment variable](../../reference/configuration/index.md#overriding-individual-properties).
+**Instead of specifying API tokens or secret access keys in the [Resoto Worker configuration](../../reference/configuration/index.md) directly, it is possible to define them using the [`--override` flag or `RESOTOWORKER_OVERRIDE` environment variable](../../reference/configuration/index.md#overriding-individual-properties).**
 
 1. Set the `RESOTOWORKER_OVERRIDE` environment variable:
 
@@ -137,6 +143,9 @@ Instead of specifying API tokens or secret access keys in the [Resoto Worker con
 
    </TabItem>
    </Tabs>
+
+</TabItem>
+</Tabs>
 
 ## Resource Collection
 

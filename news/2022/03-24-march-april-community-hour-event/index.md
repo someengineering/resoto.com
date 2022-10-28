@@ -41,7 +41,7 @@ This event is taking place **LIVE** on the [Some Engineering Discord server](htt
   - improved system configuration method
   - [DigitalOcean](/docs/reference/data-models/digitalocean) support
 - Learn how to…
-  - [search](/docs/concepts/search) and [aggregate](/docs/concepts/search/aggregation) data
+  - [search](/docs/concepts/search) and [aggregate](/docs/reference/search/aggregation) data
   - integrate Resoto into existing tools, such as [Discord](https://discord.com)
   - export data in various formats
 - Q&A

@@ -9,32 +9,37 @@ import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
 
-The [Kubernetes](../../reference/data-models/kubernetes.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs/index.md) in [Resoto Shell](../../concepts/components/shell.md):
+The [Kubernetes](../../reference/data-models/kubernetes.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs/index.md) in [Resoto Shell](../../concepts/components/shell.md).
 
-```bash
-> config edit resoto.worker
-```
+## Enabling the Collector
 
-Add `k8s` to the list of collectors by modifying the configuration as follows:
+1. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../concepts/components/shell):
 
-```yaml title="Resoto Worker configuration"
-resotoworker:
-  ...
-  # List of collectors to run
-  collector:
-# highlight-next-line
-    - 'k8s'
-    ...
-...
-```
+   ```bash
+   > config edit resoto.worker
+   ```
+
+2. Add `k8s` to the list of collectors by modifying the configuration as follows:
+
+   ```yaml title="Resoto Worker configuration"
+   resotoworker:
+     ...
+     # List of collectors to run
+     collector:
+   # highlight-next-line
+       - 'k8s'
+       ...
+   ...
+   ```
 
 ## Authentication
 
-You can authenticate with Kubernetes via [kubeconfig files](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig), [manual configuration](#manual-configuration), or both.
+**You can authenticate with Kubernetes via kubeconfig files, manual configuration, or both.**
 
-### kubeconfig Files
+<Tabs>
+<TabItem value="kubeconfig-files" label="kubeconfig Files">
 
-The easiest way to configure access to Kubernetes is to give Resoto Worker access to [kubeconfig files](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig).
+**The easiest way to configure access to Kubernetes is to give Resoto Worker access to [kubeconfig files](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig).**
 
 1. Make your kubeconfig file(s) available to Resoto at `/home/resoto/.kube`:
 
@@ -150,9 +155,10 @@ The easiest way to configure access to Kubernetes is to give Resoto Worker acces
 
    :::
 
-### Manual Configuration
+</TabItem>
+<TabItem value="manual-configuration" label="Manual Configuration">
 
-Instead of exposing a [kubeconfig file](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig) to Resoto Worker, you can alternatively supply credentials manually.
+**Instead of exposing a [kubeconfig file](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig) to Resoto Worker, you can alternatively supply credentials manually.**
 
 The required values can be found in the [kubeconfig file](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig):
 
@@ -189,6 +195,9 @@ The required values can be found in the [kubeconfig file](https://kubernetes.io/
    Multiple k8s clusters can be defined by adding multiple sets of values.
 
    :::
+
+</TabItem>
+</Tabs>
 
 ## Resource Collection
 

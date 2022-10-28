@@ -24,8 +24,9 @@ https://news.resoto.com/*                                         https://resoto
 /docs/concepts/tagging                                            /docs/concepts/resource-management/tagging
 /docs/concepts/tags                                               /docs/concepts/resource-management/tagging
 
-/docs/concepts/search/basic-syntax                                /docs/concepts/search/filters
-/docs/concepts/search/fulltext-search                             /docs/concepts/search/full-text
+/docs/concepts/search/basic-syntax                                /docs/reference/search/filters
+/docs/concepts/search/fulltext-search                             /docs/reference/search/full-text
+/docs/concepts/search/*                                           /docs/reference/search/:splat
 
 /concepts/*                                                       /docs/concepts/:splat
 
@@ -153,12 +154,11 @@ https://news.resoto.com/*                                         https://resoto
 /docs/reference/cli/configs/*                                     /docs/reference/cli/setup-commands/configs/:splat
 /docs/reference/cli/system/*                                      /docs/reference/cli/setup-commands/system/:splat
 
-
 /docs/reference/cli/query                                         /docs/reference/cli/search-commands/search
-/docs/reference/cli/query/basic-queries                           /docs/concepts/search/filters
-/docs/reference/cli/query/nesting                                 /docs/concepts/search/merging-nodes
-/docs/reference/cli/query/subqueries                              /docs/concepts/search/merging-nodes
-/docs/reference/cli/query/*                                       /docs/concepts/search/:splat
+/docs/reference/cli/query/basic-queries                           /docs/reference/search/filters
+/docs/reference/cli/query/nesting                                 /docs/reference/search/merging-nodes
+/docs/reference/cli/query/subqueries                              /docs/reference/search/merging-nodes
+/docs/reference/cli/query/*                                       /docs/reference/search/:splat
 
 /api                                                              /docs/reference/api
 /docs/reference/core-api                                          /docs/reference/api

@@ -68,11 +68,11 @@ The job functionality can be used to automate actions. Here is a list of possibl
 
 - **Gather or accumulate data.**
 
-  Resoto has advanced [search aggregation](../search/aggregation.md) capabilities. [Resoto Metrics](../components/metrics.md) uses aggregation to derive and report metrics to [Prometheus](https://prometheus.io).
+  Resoto has advanced [search aggregation](../../reference/search/aggregation.md) capabilities. [Resoto Metrics](../components/metrics.md) uses aggregation to derive and report metrics to [Prometheus](https://prometheus.io).
 
   If additional data besides metrics are relevant to you, create a job that gathers and publishes the data.
 
-  You would use [search aggregation](../search/aggregation.md) and [`http`](../../reference/cli/action-commands/http.md) to implement this functionality.
+  You would use [search aggregation](../../reference/search/aggregation.md) and [`http`](../../reference/cli/action-commands/http.md) to implement this functionality.
 
 - **Generate up-to-date diagrams.**
 

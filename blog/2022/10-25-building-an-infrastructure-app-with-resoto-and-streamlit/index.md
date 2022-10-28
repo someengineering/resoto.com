@@ -62,15 +62,8 @@ $ python3 --version
 
 If the command returns an error, you can install Python and `pip` using your distro's package manager:
 
-<Tabs>
-<TabItem value="linux-fedora" label="Fedora/CentOS">
-
-```bash
-$ sudo dnf install python3 python3-pip
-```
-
-</TabItem>
-<TabItem value="linux-debian" label="Debian/Ubuntu">
+<Tabs groupId="linux-distro">
+<TabItem value="debian" label="Debian/Ubuntu">
 
 ```bash
 $ sudo apt update
@@ -78,18 +71,25 @@ $ sudo apt install python3 python3-pip
 ```
 
 </TabItem>
+<TabItem value="fedora" label="Fedora/CentOS">
+
+```bash
+$ sudo dnf install python3 python3-pip
+```
+
+</TabItem>
 </Tabs>
 </TabItem>
 <TabItem value="macos" label="macOS">
 <Tabs>
-<TabItem value="macos-download" label="Download">
+<TabItem value="download" label="Download">
 
 You can download the latest version of Python for macOS from [Python.org](https://python.org/downloads):
 
 ![Screenshot of python.org](./img/download-python-macos.png)
 
 </TabItem>
-<TabItem value="macos-homebrew" label="Homebrew">
+<TabItem value="homebrew" label="Homebrew">
 
 With [Homebrew](https://brew.sh), you can install Python by executing the following command in the **Terminal** app:
 
@@ -110,14 +110,14 @@ The **Terminal** app can be found under **Utilities** within the **Applications*
 </TabItem>
 <TabItem value="windows" label="Windows">
 <Tabs>
-<TabItem value="windows-download" label="Download">
+<TabItem value="download" label="Download">
 
 You can download the latest version of Python for Windows from [Python.org](https://python.org/downloads):
 
 ![Screenshot of python.org](./img/download-python-windows.png)
 
 </TabItem>
-<TabItem value="windows-chocolatey" label="Chocolatey">
+<TabItem value="chocolatey" label="Chocolatey">
 
 With [Chocolatey](https://chocolatey.org), you can install Python by executing the following command:
 
@@ -637,7 +637,7 @@ We'll begin with instance metrics.
    <summary>Code Explanation</summary>
    <div>
 
-   - In the first line, we define a variable `resoto_search` which contains [an aggregate search](/docs/concepts/search/aggregation). You can copy and paste the search into the Resoto Shell to see what it does.
+   - In the first line, we define a variable `resoto_search` which contains [an aggregate search](/docs/reference/search/aggregation). You can copy and paste the search into the Resoto Shell to see what it does.
 
      In short, it searches for all instances (`is(instance)`) and returns the total number of instances (`sum(1) as instances_total`), the total number of CPU cores (`sum(instance_cores) as cores_total`) and the total amount of memory (`sum(instance_memory*1024*1024*1024) as memory_total`). (Instance memory is stored in GB in Resoto, but we need it in bytes so we multiply it by 1024\*1024\*1024 for the number of bytes.)
 

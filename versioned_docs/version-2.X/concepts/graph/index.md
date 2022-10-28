@@ -6,7 +6,7 @@ import DocCardList from '@theme/DocCardList';
 
 Resoto stores collected data in a graph database consisting of [nodes](./node.md) representing resources and [edges](./edge.md) representing the relationships between resources.
 
-This graph can be accessed to find resources via Resoto's powerful [search syntax](../../concepts/search/index.md).
+This graph can be accessed to find resources via Resoto's powerful [search](../search.md).
 
 <DocCardList />
 

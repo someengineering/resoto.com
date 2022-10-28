@@ -57,6 +57,6 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
 ## Further Reading
 
-- [Search](../../concepts/search/index.md)
+- [Search](../../reference/search/index.md)
 - [Command-Line Interface](../../reference/cli/index.md)
 - [Resource Data Models](../../reference/data-models/index.md)

@@ -94,7 +94,7 @@ It is also possible to reverse the last query to output all EC2 instances behind
 
 The arrow is now mirrored and traverses the graph "inbound," walking edges in the opposite direction.
 
-The above examples only begin to scratch the surface of Resoto's [search syntax](/docs/concepts/search). I hope you will check out our [documentation](/docs) and give Resoto a spin!
+The above examples only begin to scratch the surface of Resoto's [search syntax](/docs/reference/search). I hope you will check out our [documentation](/docs) and give Resoto a spin!
 
 :::note
 

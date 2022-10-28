@@ -35,5 +35,5 @@ This search finds all resources that have an `expires` property that is less tha
 ## Further Reading
 
 - [Resource Expiration](../../concepts/resource-management/expiration.md)
-- [Search](../../concepts/search/index.md)
+- [Search](../../reference/search/index.md)
 - [Command-Line Interface](../../reference/cli/index.md)

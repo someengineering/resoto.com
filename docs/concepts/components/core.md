@@ -24,7 +24,7 @@ Resoto Core has two [API](../../reference/api.md) endpoints to connect to for CL
 
 The [`/cli/evaluate`](../../reference/api.md#tag/cli/paths/~1cli~1evaluate/post) functinality is used internally on every [`/cli/execute`](../../reference/api.md#tag/cli/paths/~1cli~1execute/post) before the command executes.
 
-Below is a simulation of sending a [Resoto Shell](./shell.md) [search](../search/index.md) to the [API](../../reference/api.md).
+Below is a simulation of sending a [Resoto Shell](./shell.md) [search](../search.md) to the [API](../../reference/api.md).
 
 We will evaluate the search before executing it for demonstration. We also introduce a search with a typo to show the response if not successful.
 

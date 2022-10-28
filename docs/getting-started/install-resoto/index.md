@@ -9,7 +9,7 @@ sidebar_position: 1
 import DocCardList from '@theme/DocCardList';
 ```
 
-Resoto can be deployed to [Amazon Web Services](./aws/index.md) or installed locally via [Docker](./local/docker.md), [Kubernetes](./local/kubernetes.md), or [pip](./local/pip.md).
+Resoto can be deployed to [Amazon Web Services](./aws/index.md) or installed locally via [Docker](./local/docker.md), [Kubernetes](./kubernetes.md), or [pip](./local/pip.md).
 
 :::info
 

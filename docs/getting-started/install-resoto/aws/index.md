@@ -1,16 +1,16 @@
 ---
-sidebar_label: Amazon Web Services Deployment
+sidebar_label: AWS Installation
 pagination_prev: getting-started/index
 pagination_next: getting-started/configure-cloud-provider-access/index
 ---
 
-# Deploy Resoto to Amazon Web Services
+# Install Resoto on AWS
 
 ```mdx-code-block
 import DocCardList from '@theme/DocCardList';
 ```
 
-We offer two ways of deploying Resoto to [Amazon Web Services (AWS)](https://aws.amazon.com): using the Resoto [CloudFormation template](./cloudformation.md) or the Resoto [CDK construct](./cdk.md).
+We offer two ways of installing Resoto to [Amazon Web Services (AWS)](https://aws.amazon.com): using the Resoto [CloudFormation template](./cloudformation.md) or the Resoto [CDK construct](./cdk.md).
 
 :::tip
 

@@ -10,7 +10,7 @@ pagination_next: getting-started/configure-cloud-provider-access/index
 import DocCardList from '@theme/DocCardList';
 ```
 
-Resoto can be installed locally via [Docker](./docker.md), [Kubernetes](./kubernetes.md), or [pip](./pip.md).
+Resoto can be installed locally via [Docker](./docker.md), [Kubernetes](../kubernetes.md), or [pip](./pip.md).
 
 :::info
 

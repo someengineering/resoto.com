@@ -132,7 +132,7 @@ choco install python
 
 #### Learning some Python
 
-If you have no prior Python knowledge, follow these basics:
+If you have no prior Python or programming knowledge, follow these basics:
 
 <details>
 <summary>Python Basics</summary>

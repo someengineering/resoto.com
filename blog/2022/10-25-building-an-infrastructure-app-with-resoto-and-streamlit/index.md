@@ -130,13 +130,17 @@ choco install python
 </TabItem>
 </Tabs>
 
+#### Learning some Python
+
+If you have no prior Python or programming knowledge, follow these basics:
+
 <details>
 <summary>Python Basics</summary>
 <div>
 
 <h4 id="starting-the-repl">Starting the REPL</h4>
 
-Start Python by running the following command:
+Start Python by running the following command in your (Power)shell:
 
 ```bash
 $ python3
@@ -147,7 +151,9 @@ $ python3
 ​>>>
 ```
 
-This is the Python <abbr title="Read-Eval-Print-Loop">REPL</abbr>. The REPL is a great way to quickly test code. You can type in a command, execute it by pressing the <kbd>Enter</kbd> key, and see the result printed to the screen.
+Depending on your install method the command could be just `python`, without the version number.
+
+This starts the Python <abbr title="Read-Eval-Print-Loop">REPL</abbr>. The REPL is a great way to quickly test code. You can type in a command, execute it by pressing the <kbd>Enter</kbd> key, and see the result printed to the screen.
 
 To exit the REPL, simply type `exit()` and press <kbd>Enter</kbd>.
 

@@ -3,7 +3,6 @@
 
 const a11yEmoji = require('@fec/remark-a11y-emoji');
 const oembed = require('remark-plugin-oembed');
-const mdxMermaid = require('mdx-mermaid');
 
 const latestRelease = require('./latestRelease.json');
 const versions = require('./versions.json');
@@ -41,6 +40,10 @@ const config = {
         },
       ]
     : [],
+  markdown: {
+    mermaid: true,
+  },
+  themes: ['@docusaurus/theme-mermaid'],
   presets: [
     [
       'redocusaurus',
@@ -71,7 +74,7 @@ const config = {
             `https://github.com/someengineering/resoto.com/edit/main/${versionDocsDirPath}/${docPath}`,
           showLastUpdateAuthor: false,
           showLastUpdateTime: true,
-          remarkPlugins: [a11yEmoji, oembed, mdxMermaid],
+          remarkPlugins: [a11yEmoji, oembed],
           onlyIncludeVersions: (() =>
             isProd ? undefined : ['current', ...versions.slice(0, 2)])(),
           versions: {

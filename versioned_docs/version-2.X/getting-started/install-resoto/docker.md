@@ -22,7 +22,7 @@ import Tabs from '@theme/Tabs';
 
 :::note
 
-Resoto performs CPU-intensive graph operations. In a production setup, we recommend at least four cores and 16 gigabytes of RAM. See [Configuring Resoto Worker](../../../reference/configuration/worker.md#multi-core-machines) for more information.
+Resoto performs CPU-intensive graph operations. In a production setup, we recommend at least four cores and 16 gigabytes of RAM. See [Configuring Resoto Worker](../../reference/configuration/worker.md#multi-core-machines) for more information.
 
 :::
 
@@ -30,12 +30,12 @@ Resoto performs CPU-intensive graph operations. In a production setup, we recomm
 
 https://youtu.be/U5L4z71WI-w
 
-Resoto consists of multiple [components](../../../concepts/components/index.md) published as individual Docker images:
+Resoto consists of multiple [components](../../concepts/components/index.md) published as individual Docker images:
 
 1. [`somecr.io/someengineering/resotocore`](https://hub.docker.com/repository/docker/someengineering/resotocore) maintains the infrastructure graph.
 2. [`somecr.io/someengineering/resotoworker`](https://hub.docker.com/repository/docker/someengineering/resotoworker) collects infrastructure data from the cloud provider APIs.
 3. [`somecr.io/someengineering/resotometrics`](https://hub.docker.com/repository/docker/someengineering/resotometrics) exports metrics in Prometheus format.
-4. [`somecr.io/someengineering/resotoshell`](https://hub.docker.com/repository/docker/someengineering/resotoshell) provides the [command-line interface](../../../reference/cli/index.md) used to interact with Resoto.
+4. [`somecr.io/someengineering/resotoshell`](https://hub.docker.com/repository/docker/someengineering/resotoshell) provides the [command-line interface](../../reference/cli/index.md) used to interact with Resoto.
 
 To install Resoto using [Docker Compose](https://docs.docker.com/compose), first fetch the required files from the [`someengineering/resoto` GitHub repository](https://github.com/someengineering/resoto):
 
@@ -83,12 +83,12 @@ If you have an Apple Silicon or other ARM-based machine, please use the latest s
 
 ## Launching the Command-Line Interface
 
-The `resh` command is used to interact with [`resotocore`](../../../concepts/components/core.md).
+The `resh` command is used to interact with [`resotocore`](../../concepts/components/core.md).
 
-Simply execute the following to access the [Resoto Shell](../../../concepts/components/shell.md) interface:
+Simply execute the following to access the [Resoto Shell](../../concepts/components/shell.md) interface:
 
 ```bash
 $ docker exec -it resotoshell resh
 ```
 
-![Resoto Shell](../img/resoto-shell.png)
+![Resoto Shell](./img/resoto-shell.png)

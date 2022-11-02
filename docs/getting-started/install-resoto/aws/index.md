@@ -1,5 +1,5 @@
 ---
-sidebar_label: Amazon Web Services Deployment
+sidebar_label: Amazon Web Services
 pagination_prev: getting-started/index
 pagination_next: getting-started/configure-cloud-provider-access/index
 ---

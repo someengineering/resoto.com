@@ -22,5 +22,5 @@ configs update <id> <file_path>
 ## Examples
 
 ```bash
-> configs update test /path/to/my/local/config.yaml
+> configs update test /path/to/my/config.yaml
 ```

@@ -4,7 +4,7 @@ pagination_prev: getting-started/index
 pagination_next: getting-started/configure-cloud-provider-access/index
 ---
 
-# Deploy Resoto with <abbr title="Amazon Web Services">AWS</abbr> Cloud Development Kit
+# Deploy Resoto with AWS Cloud Development Kit
 
 ```mdx-code-block
 import LatestRelease from '@site/src/components/LatestRelease';

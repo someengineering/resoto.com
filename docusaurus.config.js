@@ -15,7 +15,7 @@ const isProd =
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Resoto by Some Engineering Inc.',
-  tagline: 'Automate tedious infrastructure tasks, remarkably fast.',
+  tagline: 'Cloud infrastructure intelligence and automation for humans',
   url: 'https://resoto.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -140,6 +140,8 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      image:
+        'https://resoto-og-image.vercel.app/Cloud%20infrastructure%20intelligence%20and%20automation%20for%20**humans**.png?md=1',
       docs: {
         sidebar: {
           autoCollapseCategories: true,

@@ -5,7 +5,7 @@ pagination_prev: getting-started/index
 pagination_next: getting-started/configure-cloud-provider-access/index
 ---
 
-# Deploy Resoto with <abbr title="Amazon Web Services">AWS</abbr> CloudFormation
+# Deploy Resoto with AWS CloudFormation
 
 ```mdx-code-block
 import CloudFormationButton from '@site/src/components/CloudFormationButton';

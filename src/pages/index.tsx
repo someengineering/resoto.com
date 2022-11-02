@@ -46,8 +46,9 @@ export default function Home(): JSX.Element {
             <div className={styles.heroText}>
               <h2 className={styles.tagline}>{siteConfig.tagline}</h2>
               <div>
-                Resoto creates an inventory of your cloud, provides deep
-                visibility, and reacts to changes in your infrastructure.
+                Resoto creates an <strong>inventory</strong> of your cloud,
+                provides deep <strong>visibility</strong>, and{' '}
+                <strong>reacts to changes</strong> in your infrastructure.
               </div>
             </div>
             <div id="heroAnimation" className={styles.heroAnimation} />

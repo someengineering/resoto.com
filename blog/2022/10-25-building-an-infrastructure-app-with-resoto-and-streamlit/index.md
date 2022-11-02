@@ -543,7 +543,7 @@ Now that we've set up the project environment, we can start creating the infrast
    </div>
    </details>
 
-2. Modify the `url` and `psk` values to match your local Resoto Core URL and pre-shared key. The above reflects the default values for a [Docker Compose install](/docs/getting-started/install-resoto/local/docker).
+2. Modify the `url` and `psk` values to match your local Resoto Core URL and pre-shared key. The above reflects the default values for a [Docker Compose install](/docs/getting-started/install-resoto/docker).
 
 3. Save the file and switch back to the terminal.
 

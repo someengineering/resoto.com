@@ -240,7 +240,7 @@ name=resoto-resotoworker-dc6bd998f-xpnb7
 # highlight-end
 ```
 
-Render a graph of all services that are deployed in the `resoto` namespace on the `dev` cluster. Please note: we are looking at a cluster where we have deployed `resoto` as a Helm chart as described in [Install Resoto with Kubernetes](/docs/getting-started/install-resoto/local/kubernetes).
+Render a graph of all services that are deployed in the `resoto` namespace on the `dev` cluster. Please note: we are looking at a cluster where we have deployed `resoto` as a Helm chart as described in [Install Resoto with Kubernetes](/docs/getting-started/install-resoto/kubernetes).
 
 ```bash
 search --with-edges is(kubernetes_service) and namespace=resoto <-[0:]-> | format --dot | write service.dot
@@ -309,6 +309,6 @@ We are currently working on the way to connect resources found in Kubernetes to 
 
 ## Further Reading
 
-- [Install Resoto with Kubernetes](/docs/getting-started/install-resoto/local/kubernetes)
+- [Install Resoto with Kubernetes](/docs/getting-started/install-resoto/kubernetes)
 - [Configure Kubernetes Access](/docs/getting-started/configure-cloud-provider-access/kubernetes)
 - [Kubernetes Resources](/docs/reference/data-models/kubernetes)

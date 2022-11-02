@@ -320,17 +320,15 @@ export default function Home(): JSX.Element {
                     Deploy Resoto to Amazon Web Services
                   </Link>{' '}
                   or install Resoto locally using{' '}
-                  <Link to="/docs/getting-started/install-resoto/local/docker">
+                  <Link to="/docs/getting-started/install-resoto/docker">
                     Docker
                   </Link>
                   ,{' '}
-                  <Link to="/docs/getting-started/install-resoto/local/kubernetes">
+                  <Link to="/docs/getting-started/install-resoto/kubernetes">
                     Kubernetes
                   </Link>
                   , or{' '}
-                  <Link to="/docs/getting-started/install-resoto/local/pip">
-                    pip
-                  </Link>
+                  <Link to="/docs/getting-started/install-resoto/pip">pip</Link>
                   !
                 </p>
               </li>

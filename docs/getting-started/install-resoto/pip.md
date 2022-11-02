@@ -28,7 +28,7 @@ Resoto performs CPU-intensive graph operations. In a production setup, we recomm
 
 ## Installing Resoto
 
-Resoto consists of multiple [components](../../../concepts/components/index.md) that are published as individual Python packages:
+Resoto consists of multiple [components](../../concepts/components/index.md) that are published as individual Python packages:
 
 1. [📦](https://pypi.org/project/resotocore/) `resotocore` maintains the infrastructure graph.
 2. [📦](https://pypi.org/project/resotoworker/) `resotoworker` collects infrastructure data from the cloud provider APIs.
@@ -66,7 +66,7 @@ $ arangodb/bin/arangod --database.directory ~/resoto/data
 
 This will start ArangoDB on the current shell which is useful for testing. Once Resoto Core starts it will automatically secure the ArangoDB installation using the password provided in the `.graphdb-password` file (unless explicitly turned off using the `--graphdb-bootstrap-do-not-secure` flag).
 
-Read the section [Securing ArangoDB](../../../concepts/security.md#custom-certificates) for details on how to generate certificates and encrypt the connection between Resoto Core and the graph database.
+Read the section [Securing ArangoDB](../../concepts/security.md#custom-certificates) for details on how to generate certificates and encrypt the connection between Resoto Core and the graph database.
 
 ## Running Resoto
 
@@ -82,7 +82,7 @@ $ source ~/resoto/resoto-venv/bin/activate
 $ resotocore --graphdb-password "$graphdb_password" --graphdb-server http://localhost:8529 --psk "$pre_shared_key"
 ```
 
-[Resoto Core](../../../concepts/components/core.md) only listens on `localhost:8900` by default. [Resoto Core](../../../concepts/components/core.md) can be [configured to listen on all interfaces](../../../reference/configuration/core.md#network-interfaces) if desired.
+[Resoto Core](../../concepts/components/core.md) only listens on `localhost:8900` by default. [Resoto Core](../../concepts/components/core.md) can be [configured to listen on all interfaces](../../reference/configuration/core.md#network-interfaces) if desired.
 
 </TabItem>
 <TabItem value="resotoworker" label="resotoworker">
@@ -102,16 +102,16 @@ $ source ~/resoto/resoto-venv/bin/activate
 $ resotometrics --resotocore-uri https://localhost:8900 --psk "$pre_shared_key"
 ```
 
-Resoto now exposes Prometheus metrics at `https://localhost:9955/metrics`. Follow [the Prometheus Getting Started guide](https://prometheus.io/docs/prometheus/latest/getting_started/) to install and configure a Prometheus server.
+Resoto now exposes Prometheus metrics at `https://localhost:9955/metrics`. Follow [the Prometheus Getting Started guide](https://prometheus.io/docs/prometheus/latest/getting_started) to install and configure a Prometheus server.
 
 </TabItem>
 </Tabs>
 
 ## Launching the Command-Line Interface
 
-The `resh` command is used to interact with [`resotocore`](../../../concepts/components/core.md).
+The `resh` command is used to interact with [`resotocore`](../../concepts/components/core.md).
 
-Simply execute the following to access the [Resoto Shell](../../../concepts/components/shell.md) interface:
+Simply execute the following to access the [Resoto Shell](../../concepts/components/shell.md) interface:
 
 ```bash
 $ pre_shared_key=$(< ~/resoto/.pre-shared-key)
@@ -119,4 +119,4 @@ $ source ~/resoto/resoto-venv/bin/activate
 $ resh --resotocore-uri https://localhost:8900 --psk "$pre_shared_key"
 ```
 
-![Resoto Shell](../img/resoto-shell.png)
+![Resoto Shell](./img/resoto-shell.png)

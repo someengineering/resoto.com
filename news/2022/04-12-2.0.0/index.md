@@ -30,7 +30,7 @@ Please check out the [Getting Started](/docs/getting-started) section of our doc
 
 ## Installation Options
 
-There are currently two installation options for Resoto: [Docker](/docs/getting-started/install-resoto/local/docker) and [Kubernetes](/docs/getting-started/install-resoto/local/kubernetes).
+There are currently two installation options for Resoto: [Docker](/docs/getting-started/install-resoto/docker) and [Kubernetes](/docs/getting-started/install-resoto/kubernetes).
 
 <!--truncate-->
 

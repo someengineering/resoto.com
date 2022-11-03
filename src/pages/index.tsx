@@ -35,7 +35,7 @@ export default function Home(): JSX.Element {
       loop: true,
       autoplay: true,
     });
-  });
+  }, []);
 
   return (
     <Layout>

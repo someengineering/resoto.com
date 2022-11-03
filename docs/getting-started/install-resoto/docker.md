@@ -14,6 +14,15 @@ import Tabs from '@theme/Tabs';
 
 [Docker](https://docker.com) provides the ability to run an application in a loosely isolated environment called a [container](https://docs.docker.com/get-started/overview#containers). For more information on Docker, please see the [official Docker documentation](https://docs.docker.com).
 
+Resoto consists of multiple [components](../../concepts/components/index.md) published as individual Docker images:
+
+- [`somecr.io/someengineering/resotocore`](https://hub.docker.com/repository/docker/someengineering/resotocore) maintains the infrastructure graph.
+- [`somecr.io/someengineering/resotoworker`](https://hub.docker.com/repository/docker/someengineering/resotoworker) collects infrastructure data from the cloud provider APIs.
+- [`somecr.io/someengineering/resotometrics`](https://hub.docker.com/repository/docker/someengineering/resotometrics) exports metrics in Prometheus format.
+- [`somecr.io/someengineering/resotoshell`](https://hub.docker.com/repository/docker/someengineering/resotoshell) provides the [command-line interface](../../reference/cli/index.md) used to interact with Resoto.
+
+https://youtu.be/U5L4z71WI-w
+
 ## Prerequisites
 
 - [Docker](https://docs.docker.com/get-started#download-and-install-docker)
@@ -28,58 +37,79 @@ Resoto performs CPU-intensive graph operations. In a production setup, we recomm
 
 ## Installing Resoto
 
-https://youtu.be/U5L4z71WI-w
+1. Fetch the required files from the [`someengineering/resoto` GitHub repository](https://github.com/someengineering/resoto):
 
-Resoto consists of multiple [components](../../concepts/components/index.md) published as individual Docker images:
+   <Tabs>
+   <TabItem value="curl" label="curl">
 
-1. [`somecr.io/someengineering/resotocore`](https://hub.docker.com/repository/docker/someengineering/resotocore) maintains the infrastructure graph.
-2. [`somecr.io/someengineering/resotoworker`](https://hub.docker.com/repository/docker/someengineering/resotoworker) collects infrastructure data from the cloud provider APIs.
-3. [`somecr.io/someengineering/resotometrics`](https://hub.docker.com/repository/docker/someengineering/resotometrics) exports metrics in Prometheus format.
-4. [`somecr.io/someengineering/resotoshell`](https://hub.docker.com/repository/docker/someengineering/resotoshell) provides the [command-line interface](../../reference/cli/index.md) used to interact with Resoto.
+   ```bash
+   $ mkdir -p resoto/dockerV2
+   $ cd resoto
+   $ curl -o docker-compose.yaml https://raw.githubusercontent.com/someengineering/resoto/{{repoBranch}}/docker-compose.yaml
+   $ curl -o dockerV2/prometheus.yml https://raw.githubusercontent.com/someengineering/resoto/{{repoBranch}}/dockerV2/prometheus.yml
+   ```
 
-To install Resoto using [Docker Compose](https://docs.docker.com/compose), first fetch the required files from the [`someengineering/resoto` GitHub repository](https://github.com/someengineering/resoto):
+   </TabItem>
+   <TabItem value="git" label="git">
 
-<Tabs>
-<TabItem value="curl" label="curl">
+   ```bash
+   $ git clone https://github.com/someengineering/resoto.git
+   $ cd resoto
+   $ git checkout tags/{{repoBranch}}
+   ```
 
-```bash
-$ mkdir -p resoto/dockerV2
-$ cd resoto
-$ curl -o docker-compose.yaml https://raw.githubusercontent.com/someengineering/resoto/{{repoBranch}}/docker-compose.yaml
-$ curl -o dockerV2/prometheus.yml https://raw.githubusercontent.com/someengineering/resoto/{{repoBranch}}/dockerV2/prometheus.yml
-$ docker-compose up -d
-```
+   </TabItem>
+   </Tabs>
 
-</TabItem>
-<TabItem value="git" label="git">
+   :::note
 
-```bash
-$ git clone https://github.com/someengineering/resoto.git
-$ cd resoto
-$ git checkout tags/{{repoBranch}}
-$ docker-compose up -d
-```
+   By default, the `resotoshell` service bind-mounts the `~/resoto-downloads` directory to `/home/resoto/downloads` in the container. This allows you to access files outputted by Resoto Shell on the host.
 
-</TabItem>
-</Tabs>
+   If you would like to change the download location from `~/resoto-downloads` to another directory, you can do so by editing the `docker-compose.yaml` file:
 
-Upon execution of `docker-compose up -d`, Docker Compose will start all components and set up the system. This process takes approximately 1-3 minutes, depending on your machine and internet connection.
+   ```yaml
+     resotoshell:
+       image: somecr.io/someengineering/resotoshell:edge
+       container_name: resotoshell
+       depends_on:
+         - resotocore
+       environment:
+         - PSK
+         - RESOTOSHELL_RESOTOCORE_URI=https://resotocore:8900
+       volumes:
+   # highlight-next-line
+         - ~/resoto-downloads:/home/resoto/downloads
+       command:
+         - --wait
+       restart: always
+       stop_grace_period: 2m
+   ```
 
-:::note
+   :::
 
-[Docker Compose V2 integrated compose functions in to the Docker platform.](https://docs.docker.com/compose/#compose-v2-and-the-new-docker-compose-command)
+2. Start the services defined in the `docker-compose.yaml` file:
 
-In Docker Compose V2, the command is `docker compose` (no hyphen) instead of `docker-compose`.
+   ```bash
+   $ docker-compose up -d
+   ```
 
-:::
+   Upon execution of `docker-compose up -d`, Docker Compose will start all components and set up the system. This process takes approximately 1-3 minutes, depending on your machine and internet connection.
 
-:::info
+   :::note
 
-Resoto publishes packages for both x86 and ARM architectures for stable releases, but `edge` versions are only available for x86.
+   [Docker Compose V2 integrated compose functions in to the Docker platform.](https://docs.docker.com/compose/#compose-v2-and-the-new-docker-compose-command)
 
-If you have an Apple Silicon or other ARM-based machine, please use the latest stable release (<LatestRelease /> or `latest`).
+   In Docker Compose V2, the command is `docker compose` (no hyphen) instead of `docker-compose`.
 
-:::
+   :::
+
+   :::info
+
+   Resoto publishes packages for both x86 and ARM architectures for stable releases, but `edge` versions are only available for x86.
+
+   If you have an Apple Silicon or other ARM-based machine, please use the latest stable release (<LatestRelease /> or `latest`).
+
+   :::
 
 ## Launching the Command-Line Interface
 

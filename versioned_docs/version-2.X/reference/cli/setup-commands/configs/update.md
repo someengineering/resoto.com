@@ -2,7 +2,7 @@
 sidebar_label: update
 ---
 
-# `configs update`
+# `configs update` Command
 
 The `configs update` command updates the specified configuration, creating it if it does not already exist.
 

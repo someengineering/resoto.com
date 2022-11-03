@@ -2,7 +2,7 @@
 sidebar_label: test
 ---
 
-# `templates test`
+# `templates test` Command
 
 The `templates test` command tests a search template.
 

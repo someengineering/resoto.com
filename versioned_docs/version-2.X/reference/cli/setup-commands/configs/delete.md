@@ -2,7 +2,7 @@
 sidebar_label: delete
 ---
 
-# `configs delete`
+# `configs delete` Command
 
 The `configs delete` command deletes the specified configuration.
 

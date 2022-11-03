@@ -1,4 +1,8 @@
-# `protect`
+---
+sidebar_label: protect
+---
+
+# `protect` Command
 
 The `protect` command marks all incoming database objects as protected.
 

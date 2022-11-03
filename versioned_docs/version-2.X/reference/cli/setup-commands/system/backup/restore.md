@@ -2,7 +2,7 @@
 sidebar_label: restore
 ---
 
-# `system backup restore`
+# `system backup restore` Command
 
 The `system backup restore` command restores a backup of the database.
 

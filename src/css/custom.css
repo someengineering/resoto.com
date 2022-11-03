@@ -20,7 +20,7 @@
   --ifm-color-primary-contrast-foreground: var(--ifm-color-content);
   --ifm-heading-color: var(--ifm-color-primary);
   --ifm-font-size-base: 110%;
-  --ifm-code-font-size: 80%;
+  --ifm-code-font-size: 85%;
   --ifm-font-family-base: 'Barlow', sans-serif;
   font-variation-settings: 'wght' 100, 'wdth' 500;
   --ifm-h1-font-size: 2.5rem;

@@ -2,7 +2,7 @@
 sidebar_label: run
 ---
 
-# `workflows run`
+# `workflows run` Command
 
 The `workflows run` command runs a workflow.
 

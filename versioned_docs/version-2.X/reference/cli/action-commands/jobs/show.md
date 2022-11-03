@@ -2,7 +2,7 @@
 sidebar_label: show
 ---
 
-# `jobs show`
+# `jobs show` Command
 
 The `jobs show` command shows the definition of a job.
 

@@ -1,4 +1,8 @@
-# `count`
+---
+sidebar_label: count
+---
+
+# `count` Command
 
 The `count` command returns the number of elements or properties in the piped input.
 

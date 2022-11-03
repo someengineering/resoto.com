@@ -1,4 +1,8 @@
-# `tag`
+---
+sidebar_label: tag
+---
+
+# `tag` Command
 
 The `tag` command allows for mass creation, update, and deletion of tags.
 

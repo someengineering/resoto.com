@@ -1,4 +1,8 @@
-# `help`
+---
+sidebar_label: help
+---
+
+# `help` Command
 
 The `help` commands outputs a list of all CLI commands when no argument is provided.
 

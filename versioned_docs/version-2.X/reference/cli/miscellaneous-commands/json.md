@@ -1,4 +1,8 @@
-# `json`
+---
+sidebar_label: json
+---
+
+# `json` Command
 
 The `json` command parses JSON input.
 

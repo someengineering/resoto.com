@@ -1,4 +1,8 @@
-# `ancestors`
+---
+sidebar_label: ancestors
+---
+
+# `ancestors` Command
 
 The `ancestors` command selects all ancestors of nodes returned in a query.
 

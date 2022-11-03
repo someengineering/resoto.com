@@ -1,4 +1,8 @@
-# `workflows`
+---
+sidebar_label: workflows
+---
+
+# `workflows` Command
 
 The `workflows` command allows for the management of workflows.
 

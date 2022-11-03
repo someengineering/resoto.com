@@ -1,4 +1,8 @@
-# `flatten`
+---
+sidebar_label: flatten
+---
+
+# `flatten` Command
 
 The `flatten` command combines groups of elements from the input stream into a stream of individual elements, preserving their original order.
 

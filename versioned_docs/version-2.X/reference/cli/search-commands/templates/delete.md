@@ -2,7 +2,7 @@
 sidebar_label: delete
 ---
 
-# `templates delete`
+# `templates delete` Command
 
 The `templates delete` command deletes a search template.
 

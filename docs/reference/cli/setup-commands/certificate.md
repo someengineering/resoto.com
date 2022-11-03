@@ -1,4 +1,8 @@
-# `certificate`
+---
+sidebar_label: certificate
+---
+
+# `certificate` Command
 
 The `certificate` command is used to create a new TLS certificate and key pair based on the internal root CA certificate. This can be used to create a self-signed certificate for additional components that communicate with Resoto.
 

@@ -2,7 +2,7 @@
 sidebar_label: activate
 ---
 
-# `jobs activate`
+# `jobs activate` Command
 
 The `jobs activate` command activates the triggers of a job.
 

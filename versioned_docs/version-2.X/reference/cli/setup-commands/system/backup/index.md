@@ -1,4 +1,8 @@
-# `system backup`
+---
+sidebar_label: backup
+---
+
+# `system backup` Command
 
 The `system backup` command allows for creating and restoring backups.
 

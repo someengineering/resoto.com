@@ -1,4 +1,8 @@
-# `set_metadata`
+---
+sidebar_label: set_metadata
+---
+
+# `set_metadata` Command
 
 The `set_metadata` command sets one or more properties as metadata for incoming database objects.
 

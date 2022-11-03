@@ -2,7 +2,7 @@
 sidebar_label: list
 ---
 
-# `jobs list`
+# `jobs list` Command
 
 The `jobs list` command lists all jobs.
 

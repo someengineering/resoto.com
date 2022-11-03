@@ -2,7 +2,7 @@
 sidebar_label: show
 ---
 
-# `workflows show`
+# `workflows show` Command
 
 The `workflows show` command shows the definition of a workflow.
 

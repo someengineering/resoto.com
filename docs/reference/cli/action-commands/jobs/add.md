@@ -2,7 +2,7 @@
 sidebar_label: add
 ---
 
-# `jobs add`
+# `jobs add` Command
 
 The `jobs add` command adds a job to the task handler.
 

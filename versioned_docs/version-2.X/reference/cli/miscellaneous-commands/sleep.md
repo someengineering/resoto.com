@@ -1,4 +1,8 @@
-# `sleep`
+---
+sidebar_label: sleep
+---
+
+# `sleep` Command
 
 The `sleep` command suspends execution for a defined interval of time.
 

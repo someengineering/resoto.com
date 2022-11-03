@@ -2,7 +2,7 @@
 sidebar_label: list
 ---
 
-# `workflows list`
+# `workflows list` Command
 
 The `workflows list` command lists all workflows.
 

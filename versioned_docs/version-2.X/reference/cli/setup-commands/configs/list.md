@@ -2,7 +2,7 @@
 sidebar_label: list
 ---
 
-# `configs list`
+# `configs list` Command
 
 The `configs list` command lists all configuration identifiers.
 

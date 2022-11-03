@@ -2,7 +2,7 @@
 sidebar_label: add
 ---
 
-# `templates add`
+# `templates add` Command
 
 The `templates add` command adds a search template.
 

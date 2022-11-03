@@ -1,4 +1,8 @@
-# `clean`
+---
+sidebar_label: clean
+---
+
+# `clean` Command
 
 The `clean` command marks resources for cleaning by setting `desired.clean=true` to the resources. Resources marked as such will be removed during the next cleanup step of the `collect_and_cleanup` workflow. See [concept of workflows](../../../concepts/automation/workflow.md) for reference.
 

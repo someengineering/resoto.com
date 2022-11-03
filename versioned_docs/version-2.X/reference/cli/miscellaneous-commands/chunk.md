@@ -1,4 +1,8 @@
-# `chunk`
+---
+sidebar_label: chunk
+---
+
+# `chunk` Command
 
 The `chunk` command groups elements from the input stream into "chunks" of a defined size.
 

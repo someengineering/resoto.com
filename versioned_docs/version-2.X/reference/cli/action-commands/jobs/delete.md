@@ -2,7 +2,7 @@
 sidebar_label: delete
 ---
 
-# `jobs delete`
+# `jobs delete` Command
 
 The `jobs delete` command deletes a job.
 

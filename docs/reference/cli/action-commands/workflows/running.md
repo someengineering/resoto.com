@@ -2,7 +2,7 @@
 sidebar_label: running
 ---
 
-# `workflows running`
+# `workflows running` Command
 
 The `workflows running` command lists all currently running workflows.
 

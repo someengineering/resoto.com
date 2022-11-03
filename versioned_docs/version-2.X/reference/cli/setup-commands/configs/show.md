@@ -2,7 +2,7 @@
 sidebar_label: show
 ---
 
-# `configs show`
+# `configs show` Command
 
 The `configs show` command shows the specified configuration.
 

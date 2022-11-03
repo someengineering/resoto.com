@@ -1,4 +1,8 @@
-# `set_desired`
+---
+sidebar_label: set_desired
+---
+
+# `set_desired` Command
 
 The `set_desired` command sets one or more properties as desired for incoming database objects.
 

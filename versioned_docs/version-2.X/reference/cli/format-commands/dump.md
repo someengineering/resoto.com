@@ -1,4 +1,8 @@
-# `dump`
+---
+sidebar_label: dump
+---
+
+# `dump` Command
 
 The `dump` command outputs all properties of elements.
 

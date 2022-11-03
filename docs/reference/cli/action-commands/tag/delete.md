@@ -2,7 +2,7 @@
 sidebar_label: delete
 ---
 
-# `tag delete`
+# `tag delete` Command
 
 The `tag delete` command deletes a tag.
 

@@ -2,7 +2,7 @@
 sidebar_label: create
 ---
 
-# `system backup create`
+# `system backup create` Command
 
 The `system backup create` command creates a backup of the database.
 

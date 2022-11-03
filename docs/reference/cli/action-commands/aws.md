@@ -1,4 +1,8 @@
-# `aws`
+---
+sidebar_label: aws
+---
+
+# `aws` Command
 
 The `aws` command executes an operation on an AWS resource. The command supports the same services and operations as the AWS CLI.
 

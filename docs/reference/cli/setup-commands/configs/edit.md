@@ -2,7 +2,7 @@
 sidebar_label: edit
 ---
 
-# `configs edit`
+# `configs edit` Command
 
 The `configs edit` command opens the specified configuration in the locally configured text editor. Changes to the configuration will be updated, when the local file is saved and the editor has exited. It is possible to cancel an update, by not saving the file.
 

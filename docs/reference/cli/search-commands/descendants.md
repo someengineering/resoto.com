@@ -1,4 +1,8 @@
-# `descendants`
+---
+sidebar_label: descendants
+---
+
+# `descendants` Command
 
 The `descendants` command selects all descendants of nodes returned in a query.
 

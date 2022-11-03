@@ -1,4 +1,8 @@
-# `predecessors`
+---
+sidebar_label: predecessors
+---
+
+# `predecessors` Command
 
 The `predecessors` command selects all predecessors of nodes returned in a query.
 

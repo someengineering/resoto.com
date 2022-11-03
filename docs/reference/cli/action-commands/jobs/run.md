@@ -2,7 +2,7 @@
 sidebar_label: run
 ---
 
-# `jobs run`
+# `jobs run` Command
 
 The `jobs run` command runs a job.
 

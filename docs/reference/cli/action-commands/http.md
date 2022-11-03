@@ -1,4 +1,8 @@
-# `http`
+---
+sidebar_label: http
+---
+
+# `http` Command
 
 The `http` command sends objects in a payload to the defined HTTP(S) endpoint.
 

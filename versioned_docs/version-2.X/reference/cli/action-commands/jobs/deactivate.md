@@ -2,7 +2,7 @@
 sidebar_label: deactivate
 ---
 
-# `jobs deactivate`
+# `jobs deactivate` Command
 
 The `jobs deactivate` command deactivates the triggers of a job, so that the job is not started if the triggers are fired.
 

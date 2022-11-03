@@ -1,4 +1,8 @@
-# `aggregate`
+---
+sidebar_label: aggregate
+---
+
+# `aggregate` Command
 
 The `aggregate` command aggregates query results over given properties and applies the defined aggregation functions.
 

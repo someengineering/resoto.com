@@ -1,4 +1,8 @@
-# `jq`
+---
+sidebar_label: jq
+---
+
+# `jq` Command
 
 The `jq` command filters and processes JSON input.
 

@@ -2,7 +2,7 @@
 sidebar_label: update
 ---
 
-# `jobs update`
+# `jobs update` Command
 
 The `jobs update` command updates a job.
 

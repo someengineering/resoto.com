@@ -2,7 +2,7 @@
 sidebar_label: info
 ---
 
-# `system info`
+# `system info` Command
 
 The `system info` command prints information about the system.
 

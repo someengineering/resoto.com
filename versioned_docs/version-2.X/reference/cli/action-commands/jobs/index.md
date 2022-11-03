@@ -1,4 +1,8 @@
-# `jobs`
+---
+sidebar_label: jobs
+---
+
+# `jobs` Command
 
 The `jobs` command allows for the management of jobs.
 

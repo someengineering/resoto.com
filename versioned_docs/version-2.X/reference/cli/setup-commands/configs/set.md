@@ -2,7 +2,7 @@
 sidebar_label: set
 ---
 
-# `configs set`
+# `configs set` Command
 
 The `configs set` command assigns values to specific properties in the specified configuration.
 

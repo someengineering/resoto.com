@@ -2,7 +2,7 @@
 sidebar_label: update
 ---
 
-# `templates update`
+# `templates update` Command
 
 The `templates update` command updates a search template.
 

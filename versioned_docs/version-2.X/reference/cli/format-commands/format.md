@@ -1,4 +1,8 @@
-# `format`
+---
+sidebar_label: format
+---
+
+# `format` Command
 
 The `format` command creates a string from the JSON input based on the provided format string.
 

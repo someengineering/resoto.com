@@ -1,4 +1,8 @@
-# `write`
+---
+sidebar_label: write
+---
+
+# `write` Command
 
 The `write` command outputs data to a file.
 

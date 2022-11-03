@@ -1,4 +1,8 @@
-# `env`
+---
+sidebar_label: env
+---
+
+# `env` Command
 
 The `env` command retrieves environment variables and passes it to the output stream.
 

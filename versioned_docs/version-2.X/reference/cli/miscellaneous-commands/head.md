@@ -1,4 +1,8 @@
-# `head`
+---
+sidebar_label: head
+---
+
+# `head` Command
 
 The `head` command returns the first `n` elements of the input stream and discards the remainder of the stream.
 

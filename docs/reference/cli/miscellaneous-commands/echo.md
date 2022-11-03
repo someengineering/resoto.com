@@ -1,4 +1,8 @@
-# `echo`
+---
+sidebar_label: echo
+---
+
+# `echo` Command
 
 The `echo` command sends the provided message downstream.
 

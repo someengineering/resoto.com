@@ -1,4 +1,8 @@
-# `templates`
+---
+sidebar_label: templates
+---
+
+# `templates` Command
 
 The `templates` command is used to access the search template library.
 

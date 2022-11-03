@@ -1,4 +1,8 @@
-# `search`
+---
+sidebar_label: search
+---
+
+# `search` Command
 
 The `search` command allows you to search the graph using [filters](../../search/filters.md), [traversals](../../search/traversals.md), and [functions](../../search/aggregation.md).
 

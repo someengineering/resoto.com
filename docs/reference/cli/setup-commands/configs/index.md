@@ -1,4 +1,8 @@
-# `configs`
+---
+sidebar_label: configs
+---
+
+# `configs` Command
 
 The `configs` command allows for the management of component configurations.
 

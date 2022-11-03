@@ -1,4 +1,8 @@
-# `system`
+---
+sidebar_label: system
+---
+
+# `system` Command
 
 The `system` command allows for the management of system-wide properties.
 

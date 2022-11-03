@@ -2,7 +2,7 @@
 sidebar_label: update
 ---
 
-# `tag update`
+# `tag update` Command
 
 The `tag update` command updates a tag (or creates a tag if it does not exist).
 

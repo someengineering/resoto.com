@@ -1,4 +1,8 @@
-# `uniq`
+---
+sidebar_label: uniq
+---
+
+# `uniq` Command
 
 The `uniq` command deduplicates input stream objects.
 

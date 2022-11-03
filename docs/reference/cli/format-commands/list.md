@@ -1,4 +1,8 @@
-# `list`
+---
+sidebar_label: list
+---
+
+# `list` Command
 
 The `list` command transforms inputted JSON objects into `string`s.
 

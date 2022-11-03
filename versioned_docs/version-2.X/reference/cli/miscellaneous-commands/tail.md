@@ -1,4 +1,8 @@
-# `tail`
+---
+sidebar_label: tail
+---
+
+# `tail` Command
 
 The `tail` command returns the last `n` elements of the input stream. The beginning of the stream is consumed but discarded.
 

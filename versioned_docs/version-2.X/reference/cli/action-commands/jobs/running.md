@@ -2,7 +2,7 @@
 sidebar_label: running
 ---
 
-# `jobs running`
+# `jobs running` Command
 
 The `jobs running` command lists all currently running jobs.
 

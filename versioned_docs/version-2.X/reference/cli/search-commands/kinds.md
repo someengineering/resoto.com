@@ -1,4 +1,8 @@
-# `kinds`
+---
+sidebar_label: kinds
+---
+
+# `kinds` Command
 
 The `kinds` command retrieves information about the graph data kinds.
 

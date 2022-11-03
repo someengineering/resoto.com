@@ -1,4 +1,8 @@
-# `successors`
+---
+sidebar_label: successors
+---
+
+# `successors` Command
 
 The `successors` command selects all successors of nodes returned in a query.
 

@@ -38,4 +38,14 @@ gcp:
 ...
 ```
 
-The setting `resotoworker.pool_size` determines how many collectors (Amazon Web Services, Google Cloud Platform, DigitalOcean, Kubernetes, etc.) are run concurrently. `aws.account_pool_size` and `gcp.project_pool_size` are used to determine how many accounts or projects respectively are collected concurrently. Within Amazon Web Services, the setting `aws.region_pool_size` is used to determine how many regions per account are collected concurrently.
+- The `resotoworker.pool_size` setting determines how many collectors (Amazon Web Services, Google Cloud Platform, DigitalOcean, Kubernetes, etc.) are run concurrently.
+- `aws.account_pool_size` and `gcp.project_pool_size` are used to determine how many accounts or projects respectively are collected concurrently.
+- Within Amazon Web Services, `aws.region_pool_size` is used to determine how many regions per account are collected concurrently.
+
+:::caution
+
+At peak, Resoto creates concurrent network connections for each region in every account. With a single cloud with 32 accounts and 20 regions per account, for example, there will be a maximum of 32 × 20 = 640 connections.
+
+This is not a problem in a data center or with a <abbr title="small office / home office">SOHO</abbr> router, where hundreds of thousands (or even millions) of new connections per second are supported. However, if you are testing Resoto at home using a consumer-grade router, you should be conservative when configuring thread pool sizes.
+
+:::

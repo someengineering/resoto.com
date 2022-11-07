@@ -14,6 +14,8 @@ With Resoto, it is easy to find and delete AWS IAM access keys that have not bee
 
 This guide assumes that you have already [installed](../../getting-started/install-resoto/index.md) and configured Resoto to [collect your cloud resources](../../getting-started/configure-cloud-provider-access/index.md).
 
+You should also read the [Resource Cleanup](../../concepts/resource-management/cleanup.md) guide to have an understanding how cleanup in Resoto is performed.
+
 ## Directions
 
 1. Execute the following command in [Resoto Shell](../../concepts/components/shell.md) to open the [Resoto Worker](../../concepts/components/worker.md) configuration for editing:

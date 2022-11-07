@@ -20,9 +20,19 @@ The `cleanup_aws_vpcs` plugin automatically flags dependent network resources fo
 - AWS EC2 NAT Gateways
 - AWS EC2 Route Tables
 
+:::note
+
+The `cleanup_aws_vpcs` plugin does not delete the VPC by itself. It only flags dependent resources for cleanup! Read the [Resource Cleanup](../../concepts/resource-management/cleanup.md) guide for more information how cleanup is performed.
+
+tl;dr whenever you flag a VPC for cleanup, this plugin will flag all of its dependent resources for cleanup as well. During Resoto's next cleanup cycle, these resources will then be deleted in the correct order.
+
+:::
+
 ## Prerequisites
 
 This guide assumes that you have already [installed](../../getting-started/install-resoto/index.md) and configured Resoto to [collect your cloud resources](../../getting-started/configure-cloud-provider-access/index.md).
+
+You should also read the [Resource Cleanup](../../concepts/resource-management/cleanup.md) guide to have an understanding how cleanup in Resoto is performed.
 
 ## Directions
 
@@ -68,6 +78,8 @@ This guide assumes that you have already [installed](../../getting-started/insta
    ```
 
 The plugin will now run each time Resoto emits the `post_cleanup_plan` event. The `post_cleanup_plan` event is a part of the `collect_and_cleanup` [workflow](../../concepts/automation/workflow.md) and emitted after resource planning is complete but before the cleanup is performed.
+
+From now on whenever you mark a VPC for cleanup, the plugin will automatically flag dependent network resources for cleanup.
 
 ## Further Reading
 

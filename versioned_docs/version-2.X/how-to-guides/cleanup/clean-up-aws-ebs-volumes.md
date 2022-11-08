@@ -1,10 +1,10 @@
 ---
-sidebar_label: Clean Up Unused AWS EBS Volumes
+sidebar_label: Clean Up AWS EBS Volumes
 sidebar_custom_props:
-  tags: [AWS, EBS, EC2]
+  tags: [AWS, EC2]
 ---
 
-# How to Clean Up Unused AWS EBS Volumes
+# How to Clean Up AWS EBS Volumes
 
 When EC2 instances are removed, their storage volumes are sometimes left behind. Resoto can find and delete these unused storage volumes.
 

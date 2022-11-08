@@ -13,8 +13,6 @@ https://news.resoto.com/*                                         https://resoto
 /blog/2022/05/31/resotonotebook                                   /blog/2022/05/31/resoto-meets-jupyter-notebook
 /blog/2022/06/06/cloud-infrastructure-metrics                     /blog/2022/06/09/building-actionable-cloud-infrastructure-metrics
 
-/documentation/*                                                  /docs/:splat
-
 /docs/concepts/components/resotolib                               /docs/concepts/components/library
 /docs/concepts/components/resh                                    /docs/concepts/components/shell
 /docs/concepts/components/resoto*                                 /docs/concepts/components/:splat
@@ -88,9 +86,14 @@ https://news.resoto.com/*                                         https://resoto
 /tutorial/*                                                       /docs/getting-started/:splat
 /tutorials/*                                                      /docs/getting-started/:splat
 
+/docs/how-to-guides/cleanup/clean-up-aws-vpcs                     /docs/how-to-guides/cleanup/clean-up-aws-vpc-resources
+/docs/how-to-guides/cleanup/clean-up-orphaned-cloudwatch-alerts   /docs/how-to-guides/cleanup/clean-up-aws-cloudwatch-alarms
+/docs/how-to-guides/cleanup/clean-up-orphaned-load-balancers      /docs/how-to-guides/cleanup/clean-up-aws-load-balancers
+/docs/how-to-guides/cleanup/clean-up-unused-aws-ebs-volumes       /docs/how-to-guides/cleanup/clean-up-aws-ebs-volumes
+/docs/how-to-guides/cleanup/clean-up-unused-aws-iam-access-keys   /docs/how-to-guides/cleanup/clean-up-aws-iam-access-keys
+
 /docs/how-to/alerting/set-up-discord-notifications                /docs/how-to-guides/alerting/send-discord-notifications
-/docs/how-to/cleanup/clean-up-aws-vpcs                            /docs/how-to-guides/cleanup/clean-up-aws-vpc-resources
-/docs/how-to/security/find-and-delete-unused-aws-iam-access-keys  /docs/how-to-guides/cleanup/clean-up-unused-aws-iam-access-keys
+/docs/how-to/security/find-and-delete-unused-aws-iam-access-keys  /docs/how-to-guides/cleanup/clean-up-aws-iam-access-keys
 /docs/how-to/security/*                                           /docs/how-to-guides/cleanup
 
 /docs/how-to/*                                                    /docs/how-to-guides/:splat
@@ -171,6 +174,9 @@ https://news.resoto.com/*                                         https://resoto
 /docs/reference/resources/*                                       /docs/reference/data-models/:splat
 
 /reference/*                                                      /docs/reference/:splat
+
+/documentation/*                                                  /docs/:splat
+/docs/edge/*                                                      /docs/:splat
 
 /news/:year/:month/:date/v*                                       /news/:year/:month/:date/:splat
 

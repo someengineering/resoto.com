@@ -1,14 +1,14 @@
 ---
-sidebar_label: Clean Up Orphaned Load Balancers
+sidebar_label: Clean Up AWS CloudWatch Alarms
 sidebar_custom_props:
-  tags: [AWS, ELB, ALB]
+  tags: [AWS, CloudWatch]
 ---
 
-# How to Clean Up Orphaned Load Balancers
+# How to Clean Up AWS CloudWatch Alarms
 
-When compute instances are removed, their load balancers are sometimes left behind.
+When deleting EC2 instances, [CloudWatch](https://aws.amazon.com/cloudwatch) alarms are sometimes left behind.
 
-Resoto's `cleanup_aws_loadbalancers` plugin can find and delete these orphaned load balancers.
+Resoto's `cleanup_aws_alarms` plugin can find and delete these orphaned alarms.
 
 ## Prerequisites
 
@@ -44,30 +44,29 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
    :::
 
-3. Update the `plugin_cleanup_aws_loadbalancers` section, setting the `enabled` property to `true`:
+3. Update the `plugin_cleanup_aws_alarms` section with the desired target cloud account IDs and setting the `enabled` property to `true`:
 
-   ```yaml title="cleanup_aws_loadbalancers plugin configuration"
-   plugin_cleanup_aws_loadbalancers:
+   ```yaml title="cleanup_aws_alarms plugin configuration"
+   plugin_cleanup_aws_alarms:
+     # Dictionary of key cloud with list of account IDs for which the plugin should be active as value
+     config:
+       aws:
+   # highlight-start
+         - '1234567'
+         - '567890'
+   # highlight-end
      # Enable plugin?
    # highlight-next-line
      enabled: true
-     # Minimum age of unused load balancers to cleanup
-     min_age: 7d
    ```
-
-   :::note
-
-   The above plugin configuration cleans up ELBs, ALBs, and ALB target groups older than the minimum age with no attached backends. Items tagged with `expiration: never` will not be flagged for cleanup.
-
-   :::
 
 The plugin will now run each time Resoto emits the `post_cleanup_plan` event. The `post_cleanup_plan` event is a part of the `collect_and_cleanup` [workflow](../../concepts/automation/workflow.md) and emitted after resource planning is complete but before the cleanup is performed.
 
-Each time the `cleanup_aws_loadbalancers` plugin runs, orphaned load balancers will be flagged for removal during the next cleanup run.
+Each time the `cleanup_aws_alarms` plugin runs, orphaned CloudWatch alarms will be flagged for removal during the next cleanup run.
 
 ## Further Reading
 
-- [`cleanup_aws_loadbalancers` Plugin](../../concepts/components/plugins/cleanup_aws_loadbalancers.md)
+- [`cleanup_aws_alarms` Plugin](../../concepts/components/plugins/cleanup_aws_alarms.md)
 - [Resource Cleanup](../../concepts/resource-management/cleanup.md)
 - [Configuration](../../reference/configuration/index.md)
 - [Workflow](../../concepts/automation/workflow.md)

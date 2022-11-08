@@ -1,10 +1,10 @@
 ---
-sidebar_label: Clean Up Unused AWS IAM Access Keys
+sidebar_label: Clean Up AWS IAM Access Keys
 sidebar_custom_props:
   tags: [AWS, IAM]
 ---
 
-# How to Clean Up Unused AWS IAM Access Keys
+# How to Clean Up AWS IAM Access Keys
 
 IAM access keys are long-term AWS credentials, and it is best practice to remove keys that are no longer in use. Removing unused keys enhances the security and reduces your exposure to risk.
 

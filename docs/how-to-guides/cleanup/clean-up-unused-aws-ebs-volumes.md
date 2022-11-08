@@ -12,8 +12,6 @@ When EC2 instances are removed, their storage volumes are sometimes left behind.
 
 This guide assumes that you have already [installed](../../getting-started/install-resoto/index.md) and configured Resoto to [collect your cloud resources](../../getting-started/configure-cloud-provider-access/index.md).
 
-You should also read the [Resource Cleanup](../../concepts/resource-management/cleanup.md) guide to have an understanding how cleanup in Resoto is performed.
-
 ## Directions
 
 1. Execute the following command in [Resoto Shell](../../concepts/components/shell.md) to open the [Resoto Worker](../../concepts/components/worker.md) configuration for editing:
@@ -26,12 +24,12 @@ You should also read the [Resource Cleanup](../../concepts/resource-management/c
 
    ```yaml
    resotoworker:
-   # highlight-start
      # Enable cleanup of resources
+   # highlight-next-line
      cleanup: true
      # Do not actually cleanup resources, just create log messages
+   # highlight-next-line
      cleanup_dry_run: false
-   # highlight-end
      # How many cleanup threads to run in parallel
      cleanup_pool_size: 16
    ```
@@ -68,7 +66,7 @@ You should also read the [Resource Cleanup](../../concepts/resource-management/c
 
    :::
 
-6. Finally, let's automate flagging unused EBS volumes for cleanup by creating a [job](../../concepts/automation/job.md):
+6. Automate flagging unused EBS volumes for cleanup by creating a [job](../../concepts/automation/job.md):
 
    ```bash
    > jobs add --id cleanup-unused-volumes --wait-for-event cleanup_plan 'search is(aws_ec2_volume) and /ancestors.account.reported.name in [eng-jenkins,eng-development] and volume_status = available and age > 30d and last_access > 7d | clean'
@@ -76,9 +74,13 @@ You should also read the [Resource Cleanup](../../concepts/resource-management/c
 
 The job will now run each time Resoto emits the `cleanup_plan` event. The `cleanup_plan` event is a part of the `collect_and_cleanup` [workflow](../../concepts/automation/workflow.md) and emitted after resource collection is complete but before the cleanup is performed.
 
+Each time the job runs, unused storage volumes will be flagged for removal during the next cleanup run.
+
 ## Further Reading
 
+- [Resource Cleanup](../../concepts/resource-management/cleanup.md)
+- [Configuration](../../reference/configuration/index.md)
 - [Search](../../reference/search/index.md)
 - [Job](../../concepts/automation/job.md)
-- [Workflow](../../concepts/automation/job.md)
+- [Workflow](../../concepts/automation/workflow.md)
 - [Command-Line Interface](../../reference/cli/index.md)

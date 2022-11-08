@@ -89,6 +89,7 @@ https://news.resoto.com/*                                         https://resoto
 /tutorials/*                                                      /docs/getting-started/:splat
 
 /docs/how-to/alerting/set-up-discord-notifications                /docs/how-to-guides/alerting/send-discord-notifications
+/docs/how-to/cleanup/clean-up-aws-vpcs                            /docs/how-to-guides/cleanup/clean-up-aws-vpc-resources
 /docs/how-to/security/find-and-delete-unused-aws-iam-access-keys  /docs/how-to-guides/cleanup/clean-up-unused-aws-iam-access-keys
 /docs/how-to/security/*                                           /docs/how-to-guides/cleanup
 

@@ -6,13 +6,13 @@ sidebar_custom_props:
 
 # How to Clean Up Orphaned Load Balancers
 
-When compute instances are removed, their load balancers are sometimes left behind. Resoto can find and delete these orphaned load balancers.
+When compute instances are removed, their load balancers are sometimes left behind.
+
+Resoto's `cleanup_aws_loadbalancers` plugin can find and delete these orphaned load balancers.
 
 ## Prerequisites
 
 This guide assumes that you have already [installed](../../getting-started/install-resoto/index.md) and configured Resoto to [collect your cloud resources](../../getting-started/configure-cloud-provider-access/index.md).
-
-You should also read the [Resource Cleanup](../../concepts/resource-management/cleanup.md) guide to have an understanding how cleanup in Resoto is performed.
 
 ## Directions
 
@@ -26,12 +26,12 @@ You should also read the [Resource Cleanup](../../concepts/resource-management/c
 
    ```yaml
    resotoworker:
-   # highlight-start
      # Enable cleanup of resources
+   # highlight-next-line
      cleanup: true
      # Do not actually cleanup resources, just create log messages
+   # highlight-next-line
      cleanup_dry_run: false
-   # highlight-end
      # How many cleanup threads to run in parallel
      cleanup_pool_size: 16
    ```
@@ -44,11 +44,12 @@ You should also read the [Resource Cleanup](../../concepts/resource-management/c
 
    :::
 
-3. Finally, update the `plugin_cleanup_aws_loadbalancers` section, setting the `enabled` property to `true`:
+3. Update the `plugin_cleanup_aws_loadbalancers` section, setting the `enabled` property to `true`:
 
    ```yaml title="cleanup_aws_loadbalancers plugin configuration"
    plugin_cleanup_aws_loadbalancers:
      # Enable plugin?
+   # highlight-next-line
      enabled: true
      # Minimum age of unused load balancers to cleanup
      min_age: 7d
@@ -62,9 +63,12 @@ You should also read the [Resource Cleanup](../../concepts/resource-management/c
 
 The plugin will now run each time Resoto emits the `post_cleanup_plan` event. The `post_cleanup_plan` event is a part of the `collect_and_cleanup` [workflow](../../concepts/automation/workflow.md) and emitted after resource planning is complete but before the cleanup is performed.
 
+Each time the `cleanup_aws_loadbalancers` plugin runs, orphaned load balancers will be flagged for removal during the next cleanup run.
+
 ## Further Reading
 
 - [`cleanup_aws_loadbalancers` Plugin](../../concepts/components/plugins/cleanup_aws_loadbalancers.md)
+- [Resource Cleanup](../../concepts/resource-management/cleanup.md)
 - [Configuration](../../reference/configuration/index.md)
-- [Workflow](../../concepts/automation/job.md)
+- [Workflow](../../concepts/automation/workflow.md)
 - [Command-Line Interface](../../reference/cli/index.md)

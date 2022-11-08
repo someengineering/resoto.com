@@ -1,12 +1,14 @@
 ---
-sidebar_label: Clean Up AWS VPCs
+sidebar_label: Clean Up AWS VPC Resources
 sidebar_custom_props:
   tags: [AWS, VPC]
 ---
 
-# How to Clean Up AWS VPCs
+# How to Clean Up AWS VPC Resources
 
-The `cleanup_aws_vpcs` plugin automatically flags dependent network resources for cleanup when a VPC is deleted. These resources include:
+When deleting AWS VPCs, dependent network resources are sometimes left behind.
+
+Resoto's `cleanup_aws_vpcs` plugin can find and delete these orphaned resources, which include:
 
 - AWS VPC Peering Connections
 - AWS EC2 Network ACLs
@@ -20,19 +22,9 @@ The `cleanup_aws_vpcs` plugin automatically flags dependent network resources fo
 - AWS EC2 NAT Gateways
 - AWS EC2 Route Tables
 
-:::note
-
-The `cleanup_aws_vpcs` plugin does not delete the VPC by itself. It only flags dependent resources for cleanup! Read the [Resource Cleanup](../../concepts/resource-management/cleanup.md) guide for more information how cleanup is performed.
-
-tl;dr whenever you flag a VPC for cleanup, this plugin will flag all of its dependent resources for cleanup as well. During Resoto's next cleanup cycle, these resources will then be deleted in the correct order.
-
-:::
-
 ## Prerequisites
 
 This guide assumes that you have already [installed](../../getting-started/install-resoto/index.md) and configured Resoto to [collect your cloud resources](../../getting-started/configure-cloud-provider-access/index.md).
-
-You should also read the [Resource Cleanup](../../concepts/resource-management/cleanup.md) guide to have an understanding how cleanup in Resoto is performed.
 
 ## Directions
 
@@ -46,12 +38,12 @@ You should also read the [Resource Cleanup](../../concepts/resource-management/c
 
    ```yaml
    resotoworker:
-   # highlight-start
      # Enable cleanup of resources
+   # highlight-next-line
      cleanup: true
      # Do not actually cleanup resources, just create log messages
+   # highlight-next-line
      cleanup_dry_run: false
-   # highlight-end
      # How many cleanup threads to run in parallel
      cleanup_pool_size: 16
    ```
@@ -64,26 +56,30 @@ You should also read the [Resource Cleanup](../../concepts/resource-management/c
 
    :::
 
-3. Finally, update the `plugin_cleanup_aws_vpcs` section with the desired target cloud account IDs and setting the `enabled` property to `true`:
+3. Update the `plugin_cleanup_aws_vpcs` section with the desired target cloud account IDs and setting the `enabled` property to `true`:
 
    ```yaml title="cleanup_aws_vpcs plugin configuration"
    plugin_cleanup_aws_vpcs:
      # Dictionary of key cloud with list of account IDs for which the plugin should be active as value
      config:
        aws:
+   # highlight-start
          - '1234567'
          - '567890'
+   # highlight-end
      # Enable plugin?
+   # highlight-next-line
      enabled: true
    ```
 
 The plugin will now run each time Resoto emits the `post_cleanup_plan` event. The `post_cleanup_plan` event is a part of the `collect_and_cleanup` [workflow](../../concepts/automation/workflow.md) and emitted after resource planning is complete but before the cleanup is performed.
 
-From now on whenever you mark a VPC for cleanup, the plugin will automatically flag dependent network resources for cleanup.
+Each time the `cleanup_aws_vpcs` plugin runs, network resources associated with VPCs that have been deleted or marked for [cleanup](../../concepts/resource-management/cleanup.md) will also be flagged for removal during the next cleanup run.
 
 ## Further Reading
 
 - [`cleanup_aws_vpcs` Plugin](../../concepts/components/plugins/cleanup_aws_vpcs.md)
+- [Resource Cleanup](../../concepts/resource-management/cleanup.md)
 - [Configuration](../../reference/configuration/index.md)
-- [Workflow](../../concepts/automation/job.md)
+- [Workflow](../../concepts/automation/workflow.md)
 - [Command-Line Interface](../../reference/cli/index.md)

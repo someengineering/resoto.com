@@ -43,7 +43,7 @@ This guide assumes that you have already [installed](../../../getting-started/in
    # highlight-end
    ```
 
-2. Next, pipe the search result into the [`format `command] to flatten it into rows and columns:
+2. Next, pipe the search result into the [`format `command](../../../reference/cli/format-commands/format.md) to flatten it into rows and columns:
 
    ```bash
    > search aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account: sum(volume_size * 1024 * 1024 * 1024) as volume_bytes): is(volume) | format {/group.cloud} {/group.account},{/volume_bytes}

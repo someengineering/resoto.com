@@ -14,8 +14,6 @@ With Resoto, it is easy to find and delete AWS IAM access keys that have not bee
 
 This guide assumes that you have already [installed](../../getting-started/install-resoto/index.md) and configured Resoto to [collect your cloud resources](../../getting-started/configure-cloud-provider-access/index.md).
 
-You should also read the [Resource Cleanup](../../concepts/resource-management/cleanup.md) guide to have an understanding how cleanup in Resoto is performed.
-
 ## Directions
 
 1. Execute the following command in [Resoto Shell](../../concepts/components/shell.md) to open the [Resoto Worker](../../concepts/components/worker.md) configuration for editing:
@@ -28,12 +26,12 @@ You should also read the [Resource Cleanup](../../concepts/resource-management/c
 
    ```yaml
    resotoworker:
-   # highlight-start
      # Enable cleanup of resources
+   # highlight-next-line
      cleanup: true
      # Do not actually cleanup resources, just create log messages
+   # highlight-next-line
      cleanup_dry_run: false
-   # highlight-end
      # How many cleanup threads to run in parallel
      cleanup_pool_size: 16
    ```
@@ -90,7 +88,7 @@ You should also read the [Resource Cleanup](../../concepts/resource-management/c
 
    :::
 
-5. Finally, let's automate flagging unused access keys for cleanup by creating a [job](../../concepts/automation/job.md):
+5. Automate flagging unused access keys for cleanup by creating a [job](../../concepts/automation/job.md):
 
    ```bash
    > jobs add --id clean_outdated_access_keys --wait-for-event post_collect 'search is(access_key) and last_access > 90days and /ancestors.user.reported.name not in [jenkins, ci] | clean'
@@ -100,9 +98,12 @@ You should also read the [Resource Cleanup](../../concepts/resource-management/c
 
 The job will now run each time Resoto emits the `cleanup_plan` event. The `cleanup_plan` event is a part of the `collect_and_cleanup` [workflow](../../concepts/automation/workflow.md) and emitted after resource collection is complete but before the cleanup is performed.
 
+Each time the job runs, unused IAM access keys will be flagged for removal during the next cleanup run.
+
 ## Further Reading
 
+- [Resource Cleanup](../../concepts/resource-management/cleanup.md)
 - [Search](../../reference/search/index.md)
 - [Job](../../concepts/automation/job.md)
-- [Workflow](../../concepts/automation/job.md)
+- [Workflow](../../concepts/automation/workflow.md)
 - [Command-Line Interface](../../reference/cli/index.md)

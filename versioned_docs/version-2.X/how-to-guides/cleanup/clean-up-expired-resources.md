@@ -1,12 +1,15 @@
 ---
 sidebar_label: Clean Up Expired Resources
+sidebar_position: 1
 sidebar_custom_props:
   tags: [AWS, GCP, DigitalOcean, Kubernetes]
 ---
 
 # How to Clean Up Expired Resources
 
-A resource can be tagged with an [expiration](../../concepts/resource-management/expiration.md) tag that instructs Resoto to clean it up at a defined time. This can serve as a safety net for when a CI job fails or the IaC tool aborts halfway through its run, or even as the primary means of managing resource lifecycles.
+A resource can be tagged with an [expiration](../../concepts/resource-management/expiration.md) tag that instructs Resoto to clean it up after it has reached a certain age. This can serve as a safety net for when a CI job fails or the IaC tool aborts halfway through its run, or even as the primary means of managing resource lifecycles.
+
+Resoto's `cleanup_expired` plugin can find and delete expired resources.
 
 ## Prerequisites
 
@@ -24,12 +27,12 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
    ```yaml
    resotoworker:
-   # highlight-start
      # Enable cleanup of resources
+   # highlight-next-line
      cleanup: true
      # Do not actually cleanup resources, just create log messages
+   # highlight-next-line
      cleanup_dry_run: false
-   # highlight-end
      # How many cleanup threads to run in parallel
      cleanup_pool_size: 16
    ```
@@ -42,15 +45,39 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
    :::
 
-3. Finally, update the `plugin_cleanup_expired` section, setting the `enabled` property to `true`:
+3. Update the `plugin_cleanup_expired` section, setting the `enabled` property to `true`:
 
    ```yaml title="cleanup_expired plugin configuration"
    plugin_cleanup_expired:
      # Enable plugin?
+   # highlight-next-line
      enabled: true
    ```
 
-The plugin will now run each time Resoto emits the `post_cleanup_plan` event. The `post_cleanup_plan` event is a part of the `collect_and_cleanup` [workflow](../../concepts/automation/workflow.md) and emitted after resource planning is complete but before the cleanup is performed.
+The plugin will now run each time Resoto emits the `cleanup_plan` event. The `cleanup_plan` event is a part of the `collect_and_cleanup` and `cleanup` [workflows](../../concepts/automation/workflow.md) and emitted after resource collection is complete but before the cleanup is performed.
+
+Each time the `cleanup_expired` plugin runs, expired resources will be flagged for removal during the next cleanup run.
+
+:::info
+
+A resource's expiration time can be defined either with an [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) timestamp or time delta:
+
+| Tag Name                            | Description                                                                  | Example                     |
+| ----------------------------------- | ---------------------------------------------------------------------------- | --------------------------- |
+| `resoto:expires`                    | [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) timestamp | `2022-09-21T10:40:11+00:00` |
+| `resoto:expiration` or `expiration` | Time delta from resource creation time                                       | `24h`                       |
+
+Please see the [Resource Expiration](../../concepts/resource-management/expiration.md) for more information about expiration tags.
+
+:::
+
+:::tip
+
+If you would like to apply expiration tags to existing resources, [How to Find Untagged Resources](../search/find-untagged-resources.md) describes how to find untagged resources.
+
+[How to Clean Up Untagged Resources](./clean-up-untagged-resources.md) describes how to clean up untagged resources, which can be helpful in enforcing tagging policies.
+
+:::
 
 ## Related How-To Guides
 
@@ -60,6 +87,7 @@ The plugin will now run each time Resoto emits the `post_cleanup_plan` event. Th
 
 - [`cleanup_expired` Plugin](../../concepts/components/plugins/cleanup_expired.md)
 - [Resource Expiration](../../concepts/resource-management/expiration.md)
+- [Resource Cleanup](../../concepts/resource-management/cleanup.md)
 - [Configuration](../../reference/configuration/index.md)
-- [Workflow](../../concepts/automation/job.md)
+- [Workflow](../../concepts/automation/workflow.md)
 - [Command-Line Interface](../../reference/cli/index.md)

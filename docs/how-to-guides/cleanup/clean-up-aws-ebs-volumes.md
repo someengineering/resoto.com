@@ -1,10 +1,10 @@
 ---
-sidebar_label: Clean Up Unused AWS EBS Volumes
+sidebar_label: Clean Up AWS EBS Volumes
 sidebar_custom_props:
-  tags: [AWS, EBS, EC2]
+  tags: [AWS, EC2]
 ---
 
-# How to Clean Up Unused AWS EBS Volumes
+# How to Clean Up AWS EBS Volumes
 
 When EC2 instances are removed, their storage volumes are sometimes left behind. Resoto can find and delete these unused storage volumes.
 
@@ -24,12 +24,12 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
    ```yaml
    resotoworker:
-   # highlight-start
      # Enable cleanup of resources
+   # highlight-next-line
      cleanup: true
      # Do not actually cleanup resources, just create log messages
+   # highlight-next-line
      cleanup_dry_run: false
-   # highlight-end
      # How many cleanup threads to run in parallel
      cleanup_pool_size: 16
    ```
@@ -66,7 +66,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
    :::
 
-6. Finally, let's automate flagging unused EBS volumes for cleanup by creating a [job](../../concepts/automation/job.md):
+6. Automate flagging unused EBS volumes for cleanup by creating a [job](../../concepts/automation/job.md):
 
    ```bash
    > jobs add --id cleanup-unused-volumes --wait-for-event cleanup_plan 'search is(aws_ec2_volume) and /ancestors.account.reported.name in [eng-jenkins,eng-development] and volume_status = available and age > 30d and last_access > 7d | clean'
@@ -74,9 +74,13 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
 The job will now run each time Resoto emits the `cleanup_plan` event. The `cleanup_plan` event is a part of the `collect_and_cleanup` [workflow](../../concepts/automation/workflow.md) and emitted after resource collection is complete but before the cleanup is performed.
 
+Each time the job runs, unused storage volumes will be flagged for removal during the next cleanup run.
+
 ## Further Reading
 
+- [Resource Cleanup](../../concepts/resource-management/cleanup.md)
+- [Configuration](../../reference/configuration/index.md)
 - [Search](../../reference/search/index.md)
 - [Job](../../concepts/automation/job.md)
-- [Workflow](../../concepts/automation/job.md)
+- [Workflow](../../concepts/automation/workflow.md)
 - [Command-Line Interface](../../reference/cli/index.md)

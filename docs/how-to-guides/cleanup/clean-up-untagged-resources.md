@@ -1,12 +1,15 @@
 ---
 sidebar_label: Clean Up Untagged Resources
+sidebar_position: 2
 sidebar_custom_props:
   tags: [AWS, GCP, DigitalOcean, Kubernetes]
 ---
 
 # How to Clean Up Untagged Resources
 
-Resource tags are an essential tool in finding and tracking an organization's cloud resources, but tags are only useful if they are applied consistently. Resoto can enforce tagging policies by automatically cleaning up resources that do not have the required tags (e.g., `owner` and `expiration`).
+Resource tags are an essential tool in finding and tracking an organization's cloud resources, but tags are only useful if they are applied consistently.
+
+Resoto's `cleanup_untagged` plugin can enforce tagging policies by automatically cleaning up resources that do not have required tags (e.g., `owner` and `expiration`).
 
 ## Prerequisites
 
@@ -24,12 +27,12 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
    ```yaml
    resotoworker:
-   # highlight-start
      # Enable cleanup of resources
+   # highlight-next-line
      cleanup: true
      # Do not actually cleanup resources, just create log messages
+   # highlight-next-line
      cleanup_dry_run: false
-   # highlight-end
      # How many cleanup threads to run in parallel
      cleanup_pool_size: 16
    ```
@@ -42,15 +45,17 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
    :::
 
-3. Finally, update the `plugin_cleanup_untagged` section with the desired target AWS account IDs and setting the `enabled` property to `true`:
+3. Update the `plugin_cleanup_untagged` section with the desired target AWS account IDs and setting the `enabled` property to `true`:
 
    ```yaml title="cleanup_untagged plugin configuration"
    plugin_cleanup_untagged:
      # Enable plugin?
+   # highlight-next-line
      enabled: true
      # Configuration for the plugin
      config:
        accounts:
+   # highlight-start
          aws:
            '068564737731':
              name: 'playground'
@@ -60,6 +65,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
          example:
            Example Account:
              name: 'Example Account'
+   # highlight-end
        default:
          age: '2h'
        kinds:
@@ -92,6 +98,8 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
 The plugin will now run each time Resoto emits the `post_cleanup_plan` event. The `post_cleanup_plan` event is a part of the `collect_and_cleanup` [workflow](../../concepts/automation/workflow.md) and emitted after resource planning is complete but before the cleanup is performed.
 
+Each time the `cleanup_untagged` plugin runs, resources for which the specified tag requirements are not met will be flagged for removal during the next cleanup run.
+
 ## Related How-To Guides
 
 - [How to Find Untagged Resources](../search/find-untagged-resources.md)
@@ -100,6 +108,7 @@ The plugin will now run each time Resoto emits the `post_cleanup_plan` event. Th
 
 - [`cleanup_untagged` Plugin](../../concepts/components/plugins/cleanup_untagged.md)
 - [Resource Tagging](../../concepts/resource-management/tagging.md)
+- [Resource Cleanup](../../concepts/resource-management/cleanup.md)
 - [Configuration](../../reference/configuration/index.md)
-- [Workflow](../../concepts/automation/job.md)
+- [Workflow](../../concepts/automation/workflow.md)
 - [Command-Line Interface](../../reference/cli/index.md)

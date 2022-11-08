@@ -1,10 +1,10 @@
 ---
-sidebar_label: Clean Up Unused AWS IAM Access Keys
+sidebar_label: Clean Up AWS IAM Access Keys
 sidebar_custom_props:
   tags: [AWS, IAM]
 ---
 
-# How to Clean Up Unused AWS IAM Access Keys
+# How to Clean Up AWS IAM Access Keys
 
 IAM access keys are long-term AWS credentials, and it is best practice to remove keys that are no longer in use. Removing unused keys enhances the security and reduces your exposure to risk.
 
@@ -26,12 +26,12 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
    ```yaml
    resotoworker:
-   # highlight-start
      # Enable cleanup of resources
+   # highlight-next-line
      cleanup: true
      # Do not actually cleanup resources, just create log messages
+   # highlight-next-line
      cleanup_dry_run: false
-   # highlight-end
      # How many cleanup threads to run in parallel
      cleanup_pool_size: 16
    ```
@@ -88,7 +88,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
    :::
 
-5. Finally, let's automate flagging unused access keys for cleanup by creating a [job](../../concepts/automation/job.md):
+5. Automate flagging unused access keys for cleanup by creating a [job](../../concepts/automation/job.md):
 
    ```bash
    > jobs add --id clean_outdated_access_keys --wait-for-event post_collect 'search is(access_key) and last_access > 90days and /ancestors.user.reported.name not in [jenkins, ci] | clean'
@@ -98,9 +98,12 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
 The job will now run each time Resoto emits the `cleanup_plan` event. The `cleanup_plan` event is a part of the `collect_and_cleanup` [workflow](../../concepts/automation/workflow.md) and emitted after resource collection is complete but before the cleanup is performed.
 
+Each time the job runs, unused IAM access keys will be flagged for removal during the next cleanup run.
+
 ## Further Reading
 
+- [Resource Cleanup](../../concepts/resource-management/cleanup.md)
 - [Search](../../reference/search/index.md)
 - [Job](../../concepts/automation/job.md)
-- [Workflow](../../concepts/automation/job.md)
+- [Workflow](../../concepts/automation/workflow.md)
 - [Command-Line Interface](../../reference/cli/index.md)

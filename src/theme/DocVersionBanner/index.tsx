@@ -33,8 +33,8 @@ function UnreleasedVersionLabel({
           ? 'edge'
           : versionMetadata.label}
       </code>{' '}
-      version of Resoto. This documentation may reflect changes that have yet to
-      be released.
+      version of Resoto. This page may reflect changes that have yet to be
+      released.
     </>
   );
 }
@@ -45,8 +45,8 @@ function UnmaintainedVersionLabel({
   return (
     <>
       You are currently viewing documentation for version{' '}
-      <code>{versionMetadata.label}</code> of Resoto. This documentation is no
-      longer actively maintained.
+      <code>{versionMetadata.label}</code> of Resoto. This page is no longer
+      actively maintained.
     </>
   );
 }
@@ -77,7 +77,7 @@ function LatestVersionSuggestionLabel({
     <strong>
       <Link to={to} onClick={onClick}>
         Click here to view documentation for the latest stable release (
-        {<code>{versionLabel}</code>}).
+        <code>{versionLabel}</code>).
       </Link>
     </strong>
   );

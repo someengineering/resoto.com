@@ -146,6 +146,7 @@ const config = {
         sidebar: {
           autoCollapseCategories: true,
         },
+        versionPersistence: 'none',
       },
       metadata: [
         {

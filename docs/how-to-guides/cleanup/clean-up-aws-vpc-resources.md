@@ -1,7 +1,5 @@
 ---
 sidebar_label: Clean Up AWS VPC Resources
-sidebar_custom_props:
-  tags: [AWS, VPC]
 ---
 
 # How to Clean Up AWS VPC Resources

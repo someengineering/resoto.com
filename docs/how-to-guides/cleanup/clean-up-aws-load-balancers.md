@@ -1,7 +1,5 @@
 ---
 sidebar_label: Clean Up AWS Load Balancers
-sidebar_custom_props:
-  tags: [AWS, ELB, ALB]
 ---
 
 # How to Clean Up AWS Load Balancers

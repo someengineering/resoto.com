@@ -1,7 +1,5 @@
 ---
 sidebar_label: Clean Up AWS EBS Volumes
-sidebar_custom_props:
-  tags: [AWS, EC2]
 ---
 
 # How to Clean Up AWS EBS Volumes

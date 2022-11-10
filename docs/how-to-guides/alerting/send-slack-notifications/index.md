@@ -1,7 +1,5 @@
 ---
 sidebar_label: Send Slack Notifications
-sidebar_custom_props:
-  tags: [Slack]
 ---
 
 # How to Send Slack Notifications

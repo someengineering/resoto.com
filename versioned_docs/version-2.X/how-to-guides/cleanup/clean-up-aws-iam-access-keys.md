@@ -1,7 +1,5 @@
 ---
 sidebar_label: Clean Up AWS IAM Access Keys
-sidebar_custom_props:
-  tags: [AWS, IAM]
 ---
 
 # How to Clean Up AWS IAM Access Keys

@@ -1,7 +1,5 @@
 ---
 sidebar_label: Send Prometheus Alertmanager Alerts
-sidebar_custom_props:
-  tags: [Prometheus, Alertmanager]
 ---
 
 # How to Send Prometheus Alertmanager Alerts

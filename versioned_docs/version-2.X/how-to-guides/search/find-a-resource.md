@@ -1,7 +1,5 @@
 ---
 sidebar_label: Find a Resource
-sidebar_custom_props:
-  tags: [AWS, GCP, DigitalOcean, Kubernetes]
 ---
 
 # How to Find a Resource

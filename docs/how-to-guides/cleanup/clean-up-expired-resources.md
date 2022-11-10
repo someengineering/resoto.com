@@ -1,8 +1,6 @@
 ---
 sidebar_label: Clean Up Expired Resources
 sidebar_position: 1
-sidebar_custom_props:
-  tags: [AWS, GCP, DigitalOcean, Kubernetes]
 ---
 
 # How to Clean Up Expired Resources

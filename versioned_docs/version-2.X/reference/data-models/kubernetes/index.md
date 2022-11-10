@@ -23,11 +23,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_cluster relationship to other resources](./img/kubernetes_cluster_relationships.svg)
+![Diagram of kubernetes_cluster resource relationships](./img/kubernetes_cluster_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -42,11 +42,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_cluster_role relationship to other resources](./img/kubernetes_cluster_role_relationships.svg)
+![Diagram of kubernetes_cluster_role resource relationships](./img/kubernetes_cluster_role_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -61,11 +61,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_cluster_role_binding relationship to other resources](./img/kubernetes_cluster_role_binding_relationships.svg)
+![Diagram of kubernetes_cluster_role_binding resource relationships](./img/kubernetes_cluster_role_binding_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -80,11 +80,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_config_map relationship to other resources](./img/kubernetes_config_map_relationships.svg)
+![Diagram of kubernetes_config_map resource relationships](./img/kubernetes_config_map_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -99,11 +99,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_controller_revision relationship to other resources](./img/kubernetes_controller_revision_relationships.svg)
+![Diagram of kubernetes_controller_revision resource relationships](./img/kubernetes_controller_revision_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -118,11 +118,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_cron_job relationship to other resources](./img/kubernetes_cron_job_relationships.svg)
+![Diagram of kubernetes_cron_job resource relationships](./img/kubernetes_cron_job_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -137,11 +137,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_csi_driver relationship to other resources](./img/kubernetes_csi_driver_relationships.svg)
+![Diagram of kubernetes_csi_driver resource relationships](./img/kubernetes_csi_driver_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -156,11 +156,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_csi_node relationship to other resources](./img/kubernetes_csi_node_relationships.svg)
+![Diagram of kubernetes_csi_node resource relationships](./img/kubernetes_csi_node_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -175,11 +175,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_csi_storage_capacity relationship to other resources](./img/kubernetes_csi_storage_capacity_relationships.svg)
+![Diagram of kubernetes_csi_storage_capacity resource relationships](./img/kubernetes_csi_storage_capacity_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -194,11 +194,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_daemon_set relationship to other resources](./img/kubernetes_daemon_set_relationships.svg)
+![Diagram of kubernetes_daemon_set resource relationships](./img/kubernetes_daemon_set_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -213,11 +213,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_deployment relationship to other resources](./img/kubernetes_deployment_relationships.svg)
+![Diagram of kubernetes_deployment resource relationships](./img/kubernetes_deployment_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -232,11 +232,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_endpoint relationship to other resources](./img/kubernetes_endpoint_relationships.svg)
+![Diagram of kubernetes_endpoint resource relationships](./img/kubernetes_endpoint_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -251,11 +251,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_endpoint_slice relationship to other resources](./img/kubernetes_endpoint_slice_relationships.svg)
+![Diagram of kubernetes_endpoint_slice resource relationships](./img/kubernetes_endpoint_slice_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -270,11 +270,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_flow_schema relationship to other resources](./img/kubernetes_flow_schema_relationships.svg)
+![Diagram of kubernetes_flow_schema resource relationships](./img/kubernetes_flow_schema_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -289,11 +289,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_horizontal_pod_autoscaler relationship to other resources](./img/kubernetes_horizontal_pod_autoscaler_relationships.svg)
+![Diagram of kubernetes_horizontal_pod_autoscaler resource relationships](./img/kubernetes_horizontal_pod_autoscaler_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -308,11 +308,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_ingress relationship to other resources](./img/kubernetes_ingress_relationships.svg)
+![Diagram of kubernetes_ingress resource relationships](./img/kubernetes_ingress_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -327,11 +327,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_ingress_class relationship to other resources](./img/kubernetes_ingress_class_relationships.svg)
+![Diagram of kubernetes_ingress_class resource relationships](./img/kubernetes_ingress_class_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -346,11 +346,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_job relationship to other resources](./img/kubernetes_job_relationships.svg)
+![Diagram of kubernetes_job resource relationships](./img/kubernetes_job_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -365,11 +365,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_limit_range relationship to other resources](./img/kubernetes_limit_range_relationships.svg)
+![Diagram of kubernetes_limit_range resource relationships](./img/kubernetes_limit_range_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -384,11 +384,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_mutating_webhook_configuration relationship to other resources](./img/kubernetes_mutating_webhook_configuration_relationships.svg)
+![Diagram of kubernetes_mutating_webhook_configuration resource relationships](./img/kubernetes_mutating_webhook_configuration_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -403,11 +403,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_namespace relationship to other resources](./img/kubernetes_namespace_relationships.svg)
+![Diagram of kubernetes_namespace resource relationships](./img/kubernetes_namespace_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -422,11 +422,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_network_policy relationship to other resources](./img/kubernetes_network_policy_relationships.svg)
+![Diagram of kubernetes_network_policy resource relationships](./img/kubernetes_network_policy_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -441,11 +441,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_node relationship to other resources](./img/kubernetes_node_relationships.svg)
+![Diagram of kubernetes_node resource relationships](./img/kubernetes_node_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -460,11 +460,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_persistent_volume relationship to other resources](./img/kubernetes_persistent_volume_relationships.svg)
+![Diagram of kubernetes_persistent_volume resource relationships](./img/kubernetes_persistent_volume_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -479,11 +479,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_persistent_volume_claim relationship to other resources](./img/kubernetes_persistent_volume_claim_relationships.svg)
+![Diagram of kubernetes_persistent_volume_claim resource relationships](./img/kubernetes_persistent_volume_claim_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -498,11 +498,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_pod relationship to other resources](./img/kubernetes_pod_relationships.svg)
+![Diagram of kubernetes_pod resource relationships](./img/kubernetes_pod_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -517,11 +517,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_pod_disruption_budget relationship to other resources](./img/kubernetes_pod_disruption_budget_relationships.svg)
+![Diagram of kubernetes_pod_disruption_budget resource relationships](./img/kubernetes_pod_disruption_budget_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -536,11 +536,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_pod_template relationship to other resources](./img/kubernetes_pod_template_relationships.svg)
+![Diagram of kubernetes_pod_template resource relationships](./img/kubernetes_pod_template_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -555,11 +555,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_priority_class relationship to other resources](./img/kubernetes_priority_class_relationships.svg)
+![Diagram of kubernetes_priority_class resource relationships](./img/kubernetes_priority_class_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -574,11 +574,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_priority_level_configuration relationship to other resources](./img/kubernetes_priority_level_configuration_relationships.svg)
+![Diagram of kubernetes_priority_level_configuration resource relationships](./img/kubernetes_priority_level_configuration_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -593,11 +593,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_replica_set relationship to other resources](./img/kubernetes_replica_set_relationships.svg)
+![Diagram of kubernetes_replica_set resource relationships](./img/kubernetes_replica_set_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -612,11 +612,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_replication_controller relationship to other resources](./img/kubernetes_replication_controller_relationships.svg)
+![Diagram of kubernetes_replication_controller resource relationships](./img/kubernetes_replication_controller_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -631,11 +631,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_resource relationship to other resources](./img/kubernetes_resource_relationships.svg)
+![Diagram of kubernetes_resource resource relationships](./img/kubernetes_resource_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -650,11 +650,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_resource_quota relationship to other resources](./img/kubernetes_resource_quota_relationships.svg)
+![Diagram of kubernetes_resource_quota resource relationships](./img/kubernetes_resource_quota_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -669,11 +669,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_role relationship to other resources](./img/kubernetes_role_relationships.svg)
+![Diagram of kubernetes_role resource relationships](./img/kubernetes_role_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -688,11 +688,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_role_binding relationship to other resources](./img/kubernetes_role_binding_relationships.svg)
+![Diagram of kubernetes_role_binding resource relationships](./img/kubernetes_role_binding_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -707,11 +707,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_runtime_class relationship to other resources](./img/kubernetes_runtime_class_relationships.svg)
+![Diagram of kubernetes_runtime_class resource relationships](./img/kubernetes_runtime_class_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -726,11 +726,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_secret relationship to other resources](./img/kubernetes_secret_relationships.svg)
+![Diagram of kubernetes_secret resource relationships](./img/kubernetes_secret_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -745,11 +745,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_service relationship to other resources](./img/kubernetes_service_relationships.svg)
+![Diagram of kubernetes_service resource relationships](./img/kubernetes_service_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -764,11 +764,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_service_account relationship to other resources](./img/kubernetes_service_account_relationships.svg)
+![Diagram of kubernetes_service_account resource relationships](./img/kubernetes_service_account_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -783,11 +783,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_stateful_set relationship to other resources](./img/kubernetes_stateful_set_relationships.svg)
+![Diagram of kubernetes_stateful_set resource relationships](./img/kubernetes_stateful_set_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -802,11 +802,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_storage_class relationship to other resources](./img/kubernetes_storage_class_relationships.svg)
+![Diagram of kubernetes_storage_class resource relationships](./img/kubernetes_storage_class_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -821,11 +821,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_validating_webhook_configuration relationship to other resources](./img/kubernetes_validating_webhook_configuration_relationships.svg)
+![Diagram of kubernetes_validating_webhook_configuration resource relationships](./img/kubernetes_validating_webhook_configuration_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -840,11 +840,11 @@ Please refer to [Configure Kubernetes Access](../../../getting-started/configure
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of kubernetes_volume_attachment relationship to other resources](./img/kubernetes_volume_attachment_relationships.svg)
+![Diagram of kubernetes_volume_attachment resource relationships](./img/kubernetes_volume_attachment_relationships.svg)
 
 </ZoomPanPinch>
 </div>

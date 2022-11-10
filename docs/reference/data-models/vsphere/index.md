@@ -17,11 +17,11 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of vsphere_cluster relationship to other resources](./img/vsphere_cluster_relationships.svg)
+![Diagram of vsphere_cluster resource relationships](./img/vsphere_cluster_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -36,11 +36,11 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of vsphere_data_center relationship to other resources](./img/vsphere_data_center_relationships.svg)
+![Diagram of vsphere_data_center resource relationships](./img/vsphere_data_center_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -55,11 +55,11 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of vsphere_instance relationship to other resources](./img/vsphere_instance_relationships.svg)
+![Diagram of vsphere_instance resource relationships](./img/vsphere_instance_relationships.svg)
 
 </ZoomPanPinch>
 </div>

@@ -18,11 +18,11 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of dockerhub_namespace relationship to other resources](./img/dockerhub_namespace_relationships.svg)
+![Diagram of dockerhub_namespace resource relationships](./img/dockerhub_namespace_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -37,11 +37,11 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of dockerhub_repository relationship to other resources](./img/dockerhub_repository_relationships.svg)
+![Diagram of dockerhub_repository resource relationships](./img/dockerhub_repository_relationships.svg)
 
 </ZoomPanPinch>
 </div>

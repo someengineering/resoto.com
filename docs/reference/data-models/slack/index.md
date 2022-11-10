@@ -17,11 +17,11 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of slack_conversation relationship to other resources](./img/slack_conversation_relationships.svg)
+![Diagram of slack_conversation resource relationships](./img/slack_conversation_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -36,11 +36,11 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of slack_region relationship to other resources](./img/slack_region_relationships.svg)
+![Diagram of slack_region resource relationships](./img/slack_region_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -55,11 +55,11 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of slack_team relationship to other resources](./img/slack_team_relationships.svg)
+![Diagram of slack_team resource relationships](./img/slack_team_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -74,11 +74,11 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of slack_user relationship to other resources](./img/slack_user_relationships.svg)
+![Diagram of slack_user resource relationships](./img/slack_user_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -93,11 +93,11 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of slack_usergroup relationship to other resources](./img/slack_usergroup_relationships.svg)
+![Diagram of slack_usergroup resource relationships](./img/slack_usergroup_relationships.svg)
 
 </ZoomPanPinch>
 </div>

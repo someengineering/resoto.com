@@ -23,11 +23,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_account relationship to other resources](./img/aws_account_relationships.svg)
+![Diagram of aws_account resource relationships](./img/aws_account_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -42,11 +42,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_alb relationship to other resources](./img/aws_alb_relationships.svg)
+![Diagram of aws_alb resource relationships](./img/aws_alb_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -61,11 +61,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_alb_target_group relationship to other resources](./img/aws_alb_target_group_relationships.svg)
+![Diagram of aws_alb_target_group resource relationships](./img/aws_alb_target_group_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -80,11 +80,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_api_gateway_authorizer relationship to other resources](./img/aws_api_gateway_authorizer_relationships.svg)
+![Diagram of aws_api_gateway_authorizer resource relationships](./img/aws_api_gateway_authorizer_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -99,11 +99,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_api_gateway_deployment relationship to other resources](./img/aws_api_gateway_deployment_relationships.svg)
+![Diagram of aws_api_gateway_deployment resource relationships](./img/aws_api_gateway_deployment_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -118,11 +118,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_api_gateway_domain_name relationship to other resources](./img/aws_api_gateway_domain_name_relationships.svg)
+![Diagram of aws_api_gateway_domain_name resource relationships](./img/aws_api_gateway_domain_name_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -137,11 +137,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_api_gateway_resource relationship to other resources](./img/aws_api_gateway_resource_relationships.svg)
+![Diagram of aws_api_gateway_resource resource relationships](./img/aws_api_gateway_resource_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -156,11 +156,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_api_gateway_rest_api relationship to other resources](./img/aws_api_gateway_rest_api_relationships.svg)
+![Diagram of aws_api_gateway_rest_api resource relationships](./img/aws_api_gateway_rest_api_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -175,11 +175,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_api_gateway_stage relationship to other resources](./img/aws_api_gateway_stage_relationships.svg)
+![Diagram of aws_api_gateway_stage resource relationships](./img/aws_api_gateway_stage_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -194,11 +194,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_athena_data_catalog relationship to other resources](./img/aws_athena_data_catalog_relationships.svg)
+![Diagram of aws_athena_data_catalog resource relationships](./img/aws_athena_data_catalog_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -213,11 +213,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_athena_work_group relationship to other resources](./img/aws_athena_work_group_relationships.svg)
+![Diagram of aws_athena_work_group resource relationships](./img/aws_athena_work_group_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -232,11 +232,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_autoscaling_group relationship to other resources](./img/aws_autoscaling_group_relationships.svg)
+![Diagram of aws_autoscaling_group resource relationships](./img/aws_autoscaling_group_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -251,11 +251,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_beanstalk_application relationship to other resources](./img/aws_beanstalk_application_relationships.svg)
+![Diagram of aws_beanstalk_application resource relationships](./img/aws_beanstalk_application_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -270,11 +270,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_beanstalk_environment relationship to other resources](./img/aws_beanstalk_environment_relationships.svg)
+![Diagram of aws_beanstalk_environment resource relationships](./img/aws_beanstalk_environment_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -289,11 +289,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_cloudformation_stack relationship to other resources](./img/aws_cloudformation_stack_relationships.svg)
+![Diagram of aws_cloudformation_stack resource relationships](./img/aws_cloudformation_stack_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -308,11 +308,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_cloudformation_stack_set relationship to other resources](./img/aws_cloudformation_stack_set_relationships.svg)
+![Diagram of aws_cloudformation_stack_set resource relationships](./img/aws_cloudformation_stack_set_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -327,11 +327,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_cloudwatch_alarm relationship to other resources](./img/aws_cloudwatch_alarm_relationships.svg)
+![Diagram of aws_cloudwatch_alarm resource relationships](./img/aws_cloudwatch_alarm_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -346,11 +346,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_dynamo_db_global_table relationship to other resources](./img/aws_dynamo_db_global_table_relationships.svg)
+![Diagram of aws_dynamo_db_global_table resource relationships](./img/aws_dynamo_db_global_table_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -365,11 +365,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_dynamo_db_table relationship to other resources](./img/aws_dynamo_db_table_relationships.svg)
+![Diagram of aws_dynamo_db_table resource relationships](./img/aws_dynamo_db_table_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -384,11 +384,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_ec2_elastic_ip relationship to other resources](./img/aws_ec2_elastic_ip_relationships.svg)
+![Diagram of aws_ec2_elastic_ip resource relationships](./img/aws_ec2_elastic_ip_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -403,11 +403,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_ec2_host relationship to other resources](./img/aws_ec2_host_relationships.svg)
+![Diagram of aws_ec2_host resource relationships](./img/aws_ec2_host_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -422,11 +422,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_ec2_instance relationship to other resources](./img/aws_ec2_instance_relationships.svg)
+![Diagram of aws_ec2_instance resource relationships](./img/aws_ec2_instance_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -441,11 +441,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_ec2_instance_type relationship to other resources](./img/aws_ec2_instance_type_relationships.svg)
+![Diagram of aws_ec2_instance_type resource relationships](./img/aws_ec2_instance_type_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -460,11 +460,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_ec2_internet_gateway relationship to other resources](./img/aws_ec2_internet_gateway_relationships.svg)
+![Diagram of aws_ec2_internet_gateway resource relationships](./img/aws_ec2_internet_gateway_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -479,11 +479,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_ec2_keypair relationship to other resources](./img/aws_ec2_keypair_relationships.svg)
+![Diagram of aws_ec2_keypair resource relationships](./img/aws_ec2_keypair_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -498,11 +498,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_ec2_nat_gateway relationship to other resources](./img/aws_ec2_nat_gateway_relationships.svg)
+![Diagram of aws_ec2_nat_gateway resource relationships](./img/aws_ec2_nat_gateway_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -517,11 +517,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_ec2_network_acl relationship to other resources](./img/aws_ec2_network_acl_relationships.svg)
+![Diagram of aws_ec2_network_acl resource relationships](./img/aws_ec2_network_acl_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -536,11 +536,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_ec2_network_interface relationship to other resources](./img/aws_ec2_network_interface_relationships.svg)
+![Diagram of aws_ec2_network_interface resource relationships](./img/aws_ec2_network_interface_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -555,11 +555,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_ec2_reserved_instances relationship to other resources](./img/aws_ec2_reserved_instances_relationships.svg)
+![Diagram of aws_ec2_reserved_instances resource relationships](./img/aws_ec2_reserved_instances_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -574,11 +574,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_ec2_route_table relationship to other resources](./img/aws_ec2_route_table_relationships.svg)
+![Diagram of aws_ec2_route_table resource relationships](./img/aws_ec2_route_table_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -593,11 +593,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_ec2_security_group relationship to other resources](./img/aws_ec2_security_group_relationships.svg)
+![Diagram of aws_ec2_security_group resource relationships](./img/aws_ec2_security_group_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -612,11 +612,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_ec2_snapshot relationship to other resources](./img/aws_ec2_snapshot_relationships.svg)
+![Diagram of aws_ec2_snapshot resource relationships](./img/aws_ec2_snapshot_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -631,11 +631,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_ec2_subnet relationship to other resources](./img/aws_ec2_subnet_relationships.svg)
+![Diagram of aws_ec2_subnet resource relationships](./img/aws_ec2_subnet_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -650,11 +650,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_ec2_volume relationship to other resources](./img/aws_ec2_volume_relationships.svg)
+![Diagram of aws_ec2_volume resource relationships](./img/aws_ec2_volume_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -669,11 +669,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_ec2_volume_type relationship to other resources](./img/aws_ec2_volume_type_relationships.svg)
+![Diagram of aws_ec2_volume_type resource relationships](./img/aws_ec2_volume_type_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -688,11 +688,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_ecs_capacity_provider relationship to other resources](./img/aws_ecs_capacity_provider_relationships.svg)
+![Diagram of aws_ecs_capacity_provider resource relationships](./img/aws_ecs_capacity_provider_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -707,11 +707,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_ecs_cluster relationship to other resources](./img/aws_ecs_cluster_relationships.svg)
+![Diagram of aws_ecs_cluster resource relationships](./img/aws_ecs_cluster_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -726,11 +726,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_ecs_container_instance relationship to other resources](./img/aws_ecs_container_instance_relationships.svg)
+![Diagram of aws_ecs_container_instance resource relationships](./img/aws_ecs_container_instance_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -745,11 +745,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_ecs_service relationship to other resources](./img/aws_ecs_service_relationships.svg)
+![Diagram of aws_ecs_service resource relationships](./img/aws_ecs_service_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -764,11 +764,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_ecs_task relationship to other resources](./img/aws_ecs_task_relationships.svg)
+![Diagram of aws_ecs_task resource relationships](./img/aws_ecs_task_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -783,11 +783,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_ecs_task_definition relationship to other resources](./img/aws_ecs_task_definition_relationships.svg)
+![Diagram of aws_ecs_task_definition resource relationships](./img/aws_ecs_task_definition_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -802,11 +802,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_eks_cluster relationship to other resources](./img/aws_eks_cluster_relationships.svg)
+![Diagram of aws_eks_cluster resource relationships](./img/aws_eks_cluster_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -821,11 +821,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_eks_nodegroup relationship to other resources](./img/aws_eks_nodegroup_relationships.svg)
+![Diagram of aws_eks_nodegroup resource relationships](./img/aws_eks_nodegroup_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -840,11 +840,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_elasticache_cache_cluster relationship to other resources](./img/aws_elasticache_cache_cluster_relationships.svg)
+![Diagram of aws_elasticache_cache_cluster resource relationships](./img/aws_elasticache_cache_cluster_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -859,11 +859,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_elasticache_replication_group relationship to other resources](./img/aws_elasticache_replication_group_relationships.svg)
+![Diagram of aws_elasticache_replication_group resource relationships](./img/aws_elasticache_replication_group_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -878,11 +878,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_elb relationship to other resources](./img/aws_elb_relationships.svg)
+![Diagram of aws_elb resource relationships](./img/aws_elb_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -897,11 +897,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_glacier_job relationship to other resources](./img/aws_glacier_job_relationships.svg)
+![Diagram of aws_glacier_job resource relationships](./img/aws_glacier_job_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -916,11 +916,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_glacier_vault relationship to other resources](./img/aws_glacier_vault_relationships.svg)
+![Diagram of aws_glacier_vault resource relationships](./img/aws_glacier_vault_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -935,11 +935,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_iam_access_key relationship to other resources](./img/aws_iam_access_key_relationships.svg)
+![Diagram of aws_iam_access_key resource relationships](./img/aws_iam_access_key_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -954,11 +954,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_iam_group relationship to other resources](./img/aws_iam_group_relationships.svg)
+![Diagram of aws_iam_group resource relationships](./img/aws_iam_group_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -973,11 +973,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_iam_instance_profile relationship to other resources](./img/aws_iam_instance_profile_relationships.svg)
+![Diagram of aws_iam_instance_profile resource relationships](./img/aws_iam_instance_profile_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -992,11 +992,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_iam_policy relationship to other resources](./img/aws_iam_policy_relationships.svg)
+![Diagram of aws_iam_policy resource relationships](./img/aws_iam_policy_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -1011,11 +1011,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_iam_role relationship to other resources](./img/aws_iam_role_relationships.svg)
+![Diagram of aws_iam_role resource relationships](./img/aws_iam_role_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -1030,11 +1030,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_iam_server_certificate relationship to other resources](./img/aws_iam_server_certificate_relationships.svg)
+![Diagram of aws_iam_server_certificate resource relationships](./img/aws_iam_server_certificate_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -1049,11 +1049,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_iam_user relationship to other resources](./img/aws_iam_user_relationships.svg)
+![Diagram of aws_iam_user resource relationships](./img/aws_iam_user_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -1068,11 +1068,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_kinesis_stream relationship to other resources](./img/aws_kinesis_stream_relationships.svg)
+![Diagram of aws_kinesis_stream resource relationships](./img/aws_kinesis_stream_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -1087,11 +1087,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_kms_key relationship to other resources](./img/aws_kms_key_relationships.svg)
+![Diagram of aws_kms_key resource relationships](./img/aws_kms_key_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -1106,11 +1106,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_lambda_function relationship to other resources](./img/aws_lambda_function_relationships.svg)
+![Diagram of aws_lambda_function resource relationships](./img/aws_lambda_function_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -1125,11 +1125,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_rds_instance relationship to other resources](./img/aws_rds_instance_relationships.svg)
+![Diagram of aws_rds_instance resource relationships](./img/aws_rds_instance_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -1144,11 +1144,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_redshift_cluster relationship to other resources](./img/aws_redshift_cluster_relationships.svg)
+![Diagram of aws_redshift_cluster resource relationships](./img/aws_redshift_cluster_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -1163,11 +1163,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_region relationship to other resources](./img/aws_region_relationships.svg)
+![Diagram of aws_region resource relationships](./img/aws_region_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -1182,11 +1182,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_resource relationship to other resources](./img/aws_resource_relationships.svg)
+![Diagram of aws_resource resource relationships](./img/aws_resource_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -1201,11 +1201,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_route53_resource_record relationship to other resources](./img/aws_route53_resource_record_relationships.svg)
+![Diagram of aws_route53_resource_record resource relationships](./img/aws_route53_resource_record_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -1220,11 +1220,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_route53_resource_record_set relationship to other resources](./img/aws_route53_resource_record_set_relationships.svg)
+![Diagram of aws_route53_resource_record_set resource relationships](./img/aws_route53_resource_record_set_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -1239,11 +1239,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_route53_zone relationship to other resources](./img/aws_route53_zone_relationships.svg)
+![Diagram of aws_route53_zone resource relationships](./img/aws_route53_zone_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -1258,11 +1258,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_s3_bucket relationship to other resources](./img/aws_s3_bucket_relationships.svg)
+![Diagram of aws_s3_bucket resource relationships](./img/aws_s3_bucket_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -1277,11 +1277,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_service_quota relationship to other resources](./img/aws_service_quota_relationships.svg)
+![Diagram of aws_service_quota resource relationships](./img/aws_service_quota_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -1296,11 +1296,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_sns_endpoint relationship to other resources](./img/aws_sns_endpoint_relationships.svg)
+![Diagram of aws_sns_endpoint resource relationships](./img/aws_sns_endpoint_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -1315,11 +1315,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_sns_platform_application relationship to other resources](./img/aws_sns_platform_application_relationships.svg)
+![Diagram of aws_sns_platform_application resource relationships](./img/aws_sns_platform_application_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -1334,11 +1334,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_sns_subscription relationship to other resources](./img/aws_sns_subscription_relationships.svg)
+![Diagram of aws_sns_subscription resource relationships](./img/aws_sns_subscription_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -1353,11 +1353,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_sns_topic relationship to other resources](./img/aws_sns_topic_relationships.svg)
+![Diagram of aws_sns_topic resource relationships](./img/aws_sns_topic_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -1372,11 +1372,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_sqs_queue relationship to other resources](./img/aws_sqs_queue_relationships.svg)
+![Diagram of aws_sqs_queue resource relationships](./img/aws_sqs_queue_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -1391,11 +1391,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_vpc relationship to other resources](./img/aws_vpc_relationships.svg)
+![Diagram of aws_vpc resource relationships](./img/aws_vpc_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -1410,11 +1410,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_vpc_endpoint relationship to other resources](./img/aws_vpc_endpoint_relationships.svg)
+![Diagram of aws_vpc_endpoint resource relationships](./img/aws_vpc_endpoint_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -1429,11 +1429,11 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of aws_vpc_peering_connection relationship to other resources](./img/aws_vpc_peering_connection_relationships.svg)
+![Diagram of aws_vpc_peering_connection resource relationships](./img/aws_vpc_peering_connection_relationships.svg)
 
 </ZoomPanPinch>
 </div>

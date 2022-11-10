@@ -23,11 +23,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_autoscaler relationship to other resources](./img/gcp_autoscaler_relationships.svg)
+![Diagram of gcp_autoscaler resource relationships](./img/gcp_autoscaler_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -42,11 +42,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_backend_service relationship to other resources](./img/gcp_backend_service_relationships.svg)
+![Diagram of gcp_backend_service resource relationships](./img/gcp_backend_service_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -61,11 +61,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_bucket relationship to other resources](./img/gcp_bucket_relationships.svg)
+![Diagram of gcp_bucket resource relationships](./img/gcp_bucket_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -80,11 +80,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_database relationship to other resources](./img/gcp_database_relationships.svg)
+![Diagram of gcp_database resource relationships](./img/gcp_database_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -99,11 +99,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_disk relationship to other resources](./img/gcp_disk_relationships.svg)
+![Diagram of gcp_disk resource relationships](./img/gcp_disk_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -118,11 +118,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_disk_type relationship to other resources](./img/gcp_disk_type_relationships.svg)
+![Diagram of gcp_disk_type resource relationships](./img/gcp_disk_type_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -137,11 +137,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_forwarding_rule relationship to other resources](./img/gcp_forwarding_rule_relationships.svg)
+![Diagram of gcp_forwarding_rule resource relationships](./img/gcp_forwarding_rule_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -156,11 +156,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_gke_cluster relationship to other resources](./img/gcp_gke_cluster_relationships.svg)
+![Diagram of gcp_gke_cluster resource relationships](./img/gcp_gke_cluster_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -175,11 +175,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_global_forwarding_rule relationship to other resources](./img/gcp_global_forwarding_rule_relationships.svg)
+![Diagram of gcp_global_forwarding_rule resource relationships](./img/gcp_global_forwarding_rule_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -194,11 +194,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_global_network_endpoint_group relationship to other resources](./img/gcp_global_network_endpoint_group_relationships.svg)
+![Diagram of gcp_global_network_endpoint_group resource relationships](./img/gcp_global_network_endpoint_group_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -213,11 +213,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_health_check relationship to other resources](./img/gcp_health_check_relationships.svg)
+![Diagram of gcp_health_check resource relationships](./img/gcp_health_check_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -232,11 +232,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_http_health_check relationship to other resources](./img/gcp_http_health_check_relationships.svg)
+![Diagram of gcp_http_health_check resource relationships](./img/gcp_http_health_check_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -251,11 +251,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_https_health_check relationship to other resources](./img/gcp_https_health_check_relationships.svg)
+![Diagram of gcp_https_health_check resource relationships](./img/gcp_https_health_check_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -270,11 +270,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_instance relationship to other resources](./img/gcp_instance_relationships.svg)
+![Diagram of gcp_instance resource relationships](./img/gcp_instance_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -289,11 +289,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_instance_group relationship to other resources](./img/gcp_instance_group_relationships.svg)
+![Diagram of gcp_instance_group resource relationships](./img/gcp_instance_group_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -308,11 +308,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_instance_group_manager relationship to other resources](./img/gcp_instance_group_manager_relationships.svg)
+![Diagram of gcp_instance_group_manager resource relationships](./img/gcp_instance_group_manager_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -327,11 +327,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_instance_template relationship to other resources](./img/gcp_instance_template_relationships.svg)
+![Diagram of gcp_instance_template resource relationships](./img/gcp_instance_template_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -346,11 +346,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_machine_type relationship to other resources](./img/gcp_machine_type_relationships.svg)
+![Diagram of gcp_machine_type resource relationships](./img/gcp_machine_type_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -365,11 +365,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_network relationship to other resources](./img/gcp_network_relationships.svg)
+![Diagram of gcp_network resource relationships](./img/gcp_network_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -384,11 +384,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_network_endpoint_group relationship to other resources](./img/gcp_network_endpoint_group_relationships.svg)
+![Diagram of gcp_network_endpoint_group resource relationships](./img/gcp_network_endpoint_group_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -403,11 +403,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_project relationship to other resources](./img/gcp_project_relationships.svg)
+![Diagram of gcp_project resource relationships](./img/gcp_project_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -422,11 +422,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_quota relationship to other resources](./img/gcp_quota_relationships.svg)
+![Diagram of gcp_quota resource relationships](./img/gcp_quota_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -441,11 +441,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_region relationship to other resources](./img/gcp_region_relationships.svg)
+![Diagram of gcp_region resource relationships](./img/gcp_region_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -460,11 +460,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_route relationship to other resources](./img/gcp_route_relationships.svg)
+![Diagram of gcp_route resource relationships](./img/gcp_route_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -479,11 +479,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_router relationship to other resources](./img/gcp_router_relationships.svg)
+![Diagram of gcp_router resource relationships](./img/gcp_router_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -498,11 +498,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_security_policy relationship to other resources](./img/gcp_security_policy_relationships.svg)
+![Diagram of gcp_security_policy resource relationships](./img/gcp_security_policy_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -517,11 +517,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_service relationship to other resources](./img/gcp_service_relationships.svg)
+![Diagram of gcp_service resource relationships](./img/gcp_service_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -536,11 +536,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_service_sku relationship to other resources](./img/gcp_service_sku_relationships.svg)
+![Diagram of gcp_service_sku resource relationships](./img/gcp_service_sku_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -555,11 +555,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_snapshot relationship to other resources](./img/gcp_snapshot_relationships.svg)
+![Diagram of gcp_snapshot resource relationships](./img/gcp_snapshot_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -574,11 +574,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_ssl_certificate relationship to other resources](./img/gcp_ssl_certificate_relationships.svg)
+![Diagram of gcp_ssl_certificate resource relationships](./img/gcp_ssl_certificate_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -593,11 +593,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_subnetwork relationship to other resources](./img/gcp_subnetwork_relationships.svg)
+![Diagram of gcp_subnetwork resource relationships](./img/gcp_subnetwork_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -612,11 +612,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_target_grpc_proxy relationship to other resources](./img/gcp_target_grpc_proxy_relationships.svg)
+![Diagram of gcp_target_grpc_proxy resource relationships](./img/gcp_target_grpc_proxy_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -631,11 +631,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_target_http_proxy relationship to other resources](./img/gcp_target_http_proxy_relationships.svg)
+![Diagram of gcp_target_http_proxy resource relationships](./img/gcp_target_http_proxy_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -650,11 +650,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_target_https_proxy relationship to other resources](./img/gcp_target_https_proxy_relationships.svg)
+![Diagram of gcp_target_https_proxy resource relationships](./img/gcp_target_https_proxy_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -669,11 +669,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_target_instance relationship to other resources](./img/gcp_target_instance_relationships.svg)
+![Diagram of gcp_target_instance resource relationships](./img/gcp_target_instance_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -688,11 +688,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_target_pool relationship to other resources](./img/gcp_target_pool_relationships.svg)
+![Diagram of gcp_target_pool resource relationships](./img/gcp_target_pool_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -707,11 +707,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_target_ssl_proxy relationship to other resources](./img/gcp_target_ssl_proxy_relationships.svg)
+![Diagram of gcp_target_ssl_proxy resource relationships](./img/gcp_target_ssl_proxy_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -726,11 +726,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_target_tcp_proxy relationship to other resources](./img/gcp_target_tcp_proxy_relationships.svg)
+![Diagram of gcp_target_tcp_proxy resource relationships](./img/gcp_target_tcp_proxy_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -745,11 +745,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_target_vpn_gateway relationship to other resources](./img/gcp_target_vpn_gateway_relationships.svg)
+![Diagram of gcp_target_vpn_gateway resource relationships](./img/gcp_target_vpn_gateway_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -764,11 +764,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_url_map relationship to other resources](./img/gcp_url_map_relationships.svg)
+![Diagram of gcp_url_map resource relationships](./img/gcp_url_map_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -783,11 +783,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_vpn_gateway relationship to other resources](./img/gcp_vpn_gateway_relationships.svg)
+![Diagram of gcp_vpn_gateway resource relationships](./img/gcp_vpn_gateway_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -802,11 +802,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_vpn_tunnel relationship to other resources](./img/gcp_vpn_tunnel_relationships.svg)
+![Diagram of gcp_vpn_tunnel resource relationships](./img/gcp_vpn_tunnel_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -821,11 +821,11 @@ Please refer to [Configure Google Cloud Platform Access](../../../getting-starte
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of gcp_zone relationship to other resources](./img/gcp_zone_relationships.svg)
+![Diagram of gcp_zone resource relationships](./img/gcp_zone_relationships.svg)
 
 </ZoomPanPinch>
 </div>

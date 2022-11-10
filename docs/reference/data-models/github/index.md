@@ -17,11 +17,11 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of github_account relationship to other resources](./img/github_account_relationships.svg)
+![Diagram of github_account resource relationships](./img/github_account_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -36,11 +36,11 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of github_org relationship to other resources](./img/github_org_relationships.svg)
+![Diagram of github_org resource relationships](./img/github_org_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -55,11 +55,11 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of github_region relationship to other resources](./img/github_region_relationships.svg)
+![Diagram of github_region resource relationships](./img/github_region_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -74,11 +74,11 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of github_repo relationship to other resources](./img/github_repo_relationships.svg)
+![Diagram of github_repo resource relationships](./img/github_repo_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -93,11 +93,11 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of github_user relationship to other resources](./img/github_user_relationships.svg)
+![Diagram of github_user resource relationships](./img/github_user_relationships.svg)
 
 </ZoomPanPinch>
 </div>

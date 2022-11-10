@@ -41,6 +41,7 @@
     "prism-react-renderer": "1.3.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-modal": "3.16.1",
     "react-moment": "1.1.2",
     "react-zoom-pan-pinch": "2.1.3",
     "redocusaurus": "1.4.0",

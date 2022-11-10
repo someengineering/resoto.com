@@ -17,11 +17,11 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of onelogin_account relationship to other resources](./img/onelogin_account_relationships.svg)
+![Diagram of onelogin_account resource relationships](./img/onelogin_account_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -36,11 +36,11 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of onelogin_region relationship to other resources](./img/onelogin_region_relationships.svg)
+![Diagram of onelogin_region resource relationships](./img/onelogin_region_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -55,11 +55,11 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of onelogin_user relationship to other resources](./img/onelogin_user_relationships.svg)
+![Diagram of onelogin_user resource relationships](./img/onelogin_user_relationships.svg)
 
 </ZoomPanPinch>
 </div>

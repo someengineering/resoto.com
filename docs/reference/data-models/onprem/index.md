@@ -18,11 +18,11 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of onprem_instance relationship to other resources](./img/onprem_instance_relationships.svg)
+![Diagram of onprem_instance resource relationships](./img/onprem_instance_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -37,11 +37,11 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of onprem_location relationship to other resources](./img/onprem_location_relationships.svg)
+![Diagram of onprem_location resource relationships](./img/onprem_location_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -56,11 +56,11 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of onprem_network relationship to other resources](./img/onprem_network_relationships.svg)
+![Diagram of onprem_network resource relationships](./img/onprem_network_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -75,11 +75,11 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of onprem_region relationship to other resources](./img/onprem_region_relationships.svg)
+![Diagram of onprem_region resource relationships](./img/onprem_region_relationships.svg)
 
 </ZoomPanPinch>
 </div>

@@ -17,11 +17,11 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of scarf_organization relationship to other resources](./img/scarf_organization_relationships.svg)
+![Diagram of scarf_organization resource relationships](./img/scarf_organization_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -36,11 +36,11 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of scarf_package relationship to other resources](./img/scarf_package_relationships.svg)
+![Diagram of scarf_package resource relationships](./img/scarf_package_relationships.svg)
 
 </ZoomPanPinch>
 </div>

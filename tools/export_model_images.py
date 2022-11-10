@@ -91,9 +91,9 @@ def print_md(provider: str):
             print(f"## `{name}`\n")
             print(f"<ZoomPanPinch>\n\n![Diagram of {name} data model](./img/{name}.svg)\n\n</ZoomPanPinch>\n")
             print(
-                f"<details>\n<summary>Relationship to Other Resources</summary>\n<div>\n<ZoomPanPinch>\n"
+                f"<details>\n<summary>Relationships to Other Resources</summary>\n<div>\n<ZoomPanPinch>\n"
             )
-            print(f"![Diagram of {name} relationship to other resources](./img/{name}_relationships.svg)\n")
+            print(f"![Diagram of {name} resource relationships](./img/{name}_relationships.svg)\n")
             print(f"</ZoomPanPinch>\n</div>\n</details>\n")
 
         sys.stdout = original_stdout

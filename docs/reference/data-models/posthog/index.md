@@ -17,11 +17,11 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of posthog_event relationship to other resources](./img/posthog_event_relationships.svg)
+![Diagram of posthog_event resource relationships](./img/posthog_event_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -36,11 +36,11 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 </ZoomPanPinch>
 
 <details>
-<summary>Relationship to Other Resources</summary>
+<summary>Relationships to Other Resources</summary>
 <div>
 <ZoomPanPinch>
 
-![Diagram of posthog_project relationship to other resources](./img/posthog_project_relationships.svg)
+![Diagram of posthog_project resource relationships](./img/posthog_project_relationships.svg)
 
 </ZoomPanPinch>
 </div>

@@ -95,6 +95,9 @@
     ],
     "**/*.{css,json,md,mdx,yml}": [
       "prettier --write"
+    ],
+    "**/*.svg": [
+      "svgo"
     ]
   }
 }

@@ -170,6 +170,8 @@ https://news.resoto.com/*                                         https://resoto
 /docs/reference/core-api                                          /docs/reference/api
 /docs/reference/resotocore-api                                    /docs/reference/api
 
+/docs/reference/data-models/dockerhub                             /docs/reference/data-models/docker-hub
+/docs/reference/data-models/onprem                                /docs/reference/data-models/on-premises
 /docs/reference/resources/data-models                             /docs/reference/data-models
 /docs/reference/resources/*                                       /docs/reference/data-models/:splat
 

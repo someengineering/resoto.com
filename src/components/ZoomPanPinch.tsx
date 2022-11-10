@@ -11,11 +11,15 @@ export default function ZoomPanPinch({
 
   return (
     <>
-      <p>
+      <p style={{ textAlign: 'center' }}>
         {React.cloneElement(children.props.children, {
           onClick: () => setShow(true),
           onKeyDown: () => setShow(true),
-          style: { maxHeight: '50vw', width: 'auto', cursor: 'zoom-in' },
+          style: {
+            maxHeight: 'min(50vh, 100vw)',
+            width: 'auto',
+            cursor: 'zoom-in',
+          },
         })}
       </p>
       <Modal
@@ -68,7 +72,7 @@ export default function ZoomPanPinch({
           </button>
         </div>
         <TransformWrapper
-          initialScale={0.5}
+          initialScale={0.75}
           minScale={0.25}
           maxScale={2}
           centerOnInit

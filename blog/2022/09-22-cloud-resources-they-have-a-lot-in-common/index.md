@@ -136,10 +136,10 @@ And many more, like `network_interface`, `ip_address`, `dns_record`, `database`,
 
 [Data models for all supported cloud resource can be found in the Resoto documentation](/docs/reference/data-models). This not only includes a complete list of properties but the hierarchy of the abstractions as well:
 
-- [Amazon Web Services Resources](/docs/reference/data-models/aws)
-- [Google Cloud Platform Resources](/docs/reference/data-models/gcp)
-- [Kubernetes Resources](/docs/reference/data-models/kubernetes)
-- [DigitalOcean Resources](/docs/reference/data-models/digitalocean)
+- [Amazon Web Services Resource Data Models](/docs/reference/data-models/aws)
+- [Google Cloud Platform Resource Data Models](/docs/reference/data-models/gcp)
+- [Kubernetes Resource Data Models](/docs/reference/data-models/kubernetes)
+- [DigitalOcean Resource Data Models](/docs/reference/data-models/digitalocean)
 
 ## Why Is This Useful?
 

@@ -85,7 +85,7 @@ Kubernetes has its own way of describing a resource, which is available in Resot
 
 Both sections are unique to the resource type. Since Resoto allows searching on any resource property, we made the `spec` and `status` section unique to the resource type. So a `Pod` in Resoto has a `pod_spec` and `pod_status` section, while a `Deployment` has a `deployment_spec` and `deployment_status` section. The relevant spec and status sections have the same specific data model as the Kubernetes resource.
 
-You can find a complete reference at [Kubernetes Resources](/docs/reference/data-models/kubernetes).
+You can find a complete reference at [Kubernetes Resource Data Models](/docs/reference/data-models/kubernetes).
 
 ## Searching the Graph
 
@@ -311,4 +311,4 @@ We are currently working on the way to connect resources found in Kubernetes to 
 
 - [Install Resoto with Kubernetes](/docs/getting-started/install-resoto/kubernetes)
 - [Configure Kubernetes Access](/docs/getting-started/configure-cloud-provider-access/kubernetes)
-- [Kubernetes Resources](/docs/reference/data-models/kubernetes)
+- [Kubernetes Resource Data Models](/docs/reference/data-models/kubernetes)

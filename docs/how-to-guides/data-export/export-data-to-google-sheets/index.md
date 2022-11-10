@@ -1,7 +1,5 @@
 ---
 sidebar_label: Export Data to Google Sheets
-sidebar_custom_props:
-  tags: [Google Sheets]
 ---
 
 # How to Export Data to Google Sheets

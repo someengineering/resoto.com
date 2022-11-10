@@ -1,7 +1,5 @@
 ---
 sidebar_label: Clean Up AWS CloudWatch Alarms
-sidebar_custom_props:
-  tags: [AWS, CloudWatch]
 ---
 
 # How to Clean Up AWS CloudWatch Alarms

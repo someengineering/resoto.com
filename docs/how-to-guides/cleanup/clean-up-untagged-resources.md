@@ -1,8 +1,6 @@
 ---
 sidebar_label: Clean Up Untagged Resources
 sidebar_position: 2
-sidebar_custom_props:
-  tags: [AWS, GCP, DigitalOcean, Kubernetes]
 ---
 
 # How to Clean Up Untagged Resources

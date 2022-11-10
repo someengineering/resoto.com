@@ -1,7 +1,5 @@
 ---
 sidebar_label: Visualize the Blast Radius of a Resource
-sidebar_custom_props:
-  tags: [AWS, GCP, DigitalOcean, Kubernetes]
 ---
 
 # How to Visualize the Blast Radius of a Resource

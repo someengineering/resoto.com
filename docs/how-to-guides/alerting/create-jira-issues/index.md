@@ -1,7 +1,5 @@
 ---
 sidebar_label: Create Jira Issues
-sidebar_custom_props:
-  tags: [Jira]
 ---
 
 # How to Create Jira Issues

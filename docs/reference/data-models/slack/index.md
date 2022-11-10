@@ -6,65 +6,65 @@ sidebar_label: Slack
 
 ## `slack_conversation`
 
-![slack_conversation data model](./img/slack_conversation.svg)
+![Diagram of slack_conversation data model](./img/slack_conversation.svg)
 
 <details>
 <summary>Relationship to Other Resources</summary>
 <div>
 
-![slack_conversation relationships](./img/slack_conversation_relationships.svg)
+![Diagram of slack_conversation relationship to other resources](./img/slack_conversation_relationships.svg)
 
 </div>
 </details>
 
 ## `slack_region`
 
-![slack_region data model](./img/slack_region.svg)
+![Diagram of slack_region data model](./img/slack_region.svg)
 
 <details>
 <summary>Relationship to Other Resources</summary>
 <div>
 
-![slack_region relationships](./img/slack_region_relationships.svg)
+![Diagram of slack_region relationship to other resources](./img/slack_region_relationships.svg)
 
 </div>
 </details>
 
 ## `slack_team`
 
-![slack_team data model](./img/slack_team.svg)
+![Diagram of slack_team data model](./img/slack_team.svg)
 
 <details>
 <summary>Relationship to Other Resources</summary>
 <div>
 
-![slack_team relationships](./img/slack_team_relationships.svg)
+![Diagram of slack_team relationship to other resources](./img/slack_team_relationships.svg)
 
 </div>
 </details>
 
 ## `slack_user`
 
-![slack_user data model](./img/slack_user.svg)
+![Diagram of slack_user data model](./img/slack_user.svg)
 
 <details>
 <summary>Relationship to Other Resources</summary>
 <div>
 
-![slack_user relationships](./img/slack_user_relationships.svg)
+![Diagram of slack_user relationship to other resources](./img/slack_user_relationships.svg)
 
 </div>
 </details>
 
 ## `slack_usergroup`
 
-![slack_usergroup data model](./img/slack_usergroup.svg)
+![Diagram of slack_usergroup data model](./img/slack_usergroup.svg)
 
 <details>
 <summary>Relationship to Other Resources</summary>
 <div>
 
-![slack_usergroup relationships](./img/slack_usergroup_relationships.svg)
+![Diagram of slack_usergroup relationship to other resources](./img/slack_usergroup_relationships.svg)
 
 </div>
 </details>

@@ -87,11 +87,11 @@ def print_md(provider: str):
 
         for name in sorted(a["fqn"] for a in by_provider[provider]):
             print(f"## `{name}`\n")
-            print(f"![{name} data model](./img/{name}.svg)\n")
+            print(f"![Diagram of {name} data model](./img/{name}.svg)\n")
             print(
                 f"<details>\n<summary>Relationship to Other Resources</summary>\n<div>\n"
             )
-            print(f"![{name} relationships](./img/{name}_relationships.svg)\n")
+            print(f"![Diagram of {name} relationship to other resources](./img/{name}_relationships.svg)\n")
             print(f"</div>\n</details>\n")
 
         sys.stdout = original_stdout

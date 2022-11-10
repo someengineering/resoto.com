@@ -5,7 +5,20 @@ import urllib3
 from collections import defaultdict
 
 core = "https://localhost:8900"
-provider_names = ["aws", "gcp", "vsphere", "kubernetes", "digitalocean"]
+provider_names = [
+    "aws",
+    "digitalocean",
+    "dockerhub",
+    "gcp",
+    "github",
+    "kubernetes",
+    "onelogin",
+    "onprem",
+    "posthog",
+    "scarf",
+    "slack",
+    "vsphere",
+]
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 by_provider = defaultdict(list)
@@ -52,7 +65,9 @@ def print_md(provider: str):
             lines = file.readlines()
     else:
         lines = [
-          f"# {provider.upper()} Resource Data Models"
+          f"---\nsidebar_label: {provider.capitalize()}\n---",
+          "",
+          f"# {provider.capitalize()} Resource Data Models"
         ]
 
     with open(f"./{provider}/index.md", "w+") as file:
@@ -61,35 +76,32 @@ def print_md(provider: str):
 
         if ":::\n" in lines:
             lastline = ":::\n"
-        elif [i for i in lines if i.startswith("# ")]:
-            lastline = "# "
         else:
-            lastline = None
+            lastline = "# "
 
-        if lastline:
-            for line in lines:
-                line = line
-                print(line.strip("\n"))
-                if line.startswith(lastline):
-                    print()
-                    break
+        for line in lines:
+            print(line.strip("\n"))
+            if line.startswith(lastline):
+                print()
+                break
 
         for name in sorted(a["fqn"] for a in by_provider[provider]):
             print(f"## `{name}`\n")
-            print(f"![{name} data model](./img/{name}.svg)\n")
+            print(f"![Diagram of {name} data model](./img/{name}.svg)\n")
             print(
                 f"<details>\n<summary>Relationship to Other Resources</summary>\n<div>\n"
             )
-            print(f"![{name} relationships](./img/{name}_relationships.svg)\n")
+            print(f"![Diagram of {name} relationship to other resources](./img/{name}_relationships.svg)\n")
             print(f"</div>\n</details>\n")
 
         sys.stdout = original_stdout
 
 
 for provider in provider_names:
-    if not os.path.exists(f"./{provider}"):
-        os.mkdir(f"./{provider}")
-    if not os.path.exists(f"./{provider}/img"):
-        os.mkdir(f"./{provider}/img")
-    export_images(provider)
-    print_md(provider)
+    if len(by_provider[provider]) > 0:
+        if not os.path.exists(f"./{provider}"):
+            os.mkdir(f"./{provider}")
+        if not os.path.exists(f"./{provider}/img"):
+            os.mkdir(f"./{provider}/img")
+        export_images(provider)
+        print_md(provider)

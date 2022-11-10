@@ -12,7 +12,7 @@
     "build": "docusaurus build",
     "clear": "docusaurus clear",
     "deploy": "docusaurus deploy",
-    "format": "prettier --write --cache .",
+    "format": "prettier --write --cache . && svgo -rf ./",
     "lint": "eslint \"./**/*.{ts,tsx}\"",
     "prepare": "husky install",
     "serve": "docusaurus serve",
@@ -60,6 +60,7 @@
     "husky": "8.0.2",
     "lint-staged": "13.0.3",
     "prettier": "2.7.1",
+    "svgo": "3.0.0",
     "typescript": "4.8.4"
   },
   "resolutions": {

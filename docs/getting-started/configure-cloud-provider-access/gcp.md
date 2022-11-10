@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
 
-The [Google Cloud Platform (GCP)](../../reference/data-models/gcp.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs/index.md) in [Resoto Shell](../../concepts/components/shell.md).
+The [Google Cloud Platform (GCP)](../../reference/data-models/gcp/index.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs/index.md) in [Resoto Shell](../../concepts/components/shell.md).
 
 ## Enabling the Collector
 
@@ -34,7 +34,7 @@ The [Google Cloud Platform (GCP)](../../reference/data-models/gcp.md) collector 
 
 ## Authentication
 
-**You can authenticate with [Google Cloud Platform](../../reference/data-models/gcp.md) via service account JSON files or automatic discovery.**
+**You can authenticate with [Google Cloud Platform](../../reference/data-models/gcp/index.md) via service account JSON files or automatic discovery.**
 
 <Tabs>
 <TabItem value="service-account-json-files" label="Service Account JSON Files">

@@ -4,12 +4,6 @@ sidebar_label: VMware vSphere
 
 # VMware vSphere Resource Data Models
 
-:::caution
-
-vSphere support is still in alpha. Please [report any issues on GitHub](https://github.com/someengineering/resoto/issues/new?assignees=&labels=bug&template=bug.yml)!
-
-:::
-
 ## `vsphere_cluster`
 
 ![Diagram of vsphere_cluster data model](./img/vsphere_cluster.svg)

@@ -68,6 +68,8 @@ def print_md(provider: str):
           f"---\nsidebar_label: {provider.capitalize()}\n---",
           "",
           f"# {provider.capitalize()} Resource Data Models"
+          "",
+          "```mdx-code-block\nimport ZoomPanPinch from '@site/src/components/ZoomPanPinch';\n```"
         ]
 
     with open(f"./{provider}/index.md", "w+") as file:
@@ -87,12 +89,12 @@ def print_md(provider: str):
 
         for name in sorted(a["fqn"] for a in by_provider[provider]):
             print(f"## `{name}`\n")
-            print(f"![Diagram of {name} data model](./img/{name}.svg)\n")
+            print(f"<ZoomPanPinch>\n\n![Diagram of {name} data model](./img/{name}.svg)\n\n</ZoomPanPinch>\n")
             print(
-                f"<details>\n<summary>Relationship to Other Resources</summary>\n<div>\n"
+                f"<details>\n<summary>Relationship to Other Resources</summary>\n<div>\n<ZoomPanPinch>\n"
             )
             print(f"![Diagram of {name} relationship to other resources](./img/{name}_relationships.svg)\n")
-            print(f"</div>\n</details>\n")
+            print(f"</ZoomPanPinch>\n</div>\n</details>\n")
 
         sys.stdout = original_stdout
 

@@ -19,10 +19,10 @@ The [Resoto Core API](../../reference/api/index.md) is exposed at `https://<reso
 
 Resoto Core has two [API](../../reference/api/index.md) endpoints to connect to for CLI purposes:
 
-1. [`/cli/evaluate`](../../reference/api/index.md#tag/cli/paths/~1cli~1evaluate/post)
-2. [`/cli/execute`](../../reference/api/index.md#tag/cli/paths/~1cli~1execute/post)
+1. [`/cli/evaluate`](../../reference/api/evaluate-a-cli-command.api.mdx)
+2. [`/cli/execute`](../../reference/api/execute-a-cli-command.api.mdx)
 
-The [`/cli/evaluate`](../../reference/api/index.md#tag/cli/paths/~1cli~1evaluate/post) functinality is used internally on every [`/cli/execute`](../../reference/api/index.md#tag/cli/paths/~1cli~1execute/post) before the command executes.
+The [`/cli/evaluate`](../../reference/api/evaluate-a-cli-command.api.mdx) functinality is used internally on every [`/cli/execute`](../../reference/api/execute-a-cli-command.api.mdx) before the command executes.
 
 Below is a simulation of sending a [Resoto Shell](./shell.md) [search](../search.md) to the [API](../../reference/api/index.md).
 

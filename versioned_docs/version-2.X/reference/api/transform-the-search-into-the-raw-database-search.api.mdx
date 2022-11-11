@@ -1,0 +1,38 @@
+---
+id: transform-the-search-into-the-raw-database-search
+title: "Transform the search into the raw database search"
+description: "**Experimental**: This API is not stable and might be subject of change.<br/>"
+sidebar_label: "Transform the search into the raw database search"
+hide_title: true
+hide_table_of_contents: true
+api: {"description":"**Experimental**: This API is not stable and might be subject of change.<br/>\nShow the underlying raw search.\n","tags":["debug"],"parameters":[{"name":"graph_id","in":"path","description":"The identifier of the graph","example":"resoto","required":true,"schema":{"type":"string"}},{"name":"section","in":"query","description":"The name of the section used for all property paths. If not defined root is assumed.","required":false,"schema":{"type":"string","enum":["reported","desired","metadata"]}}],"requestBody":{"description":"The search to perform","content":{"text/plain":{"schema":{"type":"string","example":"is(graph_root) and reported.name==\"root\" -->"}}}},"responses":{"200":{"description":"Returns the search as performed by the database.","content":{"application/json":{"schema":{"type":"object","description":"The raw query as performed by the database","properties":{"query":{"type":"string","description":"The string representation of the query"},"bind_vars":{"type":"object","description":"All binding variables for this query","additionalProperties":true}}}}}}},"method":"post","path":"/graph/{graph_id}/search/raw","servers":[{"url":"https://localhost:8900"}],"info":{"title":"Resoto Core REST API","version":"V1"},"postman":{"name":"Transform the search into the raw database search","description":{"content":"**Experimental**: This API is not stable and might be subject of change.<br/>\nShow the underlying raw search.\n","type":"text/plain"},"url":{"path":["graph",":graph_id","search","raw"],"host":["{{baseUrl}}"],"query":[{"disabled":false,"description":{"content":"The name of the section used for all property paths. If not defined root is assumed.","type":"text/plain"},"key":"section","value":""}],"variable":[{"disabled":false,"description":{"content":"(Required) The identifier of the graph","type":"text/plain"},"type":"any","value":"","key":"graph_id"}]},"header":[{"key":"Content-Type","value":"text/plain"},{"key":"Accept","value":"application/json"}],"method":"POST","body":{"mode":"raw","raw":"\"\""}}}
+sidebar_class_name: "post api-method"
+info_path: versioned_docs/version-2.X/reference/api/resoto-core-rest-api
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem"
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Transform the search into the raw database search
+
+**Experimental**: This API is not stable and might be subject of change.<br/> Show the underlying raw search.
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Path Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"graph_id","in":"path","description":"The identifier of the graph","example":"resoto","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Query Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"section","in":"query","description":"The name of the section used for all property paths. If not defined root is assumed.","required":false,"schema":{"type":"string","enum":["reported","desired","metadata"]}}}></ParamsItem></ul></div></details><MimeTabs><TabItem label={"text/plain"} value={"text/plain-schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Request Body</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}><div style={{"marginTop":"1rem","marginBottom":"1rem"}}>
+
+The search to perform
+
+</div></div><ul style={{"marginLeft":"1rem"}}><li><div><strong>string</strong></div></li></ul></details></TabItem></MimeTabs><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+Returns the search as performed by the database.
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"query"} required={false} schemaDescription={"The string representation of the query"} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>bind_vars</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><div style={{"marginTop":".5rem","marginBottom":".5rem"}}>
+
+All binding variables for this query
+
+</div></div></details></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"query\": \"string\",\n  \"bind_vars\": {}\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>

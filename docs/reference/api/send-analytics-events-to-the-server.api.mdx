@@ -1,0 +1,42 @@
+---
+id: send-analytics-events-to-the-server
+title: "Send analytics events to the server"
+description: "Send analytics events to the server."
+sidebar_label: "Send analytics events to the server"
+hide_title: true
+hide_table_of_contents: true
+api: {"description":"Send analytics events to the server.\nThe server will either drop or forward the event based on the user defined settings.\n","tags":["system"],"requestBody":{"description":"The analytics events to send","content":{"application/json":{"schema":{"type":"array","items":{"description":"An analytics event.","type":"object","properties":{"system":{"type":"string","description":"The system that emitted the event."},"kind":{"type":"string","description":"The kind of event."},"context":{"type":"object","description":"The context of the event.","additionalProperties":{"type":"string"}},"counters":{"type":"object","description":"The counters of the event.","additionalProperties":{"type":"integer"}},"at":{"type":"string","description":"The time of the event in IS0 8601 date time."}}}}}}},"responses":{"204":{"description":"The events were accepted"}},"method":"post","path":"/analytics","servers":[{"url":"https://localhost:8900"}],"jsonRequestBodyExample":[{"system":"string","kind":"string","context":{},"counters":{},"at":"string"}],"info":{"title":"Resoto Core REST API","version":"V1"},"postman":{"name":"Send analytics events to the server","description":{"content":"Send analytics events to the server.\nThe server will either drop or forward the event based on the user defined settings.\n","type":"text/plain"},"url":{"path":["analytics"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"key":"Content-Type","value":"application/json"}],"method":"POST","body":{"mode":"raw","raw":"\"\"","options":{"raw":{"language":"json"}}}}}
+sidebar_class_name: "post api-method"
+info_path: docs/reference/api/resoto-core-rest-api
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem"
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Send analytics events to the server
+
+Send analytics events to the server. The server will either drop or forward the event based on the user defined settings.
+
+<MimeTabs><TabItem label={"application/json"} value={"application/json-schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Request Body</strong><span style={{"opacity":"0.6"}}> array</span></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}><div style={{"marginTop":"1rem","marginBottom":"1rem"}}>
+
+The analytics events to send
+
+</div></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"system"} required={false} schemaDescription={"The system that emitted the event."} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"kind"} required={false} schemaDescription={"The kind of event."} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>context</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><div style={{"marginTop":".5rem","marginBottom":".5rem"}}>
+
+The context of the event.
+
+</div><li><div><code>property name*</code><span style={{"opacity":"0.6"}}> string</span></div></li></div></details></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>counters</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><div style={{"marginTop":".5rem","marginBottom":".5rem"}}>
+
+The counters of the event.
+
+</div><li><div><code>property name*</code><span style={{"opacity":"0.6"}}> integer</span></div></li></div></details></SchemaItem><SchemaItem collapsible={false} name={"at"} required={false} schemaDescription={"The time of the event in IS0 8601 date time."} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></ul></details></TabItem></MimeTabs><div><ApiTabs><TabItem label={"204"} value={"204"}><div>
+
+The events were accepted
+
+</div><div></div></TabItem></ApiTabs></div>

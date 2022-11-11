@@ -43,40 +43,35 @@ const config = {
   markdown: {
     mermaid: true,
   },
-  themes: ['@docusaurus/theme-mermaid'],
+  themes: ['@docusaurus/theme-mermaid', 'docusaurus-theme-openapi-docs'],
   presets: [
-    [
-      'redocusaurus',
-      {
-        specs: [
-          {
-            id: 'resotocore',
-            spec: 'openapi/resotocore.yml',
-          },
-          {
-            id: 'resotocore-edge',
-            spec: 'openapi/resotocore-edge.yml',
-          },
-        ],
-        theme: {
-          primaryColor: '#762dd7',
-          primaryColorDark: '#af62f5',
-        },
-      },
-    ],
     [
       'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
+          async sidebarItemsGenerator({
+            defaultSidebarItemsGenerator,
+            ...args
+          }) {
+            const sidebarItems = await defaultSidebarItemsGenerator(args);
+            return sidebarItems.filter(
+              (item) =>
+                (item.type !== 'doc' || !item.id.endsWith('index')) &&
+                (item.type !== 'category' ||
+                  item.link.type !== 'doc' ||
+                  !item.link.id.endsWith('reference/api/index'))
+            );
+          },
           editUrl: ({ versionDocsDirPath, docPath }) =>
             `https://github.com/someengineering/resoto.com/edit/main/${versionDocsDirPath}/${docPath}`,
           showLastUpdateAuthor: false,
           showLastUpdateTime: true,
           remarkPlugins: [a11yEmoji, oembed],
+          docItemComponent: '@theme/ApiItem',
           onlyIncludeVersions: (() =>
-            isProd ? undefined : ['current', ...versions.slice(0, 2)])(),
+            isProd ? undefined : ['current', versions[0]])(),
           versions: {
             current: {
               label: 'edge 🚧',
@@ -84,10 +79,12 @@ const config = {
               banner: 'unreleased',
               badge: false,
             },
-            '2.X': {
-              label: latestRelease.version.startsWith('2.')
+            [versions[0]]: {
+              label: latestRelease.version.startsWith(
+                versions[0].substring(0, versions[0].indexOf('X'))
+              )
                 ? latestRelease.version
-                : '2.X',
+                : versions[0],
             },
           },
         },
@@ -134,6 +131,31 @@ const config = {
           copyright: `Copyright © ${new Date().getFullYear()} Some Engineering Inc.`,
         },
         remarkPlugins: [a11yEmoji],
+      },
+    ],
+    [
+      'docusaurus-plugin-openapi-docs',
+      {
+        id: 'openapi',
+        docsPluginId: 'classic',
+        config: {
+          resotocore: {
+            specPath: 'openapi/resotocore.yml',
+            outputDir: `versioned_docs/version-${versions[0]}/reference/api`,
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+              categoryLinkSource: 'tag',
+            },
+          },
+          resotocoreEdge: {
+            specPath: 'openapi/resotocore-edge.yml',
+            outputDir: `docs/reference/api`,
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+              categoryLinkSource: 'tag',
+            },
+          },
+        },
       },
     ],
   ],

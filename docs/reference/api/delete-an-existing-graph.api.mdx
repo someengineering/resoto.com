@@ -1,0 +1,30 @@
+---
+id: delete-an-existing-graph
+title: "Delete an existing graph"
+description: "Delete an existing graph"
+sidebar_label: "Delete an existing graph"
+hide_title: true
+hide_table_of_contents: true
+api: {"tags":["graph_management"],"parameters":[{"name":"graph_id","in":"path","description":"The identifier of the graph","example":"resoto","required":true,"schema":{"type":"string"}},{"name":"truncate","in":"query","schema":{"type":"boolean"},"description":"If this parameter is set, leave the graph definition, but wipe the data."}],"responses":{"200":{"description":"Ok when the delete operation was successful","content":{"text/plain":{"example":"Graph deleted."}}}},"description":"Delete an existing graph","method":"delete","path":"/graph/{graph_id}","servers":[{"url":"https://localhost:8900"}],"info":{"title":"Resoto Core REST API","version":"V1"},"postman":{"name":"Delete an existing graph","description":{"type":"text/plain"},"url":{"path":["graph",":graph_id"],"host":["{{baseUrl}}"],"query":[{"disabled":false,"description":{"content":"If this parameter is set, leave the graph definition, but wipe the data.","type":"text/plain"},"key":"truncate","value":""}],"variable":[{"disabled":false,"description":{"content":"(Required) The identifier of the graph","type":"text/plain"},"type":"any","value":"","key":"graph_id"}]},"header":[{"key":"Accept","value":"text/plain"}],"method":"DELETE"}}
+sidebar_class_name: "delete api-method"
+info_path: docs/reference/api/resoto-core-rest-api
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem"
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Delete an existing graph
+
+Delete an existing graph
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Path Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"graph_id","in":"path","description":"The identifier of the graph","example":"resoto","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Query Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"truncate","in":"query","schema":{"type":"boolean"},"description":"If this parameter is set, leave the graph definition, but wipe the data."}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+Ok when the delete operation was successful
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"text/plain"} value={"text/plain"}><SchemaTabs><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"Graph deleted."} language={"shell"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>

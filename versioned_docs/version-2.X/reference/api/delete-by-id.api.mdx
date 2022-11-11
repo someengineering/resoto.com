@@ -1,0 +1,30 @@
+---
+id: delete-by-id
+title: "Delete by id"
+description: "Delete the subscriber with a defined id."
+sidebar_label: "Delete by id"
+hide_title: true
+hide_table_of_contents: true
+api: {"description":"Delete the subscriber with a defined id.","tags":["subscriptions"],"parameters":[{"name":"subscriber_id","in":"path","description":"The identifier of the subscriber","required":true,"schema":{"type":"string"}}],"responses":{"204":{"description":"no content"}},"method":"delete","path":"/subscriber/{subscriber_id}","servers":[{"url":"https://localhost:8900"}],"info":{"title":"Resoto Core REST API","version":"V1"},"postman":{"name":"Delete by id","description":{"content":"Delete the subscriber with a defined id.","type":"text/plain"},"url":{"path":["subscriber",":subscriber_id"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) The identifier of the subscriber","type":"text/plain"},"type":"any","value":"","key":"subscriber_id"}]},"method":"DELETE"}}
+sidebar_class_name: "delete api-method"
+info_path: versioned_docs/version-2.X/reference/api/resoto-core-rest-api
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem"
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Delete by id
+
+Delete the subscriber with a defined id.
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Path Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"subscriber_id","in":"path","description":"The identifier of the subscriber","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"204"} value={"204"}><div>
+
+no content
+
+</div><div></div></TabItem></ApiTabs></div>

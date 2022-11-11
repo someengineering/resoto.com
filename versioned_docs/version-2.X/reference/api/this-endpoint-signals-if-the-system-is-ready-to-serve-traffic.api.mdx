@@ -1,0 +1,30 @@
+---
+id: this-endpoint-signals-if-the-system-is-ready-to-serve-traffic
+title: "This endpoint signals if the system is ready to serve traffic."
+description: "This endpoint signals if the system is ready to serve traffic."
+sidebar_label: "This endpoint signals if the system is ready to serve traffic."
+hide_title: true
+hide_table_of_contents: true
+api: {"tags":["system"],"responses":{"200":{"description":"This response code signals, that the system is ready.","content":{"text/plain":{"schema":{"type":"string","example":"200: OK"}}}}},"description":"This endpoint signals if the system is ready to serve traffic.","method":"get","path":"/system/ready","servers":[{"url":"https://localhost:8900"}],"info":{"title":"Resoto Core REST API","version":"V1"},"postman":{"name":"This endpoint signals if the system is ready to serve traffic.","description":{"type":"text/plain"},"url":{"path":["system","ready"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"key":"Accept","value":"text/plain"}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: versioned_docs/version-2.X/reference/api/resoto-core-rest-api
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem"
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## This endpoint signals if the system is ready to serve traffic.
+
+This endpoint signals if the system is ready to serve traffic.
+
+<div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+This response code signals, that the system is ready.
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"text/plain"} value={"text/plain"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><li><div><strong>string</strong></div></li></ul></details></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>

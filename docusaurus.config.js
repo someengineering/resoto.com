@@ -104,7 +104,10 @@ const config = {
           remarkPlugins: [a11yEmoji],
         },
         theme: {
-          customCss: [require.resolve('./src/css/custom.css'), require.resolve('./src/css/docusaurus-plugin-openapi-docs.css')],
+          customCss: [
+            require.resolve('./src/css/custom.css'),
+            require.resolve('./src/css/docusaurus-plugin-openapi-docs.css'),
+          ],
         },
         sitemap: {
           changefreq: 'daily',

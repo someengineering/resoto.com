@@ -74,7 +74,7 @@ export default function ZoomPanPinch({
         <TransformWrapper
           initialScale={0.75}
           minScale={0.25}
-          maxScale={2}
+          maxScale={8}
           centerOnInit
         >
           <TransformComponent

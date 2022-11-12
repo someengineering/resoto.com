@@ -37,6 +37,7 @@
     "clsx": "1.2.1",
     "docusaurus-plugin-openapi-docs": "1.4.4",
     "docusaurus-theme-openapi-docs": "1.4.4",
+    "github-slugger": "2.0.0",
     "lottie-web": "5.9.6",
     "moment": "2.29.4",
     "moment-timezone": "0.5.38",

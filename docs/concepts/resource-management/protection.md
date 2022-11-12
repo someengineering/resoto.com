@@ -4,32 +4,32 @@ sidebar_label: Protection
 
 # Resource Protection
 
-Resoto has a concept of resource protection. The idea being that some resources in an account are important and should never be touched by Resoto even if a user, a plugin or an automated job has flagged them for cleanup.
+Some resources may be important and should never be touched by Resoto even if a user, plugin, or automated job flags them for cleanup.
 
-Think of a CI account where most of the resources are not important and could be deleted except for the CI server itself. In this case you could protect the CI server from accidental deletion.
+Imagine a CI account where most of the resources are not important and could be deleted, aside from the CI server itself. In this case, you could protect the CI server from accidental deletion.
 
-## Protecting resources
+## Protecting Resources
 
-To protect a resource simply perform a search and pipe the result to `| protect`.
+To protect a resource, simply perform a search and pipe the result to [`protect`](../../reference/cli/action-commands/protect.md).
 
-```
+```bash
 > search is(aws_ec2_instance) and name = jenkins-master | protect "Jenkins Master"
 ```
 
-A better way of automatically protecting resources is to use the [`Protector`](../components/plugins/protector.md) plugin or by running a job.
+A better way of automatically protecting resources is to use the [`protector` plugin](../components/plugins/protector.md) or by running a job.
 
-## Finding protected resources
+## Finding Protected Resources
 
-```
+```bash
 > search /metadata.protected = true
 ```
 
-## Unprotecting a resource
+## Unprotecting a Resource
 
-By piping a resource to `| set_metadata protected=false` the resource will be unprotected.
+Pipe a resource to [`set_metadata protected=false`](../../reference/cli/action-commands/set_metadata.md) to unprotect a resource.
 
 Example:
 
-```
+```bash
 > search name = jenkins-master | set_metadata protected=false
 ```

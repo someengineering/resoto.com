@@ -349,7 +349,14 @@ const config = {
       prism: {
         theme: require('prism-react-renderer/themes/github'),
         darkTheme: require('./src/utils/prismDark.js'),
-        additionalLanguages: ['csv', 'ini', 'powershell'],
+        additionalLanguages: [
+          'csv',
+          'ini',
+          'powershell',
+          'ruby',
+          'csharp',
+          'php',
+        ],
       },
       magicComments: [
         {

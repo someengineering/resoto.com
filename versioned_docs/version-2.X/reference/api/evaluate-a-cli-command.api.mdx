@@ -1,0 +1,38 @@
+---
+id: evaluate-a-cli-command
+title: "Evaluate a cli command"
+description: "This method can be used to analyze if the command can be interpreted without executing it."
+sidebar_label: "Evaluate a cli command"
+hide_title: true
+hide_table_of_contents: true
+api: {"description":"This method can be used to analyze if the command can be interpreted without executing it.\nWhen this method returns a 200 OK, the command can be parsed and evaluated.\n","parameters":[{"name":"env","description":"All search parameter form the environment passed to the CLI interpreter.","in":"query","schema":{"type":"object","additionalProperties":true}}],"requestBody":{"description":"The command will be sent as request body.\nA command can contain multiple command line separated by semicolon.\nEvery single line can contain multiple commands that are combined via the pipe operator.\n","content":{"text/plain":{"schema":{"type":"string","example":"json [1,2,3,4,5,6] | count"}}}},"tags":["cli"],"responses":{"200":{"description":"When the command can be evaluated.","content":{"application/json":{"schema":{"type":"array","items":{"type":"object","additionalProperties":true}}}}},"300":{"description":"When the command can not be evaluated.","content":{"text/plain":{"schema":{"type":"string"}}}}},"method":"post","path":"/cli/evaluate","servers":[{"url":"https://localhost:8900"}],"info":{"title":"Resoto Core REST API","version":"V1"},"postman":{"name":"Evaluate a cli command","description":{"content":"This method can be used to analyze if the command can be interpreted without executing it.\nWhen this method returns a 200 OK, the command can be parsed and evaluated.\n","type":"text/plain"},"url":{"path":["cli","evaluate"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"key":"Content-Type","value":"text/plain"},{"key":"Accept","value":"application/json"}],"method":"POST","body":{"mode":"raw","raw":"\"\""}}}
+sidebar_class_name: "post api-method"
+info_path: versioned_docs/version-2.X/reference/api/resoto-core-rest-api
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem"
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Evaluate a cli command
+
+This method can be used to analyze if the command can be interpreted without executing it. When this method returns a 200 OK, the command can be parsed and evaluated.
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Query Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"env","description":"All search parameter form the environment passed to the CLI interpreter.","in":"query","schema":{"type":"object","additionalProperties":true}}}></ParamsItem></ul></div></details><MimeTabs><TabItem label={"text/plain"} value={"text/plain-schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Request Body</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}><div style={{"marginTop":"1rem","marginBottom":"1rem"}}>
+
+The command will be sent as request body. A command can contain multiple command line separated by semicolon. Every single line can contain multiple commands that are combined via the pipe operator.
+
+</div></div><ul style={{"marginLeft":"1rem"}}><li><div><strong>string</strong></div></li></ul></details></TabItem></MimeTabs><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+When the command can be evaluated.
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong><span style={{"opacity":"0.6"}}> array</span></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"[\n  {}\n]"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"300"} value={"300"}><div>
+
+When the command can not be evaluated.
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"text/plain"} value={"text/plain"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><li><div><strong>string</strong></div></li></ul></details></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>

@@ -14,6 +14,7 @@
     "deploy": "docusaurus deploy",
     "format": "prettier --write --cache .",
     "format:check": "prettier --check --cache .",
+    "gen-api-docs": "docusaurus clean-api-docs all && docusaurus gen-api-docs all",
     "lint": "eslint \"./**/*.{ts,tsx}\"",
     "optimize": "svgo -rf .",
     "prepare": "husky install",
@@ -34,6 +35,8 @@
     "@octokit/core": "4.1.0",
     "a11y-react-emoji": "1.2.0",
     "clsx": "1.2.1",
+    "docusaurus-plugin-openapi-docs": "1.4.4",
+    "docusaurus-theme-openapi-docs": "1.4.4",
     "lottie-web": "5.9.6",
     "moment": "2.29.4",
     "moment-timezone": "0.5.38",
@@ -44,7 +47,6 @@
     "react-modal": "3.16.1",
     "react-moment": "1.1.2",
     "react-zoom-pan-pinch": "2.1.3",
-    "redocusaurus": "1.4.0",
     "remark-plugin-oembed": "0.1.0"
   },
   "devDependencies": {

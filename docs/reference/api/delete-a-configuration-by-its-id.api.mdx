@@ -1,0 +1,30 @@
+---
+id: delete-a-configuration-by-its-id
+title: "Delete a configuration by its id"
+description: "**Experimental**: This API is not stable and might be subject of change.<br/>"
+sidebar_label: "Delete a configuration by its id"
+hide_title: true
+hide_table_of_contents: true
+api: {"description":"**Experimental**: This API is not stable and might be subject of change.<br/>\nDelete a configuration identified by id with provided value.\n","tags":["config"],"parameters":[{"name":"config_id","in":"path","required":true,"description":"the identifier of the config to get.","schema":{"type":"string"}}],"responses":{"204":{"description":"Signals success of this operation."}},"method":"delete","path":"/config/{config_id}","servers":[{"url":"https://localhost:8900"}],"info":{"title":"Resoto Core REST API","version":"V1"},"postman":{"name":"Delete a configuration by its id","description":{"content":"**Experimental**: This API is not stable and might be subject of change.<br/>\nDelete a configuration identified by id with provided value.\n","type":"text/plain"},"url":{"path":["config",":config_id"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) the identifier of the config to get.","type":"text/plain"},"type":"any","value":"","key":"config_id"}]},"method":"DELETE"}}
+sidebar_class_name: "delete api-method"
+info_path: docs/reference/api/resoto-core-rest-api
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem"
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Delete a configuration by its id
+
+**Experimental**: This API is not stable and might be subject of change.<br/> Delete a configuration identified by id with provided value.
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Path Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"config_id","in":"path","required":true,"description":"the identifier of the config to get.","schema":{"type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"204"} value={"204"}><div>
+
+Signals success of this operation.
+
+</div><div></div></TabItem></ApiTabs></div>

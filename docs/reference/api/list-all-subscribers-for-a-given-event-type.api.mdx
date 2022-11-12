@@ -1,0 +1,34 @@
+---
+id: list-all-subscribers-for-a-given-event-type
+title: "List all subscribers for a given event type"
+description: "Get all subscriptions of registered subscribers"
+sidebar_label: "List all subscribers for a given event type"
+hide_title: true
+hide_table_of_contents: true
+api: {"description":"Get all subscriptions of registered subscribers","tags":["subscriptions"],"parameters":[{"name":"event_type","in":"path","description":"The type of message","required":true,"schema":{"type":"string"}}],"responses":{"200":{"description":"The list of all subscribers which are subscribed","content":{"application/json":{"schema":{"type":"array","items":{"description":"A subscriber has a unique name and a list of subscriptions","type":"object","properties":{"id":{"type":"string","description":"The identifier of this subscriber"},"subscriptions":{"type":"object","description":"The dictionary of subscriptions, where the key is the message type","additionalProperties":{"description":"The definition of an action subscription","type":"object","properties":{"message_type":{"type":"string","description":"The name of the action to listen to"},"wait_for_completion":{"type":"boolean","description":"If an action is sent to this subscriber, the event sender should wait until this\nsubscriber has processed the message and send a done message.\nThis is the expected behaviour of every actor and defaults to true.\n","default":true},"timeout":{"type":"number","description":"This is the duration in seconds this subscriber has time to execute the action.\nAfter this time the sender assumes a failure and rejects the result of this actor.\n","default":60}}}}}}}}}}},"method":"get","path":"/subscribers/for/{event_type}","servers":[{"url":"https://localhost:8900"}],"info":{"title":"Resoto Core REST API","version":"V1"},"postman":{"name":"List all subscribers for a given event type","description":{"content":"Get all subscriptions of registered subscribers","type":"text/plain"},"url":{"path":["subscribers","for",":event_type"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) The type of message","type":"text/plain"},"type":"any","value":"","key":"event_type"}]},"header":[{"key":"Accept","value":"application/json"}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/reference/api/resoto-core-rest-api
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem"
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## List all subscribers for a given event type
+
+Get all subscriptions of registered subscribers
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Path Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"event_type","in":"path","description":"The type of message","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+The list of all subscribers which are subscribed
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong><span style={{"opacity":"0.6"}}> array</span></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"id"} required={false} schemaDescription={"The identifier of this subscriber"} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>subscriptions</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><div style={{"marginTop":".5rem","marginBottom":".5rem"}}>
+
+The dictionary of subscriptions, where the key is the message type
+
+</div><li><div><code>property name*</code><span style={{"opacity":"0.6"}}> object</span></div></li></div></details></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"[\n  {\n    \"id\": \"string\",\n    \"subscriptions\": {}\n  }\n]"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>

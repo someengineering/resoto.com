@@ -15,16 +15,16 @@ somecr.io/someengineering/resotocore:{{imageTag}}
 
 ## API
 
-The [Resoto Core API](../../reference/api.md) is exposed at `https://<resoto-address>:8900/api-doc`. You can also access it at [`https://resoto.com/docs/reference/api`](../../reference/api.md).
+The [Resoto Core API](../../reference/api/index.md) is exposed at `https://<resoto-address>:8900/api-doc`. You can also access it at [`https://resoto.com/docs/reference/api`](../../reference/api/index.md).
 
-Resoto Core has two [API](../../reference/api.md) endpoints to connect to for CLI purposes:
+Resoto Core has two [API](../../reference/api/index.md) endpoints to connect to for CLI purposes:
 
-1. [`/cli/evaluate`](../../reference/api.md#tag/cli/paths/~1cli~1evaluate/post)
-2. [`/cli/execute`](../../reference/api.md#tag/cli/paths/~1cli~1execute/post)
+1. [`/cli/evaluate`](../../reference/api/evaluate-a-cli-command.api.mdx)
+2. [`/cli/execute`](../../reference/api/execute-a-cli-command.api.mdx)
 
-The [`/cli/evaluate`](../../reference/api.md#tag/cli/paths/~1cli~1evaluate/post) functinality is used internally on every [`/cli/execute`](../../reference/api.md#tag/cli/paths/~1cli~1execute/post) before the command executes.
+The [`/cli/evaluate`](../../reference/api/evaluate-a-cli-command.api.mdx) functinality is used internally on every [`/cli/execute`](../../reference/api/execute-a-cli-command.api.mdx) before the command executes.
 
-Below is a simulation of sending a [Resoto Shell](./shell.md) [search](../search.md) to the [API](../../reference/api.md).
+Below is a simulation of sending a [Resoto Shell](./shell.md) [search](../search.md) to the [API](../../reference/api/index.md).
 
 We will evaluate the search before executing it for demonstration. We also introduce a search with a typo to show the response if not successful.
 
@@ -113,4 +113,4 @@ We will evaluate the search before executing it for demonstration. We also intro
 
 # More API Endpoints
 
-Resoto Core is the central hub for everything Resoto does. You can explore additional API endpoints at `https://<resoto-address>:8900/api-doc` or [`https://resoto.com/docs/reference/api`](../../reference/api.md).
+Resoto Core is the central hub for everything Resoto does. You can explore additional API endpoints at `https://<resoto-address>:8900/api-doc` or [`https://resoto.com/docs/reference/api`](../../reference/api/index.md).

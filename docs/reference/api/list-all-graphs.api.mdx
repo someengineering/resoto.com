@@ -1,0 +1,30 @@
+---
+id: list-all-graphs
+title: "List all graphs"
+description: "List all graphs"
+sidebar_label: "List all graphs"
+hide_title: true
+hide_table_of_contents: true
+api: {"tags":["graph_management"],"responses":{"200":{"description":"The names of all graphs","content":{"application/json":{"schema":{"type":"array","items":{"type":"string"},"example":["main","test"]}}}}},"description":"List all graphs","method":"get","path":"/graph","servers":[{"url":"https://localhost:8900"}],"info":{"title":"Resoto Core REST API","version":"V1"},"postman":{"name":"List all graphs","description":{"type":"text/plain"},"url":{"path":["graph"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"key":"Accept","value":"application/json"}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/reference/api/resoto-core-rest-api
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem"
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## List all graphs
+
+List all graphs
+
+<div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+The names of all graphs
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong><span style={{"opacity":"0.6"}}> array</span></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><li><div><strong>string</strong></div></li></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"[\n  \"main\",\n  \"test\"\n]"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>

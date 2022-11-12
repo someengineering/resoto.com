@@ -1,6 +1,6 @@
 openapi: 3.0.0
 servers:
-  - url: http://localhost:8900
+  - url: https://localhost:8900
 info:
   title: Resoto Core REST API
   version: V1

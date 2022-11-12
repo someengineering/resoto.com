@@ -1,8 +1,7 @@
 # API
 
 ```mdx-code-block
-import { useCurrentSidebarCategory } from '@docusaurus/theme-common';
-import DocCardList from '@theme/DocCardList';
+import SectionedDocCardList from '@site/src/components/SectionedDocCardList';
 ```
 
-<DocCardList items={useCurrentSidebarCategory().items} />
+<SectionedDocCardList />

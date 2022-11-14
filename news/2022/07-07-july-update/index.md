@@ -1,9 +1,7 @@
 # July Update
 
 ```mdx-code-block
-import Moment from 'react-moment';
-import moment from 'moment/moment';
-import 'moment-timezone';
+import DayJS from '@site/src/components/DayJS';
 ```
 
 Hello everyone, here's an update for July!

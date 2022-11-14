@@ -1,0 +1,34 @@
+---
+id: get-a-configuration-validation-by-its-id
+title: "Get a configuration validation by its id"
+description: "**Experimental**: This API is not stable and might be subject of change.<br/>"
+sidebar_label: "Get a configuration validation by its id"
+hide_title: true
+hide_table_of_contents: true
+api: {"description":"**Experimental**: This API is not stable and might be subject of change.<br/>\nFetch the validation of a configuration by id.\n","tags":["config_validation"],"parameters":[{"name":"config_id","required":true,"in":"path","description":"the identifier of the configuration validation.","schema":{"type":"string"}}],"responses":{"200":{"description":"The configuration validation.","content":{"application/json":{"schema":{"description":"The validation for this configuration value.","type":"object","properties":{"id":{"description":"The identifier of the related configuration.","type":"string"},"external_validation":{"description":"True, if an external entity should validate a config change.\nIn this case resotocore is emitting a task on the task queue of type validate_config.\nIt expectes a listener to pickup this task and report back, if the configuration is valid or not.\n","type":"boolean"}}}},"application/yaml":{"schema":{"description":"The validation for this configuration value.","type":"object","properties":{"id":{"description":"The identifier of the related configuration.","type":"string"},"external_validation":{"description":"True, if an external entity should validate a config change.\nIn this case resotocore is emitting a task on the task queue of type validate_config.\nIt expectes a listener to pickup this task and report back, if the configuration is valid or not.\n","type":"boolean"}}}}}},"404":{"description":"No config validation for this key."}},"method":"get","path":"/config/{config_id}/validation","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Resoto Core REST API","version":"V1"},"postman":{"name":"Get a configuration validation by its id","description":{"content":"**Experimental**: This API is not stable and might be subject of change.<br/>\nFetch the validation of a configuration by id.\n","type":"text/plain"},"url":{"path":["config",":config_id","validation"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) the identifier of the configuration validation.","type":"text/plain"},"type":"any","value":"","key":"config_id"}]},"header":[{"key":"Accept","value":"application/json"}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/reference/api/resoto-core-rest-api
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem"
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Get a configuration validation by its id
+
+**Experimental**: This API is not stable and might be subject of change.<br/> Fetch the validation of a configuration by id.
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Path Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"config_id","required":true,"in":"path","description":"the identifier of the configuration validation.","schema":{"type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+The configuration validation.
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"id"} required={false} schemaDescription={"The identifier of the related configuration."} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"external_validation"} required={false} schemaDescription={"True, if an external entity should validate a config change.\nIn this case resotocore is emitting a task on the task queue of type validate_config.\nIt expectes a listener to pickup this task and report back, if the configuration is valid or not.\n"} schemaName={"boolean"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"id\": \"string\",\n  \"external_validation\": true\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem><TabItem label={"application/yaml"} value={"application/yaml"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"id"} required={false} schemaDescription={"The identifier of the related configuration."} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"external_validation"} required={false} schemaDescription={"True, if an external entity should validate a config change.\nIn this case resotocore is emitting a task on the task queue of type validate_config.\nIt expectes a listener to pickup this task and report back, if the configuration is valid or not.\n"} schemaName={"boolean"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"id\": \"string\",\n  \"external_validation\": true\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"404"} value={"404"}><div>
+
+No config validation for this key.
+
+</div><div></div></TabItem></ApiTabs></div>

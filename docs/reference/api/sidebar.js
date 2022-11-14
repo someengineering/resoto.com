@@ -225,14 +225,14 @@ module.exports = [
       },
       {
         type: 'doc',
-        id: 'reference/api/get-a-configuration-by-its-id',
-        label: 'Get a configuration by its id',
+        id: 'reference/api/get-a-configuration-validation-by-its-id',
+        label: 'Get a configuration validation by its id',
         className: 'api-method get',
       },
       {
         type: 'doc',
-        id: 'reference/api/replace-a-configuration-model-with-given-id',
-        label: 'Replace a configuration model with given id',
+        id: 'reference/api/replace-a-configuration-validation-with-given-id',
+        label: 'Replace a configuration validation with given id',
         className: 'api-method put',
       },
     ],

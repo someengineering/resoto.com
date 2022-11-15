@@ -17,7 +17,9 @@ export default function CodeBlock(props: Props): JSX.Element {
   }
 
   const versionTag =
-    versionMetadata?.version === 'current' ? null : latestRelease.version;
+    !versionMetadata || versionMetadata.version === 'current'
+      ? null
+      : latestRelease[versionMetadata.version].version;
 
   return (
     <OriginalCodeBlock {...props}>

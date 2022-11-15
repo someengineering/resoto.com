@@ -36,9 +36,9 @@ export default function DocSidebarItemsWrapper(props: Props): JSX.Element {
             0,
             versionMetadata.version.indexOf('.')
           ) ===
-          latestRelease.version.substring(
+          latestRelease[versionMetadata.version]?.version.substring(
             0,
-            latestRelease.version.indexOf('.')
+            latestRelease[versionMetadata.version]?.version.indexOf('.')
           ) ? (
             <Link
               to={latestRelease.link}

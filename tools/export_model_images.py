@@ -1,8 +1,10 @@
-import os, os.path
-import requests
+import os
+import os.path
 import sys
-import urllib3
 from collections import defaultdict
+
+import requests
+import urllib3
 
 core = "https://localhost:8900"
 provider_names = [
@@ -23,11 +25,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 by_provider = defaultdict(list)
 for kind in requests.get(f"{core}/model", verify=False).json():
-    groups = [
-        a
-        for a in provider_names
-        if kind["fqn"].startswith(f"{a}_") and kind.get("aggregate_root", False)
-    ]
+    groups = [a for a in provider_names if kind["fqn"].startswith(f"{a}_") and kind.get("aggregate_root", False)]
     if groups:
         by_provider[groups[0]].append(kind)
 
@@ -65,11 +63,11 @@ def print_md(provider: str):
             lines = file.readlines()
     else:
         lines = [
-          f"---\nsidebar_label: {provider.capitalize()}\n---",
-          "",
-          f"# {provider.capitalize()} Resource Data Models"
-          "",
-          "```mdx-code-block\nimport ZoomPanPinch from '@site/src/components/ZoomPanPinch';\n```"
+            f"---\nsidebar_label: {provider.capitalize()}\n---",
+            "",
+            f"# {provider.capitalize()} Resource Data Models",
+            "",
+            "```mdx-code-block\nimport ZoomPanPinch from '@site/src/components/ZoomPanPinch';\n```",
         ]
 
     with open(f"./{provider}/index.md", "w+") as file:
@@ -90,9 +88,7 @@ def print_md(provider: str):
         for name in sorted(a["fqn"] for a in by_provider[provider]):
             print(f"## `{name}`\n")
             print(f"<ZoomPanPinch>\n\n![Diagram of {name} data model](./img/{name}.svg)\n\n</ZoomPanPinch>\n")
-            print(
-                f"<details>\n<summary>Relationships to Other Resources</summary>\n<div>\n<ZoomPanPinch>\n"
-            )
+            print(f"<details>\n<summary>Relationships to Other Resources</summary>\n<div>\n<ZoomPanPinch>\n")
             print(f"![Diagram of {name} resource relationships](./img/{name}_relationships.svg)\n")
             print(f"</ZoomPanPinch>\n</div>\n</details>\n")
 

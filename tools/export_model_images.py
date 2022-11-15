@@ -5,6 +5,8 @@ from collections import defaultdict
 
 import requests
 import urllib3
+from requests.adapters import HTTPAdapter
+from urllib3.util import Retry
 
 core = "https://localhost:8900"
 provider_names = [
@@ -23,8 +25,21 @@ provider_names = [
 ]
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
+
+def get_url(url: str, params: dict = None):
+    session = requests.Session()
+    adapter = HTTPAdapter(
+        max_retries=Retry(
+            total=10,
+            backoff_factor=5,
+        )
+    )
+    session.mount("https://", adapter)
+    return session.get(url, params=params, verify=False)
+
+
 by_provider = defaultdict(list)
-for kind in requests.get(f"{core}/model", verify=False).json():
+for kind in get_url(f"{core}/model").json():
     groups = [a for a in provider_names if kind["fqn"].startswith(f"{a}_") and kind.get("aggregate_root", False)]
     if groups:
         by_provider[groups[0]].append(kind)
@@ -35,11 +50,7 @@ def export_images(provider: str):
         name = kind["fqn"]
         print(f"Exporting {name}")
         with open(f"./{provider}/img/{name}.svg", "w+") as file:
-            image = requests.get(
-                f"{core}/model/uml",
-                params={"show": name, "link_classes": "true"},
-                verify=False,
-            )
+            image = get_url(f"{core}/model/uml", params={"show": name, "link_classes": "true"})
             file.write(image.text)
         with open(f"./{provider}/img/{name}_relationships.svg", "w+") as file:
             parms = {
@@ -53,7 +64,7 @@ def export_images(provider: str):
                 "with_properties": "false",
                 "link_classes": "true",
             }
-            image = requests.get(f"{core}/model/uml", params=parms, verify=False)
+            image = get_url(f"{core}/model/uml", params=parms)
             file.write(image.text)
 
 
@@ -75,13 +86,15 @@ def print_md(provider: str):
         sys.stdout = file
 
         if ":::\n" in lines:
-            lastline = ":::\n"
+            lastline = ":::"
         else:
-            lastline = "# "
+            lastline = "```"
 
         for line in lines:
-            print(line.strip("\n"))
-            if line.startswith(lastline):
+            line = line.strip("\n")
+            print(line)
+
+            if line == lastline:
                 print()
                 break
 

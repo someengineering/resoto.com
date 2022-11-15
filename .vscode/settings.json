@@ -2,5 +2,11 @@
   "editor.codeActionsOnSave": {
     "source.organizeImports": true
   },
-  "editor.formatOnSave": true
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "[python]": {
+    "editor.defaultFormatter": null
+  },
+  "python.formatting.blackArgs": ["--line-length", "120"],
+  "python.formatting.provider": "black"
 }

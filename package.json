@@ -14,7 +14,7 @@
     "deploy": "docusaurus deploy",
     "format": "prettier --write --cache .",
     "format:check": "prettier --check --cache .",
-    "gen-api-docs": "docusaurus clean-api-docs all && docusaurus gen-api-docs all",
+    "gen-api-docs": "docusaurus clean-api-docs all && docusaurus gen-api-docs all && prettier --write .",
     "lint": "eslint \"./**/*.{ts,tsx}\"",
     "optimize": "svgo -rf .",
     "prepare": "husky install",

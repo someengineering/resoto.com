@@ -1,6 +1,7 @@
 import os
 import os.path
 import sys
+import time
 from collections import defaultdict
 
 import requests
@@ -9,7 +10,7 @@ from requests.adapters import HTTPAdapter
 from urllib3.util import Retry
 
 core = "https://localhost:8900"
-provider_names = [
+providers = [
     "aws",
     "digitalocean",
     "dockerhub",
@@ -23,30 +24,38 @@ provider_names = [
     "slack",
     "vsphere",
 ]
+required_providers = ["aws", "digitalocean", "gcp", "github", "kubernetes", "onelogin", "onprem", "slack", "vsphere"]
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
 def get_url(url: str, params: dict = None):
-    session = requests.Session()
-    adapter = HTTPAdapter(
-        max_retries=Retry(
-            total=10,
-            backoff_factor=5,
+    try:
+        session = requests.Session()
+        adapter = HTTPAdapter(
+            max_retries=Retry(
+                total=5,
+                backoff_factor=0.5,
+            )
         )
-    )
-    session.mount("https://", adapter)
-    return session.get(url, params=params, verify=False)
+        session.mount("https://", adapter)
+
+        return session.get(url, params=params, verify=False)
+    except Exception:
+        return None
 
 
-by_provider = defaultdict(list)
-for kind in get_url(f"{core}/model").json():
-    groups = [a for a in provider_names if kind["fqn"].startswith(f"{a}_") and kind.get("aggregate_root", False)]
-    if groups:
-        by_provider[groups[0]].append(kind)
+def get_kinds():
+    kinds = defaultdict(list)
+    for kind in get_url(f"{core}/model").json():
+        groups = [a for a in providers if kind["fqn"].startswith(f"{a}_") and kind.get("aggregate_root", False)]
+        if groups:
+            kinds[groups[0]].append(kind)
+
+    return kinds
 
 
-def export_images(provider: str):
-    for kind in by_provider[provider]:
+def export_images(provider: str, kinds: list):
+    for kind in kinds:
         name = kind["fqn"]
         print(f"Exporting {name}")
         with open(f"./{provider}/img/{name}.svg", "w+") as file:
@@ -68,7 +77,7 @@ def export_images(provider: str):
             file.write(image.text)
 
 
-def print_md(provider: str):
+def print_md(provider: str, kinds: list):
     if os.path.exists(f"./{provider}/index.md"):
         with (open(f"./{provider}/index.md", "r+")) as file:
             lines = file.readlines()
@@ -98,7 +107,7 @@ def print_md(provider: str):
                 print()
                 break
 
-        for name in sorted(a["fqn"] for a in by_provider[provider]):
+        for name in sorted(a["fqn"] for a in kinds):
             print(f"## `{name}`\n")
             print(f"<ZoomPanPinch>\n\n![Diagram of {name} data model](./img/{name}.svg)\n\n</ZoomPanPinch>\n")
             print(f"<details>\n<summary>Relationships to Other Resources</summary>\n<div>\n<ZoomPanPinch>\n")
@@ -108,11 +117,18 @@ def print_md(provider: str):
         sys.stdout = original_stdout
 
 
-for provider in provider_names:
-    if len(by_provider[provider]) > 0:
+for provider in providers:
+    kinds = get_kinds()
+    retries = 0
+
+    while (set(required_providers).issubset(kinds.keys()) or time.sleep(5)) and retries < 60:
+        kinds = get_kinds()
+        retries += 1
+
+    if len(kinds[provider]) > 0:
         if not os.path.exists(f"./{provider}"):
             os.mkdir(f"./{provider}")
         if not os.path.exists(f"./{provider}/img"):
             os.mkdir(f"./{provider}/img")
-        export_images(provider)
-        print_md(provider)
+        export_images(provider, kinds[provider])
+        print_md(provider, kinds[provider])

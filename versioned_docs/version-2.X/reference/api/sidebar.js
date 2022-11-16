@@ -225,14 +225,14 @@ module.exports = [
       },
       {
         type: 'doc',
-        id: 'version-2.X/reference/api/get-a-configuration-by-its-id',
-        label: 'Get a configuration by its id',
+        id: 'version-2.X/reference/api/get-a-configuration-validation-by-its-id',
+        label: 'Get a configuration validation by its id',
         className: 'api-method get',
       },
       {
         type: 'doc',
-        id: 'version-2.X/reference/api/replace-a-configuration-model-with-given-id',
-        label: 'Replace a configuration model with given id',
+        id: 'version-2.X/reference/api/replace-a-configuration-validation-with-given-id',
+        label: 'Replace a configuration validation with given id',
         className: 'api-method put',
       },
     ],
@@ -362,6 +362,12 @@ module.exports = [
     items: [
       {
         type: 'doc',
+        id: 'version-2.X/reference/api/send-analytics-events-to-the-server',
+        label: 'Send analytics events to the server',
+        className: 'api-method post',
+      },
+      {
+        type: 'doc',
         id: 'version-2.X/reference/api/web-socket-register-as-event-listener-and-receive-all-events',
         label: '[WebSocket] Register as event listener and receive all events.',
         className: 'api-method get',
@@ -390,6 +396,43 @@ module.exports = [
         id: 'version-2.X/reference/api/transform-the-search-into-the-raw-database-search',
         label: 'Transform the search into the raw database search',
         className: 'api-method post',
+      },
+    ],
+  },
+  {
+    type: 'category',
+    label: 'tsdb',
+    link: { type: 'doc', id: 'version-2.X/reference/api/tsdb' },
+    items: [
+      {
+        type: 'doc',
+        id: 'version-2.X/reference/api/proxy-request-to-a-configured-tsdb-server',
+        label: 'Proxy request to a configured tsdb server.',
+        className: 'api-method get',
+      },
+      {
+        type: 'doc',
+        id: 'version-2.X/reference/api/proxy-request-to-a-configured-tsdb-server',
+        label: 'Proxy request to a configured tsdb server.',
+        className: 'api-method put',
+      },
+      {
+        type: 'doc',
+        id: 'version-2.X/reference/api/proxy-request-to-a-configured-tsdb-server',
+        label: 'Proxy request to a configured tsdb server.',
+        className: 'api-method post',
+      },
+      {
+        type: 'doc',
+        id: 'version-2.X/reference/api/proxy-request-to-a-configured-tsdb-server',
+        label: 'Proxy request to a configured tsdb server.',
+        className: 'api-method delete',
+      },
+      {
+        type: 'doc',
+        id: 'version-2.X/reference/api/proxy-request-to-a-configured-tsdb-server',
+        label: 'Proxy request to a configured tsdb server.',
+        className: 'api-method patch',
       },
     ],
   },

@@ -70,8 +70,7 @@ const config = {
           showLastUpdateTime: true,
           remarkPlugins: [a11yEmoji, oembed],
           docItemComponent: '@theme/ApiItem',
-          onlyIncludeVersions: (() =>
-            isProd ? undefined : ['current', versions[0]])(),
+          lastVersion: versions[0],
           versions: {
             current: {
               label: 'edge 🚧',
@@ -79,13 +78,17 @@ const config = {
               banner: 'unreleased',
               badge: false,
             },
-            [versions[0]]: {
-              label: latestRelease.version.startsWith(
-                versions[0].substring(0, versions[0].indexOf('X'))
-              )
-                ? latestRelease.version
-                : versions[0],
-            },
+            ...versions
+              .map((version) => ({
+                [version]: {
+                  label: latestRelease[version].version.startsWith(
+                    version.substring(0, version.indexOf('X'))
+                  )
+                    ? latestRelease[version].version
+                    : version,
+                },
+              }))
+              .reduce((acc, cur) => ({ ...acc, ...cur }), {}),
           },
         },
         blog: {
@@ -142,14 +145,6 @@ const config = {
         id: 'openapi',
         docsPluginId: 'classic',
         config: {
-          resotocore: {
-            specPath: 'openapi/resotocore.yml',
-            outputDir: `versioned_docs/version-${versions[0]}/reference/api`,
-            sidebarOptions: {
-              groupPathsBy: 'tag',
-              categoryLinkSource: 'tag',
-            },
-          },
           resotocoreEdge: {
             specPath: 'openapi/resotocore-edge.yml',
             outputDir: `docs/reference/api`,
@@ -158,6 +153,18 @@ const config = {
               categoryLinkSource: 'tag',
             },
           },
+          ...versions
+            .map((version) => ({
+              [`resotocore${version.substring(0, version.indexOf('.'))}`]: {
+                specPath: `openapi/resotocore-${version}.yml`,
+                outputDir: `versioned_docs/version-${version}/reference/api`,
+                sidebarOptions: {
+                  groupPathsBy: 'tag',
+                  categoryLinkSource: 'tag',
+                },
+              },
+            }))
+            .reduce((acc, cur) => ({ ...acc, ...cur }), {}),
         },
       },
     ],
@@ -185,8 +192,12 @@ const config = {
         maxHeadingLevel: 5,
       },
       announcementBar: {
-        id: `announcementBar-${latestRelease.version}`, // Increment on change
-        content: `<span aria-label="star-struck" role="img">🤩</span> <a href="${latestRelease.link}">Check out what's new in Resoto ${latestRelease.version}</a>, and don't forget to <a href="https://github.com/someengineering/resoto" target="_blank" rel="noopener noreferrer">star the project on GitHub</a>! <span aria-label="sparkles" role="img">✨</span>`,
+        id: `announcementBar-${latestRelease[versions[0]].version}`, // Increment on change
+        content: `<span aria-label="star-struck" role="img">🤩</span> <a href="${
+          latestRelease[versions[0]].link
+        }">Check out what's new in Resoto ${
+          latestRelease[versions[0]].version
+        }</a>, and don't forget to <a href="https://github.com/someengineering/resoto" target="_blank" rel="noopener noreferrer">star the project on GitHub</a>! <span aria-label="sparkles" role="img">✨</span>`,
       },
       navbar: {
         hideOnScroll: true,

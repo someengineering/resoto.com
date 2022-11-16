@@ -1,13 +1,3 @@
-:root {
-  --openapi-input-background: rgb(246, 248, 250);
-}
-
-html[data-theme='dark'] {
-  --openapi-input-background: rgb(40, 42, 54);
-}
-
-/* Method labels */
-
 .api-method > .menu__link,
 .api-method > h2 {
   display: flex;

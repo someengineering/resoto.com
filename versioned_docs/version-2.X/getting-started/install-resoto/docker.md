@@ -8,6 +8,7 @@ pagination_next: getting-started/configure-cloud-provider-access/index
 
 ```mdx-code-block
 import LatestRelease from '@site/src/components/LatestRelease';
+import VersionOnly from '@site/src/components/VersionOnly';
 import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
@@ -77,6 +78,8 @@ Resoto performs CPU-intensive graph operations. In a production setup, we recomm
 
    :::
 
+   <VersionOnly allowed="current">
+
    :::info
 
    Resoto publishes packages for both x86 and ARM architectures for stable releases, but `edge` versions are only available for x86.
@@ -84,6 +87,8 @@ Resoto performs CPU-intensive graph operations. In a production setup, we recomm
    If you have an Apple Silicon or other ARM-based machine, please use the latest stable release (<LatestRelease /> or `latest`).
 
    :::
+
+   </VersionOnly>
 
 ## Launching the Command-Line Interface
 

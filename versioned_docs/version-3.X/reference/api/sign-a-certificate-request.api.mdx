@@ -1,0 +1,34 @@
+---
+id: sign-a-certificate-request
+title: "Sign a certificate request."
+description: "Sign a certificate request."
+sidebar_label: "Sign a certificate request."
+hide_title: true
+hide_table_of_contents: true
+api: {"tags":["certificate"],"requestBody":{"description":"The certificate signing request (csr) in pkcs10 format.","content":{"application/pkcs10":{"schema":{"type":"string","example":"-----BEGIN CERTIFICATE REQUEST-----\nMIICYDCCAUgCAQAwGzEZMBcGA1UEAwwQc29tZS5lbmdpbmVlcmluZzCCASIwDQYJ\nKoZIhvcNAQEBBQADggEPADCCAQoCggEBAM6QVB0C0G1yJRD1aWye8a1IscJa4cN4\n+PDWim+2qemCRpiIafgsict5AtlqmvDaYYs7uaLI8PLASMz0pnrxLaVbRVu5H7Ix\nKSh1Vz/WjsqTDNw5Q+qPpT/YPP5l02IrKrP/pdMNC0FYnDxr6Y4bXVuFqtMv+Zr2\namJSIpOET2wswo6MRflfiO9jh8mD5mdU+SqDHAvBpU7H3L4rd3cWyVsz3Q4cqpwa\nSDayhRMewxusI2MTj/uNEzZYTWiHb2TXUkYYSMYazdbVRUKFNWOsq+z1RPV1IUUe\ng0yjNS+tfYF0numPzwt9GNuB18O3X1G5rs2nHDRQL8pAbcy5Wjsuwf0CAwEAAaAA\nMA0GCSqGSIb3DQEBCwUAA4IBAQAuI5ijV9ahWtRhondwOYuYFMZL+i+tXPdn+O/B\nV7WFVdbaV13TpJ3giJBhCY3mlQ+Vb7BNDhgqdcsiXr4M1fDC0gf8J/GYA2s4yvrf\nfCqnFA97UET0AwpIA22+JZnZVs+FXqDsU2VMBgmGToU0QgzBSVi8/exSx3CWBgAk\nx2q98/r/Dhbi2KQkOYJ7yQx1t0416UiFB9xUnDIreg0k5chP5NF1YRbsatParYhG\nOviEEbELaTnWbmfnveBWjxAImv5w3tkF/dapH+QQ5yTIzDEl/UoG2pXC6QGRaRsp\nMft1XSBtZDykb6SrTTz/lUfjn3XX+zqQ7g466HvglAwqUfX1\n-----END CERTIFICATE REQUEST-----\n"}}}},"responses":{"200":{"description":"The certificate in PEM format.","content":{"application/x-pem-file":{"schema":{"type":"string","example":"-----BEGIN CERTIFICATE-----\nMIIDUjCCAjqgAwIBAgIUEtDMkiSa2FYM5LVhZiPlspro39owDQYJKoZIhvcNAQEL\nBQAweDELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcM\nDVNhbiBGcmFuY2lzY28xHjAcBgNVBAoMFVNvbWUgRW5naW5lZXJpbmcgSW5jLjEc\nMBoGA1UEAwwTQ2xvdWRrZWVwZXIgUm9vdCBDQTAeFw0yMTEyMjIwOTQ1NDJaFw0y\nMjEyMjIwOTQ1NDJaMBsxGTAXBgNVBAMMEHNvbWUuZW5naW5lZXJpbmcwggEiMA0G\nCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC5VIgOTR95jIxWJZHXUo6FUv4CyDn/\nfZWxZQmFXC8c6SqspRNpXMgZq+riTm+yQ1l/kc2xVpr5S8tVeFGGjzaCcf51DMSx\nj7SaUXP2oDtMi7e9wkfTaoN3z3erVwJl39znKQviEL8G7vYPCn7oDqt1HHry7ctN\ncrEMWYSQXUYe4s++K1q65VyGNBp6AcIrmefoH0pGARZs4MbvR74U44xsj25VFS+W\nM3YSomBv4oB4QkqlcVWOU/Tlx7Tq7ASfkSqEkUigKMx/QKrdeQHxCkEtmjbiHhOk\nVaCYsVbi8pVvE5URNrycvzJXGdimSL8pVZ8M89gUDoxUoiAneSswoRZrAgMBAAGj\nMTAvMA4GA1UdDwEB/wQEAwIFoDAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUH\nAwIwDQYJKoZIhvcNAQELBQADggEBAA70yqOYfYtguJKji+IeIsZflNH2DH6lZ2Xe\nmv5suRbjuKEApSDUL59rpliT1dAcX6+cfKDQjzZ/7VWmp+XZmehGRlhRNWJMzsOz\nXv8/5l0LL59yN4w4FNq2cREcLj35RVYUU7lssNr/RNE9xNMHeqLdC4oW22PUi1lY\niq212G5yQTg31lVmzA9Uzvz+p/A8CG24tSBFbydSIogprmALS+5rnso0bWJ3Owf1\nCVz6Dc9UM4kBWDsb+iTffXwbgSDbG+lJ+9TEndcAzb7Zxs6ghMtv/PKR/tmw+O32\n3da9fAZE2eZoDvssH6LAUcFjtP9SFb8ZOdHJ15l279vzgCvWsvU=\n-----END CERTIFICATE-----\n"}}}}},"description":"Sign a certificate request.","method":"post","path":"/ca/sign","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Resoto Core REST API","version":"V1"},"postman":{"name":"Sign a certificate request.","description":{"type":"text/plain"},"url":{"path":["ca","sign"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"key":"Content-Type","value":"application/pkcs10"},{"key":"Accept","value":"application/x-pem-file"}],"method":"POST","body":{"mode":"raw","raw":"\"\""}}}
+sidebar_class_name: "post api-method"
+info_path: versioned_docs/version-3.X/reference/api/resoto-core-rest-api
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem"
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Sign a certificate request.
+
+Sign a certificate request.
+
+<MimeTabs><TabItem label={"application/pkcs10"} value={"application/pkcs10-schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Request Body</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}><div style={{"marginTop":"1rem","marginBottom":"1rem"}}>
+
+The certificate signing request (csr) in pkcs10 format.
+
+</div></div><ul style={{"marginLeft":"1rem"}}><li><div><strong>string</strong></div></li></ul></details></TabItem></MimeTabs><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+The certificate in PEM format.
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/x-pem-file"} value={"application/x-pem-file"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><li><div><strong>string</strong></div></li></ul></details></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>

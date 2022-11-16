@@ -24,7 +24,7 @@ providers = [
     "slack",
     "vsphere",
 ]
-required_providers = ["aws", "digitalocean", "gcp", "github", "kubernetes", "onelogin", "onprem", "slack", "vsphere"]
+required_providers = {"aws", "digitalocean", "gcp", "github", "kubernetes", "onelogin", "onprem", "slack", "vsphere"}
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
@@ -33,12 +33,11 @@ def get_url(url: str, params: dict = None):
         session = requests.Session()
         adapter = HTTPAdapter(
             max_retries=Retry(
-                total=5,
-                backoff_factor=0.5,
+                total=10,
+                backoff_factor=0.1,
             )
         )
         session.mount("https://", adapter)
-
         return session.get(url, params=params, verify=False)
     except Exception:
         return None
@@ -117,14 +116,18 @@ def print_md(provider: str, kinds: list):
         sys.stdout = original_stdout
 
 
-for provider in providers:
+kinds = get_kinds()
+retries = 0
+print(f"Kinds: {list(kinds.keys())}")
+
+while retries < 60 and not required_providers.issubset(list(kinds.keys())):
+    print(f"Missing some required kinds, trying again in 5 seconds...")
+    time.sleep(5)
     kinds = get_kinds()
-    retries = 0
+    print(f"New kinds: {list(kinds.keys())}")
+    retries += 1
 
-    while (set(required_providers).issubset(kinds.keys()) or time.sleep(5)) and retries < 60:
-        kinds = get_kinds()
-        retries += 1
-
+for provider in providers:
     if len(kinds[provider]) > 0:
         if not os.path.exists(f"./{provider}"):
             os.mkdir(f"./{provider}")

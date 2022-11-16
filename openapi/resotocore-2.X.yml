@@ -34,6 +34,8 @@ tags:
     description: Endpoints to get information about the system.
   - name: debug
     description: Endpoints to debug the system.
+  - name: tsdb
+    description: Endpoints to access the time series database.
 paths:
   # region model
   /model:
@@ -1233,6 +1235,25 @@ paths:
   # endregion
 
   # region events
+  /analytics:
+    post:
+      summary: 'Send analytics events to the server'
+      description: |
+        Send analytics events to the server.
+        The server will either drop or forward the event based on the user defined settings.
+      tags:
+        - system
+      requestBody:
+        description: 'The analytics events to send'
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/AnalyticsEvent'
+      responses:
+        '204':
+          description: 'The events were accepted'
   /events:
     get:
       summary: '[WebSocket] Register as event listener and receive all events.'
@@ -1702,6 +1723,14 @@ paths:
             In case it is not defined or not set to false, every configuaration value is validated.
           schema:
             type: boolean
+        - name: dry_run
+          required: false
+          in: query
+          description: |
+            This parameter can be used to test if the config could be updated without really changing it.
+            It will perform all validations but not store the new value.
+          schema:
+            type: boolean
       requestBody:
         content:
           application/json:
@@ -1735,6 +1764,22 @@ paths:
           description: the identifier of the config to get.
           schema:
             type: string
+        - name: validate
+          required: false
+          in: query
+          description: |
+            This parameter can be used to turn off config validation.
+            In case it is not defined or not set to false, every configuaration value is validated.
+          schema:
+            type: boolean
+        - name: dry_run
+          required: false
+          in: query
+          description: |
+            This parameter can be used to test if the config could be patched without really changing it.
+            It will perform all validations but not store the new value.
+          schema:
+            type: boolean
       requestBody:
         content:
           application/json:
@@ -1773,22 +1818,22 @@ paths:
           description: Signals success of this operation.
   /config/{config_id}/validation:
     get:
-      summary: 'Get a configuration by its id'
+      summary: 'Get a configuration validation by its id'
       description: |
         **Experimental**: This API is not stable and might be subject of change.<br/>
-        Fetch the model of a configuration by id.
+        Fetch the validation of a configuration by id.
       tags:
         - config_validation
       parameters:
         - name: config_id
           required: true
           in: path
-          description: the identifier of the config.
+          description: the identifier of the configuration validation.
           schema:
             type: string
       responses:
         '200':
-          description: The configuration model.
+          description: The configuration validation.
           content:
             application/json:
               schema:
@@ -1797,19 +1842,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/ConfigValidation'
         '404':
-          description: No configuration model for this key.
+          description: No config validation for this key.
     put:
-      summary: 'Replace a configuration model with given id'
+      summary: 'Replace a configuration validation with given id'
       description: |
         **Experimental**: This API is not stable and might be subject of change.<br/>
-        Replace a configuration model identified by id with provided value.
+        Replace a configuration validation identified by id with provided value.
       tags:
         - config_validation
       parameters:
         - name: config_id
           required: true
           in: path
-          description: the identifier of the config to get.
+          description: the identifier of the configuration validation to replace.
           schema:
             type: string
       requestBody:
@@ -1819,7 +1864,7 @@ paths:
               $ref: '#/components/schemas/ConfigValidation'
       responses:
         '200':
-          description: The configuration model.
+          description: The configuration validation.
           content:
             application/json:
               schema:
@@ -2045,9 +2090,221 @@ paths:
               schema:
                 type: string
                 example: pong
-                # endregion
+  # endregion
+
+  # region tsdb
+  /tsdb/{path}:
+    get:
+      summary: Proxy request to a configured tsdb server.
+      parameters:
+        - name: path
+          description: 'Note: swagger does not allow to define a nested path with slashes.'
+          in: path
+          required: true
+          schema:
+            type: string
+            example: 'api/v1/metadata'
+      tags:
+        - tsdb
+      responses:
+        '404':
+          description: 'If the response is coming from Resoto (no ResotoVia header), this means that tsdb is not configured, so a request can not be made.'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: '404: No tsdb defined. No tsdb defined. Adjust resoto.core configuration.'
+        '502':
+          description: 'If the response is coming from Resoto (no ResotoVia header), this means that the configured tsdb server can not be reached.'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: '502. tsdb server is not reachable'
+        default:
+          headers:
+            ViaResoto:
+              description: |
+                This header indicates, that the response is created by the tsdb server and Resoto is only a proxy.
+                Depending on this header: you have to interpret the response differently.
+              schema:
+                type: string
+                example: '1.1 node1'
+          description: 'The response from the tsdb.'
+    put:
+      summary: Proxy request to a configured tsdb server.
+      parameters:
+        - name: path
+          description: 'Note: swagger does not allow to define a nested path with slashes.'
+          in: path
+          required: true
+          schema:
+            type: string
+            example: 'api/v1/metadata'
+      tags:
+        - tsdb
+      responses:
+        '404':
+          description: 'If the response is coming from Resoto (no ResotoVia header), this means that tsdb is not configured, so a request can not be made.'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: '404: No tsdb defined. No tsdb defined. Adjust resoto.core configuration.'
+        '502':
+          description: 'If the response is coming from Resoto (no ResotoVia header), this means that the configured tsdb server can not be reached.'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: '502. tsdb server is not reachable'
+        default:
+          headers:
+            ViaResoto:
+              description: |
+                This header indicates, that the response is created by the tsdb server and Resoto is only a proxy.
+                Depending on this header: you have to interpret the response differently.
+              schema:
+                type: string
+                example: '1.1 node1'
+          description: 'The response from the tsdb.'
+    post:
+      summary: Proxy request to a configured tsdb server.
+      parameters:
+        - name: path
+          description: 'Note: swagger does not allow to define a nested path with slashes.'
+          in: path
+          required: true
+          schema:
+            type: string
+            example: 'api/v1/metadata'
+      tags:
+        - tsdb
+      responses:
+        '404':
+          description: 'If the response is coming from Resoto (no ResotoVia header), this means that tsdb is not configured, so a request can not be made.'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: '404: No tsdb defined. No tsdb defined. Adjust resoto.core configuration.'
+        '502':
+          description: 'If the response is coming from Resoto (no ResotoVia header), this means that the configured tsdb server can not be reached.'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: '502. tsdb server is not reachable'
+        default:
+          headers:
+            ViaResoto:
+              description: |
+                This header indicates, that the response is created by the tsdb server and Resoto is only a proxy.
+                Depending on this header: you have to interpret the response differently.
+              schema:
+                type: string
+                example: '1.1 node1'
+          description: 'The response from the tsdb.'
+    delete:
+      summary: Proxy request to a configured tsdb server.
+      parameters:
+        - name: path
+          description: 'Note: swagger does not allow to define a nested path with slashes.'
+          in: path
+          required: true
+          schema:
+            type: string
+            example: 'api/v1/metadata'
+      tags:
+        - tsdb
+      responses:
+        '404':
+          description: 'If the response is coming from Resoto (no ResotoVia header), this means that tsdb is not configured, so a request can not be made.'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: '404: No tsdb defined. No tsdb defined. Adjust resoto.core configuration.'
+        '502':
+          description: 'If the response is coming from Resoto (no ResotoVia header), this means that the configured tsdb server can not be reached.'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: '502. tsdb server is not reachable'
+        default:
+          headers:
+            ViaResoto:
+              description: |
+                This header indicates, that the response is created by the tsdb server and Resoto is only a proxy.
+                Depending on this header: you have to interpret the response differently.
+              schema:
+                type: string
+                example: '1.1 node1'
+          description: 'The response from the tsdb.'
+    patch:
+      summary: Proxy request to a configured tsdb server.
+      parameters:
+        - name: path
+          description: 'Note: swagger does not allow to define a nested path with slashes.'
+          in: path
+          required: true
+          schema:
+            type: string
+            example: 'api/v1/metadata'
+      tags:
+        - tsdb
+      responses:
+        '404':
+          description: 'If the response is coming from Resoto (no ResotoVia header), this means that tsdb is not configured, so a request can not be made.'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: '404: No tsdb defined. No tsdb defined. Adjust resoto.core configuration.'
+        '502':
+          description: 'If the response is coming from Resoto (no ResotoVia header), this means that the configured tsdb server can not be reached.'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: '502. tsdb server is not reachable'
+        default:
+          headers:
+            ViaResoto:
+              description: |
+                This header indicates, that the response is created by the tsdb server and Resoto is only a proxy.
+                Depending on this header: you have to interpret the response differently.
+              schema:
+                type: string
+                example: '1.1 node1'
+          description: 'The response from the tsdb.'
+          # endregion
 components:
   schemas:
+    AnalyticsEvent:
+      description: 'An analytics event.'
+      type: object
+      properties:
+        system:
+          type: string
+          description: The system that emitted the event.
+        kind:
+          type: string
+          description: The kind of event.
+        context:
+          type: object
+          description: The context of the event.
+          additionalProperties:
+            type: string
+        counters:
+          type: object
+          description: The counters of the event.
+          additionalProperties:
+            type: integer
+        at:
+          type: string
+          description: The time of the event in IS0 8601 date time.
     Config:
       description: 'A config object'
       type: object

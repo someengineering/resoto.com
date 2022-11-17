@@ -399,4 +399,41 @@ module.exports = [
       },
     ],
   },
+  {
+    type: 'category',
+    label: 'tsdb',
+    link: { type: 'doc', id: 'reference/api/tsdb' },
+    items: [
+      {
+        type: 'doc',
+        id: 'reference/api/proxy-request-to-a-configured-tsdb-server',
+        label: 'Proxy request to a configured tsdb server.',
+        className: 'api-method get',
+      },
+      {
+        type: 'doc',
+        id: 'reference/api/proxy-request-to-a-configured-tsdb-server',
+        label: 'Proxy request to a configured tsdb server.',
+        className: 'api-method put',
+      },
+      {
+        type: 'doc',
+        id: 'reference/api/proxy-request-to-a-configured-tsdb-server',
+        label: 'Proxy request to a configured tsdb server.',
+        className: 'api-method post',
+      },
+      {
+        type: 'doc',
+        id: 'reference/api/proxy-request-to-a-configured-tsdb-server',
+        label: 'Proxy request to a configured tsdb server.',
+        className: 'api-method delete',
+      },
+      {
+        type: 'doc',
+        id: 'reference/api/proxy-request-to-a-configured-tsdb-server',
+        label: 'Proxy request to a configured tsdb server.',
+        className: 'api-method patch',
+      },
+    ],
+  },
 ];

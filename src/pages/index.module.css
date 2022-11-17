@@ -69,7 +69,7 @@ html[data-theme='dark'] .hero {
 
 .heroAnimation {
   height: 450px;
-  width: auto;
+  width: 450px;
   flex-shrink: 0;
   margin: -55px -60px -132px -60px !important;
   overflow: visible;

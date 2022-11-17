@@ -53,7 +53,7 @@ total unmatched: 0
 
 If you already have your suspicions about mis-spellings you can check how many of these resources carry a spelling variant of the tag by varying the tag-condition:
 
-```bash title="add the condition that a tag with key **CostCenter** must exist"
+```bash title="add the condition that a tag with key 'CostCenter' must exist"
 > search is(aws_ec2_volume) or is(aws_s3_bucket) and tags.CostCenter != null | count
 # highlight-start
 total matched: 42331
@@ -85,7 +85,7 @@ Now you can create a new tag on the affected resources with the correct key and 
 Then clean up:
 
 ```bash title="delete the incorrect tag"
-> search is(aws_ec2_volume) or is(aws_s3_bucket) and tags.CostCenter != null | tag delete Co stCenter
+> search is(aws_ec2_volume) or is(aws_s3_bucket) and tags.CostCenter != null | tag delete CostCenter
 ```
 
 Double check that all resources now carry the correct tag:

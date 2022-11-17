@@ -36,7 +36,7 @@ First, check how many resources fall under the policy:
 ```bash title="search for all resources that are EC2 Volumes or S3 Buckets and count them"
 > search is(aws_ec2_volume) or is(aws_s3_bucket) | count
 # highlight-start
-total matched: 20
+total matched: 314159
 total unmatched: 0
 # highlight-end
 ```
@@ -46,7 +46,7 @@ Next, you can check how many of these resources carry the correct tag by adding 
 ```bash title="add the condition that a tag with key 'costcenter' must exist"
 > search is(aws_ec2_volume) or is(aws_s3_bucket) and tags.costcenter != null | count
 # highlight-start
-total matched: 16
+total matched: 271828
 total unmatched: 0
 # highlight-end
 ```
@@ -56,7 +56,7 @@ If you already have your suspicions about mis-spellings you can check how many o
 ```bash title="add the condition that a tag with key **CostCenter** must exist"
 > search is(aws_ec2_volume) or is(aws_s3_bucket) and tags.CostCenter != null | count
 # highlight-start
-total matched: 4
+total matched: 42331
 total unmatched: 0
 # highlight-end
 ```
@@ -66,11 +66,11 @@ total unmatched: 0
 ```bash title="search for all tags of all resources and count how often they occur"
 > search is(aws_ec2_volume) or is(aws_s3_bucket) | jq '.tags | keys | .[] | {name:.}' | flatten | count /name
 # highlight-start
-Name: 1
-CostCenter: 4
-costcenter: 16
-name: 35
-owner: 38
+Name: 123
+CostCenter: 42331
+costcenter: 271828
+name: 359632
+owner: 389374
 # highlight-end
 ```
 
@@ -93,7 +93,7 @@ Double check that all resources now carry the correct tag:
 ```bash title="count resources that are EC2 Volumes or S3 Buckets that don't have a **costcenter** tag"
 > search is(aws_ec2_volume) or is(aws_s3_bucket) and tags.costcenter != null | count
 # highlight-start
-total matched: 20
+total matched: 314159
 total unmatched: 0
 # highlight-end
 ```

@@ -31,7 +31,7 @@ All examples below are executed on resotoshell after resource collection. They w
 
 ## Find out about the problem
 
-Check how many resources fall under the policy:
+First, check how many resources fall under the policy:
 
 ```bash title="search for all resources that are EC2 Volumes or S3 Buckets and count them"
 > search is(aws_ec2_volume) or is(aws_s3_bucket) | count
@@ -41,7 +41,7 @@ total unmatched: 0
 # highlight-end
 ```
 
-Check how many of these resources carry the correct tag by adding a condition that a tag with the key 'costcenter' exists:
+Next, you can check how many of these resources carry the correct tag by adding a condition that a tag with the key 'costcenter' must exist:
 
 ```bash title="add the condition that a tag with key 'costcenter' must exist"
 > search is(aws_ec2_volume) or is(aws_s3_bucket) and tags.costcenter != null | count
@@ -51,7 +51,7 @@ total unmatched: 0
 # highlight-end
 ```
 
-If you already have your suspicions about mis-spellings check how many of these resources carry a spelling variant of the tag by varying the tag-condition:
+If you already have your suspicions about mis-spellings you can check how many of these resources carry a spelling variant of the tag by varying the tag-condition:
 
 ```bash title="add the condition that a tag with key **CostCenter** must exist"
 > search is(aws_ec2_volume) or is(aws_s3_bucket) and tags.CostCenter != null | count
@@ -76,7 +76,7 @@ owner: 38
 
 ## Solve the problem
 
-Create a new tag on the affected resources with the correct key and the value from the incorrect tag:
+Now you can create a new tag on the affected resources with the correct key and the value from the incorrect tag:
 
 ```bash title="add a new tag to resources, taking the value from the existing tag"
 > search is(aws_ec2_volume) or is(aws_s3_bucket) and tags.CostCenter != null | tag update costcenter {tags.CostCenter}

@@ -64,7 +64,7 @@ total unmatched: 0
 **Alternatively**, if you don’t yet have an idea about which typos might have snuck into your data, search for all tags:
 
 ```bash title="search for all tags of all resources and count how often they occur"
-> search all | jq '.tags | keys | .[] | {name:.}' | flatten | count /name
+> search is(aws_ec2_volume) or is(aws_s3_bucket) | jq '.tags | keys | .[] | {name:.}' | flatten | count /name
 # highlight-start
 Name: 1
 CostCenter: 4

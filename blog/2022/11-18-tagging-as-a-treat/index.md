@@ -131,13 +131,13 @@ reporter_id="1111111111111"
 
 [See full Jira command cocumentation here](/docs/edge/how-to-guides/alerting/create-jira-issues)
 
-### Summary
+## Summary
 
 Because Resoto has a complete view over your entire cloud asset inventory **and** because Resoto is service-agnostic the tag handling even of millions of resources is no longer a fight against windmills but becomes a treat instead! ✨
 
-### Further Reading:
+## Further Reading
 
 - Learn [how to clean up untagged resources](/docs/how-to-guides/cleanup/clean-up-untagged-resources)
-- Do you know about Resotos [Tag Validator Plugin](/docs/concepts/components/plugins/tagvalidator)?
+- Did you know about Resotos [Tag Validator Plugin](/docs/concepts/components/plugins/tagvalidator)?
 
 Resoto is [open source](https://github.com/someengineering/resoto/blob/main/LICENSE) and free to use, and currently supports [<abbr title="Amazon Web Services">AWS</abbr>](/docs/getting-started/configure-cloud-provider-access/aws), [<abbr title="Google Cloud Platform">GCP</abbr>](/docs/getting-started/configure-cloud-provider-access/gcp), and [DigitalOcean](/docs/getting-started/configure-cloud-provider-access/digitalocean). [Install Resoto](/docs/getting-started/install-resoto) today!

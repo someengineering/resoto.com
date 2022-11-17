@@ -7,11 +7,11 @@ tags: [aws, tagging, cloud]
 
 Cloud Tagging Strategies and Policies are hailed as one of the most efficient ways to keep your cloud infrastructure controllable. But are they really?
 
-The idea generally is that every (taggable) piece of cloud service gets tagged (or labelled in case of GCP) by the developers or maintainers who work with it. This could be done with Infrastructure-as-Code Tools (see [Terraform](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/guides/resource-tagging) for example), with a Command Line Interface or manually in the cloud UI.
+The idea generally is that every (taggable) piece of cloud service gets tagged (or _labelled_ in case of <abbr title="Google Cloud Platform">GCP</abbr>) by the developers or maintainers who work with it. This could be done with Infrastructure-as-Code Tools (see [Terraform](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/guides/resource-tagging) for example), with a Command Line Interface or manually in the cloud UI.
 
 Tagging policies could state that every resource needs a tag to identify the owner, the cost center, the product, the project or any other metadata. By doing this diligently every resource can be managed via its tags and nothing gets overlooked.
 
-While in theory this is the right way to do it, in practice this hardly ever works as intended. Every tag created is a tag that needs maintaining. Tagging policies may change over time and people can make honest mistakes when tagging (in AWS for example: tag keys are case sensitive, which can quickly go wrong). To properly use tagging on a greenfield cloud account is one thing - to retroactively apply tags to sprawling cloud infrastructure is quite another (especially when utilising a multi-cloud strategy, where you’d need to repeat any operation over multiple interfaces).
+While in theory this is the right way to do it, in practice this hardly ever works as intended. Every tag created is a tag that needs maintaining. Tagging policies may change over time and people can make honest mistakes when tagging (in <abbr title="Amazon Web Services">AWS</abbr> for example: tag keys are case sensitive, which can quickly go wrong). To properly use tagging on a greenfield cloud account is one thing - to retroactively apply tags to sprawling cloud infrastructure is quite another (especially when utilising a multi-cloud strategy, where you’d need to repeat any operation over multiple interfaces).
 
 We [asked our community](https://www.linkedin.com/feed/update/urn:li:activity:6987739499686428672) about their most challenging aspect of cloud tagging strategies:
 
@@ -21,11 +21,11 @@ Over 70% agree that human error is the biggest issue. Be it on the console, in t
 
 As highlighted in [this recent blog post](../10-14-a-tale-of-two-tools/index.md) going through cloud infrastructure with CLI can be tiresome and requires a lot of contextual knowledge, as the API can differ between services. This is hardly conducive to effectively keeping tags under control. In that post we also outlined how Resoto simplifies interaction with your cloud(s).
 
-Here, we are going to go through a scenario of tag maintenance on AWS with Resoto in detail:
+Here, we are going to go through a scenario of tag maintenance on <abbr title="Amazon Web Services">AWS</abbr> with Resoto in detail:
 
-Let us consider a (somewhat simplified) scenario where an internal policy demands that all S3 Buckets and EC2 Volumes carry a tag with the key “costcenter” and a value that corresponds to a department or a project. Most developers know about this, but the information is often conveyed by word of mouth and not by looking into the policy itself. As a result, the tag is sometimes being mis-spelled.
+Let us consider a (somewhat simplified) scenario where an internal policy demands that all <abbr title="Simple Storage Service">S3</abbr> Buckets and <abbr title="Elastic Compute Cloud">EC2</abbr> Volumes carry a tag with the key “costcenter” and a value that corresponds to a department or a project. Most developers know about this, but the information is often conveyed by word of mouth and not by looking into the policy itself. As a result, the tag is sometimes being mis-spelled.
 
-For the sake of clarity our example only covers AWS. However, Resoto treats [all resources from all cloud providers](../09-22-cloud-resources-they-have-a-lot-in-common/index.md) the same and you can easily mix and match your search queries as needed.
+For the sake of clarity our example only covers <abbr title="Amazon Web Services">AWS</abbr>. However, Resoto treats [all resources from all cloud providers](../09-22-cloud-resources-they-have-a-lot-in-common/index.md) the same and you can easily mix and match your search queries as needed.
 
 All examples below are executed on resotoshell after resource collection. They will use the [search command](/docs/reference/cli/search-commands/search) and the [tagging commands](/docs/concepts/resource-management/tagging).
 
@@ -100,7 +100,7 @@ total unmatched: 0
 
 ## Try to prevent the problem
 
-Once you know the most common mistakes it’s time to set up some automation. While the above process on resotoshell is already infinitely more comfortable than trying the same on AWS CLI it is more of an exploratory step than an end-all solution. Resoto allows you to [define and schedule custom jobs](/docs/reference/cli/action-commands/jobs/add) to reduce this kind of toil work even more:
+Once you know the most common mistakes it’s time to set up some automation. While the above process on resotoshell is already infinitely more comfortable than trying the same on <abbr title="Amazon Web Services">AWS</abbr> CLI it is more of an exploratory step than an end-all solution. Resoto allows you to [define and schedule custom jobs](/docs/reference/cli/action-commands/jobs/add) to reduce this kind of toil work even more:
 
 ```bash title="create a job with the id 'repair_tags' that executes after the 'collect_done' event and runs the command to add a new tag to resources"
 > jobs add --id repair_tags --wait-for-event collect_done: search is(aws_ec2_volume) or is(aws_s3_bucket) and tags.CostCenter != null | tag update costcenter {tags.CostCenter}

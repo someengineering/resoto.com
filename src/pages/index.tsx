@@ -51,7 +51,11 @@ export default function Home(): JSX.Element {
                 <strong>reacts to changes</strong> in your infrastructure.
               </div>
             </div>
-            <div id="heroAnimation" className={styles.heroAnimation} />
+            <div
+              id="heroAnimation"
+              className={styles.heroAnimation}
+              aria-hidden="true"
+            />
           </div>
           <div className={styles.cta}>
             <Link

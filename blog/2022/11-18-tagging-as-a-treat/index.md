@@ -5,7 +5,7 @@ tags: [aws, tagging, cloud]
 
 # Tagging as a Treat
 
-Cloud Tagging Strategies and Policies are hailed as one of the most efficient ways to keep your cloud infrastructure controllable. But are they really?
+Cloud tagging strategies and -policies are hailed as one of the most efficient ways to keep your cloud infrastructure controllable. But are they really?
 
 The idea generally is that every (taggable) piece of cloud service gets tagged (or _labelled_ in case of <abbr title="Google Cloud Platform">GCP</abbr>) by the developers or maintainers who work with it. This could be done with Infrastructure-as-Code Tools (see [Terraform](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/guides/resource-tagging) for example), with a Command Line Interface or manually in the cloud UI.
 
@@ -19,7 +19,7 @@ We [asked our community](https://www.linkedin.com/feed/update/urn:li:activity:69
 
 Over 70% agree that human error is the biggest issue. Be it on the console, in the UI, in templates or in Terraform config files, tags are initially being typed by people. But then we want them to be properly understood by machines.
 
-As highlighted in [this recent blog post](../10-14-a-tale-of-two-tools/index.md) going through cloud infrastructure with CLI can be tiresome and requires a lot of contextual knowledge, as the API can differ between services. This is hardly conducive to effectively keeping tags under control. In that post we also outlined how Resoto simplifies interaction with your cloud(s).
+As highlighted in a [recent blog post](../10-14-a-tale-of-two-tools/index.md) going through cloud infrastructure with CLI can be tiresome and requires a lot of contextual knowledge because the API can differ between services. This is hardly conducive to effectively keeping tags under control. In the post we also outlined how Resoto simplifies interaction with your cloud(s).
 
 Here, we are going to go through a scenario of tag maintenance on <abbr title="Amazon Web Services">AWS</abbr> with Resoto in detail:
 

@@ -30,6 +30,19 @@ module.exports = [
         label: 'Explain the search execution plan',
         className: 'api-method post',
       },
+      {
+        type: 'doc',
+        id: 'reference/api/search-all-history-events-and-return-them',
+        label: 'Search all history events and return them.',
+        className: 'api-method post',
+      },
+      {
+        type: 'doc',
+        id: 'reference/api/search-and-aggregate-history-events-and-return-the-aggregation-result',
+        label:
+          'Search and aggregate history events and return the aggregation result.',
+        className: 'api-method post',
+      },
     ],
   },
   {

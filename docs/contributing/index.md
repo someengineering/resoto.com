@@ -1,3 +1,8 @@
+---
+pagination_prev: null
+pagination_next: null
+---
+
 # Contributing
 
 ```mdx-code-block

@@ -1,6 +1,6 @@
 ---
 sidebar_label: Docker
-pagination_prev: getting-started/index
+pagination_prev: getting-started/install-resoto/index
 pagination_next: getting-started/configure-cloud-provider-access/index
 ---
 

@@ -1,6 +1,6 @@
 ---
 sidebar_label: Docker
-pagination_prev: getting-started/index
+pagination_prev: getting-started/install-resoto/index
 pagination_next: getting-started/configure-cloud-provider-access/index
 ---
 
@@ -70,7 +70,7 @@ Resoto performs CPU-intensive graph operations. In a production setup, we recomm
 
    ```yaml
      resotoshell:
-       image: somecr.io/someengineering/resotoshell:edge
+       image: somecr.io/someengineering/resotoshell:{{imageTag}}
        container_name: resotoshell
        depends_on:
          - resotocore

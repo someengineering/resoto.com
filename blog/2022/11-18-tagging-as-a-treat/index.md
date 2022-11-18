@@ -23,7 +23,7 @@ As highlighted in [this recent blog post](../10-14-a-tale-of-two-tools/index.md)
 
 Here, we are going to go through a scenario of tag maintenance on <abbr title="Amazon Web Services">AWS</abbr> with Resoto in detail:
 
-Let us consider a (somewhat simplified) scenario where an internal policy demands that all <abbr title="Simple Storage Service">S3</abbr> Buckets and <abbr title="Elastic Compute Cloud">EC2</abbr> Volumes carry a tag with the key “costcenter” and a value that corresponds to a department or a project. Most developers know about this, but the information is often conveyed by word of mouth and not by looking into the policy itself. As a result, the tag is sometimes being mis-spelled.
+Let us consider a (somewhat simplified) scenario where an internal policy demands that all <abbr title="Simple Storage Service">S3</abbr> buckets and <abbr title="Elastic Compute Cloud">EC2</abbr> volumes carry a tag with the key “costcenter” and a value that corresponds to a department or a project. Most developers know about this, but the information is often conveyed by word of mouth and not by looking into the policy itself. As a result, the tag is sometimes being misspelled.
 
 For the sake of clarity our example only covers <abbr title="Amazon Web Services">AWS</abbr>. However, Resoto treats [all resources from all cloud providers](../09-22-cloud-resources-they-have-a-lot-in-common/index.md) the same and you can easily mix and match your search queries as needed.
 

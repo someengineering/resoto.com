@@ -1,17 +1,31 @@
 ---
 sidebar_label: pip
-pagination_prev: getting-started/index
+pagination_prev: getting-started/install-resoto/index
 pagination_next: getting-started/configure-cloud-provider-access/index
 ---
 
 # Install Resoto with pip
 
 ```mdx-code-block
+import LatestRelease from '@site/src/components/LatestRelease';
+import VersionOnly from '@site/src/components/VersionOnly';
 import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
 
 [pip](https://pip.pypa.io) is the package installer for [Python](https://www.python.org) and allows for easy installation of [Python](https://www.python.org) packages in Linux environments.
+
+<VersionOnly allowed="current">
+
+:::info
+
+**The `edge` version of Resoto is not installable with [pip](https://pip.pypa.io).**
+
+The below instructions will install the latest stable version of Resoto (<LatestRelease />).
+
+:::
+
+</VersionOnly>
 
 ## Prerequisites
 
@@ -42,7 +56,7 @@ $ cd ~/resoto
 $ python3 -m venv resoto-venv      # Create a virtual Python environment.
 $ source resoto-venv/bin/activate  # Activate the virtual Python environment.
 $ python -m ensurepip --upgrade    # Ensure pip is available.
-$ pip install -U resotocore resotoworker resotometrics resotoshell resoto-plugins
+$ pip install -U resotocore=={{nonEdgeImageTag}} resotoworker=={{nonEdgeImageTag}} resotometrics=={{nonEdgeImageTag}} resotoshell=={{nonEdgeImageTag}} resoto-plugins=={{nonEdgeImageTag}}
 # Generate two random passphrases. One to secure the graph database and one to secure resotocore with.
 $ echo $(LC_ALL=C tr -dc _A-Z-a-z-0-9 < /dev/urandom | head -c 20) > .graphdb-password
 $ echo $(LC_ALL=C tr -dc _A-Z-a-z-0-9 < /dev/urandom | head -c 20) > .pre-shared-key

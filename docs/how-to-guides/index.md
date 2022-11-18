@@ -1,3 +1,8 @@
+---
+pagination_prev: null
+pagination_next: null
+---
+
 # How-To Guides
 
 ```mdx-code-block

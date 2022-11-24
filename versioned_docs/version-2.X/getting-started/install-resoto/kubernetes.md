@@ -45,7 +45,6 @@ These instructions were tested with version 1.2.15 of the operator.
 
 :::
 
-
 ### Install Helm Chart (default installation)
 
 <Tabs groupId="installation-method">
@@ -90,9 +89,7 @@ $ helm install resoto someengineering/resoto --set image.tag={{imageTag}} -f res
 </TabItem>
 </Tabs>
 
-
 And just like that, you have Resoto running in a Kubernetes cluster! A collect run will begin automatically. This first collect usually takes less than 3 minutes.
-
 
 ## Launching the Resoto Command-Line Interface
 

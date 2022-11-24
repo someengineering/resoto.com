@@ -81,22 +81,26 @@ Once the plugin is loaded, and the worker starts, the command is registered and 
 
 ```shell
 > help
-
-# Custom Commands
-hello-world - Add a greeting to the tags of a resource.
-
-... other commands removed ...
+​# highlight-start
+​
+​# Custom Commands
+​hello-world - Add a greeting to the tags of a resource.
+​
+​... other commands removed ...
+# highlight-end
 ```
 
 We can get more information about the command by executing `help hello-world`:
 
 ```shell
 > help hello-world
-hello-world: Add a greeting to the tags of a resource.
-
-hello-world
-
-Long description of the command.
+# highlight-start
+​hello-world: Add a greeting to the tags of a resource.
+​
+​hello-world
+​
+​Long description of the command.
+# highlight-end
 ```
 
 We should have paid more attention to documenting the behavior of our command. The help description is not helpful as such. Custom commands allow defining the description using Markdown syntax while describing every argument in detail. You can see a complete example of a custom command in the [Resoto GitHub Repository](https://github.com/someengineering/resoto/blob/main/plugins/aws/resoto_plugin_aws/__init__.py#L156).

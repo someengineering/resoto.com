@@ -107,49 +107,59 @@ The Unix idea of small tools that do one thing well is excellent. We can combine
 
 ```shell
 > search is(instance) and age<1h | hello-world
-kind=aws_ec2_instance, id=i07b, name=ekt, instance_status=running, age=34min, cloud=aws, account=someengineering, region=eu-central-1
+# highlight-start
+​kind=aws_ec2_instance, id=i07b, name=ekt, instance_status=running, age=34min, cloud=aws, account=someengineering, region=eu-central-1
+# highlight-end
 ```
 
 This command line will search for compute instances that are younger than one hour and add a greeting to the tags of matching resources. The `hello-world` command returns the updated resource, making it possible to process the result further. For example, we can select the tags property of the resource using the `jq` command. The result would be a list of all tags for every resource that was updated. We can see our greeting tag in the list and other existing tags.
 
 ```shell
 > search is(instance) and age<1h | hello-world | jq .tags
+# highlight-start
 ​costCenter: bus
 ​owner: Maricel
 ​greeting: Hello World
+# highlight-end
 ```
 
 It is possible to pass arguments to the `hello-world` command. The arguments passed to the command will be available in the `args` parameter of the method. In our simple implementation, we are currently ignoring the arguments - but it would be possible to parameterize our function and make it even more helpful. Consider having a greeting parameter where we can define the greeting that is added to the tags of the resource. I am leaving out the implementation details since it is super trivial to do.
 
 ```shell
 > search is(aws_ec2_instance) and age<1h | hello-world --greet "Hi there" | jq .tags
+# highlight-start
 ​costCenter: bus
 ​owner: Maricel
 ​greeting: Hi there
+# highlight-end
 ```
 
 Another option that Resoto provides is parameter expansion. The value of a command parameter does not have to be static but could come from the resource's data to process. Let's assume every resource has an `owner` tag. We could define a greeting specific to the resources owner:
 
 ```shell
 > search is(aws_ec2_instance) and age<1h | hello-world --greet "Hi {tags.owner}" | jq .tags
+# highlight-start
 ​costCenter: bus
 ​owner: Maricel
 ​greeting: Hi Maricel
+# highlight-end
 ```
 
 The placeholder does not need to come from the tags but could come from any resource property. See [format](/docs/reference/cli/format-commands/format) for a more detailed description of placeholder value handling. A short summary: a property path inside curly braces will be replaced by the value of the property of the incoming resource. The string `Hi {tags.owner}` will be replaced by `Hi Maricel` if the resource has a tag `owner` with the value `Maricel`. This can be quite powerful and allows you to create expressive commands to process resources flexibly.
 
 ## The `aws` command line tool
 
-AWS provides a command line tool that allows interaction with every possible AWS resource. We thought it would be great to have the same power inside Resoto and decided to provide a custom command called `aws` with almost the same interface as the official AWS CLI tool. It allows selecting resources via `search` and piping it into the `aws` command line tool to get specific information or manipulate resources. You can find the implementation of the `aws` command in the [Resoto GitHub Repository](https://github.com/someengineering/resoto/blob/main/plugins/aws/resoto_plugin_aws/__init__.py#L156).
+AWS provides a command line tool that allows interaction with every possible AWS resource. We thought it would be great to have the same power inside Resoto and decided to provide a custom command called `aws` with almost the same interface as the official AWS CLI tool. It allows selecting resources via `search` and piping them into the `aws` command line tool to get specific information or manipulate resources. You can find the implementation of the `aws` command in the [Resoto GitHub Repository](https://github.com/someengineering/resoto/blob/main/plugins/aws/resoto_plugin_aws/__init__.py#L156).
 
 If you have set up your [AWS collector](/docs/getting-started/configure-cloud-provider-access/aws) you can use the `aws` command to see the configured identity using [`get-caller-identity`](https://docs.aws.amazon.com/cli/latest/reference/sts/get-caller-identity.html):
 
 ```shell
 > aws sts get-caller-identity
+# highlight-start
 ​UserId: AIDA42373XXXXXXXXXXXX
 ​Account: '882311111111'
 ​Arn: arn:aws:iam::882311111111:user/matthias
+# highlight-end
 ```
 
 Let's do something more interesting with our `aws` command. We assume that some development accounts with many ec2 instances are idle during the weekend. We want to automatically stop all running ec2 instances in our dev accounts on Friday EOB and start them again on Monday morning.
@@ -178,9 +188,13 @@ To automate the two actions we can create jobs with a cron trigger, that are exe
 
 ```shell
 > jobs add --id tgif --schedule "0 22 * * 5" 'search ... | aws ec2 stop-instances ...'
+# highlight-start
 ​Job tgif added.
+# highlight-end
 > jobs add --id hello_monday --schedule "0 8 * * 1" 'search ... | aws ec2 start-instances ...'
+# highlight-start
 ​Job hello_monday added.
+# highlight-end
 ```
 
 ## Conclusion

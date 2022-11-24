@@ -81,7 +81,7 @@ Once the plugin is loaded, and the worker starts, the command is registered and 
 
 ```shell
 > help
-​# highlight-start
+# highlight-start
 ​
 ​# Custom Commands
 ​hello-world - Add a greeting to the tags of a resource.

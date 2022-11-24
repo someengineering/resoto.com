@@ -45,7 +45,7 @@ These instructions were tested with version 1.2.15 of the operator.
 
 :::
 
-### Install Helm Chart (default installation)
+### Install Helm Chart
 
 <Tabs groupId="installation-method">
 <TabItem value="default" label="Default Installation">

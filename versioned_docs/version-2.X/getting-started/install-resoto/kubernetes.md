@@ -4,6 +4,11 @@ pagination_prev: getting-started/install-resoto/index
 pagination_next: getting-started/configure-cloud-provider-access/index
 ---
 
+```mdx-code-block
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+```
+
 # Install Resoto with Kubernetes
 
 [Kubernetes](https://kubernetes.io) is an open-source system for automating deployment, scaling, and management of containerized applications.
@@ -22,29 +27,16 @@ Resoto performs CPU-intensive graph operations. In a production setup, we recomm
 
 ## Installing Resoto
 
-### Prepare ArangoDB Database
+### Prepare ArangoDB operator
 
 If you don't have ArangoDB, you can use the operator to install it. See more info [here](https://arangodb.com/docs/stable/tutorials-kubernetes.html).
 
-You can use the following commands to install the database:
+You can use the following commands to install the operator:
 
 ```bash
 $ helm repo add arangodb https://arangodb.github.io/kube-arangodb
 $ helm repo update
 $ helm install kube-arangodb-crd arangodb/kube-arangodb-crd
-$ helm install kube-arangodb arangodb/kube-arangodb
-
-$ kubectl apply -f - <<EOF
-apiVersion: "database.arangodb.com/v1alpha"
-kind: "ArangoDeployment"
-metadata:
-  name: "single-server"
-spec:
-  mode: Single
-  image: arangodb/arangodb:3.8.7
-  tls:
-    caSecretName: None
-EOF
 ```
 
 :::note
@@ -53,39 +45,49 @@ These instructions were tested with version 1.2.15 of the operator.
 
 :::
 
-Then, wait until the ArangoDB deployment is ready:
-
-```bash
-$ kubectl wait --for=condition=ready arangodeployment/single-server
-```
-
-### Create Helm Values File
-
-```yaml title="resoto-values.yaml"
-resotocore:
-  graphdb:
-    server: http://single-server:8529
-```
-
-This is the minimum configuration, which points to an empty ArangoDB database with default username and password.
-
-The installation will create a separate database and password and secure the database installation with a generated password. You can find the generated database password in the secret `arango-user`.
-
-See the [`someengineering/helm-chart` GitHub repository](https://github.com/someengineering/helm-charts/tree/main/charts/resoto) for a list of configurable values.
-
 ### Install Helm Chart
 
-Add the Resoto Helm chart repository:
+<Tabs groupId="installation-method">
+<TabItem value="default" label="Default Installation">
+
+Add the Resoto Helm chart repository and install the chart.
 
 ```bash
 $ helm repo add someengineering https://helm.some.engineering
+$ helm repo update
+$ helm install resoto someengineering/resoto --set image.tag={{imageTag}}
 ```
 
-Next, install Resoto using Helm:
+</TabItem>
+<TabItem value="customized" label="Customized Installation">
+
+It is possible to adjust the configuration of Resoto installation using a Helm values file.
+
+Please find the list of all possible configuration values in the [`someengineering/helm-chart` values documentation.](https://github.com/someengineering/helm-charts/tree/main/someengineering/resoto#values).
+
+To override any value, please create the file `resoto-values.yaml` and define the values there.
+
+```yaml title="resoto-values.yaml  Example File."
+resotoworker:
+  volumeMounts:
+    - mountPath: /home/resoto/.aws
+      name: aws-credentials
+  volumes:
+    - name: aws-credentials
+      secret:
+        secretName: resoto-home
+```
+
+Add the Resoto Helm chart repository and install the chart with the configuration defined in the `resoto-values.yaml` file.
 
 ```bash
+$ helm repo add someengineering https://helm.some.engineering
+$ helm repo update
 $ helm install resoto someengineering/resoto --set image.tag={{imageTag}} -f resoto-values.yaml
 ```
+
+</TabItem>
+</Tabs>
 
 And just like that, you have Resoto running in a Kubernetes cluster! A collect run will begin automatically. This first collect usually takes less than 3 minutes.
 
@@ -106,3 +108,17 @@ $ kubectl exec -it service/resoto-resotocore -- resh
 ```
 
 ![Resoto Shell](./img/resoto-shell.png)
+
+## Accessing generated credentials
+
+The helm chart stack generates a couple of secrets that are used by the components. Those credentials are stored in Kubernetes secrets as base64 encoded strings.
+
+- `arango-user` - contains the ArangoDB user and password.
+- `resoto-psk` - contains the pre-shared key used for communication between components.
+
+The secrets can be obtained by running the following commands:
+
+```bash
+$ kubectl get secret arango-user -o jsonpath="{.data.password}" | base64 --decode
+$ kubectl get secret resoto-psk -o jsonpath="{.data.psk}" | base64 --decode
+```

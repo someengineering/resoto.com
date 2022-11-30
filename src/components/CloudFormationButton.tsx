@@ -7,13 +7,24 @@ export default function CloudFormationButton(): JSX.Element {
   let versionMetadata: PropVersionMetadata;
 
   try {
+    // versionMetadata: {pluginId: "default", version: "2.X" .... }
+    // version is either "current" or major.X version number
     versionMetadata = useDocsVersion();
   } catch (e) {
     versionMetadata = null;
   }
 
-  const versionTag =
-    versionMetadata?.version === 'current' ? 'edge' : latestRelease.version;
+  // Make sure we always have a sane fallback
+  let versionTag = 'edge';
+  if (
+    versionMetadata &&
+    versionMetadata.version &&
+    versionMetadata.version in latestRelease &&
+    latestRelease[versionMetadata.version].version
+  ) {
+    // latestRelease: { "2.X": { "version": "2.4.7", "link": "/news/2022/11/17/2.4.7" } }
+    versionTag = latestRelease[versionMetadata.version].version;
+  }
 
   return (
     <a

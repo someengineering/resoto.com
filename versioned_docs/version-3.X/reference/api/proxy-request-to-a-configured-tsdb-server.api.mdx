@@ -1,0 +1,42 @@
+---
+id: proxy-request-to-a-configured-tsdb-server
+title: "Proxy request to a configured tsdb server."
+description: "Proxy request to a configured tsdb server."
+sidebar_label: "Proxy request to a configured tsdb server."
+hide_title: true
+hide_table_of_contents: true
+api: {"parameters":[{"name":"path","description":"Note: swagger does not allow to define a nested path with slashes.","in":"path","required":true,"schema":{"type":"string","example":"api/v1/metadata"}}],"tags":["tsdb"],"responses":{"404":{"description":"If the response is coming from Resoto (no ResotoVia header), this means that tsdb is not configured, so a request can not be made.","content":{"text/plain":{"schema":{"type":"string","example":"404: No tsdb defined. No tsdb defined. Adjust resoto.core configuration."}}}},"502":{"description":"If the response is coming from Resoto (no ResotoVia header), this means that the configured tsdb server can not be reached.","content":{"text/plain":{"schema":{"type":"string","example":"502. tsdb server is not reachable"}}}},"default":{"headers":{"ViaResoto":{"description":"This header indicates, that the response is created by the tsdb server and Resoto is only a proxy.\nDepending on this header: you have to interpret the response differently.\n","schema":{"type":"string","example":"1.1 node1"}}},"description":"The response from the tsdb."}},"description":"Proxy request to a configured tsdb server.","method":"get","path":"/tsdb/{path}","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Resoto Core REST API","version":"V1"},"postman":{"name":"Proxy request to a configured tsdb server.","description":{"type":"text/plain"},"url":{"path":["tsdb",":path"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) Note: swagger does not allow to define a nested path with slashes.","type":"text/plain"},"type":"any","value":"","key":"path"}]},"header":[{"key":"Accept","value":"text/plain"}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: versioned_docs/version-3.X/reference/api/resoto-core-rest-api
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem"
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Proxy request to a configured tsdb server.
+
+Proxy request to a configured tsdb server.
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Path Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"path","description":"Note: swagger does not allow to define a nested path with slashes.","in":"path","required":true,"schema":{"type":"string","example":"api/v1/metadata"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"404"} value={"404"}><div>
+
+If the response is coming from Resoto (no ResotoVia header), this means that tsdb is not configured, so a request can not be made.
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"text/plain"} value={"text/plain"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><li><div><strong>string</strong></div></li></ul></details></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"502"} value={"502"}><div>
+
+If the response is coming from Resoto (no ResotoVia header), this means that the configured tsdb server can not be reached.
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"text/plain"} value={"text/plain"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><li><div><strong>string</strong></div></li></ul></details></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"default"} value={"default"}><div>
+
+The response from the tsdb.
+
+</div><details style={{"textAlign":"left","marginBottom":"1rem"}} data-collaposed={true} open={false}><summary style={{}}><strong>Response Headers</strong></summary><ul style={{"marginLeft":"1rem"}}><li className={"schemaItem"}><summary style={{}}><strong>ViaResoto</strong><span style={{"opacity":"0.6"}}> string</span></summary><div><div style={{"marginTop":".5rem","marginBottom":".5rem"}}>
+
+This header indicates, that the response is created by the tsdb server and Resoto is only a proxy. Depending on this header: you have to interpret the response differently.
+
+</div></div></li></ul></details><div></div></TabItem></ApiTabs></div>

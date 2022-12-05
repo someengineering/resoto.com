@@ -2,6 +2,15 @@
 
 <!-- Please describe the changes included in this PR here. -->
 
+# Applies to version
+
+<!-- Resoto maintains versioned documentation. -->
+<!-- Add an 'x' between the brackets to mark each relevant version for which this documentation is applicable. -->
+
+- [ ] Version 2.x
+- [ ] Version 3.x
+- [ ] Next upcoming major release (edge)
+
 # To-Dos
 
 <!-- Before submitting this PR, please format, lint, and build your changes locally. -->

@@ -2,7 +2,6 @@
 tags: [release notes]
 ---
 
-
 # 3.0.0
 
 ```mdx-code-block
@@ -30,8 +29,7 @@ It comes with dashboards to visualize your resource data either from a time seri
 
 </ZoomPanPinch>
 
-Explore all your cloud resources in a way you never did before. You can now search for resources and filter them by tags, attributes, and more. 
-It allows you exploring your resource data in multiple ways - for example as a tree view.
+Explore all your cloud resources in a way you never did before. You can now search for resources and filter them by tags, attributes, and more. It allows you exploring your resource data in multiple ways - for example as a tree view.
 
 <ZoomPanPinch>
 
@@ -47,7 +45,6 @@ Last but not least, it comes with a setup wizard that guides you through the ini
 
 </ZoomPanPinch>
 
-
 ### AWS: All details and better service coverage
 
 Resoto now supports all details of each supported resource. This means that you can now search resources by any attribute, tag, or any other detail of the resource.
@@ -61,7 +58,6 @@ As an example I picked the AWS application load balancer to show the complete st
 </ZoomPanPinch>
 
 See the full list of supported AWS resources in the [AWS reference](/docs/reference/data-models/aws).
-
 
 ### Cloud2SQL: Export your data into a SQL database
 
@@ -78,38 +74,27 @@ See the [Cloud2SQL](https://github.com/someengineering/cloud2sql) repository for
 
 ### Simplified installation
 
-
 **Kubernetes Helm Chart**
 
-Resoto's default installation method is Kubernetes. We now provide a helm chart to simplify this installation process. You can find the chart in our [chart repository](https://github.com/someengineering/helm-charts/tree/main/someengineering/resoto).
-Installing Resoto on Kubernetes is now a simple helm install command away.
-Please find our [installation guide](docs/getting-started/install-resoto/kubernetes) for more details.
+Resoto's default installation method is Kubernetes. We now provide a helm chart to simplify this installation process. You can find the chart in our [chart repository](https://github.com/someengineering/helm-charts/tree/main/someengineering/resoto). Installing Resoto on Kubernetes is now a simple helm install command away. Please find our [installation guide](docs/getting-started/install-resoto/kubernetes) for more details.
 
 **AWS CloudFormation**
 
 Installing Resoto on AWS is now even easier. We provide a CloudFormation template that makes installing Resoto on AWS a one click process. Ok two click process: you need to click the button below and then click the "Create Stack" button in the AWS console.
 
-<a
-  href={`https://eu-central-1.console.aws.amazon.com/cloudformation/home?region=eu-central-1#/stacks/create/review?templateURL=https://resoto-cdk.s3.eu-central-1.amazonaws.com/Resoto_EKS.template&stackName=ResotoEKS&param_ResotoTag=3.0.0`}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="button button--primary"
->
-  Deploy Resoto 3.0.0 to AWS
-</a>
+<a href={`https://eu-central-1.console.aws.amazon.com/cloudformation/home?region=eu-central-1#/stacks/create/review?templateURL=https://resoto-cdk.s3.eu-central-1.amazonaws.com/Resoto_EKS.template&stackName=ResotoEKS&param_ResotoTag=3.0.0`} target="\_blank" rel="noopener noreferrer" className="button button--primary"
+
+> Deploy Resoto 3.0.0 to AWS </a>
 
 You can find more information in the [CloudFormation](/docs/getting-started/install-resoto/aws/cloudformation) installation guide.
 
 **AWS CDK**
 
-If you want to have full control over the CloudFormation stack that is created to install Resoto, you can use the AWS CDK construct that we provide.
-The construct definition can be found in the [resoto-cdk](https://github.com/someengineering/resoto-cdk) repository.
-You can find more information in the [AWS CDK](/docs/getting-started/install-resoto/aws/cdk) installation guide.
+If you want to have full control over the CloudFormation stack that is created to install Resoto, you can use the AWS CDK construct that we provide. The construct definition can be found in the [resoto-cdk](https://github.com/someengineering/resoto-cdk) repository. You can find more information in the [AWS CDK](/docs/getting-started/install-resoto/aws/cdk) installation guide.
 
 ### History of changes
 
-Version 3 of Resoto does not only offer the current snapshot data and aggregated time series data, it now also keeps track of changes to any of your resources. 
-This not only allows you to see how a resource has changed over time, you can also use it to list the changes that happened in a specific time frame.
+Version 3 of Resoto does not only offer the current snapshot data and aggregated time series data, it now also keeps track of changes to any of your resources. This not only allows you to see how a resource has changed over time, you can also use it to list the changes that happened in a specific time frame.
 
 Think of an outage in your production cluster, and you want to know what happened in the last 2 hours before this outage. You can now use the history of changes to find out what has changed and how it has changed.
 
@@ -118,21 +103,17 @@ Think of an outage in your production cluster, and you want to know what happene
 
 ### Extend the list of commands via plugins
 
-Resoto has always been extensible via plugins for collect and cleanup. This release adds the option to programmatically add commands to Resoto. 
-We use this feature to provide the `aws` command line tool as part of the AWS collector plugin, which allows you to interact with AWS resources directly from the Resoto CLI.
+Resoto has always been extensible via plugins for collect and cleanup. This release adds the option to programmatically add commands to Resoto. We use this feature to provide the `aws` command line tool as part of the AWS collector plugin, which allows you to interact with AWS resources directly from the Resoto CLI.
 
-See the [`aws` command line reference](https://resoto.com/docs/reference/cli/action-commands/aws) for more information. 
+See the [`aws` command line reference](https://resoto.com/docs/reference/cli/action-commands/aws) for more information.
 
 <!-- TODO: Once the blog post is published, link it here. -->
 
-
 ### Client to interact with Resoto
 
-We also created a Python client as part of this release that allows you to interact with Resoto from your own applications.
-You can find the latest version of the client in this [resotoclient-python](https://github.com/someengineering/resotoclient-python) repository.
+We also created a Python client as part of this release that allows you to interact with Resoto from your own applications. You can find the latest version of the client in this [resotoclient-python](https://github.com/someengineering/resotoclient-python) repository.
 
 If your programming language of choice is not Python, you can still use the [Resoto API](https://resoto.com/docs/reference/api) directly.
-
 
 ## List of all changes
 
@@ -230,7 +211,7 @@ If your programming language of choice is not Python, you can still use the [Res
 - [`8323da64`](https://github.com/someengineering/resoto/commit/8323da64) <span class="badge badge--secondary">aws</span> Add edge from Beanstalk resource to SQS Queue (#1070)
 - [`64f46888`](https://github.com/someengineering/resoto/commit/64f46888) <span class="badge badge--secondary">aws</span> Add support for SQS (#1066)
 - [`5679d943`](https://github.com/someengineering/resoto/commit/5679d943) <span class="badge badge--secondary">resoto</span> fix node direction (#1068)
-- [`340fa446`](https://github.com/someengineering/resoto/commit/340fa446) <span class="badge badge--secondary">aws</span>  [aws][feat] Add support for Elastic Beanstalk Application Environments and Resources (#1064)
+- [`340fa446`](https://github.com/someengineering/resoto/commit/340fa446) <span class="badge badge--secondary">aws</span> [aws][feat] Add support for Elastic Beanstalk Application Environments and Resources (#1064)
 - [`7a5d20b5`](https://github.com/someengineering/resoto/commit/7a5d20b5) <span class="badge badge--secondary">aws</span> Add support for kinesis streams (#1065)
 - [`c598a788`](https://github.com/someengineering/resoto/commit/c598a788) <span class="badge badge--secondary">aws</span> Enable new resources pre_cleanup/cleanup (#1063)
 - [`79cb52df`](https://github.com/someengineering/resoto/commit/79cb52df) <span class="badge badge--secondary">aws</span> Support s3 bucket deletion (#1062)
@@ -274,7 +255,7 @@ If your programming language of choice is not Python, you can still use the [Res
 - [`41ecec4a`](https://github.com/someengineering/resoto/commit/41ecec4a) <span class="badge badge--secondary">aws</span> Add support for RDS (#1012)
 - [`1c8c96ba`](https://github.com/someengineering/resoto/commit/1c8c96ba) <span class="badge badge--secondary">aws</span> Add support for AWS profiles (#990)
 - [`b35e6134`](https://github.com/someengineering/resoto/commit/b35e6134) <span class="badge badge--secondary">resoto</span> build arm64 docker images (#1002)
-- [`45894393`](https://github.com/someengineering/resoto/commit/45894393) <span class="badge badge--secondary">aws</span> Define remaining AWS EC2 resources  (#1007)
+- [`45894393`](https://github.com/someengineering/resoto/commit/45894393) <span class="badge badge--secondary">aws</span> Define remaining AWS EC2 resources (#1007)
 - [`7ce70e2f`](https://github.com/someengineering/resoto/commit/7ce70e2f) <span class="badge badge--secondary">aws</span> Add eks Cluster and Nodegroups (#1001)
 - [`a8e3addf`](https://github.com/someengineering/resoto/commit/a8e3addf) <span class="badge badge--secondary">aws</span> Add cloud formation stack + stack set (#999)
 - [`1c24bec9`](https://github.com/someengineering/resoto/commit/1c24bec9) <span class="badge badge--secondary">resoto</span> Allow plural for month in duration strings (#1003)
@@ -314,7 +295,7 @@ If your programming language of choice is not Python, you can still use the [Res
 - [`e1694a06`](https://github.com/someengineering/resoto/commit/e1694a06) <span class="badge badge--secondary">k8s</span> Implement kuberenetes plugin (#903)
 - [`c873cc96`](https://github.com/someengineering/resoto/commit/c873cc96) <span class="badge badge--secondary">resotolib</span> Extend update check to distinguish between stable and pre-releases (#898)
 - [`9f97b568`](https://github.com/someengineering/resoto/commit/9f97b568) <span class="badge badge--secondary">resoto</span> Remove trailing slash (#905)
-- [`941eacae`](https://github.com/someengineering/resoto/commit/941eacae) <span class="badge badge--secondary">resoto</span>  Outer edge collection support - Part 2/4  (#892)
+- [`941eacae`](https://github.com/someengineering/resoto/commit/941eacae) <span class="badge badge--secondary">resoto</span> Outer edge collection support - Part 2/4 (#892)
 - [`25cb0493`](https://github.com/someengineering/resoto/commit/25cb0493) <span class="badge badge--secondary">resotolib</span> Use 120 lines length for formatting (#896)
 - [`ad42bd44`](https://github.com/someengineering/resoto/commit/ad42bd44) <span class="badge badge--secondary">resoto</span> Add a package to install all resoto components at once (#890)
 - [`fb7c25b1`](https://github.com/someengineering/resoto/commit/fb7c25b1) <span class="badge badge--secondary">resotolib</span> Update check (#895)
@@ -329,7 +310,7 @@ If your programming language of choice is not Python, you can still use the [Res
 - [`b009c2cc`](https://github.com/someengineering/resoto/commit/b009c2cc) <span class="badge badge--secondary">resotocore</span> Typed Ids: SubscriberId (#881)
 - [`c5a4b2b9`](https://github.com/someengineering/resoto/commit/c5a4b2b9) <span class="badge badge--secondary">resotocore</span> Sort config based on model order (#875)
 - [`6bb14fd2`](https://github.com/someengineering/resoto/commit/6bb14fd2) <span class="badge badge--secondary">resotocore</span> Rename config option analytics_opt_out -> usage_metrics (#874)
-- [`9bc4086e`](https://github.com/someengineering/resoto/commit/9bc4086e) <span class="badge badge--secondary">resotocore</span> Outer edge collection support - Part 1/4  (#877)
+- [`9bc4086e`](https://github.com/someengineering/resoto/commit/9bc4086e) <span class="badge badge--secondary">resotocore</span> Outer edge collection support - Part 1/4 (#877)
 - [`d53b757d`](https://github.com/someengineering/resoto/commit/d53b757d) <span class="badge badge--secondary">resotocore</span> Add sort properties to list output (#870)
 - [`4379cbe3`](https://github.com/someengineering/resoto/commit/4379cbe3) <span class="badge badge--secondary">resotocore</span> Add separate sort and limit commands (#862)
 - [`788a4ba9`](https://github.com/someengineering/resoto/commit/788a4ba9) <span class="badge badge--secondary">digitalocean</span> Rename Network -> VPC (#860)
@@ -381,7 +362,7 @@ If your programming language of choice is not Python, you can still use the [Res
 - [`c234fd36`](https://github.com/someengineering/resoto/commit/c234fd36) <span class="badge badge--secondary">docker</span> Rebase on resotopython base image and update to Node 16 actions (#1276)
 - [`aa48ea01`](https://github.com/someengineering/resoto/commit/aa48ea01) <span class="badge badge--secondary">resotocore</span> Fix api doc description for config validation (#1268)
 - [`21b9634a`](https://github.com/someengineering/resoto/commit/21b9634a) <span class="badge badge--secondary">resotocore</span> Send progress messages when the progress has changed internally (#1264)
-- [`677a78be`](https://github.com/someengineering/resoto/commit/677a78be) <span class="badge badge--secondary">aws</span> include set identifier in _keys() for RRSets (#1262)
+- [`677a78be`](https://github.com/someengineering/resoto/commit/677a78be) <span class="badge badge--secondary">aws</span> include set identifier in \_keys() for RRSets (#1262)
 - [`6e2fd0b9`](https://github.com/someengineering/resoto/commit/6e2fd0b9) <span class="badge badge--secondary">resoto</span> No analytics during post-flight (#1263)
 - [`bffcc49a`](https://github.com/someengineering/resoto/commit/bffcc49a) <span class="badge badge--secondary">aws</span> s3 objects are removed before the bucket is deleted (#1260)
 - [`c19932d4`](https://github.com/someengineering/resoto/commit/c19932d4) <span class="badge badge--secondary">resotolib</span> UnionType and NoneType in python 3.9 (#1261)
@@ -435,7 +416,7 @@ If your programming language of choice is not Python, you can still use the [Res
 - [`6a216d6f`](https://github.com/someengineering/resoto/commit/6a216d6f) <span class="badge badge--secondary">aws</span> Migrate the db config on config class change (#1108)
 - [`1e6dd832`](https://github.com/someengineering/resoto/commit/1e6dd832) <span class="badge badge--secondary">aws</span> Use sequential collection of service quotas (#1105)
 - [`c16a8a48`](https://github.com/someengineering/resoto/commit/c16a8a48) <span class="badge badge--secondary">aws</span> Give up collecting a region in case of UnauthorizedException (#1104)
-- [`6dc16968`](https://github.com/someengineering/resoto/commit/6dc16968) <span class="badge badge--secondary">aws</span> Make DNSZone.id() part of DNSRecord and DNSRecordSet _keys() (#1101)
+- [`6dc16968`](https://github.com/someengineering/resoto/commit/6dc16968) <span class="badge badge--secondary">aws</span> Make DNSZone.id() part of DNSRecord and DNSRecordSet \_keys() (#1101)
 - [`68471511`](https://github.com/someengineering/resoto/commit/68471511) <span class="badge badge--secondary">aws</span> Set correct DNS Record values (#1099)
 - [`7c3bc98a`](https://github.com/someengineering/resoto/commit/7c3bc98a) <span class="badge badge--secondary">aws</span> Correct name for quotas (#1094)
 - [`6c01319e`](https://github.com/someengineering/resoto/commit/6c01319e) <span class="badge badge--secondary">aws</span> Consistent use of service prefixes (#1085)
@@ -455,7 +436,7 @@ If your programming language of choice is not Python, you can still use the [Res
 - [`3888d5ca`](https://github.com/someengineering/resoto/commit/3888d5ca) <span class="badge badge--secondary">aws</span> Add missing kwargs (#1011)
 - [`0fe4c101`](https://github.com/someengineering/resoto/commit/0fe4c101) <span class="badge badge--secondary">aws</span> Collector json handling (#1009)
 - [`b0cc1178`](https://github.com/someengineering/resoto/commit/b0cc1178) <span class="badge badge--secondary">resotocore</span> DOT renderer should allow dashes (#1005)
-- [`5be3f8f4`](https://github.com/someengineering/resoto/commit/5be3f8f4) <span class="badge badge--secondary">resoto</span> Do not export the new Aws* classes until done. (#1006)
+- [`5be3f8f4`](https://github.com/someengineering/resoto/commit/5be3f8f4) <span class="badge badge--secondary">resoto</span> Do not export the new Aws\* classes until done. (#1006)
 - [`4670e3f5`](https://github.com/someengineering/resoto/commit/4670e3f5) <span class="badge badge--secondary">docker</span> Install git into the build env (#1000)
 - [`808bbbaa`](https://github.com/someengineering/resoto/commit/808bbbaa) <span class="badge badge--secondary">resotolib</span> Fix the resource cleanup process (#995)
 - [`0df34325`](https://github.com/someengineering/resoto/commit/0df34325) <span class="badge badge--secondary">resotolib</span> Fix tagging and attrs init (#994)
@@ -521,7 +502,7 @@ If your programming language of choice is not Python, you can still use the [Res
 - [`c7a71655`](https://github.com/someengineering/resoto/commit/c7a71655) <span class="badge badge--secondary">resotoshell</span> shutdown the client thread (#839)
 - [`95fd4d21`](https://github.com/someengineering/resoto/commit/95fd4d21) <span class="badge badge--secondary">resotoshell</span> Bump resotoclient (#838)
 - [`ee17313f`](https://github.com/someengineering/resoto/commit/ee17313f) <span class="badge badge--secondary">resotoshell</span> Fix sort suggestion and improve option information (#829)
-- [`d59e0c72`](https://github.com/someengineering/resoto/commit/d59e0c72) <span class="badge badge--secondary">plugins</span> Remove _ from plugin package names (#830)
+- [`d59e0c72`](https://github.com/someengineering/resoto/commit/d59e0c72) <span class="badge badge--secondary">plugins</span> Remove \_ from plugin package names (#830)
 - [`22cba647`](https://github.com/someengineering/resoto/commit/22cba647) <span class="badge badge--secondary">resotolib</span> close fds more targeted during restart (#827)
 - [`9cb6277a`](https://github.com/someengineering/resoto/commit/9cb6277a) <span class="badge badge--secondary">resotocore</span> Validate tarfile content (#823)
 - [`f13e8ccd`](https://github.com/someengineering/resoto/commit/f13e8ccd) <span class="badge badge--secondary">resoto</span> Add .dccache to .gitignore (#817)
@@ -591,8 +572,8 @@ If your programming language of choice is not Python, you can still use the [Res
 - [`15e2ef11`](https://github.com/someengineering/resoto/commit/15e2ef11) <span class="badge badge--secondary">resotolib, resotoworker, digitalocean</span> Refactor tag operations (#1016)
 - [`a5d599d7`](https://github.com/someengineering/resoto/commit/a5d599d7) <span class="badge badge--secondary">resoto</span> make baseresource kwargs only (#1008)
 - [`da942de7`](https://github.com/someengineering/resoto/commit/da942de7) <span class="badge badge--secondary">resoto</span> Use attrs instead of dataclasses (#972)
-- [`b02016dc`](https://github.com/someengineering/resoto/commit/b02016dc) <span class="badge badge--secondary">plugins</span> Fix the _volume_status_setter (#969)
-- [`94cc4d99`](https://github.com/someengineering/resoto/commit/94cc4d99) <span class="badge badge--secondary">resoto/plugins</span> Fix the _instance_setter (#968)
+- [`b02016dc`](https://github.com/someengineering/resoto/commit/b02016dc) <span class="badge badge--secondary">plugins</span> Fix the \_volume_status_setter (#969)
+- [`94cc4d99`](https://github.com/someengineering/resoto/commit/94cc4d99) <span class="badge badge--secondary">resoto/plugins</span> Fix the \_instance_setter (#968)
 - [`642de1ac`](https://github.com/someengineering/resoto/commit/642de1ac) <span class="badge badge--secondary">aws</span> Add mypy support (#967)
 - [`d03e976a`](https://github.com/someengineering/resoto/commit/d03e976a) <span class="badge badge--secondary">resoto</span> central place for json marshalling/unmarshalling (#965)
 - [`16b04f29`](https://github.com/someengineering/resoto/commit/16b04f29) <span class="badge badge--secondary">resoto</span> utc formatted iso-8601 timestamps (#964)
@@ -616,8 +597,6 @@ If your programming language of choice is not Python, you can still use the [Res
 - [`9d571914`](https://github.com/someengineering/resoto/commit/9d571914) <span class="badge badge--secondary">ci</span> remove individual Docker images from generated release notes (#791)
 - [`0a27e8a8`](https://github.com/someengineering/resoto/commit/0a27e8a8) <span class="badge badge--secondary">docker</span> Update compose file for 2.0.0 (#788)
 - [`edc9e22e`](https://github.com/someengineering/resoto/commit/edc9e22e) <span class="badge badge--secondary">resoto</span> Bump 2.1.0a0 (#786)
-
-
 
 <!--truncate-->
 

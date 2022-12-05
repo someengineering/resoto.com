@@ -12,8 +12,8 @@ tags: [release notes]
 - [`4379cbe`](https://github.com/someengineering/resoto/commit/4379cbe) <span class="badge badge--secondary">resotocore</span> Add separate sort and limit commands ([#862](https://github.com/someengineering/resoto/pull/862))
 - [`788a4ba`](https://github.com/someengineering/resoto/commit/788a4ba) <span class="badge badge--secondary">digitalocean</span> Rename Network -> VPC ([#860](https://github.com/someengineering/resoto/pull/860))
 - [`2ba8c2c`](https://github.com/someengineering/resoto/commit/2ba8c2c) <span class="badge badge--secondary">resoto</span> Add possible successors to the model ([#853](https://github.com/someengineering/resoto/pull/853))
-- [`f2eb950`](https://github.com/someengineering/resoto/commit/f2eb950) <span class="badge badge--secondary">plugins/aws</span> Fetch S3 bucket tag sets in parallel ([#851](https://github.com/someengineering/resoto/pull/851))
-- [`fccbcae`](https://github.com/someengineering/resoto/commit/fccbcae) <span class="badge badge--secondary">plugins/aws</span> Allow fetching and updating of S3 bucket tags ([#847](https://github.com/someengineering/resoto/pull/847))
+- [`f2eb950`](https://github.com/someengineering/resoto/commit/f2eb950) <span class="badge badge--secondary">aws</span> Fetch S3 bucket tag sets in parallel ([#851](https://github.com/someengineering/resoto/pull/851))
+- [`fccbcae`](https://github.com/someengineering/resoto/commit/fccbcae) <span class="badge badge--secondary">aws</span> Allow fetching and updating of S3 bucket tags ([#847](https://github.com/someengineering/resoto/pull/847))
 - [`f1dcc0a`](https://github.com/someengineering/resoto/commit/f1dcc0a) <span class="badge badge--secondary">resotoshell</span> Load metadata from core ([#833](https://github.com/someengineering/resoto/pull/833))
 - [`be10bb4`](https://github.com/someengineering/resoto/commit/be10bb4) <span class="badge badge--secondary">resoto</span> pypy 3.9 and bump minimal version ([#835](https://github.com/someengineering/resoto/pull/835))
 - [`41e652a`](https://github.com/someengineering/resoto/commit/41e652a) <span class="badge badge--secondary">resotoshell</span> select mode if stdin is not a tty ([#831](https://github.com/someengineering/resoto/pull/831))
@@ -45,7 +45,7 @@ tags: [release notes]
 ### Chores
 
 - [`d9304b1`](https://github.com/someengineering/resoto/commit/d9304b1) <span class="badge badge--secondary">docker</span> Use nano as default editor in Docker 🤷 ([#857](https://github.com/someengineering/resoto/pull/857))
-- [`ca6ebbf`](https://github.com/someengineering/resoto/commit/ca6ebbf) <span class="badge badge--secondary">plugins/aws</span> Bump boto3 1.22.6 -> 1.22.11 ([#855](https://github.com/someengineering/resoto/pull/855))
+- [`ca6ebbf`](https://github.com/someengineering/resoto/commit/ca6ebbf) <span class="badge badge--secondary">aws</span> Bump boto3 1.22.6 -> 1.22.11 ([#855](https://github.com/someengineering/resoto/pull/855))
 - [`2b2a9ef`](https://github.com/someengineering/resoto/commit/2b2a9ef) <span class="badge badge--secondary">resoto</span> Bump libs ([#834](https://github.com/someengineering/resoto/pull/834))
 - [`95137fe`](https://github.com/someengineering/resoto/commit/95137fe) <span class="badge badge--secondary">resotolib</span> rename package resotolib.logging and resotolib.signal ([#828](https://github.com/someengineering/resoto/pull/828))
 - [`12dea08`](https://github.com/someengineering/resoto/commit/12dea08) <span class="badge badge--secondary">resoto</span> Bump 2.2.0a0 ([#826](https://github.com/someengineering/resoto/pull/826))

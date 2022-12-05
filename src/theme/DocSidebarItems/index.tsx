@@ -41,7 +41,7 @@ export default function DocSidebarItemsWrapper(props: Props): JSX.Element {
             latestRelease[versionMetadata.version]?.version.indexOf('.')
           ) ? (
             <Link
-              to={latestRelease.link}
+              to={latestRelease[versionMetadata.version]?.link}
               className="button button--outline button--sm button--primary"
             >
               Release Notes

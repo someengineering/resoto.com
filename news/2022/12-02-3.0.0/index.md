@@ -82,9 +82,7 @@ Resoto's default installation method is Kubernetes. We now provide a helm chart 
 
 Installing Resoto on AWS is now even easier. We provide a CloudFormation template that makes installing Resoto on AWS a one click process. Ok two click process: you need to click the button below and then click the "Create Stack" button in the AWS console.
 
-<a href={`https://eu-central-1.console.aws.amazon.com/cloudformation/home?region=eu-central-1#/stacks/create/review?templateURL=https://resoto-cdk.s3.eu-central-1.amazonaws.com/Resoto_EKS.template&stackName=ResotoEKS&param_ResotoTag=3.0.0`} target="\_blank" rel="noopener noreferrer" className="button button--primary"
-
-> Deploy Resoto 3.0.0 to AWS </a>
+<a href="https://eu-central-1.console.aws.amazon.com/cloudformation/home?region=eu-central-1#/stacks/create/review?templateURL=https://resoto-cdk.s3.eu-central-1.amazonaws.com/Resoto_EKS.template&stackName=ResotoEKS&param_ResotoTag=3.0.0" target="\_blank" rel="noopener noreferrer" className="button button--primary"> Deploy Resoto 3.0.0 to AWS </a>
 
 You can find more information in the [CloudFormation](/docs/getting-started/install-resoto/aws/cloudformation) installation guide.
 

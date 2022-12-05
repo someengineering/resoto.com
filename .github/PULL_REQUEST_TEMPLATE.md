@@ -2,19 +2,20 @@
 
 <!-- Please describe the changes included in this PR here. -->
 
-# Applies to version
+# Docs Version(s)
 
-<!-- Resoto maintains versioned documentation. -->
-<!-- Add an 'x' between the brackets to mark each relevant version for which this documentation is applicable. -->
+<!-- The Resoto documentation is versioned. (Please see https://docusaurus.io/docs/versioning for details.) -->
+<!-- Add an 'x' between the brackets to mark each version of the docs modified in this PR. -->
+<!-- (Feel free to remove this section if this PR does not include docs changes.) -->
 
-- [ ] Version 2.x
-- [ ] Version 3.x
-- [ ] Next upcoming major release (edge)
+- [ ] `edge`
+- [ ] `3.X`
+- [ ] `2.X`
 
 # To-Dos
 
 <!-- Before submitting this PR, please format, lint, and build your changes locally. -->
-<!-- Add an 'x' between the brackets to mark each checkbox as checked. -->
+<!-- Add an 'x' between the brackets to mark each task as completed. -->
 <!-- (Feel free to remove any items that do not apply to this PR.) -->
 
 - [ ] Format with `yarn format`

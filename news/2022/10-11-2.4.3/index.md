@@ -9,7 +9,7 @@ tags: [release notes]
 ### Features
 
 - [`3d140cee`](https://github.com/someengineering/resoto/commit/3d140cee) <span class="badge badge--secondary">resoto</span> pin the client version
-- [`20c80278`](https://github.com/someengineering/resoto/commit/20c80278) <span class="badge badge--secondary">plugins/digitalocean</span> fix cleanup in DigitalOcean plugin (#1213)
+- [`20c80278`](https://github.com/someengineering/resoto/commit/20c80278) <span class="badge badge--secondary">digitalocean</span> fix cleanup in DigitalOcean plugin (#1213)
 
 ### Fixes
 

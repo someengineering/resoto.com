@@ -1,31 +1,8 @@
 # Command-Line Interface
 
-The [Resoto Shell](/concepts/components/shell.md) CLI supports various commands that allow you to access the graph database.
-
-## Keyboard Shortcuts
-
-Resoto Shell supports most common Unix shell keyboard shortcuts.
-
-| Shortcut                                        | Description                                                                  |
-| ----------------------------------------------- | ---------------------------------------------------------------------------- |
-| <kbd>Ctrl</kbd> + <kbd>D</kbd> on an empty line | Exit the shell (same as `quit`)                                              |
-| <kbd>Ctrl</kbd> + <kbd>L</kbd>                  | Clear the entire terminal but not the current line (redraw)                  |
-| <kbd>Ctrl</kbd> + <kbd>C</kbd>                  | Cancel input for the current line                                            |
-| <kbd>Ctrl</kbd> + <kbd>U</kbd>                  | Clear from cursor to beginning of line                                       |
-| <kbd>Ctrl</kbd> + <kbd>K</kbd>                  | Clear from cursor to end of line                                             |
-| <kbd>Ctrl</kbd> + <kbd>H</kbd>                  | Clear one character to the left of the cursor (same as <kbd>Backspace</kbd>) |
-| <kbd>Ctrl</kbd> + <kbd>D</kbd>                  | Clear one character to the right of the cursor                               |
-| <kbd>Esc</kbd> + <kbd>Backspace</kbd>           | Clear one word to the left of the cursor                                     |
-| <kbd>Esc</kbd> + <kbd>D</kbd>                   | Clear one word to the right of the cursor                                    |
-| <kbd>Alt</kbd> + <kbd>←</kbd>                   | Jump to the beginning of the previous word                                   |
-| <kbd>Alt</kbd> + <kbd>→</kbd>                   | Jump to the beginning of the next word                                       |
-| <kbd>Ctrl</kbd> + <kbd>A</kbd>                  | Jump to start of line                                                        |
-| <kbd>Ctrl</kbd> + <kbd>E</kbd>                  | Jump to end of line                                                          |
-| <kbd>Ctrl</kbd> + <kbd>R</kbd>                  | Reverse search history                                                       |
-| <kbd>↑</kbd>                                    | Step backwards in history                                                    |
-| <kbd>↓</kbd>                                    | Step forward in history                                                      |
-
 ## Commands
+
+The [Resoto Shell](/concepts/components/shell.md) CLI supports various commands that allow you to access the graph database.
 
 :::tip
 
@@ -41,6 +18,7 @@ You can pipe commands using `|` and chain multiple commands using `;`.
 | [`ancestors`](./search-commands/ancestors.md)       | Select all ancestors of this node in the graph     |
 | [`count`](./search-commands/count.md)               | Count incoming elements or sum defined property    |
 | [`descendants`](./search-commands/descendants.md)   | Select all descendants of this node in the graph   |
+| [`history`](./search-commands/history.md)           | Search the history of nodes.                       |
 | [`kinds`](./search-commands/kinds.md)               | Retrieves information about the graph data kinds   |
 | [`predecessors`](./search-commands/predecessors.md) | Select all predecessors of this node in the graph  |
 | [`search`](./search-commands/search.md)             | Search the graph                                   |
@@ -159,3 +137,26 @@ Placeholders are not case sensitive. You can use `@utc@` or `@UTC@` and will get
 | `@WEDNESDAY@` | `2022-02-16`               |
 | `@YEAR@`      | `2022`                     |
 | `@YESTERDAY@` | `2022-02-15`               |
+
+## Keyboard Shortcuts
+
+Resoto Shell supports most common Unix shell keyboard shortcuts.
+
+| Shortcut                                        | Description                                                                  |
+| ----------------------------------------------- | ---------------------------------------------------------------------------- |
+| <kbd>Ctrl</kbd> + <kbd>D</kbd> on an empty line | Exit the shell (same as `quit`)                                              |
+| <kbd>Ctrl</kbd> + <kbd>L</kbd>                  | Clear the entire terminal but not the current line (redraw)                  |
+| <kbd>Ctrl</kbd> + <kbd>C</kbd>                  | Cancel input for the current line                                            |
+| <kbd>Ctrl</kbd> + <kbd>U</kbd>                  | Clear from cursor to beginning of line                                       |
+| <kbd>Ctrl</kbd> + <kbd>K</kbd>                  | Clear from cursor to end of line                                             |
+| <kbd>Ctrl</kbd> + <kbd>H</kbd>                  | Clear one character to the left of the cursor (same as <kbd>Backspace</kbd>) |
+| <kbd>Ctrl</kbd> + <kbd>D</kbd>                  | Clear one character to the right of the cursor                               |
+| <kbd>Esc</kbd> + <kbd>Backspace</kbd>           | Clear one word to the left of the cursor                                     |
+| <kbd>Esc</kbd> + <kbd>D</kbd>                   | Clear one word to the right of the cursor                                    |
+| <kbd>Alt</kbd> + <kbd>←</kbd>                   | Jump to the beginning of the previous word                                   |
+| <kbd>Alt</kbd> + <kbd>→</kbd>                   | Jump to the beginning of the next word                                       |
+| <kbd>Ctrl</kbd> + <kbd>A</kbd>                  | Jump to start of line                                                        |
+| <kbd>Ctrl</kbd> + <kbd>E</kbd>                  | Jump to end of line                                                          |
+| <kbd>Ctrl</kbd> + <kbd>R</kbd>                  | Reverse search history                                                       |
+| <kbd>↑</kbd>                                    | Step backwards in history                                                    |
+| <kbd>↓</kbd>                                    | Step forward in history                                                      |

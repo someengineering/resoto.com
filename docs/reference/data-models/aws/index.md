@@ -280,6 +280,25 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </div>
 </details>
 
+## `aws_cloud_formation_stack_instance_summary`
+
+<ZoomPanPinch>
+
+![Diagram of aws_cloud_formation_stack_instance_summary data model](./img/aws_cloud_formation_stack_instance_summary.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_cloud_formation_stack_instance_summary resource relationships](./img/aws_cloud_formation_stack_instance_summary_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
 ## `aws_cloudformation_stack`
 
 <ZoomPanPinch>
@@ -332,6 +351,63 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 <ZoomPanPinch>
 
 ![Diagram of aws_cloudwatch_alarm resource relationships](./img/aws_cloudwatch_alarm_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_cognito_group`
+
+<ZoomPanPinch>
+
+![Diagram of aws_cognito_group data model](./img/aws_cognito_group.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_cognito_group resource relationships](./img/aws_cognito_group_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_cognito_user`
+
+<ZoomPanPinch>
+
+![Diagram of aws_cognito_user data model](./img/aws_cognito_user.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_cognito_user resource relationships](./img/aws_cognito_user_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_cognito_user_pool`
+
+<ZoomPanPinch>
+
+![Diagram of aws_cognito_user_pool data model](./img/aws_cognito_user_pool.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_cognito_user_pool resource relationships](./img/aws_cognito_user_pool_relationships.svg)
 
 </ZoomPanPinch>
 </div>

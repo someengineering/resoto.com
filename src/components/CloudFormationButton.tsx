@@ -21,7 +21,7 @@ export default function CloudFormationButton({
     versionTag =
       versionMetadata?.version === 'current'
         ? 'edge'
-        : latestRelease[versions[0]].version;
+        : latestRelease[versionMetadata?.version ?? versions[0]].version;
   }
 
   return (

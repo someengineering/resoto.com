@@ -1,48 +1,62 @@
 ---
 authors: [matthias]
 tags: [cli, command]
-image: ./img/banner-social.png
+image: https://resoto-og-image.vercel.app/At%20Your%3Cbr%2F%3E**%60%3E%20cmd%20--always%60**.png?theme=dark&md=1&fontSize=150px&images=https%3A%2F%2Fcdn.some.engineering%2Fassets%2Fresoto-logos%2Fresoto-logo.svg
 ---
 
-# Resoto - At your command
+# Resoto, at Your Command
 
-An installation of Resoto comes with batteries included: a command-line interface (CLI) with [powerful commands](/docs/reference/cli) that allows for exploration, insights, and manipulation of your infrastructure. With those tools at hand, automating tedious tasks becomes a breeze. Think about enforcing a policy, cleaning up resources, exporting data, or alerting on specific circumstances. See our [How-To](/docs/how-to-guides) section to learn more about possible use cases.
+A Resoto install comes with batteries included; Resoto ships with a [command-line interface (CLI)](/docs/reference/cli) that allows for exploration, insights, and manipulation of your infrastructure. With Resoto's <abbr title="command-line interface">CLI</abbr>, automating tedious tasks becomes a breeze. Think about enforcing a policy, cleaning up resources, exporting data, or alerting on specific circumstances. See [How-To Guides](/docs/how-to-guides) to learn more about possible use cases.
 
-![Banner](./img/banner.png)
+![](./img/banner.png)
 
-Version 3 of Resoto introduces the ability to extend this capability by defining your commands programmatically in the programming language of your choice.
+Version 3 of Resoto introduces the ability to extend this capability by defining your commands programmatically in the language of your choice.
 
 <!--truncate-->
 
-If you are confident using Python, this task becomes super easy, since all the necessary boilerplate code is already provided as part of Resoto. In this blog post, we will implement a new command called `hello-world` in Python, to show the power and flexibility of this new feature. The simple idea of our new command is adding a greeting to the tags of a selected resource.
+If you are familiar with Python, this task becomes super easy, since all the necessary boilerplate code is already provided. In this blog post, we will implement a new command called `hello-world` in Python, to show the power and flexibility of this new feature. The simple idea of our new command is adding a greeting to the tags of a selected resource.
 
-## Architectural overview
+## Architecture
 
-Resoto has a WebSocket endpoint to [attach to the work queue](https://resoto.com/docs/reference/api/web-socket-attach-to-the-working-queue). Multiple workers can register for tasks that are then distributed to the workers. Part of the registration process is a complete definition of the task the worker is able to handle. This definition is used inside Resoto to create a CLI command for this task. When the user executes the command on a given resource, the resource data with a task description is added to the work queue and the worker is notified. The worker can now do whatever it is supposed to do with the provided resource data.
+Resoto has a [WebSocket endpoint to attach to the work queue](/docs/reference/api/web-socket-attach-to-the-working-queue). Multiple workers can register for tasks that are then distributed to the workers. Part of the registration process is a complete definition of the task the worker is able to handle. This definition is used inside Resoto to create a <abbr title="command-line interface">CLI</abbr> command for this task.
 
-![Architectural overview](./img/architectural-overview.svg)
+When the user executes the command on a given resource, the resource data with a task description is added to the work queue and the worker is notified. The worker can now do whatever it is supposed to do with the provided resource data.
+
+![User → Resoto ← Extension](./img/architectural-overview.svg)
 
 A private shared key secures the communication between Resoto and the extension. The permission to handle the resource needs to be implemented in the extension.
 
-## Usage
+## Defining a Command
 
-To demonstrate the power of this feature, we will implement a simple command that adds a greeting to the tags of a resource. We call it `hello-world` because it is a simple command that might be a good starting point for your commands. The idea is to allow the user to select resources via the built-in `search` command and then execute the `hello-world` command on the selected resources.
+The idea behind this feature is to allow the user to select resources via the [`search` command](/docs/reference/cli/search-commands/search) and perform an action on each selected resource:
 
-```shell title="Our hello-world command in action"
+```bash
 > search is(kubernetes_pod) and name~resoto | hello-world
 ```
 
-All resources that got selected by the search command will be passed to the `hello-world` command. Resoto will send a task for every single resource that was selected. All workers registered for the `hello-world` task will receive messages and perform the work. A task can succeed or fail - the result is returned to Resoto and propagated to the user.
+In this example, resources selected by the search command will be passed to the `hello-world` command, with Resoto sending a task for each selected resource. Workers registered for the `hello-world` task will receive the messages and perform the work. The result of each task (success or failure) is then returned to Resoto and propagated to the user.
 
-## Implementation
+### Implementation
 
-For the sake of simplicity, we will use Python as the programming language for the extension. Resoto has facilities for finding, introspecting, activating, and using installed Python extensions using [setuptools](https://setuptools.pypa.io/en/latest/pkg_resources.html). See [available Resoto plugins](https://github.com/someengineering/resoto/tree/main/plugins) for reference.
+Let's implement a `hello-world` command that adds a `greeting` tag to a resource. This simple command can serve as a starting point for defining your own commands.
 
-A simple decorator can expose methods inside a plugin. This decorator collects all the required information about the command and makes it available to Resoto. When a user executes the command, Resoto will send a message to all registered workers, and the runtime will invoke the registered method.
+For the sake of simplicity, we'll use Python—Resoto has facilities for finding, introspecting, activating, and using installed Python extensions using [`setuptools`](https://setuptools.pypa.io/en/latest/pkg_resources.html).
 
-Please note: it is also possible to use your programming language of choice to implement the extension. In this case, you need to implement the communication between Resoto and the extension yourself.
+A simple decorator exposes the methods of a plugin. This decorator collects all the required information about the command and makes it available to Resoto. When a user executes the command, Resoto sends a message to all registered workers, and the runtime invokes the registered method.
 
-To implement the `hello-world` command, we need to define a plugin class and define our method within:
+:::tip
+
+See the [someengineering/resoto GitHub repository](https://github.com/someengineering/resoto/tree/main/plugins) for Resoto plugin examples.
+
+:::
+
+:::note
+
+It is also possible to other programming languages to implement Resoto extensions, but you would need to build the communication layer between Resoto and the extension as well.
+
+:::
+
+We first need to define a plugin class and define our method within:
 
 ```python showLineNumbers
 class MyExtensionsHolder(BasePlugin):
@@ -55,70 +69,83 @@ class MyExtensionsHolder(BasePlugin):
       expect_node_result=True,
   )
   def hello_world(self,
-       config: Config,
-       resource: BaseResource,
-       args: List[str]
+      config: Config,
+      resource: BaseResource,
+      args: List[str]
   ) -> BaseResource:
 
     if resource.update_tag("greeting", "Hello World"):
-       resource.tags["greeting"] = "Hello World"
+      resource.tags["greeting"] = "Hello World"
     return resource
 ```
 
-Let's quickly go through the code step by step:
+| Line | Description |
+| --- | --- |
+| 1 | To make the plugin available to Resoto, we need to define a class that inherits from `BasePlugin`. |
+| 4–7 | The decorator tells Resoto how this method is exposed to the user, defining the command name, description, and arguments. (This information is accessible to users in Resoto Shell via `help hello-world`.) |
+| 8 | We want to see the change in the resource directly reflected in Resoto, so we set the `expect_node_result` flag to `True`. This denotes that we will update the resource in place and return it. |
+| 10 | The function's name can be anything and is not exposed to the user. |
+| 11 | This is the current configuration of the worker. |
+| 12 | This is a single resource. If multiple resources are selected, this method will be invoked for each individual resource. The resource type is defined by the collector. All resources share the same common base class `BaseResource`. |
+| 13 | This is a list of command arguments. In this example, we don't expect any arguments. |
+| 14 | We defined `expect_node_result` to be `True`, which requires that the method returns the updated `BaseResource`. It would also be possible to set this to `False` and return `None` or any other value, which is then propagated to the user as a result. |
+| 16–18 | We use the `update_tag` method to update a tag of the resource, which is an abstract method in `BaseResource` that returns `True` if the tag was added or updated. In this case, we also update the copy and return it. (Resoto ensures this method is implemented for every resource type of each cloud provider.) |
 
-- Line 1: To make the plugin available to Resoto, we need to define a class that inherits from `BasePlugin`.
-- Line 3-8: The decorator tells Resoto how this method is exposed to the user. The name of the command, as well as a description and information about the arguments, can be defined. Please note: inside Resotoshell, you can get online help via `help hello-world`.
-- Line 8: The function can decide to update the given resource in place. We want to see the change in the resource directly reflected in Resoto. For that reason we turn this flag on, update the resource in place, and return it.
-- Line 10: This signature of the method is expected by Resoto. The function's name can be anything and is not exposed to the user.
-- Line 11: This method receives the current configuration of the worker.
-- Line 12: Defines the resource that was selected by the user. This is a single resource. If multiple resources are selected, this method will be invoked multiple times. The type of resource is a specific resource class as defined by the particular collector. All Resources share the same common base class `BaseResource`.
-- Line 13: The arguments that were passed to the command. In this case, we don't expect any arguments.
-- Line 14: We defined `expect_node_result` to be `True`, which requires that the method returns the updated `BaseResource`. It would also be possible to set this to `False` and return `None` or any other value, which is then propagated to the user as a result.
-- Line 16-18: We are using the generic `update_tag` method to update a tag of the resource, which is an abstract method in `BaseResource`. The method returns `True` if the tag was added or updated. In this case, we also update the copy and return it to Resoto. Please note: Resoto makes sure this method is implemented for every resource type for every cloud provider.
+:::info
 
-Once the plugin is loaded, and the worker starts, the command is registered and available to the user. We can check this by executing the `help` command:
+Once the plugin is loaded and the worker starts, the command is registered and available to the user. We can check this by executing the [`help` command](/docs/reference/cli/miscellaneous-commands/help), which lists all available commands:
 
-```shell
+```bash
 > help
 # highlight-start
-​
+​...
 ​# Custom Commands
 ​hello-world - Add a greeting to the tags of a resource.
-​
-​... other commands removed ...
+​...
 # highlight-end
 ```
 
-We can get more information about the command by executing `help hello-world`:
+We can view information about the command by executing `help hello-world`:
 
-```shell
+```bash
 > help hello-world
 # highlight-start
 ​hello-world: Add a greeting to the tags of a resource.
-​
+​​
 ​hello-world
-​
+​​
 ​Long description of the command.
 # highlight-end
 ```
 
-We should have paid more attention to documenting the behavior of our command. The help description is not helpful as such. Custom commands allow defining the description using Markdown syntax while describing every argument in detail. You can see a complete example of a custom command in the [Resoto GitHub Repository](https://github.com/someengineering/resoto/blob/main/plugins/aws/resoto_plugin_aws/__init__.py#L156).
+As you can see, the description is lacking in information and thus not very helpful.
 
-## Experimenting with the new command
+[Markdown](https://daringfireball.net/projects/markdown) syntax is allowed in custom command descriptions, making it easy to clearly document arguments, examples, and other useful information.
 
-The Unix idea of small tools that do one thing well is excellent. We can combine the `search` command with the `hello-world` command to add a greeting to all resources that match a particular criterion.
+:::
 
-```shell
+:::tip
+
+See a complete example of a custom command in the [Resoto GitHub Repository](https://github.com/someengineering/resoto/blob/1fc68807056e0d27dff9ec25053df3bcbc6d6948/plugins/aws/resoto_plugin_aws/__init__.py#L115-L229).
+
+:::
+
+### Usage
+
+We can now combine the [`search` command](/docs/reference/cli/search-commands/search) with our new `hello-world` command to add a `greeting` tag to all resources that match a particular criterion:
+
+```bash
 > search is(instance) and age<1h | hello-world
 # highlight-start
 ​kind=aws_ec2_instance, id=i07b, name=ekt, instance_status=running, age=34min, cloud=aws, account=someengineering, region=eu-central-1
 # highlight-end
 ```
 
-This command line will search for compute instances that are younger than one hour and add a greeting to the tags of matching resources. The `hello-world` command returns the updated resource, making it possible to process the result further. For example, we can select the tags property of the resource using the `jq` command. The result would be a list of all tags for every resource that was updated. We can see our greeting tag in the list and other existing tags.
+This above command searches for compute instances with age less than one hour, and add a `greeting` tag to each matching resource.
 
-```shell
+**Additionally, the `hello-world` command returns the updated resource, making it possible to process the result further.** For example, we can select the tags property of the resource using the `jq` command. The result would be a list of all tags for every resource that was updated. We can see our greeting tag in the list and other existing tags.
+
+```bash
 > search is(instance) and age<1h | hello-world | jq .tags
 # highlight-start
 ​costCenter: bus
@@ -127,9 +154,11 @@ This command line will search for compute instances that are younger than one ho
 # highlight-end
 ```
 
-It is possible to pass arguments to the `hello-world` command. The arguments passed to the command will be available in the `args` parameter of the method. In our simple implementation, we are currently ignoring the arguments - but it would be possible to parameterize our function and make it even more helpful. Consider having a greeting parameter where we can define the greeting that is added to the tags of the resource. I am leaving out the implementation details since it is super trivial to do.
+**It is possible to pass arguments to the `hello-world` command.** Arguments are available via the `args` parameter. In the above example, we ignore the `args` parameter as we don't expect any arguments; however, it would be possible to parameterize our function to make it more useful.
 
-```shell
+Consider the addition of a `--greet` parameter where we can define the text that is added to the `greeting` tag:
+
+```bash
 > search is(aws_ec2_instance) and age<1h | hello-world --greet "Hi there" | jq .tags
 # highlight-start
 ​costCenter: bus
@@ -138,9 +167,11 @@ It is possible to pass arguments to the `hello-world` command. The arguments pas
 # highlight-end
 ```
 
-Another option that Resoto provides is parameter expansion. The value of a command parameter does not have to be static but could come from the resource's data to process. Let's assume every resource has an `owner` tag. We could define a greeting specific to the resources owner:
+**Resoto also supports parameter expansion.** The value of a command parameter does not have to be static, but could come from resource data.
 
-```shell
+Assuming every resource has an `owner` tag, we could define a greeting specific to the resources owner:
+
+```bash
 > search is(aws_ec2_instance) and age<1h | hello-world --greet "Hi {tags.owner}" | jq .tags
 # highlight-start
 ​costCenter: bus
@@ -149,15 +180,29 @@ Another option that Resoto provides is parameter expansion. The value of a comma
 # highlight-end
 ```
 
-The placeholder does not need to come from the tags but could come from any resource property. See [format](/docs/reference/cli/format-commands/format) for a more detailed description of placeholder value handling. A short summary: a property path inside curly braces will be replaced by the value of the property of the incoming resource. The string `Hi {tags.owner}` will be replaced by `Hi Maricel` if the resource has a tag `owner` with the value `Maricel`. This can be quite powerful and allows you to create expressive commands to process resources flexibly.
+The placeholder could come from any resource property. Property paths inside curly braces are replaced with values from the incoming resource. The string `Hi {tags.owner}` will be replaced by `Hi Maricel` if the resource has a tag `owner` with value `Maricel`. This can be quite powerful and allows you to create expressive commands to process resources flexibly.
 
-## The `aws` command line tool
+:::tip
 
-AWS provides a command line tool that allows interaction with every possible AWS resource. We thought it would be great to have the same power inside Resoto and decided to provide a custom command called `aws` with almost the same interface as the official AWS CLI tool. It allows selecting resources via `search` and piping them into the `aws` command line tool to get specific information or manipulate resources. You can find the implementation of the `aws` command in the [Resoto GitHub Repository](https://github.com/someengineering/resoto/blob/main/plugins/aws/resoto_plugin_aws/__init__.py#L156).
+See [`format`](/docs/reference/cli/format-commands/format) for details of placeholder value handling.
 
-If you have set up your [AWS collector](/docs/getting-started/configure-cloud-provider-access/aws) you can use the `aws` command to see the configured identity using [`get-caller-identity`](https://docs.aws.amazon.com/cli/latest/reference/sts/get-caller-identity.html):
+:::
 
-```shell
+## The `aws` Command
+
+<abbr title="Amazon Web Services">AWS</abbr> provides a command-line utility that facilitates interactions with <abbr title="Amazon Web Services">AWS</abbr> resources.
+
+**We thought it would be great to have the same power inside Resoto and added an `aws` command with almost the same interface as the official <abbr title="Amazon Web Services">AWS</abbr> <abbr title="command-line interface">CLI</abbr> tool.** It allows selecting resources via `search` and piping them into the `aws` command line tool to get specific information or manipulate resources.
+
+:::info
+
+You can find the implementation of the `aws` command in the [someengineering/resoto GitHub repository](https://github.com/someengineering/resoto/blob/1fc68807056e0d27dff9ec25053df3bcbc6d6948/plugins/aws/resoto_plugin_aws/__init__.py#L115-L229).
+
+:::
+
+If you have [configured collection of your <abbr title="Amazon Web Services">AWS</abbr> resources](/docs/getting-started/configure-cloud-provider-access/aws), you can use the `aws` command to see the configured identity using [`get-caller-identity`](https://docs.aws.amazon.com/cli/latest/reference/sts/get-caller-identity.html):
+
+```bash
 > aws sts get-caller-identity
 # highlight-start
 ​UserId: AIDA42373XXXXXXXXXXXX
@@ -166,31 +211,33 @@ If you have set up your [AWS collector](/docs/getting-started/configure-cloud-pr
 # highlight-end
 ```
 
-Let's do something more interesting with our `aws` command. We assume that some development accounts with many ec2 instances are idle during the weekend. We want to automatically stop all running ec2 instances in our dev accounts on Friday EOB and start them again on Monday morning.
+Let's try something more interesting with the `aws` command. Consider the case where some development accounts with many EC2 instances are idle during weekends, and we want to automatically stop all running EC2 instances in dev accounts at Friday <abbr title="end of business">EOB</abbr> and restart them on Monday morning.
 
-The command to stop running instances would look like this using the [`stop-instances`](https://docs.aws.amazon.com/cli/latest/reference/ec2/stop-instances.html) command:
+The command to stop running instances would use the [`stop-instances` command](https://docs.aws.amazon.com/cli/latest/reference/ec2/stop-instances.html):
 
-```shell
+```bash
 > search is(aws_ec2_instance) and
          instance_status=running and
          /ancestors.account.reported.name~dev |
   aws ec2 stop-instances --instance-ids {id}
 ```
 
-We select all running ec2 instances in all accounts that have `dev` in their name. The selected instances are piped into the `aws` command, which will execute the `stop-instances` command with the `instance-ids` parameter set to the resource's id. Based on the resource, Resoto will pick the correct credentials and region to execute the command. This is also why we will only pass one id per call, while the `stop-instances` call theoretically allows defining multiple instance ids.
+We first select all running EC2 instances in all accounts that have `dev` in their name. Selected instances are piped to the `aws` command, which executes the `stop-instances` command with the `--instance-ids` parameter set to the resource's ID.
 
-To start all stopped instances again, we can use the [`start-instances`](https://docs.aws.amazon.com/cli/latest/reference/ec2/start-instances.html) command:
+Based on the resource, Resoto will pick the correct credentials and region to execute the command. (This is why we will only pass one ID per call, though the `stop-instances` call theoretically allows defining multiple instance IDs.)
 
-```shell
+To start all stopped instances again, we use the [`start-instances` command](https://docs.aws.amazon.com/cli/latest/reference/ec2/start-instances.html):
+
+```bash
 > search is(aws_ec2_instance) and
          instance_status=stopped and
          /ancestors.account.reported.name~dev |
   aws ec2 start-instances --instance-ids {id}
 ```
 
-To automate the two actions we can create jobs with a cron trigger, that are executed by Resoto automatically. We will schedule one job to run on Friday EOB and the other on Monday morning.
+To automate these two actions, we can create jobs with a cron trigger. We schedule one job to run on Friday evening, and the other on Monday morning.
 
-```shell
+```bash
 > jobs add --id tgif --schedule "0 22 * * 5" 'search ... | aws ec2 stop-instances ...'
 # highlight-start
 ​Job tgif added.
@@ -203,5 +250,6 @@ To automate the two actions we can create jobs with a cron trigger, that are exe
 
 ## Conclusion
 
-Ideally, Resoto already brings all the power you need to manage your cloud infrastructure. In case you find yourself in a situation, where you need to do something that is not possible with the built-in commands, you can always extend Resoto and write your own custom command. The nature of the Resoto shell command line approach using pipes and filters allows for simple extensions that can be combined to solve the most complex problems.  
-As we have seen in this article, it is straightforward to write a custom command and extend Resoto to fit your needs.
+Resoto provides a multitude of tools to help you manage your cloud infrastructure. But, if you find yourself in a situation where you need to do something that is not possible with Resoto's built-in commands, you can always extend Resoto and write your own custom command.
+
+The nature of the Resoto Shell's command-line approach using pipes and filters allows for simple extensions that can be combined to solve even the most complex problems.

@@ -34,8 +34,8 @@ history [--before <timestamp>] [--after <timestamp>] [--change <change>] [search
 
 ### Examples
 
-```shell title="Show all nodes changed on 1.1.2022 between 03:00 and 06:00 (UTC)"
-> history --after 2022-01-01T03:00:00Z --before 2022-01-02T06:00:00Z
+```shell title="Show all nodes changed in the last hour"
+> history --after 2022-01-01T03:00:
 # highlight-start
 ​change=node_updated, changed_at=2022-01-01T03:00:59Z, kind=kubernetes_config_map, id=73616434 name=leader, cloud=k8s
 ​change=node_deleted, changed_at=2022-01-01T04:40:59Z, kind=aws_vpc, id=vpc-1, name=resoto-eks, cloud=aws

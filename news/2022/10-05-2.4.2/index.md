@@ -15,7 +15,7 @@ tags: [release notes]
 ### Fixes
 
 - [`fb669cb0`](https://github.com/someengineering/resoto/commit/fb669cb0) <span class="badge badge--secondary">resotocore</span> Fix api test setup (#1192)
-- [`04a0dbd5`](https://github.com/someengineering/resoto/commit/04a0dbd5) <span class="badge badge--secondary">plugins/digitalocean</span> Fix the snapshots regions collection (#1194)
+- [`04a0dbd5`](https://github.com/someengineering/resoto/commit/04a0dbd5) <span class="badge badge--secondary">digitalocean</span> Fix the snapshots regions collection (#1194)
 
 ### Chores
 

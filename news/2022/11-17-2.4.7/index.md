@@ -16,7 +16,7 @@ tags: [release notes]
 - [`2d06999c`](https://github.com/someengineering/resoto/commit/2d06999c) <span class="badge badge--secondary">docker</span> Remove Jupyterlite venv cherry-picked from main
 - [`59dc535b`](https://github.com/someengineering/resoto/commit/59dc535b) <span class="badge badge--secondary">docker</span> Refactor to use resotopython:1.0.2 (#1280)
 - [`4aa83140`](https://github.com/someengineering/resoto/commit/4aa83140) <span class="badge badge--secondary">docker</span> Rebase on resotopython base image and update to Node 16 actions (#1276)
-- [`31e30eb9`](https://github.com/someengineering/resoto/commit/31e30eb9) <span class="badge badge--secondary">plugins/digitalocean</span> Bump boto
+- [`31e30eb9`](https://github.com/someengineering/resoto/commit/31e30eb9) <span class="badge badge--secondary">digitalocean</span> Bump boto
 
 ### Chores
 

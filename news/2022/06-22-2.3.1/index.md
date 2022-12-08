@@ -64,7 +64,7 @@ Resoto now has support for creating edges that cannot be resolved during the pha
 
 ### Features
 
-- [`8dba845`](https://github.com/someengineering/resoto/commit/8dba845) <span class="badge badge--secondary">plugins/k8s</span> Add deferred edges to digitalocean ([#921](https://github.com/someengineering/resoto/pull/921))
+- [`8dba845`](https://github.com/someengineering/resoto/commit/8dba845) <span class="badge badge--secondary">k8s</span> Add deferred edges to digitalocean ([#921](https://github.com/someengineering/resoto/pull/921))
 - [`396205a`](https://github.com/someengineering/resoto/commit/396205a) <span class="badge badge--secondary">k8s</span> Migrate from v1 config ([#933](https://github.com/someengineering/resoto/pull/933))
 - [`c28fb7f`](https://github.com/someengineering/resoto/commit/c28fb7f) <span class="badge badge--secondary">resotometrics</span> Turn metrics type into enum ([#912](https://github.com/someengineering/resoto/pull/912))
 - [`5a8d960`](https://github.com/someengineering/resoto/commit/5a8d960) <span class="badge badge--secondary">k8s</span> Order status conditions by time. ([#926](https://github.com/someengineering/resoto/pull/926))
@@ -107,7 +107,7 @@ Resoto now has support for creating edges that cannot be resolved during the pha
 - [`e62206e`](https://github.com/someengineering/resoto/commit/e62206e) <span class="badge badge--secondary">resotometrics</span> Fix metrics type ([#928](https://github.com/someengineering/resoto/pull/928))
 - [`43d1588`](https://github.com/someengineering/resoto/commit/43d1588) <span class="badge badge--secondary">k8s</span> Handle optional properties correctly ([#930](https://github.com/someengineering/resoto/pull/930))
 - [`b2faf77`](https://github.com/someengineering/resoto/commit/b2faf77) <span class="badge badge--secondary">resotoeventlog</span> Update PyPI secret name ([#927](https://github.com/someengineering/resoto/pull/927))
-- [`b0374ee`](https://github.com/someengineering/resoto/commit/b0374ee) <span class="badge badge--secondary">plugins/digitalocean</span> Type validation ([#900](https://github.com/someengineering/resoto/pull/900))
+- [`b0374ee`](https://github.com/someengineering/resoto/commit/b0374ee) <span class="badge badge--secondary">digitalocean</span> Type validation ([#900](https://github.com/someengineering/resoto/pull/900))
 - [`df85e18`](https://github.com/someengineering/resoto/commit/df85e18) <span class="badge badge--secondary">k8s</span> Fix api client handling ([#925](https://github.com/someengineering/resoto/pull/925))
 - [`418c488`](https://github.com/someengineering/resoto/commit/418c488) <span class="badge badge--secondary">resotoworker</span> Retry sending of graph data ([#923](https://github.com/someengineering/resoto/pull/923))
 - [`c7eedf8`](https://github.com/someengineering/resoto/commit/c7eedf8) <span class="badge badge--secondary">resotolib</span> Units are computed correctly ([#915](https://github.com/someengineering/resoto/pull/915))
@@ -123,9 +123,9 @@ Resoto now has support for creating edges that cannot be resolved during the pha
 - [`b79b14a`](https://github.com/someengineering/resoto/commit/b79b14a) <span class="badge badge--secondary">docker</span> Increase file limits for ArangoDB ([#845](https://github.com/someengineering/resoto/pull/845))
 - [`dc08974`](https://github.com/someengineering/resoto/commit/dc08974) <span class="badge badge--secondary">docker</span> Use TLS setup for prometheus ([#873](https://github.com/someengineering/resoto/pull/873))
 - [`5b326a5`](https://github.com/someengineering/resoto/commit/5b326a5) <span class="badge badge--secondary">resotocore</span> Make query parser more strict ([#869](https://github.com/someengineering/resoto/pull/869))
-- [`d9a2617`](https://github.com/someengineering/resoto/commit/d9a2617) <span class="badge badge--secondary">plugins/digitalocean</span> Rename do -> digitalocean ([#871](https://github.com/someengineering/resoto/pull/871))
+- [`d9a2617`](https://github.com/someengineering/resoto/commit/d9a2617) <span class="badge badge--secondary">digitalocean</span> Rename do -> digitalocean ([#871](https://github.com/someengineering/resoto/pull/871))
 - [`0db53ce`](https://github.com/someengineering/resoto/commit/0db53ce) <span class="badge badge--secondary">resotocore</span> Export model in correct format ([#868](https://github.com/someengineering/resoto/pull/868))
-- [`1b538d5`](https://github.com/someengineering/resoto/commit/1b538d5) <span class="badge badge--secondary">plugins/aws</span> Add extra logging during EKS collection ([#866](https://github.com/someengineering/resoto/pull/866))
+- [`1b538d5`](https://github.com/someengineering/resoto/commit/1b538d5) <span class="badge badge--secondary">aws</span> Add extra logging during EKS collection ([#866](https://github.com/someengineering/resoto/pull/866))
 - [`c47a422`](https://github.com/someengineering/resoto/commit/c47a422) <span class="badge badge--secondary">resoto</span> Build and push to PyPI on tag push ([#865](https://github.com/someengineering/resoto/pull/865))
 
 ### Chores

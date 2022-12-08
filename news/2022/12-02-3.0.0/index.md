@@ -5,8 +5,8 @@ tags: [release notes]
 # 3.0.0
 
 ```mdx-code-block
-import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 import CloudFormationButton from '@site/src/components/CloudFormationButton';
+import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 ```
 
 ## Highlights
@@ -15,37 +15,21 @@ import CloudFormationButton from '@site/src/components/CloudFormationButton';
 
 Resoto now ships a new UI, which will make interacting with Resoto much easier and a lot more fun.
 
-<ZoomPanPinch>
-
 ![New UI](./img/ui-overview.png)
-
-</ZoomPanPinch>
 
 It comes with dashboards to visualize your resource data either from a time series metric, an aggregated search on the current snapshot or the result of a search. You can create your own dashboards and widgets to visualize your data in the way you want.
 
-<ZoomPanPinch>
-
 ![Dashboards](./img/ui-dashboards.png)
-
-</ZoomPanPinch>
 
 Explore all your cloud resources in a way you never did before. You can now search for resources and filter them by tags, attributes, and more. It allows you exploring your resource data in multiple ways - for example as a tree view.
 
-<ZoomPanPinch>
-
 ![Tree view](./img/ui-explore.png)
-
-</ZoomPanPinch>
 
 Last but not least, it comes with a setup wizard that guides you through the initial configuration of Resoto.
 
-<ZoomPanPinch>
-
 ![Setup wizard](./img/ui-setup-wizard.png)
 
-</ZoomPanPinch>
-
-### AWS: All details and better service coverage
+### AWS: All Details and Better Service Coverage
 
 Resoto now supports all details of each supported resource. This means that you can now search resources by any attribute, tag, or any other detail of the resource.
 
@@ -59,60 +43,62 @@ As an example I picked the AWS application load balancer to show the complete st
 
 See the full list of supported AWS resources in the [AWS reference](/docs/reference/data-models/aws).
 
-### Cloud2SQL: Export your data into a SQL database
+### Cloud2SQL: Export Your Data into a SQL Database
 
 It is now possible to leverage the power of our collectors and export your data into a SQL database. This allows you to use your data in any way you want. You can use it for reporting, analytics, or even machine learning.
 
 We currently support the following list of database servers:
 
-- [PostgreSQL](https://www.postgresql.org/)
-- [MySQL](https://www.mysql.com/)
-- [MariaDB](https://mariadb.org/)
-- [SQLite](https://www.sqlite.org/)
+- [PostgreSQL](https://postgresql.org)
+- [MySQL](https://mysql.com)
+- [MariaDB](https://mariadb.org)
+- [SQLite](https://sqlite.org)
 
-See the [Cloud2SQL](https://github.com/someengineering/cloud2sql) repository for more details.
+See the the [someengineering/cloud2sql](https://github.com/someengineering/cloud2sql) repository for more details.
 
-### Simplified installation
+### Simplified Installation
 
-**Kubernetes Helm Chart**
+#### Kubernetes Helm Chart
 
-Resoto's default installation method is Kubernetes. We now provide a helm chart to simplify this installation process. You can find the chart in our [chart repository](https://github.com/someengineering/helm-charts/tree/main/someengineering/resoto). Installing Resoto on Kubernetes is now a simple helm install command away. Please find our [installation guide](docs/getting-started/install-resoto/kubernetes) for more details.
+Resoto's default installation method is Kubernetes. We now provide a Helm chart to simplify this installation process. You can find the chart in the [someengineering/helm-charts](https://github.com/someengineering/helm-charts/tree/main/someengineering/resoto) repository. Installing Resoto on Kubernetes is now a `helm install` command away. Please see [Install Resoto with Kubernetes](docs/getting-started/install-resoto/kubernetes) for more details.
 
-**AWS CloudFormation**
+#### AWS CloudFormation
 
-Installing Resoto on AWS is now even easier. We provide a CloudFormation template that makes installing Resoto on AWS a one click process. Ok two click process: you need to click the button below and then click the "Create Stack" button in the AWS console.
+Installing Resoto on AWS is now even easier. We provide a CloudFormation template that makes installing Resoto on AWS a one click process. OK, two click process: you need to first click the button below and then click the "Create Stack" button in the AWS console.
 
-<a href="https://eu-central-1.console.aws.amazon.com/cloudformation/home?region=eu-central-1#/stacks/create/review?templateURL=https://resoto-cdk.s3.eu-central-1.amazonaws.com/Resoto_EKS.template&stackName=ResotoEKS&param_ResotoTag=3.0.0" target="\_blank" rel="noopener noreferrer" className="button button--primary"> Deploy Resoto 3.0.0 to AWS </a>
+<p><CloudFormationButton versionTag="3.0.0" /></p>
 
 You can find more information in the [CloudFormation](/docs/getting-started/install-resoto/aws/cloudformation) installation guide.
 
-**AWS CDK**
+#### AWS CDK
 
-If you want to have full control over the CloudFormation stack that is created to install Resoto, you can use the AWS CDK construct that we provide. The construct definition can be found in the [resoto-cdk](https://github.com/someengineering/resoto-cdk) repository. You can find more information in the [AWS CDK](/docs/getting-started/install-resoto/aws/cdk) installation guide.
+If you want to have full control over the CloudFormation stack that is created to install Resoto, you can use the AWS CDK construct that we provide. The construct definition can be found in the [someengineering/resoto-cdk](https://github.com/someengineering/resoto-cdk) repository. You can find more information in [Deploy Resoto with AWS Cloud Development Kit](/docs/getting-started/install-resoto/aws/cdk).
 
-### History of changes
+### History of Changes
 
-Version 3 of Resoto does not only offer the current snapshot data and aggregated time series data, it now also keeps track of changes to any of your resources. This not only allows you to see how a resource has changed over time, you can also use it to list the changes that happened in a specific time frame.
+Version 3.0.0 of Resoto does not only offer the current snapshot data and aggregated time series data, it now also keeps track of changes to any of your resources. This not only allows you to see how a resource has changed over time, you can also use it to list the changes that happened in a specific time frame.
 
 Think of an outage in your production cluster, and you want to know what happened in the last 2 hours before this outage. You can now use the history of changes to find out what has changed and how it has changed.
 
 If you think this topic is interesting, you can read more about it in our [blog post](/blog/2022/12/08/what-we-can-learn-from-history). Find details and examples in the command line reference for the [history](/docs/reference/cli/search-commands/history) command.
 
-### Extend the list of commands via plugins
+### Extend the List of Commands via Plugins
 
 Resoto has always been extensible via plugins for collect and cleanup. This release adds the option to programmatically add commands to Resoto. We use this feature to provide the `aws` command line tool as part of the AWS collector plugin, which allows you to interact with AWS resources directly from the Resoto CLI.
 
-See the [`aws` command line reference](https://resoto.com/docs/reference/cli/action-commands/aws) for more information.
+See the [`aws` Command](/docs/reference/cli/action-commands/aws) documentation for more information.
 
 <!-- TODO: Once the blog post is published, link it here. -->
 
-### Client to interact with Resoto
+### Client to Interact with Resoto
 
 We also created a Python client as part of this release that allows you to interact with Resoto from your own applications. You can find the latest version of the client in this [resotoclient-python](https://github.com/someengineering/resotoclient-python) repository.
 
-If your programming language of choice is not Python, you can still use the [Resoto API](https://resoto.com/docs/reference/api) directly.
+If your programming language of choice is not Python, you can still use the [Resoto API](/docs/reference/api) directly.
 
-## List of all changes
+<!--truncate-->
+
+## What's Changed
 
 ### Features
 
@@ -400,7 +386,7 @@ If your programming language of choice is not Python, you can still use the [Res
 - [`8fa2ad21`](https://github.com/someengineering/resoto/commit/8fa2ad21) <span class="badge badge--secondary">resotometrics</span> Fix counter metrics (#1144)
 - [`f0316714`](https://github.com/someengineering/resoto/commit/f0316714) <span class="badge badge--secondary">dockerhub</span> Fix copy error (#1139)
 - [`c0837cf1`](https://github.com/someengineering/resoto/commit/c0837cf1) <span class="badge badge--secondary">aws</span> Get service quotas from region (#1136)
-- [`4c9c4f5c`](https://github.com/someengineering/resoto/commit/4c9c4f5c) <span class="badge badge--secondary">aws</span> Revert "[aws][fix] enable legacy retry mode (#1133)" (#1135)
+- [`4c9c4f5c`](https://github.com/someengineering/resoto/commit/4c9c4f5c) <span class="badge badge--secondary">aws</span> Revert "[plugins/aws][fix] enable legacy retry mode (#1133)" (#1135)
 - [`d5bc084d`](https://github.com/someengineering/resoto/commit/d5bc084d) <span class="badge badge--secondary">aws</span> enable legacy retry mode (#1133)
 - [`90dd10b7`](https://github.com/someengineering/resoto/commit/90dd10b7) <span class="badge badge--secondary">aws</span> Revert ALB delete edge and fix some client code (#1128)
 - [`1e5a93a7`](https://github.com/someengineering/resoto/commit/1e5a93a7) <span class="badge badge--secondary">aws</span> Use the correct region in the client (#1127)

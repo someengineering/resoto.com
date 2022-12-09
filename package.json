@@ -35,7 +35,7 @@
     "@octokit/core": "4.1.0",
     "a11y-react-emoji": "1.2.0",
     "clsx": "1.2.1",
-    "dayjs": "1.11.6",
+    "dayjs": "1.11.7",
     "docusaurus-plugin-openapi-docs": "1.4.7",
     "docusaurus-theme-openapi-docs": "1.4.7",
     "github-slugger": "2.0.0",
@@ -53,9 +53,9 @@
     "@commitlint/config-conventional": "17.3.0",
     "@docusaurus/module-type-aliases": "2.2.0",
     "@tsconfig/docusaurus": "1.0.6",
-    "@typescript-eslint/eslint-plugin": "5.45.1",
-    "@typescript-eslint/parser": "5.45.1",
-    "commitizen": "4.2.5",
+    "@typescript-eslint/eslint-plugin": "5.46.0",
+    "@typescript-eslint/parser": "5.46.0",
+    "commitizen": "4.2.6",
     "eslint": "8.29.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-formatjs": "4.3.8",
@@ -64,9 +64,9 @@
     "eslint-plugin-react": "7.31.11",
     "husky": "8.0.2",
     "lint-staged": "13.1.0",
-    "prettier": "2.8.0",
+    "prettier": "2.8.1",
     "svgo": "3.0.2",
-    "typescript": "4.9.3"
+    "typescript": "4.9.4"
   },
   "browserslist": {
     "production": [

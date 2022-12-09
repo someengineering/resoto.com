@@ -18,11 +18,11 @@ While this is definitely true for human history, there is also some truth that a
 
 Think of a post-mortem that tries to analyze why a specific outage happened to the application we maintain. For this analysis we need to understand how cloud resources might have changed over time, yielding the behaviour that we saw in our application. Without the ability to review a change log this becomes impossible.
 
-If you want to understand spikes in your cloud billing dashboard, you need to understand which resources have been created when and by whom. In this case you do not only want to be able to review all changes, but also to be able to filter, group and sort them by different criteria as well as aggregate them to get a better understanding of the overall picture. 
+If you want to understand spikes in your cloud billing dashboard, you need to understand which resources have been created when and by whom. In this case you do not only want to be able to review all changes, but also to be able to filter, group and sort them by different criteria as well as aggregate them to get a better understanding of the overall picture.
 
 If you want to check for security issues or compliance violations you would be able to reduce the amount of work to only those resources that have been created or updated. Even complex checks can be managed in large infrastructures, since the checks get applied only to the changed but not all resources.
 
-Last but not least, you can think of history as a log of events that defines the infrastructure that you maintain. You want to keep this event log to be able to answer any question in the future retrospectively for the state of your infrastructure at any specific point in time. This is especially important for questions you will have tomorrow that you cannot even think of today. 
+Last but not least, you can think of history as a log of events that defines the infrastructure that you maintain. You want to keep this event log to be able to answer any question in the future retrospectively for the state of your infrastructure at any specific point in time. This is especially important for questions you will have tomorrow that you cannot even think of today.
 
 ## Existing capabilities of cloud providers
 
@@ -44,14 +44,13 @@ Resoto maintains all your resources in an asset inventory. It scrapes your infra
 
 ![History Events](./img/history-events.svg)
 
-Since this mechanism does not rely on any mechanism provided by the cloud provider but purely on the collected snapshot data, we can offer the same functionality for all cloud providers the same way. This means that you can use the same tool to get the history of your resources, no matter where they are running. 
+Since this mechanism does not rely on any mechanism provided by the cloud provider but purely on the collected snapshot data, we can offer the same functionality for all cloud providers the same way. This means that you can use the same tool to get the history of your resources, no matter where they are running.
 
 Every resource change falls into the three categories:
 
 - `created` event: happens only once for any single resource when the resource gets created. Payload data is the configuration of the created resource.
 - `updated` event: can happen zero, one or multiple times and happens every time the resource changes. Payload data is the configuration of the updated resource.
 - `deleted` event: happens only once for any single resource when the resource gets deleted. Payload of the data is the configuration of the resource before it gets deleted.
-
 
 It is possible to filter the list of events by event-type and time of change.
 
@@ -66,7 +65,7 @@ Let us see this in action. The command in Resoto to access the history is called
 # highlight-end
 ```
 
-Here we defined the absolute time for `before` and `after`. It is also possible to use relative time by defining durations, e.g. `2d` (2 days), `4h` (4 hours), `6m` (6 minutes) which can also be combined to something like `2d4h6m` (2 days and 4 hours and 6 minutes). We can use durations instead of absolute time to define the time of change, where the duration is subtracted from the current time. 
+Here we defined the absolute time for `before` and `after`. It is also possible to use relative time by defining durations, e.g. `2d` (2 days), `4h` (4 hours), `6m` (6 minutes) which can also be combined to something like `2d4h6m` (2 days and 4 hours and 6 minutes). We can use durations instead of absolute time to define the time of change, where the duration is subtracted from the current time.
 
 ```bash title="List all reasource that have been deleted in the last 3 days"
 > history --change node_deleted --after 3d

@@ -1,6 +1,7 @@
 ---
 authors: [matthias]
 tags: [cloud, history]
+image: ./img/banner-social.svg
 ---
 
 # What we can learn from history
@@ -8,6 +9,8 @@ tags: [cloud, history]
 > "A generation which ignores history has no past – and no future."<br/> -- Robert A. Heinlein
 
 While this is definitely true for human history, there is also some truth that applies to the state of a cloud infrastructure: most of the time we care for the current snapshot of resources, but sometimes we want to know where a resource is coming from, when it has been deleted or when it has been updated at which point in time to which configuration. Having such knowledge is great in situations where you need to understand the order of changes to understand a specific system behaviour.
+
+![](./img/banner.svg)
 
 <!-- truncate -->
 

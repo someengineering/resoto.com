@@ -10,11 +10,11 @@ A Resoto install comes with batteries included; Resoto ships with a [command-lin
 
 ![](./img/banner.png)
 
-Version 3 of Resoto introduces the ability to extend this capability by defining your commands programmatically in the language of your choice.
+**Version 3 of Resoto introduces the ability to extend this capability by defining custom commands programmatically in the language of your choice.** If you are familiar with Python, this task becomes super easy, since all the necessary boilerplate code is already provided.
+
+In this blog post, we will implement a new command called `hello-world` in Python, to show the power and flexibility of this new feature. The simple idea of our new command is adding a greeting to the tags of a selected resource.
 
 <!--truncate-->
-
-If you are familiar with Python, this task becomes super easy, since all the necessary boilerplate code is already provided. In this blog post, we will implement a new command called `hello-world` in Python, to show the power and flexibility of this new feature. The simple idea of our new command is adding a greeting to the tags of a selected resource.
 
 ## Architecture
 

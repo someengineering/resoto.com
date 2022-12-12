@@ -5,7 +5,7 @@ tags: [ui, dashboard, visualization]
 
 # First look at resoto dashboards
 
-Resoto makes it easier than ever to create an inventory of your cloud infrastructure. And with just a few commands, you can immediately get a snapshot of what is currently happening with your resources. Furthermore, with this data ingested into a time series database, you not only know the current state of your cloud but also how they evolve. 
+Resoto makes it easier than ever to create an inventory of your cloud infrastructure. And with just a few commands, you can immediately get a snapshot of what is currently happening with your resources. Furthermore, with this data ingested into a time series database, you not only know the current state of your cloud but also how they evolve.
 
 So, with all this data now available, you will probably want a simple and human-readable way to visualize it. Until now, you could [export the data to google sheets](https://resoto.com/docs/how-to-guides/data-export/export-data-to-google-sheets) to create some charts out of it or use [resoto notebook](https://resoto.com/docs/reference/notebook) to interactively visualize and analyze the result of your searches.
 
@@ -15,21 +15,21 @@ You may be wondering: "But why do we need yet another way to visualize data?". W
 
 ## Key concepts
 
-A *dashboard* is a container where you can place different *widgets* to show relevant information. Each *widget* has its way to display data, and thus, its configurable properties. Available widgets so far are:
+A _dashboard_ is a container where you can place different _widgets_ to show relevant information. Each _widget_ has its way to display data, and thus, its configurable properties. Available widgets so far are:
 
-* Numeric Indicators
-* Line Charts
-* Heatmaps
-* Tables
+- Numeric Indicators
+- Line Charts
+- Heatmaps
+- Tables
 
 Of course, you can freely position and resize widgets inside a dashboard, to organize the data in the best way possible for your application.
 
-Each widget needs one or more *data sources* to get the data that the user wants to display. These data sources have a query that is executed periodically to keep the dashboard updated. Each widget may have some limitations on what data sources it can accept, so not all data sources are available for every widget. Available data sources so far are:
+Each widget needs one or more _data sources_ to get the data that the user wants to display. These data sources have a query that is executed periodically to keep the dashboard updated. Each widget may have some limitations on what data sources it can accept, so not all data sources are available for every widget. Available data sources so far are:
 
-* Search
-* Aggregate Search
-* Time Series
-* Two-entry Aggregate Search
+- Search
+- Aggregate Search
+- Time Series
+- Two-entry Aggregate Search
 
 ## Resoto Example Dashboard
 
@@ -43,21 +43,21 @@ There is a lot to do in the UI, but for now, let's just focus on the dashboard s
 
 ### Visualizing unused volumes
 
-For a quick demonstration of how dashboards work in resoto, let's just open the *Resoto Example Dashboard* provided with the installation, double-clicking on that option in the list.
+For a quick demonstration of how dashboards work in resoto, let's just open the _Resoto Example Dashboard_ provided with the installation, double-clicking on that option in the list.
 
-This dashboard has pre-configured a lot of widgets with relevant information about your cloud infrastructure. 
+This dashboard has pre-configured a lot of widgets with relevant information about your cloud infrastructure.
 
 ![ui-dashboard-manager](./img/ui-example-dashboard.png)
 
 Let's take a quick look at some of the elements being displayed here. Look for the table widget titled "Unused Volumes older than 1 week". There you have a complete list, as the title suggests, of the available volumes older than 1 week. This information is really useful if you want to know what resources you may mark for cleanup, and is very easily retrieved with resoto and displayed in a dashboard.
 
-To see how you can make this information available in your dashboards, let's check that specific widget's configuration. Pressing the edit button in the top-right corner of the dashboard, you can toggle the *edit mode*. While in this mode, you can move and resize your widgets, edit their settings to modify what they are showing and how they are displaying the information. You will note that an edit button appeared also on each widget. Press the one in the table we are inspecting. The following dialog should pop up:
+To see how you can make this information available in your dashboards, let's check that specific widget's configuration. Pressing the edit button in the top-right corner of the dashboard, you can toggle the _edit mode_. While in this mode, you can move and resize your widgets, edit their settings to modify what they are showing and how they are displaying the information. You will note that an edit button appeared also on each widget. Press the one in the table we are inspecting. The following dialog should pop up:
 
 ![ui-edit-table](./img/ui-edit-table.png)
 
-In the right part of this dialog, you can see a preview of the widget with the data and, below it, some display options (just some color settings in this case). In the left part, we have a more important section. There you can define the *data sources* to retrieve the data you want to show in the widget. In this case, a quite simple *full-text search* command was used. You can learn more about *full-text search* in resoto [here](https://resoto.com/docs/reference/search/full-text). 
+In the right part of this dialog, you can see a preview of the widget with the data and, below it, some display options (just some color settings in this case). In the left part, we have a more important section. There you can define the _data sources_ to retrieve the data you want to show in the widget. In this case, a quite simple _full-text search_ command was used. You can learn more about _full-text search_ in resoto [here](https://resoto.com/docs/reference/search/full-text).
 
-You can modify that search to fit your needs. As a little exercise, try to make the query show only the volumes in the "eu-central-1" region which are older than 10 days. Once you are finished with your modifications, press "Accept" and the widget will be updated in the dashboard. 
+You can modify that search to fit your needs. As a little exercise, try to make the query show only the volumes in the "eu-central-1" region which are older than 10 days. Once you are finished with your modifications, press "Accept" and the widget will be updated in the dashboard.
 
 Finally, toggle the edit mode on the top-right corner of the dashboard to return to the normal mode.
 
@@ -67,7 +67,7 @@ Another interesting widget to check out is the chart that is titled "Volumes Siz
 
 ![ui-edit-chart](./img/ui-edit-chart.png)
 
-This time we are using a *time series data source*. This data source gets the data from **prometheus** time-series database. This information is available there because we previously configured some metrics in the `resoto.metrics` configuration. For more information about this, check [this blog post](https://resoto.com/blog/2022/06/09/building-actionable-cloud-infrastructure-metrics#how-metrics-are-made).
+This time we are using a _time series data source_. This data source gets the data from **prometheus** time-series database. This information is available there because we previously configured some metrics in the `resoto.metrics` configuration. For more information about this, check [this blog post](https://resoto.com/blog/2022/06/09/building-actionable-cloud-infrastructure-metrics#how-metrics-are-made).
 
 You can see in the left part of the dialog how we configured this **data source**. Editing the fields in the dialog will automatically generate and update the query at the bottom. So to create this widget, we selected the `volume_bytes` metric from the drop-down menu, and set it to sum the results by account. The legend setting is used to display the account name when hovering the mouse over the chart.
 

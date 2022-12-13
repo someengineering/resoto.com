@@ -24,7 +24,7 @@ Resoto also makes additional connections, for instance between your K8S clusters
 
 The data collected by Resoto is complex and deeply nested, with many levels of dependencies between different cloud resources. To manage this complexity, Resoto uses a graph data model where each cloud resource is represented by a node in the graph with edges connecting dependent nodes.
 
-Let us take a closer look at all the dependencies of an AWS Elastic Load Balancer (ELB) and how they are represented.
+Let us take a closer look at all the dependencies of an AWS Elastic Load Balancer (ELB) named `aws_elb` in the model:
 
 ![Dependencies of an AWS ELB](./img/aws_elb_relationships.svg)
 
@@ -36,7 +36,7 @@ To represent an individual node, Resoto uses a unified data model with strict ty
 
 </ZoomPanPinch>
 
-As you can see, every `aws_elb` inherits from `load_balancers` which in turn inherits from `resource`. Every `aws_elb` also contain some `aws_elb_policies` which in turn contain an `aws_elb_app_cookie_stickiness_policy` and `aws_elb_lb_cookie_stickiness_policy`, and so on.
+As you can see, every `aws_elb` inherits `load_balancer` which in turn inherits from `resource`. Every `aws_elb` also contain additional data like `aws_elb_policies` which in turn contain an `aws_elb_app_cookie_stickiness_policy` and `aws_elb_lb_cookie_stickiness_policy`, and so on.
 
 An example for an individual `aws_elb` would look like this:
 
@@ -46,15 +46,16 @@ An example for an individual `aws_elb` would look like this:
   "type": "node",
   "revision": "_fH7wa0K--I",
   "reported": {
+    "kind": "aws_elb",
     "id": "blogtest-apiserver-526928195.us-west-2.elb.amazonaws.com",
+    "name": "blogtest-apiserver",
+    "ctime": "2022-11-22T09:14:30Z",
     "tags": {
       "owner": "lukas",
       "sigs.k8s.io/cluster-api-provider-aws/role": "apiserver",
       "sigs.k8s.io/cluster-api-provider-aws/cluster/blogtest": "owned",
       "Name": "blogtest-apiserver"
     },
-    "name": "blogtest-apiserver",
-    "ctime": "2022-11-22T09:14:30Z",
     "lb_type": "elb",
     "backends": [
       "i-08381208b144af211"
@@ -94,33 +95,6 @@ An example for an individual `aws_elb` would look like this:
     "elb_source_security_group": {
       "owner_alias": "999264467951",
       "group_name": "blogtest-apiserver-lb"
-    },
-    "kind": "aws_elb",
-    "age": "14d17h"
-  },
-  "metadata": {
-    "cleaned": false,
-    "phantom": false,
-    "protected": false,
-  },
-  "ancestors": {
-    "cloud": {
-      "reported": {
-        "name": "aws",
-        "id": "aws"
-      }
-    },
-    "account": {
-      "reported": {
-        "name": "someengineering-sandbox",
-        "id": "499267507254"
-      }
-    },
-    "region": {
-      "reported": {
-        "name": "us-west-2",
-        "id": "us-west-2"
-      }
     }
   }
 }

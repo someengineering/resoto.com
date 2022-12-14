@@ -309,7 +309,13 @@ html[data-theme='dark'] .cards > li {
     font-size: 54px;
   }
 
-  .section {
+  .section,
+  .section p {
+    font-size: 21px;
+  }
+
+  .cards > li,
+  .cards > li p {
     font-size: 18px;
   }
 

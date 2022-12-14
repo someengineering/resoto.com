@@ -28,6 +28,8 @@ Let us take a closer look at all the dependencies of an AWS Elastic Load Balance
 
 ![Dependencies of an AWS ELB](./img/aws_elb_relationships.svg)
 
+Here we can see how a load balancer is part of a VPC and subnet and how there are EC2 instances underneath an ELB. We also see that sometimes Amazon's Elastic Container Service (ECS) creates ELBs, as there's an edge from a ECS service to the ELB kind.
+
 To represent an individual node, Resoto uses a unified data model with strict typing and support for inheritance. In practice this has the advantage that you can either ask for e.g. all of your infrastructure's load balancers, or you can ask for AWS ELBs specifically. Speaking of which, here is the model for an ELB.
 
 <ZoomPanPinch>
@@ -102,11 +104,31 @@ An example for an individual `aws_elb` would look like this:
 
 While a graph data model is well suited to representing the complex and hierarchical data collected by Resoto, the reality is that many people are familiar with SQL and the traditional database model based on rows and columns. SQL is a mature and well-established language, with a rich ecosystem of tools and applications.
 
-To provide users with the option to use SQL with the data collected by Resoto, we developed [cloud2sql](https://cloud2sql.com), a sub-project of Resoto. cloud2sql is based on the same rich data collected by Resoto, but it flattens that data into tables, complete with foreign keys and link tables that represent the relationships between different cloud resources.
+To provide users with the option to use SQL with the data collected by Resoto, we developed [cloud2sql](https://cloud2sql.com), a sub-project of Resoto. cloud2sql is based on the same rich data collected by Resoto, but it flattens that data into tables, complete with foreign keys and link tables.
 
 ![Flattened AWS ELB](./img/aws_elb_flattened.png)
 
-This allows users who are familiar with SQL to easily work with the data collected by Resoto, using the tools and applications that they are already familiar with. It also makes it easy to integrate the data collected by Resoto into existing SQL-based workflows and processes.
+A link table is a special type of table that allows you to easily find relationships between different resources.
+
+![Link Table Format](./img/link_table.png)
+
+Each link table is prefixed with `link_` followed by the two resource kind names. For example, a link table connecting an AWS Virtual Private Cloud (VPC) to an AWS Elastic Load Balancer (ELB) would be named `link_aws_vpc_aws_elb`.
+
+Link tables only have two fields: `from_id` and `to_id`, which can be easily joined on.
+
+To illustrate how link tables work, consider the following SQL query:
+
+```sql
+SELECT aws_elb.name, aws_vpc.name
+ FROM aws_elb
+ INNER JOIN link_aws_vpc_aws_elb ON aws_elb._id = link_aws_vpc_aws_elb.to_id
+ INNER JOIN aws_vpc ON aws_vpc._id = link_aws_vpc_aws_elb.from_id
+ LIMIT 1;
+```
+
+This query would return the name of an AWS ELB and the name of the VPC it is connected to. By using link tables, you can find dependent resources without needing to know the specific details of each resource's API or how the resources are related. Much like when working with a graph you can also find resources based on the state of another resource.
+
+All of this allows users who are familiar with SQL to easily work with the data collected by Resoto, using the tools and applications that they are already familiar with. It also makes it easy to integrate the data collected by Resoto into existing SQL-based workflows and processes.
 
 ![AWS ELB Summary](./img/aws_elb_summary.png)
 
@@ -115,3 +137,5 @@ This allows users who are familiar with SQL to easily work with the data collect
 [cloud2sql](https://cloud2sql.com) already has support for writing to a variety of different destinations, including [SQLite](https://www.sqlite.org/) files, [MySQL](https://www.mysql.com/), [MariaDB](https://mariadb.org/) and [PostgreSQL](https://www.postgresql.org/) databases, the [Snowflake](https://www.snowflake.com/) cloud-based data warehousing platform, and [Parquet](https://parquet.apache.org/) columnar structure files. This allows users to choose the destination that best fits their needs and workflows. By supporting a range of different destinations, cloud2sql makes it easy to work with the data collected by Resoto in the way that is most convenient for you.
 
 In the next post we will take a closer look at [cloud2sql](https://cloud2sql.com), install and configure it, and see how it can be used to get insights into our cloud infrastructure.
+
+Lastly I want to mention, that we are currently busy integrating the SQL synchronization functionality into Resoto as well. Much like we are using Resoto collector plugins to power cloud2sql, we will be using cloud2sql's table generation and export functionality inside Resoto. The main difference between the two tools being, that cloud2sql is a stateless standalone tool that does data export only, while Resoto is a stateful collection of services that can not only export data and provide visibility but also be configured to take action.

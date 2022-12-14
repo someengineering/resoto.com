@@ -1,6 +1,6 @@
 .form {
   --ifm-button-size-multiplier: 1.35;
-  margin: 0 auto;
+  margin: calc(var(--ifm-paragraph-margin-bottom) * 2) auto;
   max-width: calc(var(--ifm-container-width) / 2);
 }
 
@@ -20,7 +20,8 @@
       var(--ifm-button-padding-vertical) * var(--ifm-button-size-multiplier)
     )
     calc(
-      var(--ifm-button-padding-horizontal) * var(--ifm-button-size-multiplier)
+      var(--ifm-button-padding-horizontal) * var(--ifm-button-size-multiplier) /
+        2
     );
   flex-grow: 1;
 }

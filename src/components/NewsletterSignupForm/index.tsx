@@ -40,7 +40,8 @@ export default function NewsletterSignupForm(): JSX.Element {
             className={clsx('alert alert--success', styles.alert)}
             role="alert"
           >
-            Thank you for signing up!
+            Thank you for signing up! Please check your inbox to confirm your
+            subscription.
           </p>
         ) : netlify.error ? (
           <p className={clsx('alert alert--danger', styles.alert)} role="alert">

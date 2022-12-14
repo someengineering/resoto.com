@@ -1,0 +1,111 @@
+.sectionImage {
+  width: auto;
+  max-width: 100%;
+  max-height: 18rem;
+  margin: 1.5rem auto 0;
+}
+
+.fadingImage {
+  max-height: 32rem;
+  margin: max(-5em, -7.5vw) auto max(-12rem, -18vw);
+  position: relative;
+}
+
+.overlappedImage {
+  max-height: 20rem;
+  margin: 1.5rem auto max(-9rem, -15vw);
+}
+
+.logos {
+  margin: 1.5rem auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.logos > * {
+  color: #ffffff;
+  height: 2.5rem;
+  max-width: 12rem;
+  display: flex;
+  flex-shrink: 1;
+  margin: 0 1.5rem;
+}
+
+.logos > a:hover {
+  color: #af62f5;
+}
+
+.logos > a > * {
+  height: 100%;
+}
+
+.cards {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+  margin: 2.25rem auto 0;
+  padding: 0;
+}
+
+.cards > li + li {
+  margin: 0 0 0 2rem;
+}
+
+.cards li {
+  z-index: 10;
+  flex: 1 1 0;
+  border-radius: var(--ifm-card-border-radius);
+  box-shadow: var(--ifm-global-shadow-md);
+  padding: var(--ifm-card-vertical-spacing) var(--ifm-card-horizontal-spacing);
+  background-color: var(--ifm-card-background-color);
+}
+
+html[data-theme='dark'] .cards li {
+  --ifm-card-background-color: #000d19;
+}
+
+.cards h3 {
+  display: flex;
+  align-items: center;
+  margin: 0 0 calc(var(--ifm-heading-margin-bottom) / 2);
+}
+
+.cards p {
+  font-size: 1.125rem;
+  margin: 0;
+}
+
+.cardIcon {
+  color: var(--ifm-badge-color);
+  background-color: var(--ifm-color-primary);
+  border-radius: var(--ifm-badge-border-radius);
+  height: 2rem;
+  width: 2rem;
+  padding: 0.25rem;
+  margin-right: 0.5rem;
+}
+
+@media screen and (max-width: 996px) {
+  .hero ul {
+    margin: 0 0 1rem 0;
+    justify-content: center;
+  }
+
+  .cards {
+    flex-direction: column;
+  }
+
+  .cards > li {
+    width: 100%;
+  }
+
+  .cards > li + li {
+    margin: 1rem 0 0;
+  }
+}

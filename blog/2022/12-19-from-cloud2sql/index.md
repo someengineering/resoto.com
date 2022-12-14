@@ -4,7 +4,7 @@ tags: [cloud2sql, graph, SQL]
 image: ./img/banner-social.png
 ---
 
-# From cloud2sql
+# From cloud2sql: integrating cloud data into existing SQL workflows
 
 ```mdx-code-block
 import ZoomPanPinch from '@site/src/components/ZoomPanPinch';

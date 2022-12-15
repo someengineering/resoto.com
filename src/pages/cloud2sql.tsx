@@ -7,7 +7,7 @@ import Layout from '@theme/Layout';
 import 'asciinema-player/dist/bundle/asciinema-player.css';
 import { clsx } from 'clsx';
 import React from 'react';
-import styles from '../index.module.css';
+import styles from './index.module.css';
 
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();

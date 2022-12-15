@@ -49,7 +49,7 @@
   align-items: flex-start;
   justify-content: center;
   text-align: left;
-  margin: 2.25rem auto 0;
+  margin: calc(var(--ifm-paragraph-margin-bottom) * 2) auto 0;
   padding: 0;
 }
 

@@ -109,9 +109,6 @@ export default function Home(): JSX.Element {
             <NewsletterSignupForm />
           </div>
         </section>
-        <section className={styles.section}>
-          <div className={styles.sectionInner}></div>
-        </section>
       </main>
     </Layout>
   );

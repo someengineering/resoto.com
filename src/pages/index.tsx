@@ -1,6 +1,5 @@
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import InstallButton from '@site/src/components/InstallButton';
 import NewsletterSignupForm from '@site/src/components/NewsletterSignupForm';
 import Layout from '@theme/Layout';
 import 'asciinema-player/dist/bundle/asciinema-player.css';
@@ -57,10 +56,18 @@ export default function Home(): JSX.Element {
                 </p>
                 <ul>
                   <li>Export to your data lake or cloud warehouse</li>
-                  <li>Security &amp; compliance checks in SQL</li>
+                  <li>
+                    Security &amp; compliance checks in{' '}
+                    <abbr title="Structured Query Language">SQL</abbr>
+                  </li>
                   <li>Visualization in your favorite dashboards</li>
                 </ul>
-                <InstallButton product="cloud2sql" />
+                <Link
+                  to="/cloud2sql"
+                  className="button button--primary button--lg"
+                >
+                  Explore cloud2sql
+                </Link>
               </li>
               <li>
                 <h3>
@@ -79,7 +86,12 @@ export default function Home(): JSX.Element {
                   <li>Full-text search across your entire cloud inventory</li>
                   <li>Custom dashboards and metrics</li>
                 </ul>
-                <InstallButton product="resoto" />
+                <Link
+                  to="/resoto"
+                  className="button button--primary button--lg"
+                >
+                  Explore Resoto
+                </Link>
               </li>
             </ul>
           </div>

@@ -379,6 +379,11 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   --ifm-button-border-color: var(--ifm-color-danger-darker);
 }
 
+input,
+button {
+  font-family: var(--ifm-font-family-base);
+}
+
 @media screen and (min-width: 997px) {
   .sm-screens-only {
     display: none;

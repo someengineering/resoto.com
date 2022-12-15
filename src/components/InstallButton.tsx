@@ -6,22 +6,26 @@ import React, { useEffect } from 'react';
 
 export default function InstallButton({
   product,
+  includeVersion,
   className,
 }: {
   product: 'resoto' | 'cloud2sql';
+  includeVersion?: boolean;
   className?: string;
 }): JSX.Element {
   const [version, setVersion] = React.useState<string>();
 
   useEffect(() => {
-    if (product === 'resoto') {
-      setVersion(latestRelease[versions[0]].version);
-    } else {
-      const getGithubData = async () => {
-        setVersion(await getLatestRelease('someengineering', 'cloud2sql'));
-      };
+    if (includeVersion) {
+      if (product === 'resoto') {
+        setVersion(latestRelease[versions[0]].version);
+      } else {
+        const getGithubData = async () => {
+          setVersion(await getLatestRelease('someengineering', 'cloud2sql'));
+        };
 
-      getGithubData();
+        getGithubData();
+      }
     }
   }, []);
 

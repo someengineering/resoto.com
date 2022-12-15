@@ -3,12 +3,9 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import {
   CalendarIcon,
   ChartSquareBarIcon,
-  ChatIcon,
-  CodeIcon,
   CogIcon,
   CurrencyDollarIcon,
   DownloadIcon,
-  LinkIcon,
   SearchIcon,
   ShieldCheckIcon,
   TerminalIcon,
@@ -19,6 +16,7 @@ import DigitalOceanLogo from '@site/src/assets/digitalocean.svg';
 import GoogleCloudLogo from '@site/src/assets/google-cloud.svg';
 import KubernetesLogo from '@site/src/assets/kubernetes.svg';
 import InstallButton from '@site/src/components/InstallButton';
+import NewsletterSignupForm from '@site/src/components/NewsletterSignupForm';
 import Layout from '@theme/Layout';
 import { clsx } from 'clsx';
 import React from 'react';
@@ -44,7 +42,7 @@ export default function Home(): JSX.Element {
               in your infrastructure.
             </p>
             <p className={baseStyles.buttons}>
-              <InstallButton product="resoto" className={baseStyles.button} />
+              <InstallButton product="resoto" includeVersion />
               <Link
                 to="/docs"
                 className="button button--outline button--primary button--lg"
@@ -331,80 +329,7 @@ export default function Home(): JSX.Element {
               Keep up to date with the latest Resoto news, features, events, and
               articles.
             </p>
-            <ul className={styles.cards}>
-              <li>
-                <a
-                  href="https://github.com/someengineering/resoto"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <h3>
-                    <CodeIcon className={styles.cardIcon} />
-                    <span>GitHub</span>
-                  </h3>
-                </a>
-                <p>
-                  Watch the{' '}
-                  <a
-                    href="https://github.com/someengineering/resoto"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <code>someengineering/resoto</code> repository
-                  </a>{' '}
-                  and be the first to know about new features and releases. Bug
-                  reports, feature requests, and pull requests are always
-                  welcome!
-                </p>
-              </li>
-              <li>
-                <a
-                  href="https://discord.gg/someengineering"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <h3>
-                    <ChatIcon className={styles.cardIcon} />
-                    <span>Discord</span>
-                  </h3>
-                </a>
-                <p>
-                  Get help with Resoto and connect with a growing community of
-                  cloud engineers in the{' '}
-                  <a
-                    href="https://discord.gg/someengineering"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Some Engineering Discord server
-                  </a>
-                  .
-                </p>
-              </li>
-              <li>
-                <a
-                  href="https://linkedin.com/company/someengineering"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <h3>
-                    <LinkIcon className={styles.cardIcon} />
-                    <span>LinkedIn</span>
-                  </h3>
-                </a>
-                <p>
-                  Follow{' '}
-                  <a
-                    href="https://linkedin.com/company/someengineering"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Some Engineering on LinkedIn
-                  </a>{' '}
-                  for news, insights, podcast episodes, sneak peeks, and more.
-                </p>
-              </li>
-            </ul>
+            <NewsletterSignupForm />
           </div>
         </section>
       </main>

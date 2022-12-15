@@ -23,12 +23,12 @@ export default function Home(): JSX.Element {
           <h2 className={styles.heroTitle}>cloud2sql</h2>
           <p>Extract your infrastructure data to an SQL database.</p>
           <p className={styles.buttons}>
-            <InstallButton product="cloud2sql" className={styles.button} />
+            <InstallButton product="cloud2sql" includeVersion />
             <Link
               to="https://github.com/someengineering/cloud2sql#readme"
               className="button button--outline button--primary button--lg"
             >
-              Explore Docs
+              View Docs
             </Link>
           </p>
           <AsciinemaPlayer
@@ -46,27 +46,26 @@ export default function Home(): JSX.Element {
         <section className={clsx(styles.section, styles.cloudSection)}>
           <div className={styles.sectionInner}>
             <div className={styles.sectionHeading}>
-              <div className={styles.tagline}>
-                Query Your Infrastructure with SQL
-              </div>
+              <div className={styles.tagline}>Query Your Infrastructure</div>
               <h2>
-                Flattened infrastructure data with foreign keys and link tables
-                representing resource relationships.
+                Infrastructure data in SQL with link tables representing
+                resource relationships.
               </h2>
             </div>
             <ul className={styles.cards}>
               <li>
                 <h3>Build Your Asset Inventory</h3>
                 <p>
-                  Visualize your infrastructure assets with your favorite BI
-                  tools and dashboards.
+                  Visualize your infrastructure assets with your favorite tools
+                  and dashboards.
                 </p>
               </li>
               <li>
                 <h3>Improve Security Posture</h3>
                 <p>
-                  Pipe data into your security data lake and write SQL queries
-                  to find vulnerabilities.
+                  Pipe data into your security data lake and write{' '}
+                  <abbr title="Structured Query Language">SQL</abbr> queries to
+                  find vulnerabilities.
                 </p>
               </li>
               <li>

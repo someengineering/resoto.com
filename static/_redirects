@@ -5,6 +5,9 @@ https://docs.resoto.com/*                                         https://resoto
 https://documentation.resoto.com/*                                https://resoto.com/docs/:splat 301!
 https://news.resoto.com/*                                         https://resoto.com/news/:splat 301!
 
+https://cloud2sql.com/*                                           https://resoto.com/cloud2sql/:splat 301!
+https://cloud2sql.resoto.com/*                                    https://resoto.com/cloud2sql/:splat 301!
+
 /js/script.js                                                     https://plausible.io/js/script.js 200
 /api/event                                                        https://plausible.io/api/event 200
 

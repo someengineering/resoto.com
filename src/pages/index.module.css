@@ -137,11 +137,11 @@
 
 .clouds {
   z-index: 10;
-  height: 144px;
+  height: 146px;
   background-image: url('./img/cloud-bg.svg');
-  background-size: auto 144px;
+  background-size: auto 146px;
   background-repeat: repeat-x;
-  background-position: left;
+  background-position: top left;
 }
 
 .cloudsTop {

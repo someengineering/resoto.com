@@ -305,10 +305,6 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   margin-right: 1rem;
 }
 
-.lottie-dark-purple {
-  fill: var(--ifm-color-primary);
-}
-
 .api-info {
   display: none;
 }
@@ -343,6 +339,10 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   width: 100%;
   max-width: calc(var(--ifm-container-width) * 3 / 5);
   margin: 0 auto;
+}
+
+.control-bar {
+  display: none;
 }
 
 .button--outline:hover {

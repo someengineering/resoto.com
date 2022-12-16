@@ -99,7 +99,7 @@ Simply execute the following to access the [Resoto Shell](../../../concepts/comp
 $ kubectl exec -it service/resoto-resotocore -- resh
 ```
 
-![Resoto Shell](../img/resoto-shell.png)
+![Screenshot of Resoto Shell](../img/resoto-shell.png)
 
 ## Removing the Resoto Deployment
 

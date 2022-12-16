@@ -6,13 +6,14 @@ pagination_next: getting-started/configure-cloud-provider-access/index
 
 # Deploy Resoto with AWS Cloud Development Kit
 
-The Resoto Cloud Development Kit (CDK) construct gives more control over the setup than the [CloudFormation template](./cloudformation.md).
+The Resoto Cloud Development Kit (CDK) construct gives more control over the setup than the [CloudFormation template](./cloudformation/index.md).
 
 ## Prerequisites
 
 - [Git](https://git-scm.com)
 - [<abbr title="Amazon Web Services">AWS</abbr>](https://aws.amazon.com) account with IAM role permissions
-- [`kubectl`](https://kubernetes.io/docs/reference/kubectl) command-line tool
+- [AWS command-line interface](https://aws.amazon.com/cli)
+- [`kubectl` command-line tool](https://kubernetes.io/docs/reference/kubectl)
 - [Node.js](https://nodejs.org)
 
 ## Deploying Resoto
@@ -69,21 +70,39 @@ The Resoto Cloud Development Kit (CDK) construct gives more control over the set
 
    ```bash
    Outputs:
-   east-test-1.easttest1ClusterName8D8E5E5E = east-test-1
-   east-test-1.easttest1ConfigCommand25ABB520 = aws eks update-kubeconfig --name east-test-1 --region us-east-1 --role-arn <ROLE_ARN>
-   east-test-1.easttest1GetTokenCommand337FE3DD = aws eks get-token --cluster-name east-test-1 --region us-east-1 --role-arn <ROLE_ARN>
+   ResotoEKS.ResotoEKSConfigCommandXXXX = aws eks update-kubeconfig ...
+   ResotoEKS.ResotoPskSecret = kubectl get secrets ...
+   ResotoEKS.ResotoUI = https://a3xxxxxx.us-east-1.elb.amazonaws.com:8900
 
    Stack ARN:
-   arn:aws:cloudformation:us-east-1:115717706081:stack/east-test-1/e1b9e6a0-d5f6-11eb-8498-0a374cd00e27e
+   arn:aws:cloudformation:us-east-1:115717706081:stack/ResotoEKS/e1b9e6a0-d5f6-11eb-8498-0a374cd00e27e
    ```
 
    :::
 
-4. Once the stack creation is completed, you need to configure access to the newly created EKS cluster. Open the **Outputs** tab of the CloudFormation stack and copy the value of the `resotoeksstackConfigCommand` key:
+4. The value of `ResotoEKS.ResotoEKSConfigCommandXXXX` in the **Outputs** is a command to configure your `kubectl` to connect to the EKS cluster. Copy the command and paste it into your terminal.
 
-   ![kubectl output command](./img/eks-cfn-output.png)
+## Launching the Web UI
 
-5. Execute the copied command in the terminal.
+1. The value of `ResotoEKS.ResotoUI` in **Outputs** is the URL for accessing Resoto UI. Copy the link into your browser.
+
+   :::note
+
+   The SSL certificate is self-signed, but you can safely ignore any browser warnings.
+
+   :::
+
+2. The UI requires a PSK token to authenticate. The value of `ResotoEKS.ResotoPskSecret` is the command to obtain this token. Copy the command and paste it into your terminal:
+
+   ```bash
+   $ kubectl get secrets resoto-psk -o jsonpath="{.data.psk}" | base64 -d
+   ```
+
+3. Copy the outputted token and paste it into the PSK field of Resoto UI.
+
+4. Resoto UI will start and guide you through the configuration. If it is your first time starting Resoto UI, the setup wizard will appear and help you configure Resoto:
+
+   ![Screenshot of Resoto UI](../img/resoto-ui.png)
 
 ## Launching the Command-Line Interface
 
@@ -95,7 +114,7 @@ Simply execute the following to access the [Resoto Shell](../../../concepts/comp
 $ kubectl exec -it service/resoto-resotocore -- resh
 ```
 
-![Resoto Shell](../img/resoto-shell.png)
+![Screenshot of Resoto Shell](../img/resoto-shell.png)
 
 ## Removing the Resoto Deployment
 

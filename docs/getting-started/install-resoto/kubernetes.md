@@ -91,6 +91,26 @@ $ helm install resoto someengineering/resoto --set image.tag={{imageTag}} -f res
 
 And just like that, you have Resoto running in a Kubernetes cluster! A collect run will begin automatically. This first collect usually takes less than 3 minutes.
 
+## Launching the Web UI
+
+1. Resoto Core provides a service that exposes Resoto UI on port `8900`. We recommend configuring an [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress) with a valid certificate for UI access, but you can port-forward the service as a temporary solution:
+
+   ```bash
+   $ kubectl port-forward services/resoto-resotocore 8900
+   ```
+
+2. Open <https://localhost:8900> in your browser to access Resoto UI.
+
+   :::note
+
+   The SSL certificate is self-signed, but you can safely ignore any browser warnings.
+
+   :::
+
+3. If it is your first time starting Resoto UI, the setup wizard will appear and help you configure Resoto:
+
+   ![Screenshot of Resoto UI](./img/resoto-ui.png)
+
 ## Launching the Resoto Command-Line Interface
 
 The `resh` command is used to interact with [`resotocore`](../../concepts/components/core.md).
@@ -109,16 +129,13 @@ $ kubectl exec -it service/resoto-resotocore -- resh
 
 ![Resoto Shell](./img/resoto-shell.png)
 
-## Accessing generated credentials
+## Accessing Credentials
 
-The helm chart stack generates a couple of secrets that are used by the components. Those credentials are stored in Kubernetes secrets as base64 encoded strings.
+The Helm chart stack generates credentials that are used by Resoto's components.
 
-- `arango-user` - contains the ArangoDB user and password.
-- `resoto-psk` - contains the pre-shared key used for communication between components.
+These credentials are stored in [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret) as Base64-encoded strings:
 
-The secrets can be obtained by running the following commands:
-
-```bash
-$ kubectl get secret arango-user -o jsonpath="{.data.password}" | base64 --decode
-$ kubectl get secret resoto-psk -o jsonpath="{.data.psk}" | base64 --decode
-```
+| Secret        | Description                                                  | Output Command                                                                     |
+| ------------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------------- |
+| `arango-user` | The ArangoDB user and password                               | `kubectl get secret arango-user -o jsonpath="{.data.password}" \| base64 --decode` |
+| `resoto-psk`  | The pre-shared key used for communication between components | `kubectl get secret resoto-psk -o jsonpath="{.data.psk}" \| base64 --decode`       |

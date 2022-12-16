@@ -1,0 +1,49 @@
+.form {
+  --ifm-button-size-multiplier: 1.35;
+  margin: calc(var(--ifm-paragraph-margin-bottom) * 2) auto;
+  max-width: calc(var(--ifm-container-width) / 2);
+}
+
+.form label {
+  display: none;
+}
+
+.form input {
+  color: var(--ifm-color-gray-900);
+  background-color: var(--ifm-color-secondary);
+  border: var(--ifm-button-border-width) solid var(--ifm-color-secondary);
+  border-radius: var(--ifm-button-border-radius);
+  font-size: calc(0.875rem * var(--ifm-button-size-multiplier));
+  font-weight: var(--ifm-button-font-weight);
+  line-height: 1.5;
+  padding: calc(
+      var(--ifm-button-padding-vertical) * var(--ifm-button-size-multiplier)
+    )
+    calc(
+      var(--ifm-button-padding-horizontal) * var(--ifm-button-size-multiplier) /
+        2
+    );
+  flex-grow: 1;
+}
+
+.form > div {
+  display: flex;
+  flex-direction: row;
+}
+
+.form > div > * + * {
+  margin-left: 0.5rem;
+}
+
+.form p {
+  font-size: calc(0.875rem * var(--ifm-button-size-multiplier)) !important;
+}
+
+p.alert {
+  border: none;
+}
+
+p.error {
+  color: var(--ifm-color-danger-dark);
+  margin-top: 0.25rem !important;
+}

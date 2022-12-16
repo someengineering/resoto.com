@@ -8,13 +8,14 @@ hide_table_of_contents: true
 api: {"tags":["graph_management"],"responses":{"200":{"description":"The names of all graphs","content":{"application/json":{"schema":{"type":"array","items":{"type":"string"},"example":["main","test"]}}}}},"description":"List all graphs","method":"get","path":"/graph","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Resoto Core REST API","version":"V1"},"postman":{"name":"List all graphs","description":{"type":"text/plain"},"url":{"path":["graph"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"key":"Accept","value":"application/json"}],"method":"GET"}}
 sidebar_class_name: "get api-method"
 info_path: docs/reference/api/resoto-core-rest-api
+custom_edit_url: null
 ---
 
 import ApiTabs from "@theme/ApiTabs";
 import MimeTabs from "@theme/MimeTabs";
 import ParamsItem from "@theme/ParamsItem";
 import ResponseSamples from "@theme/ResponseSamples";
-import SchemaItem from "@theme/SchemaItem"
+import SchemaItem from "@theme/SchemaItem";
 import SchemaTabs from "@theme/SchemaTabs";
 import DiscriminatorTabs from "@theme/DiscriminatorTabs";
 import TabItem from "@theme/TabItem";

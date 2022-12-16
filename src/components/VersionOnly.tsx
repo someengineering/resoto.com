@@ -9,7 +9,7 @@ export default function VersionOnly({
   allowed: string | string[];
   children: React.ReactNode;
 }): JSX.Element {
-  let versionMetadata: PropVersionMetadata;
+  let versionMetadata: PropVersionMetadata | null;
 
   try {
     versionMetadata = useDocsVersion();
@@ -19,11 +19,10 @@ export default function VersionOnly({
 
   return (
     <>
-      {(
-        Array.isArray(allowed)
-          ? allowed.includes(versionMetadata?.version)
-          : allowed === versionMetadata?.version
-      )
+      {versionMetadata &&
+      (Array.isArray(allowed)
+        ? allowed.includes(versionMetadata.version)
+        : allowed === versionMetadata.version)
         ? children
         : null}
     </>

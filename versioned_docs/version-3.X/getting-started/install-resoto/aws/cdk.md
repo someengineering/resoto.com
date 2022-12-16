@@ -86,6 +86,7 @@ The Resoto Cloud Development Kit (CDK) construct gives more control over the set
 1. Look for the ResotoUI Key in the Outputs result. Copy the link into your browser.
 
 2. The UI needs a PSK token to authenticate. You can find the command to obtain the token in the **Outputs** section under the key `ResotoPskSecret`. Copy the command and paste it into your terminal. Please note: the certificate is self-signed and will not be trusted by your browser. You can safely ignore the warning.
+
    ```bash
    $ kubectl get secrets resoto-psk -o jsonpath="{.data.psk}" | base64 -d
    ```
@@ -95,7 +96,6 @@ The Resoto Cloud Development Kit (CDK) construct gives more control over the set
 4. The Resoto UI is starting up and will guide you through the configuration.
 
 ![](./img/ui-ck-wizard.png)
-
 
 ## Launching the Command-Line Interface
 

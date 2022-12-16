@@ -32,7 +32,7 @@ The Resoto CloudFormation template is the easiest way to get a production-grade 
 
    :::note
 
-   Resoto performs CPU-intensive graph operations. In a production setup, we recommend at least four cores and 16 gigabytes of RAM. See [Configuring Resoto Worker](../../../reference/configuration/worker.md#multi-core-machines) for more information.
+   Resoto performs CPU-intensive graph operations. In a production setup, we recommend at least four cores and 16 gigabytes of RAM. See [Configuring Resoto Worker](../../../../reference/configuration/worker.md#multi-core-machines) for more information.
 
    :::
 
@@ -52,48 +52,54 @@ The Resoto CloudFormation template is the easiest way to get a production-grade 
 
    ![kubectl output command](./img/eks-cfn-output.png)
 
-6. Copy the command with the key `ResotoEKSConfigCommandXXXX` and paste it into your terminal. This will configure your `kubectl` to connect to the EKS cluster. This requires the `aws` command line client to be installed and configured as well as the `kubectl` command line client.
+6. Copy the value of `ResotoEKSConfigCommandXXXX` and paste it into your terminal. This will configure your `kubectl` to connect to the EKS cluster. This requires the `aws` command line client to be installed and configured as well as the `kubectl` command line client.
 
-## Launching the UI
+## Launching the Web UI
 
-1. Open the **Outputs** tab of the CloudFormation stack and look for the ResotoUI Key. Click on the link to open the UI. Please note: the certificate is self-signed and will not be trusted by your browser. You can safely ignore the warning.
+1. Open the **Outputs** tab of the CloudFormation stack. The value of `ResotoUI` is the URL for accessing Resoto UI. Click on the link to open Resoto UI.
 
-2. The UI needs a PSK token to authenticate. You can find the command to obtain the token in the **Outputs** tab of the CloudFormation stack under the key `ResotoPskSecret`. Copy the command and paste it into your terminal.
+   :::note
+
+   The SSL certificate is self-signed, but you can safely ignore any browser warnings.
+
+   :::
+
+2. The UI requires a PSK token to authenticate. The value of `ResotoPskSecret` in the **Outputs** tab is the command to obtain this token. Copy the command and paste it into your terminal:
 
    ```bash
    $ kubectl get secrets resoto-psk -o jsonpath="{.data.psk}" | base64 -d
    ```
 
-3. Copy the token and paste it into the UI into the PSK field.
+3. Copy the outputted token and paste it into the PSK field of Resoto UI.
 
-4. The Resoto UI is starting up and will guide you through the configuration.
+4. Resoto UI will start and guide you through the configuration. If it is your first time starting Resoto UI, the setup wizard will appear and help you configure Resoto:
 
-![](./img/ui-ck-wizard.png)
+   ![Screenshot of Resoto UI](../../img/resoto-ui.png)
 
 ## Launching the Command-Line Interface
 
-The `resh` command is used to interact with [`resotocore`](../../../concepts/components/core.md).
+The `resh` command is used to interact with [`resotocore`](../../../../concepts/components/core.md).
 
-Simply execute the following to access the [Resoto Shell](../../../concepts/components/shell.md) interface:
+Simply execute the following to access the [Resoto Shell](../../../../concepts/components/shell.md) interface:
 
 ```bash
 $ kubectl exec -it service/resoto-resotocore -- resh
 ```
 
-![Resoto Shell](../img/resoto-shell.png)
+![Screenshot of Resoto Shell](../../img/resoto-shell.png)
 
 ## Removing the Resoto Deployment
 
 To remove the Resoto deployment and all associated resources, you can delete the CloudFormation stack.
-
-1. Open the CloudFormation console and select the stack you wish to delete:
-
-   ![Delete Resoto stack](./img/delete-resoto-stack.png)
-
-2. Click the **Delete** button at the top of the page.
 
 :::warning
 
 Removing the Resoto stack will also delete all data stored in the Resoto database.
 
 :::
+
+1. Open the CloudFormation console and select the stack you wish to delete:
+
+   ![Delete Resoto stack](./img/delete-resoto-stack.png)
+
+2. Click the **Delete** button at the top of the page.

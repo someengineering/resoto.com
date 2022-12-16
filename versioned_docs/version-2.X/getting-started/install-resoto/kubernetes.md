@@ -109,16 +109,13 @@ $ kubectl exec -it service/resoto-resotocore -- resh
 
 ![Resoto Shell](./img/resoto-shell.png)
 
-## Accessing generated credentials
+## Accessing Credentials
 
-The helm chart stack generates a couple of secrets that are used by the components. Those credentials are stored in Kubernetes secrets as base64 encoded strings.
+The Helm chart stack generates credentials that are used by Resoto's components.
 
-- `arango-user` - contains the ArangoDB user and password.
-- `resoto-psk` - contains the pre-shared key used for communication between components.
+These credentials are stored in [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret) as Base64-encoded strings:
 
-The secrets can be obtained by running the following commands:
-
-```bash
-$ kubectl get secret arango-user -o jsonpath="{.data.password}" | base64 --decode
-$ kubectl get secret resoto-psk -o jsonpath="{.data.psk}" | base64 --decode
-```
+| Secret        | Description                                                  | Output Command                                                                     |
+| ------------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------------- |
+| `arango-user` | The ArangoDB user and password                               | `kubectl get secret arango-user -o jsonpath="{.data.password}" \| base64 --decode` |
+| `resoto-psk`  | The pre-shared key used for communication between components | `kubectl get secret resoto-psk -o jsonpath="{.data.psk}" \| base64 --decode`       |

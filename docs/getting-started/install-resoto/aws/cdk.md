@@ -6,13 +6,14 @@ pagination_next: getting-started/configure-cloud-provider-access/index
 
 # Deploy Resoto with AWS Cloud Development Kit
 
-The Resoto Cloud Development Kit (CDK) construct gives more control over the setup than the [CloudFormation template](./cloudformation.md).
+The Resoto Cloud Development Kit (CDK) construct gives more control over the setup than the [CloudFormation template](./cloudformation/index.md).
 
 ## Prerequisites
 
 - [Git](https://git-scm.com)
 - [<abbr title="Amazon Web Services">AWS</abbr>](https://aws.amazon.com) account with IAM role permissions
-- [`kubectl`](https://kubernetes.io/docs/reference/kubectl) command-line tool
+- [AWS command-line interface](https://aws.amazon.com/cli)
+- [`kubectl` command-line tool](https://kubernetes.io/docs/reference/kubectl)
 - [Node.js](https://nodejs.org)
 
 ## Deploying Resoto
@@ -79,23 +80,29 @@ The Resoto Cloud Development Kit (CDK) construct gives more control over the set
 
    :::
 
-4. Copy the command with the key `ResotoEKSConfigCommandXXXX` and paste it into your terminal. This will configure your `kubectl` to connect to the EKS cluster. This requires the `aws` command line client to be installed and configured as well as the `kubectl` command line client.
+4. The value of `ResotoEKS.ResotoEKSConfigCommandXXXX` in the **Outputs** is a command to configure your `kubectl` to connect to the EKS cluster. Copy the command and paste it into your terminal.
 
-## Launching the UI
+## Launching the Web UI
 
-1. Look for the ResotoUI Key in the Outputs result. Copy the link into your browser.
+1. The value of `ResotoEKS.ResotoUI` in **Outputs** is the URL for accessing Resoto UI. Copy the link into your browser.
 
-2. The UI needs a PSK token to authenticate. You can find the command to obtain the token in the **Outputs** section under the key `ResotoPskSecret`. Copy the command and paste it into your terminal. Please note: the certificate is self-signed and will not be trusted by your browser. You can safely ignore the warning.
+   :::note
+
+   The SSL certificate is self-signed, but you can safely ignore any browser warnings.
+
+   :::
+
+2. The UI requires a PSK token to authenticate. The value of `ResotoEKS.ResotoPskSecret` is the command to obtain this token. Copy the command and paste it into your terminal:
 
    ```bash
    $ kubectl get secrets resoto-psk -o jsonpath="{.data.psk}" | base64 -d
    ```
 
-3. Copy the token and paste it into the UI into the PSK field.
+3. Copy the outputted token and paste it into the PSK field of Resoto UI.
 
-4. The Resoto UI is starting up and will guide you through the configuration.
+4. Resoto UI will start and guide you through the configuration. If it is your first time starting Resoto UI, the setup wizard will appear and help you configure Resoto:
 
-![](./img/ui-ck-wizard.png)
+   ![Screenshot of Resoto UI](../img/resoto-ui.png)
 
 ## Launching the Command-Line Interface
 
@@ -107,7 +114,7 @@ Simply execute the following to access the [Resoto Shell](../../../concepts/comp
 $ kubectl exec -it service/resoto-resotocore -- resh
 ```
 
-![Resoto Shell](../img/resoto-shell.png)
+![Screenshot of Resoto Shell](../img/resoto-shell.png)
 
 ## Removing the Resoto Deployment
 

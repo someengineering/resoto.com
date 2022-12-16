@@ -8,13 +8,14 @@ hide_table_of_contents: true
 api: {"description":"## WebSocket Endpoint\nThe client needs to send all the required headers for a ws connection\nand has to handle the websocket protocol.<br/>\n**Note this can not be tested from within swagger!**\n\n## Authorization\nIn case Resoto has a PSK infrastructure in place, the client needs to send a JWT token via the `Authorization` header\nor via the `resoto_authorization` cookie.\nIt is also possible to omit header or cookie and send an Authorization message as first message on the websocket.\nExample\n{ \"kind\": \"authorization\", \"jwt\": \"Bearer <jwt>\" }\n","parameters":[{"name":"show","in":"query","description":"All events to show as a comma separated list","required":false,"explode":false,"schema":{"type":"string"}}],"tags":["system"],"responses":{"default":{"description":""}},"method":"get","path":"/events","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Resoto Core REST API","version":"V1"},"postman":{"name":"[WebSocket] Register as event listener and receive all events.","description":{"content":"## WebSocket Endpoint\nThe client needs to send all the required headers for a ws connection\nand has to handle the websocket protocol.<br/>\n**Note this can not be tested from within swagger!**\n\n## Authorization\nIn case Resoto has a PSK infrastructure in place, the client needs to send a JWT token via the `Authorization` header\nor via the `resoto_authorization` cookie.\nIt is also possible to omit header or cookie and send an Authorization message as first message on the websocket.\nExample\n{ \"kind\": \"authorization\", \"jwt\": \"Bearer <jwt>\" }\n","type":"text/plain"},"url":{"path":["events"],"host":["{{baseUrl}}"],"query":[{"disabled":false,"description":{"content":"All events to show as a comma separated list","type":"text/plain"},"key":"show","value":""}],"variable":[]},"method":"GET"}}
 sidebar_class_name: "get api-method"
 info_path: versioned_docs/version-3.X/reference/api/resoto-core-rest-api
+custom_edit_url: null
 ---
 
 import ApiTabs from "@theme/ApiTabs";
 import MimeTabs from "@theme/MimeTabs";
 import ParamsItem from "@theme/ParamsItem";
 import ResponseSamples from "@theme/ResponseSamples";
-import SchemaItem from "@theme/SchemaItem"
+import SchemaItem from "@theme/SchemaItem";
 import SchemaTabs from "@theme/SchemaTabs";
 import DiscriminatorTabs from "@theme/DiscriminatorTabs";
 import TabItem from "@theme/TabItem";

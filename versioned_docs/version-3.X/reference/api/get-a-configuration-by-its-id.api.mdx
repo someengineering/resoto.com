@@ -8,13 +8,14 @@ hide_table_of_contents: true
 api: {"description":"**Experimental**: This API is not stable and might be subject of change.<br/>\nFetch a configuration by id.\n","tags":["config"],"parameters":[{"name":"config_id","required":true,"in":"path","description":"the identifier of the config to get.","schema":{"type":"string"}}],"responses":{"200":{"description":"The configuration","headers":{"Resoto-Config-Revision":{"description":"The revision of this config","schema":{"type":"string"}}},"content":{"application/json":{"schema":{"type":"object","additionalProperties":true}}}},"404":{"description":"No configuration for this key."}},"method":"get","path":"/config/{config_id}","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Resoto Core REST API","version":"V1"},"postman":{"name":"Get a configuration by its id","description":{"content":"**Experimental**: This API is not stable and might be subject of change.<br/>\nFetch a configuration by id.\n","type":"text/plain"},"url":{"path":["config",":config_id"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) the identifier of the config to get.","type":"text/plain"},"type":"any","value":"","key":"config_id"}]},"header":[{"key":"Accept","value":"application/json"}],"method":"GET"}}
 sidebar_class_name: "get api-method"
 info_path: versioned_docs/version-3.X/reference/api/resoto-core-rest-api
+custom_edit_url: null
 ---
 
 import ApiTabs from "@theme/ApiTabs";
 import MimeTabs from "@theme/MimeTabs";
 import ParamsItem from "@theme/ParamsItem";
 import ResponseSamples from "@theme/ResponseSamples";
-import SchemaItem from "@theme/SchemaItem"
+import SchemaItem from "@theme/SchemaItem";
 import SchemaTabs from "@theme/SchemaTabs";
 import DiscriminatorTabs from "@theme/DiscriminatorTabs";
 import TabItem from "@theme/TabItem";

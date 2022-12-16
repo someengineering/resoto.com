@@ -8,13 +8,14 @@ hide_table_of_contents: true
 api: {"description":"**Experimental**: This API is not stable and might be subject of change.<br/>\nGet all configuration keys in the system.\n","tags":["config"],"responses":{"200":{"description":"All configuration keys.","content":{"application/json":{"schema":{"type":"array","items":{"type":"string"}}}}}},"method":"get","path":"/configs","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Resoto Core REST API","version":"V1"},"postman":{"name":"Get all configuration keys","description":{"content":"**Experimental**: This API is not stable and might be subject of change.<br/>\nGet all configuration keys in the system.\n","type":"text/plain"},"url":{"path":["configs"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"key":"Accept","value":"application/json"}],"method":"GET"}}
 sidebar_class_name: "get api-method"
 info_path: versioned_docs/version-3.X/reference/api/resoto-core-rest-api
+custom_edit_url: null
 ---
 
 import ApiTabs from "@theme/ApiTabs";
 import MimeTabs from "@theme/MimeTabs";
 import ParamsItem from "@theme/ParamsItem";
 import ResponseSamples from "@theme/ResponseSamples";
-import SchemaItem from "@theme/SchemaItem"
+import SchemaItem from "@theme/SchemaItem";
 import SchemaTabs from "@theme/SchemaTabs";
 import DiscriminatorTabs from "@theme/DiscriminatorTabs";
 import TabItem from "@theme/TabItem";

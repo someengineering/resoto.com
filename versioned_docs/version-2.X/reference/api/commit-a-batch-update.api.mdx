@@ -8,13 +8,14 @@ hide_table_of_contents: true
 api: {"description":"**Experimental**: This API is not stable and might be subject of change.<br/>\nCommit a batch update.\n","tags":["graph_management"],"parameters":[{"name":"graph_id","in":"path","description":"The identifier of the graph","example":"resoto","required":true,"schema":{"type":"string"}},{"name":"batch_id","in":"path","description":"A batch identifier is a string that uniquely identifies the batch update.","required":true,"schema":{"type":"string"}}],"responses":{"200":{"description":"Ok message","content":{"application/json":{"schema":{"type":"string","example":"Batch committed."}}}}},"method":"post","path":"/graph/{graph_id}/batch/{batch_id}","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Resoto Core REST API","version":"V1"},"postman":{"name":"Commit a batch update","description":{"content":"**Experimental**: This API is not stable and might be subject of change.<br/>\nCommit a batch update.\n","type":"text/plain"},"url":{"path":["graph",":graph_id","batch",":batch_id"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) The identifier of the graph","type":"text/plain"},"type":"any","value":"","key":"graph_id"},{"disabled":false,"description":{"content":"(Required) A batch identifier is a string that uniquely identifies the batch update.","type":"text/plain"},"type":"any","value":"","key":"batch_id"}]},"header":[{"key":"Accept","value":"application/json"}],"method":"POST"}}
 sidebar_class_name: "post api-method"
 info_path: versioned_docs/version-2.X/reference/api/resoto-core-rest-api
+custom_edit_url: null
 ---
 
 import ApiTabs from "@theme/ApiTabs";
 import MimeTabs from "@theme/MimeTabs";
 import ParamsItem from "@theme/ParamsItem";
 import ResponseSamples from "@theme/ResponseSamples";
-import SchemaItem from "@theme/SchemaItem"
+import SchemaItem from "@theme/SchemaItem";
 import SchemaTabs from "@theme/SchemaTabs";
 import DiscriminatorTabs from "@theme/DiscriminatorTabs";
 import TabItem from "@theme/TabItem";

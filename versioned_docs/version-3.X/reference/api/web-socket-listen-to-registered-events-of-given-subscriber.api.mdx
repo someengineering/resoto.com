@@ -8,13 +8,14 @@ hide_table_of_contents: true
 api: {"description":"## WebSocket Endpoint\nThe client needs to send all the required headers for a ws connection\nand has to handle the websocket protocol.<br/>\n**Note this can not be tested from within swagger!**\n\nThe connection to this endpoint will never be closed.\nAll action events of the system this subscriber has registerd will be send to this\nconnection.\n","tags":["subscriptions"],"parameters":[{"name":"subscriber_id","in":"path","description":"The identifier of the subscriber","required":true,"schema":{"type":"string"}}],"responses":{"404":{"description":"No subscriber found","content":{"text/plain":{"schema":{"type":"string","example":"No subscriber with this id"}}}}},"method":"get","path":"/subscriber/{subscriber_id}/handle","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Resoto Core REST API","version":"V1"},"postman":{"name":"[WebSocket] Listen to registered events of given subscriber","description":{"content":"## WebSocket Endpoint\nThe client needs to send all the required headers for a ws connection\nand has to handle the websocket protocol.<br/>\n**Note this can not be tested from within swagger!**\n\nThe connection to this endpoint will never be closed.\nAll action events of the system this subscriber has registerd will be send to this\nconnection.\n","type":"text/plain"},"url":{"path":["subscriber",":subscriber_id","handle"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) The identifier of the subscriber","type":"text/plain"},"type":"any","value":"","key":"subscriber_id"}]},"header":[{"key":"Accept","value":"text/plain"}],"method":"GET"}}
 sidebar_class_name: "get api-method"
 info_path: versioned_docs/version-3.X/reference/api/resoto-core-rest-api
+custom_edit_url: null
 ---
 
 import ApiTabs from "@theme/ApiTabs";
 import MimeTabs from "@theme/MimeTabs";
 import ParamsItem from "@theme/ParamsItem";
 import ResponseSamples from "@theme/ResponseSamples";
-import SchemaItem from "@theme/SchemaItem"
+import SchemaItem from "@theme/SchemaItem";
 import SchemaTabs from "@theme/SchemaTabs";
 import DiscriminatorTabs from "@theme/DiscriminatorTabs";
 import TabItem from "@theme/TabItem";

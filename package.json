@@ -37,7 +37,7 @@
     "clsx": "1.2.1",
     "dayjs": "1.11.7",
     "docusaurus-plugin-openapi-docs": "1.4.7",
-    "docusaurus-theme-openapi-docs": "1.4.7",
+    "docusaurus-theme-openapi-docs": "1.5.0",
     "github-slugger": "2.0.0",
     "lottie-web": "5.10.0",
     "netlify-plugin-cache": "1.0.3",

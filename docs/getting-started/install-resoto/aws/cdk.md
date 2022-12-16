@@ -69,21 +69,33 @@ The Resoto Cloud Development Kit (CDK) construct gives more control over the set
 
    ```bash
    Outputs:
-   east-test-1.easttest1ClusterName8D8E5E5E = east-test-1
-   east-test-1.easttest1ConfigCommand25ABB520 = aws eks update-kubeconfig --name east-test-1 --region us-east-1 --role-arn <ROLE_ARN>
-   east-test-1.easttest1GetTokenCommand337FE3DD = aws eks get-token --cluster-name east-test-1 --region us-east-1 --role-arn <ROLE_ARN>
+   ResotoEKS.ResotoEKSConfigCommandXXXX = aws eks update-kubeconfig ...
+   ResotoEKS.ResotoPskSecret = kubectl get secrets ...
+   ResotoEKS.ResotoUI = https://a3xxxxxx.us-east-1.elb.amazonaws.com:8900
 
    Stack ARN:
-   arn:aws:cloudformation:us-east-1:115717706081:stack/east-test-1/e1b9e6a0-d5f6-11eb-8498-0a374cd00e27e
+   arn:aws:cloudformation:us-east-1:115717706081:stack/ResotoEKS/e1b9e6a0-d5f6-11eb-8498-0a374cd00e27e
    ```
 
    :::
 
-4. Once the stack creation is completed, you need to configure access to the newly created EKS cluster. Open the **Outputs** tab of the CloudFormation stack and copy the value of the `resotoeksstackConfigCommand` key:
+4. Copy the command with the key `ResotoEKSConfigCommandXXXX` and paste it into your terminal. This will configure your `kubectl` to connect to the EKS cluster. This requires the `aws` command line client to be installed and configured as well as the `kubectl` command line client.
 
-   ![kubectl output command](./img/eks-cfn-output.png)
+## Launching the UI
 
-5. Execute the copied command in the terminal.
+1. Look for the ResotoUI Key in the Outputs result. Copy the link into your browser.
+
+2. The UI needs a PSK token to authenticate. You can find the command to obtain the token in the **Outputs** section under the key `ResotoPskSecret`. Copy the command and paste it into your terminal. Please note: the certificate is self-signed and will not be trusted by your browser. You can safely ignore the warning.
+   ```bash
+   $ kubectl get secrets resoto-psk -o jsonpath="{.data.psk}" | base64 -d
+   ```
+
+3. Copy the token and paste it into the UI into the PSK field.
+
+4. The Resoto UI is starting up and will guide you through the configuration.
+
+![](./img/ui-ck-wizard.png)
+
 
 ## Launching the Command-Line Interface
 

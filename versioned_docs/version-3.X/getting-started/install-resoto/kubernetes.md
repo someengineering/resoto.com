@@ -91,6 +91,21 @@ $ helm install resoto someengineering/resoto --set image.tag={{imageTag}} -f res
 
 And just like that, you have Resoto running in a Kubernetes cluster! A collect run will begin automatically. This first collect usually takes less than 3 minutes.
 
+## Launching the Resoto UI
+
+ResotoCore provides a service that exposes the Resoto UI on port `8900`. We recommend configuring an Ingress with a valid certificate to access the UI.
+Until this is done, you can access the UI by port-forwarding the service.
+
+1. Start the port forwarding.
+   ```bash
+   $ kubectl port-forward services/resoto-resotocore 8900
+   ```
+
+2. Open the UI in your browser at [https://localhost:8900](https://localhost:8900). Please note: the certificate is self-signed and will not be trusted by your browser. You can safely ignore the warning.
+
+![](./img/ui-ck-wizard.png)
+
+
 ## Launching the Resoto Command-Line Interface
 
 The `resh` command is used to interact with [`resotocore`](../../concepts/components/core.md).

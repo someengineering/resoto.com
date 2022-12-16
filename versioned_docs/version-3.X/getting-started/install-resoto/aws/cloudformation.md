@@ -48,11 +48,27 @@ The Resoto CloudFormation template is the easiest way to get a production-grade 
 
    :::
 
-5. Once the stack creation is completed, you need to configure access to the newly created EKS cluster. Open the **Outputs** tab of the CloudFormation stack and copy the value of the `resotoeksstackConfigCommand` key:
+5. Once the stack creation is completed, open the **Outputs** tab of the CloudFormation stack.
 
    ![kubectl output command](./img/eks-cfn-output.png)
 
-6. Execute the copied command in the terminal.
+6. Copy the command with the key `ResotoEKSConfigCommandXXXX` and paste it into your terminal. This will configure your `kubectl` to connect to the EKS cluster. This requires the `aws` command line client to be installed and configured as well as the `kubectl` command line client.
+
+
+## Launching the UI
+
+1. Open the **Outputs** tab of the CloudFormation stack and look for the ResotoUI Key. Click on the link to open the UI. Please note: the certificate is self-signed and will not be trusted by your browser. You can safely ignore the warning.
+
+2. The UI needs a PSK token to authenticate. You can find the command to obtain the token in the **Outputs** tab of the CloudFormation stack under the key `ResotoPskSecret`. Copy the command and paste it into your terminal.
+   ```bash
+   $ kubectl get secrets resoto-psk -o jsonpath="{.data.psk}" | base64 -d
+   ```
+
+3. Copy the token and paste it into the UI into the PSK field.
+
+4. The Resoto UI is starting up and will guide you through the configuration.
+
+![](./img/ui-ck-wizard.png)
 
 ## Launching the Command-Line Interface
 

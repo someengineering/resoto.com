@@ -5115,10 +5115,10 @@ doctrine@^3.0.0:
   dependencies:
     esutils "^2.0.2"
 
-docusaurus-plugin-openapi-docs@1.4.7, docusaurus-plugin-openapi-docs@^1.4.7:
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/docusaurus-plugin-openapi-docs/-/docusaurus-plugin-openapi-docs-1.4.7.tgz#2d79107af093c7df41f3d5babf319f08cf70f579"
-  integrity sha512-41ZDIglMQ9GsYYxWYFxeB4ddsvpZt/By6YxkP8bMNkk33z9qC9oVXcugEPBUANA7jzDzNEX5DHRTtocyifhPYA==
+docusaurus-plugin-openapi-docs@1.5.0, docusaurus-plugin-openapi-docs@^1.4.7:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/docusaurus-plugin-openapi-docs/-/docusaurus-plugin-openapi-docs-1.5.0.tgz#d90eb04630afd9e359bebb5ec0025c078df28024"
+  integrity sha512-L4FnOoi5FRFxWFmH3skYmlhLFsBtdBQJzT3Bb3SXBe9wgqkwgLDPNBQtdROGpHRvpVBrJZBgsG2GtZp0TSNBFw==
   dependencies:
     "@apidevtools/json-schema-ref-parser" "^9.0.9"
     "@docusaurus/mdx-loader" "^2.0.1"

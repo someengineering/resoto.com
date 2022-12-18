@@ -1,18 +1,14 @@
 ---
-authors: [lukas]
-tags: [inventory, metrics, graph, aggregation]
-image: ./img/banner-social.png
+sidebar_label: AWS Permissions Rollout
 ---
 
-# Resoto AWS Permissions Rollout
+# AWS Permissions Rollout
 
 Each version of Resoto programmatically generates the specific IAM permissions it requires to collect and optionally to manipulate AWS resources. Manually maintaining these permissions is a tedious task, especially when you have multiple AWS accounts. This is why we have created a Cloudformation Stack that automatically creates the `ResotoAccess` role with the correct permissions and creates a trust that allows a specified AWS account to assume this role.
 
 This stack can be deployed in a single account or organization-wide as a Cloudformation StackSet.
 
 The source code for these stacks can be found in the [resoto-cf](https://github.com/someengineering/resoto-cf) Github repository.
-
-<!--truncate-->
 
 The latest versions of the stacks are hosted in the following S3 locations:
 

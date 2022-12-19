@@ -11,9 +11,9 @@ pagination_next: getting-started/configure-cloud-provider-access/index
 import CloudFormationButton from '@site/src/components/CloudFormationButton';
 ```
 
-:::warning
+:::caution
 
-The CloudFormation template is currently being updated and it is temporarily not available. Please use the [CDK construct](../cdk.md) to deploy to AWS.
+**The Resoto CloudFormation template is currently unavailable.** Until the template is updated, please use the [<abbr title="Cloud Development Kit">CDK</abbr> construct](../cdk.md).
 
 :::
 

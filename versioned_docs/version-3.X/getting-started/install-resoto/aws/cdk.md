@@ -80,7 +80,7 @@ The Resoto Cloud Development Kit (CDK) construct gives more control over the set
 
    :::
 
-4. The value of `ResotoEKS.ResotoEKSConfigCommandXXXX` in the **Outputs** is a command to configure your `kubectl` to connect to the EKS cluster. Copy the command and paste it into your terminal.
+4. The value of `ResotoEKS.ResotoEKSConfigCommandXXXX` in **Outputs** is a command to configure `kubectl` to connect to the EKS cluster. Copy the command and paste it into your terminal.
 
 ## Launching the Web UI
 

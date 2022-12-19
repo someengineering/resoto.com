@@ -29,10 +29,12 @@
 .form > div {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.form > div > * + * {
-  margin-left: 0.5rem;
+.form > div > * {
+  margin: 0 0.25rem 0.25rem;
 }
 
 .form p {
@@ -45,5 +47,4 @@ p.alert {
 
 p.error {
   color: var(--ifm-color-danger-dark);
-  margin-top: 0.25rem !important;
 }

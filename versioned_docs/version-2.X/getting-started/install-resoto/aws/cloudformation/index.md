@@ -16,7 +16,8 @@ The Resoto CloudFormation template is the easiest way to get a production-grade 
 ## Prerequisites
 
 - [<abbr title="Amazon Web Services">AWS</abbr>](https://aws.amazon.com) account with IAM role permissions
-- [`kubectl`](https://kubernetes.io/docs/reference/kubectl) command-line tool
+- [AWS command-line interface](https://aws.amazon.com/cli)
+- [`kubectl` command-line tool](https://kubernetes.io/docs/reference/kubectl)
 
 ## Deploying Resoto
 
@@ -32,7 +33,7 @@ The Resoto CloudFormation template is the easiest way to get a production-grade 
 
    :::note
 
-   Resoto performs CPU-intensive graph operations. In a production setup, we recommend at least four cores and 16 gigabytes of RAM. See [Configuring Resoto Worker](../../../reference/configuration/worker.md#multi-core-machines) for more information.
+   Resoto performs CPU-intensive graph operations. In a production setup, we recommend at least four cores and 16 gigabytes of RAM. See [Configuring Resoto Worker](../../../../reference/configuration/worker.md#multi-core-machines) for more information.
 
    :::
 
@@ -48,36 +49,36 @@ The Resoto CloudFormation template is the easiest way to get a production-grade 
 
    :::
 
-5. Once the stack creation is completed, you need to configure access to the newly created EKS cluster. Open the **Outputs** tab of the CloudFormation stack and copy the value of the `resotoeksstackConfigCommand` key:
+5. Once the stack creation is completed, open the **Outputs** tab of the CloudFormation stack.
 
    ![kubectl output command](./img/eks-cfn-output.png)
 
-6. Execute the copied command in the terminal.
+6. Copy the value of `ResotoEKSConfigCommandXXXX` and paste it into your terminal. This will configure `kubectl` to connect to the EKS cluster.
 
 ## Launching the Command-Line Interface
 
-The `resh` command is used to interact with [`resotocore`](../../../concepts/components/core.md).
+The `resh` command is used to interact with [`resotocore`](../../../../concepts/components/core.md).
 
-Simply execute the following to access the [Resoto Shell](../../../concepts/components/shell.md) interface:
+Simply execute the following to access the [Resoto Shell](../../../../concepts/components/shell.md) interface:
 
 ```bash
 $ kubectl exec -it service/resoto-resotocore -- resh
 ```
 
-![Screenshot of Resoto Shell](../img/resoto-shell.png)
+![Screenshot of Resoto Shell](../../img/resoto-shell.png)
 
 ## Removing the Resoto Deployment
 
 To remove the Resoto deployment and all associated resources, you can delete the CloudFormation stack.
-
-1. Open the CloudFormation console and select the stack you wish to delete:
-
-   ![Delete Resoto stack](./img/delete-resoto-stack.png)
-
-2. Click the **Delete** button at the top of the page.
 
 :::warning
 
 Removing the Resoto stack will also delete all data stored in the Resoto database.
 
 :::
+
+1. Open the CloudFormation console and select the stack you wish to delete:
+
+   ![Delete Resoto stack](./img/delete-resoto-stack.png)
+
+2. Click the **Delete** button at the top of the page.

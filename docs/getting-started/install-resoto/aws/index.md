@@ -18,4 +18,10 @@ The [CloudFormation template](./cloudformation/index.md) is the easiest way to g
 
 :::
 
+:::caution
+
+**The Resoto CloudFormation template is currently unavailable.** Until the template is updated, please use the [<abbr title="Cloud Development Kit">CDK</abbr> construct](./cdk.md).
+
+:::
+
 <DocCardList />

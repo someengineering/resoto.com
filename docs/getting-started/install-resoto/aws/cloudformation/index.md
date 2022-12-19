@@ -11,6 +11,12 @@ pagination_next: getting-started/configure-cloud-provider-access/index
 import CloudFormationButton from '@site/src/components/CloudFormationButton';
 ```
 
+:::caution
+
+**The Resoto CloudFormation template is currently unavailable.** Until the template is updated, please use the [<abbr title="Cloud Development Kit">CDK</abbr> construct](../cdk.md).
+
+:::
+
 The Resoto CloudFormation template is the easiest way to get a production-grade setup.
 
 ## Prerequisites

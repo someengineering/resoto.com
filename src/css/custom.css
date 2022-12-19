@@ -235,6 +235,11 @@ html[data-theme='dark'] strong {
   color: var(--ifm-color-primary-lightest);
 }
 
+.alert em,
+.alert strong {
+  color: var(--ifm-alert-foreground-color);
+}
+
 .admonition-heading {
   --ifm-heading-color: var(--ifm-alert-foreground-color);
 }

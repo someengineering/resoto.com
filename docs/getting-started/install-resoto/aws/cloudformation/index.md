@@ -16,7 +16,8 @@ The Resoto CloudFormation template is the easiest way to get a production-grade 
 ## Prerequisites
 
 - [<abbr title="Amazon Web Services">AWS</abbr>](https://aws.amazon.com) account with IAM role permissions
-- [`kubectl`](https://kubernetes.io/docs/reference/kubectl) command-line tool
+- [AWS command-line interface](https://aws.amazon.com/cli)
+- [`kubectl` command-line tool](https://kubernetes.io/docs/reference/kubectl)
 
 ## Deploying Resoto
 
@@ -52,7 +53,7 @@ The Resoto CloudFormation template is the easiest way to get a production-grade 
 
    ![kubectl output command](./img/eks-cfn-output.png)
 
-6. Copy the value of `ResotoEKSConfigCommandXXXX` and paste it into your terminal. This will configure your `kubectl` to connect to the EKS cluster. This requires the `aws` command line client to be installed and configured as well as the `kubectl` command line client.
+6. Copy the value of `ResotoEKSConfigCommandXXXX` and paste it into your terminal. This will configure `kubectl` to connect to the EKS cluster.
 
 ## Launching the Web UI
 

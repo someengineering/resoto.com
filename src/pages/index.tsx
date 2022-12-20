@@ -57,8 +57,10 @@ export default function Home(): JSX.Element {
                 <ul>
                   <li>Export to your data lake or cloud warehouse</li>
                   <li>
-                    Security &amp; compliance checks in{' '}
-                    <abbr title="Structured Query Language">SQL</abbr>
+                    <span>
+                      Security &amp; compliance checks in{' '}
+                      <abbr title="Structured Query Language">SQL</abbr>
+                    </span>
                   </li>
                   <li>Visualization in your favorite dashboards</li>
                 </ul>

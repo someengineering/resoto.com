@@ -11,25 +11,23 @@ import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
 
-Welcome to our tutorial on installing and configuring [Cloud2SQL](/cloud2sql). As mentioned in [my last post](/blog/2022/12/20/integrating-cloud-data-into-existing-sql-workflows-with-cloud2sql), Cloud2SQL is a powerful tool based on [Resoto](/resoto)'s collector plugins, that allows users to collect data from various cloud infrastructure sources and export it directly to a database like [Snowflake](https://www.snowflake.com/), [PostgreSQL](https://postgresql.org), [MariaDB](https://mariadb.org) or [MySQL](https://mysql.com) or write it as [Parquet](https://parquet.apache.org), [SQLite](https://sqlite.org) or [<abbr title="comma-separated values">CSV</abbr>](https://en.wikipedia.org/wiki/Comma-separated_values) files for ingestion in your data lake.
+Welcome to our tutorial on installing and configuring [Cloud2SQL](/cloud2sql). As mentioned in [my last post](/blog/2022/12/20/integrating-cloud-data-into-existing-sql-workflows-with-cloud2sql), Cloud2SQL is a powerful tool based on [Resoto](/resoto)'s collector plugins, that allows users to collect data from various cloud infrastructure sources and export it directly to a database like [Snowflake](https://snowflake.com), [PostgreSQL](https://postgresql.org), [MariaDB](https://mariadb.org) or [MySQL](https://mysql.com) or write it as [Parquet](https://parquet.apache.org), [SQLite](https://sqlite.org) or [<abbr title="comma-separated values">CSV</abbr>](https://en.wikipedia.org/wiki/Comma-separated_values) files for ingestion in your data lake.
 
 In this post, we will guide you through the process of installing Cloud2SQL and demonstrate how to export data from AWS to a local SQLite database file.
 
 Whether you are looking to integrate cloud data into your existing SQL workflows or simply want an easy way to access and analyze data from multiple cloud sources, Cloud2SQL is an excellent tool to consider. Let's get started!
 
-<AsciinemaPlayer src="/asciinema/cloud2sql-standalone.cast" cols={80} rows={20} preload={true} autoPlay={true} loop={true} />
+<p><AsciinemaPlayer src="/asciinema/cloud2sql.cast" cols={80} rows={20} preload={true} autoPlay={true} loop={true} /></p>
 
 <!--truncate-->
 
 ## Installation
 
-To install Cloud2SQL, all you need is Python 3.9 or newer. Create a new virtual environment and install the package:
+To install Cloud2SQL, all you need is Python 3.9 or newer. Create a new virtual environment and install the `cloud2sql[all]` package:
 
 ```bash
 $ pip3 install --user cloud2sql[all]
 ```
-
-<AsciinemaPlayer src="/asciinema/cloud2sql-install.cast" cols={80} rows={20} preload={true} autoPlay={false} loop={false} />
 
 :::note
 
@@ -39,21 +37,19 @@ If you only require support for a specific database, you can choose between `clo
 
 :::caution
 
-Snowflake currently only supports Python 3.10. If you are using Python 3.11, use the individual database package instead of `cloud2sql[all]`.
+Snowflake currently only supports Python 3.10. If you are using Python 3.11, use a database-specific package instead of `cloud2sql[all]`.
 
 :::
 
+<p><AsciinemaPlayer src="/asciinema/cloud2sql-install.cast" cols={80} rows={20} preload={true} autoPlay={true} loop={true} /></p>
+
 ## Configuration
 
-Cloud2SQL supports all sources supported by Resoto. By default, Cloud2SQL ships with AWS, Google Cloud, DigitalOcean, and Kubernetes source plugins pre-installed.
+**Cloud2SQL supports all sources supported by Resoto.** By default, Cloud2SQL ships with AWS, Google Cloud, DigitalOcean, and Kubernetes source plugins pre-installed.
 
-The configuration file is a [YAML](https://yaml.org) file that specifies which sources to load from and which destinations to export the data to.
+Let's load some AWS data into a local SQLite database file. For authentication with AWS, we have all options supported by the AWS CLI. You can either export `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, or create a profile in your AWS config file and export `AWS_PROFILE`.
 
-In this example we are going to configure AWS and export the data to a local SQLite database file.
-
-For authentication we have all options that `aws-cli` supports. You can either export `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, or create a profile in your AWS config file and export `AWS_PROFILE`.
-
-Next let's load some AWS data into a local SQLite database file. Create a file `myconfig.yaml` with the following content:
+The configuration file is a [YAML](https://yaml.org) file that specifies sources to load data from and destinations to export data to. Create a file `myconfig.yaml`:
 
 ```yaml title="myconfig.yaml"
 sources:
@@ -63,13 +59,14 @@ destinations:
     database: resoto.db
 ```
 
-This tells Cloud2SQL to load the AWS collector. Within the `aws` section there could be additional configuration options, but they are all optional.
+This tells Cloud2SQL to load the AWS collector. Within the `aws` section, you can configure additional options, but they are optional.
 
 <details>
 <summary>More advanced configuration examples</summary>
 
+<div>
 <Tabs>
-<TabItem value="awssnowflake" label="AWS / K8S / Snowflake">
+<TabItem value="aws-snowflake" label="AWS / K8S / Snowflake">
 
 ```yaml
 sources:
@@ -117,7 +114,7 @@ destinations:
 ```
 
 </TabItem>
-<TabItem value="gcppostgres" label="GCP / PostgreSQL">
+<TabItem value="gcp-postgres" label="GCP / PostgreSQL">
 
 ```yaml
 sources:
@@ -138,7 +135,7 @@ sources:
 ```
 
 </TabItem>
-<TabItem value="doparquet" label="DigitalOcean / Parquet">
+<TabItem value="do-parquet" label="DigitalOcean / Parquet">
 
 ```yaml
 sources:
@@ -156,13 +153,18 @@ destinations:
 </TabItem>
 </Tabs>
 
+</div>
 </details>
 
-Look at [the config template](https://github.com/someengineering/cloud2sql/blob/main/config-template.yaml) for a list of all supported config options.
+:::info
+
+Please see [`config-template.yaml`](https://github.com/someengineering/cloud2sql/blob/main/config-template.yaml) for a list of all supported configuration options.
+
+:::
 
 :::tip
 
-When collecting multiple accounts the `role` and `scrape_org` options make Cloud2SQL fetch the list of all organization accounts and specify which role to assume. Alternatively, you can specify the list of accounts to collect using the `profiles` option if those profiles have been defined in your [aws-cli config file](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html).
+When collecting multiple accounts, the `role` and `scrape_org` options instruct Cloud2SQL to fetch the list of all organization accounts and specify a role to assume. Alternatively, you can specify the list of accounts to collect using the `profiles` option if those profiles have been defined in your [AWS CLI config file](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html).
 
 The option `account_pool_size` controls the number of accounts that are being collected in parallel. Increasing the value uses more CPU cores and memory but also makes the collection of multiple accounts finish faster.
 
@@ -170,42 +172,19 @@ The option `account_pool_size` controls the number of accounts that are being co
 
 ## Resource Collection
 
-Now run Cloud2SQL using
+Now, run Cloud2SQL:
 
 ```bash
 $ cloud2sql --config myconfig.yml
-# highlight-start
-​Progress
-​└── aws
-​    └── someengineering-production (434236089377)
-​        ├── 🔄 ap-northeast-1 in_progress
-​        ├── 🔄 ap-northeast-2 in_progress
-​        ├── 🔄 ap-northeast-3 in_progress
-​        ├── 🔄 ap-south-1 in_progress
-​        ├── 🔄 ap-southeast-1 in_progress
-​        ├── 🔄 ap-southeast-2 in_progress
-​        ├── 🔄 ca-central-1 in_progress
-​        ├── ✅ eu-central-1 done
-​        ├── ✅ eu-north-1 done
-​        ├── ✅ eu-west-1 done
-​        ├── ✅ eu-west-2 done
-​        ├── ✅ eu-west-3 done
-​        ├── ✅ global done
-​        ├── 🔄 sa-east-1 in_progress
-​        ├── 🔄 us-east-1 in_progress
-​        ├── 🔄 us-east-2 in_progress
-​        ├── 🔄 us-west-1 in_progress
-​        └── 🔄 us-west-2 in_progress
-# highlight-end
 ```
 
-That's it! After a couple of minutes, when the collection is done, you will have a copy of your cloud infrastructure in `resoto.db`.
+And that's it! After a couple of minutes, when the collection is done, you will have a copy of your cloud infrastructure in `resoto.db`.
 
-<AsciinemaPlayer src="/asciinema/cloud2sql-cfg_and_run.cast" cols={80} rows={20} preload={true} autoPlay={false} loop={false} />
+<p><AsciinemaPlayer src="/asciinema/cloud2sql-cfg_and_run.cast" cols={80} rows={20} preload={true} autoPlay={true} loop={true} /></p>
 
 ## Exploration
 
-Now let's open the sqlite database we just created using the command.
+Open the SQLite database we just created:
 
 ```bash
 $ sqlite3 resoto.db
@@ -217,11 +196,11 @@ If the `sqlite3` command is not already installed on your machine, the package n
 
 :::
 
-Using the `.tables` command lists all the tables that were created during cloud2sql's collect run.
+The `.tables` command lists all the tables that were created during Cloud2SQL's collect run.
 
-Use the `.schema` command to look at a table's fields.
+The `.schema` command outputs a table's fields.
 
-For instance, if you have any IAM server certificates we can list the schema of the aws_iam_server_certificate table.
+For instance, if you have IAM server certificates, we can inspect the schema of the `aws_iam_server_certificate` table:
 
 ```sql
 > .schema aws_iam_server_certificate
@@ -248,7 +227,7 @@ For instance, if you have any IAM server certificates we can list the schema of 
 # highlight-end
 ```
 
-Next, we could find all the certificates that are going to expire in the next 30 days.
+We could then find all certificates expiring in the next thirty days:
 
 ```sql
 > SELECT name, expires, account from aws_iam_server_certificate WHERE datetime(expires) BETWEEN datetime('now') AND datetime('now', 'start of day', '+30 day');
@@ -257,8 +236,10 @@ Next, we could find all the certificates that are going to expire in the next 30
 # highlight-end
 ```
 
-You can find the full list of resources that are currently supported in the [Resoto documentation](/docs/reference/data-models).
+See [Resource Data Models](/docs/reference/data-models) for a full list of currently supported resources.
 
 ## Conclusion
 
-Now that you have a good understanding of how to install and configure [Cloud2SQL](/cloud2sql), why not give it a try and see how it can help you streamline your cloud data management and analysis processes? Simply follow the steps outlined in this tutorial to get started, and feel free to reach out to us on [Discord](https://discord.gg/someengineering) if you have any questions or encounter any issues along the way. We're always happy to help!
+Now that you have a good understanding of how to install and configure [Cloud2SQL](/cloud2sql), why not give it a try and see how it can help you streamline your cloud data management and analysis processes?
+
+Simply follow the steps above to get started, and feel free to reach out to us on [Discord](https://discord.gg/someengineering) if you have any questions or encounter any issues along the way. We're always happy to help!

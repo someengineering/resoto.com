@@ -3,12 +3,12 @@ authors: [lukas]
 tags: [cloud, sql, cloud2sql, postgresql, mysql, snowflake, parquet]
 ---
 
+# Installing cloud2sql
+
 ```mdx-code-block
 import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
-
-# Installing cloud2sql
 
 Welcome to our tutorial on installing and configuring [cloud2sql](https://cloud2sql.com). As mentioned in the [previous post](/blog/2022/12/20/integrating-cloud-data-into-existing-sql-workflows-with-cloud2sql), cloud2sql is a powerful tool based on [Resoto's](https://resoto.com/resoto) collector plugins, that allows users to collect data from various cloud infrastructure sources and export it directly to a database like [Snowflake](https://www.snowflake.com/), [PostgreSQL](https://www.postgresql.org/), [MariaDB](https://mariadb.org/) or [MySQL](https://www.mysql.com/) or write it as [Parquet](https://parquet.apache.org/), [SQLite](https://www.sqlite.org/) or [CSV](https://en.wikipedia.org/wiki/Comma-separated_values) files for ingestion in your data lake.
 
@@ -246,4 +246,4 @@ You can find the full list of resources that are currently supported in the [Res
 
 ## Conclusion
 
-Now that you have a good understanding of how to install and configure cloud2sql, why not give it a try and see how it can help you streamline your cloud data management and analysis processes? Simply follow the steps outlined in this tutorial to get started, and feel free to reach out to us on [Discord](https://discord.gg/someengineering) if you have any questions or encounter any issues along the way. We're always happy to help!
+Now that you have a good understanding of how to install and configure [cloud2sql](https://cloud2sql.com), why not give it a try and see how it can help you streamline your cloud data management and analysis processes? Simply follow the steps outlined in this tutorial to get started, and feel free to reach out to us on [Discord](https://discord.gg/someengineering) if you have any questions or encounter any issues along the way. We're always happy to help!

@@ -6,6 +6,7 @@ tags: [cloud, sql, cloud2sql, postgresql, mysql, snowflake, parquet]
 # Installing Cloud2SQL
 
 ```mdx-code-block
+import AsciinemaPlayer from '@site/src/components/AsciinemaPlayer';
 import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
@@ -16,19 +17,23 @@ In this post, we will guide you through the process of installing Cloud2SQL and 
 
 Whether you are looking to integrate cloud data into your existing SQL workflows or simply want an easy way to access and analyze data from multiple cloud sources, Cloud2SQL is an excellent tool to consider. Let's get started!
 
-![](./img/cloud2sql.gif)
+<AsciinemaPlayer src="/asciinema/cloud2sql.cast" cols={80} rows={20} preload={true} autoPlay={true} loop={true} />
 
 <!--truncate-->
 
 ## Installation
 
-To install Cloud2SQL all you need is Python 3.9 or newer. Create a new virtual environment and install the package using
+To install Cloud2SQL, all you need is Python 3.9 or newer. Create a new virtual environment and install the package:
 
 ```bash
 $ pip3 install --user cloud2sql[all]
 ```
 
-If you only require support for a specific database, instead of `cloud2sql[all]` you can choose between `cloud2sql[snowflake]`, `cloud2sql[parquet]`, `cloud2sql[postgresql]`, `cloud2sql[mysql]`.
+:::note
+
+If you only require support for a specific database, you can choose between `cloud2sql[snowflake]`, `cloud2sql[parquet]`, `cloud2sql[postgresql]`, and `cloud2sql[mysql]` instead of installing `cloud2sql[all]`.
+
+:::
 
 :::caution
 
@@ -38,9 +43,9 @@ Snowflake currently only supports Python 3.10. If you are using Python 3.11, use
 
 ## Configuration
 
-Cloud2SQL supports all sources Resoto supports. By default it ships with AWS, Google Cloud, DigitalOcean, and Kubernetes source plugins pre-installed.
+Cloud2SQL supports all sources supported by Resoto. By default, Cloud2SQL ships with AWS, Google Cloud, DigitalOcean, and Kubernetes source plugins pre-installed.
 
-The configuration file is a [YAML](https://yaml.org/spec/1.2.2) file that specifies which sources to load from and which destinations to export the data to.
+The configuration file is a [YAML](https://yaml.org) file that specifies which sources to load from and which destinations to export the data to.
 
 In this example we are going to configure AWS and export the data to a local SQLite database file.
 

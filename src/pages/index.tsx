@@ -43,7 +43,7 @@ export default function Home(): JSX.Element {
             <ul className={clsx(styles.cards, styles.products)}>
               <li>
                 <h3>
-                  <Link to="/cloud2sql">cloud2sql</Link>
+                  <Link to="/cloud2sql">Cloud2SQL</Link>
                   <span className={clsx('badge', styles.badge)}>Free</span>
                   <span className={clsx('badge', styles.badge)}>
                     Open Source
@@ -57,8 +57,10 @@ export default function Home(): JSX.Element {
                 <ul>
                   <li>Export to your data lake or cloud warehouse</li>
                   <li>
-                    Security &amp; compliance checks in{' '}
-                    <abbr title="Structured Query Language">SQL</abbr>
+                    <span>
+                      Security &amp; compliance checks in{' '}
+                      <abbr title="Structured Query Language">SQL</abbr>
+                    </span>
                   </li>
                   <li>Visualization in your favorite dashboards</li>
                 </ul>
@@ -66,7 +68,7 @@ export default function Home(): JSX.Element {
                   to="/cloud2sql"
                   className="button button--primary button--lg"
                 >
-                  Explore cloud2sql
+                  Explore Cloud2SQL
                 </Link>
               </li>
               <li>

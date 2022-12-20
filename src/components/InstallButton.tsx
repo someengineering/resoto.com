@@ -38,7 +38,7 @@ export default function InstallButton({
       }
       className={`button button--primary button--lg ${className}`}
     >
-      Install {product === 'resoto' ? 'Resoto' : 'cloud2sql'}
+      Install {product === 'resoto' ? 'Resoto' : 'Cloud2SQL'}
       {version ? ` ${version}` : ''}
     </Link>
   );

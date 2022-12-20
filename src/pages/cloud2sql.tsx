@@ -20,7 +20,7 @@ export default function Home(): JSX.Element {
           <div className={styles.tagline}>
             Discover Relationships Between Resources
           </div>
-          <h2 className={styles.heroTitle}>cloud2sql</h2>
+          <h2 className={styles.heroTitle}>Cloud2SQL</h2>
           <p>Extract your infrastructure data to an SQL database.</p>
           <p className={styles.buttons}>
             <InstallButton product="cloud2sql" includeVersion />

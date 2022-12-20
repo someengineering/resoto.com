@@ -1,28 +1,28 @@
 ---
 authors: [lukas]
-tags: [cloud, sql, cloud2sql, postgresql, mysql, snowflake, parquet]
+tags: [cloud, SQL, Cloud2SQL, postgresql, mysql, snowflake, parquet]
 ---
 
-# Installing cloud2sql
+# Installing Cloud2SQL
 
 ```mdx-code-block
 import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
 
-Welcome to our tutorial on installing and configuring [cloud2sql](https://cloud2sql.com). As mentioned in the [previous post](/blog/2022/12/20/integrating-cloud-data-into-existing-sql-workflows-with-cloud2sql), cloud2sql is a powerful tool based on [Resoto's](https://resoto.com/resoto) collector plugins, that allows users to collect data from various cloud infrastructure sources and export it directly to a database like [Snowflake](https://www.snowflake.com/), [PostgreSQL](https://www.postgresql.org/), [MariaDB](https://mariadb.org/) or [MySQL](https://www.mysql.com/) or write it as [Parquet](https://parquet.apache.org/), [SQLite](https://www.sqlite.org/) or [CSV](https://en.wikipedia.org/wiki/Comma-separated_values) files for ingestion in your data lake.
+Welcome to our tutorial on installing and configuring [Cloud2SQL](https://cloud2sql.com). As mentioned in the [previous post](/blog/2022/12/20/integrating-cloud-data-into-existing-sql-workflows-with-cloud2sql), Cloud2SQL is a powerful tool based on [Resoto's](https://resoto.com/resoto) collector plugins, that allows users to collect data from various cloud infrastructure sources and export it directly to a database like [Snowflake](https://www.snowflake.com/), [PostgreSQL](https://www.postgresql.org/), [MariaDB](https://mariadb.org/) or [MySQL](https://www.mysql.com/) or write it as [Parquet](https://parquet.apache.org/), [SQLite](https://www.sqlite.org/) or [CSV](https://en.wikipedia.org/wiki/Comma-separated_values) files for ingestion in your data lake.
 
-In this post, we will guide you through the process of installing cloud2sql and demonstrate how to export data from AWS to a local SQLite database file.
+In this post, we will guide you through the process of installing Cloud2SQL and demonstrate how to export data from AWS to a local SQLite database file.
 
-Whether you are looking to integrate cloud data into your existing SQL workflows or simply want an easy way to access and analyze data from multiple cloud sources, cloud2sql is an excellent tool to consider. Let's get started!
+Whether you are looking to integrate cloud data into your existing SQL workflows or simply want an easy way to access and analyze data from multiple cloud sources, Cloud2SQL is an excellent tool to consider. Let's get started!
 
-![cloud2sql](./img/cloud2sql.gif)
+![Cloud2SQL](./img/cloud2sql.gif)
 
 <!--truncate-->
 
 ## Installation
 
-To install cloud2sql all you need is Python 3.9 or newer. Create a new virtual environment and install the package using
+To install Cloud2SQL all you need is Python 3.9 or newer. Create a new virtual environment and install the package using
 
 ```bash
 $ pip3 install --user cloud2sql[all]
@@ -32,7 +32,7 @@ If you only require support for a specific database, instead of `cloud2sql[all]`
 
 ## Configuration
 
-cloud2sql supports all sources Resoto supports. By default it ships with AWS, Google Cloud, DigitalOcean and Kubernetes source plugins pre-installed.
+Cloud2SQL supports all sources Resoto supports. By default it ships with AWS, Google Cloud, DigitalOcean and Kubernetes source plugins pre-installed.
 
 The configuration file is a [YAML](https://yaml.org/spec/1.2.2/) file that specifies which sources to load from and which destinations to export the data to.
 
@@ -50,7 +50,7 @@ destinations:
     database: resoto.db
 ```
 
-This tells cloud2sql to load the AWS collector. Within the aws section there could be additional configuration options, but they are all optional.
+This tells Cloud2SQL to load the AWS collector. Within the aws section there could be additional configuration options, but they are all optional.
 
 <details>
 <summary>More advanced configuration examples</summary>
@@ -149,7 +149,7 @@ Look at [the config template](https://github.com/someengineering/cloud2sql/blob/
 
 :::tip
 
-When collecting multiple accounts the `role` and `scrape_org` options make cloud2sql fetch the list of all organization accounts and specify which role to assume. Alternatively you can specify the list of accounts to collect using the `profiles` option if those profiles have been defined in your [aws-cli config file](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html).
+When collecting multiple accounts the `role` and `scrape_org` options make Cloud2SQL fetch the list of all organization accounts and specify which role to assume. Alternatively you can specify the list of accounts to collect using the `profiles` option if those profiles have been defined in your [aws-cli config file](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html).
 
 The option `account_pool_size` controls the number of accounts that are being collected in parallel. Increasing the value uses more CPU cores and memory but also makes the collection of multiple accounts finish faster.
 
@@ -157,7 +157,7 @@ The option `account_pool_size` controls the number of accounts that are being co
 
 ## Resource Collection
 
-Now run cloud2sql using
+Now run Cloud2SQL using
 
 ```bash
 $ cloud2sql --config myconfig.yml
@@ -246,4 +246,4 @@ You can find the full list of resources that are currently supported in the [Res
 
 ## Conclusion
 
-Now that you have a good understanding of how to install and configure [cloud2sql](https://cloud2sql.com), why not give it a try and see how it can help you streamline your cloud data management and analysis processes? Simply follow the steps outlined in this tutorial to get started, and feel free to reach out to us on [Discord](https://discord.gg/someengineering) if you have any questions or encounter any issues along the way. We're always happy to help!
+Now that you have a good understanding of how to install and configure [Cloud2SQL](https://cloud2sql.com), why not give it a try and see how it can help you streamline your cloud data management and analysis processes? Simply follow the steps outlined in this tutorial to get started, and feel free to reach out to us on [Discord](https://discord.gg/someengineering) if you have any questions or encounter any issues along the way. We're always happy to help!

@@ -218,7 +218,7 @@ const config = {
             type: 'dropdown',
             items: [
               {
-                label: 'cloud2sql',
+                label: 'Cloud2SQL',
                 to: '/cloud2sql',
               },
               {
@@ -237,7 +237,7 @@ const config = {
               {
                 type: 'html',
                 value:
-                  '<strong style="display: block; margin-top: 0.2rem; padding: 0.25rem 0.5rem; font-size: 1rem;">cloud2sql</strong>',
+                  '<strong style="display: block; margin-top: 0.2rem; padding: 0.25rem 0.5rem; font-size: 1rem;">Cloud2SQL</strong>',
               },
               {
                 label: 'Installation',
@@ -305,7 +305,7 @@ const config = {
             title: 'Products',
             items: [
               {
-                label: 'cloud2sql',
+                label: 'Cloud2SQL',
                 to: '/cloud2sql',
               },
               {

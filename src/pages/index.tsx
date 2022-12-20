@@ -43,7 +43,7 @@ export default function Home(): JSX.Element {
             <ul className={clsx(styles.cards, styles.products)}>
               <li>
                 <h3>
-                  <Link to="/cloud2sql">cloud2sql</Link>
+                  <Link to="/cloud2sql">Cloud2SQL</Link>
                   <span className={clsx('badge', styles.badge)}>Free</span>
                   <span className={clsx('badge', styles.badge)}>
                     Open Source
@@ -66,7 +66,7 @@ export default function Home(): JSX.Element {
                   to="/cloud2sql"
                   className="button button--primary button--lg"
                 >
-                  Explore cloud2sql
+                  Explore Cloud2SQL
                 </Link>
               </li>
               <li>

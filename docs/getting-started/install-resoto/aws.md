@@ -1,12 +1,12 @@
 ---
-sidebar_label: Cloud Development Kit
-pagination_prev: getting-started/install-resoto/index
+sidebar_label: Amazon Web Services
+pagination_prev: getting-started/index
 pagination_next: getting-started/configure-cloud-provider-access/index
 ---
 
-# Deploy Resoto with AWS Cloud Development Kit
+# Deploy Resoto to Amazon Web Services
 
-The Resoto Cloud Development Kit (CDK) construct gives more control over the setup than the [CloudFormation template](./cloudformation/index.md).
+We provide a <abbr title="Cloud Development Kit">CDK</abbr> construct to simplify the deployment of Resoto to AWS.
 
 ## Prerequisites
 
@@ -82,17 +82,39 @@ The Resoto Cloud Development Kit (CDK) construct gives more control over the set
 
 4. The value of `ResotoEKS.ResotoEKSConfigCommandXXXX` in **Outputs** is a command to configure `kubectl` to connect to the EKS cluster. Copy the command and paste it into your terminal.
 
+## Launching the Web UI
+
+1. The value of `ResotoEKS.ResotoUI` in **Outputs** is the URL for accessing Resoto UI. Copy the link into your browser.
+
+   :::note
+
+   The SSL certificate is self-signed, but you can safely ignore any browser warnings.
+
+   :::
+
+2. The UI requires a PSK token to authenticate. The value of `ResotoEKS.ResotoPskSecret` is the command to obtain this token. Copy the command and paste it into your terminal:
+
+   ```bash
+   $ kubectl get secrets resoto-psk -o jsonpath="{.data.psk}" | base64 -d
+   ```
+
+3. Copy the outputted token and paste it into the PSK field of Resoto UI.
+
+4. Resoto UI will start and guide you through the configuration. If it is your first time starting Resoto UI, the setup wizard will appear and help you configure Resoto:
+
+   ![Screenshot of Resoto UI](./img/resoto-ui.png)
+
 ## Launching the Command-Line Interface
 
-The `resh` command is used to interact with [`resotocore`](../../../concepts/components/core.md).
+The `resh` command is used to interact with [`resotocore`](../../concepts/components/core.md).
 
-Simply execute the following to access the [Resoto Shell](../../../concepts/components/shell.md) interface:
+Simply execute the following to access the [Resoto Shell](../../concepts/components/shell.md) interface:
 
 ```bash
 $ kubectl exec -it service/resoto-resotocore -- resh
 ```
 
-![Screenshot of Resoto Shell](../img/resoto-shell.png)
+![Screenshot of Resoto Shell](./img/resoto-shell.png)
 
 ## Removing the Resoto Deployment
 

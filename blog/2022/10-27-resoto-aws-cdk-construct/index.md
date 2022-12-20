@@ -5,9 +5,7 @@ tags: [aws, cdk, cloudformation, deployment]
 
 # Resoto AWS CDK Construct
 
-**We recently released the Resoto [<abbr title="Amazon Web Services">AWS</abbr> <abbr title="Cloud Development Kit">CDK</abbr> construct](/docs/getting-started/install-resoto/aws/cdk), which simplifies the deployment of Resoto to AWS.**
-
-We also offer a [CloudFormation template](/docs/getting-started/install-resoto/aws/cloudformation), which is the easiest way to get a production-grade setup. The [CDK construct](/docs/getting-started/install-resoto/aws/cdk) is a bit more involved, but gives you more control over the setup.
+**We recently released the Resoto [<abbr title="Amazon Web Services">AWS</abbr> <abbr title="Cloud Development Kit">CDK</abbr> construct](/docs/getting-started/install-resoto/aws), which simplifies the deployment of Resoto to AWS.**
 
 The CDK construct pretty simple. All you need is a recent version of [Node.js](https://nodejs.org) (we tested with 18.x.x) and [Git](https://git-scm.com). If you don't already have [Node.js](https://nodejs.org) installed, we recommend using [Node Version Manager (`nvm`)](https://github.com/nvm-sh/nvm).
 
@@ -46,9 +44,8 @@ $ npm run cdk deploy -- --parameters ResotoTag={{imageTag}} --parameters MngInst
 | `MngDesiredSize`  | The desired number of instances in the k8s managed node group | `1`               |
 | `MngInstanceType` | The instance type of the k8s managed node group               | `t3.medium`       |
 
-We hope that the Resoto [<abbr title="Amazon Web Services">AWS</abbr> <abbr title="Cloud Development Kit">CDK</abbr> construct](/docs/getting-started/install-resoto/aws/cdk) makes it easier to get started with Resoto!
+We hope that the Resoto [<abbr title="Amazon Web Services">AWS</abbr> <abbr title="Cloud Development Kit">CDK</abbr> construct](/docs/getting-started/install-resoto/aws) makes it easier to get started with Resoto!
 
 ## Further Reading
 
-- [Deploy Resoto with <abbr title="Amazon Web Services">AWS</abbr> CloudFormation](/docs/getting-started/install-resoto/aws/cloudformation)
-- [Deploy Resoto with <abbr title="Amazon Web Services">AWS</abbr> Cloud Development Kit](/docs/getting-started/install-resoto/aws/cdk)
+- [Deploy Resoto to Amazon Web Services](/docs/getting-started/install-resoto/aws)

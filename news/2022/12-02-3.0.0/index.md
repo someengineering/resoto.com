@@ -5,7 +5,6 @@ tags: [release notes]
 # 3.0.0
 
 ```mdx-code-block
-import CloudFormationButton from '@site/src/components/CloudFormationButton';
 import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 ```
 
@@ -62,17 +61,9 @@ See the the [someengineering/cloud2sql](https://github.com/someengineering/cloud
 
 Resoto's default installation method is Kubernetes. We now provide a Helm chart to simplify this installation process. You can find the chart in the [someengineering/helm-charts](https://github.com/someengineering/helm-charts/tree/main/someengineering/resoto) repository. Installing Resoto on Kubernetes is now a `helm install` command away. Please see [Install Resoto with Kubernetes](docs/getting-started/install-resoto/kubernetes) for more details.
 
-#### AWS CloudFormation
-
-Installing Resoto on AWS is now even easier. We provide a CloudFormation template that makes installing Resoto on AWS a one click process. OK, two click process: you need to first click the button below and then click the "Create Stack" button in the AWS console.
-
-<p><CloudFormationButton versionTag="3.0.0" /></p>
-
-You can find more information in the [CloudFormation](/docs/getting-started/install-resoto/aws/cloudformation) installation guide.
-
 #### AWS CDK
 
-If you want to have full control over the CloudFormation stack that is created to install Resoto, you can use the AWS CDK construct that we provide. The construct definition can be found in the [someengineering/resoto-cdk](https://github.com/someengineering/resoto-cdk) repository. You can find more information in [Deploy Resoto with AWS Cloud Development Kit](/docs/getting-started/install-resoto/aws/cdk).
+If you want to have full control over the CloudFormation stack that is created to install Resoto, you can use the AWS CDK construct that we provide. The construct definition can be found in the [someengineering/resoto-cdk](https://github.com/someengineering/resoto-cdk) repository. You can find more information in [Deploy Resoto with AWS Cloud Development Kit](/docs/getting-started/install-resoto/aws).
 
 ### History of Changes
 

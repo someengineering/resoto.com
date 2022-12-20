@@ -98,7 +98,7 @@ If the sqlite3 command is not already installed on your machine, the package nam
 
 Using the `.tables` command lists all the tables that were created during cloud2sql's collect run.
 
-Use the `.schema` command to look at a table's fields. TODO: it is unfortunate that cloud2sql only creates tables that it finds resources for. That way instead of returning an empty result queries that target resources the user doesn't have produce an error.
+Use the `.schema` command to look at a table's fields.
 
 For instance, if you have any IAM server certificates we can list the schema of the aws_iam_server_certificate table.
 
@@ -127,27 +127,7 @@ CREATE TABLE IF NOT EXISTS "aws_iam_server_certificate" (
 
 Next we could find all the certificates that are going to expire in the next 30 days.
 
-TODO: anonymize data
-
 ```
-sqlite> SELECT name, expires, account, region from aws_iam_server_certificate WHERE datetime(expires) BETWEEN datetime('now') AND datetime('now', 'start of day', '+30 day');
-ext-gmann-cert-2020-09-27T21-29-09-076222-07-00|2023-01-01T04:29:09Z|eng-mesosphere-soak|global
-gmann-cert-2020-09-27T21-29-09-12586-07-00|2023-01-01T04:29:09Z|eng-mesosphere-soak|global
-int-gmann-cert-2020-09-27T21-29-09-186502-07-00|2023-01-01T04:29:09Z|eng-mesosphere-soak|global
-ext-generic-dcos-it-0qNPcEXdQUvi-cert-2020-09-29T15-50-10-280858965Z|2023-01-02T15:50:10Z|eng-mesosphere-ci|global
-ext-generic-dcos-it-8VXuMU8iCrHF-cert-2020-10-03T16-23-43-056914163Z|2023-01-06T16:23:43Z|eng-mesosphere-ci|global
-ext-generic-dcos-it-elHWVPLz6Y9U-cert-2020-10-01T10-47-49-669678637Z|2023-01-04T10:47:49Z|eng-mesosphere-ci|global
-ext-generic-dcos-it-gfDRGRYdqwCp-cert-2020-10-01T10-51-55-797459999Z|2023-01-04T10:51:55Z|eng-mesosphere-ci|global
+sqlite> SELECT name, expires, account from aws_iam_server_certificate WHERE datetime(expires) BETWEEN datetime('now') AND datetime('now', 'start of day', '+30 day');
+test-cert-2020-09-27T21-29-09-12586-07-00|2023-01-01T04:29:09Z|someengineering
 ```
-
-TODO: Maybe the post should end here? Metabase is good for some screenshots but somebody using SQL likely already has a tool of choice to look at their data.
-
-## Graphical exploration
-
-Another fun thing to do is load the database into Metabase. If you have Docker installed run
-
-```
-docker run --rm -it -v $PWD/resoto.db:/resoto.db -p 3000:3000 --name metabase metabase/metabase
-```
-
-Next open up the WebUI at http://localhost:3000/. Fill in the setup wizard and in Step 3 select SQLite as your database and configure /resoto.db as the filename.

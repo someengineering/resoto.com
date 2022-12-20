@@ -17,7 +17,7 @@ In this post, we will guide you through the process of installing Cloud2SQL and 
 
 Whether you are looking to integrate cloud data into your existing SQL workflows or simply want an easy way to access and analyze data from multiple cloud sources, Cloud2SQL is an excellent tool to consider. Let's get started!
 
-<AsciinemaPlayer src="/asciinema/cloud2sql.cast" cols={80} rows={20} preload={true} autoPlay={true} loop={true} />
+<AsciinemaPlayer src="/asciinema/cloud2sql-standalone.cast" cols={80} rows={20} preload={true} autoPlay={true} loop={true} />
 
 <!--truncate-->
 
@@ -28,6 +28,8 @@ To install Cloud2SQL, all you need is Python 3.9 or newer. Create a new virtual 
 ```bash
 $ pip3 install --user cloud2sql[all]
 ```
+
+<AsciinemaPlayer src="/asciinema/cloud2sql-install.cast" cols={80} rows={20} preload={true} autoPlay={false} loop={false} />
 
 :::note
 
@@ -198,6 +200,8 @@ $ cloud2sql --config myconfig.yml
 ```
 
 That's it! After a couple of minutes, when the collection is done, you will have a copy of your cloud infrastructure in `resoto.db`.
+
+<AsciinemaPlayer src="/asciinema/cloud2sql-cfg_and_run.cast" cols={80} rows={20} preload={true} autoPlay={false} loop={false} />
 
 ## Exploration
 

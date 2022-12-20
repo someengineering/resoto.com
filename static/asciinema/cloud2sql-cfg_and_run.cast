@@ -899,4 +899,3 @@
 [66.95965600000028,"o","\r\u001b[2K\u001b[1A\u001b[2K\u001b[1A\u001b[2KProgress\r\n├── 🔄 Make latest snapshot available \u001b[2min_progress\u001b[0m\r\n└── ✅ aws \u001b[2mdone\u001b[0m"]
 [67.02387600000026,"o","\r\u001b[2K\u001b[1A\u001b[2K\u001b[1A\u001b[2KProgress\r\n├── 🔄 Make latest snapshot available \u001b[2min_progress\u001b[0m\r\n└── ✅ aws \u001b[2mdone\u001b[0m\r\n\u001b[?25h\r\u001b[1A\u001b[2K\u001b[1A\u001b[2K\u001b[1A\u001b[2K"]
 [70.02387600000026,"o","\u001b]0;cloud2sql@someengineering:~\u0007\u001b[?2004h$ "]
-[71.02387600000026,"o","\u001b[?2004l\r\r\nexit\r\n"]

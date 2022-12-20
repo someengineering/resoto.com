@@ -30,6 +30,12 @@ $ pip3 install --user cloud2sql[all]
 
 If you only require support for a specific database, instead of `cloud2sql[all]` you can choose between `cloud2sql[snowflake]`, `cloud2sql[parquet]`, `cloud2sql[postgresql]`, `cloud2sql[mysql]`.
 
+:::caution
+
+Snowflake currently only supports Python 3.10. If you are using Python 3.11, use the individual database package instead of `cloud2sql[all]`.
+
+:::
+
 ## Configuration
 
 Cloud2SQL supports all sources Resoto supports. By default it ships with AWS, Google Cloud, DigitalOcean and Kubernetes source plugins pre-installed.

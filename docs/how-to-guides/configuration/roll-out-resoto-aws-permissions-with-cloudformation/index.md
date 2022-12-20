@@ -48,9 +48,9 @@ You also need an [AWS Organization](https://aws.amazon.com/organizations) that m
 
 2. If you are not already in the correct account, log into the account where you want to deploy the StackSet. This account will be the account that manages the StackSet and the role that is deployed to all accounts in the organization unit.
 
-3. Navigate to the [Cloudformation Console](https://console.aws.amazon.com/cloudformation/home) and click **Create Stack**. Leave all the default settings, enter the S3 URL <https://resotopublic.s3.amazonaws.com/cf/resoto-stackset.template> in the **Amazon S3 URL** field and click **Next**.
+3. Click this button to open the **Quick create stack** page:
 
-   ![Create Stack](./img/create_the_stack.png)
+   <a href="https://console.aws.amazon.com/cloudformation/home#/stacks/create/review?templateURL=https://resotopublic.s3.amazonaws.com/cf/resoto-stackset.template" target="_blank" rel="noopener noreferrer" className="button button--primary">Deploy StackSet</a>
 
 4. Enter a stack name (e.g., `ResotoAccess`) and configure the four parameters as follows:
 

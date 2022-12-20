@@ -69,7 +69,7 @@ This tells Cloud2SQL to load the AWS collector. Within the `aws` section there c
 <summary>More advanced configuration examples</summary>
 
 <Tabs>
-<TabItem value="awssnowflake" label="AWS, K8S, & Snowflake">
+<TabItem value="awssnowflake" label="AWS / K8S / Snowflake">
 
 ```yaml
 sources:
@@ -117,28 +117,28 @@ destinations:
 ```
 
 </TabItem>
-<TabItem value="gcppostgres" label="GCP & PostgreSQL">
+<TabItem value="gcppostgres" label="GCP / PostgreSQL">
 
 ```yaml
 sources:
-gcp:
-  # GCP service account file(s)
-  # Empty string to use the default service account e.g.:
-  # service_account: [""]
-  service_account:
-  - /path/to/service-account1.json
-  - /path/to/service-account2.json
-destinations:
-  posgresql:
-    host: 127.0.0.1
-    port: 5432
-    user: postgres
-    password: changeme
-    database: cloud2sql
+  gcp:
+    # GCP service account file(s)
+    # Empty string to use the default service account e.g.:
+    # service_account: [""]
+    service_account:
+    - /path/to/service-account1.json
+    - /path/to/service-account2.json
+  destinations:
+    posgresql:
+      host: 127.0.0.1
+      port: 5432
+      user: postgres
+      password: changeme
+      database: cloud2sql
 ```
 
 </TabItem>
-<TabItem value="doparquet" label="DigitalOcean & Parquet">
+<TabItem value="doparquet" label="DigitalOcean / Parquet">
 
 ```yaml
 sources:

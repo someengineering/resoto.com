@@ -21,6 +21,9 @@ import Layout from '@theme/Layout';
 import { clsx } from 'clsx';
 import React from 'react';
 import baseStyles from '../index.module.css';
+import leverageForCloudEngineersImage from './img/leverage-for-cloud-engineers.png';
+import takeControlImage from './img/take-control.png';
+import whyResotoImage from './img/why-resoto.png';
 import styles from './index.module.css';
 
 export default function Home(): JSX.Element {
@@ -92,7 +95,7 @@ export default function Home(): JSX.Element {
               down development.
             </p>
             <img
-              src="img/illustrations/leverage-for-cloud-engineers.png"
+              src={leverageForCloudEngineersImage}
               loading="lazy"
               alt=""
               className={clsx(styles.sectionImage, styles.overlappedImage)}
@@ -159,7 +162,7 @@ export default function Home(): JSX.Element {
               a single place.
             </p>
             <img
-              src="img/illustrations/take-control.png"
+              src={takeControlImage}
               loading="lazy"
               alt=""
               className={clsx(styles.sectionImage, styles.fadingImage)}
@@ -221,7 +224,7 @@ export default function Home(): JSX.Element {
               without losing control of your cloud infrastructure.
             </p>
             <img
-              src="img/illustrations/why-resoto.png"
+              src={whyResotoImage}
               loading="lazy"
               alt=""
               className={styles.sectionImage}

@@ -346,7 +346,7 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   margin: 0 auto;
 }
 
-.control-bar {
+.noControls .control-bar {
   display: none;
 }
 

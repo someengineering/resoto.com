@@ -121,6 +121,16 @@ const config = {
     ],
   ],
   plugins: [
+    function customWebpackConfig() {
+      return {
+        name: 'custom-webpack-config',
+        configureWebpack: () => ({
+          module: {
+            rules: [{ test: /\.cast$/, use: 'url-loader' }],
+          },
+        }),
+      };
+    },
     [
       '@docusaurus/plugin-content-blog',
       {

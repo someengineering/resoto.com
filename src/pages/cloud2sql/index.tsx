@@ -7,7 +7,8 @@ import Layout from '@theme/Layout';
 import 'asciinema-player/dist/bundle/asciinema-player.css';
 import { clsx } from 'clsx';
 import React from 'react';
-import styles from './index.module.css';
+import styles from '../index.module.css';
+import asciinemaCast from './asciinema/cloud2sql.cast';
 
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
@@ -32,7 +33,7 @@ export default function Home(): JSX.Element {
             </Link>
           </p>
           <AsciinemaPlayer
-            src="/asciinema/cloud2sql-standalone.cast"
+            src={asciinemaCast}
             cols={80}
             rows={20}
             preload={true}

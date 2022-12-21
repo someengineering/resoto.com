@@ -11,11 +11,11 @@ import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
 
-Welcome to our tutorial on installing and configuring [Cloud2SQL](/cloud2sql). As mentioned in [my last post](/blog/2022/12/20/integrating-cloud-data-into-existing-sql-workflows-with-cloud2sql), Cloud2SQL is a powerful tool based on [Resoto](/resoto)'s collector plugins, that allows users to collect data from various cloud infrastructure sources and export it directly to a database like [Snowflake](https://snowflake.com), [PostgreSQL](https://postgresql.org), [MariaDB](https://mariadb.org) or [MySQL](https://mysql.com) or write it as [Parquet](https://parquet.apache.org), [SQLite](https://sqlite.org) or [<abbr title="comma-separated values">CSV</abbr>](https://en.wikipedia.org/wiki/Comma-separated_values) files for ingestion in your data lake.
+[Cloud2SQL](/cloud2sql) is a tool based on [Resoto](/resoto)'s collector plugins that allows you to collect data from various cloud infrastructure sources and export it to a database (like [Snowflake](https://snowflake.com), [PostgreSQL](https://postgresql.org), [MariaDB](https://mariadb.org), or [MySQL](https://mysql.com)) or write it as [Parquet](https://parquet.apache.org), [SQLite](https://sqlite.org), or [<abbr title="comma-separated values">CSV</abbr>](https://en.wikipedia.org/wiki/Comma-separated_values) files for ingestion in your data lake.
 
-In this post, we will guide you through the process of installing Cloud2SQL and demonstrate how to export data from AWS to a local SQLite database file.
+**In this post, I will guide you through the process of installing Cloud2SQL and demonstrate how to export data from AWS to a local SQLite database file.**
 
-Whether you are looking to integrate cloud data into your existing SQL workflows or simply want an easy way to access and analyze data from multiple cloud sources, Cloud2SQL is an excellent tool to consider. Let's get started!
+Whether you are looking to integrate cloud data into your existing SQL workflows or simply want an easy way to access and analyze data from multiple cloud sources, Cloud2SQL is an excellent tool to consider.
 
 <p><AsciinemaPlayer src="/asciinema/cloud2sql.cast" cols={80} rows={20} preload={true} autoPlay={true} loop={true} /></p>
 
@@ -62,9 +62,9 @@ destinations:
 This tells Cloud2SQL to load the AWS collector. Within the `aws` section, you can configure additional options, but they are optional.
 
 <details>
-<summary>More advanced configuration examples</summary>
-
+<summary>Advanced configuration examples</summary>
 <div>
+
 <Tabs>
 <TabItem value="aws-snowflake" label="AWS / K8S / Snowflake">
 
@@ -156,11 +156,7 @@ destinations:
 </div>
 </details>
 
-:::info
-
-Please see [`config-template.yaml`](https://github.com/someengineering/cloud2sql/blob/main/config-template.yaml) for a list of all supported configuration options.
-
-:::
+See [`config-template.yaml`](https://github.com/someengineering/cloud2sql/blob/main/config-template.yaml) for a list of all supported configuration options.
 
 :::tip
 
@@ -172,7 +168,7 @@ The option `account_pool_size` controls the number of accounts that are being co
 
 ## Resource Collection
 
-Now, run Cloud2SQL:
+Running Cloud2SQL is as simple as executing the following command:
 
 ```bash
 $ cloud2sql --config myconfig.yml
@@ -184,7 +180,7 @@ And that's it! After a couple of minutes, when the collection is done, you will 
 
 ## Exploration
 
-Open the SQLite database we just created:
+Let's take a look at the exported data! Open the SQLite database:
 
 ```bash
 $ sqlite3 resoto.db
@@ -196,9 +192,7 @@ If the `sqlite3` command is not already installed on your machine, the package n
 
 :::
 
-The `.tables` command lists all the tables that were created during Cloud2SQL's collect run.
-
-The `.schema` command outputs a table's fields.
+The `.tables` command lists all the tables that were created during Cloud2SQL's collect run, while the `.schema` command outputs a table's fields.
 
 For instance, if you have IAM server certificates, we can inspect the schema of the `aws_iam_server_certificate` table:
 

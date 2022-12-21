@@ -37,7 +37,16 @@ const AsciinemaPlayer: React.FC<AsciinemaPlayerProps> = ({
           });
         }, []);
 
-        return <div ref={ref} className="video-container shadow--tl" />;
+        return (
+          <div
+            ref={ref}
+            className={`video-container shadow--tl ${
+              asciinemaOptions.autoPlay && asciinemaOptions.loop
+                ? 'noControls'
+                : ''
+            }`}
+          />
+        );
       }}
     </BrowserOnly>
   );

@@ -41,7 +41,7 @@ Snowflake currently only supports Python 3.10. If you are using Python 3.11, use
 
 :::
 
-<p><AsciinemaPlayer src="/asciinema/cloud2sql-install.cast" cols={80} rows={20} preload={true} autoPlay={true} loop={true} /></p>
+<p><AsciinemaPlayer src="/asciinema/cloud2sql-install.cast" cols={80} rows={20} preload={true} autoPlay={false} loop={false} /></p>
 
 ## Configuration
 
@@ -176,7 +176,7 @@ $ cloud2sql --config myconfig.yml
 
 And that's it! After a couple of minutes, when the collection is done, you will have a copy of your cloud infrastructure in `resoto.db`.
 
-<p><AsciinemaPlayer src="/asciinema/cloud2sql-cfg_and_run.cast" cols={80} rows={20} preload={true} autoPlay={true} loop={true} /></p>
+<p><AsciinemaPlayer src="/asciinema/cloud2sql-cfg_and_run.cast" cols={80} rows={20} preload={true} autoPlay={false} loop={false} /></p>
 
 ## Exploration
 

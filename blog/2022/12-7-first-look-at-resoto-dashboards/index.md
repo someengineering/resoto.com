@@ -11,51 +11,58 @@ So, with all this data now available, you will probably want a simple and human-
 
 Now, we are introducing a new way to have this visual information always available: Resoto Dashboards.
 
-You may be wondering: "But why do we need yet another way to visualize data?". With our dashboards, you don't just visualize the data. Your searches and queries will be executed periodically and the results displayed in widgets automatically, so you always look at updated information. You can organize your widgets freely in the dashboard, to keep the most important metrics always within reach. You can share these dashboards across your organization so everybody that needs this information can make use of it. And of course, you can access your dashboards from everywhere as long as you have access to your resoto installation.
+You may be wondering: "But why do we need yet another way to visualize data?". With our dashboards, you don't just visualize the data. Compared to the methods mentioned above, with a dashboard, your searches and queries will be executed periodically and the results displayed in widgets automatically, so you always look at updated information. You can organize your widgets freely in the dashboard, to keep the most important metrics always within reach. You can share these dashboards across your organization so everybody that needs this information can make use of it. And of course, you can access your dashboards from everywhere as long as you have access to your resoto installation.
 
 ## Key concepts
 
-A _dashboard_ is a container where you can place different _widgets_ to show relevant information. Each _widget_ has its way to display data, and thus, its configurable properties. Available widgets so far are:
+A _dashboard_ is a place where you can put different _widgets_ to show relevant information. Each _widget_ has its way to display data, and thus, its configurable properties. Available widgets so far are:
 
 - Numeric Indicators
 - Line Charts
 - Heatmaps
 - Tables
 
-Of course, you can freely position and resize widgets inside a dashboard, to organize the data in the best way possible for your application.
+Of course, you can freely position and resize widgets inside a dashboard, to organize the data in the best way possible for your needs.
 
 Each widget needs one or more _data sources_ to get the data that the user wants to display. These data sources have a query that is executed periodically to keep the dashboard updated. Each widget may have some limitations on what data sources it can accept, so not all data sources are available for every widget. Available data sources so far are:
 
-- Search
-- Aggregate Search
-- Time Series
-- Two-entry Aggregate Search
+- Search: This data source performs a resoto search through the API endpoint and sends the result back to the widgets.
+- Aggregate Search: Very similar to the previous one, but using the aggregate search endpoint instead.
+- Time Series: This data source queries the **prometheus** time-series database that ships with resoto.
+- Two-entry Aggregate Search: This one is a particular case of an aggregate search, which limits what the user can configure to always return two categories and one value (useful for heatmaps).
 
 ## Resoto Example Dashboard
 
-Once you have resoto up and running, you can access the UI from a web browser in `HTTP://<your_resoto_url>/ui`. The following home screen should appear:
+If you installed resoto, you should have the web UI available already. Check these links in our documentation to learn how to launch the Web UI depending on your installation method:
+
+- [Amazon Web Services](https://resoto.com/docs/getting-started/install-resoto/aws#launching-the-web-ui)
+- [Docker](https://resoto.com/docs/getting-started/install-resoto/docker#launching-the-web-ui)
+- [Kubernetes](https://resoto.com/docs/getting-started/install-resoto/kubernetes#launching-the-web-ui)
+- [pip](https://resoto.com/docs/getting-started/install-resoto/pip#launching-the-web-ui)
+
+As stated in the links above, on your first time in the UI a wizard will guide you through the necessary steps to configure resoto. Once you are done with the configuration the following home screen should appear:
 
 ![ui-home](./img/ui-home.png)
 
-There is a lot to do in the UI, but for now, let's just focus on the dashboard section. Click on the dashboard button, and you will be redirected to the Dashboard Manager:
+There is a lot to do in the UI, but for now, let's just focus on the dashboard section. Click on the `Dashboards` button, and you will be redirected to the Dashboard Manager:
 
 ![ui-dashboard-manager](./img/ui-dashboard-manager.png)
 
 ### Visualizing unused volumes
 
-For a quick demonstration of how dashboards work in resoto, let's just open the _Resoto Example Dashboard_ provided with the installation, double-clicking on that option in the list.
+For a quick demonstration of how dashboards work in resoto, let's just open the _Resoto Example Dashboard_ provided with the installation by double-clicking on that option in the list.
 
 This dashboard has pre-configured a lot of widgets with relevant information about your cloud infrastructure.
 
 ![ui-dashboard-manager](./img/ui-example-dashboard.png)
 
-Let's take a quick look at some of the elements being displayed here. Look for the table widget titled "Unused Volumes older than 1 week". There you have a complete list, as the title suggests, of the available volumes older than 1 week. This information is really useful if you want to know what resources you may mark for cleanup, and is very easily retrieved with resoto and displayed in a dashboard.
+Let's take a quick look at some of the elements being displayed here. Scroll down until you find the table widget titled "Unused Volumes older than 1 week". There you have a complete list, as the title suggests, of the available volumes older than 1 week. This information is really useful if you want to know what resources you may mark for cleanup, and is very easily retrieved with resoto and displayed in a dashboard.
 
-To see how you can make this information available in your dashboards, let's check that specific widget's configuration. Pressing the edit button in the top-right corner of the dashboard, you can toggle the _edit mode_. While in this mode, you can move and resize your widgets, edit their settings to modify what they are showing and how they are displaying the information. You will note that an edit button appeared also on each widget. Press the one in the table we are inspecting. The following dialog should pop up:
+To see how you can make this information available in your dashboards, let's check that specific widget's configuration. Pressing the edit button in the top-right corner of the dashboard, you can toggle the _edit mode_. While in this mode, you can move and resize your widgets, and edit their settings to modify what they are showing and how they are displaying the information. You will note that an edit button appeared also on each widget. Press the one in the table we are inspecting. The following dialog should pop up:
 
 ![ui-edit-table](./img/ui-edit-table.png)
 
-In the right part of this dialog, you can see a preview of the widget with the data and, below it, some display options (just some color settings in this case). In the left part, we have a more important section. There you can define the _data sources_ to retrieve the data you want to show in the widget. In this case, a quite simple _full-text search_ command was used. You can learn more about _full-text search_ in resoto [here](https://resoto.com/docs/reference/search/full-text).
+In the right part of this dialog, you can see a preview of the widget with the data and, below it, some display options (just some color settings in this case). In the left part, we have a more important section. There you can define the _data sources_ to retrieve the data you want to show in the widget. In this case, a quite simple _text search_ command was used. You can learn more about _text search_ in resoto [here](https://resoto.com/docs/how-to-guides/search).
 
 You can modify that search to fit your needs. As a little exercise, try to make the query show only the volumes in the "eu-central-1" region which are older than 10 days. Once you are finished with your modifications, press "Accept" and the widget will be updated in the dashboard.
 
@@ -67,10 +74,10 @@ Another interesting widget to check out is the chart that is titled "Volumes Siz
 
 ![ui-edit-chart](./img/ui-edit-chart.png)
 
-This time we are using a _time series data source_. This data source gets the data from **prometheus** time-series database. This information is available there because we previously configured some metrics in the `resoto.metrics` configuration. For more information about this, check [this blog post](https://resoto.com/blog/2022/06/09/building-actionable-cloud-infrastructure-metrics#how-metrics-are-made).
+This time we are using a _time series data source_. This data source gets the data from **prometheus** time-series database that ships as part of Resoto. This information is available there because we previously configured some metrics in the `resoto.metrics` configuration. For more information about this, check [this blog post](https://resoto.com/blog/2022/06/09/building-actionable-cloud-infrastructure-metrics#how-metrics-are-made).
 
 You can see in the left part of the dialog how we configured this **data source**. Editing the fields in the dialog will automatically generate and update the query at the bottom. So to create this widget, we selected the `volume_bytes` metric from the drop-down menu, and set it to sum the results by account. The legend setting is used to display the account name when hovering the mouse over the chart.
 
-## Conclusions
+## Conclusion
 
 This was just a quick overview of the usefulness of resoto dashboards. There are a lot more features that one needs to learn to exploit their maximum potential, but that information is probably best suited for future blog posts and official documentation. So stay tuned if you want to learn more about this new feature!

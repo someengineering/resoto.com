@@ -32,7 +32,7 @@ export default function Home(): JSX.Element {
             </Link>
           </p>
           <AsciinemaPlayer
-            src="/asciinema/cloud2sql.cast"
+            src="/asciinema/cloud2sql-standalone.cast"
             cols={80}
             rows={20}
             preload={true}

@@ -4,53 +4,52 @@ tags: [cloud, history]
 image: ./img/banner-social.svg
 ---
 
-# What we can learn from history
+# What We Can Learn from History
 
-> "A generation which ignores history has no past – and no future."<br/> -- Robert A. Heinlein
+> **"A generation which ignores history has no past—and no future."**<br/>_— Robert A. Heinlein_
 
-While this is definitely true for human history, there is also some truth that applies to the state of a cloud infrastructure: most of the time we care for the current snapshot of resources, but sometimes we want to know where a resource is coming from, when it has been deleted or when it has been updated at which point in time to which configuration. Having such knowledge is great in situations where you need to understand the order of changes to understand a specific system behaviour.
+While Heinlein's words refer to human history, they also apply to cloud infrastructure. Most of the time, we care about the current state of resources; but sometimes, we want to know the origin of a resource, when a resource was deleted, or when/how a resource was updated.
+
+Such knowledge is necessary in situations where you need to understand the timeline to investigate a specific system behaviour:
+
+- To perform the post-mortem analysis of an outage, we need to know which cloud resources changed and how they changed to yield the behaviour that we saw in our application. Without the ability to review a change log this becomes impossible.
+- To understand cost spikes in your cloud billing dashboard, you need to understand what resources were created, when they were created, and by whom they were created. Not only do you need a list of changes, but also the ability to filter, group, sort, and aggregate the data to see the big picture.
+- To check for security issues or compliance violations, you may need to reduce the scope to verify only those resources that were created or updated since the previous scan. Even complex checks can be performed on large infrastructures if they are only run against changed resources.
+
+**History is a log of events defining your infrastructure.** This event log is important, as it will enable you to answer future questions about the state of your infrastructure retrospectively, including tomorrow's questions that have not yet crossed your mind.
 
 ![](./img/banner.svg)
 
 <!-- truncate -->
 
-## Why history matters
+## Existing Cloud Provider Tools
 
-Think of a post-mortem that tries to analyze why a specific outage happened to the application we maintain. For this analysis we need to understand how cloud resources might have changed over time, yielding the behaviour that we saw in our application. Without the ability to review a change log this becomes impossible.
+Without Resoto, you rely on your cloud provider for information. In many cases, cloud providers offer tools yielding at least some information:
 
-If you want to understand spikes in your cloud billing dashboard, you need to understand which resources have been created when and by whom. In this case you do not only want to be able to review all changes, but also to be able to filter, group and sort them by different criteria as well as aggregate them to get a better understanding of the overall picture.
+- [**AWS CloudTrail**](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html)
 
-If you want to check for security issues or compliance violations you would be able to reduce the amount of work to only those resources that have been created or updated. Even complex checks can be managed in large infrastructures, since the checks get applied only to the changed but not all resources.
+  > "AWS CloudTrail is an AWS service that helps you enable operational and risk auditing, governance, and compliance of your AWS account. Actions taken by a user, role, or an AWS service are recorded as events in CloudTrail. Events include actions taken in the AWS Management Console, AWS Command Line Interface, and AWS SDKs and APIs."
 
-Last but not least, you can think of history as a log of events that defines the infrastructure that you maintain. You want to keep this event log to be able to answer any question in the future retrospectively for the state of your infrastructure at any specific point in time. This is especially important for questions you will have tomorrow that you cannot even think of today.
+- [**Google Cloud Audit Logs**](https://cloud.google.com/logging/docs/audit)
+  > "Google Cloud services write audit logs that record administrative activities and accesses within your Google Cloud resources. Audit logs help you answer 'who did what, where, and when?' within your Google Cloud resources with the same level of transparency as in on-premises environments."
 
-## Existing capabilities of cloud providers
+These tools give insights into resource changes; but if your application is spread across different accounts or regions, it is tedious to gather the data. If you have resources in a Kubernetes cluster, cloud provider tools actually won't help at all, further increasing the amount of tedious, manual work. If you want to know how a resource was configured at a specific time, your only hope is that Kubernetes Deployments may have an answer based on the configured resource limit.
 
-Without Resoto you rely on your cloud provider to give you this kind of information. Most cloud providers offer tools yielding some (hopefully) helpful information:
+**Cloud providers do not offer a complete picture of the history of your infrastructure across accounts and regions, they cannot show a resource's configuration at a given point in time, and they completely ignore resources maintained in Kubernetes.**
 
-- AWS offers [Cloud Trail](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html). It positions itself like this:
-  > A service that helps you enable operational and risk auditing, governance, and compliance of your AWS account. Actions taken by a user, role, or an AWS service are recorded as events in CloudTrail. Events include actions taken in the AWS Management Console, AWS Command Line Interface, and AWS SDKs and APIs.
-- GCP offers [Cloud Audit Logs](https://cloud.google.com/logging/docs/audit). The description looks like this:
-  > Writes audit logs that record administrative activities and accesses within your Google Cloud resources. Audit logs help you answer "who did what, where, and when?"
-- If you have deployed your workload in Kubernetes, then there is no simple way to track the history of your definitions. Some resources like the Kubernetes deployment maintain a list of [revisions](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#checking-rollout-history-of-a-deployment), but this is not the case for all resources. There is no option out of the box to combine the list of changes inside Kubernetes together with the changes of the cloud infrastructure your Kubernetes cluster is running on.
+## Resoto's `history` Command
 
-All the existing tools give you some insights into when a resource has been changed by whom. If our application is spread across different accounts and regions, you will have a hard time to gather the data. If you run your cloud resources in a Kubernetes cluster the cloud providers will not help you at all, which means even more manual work. If you want to know how a resource configuration was defined at a specific moment in time, only Kubernetes Deployments might have an answer eventually based on the configured resource limit.
+**Resoto maintains a record of your resources in an asset inventory.** Resoto scrapes your infrastructure at regular intervals and tracks the configuration of collected resources. Whenever a change to a resource is detected, Resoto updates its internal representation of the resource and captures the change as an event in its database:
 
-Cloud providers do not give you a complete picture of the history of a cloud infrastructure (across accounts and regions). They can not show a resource configuration at a specific point in time, and they completely ignore resources maintained in Kubernetes.
+![Diagram illustrating how Resoto records resource changes](./img/history-events.svg)
 
-## Meet Resoto history
+Since Resoto does not rely on cloud providers to provide historical data but instead generates it from collected snapshot data, you can use Resoto to get the history of all your resources, no matter where they are running.
 
-Resoto maintains all your resources in an asset inventory. It scrapes your infrastructure continuously, and knows the configuration of any resource that is collected. Whenever the state of such a resource is identified as a change, the internal representation of this resource is updated. This change is captured as event in Resoto and stored inside the database. You can see the general idea in the following diagram:
+Each resource change falls into one of three categories:
 
-![History Events](./img/history-events.svg)
-
-Since this mechanism does not rely on any mechanism provided by the cloud provider but purely on the collected snapshot data, we can offer the same functionality for all cloud providers the same way. This means that you can use the same tool to get the history of your resources, no matter where they are running.
-
-Every resource change falls into the three categories:
-
-- `created` event: happens only once for any single resource when the resource gets created. Payload data is the configuration of the created resource.
-- `updated` event: can happen zero, one or multiple times and happens every time the resource changes. Payload data is the configuration of the updated resource.
-- `deleted` event: happens only once for any single resource when the resource gets deleted. Payload of the data is the configuration of the resource before it gets deleted.
+- `created`: happens only once for any single resource when the resource gets created. Payload data is the configuration of the created resource.
+- `updated`: can happen zero, one or multiple times and happens every time the resource changes. Payload data is the configuration of the updated resource.
+- `deleted`: happens only once for any single resource when the resource gets deleted. Payload of the data is the configuration of the resource before it gets deleted.
 
 It is possible to filter the list of events by event-type and time of change.
 
@@ -94,7 +93,7 @@ If we want to know how the configuration was defined at the moment of deletion, 
 ​    pod-template-hash: 5ff798987
 ​    resoto: core
 ​  pod_spec:
-​  --- cutted for brevity ---
+​...
 # highlight-end
 ```
 
@@ -161,7 +160,7 @@ Let us take the same changes again but this time aggregate the data by the owner
 ​group:
 ​  owner: team-cirrus
 ​  change: node_updated
-​--- cutted for brevity ---
+​...
 # highlight-end
 ```
 

@@ -337,6 +337,196 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </div>
 </details>
 
+## `aws_cloudfront_cache_policy`
+
+<ZoomPanPinch>
+
+![Diagram of aws_cloudfront_cache_policy data model](./img/aws_cloudfront_cache_policy.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_cloudfront_cache_policy resource relationships](./img/aws_cloudfront_cache_policy_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_cloudfront_distribution`
+
+<ZoomPanPinch>
+
+![Diagram of aws_cloudfront_distribution data model](./img/aws_cloudfront_distribution.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_cloudfront_distribution resource relationships](./img/aws_cloudfront_distribution_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_cloudfront_field_level_encryption_config`
+
+<ZoomPanPinch>
+
+![Diagram of aws_cloudfront_field_level_encryption_config data model](./img/aws_cloudfront_field_level_encryption_config.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_cloudfront_field_level_encryption_config resource relationships](./img/aws_cloudfront_field_level_encryption_config_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_cloudfront_field_level_encryption_profile`
+
+<ZoomPanPinch>
+
+![Diagram of aws_cloudfront_field_level_encryption_profile data model](./img/aws_cloudfront_field_level_encryption_profile.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_cloudfront_field_level_encryption_profile resource relationships](./img/aws_cloudfront_field_level_encryption_profile_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_cloudfront_function`
+
+<ZoomPanPinch>
+
+![Diagram of aws_cloudfront_function data model](./img/aws_cloudfront_function.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_cloudfront_function resource relationships](./img/aws_cloudfront_function_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_cloudfront_origin_access_control`
+
+<ZoomPanPinch>
+
+![Diagram of aws_cloudfront_origin_access_control data model](./img/aws_cloudfront_origin_access_control.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_cloudfront_origin_access_control resource relationships](./img/aws_cloudfront_origin_access_control_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_cloudfront_public_key`
+
+<ZoomPanPinch>
+
+![Diagram of aws_cloudfront_public_key data model](./img/aws_cloudfront_public_key.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_cloudfront_public_key resource relationships](./img/aws_cloudfront_public_key_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_cloudfront_realtime_log_config`
+
+<ZoomPanPinch>
+
+![Diagram of aws_cloudfront_realtime_log_config data model](./img/aws_cloudfront_realtime_log_config.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_cloudfront_realtime_log_config resource relationships](./img/aws_cloudfront_realtime_log_config_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_cloudfront_response_headers_policy`
+
+<ZoomPanPinch>
+
+![Diagram of aws_cloudfront_response_headers_policy data model](./img/aws_cloudfront_response_headers_policy.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_cloudfront_response_headers_policy resource relationships](./img/aws_cloudfront_response_headers_policy_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_cloudfront_streaming_distribution`
+
+<ZoomPanPinch>
+
+![Diagram of aws_cloudfront_streaming_distribution data model](./img/aws_cloudfront_streaming_distribution.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_cloudfront_streaming_distribution resource relationships](./img/aws_cloudfront_streaming_distribution_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
 ## `aws_cloudwatch_alarm`
 
 <ZoomPanPinch>

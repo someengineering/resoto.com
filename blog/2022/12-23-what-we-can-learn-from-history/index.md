@@ -45,17 +45,17 @@ These tools give insights into resource changes; but if your application is spre
 
 Since Resoto does not rely on cloud providers to provide historical data but instead generates it from collected snapshot data, you can use Resoto to get the history of all your resources, no matter where they are running.
 
-Each resource change falls into one of three categories:
+Resource changes fall into one of three categories:
 
-- `created`: happens only once for any single resource when the resource gets created. Payload data is the configuration of the created resource.
-- `updated`: can happen zero, one or multiple times and happens every time the resource changes. Payload data is the configuration of the updated resource.
-- `deleted`: happens only once for any single resource when the resource gets deleted. Payload of the data is the configuration of the resource before it gets deleted.
+| Event     | Description                      | Payload Data                                        |
+| --------- | -------------------------------- | --------------------------------------------------- |
+| `created` | A resource was created           | Configuration of the created resource               |
+| `updated` | An existing resource was changed | Configuration of the updated resource               |
+| `deleted` | A resource was deleted           | Configuration of the resource prior to its deletion |
 
-It is possible to filter the list of events by event-type and time of change.
+The [`history` command](/docs/reference/cli/search-commands/history) in Resoto supports filtering of events by type and time:
 
-Let us see this in action. The command in Resoto to access the history is called `history`. The simplest version of history can be invoked by defining the type and the time of change. The result will be a list of all matching changes for all cloud providers in all accounts and all regions.
-
-```bash title="List all reasource that have been deleted between 2022-12-02 and 2022-12-09"
+```bash title="List all reasource deleted between 2022-12-02 and 2022-12-09"
 > history --change node_deleted --after 2022-12-02 --before 2022-12-09
 # highlight-start
 ​change=node_deleted, changed_at=2022-12-03T16:02:17Z, kind=aws_iam_role, name=resoto-eks-stack, cloud=aws, account=prod, region=global
@@ -64,18 +64,18 @@ Let us see this in action. The command in Resoto to access the history is called
 # highlight-end
 ```
 
-Here we defined the absolute time for `before` and `after`. It is also possible to use relative time by defining durations, e.g. `2d` (2 days), `4h` (4 hours), `6m` (6 minutes) which can also be combined to something like `2d4h6m` (2 days and 4 hours and 6 minutes). We can use durations instead of absolute time to define the time of change, where the duration is subtracted from the current time.
+We defined the absolute times for the `before` and `after` filters, but could instead use duration strings (e.g., `2d` = 2 days, `4h` = 4 hours, `6m` = 6 minutes, `2d4h6m` = 2 days 4 hours 6 minutes) to specify relative times. Durations are subtracted from the current time:
 
-```bash title="List all reasource that have been deleted in the last 3 days"
+```bash title="List all reasource deleted in the last 3 days"
 > history --change node_deleted --after 3d
 # highlight-start
 ​change=node_deleted, changed_at=2022-12-07T16:37:12Z, kind=kubernetes_pod, name=resotocore, cloud=k8s, account=resoto, region=default
 # highlight-end
 ```
 
-If we want to know how the configuration was defined at the moment of deletion, we can pipe the result into the [`dump`](/docs/reference/cli/format-commands/dump) command. Since the complete configuration is part of any event, we can use this approach for any event, no matter which type of event or which time the resource changed.
+To retrieve the configuration of the deleted resource, we can pipe the result into the [`dump` command](/docs/reference/cli/format-commands/dump). Since the complete configuration is part of any event, we can use this approach for any event, no matter which type of event or which time the resource changed.
 
-```bash title="Show the last known configuration of resources that have been deleted"
+```bash title="Display last known configuration of deleted resources"
 > history --change node_deleted --after 3d | dump
 # highlight-start
 ​id: '4836788'
@@ -97,9 +97,9 @@ If we want to know how the configuration was defined at the moment of deletion, 
 # highlight-end
 ```
 
-Resoto comes with a powerful search DSL that allows filtering the resources that we maintain. The history command understands the same search syntax and can be used to filter the resulting list of changes even further. Let's filter the list of changes to only see resources of kind Kubernetes deployment that have the name `core` in their name:
+Resoto includes a powerful search DSL that allows filtering resources. The `history` command understands this search syntax and can perform further filtering. Let's filter to only list Kubernetes deployments with names including `core`:
 
-```bash title="List all changes to the k8s deployment of core after 2022-12-02"
+```bash title="List all changes to "core" Kubernetes deployments after 2022-12-02"
 > history --after 2022-12-02 is(kubernetes_deployment) and name~core
 # highlight-start
 change=node_updated, changed_at=2022-12-02T16:37:12Z, kind=kubernetes_deployment, name=resoto-resotocore, cloud=k8s, account=resoto, region=default
@@ -107,9 +107,11 @@ change=node_updated, changed_at=2022-12-04T00:02:21Z, kind=kubernetes_deployment
 # highlight-end
 ```
 
-You can not only filter the result, but also use any other command that is provided by Resoto, including `count` and `aggregation`. Let's assume we want to know which resource kinds have changed the most in the last week:
+You can not only apply filters, but you can also use any other Resoto command (e.g., [`count`](/docs/reference/cli/search-commands/count) and [`aggregate`](/docs/reference/cli/search-commands/aggregate)).
 
-```bash title="Which resource kinds have changed the most in the last week"
+If we want to know which resource kinds have changed the most in the last week, we could use the following command:
+
+```bash title="Counts of resource kinds changed in the last week"
 > history --after 7d | count kind
 # highlight-start
 ​aws_iam_access_key: 96
@@ -123,7 +125,7 @@ You can not only filter the result, but also use any other command that is provi
 # highlight-end
 ```
 
-It is also interesting to count the number of changes based on the type of change. Let's see how many resources have been created, updated or deleted in the last week:
+We can also count changes by type to see how many resources have been created, updated, and deleted in the last week:
 
 ```bash title="How many resources have been created, updated or deleted in the last week"
 > history --after 7d | count /change
@@ -136,9 +138,9 @@ It is also interesting to count the number of changes based on the type of chang
 # highlight-end
 ```
 
-Let us take the same changes again but this time aggregate the data by the owner of the resource and the kind of change. We assume that you have a proper tag policy in place, so that an owner of a resource can be identified by the owner tag. We will see which owner did the most changes and which kind of changes they did.
+We can even aggregate by resource owner and event type if you have a tagging policy in place where resources have `owner` tags:
 
-```bash title="Count the number of changes by owner in the last week"
+```bash title="Count changes in the last week by owner and type"
 > history --after 7d | aggregate tags.owner, /change: sum(1) as count
 # highlight-start
 ​count: 132
@@ -164,12 +166,16 @@ Let us take the same changes again but this time aggregate the data by the owner
 # highlight-end
 ```
 
-## Future plans
+## Looking Ahead
 
-We hope this feature is already useful for you. We are planning to extend the capabilities of the history feature in several ways. The straight forward extension is providing a diff view that shows exactly what has changed between two resource configurations. This way you would not only see what has changed plus the final configuration, but also the delta between the two configurations.
+We plan to continue improving upon and extending the capabilities of the `history` command.
 
-The other more involved feature is the ability to provide a complete snapshot of the state of your infrastructure at a specific point in time. We would love to hear from you, if this is something you would like to see in Resoto. Please join our [Discord](https://discord.gg/someengineering) and let us know what you think.
+For example, we would like to provide a "diff" view that shows the difference between two resource configurations, so that it is possible to not only see changes and their resulting configurations but also the delta of the before and after.
+
+The other feature we would like to introduce is the ability to generate a complete snapshot of the state of your infrastructure at a specific point in time from history data. If this is a feature you are interested in, we would love to get your input! Please join our [Discord](https://discord.gg/someengineering) and let us know what you think.
 
 ## Conclusion
 
-If you need more insights into who is changing your infrastructure, when, to which configuration across clouds, accounts, regions, Resoto is the right tool for you. Resoto is a free and open source tool that is available on [GitHub](https://github.com/someengineering/resoto). Please find installation instructions, tutorials and more in our [documentation](https://resoto.com).
+If you want insights into the who, what, when, and where of infrastructure changes across your clouds, accounts, and regions, why don't you give Resoto a try?
+
+Resoto is free and open-source. Check out the [docs](/docs) for install instructions, how-to guides, and more!

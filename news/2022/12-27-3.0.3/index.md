@@ -6,9 +6,12 @@ tags: [release notes]
 
 ## What's Changed
 
-### Chores
+### Fixes
 
 - [`bcb4e921`](https://github.com/someengineering/resoto/commit/bcb4e921) <span class="badge badge--secondary">resoto</span> Add files required to run setup (#1362)
+
+### Chores
+
 - [`78ffc86c`](https://github.com/someengineering/resoto/commit/78ffc86c) <span class="badge badge--secondary">resoto</span> Bump 3.0.3 (#1360)
 
 <!--truncate-->

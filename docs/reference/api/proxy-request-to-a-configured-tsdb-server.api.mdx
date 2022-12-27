@@ -8,13 +8,14 @@ hide_table_of_contents: true
 api: {"parameters":[{"name":"path","description":"Note: swagger does not allow to define a nested path with slashes.","in":"path","required":true,"schema":{"type":"string","example":"api/v1/metadata"}}],"tags":["tsdb"],"responses":{"404":{"description":"If the response is coming from Resoto (no ResotoVia header), this means that tsdb is not configured, so a request can not be made.","content":{"text/plain":{"schema":{"type":"string","example":"404: No tsdb defined. No tsdb defined. Adjust resoto.core configuration."}}}},"502":{"description":"If the response is coming from Resoto (no ResotoVia header), this means that the configured tsdb server can not be reached.","content":{"text/plain":{"schema":{"type":"string","example":"502. tsdb server is not reachable"}}}},"default":{"headers":{"ViaResoto":{"description":"This header indicates, that the response is created by the tsdb server and Resoto is only a proxy.\nDepending on this header: you have to interpret the response differently.\n","schema":{"type":"string","example":"1.1 node1"}}},"description":"The response from the tsdb."}},"description":"Proxy request to a configured tsdb server.","method":"get","path":"/tsdb/{path}","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Resoto Core REST API","version":"V1"},"postman":{"name":"Proxy request to a configured tsdb server.","description":{"type":"text/plain"},"url":{"path":["tsdb",":path"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) Note: swagger does not allow to define a nested path with slashes.","type":"text/plain"},"type":"any","value":"","key":"path"}]},"header":[{"key":"Accept","value":"text/plain"}],"method":"GET"}}
 sidebar_class_name: "get api-method"
 info_path: docs/reference/api/resoto-core-rest-api
+custom_edit_url: null
 ---
 
 import ApiTabs from "@theme/ApiTabs";
 import MimeTabs from "@theme/MimeTabs";
 import ParamsItem from "@theme/ParamsItem";
 import ResponseSamples from "@theme/ResponseSamples";
-import SchemaItem from "@theme/SchemaItem"
+import SchemaItem from "@theme/SchemaItem";
 import SchemaTabs from "@theme/SchemaTabs";
 import DiscriminatorTabs from "@theme/DiscriminatorTabs";
 import TabItem from "@theme/TabItem";

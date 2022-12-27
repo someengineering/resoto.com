@@ -11,7 +11,7 @@ pagination_next: getting-started/configure-cloud-provider-access/index
 import DocCardList from '@theme/DocCardList';
 ```
 
-Resoto can be deployed to [Amazon Web Services](./aws/index.md) or installed via [Docker](./docker.md), [Kubernetes](./kubernetes.md), or [pip](./pip.md).
+Resoto can be deployed to [Amazon Web Services](./aws.md) or installed via [Docker](./docker.md), [Kubernetes](./kubernetes.md), or [pip](./pip.md).
 
 :::info
 

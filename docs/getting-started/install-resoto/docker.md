@@ -116,6 +116,20 @@ Resoto performs CPU-intensive graph operations. In a production setup, we recomm
 
    </VersionOnly>
 
+## Launching the Web UI
+
+1. Resoto UI listens on port `8900` by default. You can access it by opening <https://localhost:8900> in your browser.
+
+   :::note
+
+   The SSL certificate is self-signed, but you can safely ignore any browser warnings.
+
+   :::
+
+2. If it is your first time starting Resoto UI, the setup wizard will appear and help you configure Resoto:
+
+   ![Screenshot of Resoto UI](./img/resoto-ui.png)
+
 ## Launching the Command-Line Interface
 
 The `resh` command is used to interact with [`resotocore`](../../concepts/components/core.md).

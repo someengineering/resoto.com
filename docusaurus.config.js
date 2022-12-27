@@ -6,6 +6,7 @@ const oembed = require('remark-plugin-oembed');
 
 const latestRelease = require('./latestRelease.json');
 const versions = require('./versions.json');
+const keywords = require('./keywords.json');
 
 const isProd =
   process.env.NODE_ENV !== 'development' &&
@@ -15,7 +16,7 @@ const isProd =
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Resoto by Some Engineering Inc.',
-  tagline: 'Cloud infrastructure intelligence and automation for humans',
+  tagline: 'Data integration for infrastructure engineers',
   url: 'https://resoto.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -120,6 +121,16 @@ const config = {
     ],
   ],
   plugins: [
+    function customWebpackConfig() {
+      return {
+        name: 'custom-webpack-config',
+        configureWebpack: () => ({
+          module: {
+            rules: [{ test: /\.cast$/, use: 'url-loader' }],
+          },
+        }),
+      };
+    },
     [
       '@docusaurus/plugin-content-blog',
       {
@@ -173,7 +184,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       image:
-        'https://resoto-og-image.vercel.app/Cloud%20infrastructure%20intelligence%20and%20automation%20for%20**humans**.png?md=1',
+        'https://resoto-og-image.vercel.app/Sync%20infrastructure%20data%20to%20a%20**single%20place**..png?md=1',
       docs: {
         sidebar: {
           autoCollapseCategories: true,
@@ -182,9 +193,13 @@ const config = {
       },
       metadata: [
         {
-          name: 'keywords',
+          name: 'description',
           content:
-            'resoto, some engineering, sre, cloud, cloud services, cloud providers, aws, amazon web services, gcp, google cloud platform, azure, digitalocean, digital ocean, docker, kubernetes, k8s, devops, prometheus, infrastructure, resource tool, multicloud, metrics, python, terraform, vmware, vsphere, finops, risotto',
+            'Resoto consolidates resource data across your clouds, regions, and accounts. Open source and free to use.',
+        },
+        {
+          name: 'keywords',
+          content: keywords.join(','),
         },
       ],
       tableOfContents: {
@@ -207,15 +222,46 @@ const config = {
           src: 'img/navbar-logo.svg',
         },
         items: [
-          { to: '/news', label: 'News', position: 'right' },
-          { to: '/blog', label: 'Blog', position: 'right' },
-          { to: '/about', label: 'About', position: 'right' },
           {
-            to: '/docs',
-            label: 'Documentation',
+            label: 'Products',
             position: 'right',
             type: 'dropdown',
             items: [
+              {
+                label: 'Cloud2SQL',
+                to: '/cloud2sql',
+              },
+              {
+                label: 'Resoto',
+                to: '/resoto',
+              },
+            ],
+          },
+          { to: '/news', label: 'News', position: 'right' },
+          { to: '/blog', label: 'Blog', position: 'right' },
+          {
+            label: 'Docs',
+            position: 'right',
+            type: 'dropdown',
+            items: [
+              {
+                type: 'html',
+                value:
+                  '<strong style="display: block; margin-top: 0.2rem; padding: 0.25rem 0.5rem; font-size: 1rem;">Cloud2SQL</strong>',
+              },
+              {
+                label: 'Installation',
+                to: 'https://github.com/someengineering/cloud2sql#installation',
+              },
+              {
+                label: 'Usage',
+                to: 'https://github.com/someengineering/cloud2sql#usage',
+              },
+              {
+                type: 'html',
+                value:
+                  '<strong style="display: block; margin-top: 0.5rem; padding: 0.25rem 0.5rem; font-size: 1rem;">Resoto</strong>',
+              },
               {
                 label: 'Getting Started',
                 to: '/docs/getting-started',
@@ -238,6 +284,7 @@ const config = {
               },
             ],
           },
+          { to: '/about', label: 'About', position: 'right' },
           {
             label: 'GitHub',
             href: 'https://github.com/someengineering/resoto',
@@ -265,7 +312,20 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Documentation',
+            title: 'Products',
+            items: [
+              {
+                label: 'Cloud2SQL',
+                to: '/cloud2sql',
+              },
+              {
+                label: 'Resoto',
+                to: '/resoto',
+              },
+            ],
+          },
+          {
+            title: 'Resoto Docs',
             items: [
               {
                 label: 'Getting Started',
@@ -324,10 +384,6 @@ const config = {
               {
                 label: 'Blog',
                 to: '/blog',
-              },
-              {
-                label: 'Support',
-                to: '/support',
               },
               {
                 label: 'Logos',

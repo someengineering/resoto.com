@@ -5,6 +5,9 @@ https://docs.resoto.com/*                                         https://resoto
 https://documentation.resoto.com/*                                https://resoto.com/docs/:splat 301!
 https://news.resoto.com/*                                         https://resoto.com/news/:splat 301!
 
+https://cloud2sql.com/*                                           https://resoto.com/cloud2sql/:splat 301!
+https://cloud2sql.resoto.com/*                                    https://resoto.com/cloud2sql/:splat 301!
+
 /js/script.js                                                     https://plausible.io/js/script.js 200
 /api/event                                                        https://plausible.io/api/event 200
 
@@ -40,14 +43,19 @@ https://news.resoto.com/*                                         https://resoto
 /contributing/docs                                                /docs/contributing/documentation
 /contributing/*                                                   /docs/contributing/:splat
 
+/docs/getting-started/install-resoto/aws/cdk                      /docs/getting-started/install-resoto/aws
+/docs/getting-started/install-resoto/aws/cloudformation           /docs/getting-started/install-resoto/aws
+
 /docs/getting-started/installation/docker                         /docs/getting-started/install-resoto/docker
 /docs/getting-started/docker                                      /docs/getting-started/install-resoto/docker
 /docs/getting-started/installing-with-docker                      /docs/getting-started/install-resoto/docker
+
 /docs/getting-started/installation/kubernetes                     /docs/getting-started/install-resoto/kubernetes
 /docs/getting-started/kubernetes                                  /docs/getting-started/install-resoto/kubernetes
 /docs/getting-started/k8s                                         /docs/getting-started/install-resoto/kubernetes
 /docs/getting-started/installing-with-kubernetes                  /docs/getting-started/install-resoto/kubernetes
 /docs/getting-started/installing-with-k8s                         /docs/getting-started/install-resoto/kubernetes
+
 /docs/getting-started/installation/pip                            /docs/getting-started/install-resoto/pip
 /docs/getting-started/pip                                         /docs/getting-started/install-resoto/pip
 /docs/getting-started/python                                      /docs/getting-started/install-resoto/pip

@@ -8,13 +8,14 @@ hide_table_of_contents: true
 api: {"description":"**Experimental**: This API is not stable and might be subject of change.<br/>\nDelete a configuration identified by id with provided value.\n","tags":["config"],"parameters":[{"name":"config_id","in":"path","required":true,"description":"the identifier of the config to get.","schema":{"type":"string"}}],"responses":{"204":{"description":"Signals success of this operation."}},"method":"delete","path":"/config/{config_id}","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Resoto Core REST API","version":"V1"},"postman":{"name":"Delete a configuration by its id","description":{"content":"**Experimental**: This API is not stable and might be subject of change.<br/>\nDelete a configuration identified by id with provided value.\n","type":"text/plain"},"url":{"path":["config",":config_id"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) the identifier of the config to get.","type":"text/plain"},"type":"any","value":"","key":"config_id"}]},"method":"DELETE"}}
 sidebar_class_name: "delete api-method"
 info_path: versioned_docs/version-2.X/reference/api/resoto-core-rest-api
+custom_edit_url: null
 ---
 
 import ApiTabs from "@theme/ApiTabs";
 import MimeTabs from "@theme/MimeTabs";
 import ParamsItem from "@theme/ParamsItem";
 import ResponseSamples from "@theme/ResponseSamples";
-import SchemaItem from "@theme/SchemaItem"
+import SchemaItem from "@theme/SchemaItem";
 import SchemaTabs from "@theme/SchemaTabs";
 import DiscriminatorTabs from "@theme/DiscriminatorTabs";
 import TabItem from "@theme/TabItem";

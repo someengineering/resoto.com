@@ -8,13 +8,14 @@ hide_table_of_contents: true
 api: {"tags":["system"],"responses":{"200":{"description":"This response code signals, that the system is ready.","content":{"text/plain":{"schema":{"type":"string","example":"200: OK"}}}}},"description":"This endpoint signals if the system is ready to serve traffic.","method":"get","path":"/system/ready","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Resoto Core REST API","version":"V1"},"postman":{"name":"This endpoint signals if the system is ready to serve traffic.","description":{"type":"text/plain"},"url":{"path":["system","ready"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"key":"Accept","value":"text/plain"}],"method":"GET"}}
 sidebar_class_name: "get api-method"
 info_path: docs/reference/api/resoto-core-rest-api
+custom_edit_url: null
 ---
 
 import ApiTabs from "@theme/ApiTabs";
 import MimeTabs from "@theme/MimeTabs";
 import ParamsItem from "@theme/ParamsItem";
 import ResponseSamples from "@theme/ResponseSamples";
-import SchemaItem from "@theme/SchemaItem"
+import SchemaItem from "@theme/SchemaItem";
 import SchemaTabs from "@theme/SchemaTabs";
 import DiscriminatorTabs from "@theme/DiscriminatorTabs";
 import TabItem from "@theme/TabItem";

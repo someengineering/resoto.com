@@ -49,18 +49,22 @@ function CardLayout({
 }): JSX.Element {
   return (
     <CardContainer href={href} className={className}>
-      <h2 className={clsx('text--truncate', styles.cardTitle)} title={title}>
-        {className?.includes('api-method') ? null : <>{icon} </>}
-        <span className="text--truncate">{title}</span>
-      </h2>
-      {description && (
-        <p
-          className={clsx('text--truncate', styles.cardDescription)}
-          title={description}
-        >
-          {description}
-        </p>
+      {className?.includes('api-method') ? null : (
+        <div className={styles.cardIcon}>{icon}</div>
       )}
+      <div>
+        <h2 className={styles.cardTitle} title={title}>
+          {title}
+        </h2>
+        {description && (
+          <p
+            className={clsx('text--truncate', styles.cardDescription)}
+            title={description}
+          >
+            {description}
+          </p>
+        )}
+      </div>
     </CardContainer>
   );
 }

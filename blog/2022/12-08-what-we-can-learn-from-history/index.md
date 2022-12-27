@@ -42,7 +42,7 @@ Cloud providers do not give you a complete picture of the history of a cloud inf
 
 Resoto maintains all your resources in an asset inventory. It scrapes your infrastructure continuously, and knows the configuration of any resource that is collected. Whenever the state of such a resource is identified as a change, the internal representation of this resource is updated. This change is captured as event in Resoto and stored inside the database. You can see the general idea in the following diagram:
 
-![History Events](./img/history-events.svg)
+![History Events](./img/history-events.png)
 
 Since this mechanism does not rely on any mechanism provided by the cloud provider but purely on the collected snapshot data, we can offer the same functionality for all cloud providers the same way. This means that you can use the same tool to get the history of your resources, no matter where they are running.
 

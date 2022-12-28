@@ -41,7 +41,7 @@ These tools give insights into resource changes; but if your application is spre
 
 **Resoto maintains a record of your resources in an asset inventory.** Resoto scrapes your infrastructure at regular intervals and tracks the configuration of collected resources. Whenever a change to a resource is detected, Resoto updates its internal representation of the resource and captures the change as an event in its database:
 
-![Diagram illustrating how Resoto records resource changes](./img/history-events.svg)
+![Diagram illustrating how Resoto records resource changes](./img/history-events.png)
 
 Since Resoto does not rely on cloud providers to provide historical data but instead generates it from collected snapshot data, you can use Resoto to get the history of all your resources, no matter where they are running.
 

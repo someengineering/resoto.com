@@ -60,7 +60,7 @@
     "@tsconfig/docusaurus": "1.0.6",
     "@types/node-fetch": "2.6.2",
     "@typescript-eslint/eslint-plugin": "5.47.1",
-    "@typescript-eslint/parser": "5.47.1",
+    "@typescript-eslint/parser": "5.48.0",
     "asciinema-player": "3.0.1",
     "commitizen": "4.2.6",
     "eslint": "8.30.0",

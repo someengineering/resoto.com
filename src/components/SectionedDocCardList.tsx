@@ -29,11 +29,8 @@ export default function SectionedDocCardList(props: Props): JSX.Element {
       />
       {filteredItems.map((item, index) =>
         item.type === 'category' ? (
-          <>
-            <h2
-              key={index}
-              className="anchor anchorWithHideOnScrollNavbar_node_modules-@docusaurus-theme-classic-lib-theme-Heading-styles-module"
-            >
+          <div key={index}>
+            <h2 className="anchor anchorWithHideOnScrollNavbar_node_modules-@docusaurus-theme-classic-lib-theme-Heading-styles-module">
               {item.label}
               <a
                 className="hash-link"
@@ -44,7 +41,7 @@ export default function SectionedDocCardList(props: Props): JSX.Element {
               </a>
             </h2>
             <DocCardList items={item.items} className={className} />
-          </>
+          </div>
         ) : null
       )}
     </>

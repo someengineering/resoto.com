@@ -16,6 +16,7 @@ https://cloud2sql.resoto.com/*                                    https://resoto
 /blog/2022/05/31/resotonotebook                                   /blog/2022/05/31/resoto-meets-jupyter-notebook
 /blog/2022/06/06/cloud-infrastructure-metrics                     /blog/2022/06/09/building-actionable-cloud-infrastructure-metrics
 
+/docs/concepts/components/plugins/protect_snowflakes              /docs/concepts/components/plugins/protector
 /docs/concepts/components/resotolib                               /docs/concepts/components/library
 /docs/concepts/components/resh                                    /docs/concepts/components/shell
 /docs/concepts/components/resoto*                                 /docs/concepts/components/:splat
@@ -121,6 +122,7 @@ https://cloud2sql.resoto.com/*                                    https://resoto
 /docs/reference/cli/set_desired                                   /docs/reference/cli/action-commands/set_desired
 /docs/reference/cli/set_metadata                                  /docs/reference/cli/action-commands/set_metadata
 /docs/reference/cli/tag/*                                         /docs/reference/cli/action-commands/tag/:splat
+/docs/reference/cli/start_task                                    /docs/reference/cli/action-commands/workflows/run
 /docs/reference/cli/workflow/*                                    /docs/reference/cli/action-commands/workflows/:splat
 /docs/reference/cli/action-commands/workflow/*                    /docs/reference/cli/action-commands/workflows/:splat
 /docs/reference/cli/workflows/*                                   /docs/reference/cli/action-commands/workflows/:splat
@@ -190,6 +192,7 @@ https://cloud2sql.resoto.com/*                                    https://resoto
 /documentation/*                                                  /docs/:splat
 /docs/edge/*                                                      /docs/:splat
 
+/news/:year/:month/:date/v2.0.0*                                  /news/2022/04/12/2.0.0
 /news/:year/:month/:date/v*                                       /news/:year/:month/:date/:splat
 
 /news/2022/03/24/community-hour-event                             /news/2022/03/24/march-april-community-hour-event
@@ -198,3 +201,5 @@ https://cloud2sql.resoto.com/*                                    https://resoto
 
 /release/*                                                        /news/:splat
 /releases/*                                                       /news/:splat
+
+/support/*                                                        /docs

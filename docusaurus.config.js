@@ -87,6 +87,9 @@ const config = {
                   )
                     ? latestRelease[version].version
                     : version,
+                  ...(version === versions[0]
+                    ? null
+                    : { path: `/${version.toLowerCase()}` }),
                 },
               }))
               .reduce((acc, cur) => ({ ...acc, ...cur }), {}),
@@ -201,6 +204,7 @@ const config = {
           name: 'keywords',
           content: keywords.join(','),
         },
+        { property: 'og:type', content: 'website' },
       ],
       tableOfContents: {
         minHeadingLevel: 2,

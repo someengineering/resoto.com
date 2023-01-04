@@ -54,8 +54,8 @@
     "yup": "0.32.11"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.3.0",
-    "@commitlint/config-conventional": "17.3.0",
+    "@commitlint/cli": "17.4.0",
+    "@commitlint/config-conventional": "17.4.0",
     "@docusaurus/module-type-aliases": "2.2.0",
     "@tsconfig/docusaurus": "1.0.6",
     "@types/node-fetch": "2.6.2",

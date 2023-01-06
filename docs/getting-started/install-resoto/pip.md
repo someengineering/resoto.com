@@ -34,12 +34,6 @@ The below instructions will install the latest stable version of Resoto (<Latest
 - [Prometheus](https://prometheus.io) 2.35.0+
 - At least 2 CPU cores and 8 GB of RAM
 
-:::note
-
-Resoto performs CPU-intensive graph operations. In a production setup, we recommend running `resotocore` using [the PyPy Python interpreter](https://www.pypy.org/). On average, PyPy is 4.5 times faster than CPython (the reference Python implementation). When using Resoto in Docker we are already shipping it with PyPy by default.
-
-:::
-
 ## Installing Resoto
 
 Resoto consists of multiple [components](../../concepts/components/index.md) that are published as individual Python packages:
@@ -48,7 +42,11 @@ Resoto consists of multiple [components](../../concepts/components/index.md) tha
 2. [📦](https://pypi.org/project/resotoworker/) `resotoworker` collects infrastructure data from the cloud provider APIs.
 3. [📦](https://pypi.org/project/resotometrics/) `resotometrics` exports metrics in Prometheus format.
 4. [📦](https://pypi.org/project/resotoshell/) `resotoshell` is the command-line interface (CLI) used to interact with Resoto.
-5. [📦](https://pypi.org/project/resoto-plugins/) `resoto-plugins` a collection of worker plugins.
+5. A list of collector plugins. In this guide we will install the most prominent collector plugins. See this [list](https://github.com/someengineering/resoto/tree/main/plugins) for an overview of all available plugins.
+   1. [📦](https://pypi.org/project/resoto-plugin-aws/) `resoto-plugin-aws` collects data from AWS.
+   1. [📦](https://pypi.org/project/resoto-plugin-gcp/) `resoto-plugin-gcp` collects data from GCP.
+   1. [📦](https://pypi.org/project/resoto-plugin-k8s/) `resoto-plugin-k8s` collects data from Kubernetes.
+   1. [📦](https://pypi.org/project/resoto-plugin-digitalocean/) `resoto-plugin-digitalocean` collects data from DigitalOcean.
 
 ```bash title="Installing Resoto using pip"
 $ mkdir -p ~/resoto
@@ -56,7 +54,7 @@ $ cd ~/resoto
 $ python3 -m venv resoto-venv      # Create a virtual Python environment.
 $ source resoto-venv/bin/activate  # Activate the virtual Python environment.
 $ python -m ensurepip --upgrade    # Ensure pip is available.
-$ pip install -U resotocore=={{nonEdgeImageTag}} resotoworker=={{nonEdgeImageTag}} resotometrics=={{nonEdgeImageTag}} resotoshell=={{nonEdgeImageTag}} resoto-plugins=={{nonEdgeImageTag}}
+$ pip install -U resotocore=={{nonEdgeImageTag}} resotoworker=={{nonEdgeImageTag}} resotometrics=={{nonEdgeImageTag}} resotoshell=={{nonEdgeImageTag}} resoto-plugin-aws=={{nonEdgeImageTag}} resoto-plugin-gcp=={{nonEdgeImageTag}} resoto-plugin-k8s=={{nonEdgeImageTag}} resoto-plugin-digitalocean=={{nonEdgeImageTag}}
 # Generate two random passphrases. One to secure the graph database and one to secure resotocore with.
 $ echo $(LC_ALL=C tr -dc _A-Z-a-z-0-9 < /dev/urandom | head -c 20) > .graphdb-password
 $ echo $(LC_ALL=C tr -dc _A-Z-a-z-0-9 < /dev/urandom | head -c 20) > .pre-shared-key
@@ -82,6 +80,18 @@ This will start ArangoDB on the current shell which is useful for testing. Once 
 
 Read the section [Securing ArangoDB](../../concepts/security.md#custom-certificates) for details on how to generate certificates and encrypt the connection between Resoto Core and the graph database.
 
+## Installing the WebUI
+
+A copy'paste ready snippet to download an extract the UI locally.
+
+```bash
+$ mkdir -p ~/resoto/ui
+$ cd ~/resoto
+$ curl -L -o ui.tar.gz https://cdn.some.engineering/resoto-ui/releases/3.0.2.tar.gz
+$ tar xzf ui.tar.gz -C ui
+$ rm -f ui.tar.gz
+```
+
 ## Running Resoto
 
 Create multiple shells/tabs and run each component in a separate shell:
@@ -93,7 +103,7 @@ Create multiple shells/tabs and run each component in a separate shell:
 $ graphdb_password=$(< ~/resoto/.graphdb-password)
 $ pre_shared_key=$(< ~/resoto/.pre-shared-key)
 $ source ~/resoto/resoto-venv/bin/activate
-$ resotocore --graphdb-password "$graphdb_password" --graphdb-server http://localhost:8529 --psk "$pre_shared_key"
+$ resotocore --graphdb-password "$graphdb_password" --graphdb-server http://localhost:8529 --psk "$pre_shared_key" --ui-path ~/resoto/ui
 ```
 
 [Resoto Core](../../concepts/components/core.md) only listens on `localhost:8900` by default. [Resoto Core](../../concepts/components/core.md) can be [configured to listen on all interfaces](../../reference/configuration/core.md#network-interfaces) if desired.

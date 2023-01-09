@@ -29,7 +29,7 @@ Resoto will add a synthetic `id` property to each node, that is globally unique,
 > search name=~"my-.*" and age>30d
 ```
 
-In order to filter for specific attributes of a node, it is possible to define predicates. A predicate always has the syntax: `<property_path> <operation> <value>` (e.g. `answer!=42`).
+In order to filter for specific attributes of a node, it is possible to define predicates. A predicate always has the syntax `<property_path> <operation> <value>` (e.g., `answer != 42`).
 
 ### Property Path
 
@@ -210,9 +210,13 @@ It is possible to negate a simple predicate or more complex term with `not`.
 
 :::
 
-### Nested Predicates inside arrays
+## Nested Predicates
 
-There are entities that contain complex structures that are deeply nested. Without arrays you can define the exact path to a deeply nested property. This is also possible with arrays, if you know the exact position of the element in the array. Sometimes we want to match multiple properties of an array element, where we do not know the exact position upfront. If you need to combine several predicates for nested array elements it is not sufficient to combine multiple predicates using the `[*]` access, since there is no way to define the same position for all predicates. You can achieve this with context notation as we can see in the following example:
+There are entities that contain complex, deeply nested structures. As explained above, you can [reference a nested property using its path](#property-path) and [access specific array elements using index notation](#arrays). But what if we don't know the position of the target element in the array, or want to match multiple properties of an array element?
+
+If you need to combine several predicates for nested array elements, it is not sufficient to combine multiple predicates using `[*]` since there is no way to define the same position for all predicates. However, this is achievable using context notation.
+
+:::tip Example
 
 ```json title="Example document showing the data of an AWS security gateway"
 {
@@ -242,11 +246,11 @@ There are entities that contain complex structures that are deeply nested. Witho
 }
 ```
 
-We want to select resources that allow ssh access (port 22) from everywhere on the internet. By matching:
+We want to select resources that allow SSH access (port 22) from everywhere on the internet by matching:
 
-- `from_port >= 22`
-- `to_port <= 22`
-- and at least one `cidr` that contains `0.0.0.0`.
+- `from_port >= 22`,
+- `to_port <= 22`, and
+- at least one `cidr` that contains `0.0.0.0`.
 
 ```bash title="This query will not do what we want!"
 > search group_ip_permissions[*].from_port>=22 and group_ip_permissions[*].to_port<=22 and group_ip_permissions[*].ip_ranges[*].cidr_ip~"0.0.0.0"
@@ -258,27 +262,33 @@ A simple combination of the same properties is not sufficient. It would eventual
 > search group_ip_permissions[*].{from_port>=22, to_port<=22, ip_ranges[*].cidr_ip~"0.0.0.0"}
 ```
 
-Resoto comes with a handy context notation, that allows us to define the same position for all predicates. It combines several predicates into a single term, which needs to be matched in a nested structure. The path to this structure is defined by a path which can contain arrays that use the wildcard index `[*]` to match any position. This way we will look for objects inside the `group_ip_permissions` array that match all three criteria we have defined.
+:::
 
-General syntax of the context notation is:
+Resoto supports context notation, which allows us to reference a single position in all predicates. Context notation combines several predicates into a single term which is matched to a nested structure. The path to this structure is defined by a path which can contain arrays that use the wildcard index `[*]`.
+
+The syntax of context notation is:
 
 ```bash title="Context notation"
 path.to[*].nested.structure[*].{predicate1, predicate2, ....}
 ```
 
-It is also possible to nest a context inside each other.
+It is also possible to nest a context within another:
 
 ```bash title="Nested context notation"
 path[*].{predicate1, nested[*].{predicate2, ...}, ...}
 ```
 
-Here is an example of a nested context notation using the example JSON document above:
+:::tip Example
+
+Here is another example of context notation using the example JSON document above:
 
 ```bash title="Example with nested context"
 > search group_ip_permissions[*].{from_port>=22, to_port<=22, ip_ranges[*].{cidr_ip~"0.0.0.0" or description~"Office access"}}
 ```
 
-With context notation you can match deeply nested objects by describing the structure and the predicates that should be matched in a single term. The nested context notation is not limited to arrays, but here they are very useful in combination with the wildcard index `[*]`.
+:::
+
+With context notation you can match deeply nested objects by describing the structure and the predicates that should be matched in a single term. The nested context notation is not limited to arrays, but they are useful in combination with the wildcard index `[*]`.
 
 ## Property Sections
 
@@ -312,24 +322,32 @@ Values coming from the cloud provider are available in the `reported` section, a
 > search cpu_count > 3 and /ancestors.account.reported.name=="123"
 ```
 
-## Selecting Nodes with a specific property key
+## Selecting Nodes by Property Key
 
 Nodes can be selected based on the fact that a specific property exists, no matter which value this property has. The `has_key(parent, property)` function will select all nodes where the property `parent` has property `property`.
 
-Example: We want to find all volumes that are tagged with the tag `owner`.
+:::tip Example
+
+We want to find all volumes that are tagged with the tag `owner`.
 
 ```bash title="Select all volumes that are tagged with the tag owner"
 > search is(volume) and has_key(tags, owner)
 ```
 
-Note: we could have used the search `search is(volume) and tags.owner!=null` instead. This would select all volumes with an owner tag, where the owner tag is not null. The `has_key` function ignores the value of the property and only returns if the property exists.
+(**Note:** We could have used the search `search is(volume) and tags.owner!=null` instead. This would select all volumes with an owner tag, where the owner tag is not null. The `has_key` function ignores the value of the property and only returns if the property exists.)
 
-## Selecting Nodes by IPV4 addresses in a certain subnet range
+:::
 
-For resources with IPV4 addresses, it is possible to select nodes in a specific subnet range. The function `in_subnet(ipv4_property, cidr)` will select all nodes where the property `ipv4_property` is in the subnet range `cidr`.
+## Selecting Nodes by IPv4 Address
 
-Example: We want to find all load balancer, where the public ipv4 address is in the subnet range `167.123.0.0/16`.
+For resources with IPv4 addresses, it is possible to select nodes in a specific subnet range. The function `in_subnet(ipv4_property, cidr)` will select all nodes where the property `ipv4_property` is in the subnet range `cidr`.
+
+:::tip Example
+
+We want to find all load balancer, where the public IPv4 address is in the subnet range `167.123.0.0/16`.
 
 ```bash title="Select all load balancers in a specific subnet range"
 > search is(load_balancer) and in_subnet(public_ip_address, "167.123.0.0/16")
 ```
+
+:::

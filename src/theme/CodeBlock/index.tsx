@@ -31,7 +31,13 @@ export default function CodeBlock(props: Props): JSX.Element {
           /{{nonEdgeImageTag}}/g,
           versionTag ?? latestRelease[versions[0]].version
         )
-        .replace(/{{repoBranch}}/g, versionTag ?? 'main')}
+        .replace(/{{repoBranch}}/g, versionTag ?? 'main')
+        .replace(
+          /{{dockerComposeUrl}}/g,
+          versionTag
+            ? `https://github.com/someengineering/resoto/releases/download/${versionTag}/docker-compose.yaml`
+            : 'https://raw.githubusercontent.com/someengineering/resoto/main/docker-compose.yaml'
+        )}
     </OriginalCodeBlock>
   );
 }

@@ -40,27 +40,12 @@ Resoto performs CPU-intensive graph operations. In a production setup, we recomm
 
 1. Fetch the required files from the [`someengineering/resoto` GitHub repository](https://github.com/someengineering/resoto):
 
-   <Tabs>
-   <TabItem value="curl" label="curl">
-
    ```bash
    $ mkdir -p resoto/dockerV2
    $ cd resoto
-   $ curl -o docker-compose.yaml https://raw.githubusercontent.com/someengineering/resoto/{{repoBranch}}/docker-compose.yaml
+   $ curl -o docker-compose.yaml {{dockerComposeUrl}}
    $ curl -o dockerV2/prometheus.yml https://raw.githubusercontent.com/someengineering/resoto/{{repoBranch}}/dockerV2/prometheus.yml
    ```
-
-   </TabItem>
-   <TabItem value="git" label="git">
-
-   ```bash
-   $ git clone https://github.com/someengineering/resoto.git
-   $ cd resoto
-   $ git checkout tags/{{repoBranch}}
-   ```
-
-   </TabItem>
-   </Tabs>
 
    :::note
 

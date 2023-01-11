@@ -1,7 +1,6 @@
-import useIsBrowser from '@docusaurus/useIsBrowser';
 import clsx from 'clsx';
 import { useFormik } from 'formik';
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Honeypot,
   NetlifyFormComponent,
@@ -12,8 +11,6 @@ import * as Yup from 'yup';
 import styles from './index.module.css';
 
 export default function NewsletterSignupForm(): JSX.Element {
-  const isBrowser = useIsBrowser();
-
   const netlify = useNetlifyForm({
     name: 'newsletter-signup',
     honeypotName: 'bot-field',
@@ -27,7 +24,7 @@ export default function NewsletterSignupForm(): JSX.Element {
     useFormik({
       initialValues: {
         email: '',
-        referrer_url: isBrowser ? window.location.href : '',
+        referrer_url: '',
       },
       onSubmit: (values) => netlify.handleSubmit(null, values),
       validationSchema: Yup.object().shape({
@@ -37,6 +34,10 @@ export default function NewsletterSignupForm(): JSX.Element {
           .email('Please provide a valid email address'),
       }),
     });
+
+  useEffect(() => {
+    values.referrer_url = window.location.href;
+  }, []);
 
   return (
     <NetlifyFormProvider {...netlify}>

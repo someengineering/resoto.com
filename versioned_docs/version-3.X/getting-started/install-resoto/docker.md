@@ -43,8 +43,8 @@ Resoto performs CPU-intensive graph operations. In a production setup, we recomm
    ```bash
    $ mkdir -p resoto/dockerV2
    $ cd resoto
-   $ curl -o docker-compose.yaml {{dockerComposeUrl}}
-   $ curl -o dockerV2/prometheus.yml https://raw.githubusercontent.com/someengineering/resoto/{{repoBranch}}/dockerV2/prometheus.yml
+   $ curl -Lo docker-compose.yaml {{dockerComposeUrl}}
+   $ curl -Lo dockerV2/prometheus.yml https://raw.githubusercontent.com/someengineering/resoto/{{repoBranch}}/dockerV2/prometheus.yml
    ```
 
    :::note
@@ -54,21 +54,12 @@ Resoto performs CPU-intensive graph operations. In a production setup, we recomm
    If you would like to change the download location from `~/resoto-downloads` to another directory, you can do so by editing the `docker-compose.yaml` file:
 
    ```yaml
-     resotoshell:
-       image: somecr.io/someengineering/resotoshell:{{imageTag}}
-       container_name: resotoshell
-       depends_on:
-         - resotocore
-       environment:
-         - PSK
-         - RESOTOSHELL_RESOTOCORE_URI=https://resotocore:8900
-       volumes:
+   resotoshell:
+     ...
+     volumes:
    # highlight-next-line
-         - ~/resoto-downloads:/home/resoto/downloads
-       command:
-         - --wait
-       restart: always
-       stop_grace_period: 2m
+       - ~/resoto-downloads:/home/resoto/downloads
+     ...
    ```
 
    :::

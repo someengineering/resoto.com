@@ -37,7 +37,7 @@
     "a11y-react-emoji": "1.2.0",
     "clsx": "1.2.1",
     "dayjs": "1.11.7",
-    "docusaurus-plugin-openapi-docs": "1.5.0",
+    "docusaurus-plugin-openapi-docs": "1.5.1",
     "docusaurus-theme-openapi-docs": "1.5.0",
     "formik": "2.2.9",
     "github-slugger": "2.0.0",

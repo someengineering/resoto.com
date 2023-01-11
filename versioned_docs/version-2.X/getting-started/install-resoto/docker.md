@@ -43,8 +43,8 @@ Resoto performs CPU-intensive graph operations. In a production setup, we recomm
    ```bash
    $ mkdir -p resoto/dockerV2
    $ cd resoto
-   $ curl -o docker-compose.yaml {{dockerComposeUrl}}
-   $ curl -o dockerV2/prometheus.yml https://raw.githubusercontent.com/someengineering/resoto/{{repoBranch}}/dockerV2/prometheus.yml
+   $ curl -Lo docker-compose.yaml {{dockerComposeUrl}}
+   $ curl -Lo dockerV2/prometheus.yml https://raw.githubusercontent.com/someengineering/resoto/{{repoBranch}}/dockerV2/prometheus.yml
    ```
 
 2. Start the services defined in the `docker-compose.yaml` file:

@@ -55,9 +55,11 @@ Resoto performs CPU-intensive graph operations. In a production setup, we recomm
 
    ```yaml
    resotoshell:
+     ...
      volumes:
    # highlight-next-line
        - ~/resoto-downloads:/home/resoto/downloads
+     ...
    ```
 
    :::

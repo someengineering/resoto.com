@@ -5,6 +5,7 @@ import fetch from 'node-fetch';
 const handler: Handler = async (event: HandlerEvent) => {
   const { BUTTONDOWN_API_KEY } = process.env;
   const email = JSON.parse(event.body ?? '').payload.email;
+  const referrer_url = JSON.parse(event.body ?? '').payload.referrer_url;
 
   console.log(`Received email signup form submission: ${email}`);
 
@@ -13,7 +14,7 @@ const handler: Handler = async (event: HandlerEvent) => {
       'https://api.buttondown.email/v1/subscribers',
       {
         method: 'post',
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, referrer_url }),
         headers: {
           Authorization: `Token ${BUTTONDOWN_API_KEY}`,
           'Content-Type': 'application/json',
@@ -22,7 +23,9 @@ const handler: Handler = async (event: HandlerEvent) => {
     );
     const data = await response.json();
 
-    console.log(`Sent email signup request to Buttondown: ${data}`);
+    console.log(
+      `Sent email signup request to Buttondown: ${JSON.stringify(data)}`
+    );
 
     return {
       statusCode: 200,

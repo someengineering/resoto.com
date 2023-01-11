@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Handler, HandlerEvent } from '@netlify/functions';
 import fetch from 'node-fetch';
 

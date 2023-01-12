@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { useFormik } from 'formik';
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Honeypot,
   NetlifyFormComponent,
@@ -19,9 +19,13 @@ export default function NewsletterSignupForm(): JSX.Element {
       console.log('Successfully sent form data to Netlify Server');
     },
   });
+
   const { handleSubmit, handleChange, handleBlur, touched, errors, values } =
     useFormik({
-      initialValues: { email: '' },
+      initialValues: {
+        email: '',
+        referrer_url: '',
+      },
       onSubmit: (values) => netlify.handleSubmit(null, values),
       validationSchema: Yup.object().shape({
         email: Yup.string()
@@ -30,6 +34,10 @@ export default function NewsletterSignupForm(): JSX.Element {
           .email('Please provide a valid email address'),
       }),
     });
+
+  useEffect(() => {
+    values.referrer_url = window.location.href;
+  }, []);
 
   return (
     <NetlifyFormProvider {...netlify}>
@@ -71,6 +79,12 @@ export default function NewsletterSignupForm(): JSX.Element {
             <p className={clsx(styles.error)} aria-live="polite">
               {touched.email ? errors.email : <>&nbsp;</>}
             </p>
+            <input
+              type="hidden"
+              name="referrer_url"
+              id="referrer_url"
+              value={values.referrer_url}
+            />
           </>
         )}
       </NetlifyFormComponent>

@@ -57,12 +57,6 @@ export default function NewsletterSignupForm(): JSX.Element {
           </p>
         ) : (
           <>
-            <input
-              type="hidden"
-              name="referrer_url"
-              id="referrer_url"
-              value={values.referrer_url}
-            />
             <label htmlFor="email">Email address</label>
             <div>
               <input
@@ -85,6 +79,12 @@ export default function NewsletterSignupForm(): JSX.Element {
             <p className={clsx(styles.error)} aria-live="polite">
               {touched.email ? errors.email : <>&nbsp;</>}
             </p>
+            <input
+              type="hidden"
+              name="referrer_url"
+              id="referrer_url"
+              value={values.referrer_url}
+            />
           </>
         )}
       </NetlifyFormComponent>

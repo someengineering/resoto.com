@@ -41,7 +41,9 @@ The [Kubernetes](../../reference/data-models/kubernetes/index.md) collector is c
 
 **The easiest way to configure access to Kubernetes is to give Resoto Worker access to [kubeconfig files](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig).**
 
-1. Make your kubeconfig file(s) available to Resoto at `/home/resoto/.kube`:
+1. Move or copy your kubeconfig files to the `~/.kube` directory.
+
+2. Make your kubeconfig file(s) available to Resoto at `/home/resoto/.kube`:
 
    <Tabs groupId="install-method">
    <TabItem value="docker" label="Docker">
@@ -56,8 +58,7 @@ The [Kubernetes](../../reference/data-models/kubernetes/index.md) collector is c
          ...
      # highlight-start
          volumes:
-           - <PATH TO kubeconfig FILE>:/home/resoto/.kube/config_1
-           - <PATH TO ANOTHER kubeconfig FILE>:/home/resoto/.kube/config_2
+           - $HOME/.kube:/home/resoto/.kube
      # highlight-end
        ...
      ...
@@ -126,13 +127,13 @@ The [Kubernetes](../../reference/data-models/kubernetes/index.md) collector is c
    </TabItem>
    </Tabs>
 
-2. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../concepts/components/shell):
+3. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../concepts/components/shell):
 
    ```bash
    > config edit resoto.worker
    ```
 
-3. Modify the `k8s` section of the configuration as follows, defining `path` and `contexts` for each file:
+4. Modify the `k8s` section of the configuration as follows, defining `path` and `contexts` for each file:
 
    ```yaml title="Resoto Worker configuration"
    resotoworker:

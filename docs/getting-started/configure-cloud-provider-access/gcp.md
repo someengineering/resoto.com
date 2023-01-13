@@ -39,7 +39,9 @@ The [Google Cloud Platform (GCP)](../../reference/data-models/gcp/index.md) coll
 <Tabs>
 <TabItem value="service-account-json-files" label="Service Account JSON Files">
 
-1. Make your service account JSON file(s) available to Resoto at `/home/resoto/.gcp`:
+1. Move or copy your service account JSON file(s) to the `~/.gcp` directory.
+
+2. Make your service account JSON file(s) available to Resoto at `/home/resoto/.gcp`:
 
    <Tabs groupId="install-method">
    <TabItem value="docker" label="Docker">
@@ -54,8 +56,7 @@ The [Google Cloud Platform (GCP)](../../reference/data-models/gcp/index.md) coll
          ...
      # highlight-start
          volumes:
-           - <PATH TO SERVICE ACCOUNT JSON>:/home/resoto/.gcp/service-account-1.json
-           - <PATH TO ANOTHER SERVICE ACCOUNT JSON>:/home/resoto/.gcp/service-account-2.json
+           - $HOME/.gcp:/home/resoto/.gcp
      # highlight-end
        ...
      ...
@@ -124,13 +125,13 @@ The [Google Cloud Platform (GCP)](../../reference/data-models/gcp/index.md) coll
    </TabItem>
    </Tabs>
 
-2. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../concepts/components/shell):
+3. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../concepts/components/shell):
 
    ```bash
    > config edit resoto.worker
    ```
 
-3. Modify the `gcp` section of the configuration as follows, adding the paths to your service account JSON file:
+4. Modify the `gcp` section of the configuration as follows, adding the paths to your service account JSON file:
 
    ```yaml title="Resoto Worker configuration"
    resotoworker:

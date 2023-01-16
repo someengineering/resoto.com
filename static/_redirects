@@ -1,207 +1,209 @@
-https://resoto.netlify.app/*                                      https://resoto.com/:splat 301!
+https://resoto.netlify.app/*                                                          https://resoto.com/:splat 301!
 
-https://blog.resoto.com/*                                         https://resoto.com/blog/:splat 301!
-https://docs.resoto.com/*                                         https://resoto.com/docs/:splat 301!
-https://documentation.resoto.com/*                                https://resoto.com/docs/:splat 301!
-https://news.resoto.com/*                                         https://resoto.com/news/:splat 301!
+https://blog.resoto.com/*                                                             https://resoto.com/blog/:splat 301!
+https://docs.resoto.com/*                                                             https://resoto.com/docs/:splat 301!
+https://documentation.resoto.com/*                                                    https://resoto.com/docs/:splat 301!
+https://news.resoto.com/*                                                             https://resoto.com/news/:splat 301!
 
-https://cloud2sql.com/*                                           https://resoto.com/cloud2sql/:splat 301!
-https://cloud2sql.resoto.com/*                                    https://resoto.com/cloud2sql/:splat 301!
+https://cloud2sql.com/*                                                               https://resoto.com/cloud2sql/:splat 301!
+https://cloud2sql.resoto.com/*                                                        https://resoto.com/cloud2sql/:splat 301!
 
-/js/script.js                                                     https://plausible.io/js/script.js 200
-/api/event                                                        https://plausible.io/api/event 200
+/js/script.js                                                                         https://plausible.io/js/script.js 200
+/api/event                                                                            https://plausible.io/api/event 200
 
-/blog/2022/02/04/resoto-query-language-101                        /blog/2022/02/04/resoto-search-101
-/blog/2022/02/04/resoto-search-syntax-101                         /blog/2022/02/04/resoto-search-101
-/blog/2022/05/31/resotonotebook                                   /blog/2022/05/31/resoto-meets-jupyter-notebook
-/blog/2022/06/06/cloud-infrastructure-metrics                     /blog/2022/06/09/building-actionable-cloud-infrastructure-metrics
-/blog/tags/*                                                      /blog
+/blog/2022/02/04/resoto-query-language-101                                            /blog/2022/02/04/resoto-search-101
+/blog/2022/02/04/resoto-search-syntax-101                                             /blog/2022/02/04/resoto-search-101
+/blog/2022/05/31/resotonotebook                                                       /blog/2022/05/31/resoto-meets-jupyter-notebook
+/blog/2022/06/06/cloud-infrastructure-metrics                                         /blog/2022/06/09/building-actionable-cloud-infrastructure-metrics
+/blog/2022/12/20/integrating-cloud-data-into-existing-sql-workflows-with-cloud2sql    /blog/2023/01/16/integrating-cloud-data-into-existing-sql-workflows-with-cloud2sql
+/blog/2022/12/21/installing-cloud2sql                                                 /blog/2023/01/17/installing-cloud2sql
+/blog/tags/*                                                                          /blog
 
-/docs/concepts/components/plugins/protect_snowflakes              /docs/concepts/components/plugins/protector
-/docs/concepts/components/resotolib                               /docs/concepts/components/library
-/docs/concepts/components/resh                                    /docs/concepts/components/shell
-/docs/concepts/components/resoto*                                 /docs/concepts/components/:splat
+/docs/concepts/components/plugins/protect_snowflakes                                  /docs/concepts/components/plugins/protector
+/docs/concepts/components/resotolib                                                   /docs/concepts/components/library
+/docs/concepts/components/resh                                                        /docs/concepts/components/shell
+/docs/concepts/components/resoto*                                                     /docs/concepts/components/:splat
 
-/docs/concepts/cleanup                                            /docs/concepts/resource-management/cleanup
-/docs/concepts/protection                                         /docs/concepts/resource-management/protection
-/docs/concepts/tagging                                            /docs/concepts/resource-management/tagging
-/docs/concepts/tags                                               /docs/concepts/resource-management/tagging
+/docs/concepts/cleanup                                                                /docs/concepts/resource-management/cleanup
+/docs/concepts/protection                                                             /docs/concepts/resource-management/protection
+/docs/concepts/tagging                                                                /docs/concepts/resource-management/tagging
+/docs/concepts/tags                                                                   /docs/concepts/resource-management/tagging
 
-/docs/concepts/search/basic-syntax                                /docs/reference/search/filters
-/docs/concepts/search/fulltext-search                             /docs/reference/search/full-text
-/docs/concepts/search/*                                           /docs/reference/search/:splat
+/docs/concepts/search/basic-syntax                                                    /docs/reference/search/filters
+/docs/concepts/search/fulltext-search                                                 /docs/reference/search/full-text
+/docs/concepts/search/*                                                               /docs/reference/search/:splat
 
-/concepts/*                                                       /docs/concepts/:splat
+/concepts/*                                                                           /docs/concepts/:splat
 
-/contribute/code                                                  /docs/contributing/components
-/contribute/component                                             /docs/contributing/components
-/contribute/doc                                                   /docs/contributing/documentation
-/contribute/docs                                                  /docs/contributing/documentation
-/contribute/*                                                     /docs/contributing/:splat
+/contribute/code                                                                      /docs/contributing/components
+/contribute/component                                                                 /docs/contributing/components
+/contribute/doc                                                                       /docs/contributing/documentation
+/contribute/docs                                                                      /docs/contributing/documentation
+/contribute/*                                                                         /docs/contributing/:splat
 
-/contributing/code                                                /docs/contributing/components
-/contributing/component                                           /docs/contributing/components
-/contributing/doc                                                 /docs/contributing/documentation
-/contributing/docs                                                /docs/contributing/documentation
-/contributing/*                                                   /docs/contributing/:splat
+/contributing/code                                                                    /docs/contributing/components
+/contributing/component                                                               /docs/contributing/components
+/contributing/doc                                                                     /docs/contributing/documentation
+/contributing/docs                                                                    /docs/contributing/documentation
+/contributing/*                                                                       /docs/contributing/:splat
 
-/docs/getting-started/install-resoto/aws/cdk                      /docs/getting-started/install-resoto/aws
-/docs/getting-started/install-resoto/aws/cloudformation           /docs/getting-started/install-resoto/aws
+/docs/getting-started/install-resoto/aws/cdk                                          /docs/getting-started/install-resoto/aws
+/docs/getting-started/install-resoto/aws/cloudformation                               /docs/getting-started/install-resoto/aws
 
-/docs/getting-started/installation/docker                         /docs/getting-started/install-resoto/docker
-/docs/getting-started/docker                                      /docs/getting-started/install-resoto/docker
-/docs/getting-started/installing-with-docker                      /docs/getting-started/install-resoto/docker
+/docs/getting-started/installation/docker                                             /docs/getting-started/install-resoto/docker
+/docs/getting-started/docker                                                          /docs/getting-started/install-resoto/docker
+/docs/getting-started/installing-with-docker                                          /docs/getting-started/install-resoto/docker
 
-/docs/getting-started/installation/kubernetes                     /docs/getting-started/install-resoto/kubernetes
-/docs/getting-started/kubernetes                                  /docs/getting-started/install-resoto/kubernetes
-/docs/getting-started/k8s                                         /docs/getting-started/install-resoto/kubernetes
-/docs/getting-started/installing-with-kubernetes                  /docs/getting-started/install-resoto/kubernetes
-/docs/getting-started/installing-with-k8s                         /docs/getting-started/install-resoto/kubernetes
+/docs/getting-started/installation/kubernetes                                         /docs/getting-started/install-resoto/kubernetes
+/docs/getting-started/kubernetes                                                      /docs/getting-started/install-resoto/kubernetes
+/docs/getting-started/k8s                                                             /docs/getting-started/install-resoto/kubernetes
+/docs/getting-started/installing-with-kubernetes                                      /docs/getting-started/install-resoto/kubernetes
+/docs/getting-started/installing-with-k8s                                             /docs/getting-started/install-resoto/kubernetes
 
-/docs/getting-started/installation/pip                            /docs/getting-started/install-resoto/pip
-/docs/getting-started/pip                                         /docs/getting-started/install-resoto/pip
-/docs/getting-started/python                                      /docs/getting-started/install-resoto/pip
-/docs/getting-started/installing-with-pip                         /docs/getting-started/install-resoto/pip
-/docs/getting-started/installing-with-python                      /docs/getting-started/install-resoto/pip
+/docs/getting-started/installation/pip                                                /docs/getting-started/install-resoto/pip
+/docs/getting-started/pip                                                             /docs/getting-started/install-resoto/pip
+/docs/getting-started/python                                                          /docs/getting-started/install-resoto/pip
+/docs/getting-started/installing-with-pip                                             /docs/getting-started/install-resoto/pip
+/docs/getting-started/installing-with-python                                          /docs/getting-started/install-resoto/pip
 
-/docs/getting-started/install-resoto/local/*                      /docs/getting-started/install-resoto/:splat
+/docs/getting-started/install-resoto/local/*                                          /docs/getting-started/install-resoto/:splat
 
-/docs/getting-started/configuration/core                          /docs/reference/configuration/core
-/docs/getting-started/configuration/worker                        /docs/reference/configuration/worker
-/docs/getting-started/configuration                               /docs/getting-started/configure-cloud-provider-access
-/docs/getting-started/configuring-resoto                          /docs/getting-started/configure-cloud-provider-access
-/docs/getting-started/configuration/cloud-providers/*             /docs/getting-started/configure-cloud-provider-access/:splat
-/docs/getting-started/configuration/worker/cloud-providers/*      /docs/getting-started/configure-cloud-provider-access/:splat
+/docs/getting-started/configuration/core                                              /docs/reference/configuration/core
+/docs/getting-started/configuration/worker                                            /docs/reference/configuration/worker
+/docs/getting-started/configuration                                                   /docs/getting-started/configure-cloud-provider-access
+/docs/getting-started/configuring-resoto                                              /docs/getting-started/configure-cloud-provider-access
+/docs/getting-started/configuration/cloud-providers/*                                 /docs/getting-started/configure-cloud-provider-access/:splat
+/docs/getting-started/configuration/worker/cloud-providers/*                          /docs/getting-started/configure-cloud-provider-access/:splat
 
-/docs/getting-started/queries                                     /docs/how-to-guides/search
-/docs/getting-started/query                                       /docs/how-to-guides/search
-/docs/getting-started/perform-a-search                            /docs/how-to-guides/search
-/docs/getting-started/performing-queries                          /docs/how-to-guides/search
-/docs/getting-started/performing-searches                         /docs/how-to-guides/search
-/docs/getting-started/search                                      /docs/how-to-guides/search
-/docs/getting-started/searches                                    /docs/how-to-guides/search
-/docs/getting-started/usage/search                                /docs/how-to-guides/search
+/docs/getting-started/queries                                                         /docs/how-to-guides/search
+/docs/getting-started/query                                                           /docs/how-to-guides/search
+/docs/getting-started/perform-a-search                                                /docs/how-to-guides/search
+/docs/getting-started/performing-queries                                              /docs/how-to-guides/search
+/docs/getting-started/performing-searches                                             /docs/how-to-guides/search
+/docs/getting-started/search                                                          /docs/how-to-guides/search
+/docs/getting-started/searches                                                        /docs/how-to-guides/search
+/docs/getting-started/usage/search                                                    /docs/how-to-guides/search
 
-/docs/getting-started/cleanup                                     /docs/how-to-guides/cleanup
-/docs/getting-started/clean-resources                             /docs/how-to-guides/cleanup
-/docs/getting-started/cleaning-resources                          /docs/how-to-guides/cleanup
-/docs/getting-started/pruning-resources                           /docs/how-to-guides/cleanup
-/docs/getting-started/usage/cleanup                               /docs/how-to-guides/cleanup
+/docs/getting-started/cleanup                                                         /docs/how-to-guides/cleanup
+/docs/getting-started/clean-resources                                                 /docs/how-to-guides/cleanup
+/docs/getting-started/cleaning-resources                                              /docs/how-to-guides/cleanup
+/docs/getting-started/pruning-resources                                               /docs/how-to-guides/cleanup
+/docs/getting-started/usage/cleanup                                                   /docs/how-to-guides/cleanup
 
-/docs/getting-started/resotonotebook                              /docs/reference/notebook
-/docs/getting-started/resoto-notebook                             /docs/reference/notebook
-/docs/reference/resotonotebook                                    /docs/reference/notebook
+/docs/getting-started/resotonotebook                                                  /docs/reference/notebook
+/docs/getting-started/resoto-notebook                                                 /docs/reference/notebook
+/docs/reference/resotonotebook                                                        /docs/reference/notebook
 
-/docs/tutorial/*                                                  /docs/getting-started/:splat
-/docs/tutorials/*                                                 /docs/getting-started/:splat
-/getting-started/*                                                /docs/getting-started/:splat
-/tutorial/*                                                       /docs/getting-started/:splat
-/tutorials/*                                                      /docs/getting-started/:splat
+/docs/tutorial/*                                                                      /docs/getting-started/:splat
+/docs/tutorials/*                                                                     /docs/getting-started/:splat
+/getting-started/*                                                                    /docs/getting-started/:splat
+/tutorial/*                                                                           /docs/getting-started/:splat
+/tutorials/*                                                                          /docs/getting-started/:splat
 
-/docs/how-to-guides/cleanup/clean-up-aws-vpcs                     /docs/how-to-guides/cleanup/clean-up-aws-vpc-resources
-/docs/how-to-guides/cleanup/clean-up-orphaned-cloudwatch-alerts   /docs/how-to-guides/cleanup/clean-up-aws-cloudwatch-alarms
-/docs/how-to-guides/cleanup/clean-up-orphaned-load-balancers      /docs/how-to-guides/cleanup/clean-up-aws-load-balancers
-/docs/how-to-guides/cleanup/clean-up-unused-aws-ebs-volumes       /docs/how-to-guides/cleanup/clean-up-aws-ebs-volumes
-/docs/how-to-guides/cleanup/clean-up-unused-aws-iam-access-keys   /docs/how-to-guides/cleanup/clean-up-aws-iam-access-keys
+/docs/how-to-guides/cleanup/clean-up-aws-vpcs                                         /docs/how-to-guides/cleanup/clean-up-aws-vpc-resources
+/docs/how-to-guides/cleanup/clean-up-orphaned-cloudwatch-alerts                       /docs/how-to-guides/cleanup/clean-up-aws-cloudwatch-alarms
+/docs/how-to-guides/cleanup/clean-up-orphaned-load-balancers                          /docs/how-to-guides/cleanup/clean-up-aws-load-balancers
+/docs/how-to-guides/cleanup/clean-up-unused-aws-ebs-volumes                           /docs/how-to-guides/cleanup/clean-up-aws-ebs-volumes
+/docs/how-to-guides/cleanup/clean-up-unused-aws-iam-access-keys                       /docs/how-to-guides/cleanup/clean-up-aws-iam-access-keys
 
-/docs/how-to/alerting/set-up-discord-notifications                /docs/how-to-guides/alerting/send-discord-notifications
-/docs/how-to/security/find-and-delete-unused-aws-iam-access-keys  /docs/how-to-guides/cleanup/clean-up-aws-iam-access-keys
-/docs/how-to/security/*                                           /docs/how-to-guides/cleanup
+/docs/how-to/alerting/set-up-discord-notifications                                    /docs/how-to-guides/alerting/send-discord-notifications
+/docs/how-to/security/find-and-delete-unused-aws-iam-access-keys                      /docs/how-to-guides/cleanup/clean-up-aws-iam-access-keys
+/docs/how-to/security/*                                                               /docs/how-to-guides/cleanup
 
-/docs/how-to/*                                                    /docs/how-to-guides/:splat
-/docs/guides/*                                                    /docs/how-to-guides/:splat
-/how-to/*                                                         /docs/how-to-guides/:splat
-/how-to-guides/*                                                  /docs/how-to-guides/:splat
-/guides/*                                                         /docs/how-to-guides/:splat
+/docs/how-to/*                                                                        /docs/how-to-guides/:splat
+/docs/guides/*                                                                        /docs/how-to-guides/:splat
+/how-to/*                                                                             /docs/how-to-guides/:splat
+/how-to-guides/*                                                                      /docs/how-to-guides/:splat
+/guides/*                                                                             /docs/how-to-guides/:splat
 
-/docs/reference/cli/clean                                         /docs/reference/cli/action-commands/clean
-/docs/reference/cli/http                                          /docs/reference/cli/action-commands/http
-/docs/reference/cli/job/*                                         /docs/reference/cli/action-commands/jobs/:splat
-/docs/reference/cli/action-commands/job/*                         /docs/reference/cli/action-commands/jobs/:splat
-/docs/reference/cli/jobs/*                                        /docs/reference/cli/action-commands/jobs/:splat
-/docs/reference/cli/protect                                       /docs/reference/cli/action-commands/protect
-/docs/reference/cli/set_desired                                   /docs/reference/cli/action-commands/set_desired
-/docs/reference/cli/set_metadata                                  /docs/reference/cli/action-commands/set_metadata
-/docs/reference/cli/tag/*                                         /docs/reference/cli/action-commands/tag/:splat
-/docs/reference/cli/start_task                                    /docs/reference/cli/action-commands/workflows/run
-/docs/reference/cli/workflow/*                                    /docs/reference/cli/action-commands/workflows/:splat
-/docs/reference/cli/action-commands/workflow/*                    /docs/reference/cli/action-commands/workflows/:splat
-/docs/reference/cli/workflows/*                                   /docs/reference/cli/action-commands/workflows/:splat
+/docs/reference/cli/clean                                                             /docs/reference/cli/action-commands/clean
+/docs/reference/cli/http                                                              /docs/reference/cli/action-commands/http
+/docs/reference/cli/job/*                                                             /docs/reference/cli/action-commands/jobs/:splat
+/docs/reference/cli/action-commands/job/*                                             /docs/reference/cli/action-commands/jobs/:splat
+/docs/reference/cli/jobs/*                                                            /docs/reference/cli/action-commands/jobs/:splat
+/docs/reference/cli/protect                                                           /docs/reference/cli/action-commands/protect
+/docs/reference/cli/set_desired                                                       /docs/reference/cli/action-commands/set_desired
+/docs/reference/cli/set_metadata                                                      /docs/reference/cli/action-commands/set_metadata
+/docs/reference/cli/tag/*                                                             /docs/reference/cli/action-commands/tag/:splat
+/docs/reference/cli/start_task                                                        /docs/reference/cli/action-commands/workflows/run
+/docs/reference/cli/workflow/*                                                        /docs/reference/cli/action-commands/workflows/:splat
+/docs/reference/cli/action-commands/workflow/*                                        /docs/reference/cli/action-commands/workflows/:splat
+/docs/reference/cli/workflows/*                                                       /docs/reference/cli/action-commands/workflows/:splat
 
-/docs/reference/cli/dump                                          /docs/reference/cli/format-commands/dump
-/docs/reference/cli/format                                        /docs/reference/cli/format-commands/format
-/docs/reference/cli/list                                          /docs/reference/cli/format-commands/list
+/docs/reference/cli/dump                                                              /docs/reference/cli/format-commands/dump
+/docs/reference/cli/format                                                            /docs/reference/cli/format-commands/format
+/docs/reference/cli/list                                                              /docs/reference/cli/format-commands/list
 
-/docs/reference/cli/chunk                                         /docs/reference/cli/miscellaneous-commands/chunk
-/docs/reference/cli/echo                                          /docs/reference/cli/miscellaneous-commands/echo
-/docs/reference/cli/env                                           /docs/reference/cli/miscellaneous-commands/env
-/docs/reference/cli/flatten                                       /docs/reference/cli/miscellaneous-commands/flatten
-/docs/reference/cli/head                                          /docs/reference/cli/miscellaneous-commands/head
-/docs/reference/cli/help                                          /docs/reference/cli/miscellaneous-commands/help
-/docs/reference/cli/jq                                            /docs/reference/cli/miscellaneous-commands/jq
-/docs/reference/cli/json                                          /docs/reference/cli/miscellaneous-commands/json
-/docs/reference/cli/sleep                                         /docs/reference/cli/miscellaneous-commands/sleep
-/docs/reference/cli/tail                                          /docs/reference/cli/miscellaneous-commands/tail
-/docs/reference/cli/uniq                                          /docs/reference/cli/miscellaneous-commands/uniq
-/docs/reference/cli/write                                         /docs/reference/cli/miscellaneous-commands/write
+/docs/reference/cli/chunk                                                             /docs/reference/cli/miscellaneous-commands/chunk
+/docs/reference/cli/echo                                                              /docs/reference/cli/miscellaneous-commands/echo
+/docs/reference/cli/env                                                               /docs/reference/cli/miscellaneous-commands/env
+/docs/reference/cli/flatten                                                           /docs/reference/cli/miscellaneous-commands/flatten
+/docs/reference/cli/head                                                              /docs/reference/cli/miscellaneous-commands/head
+/docs/reference/cli/help                                                              /docs/reference/cli/miscellaneous-commands/help
+/docs/reference/cli/jq                                                                /docs/reference/cli/miscellaneous-commands/jq
+/docs/reference/cli/json                                                              /docs/reference/cli/miscellaneous-commands/json
+/docs/reference/cli/sleep                                                             /docs/reference/cli/miscellaneous-commands/sleep
+/docs/reference/cli/tail                                                              /docs/reference/cli/miscellaneous-commands/tail
+/docs/reference/cli/uniq                                                              /docs/reference/cli/miscellaneous-commands/uniq
+/docs/reference/cli/write                                                             /docs/reference/cli/miscellaneous-commands/write
 
-/docs/reference/cli/aggregate                                     /docs/reference/cli/search-commands/aggregate
-/docs/reference/cli/ancestor                                      /docs/reference/cli/search-commands/ancestors
-/docs/reference/cli/search-commands/ancestor                      /docs/reference/cli/search-commands/ancestors
-/docs/reference/cli/ancestors                                     /docs/reference/cli/search-commands/ancestors
-/docs/reference/cli/count                                         /docs/reference/cli/search-commands/count
-/docs/reference/cli/descendant                                    /docs/reference/cli/search-commands/descendants
-/docs/reference/cli/search-commands/descendant                    /docs/reference/cli/search-commands/descendants
-/docs/reference/cli/descendants                                   /docs/reference/cli/search-commands/descendants
-/docs/reference/cli/kind                                          /docs/reference/cli/search-commands/kinds
-/docs/reference/cli/search-commands/kind                          /docs/reference/cli/search-commands/kinds
-/docs/reference/cli/kinds                                         /docs/reference/cli/search-commands/kinds
-/docs/reference/cli/predecessor                                   /docs/reference/cli/search-commands/predecessors
-/docs/reference/cli/search-commands/predecessor                   /docs/reference/cli/search-commands/predecessors
-/docs/reference/cli/predecessors                                  /docs/reference/cli/search-commands/predecessors
-/docs/reference/cli/search                                        /docs/reference/cli/search-commands/search
-/docs/reference/cli/successor                                     /docs/reference/cli/search-commands/successors
-/docs/reference/cli/search-commands/successor                     /docs/reference/cli/search-commands/successors
-/docs/reference/cli/successors                                    /docs/reference/cli/search-commands/successors
-/docs/reference/cli/template/*                                    /docs/reference/cli/search-commands/templates/:splat
-/docs/reference/cli/search-commands/template/*                    /docs/reference/cli/search-commands/templates/:splat
-/docs/reference/cli/templates/*                                   /docs/reference/cli/search-commands/templates/:splat
+/docs/reference/cli/aggregate                                                         /docs/reference/cli/search-commands/aggregate
+/docs/reference/cli/ancestor                                                          /docs/reference/cli/search-commands/ancestors
+/docs/reference/cli/search-commands/ancestor                                          /docs/reference/cli/search-commands/ancestors
+/docs/reference/cli/ancestors                                                         /docs/reference/cli/search-commands/ancestors
+/docs/reference/cli/count                                                             /docs/reference/cli/search-commands/count
+/docs/reference/cli/descendant                                                        /docs/reference/cli/search-commands/descendants
+/docs/reference/cli/search-commands/descendant                                        /docs/reference/cli/search-commands/descendants
+/docs/reference/cli/descendants                                                       /docs/reference/cli/search-commands/descendants
+/docs/reference/cli/kind                                                              /docs/reference/cli/search-commands/kinds
+/docs/reference/cli/search-commands/kind                                              /docs/reference/cli/search-commands/kinds
+/docs/reference/cli/kinds                                                             /docs/reference/cli/search-commands/kinds
+/docs/reference/cli/predecessor                                                       /docs/reference/cli/search-commands/predecessors
+/docs/reference/cli/search-commands/predecessor                                       /docs/reference/cli/search-commands/predecessors
+/docs/reference/cli/predecessors                                                      /docs/reference/cli/search-commands/predecessors
+/docs/reference/cli/search                                                            /docs/reference/cli/search-commands/search
+/docs/reference/cli/successor                                                         /docs/reference/cli/search-commands/successors
+/docs/reference/cli/search-commands/successor                                         /docs/reference/cli/search-commands/successors
+/docs/reference/cli/successors                                                        /docs/reference/cli/search-commands/successors
+/docs/reference/cli/template/*                                                        /docs/reference/cli/search-commands/templates/:splat
+/docs/reference/cli/search-commands/template/*                                        /docs/reference/cli/search-commands/templates/:splat
+/docs/reference/cli/templates/*                                                       /docs/reference/cli/search-commands/templates/:splat
 
-/docs/reference/cli/certificate                                   /docs/reference/cli/setup-commands/certificate
-/docs/reference/cli/config/*                                      /docs/reference/cli/setup-commands/configs/:splat
-/docs/reference/cli/setup-commands/config/*                       /docs/reference/cli/setup-commands/configs/:splat
-/docs/reference/cli/configs/*                                     /docs/reference/cli/setup-commands/configs/:splat
-/docs/reference/cli/system/*                                      /docs/reference/cli/setup-commands/system/:splat
+/docs/reference/cli/certificate                                                       /docs/reference/cli/setup-commands/certificate
+/docs/reference/cli/config/*                                                          /docs/reference/cli/setup-commands/configs/:splat
+/docs/reference/cli/setup-commands/config/*                                           /docs/reference/cli/setup-commands/configs/:splat
+/docs/reference/cli/configs/*                                                         /docs/reference/cli/setup-commands/configs/:splat
+/docs/reference/cli/system/*                                                          /docs/reference/cli/setup-commands/system/:splat
 
-/docs/reference/cli/query                                         /docs/reference/cli/search-commands/search
-/docs/reference/cli/query/basic-queries                           /docs/reference/search/filters
-/docs/reference/cli/query/nesting                                 /docs/reference/search/merging-nodes
-/docs/reference/cli/query/subqueries                              /docs/reference/search/merging-nodes
-/docs/reference/cli/query/*                                       /docs/reference/search/:splat
+/docs/reference/cli/query                                                             /docs/reference/cli/search-commands/search
+/docs/reference/cli/query/basic-queries                                               /docs/reference/search/filters
+/docs/reference/cli/query/nesting                                                     /docs/reference/search/merging-nodes
+/docs/reference/cli/query/subqueries                                                  /docs/reference/search/merging-nodes
+/docs/reference/cli/query/*                                                           /docs/reference/search/:splat
 
-/api                                                              /docs/reference/api
-/docs/reference/core-api                                          /docs/reference/api
-/docs/reference/resotocore-api                                    /docs/reference/api
+/api                                                                                  /docs/reference/api
+/docs/reference/core-api                                                              /docs/reference/api
+/docs/reference/resotocore-api                                                        /docs/reference/api
 
-/docs/reference/data-models/dockerhub                             /docs/reference/data-models/docker-hub
-/docs/reference/data-models/onprem                                /docs/reference/data-models/on-premises
-/docs/reference/resources/data-models                             /docs/reference/data-models
-/docs/reference/resources/*                                       /docs/reference/data-models/:splat
+/docs/reference/data-models/dockerhub                                                 /docs/reference/data-models/docker-hub
+/docs/reference/data-models/onprem                                                    /docs/reference/data-models/on-premises
+/docs/reference/resources/data-models                                                 /docs/reference/data-models
+/docs/reference/resources/*                                                           /docs/reference/data-models/:splat
 
-/reference/*                                                      /docs/reference/:splat
+/reference/*                                                                          /docs/reference/:splat
 
-/documentation/*                                                  /docs/:splat
-/docs/edge/*                                                      /docs/:splat
+/documentation/*                                                                      /docs/:splat
+/docs/edge/*                                                                          /docs/:splat
 
-/news/:year/:month/:date/v2.0.0*                                  /news/2022/04/12/2.0.0
-/news/:year/:month/:date/v*                                       /news/:year/:month/:date/:splat
+/news/:year/:month/:date/v2.0.0*                                                      /news/2022/04/12/2.0.0
+/news/:year/:month/:date/v*                                                           /news/:year/:month/:date/:splat
 
-/news/2022/03/24/community-hour-event                             /news/2022/03/24/march-april-community-hour-event
-/news/2022/05/03/community-hour-event                             /news/2022/05/03/may-community-hour-event
-/news/2022/06/01/community-hour-event                             /news/2022/06/01/june-community-hour-event
+/news/2022/03/24/community-hour-event                                                 /news/2022/03/24/march-april-community-hour-event
+/news/2022/05/03/community-hour-event                                                 /news/2022/05/03/may-community-hour-event
+/news/2022/06/01/community-hour-event                                                 /news/2022/06/01/june-community-hour-event
 
-/release/*                                                        /news/:splat
-/releases/*                                                       /news/:splat
-/news/tags/*                                                      /news
+/release/*                                                                            /news/:splat
+/releases/*                                                                           /news/:splat
+/news/tags/*                                                                          /news
 
-/support/*                                                        /docs
+/support/*                                                                            /docs

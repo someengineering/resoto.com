@@ -1,27 +1,7 @@
-import { PageMetadata, usePluralForm } from '@docusaurus/theme-common';
+import { PageMetadata } from '@docusaurus/theme-common';
 import { useBlogPost } from '@docusaurus/theme-common/internal';
-import { translate } from '@docusaurus/Translate';
 import { getImage } from '@site/src/utils/socialImageHelper';
 import React from 'react';
-
-function useReadingTimePlural() {
-  const { selectMessage } = usePluralForm();
-  return (readingTimeFloat: number) => {
-    const readingTime = Math.ceil(readingTimeFloat);
-    return selectMessage(
-      readingTime,
-      translate(
-        {
-          id: 'theme.blog.post.readingTime.plurals',
-          description:
-            'Pluralized label for "{readingTime} min read". Use as much plural forms (separated by "|") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)',
-          message: 'One min read|{readingTime} min read',
-        },
-        { readingTime }
-      )
-    );
-  };
-}
 
 export default function BlogPostPageMetadata(): JSX.Element {
   const { assets, metadata } = useBlogPost();
@@ -30,7 +10,6 @@ export default function BlogPostPageMetadata(): JSX.Element {
 
   const { keywords } = frontMatter;
 
-  const readingTimePlural = useReadingTimePlural();
   const image =
     assets.image ??
     frontMatter.image ??
@@ -38,7 +17,7 @@ export default function BlogPostPageMetadata(): JSX.Element {
       title,
       metadata: formattedDate
         ? `${formattedDate}${
-            readingTime ? ` · ${readingTimePlural(readingTime)}` : ''
+            readingTime ? ` · ${Math.ceil(readingTime)} min read` : ''
           }`
         : null,
       authors,

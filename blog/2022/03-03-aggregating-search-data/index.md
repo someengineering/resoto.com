@@ -1,7 +1,6 @@
 ---
 authors: [matthias]
 tags: [search, graph, aws, gcp]
-image: ./img/banner-social.png
 ---
 
 # Aggregating Search Data

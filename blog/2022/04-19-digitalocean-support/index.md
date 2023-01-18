@@ -1,7 +1,6 @@
 ---
 authors: [nikita]
 tags: [search, graph, plugins, digitalocean]
-image: ./img/banner-social.png
 ---
 
 # DigitalOcean Support

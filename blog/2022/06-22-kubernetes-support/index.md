@@ -1,7 +1,6 @@
 ---
 authors: [matthias]
 tags: [search, graph, plugins, kubernetes]
-image: ./img/banner-social.png
 ---
 
 # Kubernetes Support

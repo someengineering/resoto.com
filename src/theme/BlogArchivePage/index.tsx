@@ -75,7 +75,7 @@ export default function BlogArchive({ archive }: Props): JSX.Element {
       <PageMetadata
         title={title}
         description={description}
-        image={getImage(title)}
+        image={getImage({ title })}
       />
       <Layout>
         <header className="hero hero--primary">

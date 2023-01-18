@@ -1,7 +1,6 @@
 ---
 authors: [lukas]
 tags: [inventory, metrics, graph, aggregation]
-image: ./img/banner-social.png
 ---
 
 # Building Actionable Cloud Infrastructure Metrics

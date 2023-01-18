@@ -1,9 +1,5 @@
 # July Update
 
-```mdx-code-block
-import DayJS from '@site/src/components/DayJS';
-```
-
 Hello everyone, here's an update for July!
 
 In June, we released [Resoto 2.3.2](/news/2022/06/24/2.3.2). The key update that we shipped is a feature that a lot of users have asked for—[support for Kubernetes](#kubernetes-support)! 😎

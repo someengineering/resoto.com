@@ -1,7 +1,6 @@
 ---
 authors: [lukas]
 tags: [infrastructure, apps]
-image: ./img/banner-social.png
 ---
 
 # Building an Infrastructure App with Resoto and Streamlit

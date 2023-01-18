@@ -1,7 +1,6 @@
 ---
 authors: [anja]
 tags: [aws, inventory, cloud]
-image: ./img/banner-social.png
 ---
 
 # A Tale of Two Tools

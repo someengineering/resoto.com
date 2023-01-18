@@ -1,7 +1,6 @@
 ---
 authors: [matthias]
 tags: [cloud, history]
-image: ./img/banner-social.svg
 ---
 
 # What We Can Learn from History

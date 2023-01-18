@@ -1,7 +1,6 @@
 ---
 authors: [matthias]
 tags: [cloud, search, graph, kubernetes]
-image: ./img/banner-social.png
 ---
 
 # Discover Kubernetes Resources

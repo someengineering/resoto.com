@@ -31,7 +31,7 @@ export default function MDXPage(props: Props): JSX.Element {
       <PageMetadata
         title={title}
         description={description}
-        image={getImage(title)}
+        image={getImage({ title })}
       />
       <Layout>
         <main className="container container--fluid margin-vert--lg">

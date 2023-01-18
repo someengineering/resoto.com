@@ -1,7 +1,6 @@
 ---
 authors: [lukas]
 tags: [cloud2sql, graph, sql]
-image: ./img/banner-social.png
 ---
 
 # Integrating Cloud Data into Existing SQL Workflows with Cloud2SQL

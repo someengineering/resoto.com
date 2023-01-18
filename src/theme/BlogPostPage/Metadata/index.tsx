@@ -5,10 +5,23 @@ import React from 'react';
 
 export default function BlogPostPageMetadata(): JSX.Element {
   const { assets, metadata } = useBlogPost();
+  const { formattedDate, readingTime } = metadata;
   const { title, description, date, tags, authors, frontMatter } = metadata;
 
   const { keywords } = frontMatter;
-  const image = assets.image ?? frontMatter.image ?? getImage(title);
+
+  const image =
+    assets.image ??
+    frontMatter.image ??
+    getImage({
+      title,
+      metadata: formattedDate
+        ? `${formattedDate}${
+            readingTime ? ` · ${Math.ceil(readingTime)} min read` : ''
+          }`
+        : null,
+      authors,
+    });
   return (
     <PageMetadata
       title={title}

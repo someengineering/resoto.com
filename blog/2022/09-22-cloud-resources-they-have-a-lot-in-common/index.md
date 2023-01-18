@@ -1,7 +1,6 @@
 ---
 authors: [matthias]
 tags: [graph, search, cloud]
-image: ./img/banner-social.png
 ---
 
 # Cloud Resources, They Have a Lot in Common

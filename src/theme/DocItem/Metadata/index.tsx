@@ -10,7 +10,9 @@ export default function DocItemMetadata(): JSX.Element {
       title={metadata.title}
       description={metadata.description}
       keywords={frontMatter.keywords}
-      image={assets.image ?? frontMatter.image ?? getImage(metadata.title)}
+      image={
+        assets.image ?? frontMatter.image ?? getImage({ title: metadata.title })
+      }
     />
   );
 }

@@ -1,7 +1,6 @@
 ---
 authors: [matthias]
 tags: [graph, search, digitalocean, aws, gcp]
-image: ./img/banner-social.png
 ---
 
 # A Walk in the Graph

@@ -1,7 +1,6 @@
 ---
 authors: [matthias]
 tags: [search, graph, aws]
-image: ./img/banner-social.png
 ---
 
 # Resoto Search 101

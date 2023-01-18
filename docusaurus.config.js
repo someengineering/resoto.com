@@ -145,7 +145,7 @@ const config = {
         path: 'news',
         routeBasePath: 'news',
         archiveBasePath: null,
-        showReadingTime: true,
+        showReadingTime: false,
         feedOptions: {
           type: 'all',
           copyright: `Copyright © ${new Date().getFullYear()} Some Engineering Inc.`,
@@ -187,7 +187,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       image:
-        'https://resoto-og-image.vercel.app/Sync%20infrastructure%20data%20to%20a%20**single%20place**..png?md=1',
+        'https://og.some.engineering/api/image?theme=resoto&darkMode=0&title=%20&metadata=by%20Some%20Engineering%20Inc.',
       docs: {
         sidebar: {
           autoCollapseCategories: true,

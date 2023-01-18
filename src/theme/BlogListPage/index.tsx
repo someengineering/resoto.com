@@ -27,7 +27,7 @@ function BlogListPageMetadata(props: Props): JSX.Element {
       <PageMetadata
         title={title}
         description={blogDescription}
-        image={getImage(title)}
+        image={getImage({ title })}
       />
       <SearchMetadata tag="blog_posts_list" />
     </>

@@ -442,6 +442,12 @@ You can specify a profile using `AWS_PROFILE` and, for local testing, SSO authen
 </TabItem>
 </Tabs>
 
+## Authorization
+
+Check out [How to Roll Out Resoto AWS Permissions with CloudFormation](../../how-to-guides/configuration/roll-out-resoto-aws-permissions-with-cloudformation/index.md) for a step-by-step guide on how to roll out Resoto permissions organization wide.
+
+If you prefer to deploy the role yourself, the S3 URL of the template to create the ResotoAccess role is [https://resotopublic.s3.amazonaws.com/cf/resoto-role.template](https://resotopublic.s3.amazonaws.com/cf/resoto-role.template).
+
 ## Resource Collection
 
 By default, Resoto performs resource collection each hour. To immediately trigger a collect run, use the [`workflow run` command](../../reference/cli/action-commands/workflows/run.md) in [Resoto Shell](../../concepts/components/shell):

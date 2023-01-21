@@ -226,21 +226,6 @@ const config = {
           src: 'img/navbar-logo.svg',
         },
         items: [
-          {
-            label: 'Products',
-            position: 'right',
-            type: 'dropdown',
-            items: [
-              {
-                label: 'Cloud2SQL',
-                to: '/cloud2sql',
-              },
-              {
-                label: 'Resoto',
-                to: '/resoto',
-              },
-            ],
-          },
           { to: '/news', label: 'News', position: 'right' },
           { to: '/blog', label: 'Blog', position: 'right' },
           {
@@ -248,24 +233,6 @@ const config = {
             position: 'right',
             type: 'dropdown',
             items: [
-              {
-                type: 'html',
-                value:
-                  '<strong style="display: block; margin-top: 0.2rem; padding: 0.25rem 0.5rem; font-size: 1rem;">Cloud2SQL</strong>',
-              },
-              {
-                label: 'Installation',
-                to: 'https://github.com/someengineering/cloud2sql#installation',
-              },
-              {
-                label: 'Usage',
-                to: 'https://github.com/someengineering/cloud2sql#usage',
-              },
-              {
-                type: 'html',
-                value:
-                  '<strong style="display: block; margin-top: 0.5rem; padding: 0.25rem 0.5rem; font-size: 1rem;">Resoto</strong>',
-              },
               {
                 label: 'Getting Started',
                 to: '/docs/getting-started',
@@ -315,19 +282,6 @@ const config = {
       footer: {
         style: 'dark',
         links: [
-          {
-            title: 'Products',
-            items: [
-              {
-                label: 'Cloud2SQL',
-                to: '/cloud2sql',
-              },
-              {
-                label: 'Resoto',
-                to: '/resoto',
-              },
-            ],
-          },
           {
             title: 'Resoto Docs',
             items: [

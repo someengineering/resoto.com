@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
 
-[Cloud2SQL](/cloud2sql) is a tool based on [Resoto](/resoto)'s collector plugins that allows you to collect data from various cloud infrastructure sources and export it to a database (like [Snowflake](https://snowflake.com), [PostgreSQL](https://postgresql.org), [MariaDB](https://mariadb.org), or [MySQL](https://mysql.com)) or write it as [Parquet](https://parquet.apache.org), [SQLite](https://sqlite.org), or [<abbr title="comma-separated values">CSV</abbr>](https://en.wikipedia.org/wiki/Comma-separated_values) files for ingestion in your data lake.
+[Cloud2SQL](https://cloud2sql.com) is a tool based on Resoto's collector plugins that allows you to collect data from various cloud infrastructure sources and export it to a database (like [Snowflake](https://snowflake.com), [PostgreSQL](https://postgresql.org), [MariaDB](https://mariadb.org), or [MySQL](https://mysql.com)) or write it as [Parquet](https://parquet.apache.org), [SQLite](https://sqlite.org), or [<abbr title="comma-separated values">CSV</abbr>](https://en.wikipedia.org/wiki/Comma-separated_values) files for ingestion in your data lake.
 
 **In this post, I will guide you through the process of installing Cloud2SQL and demonstrate how to export data from AWS to a local SQLite database file.**
 
@@ -234,6 +234,6 @@ See [Resource Data Models](/docs/reference/data-models) for a full list of curre
 
 ## Conclusion
 
-Now that you have a good understanding of how to install and configure [Cloud2SQL](/cloud2sql), why not give it a try and see how it can help you streamline your cloud data management and analysis processes?
+Now that you have a good understanding of how to install and configure [Cloud2SQL](https://cloud2sql.com), why not give it a try and see how it can help you streamline your cloud data management and analysis processes?
 
 Simply follow the steps above to get started, and feel free to reach out to us on [Discord](https://discord.gg/someengineering) if you have any questions or encounter any issues along the way. We're always happy to help!

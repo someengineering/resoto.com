@@ -112,7 +112,7 @@ As you can see, every `aws_elb` inherits `load_balancer`, which in turn inherits
 
 While a graph data model is well-suited to representing the complex and hierarchical data collected by Resoto, the reality is that many people are familiar with SQL and the traditional database model based on rows and columns. SQL is a mature and well-established language, with a rich ecosystem of tools and applications.
 
-**To provide users with the option to use SQL with the data collected by Resoto, we developed [Cloud2SQL](/cloud2sql), a sub-project of Resoto.** Cloud2SQL is based on the same rich data collected by Resoto, but it flattens that data into tables, complete with foreign keys and link tables.
+**To provide users with the option to use SQL with the data collected by Resoto, we developed [Cloud2SQL](https://cloud2sql.com), a sub-project of Resoto.** Cloud2SQL is based on the same rich data collected by Resoto, but it flattens that data into tables, complete with foreign keys and link tables.
 
 ![Flattened AWS ELB](./img/aws_elb_flattened.png)
 
@@ -140,10 +140,10 @@ All of this allows users who are familiar with SQL to easily work with the data 
 
 ![AWS ELB Summary](./img/aws_elb_summary.png)
 
-**[Cloud2SQL](/cloud2sql) is stateless and runs standalone, independently of Resoto.** It is, however, based on the same collector plugins that Resoto uses to gather data.
+**[Cloud2SQL](https://cloud2sql.com) is stateless and runs standalone, independently of Resoto.** It is, however, based on the same collector plugins that Resoto uses to gather data.
 
-[Cloud2SQL](/cloud2sql) already has support for writing to a variety of different destinations, including [SQLite](https://sqlite.org) files, [MySQL](https://mysql.com), [MariaDB](https://mariadb.org), and [PostgreSQL](https://postgresql.org) databases, the [Snowflake](https://snowflake.com) cloud-based data warehousing platform, and [Parquet](https://parquet.apache.org) columnar structure files. This allows users to choose the destination that best fits their needs and workflows. By supporting a range of different destinations, Cloud2SQL makes it easy to work with the data collected by Resoto in the way that is most convenient for you.
+[Cloud2SQL](https://cloud2sql.com) already has support for writing to a variety of different destinations, including [SQLite](https://sqlite.org) files, [MySQL](https://mysql.com), [MariaDB](https://mariadb.org), and [PostgreSQL](https://postgresql.org) databases, the [Snowflake](https://snowflake.com) cloud-based data warehousing platform, and [Parquet](https://parquet.apache.org) columnar structure files. This allows users to choose the destination that best fits their needs and workflows. By supporting a range of different destinations, Cloud2SQL makes it easy to work with the data collected by Resoto in the way that is most convenient for you.
 
-In [my next post](/blog/2023/01/17/installing-cloud2sql), we'll take a closer look at [Cloud2SQL](/cloud2sql), install and configure it, and see how it can be used to get insights into our cloud infrastructure.
+In [my next post](/blog/2023/01/17/installing-cloud2sql), we'll take a closer look at [Cloud2SQL](https://cloud2sql.com), install and configure it, and see how it can be used to get insights into our cloud infrastructure.
 
 **Lastly, we are currently busy integrating the SQL synchronization functionality into Resoto as well.** Much like we are using Resoto collector plugins to power Cloud2SQL, we will be using Cloud2SQL's table generation and export functionality inside Resoto. The main difference between the two tools is that Cloud2SQL is a stateless, standalone tool that does data export only, while Resoto is a stateful collection of services that can not only export data and provide visibility but also be configured to take action.

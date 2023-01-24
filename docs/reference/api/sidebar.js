@@ -370,6 +370,31 @@ module.exports = [
   },
   {
     type: 'category',
+    label: 'report',
+    link: { type: 'doc', id: 'reference/api/report' },
+    items: [
+      {
+        type: 'doc',
+        id: 'reference/api/list-all-checks',
+        label: 'List all checks.',
+        className: 'api-method get',
+      },
+      {
+        type: 'doc',
+        id: 'reference/api/perform-a-benchmark-on-a-graph',
+        label: 'Perform a benchmark on a graph.',
+        className: 'api-method get',
+      },
+      {
+        type: 'doc',
+        id: 'reference/api/perform-a-dynamically-assembled-benchmark-on-a-graph',
+        label: 'Perform a dynamically assembled benchmark on a graph.',
+        className: 'api-method get',
+      },
+    ],
+  },
+  {
+    type: 'category',
     label: 'system',
     link: { type: 'doc', id: 'reference/api/system' },
     items: [

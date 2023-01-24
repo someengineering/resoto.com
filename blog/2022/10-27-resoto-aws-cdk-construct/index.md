@@ -37,7 +37,7 @@ $ npm run cdk deploy -- --parameters ResotoTag={{imageTag}} --parameters MngInst
 ```
 
 | Parameter         | Description                                                   | Default Value     |
-| ----------------- | ------------------------------------------------------------- |-------------------|
+| ----------------- | ------------------------------------------------------------- | ----------------- |
 | `ResotoTag`       | The Resoto image tag to use                                   | <LatestRelease /> |
 | `MngMaxSize`      | The maximum number of instances in the k8s managed node group | `3`               |
 | `MngMinSize`      | The minimum number of instances in the k8s managed node group | `1`               |

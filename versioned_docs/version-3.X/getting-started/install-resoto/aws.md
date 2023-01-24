@@ -51,7 +51,7 @@ We provide a <abbr title="Cloud Development Kit">CDK</abbr> construct to simplif
    ```
 
    | Parameter         | Description                                                   | Default Value     |
-   | ----------------- |-------------------| ----------------- |
+   | ----------------- | ------------------------------------------------------------- | ----------------- |
    | `ResotoTag`       | The Resoto image tag to use                                   | <LatestRelease /> |
    | `MngMaxSize`      | The maximum number of instances in the k8s managed node group | `3`               |
    | `MngMinSize`      | The minimum number of instances in the k8s managed node group | `1`               |

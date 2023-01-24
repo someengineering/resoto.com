@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-export default function LatestRelease(): JSX.Element {
+export default function PlausibleExclude(): JSX.Element {
   const [exclusionState, setExclusionState] = useState<boolean>(false);
 
   useEffect(() => {

@@ -9661,10 +9661,10 @@ react-textarea-autosize@^8.3.2:
     use-composed-ref "^1.3.0"
     use-latest "^1.2.1"
 
-react-zoom-pan-pinch@2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/react-zoom-pan-pinch/-/react-zoom-pan-pinch-2.2.0.tgz#15dd97aef798699016e4e30182cc51c4bddd4739"
-  integrity sha512-khOlTeTI/ZXtbCfqUmkKW0HpM+w0RklEQ1DlFVi0D9y90r+Z8x+ipKBXvPQC3rUu5VoYK4603SY8GsA6enfa8w==
+react-zoom-pan-pinch@2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/react-zoom-pan-pinch/-/react-zoom-pan-pinch-2.2.1.tgz#0158bd44c512bab068173b0ee57f6e18e7be3ac3"
+  integrity sha512-1TPTjTzX+i0N70QAKMvYWqzgLsCMyxLIIB/oVzKhGK+n1QON5EEGKqrcf4Zc0kI5BQ7bq5YN5PS9BbysLLQKKw==
 
 react@18.2.0:
   version "18.2.0"

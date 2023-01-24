@@ -56,7 +56,7 @@ We provide a <abbr title="Cloud Development Kit">CDK</abbr> construct to simplif
    | `MngMaxSize`      | The maximum number of instances in the k8s managed node group | `3`               |
    | `MngMinSize`      | The minimum number of instances in the k8s managed node group | `1`               |
    | `MngDesiredSize`  | The desired number of instances in the k8s managed node group | `1`               |
-   | `MngInstanceType` | The instance type of the k8s managed node group               | `t3.medium`       |
+   | `MngInstanceType` | The instance type of the k8s managed node group               | `t3.large`        |
 
    :::
 

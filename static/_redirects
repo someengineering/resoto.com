@@ -5,13 +5,11 @@ https://docs.resoto.com/*                                                       
 https://documentation.resoto.com/*                                                    https://resoto.com/docs/:splat 301!
 https://news.resoto.com/*                                                             https://resoto.com/news/:splat 301!
 
-/resoto/*                                                                             /
-
-https://cloud2sql.resoto.com/*                                                        https://cloud2sql.com/:splat 301!
-/cloud2sql/*                                                                          https://cloud2sql.com/:splat 301!
-
 /js/script.js                                                                         https://plausible.io/js/script.js 200
 /api/event                                                                            https://plausible.io/api/event 200
+
+/resoto/*                                                                             /
+/cloud2sql/*                                                                          https://cloud2sql.com/:splat 301!
 
 /blog/2022/02/04/resoto-query-language-101                                            /blog/2022/02/04/resoto-search-101
 /blog/2022/02/04/resoto-search-syntax-101                                             /blog/2022/02/04/resoto-search-101
@@ -199,10 +197,6 @@ https://cloud2sql.resoto.com/*                                                  
 
 /news/:year/:month/:date/v2.0.0*                                                      /news/2022/04/12/2.0.0
 /news/:year/:month/:date/v*                                                           /news/:year/:month/:date/:splat
-
-/news/2022/03/24/community-hour-event                                                 /news/2022/03/24/march-april-community-hour-event
-/news/2022/05/03/community-hour-event                                                 /news/2022/05/03/may-community-hour-event
-/news/2022/06/01/community-hour-event                                                 /news/2022/06/01/june-community-hour-event
 
 /release/*                                                                            /news/:splat
 /releases/*                                                                           /news/:splat

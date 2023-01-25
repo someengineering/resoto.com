@@ -229,6 +229,7 @@ const config = {
           { to: '/news', label: 'News', position: 'right' },
           { to: '/blog', label: 'Blog', position: 'right' },
           {
+            to: '/docs',
             label: 'Docs',
             position: 'right',
             type: 'dropdown',

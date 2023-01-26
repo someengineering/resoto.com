@@ -4,12 +4,12 @@ pagination_prev: getting-started/install-resoto/index
 pagination_next: getting-started/configure-cloud-provider-access/index
 ---
 
+# Install Resoto with Kubernetes
+
 ```mdx-code-block
 import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
-
-# Install Resoto with Kubernetes
 
 [Kubernetes](https://kubernetes.io) is an open-source system for automating deployment, scaling, and management of containerized applications.
 

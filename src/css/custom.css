@@ -188,6 +188,10 @@ div[class^='announcementBar_'] .close {
   border: none !important;
 }
 
+html[data-theme='dark'] .theme-doc-sidebar-container {
+  background-color: #3d176e33;
+}
+
 .version-selector {
   background-color: var(--ifm-navbar-background-color);
   padding: var(--ifm-menu-link-padding-vertical)
@@ -210,10 +214,6 @@ div[class^='announcementBar_'] .close {
       var(--ifm-button-padding-horizontal) * var(--ifm-button-size-multiplier) /
         2
     );
-}
-
-html[data-theme='dark'] .theme-doc-sidebar-container {
-  background-color: #3d176e33;
 }
 
 h1 code,
@@ -299,15 +299,6 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 
 .breadcrumbs__link:hover {
   text-decoration: var(--ifm-link-hover-decoration);
-}
-
-.md-actions {
-  display: flex;
-  align-items: center;
-}
-
-.md-actions > * {
-  margin-right: 1rem;
 }
 
 .api-info {

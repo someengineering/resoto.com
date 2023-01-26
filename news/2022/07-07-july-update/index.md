@@ -18,7 +18,7 @@ Resoto's [unified data model](/docs/reference/data-models) still applies. Common
 
 :::
 
-We think you will be delighted to use Resoto with Kubernetes. For more details, check out [Matthias' blog post](https://resoto.com/blog/2022/06/22/kubernetes-support).
+We think you will be delighted to use Resoto with Kubernetes. For more details, check out [Matthias' blog post](https://some.engineering/blog/2022/06/22/kubernetes-support).
 
 ## Nested Properties
 

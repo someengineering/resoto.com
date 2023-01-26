@@ -96,14 +96,14 @@ const config = {
           },
         },
         blog: {
-          blogTitle: 'Blog',
-          blogDescription: 'Resoto blog',
-          blogSidebarTitle: 'Posts',
+          blogTitle: 'News',
+          blogDescription: 'Resoto release notes and updates',
+          blogSidebarTitle: 'Announcements',
           blogSidebarCount: 'ALL',
-          path: 'blog',
+          path: 'news',
+          routeBasePath: 'news',
           archiveBasePath: null,
-          routeBasePath: 'blog',
-          showReadingTime: true,
+          showReadingTime: false,
           feedOptions: {
             type: 'all',
             copyright: `Copyright © ${new Date().getFullYear()} Some Engineering Inc.`,
@@ -134,25 +134,6 @@ const config = {
         }),
       };
     },
-    [
-      '@docusaurus/plugin-content-blog',
-      {
-        id: 'news',
-        blogTitle: 'News',
-        blogDescription: 'Resoto release notes and updates',
-        blogSidebarTitle: 'Announcements',
-        blogSidebarCount: 'ALL',
-        path: 'news',
-        routeBasePath: 'news',
-        archiveBasePath: null,
-        showReadingTime: false,
-        feedOptions: {
-          type: 'all',
-          copyright: `Copyright © ${new Date().getFullYear()} Some Engineering Inc.`,
-        },
-        remarkPlugins: [a11yEmoji],
-      },
-    ],
     [
       'docusaurus-plugin-openapi-docs',
       {
@@ -227,7 +208,6 @@ const config = {
         },
         items: [
           { to: '/news', label: 'News', position: 'right' },
-          { to: '/blog', label: 'Blog', position: 'right' },
           {
             to: '/docs',
             label: 'Docs',
@@ -339,10 +319,6 @@ const config = {
               {
                 label: 'News',
                 to: '/news',
-              },
-              {
-                label: 'Blog',
-                to: '/blog',
               },
               {
                 label: 'Logos',

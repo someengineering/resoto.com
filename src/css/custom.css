@@ -301,15 +301,6 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   text-decoration: var(--ifm-link-hover-decoration);
 }
 
-.md-actions {
-  display: flex;
-  align-items: center;
-}
-
-.md-actions > * {
-  margin-right: 1rem;
-}
-
 .api-info {
   display: none;
 }

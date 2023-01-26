@@ -1,6 +1,6 @@
 https://resoto.netlify.app/*                                                          https://resoto.com/:splat 301!
+https://resoto.some.engineering/*                                                     https://resoto.com/:splat 301!
 
-https://blog.resoto.com/*                                                             https://resoto.com/blog/:splat 301!
 https://docs.resoto.com/*                                                             https://resoto.com/docs/:splat 301!
 https://documentation.resoto.com/*                                                    https://resoto.com/docs/:splat 301!
 https://news.resoto.com/*                                                             https://resoto.com/news/:splat 301!
@@ -11,13 +11,8 @@ https://news.resoto.com/*                                                       
 /resoto/*                                                                             /
 /cloud2sql/*                                                                          https://cloud2sql.com/:splat 301!
 
-/blog/2022/02/04/resoto-query-language-101                                            /blog/2022/02/04/resoto-search-101
-/blog/2022/02/04/resoto-search-syntax-101                                             /blog/2022/02/04/resoto-search-101
-/blog/2022/05/31/resotonotebook                                                       /blog/2022/05/31/resoto-meets-jupyter-notebook
-/blog/2022/06/06/cloud-infrastructure-metrics                                         /blog/2022/06/09/building-actionable-cloud-infrastructure-metrics
-/blog/2022/12/20/integrating-cloud-data-into-existing-sql-workflows-with-cloud2sql    /blog/2023/01/16/integrating-cloud-data-into-existing-sql-workflows-with-cloud2sql
-/blog/2022/12/21/installing-cloud2sql                                                 /blog/2023/01/17/installing-cloud2sql
-/blog/*                                                                               /blog
+https://blog.resoto.com/*                                                             https://some.engineering/blog/:splat
+/blog/*                                                                               https://some.engineering/blog/:splat
 
 /docs/concepts/components/plugins/protect_snowflakes                                  /docs/concepts/components/plugins/protector
 /docs/concepts/components/resotolib                                                   /docs/concepts/components/library

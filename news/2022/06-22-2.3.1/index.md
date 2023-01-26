@@ -14,7 +14,7 @@ tags: [release notes]
 
 #### Further Reading
 
-- [Kubernetes Support](/blog/2022/06/22/kubernetes-support)
+- [Kubernetes Support](https://some.engineering/blog/2022/06/22/kubernetes-support)
 - [Install Resoto with Kubernetes](/docs/getting-started/install-resoto/kubernetes)
 - [Configure Kubernetes Access](/docs/getting-started/configure-cloud-provider-access/kubernetes)
 - [Kubernetes Resource Data Models](/docs/reference/data-models/kubernetes)

@@ -264,7 +264,7 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Resoto Docs',
+            title: 'Documentation',
             items: [
               {
                 label: 'Getting Started',

@@ -313,12 +313,16 @@ const config = {
             title: 'More',
             items: [
               {
-                label: 'About',
-                to: '/about',
+                label: 'Blog',
+                href: 'https://some.engineering/blog',
               },
               {
                 label: 'News',
                 to: '/news',
+              },
+              {
+                label: 'About',
+                to: '/about',
               },
               {
                 label: 'Logos',

@@ -50,41 +50,65 @@ These instructions were tested with version 1.2.15 of the operator.
 <Tabs groupId="installation-method">
 <TabItem value="default" label="Default Installation">
 
-Add the Resoto Helm chart repository and install the chart.
+1. Add the [Some Engineering Helm chart repository](https://helm.some.engineering):
 
-```bash
-$ helm repo add someengineering https://helm.some.engineering
-$ helm repo update
-$ helm install resoto someengineering/resoto --set image.tag={{imageTag}}
-```
+   ```bash
+   $ helm repo add someengineering https://helm.some.engineering
+   ```
+
+2. Update cached chart information:
+
+   ```bash
+   $ helm repo update
+   ```
+
+3. And install the `resoto` chart:
+
+   ```bash
+   $ helm install resoto someengineering/resoto --set image.tag={{imageTag}}
+   ```
 
 </TabItem>
 <TabItem value="customized" label="Customized Installation">
 
-It is possible to adjust the configuration of Resoto installation using a Helm values file.
+It is possible to customize your Resoto installation using a Helm values file.
 
-Please find the list of all possible configuration values in the [`someengineering/helm-chart` values documentation.](https://github.com/someengineering/helm-charts/tree/main/someengineering/resoto#values).
+1. Create a file `resoto-values.yaml` with the desired configuration:
 
-To override any value, please create the file `resoto-values.yaml` and define the values there.
+   ```yaml title="resoto-values.yaml"
+   resotoworker:
+     volumeMounts:
+       - mountPath: /home/resoto/.aws
+         name: aws-credentials
+     volumes:
+       - name: aws-credentials
+         secret:
+           secretName: resoto-home
+   ```
 
-```yaml title="resoto-values.yaml  Example File."
-resotoworker:
-  volumeMounts:
-    - mountPath: /home/resoto/.aws
-      name: aws-credentials
-  volumes:
-    - name: aws-credentials
-      secret:
-        secretName: resoto-home
-```
+   :::info
 
-Add the Resoto Helm chart repository and install the chart with the configuration defined in the `resoto-values.yaml` file.
+   [Configurable values are documented in the Some Engineering Helm Chart Repository.](https://helm.some.engineering/someengineering/resoto#values)
 
-```bash
-$ helm repo add someengineering https://helm.some.engineering
-$ helm repo update
-$ helm install resoto someengineering/resoto --set image.tag={{imageTag}} -f resoto-values.yaml
-```
+   :::
+
+2. Add the [Some Engineering Helm chart repository](https://helm.some.engineering):
+
+   ```bash
+   $ helm repo add someengineering https://helm.some.engineering
+   ```
+
+3. Update cached chart information:
+
+   ```bash
+   $ helm repo update
+   ```
+
+4. Install the `resoto` chart with the `resoto-values.yaml` file:
+
+   ```bash
+   $ helm install resoto someengineering/resoto --set image.tag={{imageTag}} -f resoto-values.yaml
+   ```
 
 </TabItem>
 </Tabs>

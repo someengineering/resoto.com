@@ -28,6 +28,8 @@ tags: [release notes]
 
 - [`8094ee96`](https://github.com/someengineering/resoto/commit/8094ee96) <span class="badge badge--secondary">resoto</span> Next release (#1377)
 
+<!--truncate-->
+
 ## Docker Images
 
 - `somecr.io/someengineering/resotocore:3.1.0`

@@ -85,6 +85,8 @@ https://blog.resoto.com/*                                                       
 /docs/getting-started/pruning-resources                                               /docs/how-to-guides/cleanup
 /docs/getting-started/usage/cleanup                                                   /docs/how-to-guides/cleanup
 
+/docs/getting-started/usage/*                                                         /docs/how-to-guides
+
 /docs/getting-started/resotonotebook                                                  /docs/reference/notebook
 /docs/getting-started/resoto-notebook                                                 /docs/reference/notebook
 /docs/reference/resotonotebook                                                        /docs/reference/notebook
@@ -189,12 +191,12 @@ https://blog.resoto.com/*                                                       
 
 /documentation/*                                                                      /docs/:splat
 /docs/edge/*                                                                          /docs/:splat
+/docs/2.x/*                                                                           /docs/:splat
+/docs/3.x/*                                                                           /docs/:splat
 
 /news/:year/:month/:date/v2.0.0*                                                      /news/2022/04/12/2.0.0
 /news/:year/:month/:date/v*                                                           /news/:year/:month/:date/:splat
-
-/release/*                                                                            /news/:splat
-/releases/*                                                                           /news/:splat
+/news/tags/release-notes/*                                                            /news/tags/release-notes
 /news/*                                                                               /news
 
 /support/*                                                                            /docs

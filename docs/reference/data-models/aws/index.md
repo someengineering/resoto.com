@@ -1534,6 +1534,481 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </div>
 </details>
 
+## `aws_sagemaker_algorithm`
+
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_algorithm data model](./img/aws_sagemaker_algorithm.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_algorithm resource relationships](./img/aws_sagemaker_algorithm_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_sagemaker_app`
+
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_app data model](./img/aws_sagemaker_app.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_app resource relationships](./img/aws_sagemaker_app_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_sagemaker_artifact`
+
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_artifact data model](./img/aws_sagemaker_artifact.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_artifact resource relationships](./img/aws_sagemaker_artifact_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_sagemaker_auto_ml_job`
+
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_auto_ml_job data model](./img/aws_sagemaker_auto_ml_job.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_auto_ml_job resource relationships](./img/aws_sagemaker_auto_ml_job_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_sagemaker_code_repository`
+
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_code_repository data model](./img/aws_sagemaker_code_repository.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_code_repository resource relationships](./img/aws_sagemaker_code_repository_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_sagemaker_compilation_job`
+
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_compilation_job data model](./img/aws_sagemaker_compilation_job.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_compilation_job resource relationships](./img/aws_sagemaker_compilation_job_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_sagemaker_domain`
+
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_domain data model](./img/aws_sagemaker_domain.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_domain resource relationships](./img/aws_sagemaker_domain_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_sagemaker_edge_packaging_job`
+
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_edge_packaging_job data model](./img/aws_sagemaker_edge_packaging_job.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_edge_packaging_job resource relationships](./img/aws_sagemaker_edge_packaging_job_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_sagemaker_endpoint`
+
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_endpoint data model](./img/aws_sagemaker_endpoint.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_endpoint resource relationships](./img/aws_sagemaker_endpoint_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_sagemaker_experiment`
+
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_experiment data model](./img/aws_sagemaker_experiment.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_experiment resource relationships](./img/aws_sagemaker_experiment_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_sagemaker_hyper_parameter_tuning_job`
+
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_hyper_parameter_tuning_job data model](./img/aws_sagemaker_hyper_parameter_tuning_job.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_hyper_parameter_tuning_job resource relationships](./img/aws_sagemaker_hyper_parameter_tuning_job_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_sagemaker_image`
+
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_image data model](./img/aws_sagemaker_image.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_image resource relationships](./img/aws_sagemaker_image_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_sagemaker_inference_recommendations_job`
+
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_inference_recommendations_job data model](./img/aws_sagemaker_inference_recommendations_job.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_inference_recommendations_job resource relationships](./img/aws_sagemaker_inference_recommendations_job_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_sagemaker_job`
+
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_job data model](./img/aws_sagemaker_job.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_job resource relationships](./img/aws_sagemaker_job_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_sagemaker_labeling_job`
+
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_labeling_job data model](./img/aws_sagemaker_labeling_job.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_labeling_job resource relationships](./img/aws_sagemaker_labeling_job_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_sagemaker_model`
+
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_model data model](./img/aws_sagemaker_model.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_model resource relationships](./img/aws_sagemaker_model_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_sagemaker_notebook`
+
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_notebook data model](./img/aws_sagemaker_notebook.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_notebook resource relationships](./img/aws_sagemaker_notebook_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_sagemaker_pipeline`
+
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_pipeline data model](./img/aws_sagemaker_pipeline.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_pipeline resource relationships](./img/aws_sagemaker_pipeline_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_sagemaker_processing_job`
+
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_processing_job data model](./img/aws_sagemaker_processing_job.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_processing_job resource relationships](./img/aws_sagemaker_processing_job_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_sagemaker_project`
+
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_project data model](./img/aws_sagemaker_project.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_project resource relationships](./img/aws_sagemaker_project_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_sagemaker_training_job`
+
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_training_job data model](./img/aws_sagemaker_training_job.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_training_job resource relationships](./img/aws_sagemaker_training_job_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_sagemaker_transform_job`
+
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_transform_job data model](./img/aws_sagemaker_transform_job.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_transform_job resource relationships](./img/aws_sagemaker_transform_job_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_sagemaker_trial`
+
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_trial data model](./img/aws_sagemaker_trial.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_trial resource relationships](./img/aws_sagemaker_trial_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_sagemaker_user_profile`
+
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_user_profile data model](./img/aws_sagemaker_user_profile.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_user_profile resource relationships](./img/aws_sagemaker_user_profile_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_sagemaker_workteam`
+
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_workteam data model](./img/aws_sagemaker_workteam.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_sagemaker_workteam resource relationships](./img/aws_sagemaker_workteam_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
 ## `aws_service_quota`
 
 <ZoomPanPinch>

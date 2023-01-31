@@ -74,12 +74,8 @@
   margin: 0;
 }
 
-.heroInner .buttons > * + * {
-  margin-left: 1rem;
-}
-
-.heroInner > .button:not(:last-child) {
-  margin: 0 0 var(--ifm-paragraph-margin-bottom);
+.heroInner .buttons > * {
+  margin: 0 0.5rem 0.5rem;
 }
 
 .section:nth-of-type(2) {

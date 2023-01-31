@@ -203,7 +203,7 @@ const config = {
           {
             tagName: 'link',
             rel: 'apple-touch-icon',
-            href: 'img/apple-icon-180.pngg',
+            href: 'img/apple-icon-180.png',
           },
         ],
       },

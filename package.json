@@ -65,7 +65,7 @@
     "@typescript-eslint/parser": "5.49.0",
     "asciinema-player": "3.0.1",
     "commitizen": "4.3.0",
-    "eslint": "8.32.0",
+    "eslint": "8.33.0",
     "eslint-config-prettier": "8.6.0",
     "eslint-plugin-formatjs": "4.5.0",
     "eslint-plugin-jsx-a11y": "6.7.1",

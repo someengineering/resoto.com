@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@docusaurus/core": "2.2.0",
+    "@docusaurus/plugin-pwa": "2.2.0",
     "@docusaurus/plugin-sitemap": "2.2.0",
     "@docusaurus/preset-classic": "2.2.0",
     "@docusaurus/theme-mermaid": "2.2.0",
@@ -50,6 +51,8 @@
     "react-zoom-pan-pinch": "2.2.1",
     "remark-plugin-oembed": "0.1.0",
     "url-loader": "4.1.1",
+    "workbox-routing": "6.5.4",
+    "workbox-strategies": "6.5.4",
     "yup": "0.32.11"
   },
   "devDependencies": {
@@ -67,7 +70,7 @@
     "eslint-plugin-formatjs": "4.5.0",
     "eslint-plugin-jsx-a11y": "6.7.1",
     "eslint-plugin-prettier": "4.2.1",
-    "eslint-plugin-react": "7.32.1",
+    "eslint-plugin-react": "7.32.2",
     "husky": "8.0.3",
     "lint-staged": "13.1.0",
     "prettier": "2.8.3",

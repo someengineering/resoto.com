@@ -163,6 +163,51 @@ const config = {
         },
       },
     ],
+    [
+      'pwa',
+      /** @type {import('@docusaurus/plugin-pwa').PluginOptions} */
+      {
+        debug: !isProd,
+        swCustom: require.resolve('./src/sw.js'),
+        pwaHead: [
+          {
+            tagName: 'link',
+            rel: 'manifest',
+            href: 'site.webmanifest',
+          },
+          {
+            tagName: 'link',
+            rel: 'icon',
+            href: 'img/icon-192.maskable.png',
+          },
+          {
+            tagName: 'link',
+            rel: 'icon',
+            href: 'img/icon-512.maskable.png',
+          },
+          {
+            tagName: 'meta',
+            name: 'theme-color',
+            content: '#af62f5',
+          },
+          {
+            tagName: 'meta',
+            name: 'apple-mobile-web-app-capable',
+            content: 'yes',
+          },
+          {
+            tagName: 'meta',
+            name: 'apple-mobile-web-app-status-bar-style',
+            content: '#000d19',
+          },
+          {
+            tagName: 'link',
+            rel: 'apple-touch-icon',
+            href: 'img/apple-icon-180.pngg',
+          },
+        ],
+      },
+    ],
   ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -178,6 +223,11 @@ const config = {
       metadata: [
         {
           name: 'description',
+          content:
+            'Resoto consolidates resource data across your clouds, regions, and accounts. Open source and free to use.',
+        },
+        {
+          name: 'og:description',
           content:
             'Resoto consolidates resource data across your clouds, regions, and accounts. Open source and free to use.',
         },

@@ -168,6 +168,7 @@ const config = {
       /** @type {import('@docusaurus/plugin-pwa').PluginOptions} */
       {
         debug: !isProd,
+        swRegister: false,
         swCustom: require.resolve('./src/sw.js'),
         pwaHead: [
           {

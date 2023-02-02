@@ -288,6 +288,11 @@ const config = {
           },
           { to: '/about', label: 'About', position: 'right' },
           {
+            label: 'Blog',
+            href: 'https://some.engineering/blog',
+            position: 'right',
+          },
+          {
             label: 'GitHub',
             href: 'https://github.com/someengineering/resoto',
             position: 'left',

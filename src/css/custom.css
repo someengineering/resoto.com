@@ -320,7 +320,7 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 
 .tabs__item {
   padding: calc(var(--ifm-tabs-padding-vertical) / 2)
-    var(--ifm-tabs-padding-horizontal);
+    var(--ifm-tabs-padding-horizontal) !important;
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
 }

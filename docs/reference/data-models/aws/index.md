@@ -622,6 +622,25 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </div>
 </details>
 
+## `aws_config_recorder`
+
+<ZoomPanPinch>
+
+![Diagram of aws_config_recorder data model](./img/aws_config_recorder.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_config_recorder resource relationships](./img/aws_config_recorder_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
 ## `aws_dynamo_db_global_table`
 
 <ZoomPanPinch>
@@ -674,6 +693,25 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 <ZoomPanPinch>
 
 ![Diagram of aws_ec2_elastic_ip resource relationships](./img/aws_ec2_elastic_ip_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_ec2_flow_log`
+
+<ZoomPanPinch>
+
+![Diagram of aws_ec2_flow_log data model](./img/aws_ec2_flow_log.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_ec2_flow_log resource relationships](./img/aws_ec2_flow_log_relationships.svg)
 
 </ZoomPanPinch>
 </div>

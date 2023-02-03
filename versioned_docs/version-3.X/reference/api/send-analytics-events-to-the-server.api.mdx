@@ -28,7 +28,7 @@ Send analytics events to the server. The server will either drop or forward the 
 
 The analytics events to send
 
-</div></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"system"} required={false} deprecated={undefined} schemaDescription={"The system that emitted the event."} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"kind"} required={false} deprecated={undefined} schemaDescription={"The kind of event."} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>context</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><div style={{"marginTop":".5rem","marginBottom":".5rem"}}>
+</div></div><ul style={{"marginLeft":"1rem"}}><li><div style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}>Array [</div></li><SchemaItem collapsible={false} name={"system"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","description":"The system that emitted the event."}}></SchemaItem><SchemaItem collapsible={false} name={"kind"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","description":"The kind of event."}}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>context</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><div style={{"marginTop":".5rem","marginBottom":".5rem"}}>
 
 The context of the event.
 
@@ -36,7 +36,7 @@ The context of the event.
 
 The counters of the event.
 
-</div><li><div><code>property name*</code><span style={{"opacity":"0.6"}}> integer</span></div></li></div></details></SchemaItem><SchemaItem collapsible={false} name={"at"} required={false} deprecated={undefined} schemaDescription={"The time of the event in IS0 8601 date time."} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></ul></details></TabItem></MimeTabs><div><ApiTabs><TabItem label={"204"} value={"204"}><div>
+</div><li><div><code>property name*</code><span style={{"opacity":"0.6"}}> integer</span></div></li></div></details></SchemaItem><SchemaItem collapsible={false} name={"at"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","description":"The time of the event in IS0 8601 date time."}}></SchemaItem><li><div style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}>]</div></li></ul></details></TabItem></MimeTabs><div><ApiTabs><TabItem label={"204"} value={"204"}><div>
 
 The events were accepted
 

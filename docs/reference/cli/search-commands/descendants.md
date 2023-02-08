@@ -4,9 +4,7 @@ sidebar_label: descendants
 
 # `descendants` Command
 
-The `descendants` command selects all descendants of nodes returned in a query.
-
-Please refer to the [Search Traversals](../../search/traversals.md#by-depth) for a detailed explanation of traversals.
+The `descendants` command selects all [descendants](../../../concepts/graph/edge.md#descendant) of nodes returned in a query.
 
 ## Usage
 
@@ -49,3 +47,8 @@ descendants [--with-origin] <edge_type>
 - [`ancestors`](./ancestors.md)
 - [`predecessors`](./predecessors.md)
 - [`successors`](./successors.md)
+
+## Further Reading
+
+- [Graph Edge](../../../concepts/graph/edge.md)
+- [Search Traversals](../../search/traversals.md)

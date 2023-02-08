@@ -4,9 +4,7 @@ sidebar_label: ancestors
 
 # `ancestors` Command
 
-The `ancestors` command selects all ancestors of nodes returned in a query.
-
-Please refer to the [Search Traversals](../../search/traversals.md#by-depth) for a detailed explanation of traversals.
+The `ancestors` command selects all [ancestors](../../../concepts/graph/edge.md#ancestor) of nodes returned in a query.
 
 ## Usage
 
@@ -54,3 +52,8 @@ ancestors [--with-origin] <edge_type>
 - [`descendants`](./descendants.md)
 - [`predecessors`](./predecessors.md)
 - [`successors`](./successors.md)
+
+## Further Reading
+
+- [Graph Edge](../../../concepts/graph/edge.md)
+- [Search Traversals](../../search/traversals.md)

@@ -4,9 +4,7 @@ sidebar_label: predecessors
 
 # `predecessors` Command
 
-The `predecessors` command selects all predecessors of nodes returned in a query.
-
-Please refer to the [Search Traversals](../../search/traversals.md#by-depth) for a detailed explanation of traversals.
+The `predecessors` command selects all [predecessors](../../../concepts/graph/edge.md#predecessor) of nodes returned in a query.
 
 ## Usage
 
@@ -50,3 +48,8 @@ predecessors [--with-origin] <edge_type>
 - [`ancestors`](./ancestors.md)
 - [`descendants`](./descendants.md)
 - [`successors`](./successors.md)
+
+## Further Reading
+
+- [Graph Edge](../../../concepts/graph/edge.md)
+- [Search Traversals](../../search/traversals.md)

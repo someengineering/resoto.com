@@ -4,9 +4,7 @@ sidebar_label: successors
 
 # `successors` Command
 
-The `successors` command selects all successors of nodes returned in a query.
-
-Please refer to the [Search Traversals](../../search/traversals.md#by-depth) for a detailed explanation of traversals.
+The `successors` command selects all [successors](../../../concepts/graph/edge.md#successor) of nodes returned in a query.
 
 ## Usage
 
@@ -50,3 +48,8 @@ successors [--with-origin] <edge_type>
 - [`ancestors`](./ancestors.md)
 - [`descendants`](./descendants.md)
 - [`predecessors`](./predecessors.md)
+
+## Further Reading
+
+- [Graph Edge](../../../concepts/graph/edge.md)
+- [Search Traversals](../../search/traversals.md)

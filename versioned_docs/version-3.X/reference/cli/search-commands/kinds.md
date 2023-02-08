@@ -65,3 +65,7 @@ kinds [-p <property_path>] <name>
 ​runtime_kind: string
 # highlight-end
 ```
+
+## Further Reading
+
+- [Graph Node](../../../concepts/graph/node.md#kind)

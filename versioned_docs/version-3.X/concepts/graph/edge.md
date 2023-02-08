@@ -7,54 +7,80 @@ sidebar_position: 2
 
 Nodes in the graph are connected via edges. Edges in the graph are directed, starting from a node pointing to a node.
 
+## Traversing the Graph
+
 In order to traverse the graph in a meaningful way, it is important to understand the structure of the graph. The following model is only a subset of the graph model you will find in Resoto, but illustrates how we can "walk" edges in the graph:
 
 ![Edge Data Model](./img/graph_query_graph_edges.png)
 
-All of the resources in AWS are placed in a region. The region is one node in the graph.
+All resources in AWS are placed in a region. The region is a node in the graph.
 
 If we want to find all resources in the graph, we need to walk _outbound_ (following the edges in direction of the arrow).
 
 If we want to know the account of a specific resource, we need to walk _inbound_ (following the edge in reverse direction of the arrow) in the graph until we find an account.
 
-## Edge Traversal Terminology
+## Traversal Terminology
 
-In Resoto and this documentation you will find four terms that we use to describe traversals on inbound and outbound edges from and to nodes. You can learn more about the [traversal commands here](../../reference/search/traversals#commands).
+### Successor
 
-In the following examples we always use _one node_ as the _current node_. This is depending on the selection or search, it could also be _multiple nodes_.
+**Successor nodes are _directly_ connected to the current node in an _outbound_ direction.**
 
-## Outbound
+[Descendants](#descendant) are a subset of successors (descendants are successors at depth 1).
 
-### Successors
+:::tip Example
 
-These are nodes that are **directly** connected to the current node in an **outbound** direction. Example: _aws_alb_ is selected. The next level of outbound node includes _aws_ec2_instance_.
+`aws_ec2_instance` is a **successor** of `aws_alb`:
 
 ![Successors](./img/graph_edges_successors.png)
 
-aws_ec2_instance is a **successor** of aws_alb.
+:::
 
-### Descendants
+### Descendant
 
-These are nodes that are connected to the current node in an **outbound** direction on any depth level. Example: _aws_alb_ is selected. Any node connected to this outbound on any level of depth is it's ancestor.
+**Descendant nodes are _directly or indirectly_ connected to the current node in an _outbound_ direction (at any depth).**
+
+Descendants are a subset of [successors](#successor) (descendants are successors at depth 1).
+
+:::tip Example
+
+`aws_ec2_instance` and `aws_ec2_elastic_ip` are **ancestors** of `aws_alb`:
 
 ![Descendants](./img/graph_edges_descendants.png)
 
-aws_ec2_instance and aws_ec2_elastic_ip are **ancestors** of aws_alb.
+:::
 
-## Inbound
+### Predecessor
 
-### Predecessors
+**Predecessor nodes are _directly_ connected to the current node in an _inbound_ direction.**
 
-These are nodes that are **directly** connected to the current node in an **inbound** direction. Example: _aws_ec2_instance_ is selected. The next level of inbound nodes includes _aws_region_, _aws_alb_ and _aws_alb_target_group_.
+Predecessors are a subset of [ancestors](#ancestor) (predecessors are ancestors at depth 1).
+
+:::tip Example
+
+`aws_region`, `aws_alb`, and `aws_alb_target_group` are **predecessors** of `aws_ec2_instance`:
 
 ![Predecessors](./img/graph_edges_predecessors.png)
 
-aws_region, aws_alb, and aws_alb_target_group are **predecessors** of aws_ec2_instance.
+:::
 
-### Ancestors
+### Ancestor
 
-These are nodes that are connected to the current node in an **inbound** direction on any depth level. Example: _aws_ec2_instance_ is selected. Any node connected to this inbound on any level of depth is it's ancestor.
+**Ancestor nodes are _directly or indirectly_ connected to the current node in an _inbound_ direction (at any depth).**
+
+[Predecessors](#predecessor) are a subset of ancestors (predecessors are ancestors at depth 1).
+
+:::tip Example
+
+`aws_region`, `aws_alb`, `aws_alb_target_group`, and `aws_account` are **ancestors** of `aws_ec2_instance`:
 
 ![Ancestors](./img/graph_edges_ancestors.png)
 
-aws_region, aws_alb, aws_alb_target_group, and aws_account are **ancestors** of aws_ec2_instance.
+:::
+
+## Further Reading
+
+- [Search Traversals](../../reference/search/traversals.md)
+- [`ancestors` Command](../../reference/cli/search-commands/ancestors.md)
+- [`descendants` Command](../../reference/cli/search-commands/descendants.md)
+- [`predecessors` Command](../../reference/cli/search-commands/predecessors.md)
+- [`successors` Command](../../reference/cli/search-commands/successors.md)

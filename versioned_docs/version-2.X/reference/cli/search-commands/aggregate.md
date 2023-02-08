@@ -79,3 +79,7 @@ Each grouping function can have an `as <name>` clause to give the function resul
 ## Related Commands
 
 - [`search`](./search.md)
+
+## Further Reading
+
+- [Search Aggregation](../../search/aggregation.md)

@@ -34,3 +34,7 @@ Every node has a kind, which describes the structure of the reported section of 
 The model supports inheritance: every specific type is also an instance of every more general type of this specific type.
 
 Take a graph node with a type of `aws_ec2_instance` as an example. This type is subtype of the types: `instance`, `aws_resource` and `resource`.
+
+## Further Reading
+
+- [Search Filters](../../reference/search/filters.md)

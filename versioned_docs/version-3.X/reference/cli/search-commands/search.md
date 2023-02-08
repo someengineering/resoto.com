@@ -59,3 +59,7 @@ search [--with-edges] [--explain] <query>
 ## Related Commands
 
 - [`aggregate`](./aggregate.md)
+
+## Further Reading
+
+- [Search](../../search/index.md)

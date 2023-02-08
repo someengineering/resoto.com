@@ -6,7 +6,6 @@ const oembed = require('remark-plugin-oembed');
 
 const latestRelease = require('./latestRelease.json');
 const versions = require('./versions.json');
-const keywords = require('./keywords.json');
 
 const isProd =
   process.env.NODE_ENV !== 'development' &&
@@ -224,19 +223,12 @@ const config = {
       metadata: [
         {
           name: 'description',
+          property: 'og:description',
           content:
             'Resoto consolidates resource data across your clouds, regions, and accounts. Open source and free to use.',
-        },
-        {
-          name: 'og:description',
-          content:
-            'Resoto consolidates resource data across your clouds, regions, and accounts. Open source and free to use.',
-        },
-        {
-          name: 'keywords',
-          content: keywords.join(','),
         },
         { property: 'og:type', content: 'website' },
+        { name: 'robots', content: 'nofollow' },
       ],
       tableOfContents: {
         minHeadingLevel: 2,

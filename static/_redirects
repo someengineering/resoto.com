@@ -11,8 +11,8 @@ https://news.resoto.com/*                                                       
 /resoto/*                                                                             /
 /cloud2sql/*                                                                          https://cloud2sql.com/:splat 301!
 
-https://blog.resoto.com/*                                                             https://some.engineering/blog/:splat
-/blog/*                                                                               https://some.engineering/blog/:splat
+https://blog.resoto.com/*                                                             https://some.engineering/blog/:splat 301!
+/blog/*                                                                               https://some.engineering/blog/:splat 301!
 
 /docs/concepts/components/plugins/protect_snowflakes                                  /docs/concepts/components/plugins/protector
 /docs/concepts/components/resotolib                                                   /docs/concepts/components/library

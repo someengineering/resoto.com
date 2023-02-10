@@ -444,9 +444,9 @@ You can specify a profile using `AWS_PROFILE` and, for local testing, SSO authen
 
 ## Authorization
 
-See [How to Roll Out Resoto AWS Permissions with CloudFormation](../../how-to-guides/configuration/roll-out-resoto-aws-permissions-with-cloudformation/index.md) for a step-by-step guide on how to roll out Resoto permissions organization-wide.
+See [How to Roll Out Resoto AWS Permissions with CloudFormation](../../how-to-guides/configuration/roll-out-resoto-aws-permissions-with-cloudformation/index.md) for a step-by-step guide on how to roll out Resoto [permissions](../../reference/permissions/aws.md) organization-wide.
 
-If you prefer to deploy the role yourself, the S3 URL of the template to create the ResotoAccess role is <https://resotopublic.s3.amazonaws.com/cf/resoto-role.template>.
+If you prefer to deploy the role yourself, the S3 URL of the template to create the `ResotoAccess` role is <https://resotopublic.s3.amazonaws.com/cf/resoto-role.template>.
 
 ## Resource Collection
 

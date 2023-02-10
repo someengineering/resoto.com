@@ -27,6 +27,7 @@ https://blog.resoto.com/*                                                       
 /docs/concepts/search/basic-syntax                                                    /docs/reference/search/filters
 /docs/concepts/search/fulltext-search                                                 /docs/reference/search/full-text
 /docs/concepts/search/*                                                               /docs/reference/search/:splat
+/docs/concepts/security                                                               /docs/reference/security
 
 /concepts/*                                                                           /docs/concepts/:splat
 

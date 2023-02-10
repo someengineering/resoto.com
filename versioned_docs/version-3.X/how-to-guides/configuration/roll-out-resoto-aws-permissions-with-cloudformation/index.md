@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
 
-Each version of Resoto programmatically generates the specific <abbr title="Identity and Access Management">IAM</abbr> permissions it requires to collect (and optionally, manipulate) AWS resources. Manually maintaining these permissions is a tedious task, especially if you have multiple AWS accounts.
+Each version of Resoto programmatically generates the specific <abbr title="Identity and Access Management">IAM</abbr> [permissions](../../../reference/permissions/aws.md) it requires to collect (and optionally, manipulate) AWS resources. Manually maintaining these permissions is a tedious task, especially if you have multiple AWS accounts.
 
 **To eliminate this pain point, we provide a CloudFormation template that automatically creates a `ResotoAccess` role with the required permissions and a trust that allows a specified AWS account to assume this role.**
 
@@ -17,7 +17,7 @@ The stack can be deployed in a single account, or organization-wide as a [CloudF
 
 :::info
 
-The source code can be found in the [someengineering/resoto-cf GitHub repository](https://github.com/someengineering/resoto-cf).
+The source code can be found in the [`someengineering/resoto-cf` GitHub repository](https://github.com/someengineering/resoto-cf).
 
 :::
 
@@ -149,3 +149,7 @@ You also need an [AWS Organization](https://aws.amazon.com/organizations) that m
 
 </TabItem>
 </Tabs>
+
+## Further Reading
+
+- [Amazon Web Services Permissions](../../../reference/permissions/aws.md)

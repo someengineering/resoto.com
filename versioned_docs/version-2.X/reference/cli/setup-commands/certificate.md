@@ -34,4 +34,4 @@ certificate create --common-name <common-name>
 
 ## Further Reading
 
-- [Security](../../../concepts/security.md)
+- [Security](../../../reference/security.md)

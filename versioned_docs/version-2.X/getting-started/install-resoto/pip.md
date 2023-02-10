@@ -80,7 +80,7 @@ $ arangodb/bin/arangod --database.directory ~/resoto/data
 
 This will start ArangoDB on the current shell which is useful for testing. Once Resoto Core starts it will automatically secure the ArangoDB installation using the password provided in the `.graphdb-password` file (unless explicitly turned off using the `--graphdb-bootstrap-do-not-secure` flag).
 
-Read the section [Securing ArangoDB](../../concepts/security.md#custom-certificates) for details on how to generate certificates and encrypt the connection between Resoto Core and the graph database.
+Read the section [Securing ArangoDB](../../reference/security.md#custom-certificates) for details on how to generate certificates and encrypt the connection between Resoto Core and the graph database.
 
 ## Running Resoto
 

@@ -31,26 +31,14 @@ export default function AwsPolicyComparison({
       ? 'edge'
       : latestRelease[versionMetadata?.version ?? versions[0]].version;
 
-  const policies: { [policyName: string]: AwsPolicyResponse } = policyNames
-    .map((policyName) => ({
-      [policyName]: useStoredJson(
-        `aws-${version}-${policyName}`
-      ) as AwsPolicyResponse,
-    }))
-    .reduce(
-      (acc, policy) => ({
-        ...acc,
-        ...policy,
-      }),
-      {}
-    );
-
   const groupedActions: {
     [policyName: string]: { [namespace: string]: string[] };
   } = policyNames.reduce(
     (acc, policyName) => ({
       ...acc,
-      [policyName]: actionsByNamespace(policies[policyName]),
+      [policyName]: actionsByNamespace(
+        useStoredJson(`aws-${version}-${policyName}`) as AwsPolicyResponse
+      ),
     }),
     {}
   );
@@ -63,7 +51,7 @@ export default function AwsPolicyComparison({
 
   return (
     <>
-      {policyNames.length ? (
+      {policyNames.length && namespaces.length ? (
         <table>
           <thead>
             <tr>

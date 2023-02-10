@@ -163,6 +163,25 @@ const config = {
       },
     ],
     [
+      '@1password/docusaurus-plugin-stored-data',
+      {
+        data: {
+          ...[
+            'edge',
+            ...versions
+              .filter((version) => version !== '2.X')
+              .map((version) => latestRelease[version].version),
+          ]
+            .map((version) => ({
+              [`aws-${version}-ResotoOrgList`]: `https://cdn.some.engineering/resoto/aws/${version}/ResotoOrgList.json`,
+              [`aws-${version}-ResotoCollect`]: `https://cdn.some.engineering/resoto/aws/${version}/ResotoCollect.json`,
+              [`aws-${version}-ResotoMutate`]: `https://cdn.some.engineering/resoto/aws/${version}/ResotoMutate.json`,
+            }))
+            .reduce((acc, cur) => ({ ...acc, ...cur }), {}),
+        },
+      },
+    ],
+    [
       'pwa',
       /** @type {import('@docusaurus/plugin-pwa').PluginOptions} */
       {

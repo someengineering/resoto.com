@@ -9,20 +9,6 @@ export const awsPolicyUrl = (version: string, name: AwsPolicyName): string => {
   return `https://cdn.some.engineering/resoto/aws/${version}/${name}.json`;
 };
 
-export const fetchAwsPolicy = async (
-  version: string,
-  name: AwsPolicyName
-): Promise<AwsPolicyResponse | null> => {
-  try {
-    const response = await fetch(awsPolicyUrl(version, name));
-    const data = (await response.json()) as AwsPolicyResponse;
-
-    return data;
-  } catch (err) {
-    return null;
-  }
-};
-
 export const actionsByNamespace = (
   policy: AwsPolicyResponse | null
 ): { [namespace: string]: string[] } => {

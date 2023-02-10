@@ -565,6 +565,44 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </div>
 </details>
 
+## `aws_cloudwatch_log_group`
+
+<ZoomPanPinch>
+
+![Diagram of aws_cloudwatch_log_group data model](./img/aws_cloudwatch_log_group.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_cloudwatch_log_group resource relationships](./img/aws_cloudwatch_log_group_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_cloudwatch_metric_filter`
+
+<ZoomPanPinch>
+
+![Diagram of aws_cloudwatch_metric_filter data model](./img/aws_cloudwatch_metric_filter.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_cloudwatch_metric_filter resource relationships](./img/aws_cloudwatch_metric_filter_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
 ## `aws_cognito_group`
 
 <ZoomPanPinch>
@@ -1491,6 +1529,25 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 <ZoomPanPinch>
 
 ![Diagram of aws_lambda_function resource relationships](./img/aws_lambda_function_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_rds_cluster`
+
+<ZoomPanPinch>
+
+![Diagram of aws_rds_cluster data model](./img/aws_rds_cluster.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_rds_cluster resource relationships](./img/aws_rds_cluster_relationships.svg)
 
 </ZoomPanPinch>
 </div>

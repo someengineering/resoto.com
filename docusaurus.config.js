@@ -60,8 +60,8 @@ const config = {
               (item) =>
                 (item.type !== 'doc' || !item.id.endsWith('index')) &&
                 (item.type !== 'category' ||
-                  item.link.type !== 'doc' ||
-                  !item.link.id.endsWith('reference/api/index'))
+                  item.link?.type !== 'doc' ||
+                  !item.link?.id.endsWith('reference/api/index'))
             );
           },
           editUrl: ({ versionDocsDirPath, docPath }) =>
@@ -164,6 +164,7 @@ const config = {
     ],
     [
       '@1password/docusaurus-plugin-stored-data',
+      /** @type {import('@1password/docusaurus-plugin-stored-data').Options} */
       {
         data: {
           ...[

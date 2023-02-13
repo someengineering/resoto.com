@@ -299,6 +299,25 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </div>
 </details>
 
+## `aws_cloud_trail`
+
+<ZoomPanPinch>
+
+![Diagram of aws_cloud_trail data model](./img/aws_cloud_trail.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_cloud_trail resource relationships](./img/aws_cloud_trail_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
 ## `aws_cloudformation_stack`
 
 <ZoomPanPinch>
@@ -546,6 +565,44 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </div>
 </details>
 
+## `aws_cloudwatch_log_group`
+
+<ZoomPanPinch>
+
+![Diagram of aws_cloudwatch_log_group data model](./img/aws_cloudwatch_log_group.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_cloudwatch_log_group resource relationships](./img/aws_cloudwatch_log_group_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_cloudwatch_metric_filter`
+
+<ZoomPanPinch>
+
+![Diagram of aws_cloudwatch_metric_filter data model](./img/aws_cloudwatch_metric_filter.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_cloudwatch_metric_filter resource relationships](./img/aws_cloudwatch_metric_filter_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
 ## `aws_cognito_group`
 
 <ZoomPanPinch>
@@ -603,6 +660,25 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </div>
 </details>
 
+## `aws_config_recorder`
+
+<ZoomPanPinch>
+
+![Diagram of aws_config_recorder data model](./img/aws_config_recorder.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_config_recorder resource relationships](./img/aws_config_recorder_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
 ## `aws_dynamo_db_global_table`
 
 <ZoomPanPinch>
@@ -655,6 +731,25 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 <ZoomPanPinch>
 
 ![Diagram of aws_ec2_elastic_ip resource relationships](./img/aws_ec2_elastic_ip_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_ec2_flow_log`
+
+<ZoomPanPinch>
+
+![Diagram of aws_ec2_flow_log data model](./img/aws_ec2_flow_log.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_ec2_flow_log resource relationships](./img/aws_ec2_flow_log_relationships.svg)
 
 </ZoomPanPinch>
 </div>
@@ -1059,6 +1154,63 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </div>
 </details>
 
+## `aws_efs_access_point`
+
+<ZoomPanPinch>
+
+![Diagram of aws_efs_access_point data model](./img/aws_efs_access_point.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_efs_access_point resource relationships](./img/aws_efs_access_point_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_efs_file_system`
+
+<ZoomPanPinch>
+
+![Diagram of aws_efs_file_system data model](./img/aws_efs_file_system.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_efs_file_system resource relationships](./img/aws_efs_file_system_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_efs_mount_target`
+
+<ZoomPanPinch>
+
+![Diagram of aws_efs_mount_target data model](./img/aws_efs_mount_target.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_efs_mount_target resource relationships](./img/aws_efs_mount_target_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
 ## `aws_eks_cluster`
 
 <ZoomPanPinch>
@@ -1382,6 +1534,25 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </div>
 </details>
 
+## `aws_rds_cluster`
+
+<ZoomPanPinch>
+
+![Diagram of aws_rds_cluster data model](./img/aws_rds_cluster.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_rds_cluster resource relationships](./img/aws_rds_cluster_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
 ## `aws_rds_instance`
 
 <ZoomPanPinch>
@@ -1458,6 +1629,25 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 </div>
 </details>
 
+## `aws_root_user`
+
+<ZoomPanPinch>
+
+![Diagram of aws_root_user data model](./img/aws_root_user.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_root_user resource relationships](./img/aws_root_user_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
 ## `aws_route53_resource_record`
 
 <ZoomPanPinch>
@@ -1510,6 +1700,25 @@ Please refer to [Configure Amazon Web Services Access](../../../getting-started/
 <ZoomPanPinch>
 
 ![Diagram of aws_route53_zone resource relationships](./img/aws_route53_zone_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
+## `aws_s3_account_settings`
+
+<ZoomPanPinch>
+
+![Diagram of aws_s3_account_settings data model](./img/aws_s3_account_settings.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of aws_s3_account_settings resource relationships](./img/aws_s3_account_settings_relationships.svg)
 
 </ZoomPanPinch>
 </div>

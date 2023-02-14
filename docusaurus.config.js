@@ -174,9 +174,9 @@ const config = {
               .map((version) => latestRelease[version].version),
           ]
             .map((version) => ({
-              [`aws-${version}-ResotoOrgList`]: `https://raw.githubusercontent.com/someengineering/resoto.com/dh/aws/aws/${version}/ResotoOrgList.json`,
-              [`aws-${version}-ResotoCollect`]: `https://raw.githubusercontent.com/someengineering/resoto.com/dh/aws/aws/${version}/ResotoCollect.json`,
-              [`aws-${version}-ResotoMutate`]: `https://raw.githubusercontent.com/someengineering/resoto.com/dh/aws/aws/${version}/ResotoMutate.json`,
+              [`aws-${version}-ResotoOrgList`]: `https://cdn.some.engineering/resoto/aws/${version}/ResotoOrgList.json`,
+              [`aws-${version}-ResotoCollect`]: `https://cdn.some.engineering/resoto/aws/${version}/ResotoCollect.json`,
+              [`aws-${version}-ResotoMutate`]: `https://cdn.some.engineering/resoto/aws/${version}/ResotoMutate.json`,
             }))
             .reduce((acc, cur) => ({ ...acc, ...cur }), {}),
         },

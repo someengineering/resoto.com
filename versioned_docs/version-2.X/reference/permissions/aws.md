@@ -1,22 +1,12 @@
-# Permissions
+---
+sidebar_label: Amazon Web Services
+---
 
-To use Resoto with all it's features—including cleanup—it requires wide permissions. It needs to collect all the resources, do tag validations and updates as well as deleting resources.
+# Amazon Web Services Permissions
 
-To use Resoto in a read-only capacity you can limit access to your cloud provider accordingly.
+To enable the full capabilities of Resoto, it needs a PowerUser-like role. You can then deny the permissions we don't want this role to have.
 
-:::info
-
-Resoto will _NOT_ delete resources marked for deletion by default, even with the neccessary permissions.
-
-:::
-
-Resoto will **silently ignore** collecting specific resources if it does not have the required permissions.
-
-## AWS Permissions
-
-To enable the full capabilities of Resoto it needs a PowerUser like role and then deny the ones we don't want it to have.
-
-### Discovery-Only
+## Discovery-Only
 
 To use Resoto in a read-only capacity it needs the following IAM role permissions.
 
@@ -333,9 +323,9 @@ To use Resoto in a read-only capacity it needs the following IAM role permission
 }
 ```
 
-### Full Capabilities
+## Full Capabilities
 
-For production use—where Resoto also cleans up and validates tags—the needed permission role is a PowerUser that is locked down to not be able to create any resources or modify IAM settings.
+For production use (where Resoto also cleans up and validates tags), the needed permission role is a PowerUser that is locked down to not be able to create any resources or modify IAM settings.
 
 The following three policies are needed for Resoto to run with full capabilities.
 

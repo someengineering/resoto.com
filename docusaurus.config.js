@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 // @ts-check
 
+const { resolve } = require('path');
+
 const a11yEmoji = require('@fec/remark-a11y-emoji');
 const oembed = require('remark-plugin-oembed');
 
@@ -60,8 +62,8 @@ const config = {
               (item) =>
                 (item.type !== 'doc' || !item.id.endsWith('index')) &&
                 (item.type !== 'category' ||
-                  item.link.type !== 'doc' ||
-                  !item.link.id.endsWith('reference/api/index'))
+                  item.link?.type !== 'doc' ||
+                  !item.link?.id.endsWith('reference/api/index'))
             );
           },
           editUrl: ({ versionDocsDirPath, docPath }) =>
@@ -157,6 +159,36 @@ const config = {
                   categoryLinkSource: 'tag',
                 },
               },
+            }))
+            .reduce((acc, cur) => ({ ...acc, ...cur }), {}),
+        },
+      },
+    ],
+    [
+      '@1password/docusaurus-plugin-stored-data',
+      /** @type {import('@1password/docusaurus-plugin-stored-data').Options} */
+      {
+        data: {
+          ...['edge', ...versions.filter((version) => version !== '2.X')]
+            .map((version) => ({
+              [`aws-${version}-ResotoOrgList`]: resolve(
+                __dirname,
+                'aws',
+                version,
+                'ResotoOrgList.json'
+              ),
+              [`aws-${version}-ResotoCollect`]: resolve(
+                __dirname,
+                'aws',
+                version,
+                'ResotoCollect.json'
+              ),
+              [`aws-${version}-ResotoMutate`]: resolve(
+                __dirname,
+                'aws',
+                version,
+                'ResotoMutate.json'
+              ),
             }))
             .reduce((acc, cur) => ({ ...acc, ...cur }), {}),
         },

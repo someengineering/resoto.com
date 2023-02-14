@@ -1,15 +1,14 @@
 import type { PropVersionMetadata } from '@docusaurus/plugin-content-docs';
 import { useDocsVersion } from '@docusaurus/theme-common/internal';
-import latestRelease from '@site/latestRelease.json';
 import versions from '@site/versions.json';
+import useStoredJson from '@theme/useStoredJson';
 import GithubSlugger from 'github-slugger';
 import { union } from 'lodash';
-import React, { useEffect, useMemo, useState } from 'react';
+import React from 'react';
 import {
   actionsByNamespace,
   AwsPolicyName,
   AwsPolicyResponse,
-  fetchAwsPolicy,
 } from '../utils/awsPolicyHelper';
 
 export default function AwsPolicyComparison({
@@ -18,9 +17,6 @@ export default function AwsPolicyComparison({
   policyNames: AwsPolicyName[];
 }): JSX.Element {
   const githubSlugger = new GithubSlugger();
-  const [policies, setPolicies] = useState<{
-    [policyName: string]: AwsPolicyResponse | null;
-  }>({});
   let versionMetadata: PropVersionMetadata | null;
 
   try {
@@ -32,57 +28,29 @@ export default function AwsPolicyComparison({
   const version =
     versionMetadata?.version === 'current'
       ? 'edge'
-      : latestRelease[versionMetadata?.version ?? versions[0]].version;
-
-  useEffect(() => {
-    const getAwsPolicies = async () => {
-      setPolicies(
-        (
-          await Promise.all(
-            policyNames.map(async (policyName) => ({
-              [policyName]: await fetchAwsPolicy(version, policyName),
-            }))
-          )
-        ).reduce(
-          (acc, policy) => ({
-            ...acc,
-            ...policy,
-          }),
-          {}
-        )
-      );
-    };
-
-    getAwsPolicies();
-  }, [policyNames]);
+      : versionMetadata?.version ?? versions[0];
 
   const groupedActions: {
     [policyName: string]: { [namespace: string]: string[] };
-  } = useMemo(
-    () =>
-      policyNames.reduce(
-        (acc, policyName) => ({
-          ...acc,
-          [policyName]: actionsByNamespace(policies[policyName]),
-        }),
-        {}
+  } = policyNames.reduce(
+    (acc, policyName) => ({
+      ...acc,
+      [policyName]: actionsByNamespace(
+        useStoredJson(`aws-${version}-${policyName}`) as AwsPolicyResponse
       ),
-    [policies]
+    }),
+    {}
   );
 
-  const namespaces: string[] = useMemo(
-    () =>
-      union(
-        ...Object.keys(groupedActions).map((policyName) =>
-          Object.keys(groupedActions[policyName])
-        )
-      ),
-    [groupedActions]
+  const namespaces: string[] = union(
+    ...Object.keys(groupedActions).map((policyName) =>
+      Object.keys(groupedActions[policyName])
+    )
   );
 
   return (
     <>
-      {policyNames.length ? (
+      {policyNames.length && namespaces.length ? (
         <table>
           <thead>
             <tr>

@@ -11,6 +11,8 @@ import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
 
+Each version of Resoto programmatically generates the specific <abbr title="Identity and Access Management">IAM</abbr> permissions it requires to collect (and optionally, manipulate) AWS resources.
+
 <AwsPolicyComparison policyNames={["ResotoOrgList", "ResotoCollect", "ResotoMutate"]} />
 
 ## `ResotoOrgList`

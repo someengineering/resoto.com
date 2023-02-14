@@ -28,7 +28,9 @@ export default function PlausibleExclude(): JSX.Element {
 
             setExclusionState(!exclusionState);
           }}
-          className="button button--primary"
+          className={`button button--primary${
+            exclusionState ? ' button--outline' : ''
+          }`}
         >
           {exclusionState ? 'Stop Excluding My Visits' : 'Exclude My Visits'}
         </button>

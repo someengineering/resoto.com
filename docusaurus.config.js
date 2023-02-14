@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 // @ts-check
 
+const { resolve } = require('path');
+
 const a11yEmoji = require('@fec/remark-a11y-emoji');
 const oembed = require('remark-plugin-oembed');
 
@@ -167,16 +169,26 @@ const config = {
       /** @type {import('@1password/docusaurus-plugin-stored-data').Options} */
       {
         data: {
-          ...[
-            'edge',
-            ...versions
-              .filter((version) => version !== '2.X')
-              .map((version) => latestRelease[version].version),
-          ]
+          ...['edge', ...versions.filter((version) => version !== '2.X')]
             .map((version) => ({
-              [`aws-${version}-ResotoOrgList`]: `https://cdn.some.engineering/resoto/aws/${version}/ResotoOrgList.json`,
-              [`aws-${version}-ResotoCollect`]: `https://cdn.some.engineering/resoto/aws/${version}/ResotoCollect.json`,
-              [`aws-${version}-ResotoMutate`]: `https://cdn.some.engineering/resoto/aws/${version}/ResotoMutate.json`,
+              [`aws-${version}-ResotoOrgList`]: resolve(
+                __dirname,
+                'aws',
+                version,
+                'ResotoOrgList.json'
+              ),
+              [`aws-${version}-ResotoCollect`]: resolve(
+                __dirname,
+                'aws',
+                version,
+                'ResotoCollect.json'
+              ),
+              [`aws-${version}-ResotoMutate`]: resolve(
+                __dirname,
+                'aws',
+                version,
+                'ResotoMutate.json'
+              ),
             }))
             .reduce((acc, cur) => ({ ...acc, ...cur }), {}),
         },

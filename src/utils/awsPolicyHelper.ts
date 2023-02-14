@@ -1,3 +1,5 @@
+import latestRelease from '@site/latestRelease.json';
+
 export interface AwsPolicyResponse {
   Version: string;
   Statement: { Effect: string; Resource: string; Action: string[] }[];
@@ -6,7 +8,12 @@ export interface AwsPolicyResponse {
 export type AwsPolicyName = 'ResotoOrgList' | 'ResotoCollect' | 'ResotoMutate';
 
 export const awsPolicyUrl = (version: string, name: AwsPolicyName): string => {
-  return `https://cdn.some.engineering/resoto/aws/${version}/${name}.json`;
+  const directory =
+    version === 'edge' ? 'edge' : latestRelease[version]?.version;
+
+  return directory
+    ? `https://cdn.some.engineering/resoto/aws/${directory}/${name}.json`
+    : null;
 };
 
 export const actionsByNamespace = (

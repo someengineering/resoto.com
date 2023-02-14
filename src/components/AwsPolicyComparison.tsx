@@ -1,6 +1,5 @@
 import type { PropVersionMetadata } from '@docusaurus/plugin-content-docs';
 import { useDocsVersion } from '@docusaurus/theme-common/internal';
-import latestRelease from '@site/latestRelease.json';
 import versions from '@site/versions.json';
 import useStoredJson from '@theme/useStoredJson';
 import GithubSlugger from 'github-slugger';
@@ -29,7 +28,7 @@ export default function AwsPolicyComparison({
   const version =
     versionMetadata?.version === 'current'
       ? 'edge'
-      : latestRelease[versionMetadata?.version ?? versions[0]].version;
+      : versionMetadata?.version ?? versions[0];
 
   const groupedActions: {
     [policyName: string]: { [namespace: string]: string[] };

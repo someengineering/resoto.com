@@ -9,7 +9,7 @@ https://news.resoto.com/*                                                       
 /api/event                                                                            https://plausible.io/api/event 200
 
 /resoto/*                                                                             /
-/cloud2sql/*                                                                          https://cloud2sql.com/:splat 301!
+/cloud2sql/*                                                                          https://cloud2sql.com 301!
 
 https://blog.resoto.com/*                                                             https://some.engineering/blog/:splat 301!
 /blog/*                                                                               https://some.engineering/blog/:splat 301!

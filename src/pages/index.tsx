@@ -1,5 +1,4 @@
 import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import {
   CalendarIcon,
   ChartSquareBarIcon,
@@ -26,18 +25,15 @@ import whyResotoImage from './img/why-resoto.png';
 import styles from './index.module.css';
 
 export default function Home(): JSX.Element {
-  const { siteConfig } = useDocusaurusContext();
-
   return (
     <Layout>
       <header className={styles.hero}>
-        <h1 className={styles.siteTitle}>{siteConfig.title}</h1>
         <div className={styles.heroInner}>
           <div className={styles.heroText}>
             <div className={styles.tagline}>
               Metric generation and visual exploration
             </div>
-            <h2 className={styles.heroTitle}>Resoto</h2>
+            <h1 className={styles.heroTitle}>Resoto</h1>
             <p>
               Create an <strong>inventory</strong> of your cloud, get deep{' '}
               <strong>visibility</strong>, and <strong>react to changes</strong>{' '}

@@ -34,7 +34,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
      cleanup_pool_size: 16
    ```
 
-   When cleanup is enabled, marked resources will be deleted as a part of the `collect_and_cleanup` [workflow](../../concepts/automation/workflow.md), which runs each hour by default.
+   When cleanup is enabled, marked resources will be deleted as a part of the [`collect_and_cleanup`](../../concepts/collect_and_cleanup/index.md), which runs each hour by default.
 
    :::tip
 
@@ -82,11 +82,11 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
    :::note
 
-   The [`clean` command](../../reference/cli/action-commands/clean.md) flags a resource for cleanup. Cleanup is performed whenever the `collect_and_cleanup` [workflow](../../concepts/automation/workflow.md) runs. The workflow runs every hour by default, but can also be manually triggered using the `workflow run cleanup` command.
+   The [`clean` command](../../reference/cli/action-commands/clean.md) flags a resource for cleanup. Cleanup is performed whenever the [`collect_and_cleanup`](../../concepts/collect_and_cleanup/index.md) runs. The workflow runs every hour by default, but can also be manually triggered using the `workflow run cleanup` command.
 
    :::
 
-5. Automate flagging unused access keys for cleanup by creating a [job](../../concepts/automation/job.md):
+5. Automate flagging unused access keys for cleanup by creating a [job](../../concepts/automation/index.md):
 
    ```bash
    > jobs add --id clean_outdated_access_keys --wait-for-event post_collect 'search is(access_key) and last_access > 90days and /ancestors.user.reported.name not in [jenkins, ci] | clean'
@@ -94,7 +94,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
    ​Job clean_outdated_access_keys added.
    ```
 
-The job will now run each time Resoto emits the `cleanup_plan` event. The `cleanup_plan` event is a part of the `collect_and_cleanup` [workflow](../../concepts/automation/workflow.md) and emitted after resource collection is complete but before the cleanup is performed.
+The job will now run each time Resoto emits the `cleanup_plan` event. The `cleanup_plan` event is a part of the [`collect_and_cleanup`](../../concepts/collect_and_cleanup/index.md) and emitted after resource collection is complete but before the cleanup is performed.
 
 Each time the job runs, unused IAM access keys will be flagged for removal during the next cleanup run.
 
@@ -102,6 +102,6 @@ Each time the job runs, unused IAM access keys will be flagged for removal durin
 
 - [Resource Cleanup](../../concepts/resource-management/cleanup.md)
 - [Search](../../reference/search/index.md)
-- [Job](../../concepts/automation/job.md)
-- [Workflow](../../concepts/automation/workflow.md)
+- [Automation](../../concepts/automation/index.md)
+- [Collect and Cleanup](../../concepts/collect_and_cleanup/index.md)
 - [Command-Line Interface](../../reference/cli/index.md)

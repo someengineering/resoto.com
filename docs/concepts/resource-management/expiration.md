@@ -6,7 +6,7 @@ sidebar_label: Expiration
 
 Resoto calculates the expiration time of a resource based on its expiration tag and stores the result as the value of the `metadata.expires` property.
 
-Cleanup can be performed manually in [Resoto Shell](../components/shell.md), automatically using the [`cleanup_expired` plugin](../components/plugins/cleanup_expired.md), or via a scheduled [job](../automation/job.md).
+Cleanup can be performed manually in [Resoto Shell](../components/shell.md), automatically using the [`cleanup_expired` plugin](../components/plugins/cleanup_expired.md), or via a scheduled [job](../automation/index.md).
 
 ## Supported Expiration Tags
 

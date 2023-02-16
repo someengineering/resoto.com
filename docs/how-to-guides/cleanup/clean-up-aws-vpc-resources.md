@@ -46,7 +46,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
      cleanup_pool_size: 16
    ```
 
-   When cleanup is enabled, marked resources will be deleted as a part of the `collect_and_cleanup` [workflow](../../concepts/automation/workflow.md), which runs each hour by default.
+   When cleanup is enabled, marked resources will be deleted as a part of the [`collect_and_cleanup`](../../concepts/collect_and_cleanup/index.md), which runs each hour by default.
 
    :::tip
 
@@ -70,7 +70,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
      enabled: true
    ```
 
-The plugin will now run each time Resoto emits the `post_cleanup_plan` event. The `post_cleanup_plan` event is a part of the `collect_and_cleanup` [workflow](../../concepts/automation/workflow.md) and emitted after resource planning is complete but before the cleanup is performed.
+The plugin will now run each time Resoto emits the `post_cleanup_plan` event. The `post_cleanup_plan` event is a part of the [`collect_and_cleanup`](../../concepts/collect_and_cleanup/index.md) and emitted after resource planning is complete but before the cleanup is performed.
 
 Each time the `cleanup_aws_vpcs` plugin runs, network resources associated with VPCs that have been deleted or marked for [cleanup](../../concepts/resource-management/cleanup.md) will also be flagged for removal during the next cleanup run.
 
@@ -79,5 +79,5 @@ Each time the `cleanup_aws_vpcs` plugin runs, network resources associated with 
 - [`cleanup_aws_vpcs` Plugin](../../concepts/components/plugins/cleanup_aws_vpcs.md)
 - [Resource Cleanup](../../concepts/resource-management/cleanup.md)
 - [Configuration](../../reference/configuration/index.md)
-- [Workflow](../../concepts/automation/workflow.md)
+- [Collect and Cleanup](../../concepts/collect_and_cleanup/index.md)
 - [Command-Line Interface](../../reference/cli/index.md)

@@ -32,7 +32,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
      cleanup_pool_size: 16
    ```
 
-   When cleanup is enabled, marked resources will be deleted as a part of the `collect_and_cleanup` [workflow](../../concepts/automation/workflow.md), which runs each hour by default.
+   When cleanup is enabled, marked resources will be deleted as a part of the [`collect_and_cleanup`](../../concepts/collect_and_cleanup/index.md), which runs each hour by default.
 
    :::tip
 
@@ -60,17 +60,17 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
    :::note
 
-   The [`clean` command](../../reference/cli/action-commands/clean.md) flags a resource for cleanup. Cleanup is performed whenever the `collect_and_cleanup` [workflow](../../concepts/automation/workflow.md) runs. The workflow runs every hour by default, but can also be manually triggered using the `workflow run cleanup` command.
+   The [`clean` command](../../reference/cli/action-commands/clean.md) flags a resource for cleanup. Cleanup is performed whenever the [`collect_and_cleanup`](../../concepts/collect_and_cleanup/index.md) runs. The workflow runs every hour by default, but can also be manually triggered using the `workflow run cleanup` command.
 
    :::
 
-6. Automate flagging unused EBS volumes for cleanup by creating a [job](../../concepts/automation/job.md):
+6. Automate flagging unused EBS volumes for cleanup by creating a [job](../../concepts/automation/index.md):
 
    ```bash
    > jobs add --id cleanup-unused-volumes --wait-for-event cleanup_plan 'search is(aws_ec2_volume) and /ancestors.account.reported.name in [eng-jenkins,eng-development] and volume_status = available and age > 30d and last_access > 7d | clean'
    ```
 
-The job will now run each time Resoto emits the `cleanup_plan` event. The `cleanup_plan` event is a part of the `collect_and_cleanup` [workflow](../../concepts/automation/workflow.md) and emitted after resource collection is complete but before the cleanup is performed.
+The job will now run each time Resoto emits the `cleanup_plan` event. The `cleanup_plan` event is a part of the [`collect_and_cleanup`](../../concepts/collect_and_cleanup/index.md) and emitted after resource collection is complete but before the cleanup is performed.
 
 Each time the job runs, unused storage volumes will be flagged for removal during the next cleanup run.
 
@@ -79,6 +79,6 @@ Each time the job runs, unused storage volumes will be flagged for removal durin
 - [Resource Cleanup](../../concepts/resource-management/cleanup.md)
 - [Configuration](../../reference/configuration/index.md)
 - [Search](../../reference/search/index.md)
-- [Job](../../concepts/automation/job.md)
-- [Workflow](../../concepts/automation/workflow.md)
+- [Automation](../../concepts/automation/index.md)
+- [Collect and Cleanup](../../concepts/collect_and_cleanup/index.md)
 - [Command-Line Interface](../../reference/cli/index.md)

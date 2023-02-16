@@ -62,29 +62,29 @@ Here is a list of possible actions we could perform:
   # mark resources for cleanup. Matching resources will be deleted during the next cleanup run.
   > search ... | clean "Reason for cleanup"
   ```
-- create an alert in Pagerduty via the [`pagerduty`](../../how-to-guides/alerting/create-pagerduty-alert) command
+- create an alert in Pagerduty via the [`pagerduty`](../../how-to-guides/alerting/create-pagerduty-alert/index.md) command
   ```shell title="Example"
   # Create an alert in pagerduty
   > search ... | pagerduty summary="Reason for the alert" dedup_key="xyz"
   ```
-- create a Jira ticket with the [`jira`](../../how-to-guides/alerting/create-jira-issues) command
+- create a Jira ticket with the [`jira`](../../how-to-guides/alerting/create-jira-issues/index.md) command
   ```shell title="Example"
   # Create a ticket in Jira
   > search ... | jira title="Title of the ticket" username="..." token="..." project_id="123" reporter_id="xyz"
   ```
-- send an alert to Alertmanager via [`alertmanager`](../../how-to-guides/alerting/send-prometheus-alertmanager-alerts)
+- send an alert to Alertmanager via [`alertmanager`](../../how-to-guides/alerting/send-prometheus-alertmanager-alerts/index.md)
 
   ```shell title="Example"
   # Create an alert in alertmanager
   > search ... | alertmanager name="Description of the alert"
   ```
 
-- send a message to Slack via the [`slack`](../../how-to-guides/alerting/send-slack-notifications) command
+- send a message to Slack via the [`slack`](../../how-to-guides/alerting/send-slack-notifications/index.md) command
   ```shell title="Example"
   # Send a message to Slack
   > search ... | slack title="Description of the alert"
   ```
-- send a message to Discord via the [`discord`](../../how-to-guides/alerting/send-discord-notifications) command
+- send a message to Discord via the [`discord`](../../how-to-guides/alerting/send-discord-notifications/index.md) command
 
   ```shell title="Example"
   # Send a message to Discord

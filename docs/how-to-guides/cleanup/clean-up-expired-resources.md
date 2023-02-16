@@ -35,7 +35,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
      cleanup_pool_size: 16
    ```
 
-   When cleanup is enabled, marked resources will be deleted as a part of the `collect_and_cleanup` [workflow](../../concepts/automation/workflow.md), which runs each hour by default.
+   When cleanup is enabled, marked resources will be deleted as a part of the [`collect_and_cleanup`](../../concepts/collect_and_cleanup/index.md), which runs each hour by default.
 
    :::tip
 
@@ -52,7 +52,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
      enabled: true
    ```
 
-The plugin will now run each time Resoto emits the `cleanup_plan` event. The `cleanup_plan` event is a part of the `collect_and_cleanup` and `cleanup` [workflows](../../concepts/automation/workflow.md) and emitted after resource collection is complete but before the cleanup is performed.
+The plugin will now run each time Resoto emits the `cleanup_plan` event. The `cleanup_plan` event is a part of the `collect_and_cleanup` and [`cleanup`](../../concepts/collect_and_cleanup/index.md) and emitted after resource collection is complete but before the cleanup is performed.
 
 Each time the `cleanup_expired` plugin runs, expired resources will be flagged for removal during the next cleanup run.
 
@@ -87,5 +87,5 @@ If you would like to apply expiration tags to existing resources, [How to Find U
 - [Resource Expiration](../../concepts/resource-management/expiration.md)
 - [Resource Cleanup](../../concepts/resource-management/cleanup.md)
 - [Configuration](../../reference/configuration/index.md)
-- [Workflow](../../concepts/automation/workflow.md)
+- [Collect and Cleanup](../../concepts/collect_and_cleanup/index.md)
 - [Command-Line Interface](../../reference/cli/index.md)

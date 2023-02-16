@@ -55,7 +55,7 @@ The `pagerduty` command has the following parameters. All parameters without def
 
    If the defined condition is currently true, you should see a new alert in Pagerduty:
 
-4. Finally, we want to automate checking of the defined alert trigger and send alerts to [Pagerduty](https://www.pagerduty.com) whenever the result is true. We can accomplish this by creating a [job](../../../concepts/automation/job.md):
+4. Finally, we want to automate checking of the defined alert trigger and send alerts to [Pagerduty](https://www.pagerduty.com) whenever the result is true. We can accomplish this by creating a [job](../../../concepts/automation/index.md):
 
    ```bash
    > jobs add --id alert_on_pod_failure--wait-for-event post_collect 'search is(kubernetes_pod) and pod_status.container_statuses[*].restart_count > 20 and last_update<1h | pagerduty summary="Pods are restarting too often!" dedup_key="Resoto::PodRestartedTooOften"

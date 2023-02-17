@@ -169,6 +169,12 @@ Jobs can be triggered in two ways:
    |  | pre_generate_metrics | Trigger event to hook into the system before the generate_metrics is performed. |
    |  | post_generate_metrics | Trigger event to hook into the system before the generate_metrics is performed. |
 
+3. Combine both: execute the command line when a specific event happens after the time trigger fired.
+
+   It is possible to define a time trigger and an event trigger for one job. The command line will be executed, once the time trigger and then the event trigger fires. This is useful if you want to execute a command line on a specific schedule, but only after a specific event is fired.
+
+   Example: You want to clean up your development accounts in a special way by the end of the business week - lets says Friday 10PM. You would define a time trigger that executes the command line every Friday at 10PM and an event trigger that executes the command line when the `cleanup_plan` event is fired. The command line would mark all development resources that should not run over the weekend or longer for cleanup. The combination of the two triggers makes sure, that you operate on the latest state of resources available after 10PM on Friday.
+
 ### Define Jobs
 
 If you made it this far, you know how to interact with the CLI and what a trigger is. Now we can combine both to define a job.

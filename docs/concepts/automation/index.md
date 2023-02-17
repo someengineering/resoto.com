@@ -22,7 +22,7 @@ The CLI in Resoto is also extensible: you can define [custom commands](../../ref
 
 ### Example
 
-AWS has announced end of support for its RDS Aurora PostgreSQL 10.x version ([AWS announcement](https://repost.aws/questions/QU0ligxMlJSJWhzzgKbKgytQ/announcement-amazon-aurora-postgre-sql-10-x-end-of-support-is-january-31-2023)). Let's find out if we have instances of this version in any of our accounts. We will use the [`search`](../../reference/cli/search-commands/search.md) command to filter the relevant data. All results falling out of this search are instances we need to take action on.
+AWS has announced end of support for its RDS Aurora PostgreSQL 11.x version ([AWS announcement](https://repost.aws/questions/QUqTaY2mfcTSWoioVXmxSQdQ/announcement-amazon-aurora-postgre-sql-11-x-end-of-support-is-january-31-2024)). Let's find out if we have instances of this version in any of our accounts. We will use the [`search`](../../reference/cli/search-commands/search.md) command to filter the relevant data. All results falling out of this search are instances we need to take action on.
 
 ```shell
 > search is(aws_rds_cluster) and db_type=aurora-postgresql and db_version~11

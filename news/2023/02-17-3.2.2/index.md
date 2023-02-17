@@ -27,6 +27,10 @@ tags: [release notes]
 - [`a7ec1150`](https://github.com/someengineering/resoto/commit/a7ec1150) <span class="badge badge--secondary">gcp</span> Housekeeping (#1447)
 - [`c58b77d2`](https://github.com/someengineering/resoto/commit/c58b77d2) <span class="badge badge--secondary">resoto</span> Bump 3.2.2 (#1444)
 
+### Known Issues
+
+- Resoto UI - On MacOS, opening a dashboard and adding a new world map widget results in a WebGL context crash, requiring to reload the browser tab. On Windows the widget works as expected.
+
 <!--truncate-->
 
 ## Docker Images

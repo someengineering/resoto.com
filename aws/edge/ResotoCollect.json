@@ -15,6 +15,7 @@
         "cloudformation:DescribeStacks",
         "cloudformation:ListStackInstances",
         "cloudformation:ListStackSets",
+        "cloudformation:ListStacks",
         "cloudfront:ListCachePolicies",
         "cloudfront:ListDistributions",
         "cloudfront:ListFieldLevelEncryptionConfigs",

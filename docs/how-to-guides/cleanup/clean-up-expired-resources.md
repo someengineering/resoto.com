@@ -15,7 +15,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
 ## Directions
 
-1. Execute the following command in [Resoto Shell](../../concepts/components/shell.md) to open the [Resoto Worker](../../concepts/components/worker.md) configuration for editing:
+1. Execute the following command in [Resoto Shell](../../reference/components/shell.md) to open the [Resoto Worker](../../reference/components/worker.md) configuration for editing:
 
    ```bash
    > config edit resoto.worker
@@ -35,7 +35,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
      cleanup_pool_size: 16
    ```
 
-   When cleanup is enabled, marked resources will be deleted as a part of the [`collect_and_cleanup`](../../concepts/collect_and_cleanup/index.md), which runs each hour by default.
+   When cleanup is enabled, marked resources will be deleted as a part of the [`collect_and_cleanup`](../../concepts/workflows/index.md), which runs each hour by default.
 
    :::tip
 
@@ -52,7 +52,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
      enabled: true
    ```
 
-The plugin will now run each time Resoto emits the `cleanup_plan` event. The `cleanup_plan` event is a part of the `collect_and_cleanup` and [`cleanup`](../../concepts/collect_and_cleanup/index.md) and emitted after resource collection is complete but before the cleanup is performed.
+The plugin will now run each time Resoto emits the `cleanup_plan` event. The `cleanup_plan` event is a part of the `collect_and_cleanup` and [`cleanup`](../../concepts/workflows/index.md) and emitted after resource collection is complete but before the cleanup is performed.
 
 Each time the `cleanup_expired` plugin runs, expired resources will be flagged for removal during the next cleanup run.
 
@@ -83,9 +83,9 @@ If you would like to apply expiration tags to existing resources, [How to Find U
 
 ## Further Reading
 
-- [`cleanup_expired` Plugin](../../concepts/components/plugins/cleanup_expired.md)
+- [`cleanup_expired` Plugin](../../reference/components/plugins/cleanup_expired.md)
 - [Resource Expiration](../../concepts/resource-management/expiration.md)
 - [Resource Cleanup](../../concepts/resource-management/cleanup.md)
 - [Configuration](../../reference/configuration/index.md)
-- [Collect and Cleanup](../../concepts/collect_and_cleanup/index.md)
+- [Collect and Cleanup](../../concepts/workflows/index.md)
 - [Command-Line Interface](../../reference/cli/index.md)

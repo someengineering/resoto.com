@@ -24,4 +24,4 @@ The `jobs` command allows for the management of jobs.
 
 ## Further Reading
 
-- [Automation](../../../../concepts/automation/index.md)
+- [Jobs](../../../../concepts/jobs/index.md)

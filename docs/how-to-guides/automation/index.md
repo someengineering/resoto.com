@@ -1,8 +1,8 @@
 ---
-sidebar_position: 5
+sidebar_label: Automation
 ---
 
-# Resource Management
+# Automation How-To Guides
 
 ```mdx-code-block
 import DocCardList from '@theme/DocCardList';

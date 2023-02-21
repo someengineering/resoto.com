@@ -15,7 +15,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
 ## Directions
 
-1. Execute the following command in [Resoto Shell](../../concepts/components/shell.md) to open the [Resoto Worker](../../concepts/components/worker.md) configuration for editing:
+1. Execute the following command in [Resoto Shell](../../reference/components/shell.md) to open the [Resoto Worker](../../reference/components/worker.md) configuration for editing:
 
    ```bash
    > config edit resoto.worker
@@ -35,7 +35,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
      cleanup_pool_size: 16
    ```
 
-   When cleanup is enabled, marked resources will be deleted as a part of the [`collect_and_cleanup`](../../concepts/collect_and_cleanup/index.md), which runs each hour by default.
+   When cleanup is enabled, marked resources will be deleted as a part of the [`collect_and_cleanup`](../../concepts/workflows/index.md), which runs each hour by default.
 
    :::tip
 
@@ -94,7 +94,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
    :::
 
-The plugin will now run each time Resoto emits the `post_cleanup_plan` event. The `post_cleanup_plan` event is a part of the [`collect_and_cleanup`](../../concepts/collect_and_cleanup/index.md) and emitted after resource planning is complete but before the cleanup is performed.
+The plugin will now run each time Resoto emits the `post_cleanup_plan` event. The `post_cleanup_plan` event is a part of the [`collect_and_cleanup`](../../concepts/workflows/index.md) and emitted after resource planning is complete but before the cleanup is performed.
 
 Each time the `cleanup_untagged` plugin runs, resources for which the specified tag requirements are not met will be flagged for removal during the next cleanup run.
 
@@ -104,9 +104,9 @@ Each time the `cleanup_untagged` plugin runs, resources for which the specified 
 
 ## Further Reading
 
-- [`cleanup_untagged` Plugin](../../concepts/components/plugins/cleanup_untagged.md)
+- [`cleanup_untagged` Plugin](../../reference/components/plugins/cleanup_untagged.md)
 - [Resource Tagging](../../concepts/resource-management/tagging.md)
 - [Resource Cleanup](../../concepts/resource-management/cleanup.md)
 - [Configuration](../../reference/configuration/index.md)
-- [Collect and Cleanup](../../concepts/collect_and_cleanup/index.md)
+- [Collect and Cleanup](../../concepts/workflows/index.md)
 - [Command-Line Interface](../../reference/cli/index.md)

@@ -19,4 +19,4 @@ The `workflows` command allows for the management of workflows.
 
 ## Further Reading
 
-- [Collect and Cleanup](../../../../concepts/collect_and_cleanup/index.md)
+- [Workflows](../../../../concepts/workflows/index.md)

@@ -65,7 +65,7 @@ With the help of our community, Resoto currently supports over [300 resource typ
 
 See [Configure Cloud Provider Access](./getting-started/configure-cloud-provider-access/index.md) for more information on how to configure these providers.
 
-In addition to the above collector plugins, various [tag validation and cleanup plugins](./concepts/components/plugins/index.md) are also included for effortless handling of common use cases and tasks.
+In addition to the above collector plugins, various tag validation and cleanup [plugins](./reference/components/plugins/index.md) are also included for effortless handling of common use cases and tasks.
 
 :::info
 

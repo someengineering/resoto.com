@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 3
 sidebar_label: Shell
 ---
 
@@ -9,7 +9,7 @@ The `resh` command starts [Resoto Shell (`resotoshell`)](https://github.com/some
 
 Resoto Shell allows you to explore the graph, find resources of interest, mark them for cleanup, fix their tagging, aggregate over their metadata to create metrics, and format the output for use in a third-party script or system.
 
-Please refer to [Command-Line Interface](../../reference/cli/index.md) for details on how to use Resoto Shell.
+Please refer to [Command-Line Interface](../cli/index.md) for details on how to use Resoto Shell.
 
 ```bash title="Resoto Shell Docker image"
 somecr.io/someengineering/resotoshell:{{imageTag}}

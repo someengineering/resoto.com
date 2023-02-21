@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 4
 sidebar_label: Metrics
 ---
 
@@ -15,71 +15,51 @@ somecr.io/someengineering/resotometrics:{{imageTag}}
 
 ## Usage
 
-`resotometrics` uses the following commandline arguments:
-
-```
-  --subscriber-id SUBSCRIBER_ID
-                        Unique subscriber ID (default: resoto.metrics)
-  --override CONFIG_OVERRIDE [CONFIG_OVERRIDE ...]
-                        Override config attribute(s)
-  --resotocore-uri RESOTOCORE_URI
-                        resotocore URI (default: https://localhost:8900)
-  --verbose, -v         Verbose logging
-  --quiet               Only log errors
-  --psk PSK             Pre-shared key
-  --ca-cert CA_CERT     Path to custom CA certificate file
-  --cert CERT           Path to custom certificate file
-  --cert-key CERT_KEY   Path to custom certificate key file
-  --cert-key-pass CERT_KEY_PASS
-                        Passphrase for certificate key file
-  --no-verify-certs     Turn off certificate verification
-```
-
-ENV Prefix: `RESOTOMETRICS_` Every CLI arg can also be specified using ENV variables.
-
-For instance the boolean `--verbose` would become `RESOTOMETRICS_VERBOSE=true`.
-
 Once started `resotometrics` will register for `generate_metrics` core events. When such an event is received it will generate Resoto metrics and provide them at the `/metrics` endpoint.
 
-A prometheus config could look like this:
+A Prometheus config could look like this:
 
-```
+```yaml
 scrape_configs:
   - job_name: "resotometrics"
     static_configs:
       - targets: ["localhost:9955"]
 ```
 
+### Options
+
+| Option                                               | Description                         | Default                  |
+| ---------------------------------------------------- | ----------------------------------- | ------------------------ |
+| `--subscriber-id <SUBSCRIBER_ID>`                    | Unique subscriber ID                | `resoto.worker`          |
+| `--psk <PSK>`                                        | Pre-shared key                      |                          |
+| `--verbose`, `-v`                                    | Verbose logging                     |                          |
+| `--quiet`                                            | Only log errors                     |                          |
+| `--resotocore-uri <RESOTOCORE_URI>`                  | [Resoto Core](./core.md) URI        | `https://localhost:8900` |
+| `--override CONFIG_OVERRIDE [<CONFIG_OVERRIDE> ...]` | Override config attribute(s)        |                          |
+| `--ca-cert <CA_CERT>`                                | Path to custom CA certificate file  |                          |
+| `--cert <CERT>`                                      | Path to custom certificate file     |                          |
+| `--cert-key <CERT_KEY>`                              | Path to custom certificate key file |                          |
+| `--cert-key-pass <CERT_KEY_PASS>`                    | Passphrase for certificate key file |                          |
+| `--no-verify-certs`                                  | Turn off certificate verification   |                          |
+
+### Environment Variables
+
+CLI options can also be set via environment variables. The environment variable name is the same as the option name, but in uppercase with the prefix `RESOTOMETRICS_` and dashes replaced by underscores.
+
+For example, `--verbose` would become `RESOTOMETRICS_VERBOSE=true`.
+
 ## Details
 
-Resoto core supports aggregated queries to produce metrics. Our common library [`resotolib`](library.md) define a number of base resources that are common to a lot of cloud proviers, like say compute instances, subnets, routers, load balancers, and so on. All of those ship with a standard set of metrics specific to each resource.
+Resoto Core supports aggregated queries to produce metrics. The common library `resotolib` defines a number of base resources that are common to a lot of cloud proviers, like say compute instances, subnets, routers, load balancers, and so on. All of those ship with a standard set of metrics specific to each resource.
 
 For example, instances have CPU cores and memory, so they define default metrics for those attributes. Right now metrics are hard coded and read from the base resources, but future versions of Resoto will allow you to define your own metrics in `resotocore` and have `resotometrics` export them.
 
-For right now you can use the aggregate API at `{resotocore}:8900/graph/{graph}/reported/search/aggregate` or the `aggregate` CLI command to generate your own metrics. For API details check out the `resotocore` API documentation as well as the Swagger UI at `{resotocore}:8900/api-doc/`.
+## Example
 
-In the following we will be using the Resoto shell `resh` and the `aggregate` command.
+Enter the following command into Resoto Shell:
 
-### Example
-
-Enter the following commands into `resh`
-
-```
+```bash
 > search aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account, /ancestors.region.reported.name as region, instance_type as type : sum(1) as instances_total, sum(instance_cores) as cores_total, sum(instance_memory*1024*1024*1024) as memory_bytes): is(instance)
-```
-
-Here is the same query with line feeds for readability (can not be copy'pasted)
-
-```
-search aggregate(
-    /ancestors.cloud.reported.name as cloud,
-    /ancestors.account.reported.name as account,
-    /ancestors.region.reported.name as region,
-    instance_type as type :
-  sum(1) as instances_total,
-  sum(instance_cores) as cores_total,
-  sum(instance_memory*1024*1024*1024) as memory_bytes):
-  is(instance)
 ```
 
 If your graph contains any compute instances the resulting output will look something like this
@@ -114,28 +94,16 @@ cores_total: 48
 memory_bytes: 193273528320
 ```
 
-Let us dissect the `search` we've written here:
+Let us dissect the above command:
 
 - `aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account, /ancestors.region.reported.name as region, instance_type as type` aggregate the instance metrics by `cloud`, `account`, and `region` name as well as `instance_type` (think `GROUP_BY` in SQL).
 - `sum(1) as instances_total, sum(instance_cores) as cores_total, sum(instance_memory*1024*1024*1024) as memory_bytes):` sum up the total number of instances, number of instance cores and memory. The later is stored in GB and here we convert it to bytes as is customary in Prometheus exporters.
 - `is(instance)` search all the resources that inherit from base kind `instance`. This would be compute instances like `aws_ec2_instance` or `gcp_instance`.
 
-### Taking it one step further
+### Taking It One Step Further
 
-```
+```bash
 > search aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account, /ancestors.region.reported.name as region, instance_type as type : sum(/ancestors.instance_type.reported.ondemand_cost) as instances_hourly_cost_estimate): is(instance) and instance_status = running
-```
-
-Again the same query with line feeds for readability (can not be copy'pasted)
-
-```
-search aggregate(
-    /ancestors.cloud.reported.name as cloud,
-    /ancestors.account.reported.name as account,
-    /ancestors.region.reported.name as region,
-    instance_type as type :
-  sum(/ancestors.instance_type.reported.ondemand_cost) as instances_hourly_cost_estimate):
-  is(instance) and instance_status = running
 ```
 
 Outputs something like
@@ -158,6 +126,7 @@ Example
 
 ```
 > search is(instance) | tail -1 | format {kind} {name} {instance_type}
+# highlight-next-line
 aws_ec2_instance i-039e06bb2539e5484 t2.micro
 ```
 
@@ -165,7 +134,7 @@ What we did now was ask Resoto to go up the graph and find the directly connecte
 
 An `instance_type` resource looks something like this
 
-```
+```bash
 > search is(instance_type) | tail -1 | dump
 ​reported:
 ​  kind: aws_ec2_instance_type

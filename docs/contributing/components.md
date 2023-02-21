@@ -9,13 +9,12 @@ import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
 
-Resoto is comprised of multiple [components](../concepts/components/index.md), each of which is maintained as separate project:
+Resoto is comprised of multiple [components](../reference/components/index.md), each of which is maintained as separate project:
 
-- [Resoto Core](../concepts/components/core.md) [<span class="badge badge--secondary">View on GitHub</span>](https://github.com/someengineering/resoto/tree/main/resotocore)
-- [Resoto Shell](../concepts/components/shell.md) [<span class="badge badge--secondary">View on GitHub</span>](https://github.com/someengineering/resoto/tree/main/resotoshell)
-- [Resoto Worker](../concepts/components/worker.md) [<span class="badge badge--secondary">View on GitHub</span>](https://github.com/someengineering/resoto/tree/main/resotoworker)
-- [Resoto Metrics](../concepts/components/metrics.md) [<span class="badge badge--secondary">View on GitHub</span>](https://github.com/someengineering/resoto/tree/main/resotometrics)
-- [Resoto Library](../concepts/components/library.md) [<span class="badge badge--secondary">View on GitHub</span>](https://github.com/someengineering/resoto/tree/main/resotolib)
+- [Resoto Core](../reference/components/core.md) [<span class="badge badge--secondary">View on GitHub</span>](https://github.com/someengineering/resoto/tree/main/resotocore)
+- [Resoto Shell](../reference/components/shell.md) [<span class="badge badge--secondary">View on GitHub</span>](https://github.com/someengineering/resoto/tree/main/resotoshell)
+- [Resoto Worker](../reference/components/worker.md) [<span class="badge badge--secondary">View on GitHub</span>](https://github.com/someengineering/resoto/tree/main/resotoworker)
+- [Resoto Metrics](../reference/components/metrics.md) [<span class="badge badge--secondary">View on GitHub</span>](https://github.com/someengineering/resoto/tree/main/resotometrics)
 
 The source code for Resoto lives in the [`someengineering/resoto` repository on GitHub](https://github.com/someengineering/resoto).
 
@@ -23,7 +22,7 @@ The source code for Resoto lives in the [`someengineering/resoto` repository on 
 
 Contributions are made via [pull requests to the GitHub repository](https://github.com/someengineering/resoto/pulls). You will first need to [fork](https://docs.github.com/get-started/quickstart/fork-a-repo) the repository.
 
-Pull requests should target a single [component](../concepts/components/index.md).
+Pull requests should target a single [component](../reference/components/index.md).
 
 ### Prerequisites
 

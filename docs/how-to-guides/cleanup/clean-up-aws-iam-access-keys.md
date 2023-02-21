@@ -10,11 +10,11 @@ With Resoto, it is easy to find and delete AWS IAM access keys that have not bee
 
 ## Prerequisites
 
-This guide assumes that you have already [installed](../../getting-started/install-resoto/index.md) and configured Resoto to [collect your cloud resources](../../getting-started/configure-cloud-provider-access/index.md).
+This guide assumes that you have already [installed](../../getting-started/install-resoto/index.md) and configured Resoto to [collect your AWS cloud resources](../../getting-started/configure-cloud-provider-access/aws.md).
 
 ## Directions
 
-1. Execute the following command in [Resoto Shell](../../concepts/components/shell.md) to open the [Resoto Worker](../../concepts/components/worker.md) configuration for editing:
+1. Execute the following command in [Resoto Shell](../../reference/components/shell.md) to open the [Resoto Worker](../../reference/components/worker.md) configuration for editing:
 
    ```bash
    > config edit resoto.worker
@@ -34,7 +34,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
      cleanup_pool_size: 16
    ```
 
-   When cleanup is enabled, marked resources will be deleted as a part of the [`collect_and_cleanup`](../../concepts/collect_and_cleanup/index.md), which runs each hour by default.
+   When cleanup is enabled, marked resources will be deleted as a part of the [`collect_and_cleanup`](../../concepts/workflows/index.md), which runs each hour by default.
 
    :::tip
 
@@ -42,7 +42,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
    :::
 
-3. Execute the following search in [Resoto Shell](../../concepts/components/shell.md) to find the number of access keys that have not been used within the last 90 days, grouped by user:
+3. Execute the following search in [Resoto Shell](../../reference/components/shell.md) to find the number of access keys that have not been used within the last 90 days, grouped by user:
 
    ```bash
    > search is(access_key) and last_access > 90days <-- is(user) | count name
@@ -82,11 +82,11 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
    :::note
 
-   The [`clean` command](../../reference/cli/action-commands/clean.md) flags a resource for cleanup. Cleanup is performed whenever the [`collect_and_cleanup`](../../concepts/collect_and_cleanup/index.md) runs. The workflow runs every hour by default, but can also be manually triggered using the `workflow run cleanup` command.
+   The [`clean` command](../../reference/cli/action-commands/clean.md) flags a resource for cleanup. Cleanup is performed whenever the [`collect_and_cleanup`](../../concepts/workflows/index.md) runs. The workflow runs every hour by default, but can also be manually triggered using the `workflow run cleanup` command.
 
    :::
 
-5. Automate flagging unused access keys for cleanup by creating a [job](../../concepts/automation/index.md):
+5. Automate flagging unused access keys for cleanup by creating a [job](../../concepts/jobs/index.md):
 
    ```bash
    > jobs add --id clean_outdated_access_keys --wait-for-event post_collect 'search is(access_key) and last_access > 90days and /ancestors.user.reported.name not in [jenkins, ci] | clean'
@@ -94,7 +94,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
    ​Job clean_outdated_access_keys added.
    ```
 
-The job will now run each time Resoto emits the `cleanup_plan` event. The `cleanup_plan` event is a part of the [`collect_and_cleanup`](../../concepts/collect_and_cleanup/index.md) and emitted after resource collection is complete but before the cleanup is performed.
+The job will now run each time Resoto emits the `cleanup_plan` event. The `cleanup_plan` event is a part of the [`collect_and_cleanup`](../../concepts/workflows/index.md) and emitted after resource collection is complete but before the cleanup is performed.
 
 Each time the job runs, unused IAM access keys will be flagged for removal during the next cleanup run.
 
@@ -102,6 +102,6 @@ Each time the job runs, unused IAM access keys will be flagged for removal durin
 
 - [Resource Cleanup](../../concepts/resource-management/cleanup.md)
 - [Search](../../reference/search/index.md)
-- [Automation](../../concepts/automation/index.md)
-- [Collect and Cleanup](../../concepts/collect_and_cleanup/index.md)
+- [Automation](../../concepts/jobs/index.md)
+- [Collect and Cleanup](../../concepts/workflows/index.md)
 - [Command-Line Interface](../../reference/cli/index.md)

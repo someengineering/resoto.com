@@ -2,7 +2,7 @@
 
 ## Commands
 
-The [Resoto Shell](/concepts/components/shell.md) CLI supports various commands that allow you to access the graph database.
+The [Resoto Shell](../components/shell.md) CLI supports various commands that allow you to access the graph database.
 
 :::tip
 
@@ -93,7 +93,7 @@ parameters:
 template: 'echo Hello {{person}}.'
 ```
 
-Once a custom command has been defined in the `resoto.core.commands` configuration, the command can be executed in [Resoto Shell](../../concepts/components/shell.md):
+Once a custom command has been defined in the `resoto.core.commands` configuration, the command can be executed in [Resoto Shell](../../reference/components/shell.md):
 
 ```bash title="Usage of the new hello command"
 > help hello

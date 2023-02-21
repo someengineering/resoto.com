@@ -2,9 +2,12 @@
 sidebar_position: 4
 ---
 
-# Jobs
+# Automation
 
-The heart of automation in Resoto is the [command line interface (CLI)](../../reference/cli/index.md) that allows you to interact with the system. <br/> Jobs are [command-line actions](#job-actions) that execute command lines automatically based on a defined [trigger](#job-triggers).
+The heart of automation are [Resoto commands](../../reference/cli/index.md) that allow you to interact with the system. <br/> 
+Jobs execute [commands](#job-actions) automatically based on a defined [trigger](#job-triggers).
+
+Think of jobs as cron jobs, executed within Resoto. The difference between Resoto jobs and cron jobs is, that while cron jobs are triggered solely based on a schedule, Resoto jobs can also be triggered based on an event or a combination of the two.
 
 ## Job Triggers
 
@@ -25,11 +28,11 @@ There are two types of job triggers: schedule triggers and event triggers.
 ```
 
 ```bash title="Every Monday at 4:00am"
-0 4 \* \* MON
+0 4 * * MON
 ```
 
 ```bash title="Every New Year's Eve at 11:59pm"
-59 23 31 12 \*
+59 23 31 12 *
 ```
 
 :::
@@ -59,15 +62,6 @@ The combination of the two triggers ensures that you execute the job based on th
 ## Job Actions
 
 Job actions are command lines executed by the [command-line interface (CLI)](../../reference/cli/index.md).
-
-Resoto commands can be categorized into the following types:
-
-| Type                                                       | Description                                     |
-| ---------------------------------------------------------- | ----------------------------------------------- |
-| **[Search](../../reference/cli/search-commands/index.md)** | Search, filter, and traverse the resource graph |
-| **[Format](../../reference/cli/format-commands/index.md)** | Define how results should be rendered           |
-| **[Action](../../reference/cli/action-commands/index.md)** | Change the state of resources and/or the graph  |
-| **[Setup](../../reference/cli/setup-commands/index.md)**   | Set up and configure your Resoto install        |
 
 **Commands can be combined by piping the output of one command to another command.** Combining commands allows you to perform actions based on any logic you define, and this is the basis for creating automations in Resoto.
 

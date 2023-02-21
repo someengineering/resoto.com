@@ -10,7 +10,7 @@ Resoto is very good at helping you find problematic resources in your infrastruc
 
 By default, [Resoto Worker](../../reference/components/worker.md) does not delete resources marked for deletion. Resources marked with `| clean` will stay this way without getting deleted unless [cleanup is enabled](#enabling-cleanup).
 
-Cleanup can be performed manually in [Resoto Shell](../../reference/components/shell.md), automatically using a [cleanup plugin](../../reference/components/plugins/index.md), or via a scheduled [job](../jobs/index.md).
+Cleanup can be performed manually in [Resoto Shell](../../reference/components/shell.md), automatically using a [cleanup plugin](../../reference/components/plugins/index.md), or via a scheduled [job](docs/concepts/automation/index.md).
 
 See [Cleanup How-To Guides](../../how-to-guides/cleanup/index.md) for step-by-step instructions to clean up various types of resources.
 
@@ -24,7 +24,7 @@ A manual search and cleanup in this situation could look like this:
 > search is(aws_ec2_instance) and name =~ "^jenkins-worker-.*" and age > 24h | clean "instance older than 24h"
 ```
 
-To automate things, you could create a [job](../jobs/index.md) that runs whenever cleanup is planned and searches for compute instances with a certain name that are older than 24 hours and automatically deletes them.
+To automate things, you could create a [job](docs/concepts/automation/index.md) that runs whenever cleanup is planned and searches for compute instances with a certain name that are older than 24 hours and automatically deletes them.
 
 The same search turned into an automated cleanup job:
 

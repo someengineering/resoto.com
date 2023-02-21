@@ -40,7 +40,7 @@ You will also need the **Manage Webhooks** permission for the target text channe
 
    ![Example Discord alert](./img/example-alert.png)
 
-4. Finally, we want to automate checking of the defined alert trigger and send alerts to Discord whenever the result is true. We can accomplish this by creating a [job](../../../concepts/jobs/index.md):
+4. Finally, we want to automate checking of the defined alert trigger and send alerts to Discord whenever the result is true. We can accomplish this by creating a [job](docs/concepts/automation/index.md):
 
    ```bash
    > jobs add --id notify_large_test_instances --wait-for-event post_collect 'search is(instance) and instance_memory>4 and /ancestors.account.reported.name==test-account | discord title="Large instances found in test-account" webhook="https://discord.com/api/webhooks/..."'
@@ -55,5 +55,5 @@ A default webhook URL can be specified in the `discord` custom command configura
 ## Further Reading
 
 - [Search](../../../reference/search/index.md)
-- [Jobs](../../../concepts/jobs/index.md)
+- [Automation](docs/concepts/automation/index.md)
 - [Command-Line Interface](../../../reference/cli/index.md)

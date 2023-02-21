@@ -86,7 +86,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
    :::
 
-5. Automate flagging unused access keys for cleanup by creating a [job](../../concepts/jobs/index.md):
+5. Automate flagging unused access keys for cleanup by creating a [job](docs/concepts/automation/index.md):
 
    ```bash
    > jobs add --id clean_outdated_access_keys --wait-for-event post_collect 'search is(access_key) and last_access > 90days and /ancestors.user.reported.name not in [jenkins, ci] | clean'
@@ -102,6 +102,6 @@ Each time the job runs, unused IAM access keys will be flagged for removal durin
 
 - [Resource Cleanup](../../concepts/resource-management/cleanup.md)
 - [Search](../../reference/search/index.md)
-- [Automation](../../concepts/jobs/index.md)
+- [Automation](docs/concepts/automation/index.md)
 - [Cloud Data Sync](docs/concepts/cloud-data-sync/index.md)
 - [Command-Line Interface](../../reference/cli/index.md)

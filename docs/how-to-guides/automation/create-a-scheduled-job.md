@@ -4,7 +4,7 @@ sidebar_label: Create a Scheduled Job
 
 # How to Create a Scheduled Job
 
-[Jobs](../../concepts/jobs/index.md) allow you to define automations in Resoto and can be triggered on a regular schedule.
+[Jobs](docs/concepts/automation/index.md) allow you to define automations in Resoto and can be triggered on a regular schedule.
 
 ## Prerequisites
 
@@ -18,7 +18,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
    > search is(aws_rds_instance) and db_type=aurora-postgresql and db_version~11 | discord title="Outdated Aurora databases found." message="This version is outdated and should be migrated!"
    ```
 
-2. Determine the [job schedule](../../concepts/jobs/index.md#schedule-trigger) and define it using a [cron expression](https://crontab.guru). For example, if we want to run the job every Monday at 9am:
+2. Determine the [job schedule](docs/concepts/automation/index.md#schedule-trigger) and define it using a [cron expression](https://crontab.guru). For example, if we want to run the job every Monday at 9am:
 
    ```bash
    0 9 * * 1
@@ -36,6 +36,6 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
 ## Further Reading
 
-- [Jobs](../../concepts/jobs/index.md)
+- [Automation](docs/concepts/automation/index.md)
 - [Cloud Data Sync](docs/concepts/cloud-data-sync/index.md)
 - [Command-Line Interface](../../reference/cli/index.md)

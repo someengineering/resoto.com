@@ -2,7 +2,7 @@
 
 Resoto collects anonymized telemetry data to inform product development. Telemetry data helps pinpoint roadblocks or issues, and also helps to identify how we can help users get more value out of Resoto.
 
-All data collected is anonymous—**we do not capture or store any personally identifiable information (PII)**. There are no unique identifiers that allow us to correlate a Resoto installation back to an actual person.
+All data collected is anonymous—**we do not capture or store any personal identifiable information (PII)**. There are no unique identifiers that allow us to correlate a Resoto installation back to an actual person.
 
 ## Types of Telemetry Data {#types}
 

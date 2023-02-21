@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # Jobs
 
-Jobs allow you to define automations in Resoto. Jobs are [command-line actions](#job-actions) that are executed automatically based on a defined [trigger](#job-triggers).
+The heart of automation in Resoto is the [command line interface (CLI)](../../reference/cli/index.md) that allows you to interact with the system. <br/> Jobs are [command-line actions](#job-actions) that execute command lines automatically based on a defined [trigger](#job-triggers).
 
 ## Job Triggers
 
@@ -58,7 +58,7 @@ The combination of the two triggers ensures that you execute the job based on th
 
 ## Job Actions
 
-The heart of automation in Resoto lies in the [command-line interface (CLI)](../../reference/cli/index.md), which performs server-side actions.
+Job actions are command lines executed by the [command-line interface (CLI)](../../reference/cli/index.md).
 
 Resoto commands can be categorized into the following types:
 
@@ -70,6 +70,93 @@ Resoto commands can be categorized into the following types:
 | **[Setup](../../reference/cli/setup-commands/index.md)**   | Set up and configure your Resoto install        |
 
 **Commands can be combined by piping the output of one command to another command.** Combining commands allows you to perform actions based on any logic you define, and this is the basis for creating automations in Resoto.
+
+### Structure of a Job Action
+
+The usual structure of a job action in Resoto is this:
+
+1. Use a [search command](../../reference/cli/search-commands/index.md) to find the resources you want to act on.
+
+   This defines the scope of your job action. You can use any search command to find the resources you want to act on.
+
+2. Pipe the result into ab [action command](../../reference/cli/action-commands/index.md) to act on that resource.
+
+   The action command takes the resulting resource as input and performs the action you define.
+
+   To give you an idea about actions you can perform, here are some examples:
+
+   - tag the resource with the [`tag`](../../reference/cli/action-commands/tag/index.md) command
+
+     ```shell title="Example"
+     # set the tag 'owner' to 'team-cumulus' on any resource that matches the search criteria
+     > search ... | tag update owner=team-cumulus
+     # delete the tag 'costcenter' from on any resource that matches the search criteria
+     > search ... | tag delete costcenter
+     ```
+
+   - clean up the resource via the [`clean`](../../reference/cli/action-commands/clean.md) command
+     ```shell title="Example"
+     # mark resources for cleanup. Matching resources will be deleted during the next cleanup run.
+     > search ... | clean "Reason for cleanup"
+     ```
+   - create an alert in Pagerduty via the [`pagerduty`](../../how-to-guides/alerting/create-pagerduty-alert/index.md) command
+     ```shell title="Example"
+     # Create an alert in pagerduty
+     > search ... | pagerduty summary="Reason for the alert" dedup_key="xyz"
+     ```
+   - create a Jira ticket with the [`jira`](../../how-to-guides/alerting/create-jira-issues) command
+     ```shell title="Example"
+     # Create a ticket in Jira
+     > search ... | jira title="Title of the ticket" username="..." token="..." project_id="123" reporter_id="xyz"
+     ```
+   - send an alert to Alertmanager via [`alertmanager`](../../how-to-guides/alerting/send-prometheus-alertmanager-alerts)
+
+     ```shell title="Example"
+     # Create an alert in alertmanager
+     > search ... | alertmanager name="Description of the alert"
+     ```
+
+   - send a message to Slack via the [`slack`](../../how-to-guides/alerting/send-slack-notifications) command
+     ```shell title="Example"
+     # Send a message to Slack
+     > search ... | slack title="Description of the alert"
+     ```
+   - send a message to Discord via the [`discord`](../../how-to-guides/alerting/send-discord-notifications) command
+
+     ```shell title="Example"
+     # Send a message to Discord
+     > search ... | discord title="Description of the alert"
+     ```
+
+   - you can call the [`aws`](https://some.engineering/blog/2022/12/09/resoto-at-your-command) command on AWS resources. It allows all options the AWS CLI offers to change your AWS resource in any way you need.
+
+     ```shell title="Example"
+     # Stop running ec2 instances
+     > search is(aws_ec2_instance) and instance_status=running and ... | aws ec2 stop-instances --instance-ids {id}
+     # Start stopped ec2 instances
+     > search is(aws_ec2_instance) and instance_status=stopped and ... | aws ec2 start-instances --instance-ids {id}
+     ```
+
+   - send a message to an external webhook via the [`http` or `https`](../../reference/cli/action-commands/http.md) command
+     ```shell title="Example"
+     # Break the results of the search into chunks of 50 and send them to a webhook.
+     > search ... | chunk 50 | http POST my.node.org/handle
+     ```
+   - ensure that a resource is protected from cleanup via the [`protect`](../../reference/cli/action-commands/protect.md) command
+     ```shell title="Example"
+     # Protect resources from cleanup
+     > search ... | protect
+     ```
+   - adjust the metadata associated with a resource via the [`set_metadata`](../../reference/cli/action-commands/set_metadata.md) command
+     ```shell title="Example"
+     # Set the metadata 'owner' to 'team-cumulus' on any resource that matches the search criteria
+     > search ... | set_metadata owner=team-cumulus
+     ```
+   - adjust the desired data associated with a resource via the [`set_desired`](../../reference/cli/action-commands/set_metadata.md) command
+     ```shell title="Example"
+     # Set the desired data clean=false on any resource that matches the search criteria
+     > search ... | set_desired clean=false
+     ```
 
 ## Related How-To Guides
 

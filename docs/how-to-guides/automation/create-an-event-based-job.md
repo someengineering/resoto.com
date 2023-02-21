@@ -4,7 +4,7 @@ sidebar_label: Create an Event-Based Job
 
 # How to Create an Event-Based Job
 
-[Jobs](../../concepts/jobs/index.md) allow you to define automations in Resoto and can be triggered by the steps in the [`collect_and_cleanup` workflow](../../concepts/workflows/index.md#collect_and_cleanup-workflow).
+[Jobs](../../concepts/jobs/index.md) allow you to define automations in Resoto and can be triggered by the steps in the [cloud data sync](docs/concepts/cloud-data-sync/index.md).
 
 ## Prerequisites
 
@@ -33,5 +33,5 @@ This guide assumes that you have already [installed](../../getting-started/insta
 ## Further Reading
 
 - [Jobs](../../concepts/jobs/index.md)
-- [Workflows](../../concepts/workflows/index.md)
+- [Cloud Data Sync](docs/concepts/cloud-data-sync/index.md)
 - [Command-Line Interface](../../reference/cli/index.md)

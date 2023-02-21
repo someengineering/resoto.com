@@ -2,29 +2,25 @@
 sidebar_position: 2
 ---
 
-# Workflows
+# Cloud data sync and action
 
-Resoto scrapes your infrastructure at regular intervals to ensure that you always have the latest information about your cloud resources. Time-series metrics are also derived from this data.
+Resoto scrapes your infrastructure at regular intervals to ensure that you always have the latest information about your cloud resources.
 
-Resoto's resource collection and automated jobs are triggered as part of a "collect and cleanup" cycle. This cycle is defined as a series of steps called a **workflow**.
+Based on the latest state of infrastructure, several other tasks are triggered automatically and are executed in a specific order. The phases and steps are the foundation for automation and can be used to run automated jobs.
 
 :::info
+
+This cycle is defined as a series of steps called a **workflow**.
 
 The [`workflows` command](../../reference/cli/action-commands/workflows) can be used to inspect and run workflows on demand.
 
 :::
 
-:::note
+## `collect_and_cleanup`
 
-Workflows in Resoto are currently hardcoded, so it is not possible to create or modify workflows.
+**By default, Resoto automatically synchronizes the resource data and performs cleanup every hour.**
 
-:::
-
-## `collect_and_cleanup` Workflow
-
-**By default, Resoto triggers the `collect_and_cleanup` workflow every hour.**
-
-The `collect_and_cleanup` workflow has four phases: `collect`, `cleanup_plan`, `cleanup`, and `generate_metrics`. Each phase has a `pre` and `post` event.
+The `collect_and_cleanup` has four phases: `collect`, `cleanup_plan`, `cleanup`, and `generate_metrics`. Each phase has a `pre` and `post` event.
 
 ![Default Workflow Diagram](./img/workflow-phases.svg)
 

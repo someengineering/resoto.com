@@ -54,7 +54,7 @@ You can also target specific resources to un-mark. For example, to quickly undo 
 
 ## Enabling Cleanup
 
-When a resource is marked for cleanup, it is not immediately deleted. Rather, it is flagged for deletion during the [`collect_and_cleanup`](../workflows/index.md), which runs each hour by default.
+When a resource is marked for cleanup, it is not immediately deleted. Rather, it is flagged for deletion during the [cloud data sync](docs/concepts/cloud-data-sync/index.md), which runs each hour by default.
 
 :::info
 
@@ -82,7 +82,7 @@ resotoworker:
   cleanup_pool_size: 16
 ```
 
-When cleanup is enabled, marked resources will be deleted as a part of the [`collect_and_cleanup`](../../concepts/workflows/index.md), which runs each hour by default.
+When cleanup is enabled, marked resources will be deleted as a part of the [cloud data sync](docs/concepts/cloud-data-sync/index.md), which runs each hour by default.
 
 :::tip
 

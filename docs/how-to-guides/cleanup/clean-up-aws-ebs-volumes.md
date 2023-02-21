@@ -32,7 +32,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
      cleanup_pool_size: 16
    ```
 
-   When cleanup is enabled, marked resources will be deleted as a part of the [`collect_and_cleanup`](../../concepts/workflows/index.md), which runs each hour by default.
+   When cleanup is enabled, marked resources will be deleted as a part of the [`collect_and_cleanup`](docs/concepts/cloud-data-sync/index.md), which runs each hour by default.
 
    :::tip
 
@@ -60,7 +60,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
    :::note
 
-   The [`clean` command](../../reference/cli/action-commands/clean.md) flags a resource for cleanup. Cleanup is performed whenever the [`collect_and_cleanup`](../../concepts/workflows/index.md) runs. The workflow runs every hour by default, but can also be manually triggered using the `workflow run cleanup` command.
+   The [`clean` command](../../reference/cli/action-commands/clean.md) flags a resource for cleanup. Cleanup is performed whenever the [`collect_and_cleanup`](docs/concepts/cloud-data-sync/index.md) runs. The workflow runs every hour by default, but can also be manually triggered using the `workflow run cleanup` command.
 
    :::
 
@@ -70,7 +70,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
    > jobs add --id cleanup-unused-volumes --wait-for-event cleanup_plan 'search is(aws_ec2_volume) and /ancestors.account.reported.name in [eng-jenkins,eng-development] and volume_status = available and age > 30d and last_access > 7d | clean'
    ```
 
-The job will now run each time Resoto emits the `cleanup_plan` event. The `cleanup_plan` event is a part of the [`collect_and_cleanup`](../../concepts/workflows/index.md) and emitted after resource collection is complete but before the cleanup is performed.
+The job will now run each time Resoto emits the `cleanup_plan` event. The `cleanup_plan` event is a part of the [cloud data sync](docs/concepts/cloud-data-sync/index.md) and emitted after resource collection is complete but before the cleanup is performed.
 
 Each time the job runs, unused storage volumes will be flagged for removal during the next cleanup run.
 
@@ -80,5 +80,5 @@ Each time the job runs, unused storage volumes will be flagged for removal durin
 - [Configuration](../../reference/configuration/index.md)
 - [Search](../../reference/search/index.md)
 - [Automation](../../concepts/jobs/index.md)
-- [Collect and Cleanup](../../concepts/workflows/index.md)
+- [Cloud Data Sync](docs/concepts/cloud-data-sync/index.md)
 - [Command-Line Interface](../../reference/cli/index.md)

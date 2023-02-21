@@ -38,7 +38,7 @@ There are two types of job triggers: schedule triggers and event triggers.
 
 **An event trigger executes a job when a specific event is emitted by Resoto.**
 
-Resoto updates the state of resources in four phases: [`collect`](../workflows/index.md#collect), `cleanup_plan`, `cleanup`, and `generate_metrics`, each of emits events that can be used to trigger jobs.
+Resoto updates the state of resources in four phases: [`collect`](docs/concepts/cloud-data-sync/index.md#collect), `cleanup_plan`, `cleanup`, and `generate_metrics`, each of emits events that can be used to trigger jobs.
 
 ### Combined Trigger
 
@@ -78,5 +78,5 @@ Resoto commands can be categorized into the following types:
 
 ## Further Reading
 
-- [Workflows](../../concepts/workflows/index.md)
+- [Cloud Data Sync](docs/concepts/cloud-data-sync/index.md)
 - [Command-Line Interface](../../reference/cli/index.md)

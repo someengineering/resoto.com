@@ -37,5 +37,5 @@ This guide assumes that you have already [installed](../../getting-started/insta
 ## Further Reading
 
 - [Jobs](../../concepts/jobs/index.md)
-- [Workflows](../../concepts/workflows/index.md)
+- [Cloud Data Sync](docs/concepts/cloud-data-sync/index.md)
 - [Command-Line Interface](../../reference/cli/index.md)

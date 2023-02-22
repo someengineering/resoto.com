@@ -1,7 +1,7 @@
 ---
-sidebar_label: "3. Next Steps"
-sidebar_position: 3
-pagination_prev: getting-started/configure-cloud-provider-access/index
+sidebar_label: "4. Next Steps"
+sidebar_position: 4
+pagination_prev: getting-started/use-the-resoto-ui/index
 pagination_next: how-to-guides/index
 ---
 

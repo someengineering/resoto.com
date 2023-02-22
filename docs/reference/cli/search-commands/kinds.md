@@ -68,4 +68,4 @@ kinds [-p <property_path>] <name>
 
 ## Further Reading
 
-- [Graph Node](../../../concepts/graph/node.md#kind)
+- [Graph Node](../../../concepts/graph/index.md#kind)

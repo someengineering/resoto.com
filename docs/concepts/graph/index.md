@@ -35,11 +35,11 @@ There is a plethora of resource types. Resoto captures all of this information a
 
 <ZoomPanPinch>
 
-![Diagram of aws_ec2_instance resource relationships](../../reference/data-models/aws/img/aws_ec2_volume.svg)
+![Diagram of aws_ec2_volume resource relationships](../../reference/data-models/aws/img/aws_ec2_volume.svg)
 
 </ZoomPanPinch>
 
-The same resource can adhere to multiple resource kinds. This makes it possible to allow to view the same resource in more than one way. For example, an AWS EC2 instance can be viewed as `aws_ec2_instance`, as compute `instance`, as `aws_resource` and as `resource`. This ability can be powerful, if you want to search the graph using more abstract concepts. For example, it allows to select all compute instances, regardless of the cloud provider.
+The same resource can adhere to multiple resource kinds. This makes it possible to allow to view the same resource in more than one way. For example, an AWS EC2 volume can be viewed as `aws_ec2_volume`, as compute `volume`, as `aws_resource` and as `resource`. This ability can be powerful, if you want to search the graph using more abstract concepts. For example, it allows to select all volumes, regardless of the cloud provider.
 
 The Resoto CLI comes with the [`kinds`](../../reference/cli/search-commands/kinds.md) command, which allows you to list all resource kinds and their properties.
 
@@ -51,7 +51,7 @@ The list of possible edges are also defined explicitly in our [data model refere
 
 <ZoomPanPinch>
 
-![Diagram of aws_ec2_instance resource relationships](../../reference/data-models/aws/img/aws_ec2_volume_relationships.svg)
+![Diagram of aws_ec2_volume resource relationships](../../reference/data-models/aws/img/aws_ec2_volume_relationships.svg)
 
 </ZoomPanPinch>
 

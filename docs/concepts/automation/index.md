@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # Automation
 
-The heart of automation are [Resoto commands](../../reference/cli/index.md) that allow you to interact with the system. <br/> Jobs execute [commands](#job-actions) automatically based on a defined [trigger](#job-triggers).
+The heart of automation are [Resoto commands](../../reference/cli/index.md) that allow you to interact with the system. Commands in Resoto are self-contained and run in a secure and controlled environment.<br/> Jobs execute [commands](#job-actions) automatically based on a defined [trigger](#job-triggers).
 
 Think of jobs as cron jobs, executed within Resoto. The difference between Resoto jobs and cron jobs is, that while cron jobs are triggered solely based on a schedule, Resoto jobs can also be triggered based on an event or a combination of the two.
 

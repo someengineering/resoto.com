@@ -11,6 +11,8 @@ Resoto is a cloud infrastructure management tool that allows you to manage and e
 
 ## Using the Resoto User Web Interface
 
+https://youtu.be/_odyE3scPGg
+
 Resoto offers a user-friendly web interface that dramatically simplifies managing and exploring your cloud infrastructure. Let's look at the different parts of the Resoto user interface.
 
 ### Start Page

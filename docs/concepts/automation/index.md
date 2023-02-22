@@ -4,9 +4,46 @@ sidebar_position: 4
 
 # Automation
 
-The heart of automation are [Resoto commands](../../reference/cli/index.md) that allow you to interact with the system. Commands in Resoto are self-contained and run in a secure and controlled environment.<br/> Jobs execute [commands](#job-actions) automatically based on a defined [trigger](#job-triggers).
+Maintaining a sound cloud infrastructure includes tasks that need to be performed regularly. Resoto can help you automate many of these tasks.
+Resoto provides the ability to define jobs to automate tedious tasks that must be performed manually or by specifically tailored scripts.
 
-Think of jobs as cron jobs, executed within Resoto. The difference between Resoto jobs and cron jobs is, that while cron jobs are triggered solely based on a schedule, Resoto jobs can also be triggered based on an event or a combination of the two.
+Examples of recurring tasks could be 
+- enforcing company policies (e.g. tagging policies)
+- notifying you or your teams about critical changes in the infrastructure (send a message with the matching resources in Slack, Discord, Pagerduty or a custom API).
+- cleaning up unused resources in your development accounts
+
+A job is a command line that is executed by Resoto at a specific time interval or when a specific event is emitted. If you are a Unix command line hero, think of jobs as cron jobs, executed within Resoto. The difference between Resoto jobs and cron jobs is, that while cron jobs are triggered solely based on a schedule, Resoto jobs can also be triggered based on an event or a combination of the two.
+
+![Job Overview](./img/jobs_intro.png)
+
+The typical structure of a job has three parts and looks like this:
+- **Trigger**: When should the job be executed? Can be a fixed schedule or an event.
+- **Filter**: Defined by a Resoto [search](../../reference/search/index.md) to define the filter for resources of interest for this job. Only resources matching the filter will be processed by the job.
+- **Action**: A Resoto [action command](../../reference/cli/action-commands/index.md), which performs the action to be performed on the resources matching the filter. 
+
+:::tip Example
+
+- **Trigger**:  every day at 9am
+
+  ```bash
+  0 9 * * *
+  ``` 
+- **Filter**:  all instances without an owner tag in the `dev` or `playground` account
+
+  ```bash
+  search is(instance)  
+    and tag.owner==null 
+    and /ancestors.account.reported.name in ["dev", "playground"]
+  ```
+
+- **Action**: send a message to a Discord channel with the matching resources
+  ```bash 
+  discord 
+     --title "Compute instances without owner tag" 
+     --message "The following instances are missing an owner tag:"
+  ``` 
+
+:::
 
 ## Job Triggers
 

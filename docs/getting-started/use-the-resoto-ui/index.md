@@ -31,7 +31,8 @@ The search function allows you to search your entire cloud infrastructure using 
 
 Assume you have an IP address that is used by different components of your infrastructure. You can search for this IP address and find all resources where this IP address is used. Another good example is finding all traces of a specific user in your infrastructure by searching for the user's name.
 
-Resoto offers a powerful [search syntax](../../concepts/search.md) that empowers you to define filters as complex as you need. For example, you can search for all resources with a specific tag or a specific value of a tag combined with other filters.  
+Resoto offers a powerful [search syntax](../../reference/search/index.md) that empowers you to define filters as complex as you need. For example, you can search for all resources with a specific tag or a specific value of a tag combined with other filters.
+
 You can use such a search by prefixing it with `search`. For example, `search is(instance) and instance_status=running and tag.owner~".*test.*"` will find all compute instances that are currently running and tagged with `owner` that matches the regular expression `.*test.*`.
 
 ### Explore

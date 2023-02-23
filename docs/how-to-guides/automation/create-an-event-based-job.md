@@ -18,6 +18,12 @@ This guide assumes that you have already [installed](../../getting-started/insta
    > search is(database) and db_publicly_accessible==true | pagerduty summary="Databases found that are publicly accessible" dedup_key="dbs_publicly_accessible"
    ```
 
+   :::tip
+
+   See [Search How-To Guides](../search/index.md) for guidance on how to write search queries.
+
+   :::
+
 2. Determine the [event trigger](../../concepts/automation/index.md#event-trigger) for the job. In this case, since we want to send an alert as soon as a publicly accessible database is detected, we'll use the `post_collect` event to trigger the job.
 
 3. Now that we've defined the action and decided on the trigger, create the job using the [`jobs add` command](../../reference/cli/action-commands/jobs/add.md) (replace the value of the `--id` parameter with a unique job identifier):
@@ -28,6 +34,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
 ## Related How-To Guides
 
+- [How to Create a Scheduled Event-Based Job](./create-a-scheduled-event-based-job.md)
 - [How to Create a Scheduled Job](./create-a-scheduled-job.md)
 
 ## Further Reading

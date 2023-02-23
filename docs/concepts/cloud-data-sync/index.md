@@ -20,11 +20,11 @@ The [`workflows` command](../../reference/cli/action-commands/workflows/index.md
 
 **By default, Resoto triggers the `collect_and_cleanup` workflow every hour.**
 
-The `collect_and_cleanup` workflow has four phases: [`collect`](#collect), [`cleanup_plan`](#cleanup_plan), [`cleanup`](#cleanup), and [`generate_metrics`](#generate_metrics). Each phase has a `pre` and `post` event.
+The `collect_and_cleanup` workflow has four steps: [`collect`](#collect), [`cleanup_plan`](#cleanup_plan), [`cleanup`](#cleanup), and [`generate_metrics`](#generate_metrics). Each step has a `pre` and `post` event.
 
 ![Default Workflow Diagram](./img/workflow-phases.svg)
 
-#### `collect` Phase {#collect}
+#### `collect` Step {#collect}
 
 In the `collect` phase, resources are collected from all configured cloud provider and synchronized with the internal graph.
 
@@ -39,7 +39,7 @@ At the conclusion of this phase, the graph database contains the latest state of
 | `merge_outer_edges` | This event is emitted after collection is done.                                                                                                         |
 | `post_collect`      | This event is emitted after all outer edges have been merged.<br />_Custom logic to react to resource changes should define this event as the trigger._ |
 
-#### `cleanup_plan` Phase {#cleanup_plan}
+#### `cleanup_plan` Step {#cleanup_plan}
 
 During the `cleanup_plan` phase, Resoto computes which resources should be cleaned up, and marks them for deletion during the subsequent `cleanup` phase.
 
@@ -57,7 +57,7 @@ Resoto ships with built-in cleanup [plugins](../../reference/components/plugins/
 | `cleanup_plan`      | Cleanup [plugins](../../reference/components/plugins/index.md) bundled with Resoto listen on this event. |
 | `post_cleanup_plan` | This event is emitted after the cleanup is planned.                                                      |
 
-#### `cleanup` Phase {#cleanup}
+#### `cleanup` Step {#cleanup}
 
 In the `cleanup` phase, all resources marked for cleanup are deleted if [cleanup is enabled](../resource-management/cleanup.md#enabling-cleanup).
 
@@ -77,7 +77,7 @@ Cleanup is disabled by default. Please refer to [Resource Cleanup](../resource-m
 | `cleanup`      | Resource collectors listen on this event to delete resources marked for cleanup. |
 | `post_cleanup` | This event is emitted after the cleanup is performed.                            |
 
-#### `generate_metrics` Phase {#generate_metrics}
+#### `generate_metrics` Step {#generate_metrics}
 
 As its name suggests, metrics are generated and provided to the time-series database during the `generate_metrics` phase.
 

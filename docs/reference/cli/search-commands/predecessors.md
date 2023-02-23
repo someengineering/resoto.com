@@ -4,7 +4,7 @@ sidebar_label: predecessors
 
 # `predecessors` Command
 
-The `predecessors` command selects all [predecessors](../../../concepts/asset-inventory-graph/index.md#predecessor) of [nodes](../../../concepts/asset-inventory-graph/index.md#nodes) returned in a query.
+The `predecessors` command selects all [predecessors](../../../concepts/asset-inventory-graph/index.md#predecessors) of [nodes](../../../concepts/asset-inventory-graph/index.md#nodes) returned in a query.
 
 ## Usage
 

@@ -85,7 +85,7 @@ In order to traverse the graph in a meaningful way, it is important to understan
 
 All resources in AWS are placed in a region. The region is a node in the graph. If we want to find all resources in the graph, we need to walk _outbound_ (following the edges in direction of the arrow). If we want to know the account of a specific resource, we need to walk _inbound_ (following the edge in reverse direction of the arrow) in the graph until we find an account.
 
-### Successor
+### Successors
 
 **Successor nodes are _directly_ connected to the current node in an _outbound_ direction.**
 
@@ -93,7 +93,7 @@ All resources in AWS are placed in a region. The region is a node in the graph. 
 
 ![Successors](./img/graph_edges_successors.png)
 
-### Descendant
+### Descendants
 
 **Descendant nodes are _directly or indirectly_ connected to the current node in an _outbound_ direction (at any depth).**
 
@@ -101,7 +101,7 @@ All resources in AWS are placed in a region. The region is a node in the graph. 
 
 ![Descendants](./img/graph_edges_descendants.png)
 
-### Predecessor
+### Predecessors
 
 **Predecessor nodes are _directly_ connected to the current node in an _inbound_ direction.**
 
@@ -109,7 +109,7 @@ All resources in AWS are placed in a region. The region is a node in the graph. 
 
 ![Predecessors](./img/graph_edges_predecessors.png)
 
-### Ancestor
+### Ancestors
 
 **Ancestor nodes are _directly or indirectly_ connected to the current node in an _inbound_ direction (at any depth).**
 

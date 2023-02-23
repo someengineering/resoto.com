@@ -4,7 +4,7 @@ sidebar_label: descendants
 
 # `descendants` Command
 
-The `descendants` command selects all [descendants](../../../concepts/asset-inventory-graph/index.md#descendant) of [nodes](../../../concepts/asset-inventory-graph/index.md#nodes) returned in a query.
+The `descendants` command selects all [descendants](../../../concepts/asset-inventory-graph/index.md#descendants) of [nodes](../../../concepts/asset-inventory-graph/index.md#nodes) returned in a query.
 
 ## Usage
 

@@ -4,7 +4,7 @@ sidebar_label: ancestors
 
 # `ancestors` Command
 
-The `ancestors` command selects all [ancestors](../../../concepts/asset-inventory-graph/index.md#ancestor) of [nodes](../../../concepts/asset-inventory-graph/index.md#nodes) returned in a query.
+The `ancestors` command selects all [ancestors](../../../concepts/asset-inventory-graph/index.md#ancestors) of [nodes](../../../concepts/asset-inventory-graph/index.md#nodes) returned in a query.
 
 ## Usage
 

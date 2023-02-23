@@ -14,24 +14,38 @@ Resoto also knows how resources relate to each other. For example, a compute ins
 
 The superpower of Resoto is the ability to provide a complete picture of your cloud assets and how they relate to each other.
 
-## Nodes
+## Graph Nodes {#nodes}
 
-Every resource that is collected is a node in the graph. The information is encoded as a JSON document with a well-defined structure. Resoto ensures, that you can expect the following properties on every resource:
+Each collected resource is a node in the asset inventory graph.
+
+Resource data is encoded as a JSON document with a well-defined structure.
+
+You can expect the following properties on every resource:
 
 | Property | Type     | Description                                                                                                      |
 | -------- | -------- | ---------------------------------------------------------------------------------------------------------------- |
 | `id`     | string   | The cloud providers unique ID of a resource. This identifier might not be unique over different cloud providers. |
-| `kind`   | string   | The kind of the resource. See [Resource Kinds](#resource-kinds) for more information.                            |
+| `kind`   | string   | The kind of the resource. See [Resource Kinds](#resource-kinds) below for details.                               |
 | `name`   | string   | The name of the resource. Resoto tries its best to map the relevant property for that matter.                    |
 | `ctime`  | datetime | The time the resource has been created.                                                                          |
 | `mtime`  | datetime | The time the resource has been modified the last time.                                                           |
 | `atime`  | datetime | The time the resource has been accessed the last time.                                                           |
 
-Resources have a lot more properties which are available in the JSON document. The structure of the JSON document is defined by the resource kind.
+Resources have additional properties in addition to those above. The structure of the JSON document is defined by the resource kind.
 
-## Resource Kinds
+### Resource Kinds
 
-There is a plethora of resource types. Resoto captures all of this information and makes it available to you. To ensure you get consistent data, Resoto defines a set of resource kinds. Every resource type is mapped to one of these kinds. Resoto will ensure that the data you get for a specific kind adheres to the schema defined for that kind. The kind of resource is defined in the `kind` property of the resource. See the list of all resource kinds in our [data model reference section](../../reference/data-models/index.md).
+There is a plethora of resource types. Resoto captures all of this information and makes it available to you.
+
+To ensure you get consistent data, Resoto defines a set of resource kinds. Each resource type is mapped to one of these kinds. Resoto ensures that the data you get for a specific kind adheres to the schema defined for that kind.
+
+The kind of resource is defined in the `kind` property of the resource.
+
+:::info
+
+[Resource Data Models](../../reference/data-models/index.md) lists all available resource kinds.
+
+:::
 
 <ZoomPanPinch>
 
@@ -39,13 +53,19 @@ There is a plethora of resource types. Resoto captures all of this information a
 
 </ZoomPanPinch>
 
-The same resource can adhere to multiple resource kinds. This makes it possible to allow to view the same resource in more than one way. For example, an AWS EC2 volume can be viewed as `aws_ec2_volume`, as compute `volume`, as `aws_resource` and as `resource`. This ability can be powerful, if you want to search the graph using more abstract concepts. For example, it allows to select all volumes, regardless of the cloud provider.
+The same resource can adhere to multiple resource kinds. This makes it possible to allow to view the same resource in more than one way. For example, an AWS EC2 volume can be viewed as `aws_ec2_volume`, as compute `volume`, as `aws_resource` and as `resource`.
 
-The Resoto CLI comes with the [`kinds`](../../reference/cli/search-commands/kinds.md) command, which allows you to list all resource kinds and their properties.
+This is useful if you want to search the graph using more abstract concepts. For example, it allows for the selection of all volumes regardless of cloud provider.
 
-## Edges
+:::info
 
-Resoto also captures the relationships between resources. This is done by encoding the relationships as edges in the graph. This makes it possible to traverse the graph and walk from one resource to another based on a specific relationship. The relationship itself does not have any additional properties.
+The [`kinds` command](../../reference/cli/search-commands/kinds.md) allows you to list all resource kinds and their properties.
+
+:::
+
+## Graph Edges {#edges}
+
+Resoto also captures the relationships between resources by encoding the relationships as edges in the graph. This makes it possible to traverse the graph and walk from one resource to another based on a specific relationship. The relationship itself does not have any additional properties.
 
 The list of possible edges are also defined explicitly in our [data model reference section](../../reference/data-models/index.md). Another option is the [`kinds`](../../reference/cli/search-commands/kinds.md) command to get the same information on the command line.
 
@@ -57,7 +77,7 @@ The list of possible edges are also defined explicitly in our [data model refere
 
 This documentation describes how a resource might be connected. This does not mean that every relationship has to exist. For example, a compute instance might not have a volume attached to it. In this case, there is no edge between the compute instance and the volume.
 
-## Traversing the Graph
+## Graph Traversal {#traversal}
 
 In order to traverse the graph in a meaningful way, it is important to understand the structure. The following diagram serves as an example graph you will find in Resoto to illustrates how we can "walk" edges in a graph:
 

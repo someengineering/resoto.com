@@ -34,7 +34,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
      cleanup_pool_size: 16
    ```
 
-   When cleanup is enabled, marked resources will be deleted as a part of the [`collect_and_cleanup`](docs/concepts/cloud-data-sync/index.md), which runs each hour by default.
+   When cleanup is enabled, marked resources will be deleted as a part of the [`collect_and_cleanup` workflow](../../concepts/cloud-data-sync/index.md#collect_and_cleanup-workflow), which runs each hour by default.
 
    :::tip
 
@@ -59,7 +59,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
    :::
 
-The plugin will now run each time Resoto emits the `post_cleanup_plan` event. The `post_cleanup_plan` event is a part of the [cloud data sync](docs/concepts/cloud-data-sync/index.md) and emitted after resource planning is complete but before the cleanup is performed.
+The plugin will now run each time Resoto emits the `post_cleanup_plan` event. The `post_cleanup_plan` event is emitted in the [`cleanup` phase](../../concepts/cloud-data-sync/index.md#cleanup) of the [`collect_and_cleanup` workflow](../../concepts/cloud-data-sync/index.md#collect_and_cleanup-workflow).
 
 Each time the `cleanup_aws_loadbalancers` plugin runs, orphaned load balancers will be flagged for removal during the next cleanup run.
 
@@ -67,6 +67,6 @@ Each time the `cleanup_aws_loadbalancers` plugin runs, orphaned load balancers w
 
 - [`cleanup_aws_loadbalancers` Plugin](../../reference/components/plugins/cleanup_aws_loadbalancers.md)
 - [Resource Cleanup](../../concepts/resource-management/cleanup.md)
+- [Cloud Data Sync](../../concepts/cloud-data-sync/index.md)
 - [Configuration](../../reference/configuration/index.md)
-- [Cloud Data Sync](docs/concepts/cloud-data-sync/index.md)
 - [Command-Line Interface](../../reference/cli/index.md)

@@ -31,6 +31,7 @@
   --ifm-h4-font-size: 1.25rem;
   --ifm-h5-font-size: 1rem;
   --ifm-h6-font-size: 0.875rem;
+  --ifm-heading-margin-top: calc(var(--ifm-spacing-vertical) * 2);
   --ifm-navbar-height: 4rem;
   --docusaurus-highlighted-code-line-bg: rgb(0 0 0 / 10%);
   --ifm-background-color: #ffffff;
@@ -214,6 +215,14 @@ html[data-theme='dark'] .theme-doc-sidebar-container {
       var(--ifm-button-padding-horizontal) * var(--ifm-button-size-multiplier) /
         2
     );
+}
+
+.markdown h1:first-child,
+.markdown h2:first-child,
+.markdown h3:first-child,
+.markdown h4:first-child,
+.markdown h5:first-child {
+  margin-top: 0;
 }
 
 h1 code,

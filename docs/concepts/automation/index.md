@@ -4,90 +4,73 @@ sidebar_position: 4
 
 # Automation
 
-Maintaining a sound cloud infrastructure includes tasks that need to be performed regularly. Resoto can help you automate many of these tasks. Resoto provides the ability to define jobs to automate tedious tasks that must be performed manually or by specifically tailored scripts.
+Maintaining a sound cloud infrastructure includes tasks that need to be performed regularly. Resoto can help you automate many of these tasks by defining jobs.
 
-Examples of recurring tasks could be
+Examples of these tasks include:
 
-- enforcing company policies (e.g. tagging policies)
-- notifying you or your teams about critical changes in the infrastructure (send a message with the matching resources in Slack, Discord, Pagerduty or a custom API).
-- cleaning up unused resources in your development accounts
+- enforcing company policies (e.g., [tagging](../../how-to-guides/cleanup/clean-up-untagged-resources.md)),
+- sending notifications about critical infrastructure changes (e.g., to [Slack](../../how-to-guides/alerting/send-slack-notifications/index.md), [Discord](../../how-to-guides/alerting/send-discord-notifications/index.md), or [PagerDuty](../../how-to-guides/alerting/create-pagerduty-alerts/index.md)), and
+- cleaning up unused resources in your development accounts.
 
-A job is a command line that is executed by Resoto at a specific time interval or when a specific event is emitted. If you are a Unix command line hero, think of jobs as cron jobs, executed within Resoto. The difference between Resoto jobs and cron jobs is, that while cron jobs are triggered solely based on a schedule, Resoto jobs can also be triggered based on an event or a combination of the two.
+## Jobs
 
-![Job Overview](./img/jobs_intro.png)
+**A job is a command that is executed by Resoto at a specific time interval or when a specific event is emitted.**
 
-The typical structure of a job has three parts and looks like this:
+Jobs in Resoto are similar to cron jobs. However, while cron jobs run only on a specific schedule, Resoto jobs can also be triggered based by events.
 
-- **Trigger**: When should the job be executed? Can be a fixed schedule or an event.
-- **Filter**: Defined by a Resoto [search](../../reference/search/index.md) to define the filter for resources of interest for this job. Only resources matching the filter will be processed by the job.
-- **Action**: A Resoto [action command](../../reference/cli/action-commands/index.md), which performs the action to be performed on the resources matching the filter.
+The typical structure of a job has three parts: a [trigger](#job-triggers), an optional [filter](#job-filter), and an [action](#job-actions).
 
-:::tip Example
+### Job Triggers
 
-- **Trigger**: every day at 9am
-
-  ```bash
-  0 9 * * *
-  ```
-
-- **Filter**: all instances without an owner tag in the `dev` or `playground` account
-
-  ```bash
-  search is(instance)
-    and tag.owner==null
-    and /ancestors.account.reported.name in ["dev", "playground"]
-  ```
-
-- **Action**: send a message to a Discord channel with the matching resources
-  ```bash
-  discord
-     --title "Compute instances without owner tag"
-     --message "The following instances are missing an owner tag:"
-  ```
-
-:::
-
-## Job Triggers
+**The job trigger defines when a job is executed.**
 
 There are two types of job triggers: schedule triggers and event triggers.
 
-### Schedule Trigger
+#### Schedule Trigger
 
 **A schedule trigger executes a job at a specific time interval described by a [cron expression](https://crontab.guru).**
 
-:::tip Examples
+<details>
+<summary>Examples</summary>
+<div>
 
-```bash title="Every 5 minutes"
-*/5 * * * *
-```
+- Every 5 minutes
+  ```bash
+  */5 * * * *
+  ```
+- Every day at 3:00am
+  ```bash
+  0 3 * * *
+  ```
+- Every Monday at 4:00am
+  ```bash
+  0 4 * * MON
+  ```
+- Every New Year's Eve at 11:59pm
+  ```bash
+  59 23 31 12 *
+  ```
 
-```bash title="Every day at 3:00am"
-0 3 * * *
-```
+</div>
+</details>
 
-```bash title="Every Monday at 4:00am"
-0 4 * * MON
-```
-
-```bash title="Every New Year's Eve at 11:59pm"
-59 23 31 12 *
-```
-
-:::
-
-### Event Trigger
+#### Event Trigger
 
 **An event trigger executes a job when a specific event is emitted by Resoto.**
 
-Resoto updates the state of resources in four phases: [`collect`](docs/concepts/cloud-data-sync/index.md#collect), `cleanup_plan`, `cleanup`, and `generate_metrics`, each of emits events that can be used to trigger jobs.
+Resoto updates the state of resources in four phases: [`collect`](../cloud-data-sync/index.md#collect), [`cleanup_plan`](../cloud-data-sync/index.md#cleanup_plan), [`cleanup`](../cloud-data-sync/index.md#cleanup), and [`generate_metrics`](../cloud-data-sync/index.md#generate_metrics).
 
-### Combined Trigger
+Each phase emits events that can be used to trigger jobs.
+
+#### Combined Trigger
 
 **A combined trigger combines a schedule trigger with an event trigger, and executes a job when a specific event is emitted after a schedule trigger is fired.**
 
 Combined triggers are useful if you want to perform an action on a specific schedule, but only after a specific event is fired.
 
-:::tip Example
+<details>
+<summary>Example</summary>
+<div>
 
 Let's say you want to clean up development accounts at the end of each week.
 
@@ -95,100 +78,89 @@ You could define both a [schedule trigger](#schedule-trigger) (e.g., every Frida
 
 The combination of the two triggers ensures that you execute the job based on the latest state of resources after 10pm each Friday.
 
-:::
+</div>
+</details>
 
-## Job Actions
+### Job Filter
 
-Job actions are command lines executed by the [command-line interface (CLI)](../../reference/cli/index.md).
+**A job filter is an optional [search](../../reference/search/index.md) that returns the resources of interest.** Only resources matching the filter will be processed by the job.
 
-**Commands can be combined by piping the output of one command to another command.** Combining commands allows you to perform actions based on any logic you define, and this is the basis for creating automations in Resoto.
+<details>
+<summary>Example</summary>
+<div>
 
-### Structure of a Job Action
+```bash title="Instances without an owner tag in the dev or playground accounts"
+search is(instance) and tag.owner==null and /ancestors.account.reported.name in ["dev", "playground"]
+```
 
-The usual structure of a job action in Resoto is this:
+</div>
+</details>
 
-1. Use a [search command](../../reference/cli/search-commands/index.md) to find the resources you want to act on.
+### Job Actions
 
-   This defines the scope of your job action. You can use any search command to find the resources you want to act on.
+**Job actions are [action commands](../../reference/cli/action-commands/index.md) performed on resources matching the [filter](#job-filters).**
 
-2. Pipe the result into ab [action command](../../reference/cli/action-commands/index.md) to act on that resource.
+Commands can be combined by piping the output of one command to another command. Combining commands allows you to perform actions based on any logic you define, and this is the basis for creating automations in Resoto.
 
-   The action command takes the resulting resource as input and performs the action you define.
+### Combining Job Filters & Actions
 
-   To give you an idea about actions you can perform, here are some examples:
+**Job filters are applied by piping the results of the search filter to the action command.**
 
-   - tag the resource with the [`tag`](../../reference/cli/action-commands/tag/index.md) command
+<details>
+<summary>Examples</summary>
+<div>
 
-     ```shell title="Example"
-     # set the tag 'owner' to 'team-cumulus' on any resource that matches the search criteria
-     > search ... | tag update owner=team-cumulus
-     # delete the tag 'costcenter' from on any resource that matches the search criteria
-     > search ... | tag delete costcenter
-     ```
+- Update resource tags using the [`tag update` command](../../reference/cli/action-commands/tag/update.md)
+  ```bash
+  > search ... | tag update owner=team-cumulus
+  ```
+- Delete resource tags using the [`tag delete` command](../../reference/cli/action-commands/tag/delete.md)
+  ```bash
+  > search ... | tag delete costcenter
+  ```
+- Clean up resources using the [`clean` command](../../reference/cli/action-commands/clean.md)
+  ```bash
+  > search ... | clean "Reason for cleanup"
+  ```
+- [Create PagerDuty alerts](../../how-to-guides/alerting/create-pagerduty-alerts/index.md) using the `pagerduty` [custom command](../../reference/cli/index.md#custom-commands)
+  ```bash
+  > search ... | pagerduty summary="Reason for the alert" dedup_key="xyz"
+  ```
+- [Send Prometheus Alertmanager alerts](../../how-to-guides/alerting/send-prometheus-alertmanager-alerts/index.md) using the `alertmanager` [custom command](../../reference/cli/index.md#custom-commands)
+  ```bash
+  > search ... | alertmanager name="Description of the alert"
+  ```
+- [Send Slack notifications](../../how-to-guides/alerting/send-slack-notifications/index.md) the `slack` [custom command](../../reference/cli/index.md#custom-commands)
+  ```bash
+  > search ... | slack title="Description of the alert"
+  ```
+- [Send Discord notifications](../../how-to-guides/alerting/send-discord-notifications/index.md) the `discord` [custom command](../../reference/cli/index.md#custom-commands)
+  ```bash
+  > search ... | discord title="Description of the alert"
+  ```
+- Modify AWS resources using the `aws` command
+  ```bash
+  # Stop running ec2 instances
+  > search is(aws_ec2_instance) and instance_status=running and ... | aws ec2 stop-instances --instance-ids {id}
+  # Start stopped ec2 instances
+  > search is(aws_ec2_instance) and instance_status=stopped and ... | aws ec2 start-instances --instance-ids {id}
+  ```
+- Send data to a webhook server using the [`http` command](../../reference/cli/action-commands/http.md)
+  ```bash
+  # Break the results of the search into chunks of 50 and send them to a webhook.
+  > search ... | chunk 50 | http POST my.node.org/handle
+  ```
+- Protect resources from cleanup using the [`protect` command](../../reference/cli/action-commands/protect.md)
+  ```bash
+  > search ... | protect
+  ```
+- Edit resource metadata using the [`set_metadata` command](../../reference/cli/action-commands/set_metadata.md)
+  ```bash
+  > search ... | set_metadata owner=team-cumulus
+  ```
 
-   - clean up the resource via the [`clean`](../../reference/cli/action-commands/clean.md) command
-     ```shell title="Example"
-     # mark resources for cleanup. Matching resources will be deleted during the next cleanup run.
-     > search ... | clean "Reason for cleanup"
-     ```
-   - create an alert in Pagerduty via the [`pagerduty`](../../how-to-guides/alerting/create-pagerduty-alert/index.md) command
-     ```shell title="Example"
-     # Create an alert in pagerduty
-     > search ... | pagerduty summary="Reason for the alert" dedup_key="xyz"
-     ```
-   - create a Jira ticket with the [`jira`](../../how-to-guides/alerting/create-jira-issues) command
-     ```shell title="Example"
-     # Create a ticket in Jira
-     > search ... | jira title="Title of the ticket" username="..." token="..." project_id="123" reporter_id="xyz"
-     ```
-   - send an alert to Alertmanager via [`alertmanager`](../../how-to-guides/alerting/send-prometheus-alertmanager-alerts)
-
-     ```shell title="Example"
-     # Create an alert in alertmanager
-     > search ... | alertmanager name="Description of the alert"
-     ```
-
-   - send a message to Slack via the [`slack`](../../how-to-guides/alerting/send-slack-notifications) command
-     ```shell title="Example"
-     # Send a message to Slack
-     > search ... | slack title="Description of the alert"
-     ```
-   - send a message to Discord via the [`discord`](../../how-to-guides/alerting/send-discord-notifications) command
-
-     ```shell title="Example"
-     # Send a message to Discord
-     > search ... | discord title="Description of the alert"
-     ```
-
-   - you can call the [`aws`](https://some.engineering/blog/2022/12/09/resoto-at-your-command) command on AWS resources. It allows all options the AWS CLI offers to change your AWS resource in any way you need.
-
-     ```shell title="Example"
-     # Stop running ec2 instances
-     > search is(aws_ec2_instance) and instance_status=running and ... | aws ec2 stop-instances --instance-ids {id}
-     # Start stopped ec2 instances
-     > search is(aws_ec2_instance) and instance_status=stopped and ... | aws ec2 start-instances --instance-ids {id}
-     ```
-
-   - send a message to an external webhook via the [`http` or `https`](../../reference/cli/action-commands/http.md) command
-     ```shell title="Example"
-     # Break the results of the search into chunks of 50 and send them to a webhook.
-     > search ... | chunk 50 | http POST my.node.org/handle
-     ```
-   - ensure that a resource is protected from cleanup via the [`protect`](../../reference/cli/action-commands/protect.md) command
-     ```shell title="Example"
-     # Protect resources from cleanup
-     > search ... | protect
-     ```
-   - adjust the metadata associated with a resource via the [`set_metadata`](../../reference/cli/action-commands/set_metadata.md) command
-     ```shell title="Example"
-     # Set the metadata 'owner' to 'team-cumulus' on any resource that matches the search criteria
-     > search ... | set_metadata owner=team-cumulus
-     ```
-   - adjust the desired data associated with a resource via the [`set_desired`](../../reference/cli/action-commands/set_metadata.md) command
-     ```shell title="Example"
-     # Set the desired data clean=false on any resource that matches the search criteria
-     > search ... | set_desired clean=false
-     ```
+</div>
+</details>
 
 ## Related How-To Guides
 
@@ -197,5 +169,5 @@ The usual structure of a job action in Resoto is this:
 
 ## Further Reading
 
-- [Cloud Data Sync](docs/concepts/cloud-data-sync/index.md)
+- [Cloud Data Sync](../cloud-data-sync/index.md)
 - [Command-Line Interface](../../reference/cli/index.md)

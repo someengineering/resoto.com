@@ -1,16 +1,16 @@
 ---
-sidebar_label: Create Pagerduty Alerts
+sidebar_label: Create PagerDuty Alerts
 ---
 
-# How to Create Pagerduty Alerts
+# How to Create PagerDuty Alerts
 
-Resoto constantly monitors your infrastructure, and can alert you to any detected issues. [Pagerduty](https://www.pagerduty.com) is the de-facto standard to escalate alerts. In this guide, we will configure Resoto to send alerts to Pagerduty with a [custom command](../../../reference/cli/index.md).
+Resoto constantly monitors your infrastructure, and can alert you to any detected issues. [PagerDuty](https://www.pagerduty.com) is the de-facto standard to escalate alerts. In this guide, we will configure Resoto to send alerts to PagerDuty with a [custom command](../../../reference/cli/index.md).
 
 ## Prerequisites
 
 This guide assumes that you have already [installed](../../../getting-started/install-resoto/index.md) and configured Resoto to [collect your cloud resources](../../../getting-started/configure-cloud-provider-access/index.md).
 
-You will also need a valid routing key for your [Pagerduty](https://www.pagerduty.com) account.
+You will also need a valid routing key for your [PagerDuty](https://www.pagerduty.com) account.
 
 The `pagerduty` command has the following parameters. All parameters without default values are required to define by the user.
 
@@ -18,7 +18,7 @@ The `pagerduty` command has the following parameters. All parameters without def
 | --- | --- | --- |
 | `summary` | Summary of this alert |  |
 | `routing_key` | The GUID of one of your Events API V2 integrations. This is the "Integration Key" listed on the Events API V2 integration\'s detail page. |  |
-| `dedup_key` | A string that identifies the alert. Pagerduty will ensure that only one alert with this key is active at a time. |  |
+| `dedup_key` | A string that identifies the alert. PagerDuty will ensure that only one alert with this key is active at a time. |  |
 | `source` | The source of this alert | `Resoto` |
 | `severity` | The severity of the alert. One of: `critical`, `error`, `warning` or `info`. | `warning` |
 | `source` | The unique location of the affected system, preferably a hostname or FQDN. | `Resoto` |
@@ -53,9 +53,9 @@ The `pagerduty` command has the following parameters. All parameters without def
    > search is(kubernetes_pod) and pod_status.container_statuses[*].restart_count > 20 and last_update<1h | pagerduty summary="Pods are restarting too often!" dedup_key="Resoto::PodRestartedTooOften"
    ```
 
-   If the defined condition is currently true, you should see a new alert in Pagerduty:
+   If the defined condition is currently true, you should see a new alert in PagerDuty:
 
-4. Finally, we want to automate checking of the defined alert trigger and send alerts to [Pagerduty](https://www.pagerduty.com) whenever the result is true. We can accomplish this by creating a [job](docs/concepts/automation/index.md):
+4. Finally, we want to automate checking of the defined alert trigger and send alerts to [PagerDuty](https://www.pagerduty.com) whenever the result is true. We can accomplish this by creating a [job](../../../concepts/automation/index.md#jobs):
 
    ```bash
    > jobs add --id alert_on_pod_failure--wait-for-event post_collect 'search is(kubernetes_pod) and pod_status.container_statuses[*].restart_count > 20 and last_update<1h | pagerduty summary="Pods are restarting too often!" dedup_key="Resoto::PodRestartedTooOften"
@@ -64,5 +64,5 @@ The `pagerduty` command has the following parameters. All parameters without def
 ## Further Reading
 
 - [Search](../../../reference/search/index.md)
-- [Automation](docs/concepts/automation/index.md)
+- [Automation](../../../concepts/automation/index.md)
 - [Command-Line Interface](../../../reference/cli/index.md)

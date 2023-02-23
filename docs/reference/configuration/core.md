@@ -73,7 +73,7 @@ resotocore:
 
 ## Workflow Schedules
 
-By default, the `collect_and_cleanup` workflow runs at the start of each hour. This setting can be configured using [standard cron syntax](https://en.wikipedia.org/wiki/Cron).
+By default, the [`collect_and_cleanup` workflow](../../concepts/cloud-data-sync/index.md#collect_and_cleanup-workflow) runs at the start of each hour. This setting can be configured using [standard cron syntax](https://en.wikipedia.org/wiki/Cron).
 
 Execute the following command in [Resoto Shell](../../reference/components/shell.md) to open the relevant configuration for editing:
 

@@ -34,7 +34,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
      cleanup_pool_size: 16
    ```
 
-   When cleanup is enabled, marked resources will be deleted as a part of the [`collect_and_cleanup`](docs/concepts/cloud-data-sync/index.md), which runs each hour by default.
+   When cleanup is enabled, marked resources will be deleted as a part of the [`collect_and_cleanup` workflow](../../concepts/cloud-data-sync/index.md#collect_and_cleanup-workflow), which runs each hour by default.
 
    :::tip
 
@@ -82,11 +82,15 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
    :::note
 
-   The [`clean` command](../../reference/cli/action-commands/clean.md) flags a resource for cleanup. Cleanup is performed whenever the [cloud data sync](docs/concepts/cloud-data-sync/index.md) runs. The workflow runs every hour by default, but can also be manually triggered using the `workflow run cleanup` command.
+   The [`clean` command](../../reference/cli/action-commands/clean.md) flags a resource for cleanup.
+
+   Cleanup is performed whenever the [`collect_and_cleanup` workflow](../../concepts/cloud-data-sync/index.md#collect_and_cleanup-workflow) runs.
+
+   The workflow runs every hour by default, but can also be manually triggered using the `workflow run cleanup` command.
 
    :::
 
-5. Automate flagging unused access keys for cleanup by creating a [job](docs/concepts/automation/index.md):
+5. Automate flagging unused access keys for cleanup by creating a [job](../../concepts/automation/index.md#jobs):
 
    ```bash
    > jobs add --id clean_outdated_access_keys --wait-for-event post_collect 'search is(access_key) and last_access > 90days and /ancestors.user.reported.name not in [jenkins, ci] | clean'
@@ -94,14 +98,14 @@ This guide assumes that you have already [installed](../../getting-started/insta
    ​Job clean_outdated_access_keys added.
    ```
 
-The job will now run each time Resoto emits the `cleanup_plan` event. The `cleanup_plan` event is a part of the [cloud data sync](docs/concepts/cloud-data-sync/index.md) and emitted after resource collection is complete but before the cleanup is performed.
+The job will now run each time Resoto emits the `post_cleanup_plan` event. The `post_cleanup_plan` event is emitted in the [`cleanup` phase](../../concepts/cloud-data-sync/index.md#cleanup) of the [`collect_and_cleanup` workflow](../../concepts/cloud-data-sync/index.md#collect_and_cleanup-workflow).
 
 Each time the job runs, unused IAM access keys will be flagged for removal during the next cleanup run.
 
 ## Further Reading
 
 - [Resource Cleanup](../../concepts/resource-management/cleanup.md)
+- [Cloud Data Sync](../../concepts/cloud-data-sync/index.md)
+- [Automation](../../concepts/automation/index.md)
 - [Search](../../reference/search/index.md)
-- [Automation](docs/concepts/automation/index.md)
-- [Cloud Data Sync](docs/concepts/cloud-data-sync/index.md)
 - [Command-Line Interface](../../reference/cli/index.md)

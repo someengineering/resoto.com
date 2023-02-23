@@ -14,7 +14,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
 ## Directions
 
-1. Execute the following command in [Resoto Shell](../../concepts/components/shell.md) to open the [Resoto Worker](../../concepts/components/worker.md) configuration for editing:
+1. Execute the following command in [Resoto Shell](../../reference/components/shell.md) to open the [Resoto Worker](../../reference/components/worker.md) configuration for editing:
 
    ```bash
    > config edit resoto.worker
@@ -42,7 +42,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
    :::
 
-3. Execute the following search in [Resoto Shell](../../concepts/components/shell.md) to find the number of access keys that have not been used within the last 90 days, grouped by user:
+3. Execute the following search in [Resoto Shell](../../reference/components/shell.md) to find the number of access keys that have not been used within the last 90 days, grouped by user:
 
    ```bash
    > search is(access_key) and last_access > 90days <-- is(user) | count name

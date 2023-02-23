@@ -68,4 +68,5 @@ kinds [-p <property_path>] <name>
 
 ## Further Reading
 
-- [Graph Node](../../../concepts/graph/index.md#kind)
+- [Asset Inventory Graph](../../../concepts/asset-inventory-graph/index.md)
+- [Resource Data Models](../../data-models/index.md)

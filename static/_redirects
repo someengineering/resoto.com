@@ -22,6 +22,8 @@ https://blog.resoto.com/*                                                       
 /docs/concepts/automation/workflow                                                    /docs/concepts/cloud-data-sync
 /docs/concepts/automation/*                                                           /docs/concepts/automation
 
+/docs/concepts/graph/*                                                                /docs/concepts/asset-inventory-graph
+
 /docs/concepts/cleanup                                                                /docs/concepts/resource-management/cleanup
 /docs/concepts/protection                                                             /docs/concepts/resource-management/protection
 /docs/concepts/tagging                                                                /docs/concepts/resource-management/tagging

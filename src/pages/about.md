@@ -4,7 +4,7 @@ title: About
 
 # About Resoto
 
-**Resoto** indexes resources, captures dependencies, and maps out your infrastructure in an understandable [graph](/docs/concepts/graph). The graph contains metrics for each [resource](/docs/reference/data-models).
+**Resoto** indexes resources, captures dependencies, and maps out your infrastructure in an understandable [graph](/docs/concepts/asset-inventory-graph). The graph contains metrics for each [resource](/docs/reference/data-models).
 
 Developers and SREs can search the graph with a [search syntax](/docs/reference/search), and create alerting and cleanup [workflows](/docs/concepts/cloud-data-sync#workflows).
 

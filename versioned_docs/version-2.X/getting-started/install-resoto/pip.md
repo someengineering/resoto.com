@@ -36,19 +36,19 @@ The below instructions will install the latest stable version of Resoto (<Latest
 
 :::note
 
-Resoto performs CPU-intensive graph operations. In a production setup, we recommend running `resotocore` using [the PyPy Python interpreter](https://www.pypy.org/). On average, PyPy is 4.5 times faster than CPython (the reference Python implementation). When using Resoto in Docker we are already shipping it with PyPy by default.
+Resoto performs CPU-intensive graph operations. In a production setup, we recommend running `resotocore` using [the PyPy Python interpreter](https://www.pypy.org). On average, PyPy is 4.5 times faster than CPython (the reference Python implementation). When using Resoto in Docker we are already shipping it with PyPy by default.
 
 :::
 
 ## Installing Resoto
 
-Resoto consists of multiple [components](../../concepts/components/index.md) that are published as individual Python packages:
+Resoto consists of multiple [components](../../reference/components/index.md) that are published as individual Python packages:
 
-1. [📦](https://pypi.org/project/resotocore/) `resotocore` maintains the infrastructure graph.
-2. [📦](https://pypi.org/project/resotoworker/) `resotoworker` collects infrastructure data from the cloud provider APIs.
-3. [📦](https://pypi.org/project/resotometrics/) `resotometrics` exports metrics in Prometheus format.
-4. [📦](https://pypi.org/project/resotoshell/) `resotoshell` is the command-line interface (CLI) used to interact with Resoto.
-5. [📦](https://pypi.org/project/resoto-plugins/) `resoto-plugins` a collection of worker plugins.
+1. [📦](https://pypi.org/project/resotocore) `resotocore` maintains the infrastructure graph.
+2. [📦](https://pypi.org/project/resotoworker) `resotoworker` collects infrastructure data from the cloud provider APIs.
+3. [📦](https://pypi.org/project/resotometrics) `resotometrics` exports metrics in Prometheus format.
+4. [📦](https://pypi.org/project/resotoshell) `resotoshell` is the command-line interface (CLI) used to interact with Resoto.
+5. [📦](https://pypi.org/project/resoto-plugins) `resoto-plugins` a collection of worker plugins.
 
 ```bash title="Installing Resoto using pip"
 $ mkdir -p ~/resoto
@@ -96,7 +96,7 @@ $ source ~/resoto/resoto-venv/bin/activate
 $ resotocore --graphdb-password "$graphdb_password" --graphdb-server http://localhost:8529 --psk "$pre_shared_key"
 ```
 
-[Resoto Core](../../concepts/components/core.md) only listens on `localhost:8900` by default. [Resoto Core](../../concepts/components/core.md) can be [configured to listen on all interfaces](../../reference/configuration/core.md#network-interfaces) if desired.
+[Resoto Core](../../reference/components/core.md) only listens on `localhost:8900` by default. [Resoto Core](../../reference/components/core.md) can be [configured to listen on all interfaces](../../reference/configuration/core.md#network-interfaces) if desired.
 
 </TabItem>
 <TabItem value="resotoworker" label="resotoworker">
@@ -123,9 +123,9 @@ Resoto now exposes Prometheus metrics at `https://localhost:9955/metrics`. Follo
 
 ## Launching the Command-Line Interface
 
-The `resh` command is used to interact with [`resotocore`](../../concepts/components/core.md).
+The `resh` command is used to interact with [`resotocore`](../../reference/components/core.md).
 
-Simply execute the following to access the [Resoto Shell](../../concepts/components/shell.md) interface:
+Simply execute the following to access the [Resoto Shell](../../reference/components/shell.md) interface:
 
 ```bash
 $ pre_shared_key=$(< ~/resoto/.pre-shared-key)

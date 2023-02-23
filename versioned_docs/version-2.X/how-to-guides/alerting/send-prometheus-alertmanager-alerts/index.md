@@ -14,7 +14,7 @@ You will also need a running installation of [Alertmanager](https://prometheus.i
 
 ## Directions
 
-1. Open the `resoto.core.commands` configuration by executing the following command in [Resoto Shell](../../../concepts/components/shell.md):
+1. Open the `resoto.core.commands` configuration by executing the following command in [Resoto Shell](../../../reference/components/shell.md):
 
    ```bash
    > config edit resoto.core.commands

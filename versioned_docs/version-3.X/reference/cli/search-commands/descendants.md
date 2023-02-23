@@ -4,7 +4,7 @@ sidebar_label: descendants
 
 # `descendants` Command
 
-The `descendants` command selects all [descendants](../../../concepts/graph/edge.md#descendant) of nodes returned in a query.
+The `descendants` command selects all [descendants](../../../concepts/asset-inventory-graph/index.md#descendant) of nodes returned in a query.
 
 ## Usage
 
@@ -50,5 +50,5 @@ descendants [--with-origin] <edge_type>
 
 ## Further Reading
 
-- [Graph Edge](../../../concepts/graph/edge.md)
+- [Asset Inventory Graph](../../../concepts/asset-inventory-graph/index.md)
 - [Search Traversals](../../search/traversals.md)

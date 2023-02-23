@@ -4,7 +4,7 @@ sidebar_label: predecessors
 
 # `predecessors` Command
 
-The `predecessors` command selects all [predecessors](../../../concepts/graph/index.md#predecessor) of nodes returned in a query.
+The `predecessors` command selects all [predecessors](../../../concepts/asset-inventory-graph/index.md#predecessor) of nodes returned in a query.
 
 ## Usage
 
@@ -51,5 +51,5 @@ predecessors [--with-origin] <edge_type>
 
 ## Further Reading
 
-- [Graph Edge](../../../concepts/graph/index.md)
+- [Asset Inventory Graph](../../../concepts/asset-inventory-graph/index.md)
 - [Search Traversals](../../search/traversals.md)

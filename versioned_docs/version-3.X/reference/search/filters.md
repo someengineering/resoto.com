@@ -5,7 +5,7 @@ sidebar_label: Filters
 
 # Search Filters
 
-## Selecting Nodes by [Kind](../../concepts/graph/node.md#kind) {#selecting-nodes-by-kind}
+## Selecting Nodes by [Kind](../../concepts/asset-inventory-graph/index.md#resource-kinds) {#selecting-nodes-by-kind}
 
 ```bash title="Filter by kind"
 > search is(instance)

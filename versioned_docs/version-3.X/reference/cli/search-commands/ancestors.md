@@ -4,7 +4,7 @@ sidebar_label: ancestors
 
 # `ancestors` Command
 
-The `ancestors` command selects all [ancestors](../../../concepts/graph/edge.md#ancestor) of nodes returned in a query.
+The `ancestors` command selects all [ancestors](../../../concepts/asset-inventory-graph/index.md#ancestor) of nodes returned in a query.
 
 ## Usage
 
@@ -55,5 +55,5 @@ ancestors [--with-origin] <edge_type>
 
 ## Further Reading
 
-- [Graph Edge](../../../concepts/graph/edge.md)
+- [Asset Inventory Graph](../../../concepts/asset-inventory-graph/index.md)
 - [Search Traversals](../../search/traversals.md)

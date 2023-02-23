@@ -14,7 +14,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
 ## Directions
 
-1. Execute the [`search` command](../../reference/cli/search-commands/search.md) in [Resoto Shell](../../concepts/components/shell.md) with your search term in double quotes:
+1. Execute the [`search` command](../../reference/cli/search-commands/search.md) in [Resoto Shell](../../reference/components/shell.md) with your search term in double quotes:
 
    ```bash
    > search "poweruser"

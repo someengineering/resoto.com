@@ -49,7 +49,7 @@ Usually, the graph is structured as follows:
 
 ### Merging Collected Resources
 
-Resoto uses a thin wrapper on top of [NetworkX](https://networkx.org/) to operate on graphs. The two most used methods in the wrapper are `add_resource` and `add_edge`.
+Resoto uses a thin wrapper on top of [NetworkX](https://networkx.org) to operate on graphs. The two most used methods in the wrapper are `add_resource` and `add_edge`.
 
 Keep in mind that there are two types of edges, `default` and `delete`.
 

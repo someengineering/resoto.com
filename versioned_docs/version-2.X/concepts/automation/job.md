@@ -1,6 +1,6 @@
 # Job
 
-You can use the [Resoto Shell](../components/shell.md) to trigger commands in Resoto.
+You can use the [Resoto Shell](../../reference/components/shell.md) to trigger commands in Resoto.
 
 Let's say you want to find all resources that have not been labeled with an owner tag. The following search would do the trick:
 
@@ -68,7 +68,7 @@ The job functionality can be used to automate actions. Here is a list of possibl
 
 - **Gather or accumulate data.**
 
-  Resoto has advanced [search aggregation](../../reference/search/aggregation.md) capabilities. [Resoto Metrics](../components/metrics.md) uses aggregation to derive and report metrics to [Prometheus](https://prometheus.io).
+  Resoto has advanced [search aggregation](../../reference/search/aggregation.md) capabilities. [Resoto Metrics](../../reference/components/metrics.md) uses aggregation to derive and report metrics to [Prometheus](https://prometheus.io).
 
   If additional data besides metrics are relevant to you, create a job that gathers and publishes the data.
 
@@ -78,7 +78,7 @@ The job functionality can be used to automate actions. Here is a list of possibl
 
   Did you know that Resoto can provide graph diagrams in [Graphviz DOT format](https://graphviz.org/doc/info/lang.html)?
 
-  Try this in [Resoto Shell (`resh`)](../components/shell.md):
+  Try this in [Resoto Shell (`resh`)](../../reference/components/shell.md):
 
   ```bash
   > search --include-edges is(graph_root) -[0:2]-> | format --dot | write out.dot

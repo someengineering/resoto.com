@@ -4,7 +4,7 @@ sidebar_label: successors
 
 # `successors` Command
 
-The `successors` command selects all [successors](../../../concepts/asset-inventory-graph/index.md#successor) of nodes returned in a query.
+The `successors` command selects all [successors](../../../concepts/asset-inventory-graph/index.md#successor) of [nodes](../../../concepts/asset-inventory-graph/index.md#nodes) returned in a query.
 
 ## Usage
 

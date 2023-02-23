@@ -107,7 +107,7 @@ This query will select the aws account with name `sunshine` and then select all 
 
 ## By Edge Type
 
-Every edge has a type which defines the relationship between two nodes.
+Every [edge](../../concepts/asset-inventory-graph/index.md#edges) has a type which defines the relationship between two [nodes](../../concepts/asset-inventory-graph/index.md#nodes).
 
 The types of edge can be specified via the graph traversal: `-<edge_type>[<start>:<until>]->`. If more than one type should be used for the traversal, the types need to be separated by comma.
 

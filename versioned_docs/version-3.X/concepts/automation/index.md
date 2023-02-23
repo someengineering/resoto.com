@@ -56,6 +56,12 @@ There are three types of job triggers: [schedule triggers](#schedule-trigger), [
 </div>
 </details>
 
+:::tip
+
+See [How to Create a Scheduled Job](../../how-to-guides/automation/create-a-scheduled-job.md) for step-by-step instructions describing how to create a job with a schedule trigger.
+
+:::
+
 #### Event Trigger
 
 **An event trigger executes a job when a specific event is emitted by Resoto.**
@@ -77,6 +83,12 @@ Resoto updates the state of resources in the four steps of the [`collect_and_cle
 
 </div>
 </details>
+
+:::tip
+
+See [How to Create an Event-Based Job](../../how-to-guides/automation/create-an-event-based-job.md) for step-by-step instructions describing how to create a job with an event trigger.
+
+:::
 
 #### Combined Trigger
 
@@ -100,6 +112,12 @@ The above combined trigger executes the job based on the latest state of resourc
 
 </div>
 </details>
+
+:::tip
+
+See [How to Create a Scheduled Event-Based Job](../../how-to-guides/automation/create-a-scheduled-event-based-job.md) for step-by-step instructions describing how to create a job with a combined trigger.
+
+:::
 
 ### Job Filters & Actions
 

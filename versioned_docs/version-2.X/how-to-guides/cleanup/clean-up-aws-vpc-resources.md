@@ -26,7 +26,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
 ## Directions
 
-1. Execute the following command in [Resoto Shell](../../concepts/components/shell.md) to open the [Resoto Worker](../../concepts/components/worker.md) configuration for editing:
+1. Execute the following command in [Resoto Shell](../../reference/components/shell.md) to open the [Resoto Worker](../../reference/components/worker.md) configuration for editing:
 
    ```bash
    > config edit resoto.worker
@@ -76,7 +76,7 @@ Each time the `cleanup_aws_vpcs` plugin runs, network resources associated with 
 
 ## Further Reading
 
-- [`cleanup_aws_vpcs` Plugin](../../concepts/components/plugins/cleanup_aws_vpcs.md)
+- [`cleanup_aws_vpcs` Plugin](../../reference/components/plugins/cleanup_aws_vpcs.md)
 - [Resource Cleanup](../../concepts/resource-management/cleanup.md)
 - [Configuration](../../reference/configuration/index.md)
 - [Workflow](../../concepts/automation/workflow.md)

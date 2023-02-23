@@ -15,7 +15,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
 ## Directions
 
-1. Execute the following command in [Resoto Shell](../../concepts/components/shell.md) to open the [Resoto Worker](../../concepts/components/worker.md) configuration for editing:
+1. Execute the following command in [Resoto Shell](../../reference/components/shell.md) to open the [Resoto Worker](../../reference/components/worker.md) configuration for editing:
 
    ```bash
    > config edit resoto.worker
@@ -83,7 +83,7 @@ If you would like to apply expiration tags to existing resources, [How to Find U
 
 ## Further Reading
 
-- [`cleanup_expired` Plugin](../../concepts/components/plugins/cleanup_expired.md)
+- [`cleanup_expired` Plugin](../../reference/components/plugins/cleanup_expired.md)
 - [Resource Expiration](../../concepts/resource-management/expiration.md)
 - [Resource Cleanup](../../concepts/resource-management/cleanup.md)
 - [Configuration](../../reference/configuration/index.md)

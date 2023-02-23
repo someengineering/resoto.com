@@ -16,7 +16,7 @@ To protect a resource, simply perform a search and pipe the result to [`protect`
 > search is(aws_ec2_instance) and name = jenkins-master | protect "Jenkins Master"
 ```
 
-A better way of automatically protecting resources is to use the [`protector` plugin](../components/plugins/protector.md) or by running a job.
+A better way of automatically protecting resources is to use the [`protector` plugin](../../reference/components/plugins/protector.md) or by running a job.
 
 ## Finding Protected Resources
 

@@ -10,7 +10,7 @@ import DocCardList from '@theme/DocCardList';
 
 Collector plugins allow for importing of arbitrary resources into Resoto in graph form. The most common use case is to gather information about cloud accounts and/or resources. However, any data expressible is graph form can be collected—be it social media accounts, software dependency trees, network topology, steps for cooking your favorite food, etc.
 
-Once the graph data is collected and sent to [Resoto Core](../../concepts/components/core.md), the power of Resoto's [search syntax](../../concepts/search.md) is at your fingertips.
+Once the graph data is collected and sent to [Resoto Core](../../reference/components/core.md), the power of Resoto's [search syntax](../../concepts/search.md) is at your fingertips.
 
 Plugin source code lives in the [`plugins` directory within the `someengineering/resoto` repository on GitHub](https://github.com/someengineering/resoto/tree/main/plugins). Each plugin is maintained as separate project.
 
@@ -49,7 +49,7 @@ Usually, the graph is structured as follows:
 
 ### Merging Collected Resources
 
-Resoto uses a thin wrapper on top of [NetworkX](https://networkx.org/) to operate on graphs. The two most used methods in the wrapper are `add_resource` and `add_edge`.
+Resoto uses a thin wrapper on top of [NetworkX](https://networkx.org) to operate on graphs. The two most used methods in the wrapper are `add_resource` and `add_edge`.
 
 Keep in mind that there are two types of edges, `default` and `delete`.
 
@@ -60,7 +60,7 @@ Please refer to the [example collector plugin](https://github.com/someengineerin
 
 ### Testing Plugins
 
-To test a plugin, simply launch Resoto and trigger the collect action manually by executing `workflows run collect` in the [shell](../../concepts/components/shell.md). Once the collection is complete, you execute `search (<plugin_resource_type>)` to see the newly collected resources.
+To test a plugin, simply launch Resoto and trigger the collect action manually by executing `workflows run collect` in the [shell](../../reference/components/shell.md). Once the collection is complete, you execute `search (<plugin_resource_type>)` to see the newly collected resources.
 
 ### Tips
 

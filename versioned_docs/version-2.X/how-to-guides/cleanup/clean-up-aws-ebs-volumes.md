@@ -12,7 +12,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
 ## Directions
 
-1. Execute the following command in [Resoto Shell](../../concepts/components/shell.md) to open the [Resoto Worker](../../concepts/components/worker.md) configuration for editing:
+1. Execute the following command in [Resoto Shell](../../reference/components/shell.md) to open the [Resoto Worker](../../reference/components/worker.md) configuration for editing:
 
    ```bash
    > config edit resoto.worker
@@ -40,7 +40,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
    :::
 
-3. Execute the following search in [Resoto Shell](../../concepts/components/shell.md) to list all unused EBS volumes:
+3. Execute the following search in [Resoto Shell](../../reference/components/shell.md) to list all unused EBS volumes:
 
    ```bash
    > search is(ebs_volume) and not /ancestors.instance

@@ -38,15 +38,15 @@ The below instructions will install the latest stable version of Resoto (<Latest
 
 Resoto consists of multiple [components](../../reference/components/index.md) that are published as individual Python packages:
 
-1. [📦](https://pypi.org/project/resotocore/) `resotocore` maintains the infrastructure graph.
-2. [📦](https://pypi.org/project/resotoworker/) `resotoworker` collects infrastructure data from the cloud provider APIs.
-3. [📦](https://pypi.org/project/resotometrics/) `resotometrics` exports metrics in Prometheus format.
-4. [📦](https://pypi.org/project/resotoshell/) `resotoshell` is the command-line interface (CLI) used to interact with Resoto.
+1. [📦](https://pypi.org/project/resotocore) `resotocore` maintains the infrastructure graph.
+2. [📦](https://pypi.org/project/resotoworker) `resotoworker` collects infrastructure data from the cloud provider APIs.
+3. [📦](https://pypi.org/project/resotometrics) `resotometrics` exports metrics in Prometheus format.
+4. [📦](https://pypi.org/project/resotoshell) `resotoshell` is the command-line interface (CLI) used to interact with Resoto.
 5. A list of collector plugins. In this guide we will install the most prominent collector plugins. See this [list](https://github.com/someengineering/resoto/tree/main/plugins) for an overview of all available plugins.
-   1. [📦](https://pypi.org/project/resoto-plugin-aws/) `resoto-plugin-aws` collects data from AWS.
-   1. [📦](https://pypi.org/project/resoto-plugin-gcp/) `resoto-plugin-gcp` collects data from GCP.
-   1. [📦](https://pypi.org/project/resoto-plugin-k8s/) `resoto-plugin-k8s` collects data from Kubernetes.
-   1. [📦](https://pypi.org/project/resoto-plugin-digitalocean/) `resoto-plugin-digitalocean` collects data from DigitalOcean.
+   1. [📦](https://pypi.org/project/resoto-plugin-aws) `resoto-plugin-aws` collects data from AWS.
+   1. [📦](https://pypi.org/project/resoto-plugin-gcp) `resoto-plugin-gcp` collects data from GCP.
+   1. [📦](https://pypi.org/project/resoto-plugin-k8s) `resoto-plugin-k8s` collects data from Kubernetes.
+   1. [📦](https://pypi.org/project/resoto-plugin-digitalocean) `resoto-plugin-digitalocean` collects data from DigitalOcean.
 
 ```bash title="Installing Resoto using pip"
 $ mkdir -p ~/resoto

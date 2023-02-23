@@ -9,11 +9,11 @@ import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
 
-The [DigitalOcean](../../reference/data-models/digitalocean/index.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs/index.md) in [Resoto Shell](../../concepts/components/shell.md).
+The [DigitalOcean](../../reference/data-models/digitalocean/index.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs/index.md) in [Resoto Shell](../../reference/components/shell.md).
 
 ## Enabling the Collector
 
-1. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../concepts/components/shell):
+1. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
 
    ```bash
    > config edit resoto.worker
@@ -39,7 +39,7 @@ The [DigitalOcean](../../reference/data-models/digitalocean/index.md) collector 
 <Tabs groupId="auth-method">
 <TabItem value="configuration" label="Resoto Worker Configuration">
 
-1. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../concepts/components/shell):
+1. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
 
    ```bash
    > config edit resoto.worker
@@ -149,7 +149,7 @@ The [DigitalOcean](../../reference/data-models/digitalocean/index.md) collector 
 
 ## Resource Collection
 
-By default, Resoto performs resource collection each hour. To immediately trigger a collect run, use the [`workflow run` command](../../reference/cli/action-commands/workflows/run.md) in [Resoto Shell](../../concepts/components/shell):
+By default, Resoto performs resource collection each hour. To immediately trigger a collect run, use the [`workflow run` command](../../reference/cli/action-commands/workflows/run.md) in [Resoto Shell](../../reference/components/shell):
 
 ```bash
 > workflow run collect

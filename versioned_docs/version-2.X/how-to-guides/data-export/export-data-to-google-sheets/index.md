@@ -16,7 +16,7 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
 ## Directions
 
-1. Execute the following [aggregate search](../../../reference/search/aggregation.md) in [Resoto Shell](../../../concepts/components/shell.md):
+1. Execute the following [aggregate search](../../../reference/search/aggregation.md) in [Resoto Shell](../../../reference/components/shell.md):
 
    ```bash
    > search aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account: sum(volume_size * 1024 * 1024 * 1024) as volume_bytes): is(volume)

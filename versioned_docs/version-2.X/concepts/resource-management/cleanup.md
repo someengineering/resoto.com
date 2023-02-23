@@ -8,9 +8,9 @@ Resoto is very good at helping you find problematic resources in your infrastruc
 
 :::info
 
-By default, [Resoto Worker](../components/worker.md) does not delete resources marked for deletion. Resources marked with `| clean` will stay this way without getting deleted unless [cleanup is enabled](#enabling-cleanup).
+By default, [Resoto Worker](../../reference/components/worker.md) does not delete resources marked for deletion. Resources marked with `| clean` will stay this way without getting deleted unless [cleanup is enabled](#enabling-cleanup).
 
-Cleanup can be performed manually in [Resoto Shell](../components/shell.md), automatically using a [cleanup plugin](../components/plugins/index.md), or via a scheduled [job](../automation/job.md).
+Cleanup can be performed manually in [Resoto Shell](../../reference/components/shell.md), automatically using a [cleanup plugin](../../reference/components/plugins/index.md), or via a scheduled [job](../automation/job.md).
 
 See [Cleanup How-To Guides](../../how-to-guides/cleanup/index.md) for step-by-step instructions to clean up various types of resources.
 
@@ -62,7 +62,7 @@ Resources can only be cleaned up if they are not [protected](./protection.md).
 
 :::
 
-To enable cleanup, execute the following command in [Resoto Shell](../components/shell.md) to open the [Resoto Worker](../components/worker.md) configuration for editing:
+To enable cleanup, execute the following command in [Resoto Shell](../../reference/components/shell.md) to open the [Resoto Worker](../../reference/components/worker.md) configuration for editing:
 
 ```bash
 > config edit resoto.worker

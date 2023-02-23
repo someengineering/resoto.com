@@ -36,7 +36,7 @@ Here's a step-by-step breakdown on how to add a new resource to the AWS collecto
 
 3. **Connect to other resources.**
 
-   Once the new resource(s) are being collected (and new nodes in the graph have been created), edges representing the relationships between connected resources need to be added as well.
+   Once the new resource(s) are being collected (and new [nodes](../../concepts/asset-inventory-graph/index.md#nodes) in the graph have been created), [edges](../../concepts/asset-inventory-graph/index.md#edges) representing the relationships between connected resources need to be added as well.
 
    There are two ways to add these connections:
 

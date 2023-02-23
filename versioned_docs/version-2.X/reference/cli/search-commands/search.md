@@ -14,10 +14,10 @@ search [--with-edges] [--explain] <query>
 
 ### Options
 
-| Option         | Description                                      |
-| -------------- | ------------------------------------------------ |
-| `--with-edges` | Return edges in addition to nodes                |
-| `--explain`    | Instead of executing the query, analyze its cost |
+| Option         | Description                                                                                                                                           |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--with-edges` | Return [edges](../../../concepts/asset-inventory-graph/index.md#edges) in addition to [nodes](../../../concepts/asset-inventory-graph/index.md#nodes) |
+| `--explain`    | Instead of executing the query, analyze its cost                                                                                                      |
 
 ### Parameters
 

@@ -27,7 +27,7 @@ https://youtu.be/U5L4z71WI-w
 ## Prerequisites
 
 - [Docker](https://docs.docker.com/get-started#download-and-install-docker)
-- [Docker Compose >= 1.29](https://docs.docker.com/compose/install/)
+- [Docker Compose >= 1.29](https://docs.docker.com/compose/install)
 - At least 2 CPU cores and 8 GB of RAM
 
 :::note

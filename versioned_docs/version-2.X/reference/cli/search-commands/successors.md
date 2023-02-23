@@ -4,7 +4,7 @@ sidebar_label: successors
 
 # `successors` Command
 
-The `successors` command selects all [successors](../../../concepts/graph/edge.md#successor) of nodes returned in a query.
+The `successors` command selects all [successors](../../../concepts/asset-inventory-graph/index.md#successors) of [nodes](../../../concepts/asset-inventory-graph/index.md#nodes) returned in a query.
 
 ## Usage
 
@@ -51,5 +51,5 @@ successors [--with-origin] <edge_type>
 
 ## Further Reading
 
-- [Graph Edge](../../../concepts/graph/edge.md)
+- [Asset Inventory Graph](../../../concepts/asset-inventory-graph/index.md)
 - [Search Traversals](../../search/traversals.md)

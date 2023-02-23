@@ -14,7 +14,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
 ## Directions
 
-Execute the following search in [Resoto Shell](../../concepts/components/shell.md) to list all expired resources:
+Execute the following search in [Resoto Shell](../../reference/components/shell.md) to list all expired resources:
 
 ```bash
 > search /metadata.expires < "@utc@"

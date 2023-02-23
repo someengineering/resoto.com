@@ -34,7 +34,7 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
 :::warning
 
-We do not recommend creating a [job](../../../concepts/automation/job.md) using the `jira` command at this time, as this will result in the creation of a new ticket each hour while the search condition remains true.
+We do not recommend creating a [job](../../../concepts/automation/index.md#jobs) using the `jira` command at this time, as this will result in the creation of a new ticket each hour while the search condition remains true.
 
 :::
 
@@ -47,5 +47,5 @@ For all parameters mentioned above you can specify defaults in the `jira` custom
 ## Further Reading
 
 - [Search](../../../reference/search/index.md)
-- [Job](../../../concepts/automation/job.md)
+- [Automation](../../../concepts/automation/index.md)
 - [Command-Line Interface](../../../reference/cli/index.md)

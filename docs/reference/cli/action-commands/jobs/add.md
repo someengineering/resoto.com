@@ -14,12 +14,12 @@ jobs add [--id <id>] [--schedule <cron_expression>] [--wait-for-event <event_nam
 
 ### Options
 
-| Option                          | Description                                                                                                                                     |
-| ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--id <id>`                     | Job identifier (if no ID is provided, a random identifier will be automatically generated)                                                      |
-| `--schedule <cron_expression>`  | The schedule as a `cron` expression                                                                                                             |
-| `--wait-for-event <event_name>` | Waits for the specified event to occur (if this option is defined in conjunction with the `--schedule` option, the schedule must trigger first) |
-| `--timeout`                     | Number of seconds for which the job is allowed to run before being automatically terminated (default 3600)                                      |
+| Option | Description |
+| --- | --- |
+| `--id <id>` | Job identifier (if no ID is provided, a random identifier will be automatically generated) |
+| `--schedule <cron_expression>` | The schedule as a `cron` expression |
+| `--wait-for-event <event_name>` | Waits for the specified event to occur. See [events](../../../events.md) for a complete list of possible events. If this option is defined in conjunction with the `--schedule` option, the schedule must trigger first |
+| `--timeout` | Number of seconds for which the job is allowed to run before being automatically terminated (default 3600) |
 
 ### Parameters
 
@@ -48,3 +48,7 @@ jobs add [--id <id>] [--schedule <cron_expression>] [--wait-for-event <event_nam
 # highlight-next-line
 ​Job wait_for_collect_done added.
 ```
+
+## References
+
+- [Events](../../../events.md) to get the list of all possible events to listen for.

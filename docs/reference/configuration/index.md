@@ -6,7 +6,7 @@ import DocCardList from '@theme/DocCardList';
 
 ## Internal Configuration
 
-Resoto uses an internal configuration system for its [components](../../reference/components/index.md). Configuration is maintained within [Resoto Core](../../reference/components/core.md) and can be edited using [Resoto Shell](../../reference/components/shell.md) using the [`config edit` command](../cli/setup-commands/configs/edit.md).
+Resoto uses an internal configuration system for its [components](../components/index.md). Configuration is maintained within [Resoto Core](../components/core.md) and can be edited using [Resoto Shell](../components/shell.md) using the [`config edit` command](../cli/setup-commands/configs/edit.md).
 
 ### Listing Configurations
 
@@ -39,7 +39,7 @@ Resoto automatically creates the following configurations by default:
 > config edit resoto.worker
 ```
 
-Upon execution of the above command, [Resoto Shell](../../reference/components/shell.md) presents the specified configuration in [YAML format](https://yaml.org) using the local text editor as defined by the [`EDITOR` environment variable](#text-editor).
+Upon execution of the above command, [Resoto Shell](../components/shell.md) presents the specified configuration in [YAML format](https://yaml.org) using the local text editor as defined by the [`EDITOR` environment variable](#text-editor).
 
 ```yaml title="Example Resoto Worker configuration"
 resotoworker:
@@ -158,7 +158,7 @@ $ resotoworker
 
 ### Text Editor
 
-The text editor opened by [Resoto Shell](../../reference/components/shell.md) can be configured via the `EDITOR` environment variable.
+The text editor opened by [Resoto Shell](../components/shell.md) can be configured via the `EDITOR` environment variable.
 
 For [Docker installs](../../getting-started/install-resoto/docker.md), the default text editor is [nano](https://nano-editor.org).
 
@@ -168,9 +168,9 @@ $ export EDITOR=nano
 
 ### Logging Format
 
-Resoto components produce logs in JSON format by default, with the exception of [Resoto Shell](../../reference/components/shell.md).
+Resoto components produce logs in JSON format by default, with the exception of [Resoto Shell](../components/shell.md).
 
-The rationale behind this behavior is that [Core](../../reference/components/core.md), [Worker](../../reference/components/worker.md), and [Metrics](../../reference/components/metrics.md) are likely running on something like a Kubernetes cluster in a data center, with logs ingested by a central logging system. [Resoto Shell](../../reference/components/shell.md), on the other hand, is executed on a user's local machine so the log output is formatted for readability.
+The rationale behind this behavior is that [Core](../components/core.md), [Worker](../components/worker.md), and [Metrics](../components/metrics.md) are likely running on something like a Kubernetes cluster in a data center, with logs ingested by a central logging system. [Resoto Shell](../components/shell.md), on the other hand, is executed on a user's local machine so the log output is formatted for readability.
 
 JSON-format logging can be disabled via the `RESOTO_LOG_TEXT` environment variable:
 

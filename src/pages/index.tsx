@@ -95,7 +95,7 @@ export default function Home(): JSX.Element {
             />
             <ul className={styles.cards}>
               <li>
-                <Link to="/docs/concepts/search">
+                <Link to="/docs/reference/search">
                   <h3>
                     <SearchIcon className={styles.cardIcon} />
                     <span>Search</span>
@@ -115,7 +115,7 @@ export default function Home(): JSX.Element {
                   </h3>
                 </Link>
                 <p>
-                  Turn your <Link to="/docs/concepts/search">searches</Link>{' '}
+                  Turn your <Link to="/docs/reference/search">searches</Link>{' '}
                   into regular reports with fleet-wide, actionable metrics that
                   you can export to popular tools and share with colleagues in
                   Product or Finance.
@@ -130,7 +130,7 @@ export default function Home(): JSX.Element {
                 </Link>
                 <p>
                   Automate your work with{' '}
-                  <Link to="/docs/concepts/automation/job">jobs</Link> that
+                  <Link to="/docs/concepts/automation#jobs">jobs</Link> that
                   execute recurring tasks, such as identifying and cleaning up
                   orphaned resources and enforcing{' '}
                   <Link to="/docs/concepts/resource-management/tagging">
@@ -181,7 +181,7 @@ export default function Home(): JSX.Element {
                 </h3>
                 <p>
                   Resoto reverses your cost curve by{' '}
-                  <Link to="/docs/concepts/search">finding</Link> and{' '}
+                  <Link to="/docs/reference/search">finding</Link> and{' '}
                   <Link to="/docs/concepts/resource-management/cleanup">
                     cleaning up
                   </Link>{' '}
@@ -296,7 +296,7 @@ export default function Home(): JSX.Element {
                 </p>
               </li>
               <li>
-                <Link to="/docs/concepts/automation/job">
+                <Link to="/docs/how-to-guides/automation">
                   <h3>
                     <CalendarIcon className={styles.cardIcon} />
                     <span>Schedule a Job</span>
@@ -304,7 +304,7 @@ export default function Home(): JSX.Element {
                 </Link>
                 <p>
                   Set up a recurring{' '}
-                  <Link to="/docs/concepts/automation/job">job</Link> and allow
+                  <Link to="/docs/concepts/automation#jobs">job</Link> and allow
                   Resoto to take care of resource{' '}
                   <Link to="/docs/concepts/resource-management/cleanup">
                     cleanup

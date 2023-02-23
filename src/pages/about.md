@@ -6,7 +6,7 @@ title: About
 
 **Resoto** indexes resources, captures dependencies, and maps out your infrastructure in an understandable [graph](/docs/concepts/graph). The graph contains metrics for each [resource](/docs/reference/data-models).
 
-Developers and SREs can search the graph with a [search syntax](/docs/concepts/search), and create alerting and cleanup [workflows](/docs/concepts/automation/workflow).
+Developers and SREs can search the graph with a [search syntax](/docs/reference/search), and create alerting and cleanup [workflows](/docs/concepts/cloud-data-sync#workflows).
 
 Metrics can be aggregated and exported to a time-series database such as [Prometheus](https://prometheus.io).
 
@@ -74,7 +74,7 @@ Resoto is the one place where developers and site reliability engineers go to se
 
 Resoto is a horizontal product that supports [Amazon Web Services (AWS)](https://aws.amazon.com) and [Google Cloud Platform (GCP)](https://console.cloud.google.com). That is more for historic reasons than for market share reasons. Resoto started as an internal [D2iQ](https://d2iq.com) project, and [D2iQ](https://d2iq.com) runs on [AWS](https://aws.amazon.com) and [GCP](https://console.cloud.google.com).
 
-Resoto is an expert tool for engineers that runs on top of the [Resoto Core](/docs/concepts/components/core) graph platform. They interact with Resoto via a [command-line interface (CLI)](/docs/reference/cli) which engineers are comfortable working with.
+Resoto is an expert tool for engineers that runs on top of the [Resoto Core](/docs/reference/components/core) graph platform. They interact with Resoto via a [command-line interface (CLI)](/docs/reference/cli) which engineers are comfortable working with.
 
 - We keep their cloud infrastructure _permanently_ clean.
 
@@ -136,9 +136,9 @@ Our users have started to adopt Resoto as their "source of truth" to document th
 
 **Resoto is _the_ platform for universal search and workflows for digital infrastructure.**
 
-Resoto is the established tool to collect metadata from millions and millions of resources. [Resoto Core](/docs/concepts/components/core) is the underlying graph platform to store, annotate and navigate the resources.
+Resoto is the established tool to collect metadata from millions and millions of resources. [Resoto Core](/docs/reference/components/core) is the underlying graph platform to store, annotate and navigate the resources.
 
-As our use cases have expanded, our users want to start offering the benefits of universal search and workflows for digital infrastructure to their customers. They embed Resoto and [Resoto Core](/docs/concepts/components/core) into their own products.
+As our use cases have expanded, our users want to start offering the benefits of universal search and workflows for digital infrastructure to their customers. They embed Resoto and [Resoto Core](/docs/reference/components/core) into their own products.
 
 In the example of the valves and the fertilizer plant, the plant operator retrofitted the valves by connecting them via [Raspberry Pis](https://raspberrypi.org) and writing the plug-in.
 
@@ -152,7 +152,7 @@ By turning a physical product into a programmable infrastructure resource, compa
 
 - We've launched a development platform, to build and publish custom-branded infrastructure workflow apps via the web and cloud marketplaces. These stores offer distribution and commercialization options for our customers and partners. We build the integrations to automate onboarding and listing for these marketplaces.
 
-- Customers use Resoto to maintain their entire digital infrastructure—across cloud, edge, IoT, SaaS, data, software. We hear from customers how they are replacing their "rows & columns" CMDBs with a graph maintained in [Resoto Core](/docs/concepts/components/core).
+- Customers use Resoto to maintain their entire digital infrastructure—across cloud, edge, IoT, SaaS, data, software. We hear from customers how they are replacing their "rows & columns" CMDBs with a graph maintained in [Resoto Core](/docs/reference/components/core).
 
 - Our customers consider us to be their Air Traffic Control, depending on us to supervise their infrastructure and act before something catastrophic happens (e.g., when a user starts a database that is not encrypted).
 

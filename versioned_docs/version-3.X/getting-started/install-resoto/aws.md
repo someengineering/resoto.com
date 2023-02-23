@@ -106,9 +106,9 @@ We provide a <abbr title="Cloud Development Kit">CDK</abbr> construct to simplif
 
 ## Launching the Command-Line Interface
 
-The `resh` command is used to interact with [`resotocore`](../../concepts/components/core.md).
+The `resh` command is used to interact with [`resotocore`](../../reference/components/core.md).
 
-Simply execute the following to access the [Resoto Shell](../../concepts/components/shell.md) interface:
+Simply execute the following to access the [Resoto Shell](../../reference/components/shell.md) interface:
 
 ```bash
 $ kubectl exec -it service/resoto-resotocore -- resh

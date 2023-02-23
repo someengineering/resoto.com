@@ -21,29 +21,27 @@ somecr.io/someengineering/resotoworker:{{imageTag}}
 
 ## Usage
 
-Resoto Worker uses the following commandline arguments:
+### Options
 
-```
-  --subscriber-id SUBSCRIBER_ID
-                        Unique subscriber ID (default: resoto.worker)
-  --psk PSK             Pre-shared key
-  --verbose, -v         Verbose logging
-  --quiet               Only log errors
-  --resotocore-uri RESOTOCORE_URI
-                        resotocore URI (default: https://localhost:8900)
-  --override CONFIG_OVERRIDE [CONFIG_OVERRIDE ...]
-                        Override config attribute(s)
-  --ca-cert CA_CERT     Path to custom CA certificate file
-  --cert CERT           Path to custom certificate file
-  --cert-key CERT_KEY   Path to custom certificate key file
-  --cert-key-pass CERT_KEY_PASS
-                        Passphrase for certificate key file
-  --no-verify-certs     Turn off certificate verification
-```
+| Option                                               | Description                         | Default                  |
+| ---------------------------------------------------- | ----------------------------------- | ------------------------ |
+| `--subscriber-id <SUBSCRIBER_ID>`                    | Unique subscriber ID                | `resoto.worker`          |
+| `--psk <PSK>`                                        | Pre-shared key                      |                          |
+| `--verbose`, `-v`                                    | Verbose logging                     |                          |
+| `--quiet`                                            | Only log errors                     |                          |
+| `--resotocore-uri <RESOTOCORE_URI>`                  | [Resoto Core](./core.md) URI        | `https://localhost:8900` |
+| `--override CONFIG_OVERRIDE [<CONFIG_OVERRIDE> ...]` | Override config attribute(s)        |                          |
+| `--ca-cert <CA_CERT>`                                | Path to custom CA certificate file  |                          |
+| `--cert <CERT>`                                      | Path to custom certificate file     |                          |
+| `--cert-key <CERT_KEY>`                              | Path to custom certificate key file |                          |
+| `--cert-key-pass <CERT_KEY_PASS>`                    | Passphrase for certificate key file |                          |
+| `--no-verify-certs`                                  | Turn off certificate verification   |                          |
 
-ENV Prefix: `RESOTOWORKER_` Every CLI arg can also be specified using ENV variables.
+### Environment Variables
 
-For instance the boolean `--fork` would become `RESOTOWORKER_FORK=true`.
+CLI options can also be set via environment variables. The environment variable name is the same as the option name, but in uppercase with the prefix `RESOTOWORKER_` and dashes replaced by underscores.
+
+For example, `--fork` would become `RESOTOWORKER_FORK=true`.
 
 ## Details
 
@@ -51,7 +49,7 @@ The following are details on how Resoto Worker works internally and how it integ
 
 ### Plugins
 
-Upon start up, Resoto Worker discovers and loads all of the available plugins. There are two types of plugins. The first are collector plugins, which are responsible for collecting resources from a cloud. The second are action plugins, which wait for a certain action to occur and are responsible for things like flagging resources for cleanup, tagging or protecting them.
+Upon start up, Resoto Worker discovers and loads all of the available [plugins](./plugins/index.md). There are two types of plugins. The first are collector plugins, which are responsible for collecting resources from a cloud. The second are action plugins, which wait for a certain action to occur and are responsible for things like flagging resources for cleanup, tagging or protecting them.
 
 ### Actions and Tasks
 

@@ -15,7 +15,7 @@ import Tabs from '@theme/Tabs';
 
 [Docker](https://docker.com) provides the ability to run an application in a loosely isolated environment called a [container](https://docs.docker.com/get-started/overview#containers). For more information on Docker, please see the [official Docker documentation](https://docs.docker.com).
 
-Resoto consists of multiple [components](../../concepts/components/index.md) published as individual Docker images:
+Resoto consists of multiple [components](../../reference/components/index.md) published as individual Docker images:
 
 - [`somecr.io/someengineering/resotocore`](https://hub.docker.com/repository/docker/someengineering/resotocore) maintains the infrastructure graph.
 - [`somecr.io/someengineering/resotoworker`](https://hub.docker.com/repository/docker/someengineering/resotoworker) collects infrastructure data from the cloud provider APIs.
@@ -108,9 +108,9 @@ Resoto performs CPU-intensive graph operations. In a production setup, we recomm
 
 ## Launching the Command-Line Interface
 
-The `resh` command is used to interact with [`resotocore`](../../concepts/components/core.md).
+The `resh` command is used to interact with [`resotocore`](../../reference/components/core.md).
 
-Simply execute the following to access the [Resoto Shell](../../concepts/components/shell.md) interface:
+Simply execute the following to access the [Resoto Shell](../../reference/components/shell.md) interface:
 
 ```bash
 $ docker exec -it resotoshell resh

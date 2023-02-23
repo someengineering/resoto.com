@@ -6,9 +6,9 @@ sidebar_label: Core
 
 ## Network Interfaces
 
-For security reasons, [Resoto Core](../../reference/components/core.md) only listens on the loopback interface by default. This can be changed via the `resotocore.api.web_hosts` option in the `resoto.core` configuration.
+For security reasons, [Resoto Core](../components/core.md) only listens on the loopback interface by default. This can be changed via the `resotocore.api.web_hosts` option in the `resoto.core` configuration.
 
-Execute the following command in [Resoto Shell](../../reference/components/shell.md) to open the relevant configuration for editing:
+Execute the following command in [Resoto Shell](../components/shell.md) to open the relevant configuration for editing:
 
 ```bash
 > config edit resoto.core
@@ -41,7 +41,7 @@ Alternatively, you can use the [`config set` command](../cli/setup-commands/conf
 
 Resoto attempts to find all local IP addresses and hostnames and add them to the subject alternative names (SAN) list of the x509 certificate. If your system has additional DNS names, you can add them to the SAN list via the `resotocore.api.host_certificate.san_dns_names` option in the `resoto.core` configuration.
 
-Execute the following command in [Resoto Shell](../../reference/components/shell.md) to open the relevant configuration for editing:
+Execute the following command in [Resoto Shell](../components/shell.md) to open the relevant configuration for editing:
 
 ```bash
 > config edit resoto.core
@@ -75,7 +75,7 @@ resotocore:
 
 By default, the [`collect_and_cleanup` workflow](../../concepts/cloud-data-sync/index.md#collect_and_cleanup-workflow) runs at the start of each hour. This setting can be configured using [standard cron syntax](https://en.wikipedia.org/wiki/Cron).
 
-Execute the following command in [Resoto Shell](../../reference/components/shell.md) to open the relevant configuration for editing:
+Execute the following command in [Resoto Shell](../components/shell.md) to open the relevant configuration for editing:
 
 ```bash
 > config edit resoto.core

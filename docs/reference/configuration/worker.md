@@ -6,11 +6,11 @@ sidebar_label: Worker
 
 ## Multi-Core Machines
 
-Resoto resource collection speed depends heavily on the number of CPU cores available to the worker. When collecting hundreds of accounts, [Resoto Worker](../../reference/components/worker.md) can easily saturate 64 cores or more.
+Resoto resource collection speed depends heavily on the number of CPU cores available to the worker. When collecting hundreds of accounts, [Resoto Worker](../components/worker.md) can easily saturate 64 cores or more.
 
 The amount of RAM required depends on the number of resources in each account. As a rule of thumb, estimate 512 MB of RAM and 0.5 CPU cores per account concurrently collected, with a minimum of 4 cores and 16 GB for a production setup.
 
-The following settings specify how many [Worker](../../reference/components/worker.md) threads Resoto starts:
+The following settings specify how many [Worker](../components/worker.md) threads Resoto starts:
 
 ```yaml
 resotoworker:

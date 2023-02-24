@@ -387,6 +387,12 @@ module.exports = [
       },
       {
         type: 'doc',
+        id: 'reference/api/list-all-resources-that-match-a-given-check',
+        label: 'List all resources that match a given check.',
+        className: 'api-method get',
+      },
+      {
+        type: 'doc',
         id: 'reference/api/perform-a-dynamically-assembled-benchmark-on-a-graph',
         label: 'Perform a dynamically assembled benchmark on a graph.',
         className: 'api-method get',

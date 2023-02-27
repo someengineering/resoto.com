@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@1password/docusaurus-plugin-stored-data": "0.1.0",
-    "@docusaurus/core": "2.2.0",
+    "@docusaurus/core": "2.3.1",
     "@docusaurus/plugin-pwa": "2.2.0",
     "@docusaurus/plugin-sitemap": "2.2.0",
     "@docusaurus/preset-classic": "2.2.0",

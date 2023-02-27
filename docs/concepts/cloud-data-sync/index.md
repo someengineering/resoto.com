@@ -6,7 +6,7 @@ sidebar_position: 1
 
 In today's fast-paced and ever-changing cloud infrastructure, keeping track of all the resources being used can be challenging. This is especially true for organizations with multiple teams and engineers working in multiple cloud accounts and regions.
 
-Resoto is a tool that regularly scrapes your cloud infrastructure to ensure that the latest information about all resources is available, no matter which cloud provider, account, or region is being used. By creating a snapshot of your infrastructure and storing it in an internal graph database, Resoto provides a complete and up-to-date view of _all_ your cloud resources.
+Resoto is a tool that regularly extracts and transforms infrastructure data from your cloud provider and SaaS APIs to ensure that the latest information about all resources is available, no matter which cloud provider, account, or region is being used. By creating a snapshot of your infrastructure and storing it in an internal graph database, Resoto provides a complete and up-to-date view of _all_ your cloud resources.
 
 Having a complete view of your infrastructure is important since it defines the foundation for [Insights](../../reference/user-interface/index.md), [Metrics](https://some.engineering/blog/2022/06/09/building-actionable-cloud-infrastructure-metrics) and [Automation](../automation/index.md). It allows you to understand the current state of your infrastructure, and to identify any issues that might be present. Think of security vulnerabilities, compliance issues, or unused resources costing you money. All of that information is revealed by Resoto and available to you in a single place.
 
@@ -16,11 +16,11 @@ The cloud data sync process runs continuously in the background and is responsib
 
 ## Collect
 
-Resoto's pluggable architecture allows data collection from multiple [cloud providers](https://github.com/someengineering/resoto/tree/main/plugins). It will instruct each collector plugin to scrape the cloud infrastructure in the collect phase.
+Resoto's pluggable architecture allows data collection from multiple [cloud providers](https://github.com/someengineering/resoto/tree/main/plugins). It will instruct each collector plugin to extract the cloud infrastructure in the collect phase.
 
 ![Collect](./img/collect.png)
 
-Each collector plugin encodes the logic to scrape the cloud provider's API and transform the data into a [common data model](../../reference/data-models/index.md). This is important since it allows you to query any resource based on well-known properties, regardless of the cloud provider. Every resource will have an `id`, `name`, `kind`, `tags`, `created_at` and `updated_at` property as well as the information about `cloud`, `account` and `region` it belongs to. Detailed information about every resource of a specific kind is available as well.
+Each collector plugin encodes the logic to extract the cloud provider's API and transform the data into a [common data model](../../reference/data-models/index.md). This is important since it allows you to query any resource based on well-known properties, regardless of the cloud provider. Every resource will have an `id`, `name`, `kind`, `tags`, `created_at` and `updated_at` property as well as the information about `cloud`, `account` and `region` it belongs to. Detailed information about every resource of a specific kind is available as well.
 
 The collectors not only collect the latest state of things of the infrastructure - it also knows how resources are related to each other. This information is used to connect the resources collected and build an [asset inventory graph](../asset-inventory-graph/index.md). The graph as an underlying data source allows for insights from the data of a single resource and the relationships between resources.
 

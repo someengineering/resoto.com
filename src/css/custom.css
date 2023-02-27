@@ -217,6 +217,10 @@ html[data-theme='dark'] .theme-doc-sidebar-container {
     );
 }
 
+article header {
+  margin-bottom: calc(var(--ifm-paragraph-margin-bottom) * 1.5);
+}
+
 .markdown h1:first-child,
 .markdown h2:first-child,
 .markdown h3:first-child,
@@ -232,6 +236,10 @@ h4 code,
 h5 code {
   background: none;
   border: none;
+}
+
+p:last-child {
+  margin-bottom: 0;
 }
 
 em,

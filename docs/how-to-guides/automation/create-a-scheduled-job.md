@@ -18,6 +18,12 @@ This guide assumes that you have already [installed](../../getting-started/insta
    > search is(aws_rds_instance) and db_type=aurora-postgresql and db_version~11 | discord title="Outdated Aurora databases found." message="This version is outdated and should be migrated!"
    ```
 
+   :::tip
+
+   See [Search How-To Guides](../search/index.md) for guidance on how to write search queries.
+
+   :::
+
 2. Determine the [job schedule](../../concepts/automation/index.md#schedule-trigger) and define it using a [cron expression](https://crontab.guru). For example, if we want to run the job every Monday at 9am:
 
    ```bash
@@ -32,6 +38,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
 ## Related How-To Guides
 
+- [How to Create a Scheduled Event-Based Job](./create-a-scheduled-event-based-job.md)
 - [How to Create an Event-Based Job](./create-an-event-based-job.md)
 
 ## Further Reading

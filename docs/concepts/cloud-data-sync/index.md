@@ -34,7 +34,7 @@ When the React phase starts, the collect phase is done. At this point, you have 
 
 There is a set of predefined action plugins for [resource management](../resource-management/index.md) which can be activated in the [Resoto Worker configuration](../../reference/configuration/worker.md) and also run in that phase. These plugins allow you to automatically manage your infrastructure, by enforcing tags or labels, or by deleting unused resources.
 
-Last but not least, you can define your rules and actions in this phase. You can [automate](../automation/index.md) a job by listening to the desired [Cloud data sync event](../../reference/events#cloud-data-sync-events) and performing the desired action.
+Last but not least, you can define your rules and actions in this phase. You can [automate](../automation/index.md) a job by listening to the desired [Cloud data sync event](../../reference/events.md#cloud-data-sync-events) and performing the desired action.
 
 ![React](./img/react.png)
 

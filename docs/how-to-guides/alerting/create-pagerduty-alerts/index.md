@@ -31,7 +31,15 @@ The `pagerduty` command has the following parameters. All parameters without def
 > help pagerduty
 ```
 
-1. Configure the routing key to use for this command. This way we do not need to provide it with every execution of this command.
+1. Create the integration in PagerDuty and copy the routing key.
+
+   Log into PagerDuty, open the relevant service and click integrations. Then click the `Add new integration` button and select `Events API V2`:
+
+   ![PagerDuty Integration](./img/pagerduty-setup-integration.png)
+
+   Unfold the integration section and copy the `Integration Key`, which is called the `routing_key` in the following steps.
+
+2. Configure the routing key to use for this command. This way we do not need to provide it with every execution of this command.
 
    ```bash
    > config edit resoto.core.commands
@@ -39,7 +47,7 @@ The `pagerduty` command has the following parameters. All parameters without def
 
    Go to the `pagerduty` section and add your Routing key as default value to the `routing_key` parameter.
 
-2. Define the search criteria that will trigger an alert. For example, let's say we want to send alerts whenever we find a [Kubernetes Pod](https://kubernetes.io/docs/concepts/workloads/pods) updated in the last hour with a restart count greater than 20:
+3. Define the search criteria that will trigger an alert. For example, let's say we want to send alerts whenever we find a [Kubernetes Pod](https://kubernetes.io/docs/concepts/workloads/pods) updated in the last hour with a restart count greater than 20:
 
    ```bash
    > search is(kubernetes_pod) and pod_status.container_statuses[*].restart_count > 20 and last_update<1h
@@ -47,7 +55,7 @@ The `pagerduty` command has the following parameters. All parameters without def
    ​kind=kubernetes_pod, name=db-operator-mcd4g, restart_count=[42], age=2mo5d, last_update=23m, cloud=k8s, account=prod, region=kube-system
    ```
 
-3. Now that we've defined the alert trigger, we will simply pipe the result of the search query to the `pagerduty` command, replacing the `name` with your desired alert name:
+4. Now that we've defined the alert trigger, we will simply pipe the result of the search query to the `pagerduty` command, replacing the `name` with your desired alert name:
 
    ```bash
    > search is(kubernetes_pod) and pod_status.container_statuses[*].restart_count > 20 and last_update<1h | pagerduty summary="Pods are restarting too often!" dedup_key="Resoto::PodRestartedTooOften"
@@ -55,7 +63,7 @@ The `pagerduty` command has the following parameters. All parameters without def
 
    If the defined condition is currently true, you should see a new alert in PagerDuty:
 
-4. Finally, we want to automate checking of the defined alert trigger and send alerts to [PagerDuty](https://www.pagerduty.com) whenever the result is true. We can accomplish this by creating a [job](../../../concepts/automation/index.md#jobs):
+5. Finally, we want to automate checking of the defined alert trigger and send alerts to [PagerDuty](https://www.pagerduty.com) whenever the result is true. We can accomplish this by creating a [job](../../../concepts/automation/index.md#jobs):
 
    ```bash
    > jobs add --id alert_on_pod_failure--wait-for-event post_collect 'search is(kubernetes_pod) and pod_status.container_statuses[*].restart_count > 20 and last_update<1h | pagerduty summary="Pods are restarting too often!" dedup_key="Resoto::PodRestartedTooOften"

@@ -221,11 +221,11 @@ article header {
   margin-bottom: calc(var(--ifm-paragraph-margin-bottom) * 1.5);
 }
 
-.markdown h1:first-child,
-.markdown h2:first-child,
-.markdown h3:first-child,
-.markdown h4:first-child,
-.markdown h5:first-child {
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child {
   margin-top: 0;
 }
 

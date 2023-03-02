@@ -1,7 +1,7 @@
 ---
 sidebar_label: Docker
 pagination_prev: getting-started/install-resoto/index
-pagination_next: getting-started/configure-resoto/index
+pagination_next: getting-started/launch-resoto/index
 ---
 
 # Install Resoto with Docker

@@ -1,7 +1,7 @@
 ---
 sidebar_label: "3. Configure Resoto"
 sidebar_position: 3
-pagination_prev: getting-started/install-resoto/index
+pagination_prev: getting-started/launch-resoto/index
 pagination_next: getting-started/explore-resoto/index
 ---
 

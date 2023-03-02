@@ -8,7 +8,7 @@ Resoto constantly monitors your infrastructure, and can alert you to any detecte
 
 ## Prerequisites
 
-This guide assumes that you have already [installed](../../../getting-started/install-resoto/index.md) and configured Resoto to [collect your cloud resources](../../../getting-started/configure-cloud-provider-access/index.md).
+This guide assumes that you have already [installed](../../../getting-started/install-resoto/index.md) and configured Resoto to [collect your cloud resources](../../../getting-started/configure-resoto/index.md).
 
 You will also need a valid routing key for your [PagerDuty](https://www.pagerduty.com) account.
 

@@ -10,7 +10,7 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 
 :::info
 
-Please refer to [Configure Amazon Web Services Access](../../../getting-started/configure-cloud-provider-access/aws.md) for details on how to set up Resoto to collect [Amazon Web Services (AWS)](https://aws.amazon.com) resources.
+Please refer to [Configure Amazon Web Services Resource Collection](../../../getting-started/configure-resoto/aws.md) for details on how to set up Resoto to collect [Amazon Web Services (AWS)](https://aws.amazon.com) resources.
 
 :::
 

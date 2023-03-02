@@ -1,7 +1,7 @@
 ---
 sidebar_label: pip
 pagination_prev: getting-started/install-resoto/index
-pagination_next: getting-started/configure-cloud-provider-access/index
+pagination_next: getting-started/launch-resoto/index
 ---
 
 # Install Resoto with pip
@@ -130,31 +130,3 @@ Resoto now exposes Prometheus metrics at `https://localhost:9955/metrics`. Follo
 
 </TabItem>
 </Tabs>
-
-## Launching the Web UI
-
-1. Resoto UI listens on port `8900` by default. You can access it by opening <https://localhost:8900> in your browser.
-
-   :::note
-
-   The SSL certificate is self-signed, but you can safely ignore any browser warnings.
-
-   :::
-
-2. If it is your first time starting Resoto UI, the setup wizard will appear and help you configure Resoto:
-
-   ![Screenshot of Resoto UI](./img/resoto-ui.png)
-
-## Launching the Command-Line Interface
-
-The `resh` command is used to interact with [`resotocore`](../../reference/components/core.md).
-
-Simply execute the following to access the [Resoto Shell](../../reference/components/shell.md) interface:
-
-```bash
-$ pre_shared_key=$(< ~/resoto/.pre-shared-key)
-$ source ~/resoto/resoto-venv/bin/activate
-$ resh --resotocore-uri https://localhost:8900 --psk "$pre_shared_key"
-```
-
-![Resoto Shell](./img/resoto-shell.png)

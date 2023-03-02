@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
 
-Resoto offers a user-friendly web interface that dramatically simplifies managing and exploring your cloud infrastructure.
+Resoto UI is a user-friendly web interface that simplifies managing and exploring your cloud infrastructure.
 
 https://youtu.be/_odyE3scPGg
 

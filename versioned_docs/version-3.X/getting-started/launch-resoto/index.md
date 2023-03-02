@@ -14,7 +14,7 @@ import Tabs from '@theme/Tabs';
 
 Resoto allows you to manage and explore your cloud infrastructure via a web or shell interface.
 
-## Launch Resoto UI
+## Launching Resoto UI
 
 Resoto UI is a user-friendly web interface that simplifies managing and exploring your cloud infrastructure.
 
@@ -97,7 +97,7 @@ The steps to launch Resoto UI depend on how you installed Resoto.
 </TabItem>
 </Tabs>
 
-## Launch Resoto Shell
+## Launching Resoto Shell
 
 Resoto Shell is Resoto's command-line interface.
 

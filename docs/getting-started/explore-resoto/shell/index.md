@@ -9,16 +9,20 @@ import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
 
-Another way to use Resoto is the Resoto shell - a command line interface to interact with your resources.
+Resoto Shell is Resoto's command-line interface.
 
 ![Resoto Shell](./img/shell.png)
 
-## Resoto Shell Basics
+## `help` Command
 
-Use the `help` command to get a list of all available commands or use `help <command>` to get help for a specific command.
+Use the `help` command to list all available commands, or `help <command name>` to view information about a specific command.
 
-The Resoto shell has command completion for all commands and all resource kinds, making it much easier to create commands and queries.
+## Tab Completion
+
+Resoto Shell has auto-complete functionality for command and resource kind names, making it much easier to create commands and queries.
 
 ![Shell Tab Completion](./img/shell-tab-completion.png)
 
-There is a lot of analogy to the Unix command line, allowing you to pipe the output of one command into another and create the desired action you want to perform.
+## Further Reading
+
+- [Command-Line Interface](../../../reference/cli/index.md)

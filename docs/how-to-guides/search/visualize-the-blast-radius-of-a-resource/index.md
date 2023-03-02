@@ -12,7 +12,7 @@ Transitive dependencies show the "blast radius" of a resource, giving an overvie
 
 ## Prerequisites
 
-This guide assumes that you have already [installed](../../../getting-started/install-resoto/index.md) and configured Resoto to [collect your cloud resources](../../../getting-started/configure-cloud-provider-access/index.md).
+This guide assumes that you have already [installed](../../../getting-started/install-resoto/index.md) and configured Resoto to [collect your cloud resources](../../../getting-started/configure-resoto/index.md).
 
 ## Directions
 

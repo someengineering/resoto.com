@@ -50,31 +50,30 @@ https://blog.resoto.com/*                                                       
 
 /docs/getting-started/install-resoto/aws/cdk                                          /docs/getting-started/install-resoto/aws
 /docs/getting-started/install-resoto/aws/cloudformation                               /docs/getting-started/install-resoto/aws
-
 /docs/getting-started/installation/docker                                             /docs/getting-started/install-resoto/docker
 /docs/getting-started/docker                                                          /docs/getting-started/install-resoto/docker
 /docs/getting-started/installing-with-docker                                          /docs/getting-started/install-resoto/docker
-
 /docs/getting-started/installation/kubernetes                                         /docs/getting-started/install-resoto/kubernetes
 /docs/getting-started/kubernetes                                                      /docs/getting-started/install-resoto/kubernetes
 /docs/getting-started/k8s                                                             /docs/getting-started/install-resoto/kubernetes
 /docs/getting-started/installing-with-kubernetes                                      /docs/getting-started/install-resoto/kubernetes
 /docs/getting-started/installing-with-k8s                                             /docs/getting-started/install-resoto/kubernetes
-
 /docs/getting-started/installation/pip                                                /docs/getting-started/install-resoto/pip
 /docs/getting-started/pip                                                             /docs/getting-started/install-resoto/pip
 /docs/getting-started/python                                                          /docs/getting-started/install-resoto/pip
 /docs/getting-started/installing-with-pip                                             /docs/getting-started/install-resoto/pip
 /docs/getting-started/installing-with-python                                          /docs/getting-started/install-resoto/pip
-
 /docs/getting-started/install-resoto/local/*                                          /docs/getting-started/install-resoto/:splat
 
 /docs/getting-started/configuration/core                                              /docs/reference/configuration/core
 /docs/getting-started/configuration/worker                                            /docs/reference/configuration/worker
-/docs/getting-started/configuration                                                   /docs/getting-started/configure-cloud-provider-access
-/docs/getting-started/configuring-resoto                                              /docs/getting-started/configure-cloud-provider-access
-/docs/getting-started/configuration/cloud-providers/*                                 /docs/getting-started/configure-cloud-provider-access/:splat
-/docs/getting-started/configuration/worker/cloud-providers/*                          /docs/getting-started/configure-cloud-provider-access/:splat
+/docs/getting-started/configuration                                                   /docs/getting-started/configure-resoto
+/docs/getting-started/configuring-resoto                                              /docs/getting-started/configure-resoto
+/docs/getting-started/configuration/cloud-providers/*                                 /docs/getting-started/configure-resoto/:splat
+/docs/getting-started/configuration/worker/cloud-providers/*                          /docs/getting-started/configure-resoto/:splat
+/docs/getting-started/configure-cloud-provider-access/*                               /docs/getting-started/configure-resoto/:splat
+
+/docs/getting-started/next-steps                                                      /docs/getting-started/explore-resoto
 
 /docs/getting-started/queries                                                         /docs/how-to-guides/search
 /docs/getting-started/query                                                           /docs/how-to-guides/search

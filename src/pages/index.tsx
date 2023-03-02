@@ -60,16 +60,16 @@ export default function Home(): JSX.Element {
               for&hellip;
             </h2>
             <div className={styles.logos}>
-              <Link to="/docs/getting-started/configure-cloud-provider-access/aws">
+              <Link to="/docs/getting-started/configure-resoto/aws">
                 <AwsLogo />
               </Link>
-              <Link to="/docs/getting-started/configure-cloud-provider-access/gcp">
+              <Link to="/docs/getting-started/configure-resoto/gcp">
                 <GoogleCloudLogo />
               </Link>
-              <Link to="/docs/getting-started/configure-cloud-provider-access/digitalocean">
+              <Link to="/docs/getting-started/configure-resoto/digitalocean">
                 <DigitalOceanLogo />
               </Link>
-              <Link to="/docs/getting-started/configure-cloud-provider-access/kubernetes">
+              <Link to="/docs/getting-started/configure-resoto/kubernetes">
                 <KubernetesLogo />
               </Link>
             </div>
@@ -240,19 +240,19 @@ export default function Home(): JSX.Element {
                 open source
               </a>{' '}
               and completely free to use, with out-of-the-box support for{' '}
-              <Link to="/docs/getting-started/configure-cloud-provider-access/aws">
+              <Link to="/docs/getting-started/configure-resoto/aws">
                 Amazon Web Services
               </Link>
               ,{' '}
-              <Link to="/docs/getting-started/configure-cloud-provider-access/gcp">
+              <Link to="/docs/getting-started/configure-resoto/gcp">
                 Google Cloud Platform
               </Link>
               ,{' '}
-              <Link to="/docs/getting-started/configure-cloud-provider-access/digitalocean">
+              <Link to="/docs/getting-started/configure-resoto/digitalocean">
                 DigitalOcean
               </Link>
               , and{' '}
-              <Link to="/docs/getting-started/configure-cloud-provider-access/kubernetes">
+              <Link to="/docs/getting-started/configure-resoto/kubernetes">
                 Kubernetes
               </Link>
               .

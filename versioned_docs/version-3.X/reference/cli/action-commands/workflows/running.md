@@ -22,3 +22,10 @@ started_at: '2022-04-12T07:22:29Z'
 task-id: 4feab068-ba31-11ec-abdf-dad780437c54
 # highlight-end
 ```
+
+## Further Reading
+
+- [Cloud Data Sync](../../../../concepts/cloud-data-sync/index.md)
+- [Automation](../../../../concepts/automation/index.md)
+- [Events](../../../events/index.md)
+- [Workflows](../../../workflows/index.md)

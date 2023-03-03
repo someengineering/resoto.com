@@ -28,3 +28,10 @@ jobs update <id> [--schedule <cron_expression>] [--wait-for-event <event_name>] 
 | `command` | CLI command that will be executed when the job is triggered \* | ✔️        | N/A           |
 
 \* It is recommended to either surround the `command` with single quotes (`'`) or escape special characters such as pipes (`|`) or semicolons (`;`). Multiple commands can be delimited using semicolons.
+
+## Further Reading
+
+- [Cloud Data Sync](../../../../concepts/cloud-data-sync/index.md)
+- [Automation](../../../../concepts/automation/index.md)
+- [Events](../../../events/index.md)
+- [Workflows](../../../workflows/index.md)

@@ -1,98 +1,60 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 # Cloud Data Sync
 
-Resoto scrapes your infrastructure at regular intervals to ensure that you always have the latest information about your cloud resources.
+In today's fast-paced and ever-changing cloud infrastructure, keeping track of the large number of resources in your infrastructure can be challenging. This is especially true for organizations with multiple teams and engineers working in multiple cloud accounts and regions.
 
-## Workflows
+Resoto's cloud data sync runs continuously in the background, collecting information about your cloud resources and triggering actions in response to changes. The cloud data sync process is a [workflow](../../reference/workflows/index.md) that runs every hour.
 
-Resoto's resource collection and automated jobs are triggered as part of a series of steps called a **workflow**. It is possible to create your own [automations](../automation/index.md) that hook into the events emitted by workflows.
+## Resource Collection
 
-:::info
+Resoto routinely extracts and transforms infrastructure data from cloud provider and SaaS APIs, storing snapshots of your infrastructure in its [asset inventory graph database](../asset-inventory-graph/index.md).
 
-The [`workflows` command](../../reference/cli/action-commands/workflows/index.md) can be used to inspect and run workflows on demand.
+A complete view of your infrastructure is the foundation for insights, metrics, and [automation](../automation/index.md), as it allows you to understand the current state of your infrastructure and identify issues. Costly security vulnerabilities, compliance issues, and unused resources can be monitored by Resoto.
 
-:::
+Resoto's pluggable architecture allows it to collect data from multiple [cloud providers](../../getting-started/configure-resoto/index.md).
 
-### `collect_and_cleanup` Workflow
+![Collect](./img/collect.png)
 
-**By default, Resoto triggers the `collect_and_cleanup` workflow every hour.**
+Each collector plugin includes logic to extract data from the cloud provider API and map it to Resoto's [data models](../../reference/data-models/index.md). This mapping allows you to interact with resources across cloud providers in a consistent fashion. Each resource has `id`, `name`, `kind`, `tags`, `created_at`, and `updated_at` properties, in addition to `cloud`, `account`, and `region` data denoting the location of the resource.
 
-The `collect_and_cleanup` workflow has four steps: [`collect`](#collect), [`cleanup_plan`](#cleanup_plan), [`cleanup`](#cleanup), and [`generate_metrics`](#generate_metrics). Each step has a `pre` and `post` event.
+Resource collector plugins not only index your infrastructure, but also gather data about resource relationships to connect resources in the [asset inventory graph](../asset-inventory-graph/index.md).
 
-![Default Workflow Diagram](./img/workflow-phases.svg)
+Collectors are designed to be run in parallel, which allows for fast and efficient data collection. Each collector reports the latest state of your resources to Resoto, which then writes the data to the internal graph database.
 
-#### `collect` Step {#collect}
+## Reacting to Infrastructure Changes
 
-In the `collect` phase, resources are collected from all configured cloud provider and synchronized with the internal graph.
+After resource collection is complete, the [asset inventory graph database](../asset-inventory-graph/index.md) contains a complete and up-to-date view of your infrastructure available.
 
-At the conclusion of this phase, the graph database contains the latest state of all resources.
+Resoto can monitor your infrastructure using the data in the graph and automatically perform specified actions when conditions are met.
 
-##### `collect` Events
+![React](./img/react.png)
 
-| Event Name          | Event Description                                                                                                                                       |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `pre_collect`       | This event is emitted before collection is started.                                                                                                     |
-| `collect`           | Resource collectors listen on this event to begin resource collection.                                                                                  |
-| `merge_outer_edges` | This event is emitted after collection is done.                                                                                                         |
-| `post_collect`      | This event is emitted after all outer edges have been merged.<br />_Custom logic to react to resource changes should define this event as the trigger._ |
+### Metrics Generation
 
-#### `cleanup_plan` Step {#cleanup_plan}
+[Resoto Metrics](../../reference/components/metrics.md) calculates configured metrics at this point and stores them in a time-series database.
 
-During the `cleanup_plan` phase, Resoto computes which resources should be cleaned up, and marks them for deletion during the subsequent `cleanup` phase.
+Resoto ships with a set of predefined metrics, but you can also define your own metrics for custom dashboards and alerts.
 
-:::tip
+### Resource Management
 
-Resoto ships with built-in cleanup [plugins](../../reference/components/plugins/index.md) that can be enabled in the `resoto.worker` configuration.
+Resoto has built-in action plugins for [resource management](../resource-management/index.md) that also run in this phase of the cloud data sync process.
 
-:::
-
-##### `cleanup_plan` Events
-
-| Event Name          | Event Description                                                                                        |
-| ------------------- | -------------------------------------------------------------------------------------------------------- |
-| `pre_cleanup_plan`  | This event is emitted before the cleanup is planned.                                                     |
-| `cleanup_plan`      | Cleanup [plugins](../../reference/components/plugins/index.md) bundled with Resoto listen on this event. |
-| `post_cleanup_plan` | This event is emitted after the cleanup is planned.                                                      |
-
-#### `cleanup` Step {#cleanup}
-
-In the `cleanup` phase, all resources marked for cleanup are deleted if [cleanup is enabled](../resource-management/cleanup.md#enabling-cleanup).
-
-Resources are deleted in the order mandated by their dependencies and relationships to other resources.
-
-:::note
-
-Cleanup is disabled by default. Please refer to [Resource Cleanup](../resource-management/cleanup.md) for details.
-
-:::
-
-##### `cleanup` Events
-
-| Event Name     | Event Description                                                                |
-| -------------- | -------------------------------------------------------------------------------- |
-| `pre_cleanup`  | This event is emitted before the cleanup is performed.                           |
-| `cleanup`      | Resource collectors listen on this event to delete resources marked for cleanup. |
-| `post_cleanup` | This event is emitted after the cleanup is performed.                            |
-
-#### `generate_metrics` Step {#generate_metrics}
-
-As its name suggests, metrics are generated and provided to the time-series database during the `generate_metrics` phase.
-
-In this phase, Resoto performs several queries to get updated metrics. Since the incoming data will only change during the next collect run, metrics are generated here and cached until the next collection.
+These plugins can be activated via the [Resoto Worker configuration](../../reference/configuration/worker.md).
 
 :::tip
 
-You can adjust the metrics that should be generated by editing the Resoto Metrics [configuration](../../reference/configuration/index.md).
+See [Plugins](../../reference/components/plugins/index.md) for a full list of available plugins.
 
 :::
 
-##### `generate_metrics` Events
+### Custom Automations
 
-| Event Name              | Event Description                                      |
-| ----------------------- | ------------------------------------------------------ |
-| `pre_generate_metrics`  | This event is emitted before metrics are generated.    |
-| `generate_metrics`      | Metrics generation begins after this event is emitted. |
-| `post_generate_metrics` | This event is emitted after metrics are generated.     |
+Last but not least, you can define your rules and actions in this phase. [Jobs](../automation/index.md#jobs) can be triggered at specific points in the cloud data sync process with an [event trigger](../automation/index.md#event-trigger), or on a schedule using a [schedule trigger](../automation/index.md#schedule-trigger).
+
+## Further Reading
+
+- [Events](../../reference/events/index.md)
+- [Workflows](../../reference/workflows/index.md)

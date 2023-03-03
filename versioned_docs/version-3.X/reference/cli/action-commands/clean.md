@@ -4,7 +4,7 @@ sidebar_label: clean
 
 # `clean` Command
 
-The `clean` command marks resources for cleaning by setting `desired.clean=true` to the resources. Resources marked as such will be removed during the [`cleanup` phase](../../../concepts/cloud-data-sync/index.md#cleanup) of the next [`collect_and_cleanup` workflow](../../../concepts/cloud-data-sync/index.md#collect_and_cleanup-workflow) run.
+The `clean` command marks resources for cleaning by setting `desired.clean=true` to the resources. Resources marked as such will be removed during the [`cleanup` phase](../../../reference/workflows/index.md#cleanup) of the next [`collect_and_cleanup` workflow](../../../reference/workflows/index.md#collect_and_cleanup-workflow) run.
 
 The `clean` command expects query results (objects) or an array of object IDs to be piped as input. Optionally, you can provide a reason for marking the matched resources to be pruned during the next cleanup run. The reason is logged and can be useful in reviewing why a particular resource was deleted.
 

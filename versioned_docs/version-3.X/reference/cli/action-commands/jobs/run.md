@@ -25,3 +25,10 @@ jobs run <id>
 # highlight-next-line
 ​Job say-hello started with id a4bb64cc-7385-11ec-b2cb-dad780437c53.
 ```
+
+## Further Reading
+
+- [Cloud Data Sync](../../../../concepts/cloud-data-sync/index.md)
+- [Automation](../../../../concepts/automation/index.md)
+- [Events](../../../events/index.md)
+- [Workflows](../../../workflows/index.md)

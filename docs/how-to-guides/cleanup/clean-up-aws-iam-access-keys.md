@@ -34,7 +34,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
      cleanup_pool_size: 16
    ```
 
-   When cleanup is enabled, marked resources will be deleted as a part of the [`collect_and_cleanup` workflow](../../concepts/cloud-data-sync/index.md#collect_and_cleanup-workflow), which runs each hour by default.
+   When cleanup is enabled, marked resources will be deleted as a part of the [`collect_and_cleanup` workflow](../../reference/workflows/index.md#collect_and_cleanup-workflow), which runs each hour by default.
 
    :::tip
 
@@ -84,7 +84,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
    The [`clean` command](../../reference/cli/action-commands/clean.md) flags a resource for cleanup.
 
-   Cleanup is performed whenever the [`collect_and_cleanup` workflow](../../concepts/cloud-data-sync/index.md#collect_and_cleanup-workflow) runs.
+   Cleanup is performed whenever the [`collect_and_cleanup` workflow](../../reference/workflows/index.md#collect_and_cleanup-workflow) runs.
 
    The workflow runs every hour by default, but can also be manually triggered using the `workflow run cleanup` command.
 
@@ -98,7 +98,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
    ​Job clean_outdated_access_keys added.
    ```
 
-The job will now run each time Resoto emits the `post_cleanup_plan` event. The `post_cleanup_plan` event is emitted in the [`cleanup` phase](../../concepts/cloud-data-sync/index.md#cleanup) of the [`collect_and_cleanup` workflow](../../concepts/cloud-data-sync/index.md#collect_and_cleanup-workflow).
+The job will now run each time Resoto emits the `post_cleanup_plan` [event](../../reference/events/index.md). The `post_cleanup_plan` event is emitted in the [`cleanup` phase](../../reference/workflows/index.md#cleanup) of the [`collect_and_cleanup` workflow](../../reference/workflows/index.md#collect_and_cleanup-workflow).
 
 Each time the job runs, unused IAM access keys will be flagged for removal during the next cleanup run.
 

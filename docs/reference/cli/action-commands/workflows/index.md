@@ -20,3 +20,6 @@ The `workflows` command allows for the management of workflows.
 ## Further Reading
 
 - [Cloud Data Sync](../../../../concepts/cloud-data-sync/index.md)
+- [Automation](../../../../concepts/automation/index.md)
+- [Events](../../../events/index.md)
+- [Workflows](../../../workflows/index.md)

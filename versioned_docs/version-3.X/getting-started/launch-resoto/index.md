@@ -20,7 +20,7 @@ Resoto UI is a user-friendly web interface that simplifies managing and explorin
 
 The steps to launch Resoto UI depend on how you installed Resoto.
 
-<Tabs>
+<Tabs groupId="install-method">
 <TabItem value="aws" label="Amazon Web Services">
 
 1. The value of `ResotoEKS.ResotoUI` in **Outputs** is the URL for accessing Resoto UI. Copy the link into your browser.
@@ -59,7 +59,7 @@ The steps to launch Resoto UI depend on how you installed Resoto.
    ![Screenshot of Resoto UI setup wizard](./img/resoto-ui.png)
 
 </TabItem>
-<TabItem value="kubernetes" label="Kubernetes">
+<TabItem value="k8s" label="Kubernetes">
 
 1. Resoto Core provides a service that exposes Resoto UI on port `8900`. We recommend configuring an [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress) with a valid certificate for UI access, but you can port-forward the service as a temporary solution:
 
@@ -103,7 +103,7 @@ Resoto Shell is Resoto's command-line interface.
 
 The steps to launch Resoto Shell depend on how you installed Resoto.
 
-<Tabs>
+<Tabs groupId="install-method">
 <TabItem value="aws" label="Amazon Web Services">
 
 Execute the following in your terminal to access the [Resoto Shell](../../reference/components/shell.md) interface:
@@ -122,7 +122,7 @@ $ docker exec -it resotoshell resh
 ```
 
 </TabItem>
-<TabItem value="kubernetes" label="Kubernetes">
+<TabItem value="k8s" label="Kubernetes">
 
 1. Make sure that the deployment is available:
 

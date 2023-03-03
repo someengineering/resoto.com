@@ -66,7 +66,9 @@ See [How to Create a Scheduled Job](../../how-to-guides/automation/create-a-sche
 
 **An event trigger executes a job when a specific event is emitted by Resoto.**
 
-Resoto updates the state of resources in the four steps of the [`collect_and_cleanup` workflow](../cloud-data-sync/index.md#collect_and_cleanup-workflow): [`collect`](../cloud-data-sync/index.md#collect), [`cleanup_plan`](../cloud-data-sync/index.md#cleanup_plan), [`cleanup`](../cloud-data-sync/index.md#cleanup), and [`generate_metrics`](../cloud-data-sync/index.md#generate_metrics). Each of these steps emits events that can be used to trigger jobs.
+Resoto updates the state of resources in the four steps of the [`collect_and_cleanup` workflow](../../reference/workflows/index.md#collect_and_cleanup-workflow): [`collect`](../../reference/workflows/index.md#collect), [`cleanup_plan`](../../reference/workflows/index.md#cleanup_plan), [`cleanup`](../../reference/workflows/index.md#cleanup), and [`generate_metrics`](../../reference/workflows/index.md#generate_metrics).
+
+Each of these steps emits [events](../../reference/events/index.md) that can be used to trigger jobs.
 
 <details>
 <summary>Examples</summary>
@@ -83,6 +85,12 @@ Resoto updates the state of resources in the four steps of the [`collect_and_cle
 
 </div>
 </details>
+
+:::info
+
+See [Events](../../reference/events/index.md) for a list of events emitted by Resoto.
+
+:::
 
 :::tip
 
@@ -263,3 +271,5 @@ See [Related How-To Guides](#related-how-to-guides) below for step-by-step instr
 - [Cloud Data Sync](../cloud-data-sync/index.md)
 - [`jobs` Command](../../reference/cli/action-commands/jobs/index.md)
 - [Command-Line Interface](../../reference/cli/index.md)
+- [Events](../../reference/events/index.md)
+- [Workflows](../../reference/workflows/index.md)

@@ -1,10 +1,9 @@
-
 import os
 import os.path
 import time
 from collections import defaultdict
 from itertools import takewhile
-from typing import Dict, List, Any
+from typing import Any, Dict, List
 
 import requests
 import urllib3
@@ -12,6 +11,7 @@ from requests import Response
 from requests.adapters import HTTPAdapter
 from urllib3.exceptions import InsecureRequestWarning
 from urllib3.util import Retry
+
 urllib3.disable_warnings(InsecureRequestWarning)
 
 core = "https://localhost:8900"
@@ -28,6 +28,7 @@ def get_url(url: str, params: dict = None) -> Response:
     session.mount("https://", adapter)
     return session.get(url, params=params, verify=False)
 
+
 service_names = {
     "rds": "RDS",
     "iam": "IAM",
@@ -39,12 +40,13 @@ service_names = {
     "efs": "EFS",
     "kms": "KMS",
     "lambda": "Lambda",
-
 }
+
+
 def howto_from_command(check: dict, command: str) -> None:
     provider = check["provider"].upper()
     service = service_names[check["service"]]
-    name = f'fix-'+check["id"].replace("_", "-")
+    name = f"fix-" + check["id"].replace("_", "-")
     title = check["title"].strip(".")
     risk = check["risk"].replace(";", ",")
     result_kind = check["result_kind"]
@@ -53,35 +55,27 @@ def howto_from_command(check: dict, command: str) -> None:
     remediation_url = check["remediation"]["url"]
     severity = check["severity"]
 
-    text=f"""---
+    text = f"""---
 sidebar_label: Fix {provider} {service} {title.replace(":", "")}
 ---
-# How to fix {provider} {service} {result_kind_short} with {title}
-
-Resoto builds a cloud asset inventory by collecting resource metadata from cloud providers.
-This inventory is used to detect security and compliance issues.
-
-## Security Considerations
-
-This check is part of the [CIS Amazon Web Services Benchmarks](https://www.cisecurity.org/benchmark/amazon_web_services) and is rated with severity **{severity}**.
-
-#### Risk
+# How to Fix {provider} {service} {result_kind_short} with {title}
 
 {risk}
-The following search command will find [`{result_kind}` resources](../../reference/data-models/aws/index.md#{result_kind}) that are not compliant. It is recommended to adapt the configuration of matching resource to be compliant.
 
-#### Remediation
+:::info
 
-{remediation}. See [provider specific documentation]({remediation_url}) for more details.
+This security check is part of the [CIS Amazon Web Services Benchmarks](https://cisecurity.org/benchmark/amazon_web_services) and is rated severity **{severity}**.
+
+:::
 
 ## Prerequisites
 
-This guide assumes that you have already [installed](../../getting-started/install-resoto/index.md) and configured Resoto to [collect your cloud resources](../../getting-started/configure-resoto/index.md).
-The following command can be executed either from the [Resoto Shell](../../reference/components/shell.md) or from the Resoto WebUI.
+This guide assumes that you have already [installed](../../getting-started/install-resoto/index.md) and configured Resoto to [collect your AWS cloud resources](../../getting-started/configure-resoto/aws.md).
 
 ## Directions
 
-1. Execute the [`search` command](../../reference/cli/search-commands/search.md) in [Resoto Shell](../../reference/components/shell.md) or WebUI:
+1. Execute the following [`search` command](../../reference/cli/search-commands/search.md) in [Resoto Shell](../../reference/components/shell.md) or Resoto UI:
+
    ```bash
    > {command}
    # highlight-start
@@ -89,7 +83,9 @@ The following command can be executed either from the [Resoto Shell](../../refer
    ​kind={result_kind}, ..., account=poweruser-team
    # highlight-end
    ```
-2. To view resource details, pipe the previous command into the [`dump` command](../../reference/cli/format-commands/dump.md):
+
+2. Pipe the `search` command into the [`dump` command](../../reference/cli/format-commands/dump.md):
+
    ```bash
    > {command} | dump
    # highlight-start
@@ -101,15 +97,29 @@ The following command can be executed either from the [Resoto Shell](../../refer
    ​  age: 2mo28d
    # highlight-end
    ```
-3. {remediation}. See [provider specific documentation]({remediation_url}) for more details.
+
+   The command output will list the details of all non-compliant [`{result_kind}` resources](../../reference/data-models/aws/index.md#{result_kind}).
+
+3. Fix detected issues by following the [remediation steps](#remediation):
+
+     - {remediation}.
+
+   :::note
+
+   Please refer to the [AWS Lambda documentation](https://docs.aws.amazon.com/lambda/latest/dg/runtime-support-policy.html) for details.
+
+   :::
 
 ## Further Reading
 
 - [Search](../../reference/search/index.md)
 - [Command-Line Interface](../../reference/cli/index.md)
-- [Data Model for `{result_kind}`](../../reference/data-models/aws/index.md#{result_kind})
-- [CIS Amazon Web Services Benchmarks](https://www.cisecurity.org/benchmark/amazon_web_services)
-- [Provider specific documentation]({remediation_url})
+- [`{result_kind}` Resource Data Model](../../reference/data-models/aws/index.md#{result_kind})
+
+## External Links
+
+- [CIS Amazon Web Services Benchmarks <span class="badge badge--secondary">cisecurity.org <IconExternalLink width="10" height="10" /></span>](https://cisecurity.org/benchmark/amazon_web_services)
+- [AWS Documentation <span class="badge badge--secondary">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>]({remediation_url})
 """
     with open(f"../docs/how-to-guides/security/{name}.md", "w") as f:
         f.write(text)
@@ -119,6 +129,6 @@ if __name__ == "__main__":
     for check_json in get_url("https://localhost:8900/report/checks", params={"category": "security"}).json():
         detect = check_json["detect"]
         if detect.get("resoto"):
-            howto_from_command(check_json, "search "+detect["resoto"])
+            howto_from_command(check_json, "search " + detect["resoto"])
         elif detect.get("resoto_cmd"):
             howto_from_command(check_json, detect["resoto_cmd"])

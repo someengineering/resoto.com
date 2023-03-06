@@ -1,30 +1,29 @@
 ---
-sidebar_label: Fix AWS Lambda functions with an obsolete runtime
+sidebar_label: Fix AWS Lambda Functions with an Obsolete Runtime
 ---
 
-# How to fix AWS Lambda functions with an obsolete runtime
+# How to Fix AWS Lambda Functions with an Obsolete Runtime
 
-Resoto builds a cloud asset inventory by collecting resource metadata from cloud providers. This inventory is used to detect security and compliance issues.
+If you have functions running on a runtime that will be deprecated in the next 60 days, Lambda notifies you by email that you should prepare by migrating your function to a supported runtime.
 
-## Security Considerations
+In some cases, such as security issues that require a backwards-incompatible update, or software that does not support a long-term support (LTS) schedule, advance notice might not be possible.
 
-This check is part of the [CIS Amazon Web Services Benchmarks](https://www.cisecurity.org/benchmark/amazon_web_services) and is rated with severity **medium**.
+After a runtime is deprecated, Lambda might retire it completely at any time by disabling invocation. Deprecated runtimes are not eligible for security updates or technical support.
 
-#### Risk
+:::info
 
-If you have functions running on a runtime that will be deprecated in the next 60 days, Lambda notifies you by email that you should prepare by migrating your function to a supported runtime. In some cases, such as security issues that require a backwards-incompatible update, or software that does not support a long-term support (LTS) schedule, advance notice might not be possible. After a runtime is deprecated, Lambda might retire it completely at any time by disabling invocation. Deprecated runtimes are not eligible for security updates or technical support. The following search command will find [`aws_lambda_function` resources](../../reference/data-models/aws/index.md#aws_lambda_function) that are not compliant. It is recommended to adapt the configuration of matching resource to be compliant.
+This security check is part of the [CIS Amazon Web Services Benchmarks](https://cisecurity.org/benchmark/amazon_web_services) and is rated severity **medium**.
 
-#### Remediation
-
-Test new runtimes as they are made available. Implement them in production as soon as possible. See [provider specific documentation](https://docs.aws.amazon.com/lambda/latest/dg/runtime-support-policy.html) for more details.
+:::
 
 ## Prerequisites
 
-This guide assumes that you have already [installed](../../getting-started/install-resoto/index.md) and configured Resoto to [collect your cloud resources](../../getting-started/configure-resoto/index.md). The following command can be executed either from the [Resoto Shell](../../reference/components/shell.md) or from the Resoto WebUI.
+This guide assumes that you have already [installed](../../getting-started/install-resoto/index.md) and configured Resoto to [collect your AWS cloud resources](../../getting-started/configure-resoto/aws.md).
 
 ## Directions
 
-1. Execute the [`search` command](../../reference/cli/search-commands/search.md) in [Resoto Shell](../../reference/components/shell.md) or WebUI:
+1. Execute the following [`search` command](../../reference/cli/search-commands/search.md) in [Resoto Shell](../../reference/components/shell.md) or Resoto UI:
+
    ```bash
    > search is(aws_lambda_function) and function_runtime in [python3.6, python2.7, dotnetcore2.1, ruby2.5, nodejs10.x, nodejs8.10, nodejs4.3, nodejs6.10, dotnetcore1.0, dotnetcore2.0, nodejs4.3-edge, nodejs]
    # highlight-start
@@ -32,7 +31,9 @@ This guide assumes that you have already [installed](../../getting-started/insta
    ​kind=aws_lambda_function, ..., account=poweruser-team
    # highlight-end
    ```
-2. To view resource details, pipe the previous command into the [`dump` command](../../reference/cli/format-commands/dump.md):
+
+2. Pipe the `search` command into the [`dump` command](../../reference/cli/format-commands/dump.md):
+
    ```bash
    > search is(aws_lambda_function) and function_runtime in [python3.6, python2.7, dotnetcore2.1, ruby2.5, nodejs10.x, nodejs8.10, nodejs4.3, nodejs6.10, dotnetcore1.0, dotnetcore2.0, nodejs4.3-edge, nodejs] | dump
    # highlight-start
@@ -44,12 +45,28 @@ This guide assumes that you have already [installed](../../getting-started/insta
    ​  age: 2mo28d
    # highlight-end
    ```
-3. Migrate your deprecated functions to a supported runtime. Test new runtimes as they are made available. Implement them in production as soon as possible. See [provider specific documentation](https://docs.aws.amazon.com/lambda/latest/dg/runtime-support-policy.html) for more details.
+
+   The command output will list the details of all non-compliant [`aws_lambda_function` resources](../../reference/data-models/aws/index.md#aws_lambda_function).
+
+3. Fix detected issues by following the [remediation steps](#remediation):
+
+   - Migrating your deprecated functions to a supported runtime.
+   - Testing new runtimes as they are made available.
+   - Rolling out new runtimes in production as soon as possible.
+
+   :::note
+
+   Please refer to the [AWS Lambda documentation](https://docs.aws.amazon.com/lambda/latest/dg/runtime-support-policy.html) for details.
+
+   :::
 
 ## Further Reading
 
 - [Search](../../reference/search/index.md)
 - [Command-Line Interface](../../reference/cli/index.md)
-- [Data Model for `aws_lambda_function`](../../reference/data-models/aws/index.md#aws_lambda_function)
-- [CIS Amazon Web Services Benchmarks](https://www.cisecurity.org/benchmark/amazon_web_services)
-- [Provider specific documentation](https://docs.aws.amazon.com/lambda/latest/dg/runtime-support-policy.html)
+- [`aws_lambda_function` Resource Data Model](../../reference/data-models/aws/index.md#aws_lambda_function)
+
+## External Links
+
+- [CIS Amazon Web Services Benchmarks <span class="badge badge--secondary">cisecurity.org <IconExternalLink width="10" height="10" /></span>](https://cisecurity.org/benchmark/amazon_web_services)
+- [AWS Lambda Documentation <span class="badge badge--secondary">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://docs.aws.amazon.com/lambda/latest/dg/runtime-support-policy.html)

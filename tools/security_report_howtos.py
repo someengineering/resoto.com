@@ -60,6 +60,10 @@ sidebar_label: Fix {provider} {service} {title.replace(":", "")}
 ---
 # How to Fix {provider} {service} {result_kind_short} with {title}
 
+```mdx-code-block
+import IconExternalLink from '@theme/Icon/ExternalLink';
+```
+
 {risk}
 
 :::info

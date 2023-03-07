@@ -3,7 +3,7 @@ import { useDocsVersion } from '@docusaurus/theme-common/internal';
 import versions from '@site/versions.json';
 import useStoredJson from '@theme/useStoredJson';
 import GithubSlugger from 'github-slugger';
-import { union } from 'lodash';
+import { sortBy, union } from 'lodash';
 import React from 'react';
 import {
   actionsByNamespace,
@@ -42,9 +42,11 @@ export default function AwsPolicyComparison({
     {}
   );
 
-  const namespaces: string[] = union(
-    ...Object.keys(groupedActions).map((policyName) =>
-      Object.keys(groupedActions[policyName])
+  const namespaces: string[] = sortBy(
+    union(
+      ...Object.keys(groupedActions).map((policyName) =>
+        Object.keys(groupedActions[policyName])
+      )
     )
   );
 

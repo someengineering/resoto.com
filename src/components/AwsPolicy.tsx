@@ -30,7 +30,7 @@ export default function AwsPolicy({
       title={awsPolicyUrl(version, policyName)}
       showLineNumbers
     >
-      {JSON.stringify(useStoredJson(`aws-${version}-ResotoOrgList`), null, 2)}
+      {JSON.stringify(useStoredJson(`aws-${version}-${policyName}`), null, 2)}
     </CodeBlock>
   );
 }

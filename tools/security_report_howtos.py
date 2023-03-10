@@ -110,7 +110,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
    :::note
 
-   Please refer to the [AWS Lambda documentation](https://docs.aws.amazon.com/lambda/latest/dg/runtime-support-policy.html) for details.
+   Please refer to the [AWS {service} documentation]({remediation_url}) for details.
 
    :::
 
@@ -133,6 +133,6 @@ if __name__ == "__main__":
     for check_json in get_url("https://localhost:8900/report/checks", params={"category": "security"}).json():
         detect = check_json["detect"]
         if detect.get("resoto"):
-            howto_from_command(check_json, "search " + detect["resoto"])
+            howto_from_command(check_json, "search " + detect["resoto"].strip())
         elif detect.get("resoto_cmd"):
-            howto_from_command(check_json, detect["resoto_cmd"])
+            howto_from_command(check_json, detect["resoto_cmd"].strip())

@@ -1,5 +1,5 @@
 ---
-sidebar_label: Amazon Web Services
+sidebar_label: Cloud Development Kit
 pagination_prev: getting-started/index
 pagination_next: getting-started/launch-resoto/index
 ---

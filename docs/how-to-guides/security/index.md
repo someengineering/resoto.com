@@ -5,7 +5,7 @@ sidebar_label: Security
 # Security How-To Guides
 
 ```mdx-code-block
-import DocCardList from '@theme/DocCardList';
+import SectionedDocCardList from '@site/src/components/SectionedDocCardList';
 ```
 
-<DocCardList />
+<SectionedDocCardList />

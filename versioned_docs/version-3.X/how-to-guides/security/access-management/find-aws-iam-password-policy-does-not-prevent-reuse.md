@@ -1,8 +1,8 @@
 ---
-sidebar_label: Find EC2 Instances with Public IP
+sidebar_label: Find AWS IAM Password Policy does not prevent reuse
 ---
 
-# How to Find AWS EC2 Instances with Public IP
+# How to Find AWS IAM Password Policy does not prevent reuse
 
 ```mdx-code-block
 import IconExternalLink from '@theme/Icon/ExternalLink';
@@ -10,7 +10,7 @@ import IconExternalLink from '@theme/Icon/ExternalLink';
 
 ## Problem
 
-Exposing an EC2 directly to internet increases the attack surface and therefore the risk of compromise.
+Password policies are used to enforce password complexity requirements. IAM password policies can be used to ensure password are comprised of different character sets. It is recommended that the password policy prevents at least password reuse of 24 or greater.
 
 :::info
 
@@ -27,36 +27,36 @@ This guide assumes that you have already [installed](../../../getting-started/in
 1. Execute the following [`search` command](../../../reference/cli/search-commands/search.md) in [Resoto Shell](../../../reference/components/shell.md) or Resoto UI:
 
    ```bash
-   > search is(aws_ec2_instance) and instance_public_ip_address!=null
+   > search is(aws_account) and password_reuse_prevention<24
    # highlight-start
-   ​kind=aws_ec2_instance, ..., region=resoto-poweruser
-   ​kind=aws_ec2_instance, ..., account=poweruser-team
+   ​kind=aws_account, ..., region=resoto-poweruser
+   ​kind=aws_account, ..., account=poweruser-team
    # highlight-end
    ```
 
 2. Pipe the `search` command into the [`dump` command](../../../reference/cli/format-commands/dump.md):
 
    ```bash
-   > search is(aws_ec2_instance) and instance_public_ip_address!=null | dump
+   > search is(aws_account) and password_reuse_prevention<24 | dump
    # highlight-start
    ​reported:
-   ​  id: /aws/ec2/123
+   ​  id: /aws/iam/123
    ​  name: some-name
    ​  ctime: '2022-12-05T22:53:14Z'
-   ​  kind: aws_ec2_instance
+   ​  kind: aws_account
    ​  age: 2mo28d
    # highlight-end
    ```
 
-   The command output will list the details of all non-compliant [`aws_ec2_instance` resources](../../../reference/data-models/aws/index.md#aws_ec2_instance).
+   The command output will list the details of all non-compliant [`aws_account` resources](../../../reference/data-models/aws/index.md#aws_account).
 
 3. Fix detected issues by following the remediation steps:
 
-   Use an ALB and apply WAF ACL.
+   Ensure "Number of passwords to remember" is set to 24 or higher.
 
    :::note
 
-   Please refer to the [AWS EC2 documentation](https://aws.amazon.com/blogs/aws/aws-web-application-firewall-waf-for-application-load-balancers/) for details.
+   Please refer to the [AWS IAM documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html) for details.
 
    :::
 
@@ -64,9 +64,9 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
 - [Search](../../../reference/search/index.md)
 - [Command-Line Interface](../../../reference/cli/index.md)
-- [`aws_ec2_instance` Resource Data Model](../../../reference/data-models/aws/index.md#aws_ec2_instance)
+- [`aws_account` Resource Data Model](../../../reference/data-models/aws/index.md#aws_account)
 
 ## External Links
 
 - [CIS Amazon Web Services Benchmarks <span class="badge badge--secondary">cisecurity.org <IconExternalLink width="10" height="10" /></span>](https://cisecurity.org/benchmark/amazon_web_services)
-- [AWS Documentation <span class="badge badge--secondary">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://aws.amazon.com/blogs/aws/aws-web-application-firewall-waf-for-application-load-balancers/)
+- [AWS Documentation <span class="badge badge--secondary">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html)

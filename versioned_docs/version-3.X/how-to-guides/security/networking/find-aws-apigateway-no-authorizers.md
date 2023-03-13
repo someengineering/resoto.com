@@ -1,8 +1,8 @@
 ---
-sidebar_label: Find EC2 Instances with Public IP
+sidebar_label: Find AWS API Gateway with no Authorizers
 ---
 
-# How to Find AWS EC2 Instances with Public IP
+# How to Find AWS API Gateway with no Authorizers
 
 ```mdx-code-block
 import IconExternalLink from '@theme/Icon/ExternalLink';
@@ -10,7 +10,7 @@ import IconExternalLink from '@theme/Icon/ExternalLink';
 
 ## Problem
 
-Exposing an EC2 directly to internet increases the attack surface and therefore the risk of compromise.
+If no authorizer is defined, anyone can use the service.
 
 :::info
 
@@ -27,36 +27,36 @@ This guide assumes that you have already [installed](../../../getting-started/in
 1. Execute the following [`search` command](../../../reference/cli/search-commands/search.md) in [Resoto Shell](../../../reference/components/shell.md) or Resoto UI:
 
    ```bash
-   > search is(aws_ec2_instance) and instance_public_ip_address!=null
+   > search is(aws_api_gateway_rest_api) with(empty, --> is(aws_api_gateway_authorizer))
    # highlight-start
-   ​kind=aws_ec2_instance, ..., region=resoto-poweruser
-   ​kind=aws_ec2_instance, ..., account=poweruser-team
+   ​kind=aws_api_gateway_rest_api, ..., region=resoto-poweruser
+   ​kind=aws_api_gateway_rest_api, ..., account=poweruser-team
    # highlight-end
    ```
 
 2. Pipe the `search` command into the [`dump` command](../../../reference/cli/format-commands/dump.md):
 
    ```bash
-   > search is(aws_ec2_instance) and instance_public_ip_address!=null | dump
+   > search is(aws_api_gateway_rest_api) with(empty, --> is(aws_api_gateway_authorizer)) | dump
    # highlight-start
    ​reported:
-   ​  id: /aws/ec2/123
+   ​  id: /aws/apigateway/123
    ​  name: some-name
    ​  ctime: '2022-12-05T22:53:14Z'
-   ​  kind: aws_ec2_instance
+   ​  kind: aws_api_gateway_rest_api
    ​  age: 2mo28d
    # highlight-end
    ```
 
-   The command output will list the details of all non-compliant [`aws_ec2_instance` resources](../../../reference/data-models/aws/index.md#aws_ec2_instance).
+   The command output will list the details of all non-compliant [`aws_api_gateway_rest_api` resources](../../../reference/data-models/aws/index.md#aws_api_gateway_rest_api).
 
 3. Fix detected issues by following the remediation steps:
 
-   Use an ALB and apply WAF ACL.
+   Add a Cognito pool or attach a Lambda function to control access to your API.
 
    :::note
 
-   Please refer to the [AWS EC2 documentation](https://aws.amazon.com/blogs/aws/aws-web-application-firewall-waf-for-application-load-balancers/) for details.
+   Please refer to the [AWS API Gateway documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html) for details.
 
    :::
 
@@ -64,9 +64,9 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
 - [Search](../../../reference/search/index.md)
 - [Command-Line Interface](../../../reference/cli/index.md)
-- [`aws_ec2_instance` Resource Data Model](../../../reference/data-models/aws/index.md#aws_ec2_instance)
+- [`aws_api_gateway_rest_api` Resource Data Model](../../../reference/data-models/aws/index.md#aws_api_gateway_rest_api)
 
 ## External Links
 
 - [CIS Amazon Web Services Benchmarks <span class="badge badge--secondary">cisecurity.org <IconExternalLink width="10" height="10" /></span>](https://cisecurity.org/benchmark/amazon_web_services)
-- [AWS Documentation <span class="badge badge--secondary">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://aws.amazon.com/blogs/aws/aws-web-application-firewall-waf-for-application-load-balancers/)
+- [AWS Documentation <span class="badge badge--secondary">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html)

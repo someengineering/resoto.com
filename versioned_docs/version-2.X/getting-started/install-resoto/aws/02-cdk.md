@@ -1,5 +1,5 @@
 ---
-sidebar_label: Amazon Web Services
+sidebar_label: Cloud Development Kit
 pagination_prev: getting-started/index
 pagination_next: getting-started/configure-cloud-provider-access/index
 ---
@@ -7,6 +7,12 @@ pagination_next: getting-started/configure-cloud-provider-access/index
 # Deploy Resoto to Amazon Web Services
 
 We provide a <abbr title="Cloud Development Kit">CDK</abbr> construct to simplify the deployment of Resoto to AWS.
+
+:::tip
+
+The [Resoto web installer](./01-web-installer/index.md) is the easiest way to get a production-grade setup, whereas the [CDK construct](./02-cdk.md) is a bit more involved but gives you more control over the setup and does not require you to send us your cloud credentials.
+
+:::
 
 ## Prerequisites
 
@@ -81,18 +87,6 @@ We provide a <abbr title="Cloud Development Kit">CDK</abbr> construct to simplif
    :::
 
 4. The value of `ResotoEKS.ResotoEKSConfigCommandXXXX` in **Outputs** is a command to configure `kubectl` to connect to the EKS cluster. Copy the command and paste it into your terminal.
-
-## Launching the Command-Line Interface
-
-The `resh` command is used to interact with [`resotocore`](../../reference/components/core.md).
-
-Simply execute the following to access the [Resoto Shell](../../reference/components/shell.md) interface:
-
-```bash
-$ kubectl exec -it service/resoto-resotocore -- resh
-```
-
-![Screenshot of Resoto Shell](./img/resoto-shell.png)
 
 ## Removing the Resoto Deployment
 

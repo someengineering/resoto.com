@@ -10,7 +10,7 @@ We provide a Resoto Web installer to allow one button deployment of Resoto to AW
 
 :::tip
 
-When deploying Resoto, we will only use your AWS credentials for that specific deployment and will not keep them afterward. If you're not comfortable sharing your credentials, you can use the [CDK](../cdk.md) to deploy Resoto from your own machine.
+When deploying Resoto, we will only use your AWS credentials for that specific deployment and will not keep them afterward. If you're not comfortable sharing your credentials, you can use the [CDK](../02-cdk.md) to deploy Resoto from your own machine.
 
 :::
 

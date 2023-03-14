@@ -8,6 +8,12 @@ pagination_next: getting-started/launch-resoto/index
 
 We provide a <abbr title="Cloud Development Kit">CDK</abbr> construct to simplify the deployment of Resoto to AWS.
 
+:::tip
+
+The [Resoto web installer](./web-installer/index.md) is the easiest way to get a production-grade setup, whereas the [CDK construct](./cdk.md) is a bit more involved but gives you more control over the setup and does not require you to send us your cloud credentials.
+
+:::
+
 ## Prerequisites
 
 - [Git](https://git-scm.com)

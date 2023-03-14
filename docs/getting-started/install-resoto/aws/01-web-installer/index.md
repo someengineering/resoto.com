@@ -14,16 +14,12 @@ When deploying Resoto, we will only use your AWS credentials for that specific d
 
 :::
 
-## Prerequisites
-
-- AWS credentials: `Access Key Id`, `Server Access Key`, `Session Token` (optional), `Account Id` and region
-
 ## Resoto Deployment Process
 
 To deploy Resoto, follow these steps:
 
 1. Click on the installer link: https://install.resoto.com/.
-2. Enter your credentials. ![credentials-form](form.png)
+2. Enter your AWS credentials. ![credentials-form](form.png)
 3. Wait until the deployment process is complete. ![deployment log](deployment-log.png)
 4. Once the deployment is successful, take note of the credentials required to connect to your Resoto cluster. Please keep them in a safe place as they will not be displayed again. ![psk](psk.png)
 

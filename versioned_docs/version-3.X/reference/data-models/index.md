@@ -75,7 +75,7 @@ The complete data that is collected and stored would look like the following:
 
 ![Resoto Resource Data Example](./img/ec2_volume_example.svg)
 
-You might have noticed, that not only `aws_ec2_instance` is a subtype of `volume`, but also `gcp_disk`. A google cloud resource of type [Disk](https://cloud.google.com/compute/docs/reference/rest/v1/disks) is conceptually similar to an AWS EC2 Volume and shares quite some properties.
+You might have noticed, that not only `aws_ec2_volume` is a subtype of `volume`, but also `gcp_disk`. A google cloud resource of type [Disk](https://cloud.google.com/compute/docs/reference/rest/v1/disks) is conceptually similar to an AWS EC2 Volume and shares quite some properties.
 
 The model makes it easy to query conceptually common data and also to retrieve and reason about this data.
 

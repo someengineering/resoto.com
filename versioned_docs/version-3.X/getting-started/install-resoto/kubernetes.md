@@ -27,25 +27,6 @@ Resoto performs CPU-intensive graph operations. In a production setup, we recomm
 
 ## Installing Resoto
 
-### Prepare ArangoDB operator
-
-If you don't have ArangoDB, you can use the operator to install it. See more info [here](https://arangodb.com/docs/stable/tutorials-kubernetes.html).
-
-You can use the following commands to install the operator:
-
-```bash
-$ helm repo add arangodb https://arangodb.github.io/kube-arangodb
-$ helm repo update
-$ helm install kube-arangodb-crd arangodb/kube-arangodb-crd
-```
-
-:::note
-
-These instructions were tested with version 1.2.15 of the operator.
-
-:::
-
-### Install Helm Chart
 
 <Tabs groupId="installation-method">
 <TabItem value="default" label="Default Installation">
@@ -75,7 +56,7 @@ It is possible to customize your Resoto installation using a Helm values file.
 
 1. Create a file `resoto-values.yaml` with the desired configuration:
 
-   ```yaml title="resoto-values.yaml"
+   ```yaml title="Example configuration that mounts AWS credentials from a Kubernetes Secret"
    resotoworker:
      volumeMounts:
        - mountPath: /home/resoto/.aws
@@ -88,7 +69,7 @@ It is possible to customize your Resoto installation using a Helm values file.
 
    :::info
 
-   [Configurable values are documented in the Some Engineering Helm Chart Repository.](https://helm.some.engineering/someengineering/resoto#values)
+   [Configurable values are documented in the Some Engineering Helm Chart Repository.](https://github.com/someengineering/helm-charts/blob/main/someengineering/resoto/README.md#values)
 
    :::
 

@@ -27,7 +27,6 @@ Resoto performs CPU-intensive graph operations. In a production setup, we recomm
 
 ## Installing Resoto
 
-
 <Tabs groupId="installation-method">
 <TabItem value="default" label="Default Installation">
 

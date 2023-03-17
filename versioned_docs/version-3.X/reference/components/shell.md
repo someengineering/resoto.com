@@ -11,8 +11,20 @@ Resoto Shell allows you to explore the graph, find resources of interest, mark t
 
 Please refer to [Command-Line Interface](../cli/index.md) for details on how to use Resoto Shell.
 
+## Installation
+
+Resoto Shell can be run via Docker or installed via `pip`. On macOS, you can also install it via Homebrew.
+
 ```bash title="Resoto Shell Docker image"
 somecr.io/someengineering/resotoshell:{{imageTag}}
+```
+
+```bash title="Resoto Shell Python 3.9+ PIP install"
+pip install --user resotoshell
+```
+
+```bash title="Homebrew installation"
+brew install someengineering/tap/resotoshell
 ```
 
 ## Usage

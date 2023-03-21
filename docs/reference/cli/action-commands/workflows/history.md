@@ -4,7 +4,7 @@ sidebar_label: history
 
 # `workflows history` Command
 
-The `workflows history` command shows the history of workflows based on the filter criteria. If no workflow id is provided, shows the aggregated history of all workflows
+The `workflows history` command shows the history of workflows based on the filter criteria. If no workflow id is provided, it shows the aggregated history of all workflows.
 
 ## Usage
 

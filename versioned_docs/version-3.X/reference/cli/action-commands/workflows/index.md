@@ -13,6 +13,7 @@ The `workflows` command allows for the management of workflows.
 | [`workflows running`](./running.md) | List all currently running workflows     |
 | [`workflows show`](./show.md)       | Show the definition of a workflow        |
 | [`workflows history`](./history.md) | Show the aggregated history of workflows |
+| [`workflows log`](./log.md)         | Show the logs of the workflow run        |
 
 ### Aliases
 

@@ -53,7 +53,7 @@ The [Resoto web installer](./01-web-installer/index.md) is the easiest way to ge
    It is possible to override the default CloudFormation parameter values:
 
    ```bash
-   $ npm run cdk deploy -- --parameters ResotoTag={{imageTag}} --parameters MngInstanceType=t3.large
+   $ npm run cdk deploy -- --parameters ResotoTag={{imageTag}} --parameters MngInstanceType=r5a.xlarge
    ```
 
    | Parameter         | Description                                                   | Default Value     |

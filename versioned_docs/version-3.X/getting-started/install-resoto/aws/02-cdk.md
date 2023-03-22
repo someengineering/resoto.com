@@ -62,7 +62,7 @@ The [Resoto web installer](./01-web-installer/index.md) is the easiest way to ge
    | `MngMaxSize`      | The maximum number of instances in the k8s managed node group | `3`               |
    | `MngMinSize`      | The minimum number of instances in the k8s managed node group | `1`               |
    | `MngDesiredSize`  | The desired number of instances in the k8s managed node group | `1`               |
-   | `MngInstanceType` | The instance type of the k8s managed node group               | `t3.large`        |
+   | `MngInstanceType` | The instance type of the k8s managed node group               | `r5a.xlarge`      |
 
    :::
 

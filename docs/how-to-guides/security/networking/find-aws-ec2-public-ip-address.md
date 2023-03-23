@@ -8,8 +8,6 @@ sidebar_label: Find EC2 Instances with Public IP
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-## Problem
-
 Exposing an EC2 directly to internet increases the attack surface and therefore the risk of compromise.
 
 :::info

@@ -8,8 +8,6 @@ sidebar_label: Find AWS EC2 Network ACLs Allow Ingress from Everywhere to Any Po
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-## Problem
-
 Even having a perimeter firewall, having network acls open allows any user or malware with vpc access to scan for well known and sensitive ports and gain access to instance.
 
 :::info

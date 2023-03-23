@@ -8,8 +8,6 @@ sidebar_label: Find AWS EC2 Default security group of VPC does not restrict traf
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-## Problem
-
 Even having a perimeter firewall, having security groups open allows any user or malware with vpc access to scan for well known and sensitive ports and gain access to instance.
 
 :::info

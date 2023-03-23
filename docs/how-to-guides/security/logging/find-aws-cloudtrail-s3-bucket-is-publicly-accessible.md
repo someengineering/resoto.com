@@ -8,8 +8,6 @@ sidebar_label: Find AWS CloudTrail S3 bucket is publicly accessible
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-## Problem
-
 Allowing public access to CloudTrail log content may aid an adversary in identifying weaknesses in the affected accounts use or configuration.
 
 :::info

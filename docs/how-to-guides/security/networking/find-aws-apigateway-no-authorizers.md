@@ -8,8 +8,6 @@ sidebar_label: Find AWS API Gateway with no Authorizers
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-## Problem
-
 If no authorizer is defined, anyone can use the service.
 
 :::info

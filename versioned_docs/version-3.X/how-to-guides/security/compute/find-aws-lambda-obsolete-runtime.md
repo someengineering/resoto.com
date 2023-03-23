@@ -8,8 +8,6 @@ sidebar_label: Find AWS Lambda Functions with an Obsolete Runtime
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-## Problem
-
 If you have functions running on a runtime that will be deprecated in the next 60 days, Lambda notifies you by email that you should prepare by migrating your function to a supported runtime.
 
 In some cases, such as security issues that require a backwards-incompatible update, or software that does not support a long-term support (LTS) schedule, advance notice might not be possible.

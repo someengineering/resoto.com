@@ -8,8 +8,6 @@ sidebar_label: Find AWS RDS instances no Auto Minor Version Upgrade enabled
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-## Problem
-
 Auto Minor Version Upgrade is a feature that you can enable to have your database automatically upgraded when a new minor database engine version is available. Minor version upgrades often patch security vulnerabilities and fix bugs and therefore should be applied.
 
 :::info

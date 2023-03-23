@@ -8,8 +8,6 @@ sidebar_label: Find AWS CloudTrail access logging is disabled on the S3 bucket
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-## Problem
-
 Server access logs can assist you in security and access audits, help you learn about your customer base, and understand your Amazon S3 bill.
 
 :::info

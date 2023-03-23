@@ -8,8 +8,6 @@ sidebar_label: Find Internet Facing EC2 Instances with Instance Profiles attache
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-## Problem
-
 Exposing an EC2 directly to internet increases the attack surface and therefore the risk of compromise.
 
 :::info

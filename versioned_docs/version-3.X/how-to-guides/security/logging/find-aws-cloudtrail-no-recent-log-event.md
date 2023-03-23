@@ -8,8 +8,6 @@ sidebar_label: Find AWS CloudTrail without Log Events
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-## Problem
-
 Sending CloudTrail logs to CloudWatch Logs will facilitate real-time and historic activity logging based on user, API, resource, and IP address, and provides opportunity to establish alarms and notifications for anomalous or sensitivity account activity.
 
 :::info

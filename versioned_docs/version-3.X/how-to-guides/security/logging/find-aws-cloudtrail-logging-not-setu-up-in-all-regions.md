@@ -8,8 +8,6 @@ sidebar_label: Find AWS CloudTrail not Set Up for logging in all regions
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-## Problem
-
 AWS CloudTrail is a web service that records AWS API calls for your account and delivers log files to you. The recorded information includes the identity of the API caller, the time of the API call, the source IP address of the API caller, the request parameters, and the response elements returned by the AWS service.
 
 :::info

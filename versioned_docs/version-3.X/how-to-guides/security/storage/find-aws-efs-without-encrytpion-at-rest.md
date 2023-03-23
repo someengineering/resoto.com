@@ -8,8 +8,6 @@ sidebar_label: Find AWS EFS without Encryption At Rest
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-## Problem
-
 EFS should be encrypted at rest to prevent exposure of sensitive data to bad actors.
 
 :::info

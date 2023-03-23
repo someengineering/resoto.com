@@ -8,8 +8,6 @@ sidebar_label: Find AWS S3 buckets without default encryption
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-## Problem
-
 Amazon S3 default encryption provides a way to set the default encryption behavior for an S3 bucket. This will ensure data-at-rest is encrypted.
 
 :::info

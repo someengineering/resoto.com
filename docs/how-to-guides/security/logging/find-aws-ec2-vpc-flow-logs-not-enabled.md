@@ -8,8 +8,6 @@ sidebar_label: Find AWS EC2 Flow Logging is not enabled in all VPCs
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-## Problem
-
 VPC Flow Logs provide visibility into network traffic that traverses the VPC and can be used to detect anomalous traffic or insight during security workflows.
 
 :::info

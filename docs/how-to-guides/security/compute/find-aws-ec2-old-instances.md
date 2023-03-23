@@ -8,8 +8,6 @@ sidebar_label: Find AWS EC2 Instances are old
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-## Problem
-
 Having old instances within your AWS account could increase the risk of having vulnerable software.
 
 :::info

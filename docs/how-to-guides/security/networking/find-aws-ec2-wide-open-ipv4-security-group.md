@@ -8,8 +8,6 @@ sidebar_label: Find AWS EC2 Security group is configured wide open
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-## Problem
-
 If Security groups are not properly configured the attack surface is increased.
 
 :::info

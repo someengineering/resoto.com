@@ -8,8 +8,6 @@ sidebar_label: Find AWS RDS Public Accessible Instances
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-## Problem
-
 Publicly accessible databases could expose sensitive data to bad actors.
 
 :::info

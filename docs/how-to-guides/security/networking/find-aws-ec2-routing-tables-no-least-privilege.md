@@ -8,8 +8,6 @@ sidebar_label: Find AWS EC2 Routing Tables for VPC peering are not least access
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-## Problem
-
 Being highly selective in peering routing tables is a very effective way of minimizing the impact of breach as resources outside of these routes are inaccessible to the peered VPC.
 
 :::info

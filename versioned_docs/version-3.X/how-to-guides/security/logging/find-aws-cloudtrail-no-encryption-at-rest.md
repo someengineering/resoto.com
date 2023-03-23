@@ -8,8 +8,6 @@ sidebar_label: Find AWS CloudTrail logs are not Encrypted At Rest
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-## Problem
-
 By default, the log files delivered by CloudTrail to your bucket are encrypted by Amazon server-side encryption with Amazon S3-managed encryption keys (SSE-S3). To provide a security layer that is directly manageable, you can instead use server-side encryption with AWS KMS–managed keys (SSE-KMS) for your CloudTrail log files.
 
 :::info

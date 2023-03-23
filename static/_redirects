@@ -110,7 +110,28 @@ https://blog.resoto.com/*                                                       
 
 /docs/how-to/alerting/set-up-discord-notifications                                    /docs/how-to-guides/alerting/send-discord-notifications
 /docs/how-to/security/find-and-delete-unused-aws-iam-access-keys                      /docs/how-to-guides/cleanup/clean-up-aws-iam-access-keys
-/docs/how-to/security/*                                                               /docs/how-to-guides/cleanup
+
+/docs/how-to-guides/security/access-management/find-aws-ec2-no-instance-profile-attached                          /docs/how-to-guides/security/access-management/find-aws-ec2-instances-not-using-iam-instance-roles
+/docs/how-to-guides/security/access-management/find-aws-iam-access-keys-not-rotated-after-90-days                 /docs/how-to-guides/security/access-management/find-aws-iam-access-keys-not-rotated-within-90-days
+/docs/how-to-guides/security/access-management/find-aws-iam-disable-old-credentials                               /docs/how-to-guides/security/access-management/find-unused-aws-iam-credentials
+/docs/how-to-guides/security/access-management/find-aws-iam-expired-server-certificates-not-deleted               /docs/how-to-guides/security/access-management/find-expired-aws-iam-server-certificates
+/docs/how-to-guides/security/access-management/find-aws-iam-hardware-mfa-not-enabled-for-root-account             /docs/how-to-guides/security/access-management/find-aws-account-root-users-without-hardware-mfa-enabled
+/docs/how-to-guides/security/access-management/find-aws-iam-password-policy-does-not-define-proper-minimum-length /docs/how-to-guides/security/access-management/find-aws-accounts-without-minimum-password-length-of-14-characters
+/docs/how-to-guides/security/access-management/find-aws-iam-password-policy-does-not-prevent-reuse                /docs/how-to-guides/security/access-management/find-aws-accounts-that-do-not-preent-reuse-of-the-last-24-passwords
+/docs/how-to-guides/security/access-management/find-aws-iam-policy-not-attached-to-groups-or-roles                /docs/how-to-guides/security/access-management/find-aws-iam-policies-not-attached-to-groups-or-roles
+/docs/how-to-guides/security/access-management/find-aws-iam-policy-with-full-administrative-privileges            /docs/how-to-guides/security/access-management/find-aws-iam-policies-with-full-administrative-privileges
+/docs/how-to-guides/security/access-management/find-aws-iam-root-access-keys-exist                                /docs/how-to-guides/security/access-management/find-aws-account-root-users-with-access-keys
+/docs/how-to-guides/security/access-management/find-aws-iam-support-role-not-created                              /docs/how-to-guides/security/access-management/detect-missing-aws-iam-support-role
+/docs/how-to-guides/security/access-management/find-aws-iam-use-root-account                                      /docs/how-to-guides/security/access-management/detect-use-of-aws-account-root-user-credentials
+/docs/how-to-guides/security/access-management/find-aws-iam-user-access-keys-creation-during-setup                /docs/how-to-guides/security/access-management/find-unused-aws-iam-access-keys-for-users-with-configured-passwords
+/docs/how-to-guides/security/access-management/find-aws-iam-user-has-two-active-access-keys                       /docs/how-to-guides/security/access-management/find-aws-iam-users-with-multiple-active-access-keys
+/docs/how-to-guides/security/access-management/find-aws-iam-user-mfa-not-enabled-console-access                   /docs/how-to-guides/security/access-management/find-aws-iam-users-without-mfa-enabled
+/docs/how-to-guides/security/access-management/find-aws-lambda-cors-policy                                        /docs/how-to-guides/security/access-management/find-aws-lambda-function-cors-vulnerabilities
+/docs/how-to-guides/security/access-management/find-aws-lambda-is-public                                          /docs/how-to-guides/security/access-management/find-public-aws-lambda-functions
+/docs/how-to-guides/security/access-management/find-aws-lambda-policy-public                                      /docs/how-to-guides/security/access-management/find-aws-lambda-functions-with-public-resource-based-policies
+/docs/how-to-guides/security/access-management/*                                                                  /docs/how-to-guides/security/access-management
+
+/docs/how-to-guides/security/*                                                        /docs/how-to-guides/security
 
 /docs/how-to/*                                                                        /docs/how-to-guides/:splat
 /docs/guides/*                                                                        /docs/how-to-guides/:splat

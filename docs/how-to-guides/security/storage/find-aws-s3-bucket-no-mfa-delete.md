@@ -8,8 +8,6 @@ sidebar_label: Find AWS S3 bucket MFA Delete is not enabled
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-## Problem
-
 Your security credentials are compromised or unauthorized access is granted.
 
 :::info

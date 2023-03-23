@@ -8,8 +8,6 @@ sidebar_label: Find AWS EC2 EBS Snapshots are not encrypted or public
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-## Problem
-
 When you share a snapshot, you are giving others access to all the data on the snapshot. Share snapshots only with people with whom you want to share all of your snapshot data.
 
 :::info

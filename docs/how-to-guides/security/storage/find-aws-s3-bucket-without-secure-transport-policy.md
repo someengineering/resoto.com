@@ -8,8 +8,6 @@ sidebar_label: Find AWS S3 buckets without Secure Transport Policy
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-## Problem
-
 If HTTPS is not enforced on the bucket policy, communication between clients and S3 buckets can use unencrypted HTTP. As a result, sensitive information could be transmitted in clear text over the network or internet.
 
 :::info

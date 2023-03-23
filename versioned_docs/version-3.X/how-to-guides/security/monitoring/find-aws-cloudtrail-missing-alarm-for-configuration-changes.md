@@ -8,8 +8,6 @@ sidebar_label: Find AWS CloudTrail missing Alarm for CloudTrail configuration ch
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-## Problem
-
 Monitoring unauthorized API calls will help reveal application errors and may reduce time to detect malicious activity.
 
 :::info

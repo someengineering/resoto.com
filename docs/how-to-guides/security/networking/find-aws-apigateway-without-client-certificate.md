@@ -8,8 +8,6 @@ sidebar_label: Find AWS API Gateway without Client Certificate
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-## Problem
-
 Man in the middle attacks are possible and other similar risks.
 
 :::info

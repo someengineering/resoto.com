@@ -8,8 +8,6 @@ sidebar_label: Find AWS EC2 EBS Volumes not encrypted
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-## Problem
-
 Data encryption at rest prevents data visibility in the event of its unauthorized access or theft.
 
 :::info

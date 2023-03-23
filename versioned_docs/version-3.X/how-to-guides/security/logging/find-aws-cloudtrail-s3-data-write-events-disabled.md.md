@@ -8,8 +8,6 @@ sidebar_label: Find AWS CloudTrail Object-Level Logging for S3 bucket Write Even
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-## Problem
-
 If logs are not enabled, monitoring of service use and threat analysis is not possible.
 
 :::info

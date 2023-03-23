@@ -8,8 +8,6 @@ sidebar_label: Find AWS KMS rotation for customer created master keys not enable
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-## Problem
-
 Cryptographic best practices discourage extensive reuse of encryption keys. Consequently, Customer Master Keys (CMKs) should be rotated to prevent usage of compromised keys.
 
 :::info

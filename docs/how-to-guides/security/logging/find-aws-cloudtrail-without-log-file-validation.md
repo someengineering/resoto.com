@@ -8,8 +8,6 @@ sidebar_label: Find AWS CloudTrail without Log File Validation
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-## Problem
-
 Enabling log file validation will provide additional integrity checking of CloudTrail logs.
 
 :::info

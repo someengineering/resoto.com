@@ -8,8 +8,6 @@ sidebar_label: Find AWS RDS instances storage not encrypted
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-## Problem
-
 If not enabled sensitive information at rest is not protected.
 
 :::info

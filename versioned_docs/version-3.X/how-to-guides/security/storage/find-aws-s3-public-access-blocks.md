@@ -8,8 +8,6 @@ sidebar_label: Find AWS S3 Account Level Public Access
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-## Problem
-
 Public access policies may be applied to sensitive data buckets.
 
 :::info

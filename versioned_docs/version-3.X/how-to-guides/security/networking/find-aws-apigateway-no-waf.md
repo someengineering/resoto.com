@@ -8,8 +8,6 @@ sidebar_label: Find AWS API Gateway without WAF ACL
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-## Problem
-
 Potential attacks and / or abuse of service for internet reachable services.
 
 :::info

@@ -8,8 +8,6 @@ sidebar_label: Find AWS Config is not enabled in all Regions
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-## Problem
-
 The AWS configuration item history captured by AWS Config enables security analysis, resource change tracking and compliance auditing.
 
 :::info

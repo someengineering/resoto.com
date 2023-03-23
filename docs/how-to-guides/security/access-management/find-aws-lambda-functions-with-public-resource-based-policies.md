@@ -1,5 +1,5 @@
 ---
-sidebar_label: Find AWS Lambda functions have resource-based policy set as Public
+sidebar_label: Find AWS Lambda Functions with Public Resource-Based Policies
 ---
 
 # How to Find AWS Lambda Functions with Public Resource-Based Policies

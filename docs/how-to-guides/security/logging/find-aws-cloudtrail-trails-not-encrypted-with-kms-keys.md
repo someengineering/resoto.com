@@ -1,14 +1,14 @@
 ---
-sidebar_label: Find AWS CloudTrail without Log File Validation
+sidebar_label: Find AWS CloudTrail Trails Not Encrypted with KMS Keys
 ---
 
-# How to Find AWS CloudTrail without Log File Validation
+# How to Find AWS CloudTrail Trails Not Encrypted with KMS Keys
 
 ```mdx-code-block
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-Enabling log file validation will provide additional integrity checking of CloudTrail logs.
+By default, the log files delivered by CloudTrail to your bucket are encrypted by Amazon server-side encryption with Amazon S3-managed encryption keys (SSE-S3). To provide a security layer that is directly manageable, you can instead use server-side encryption with AWS KMS–managed keys (SSE-KMS) for your CloudTrail log files.
 
 :::info
 
@@ -25,7 +25,7 @@ This guide assumes that you have already [installed](../../../getting-started/in
 1. Execute the following [`search` command](../../../reference/cli/search-commands/search.md) in [Resoto Shell](../../../reference/components/shell.md) or Resoto UI:
 
    ```bash
-   > search is(aws_cloud_trail) and trail_status.is_logging==true and trail_log_file_validation_enabled==false
+   > search is(aws_cloud_trail) and trail_kms_key_id==null
    # highlight-start
    ​kind=aws_cloud_trail, ..., region=resoto-poweruser
    ​kind=aws_cloud_trail, ..., account=poweruser-team
@@ -35,7 +35,7 @@ This guide assumes that you have already [installed](../../../getting-started/in
 2. Pipe the `search` command into the [`dump` command](../../../reference/cli/format-commands/dump.md):
 
    ```bash
-   > search is(aws_cloud_trail) and trail_status.is_logging==true and trail_log_file_validation_enabled==false | dump
+   > search is(aws_cloud_trail) and trail_kms_key_id==null | dump
    # highlight-start
    ​reported:
    ​  id: /aws/cloudtrail/123
@@ -48,15 +48,18 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_cloud_trail` resources](../../../reference/data-models/aws/index.md#aws_cloud_trail).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   Ensure LogFileValidationEnabled is set to true for each trail.
+- Create and manage the CMK encryption keys.
+- Use a single CMK to encrypt and decrypt log files for multiple accounts across all regions.
+- Control who can use your key for encrypting and decrypting CloudTrail log files.
+- Assign permissions for the key to the users.
 
-   :::note
+:::note
 
-   Please refer to the [AWS CloudTrail documentation](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-log-filevalidation-enabling.html) for details.
+Please refer to the [AWS CloudTrail documentation](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/encrypting-cloudtrail-log-files-with-aws-kms.html) for details.
 
-   :::
+:::
 
 ## Further Reading
 
@@ -67,4 +70,4 @@ This guide assumes that you have already [installed](../../../getting-started/in
 ## External Links
 
 - [CIS Amazon Web Services Benchmarks <span class="badge badge--secondary">cisecurity.org <IconExternalLink width="10" height="10" /></span>](https://cisecurity.org/benchmark/amazon_web_services)
-- [AWS Documentation <span class="badge badge--secondary">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-log-filevalidation-enabling.html)
+- [AWS Documentation <span class="badge badge--secondary">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/encrypting-cloudtrail-log-files-with-aws-kms.html)

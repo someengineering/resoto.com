@@ -48,15 +48,15 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_ec2_instance` resources](../../../reference/data-models/aws/index.md#aws_ec2_instance).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   Use an ALB and apply WAF ACL.
+Use an ALB and apply WAF ACL.
 
-   :::note
+:::note
 
-   Please refer to the [AWS EC2 documentation](https://aws.amazon.com/blogs/aws/aws-web-application-firewall-waf-for-application-load-balancers/) for details.
+Please refer to the [AWS EC2 documentation](https://aws.amazon.com/blogs/aws/aws-web-application-firewall-waf-for-application-load-balancers/) for details.
 
-   :::
+:::
 
 ## Further Reading
 

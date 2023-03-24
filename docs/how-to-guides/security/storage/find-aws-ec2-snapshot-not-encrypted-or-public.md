@@ -48,15 +48,15 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_ec2_snapshot` resources](../../../reference/data-models/aws/index.md#aws_ec2_snapshot).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   Enable encryption of snapshots.
+Enable encryption of snapshots.
 
-   :::note
+:::note
 
-   Please refer to the [AWS EC2 documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html) for details.
+Please refer to the [AWS EC2 documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html) for details.
 
-   :::
+:::
 
 ## Further Reading
 

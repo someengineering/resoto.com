@@ -48,16 +48,16 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_ec2_instance` resources](../../../reference/data-models/aws/index.md#aws_ec2_instance).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   - Do not expose EC2 instances with Instance Profiles directly to the internet.
-   - Use a firewall or API Gateway.
+- Do not expose EC2 instances with Instance Profiles directly to the internet.
+- Use a firewall or API Gateway.
 
-   :::note
+:::note
 
-   Please refer to the [AWS EC2 documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) for details.
+Please refer to the [AWS EC2 documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) for details.
 
-   :::
+:::
 
 ## Further Reading
 

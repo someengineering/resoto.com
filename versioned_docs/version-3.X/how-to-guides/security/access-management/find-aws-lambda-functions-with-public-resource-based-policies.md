@@ -48,15 +48,15 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_lambda_function` resources](../../../reference/data-models/aws/index.md#aws_lambda_function).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   - Grant usage permission on a per-resource basis and applying least privilege principle.
+- Grant usage permission on a per-resource basis and applying least privilege principle.
 
-   :::note
+:::note
 
-   Please refer to the [AWS Lambda documentation](https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html) for details.
+Please refer to the [AWS Lambda documentation](https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html) for details.
 
-   :::
+:::
 
 ## Further Reading
 

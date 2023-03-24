@@ -48,17 +48,17 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_iam_server_certificate` resources](../../../reference/data-models/aws/index.md#aws_iam_server_certificate).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   - Delete the expired certificates.
-   - Deleting the certificate could have implications for your application if you are using an expired server certificate with Elastic Load Balancing, CloudFront, etc.
-   - One has to make configurations at respective services to ensure there is no interruption in application functionality.
+- Delete the expired certificates.
+- Deleting the certificate could have implications for your application if you are using an expired server certificate with Elastic Load Balancing, CloudFront, etc.
+- One has to make configurations at respective services to ensure there is no interruption in application functionality.
 
-   :::note
+:::note
 
-   Please refer to the [AWS IAM documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html) for details.
+Please refer to the [AWS IAM documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html) for details.
 
-   :::
+:::
 
 ## Further Reading
 

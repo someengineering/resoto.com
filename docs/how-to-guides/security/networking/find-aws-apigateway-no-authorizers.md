@@ -48,15 +48,15 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_api_gateway_rest_api` resources](../../../reference/data-models/aws/index.md#aws_api_gateway_rest_api).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   Add a Cognito pool or attach a Lambda function to control access to your API.
+Add a Cognito pool or attach a Lambda function to control access to your API.
 
-   :::note
+:::note
 
-   Please refer to the [AWS API Gateway documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html) for details.
+Please refer to the [AWS API Gateway documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html) for details.
 
-   :::
+:::
 
 ## Further Reading
 

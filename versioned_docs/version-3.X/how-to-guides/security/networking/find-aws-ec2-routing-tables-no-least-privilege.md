@@ -48,15 +48,15 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_vpc` resources](../../../reference/data-models/aws/index.md#aws_vpc).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   Review routing tables of peered VPCs for whether they route all subnets of each VPC and whether that is necessary to accomplish the intended purposes for peering the VPCs.
+Review routing tables of peered VPCs for whether they route all subnets of each VPC and whether that is necessary to accomplish the intended purposes for peering the VPCs.
 
-   :::note
+:::note
 
-   Please refer to the [AWS EC2 documentation](https://docs.aws.amazon.com/vpc/latest/peering/peering-configurations-partial-access.html) for details.
+Please refer to the [AWS EC2 documentation](https://docs.aws.amazon.com/vpc/latest/peering/peering-configurations-partial-access.html) for details.
 
-   :::
+:::
 
 ## Further Reading
 

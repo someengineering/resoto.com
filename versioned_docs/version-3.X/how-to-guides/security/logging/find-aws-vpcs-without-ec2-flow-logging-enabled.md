@@ -1,8 +1,8 @@
 ---
-sidebar_label: Find AWS EC2 Flow Logging is not enabled in all VPCs
+sidebar_label: Find AWS VPCs Without EC2 Flow Logging Enabled
 ---
 
-# How to Find AWS EC2 Flow Logging is not enabled in all VPCs
+# How to Find AWS VPCs Without EC2 Flow Logging Enabled
 
 ```mdx-code-block
 import IconExternalLink from '@theme/Icon/ExternalLink';
@@ -48,15 +48,15 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_vpc` resources](../../../reference/data-models/aws/index.md#aws_vpc).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   Enable Flow Logs for packet Rejects of your VPCs.
+Enable Flow Logs for packet Rejects of your VPCs.
 
-   :::note
+:::note
 
-   Please refer to the [AWS EC2 documentation](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html) for details.
+Please refer to the [AWS EC2 documentation](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html) for details.
 
-   :::
+:::
 
 ## Further Reading
 

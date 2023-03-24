@@ -52,17 +52,17 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_root_user` resources](../../../reference/data-models/aws/index.md#aws_root_user).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   - Go to IAM console.
-   - Navigate to Dashboard.
-   - Activate MFA on your root account.
+- Go to IAM console.
+- Navigate to Dashboard.
+- Activate MFA on your root account.
 
-   :::note
+:::note
 
-   Please refer to the [AWS IAM documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html#id_root-user_manage_mfa) for details.
+Please refer to the [AWS IAM documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html#id_root-user_manage_mfa) for details.
 
-   :::
+:::
 
 ## Further Reading
 

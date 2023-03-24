@@ -50,15 +50,15 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_account` resources](../../../reference/data-models/aws/index.md#aws_account).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   Ensure "Number of passwords to remember" is set to 24 or higher.
+Ensure "Number of passwords to remember" is set to 24 or higher.
 
-   :::note
+:::note
 
-   Please refer to the [AWS IAM documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html) for details.
+Please refer to the [AWS IAM documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html) for details.
 
-   :::
+:::
 
 ## Further Reading
 

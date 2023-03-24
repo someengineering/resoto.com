@@ -1,8 +1,8 @@
 ---
-sidebar_label: Find AWS EC2 Instances are old
+sidebar_label: Find Old AWS EC2 Instances
 ---
 
-# How to Find AWS EC2 Instances are old
+# How to Find Old AWS EC2 Instances
 
 ```mdx-code-block
 import IconExternalLink from '@theme/Icon/ExternalLink';
@@ -48,16 +48,16 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_ec2_instance` resources](../../../reference/data-models/aws/index.md#aws_ec2_instance).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   - Check if software running in the instance is up-to-date and patched accordingly.
-   - Consider migrating to an updated instance type.
+- Check if software running in the instance is up-to-date and patched accordingly.
+- Consider migrating to an updated instance type.
 
-   :::note
+:::note
 
-   Please refer to the [AWS EC2 documentation](https://docs.aws.amazon.com/systems-manager/latest/userguide/viewing-patch-compliance-results.html) for details.
+Please refer to the [AWS EC2 documentation](https://docs.aws.amazon.com/systems-manager/latest/userguide/viewing-patch-compliance-results.html) for details.
 
-   :::
+:::
 
 ## Further Reading
 

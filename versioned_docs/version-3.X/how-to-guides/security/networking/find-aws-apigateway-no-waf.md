@@ -48,15 +48,15 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_api_gateway_stage` resources](../../../reference/data-models/aws/index.md#aws_api_gateway_stage).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   Use AWS WAF to protect your API Gateway API from common web exploits, such as SQL injection and cross-site scripting (XSS) attacks. These could affect API availability and performance, compromise security or consume excessive resources.
+Use AWS WAF to protect your API Gateway API from common web exploits, such as SQL injection and cross-site scripting (XSS) attacks. These could affect API availability and performance, compromise security or consume excessive resources.
 
-   :::note
+:::note
 
-   Please refer to the [AWS API Gateway documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/security-monitoring.html) for details.
+Please refer to the [AWS API Gateway documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/security-monitoring.html) for details.
 
-   :::
+:::
 
 ## Further Reading
 

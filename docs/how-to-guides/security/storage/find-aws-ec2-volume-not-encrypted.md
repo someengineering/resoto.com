@@ -48,17 +48,17 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_ec2_volume` resources](../../../reference/data-models/aws/index.md#aws_ec2_volume).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   - Encrypt all EBS volumes.
-   - Enable Encryption by default.
-   - You can configure your AWS account to enforce the encryption of the new EBS volumes and snapshot copies that you create. For example, Amazon EBS encrypts the EBS volumes created when you launch an instance and the snapshots that you copy from an unencrypted snapshot.
+- Encrypt all EBS volumes.
+- Enable Encryption by default.
+- You can configure your AWS account to enforce the encryption of the new EBS volumes and snapshot copies that you create. For example, Amazon EBS encrypts the EBS volumes created when you launch an instance and the snapshots that you copy from an unencrypted snapshot.
 
-   :::note
+:::note
 
-   Please refer to the [AWS EC2 documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) for details.
+Please refer to the [AWS EC2 documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) for details.
 
-   :::
+:::
 
 ## Further Reading
 

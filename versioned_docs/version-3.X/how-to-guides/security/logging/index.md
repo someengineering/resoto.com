@@ -2,7 +2,7 @@
 sidebar_label: Logging
 ---
 
-# Security: Logging How-To Guides
+# Logging Security How-To Guides
 
 ```mdx-code-block
 import DocCardList from '@theme/DocCardList';

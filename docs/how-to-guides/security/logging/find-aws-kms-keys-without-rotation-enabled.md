@@ -1,14 +1,14 @@
 ---
-sidebar_label: Find AWS KMS rotation for customer created master keys not enabled
+sidebar_label: Find AWS KMS Keys Without Rotation Enabled
 ---
 
-# How to Find AWS KMS rotation for customer created master keys not enabled
+# How to Find AWS KMS Keys Without Rotation Enabled
 
 ```mdx-code-block
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-Cryptographic best practices discourage extensive reuse of encryption keys. Consequently, Customer Master Keys (CMKs) should be rotated to prevent usage of compromised keys.
+Cryptographic best practices discourage extensive reuse of encryption keys. Consequently, AWS KMS keys should be rotated to prevent usage of compromised keys.
 
 :::info
 
@@ -48,15 +48,15 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_kms_key` resources](../../../reference/data-models/aws/index.md#aws_kms_key).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   For every KMS Customer Master Keys (CMKs), ensure that Rotate this key every year is enabled.
+- For each AWS KMS key, ensure that the **Rotate this key every year** setting is enabled.
 
-   :::note
+:::note
 
-   Please refer to the [AWS KMS documentation](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html) for details.
+Please refer to the [AWS KMS documentation](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html) for details.
 
-   :::
+:::
 
 ## Further Reading
 

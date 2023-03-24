@@ -1,8 +1,8 @@
 ---
-sidebar_label: Find AWS Lambda Functions with an Obsolete Runtime
+sidebar_label: Find AWS Lambda Functions with Obsolete Runtimes
 ---
 
-# How to Find AWS Lambda Functions with an Obsolete Runtime
+# How to Find AWS Lambda Functions with Obsolete Runtimes
 
 ```mdx-code-block
 import IconExternalLink from '@theme/Icon/ExternalLink';
@@ -52,17 +52,17 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_lambda_function` resources](../../../reference/data-models/aws/index.md#aws_lambda_function).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   - Migrating your deprecated functions to a supported runtime.
-   - Testing new runtimes as they are made available.
-   - Rolling out new runtimes in production as soon as possible.
+- Migrating your deprecated functions to a supported runtime.
+- Testing new runtimes as they are made available.
+- Rolling out new runtimes in production as soon as possible.
 
-   :::note
+:::note
 
-   Please refer to the [AWS Lambda documentation](https://docs.aws.amazon.com/lambda/latest/dg/runtime-support-policy.html) for details.
+Please refer to the [AWS Lambda documentation](https://docs.aws.amazon.com/lambda/latest/dg/runtime-support-policy.html) for details.
 
-   :::
+:::
 
 ## Further Reading
 

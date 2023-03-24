@@ -50,16 +50,16 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_iam_policy` resources](../../../reference/data-models/aws/index.md#aws_iam_policy).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   - Start with a minimum set of permissions and grant additional permissions as necessary, rather than starting with permissions that are too lenient and then trying to tighten them later.
-   - List policies to analyze if permissions are the least possible to conduct business activities.
+- Start with a minimum set of permissions and grant additional permissions as necessary, rather than starting with permissions that are too lenient and then trying to tighten them later.
+- List policies to analyze if permissions are the least possible to conduct business activities.
 
-   :::note
+:::note
 
-   Please refer to the [AWS IAM documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html) for details.
+Please refer to the [AWS IAM documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html) for details.
 
-   :::
+:::
 
 ## Further Reading
 

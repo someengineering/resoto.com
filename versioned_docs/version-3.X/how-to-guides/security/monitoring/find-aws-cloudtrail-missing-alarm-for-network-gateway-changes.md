@@ -48,15 +48,15 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_cloud_trail` resources](../../../reference/data-models/aws/index.md#aws_cloud_trail).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   It is recommended that a metric filter and alarm be established for Network Gateway Changes.
+It is recommended that a metric filter and alarm be established for Network Gateway Changes.
 
-   :::note
+:::note
 
-   Please refer to the [AWS CloudTrail documentation](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudwatch-alarms-for-cloudtrail.html) for details.
+Please refer to the [AWS CloudTrail documentation](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudwatch-alarms-for-cloudtrail.html) for details.
 
-   :::
+:::
 
 ## Further Reading
 

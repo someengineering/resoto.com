@@ -1,8 +1,8 @@
 ---
-sidebar_label: Find AWS CloudTrail S3 bucket is publicly accessible
+sidebar_label: Find AWS CloudTrail Trails with Public S3 Buckets
 ---
 
-# How to Find AWS CloudTrail S3 bucket is publicly accessible
+# How to Find AWS CloudTrail Trails with Public S3 Buckets
 
 ```mdx-code-block
 import IconExternalLink from '@theme/Icon/ExternalLink';
@@ -48,17 +48,17 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_cloud_trail` resources](../../../reference/data-models/aws/index.md#aws_cloud_trail).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   - Analyze Bucket policy to validate appropriate permissions.
-   - Ensure the AllUsers principal is not granted privileges.
-   - Ensure the AuthenticatedUsers principal is not granted privileges.
+- Analyze Bucket policy to validate appropriate permissions.
+- Ensure the AllUsers principal is not granted privileges.
+- Ensure the AuthenticatedUsers principal is not granted privileges.
 
-   :::note
+:::note
 
-   Please refer to the [AWS CloudTrail documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html) for details.
+Please refer to the [AWS CloudTrail documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html) for details.
 
-   :::
+:::
 
 ## Further Reading
 

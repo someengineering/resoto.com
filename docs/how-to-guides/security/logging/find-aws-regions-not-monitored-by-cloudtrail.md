@@ -1,8 +1,8 @@
 ---
-sidebar_label: Find AWS CloudTrail not Set Up for logging in all regions
+sidebar_label: Find AWS Regions Not Monitored by CloudTrail
 ---
 
-# How to Find AWS CloudTrail not Set Up for logging in all regions
+# How to Find AWS Regions Not Monitored by CloudTrail
 
 ```mdx-code-block
 import IconExternalLink from '@theme/Icon/ExternalLink';
@@ -48,15 +48,15 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_region` resources](../../../reference/data-models/aws/index.md#aws_region).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   Ensure there is one trail in every region with logging enabled. Consider using multi account / multi region trails for your organization.
+= Ensure there is one trail in every region with logging enabled. Consider using multi account / multi region trails for your organization.
 
-   :::note
+:::note
 
-   Please refer to the [AWS CloudTrail documentation](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrailconcepts.html#cloudtrail-concepts-management-events) for details.
+Please refer to the [AWS CloudTrail documentation](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrailconcepts.html#cloudtrail-concepts-management-events) for details.
 
-   :::
+:::
 
 ## Further Reading
 

@@ -48,15 +48,15 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_rds_instance` resources](../../../reference/data-models/aws/index.md#aws_rds_instance).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   - Enable Encryption for all matching instances.
+- Enable Encryption for all matching instances.
 
-   :::note
+:::note
 
-   Please refer to the [AWS RDS documentation](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.html) for details.
+Please refer to the [AWS RDS documentation](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.html) for details.
 
-   :::
+:::
 
 ## Further Reading
 

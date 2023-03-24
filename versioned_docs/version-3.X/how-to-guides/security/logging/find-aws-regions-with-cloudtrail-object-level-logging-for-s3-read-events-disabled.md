@@ -1,8 +1,8 @@
 ---
-sidebar_label: Find AWS CloudTrail Object-Level Logging for S3 bucket Read Events is Disabled
+sidebar_label: Find AWS Regions with CloudTrail Object-Level Logging for S3 Read Events Disabled
 ---
 
-# How to Find AWS CloudTrail Object-Level Logging for S3 bucket Read Events is Disabled
+# How to Find AWS Regions Where CloudTrail Object-Level Logging for S3 Read Events Is Disabled
 
 ```mdx-code-block
 import IconExternalLink from '@theme/Icon/ExternalLink';
@@ -48,17 +48,17 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_region` resources](../../../reference/data-models/aws/index.md#aws_region).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   - Enable logs.
-   - Create an S3 lifecycle policy.
-   - Define use cases, metrics and automated responses where applicable.
+- Enable logs.
+- Create an S3 lifecycle policy.
+- Define use cases, metrics and automated responses where applicable.
 
-   :::note
+:::note
 
-   Please refer to the [AWS CloudTrail documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/enable-cloudtrail-logging-for-s3.html) for details.
+Please refer to the [AWS CloudTrail documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/enable-cloudtrail-logging-for-s3.html) for details.
 
-   :::
+:::
 
 ## Further Reading
 

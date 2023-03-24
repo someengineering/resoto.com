@@ -48,17 +48,17 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_ec2_network_acl` resources](../../../reference/data-models/aws/index.md#aws_ec2_network_acl).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   - Apply Zero Trust approach.
-   - Implement a process to scan and remediate unrestricted or overly permissive network acls.
-   - Recommended best practices is to narrow the definition for the minimum ports required.
+- Apply Zero Trust approach.
+- Implement a process to scan and remediate unrestricted or overly permissive network acls.
+- Recommended best practices is to narrow the definition for the minimum ports required.
 
-   :::note
+:::note
 
-   Please refer to the [AWS EC2 documentation](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html) for details.
+Please refer to the [AWS EC2 documentation](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html) for details.
 
-   :::
+:::
 
 ## Further Reading
 

@@ -48,16 +48,16 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_s3_bucket` resources](../../../reference/data-models/aws/index.md#aws_s3_bucket).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   - Add MFA delete to an S3 bucket.
-   - It requires additional authentication when you change the version state of your bucket, or you delete and object version adding another layer of security in the event your security credentials are compromised or unauthorized access is granted.
+- Add MFA delete to an S3 bucket.
+- It requires additional authentication when you change the version state of your bucket, or you delete and object version adding another layer of security in the event your security credentials are compromised or unauthorized access is granted.
 
-   :::note
+:::note
 
-   Please refer to the [AWS S3 documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/MultiFactorAuthenticationDelete.html) for details.
+Please refer to the [AWS S3 documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/MultiFactorAuthenticationDelete.html) for details.
 
-   :::
+:::
 
 ## Further Reading
 

@@ -1,8 +1,8 @@
 ---
-sidebar_label: Find AWS Config is not enabled in all Regions
+sidebar_label: Find AWS Regions Without AWS Config Enabled
 ---
 
-# How to Find AWS Config is not enabled in all Regions
+# How to Find AWS Regions Without AWS Config Enabled
 
 ```mdx-code-block
 import IconExternalLink from '@theme/Icon/ExternalLink';
@@ -48,15 +48,15 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_region` resources](../../../reference/data-models/aws/index.md#aws_region).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   Enable AWS Config be enabled in all regions.
+- Enable AWS Config in all regions.
 
-   :::note
+:::note
 
-   Please refer to the [AWS Config documentation](https://aws.amazon.com/blogs/mt/aws-config-best-practices/) for details.
+Please refer to the [AWS Config documentation](https://aws.amazon.com/blogs/mt/aws-config-best-practices/) for details.
 
-   :::
+:::
 
 ## Further Reading
 

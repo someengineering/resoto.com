@@ -48,15 +48,15 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_cloud_trail` resources](../../../reference/data-models/aws/index.md#aws_cloud_trail).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   Create a metric filter and alarm for organization changes.
+Create a metric filter and alarm for organization changes.
 
-   :::note
+:::note
 
-   Please refer to the [AWS CloudTrail documentation](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudwatch-alarms-for-cloudtrail.html) for details.
+Please refer to the [AWS CloudTrail documentation](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudwatch-alarms-for-cloudtrail.html) for details.
 
-   :::
+:::
 
 ## Further Reading
 

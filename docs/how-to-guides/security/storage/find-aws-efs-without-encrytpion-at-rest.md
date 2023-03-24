@@ -48,16 +48,16 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_efs_file_system` resources](../../../reference/data-models/aws/index.md#aws_efs_file_system).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   - Enable encryption at rest for EFS file systems.
-   - Encryption at rest can only be enabled during the file system creation.
+- Enable encryption at rest for EFS file systems.
+- Encryption at rest can only be enabled during the file system creation.
 
-   :::note
+:::note
 
-   Please refer to the [AWS EFS documentation](https://docs.aws.amazon.com/efs/latest/ug/encryption-at-rest.html) for details.
+Please refer to the [AWS EFS documentation](https://docs.aws.amazon.com/efs/latest/ug/encryption-at-rest.html) for details.
 
-   :::
+:::
 
 ## Further Reading
 

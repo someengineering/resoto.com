@@ -1,18 +1,18 @@
 ---
-sidebar_label: Find AWS CloudTrail logs are not Encrypted At Rest
+sidebar_label: Find AWS CloudTrail Trails with Logging Disabled
 ---
 
-# How to Find AWS CloudTrail logs are not Encrypted At Rest using KMS CMKs
+# How to Find AWS CloudTrail Trails with Logging Disabled
 
 ```mdx-code-block
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-By default, the log files delivered by CloudTrail to your bucket are encrypted by Amazon server-side encryption with Amazon S3-managed encryption keys (SSE-S3). To provide a security layer that is directly manageable, you can instead use server-side encryption with AWS KMS–managed keys (SSE-KMS) for your CloudTrail log files.
+Sending AWS CloudTrail events to CloudWatch Logs facilitates real-time and historic activity logging based on user, API, resource, and IP address, and makes it possible to establish alarms and notifications for anomalous or sensitive account activity.
 
 :::info
 
-This security check is part of the [CIS Amazon Web Services Benchmarks](https://cisecurity.org/benchmark/amazon_web_services) and is rated severity **medium**.
+This security check is part of the [CIS Amazon Web Services Benchmarks](https://cisecurity.org/benchmark/amazon_web_services) and is rated severity **low**.
 
 :::
 
@@ -25,7 +25,7 @@ This guide assumes that you have already [installed](../../../getting-started/in
 1. Execute the following [`search` command](../../../reference/cli/search-commands/search.md) in [Resoto Shell](../../../reference/components/shell.md) or Resoto UI:
 
    ```bash
-   > search is(aws_cloud_trail) and trail_kms_key_id==null
+   > search is(aws_cloud_trail) and trail_status.is_logging==false
    # highlight-start
    ​kind=aws_cloud_trail, ..., region=resoto-poweruser
    ​kind=aws_cloud_trail, ..., account=poweruser-team
@@ -35,7 +35,7 @@ This guide assumes that you have already [installed](../../../getting-started/in
 2. Pipe the `search` command into the [`dump` command](../../../reference/cli/format-commands/dump.md):
 
    ```bash
-   > search is(aws_cloud_trail) and trail_kms_key_id==null | dump
+   > search is(aws_cloud_trail) and trail_status.is_logging==false | dump
    # highlight-start
    ​reported:
    ​  id: /aws/cloudtrail/123
@@ -48,18 +48,15 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_cloud_trail` resources](../../../reference/data-models/aws/index.md#aws_cloud_trail).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   - Create and manage the CMK encryption keys.
-   - Use a single CMK to encrypt and decrypt log files for multiple accounts across all regions.
-   - Control who can use your key for encrypting and decrypting CloudTrail log files.
-   - Assign permissions for the key to the users.
+- Validate that the trails in CloudTrail has an ARN set in the `CloudWatchLogsLogGroupArn` property.
 
-   :::note
+:::note
 
-   Please refer to the [AWS CloudTrail documentation](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/encrypting-cloudtrail-log-files-with-aws-kms.html) for details.
+Please refer to the [AWS CloudTrail documentation](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/send-cloudtrail-events-to-cloudwatch-logs.html) for details.
 
-   :::
+:::
 
 ## Further Reading
 
@@ -70,4 +67,4 @@ This guide assumes that you have already [installed](../../../getting-started/in
 ## External Links
 
 - [CIS Amazon Web Services Benchmarks <span class="badge badge--secondary">cisecurity.org <IconExternalLink width="10" height="10" /></span>](https://cisecurity.org/benchmark/amazon_web_services)
-- [AWS Documentation <span class="badge badge--secondary">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/encrypting-cloudtrail-log-files-with-aws-kms.html)
+- [AWS Documentation <span class="badge badge--secondary">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/send-cloudtrail-events-to-cloudwatch-logs.html)

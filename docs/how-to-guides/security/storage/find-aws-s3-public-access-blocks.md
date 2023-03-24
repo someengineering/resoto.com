@@ -48,15 +48,15 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_s3_bucket` resources](../../../reference/data-models/aws/index.md#aws_s3_bucket).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   Enable Public Access Block at the account level to prevent the exposure of your data stored in S3.
+Enable Public Access Block at the account level to prevent the exposure of your data stored in S3.
 
-   :::note
+:::note
 
-   Please refer to the [AWS S3 documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html) for details.
+Please refer to the [AWS S3 documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html) for details.
 
-   :::
+:::
 
 ## Further Reading
 

@@ -48,15 +48,15 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_root_user` resources](../../../reference/data-models/aws/index.md#aws_root_user).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   - Ensure IAM policies are attached only to groups or roles.
+- Ensure IAM policies are attached only to groups or roles.
 
-   :::note
+:::note
 
-   Please refer to the [AWS IAM documentation](http://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html) for details.
+Please refer to the [AWS IAM documentation](http://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html) for details.
 
-   :::
+:::
 
 ## Further Reading
 

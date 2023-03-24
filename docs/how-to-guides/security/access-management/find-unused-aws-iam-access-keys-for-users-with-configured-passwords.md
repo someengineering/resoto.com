@@ -52,16 +52,16 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_iam_access_key` resources](../../../reference/data-models/aws/index.md#aws_iam_access_key).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   - Delete all matching access keys that have been reported.
-   - Ensure to uncheck the setting that creates access keys by default during the initial user setup.
+- Delete all matching access keys that have been reported.
+- Ensure to uncheck the setting that creates access keys by default during the initial user setup.
 
-   :::note
+:::note
 
-   Please refer to the [AWS IAM documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_getting-report.html) for details.
+Please refer to the [AWS IAM documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_getting-report.html) for details.
 
-   :::
+:::
 
 ## Further Reading
 

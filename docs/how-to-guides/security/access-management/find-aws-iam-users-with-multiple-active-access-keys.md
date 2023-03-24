@@ -50,16 +50,16 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_iam_user` resources](../../../reference/data-models/aws/index.md#aws_iam_user).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   - Remove the second active access key and only use one.
-   - Avoid using long-lived access keys altogether.
+- Remove the second active access key and only use one.
+- Avoid using long-lived access keys altogether.
 
-   :::note
+:::note
 
-   Please refer to the [AWS IAM documentation](https://docs.aws.amazon.com/IAM/latest/APIReference/API_ListAccessKeys.html) for details.
+Please refer to the [AWS IAM documentation](https://docs.aws.amazon.com/IAM/latest/APIReference/API_ListAccessKeys.html) for details.
 
-   :::
+:::
 
 ## Further Reading
 

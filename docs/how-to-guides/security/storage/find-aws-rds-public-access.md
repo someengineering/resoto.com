@@ -48,15 +48,15 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_rds_instance` resources](../../../reference/data-models/aws/index.md#aws_rds_instance).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   - Do not allow public access.
+- Do not allow public access.
 
-   :::note
+:::note
 
-   Please refer to the [AWS RDS documentation](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_RDS_Configuring.html) for details.
+Please refer to the [AWS RDS documentation](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_RDS_Configuring.html) for details.
 
-   :::
+:::
 
 ## Further Reading
 

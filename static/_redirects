@@ -131,6 +131,24 @@ https://blog.resoto.com/*                                                       
 /docs/how-to-guides/security/access-management/find-aws-lambda-policy-public                                      /docs/how-to-guides/security/access-management/find-aws-lambda-functions-with-public-resource-based-policies
 /docs/how-to-guides/security/access-management/*                                                                  /docs/how-to-guides/security/access-management
 
+/docs/how-to-guides/security/compute/find-aws-ec2-old-instances                       /docs/how-to-guides/security/compute/find-old-aws-ec2-instances
+/docs/how-to-guides/security/compute/find-aws-lambda-obsolete-runtime                 /docs/how-to-guides/security/compute/find-aws-lambda-functions-with-obsolete-runtimes
+/docs/how-to-guides/security/compute/*                                                /docs/how-to-guides/security/compute
+
+/docs/how-to-guides/security/logging/find-aws-cloudtrail-logging-disabled                   /docs/how-to-guides/security/logging/find-aws-cloudtrail-trails-with-logging-disabled
+/docs/how-to-guides/security/logging/find-aws-cloudtrail-logging-not-setu-up-in-all-regions /docs/how-to-guides/security/logging/find-aws-regions-not-monitored-by-cloudtrail
+/docs/how-to-guides/security/logging/find-aws-cloudtrail-no-encryption-at-rest              /docs/how-to-guides/security/logging/find-aws-cloudtrail-trails-not-encrypted-with-kms-keys
+/docs/how-to-guides/security/logging/find-aws-cloudtrail-no-recent-log-event                /docs/how-to-guides/security/logging/find-aws-cloudtrail-trails-with-no-log-events
+/docs/how-to-guides/security/logging/find-aws-cloudtrail-s3-bucket-access-logging-disabled  /docs/how-to-guides/security/logging/find-aws-cloudtrail-trails-with-s3-bucket-access-logging-disabled
+/docs/how-to-guides/security/logging/find-aws-cloudtrail-s3-bucket-is-publicly-accessible   /docs/how-to-guides/security/logging/find-aws-cloudtrail-trails-with-public-s3-buckets
+/docs/how-to-guides/security/logging/find-aws-cloudtrail-s3-data-read-events-disabled       /docs/how-to-guides/security/logging/find-aws-regions-with-cloudtrail-object-level-logging-for-s3-read-events-disabled
+/docs/how-to-guides/security/logging/find-aws-cloudtrail-s3-data-write-events-disabled      /docs/how-to-guides/security/logging/find-aws-regions-with-cloudtrail-object-level-logging-for-s3-write-events-disabled
+/docs/how-to-guides/security/logging/find-aws-cloudtrail-without-log-file-validation        /docs/how-to-guides/security/logging/find-aws-cloudtrail-trails-without-log-file-validation-enabled
+/docs/how-to-guides/security/logging/find-aws-config-not-enabled-in-all-regions             /docs/how-to-guides/security/logging/find-aws-regions-without-aws-config-enabled
+/docs/how-to-guides/security/logging/find-aws-ec2-vpc-flow-logs-not-enabled                 /docs/how-to-guides/security/logging/find-aws-vpcs-without-ec2-flow-logging-enabled
+/docs/how-to-guides/security/logging/find-aws-kms-master-key-rotation-not-enabled           /docs/how-to-guides/security/logging/find-aws-kms-keys-without-rotation-enabled
+/docs/how-to-guides/security/logging/*                                                      /docs/how-to-guides/security/logging
+
 /docs/how-to-guides/security/*                                                        /docs/how-to-guides/security
 
 /docs/how-to/*                                                                        /docs/how-to-guides/:splat

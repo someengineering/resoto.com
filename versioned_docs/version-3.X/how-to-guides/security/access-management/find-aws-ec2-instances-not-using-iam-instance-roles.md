@@ -50,15 +50,15 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_ec2_instance` resources](../../../reference/data-models/aws/index.md#aws_ec2_instance).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   - Create an IAM instance role and attach it to the corresponding EC2 instance.
+- Create an IAM instance role and attach it to the corresponding EC2 instance.
 
-   :::note
+:::note
 
-   Please refer to the [AWS EC2 documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html) for details.
+Please refer to the [AWS EC2 documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html) for details.
 
-   :::
+:::
 
 ## Further Reading
 

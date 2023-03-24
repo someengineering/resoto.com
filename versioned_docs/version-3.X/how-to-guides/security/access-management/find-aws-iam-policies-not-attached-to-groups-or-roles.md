@@ -50,17 +50,17 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_iam_access_key` resources](../../../reference/data-models/aws/index.md#aws_iam_access_key).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   - Remove any policy attached directly to the user.
-   - You can find all policies by dumping the user and look for all `user_policies` and `attached_policy`.
-   - Use groups or roles instead.
+- Remove any policy attached directly to the user.
+- You can find all policies by dumping the user and look for all `user_policies` and `attached_policy`.
+- Use groups or roles instead.
 
-   :::note
+:::note
 
-   Please refer to the [AWS IAM documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html) for details.
+Please refer to the [AWS IAM documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html) for details.
 
-   :::
+:::
 
 ## Further Reading
 

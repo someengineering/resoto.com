@@ -48,15 +48,15 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_rds_instance` resources](../../../reference/data-models/aws/index.md#aws_rds_instance).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   Enable auto minor version upgrade for all databases and environments that are matched by the search.
+Enable auto minor version upgrade for all databases and environments that are matched by the search.
 
-   :::note
+:::note
 
-   Please refer to the [AWS RDS documentation](https://aws.amazon.com/blogs/database/best-practices-for-upgrading-amazon-rds-to-major-and-minor-versions-of-postgresql) for details.
+Please refer to the [AWS RDS documentation](https://aws.amazon.com/blogs/database/best-practices-for-upgrading-amazon-rds-to-major-and-minor-versions-of-postgresql) for details.
 
-   :::
+:::
 
 ## Further Reading
 

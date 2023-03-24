@@ -50,17 +50,17 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_iam_user` resources](../../../reference/data-models/aws/index.md#aws_iam_user).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   - Enable MFA for users account.
-   - MFA is a simple best practice that adds an extra layer of protection on top of your user name and password.
-   - Recommended to use hardware keys over virtual MFA.
+- Enable MFA for users account.
+- MFA is a simple best practice that adds an extra layer of protection on top of your user name and password.
+- Recommended to use hardware keys over virtual MFA.
 
-   :::note
+:::note
 
-   Please refer to the [AWS IAM documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_virtual.html) for details.
+Please refer to the [AWS IAM documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_virtual.html) for details.
 
-   :::
+:::
 
 ## Further Reading
 

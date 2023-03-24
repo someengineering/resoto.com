@@ -48,15 +48,15 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_s3_bucket` resources](../../../reference/data-models/aws/index.md#aws_s3_bucket).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   Enable encryption at rest for matching S3 buckets.
+Enable encryption at rest for matching S3 buckets.
 
-   :::note
+:::note
 
-   Please refer to the [AWS S3 documentation](https://aws.amazon.com/blogs/security/how-to-prevent-uploads-of-unencrypted-objects-to-amazon-s3/) for details.
+Please refer to the [AWS S3 documentation](https://aws.amazon.com/blogs/security/how-to-prevent-uploads-of-unencrypted-objects-to-amazon-s3/) for details.
 
-   :::
+:::
 
 ## Further Reading
 

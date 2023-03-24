@@ -1,14 +1,14 @@
 ---
-sidebar_label: Find AWS CloudTrail without Log Events
+sidebar_label: Find AWS CloudTrail Trails with No Log Events
 ---
 
-# How to Find AWS CloudTrail without Log Events
+# How to Find AWS CloudTrail Trails with No Log Events
 
 ```mdx-code-block
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-Sending CloudTrail logs to CloudWatch Logs will facilitate real-time and historic activity logging based on user, API, resource, and IP address, and provides opportunity to establish alarms and notifications for anomalous or sensitivity account activity.
+Sending AWS CloudTrail events to CloudWatch Logs facilitates real-time and historic activity logging based on user, API, resource, and IP address, and makes it possible to establish alarms and notifications for anomalous or sensitive account activity.
 
 :::info
 
@@ -48,15 +48,15 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_cloud_trail` resources](../../../reference/data-models/aws/index.md#aws_cloud_trail).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   Validate that the trails in CloudTrail has an arn set in the CloudWatchLogsLogGroupArn property.
+Validate that the trails in CloudTrail has an arn set in the CloudWatchLogsLogGroupArn property.
 
-   :::note
+:::note
 
-   Please refer to the [AWS CloudTrail documentation](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/send-cloudtrail-events-to-cloudwatch-logs.html) for details.
+Please refer to the [AWS CloudTrail documentation](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/send-cloudtrail-events-to-cloudwatch-logs.html) for details.
 
-   :::
+:::
 
 ## Further Reading
 

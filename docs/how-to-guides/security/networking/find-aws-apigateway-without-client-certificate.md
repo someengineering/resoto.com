@@ -48,15 +48,15 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
    The command output will list the details of all non-compliant [`aws_api_gateway_stage` resources](../../../reference/data-models/aws/index.md#aws_api_gateway_stage).
 
-3. Fix detected issues by following the remediation steps:
+## Remediation
 
-   Enable client certificate. Mutual TLS is recommended and commonly used for business-to-business (B2B) applications. It iss used in standards such as Open Banking. API Gateway now provides integrated mutual TLS authentication at no additional cost.
+Enable client certificate. Mutual TLS is recommended and commonly used for business-to-business (B2B) applications. It iss used in standards such as Open Banking. API Gateway now provides integrated mutual TLS authentication at no additional cost.
 
-   :::note
+:::note
 
-   Please refer to the [AWS API Gateway documentation](https://aws.amazon.com/blogs/compute/introducing-mutual-tls-authentication-for-amazon-api-gateway/) for details.
+Please refer to the [AWS API Gateway documentation](https://aws.amazon.com/blogs/compute/introducing-mutual-tls-authentication-for-amazon-api-gateway/) for details.
 
-   :::
+:::
 
 ## Further Reading
 

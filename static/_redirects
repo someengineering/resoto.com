@@ -121,7 +121,7 @@ https://blog.resoto.com/*                                                       
 /docs/how-to-guides/security/access-management/find-aws-iam-policy-not-attached-to-groups-or-roles                /docs/how-to-guides/security/access-management/find-aws-iam-policies-not-attached-to-groups-or-roles
 /docs/how-to-guides/security/access-management/find-aws-iam-policy-with-full-administrative-privileges            /docs/how-to-guides/security/access-management/find-aws-iam-policies-with-full-administrative-privileges
 /docs/how-to-guides/security/access-management/find-aws-iam-root-access-keys-exist                                /docs/how-to-guides/security/access-management/find-aws-account-root-users-with-access-keys
-/docs/how-to-guides/security/access-management/find-aws-iam-support-role-not-created                              /docs/how-to-guides/security/access-management/detect-missing-aws-iam-support-role
+/docs/how-to-guides/security/access-management/find-aws-iam-support-role-not-created                              /docs/how-to-guides/security/access-management/find-aws-accounts-missing-iam-support-roles
 /docs/how-to-guides/security/access-management/find-aws-iam-use-root-account                                      /docs/how-to-guides/security/access-management/detect-use-of-aws-account-root-user-credentials
 /docs/how-to-guides/security/access-management/find-aws-iam-user-access-keys-creation-during-setup                /docs/how-to-guides/security/access-management/find-unused-aws-iam-access-keys-for-users-with-configured-passwords
 /docs/how-to-guides/security/access-management/find-aws-iam-user-has-two-active-access-keys                       /docs/how-to-guides/security/access-management/find-aws-iam-users-with-multiple-active-access-keys
@@ -148,6 +148,24 @@ https://blog.resoto.com/*                                                       
 /docs/how-to-guides/security/logging/find-aws-ec2-vpc-flow-logs-not-enabled                 /docs/how-to-guides/security/logging/find-aws-vpcs-without-ec2-flow-logging-enabled
 /docs/how-to-guides/security/logging/find-aws-kms-master-key-rotation-not-enabled           /docs/how-to-guides/security/logging/find-aws-kms-keys-without-rotation-enabled
 /docs/how-to-guides/security/logging/*                                                      /docs/how-to-guides/security/logging
+
+/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-authentication-failures         /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-authentication-failures
+/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-config-configuration-changes    /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-aws-config-changes
+/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-configuration-changes           /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-trail-configuration-changes
+/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-console-sign-in-in-without-mfa  /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-console-logins-without-mfa
+/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-iam-policy-changes              /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-iam-policy-changes
+/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-kms-key-deletion                /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-kms-key-deletion
+/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-network-acl-changes             /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-network-acl-changes
+/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-network-gateway-changes         /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-network-gateway-changes
+/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-no-mfa                          /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-console-logins-without-mfa
+/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-org-changes                     /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-organization-changes
+/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-root-account-usage              /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-root-user-usage
+/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-route-table-changes             /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-route-table-changes
+/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-s3-bucket-policy-changes        /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-s3-policy-changes
+/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-security-group-changes          /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-security-group-changes
+/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-unauthorized-api-calls          /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-unauthorized-api-calls
+/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-vpc-changes                     /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-vpc-changes
+/docs/how-to-guides/security/monitoring/*                                                                     /docs/how-to-guides/security/monitoring
 
 /docs/how-to-guides/security/*                                                        /docs/how-to-guides/security
 

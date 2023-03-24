@@ -1,8 +1,8 @@
 ---
-sidebar_label: Find AWS RDS Public Accessible Instances
+sidebar_label: Find Publicly Accessible AWS RDS Instances
 ---
 
-# How to Find AWS RDS Public Accessible Instances
+# How to Find Publicly Accessible AWS RDS Instances
 
 ```mdx-code-block
 import IconExternalLink from '@theme/Icon/ExternalLink';

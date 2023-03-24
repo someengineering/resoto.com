@@ -1,8 +1,8 @@
 ---
-sidebar_label: Find AWS RDS instances no Auto Minor Version Upgrade enabled
+sidebar_label: Find AWS RDS Instances Without Auto Minor Version Upgrade Enabled
 ---
 
-# How to Find AWS RDS instances do not have Auto Minor Version Upgrade enabled
+# How to Find AWS RDS Instances Without Auto Minor Version Upgrade Enabled
 
 ```mdx-code-block
 import IconExternalLink from '@theme/Icon/ExternalLink';

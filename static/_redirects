@@ -167,6 +167,18 @@ https://blog.resoto.com/*                                                       
 /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-vpc-changes                     /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-vpc-changes
 /docs/how-to-guides/security/monitoring/*                                                                     /docs/how-to-guides/security/monitoring
 
+/docs/how-to-guides/security/storage/find-aws-ec2-snapshot-not-encrypted-or-public      /docs/how-to-guides/security/storage/find-unencrypted-aws-ec2-snapshots
+/docs/how-to-guides/security/storage/find-aws-ec2-volume-not-encrypted                  /docs/how-to-guides/security/storage/find-unencrypted-aws-ec2-volumes
+/docs/how-to-guides/security/storage/find-aws-efs-without-encrytpion-at-rest            /docs/how-to-guides/security/storage/find-unencrypted-aws-efs-file-systems
+/docs/how-to-guides/security/storage/find-aws-rds-no-auto-minor-version-upgrade         /docs/how-to-guides/security/storage/find-aws-rds-instances-without-auto-minor-version-upgrade-enabled
+/docs/how-to-guides/security/storage/find-aws-rds-public-access                         /docs/how-to-guides/security/storage/find-publicly-accessible-aws-rds-instances
+/docs/how-to-guides/security/storage/find-aws-rds-storage-not-encrypted                 /docs/how-to-guides/security/storage/find-unencrypted-aws-rds-storage-volumes
+/docs/how-to-guides/security/storage/find-aws-s3-bucket-no-mfa-delete                   /docs/how-to-guides/security/storage/find-aws-s3-buckets-without-mfa-delete-enabled
+/docs/how-to-guides/security/storage/find-aws-s3-bucket-without-secure-transport-policy /docs/how-to-guides/security/storage/find-aws-s3-buckets-without-secure-transport-policies
+/docs/how-to-guides/security/storage/find-aws-s3-no-encryption                          /docs/how-to-guides/security/storage/find-unencrypted-aws-s3-buckets
+/docs/how-to-guides/security/storage/find-aws-s3-public-access-blocks                   /docs/how-to-guides/security/storage/find-aws-s3-buckets-missing-public-access-blocks
+/docs/how-to-guides/security/storage/*                                                  /docs/how-to-guides/security/storage
+
 /docs/how-to-guides/security/*                                                        /docs/how-to-guides/security
 
 /docs/how-to/*                                                                        /docs/how-to-guides/:splat

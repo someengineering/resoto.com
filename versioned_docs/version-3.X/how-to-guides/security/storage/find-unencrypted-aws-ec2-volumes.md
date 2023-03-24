@@ -1,8 +1,8 @@
 ---
-sidebar_label: Find AWS EC2 EBS Volumes not encrypted
+sidebar_label: Find Unencrypted AWS EC2 Volumes
 ---
 
-# How to Find AWS EC2 EBS Volumes not encrypted
+# How to Find Unencrypted AWS EC2 Volumes
 
 ```mdx-code-block
 import IconExternalLink from '@theme/Icon/ExternalLink';

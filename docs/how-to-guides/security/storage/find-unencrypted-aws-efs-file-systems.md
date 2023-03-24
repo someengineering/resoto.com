@@ -1,14 +1,14 @@
 ---
-sidebar_label: Find AWS RDS instances storage not encrypted
+sidebar_label: Find Unencrypted AWS EFS File Systems
 ---
 
-# How to Find AWS RDS instances storage not encrypted
+# How to Find Unencrypted AWS EFS File Systems
 
 ```mdx-code-block
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-If not enabled sensitive information at rest is not protected.
+EFS file systems should be encrypted at rest to prevent exposure of sensitive data to bad actors.
 
 :::info
 
@@ -25,36 +25,37 @@ This guide assumes that you have already [installed](../../../getting-started/in
 1. Execute the following [`search` command](../../../reference/cli/search-commands/search.md) in [Resoto Shell](../../../reference/components/shell.md) or Resoto UI:
 
    ```bash
-   > search is(aws_rds_instance) and volume_encrypted==false
+   > search is(aws_efs_file_system) and volume_encrypted==false
    # highlight-start
-   ​kind=aws_rds_instance, ..., region=resoto-poweruser
-   ​kind=aws_rds_instance, ..., account=poweruser-team
+   ​kind=aws_efs_file_system, ..., region=resoto-poweruser
+   ​kind=aws_efs_file_system, ..., account=poweruser-team
    # highlight-end
    ```
 
 2. Pipe the `search` command into the [`dump` command](../../../reference/cli/format-commands/dump.md):
 
    ```bash
-   > search is(aws_rds_instance) and volume_encrypted==false | dump
+   > search is(aws_efs_file_system) and volume_encrypted==false | dump
    # highlight-start
    ​reported:
-   ​  id: /aws/rds/123
+   ​  id: /aws/efs/123
    ​  name: some-name
    ​  ctime: '2022-12-05T22:53:14Z'
-   ​  kind: aws_rds_instance
+   ​  kind: aws_efs_file_system
    ​  age: 2mo28d
    # highlight-end
    ```
 
-   The command output will list the details of all non-compliant [`aws_rds_instance` resources](../../../reference/data-models/aws/index.md#aws_rds_instance).
+   The command output will list the details of all non-compliant [`aws_efs_file_system` resources](../../../reference/data-models/aws/index.md#aws_efs_file_system).
 
 ## Remediation
 
-- Enable Encryption for all matching instances.
+- Enable encryption at rest for EFS file systems.
+- Encryption at rest can only be enabled during the file system creation.
 
 :::note
 
-Please refer to the [AWS RDS documentation](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.html) for details.
+Please refer to the [AWS EFS documentation](https://docs.aws.amazon.com/efs/latest/ug/encryption-at-rest.html) for details.
 
 :::
 
@@ -62,9 +63,9 @@ Please refer to the [AWS RDS documentation](https://docs.aws.amazon.com/AmazonRD
 
 - [Search](../../../reference/search/index.md)
 - [Command-Line Interface](../../../reference/cli/index.md)
-- [`aws_rds_instance` Resource Data Model](../../../reference/data-models/aws/index.md#aws_rds_instance)
+- [`aws_efs_file_system` Resource Data Model](../../../reference/data-models/aws/index.md#aws_efs_file_system)
 
 ## External Links
 
 - [CIS Amazon Web Services Benchmarks <span class="badge badge--secondary">cisecurity.org <IconExternalLink width="10" height="10" /></span>](https://cisecurity.org/benchmark/amazon_web_services)
-- [AWS Documentation <span class="badge badge--secondary">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.html)
+- [AWS Documentation <span class="badge badge--secondary">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://docs.aws.amazon.com/efs/latest/ug/encryption-at-rest.html)

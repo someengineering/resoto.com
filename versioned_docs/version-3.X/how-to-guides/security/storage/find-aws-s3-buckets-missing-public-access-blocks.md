@@ -1,8 +1,8 @@
 ---
-sidebar_label: Find AWS S3 Account Level Public Access 
+sidebar_label: Find AWS S3 Buckets Missing Public Access Blocks
 ---
 
-# How to Find AWS S3 Account Level Public Access
+# How to Find AWS S3 Buckets Missing Public Access Blocks
 
 ```mdx-code-block
 import IconExternalLink from '@theme/Icon/ExternalLink';

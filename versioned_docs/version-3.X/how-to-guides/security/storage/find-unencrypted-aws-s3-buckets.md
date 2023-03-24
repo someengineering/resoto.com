@@ -1,14 +1,14 @@
 ---
-sidebar_label: Find AWS S3 buckets without default encryption 
+sidebar_label: Find Unencrypted AWS S3 Buckets
 ---
 
-# How to Find AWS S3 buckets without default encryption
+# How to Find Unencrypted AWS S3 Buckets
 
 ```mdx-code-block
 import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
-Amazon S3 default encryption provides a way to set the default encryption behavior for an S3 bucket. This will ensure data-at-rest is encrypted.
+Amazon S3 provides a way to set the default encryption behavior for an S3 bucket to ensure data is encrypted at rest.
 
 :::info
 

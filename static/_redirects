@@ -167,6 +167,35 @@ https://blog.resoto.com/*                                                       
 /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-vpc-changes                     /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-vpc-changes
 /docs/how-to-guides/security/monitoring/*                                                                     /docs/how-to-guides/security/monitoring
 
+/docs/how-to-guides/security/networking/find-aws-apigateway-no-authorizers                            /docs/how-to-guides/security/networking/find-aws-api-gateways-without-authorizers
+/docs/how-to-guides/security/networking/find-aws-apigateway-no-waf                                    /docs/how-to-guides/security/networking/find-aws-api-gateways-without-waf-acls
+/docs/how-to-guides/security/networking/find-aws-apigateway-without-client-certificate                /docs/how-to-guides/security/networking/find-aws-api-gateways-without-ssl-client-authentication
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-any-port-ipv4                      /docs/how-to-guides/security/networking/find-aws-ec2-network-acls-allowing-all-ipv4-inbound-traffic
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-any-port-ipv6                      /docs/how-to-guides/security/networking/find-aws-ec2-network-acls-allowing-all-ipv6-inbound-traffic
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-any-port-ipv4     /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-ipv4-inbound-traffic
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-any-port-ipv6     /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-ipv6-inbound-traffic
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-any-port          /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-cassandra-ports   /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-cassandra-ports
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-ftp-port          /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-ftp-ports
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-kafka-ports       /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-kafka-ports
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-kibana-ports      /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-kibana-ports
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-memcached-ports   /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-memcached-ports
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-mysql-ports       /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-mysql-ports
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-oracledb          /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-oracle-database-ports
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-port-mongodb      /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-mongodb-ports
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-postgresql-ports  /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-postgresql-ports
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-rdp-port          /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-rdp-ports
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-redis-ports       /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-redis-ports
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-sql-server-ports  /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-sql-server-ports
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-ssh-port          /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-ssh-ports
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-telnet-ports      /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-telnet-ports
+/docs/how-to-guides/security/networking/find-aws-ec2-default-security-group-traffic-not-restricted    /docs/how-to-guides/security/networking/find-aws-vpcs-with-default-security-groups-allowing-all-inbound-traffic
+/docs/how-to-guides/security/networking/find-aws-ec2-internet-facing-with-instance-profile            /docs/how-to-guides/security/networking/find-public-aws-ec2-instances-with-instance-profiles
+/docs/how-to-guides/security/networking/find-aws-ec2-public-ip-address                                /docs/how-to-guides/security/networking/find-public-aws-ec2-instances
+/docs/how-to-guides/security/networking/find-aws-ec2-routing-tables-no-least-privilege                /docs/how-to-guides/security/networking/find-aws-vpcs-with-overly-permissive-peering-routing-tables
+/docs/how-to-guides/security/networking/find-aws-ec2-wide-open-ipv4-security-group                    /docs/how-to-guides/security/networking/find-overly-permissive-aws-ec2-security-groups
+/docs/how-to-guides/security/networking/*                                                             /docs/how-to-guides/security/networking
+
 /docs/how-to-guides/security/storage/find-aws-ec2-snapshot-not-encrypted-or-public      /docs/how-to-guides/security/storage/find-unencrypted-aws-ec2-snapshots
 /docs/how-to-guides/security/storage/find-aws-ec2-volume-not-encrypted                  /docs/how-to-guides/security/storage/find-unencrypted-aws-ec2-volumes
 /docs/how-to-guides/security/storage/find-aws-efs-without-encrytpion-at-rest            /docs/how-to-guides/security/storage/find-unencrypted-aws-efs-file-systems

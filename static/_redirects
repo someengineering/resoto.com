@@ -110,7 +110,105 @@ https://blog.resoto.com/*                                                       
 
 /docs/how-to/alerting/set-up-discord-notifications                                    /docs/how-to-guides/alerting/send-discord-notifications
 /docs/how-to/security/find-and-delete-unused-aws-iam-access-keys                      /docs/how-to-guides/cleanup/clean-up-aws-iam-access-keys
-/docs/how-to/security/*                                                               /docs/how-to-guides/cleanup
+
+/docs/how-to-guides/security/access-management/find-aws-ec2-no-instance-profile-attached                          /docs/how-to-guides/security/access-management/find-aws-ec2-instances-not-using-iam-instance-roles
+/docs/how-to-guides/security/access-management/find-aws-iam-access-keys-not-rotated-after-90-days                 /docs/how-to-guides/security/access-management/find-aws-iam-access-keys-not-rotated-within-90-days
+/docs/how-to-guides/security/access-management/find-aws-iam-disable-old-credentials                               /docs/how-to-guides/security/access-management/find-unused-aws-iam-credentials
+/docs/how-to-guides/security/access-management/find-aws-iam-expired-server-certificates-not-deleted               /docs/how-to-guides/security/access-management/find-expired-aws-iam-server-certificates
+/docs/how-to-guides/security/access-management/find-aws-iam-hardware-mfa-not-enabled-for-root-account             /docs/how-to-guides/security/access-management/find-aws-account-root-users-without-hardware-mfa-enabled
+/docs/how-to-guides/security/access-management/find-aws-iam-password-policy-does-not-define-proper-minimum-length /docs/how-to-guides/security/access-management/find-aws-accounts-without-minimum-password-length-of-14-characters
+/docs/how-to-guides/security/access-management/find-aws-iam-password-policy-does-not-prevent-reuse                /docs/how-to-guides/security/access-management/find-aws-accounts-that-do-not-preent-reuse-of-the-last-24-passwords
+/docs/how-to-guides/security/access-management/find-aws-iam-policy-not-attached-to-groups-or-roles                /docs/how-to-guides/security/access-management/find-aws-iam-policies-not-attached-to-groups-or-roles
+/docs/how-to-guides/security/access-management/find-aws-iam-policy-with-full-administrative-privileges            /docs/how-to-guides/security/access-management/find-aws-iam-policies-with-full-administrative-privileges
+/docs/how-to-guides/security/access-management/find-aws-iam-root-access-keys-exist                                /docs/how-to-guides/security/access-management/find-aws-account-root-users-with-access-keys
+/docs/how-to-guides/security/access-management/find-aws-iam-support-role-not-created                              /docs/how-to-guides/security/access-management/find-aws-accounts-missing-iam-support-roles
+/docs/how-to-guides/security/access-management/find-aws-iam-use-root-account                                      /docs/how-to-guides/security/access-management/detect-use-of-aws-account-root-user-credentials
+/docs/how-to-guides/security/access-management/find-aws-iam-user-access-keys-creation-during-setup                /docs/how-to-guides/security/access-management/find-unused-aws-iam-access-keys-for-users-with-configured-passwords
+/docs/how-to-guides/security/access-management/find-aws-iam-user-has-two-active-access-keys                       /docs/how-to-guides/security/access-management/find-aws-iam-users-with-multiple-active-access-keys
+/docs/how-to-guides/security/access-management/find-aws-iam-user-mfa-not-enabled-console-access                   /docs/how-to-guides/security/access-management/find-aws-iam-users-without-mfa-enabled
+/docs/how-to-guides/security/access-management/find-aws-lambda-cors-policy                                        /docs/how-to-guides/security/access-management/find-aws-lambda-function-cors-vulnerabilities
+/docs/how-to-guides/security/access-management/find-aws-lambda-is-public                                          /docs/how-to-guides/security/access-management/find-public-aws-lambda-functions
+/docs/how-to-guides/security/access-management/find-aws-lambda-policy-public                                      /docs/how-to-guides/security/access-management/find-aws-lambda-functions-with-public-resource-based-policies
+/docs/how-to-guides/security/access-management/*                                                                  /docs/how-to-guides/security/access-management
+
+/docs/how-to-guides/security/compute/find-aws-ec2-old-instances                       /docs/how-to-guides/security/compute/find-old-aws-ec2-instances
+/docs/how-to-guides/security/compute/find-aws-lambda-obsolete-runtime                 /docs/how-to-guides/security/compute/find-aws-lambda-functions-with-obsolete-runtimes
+/docs/how-to-guides/security/compute/*                                                /docs/how-to-guides/security/compute
+
+/docs/how-to-guides/security/logging/find-aws-cloudtrail-logging-disabled                   /docs/how-to-guides/security/logging/find-aws-cloudtrail-trails-with-logging-disabled
+/docs/how-to-guides/security/logging/find-aws-cloudtrail-logging-not-setu-up-in-all-regions /docs/how-to-guides/security/logging/find-aws-regions-not-monitored-by-cloudtrail
+/docs/how-to-guides/security/logging/find-aws-cloudtrail-no-encryption-at-rest              /docs/how-to-guides/security/logging/find-aws-cloudtrail-trails-not-encrypted-with-kms-keys
+/docs/how-to-guides/security/logging/find-aws-cloudtrail-no-recent-log-event                /docs/how-to-guides/security/logging/find-aws-cloudtrail-trails-with-no-log-events
+/docs/how-to-guides/security/logging/find-aws-cloudtrail-s3-bucket-access-logging-disabled  /docs/how-to-guides/security/logging/find-aws-cloudtrail-trails-with-s3-bucket-access-logging-disabled
+/docs/how-to-guides/security/logging/find-aws-cloudtrail-s3-bucket-is-publicly-accessible   /docs/how-to-guides/security/logging/find-aws-cloudtrail-trails-with-public-s3-buckets
+/docs/how-to-guides/security/logging/find-aws-cloudtrail-s3-data-read-events-disabled       /docs/how-to-guides/security/logging/find-aws-regions-with-cloudtrail-object-level-logging-for-s3-read-events-disabled
+/docs/how-to-guides/security/logging/find-aws-cloudtrail-s3-data-write-events-disabled      /docs/how-to-guides/security/logging/find-aws-regions-with-cloudtrail-object-level-logging-for-s3-write-events-disabled
+/docs/how-to-guides/security/logging/find-aws-cloudtrail-without-log-file-validation        /docs/how-to-guides/security/logging/find-aws-cloudtrail-trails-without-log-file-validation-enabled
+/docs/how-to-guides/security/logging/find-aws-config-not-enabled-in-all-regions             /docs/how-to-guides/security/logging/find-aws-regions-without-aws-config-enabled
+/docs/how-to-guides/security/logging/find-aws-ec2-vpc-flow-logs-not-enabled                 /docs/how-to-guides/security/logging/find-aws-vpcs-without-ec2-flow-logging-enabled
+/docs/how-to-guides/security/logging/find-aws-kms-master-key-rotation-not-enabled           /docs/how-to-guides/security/logging/find-aws-kms-keys-without-rotation-enabled
+/docs/how-to-guides/security/logging/*                                                      /docs/how-to-guides/security/logging
+
+/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-authentication-failures         /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-authentication-failures
+/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-config-configuration-changes    /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-aws-config-changes
+/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-configuration-changes           /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-trail-configuration-changes
+/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-console-sign-in-in-without-mfa  /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-console-logins-without-mfa
+/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-iam-policy-changes              /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-iam-policy-changes
+/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-kms-key-deletion                /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-kms-key-deletion
+/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-network-acl-changes             /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-network-acl-changes
+/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-network-gateway-changes         /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-network-gateway-changes
+/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-no-mfa                          /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-console-logins-without-mfa
+/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-org-changes                     /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-organization-changes
+/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-root-account-usage              /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-root-user-usage
+/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-route-table-changes             /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-route-table-changes
+/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-s3-bucket-policy-changes        /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-s3-policy-changes
+/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-security-group-changes          /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-security-group-changes
+/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-unauthorized-api-calls          /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-unauthorized-api-calls
+/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-vpc-changes                     /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-vpc-changes
+/docs/how-to-guides/security/monitoring/*                                                                     /docs/how-to-guides/security/monitoring
+
+/docs/how-to-guides/security/networking/find-aws-apigateway-no-authorizers                            /docs/how-to-guides/security/networking/find-aws-api-gateways-without-authorizers
+/docs/how-to-guides/security/networking/find-aws-apigateway-no-waf                                    /docs/how-to-guides/security/networking/find-aws-api-gateways-without-waf-acls
+/docs/how-to-guides/security/networking/find-aws-apigateway-without-client-certificate                /docs/how-to-guides/security/networking/find-aws-api-gateways-without-ssl-client-authentication
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-any-port-ipv4                      /docs/how-to-guides/security/networking/find-aws-ec2-network-acls-allowing-all-ipv4-inbound-traffic
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-any-port-ipv6                      /docs/how-to-guides/security/networking/find-aws-ec2-network-acls-allowing-all-ipv6-inbound-traffic
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-any-port-ipv4     /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-ipv4-inbound-traffic
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-any-port-ipv6     /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-ipv6-inbound-traffic
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-any-port          /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-cassandra-ports   /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-cassandra-ports
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-ftp-port          /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-ftp-ports
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-kafka-ports       /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-kafka-ports
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-kibana-ports      /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-kibana-ports
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-memcached-ports   /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-memcached-ports
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-mysql-ports       /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-mysql-ports
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-oracledb          /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-oracle-database-ports
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-port-mongodb      /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-mongodb-ports
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-postgresql-ports  /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-postgresql-ports
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-rdp-port          /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-rdp-ports
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-redis-ports       /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-redis-ports
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-sql-server-ports  /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-sql-server-ports
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-ssh-port          /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-ssh-ports
+/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-telnet-ports      /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-telnet-ports
+/docs/how-to-guides/security/networking/find-aws-ec2-default-security-group-traffic-not-restricted    /docs/how-to-guides/security/networking/find-aws-vpcs-with-default-security-groups-allowing-all-inbound-traffic
+/docs/how-to-guides/security/networking/find-aws-ec2-internet-facing-with-instance-profile            /docs/how-to-guides/security/networking/find-public-aws-ec2-instances-with-instance-profiles
+/docs/how-to-guides/security/networking/find-aws-ec2-public-ip-address                                /docs/how-to-guides/security/networking/find-public-aws-ec2-instances
+/docs/how-to-guides/security/networking/find-aws-ec2-routing-tables-no-least-privilege                /docs/how-to-guides/security/networking/find-aws-vpcs-with-overly-permissive-peering-routing-tables
+/docs/how-to-guides/security/networking/find-aws-ec2-wide-open-ipv4-security-group                    /docs/how-to-guides/security/networking/find-overly-permissive-aws-ec2-security-groups
+/docs/how-to-guides/security/networking/*                                                             /docs/how-to-guides/security/networking
+
+/docs/how-to-guides/security/storage/find-aws-ec2-snapshot-not-encrypted-or-public      /docs/how-to-guides/security/storage/find-unencrypted-aws-ec2-snapshots
+/docs/how-to-guides/security/storage/find-aws-ec2-volume-not-encrypted                  /docs/how-to-guides/security/storage/find-unencrypted-aws-ec2-volumes
+/docs/how-to-guides/security/storage/find-aws-efs-without-encrytpion-at-rest            /docs/how-to-guides/security/storage/find-unencrypted-aws-efs-file-systems
+/docs/how-to-guides/security/storage/find-aws-rds-no-auto-minor-version-upgrade         /docs/how-to-guides/security/storage/find-aws-rds-instances-without-auto-minor-version-upgrade-enabled
+/docs/how-to-guides/security/storage/find-aws-rds-public-access                         /docs/how-to-guides/security/storage/find-publicly-accessible-aws-rds-instances
+/docs/how-to-guides/security/storage/find-aws-rds-storage-not-encrypted                 /docs/how-to-guides/security/storage/find-unencrypted-aws-rds-storage-volumes
+/docs/how-to-guides/security/storage/find-aws-s3-bucket-no-mfa-delete                   /docs/how-to-guides/security/storage/find-aws-s3-buckets-without-mfa-delete-enabled
+/docs/how-to-guides/security/storage/find-aws-s3-bucket-without-secure-transport-policy /docs/how-to-guides/security/storage/find-aws-s3-buckets-without-secure-transport-policies
+/docs/how-to-guides/security/storage/find-aws-s3-no-encryption                          /docs/how-to-guides/security/storage/find-unencrypted-aws-s3-buckets
+/docs/how-to-guides/security/storage/find-aws-s3-public-access-blocks                   /docs/how-to-guides/security/storage/find-aws-s3-buckets-missing-public-access-blocks
+/docs/how-to-guides/security/storage/*                                                  /docs/how-to-guides/security/storage
+
+/docs/how-to-guides/security/*                                                        /docs/how-to-guides/security
 
 /docs/how-to/*                                                                        /docs/how-to-guides/:splat
 /docs/guides/*                                                                        /docs/how-to-guides/:splat

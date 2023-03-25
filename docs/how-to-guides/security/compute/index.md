@@ -2,7 +2,7 @@
 sidebar_label: Compute
 ---
 
-# Security: Compute How-To Guides
+# Compute Security How-To Guides
 
 ```mdx-code-block
 import DocCardList from '@theme/DocCardList';

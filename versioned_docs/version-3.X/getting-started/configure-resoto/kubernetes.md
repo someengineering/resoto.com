@@ -126,6 +126,12 @@ The [Kubernetes](../../reference/data-models/kubernetes/index.md) collector is c
    </TabItem>
    <TabItem value="k8s" label="Kubernetes">
 
+   :::note
+
+   This can also be done via Resoto Configuration. See the Resoto Config tab above to learn more.
+
+   :::
+
    - Create a secret with the path(s) to your kubeconfig file(s):
 
      ```bash

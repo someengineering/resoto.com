@@ -4,6 +4,37 @@ sidebar_label: Worker
 
 # Resoto Worker Configuration
 
+## Writing files to worker's home directory
+
+There are situations where it is desired to write configuration files to the worker's home directory. For example, you might want to store the AWS credentials, GCP service account JSON, or Kubernetes kubeconfig files there.
+
+Resoto Worker allows you to define the file path and file content in the config, and it will write the file on worker startup. Keep in mind that the worker will only allow writing files to its home directory.
+
+:::caution
+
+Resoto Worker will overwrite any existing files.
+
+:::
+
+Example:
+
+```yaml
+resotoworker:
+  write_files_to_home_dir:
+    - path: ~/.aws/config
+      content: |
+        [default]
+        aws_access_key_id=AKIAIOSFODNN7EXAMPLE
+        aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+        region = us-east-1
+        output=json
+
+        [profile user1]
+        region=us-west-1
+        output=text
+
+```
+
 ## Multi-Core Machines
 
 Resoto resource collection speed depends heavily on the number of CPU cores available to the worker. When collecting hundreds of accounts, [Resoto Worker](../components/worker.md) can easily saturate 64 cores or more.

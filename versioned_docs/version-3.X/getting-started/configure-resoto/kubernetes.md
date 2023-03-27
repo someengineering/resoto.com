@@ -46,6 +46,51 @@ The [Kubernetes](../../reference/data-models/kubernetes/index.md) collector is c
 2. Make your kubeconfig file(s) available to Resoto at `/home/resoto/.kube`:
 
    <Tabs groupId="install-method">
+   <TabItem value="worker-config" label="Resoto Config">
+
+   - Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
+
+     ```bash
+     > config edit resoto.worker
+     ```
+
+   - Add the content of kubeconfig file(s) to the `resotoworker` section as follows:
+
+     ```yaml title="Resoto Worker configuration"
+     resotoworker:
+       ...
+     # highlight-start
+       write_files_to_home_dir:
+         - path: ~/.kube/config_1
+           content: |
+             apiVersion: v1
+             clusters:
+             - cluster:
+                 certificate-authority-data: <ca_data>
+                 server: https://k8s.example.com
+               name: example-cluster
+             contexts:
+             - context:
+                 cluster: example-cluster
+                 user: k8s-admin
+               name: context1
+             current-context: context1
+             kind: Config
+             preferences: {}
+             users:
+             - name: k8s-admin
+               user:
+                 token: <token>
+         - path: ~/.kube/config_2
+           content: ...
+     # highlight-end
+       ...
+     ...
+     ```
+
+   - Resoto Worker will create the kubeconfig file(s) at the specified location.
+
+   </TabItem>
    <TabItem value="docker" label="Docker">
 
    - Add volume definition(s) for each kubeconfig file to the `resotoworker` service in `docker-compose.yaml`:

@@ -59,6 +59,37 @@ https://youtu.be/6_nxUM0iFx4
 3. Make your `credentials` file available to Resoto at `/home/resoto/.aws`:
 
    <Tabs groupId="install-method">
+   <TabItem value="worker-config" label="Resoto Config">
+
+   - Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
+
+     ```bash
+     > config edit resoto.worker
+     ```
+
+   - Add the content of credentials file to the `resotoworker` section as follows:
+
+     ```yaml title="Resoto Worker configuration"
+     resotoworker:
+       ...
+     # highlight-start
+       write_files_to_home_dir:
+         - path: ~/.aws/credentials
+           content: |
+             [default]
+             region = us-west-2
+
+             role_arn = arn:aws:iam::235059640852:role/Resoto
+             external_id = a5eMybsyGIowimdZqpZWxxxxxxxxxxxx
+             credential_source = Ec2InstanceMetadata
+     # highlight-end
+       ...
+     ...
+     ```
+
+   - Resoto Worker will create the credentials file at the specified location.
+
+   </TabItem>
    <TabItem value="docker" label="Docker">
 
    - Add the following volume definition to the `resotoworker` service in `docker-compose.yaml`:
@@ -212,6 +243,37 @@ Access keys in the configuration are visible to anyone with access to your Resot
 2. Make your `credentials` file available to Resoto at `/home/resoto/.aws`:
 
    <Tabs groupId="install-method">
+   <TabItem value="worker-config" label="Resoto Config">
+
+   - Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
+
+     ```bash
+     > config edit resoto.worker
+     ```
+
+   - Add the content of credentials file to the `resotoworker` section as follows:
+
+     ```yaml title="Resoto Worker configuration"
+     resotoworker:
+       ...
+     # highlight-start
+       write_files_to_home_dir:
+         - path: ~/.aws/credentials
+           content: |
+             [default]
+             region = us-west-2
+
+             role_arn = arn:aws:iam::235059640852:role/Resoto
+             external_id = a5eMybsyGIowimdZqpZWxxxxxxxxxxxx
+             credential_source = Ec2InstanceMetadata
+     # highlight-end
+       ...
+     ...
+     ```
+
+   - Resoto Worker will create the credentials file at the specified location.
+
+   </TabItem>
    <TabItem value="docker" label="Docker">
 
    - Add the following volume definition to the `resotoworker` service in `docker-compose.yaml`:

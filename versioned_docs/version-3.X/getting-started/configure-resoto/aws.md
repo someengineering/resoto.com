@@ -53,33 +53,33 @@ If you do not wish to store credentials in the Resoto configuration, you have th
 
 :::
 
-- Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
+3. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
 
-  ```bash
-  > config edit resoto.worker
-  ```
+```bash
+> config edit resoto.worker
+```
 
-- Add the credentials for the instance profile that was created in the resotoworker section in the following manner:
+4. Add the credentials for the instance profile that was created in the resotoworker section in the following manner:
 
-  ```yaml title="Resoto Worker configuration"
-  resotoworker:
-    ...
-  # highlight-start
-    write_files_to_home_dir:
-      - path: ~/.aws/credentials
-        content: |
-          [default]
-          region = us-west-2
-
-          role_arn = arn:aws:iam::235059640852:role/Resoto
-          external_id = a5eMybsyGIowimdZqpZWxxxxxxxxxxxx
-          credential_source = Ec2InstanceMetadata
-  # highlight-end
-    ...
+```yaml title="Resoto Worker configuration"
+resotoworker:
   ...
-  ```
+# highlight-start
+  write_files_to_home_dir:
+    - path: ~/.aws/credentials
+      content: |
+        [default]
+        region = us-west-2
 
-- Resoto Worker will create the credentials file at the specified location.
+        role_arn = arn:aws:iam::235059640852:role/Resoto
+        external_id = a5eMybsyGIowimdZqpZWxxxxxxxxxxxx
+        credential_source = Ec2InstanceMetadata
+# highlight-end
+  ...
+...
+```
+
+Resoto Worker will create the credentials file at the specified location.
 
 :::info
 
@@ -87,13 +87,13 @@ This step is not necessary for pip installs. Since Resoto is running on your loc
 
 :::
 
-3. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
+5. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
 
    ```bash
    > config edit resoto.worker
    ```
 
-4. Modify the `aws` section of the configuration as follows, making sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null`:
+6. Modify the `aws` section of the configuration as follows, making sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null`:
 
    ```yaml title="Resoto Worker configuration"
    resotoworker:
@@ -151,33 +151,33 @@ If you do not wish to store credentials in the Resoto configuration, you have th
 
 :::
 
-- Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
+2. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
 
-  ```bash
-  > config edit resoto.worker
-  ```
+```bash
+> config edit resoto.worker
+```
 
-- Add the content of credentials file with the desired profiles to the `resotoworker` section as follows:
+3. Add the content of credentials file with the desired profiles to the `resotoworker` section as follows:
 
-  ```yaml title="Resoto Worker configuration"
-  resotoworker:
-    ...
-  # highlight-start
-    write_files_to_home_dir:
-      - path: ~/.aws/credentials
-        content: |
-          [default]
-          region = us-west-2
-
-          role_arn = arn:aws:iam::235059640852:role/Resoto
-          external_id = a5eMybsyGIowimdZqpZWxxxxxxxxxxxx
-          credential_source = Ec2InstanceMetadata
-  # highlight-end
-    ...
+```yaml title="Resoto Worker configuration"
+resotoworker:
   ...
-  ```
+# highlight-start
+  write_files_to_home_dir:
+    - path: ~/.aws/credentials
+      content: |
+        [default]
+        region = us-west-2
 
-- Resoto Worker will create the credentials file at the specified location.
+        role_arn = arn:aws:iam::235059640852:role/Resoto
+        external_id = a5eMybsyGIowimdZqpZWxxxxxxxxxxxx
+        credential_source = Ec2InstanceMetadata
+# highlight-end
+  ...
+...
+```
+
+Resoto Worker will create the credentials file at the specified location.
 
 :::info
 
@@ -185,7 +185,7 @@ This step is not necessary for pip installs. Since Resoto is running on your loc
 
 :::
 
-3. Modify the `aws` section of the configuration as follows, adding one or more profile names from your `~/.aws/credentials` file:
+4. Modify the `aws` section of the configuration as follows, adding one or more profile names from your `~/.aws/credentials` file:
 
    ```yaml title="Resoto Worker configuration"
    resotoworker:

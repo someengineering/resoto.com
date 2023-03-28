@@ -47,40 +47,40 @@ If you do not wish to store service account JSON file(s) in the Resoto configura
 
 :::
 
-- Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
+2. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
 
-  ```bash
-  > config edit resoto.worker
-  ```
+```bash
+> config edit resoto.worker
+```
 
-- Add the content of the service account JSON to the `resotoworker` section as follows:
+3. Add the content of the service account JSON to the `resotoworker` section as follows:
 
-  ```yaml title="Resoto Worker configuration"
-  resotoworker:
-    ...
-  # highlight-start
-    write_files_to_home_dir:
-      - path: ~/.gcp/service-account-1.json
-        content: |
-          {
-           "type": "service_account",
-           "project_id": "example",
-           "private_key_id": "7fe5157943fc7fe5157943fc7fe5157943fc",
-           "private_key": "-----BEGIN PRIVATE KEY-----\n<private key>\n-----END PRIVATE KEY-----\n",
-           "client_email": "account@example.iam.gserviceaccount.com",
-           "client_id": "123456789123456789",
-           "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-           "token_uri": "https://oauth2.googleapis.com/token",
-           "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-           "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/account%40example.iam.gserviceaccount.com"
-         }
-
-  # highlight-end
-    ...
+```yaml title="Resoto Worker configuration"
+resotoworker:
   ...
-  ```
+# highlight-start
+  write_files_to_home_dir:
+    - path: ~/.gcp/service-account-1.json
+      content: |
+        {
+         "type": "service_account",
+         "project_id": "example",
+         "private_key_id": "7fe5157943fc7fe5157943fc7fe5157943fc",
+         "private_key": "-----BEGIN PRIVATE KEY-----\n<private key>\n-----END PRIVATE KEY-----\n",
+         "client_email": "account@example.iam.gserviceaccount.com",
+         "client_id": "123456789123456789",
+         "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+         "token_uri": "https://oauth2.googleapis.com/token",
+         "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+         "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/account%40example.iam.gserviceaccount.com"
+       }
 
-- Resoto Worker will create the service account JSON file at the specified location.
+# highlight-end
+  ...
+...
+```
+
+Resoto Worker will create the service account JSON file at the specified location.
 
 :::info
 
@@ -94,13 +94,13 @@ The following steps assume that the file(s) are named `service-account-1.json`, 
 
 :::
 
-2. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
+4. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
 
    ```bash
    > config edit resoto.worker
    ```
 
-3. Modify the `gcp` section of the configuration as follows, adding the paths to your service account JSON file:
+5. Modify the `gcp` section of the configuration as follows, adding the paths to your service account JSON file:
 
    ```yaml title="Resoto Worker configuration"
    resotoworker:

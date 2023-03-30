@@ -4,22 +4,24 @@ sidebar_label: Worker
 
 # Resoto Worker Configuration
 
-## Creating Configuration Files in the Worker's Home Directory
+```mdx-code-block
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+```
 
-In certain scenarios, it may be necessary to create configuration files in the worker's home directory. For instance, you might need to store AWS credentials, GCP service account JSON, or Kubernetes kubeconfig files in that location.
+## Configuration Files
 
-Resoto Worker provides the ability to specify both the file path and content within the configuration settings, and will automatically generate the file upon worker startup. It is important to note that the worker will only permit the writing of files to its home directory.
+You may need make your AWS `credentials` file, GCP service account JSON files, Kubernetes kubeconfig files, etc. available to Resoto Worker so that it can collect your resources.
 
-:::caution
+### Writing Configuration Files at Startup
 
-Resoto Worker will overwrite any pre-existing files with the same name.
+The Resoto Worker `write_files_to_home_dir` configuration option allows you to write files to the Resoto Worker home directory.
 
-:::
+Resoto Worker generates files at defined `path` with the specified `content` at startup.
 
-Example:
-
-```yaml
+```yaml title="Resoto Worker configuration"
 resotoworker:
+# highlight-start
   write_files_to_home_dir:
     - path: ~/.aws/config
       content: |
@@ -32,78 +34,94 @@ resotoworker:
         [profile user1]
         region=us-west-1
         output=text
-
-```
-
-## Mounting configuration files using Docker or Kubernetes
-
-Another method of providing configuration files is to mount them within the container. The following examples demonstrate how to mount the `.aws` directory in both Docker and Kubernetes:
-
-### Docker
-
-To mount the .aws directory in Docker, you need to add the following volume definition to the resotoworker service in the docker-compose.yaml file:
-
-```yaml title="docker-compose.yaml"
-services:
-  ...
-  resotoworker:
-    image: somecr.io/someengineering/resotoworker:{{imageTag}}
-    container_name: resotoworker
-    ...
-# highlight-start
-    volumes:
-      - $HOME/.aws:/home/resoto/.aws
 # highlight-end
-  ...
-...
-```
-
-Once you have added the volume definition, you need to recreate the resotoworker container with the updated service definition using the following command:
-
-```bash
-$ docker-compose up -d
 ```
 
 :::note
 
-[Docker Compose V2 integrated compose functions in to the Docker platform.](https://docs.docker.com/compose/#compose-v2-and-the-new-docker-compose-command)
-
-In Docker Compose V2, the command is `docker compose` (no hyphen) instead of `docker-compose`.
+Resoto Worker can only write files to its home directory.
 
 :::
 
-### Kubernetes
+:::caution
 
-To mount the .aws directory in Kubernetes, you need to create a secret that includes the path to the credentials file as follows:
+Resoto Worker will overwrite any existing files with the defined filenames.
 
-```bash
-$ kubectl -n resoto create secret generic resoto-home \
-  --from-file=credentials=$HOME/.aws/credentials
-```
+:::
 
-Next, update the resoto-values.yaml file to include the following volume mounts and volumes under the resotoworker section:
+### Mounting Configuration Files to Container-Based Installations
 
-```yaml title="resoto-values.yaml"
-...
-resotoworker:
-  ...
-# highlight-start
-  volumeMounts:
-    - mountPath: /home/resoto/.aws
-      name: aws-credentials
-  volumes:
-    - name: aws-credentials
-      secret:
-        secretName: resoto-home
-# highlight-end
-...
-```
+For [Docker](../../getting-started/install-resoto/docker.md) and [Kubernetes](../../getting-started/install-resoto/kubernetes.md) installations, you can mount configuration files within the `resotoworker` container instead of defining them in the configuration.
 
-Finally, deploy these changes with Helm using the following command:
+<Tabs groupId="install-method">
+<TabItem value="docker" label="Docker">
 
-```bash
-$ helm upgrade resoto resoto/resoto --set image.tag={{imageTag}} -f resoto-values.yaml
-```
+1. Add the desired volume definition to the `resotoworker` service in `docker-compose.yaml`:
+
+   ```yaml title="docker-compose.yaml"
+   services:
+     ...
+     resotoworker:
+       image: somecr.io/someengineering/resotoworker:{{imageTag}}
+       container_name: resotoworker
+       ...
+   # highlight-start
+       volumes:
+         - $HOME/.aws:/home/resoto/.aws
+   # highlight-end
+     ...
+   ...
+   ```
+
+2. Recreate the `resotoworker` container with the updated service definition:
+
+   ```bash
+   $ docker-compose up -d
+   ```
+
+   :::note
+
+   [Docker Compose V2 integrated compose functions in to the Docker platform.](https://docs.docker.com/compose/#compose-v2-and-the-new-docker-compose-command)
+
+   In Docker Compose V2, the command is `docker compose` (no hyphen) instead of `docker-compose`.
+
+   :::
+
+</TabItem>
+<TabItem value="k8s" label="Kubernetes">
+
+1. Create a secret with the path to the configuration file:
+
+   ```bash
+   $ kubectl -n resoto create secret generic resoto-home --from-file=credentials=$HOME/.aws/credentials
+   ```
+
+2. Update `resoto-values.yaml` with `resotoworker` volume mounts and volumes:
+
+   ```yaml title="resoto-values.yaml"
+   ...
+   resotoworker:
+     ...
+   # highlight-start
+     volumeMounts:
+       - mountPath: /home/resoto/.aws
+         name: aws-credentials
+     volumes:
+       - name: aws-credentials
+         secret:
+           secretName: resoto-home
+   # highlight-end
+   ...
+   ```
+
+3. Deploy the changes with Helm:
+
+   ```bash
+   $ helm upgrade resoto resoto/resoto --set image.tag={{imageTag}} -f resoto-values.yaml
+   ```
+
+</TabItem>
+</Tabs>
 
 ## Multi-Core Machines
 

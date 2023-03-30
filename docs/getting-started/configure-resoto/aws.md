@@ -45,55 +45,44 @@ https://youtu.be/6_nxUM0iFx4
 
 1. Configure an [instance profile](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html).
 
-2. Make your `credentials` available to Resoto at `/home/resoto/.aws`:
-
-:::note
-
-If you do not wish to store credentials in the Resoto configuration, you have the option [to mount the directory containing the credentials onto the container](../../reference/configuration/worker#mounting-configuration-files-using-docker-or-kubernetes).
-
-:::
-
-3. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
-
-```bash
-> config edit resoto.worker
-```
-
-4. Add the credentials for the instance profile that was created in the resotoworker section in the following manner:
-
-```yaml title="Resoto Worker configuration"
-resotoworker:
-  ...
-# highlight-start
-  write_files_to_home_dir:
-    - path: ~/.aws/credentials
-      content: |
-        [default]
-        region = us-west-2
-
-        role_arn = arn:aws:iam::235059640852:role/Resoto
-        external_id = a5eMybsyGIowimdZqpZWxxxxxxxxxxxx
-        credential_source = Ec2InstanceMetadata
-# highlight-end
-  ...
-...
-```
-
-Resoto Worker will create the credentials file at the specified location.
-
-:::info
-
-This step is not necessary for pip installs. Since Resoto is running on your local machine, it can access the `credentials` file directly.
-
-:::
-
-5. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
+2. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
 
    ```bash
    > config edit resoto.worker
    ```
 
-6. Modify the `aws` section of the configuration as follows, making sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null`:
+3. Add the contents of your `credentials` file to the `resotoworker` section of the configuration as follows:
+
+   ```yaml title="Resoto Worker configuration"
+   resotoworker:
+     ...
+   # highlight-start
+     write_files_to_home_dir:
+       - path: ~/.aws/credentials
+         content: |
+           [default]
+           region = us-west-2
+
+           role_arn = arn:aws:iam::235059640852:role/Resoto
+           external_id = a5eMybsyGIowimdZqpZWxxxxxxxxxxxx
+           credential_source = Ec2InstanceMetadata
+   # highlight-end
+   ...
+   ```
+
+   :::note
+
+   If you do not wish to save the contents of your `credentials` file to Resoto's database, you can alternatively [mount the `~/.aws` directory to the `resotoworker` container](../../reference/configuration/worker#mounting-configuration-files-to-container-based-installations).
+
+   :::
+
+   :::info
+
+   This step is not necessary for pip installs. Since Resoto is running on your local machine, it can access the `credentials` file directly at `~/.aws/credentials`.
+
+   :::
+
+4. Modify the `aws` section of the configuration as follows, making sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null`:
 
    ```yaml title="Resoto Worker configuration"
    resotoworker:
@@ -143,47 +132,57 @@ Access keys in the configuration are visible to anyone with access to your Resot
 </TabItem>
 <TabItem value="profiles" label="Profiles">
 
-1. Make your `credentials` file available to Resoto at `/home/resoto/.aws`:
+1. Create a file `~/.aws/credentials` with the desired profiles:
 
-:::note
+   ```ini title="~/.aws/credentials"
+   [production]
+   aws_xxx = yyy
 
-If you do not wish to store credentials in the Resoto configuration, you have the option [to mount the directory containing the credentials onto the container](../../reference/configuration/worker#mounting-configuration-files-using-docker-or-kubernetes).
+   [test]
+   aws_xxx = yyy
 
-:::
+   [dev]
+   aws_xxx = yyy
+
+   ...
+   ```
 
 2. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
 
-```bash
-> config edit resoto.worker
-```
+   ```bash
+   > config edit resoto.worker
+   ```
 
-3. Add the content of credentials file with the desired profiles to the `resotoworker` section as follows:
+3. Add the contents of your `credentials` file to the `resotoworker` section of the configuration as follows:
 
-```yaml title="Resoto Worker configuration"
-resotoworker:
-  ...
-# highlight-start
-  write_files_to_home_dir:
-    - path: ~/.aws/credentials
-      content: |
-        [default]
-        region = us-west-2
+   ```yaml title="Resoto Worker configuration"
+   resotoworker:
+     ...
+   # highlight-start
+     write_files_to_home_dir:
+       - path: ~/.aws/credentials
+         content: |
+           [default]
+           region = us-west-2
 
-        role_arn = arn:aws:iam::235059640852:role/Resoto
-        external_id = a5eMybsyGIowimdZqpZWxxxxxxxxxxxx
-        credential_source = Ec2InstanceMetadata
-# highlight-end
-  ...
-...
-```
+           role_arn = arn:aws:iam::235059640852:role/Resoto
+           external_id = a5eMybsyGIowimdZqpZWxxxxxxxxxxxx
+           credential_source = Ec2InstanceMetadata
+   # highlight-end
+   ...
+   ```
 
-Resoto Worker will create the credentials file at the specified location.
+   :::note
 
-:::info
+   If you do not wish to save the contents of your `credentials` file to Resoto's database, you can alternatively [mount the `~/.aws` directory to the `resotoworker` container](../../reference/configuration/worker#mounting-configuration-files-to-container-based-installations).
 
-This step is not necessary for pip installs. Since Resoto is running on your local machine, it can access the `credentials` file directly.
+   :::
 
-:::
+   :::info
+
+   This step is not necessary for pip installs. Since Resoto is running on your local machine, it can access the `credentials` file directly at `~/.aws/credentials`.
+
+   :::
 
 4. Modify the `aws` section of the configuration as follows, adding one or more profile names from your `~/.aws/credentials` file:
 

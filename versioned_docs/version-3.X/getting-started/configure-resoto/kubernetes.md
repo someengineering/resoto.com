@@ -89,7 +89,7 @@ The [Kubernetes](../../reference/data-models/kubernetes/index.md) collector is c
 
    :::info
 
-   For pip installs, you can simply move or copy your kubeconfig file(s) to the `~/.kube` directory. (Since Resoto is running on your local machine, it can access the file(s) directly.)
+   For [pip installs](../install-resoto/pip.md), you can simply move or copy your kubeconfig file(s) to the `~/.kube` directory. (Since Resoto is running on your local machine, it can access the file(s) directly.)
 
    :::
 

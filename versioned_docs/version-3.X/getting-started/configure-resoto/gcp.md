@@ -39,12 +39,6 @@ The [Google Cloud Platform (GCP)](../../reference/data-models/gcp/index.md) coll
 <Tabs>
 <TabItem value="service-account-json" label="Service Account JSON">
 
-:::note
-
-If you do not wish to save the contents of your service account JSON file(s) to Resoto's database, you can alternatively [mount the directory containing your service account JSON file(s) to the `resotoworker` container](../../reference/configuration/worker#mounting-configuration-files-to-container-based-installations).
-
-:::
-
 1. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
 
 ```bash
@@ -81,9 +75,15 @@ If you do not wish to save the contents of your service account JSON file(s) to 
    ...
    ```
 
+   :::note
+
+   If you do not wish to save the contents of your service account JSON file(s) to Resoto's database, you can alternatively [mount the directory containing your service account JSON file(s) to the `resotoworker` container](../../reference/configuration/worker#mounting-configuration-files-to-container-based-installations).
+
+   :::
+
    :::info
 
-   For pip installs, you can simply move or copy your service account JSON file(s) to the `~/.gcp` directory. (Since Resoto is running on your local machine, it can access the file(s) directly.)
+   For [pip installs](../install-resoto/pip.md), you can simply move or copy your service account JSON file(s) to the `~/.gcp` directory. (Since Resoto is running on your local machine, it can access the file(s) directly.)
 
    :::
 

@@ -78,7 +78,7 @@ https://youtu.be/6_nxUM0iFx4
 
    :::info
 
-   This step is not necessary for pip installs. Since Resoto is running on your local machine, it can access the `credentials` file directly at `~/.aws/credentials`.
+   This step is not necessary for [pip installs](../install-resoto/pip.md). Since Resoto is running on your local machine, it can access the `credentials` file directly at `~/.aws/credentials`.
 
    :::
 
@@ -180,7 +180,7 @@ Access keys in the configuration are visible to anyone with access to your Resot
 
    :::info
 
-   This step is not necessary for pip installs. Since Resoto is running on your local machine, it can access the `credentials` file directly at `~/.aws/credentials`.
+   This step is not necessary for [pip installs](../install-resoto/pip.md). Since Resoto is running on your local machine, it can access the `credentials` file directly at `~/.aws/credentials`.
 
    :::
 

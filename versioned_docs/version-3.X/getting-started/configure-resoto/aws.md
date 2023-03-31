@@ -45,106 +45,44 @@ https://youtu.be/6_nxUM0iFx4
 
 1. Configure an [instance profile](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html).
 
-2. Create a file `~/.aws/credentials` with the credentials for the created instance profile:
-
-   ```ini title="~/.aws/credentials"
-   [default]
-   region = us-west-2
-
-   role_arn = arn:aws:iam::235059640852:role/Resoto
-   external_id = a5eMybsyGIowimdZqpZWxxxxxxxxxxxx
-   credential_source = Ec2InstanceMetadata
-   ```
-
-3. Make your `credentials` file available to Resoto at `/home/resoto/.aws`:
-
-   <Tabs groupId="install-method">
-   <TabItem value="docker" label="Docker">
-
-   - Add the following volume definition to the `resotoworker` service in `docker-compose.yaml`:
-
-     ```yaml title="docker-compose.yaml"
-     services:
-       ...
-       resotoworker:
-         image: somecr.io/someengineering/resotoworker:{{imageTag}}
-         container_name: resotoworker
-         ...
-     # highlight-start
-         volumes:
-           - $HOME/.aws:/home/resoto/.aws
-     # highlight-end
-       ...
-     ...
-     ```
-
-   - Recreate the `resotoworker` container with the updated service definition:
-
-     ```bash
-     $ docker-compose up -d
-     ```
-
-     :::note
-
-     [Docker Compose V2 integrated compose functions in to the Docker platform.](https://docs.docker.com/compose/#compose-v2-and-the-new-docker-compose-command)
-
-     In Docker Compose V2, the command is `docker compose` (no hyphen) instead of `docker-compose`.
-
-     :::
-
-   </TabItem>
-   <TabItem value="k8s" label="Kubernetes">
-
-   - Create a secret with the path to the `credentials` file:
-
-     ```bash
-     $ kubectl -n resoto create secret generic resoto-home \
-       --from-file=credentials=$HOME/.aws/credentials
-     ```
-
-   - Update `resoto-values.yaml` as follows:
-
-     ```yaml title="resoto-values.yaml"
-     ...
-     resotoworker:
-       ...
-     # highlight-start
-       volumeMounts:
-         - mountPath: /home/resoto/.aws
-           name: aws-credentials
-       volumes:
-         - name: aws-credentials
-           secret:
-             secretName: resoto-home
-     # highlight-end
-     ...
-     ```
-
-   - Deploy these changes with Helm:
-
-     ```bash
-     $ helm upgrade resoto resoto/resoto --set image.tag={{imageTag}} -f resoto-values.yaml
-     ```
-
-   </TabItem>
-   <TabItem value="pip" label="pip">
-
-   :::info
-
-   This step is not necessary for pip installs. Since Resoto is running on your local machine, it can access the `credentials` file directly.
-
-   :::
-
-   </TabItem>
-   </Tabs>
-
-4. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
+2. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
 
    ```bash
    > config edit resoto.worker
    ```
 
-5. Modify the `aws` section of the configuration as follows, making sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null`:
+3. Add the contents of your `credentials` file to the `resotoworker` section of the configuration as follows:
+
+   ```yaml title="Resoto Worker configuration"
+   resotoworker:
+     ...
+   # highlight-start
+     write_files_to_home_dir:
+       - path: ~/.aws/credentials
+         content: |
+           [default]
+           region = us-west-2
+
+           role_arn = arn:aws:iam::235059640852:role/Resoto
+           external_id = a5eMybsyGIowimdZqpZWxxxxxxxxxxxx
+           credential_source = Ec2InstanceMetadata
+   # highlight-end
+   ...
+   ```
+
+   :::note
+
+   If you do not wish to save the contents of your `credentials` file to Resoto's database, you can alternatively [mount the `~/.aws` directory to the `resotoworker` container](../../reference/configuration/worker#mounting-configuration-files-to-container-based-installations).
+
+   :::
+
+   :::info
+
+   This step is not necessary for [pip installs](../install-resoto/pip.md). Since Resoto is running on your local machine, it can access the `credentials` file directly at `~/.aws/credentials`.
+
+   :::
+
+4. Modify the `aws` section of the configuration as follows, making sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null`:
 
    ```yaml title="Resoto Worker configuration"
    resotoworker:
@@ -209,88 +147,44 @@ Access keys in the configuration are visible to anyone with access to your Resot
    ...
    ```
 
-2. Make your `credentials` file available to Resoto at `/home/resoto/.aws`:
+2. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
 
-   <Tabs groupId="install-method">
-   <TabItem value="docker" label="Docker">
+   ```bash
+   > config edit resoto.worker
+   ```
 
-   - Add the following volume definition to the `resotoworker` service in `docker-compose.yaml`:
+3. Add the contents of your `credentials` file to the `resotoworker` section of the configuration as follows:
 
-     ```yaml title="docker-compose.yaml"
-     services:
-       ...
-       resotoworker:
-         image: somecr.io/someengineering/resotoworker:{{imageTag}}
-         ...
-     # highlight-start
-         volumes:
-           - $HOME/.aws:/home/resoto/.aws
-     # highlight-end
-       ...
+   ```yaml title="Resoto Worker configuration"
+   resotoworker:
      ...
-     ```
+   # highlight-start
+     write_files_to_home_dir:
+       - path: ~/.aws/credentials
+         content: |
+           [default]
+           region = us-west-2
 
-   - Recreate the `resotoworker` container with the updated service definition:
+           role_arn = arn:aws:iam::235059640852:role/Resoto
+           external_id = a5eMybsyGIowimdZqpZWxxxxxxxxxxxx
+           credential_source = Ec2InstanceMetadata
+   # highlight-end
+   ...
+   ```
 
-     ```bash
-     $ docker-compose up -d
-     ```
+   :::note
 
-     :::note
-
-     [Docker Compose V2 integrated compose functions in to the Docker platform.](https://docs.docker.com/compose/#compose-v2-and-the-new-docker-compose-command)
-
-     In Docker Compose V2, the command is `docker compose` (no hyphen) instead of `docker-compose`.
-
-     :::
-
-   </TabItem>
-   <TabItem value="k8s" label="Kubernetes">
-
-   - Create a secret for the `credentials` file:
-
-     ```bash
-     $ kubectl -n resoto create secret generic resoto-home \
-       --from-file=credentials=$HOME/.aws/credentials
-     ```
-
-   - Update the Helm values `resoto-values.yaml` file as follows:
-
-     ```yaml title="resoto-values.yaml"
-     ...
-     resotoworker:
-       ...
-     # highlight-start
-       volumeMounts:
-         - mountPath: /home/resoto/.aws
-           name: aws-credentials
-       volumes:
-         - name: aws-credentials
-           secret:
-             secretName: resoto-home
-     # highlight-end
-     ...
-     ```
-
-   - Deploy these changes with Helm:
-
-     ```bash
-     $ helm upgrade resoto resoto/resoto --set image.tag={{imageTag}} -f resoto-values.yaml
-     ```
-
-   </TabItem>
-   <TabItem value="pip" label="pip">
-
-   :::info
-
-   This step is not necessary for pip installs. Since Resoto is running on your local machine, it can access the `credentials` file directly.
+   If you do not wish to save the contents of your `credentials` file to Resoto's database, you can alternatively [mount the `~/.aws` directory to the `resotoworker` container](../../reference/configuration/worker#mounting-configuration-files-to-container-based-installations).
 
    :::
 
-   </TabItem>
-   </Tabs>
+   :::info
 
-3. Modify the `aws` section of the configuration as follows, adding one or more profile names from your `~/.aws/credentials` file:
+   This step is not necessary for [pip installs](../install-resoto/pip.md). Since Resoto is running on your local machine, it can access the `credentials` file directly at `~/.aws/credentials`.
+
+   :::
+
+4. Modify the `aws` section of the configuration as follows, adding one or more profile names from your `~/.aws/credentials` file:
 
    ```yaml title="Resoto Worker configuration"
    resotoworker:

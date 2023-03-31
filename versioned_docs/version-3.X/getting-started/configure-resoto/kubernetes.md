@@ -39,101 +39,61 @@ The [Kubernetes](../../reference/data-models/kubernetes/index.md) collector is c
 <Tabs>
 <TabItem value="kubeconfig-files" label="kubeconfig Files">
 
-**The easiest way to configure access to Kubernetes is to give Resoto Worker access to [kubeconfig files](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig).**
+**The easiest way to configure access to Kubernetes is via [kubeconfig files](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig).**
 
-1. Move or copy your kubeconfig files to the `~/.kube` directory.
-
-2. Make your kubeconfig file(s) available to Resoto at `/home/resoto/.kube`:
-
-   <Tabs groupId="install-method">
-   <TabItem value="docker" label="Docker">
-
-   - Add volume definition(s) for each kubeconfig file to the `resotoworker` service in `docker-compose.yaml`:
-
-     ```yaml title="docker-compose.yaml"
-     services:
-       ...
-       resotoworker:
-         image: somecr.io/someengineering/resotoworker:{{imageTag}}
-         ...
-     # highlight-start
-         volumes:
-           - $HOME/.kube:/home/resoto/.kube
-     # highlight-end
-       ...
-     ...
-     ```
-
-   - Recreate the `resotoworker` container with the updated service definition:
-
-     ```bash
-     $ docker-compose up -d
-     ```
-
-     :::note
-
-     [Docker Compose V2 integrated compose functions in to the Docker platform.](https://docs.docker.com/compose/#compose-v2-and-the-new-docker-compose-command)
-
-     In Docker Compose V2, the command is `docker compose` (no hyphen) instead of `docker-compose`.
-
-     :::
-
-   </TabItem>
-   <TabItem value="k8s" label="Kubernetes">
-
-   - Create a secret with the path(s) to your kubeconfig file(s):
-
-     ```bash
-     $ kubectl -n resoto create secret generic kubernetes-auth \
-       --from-file=config_1=<PATH TO kubeconfig FILE>
-       --from-file=config_2=<PATH TO ANOTHER kubeconfig FILE>
-     ```
-
-   - Update `resoto-values.yaml` as follows:
-
-     ```yaml title="resoto-values.yaml"
-     ...
-     resotoworker:
-       ...
-     # highlight-start
-       volumeMounts:
-         - mountPath: /home/resoto/.kube
-           name: kubeconfig-files
-       volumes:
-         - name: kubeconfig-files
-           secret:
-             secretName: kubernetes-auth
-     # highlight-end
-     ...
-     ```
-
-   - Deploy these changes with Helm:
-
-     ```bash
-     $ helm upgrade resoto resoto/resoto --set image.tag={{imageTag}} -f resoto-values.yaml
-     ```
-
-   </TabItem>
-   <TabItem value="pip" label="pip">
-
-   - Simply move or copy your kubeconfig file(s) to the `~/.kube` directory. (Since Resoto is running on your local machine, it can access the file(s) directly.)
-
-     :::note
-
-     The following steps assume that the file(s) are named `config_1`, `config_2`, etc.
-
-     :::
-
-   </TabItem>
-   </Tabs>
-
-3. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
+1. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
 
    ```bash
    > config edit resoto.worker
    ```
 
-4. Modify the `k8s` section of the configuration as follows, defining `path` and `contexts` for each file:
+2. Add the content of kubeconfig file(s) to the `resotoworker` section as follows:
+
+   ```yaml title="Resoto Worker configuration"
+   resotoworker:
+     ...
+   # highlight-start
+     write_files_to_home_dir:
+       - path: ~/.kube/config_1
+         content: |
+           apiVersion: v1
+           clusters:
+           - cluster:
+               certificate-authority-data: <ca_data>
+               server: https://k8s.example.com
+             name: example-cluster
+           contexts:
+           - context:
+               cluster: example-cluster
+               user: k8s-admin
+             name: context1
+           current-context: context1
+           kind: Config
+           preferences: {}
+           users:
+           - name: k8s-admin
+             user:
+               token: <token>
+       - path: ~/.kube/config_2
+         content: ...
+   # highlight-end
+     ...
+   ...
+   ```
+
+   :::note
+
+   If you do not wish to save the contents of your kubeconfig file(s) to Resoto's database, you can alternatively [mount the directory containing your kubeconfig file(s) to the `resotoworker` container](../../reference/configuration/worker#mounting-configuration-files-to-container-based-installations).
+
+   :::
+
+   :::info
+
+   For [pip installs](../install-resoto/pip.md), you can simply move or copy your kubeconfig file(s) to the `~/.kube` directory. (Since Resoto is running on your local machine, it can access the file(s) directly.)
+
+   :::
+
+3. Modify the `k8s` section of the configuration as follows, defining `path` and `contexts` for each file:
 
    ```yaml title="Resoto Worker configuration"
    resotoworker:
@@ -149,6 +109,12 @@ The [Kubernetes](../../reference/data-models/kubernetes/index.md) collector is c
          all_contexts: true
    # highlight-end
    ```
+
+   :::note
+
+   The above example assumes that your kubeconfig file(s) are named `config_1`, `config_2`, etc.
+
+   :::
 
    :::info
 

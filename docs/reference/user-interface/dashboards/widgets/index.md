@@ -88,7 +88,11 @@ The Table Widget is a very flexible way to display [search](../../../../referenc
 - [Aggregate Search (Live Data)](../data-sources/index.md#aggregate-search)
 - [Search (Live Data)](../data-sources/index.md#search)
 
-:::tip You can export the displayed data directly from the widget by clicking the export button on the top right. :::
+:::tip
+
+You can export the displayed data directly from the widget by clicking the export button on the top right.
+
+:::
 
 <details>
 <summary>Table Aggregate Search Data Source examples</summary>

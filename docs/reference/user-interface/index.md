@@ -28,7 +28,7 @@ The Resoto user interface features a menu bar at the top of the screen.
 
 **(5) Search box** on the right side of the menu bar is visible when the UI is not showing the home screen. You can use this to quickly start a new [search](./search.md).
 
-**(5) Workflow status** indicates if a workflow is currently running. Click on it to get more information about the running [workflow](../../concepts/automation/workflow.md).
+**(5) Workflow status** indicates if a workflow is currently running. Click on it to get more information about the running [workflow](../../concepts/automation/index.md).
 
 ## Home Screen
 
@@ -52,7 +52,7 @@ The home screen is displayed by default. Clicking on these icons opens the other
 
 ### Job Editor
 
-The [Job Editor](./job-editor.md) gives an easy-to-use interface to set up and manage [automation jobs](../../concepts/automation/job.md). ![Resoto UI Job Editor](./img/resoto-ui-job-editor.jpg)
+The [Job Editor](./job-editor.md) gives an easy-to-use interface to set up and manage [automation jobs](../../concepts/automation/index.md). ![Resoto UI Job Editor](./img/resoto-ui-job-editor.jpg)
 
 ### Resoto Shell Lite
 
@@ -60,11 +60,11 @@ The [Job Editor](./job-editor.md) gives an easy-to-use interface to set up and m
 
 ### Configuration Editor
 
-[Configuration Editor](./configuration-editor.md) ![Resoto UI Resh Lite](./img/resoto-ui-config-editor.jpg)
+The [Configuration Editor](./configuration-editor.md) gives you an easy way of editing Resoto [configurations](../configuration/). ![Resoto UI Resh Lite](./img/resoto-ui-config-editor.jpg)
 
 ### Setup Wizard
 
-[Setup Wizard](./setup-wizard.md) ![Resoto UI Resh Lite](./img/resoto-ui-setup-wizard.jpg)
+The [Setup Wizard](./setup-wizard.md) guides you through the initial setup of Resoto. ![Resoto UI Resh Lite](./img/resoto-ui-setup-wizard.jpg)
 
 ### Settings and Tools
 

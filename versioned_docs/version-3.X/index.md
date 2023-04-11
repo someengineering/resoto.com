@@ -17,7 +17,7 @@ At Resoto's core is a graph-based data model, which is better suited to capture 
 
 To help you find the information you need, the Resoto documentation is organized as follows:
 
-- **[Getting Started](./getting-started/index.md)** walks you through how to [install](./getting-started/install-resoto/index.md) and [configure](./getting-started/configure-cloud-provider-access/index.md) Resoto, step by step.** _Start here if you're new to Resoto._**
+- **[Getting Started](./getting-started/index.md)** walks you through how to [install](./getting-started/install-resoto/index.md) and [configure](./getting-started/configure-resoto/index.md) Resoto, step by step.** _Start here if you're new to Resoto._**
 - **[How-To Guides](./how-to-guides/index.md)** provide step-by-step instructions for performing various tasks within Resoto, such as [search](./how-to-guides/search/index.md), [cleanup](./how-to-guides/cleanup/index.md), [alerting](./how-to-guides/alerting/index.md), and [data export](./how-to-guides/data-export/index.md).
 - **[Concepts](./concepts/index.md)** describe key topics and ideas, and provide an overview of how Resoto works.
 - **[Reference](./reference/index.md)** is a manual describing the [command-line interface (CLI)](./reference/cli/index.md) and [data models](./reference/data-models/index.md). It is assumed that you already have a basic understanding of important concepts.
@@ -58,14 +58,14 @@ By default, Resoto collects this data and creates an inventory snapshot every ho
 
 With the help of our community, Resoto currently supports over [300 resource types](./reference/data-models/index.md) that enable you to track and manage assets across the following cloud providers:
 
-- [Amazon Web Services (AWS)](./getting-started/configure-cloud-provider-access/aws.md)
-- [Google Cloud Platform (GCP)](./getting-started/configure-cloud-provider-access/gcp.md)
-- [DigitalOcean](./getting-started/configure-cloud-provider-access/digitalocean.md)
-- [Kubernetes (K8s)](./getting-started/configure-cloud-provider-access/kubernetes.md)
+- [Amazon Web Services (AWS)](./getting-started/configure-resoto/aws.md)
+- [Google Cloud Platform (GCP)](./getting-started/configure-resoto/gcp.md)
+- [DigitalOcean](./getting-started/configure-resoto/digitalocean.md)
+- [Kubernetes (K8s)](./getting-started/configure-resoto/kubernetes.md)
 
-See [Configure Cloud Provider Access](./getting-started/configure-cloud-provider-access/index.md) for more information on how to configure these providers.
+See [Configure Resoto Access](./getting-started/configure-resoto/index.md) for more information on how to configure these providers.
 
-In addition to the above collector plugins, various [tag validation and cleanup plugins](./concepts/components/plugins/index.md) are also included for effortless handling of common use cases and tasks.
+In addition to the above collector plugins, various tag validation and cleanup [plugins](./reference/components/plugins/index.md) are also included for effortless handling of common use cases and tasks.
 
 :::info
 

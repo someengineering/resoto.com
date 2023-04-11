@@ -1,10 +1,10 @@
 # Security
 
-By default, all [Resoto components](../concepts/components/index.md) communicate with each other via HTTPS using Transport Layer Security (TLS).
+By default, all [Resoto components](./components/index.md) communicate with each other via HTTPS using Transport Layer Security (TLS).
 
 The trust between components is established using a Pre-Shared-Key (PSK) that is used to derive a key which in turn is used to sign JWT tokens.
 
-[Resoto Core](../concepts/components/core.md) is running a Public Key Infrastructure (PKI) including a Certificate Authority (CA). Upon start, all components will request a certificate from the CA.
+[Resoto Core](./components/core.md) is running a Public Key Infrastructure (PKI) including a Certificate Authority (CA). Upon start, all components will request a certificate from the CA.
 
 ## Pre-Shared Key (PSK) {#pre-shared-key}
 
@@ -14,7 +14,7 @@ From this passphrase, a 256 bit key is derived using PKCS#5 password-based key d
 
 ### JSON Web Token (JWT) {#json-web-token}
 
-If `--psk` was specified, every request that a component makes to [Resoto Core](../concepts/components/core.md) must provide a valid `Authentication` header with a JWT signed using the PSK.
+If `--psk` was specified, every request that a component makes to [Resoto Core](./components/core.md) must provide a valid `Authentication` header with a JWT signed using the PSK.
 
 This is true for encrypted HTTPS and unencrypted HTTP requests, meaning that if TLS is turned off (`--no-tls`) but a PSK was specified, the request will still be authenticated (just not encrypted!).
 
@@ -22,7 +22,7 @@ This is true for encrypted HTTPS and unencrypted HTTP requests, meaning that if 
 
 By default, the Resoto built-in CA will be used.
 
-Alternatively, a custom CA cert and key can be provided to [Resoto Core](../concepts/components/core.md) using the `--ca-cert` and `--ca-cert-key` flags.
+Alternatively, a custom CA cert and key can be provided to [Resoto Core](./components/core.md) using the `--ca-cert` and `--ca-cert-key` flags.
 
 Or, if you are already running a CA or have externally signed certificates (e.g., [Let's Encrypt](https://letsencrypt.org)) they can be used using the `--ca-cert`, `--cert` and `--cert-key` flags for all components. If the key is protected by a passphrase, `--cert-key-pass` can also be specified.
 
@@ -30,13 +30,13 @@ The following sections explain the steps Resoto automatically performs when usin
 
 ### Establishing Trust
 
-[Resoto Core](../concepts/components/core.md) has two API endpoints, [`/ca/cert`](./api/retrieve-the-certificate-authorities-public-certificate) and [`/ca/sign`](./api/sign-a-certificate-request).
+[Resoto Core](./components/core.md) has two API endpoints, [`/ca/cert`](./api/retrieve-the-certificate-authorities-public-certificate) and [`/ca/sign`](./api/sign-a-certificate-request).
 
-The former serves the core's public CA root certificate. Upon startup, all other components will request this root certificate from [Resoto Core](../concepts/components/core.md) without validating the TLS connection.
+The former serves the core's public CA root certificate. Upon startup, all other components will request this root certificate from [Resoto Core](./components/core.md) without validating the TLS connection.
 
-However, [Resoto Core](../concepts/components/core.md) encodes the certificate's SHA256 fingerprint into a JWT which is signed with the previously mentioned PSK. When the component downloads the thus far untrusted root certificate it compares its fingerprint with the one the core has encoded into the JWT. If the fingerprints match the CA's root certificate is stored as a valid root certificate and from then on trusted. The trust is established.
+However, [Resoto Core](./components/core.md) encodes the certificate's SHA256 fingerprint into a JWT which is signed with the previously mentioned PSK. When the component downloads the thus far untrusted root certificate it compares its fingerprint with the one the core has encoded into the JWT. If the fingerprints match the CA's root certificate is stored as a valid root certificate and from then on trusted. The trust is established.
 
-Any HTTPS requests between components and [Resoto Core](../concepts/components/core.md) from this point forward are validated against the CA root certificate.
+Any HTTPS requests between components and [Resoto Core](./components/core.md) from this point forward are validated against the CA root certificate.
 
 ### Component Certificates
 
@@ -48,9 +48,9 @@ Components will automatically renew their certificates a day before they expire.
 
 ## Custom Certificates
 
-[Resoto Shell (`resh`)](../concepts/components/shell.md) can be used to create custom certificates. This is useful for securing the connection to other components like [ArangoDB](https://arangodb.com) or [Prometheus](https://prometheus.io).
+[Resoto Shell (`resh`)](./components/shell.md) can be used to create custom certificates. This is useful for securing the connection to other components like [ArangoDB](https://arangodb.com) or [Prometheus](https://prometheus.io).
 
-To create a certificate, open [Resoto Shell](../concepts/components/shell.md) and execute:
+To create a certificate, open [Resoto Shell](./components/shell.md) and execute:
 
 ```bash
 > certificate create --common-name arangodb.local --dns-names arangodb.local localhost --ip-addresses 127.0.0.1
@@ -85,13 +85,13 @@ See [`certificate` Command](./cli/setup-commands/certificate.md) for details.
 
 ## Advanced
 
-For advanced users who would like to communicate with [Resoto APIs](./api/index.md), here are some pointers of how to integrate with [Resoto Core](../concepts/components/core.md) using the same transport encryption and authentication [Resoto's components](../concepts/components/index.md) use when communicating with each other.
+For advanced users who would like to communicate with [Resoto APIs](./api/index.md), here are some pointers of how to integrate with [Resoto Core](./components/core.md) using the same transport encryption and authentication [Resoto's components](./components/index.md) use when communicating with each other.
 
 ### Retrieving and Validating the CA Certificate
 
-The Resoto CA certificate can be retrieved at <https://localhost:8900/ca/cert> (replace `localhost` with the hostname or IP where [Resoto Core](../concepts/components/core.md) is running).
+The Resoto CA certificate can be retrieved at <https://localhost:8900/ca/cert> (replace `localhost` with the hostname or IP where [Resoto Core](./components/core.md) is running).
 
-In a Python 3 REPL with [`resotolib`](../concepts/components/library.md) installed execute the following:
+In a Python 3 REPL with `resotolib` installed, execute the following:
 
 ```python
 >>> from resotolib.core.ca import get_ca_cert

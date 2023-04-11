@@ -10,7 +10,7 @@ One way to receive these alerts is via [Discord](https://discord.com). In this g
 
 ## Prerequisites
 
-This guide assumes that you have already [installed](../../../getting-started/install-resoto/index.md) and configured Resoto to [collect your cloud resources](../../../getting-started/configure-cloud-provider-access/index.md).
+This guide assumes that you have already [installed](../../../getting-started/install-resoto/index.md) and configured Resoto to [collect your cloud resources](../../../getting-started/configure-resoto/index.md).
 
 You will also need the **Manage Webhooks** permission for the target text channel in your Discord server.
 
@@ -40,7 +40,7 @@ You will also need the **Manage Webhooks** permission for the target text channe
 
    ![Example Discord alert](./img/example-alert.png)
 
-4. Finally, we want to automate checking of the defined alert trigger and send alerts to Discord whenever the result is true. We can accomplish this by creating a [job](../../../concepts/automation/job.md):
+4. Finally, we want to automate checking of the defined alert trigger and send alerts to Discord whenever the result is true. We can accomplish this by creating a [job](../../../concepts/automation/index.md#jobs):
 
    ```bash
    > jobs add --id notify_large_test_instances --wait-for-event post_collect 'search is(instance) and instance_memory>4 and /ancestors.account.reported.name==test-account | discord title="Large instances found in test-account" webhook="https://discord.com/api/webhooks/..."'
@@ -55,5 +55,5 @@ A default webhook URL can be specified in the `discord` custom command configura
 ## Further Reading
 
 - [Search](../../../reference/search/index.md)
-- [Job](../../../concepts/automation/job.md)
+- [Automation](../../../concepts/automation/index.md)
 - [Command-Line Interface](../../../reference/cli/index.md)

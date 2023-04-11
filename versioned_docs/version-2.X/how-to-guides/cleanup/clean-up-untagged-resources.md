@@ -15,7 +15,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
 ## Directions
 
-1. Execute the following command in [Resoto Shell](../../concepts/components/shell.md) to open the [Resoto Worker](../../concepts/components/worker.md) configuration for editing:
+1. Execute the following command in [Resoto Shell](../../reference/components/shell.md) to open the [Resoto Worker](../../reference/components/worker.md) configuration for editing:
 
    ```bash
    > config edit resoto.worker
@@ -88,8 +88,8 @@ This guide assumes that you have already [installed](../../getting-started/insta
    The `cleanup_untagged` plugin configuration has the following subsections:
 
    - `default` specifies the default age of a resource before mandatory tags are enforced. For example, if `age` is set to `2h`, there is a 2-hour grace period to add the required tags after resource creation.
-   - `tags` lists tags that **must** exist on every resource [kind](../../reference/data-models/index.md#kinds) listed in the `kinds` subsection.
-   - `kinds` lists [kinds](../../reference/data-models/index.md#kinds) for which tags listed in `tags` **must** exist.
+   - `tags` lists tags that **must** exist on every [resource kind](../../concepts/asset-inventory-graph/index.md#resource-kinds) listed in the `kinds` subsection.
+   - `kinds` lists [resource kind](../../concepts/asset-inventory-graph/index.md#resource-kinds) for which tags listed in `tags` **must** exist.
    - `accounts` contains a dictionary of cloud and account IDs for which tags will be enforced. For each account, a name is defined and the age defined in `default` can optionally be overridden.
 
    :::
@@ -104,7 +104,7 @@ Each time the `cleanup_untagged` plugin runs, resources for which the specified 
 
 ## Further Reading
 
-- [`cleanup_untagged` Plugin](../../concepts/components/plugins/cleanup_untagged.md)
+- [`cleanup_untagged` Plugin](../../reference/components/plugins/cleanup_untagged.md)
 - [Resource Tagging](../../concepts/resource-management/tagging.md)
 - [Resource Cleanup](../../concepts/resource-management/cleanup.md)
 - [Configuration](../../reference/configuration/index.md)

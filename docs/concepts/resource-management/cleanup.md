@@ -8,9 +8,9 @@ Resoto is very good at helping you find problematic resources in your infrastruc
 
 :::info
 
-By default, [Resoto Worker](../components/worker.md) does not delete resources marked for deletion. Resources marked with `| clean` will stay this way without getting deleted unless [cleanup is enabled](#enabling-cleanup).
+By default, [Resoto Worker](../../reference/components/worker.md) does not delete resources marked for deletion. Resources marked with `| clean` will stay this way without getting deleted unless [cleanup is enabled](#enabling-cleanup).
 
-Cleanup can be performed manually in [Resoto Shell](../components/shell.md), automatically using a [cleanup plugin](../components/plugins/index.md), or via a scheduled [job](../automation/job.md).
+Cleanup can be performed manually in [Resoto Shell](../../reference/components/shell.md), automatically using a [cleanup plugin](../../reference/components/plugins/index.md), or via a scheduled [job](../automation/index.md#jobs).
 
 See [Cleanup How-To Guides](../../how-to-guides/cleanup/index.md) for step-by-step instructions to clean up various types of resources.
 
@@ -24,7 +24,7 @@ A manual search and cleanup in this situation could look like this:
 > search is(aws_ec2_instance) and name =~ "^jenkins-worker-.*" and age > 24h | clean "instance older than 24h"
 ```
 
-To automate things, you could create a [job](../automation/job.md) that runs whenever cleanup is planned and searches for compute instances with a certain name that are older than 24 hours and automatically deletes them.
+To automate things, you could create a [job](../automation/index.md#jobs) that runs whenever cleanup is planned and searches for compute instances with a certain name that are older than 24 hours and automatically deletes them.
 
 The same search turned into an automated cleanup job:
 
@@ -54,7 +54,7 @@ You can also target specific resources to un-mark. For example, to quickly undo 
 
 ## Enabling Cleanup
 
-When a resource is marked for cleanup, it is not immediately deleted. Rather, it is flagged for deletion during the `collect_and_cleanup` [workflow](../automation/workflow.md), which runs each hour by default.
+When a resource is marked for cleanup, it is not immediately deleted. Rather, it is flagged for deletion during the [`collect_and_cleanup` workflow](../../reference/workflows/index.md#collect_and_cleanup-workflow), which runs each hour by default.
 
 :::info
 
@@ -62,7 +62,7 @@ Resources can only be cleaned up if they are not [protected](./protection.md).
 
 :::
 
-To enable cleanup, execute the following command in [Resoto Shell](../components/shell.md) to open the [Resoto Worker](../components/worker.md) configuration for editing:
+To enable cleanup, execute the following command in [Resoto Shell](../../reference/components/shell.md) to open the [Resoto Worker](../../reference/components/worker.md) configuration for editing:
 
 ```bash
 > config edit resoto.worker
@@ -82,7 +82,7 @@ resotoworker:
   cleanup_pool_size: 16
 ```
 
-When cleanup is enabled, marked resources will be deleted as a part of the `collect_and_cleanup` [workflow](../../concepts/automation/workflow.md), which runs each hour by default.
+When cleanup is enabled, marked resources will be deleted as a part of the [`collect_and_cleanup` workflow](../../reference/workflows/index.md#collect_and_cleanup-workflow), which runs each hour by default.
 
 :::tip
 

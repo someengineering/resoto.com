@@ -5,13 +5,13 @@ sidebar_label: Filters
 
 # Search Filters
 
-## Selecting Nodes by [Kind](../../concepts/graph/node.md#kind) {#selecting-nodes-by-kind}
+## Selecting Nodes by [Kind](../../concepts/asset-inventory-graph/index.md#resource-kinds) {#selecting-nodes-by-kind}
 
 ```bash title="Filter by kind"
 > search is(instance)
 ```
 
-In order to select nodes by a specific type, the search syntax supports the `is(<kind>)` function. The term `is(instance)` would select the EC2 instance above, but also all other instances, e.g. Google Cloud instances, while the term `is(aws_ec2_instance)` would select only EC2 instances from AWS.
+In order to select [nodes](../../concepts/asset-inventory-graph/index.md#nodes) by a specific type, the search syntax supports the `is(<kind>)` function. The term `is(instance)` would select the EC2 instance above, but also all other instances, e.g. Google Cloud instances, while the term `is(aws_ec2_instance)` would select only EC2 instances from AWS.
 
 You can get a list of all available kinds via the `kind` CLI command.
 
@@ -21,7 +21,7 @@ You can get a list of all available kinds via the `kind` CLI command.
 > search id(id2345)
 ```
 
-Resoto will add a synthetic `id` property to each node, that is globally unique, no matter which cloud provider you are using. Nodes can be selected by their internal ID via the `id(xyz)` function.
+Resoto will add a synthetic `id` property to each [node](../../concepts/asset-inventory-graph/index.md#nodes) that is globally unique, no matter which cloud provider you are using. Nodes can be selected by their internal ID via the `id(xyz)` function.
 
 ## Selecting Nodes by Predicate
 
@@ -29,7 +29,7 @@ Resoto will add a synthetic `id` property to each node, that is globally unique,
 > search name=~"my-.*" and age>30d
 ```
 
-In order to filter for specific attributes of a node, it is possible to define predicates. A predicate always has the syntax `<property_path> <operation> <value>` (e.g., `answer != 42`).
+In order to filter for specific attributes of a [node](../../concepts/asset-inventory-graph/index.md#nodes), it is possible to define predicates. A predicate always has the syntax `<property_path> <operation> <value>` (e.g., `answer != 42`).
 
 ### Property Path
 

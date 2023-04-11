@@ -12,11 +12,11 @@ We will first perform a search that aggregates all storage volumes across all cl
 
 ## Prerequisites
 
-This guide assumes that you have already [installed](../../../getting-started/install-resoto/index.md) and configured Resoto to [collect your cloud resources](../../../getting-started/configure-cloud-provider-access/index.md).
+This guide assumes that you have already [installed](../../../getting-started/install-resoto/index.md) and configured Resoto to [collect your cloud resources](../../../getting-started/configure-resoto/index.md).
 
 ## Directions
 
-1. Execute the following [aggregate search](../../../reference/search/aggregation.md) in [Resoto Shell](../../../concepts/components/shell.md):
+1. Execute the following [aggregate search](../../../reference/search/aggregation.md) in [Resoto Shell](../../../reference/components/shell.md):
 
    ```bash
    > search aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account: sum(volume_size * 1024 * 1024 * 1024) as volume_bytes): is(volume)

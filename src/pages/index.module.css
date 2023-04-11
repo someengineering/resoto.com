@@ -35,10 +35,6 @@
   max-width: var(--ifm-container-width);
 }
 
-.siteTitle {
-  display: none;
-}
-
 .heroInner {
   font-size: 32px;
   line-height: 1;

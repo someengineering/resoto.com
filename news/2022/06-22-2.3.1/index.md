@@ -16,12 +16,12 @@ tags: [release notes]
 
 - [Kubernetes Support](https://some.engineering/blog/2022/06/22/kubernetes-support)
 - [Install Resoto with Kubernetes](/docs/getting-started/install-resoto/kubernetes)
-- [Configure Kubernetes Access](/docs/getting-started/configure-cloud-provider-access/kubernetes)
+- [Configure Kubernetes Resource Collection](/docs/getting-started/configure-resoto/kubernetes)
 - [Kubernetes Resource Data Models](/docs/reference/data-models/kubernetes)
 
 ### UI to Configure Resoto
 
-We now ship a user interface (UI) in [Resoto Core](/docs/concepts/components/core), from which it is possible to configure Resoto.
+We now ship a user interface (UI) in [Resoto Core](/docs/reference/components/core), from which it is possible to configure Resoto.
 
 If you are running Resoto locally via [Docker](/docs/getting-started/install-resoto/docker), the UI is accessible via [https://localhost:8900/ui](https://localhost:8900/ui):
 
@@ -31,11 +31,11 @@ If you are running Resoto locally via [Docker](/docs/getting-started/install-res
 
 Resoto had limited support to handle complex models. This release adds the ability to handle any deeply structured type while also introspecting them.
 
-[Resoto Shell](/docs/concepts/components/shell) now provides better, type-aware suggestions:
+[Resoto Shell](/docs/reference/components/shell) now provides better, type-aware suggestions:
 
 ![Complex Kind](./img/kind_is_complex.png)
 
-[Resoto Shell](/docs/concepts/components/shell) is also able to suggest deeply nested properties, since it knows the complete model structure:
+[Resoto Shell](/docs/reference/components/shell) is also able to suggest deeply nested properties, since it knows the complete model structure:
 
 ![Complex Kind](./img/kind_nested_property_suggestions.png)
 

@@ -11,11 +11,11 @@ Resoto's `cleanup_expired` plugin can find and delete expired resources.
 
 ## Prerequisites
 
-This guide assumes that you have already [installed](../../getting-started/install-resoto/index.md) and configured Resoto to [collect your cloud resources](../../getting-started/configure-cloud-provider-access/index.md).
+This guide assumes that you have already [installed](../../getting-started/install-resoto/index.md) and configured Resoto to [collect your cloud resources](../../getting-started/configure-resoto/index.md).
 
 ## Directions
 
-1. Execute the following command in [Resoto Shell](../../concepts/components/shell.md) to open the [Resoto Worker](../../concepts/components/worker.md) configuration for editing:
+1. Execute the following command in [Resoto Shell](../../reference/components/shell.md) to open the [Resoto Worker](../../reference/components/worker.md) configuration for editing:
 
    ```bash
    > config edit resoto.worker
@@ -35,7 +35,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
      cleanup_pool_size: 16
    ```
 
-   When cleanup is enabled, marked resources will be deleted as a part of the `collect_and_cleanup` [workflow](../../concepts/automation/workflow.md), which runs each hour by default.
+   When cleanup is enabled, marked resources will be deleted as a part of the [`collect_and_cleanup` workflow](../../reference/workflows/index.md#collect_and_cleanup-workflow), which runs each hour by default.
 
    :::tip
 
@@ -52,7 +52,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
      enabled: true
    ```
 
-The plugin will now run each time Resoto emits the `cleanup_plan` event. The `cleanup_plan` event is a part of the `collect_and_cleanup` and `cleanup` [workflows](../../concepts/automation/workflow.md) and emitted after resource collection is complete but before the cleanup is performed.
+The plugin will now run each time Resoto emits the `post_cleanup_plan` [event](../../reference/events/index.md). The `post_cleanup_plan` event is emitted in the [`cleanup` phase](../../reference/workflows/index.md#cleanup) of the [`collect_and_cleanup` workflow](../../reference/workflows/index.md#collect_and_cleanup-workflow).
 
 Each time the `cleanup_expired` plugin runs, expired resources will be flagged for removal during the next cleanup run.
 
@@ -83,9 +83,9 @@ If you would like to apply expiration tags to existing resources, [How to Find U
 
 ## Further Reading
 
-- [`cleanup_expired` Plugin](../../concepts/components/plugins/cleanup_expired.md)
+- [`cleanup_expired` Plugin](../../reference/components/plugins/cleanup_expired.md)
 - [Resource Expiration](../../concepts/resource-management/expiration.md)
 - [Resource Cleanup](../../concepts/resource-management/cleanup.md)
+- [Cloud Data Sync](../../concepts/cloud-data-sync/index.md)
 - [Configuration](../../reference/configuration/index.md)
-- [Workflow](../../concepts/automation/workflow.md)
 - [Command-Line Interface](../../reference/cli/index.md)

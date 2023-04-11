@@ -8,13 +8,13 @@ Resoto constantly monitors your infrastructure, and can alert you to any detecte
 
 ## Prerequisites
 
-This guide assumes that you have already [installed](../../../getting-started/install-resoto/index.md) and configured Resoto to [collect your cloud resources](../../../getting-started/configure-cloud-provider-access/index.md).
+This guide assumes that you have already [installed](../../../getting-started/install-resoto/index.md) and configured Resoto to [collect your cloud resources](../../../getting-started/configure-resoto/index.md).
 
 You will also need a running installation of [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager).
 
 ## Directions
 
-1. Open the `resoto.core.commands` configuration by executing the following command in [Resoto Shell](../../../concepts/components/shell.md):
+1. Open the `resoto.core.commands` configuration by executing the following command in [Resoto Shell](../../../reference/components/shell.md):
 
    ```bash
    > config edit resoto.core.commands
@@ -80,7 +80,7 @@ You will also need a running installation of [Alertmanager](https://prometheus.i
 
    ![Example Alertmanager alert](./img/example-alert.png)
 
-6. Finally, we want to automate checking of the defined alert trigger and send alerts to [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager) whenever the result is true. We can accomplish this by creating a [job](../../../concepts/automation/job.md):
+6. Finally, we want to automate checking of the defined alert trigger and send alerts to [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager) whenever the result is true. We can accomplish this by creating a [job](../../../concepts/automation/index.md#jobs):
 
    ```bash
    > jobs add --id alert_on_pod_failure--wait-for-event post_collect 'search is(kubernetes_pod) and pod_status.container_statuses[*].restart_count > 20 and last_update<1h | alertmanager name=pod-restart-alert'
@@ -89,5 +89,5 @@ You will also need a running installation of [Alertmanager](https://prometheus.i
 ## Further Reading
 
 - [Search](../../../reference/search/index.md)
-- [Job](../../../concepts/automation/job.md)
+- [Automation](../../../concepts/automation/index.md)
 - [Command-Line Interface](../../../reference/cli/index.md)

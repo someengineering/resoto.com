@@ -1,7 +1,7 @@
 ---
 sidebar_label: pip
 pagination_prev: getting-started/install-resoto/index
-pagination_next: getting-started/configure-cloud-provider-access/index
+pagination_next: getting-started/launch-resoto/index
 ---
 
 # Install Resoto with pip
@@ -36,17 +36,17 @@ The below instructions will install the latest stable version of Resoto (<Latest
 
 ## Installing Resoto
 
-Resoto consists of multiple [components](../../concepts/components/index.md) that are published as individual Python packages:
+Resoto consists of multiple [components](../../reference/components/index.md) that are published as individual Python packages:
 
-1. [📦](https://pypi.org/project/resotocore/) `resotocore` maintains the infrastructure graph.
-2. [📦](https://pypi.org/project/resotoworker/) `resotoworker` collects infrastructure data from the cloud provider APIs.
-3. [📦](https://pypi.org/project/resotometrics/) `resotometrics` exports metrics in Prometheus format.
-4. [📦](https://pypi.org/project/resotoshell/) `resotoshell` is the command-line interface (CLI) used to interact with Resoto.
+1. [📦](https://pypi.org/project/resotocore) `resotocore` maintains the infrastructure graph.
+2. [📦](https://pypi.org/project/resotoworker) `resotoworker` collects infrastructure data from the cloud provider APIs.
+3. [📦](https://pypi.org/project/resotometrics) `resotometrics` exports metrics in Prometheus format.
+4. [📦](https://pypi.org/project/resotoshell) `resotoshell` is the command-line interface (CLI) used to interact with Resoto.
 5. A list of collector plugins. In this guide we will install the most prominent collector plugins. See this [list](https://github.com/someengineering/resoto/tree/main/plugins) for an overview of all available plugins.
-   1. [📦](https://pypi.org/project/resoto-plugin-aws/) `resoto-plugin-aws` collects data from AWS.
-   1. [📦](https://pypi.org/project/resoto-plugin-gcp/) `resoto-plugin-gcp` collects data from GCP.
-   1. [📦](https://pypi.org/project/resoto-plugin-k8s/) `resoto-plugin-k8s` collects data from Kubernetes.
-   1. [📦](https://pypi.org/project/resoto-plugin-digitalocean/) `resoto-plugin-digitalocean` collects data from DigitalOcean.
+   1. [📦](https://pypi.org/project/resoto-plugin-aws) `resoto-plugin-aws` collects data from AWS.
+   1. [📦](https://pypi.org/project/resoto-plugin-gcp) `resoto-plugin-gcp` collects data from GCP.
+   1. [📦](https://pypi.org/project/resoto-plugin-k8s) `resoto-plugin-k8s` collects data from Kubernetes.
+   1. [📦](https://pypi.org/project/resoto-plugin-digitalocean) `resoto-plugin-digitalocean` collects data from DigitalOcean.
 
 ```bash title="Installing Resoto using pip"
 $ mkdir -p ~/resoto
@@ -106,7 +106,7 @@ $ source ~/resoto/resoto-venv/bin/activate
 $ resotocore --graphdb-password "$graphdb_password" --graphdb-server http://localhost:8529 --psk "$pre_shared_key" --ui-path ~/resoto/ui
 ```
 
-[Resoto Core](../../concepts/components/core.md) only listens on `localhost:8900` by default. [Resoto Core](../../concepts/components/core.md) can be [configured to listen on all interfaces](../../reference/configuration/core.md#network-interfaces) if desired.
+[Resoto Core](../../reference/components/core.md) only listens on `localhost:8900` by default. [Resoto Core](../../reference/components/core.md) can be [configured to listen on all interfaces](../../reference/configuration/core.md#network-interfaces) if desired.
 
 </TabItem>
 <TabItem value="resotoworker" label="resotoworker">
@@ -130,31 +130,3 @@ Resoto now exposes Prometheus metrics at `https://localhost:9955/metrics`. Follo
 
 </TabItem>
 </Tabs>
-
-## Launching the Web UI
-
-1. Resoto UI listens on port `8900` by default. You can access it by opening <https://localhost:8900> in your browser.
-
-   :::note
-
-   The SSL certificate is self-signed, but you can safely ignore any browser warnings.
-
-   :::
-
-2. If it is your first time starting Resoto UI, the setup wizard will appear and help you configure Resoto:
-
-   ![Screenshot of Resoto UI](./img/resoto-ui.png)
-
-## Launching the Command-Line Interface
-
-The `resh` command is used to interact with [`resotocore`](../../concepts/components/core.md).
-
-Simply execute the following to access the [Resoto Shell](../../concepts/components/shell.md) interface:
-
-```bash
-$ pre_shared_key=$(< ~/resoto/.pre-shared-key)
-$ source ~/resoto/resoto-venv/bin/activate
-$ resh --resotocore-uri https://localhost:8900 --psk "$pre_shared_key"
-```
-
-![Resoto Shell](./img/resoto-shell.png)

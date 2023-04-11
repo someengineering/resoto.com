@@ -59,7 +59,7 @@ See the the [someengineering/cloud2sql](https://github.com/someengineering/cloud
 
 #### Kubernetes Helm Chart
 
-Resoto's default installation method is Kubernetes. We now provide a Helm chart to simplify this installation process. You can find the chart in the [someengineering/helm-charts](https://github.com/someengineering/helm-charts/tree/main/someengineering/resoto) repository. Installing Resoto on Kubernetes is now a `helm install` command away. Please see [Install Resoto with Kubernetes](docs/getting-started/install-resoto/kubernetes) for more details.
+Resoto's default installation method is Kubernetes. We now provide a Helm chart to simplify this installation process. You can find the chart in the [someengineering/helm-charts](https://github.com/someengineering/helm-charts/tree/main/someengineering/resoto) repository. Installing Resoto on Kubernetes is now a `helm install` command away. Please see [Install Resoto with Kubernetes](/docs/getting-started/install-resoto/kubernetes) for more details.
 
 #### AWS CDK
 

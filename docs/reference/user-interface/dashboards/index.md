@@ -12,15 +12,27 @@ Dashboards are saved in Resoto Core in JSON format and can be managed using the 
 
 Dashboards can be accessed through a tab selection at the top of the screen.
 
+### Manage Dashboards
+
 The last tab is the `Manage Dashboards` tab, where you can **add**, **delete**, **duplicate**, and **open dashboards**.
 
-:::tip Closing a dashboard using the ✖ button will only close it, **not delete it**. You can re-open your dashboard again in the `Manage Dashboards` tab. :::
+In this interface you can also drop a dashboard's exported `json` file to import the dashboard into your Resoto UI.
+
+:::tip
+
+Closing a dashboard using the ✖ button will only close it, **not delete it**. You can re-open your dashboard again in the `Manage Dashboards` tab.
+
+:::
 
 ### Top
 
 The **main toolbar** is located at the top of the view. Here you can filter the dashboard data by `Cloud`, `Account`, or `Region`. You can also change the **time range** that is displayed on the dashboard in the center of the toolbar.
 
-:::info [Widgets](./widgets/index.md) using [data sources](./data-sources/index.md) that display Live Data are ignoring the time range settings. :::
+:::info
+
+[Widgets](./widgets/index.md) using [data sources](./data-sources/index.md) that display Live Data are ignoring the time range settings.
+
+:::
 
 On the right side of this toolbar, you will find four more buttons: `more`, `edit mode`, `maximize the view` and `close dashboard`. Clicking `more` will open up a popup where you can **change the automatic refresh rate** of the dashboard, **export the dashboard to JSON** (which can also be imported again), **renaming** or **delete the dashboard**.
 

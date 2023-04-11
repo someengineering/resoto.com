@@ -60,11 +60,11 @@ The [Job Editor](./job-editor.md) gives an easy-to-use interface to set up and m
 
 ### Configuration Editor
 
-[Configuration Editor](./configuration-editor.md) ![Resoto UI Resh Lite](./img/resoto-ui-config-editor.jpg)
+The [Configuration Editor](./configuration-editor.md) gives you an easy way of editing Resoto [configurations](../configuration/). ![Resoto UI Resh Lite](./img/resoto-ui-config-editor.jpg)
 
 ### Setup Wizard
 
-[Setup Wizard](./setup-wizard.md) ![Resoto UI Resh Lite](./img/resoto-ui-setup-wizard.jpg)
+The [Setup Wizard](./setup-wizard.md) guides you through the initial setup of Resoto. ![Resoto UI Resh Lite](./img/resoto-ui-setup-wizard.jpg)
 
 ### Settings and Tools
 

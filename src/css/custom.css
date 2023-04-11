@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'Barlow';
   font-style: normal;
-  font-weight: 22 188;
+  font-weight: 22 99;
   font-display: swap;
   src: url('https://cdn.some.engineering/fonts/Barlow.woff2') format('woff2');
 }
@@ -31,6 +31,7 @@
   --ifm-h4-font-size: 1.25rem;
   --ifm-h5-font-size: 1rem;
   --ifm-h6-font-size: 0.875rem;
+  --ifm-heading-margin-top: calc(var(--ifm-spacing-vertical) * 2);
   --ifm-navbar-height: 4rem;
   --docusaurus-highlighted-code-line-bg: rgb(0 0 0 / 10%);
   --ifm-background-color: #ffffff;
@@ -216,6 +217,18 @@ html[data-theme='dark'] .theme-doc-sidebar-container {
     );
 }
 
+article header {
+  margin-bottom: calc(var(--ifm-paragraph-margin-bottom) * 1.5);
+}
+
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child {
+  margin-top: 0;
+}
+
 h1 code,
 h2 code,
 h3 code,
@@ -223,6 +236,10 @@ h4 code,
 h5 code {
   background: none;
   border: none;
+}
+
+p:last-child {
+  margin-bottom: 0;
 }
 
 em,

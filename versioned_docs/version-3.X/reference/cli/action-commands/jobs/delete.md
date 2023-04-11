@@ -25,3 +25,10 @@ jobs delete <id>
 # highlight-next-line
 ​Job say-hello deleted.
 ```
+
+## Further Reading
+
+- [Cloud Data Sync](../../../../concepts/cloud-data-sync/index.md)
+- [Automation](../../../../concepts/automation/index.md)
+- [Events](../../../events/index.md)
+- [Workflows](../../../workflows/index.md)

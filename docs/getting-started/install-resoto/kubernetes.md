@@ -1,7 +1,7 @@
 ---
 sidebar_label: Kubernetes
 pagination_prev: getting-started/install-resoto/index
-pagination_next: getting-started/configure-cloud-provider-access/index
+pagination_next: getting-started/launch-resoto/index
 ---
 
 # Install Resoto with Kubernetes
@@ -26,26 +26,6 @@ Resoto performs CPU-intensive graph operations. In a production setup, we recomm
 :::
 
 ## Installing Resoto
-
-### Prepare ArangoDB operator
-
-If you don't have ArangoDB, you can use the operator to install it. See more info [here](https://arangodb.com/docs/stable/tutorials-kubernetes.html).
-
-You can use the following commands to install the operator:
-
-```bash
-$ helm repo add arangodb https://arangodb.github.io/kube-arangodb
-$ helm repo update
-$ helm install kube-arangodb-crd arangodb/kube-arangodb-crd
-```
-
-:::note
-
-These instructions were tested with version 1.2.15 of the operator.
-
-:::
-
-### Install Helm Chart
 
 <Tabs groupId="installation-method">
 <TabItem value="default" label="Default Installation">
@@ -75,7 +55,7 @@ It is possible to customize your Resoto installation using a Helm values file.
 
 1. Create a file `resoto-values.yaml` with the desired configuration:
 
-   ```yaml title="resoto-values.yaml"
+   ```yaml title="Example configuration that mounts AWS credentials from a Kubernetes Secret"
    resotoworker:
      volumeMounts:
        - mountPath: /home/resoto/.aws
@@ -88,7 +68,7 @@ It is possible to customize your Resoto installation using a Helm values file.
 
    :::info
 
-   [Configurable values are documented in the Some Engineering Helm Chart Repository.](https://helm.some.engineering/someengineering/resoto#values)
+   [Configurable values are documented in the Some Engineering Helm Chart Repository.](https://github.com/someengineering/helm-charts/blob/main/someengineering/resoto/README.md#values)
 
    :::
 
@@ -114,44 +94,6 @@ It is possible to customize your Resoto installation using a Helm values file.
 </Tabs>
 
 And just like that, you have Resoto running in a Kubernetes cluster! A collect run will begin automatically. This first collect usually takes less than 3 minutes.
-
-## Launching the Web UI
-
-1. Resoto Core provides a service that exposes Resoto UI on port `8900`. We recommend configuring an [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress) with a valid certificate for UI access, but you can port-forward the service as a temporary solution:
-
-   ```bash
-   $ kubectl port-forward services/resoto-resotocore 8900
-   ```
-
-2. Open <https://localhost:8900> in your browser to access Resoto UI.
-
-   :::note
-
-   The SSL certificate is self-signed, but you can safely ignore any browser warnings.
-
-   :::
-
-3. If it is your first time starting Resoto UI, the setup wizard will appear and help you configure Resoto:
-
-   ![Screenshot of Resoto UI](./img/resoto-ui.png)
-
-## Launching the Resoto Command-Line Interface
-
-The `resh` command is used to interact with [`resotocore`](../../concepts/components/core.md).
-
-We need to first make sure that the deployment is available:
-
-```bash
-$ kubectl wait --for=condition=available deployment/resoto-resotocore
-```
-
-Then, simply execute the following to access the [Resoto Shell](../../concepts/components/shell.md) interface:
-
-```bash
-$ kubectl exec -it service/resoto-resotocore -- resh
-```
-
-![Resoto Shell](./img/resoto-shell.png)
 
 ## Accessing Credentials
 

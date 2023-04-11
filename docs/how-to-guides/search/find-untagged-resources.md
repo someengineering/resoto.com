@@ -10,11 +10,11 @@ Resoto calculates the expiration time of a resource based on its expiration tag 
 
 ## Prerequisites
 
-This guide assumes that you have already [installed](../../getting-started/install-resoto/index.md) and configured Resoto to [collect your cloud resources](../../getting-started/configure-cloud-provider-access/index.md).
+This guide assumes that you have already [installed](../../getting-started/install-resoto/index.md) and configured Resoto to [collect your cloud resources](../../getting-started/configure-resoto/index.md).
 
 ## Directions
 
-Execute the following search in [Resoto Shell](../../concepts/components/shell.md) to find all instances and volumes that are not tagged with both `owner` and `expiration` within 2 hours of creation:
+Execute the following search in [Resoto Shell](../../reference/components/shell.md) to find all instances and volumes that are not tagged with both `owner` and `expiration` within 2 hours of creation:
 
 ```bash
 > search is(instance,volume) and age > 2h and (tags.owner = null or tags.expiration = null)

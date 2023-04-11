@@ -16,7 +16,7 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
 ## Directions
 
-1. Execute the [`search` command](../../../reference/cli/search-commands/search.md) in [Resoto Shell](../../../concepts/components/shell.md) to get the resource for which we want to see the blast radius:
+1. Execute the [`search` command](../../../reference/cli/search-commands/search.md) in [Resoto Shell](../../../reference/components/shell.md) to get the resource for which we want to see the blast radius:
 
    ```bash
    > search is(aws_ec2_instance) and name=teamcity-production
@@ -58,7 +58,7 @@ This guide assumes that you have already [installed](../../../getting-started/in
    ​Received a file blast-radius.dot, which is stored to ./blast-radius.dot.
    ```
 
-   The resulting file is outputted to the [Resoto Shell](../../../concepts/components/shell.md) download directory, which defaults to the current working directory. Use a [Graphviz](https://graphviz.org) tool to visualize the results:
+   The resulting file is outputted to the [Resoto Shell](../../../reference/components/shell.md) download directory, which defaults to the current working directory. Use a [Graphviz](https://graphviz.org) tool to visualize the results:
 
    ```bash
    $ dot -Tsvg blast-radius.dot -o blast-radius.svg

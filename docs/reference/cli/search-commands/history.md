@@ -61,7 +61,7 @@ history [--before <timestamp>] [--after <timestamp>] [--change <change>] [search
 
 The event history is only kept for a limited amount of time. The default retention time is 14 days. All changes that are older than that time are deleted from the database.
 
-The current implementation only maintains the history of nodes, not edges.
+The current implementation only maintains the history of [nodes](../../../concepts/asset-inventory-graph/index.md#nodes), not [edges](../../../concepts/asset-inventory-graph/index.md#edges).
 
 ## Related Commands
 

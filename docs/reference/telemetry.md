@@ -14,11 +14,11 @@ Collected usage data includes non-sensitive information on how and what Resoto f
 
 The following are examples of metrics we currently monitor based on this usage data:
 
-- Number of started [`resotocore`](../concepts/components/core.md) instances
-- Number of long-running [`resotocore`](../concepts/components/core.md) instances (greater than one hour)
+- Number of started [`resotocore`](./components/core.md) instances
+- Number of long-running [`resotocore`](./components/core.md) instances (greater than one hour)
 - Number of executed [CLI commands](./cli/index.md)
-- Number of executed [jobs](../concepts/automation/job.md)
-- Number and type of [configured cloud providers](../getting-started/configure-cloud-provider-access/index.md) as well as with configuration change events
+- Number of executed [jobs](../concepts/automation/index.md)
+- Number and type of [configured cloud providers](../getting-started/configure-resoto/index.md) as well as with configuration change events
 - [Installation method](../getting-started/install-resoto/index.md)
 
 ### Error Reporting

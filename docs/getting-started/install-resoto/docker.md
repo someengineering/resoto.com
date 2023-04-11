@@ -1,7 +1,7 @@
 ---
 sidebar_label: Docker
 pagination_prev: getting-started/install-resoto/index
-pagination_next: getting-started/configure-cloud-provider-access/index
+pagination_next: getting-started/launch-resoto/index
 ---
 
 # Install Resoto with Docker
@@ -15,7 +15,7 @@ import Tabs from '@theme/Tabs';
 
 [Docker](https://docker.com) provides the ability to run an application in a loosely isolated environment called a [container](https://docs.docker.com/get-started/overview#containers). For more information on Docker, please see the [official Docker documentation](https://docs.docker.com).
 
-Resoto consists of multiple [components](../../concepts/components/index.md) published as individual Docker images:
+Resoto consists of multiple [components](../../reference/components/index.md) published as individual Docker images:
 
 - [`somecr.io/someengineering/resotocore`](https://hub.docker.com/repository/docker/someengineering/resotocore) maintains the infrastructure graph.
 - [`somecr.io/someengineering/resotoworker`](https://hub.docker.com/repository/docker/someengineering/resotoworker) collects infrastructure data from the cloud provider APIs.
@@ -27,7 +27,7 @@ https://youtu.be/U5L4z71WI-w
 ## Prerequisites
 
 - [Docker](https://docs.docker.com/get-started#download-and-install-docker)
-- [Docker Compose >= 1.29](https://docs.docker.com/compose/install/)
+- [Docker Compose >= 1.29](https://docs.docker.com/compose/install)
 - At least 2 CPU cores and 8 GB of RAM
 
 :::note
@@ -91,29 +91,3 @@ Resoto performs CPU-intensive graph operations. In a production setup, we recomm
    :::
 
    </VersionOnly>
-
-## Launching the Web UI
-
-1. Resoto UI listens on port `8900` by default. You can access it by opening <https://localhost:8900> in your browser.
-
-   :::note
-
-   The SSL certificate is self-signed, but you can safely ignore any browser warnings.
-
-   :::
-
-2. If it is your first time starting Resoto UI, the setup wizard will appear and help you configure Resoto:
-
-   ![Screenshot of Resoto UI](./img/resoto-ui.png)
-
-## Launching the Command-Line Interface
-
-The `resh` command is used to interact with [`resotocore`](../../concepts/components/core.md).
-
-Simply execute the following to access the [Resoto Shell](../../concepts/components/shell.md) interface:
-
-```bash
-$ docker exec -it resotoshell resh
-```
-
-![Resoto Shell](./img/resoto-shell.png)

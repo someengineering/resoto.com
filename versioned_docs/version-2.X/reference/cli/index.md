@@ -1,6 +1,6 @@
 # Command-Line Interface
 
-The [Resoto Shell](/concepts/components/shell.md) CLI supports various commands that allow you to access the graph database.
+The [Resoto Shell](../components/shell.md) CLI supports various commands that allow you to access the graph database.
 
 ## Keyboard Shortcuts
 
@@ -35,17 +35,17 @@ You can pipe commands using `|` and chain multiple commands using `;`.
 
 ### Search Commands
 
-| Command                                             | Description                                        |
-| --------------------------------------------------- | -------------------------------------------------- |
-| [`aggregate`](./search-commands/aggregate.md)       | Aggregate this query by the provided specification |
-| [`ancestors`](./search-commands/ancestors.md)       | Select all ancestors of this node in the graph     |
-| [`count`](./search-commands/count.md)               | Count incoming elements or sum defined property    |
-| [`descendants`](./search-commands/descendants.md)   | Select all descendants of this node in the graph   |
-| [`kinds`](./search-commands/kinds.md)               | Retrieves information about the graph data kinds   |
-| [`predecessors`](./search-commands/predecessors.md) | Select all predecessors of this node in the graph  |
-| [`search`](./search-commands/search.md)             | Search the graph                                   |
-| [`successors`](./search-commands/successors.md)     | Select all successor of this node in the graph     |
-| [`templates`](./search-commands/templates/index.md) | Access the query template library                  |
+| Command                                             | Description                                                                                                     |
+| --------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| [`aggregate`](./search-commands/aggregate.md)       | Aggregate this query by the provided specification                                                              |
+| [`ancestors`](./search-commands/ancestors.md)       | Select all [ancestors](../../concepts/asset-inventory-graph/index.md#ancestors) of this node in the graph       |
+| [`count`](./search-commands/count.md)               | Count incoming elements or sum defined property                                                                 |
+| [`descendants`](./search-commands/descendants.md)   | Select all [descendants](../../concepts/asset-inventory-graph/index.md#descendants) of this node in the graph   |
+| [`kinds`](./search-commands/kinds.md)               | Retrieves information about the graph data kinds                                                                |
+| [`predecessors`](./search-commands/predecessors.md) | Select all [predecessors](../../concepts/asset-inventory-graph/index.md#predecessors) of this node in the graph |
+| [`search`](./search-commands/search.md)             | Search the graph                                                                                                |
+| [`successors`](./search-commands/successors.md)     | Select all [successors](../../concepts/asset-inventory-graph/index.md#successors) of this node in the graph     |
+| [`templates`](./search-commands/templates/index.md) | Access the query template library                                                                               |
 
 ### Format Commands
 
@@ -114,7 +114,7 @@ parameters:
 template: 'echo Hello {{person}}.'
 ```
 
-Once a custom command has been defined in the `resoto.core.commands` configuration, the command can be executed in [Resoto Shell](../../concepts/components/shell.md):
+Once a custom command has been defined in the `resoto.core.commands` configuration, the command can be executed in [Resoto Shell](../components/shell.md):
 
 ```bash title="Usage of the new hello command"
 > help hello

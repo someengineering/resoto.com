@@ -139,7 +139,7 @@ The Heatmap Widget provides a visual tool to quickly find hotspots of certain me
 
 ## World Map
 
-![Resoto UI World Map Widget](./img/resoto-ui-widgets-table.jpg)
+![Resoto UI World Map Widget](./img/resoto-ui-widgets-world-map.jpg)
 
 The World Map Widget is a way of displaying elements grouped by the geolocation of their regions on a world map.
 

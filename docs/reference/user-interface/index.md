@@ -8,7 +8,7 @@ The Resoto User Interface offers a simple way to interact with your infrastructu
 
 :::tip
 
-We recommend using [Google Chrome](https://www.google.com/intl/en_en/chrome/) to run the Resoto UI. Other web browsers can have issues with accessing the clipboard. On Firefox there is a workaround described [here](https://github.com/godotengine/godot/issues/57382#issuecomment-1262280650)](https://github.com/godotengine/godot/issues/57382#issuecomment-1262280650).
+We recommend using [Google Chrome](https://www.google.com/intl/en_en/chrome/) to run the Resoto UI. Other web browsers might have issues with accessing the clipboard. On Firefox there is a workaround described [here](https://github.com/godotengine/godot/issues/57382#issuecomment-1262280650).
 
 :::
 

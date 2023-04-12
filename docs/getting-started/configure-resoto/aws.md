@@ -72,7 +72,7 @@ https://youtu.be/6_nxUM0iFx4
 
    :::note
 
-   If you do not wish to save the contents of your `credentials` file to Resoto's database, you can alternatively [mount the `~/.aws` directory to the `resotoworker` container](../../reference/configuration/worker#mounting-configuration-files-to-container-based-installations).
+   If you do not wish to save the contents of your `credentials` file to Resoto's database, you can alternatively mount the aws directory to the ['resotoworker` container](../../reference/configuration/worker#mounting-configuration-files-to-container-based-installations).
 
    :::
 
@@ -82,7 +82,7 @@ https://youtu.be/6_nxUM0iFx4
 
    :::
 
-4. Modify the `aws` section of the configuration as follows, making sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null`:
+4. Modify the `aws` test of the configuration as follows, making sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null`:
 
    ```yaml title="Resoto Worker configuration"
    resotoworker:
@@ -338,7 +338,7 @@ You can specify a profile using `AWS_PROFILE` and, for local testing, SSO authen
 
 ## Authorization
 
-See [How to Roll Out Resoto AWS Permissions with CloudFormation](../../how-to-guides/configuration/roll-out-resoto-aws-permissions-with-cloudformation/index.md) for a step-by-step guide on how to roll out Resoto [permissions](../../reference/permissions/aws.md) organization-wide.
+See How to Roll Out [ Resoto AWS Permissions with CloudFormation](../../how-to-guides/configuration/roll-out-resoto-aws-permissions-with-cloudformation/index.md) for a step-by-step guide on how to roll out Resoto [permissions](../../reference/permissions/aws.md) organization-wide.
 
 If you prefer to deploy the role yourself, the S3 URL of the template to create the `ResotoAccess` role is <https://resotopublic.s3.amazonaws.com/cf/resoto-role.template>.
 

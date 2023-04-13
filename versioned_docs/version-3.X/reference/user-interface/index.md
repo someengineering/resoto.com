@@ -56,7 +56,7 @@ The [Job Editor](./job-editor.md) gives an easy-to-use interface to set up and m
 
 ### Resoto Shell Lite
 
-[Resoto Shell Lite](./resh-lite.md) (Resh Lite) gives you access to the full range of [CLI commands](../../reference/cli/) as a popup you can open anywhere in the user interface. ![Resoto UI Resh Lite](./img/resoto-ui-resh-lite.jpg)
+[Resoto Shell Lite](./resh-lite.md) (Resh Lite) gives you access to the full range of [CLI commands](../../reference/cli/index.md) as a popup you can open anywhere in the user interface. ![Resoto UI Resh Lite](./img/resoto-ui-resh-lite.jpg)
 
 ### Configuration Editor
 

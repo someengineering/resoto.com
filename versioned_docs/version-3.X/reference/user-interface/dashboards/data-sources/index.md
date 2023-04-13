@@ -20,7 +20,7 @@ This Data Source gives you an interface to build an [aggregation search](../../.
 
 ![Resoto UI Time Series Data Source](./img/data-source-time-series.jpg)
 
-This Data Source helps you build time series queries using the [configured metrics](../../../../reference/components/metrics/) and the time series database that is set up.
+This Data Source helps you build time series queries using the [configured metrics](../../../../reference/components/metrics.md) and the time series database that is set up.
 
 In [this blog post](https://some.engineering/blog/2022/06/09/building-actionable-cloud-infrastructure-metrics) about building actionable cloud metrics you can learn more about helpful queries.
 
@@ -28,7 +28,7 @@ In [this blog post](https://some.engineering/blog/2022/06/09/building-actionable
 
 ![Resoto UI Search Data Source](./img/data-source-search.jpg)
 
-Executing a [Resoto Search](../../../../reference/search/) can be performed using this Data Source.
+Executing a [Resoto Search](../../../../reference/search/index.md) can be performed using this Data Source.
 
 ## Two Entries Aggregate (Live Data)
 

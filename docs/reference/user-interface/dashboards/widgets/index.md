@@ -81,7 +81,7 @@ The Chart Widget displays time series data as a line chart. You can change setti
 
 ![Resoto UI Table Widget](./img/resoto-ui-widgets-table.jpg)
 
-The Table Widget is a very flexible way to display [search](../../../../reference/cli/search-commands/) or [aggregation](../../../../reference/cli/search-commands/aggregate.md) results. When using a [Search Data Source](../data-sources/index.md#search), a click on a row takes you to [Explore view](../../explore.md) to display the clicked resource.
+The Table Widget is a very flexible way to display [search](../../../../reference/cli/search-commands/index.md) or [aggregation](../../../../reference/cli/search-commands/aggregate.md) results. When using a [Search Data Source](../data-sources/index.md#search), a click on a row takes you to [Explore view](../../explore.md) to display the clicked resource.
 
 **Data Sources**
 

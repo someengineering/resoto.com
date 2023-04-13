@@ -355,3 +355,7 @@ Once the collect run completes, you can view a summary of collected <abbr title=
 ```bash
 > search is(aws_resource) | count kind
 ```
+
+## Deployment
+
+[`Deploy Resoto` to Amazon Web Services](../../getting-started/install-resoto/aws/)

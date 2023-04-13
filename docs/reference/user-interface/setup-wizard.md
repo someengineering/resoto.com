@@ -1,0 +1,7 @@
+# Setup Wizard
+
+![Resoto UI Resh Lite](./img/resoto-ui-setup-wizard.jpg)
+
+The Setup Wizard will guide you through the initial setup of Resoto.
+
+You can start the Setup Wizard at any time to configure additional Collectors or change Collector settings from the [side menu bar](./index.md#top-menu-bar) (<kbd>Esc</kbd>).

@@ -1,7 +1,8 @@
-import isInternalUrl from '@docusaurus/isInternalUrl';
 import Link from '@docusaurus/Link';
+import isInternalUrl from '@docusaurus/isInternalUrl';
 import { isRegexpStringMatch } from '@docusaurus/theme-common';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import useIsBrowser from '@docusaurus/useIsBrowser';
 import { getGithubStars } from '@site/src/utils/githubHelper';
 import IconExternalLink from '@theme/Icon/ExternalLink';
 import type { Props } from '@theme/NavbarItem/NavbarNavLink';
@@ -19,6 +20,12 @@ export default function NavbarNavLink({
   prependBaseUrlToHref,
   ...props
 }: Props): JSX.Element {
+  const isBrowser = useIsBrowser();
+  const isDev =
+    process.env.NODE_ENV === 'development' ||
+    !isBrowser ||
+    new URL(window.location.href).hostname !== 'resoto.com';
+
   const toUrl = useBaseUrl(to);
   const activeBaseUrl = useBaseUrl(activeBasePath);
   const normalizedHref = useBaseUrl(href, { forcePrependBaseUrl: true });
@@ -27,11 +34,13 @@ export default function NavbarNavLink({
   const [githubStars, setGithubStars] = useState<number | null>(null);
 
   useEffect(() => {
-    const getGithubData = async () => {
-      setGithubStars(await getGithubStars('someengineering', 'resoto'));
-    };
+    if (!isDev) {
+      const getGithubData = async () => {
+        setGithubStars(await getGithubStars('someengineering', 'resoto'));
+      };
 
-    getGithubData();
+      getGithubData();
+    }
   }, []);
 
   // Link content is set through html XOR label

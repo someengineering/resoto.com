@@ -1,9 +1,73 @@
 @font-face {
   font-family: 'Barlow';
   font-style: normal;
-  font-weight: 22 99;
+  font-weight: 100;
   font-display: swap;
-  src: url('https://cdn.some.engineering/fonts/Barlow.woff2') format('woff2');
+  src: url('https://cdn.some.engineering/fonts/Barlow100.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url('https://cdn.some.engineering/fonts/Barlow200.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('https://cdn.some.engineering/fonts/Barlow300.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://cdn.some.engineering/fonts/Barlow400.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('https://cdn.some.engineering/fonts/Barlow500.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('https://cdn.some.engineering/fonts/Barlow600.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('https://cdn.some.engineering/fonts/Barlow700.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('https://cdn.some.engineering/fonts/Barlow800.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('https://cdn.some.engineering/fonts/Barlow900.woff2') format('woff2');
 }
 
 :root {
@@ -24,7 +88,6 @@
   --ifm-heading-color: var(--ifm-color-primary);
   --ifm-font-size-base: 105%;
   --ifm-font-family-base: 'Barlow', sans-serif;
-  font-variation-settings: 'wght' 100, 'wdth' 500;
   --ifm-h1-font-size: 2.5rem;
   --ifm-h2-font-size: 2rem;
   --ifm-h3-font-size: 1.5rem;

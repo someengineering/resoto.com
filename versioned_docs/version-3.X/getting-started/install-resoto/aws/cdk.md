@@ -11,7 +11,7 @@ We provide a <abbr title="Cloud Development Kit">CDK</abbr> construct to simplif
 
 :::tip
 
-The [Resoto web installer](../web-installer/index.md) is the easiest way to get a production-grade setup, whereas the CDK construct is a bit more involved but gives you more control over the setup and does not require you to send us your cloud credentials.
+The [Resoto web installer](./web-installer/index.md) is the easiest way to get a production-grade setup, whereas the CDK construct is a bit more involved but gives you more control over the setup and does not require you to send us your cloud credentials.
 
 :::
 

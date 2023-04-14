@@ -2,7 +2,7 @@
 sidebar_label: "1. Install Resoto"
 sidebar_position: 1
 pagination_prev: getting-started/index
-pagination_next: getting-started/configure-cloud-provider-access/index
+pagination_next: getting-started/configure-resoto/index
 ---
 
 # Install Resoto

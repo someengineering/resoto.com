@@ -1,7 +1,7 @@
 ---
 sidebar_label: Kubernetes
 pagination_prev: getting-started/install-resoto/index
-pagination_next: getting-started/configure-cloud-provider-access/index
+pagination_next: getting-started/configure-resoto/index
 ---
 
 # Install Resoto with Kubernetes
@@ -143,3 +143,37 @@ $ kubectl exec -it service/resoto-resotocore -- resh
 ```
 
 ![Resoto Shell](./img/resoto-shell.png)
+
+## Updating Resoto
+
+1. List installed Helm charts:
+
+   ```bash
+   $ helm list
+   ​NAME  	NAMESPACE	CHART       	APP VERSION
+   ​resoto	resoto   	resoto-0.7.4	3.3.1
+   ```
+
+   :::note
+
+   The `APP VERSION` column displays the currently installed version of Resoto.
+
+   :::
+
+2. Add the [Some Engineering Helm chart repository](https://helm.some.engineering):
+
+   ```bash
+   $ helm repo add someengineering https://helm.some.engineering
+   ```
+
+3. Update cached chart information:
+
+   ```bash
+   $ helm repo update
+   ```
+
+4. Upgrade the `resoto` chart:
+
+   ```bash
+   $ helm upgrade resoto someengineering/resoto --atomic --reuse-values --set image.tag={{imageTag}}
+   ```

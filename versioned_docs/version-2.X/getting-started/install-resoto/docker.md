@@ -1,7 +1,7 @@
 ---
 sidebar_label: Docker
 pagination_prev: getting-started/install-resoto/index
-pagination_next: getting-started/configure-cloud-provider-access/index
+pagination_next: getting-started/configure-resoto/index
 ---
 
 # Install Resoto with Docker
@@ -63,18 +63,6 @@ Resoto performs CPU-intensive graph operations. In a production setup, we recomm
 
    :::
 
-   <VersionOnly allowed="current">
-
-   :::info
-
-   Resoto publishes packages for both x86 and ARM architectures for stable releases, but `edge` versions are only available for x86.
-
-   If you have an Apple Silicon or other ARM-based machine, please use the latest stable release (<LatestRelease /> or `latest`).
-
-   :::
-
-   </VersionOnly>
-
 ## Launching the Command-Line Interface
 
 The `resh` command is used to interact with [`resotocore`](../../reference/components/core.md).
@@ -86,3 +74,26 @@ $ docker exec -it resotoshell resh
 ```
 
 ![Resoto Shell](./img/resoto-shell.png)
+
+## Updating Resoto
+
+1. Fetch the `docker-compose.yaml` file for the desired Resoto version from the [`someengineering/resoto` GitHub repository](https://github.com/someengineering/resoto):
+
+   ```bash
+   $ cd resoto
+   $ curl -Lo docker-compose.yaml {{dockerComposeUrl}}
+   ```
+
+2. Restart the services defined in the `docker-compose.yaml` file:
+
+   ```bash
+   $ docker-compose up -d
+   ```
+
+   :::note
+
+   [Docker Compose V2 integrated compose functions in to the Docker platform.](https://docs.docker.com/compose/#compose-v2-and-the-new-docker-compose-command)
+
+   In Docker Compose V2, the command is `docker compose` (no hyphen) instead of `docker-compose`.
+
+   :::

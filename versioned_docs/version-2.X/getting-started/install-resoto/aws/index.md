@@ -1,7 +1,7 @@
 ---
 sidebar_label: Amazon Web Services
 pagination_prev: getting-started/index
-pagination_next: getting-started/configure-cloud-provider-access/index
+pagination_next: getting-started/configure-resoto/index
 ---
 
 # Deploy Resoto to Amazon Web Services

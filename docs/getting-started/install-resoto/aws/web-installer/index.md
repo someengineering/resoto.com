@@ -13,7 +13,7 @@ We provide a web installer for one-click deployment of Resoto to <abbr title="Am
 
 When deploying Resoto, we only use provided AWS credentials for the deployment. Credentials are not stored or retained after the deployment is complete.
 
-If you are not comfortable sharing your credentials, you can alternatively use the [CDK construct](../cdk/index.md) to deploy Resoto.
+If you are not comfortable sharing your credentials, you can alternatively use the [CDK construct](../cdk.md) to deploy Resoto.
 
 :::
 
@@ -32,6 +32,58 @@ If you are not comfortable sharing your credentials, you can alternatively use t
 4. Once the deployment is successful, take note of the credentials required to connect to your Resoto cluster. Please keep them in a safe place as they will not be displayed again.
 
    ![Screenshot of Resoto web installer after deployment completes](./img/psk.png)
+
+## Updating Resoto
+
+1. Log in to the [AWS CloudFormation console](https://console.aws.amazon.com/cloudformation).
+
+2. Click **Stacks**.
+
+3. Enter `ResotoEKS` into the search box, and click on the stack you would like to upgrade.
+
+   ![Cloudformation Stacks](../img/cf_stack.png)
+
+4. Click the **Outputs** tab.
+
+5. Enter `ResotoEKSConfigCommand` into the search box. There should be exactly one entry. Copy the value (`aws eks ...`).
+
+   ![Cloudformation Stacks](../img/cf_output.png)
+
+6. Open a terminal and execute the copied command.
+
+   ![Cloudformation Stacks](../img/k8s_access.png)
+
+7. List installed Helm charts:
+
+   ```bash
+   $ helm list
+   ​NAME  	NAMESPACE	CHART       	APP VERSION
+   ​resoto	resoto   	resoto-0.7.4	3.3.1
+   ```
+
+   :::note
+
+   The `APP VERSION` column displays the currently installed version of Resoto.
+
+   :::
+
+8. Add the [Some Engineering Helm chart repository](https://helm.some.engineering):
+
+   ```bash
+   $ helm repo add someengineering https://helm.some.engineering
+   ```
+
+9. Update cached chart information:
+
+   ```bash
+   $ helm repo update
+   ```
+
+10. Upgrade the `resoto` chart:
+
+    ```bash
+    $ helm upgrade resoto someengineering/resoto --atomic --reuse-values --set image.tag={{imageTag}}
+    ```
 
 ## Removing Resoto
 

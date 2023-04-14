@@ -60,7 +60,7 @@
   "devDependencies": {
     "@commitlint/cli": "17.6.0",
     "@commitlint/config-conventional": "17.6.0",
-    "@docusaurus/module-type-aliases": "2.2.0",
+    "@docusaurus/module-type-aliases": "2.4.0",
     "@tsconfig/docusaurus": "1.0.7",
     "@types/node-fetch": "2.6.3",
     "@typescript-eslint/eslint-plugin": "5.58.0",

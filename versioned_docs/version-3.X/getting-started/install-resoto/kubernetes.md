@@ -42,7 +42,7 @@ Resoto performs CPU-intensive graph operations. In a production setup, we recomm
    $ helm repo update
    ```
 
-3. And install the `resoto` chart:
+3. Install the `resoto` chart:
 
    ```bash
    $ helm install resoto someengineering/resoto --set image.tag={{imageTag}}
@@ -95,9 +95,9 @@ It is possible to customize your Resoto installation using a Helm values file.
 
 And just like that, you have Resoto running in a Kubernetes cluster! A collect run will begin automatically. This first collect usually takes less than 3 minutes.
 
-## Accessing Credentials
+### Credentials
 
-The Helm chart stack generates credentials that are used by Resoto's components.
+The Helm chart stack generates credentials used by Resoto's components.
 
 These credentials are stored in [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret) as Base64-encoded strings:
 
@@ -105,3 +105,37 @@ These credentials are stored in [Kubernetes Secrets](https://kubernetes.io/docs/
 | ------------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------------- |
 | `arango-user` | The ArangoDB user and password                               | `kubectl get secret arango-user -o jsonpath="{.data.password}" \| base64 --decode` |
 | `resoto-psk`  | The pre-shared key used for communication between components | `kubectl get secret resoto-psk -o jsonpath="{.data.psk}" \| base64 --decode`       |
+
+## Updating Resoto
+
+1. List installed Helm charts:
+
+   ```bash
+   $ helm list
+   ​NAME  	NAMESPACE	CHART       	APP VERSION
+   ​resoto	resoto   	resoto-0.7.4	3.3.1
+   ```
+
+   :::note
+
+   The `APP VERSION` column displays the currently installed version of Resoto.
+
+   :::
+
+2. Add the [Some Engineering Helm chart repository](https://helm.some.engineering):
+
+   ```bash
+   $ helm repo add someengineering https://helm.some.engineering
+   ```
+
+3. Update cached chart information:
+
+   ```bash
+   $ helm repo update
+   ```
+
+4. Upgrade the `resoto` chart:
+
+   ```bash
+   $ helm upgrade resoto someengineering/resoto --atomic --reuse-values --set image.tag={{imageTag}}
+   ```

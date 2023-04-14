@@ -5,7 +5,7 @@ pagination_prev: getting-started/index
 pagination_next: getting-started/launch-resoto/index
 ---
 
-# Deploy Resoto to Amazon Web Services Using the Resoto Web Installer
+# Deploy Resoto to AWS Using the Resoto Web Installer
 
 We provide a web installer for one-click deployment of Resoto to <abbr title="Amazon Web Services">AWS</abbr>.
 
@@ -13,7 +13,7 @@ We provide a web installer for one-click deployment of Resoto to <abbr title="Am
 
 When deploying Resoto, we only use provided AWS credentials for the deployment. Credentials are not stored or retained after the deployment is complete.
 
-If you are not comfortable sharing your credentials, you can alternatively use the [CDK construct](../cdk.md) to deploy Resoto.
+If you are not comfortable sharing your credentials, you can alternatively use the [CDK construct](../cdk/index.md) to deploy Resoto.
 
 :::
 
@@ -33,11 +33,11 @@ If you are not comfortable sharing your credentials, you can alternatively use t
 
    ![Screenshot of Resoto web installer after deployment completes](./img/psk.png)
 
-## Removing the Resoto Deployment
+## Removing Resoto
 
 To remove the Resoto deployment and all associated resources:
 
-1. Open the AWS console.
+1. Log in to the [AWS console](https://console.aws.amazon.com).
 
 2. Select the region where you deployed Resoto, and open the CloudFormation service.
 

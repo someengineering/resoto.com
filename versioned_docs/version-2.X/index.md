@@ -58,12 +58,12 @@ By default, Resoto collects this data and creates an inventory snapshot every ho
 
 With the help of our community, Resoto currently supports over [300 resource types](./reference/data-models/index.md) that enable you to track and manage assets across the following cloud providers:
 
-- [Amazon Web Services (AWS)](./getting-started/configure-cloud-provider-access/aws.md)
-- [Google Cloud Platform (GCP)](./getting-started/configure-cloud-provider-access/gcp.md)
-- [DigitalOcean](./getting-started/configure-cloud-provider-access/digitalocean.md)
-- [Kubernetes (K8s)](./getting-started/configure-cloud-provider-access/kubernetes.md)
+- [Amazon Web Services (AWS)](./getting-started/configure-resoto/aws.md)
+- [Google Cloud Platform (GCP)](./getting-started/configure-resoto/gcp.md)
+- [DigitalOcean](./getting-started/configure-resoto/digitalocean.md)
+- [Kubernetes (K8s)](./getting-started/configure-resoto/kubernetes.md)
 
-See [Configure Cloud Provider Access](./getting-started/configure-cloud-provider-access/index.md) for more information on how to configure these providers.
+See [Configure Resoto](./getting-started/configure-resoto/index.md) for more information on how to configure these providers.
 
 In addition to the above collector plugins, various [tag validation and cleanup plugins](./reference/components/plugins/index.md) are also included for effortless handling of common use cases and tasks.
 

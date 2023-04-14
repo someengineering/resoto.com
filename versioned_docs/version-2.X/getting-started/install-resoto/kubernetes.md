@@ -1,7 +1,7 @@
 ---
 sidebar_label: Kubernetes
 pagination_prev: getting-started/install-resoto/index
-pagination_next: getting-started/configure-cloud-provider-access/index
+pagination_next: getting-started/configure-resoto/index
 ---
 
 # Install Resoto with Kubernetes
@@ -115,6 +115,17 @@ It is possible to customize your Resoto installation using a Helm values file.
 
 And just like that, you have Resoto running in a Kubernetes cluster! A collect run will begin automatically. This first collect usually takes less than 3 minutes.
 
+### Credentials
+
+The Helm chart stack generates credentials used by Resoto's components.
+
+These credentials are stored in [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret) as Base64-encoded strings:
+
+| Secret        | Description                                                  | Output Command                                                                     |
+| ------------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------------- |
+| `arango-user` | The ArangoDB user and password                               | `kubectl get secret arango-user -o jsonpath="{.data.password}" \| base64 --decode` |
+| `resoto-psk`  | The pre-shared key used for communication between components | `kubectl get secret resoto-psk -o jsonpath="{.data.psk}" \| base64 --decode`       |
+
 ## Launching the Resoto Command-Line Interface
 
 The `resh` command is used to interact with [`resotocore`](../../reference/components/core.md).
@@ -133,13 +144,36 @@ $ kubectl exec -it service/resoto-resotocore -- resh
 
 ![Resoto Shell](./img/resoto-shell.png)
 
-## Accessing Credentials
+## Updating Resoto
 
-The Helm chart stack generates credentials that are used by Resoto's components.
+1. List installed Helm charts:
 
-These credentials are stored in [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret) as Base64-encoded strings:
+   ```bash
+   $ helm list
+   ​NAME  	NAMESPACE	CHART       	APP VERSION
+   ​resoto	resoto   	resoto-0.7.4	3.3.1
+   ```
 
-| Secret        | Description                                                  | Output Command                                                                     |
-| ------------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------------- |
-| `arango-user` | The ArangoDB user and password                               | `kubectl get secret arango-user -o jsonpath="{.data.password}" \| base64 --decode` |
-| `resoto-psk`  | The pre-shared key used for communication between components | `kubectl get secret resoto-psk -o jsonpath="{.data.psk}" \| base64 --decode`       |
+   :::note
+
+   The `APP VERSION` column displays the currently installed version of Resoto.
+
+   :::
+
+2. Add the [Some Engineering Helm chart repository](https://helm.some.engineering):
+
+   ```bash
+   $ helm repo add someengineering https://helm.some.engineering
+   ```
+
+3. Update cached chart information:
+
+   ```bash
+   $ helm repo update
+   ```
+
+4. Upgrade the `resoto` chart:
+
+   ```bash
+   $ helm upgrade resoto someengineering/resoto --atomic --reuse-values --set image.tag={{imageTag}}
+   ```

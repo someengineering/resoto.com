@@ -91,3 +91,55 @@ Resoto performs CPU-intensive graph operations. In a production setup, we recomm
    :::
 
    </VersionOnly>
+
+## Updating Resoto
+
+1. Fetch the `docker-compose.yaml` file for the desired Resoto version from the [`someengineering/resoto` GitHub repository](https://github.com/someengineering/resoto):
+
+   ```bash
+   $ cd resoto
+   $ curl -Lo docker-compose.yaml {{dockerComposeUrl}}
+   ```
+
+   :::note
+
+   By default, the `resotoshell` service bind-mounts the `~/resoto-downloads` directory to `/home/resoto/downloads` in the container. This allows you to access files outputted by Resoto Shell on the host.
+
+   If you previously changed the download location from `~/resoto-downloads` to another directory, be sure to re-apply those changes to the new `docker-compose.yaml` file:
+
+   ```yaml
+   resotoshell:
+     ...
+     volumes:
+   # highlight-next-line
+       - ~/resoto-downloads:/home/resoto/downloads
+     ...
+   ```
+
+   :::
+
+2. Restart the services defined in the `docker-compose.yaml` file:
+
+   ```bash
+   $ docker-compose up -d
+   ```
+
+   :::note
+
+   [Docker Compose V2 integrated compose functions in to the Docker platform.](https://docs.docker.com/compose/#compose-v2-and-the-new-docker-compose-command)
+
+   In Docker Compose V2, the command is `docker compose` (no hyphen) instead of `docker-compose`.
+
+   :::
+
+   <VersionOnly allowed="current">
+
+   :::info
+
+   Resoto publishes packages for both x86 and ARM architectures for stable releases, but `edge` versions are only available for x86.
+
+   If you have an Apple Silicon or other ARM-based machine, please use the latest stable release (<LatestRelease /> or `latest`).
+
+   :::
+
+   </VersionOnly>

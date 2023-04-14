@@ -1,11 +1,11 @@
 ---
-sidebar_label: "2. Configure Cloud Provider Access"
+sidebar_label: "2. Configure Resoto"
 sidebar_position: 2
 pagination_prev: getting-started/install-resoto/index
 pagination_next: getting-started/next-steps
 ---
 
-# Configure Cloud Provider Access
+# Configure Resoto
 
 ```mdx-code-block
 import DocCardList from '@theme/DocCardList';

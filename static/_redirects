@@ -14,11 +14,13 @@ https://news.resoto.com/*                                                       
 https://blog.resoto.com/*                                                             https://some.engineering/blog/:splat 301!
 /blog/*                                                                               https://some.engineering/blog/:splat 301!
 
+/docs/concepts/components/library                                                     /docs/reference/components
 /docs/concepts/components/plugins/protect_snowflakes                                  /docs/reference/components/plugins/protector
 /docs/concepts/components/resh                                                        /docs/reference/components/shell
 /docs/concepts/components/resoto*                                                     /docs/reference/components/:splat
 /docs/concepts/components/*                                                           /docs/reference/components/:splat
 
+/docs/concepts/automation/job                                                         /docs/concepts/automation#jobs
 /docs/concepts/automation/workflow                                                    /docs/concepts/cloud-data-sync
 /docs/concepts/automation/*                                                           /docs/concepts/automation
 

@@ -10,7 +10,7 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 
 :::info
 
-Please refer to [Configure Kubernetes Resource Collection](../../../getting-started/configure-resoto/kubernetes.md) for details on how to set up Resoto to collect [Kuberenetes](https://kubernetes.io) resources.
+Please refer to [Configure Kubernetes Resource Collection](../../../reference/configuration/cloudprovider/kubernetes.md) for details on how to set up Resoto to collect [Kuberenetes](https://kubernetes.io) resources.
 
 :::
 

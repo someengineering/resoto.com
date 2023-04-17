@@ -16,6 +16,7 @@ import Tabs from '@theme/Tabs';
 ## Prerequisites
 
 - [Helm](https://helm.sh) (version 3 or above)
+- [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)
 - Kubernetes cluster ([kind](https://kind.sigs.k8s.io) or [minikube](https://minikube.sigs.k8s.io) should work as well)
 - At least 2 CPU cores and 8 GB of RAM
 
@@ -46,6 +47,14 @@ Resoto performs CPU-intensive graph operations. In a production setup, we recomm
 
    ```bash
    $ helm install resoto someengineering/resoto --set image.tag={{imageTag}}
+   ```
+
+4. Retrieve the PSK from secret.
+
+   This key is required for accessing the Resoto installation via the UI and CLI. These PSK is stored as [Kubernetes Secret](https://kubernetes.io/docs/concepts/configuration/secret) in `resoto-psk`. Copy and run the following command to retrieve the PSK:
+
+   ```bash
+   kubectl get secret arango-user -o jsonpath="{.data.password}" | base64 --decode
    ```
 
 </TabItem>
@@ -90,52 +99,15 @@ It is possible to customize your Resoto installation using a Helm values file.
    $ helm install resoto someengineering/resoto --set image.tag={{imageTag}} -f resoto-values.yaml
    ```
 
+5. Retrieve the PSK from secret.
+
+   This key is required for accessing the Resoto installation via the UI and CLI. These PSK is stored as [Kubernetes Secret](https://kubernetes.io/docs/concepts/configuration/secret) in `resoto-psk`. Copy and run the following command to retrieve the PSK:
+
+   ```bash
+   kubectl get secret arango-user -o jsonpath="{.data.password}" | base64 --decode
+   ```
+
 </TabItem>
 </Tabs>
 
-And just like that, you have Resoto running in a Kubernetes cluster! A collect run will begin automatically. This first collect usually takes less than 3 minutes.
-
-### Credentials
-
-The Helm chart stack generates credentials used by Resoto's components.
-
-These credentials are stored in [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret) as Base64-encoded strings:
-
-| Secret        | Description                                                  | Output Command                                                                                     |
-| ------------- | ------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- |
-| `arango-user` | The ArangoDB user and password                               | <code>kubectl get secret arango-user -o jsonpath=\{.data.password\}" &#124; base64 --decode</code> |
-| `resoto-psk`  | The pre-shared key used for communication between components | <code>kubectl get secret resoto-psk -o jsonpath=\{.data.psk\}" &#124; base64 --decode</code>       |
-
-## Updating Resoto
-
-1. List installed Helm charts:
-
-   ```bash
-   $ helm list
-   ​NAME  	NAMESPACE	CHART       	APP VERSION
-   ​resoto	resoto   	resoto-0.7.4	3.3.1
-   ```
-
-   :::note
-
-   The `APP VERSION` column displays the currently installed version of Resoto.
-
-   :::
-
-2. Add the [Some Engineering Helm chart repository](https://helm.some.engineering):
-
-   ```bash
-   $ helm repo add someengineering https://helm.some.engineering
-   ```
-
-3. Update cached chart information:
-
-   ```bash
-   $ helm repo update
-   ```
-
-4. Upgrade the `resoto` chart:
-
-   ```bash
-   $ helm upgrade resoto someengineering/resoto --atomic --reuse-values --set image.tag={{imageTag}}
-   ```
+And just like that, you have Resoto running in a Kubernetes cluster!

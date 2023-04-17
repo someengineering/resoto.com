@@ -80,18 +80,6 @@ This will start ArangoDB on the current shell which is useful for testing. Once 
 
 Read the section [Securing ArangoDB](../../reference/security.md#custom-certificates) for details on how to generate certificates and encrypt the connection between Resoto Core and the graph database.
 
-## Installing the WebUI
-
-A copy'paste ready snippet to download an extract the UI locally.
-
-```bash
-$ mkdir -p ~/resoto/ui
-$ cd ~/resoto
-$ curl -L -o ui.tar.gz https://cdn.some.engineering/resoto-ui/releases/3.0.2.tar.gz
-$ tar xzf ui.tar.gz -C ui
-$ rm -f ui.tar.gz
-```
-
 ## Running Resoto
 
 Create multiple shells/tabs and run each component in a separate shell:

@@ -9,11 +9,11 @@ import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
 
-The [DigitalOcean](../../reference/data-models/digitalocean/index.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs/index.md) in [Resoto Shell](../../reference/components/shell.md).
+The [DigitalOcean](../../data-models/digitalocean/index.md) collector is configured within the [Resoto Worker configuration](../../configuration/index.md) via the [`config` command](../../cli/setup-commands/configs/index.md) in [Resoto Shell](../../components/shell.md).
 
 ## Enabling the Collector
 
-1. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
+1. Open the [Resoto Worker configuration](../../configuration/index.md) via the [`config` command](../../cli/setup-commands/configs) in [Resoto Shell](../../components/shell):
 
    ```bash
    > config edit resoto.worker
@@ -39,7 +39,7 @@ The [DigitalOcean](../../reference/data-models/digitalocean/index.md) collector 
 <Tabs groupId="auth-method">
 <TabItem value="configuration" label="Resoto Worker Configuration">
 
-1. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
+1. Open the [Resoto Worker configuration](../../configuration/index.md) via the [`config` command](../../cli/setup-commands/configs) in [Resoto Shell](../../components/shell):
 
    ```bash
    > config edit resoto.worker
@@ -62,7 +62,7 @@ The [DigitalOcean](../../reference/data-models/digitalocean/index.md) collector 
 </TabItem>
 <TabItem value="environment" label="Environment Variables">
 
-**Instead of specifying API tokens or secret access keys in the [Resoto Worker configuration](../../reference/configuration/index.md) directly, it is possible to define them using the [`--override` flag or `RESOTOWORKER_OVERRIDE` environment variable](../../reference/configuration/index.md#overriding-individual-properties).**
+**Instead of specifying API tokens or secret access keys in the [Resoto Worker configuration](../../configuration/index.md) directly, it is possible to define them using the [`--override` flag or `RESOTOWORKER_OVERRIDE` environment variable](../../configuration/index.md#overriding-individual-properties).**
 
 1. Set the `RESOTOWORKER_OVERRIDE` environment variable:
 
@@ -149,7 +149,7 @@ The [DigitalOcean](../../reference/data-models/digitalocean/index.md) collector 
 
 ## Resource Collection
 
-By default, Resoto performs resource collection each hour. To immediately trigger a collect run, use the [`workflow run` command](../../reference/cli/action-commands/workflows/run.md) in [Resoto Shell](../../reference/components/shell):
+By default, Resoto performs resource collection each hour. To immediately trigger a collect run, use the [`workflow run` command](../../cli/action-commands/workflows/run.md) in [Resoto Shell](../../components/shell):
 
 ```bash
 > workflow run collect

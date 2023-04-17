@@ -10,7 +10,7 @@ Resoto's search makes it easy to find all Aurora PostgreSQL 11.x databases in yo
 
 ## Prerequisites
 
-This guide assumes that you have already [installed](../../getting-started/install-resoto/index.md) and configured Resoto to [collect your AWS cloud resources](../../getting-started/configure-resoto/aws.md).
+This guide assumes that you have already [installed](../../getting-started/install-resoto/index.md) and configured Resoto to [collect your AWS cloud resources](../../reference/configuration/cloudprovider/aws.md).
 
 ## Directions
 

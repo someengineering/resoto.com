@@ -9,11 +9,11 @@ import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
 
-The [Kubernetes](../../reference/data-models/kubernetes/index.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs/index.md) in [Resoto Shell](../../reference/components/shell.md).
+The [Kubernetes](../../data-models/kubernetes/index.md) collector is configured within the [Resoto Worker configuration](../../configuration/index.md) via the [`config` command](../../cli/setup-commands/configs/index.md) in [Resoto Shell](../../components/shell.md).
 
 ## Enabling the Collector
 
-1. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
+1. Open the [Resoto Worker configuration](../../configuration/index.md) via the [`config` command](../../cli/setup-commands/configs) in [Resoto Shell](../../components/shell):
 
    ```bash
    > config edit resoto.worker
@@ -41,7 +41,7 @@ The [Kubernetes](../../reference/data-models/kubernetes/index.md) collector is c
 
 **The easiest way to configure access to Kubernetes is via [kubeconfig files](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig).**
 
-1. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
+1. Open the [Resoto Worker configuration](../../configuration/index.md) via the [`config` command](../../cli/setup-commands/configs) in [Resoto Shell](../../components/shell):
 
    ```bash
    > config edit resoto.worker
@@ -83,13 +83,13 @@ The [Kubernetes](../../reference/data-models/kubernetes/index.md) collector is c
 
    :::note
 
-   If you do not wish to save the contents of your kubeconfig file(s) to Resoto's database, you can alternatively [mount the directory containing your kubeconfig file(s) to the `resotoworker` container](../../reference/configuration/worker#mounting-configuration-files-to-container-based-installations).
+   If you do not wish to save the contents of your kubeconfig file(s) to Resoto's database, you can alternatively [mount the directory containing your kubeconfig file(s) to the `resotoworker` container](../../configuration/worker#mounting-configuration-files-to-container-based-installations).
 
    :::
 
    :::info
 
-   For [pip installs](../install-resoto/pip.md), you can simply move or copy your kubeconfig file(s) to the `~/.kube` directory. (Since Resoto is running on your local machine, it can access the file(s) directly.)
+   Since Resoto is running on your local machine, it can access the file(s) directly. Move or copy your kubeconfig file(s) to the `~/.kube` directory.
 
    :::
 
@@ -135,7 +135,7 @@ The required values can be found in the [kubeconfig file](https://kubernetes.io/
 | `token`                      | `users.user.token`                                                                                                  |
 | `certificate_authority_data` | `clusters.cluster.certificate-authority-data`<br />(only required if the server is using a self-signed certificate) |
 
-1. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
+1. Open the [Resoto Worker configuration](../../configuration/index.md) via the [`config` command](../../cli/setup-commands/configs) in [Resoto Shell](../../components/shell):
 
    ```bash
    > config edit resoto.worker
@@ -168,7 +168,7 @@ The required values can be found in the [kubeconfig file](https://kubernetes.io/
 
 ## Resource Collection
 
-By default, Resoto performs resource collection each hour. To immediately trigger a collect run, use the [`workflow run` command](../../reference/cli/action-commands/workflows/run.md) in [Resoto Shell](../../reference/components/shell):
+By default, Resoto performs resource collection each hour. To immediately trigger a collect run, use the [`workflow run` command](../../cli/action-commands/workflows/run.md) in [Resoto Shell](../../components/shell):
 
 ```bash
 > workflow run collect

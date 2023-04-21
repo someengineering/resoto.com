@@ -121,10 +121,10 @@ The Helm chart stack generates credentials used by Resoto's components.
 
 These credentials are stored in [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret) as Base64-encoded strings:
 
-| Secret        | Description                                                  | Output Command                                                                     |
-| ------------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------------- |
-| `arango-user` | The ArangoDB user and password                               | `kubectl get secret arango-user -o jsonpath="{.data.password}" \| base64 --decode` |
-| `resoto-psk`  | The pre-shared key used for communication between components | `kubectl get secret resoto-psk -o jsonpath="{.data.psk}" \| base64 --decode`       |
+| Secret        | Description                                                  | Output Command                                                                                     |
+| ------------- | ------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- |
+| `arango-user` | The ArangoDB user and password                               | <code>kubectl get secret arango-user -o jsonpath=\{.data.password\}" &#124; base64 --decode</code> |
+| `resoto-psk`  | The pre-shared key used for communication between components | <code>kubectl get secret resoto-psk -o jsonpath=\{.data.psk\}" &#124; base64 --decode</code>       |
 
 ## Launching the Resoto Command-Line Interface
 

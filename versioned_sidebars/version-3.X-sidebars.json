@@ -91,6 +91,12 @@
                 },
                 {
                   "type": "doc",
+                  "id": "reference/api/show-the-structure-of-the-search",
+                  "label": "Show the structure of the search",
+                  "className": "api-method post"
+                },
+                {
+                  "type": "doc",
                   "id": "reference/api/explain-the-search-execution-plan",
                   "label": "Explain the search execution plan",
                   "className": "api-method post"
@@ -475,6 +481,12 @@
                   "type": "doc",
                   "id": "reference/api/perform-a-benchmark-on-a-graph",
                   "label": "Perform a benchmark on a graph.",
+                  "className": "api-method get"
+                },
+                {
+                  "type": "doc",
+                  "id": "reference/api/list-all-resources-that-match-a-given-check",
+                  "label": "List all resources that match a given check.",
                   "className": "api-method get"
                 },
                 {

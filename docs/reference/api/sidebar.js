@@ -26,6 +26,12 @@ module.exports = [
       },
       {
         type: 'doc',
+        id: 'reference/api/show-the-structure-of-the-search',
+        label: 'Show the structure of the search',
+        className: 'api-method post',
+      },
+      {
+        type: 'doc',
         id: 'reference/api/explain-the-search-execution-plan',
         label: 'Explain the search execution plan',
         className: 'api-method post',

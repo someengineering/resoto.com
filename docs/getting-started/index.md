@@ -3,6 +3,41 @@ pagination_prev: null
 pagination_next: null
 ---
 
+<head>
+<script type="application/ld+json">
+{JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How do I install Resoto?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Resoto can be deployed to AWS or installed via Docker, Kubernetes, or pip.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How do I launch Resoto?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Resoto has both a web interface (Resoto UI) and CLI (Resoto Shell).',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How do I configure Resoto?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Resoto can be configured using its web interface (Resoto UI) or CLI (config command in Resoto Shell).',
+      },
+    },
+  ],
+})}
+</script>
+</head>
+
 # Getting Started
 
 ```mdx-code-block

@@ -46,6 +46,25 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 </div>
 </details>
 
+## `github_pull_request`
+
+<ZoomPanPinch>
+
+![Diagram of github_pull_request data model](./img/github_pull_request.svg)
+
+</ZoomPanPinch>
+
+<details>
+<summary>Relationships to Other Resources</summary>
+<div>
+<ZoomPanPinch>
+
+![Diagram of github_pull_request resource relationships](./img/github_pull_request_relationships.svg)
+
+</ZoomPanPinch>
+</div>
+</details>
+
 ## `github_region`
 
 <ZoomPanPinch>

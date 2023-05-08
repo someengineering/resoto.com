@@ -25,7 +25,6 @@ jobs update --id <id> [--schedule <cron_expression>] [--wait-for-event <event_na
 
 | Parameter | Description                                                    | Required? | Default Value |
 | --------- | -------------------------------------------------------------- | --------- | ------------- |
-| `id`      | Job identifier                                                 | ✔️        | N/A           |
 | `command` | CLI command that will be executed when the job is triggered \* | ✔️        | N/A           |
 
 \* It is recommended to either surround the `command` with single quotes (`'`) or escape special characters such as pipes (`|`) or semicolons (`;`). Multiple commands can be delimited using semicolons.

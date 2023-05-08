@@ -1,4 +1,5 @@
 module.exports = [
+  { type: 'doc', id: 'version-2.X/reference/api/resoto-core-rest-api' },
   {
     type: 'category',
     label: 'graph_search',

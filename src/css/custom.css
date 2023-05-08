@@ -381,10 +381,6 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   text-decoration: var(--ifm-link-hover-decoration);
 }
 
-.api-info {
-  display: none;
-}
-
 .tabs-container > .margin-top--md {
   margin-top: -3px !important;
   padding: var(--ifm-alert-padding-vertical) var(--ifm-alert-padding-horizontal);
@@ -393,19 +389,19 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   box-shadow: var(--ifm-alert-shadow);
 }
 
-.tabs {
+.tabs-container > .tabs {
   overflow-x: visible;
   margin-left: var(--ifm-tabs-padding-horizontal);
 }
 
-.tabs__item {
+.tabs-container > .tabs > .tabs__item {
   padding: calc(var(--ifm-tabs-padding-vertical) / 2)
     var(--ifm-tabs-padding-horizontal) !important;
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
 }
 
-.tabs__item:not(.tabs__item--active):hover {
+.tabs-container > .tabs > .tabs__item:not(.tabs__item--active):hover {
   border-bottom-color: var(--ifm-toc-border-color);
 }
 

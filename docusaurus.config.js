@@ -25,6 +25,7 @@ const config = {
   onBrokenMarkdownLinks: 'throw',
   favicon: 'img/favicon.ico',
   trailingSlash: false,
+  noIndex: !isProd,
   stylesheets: [
     {
       rel: 'preload',

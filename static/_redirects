@@ -297,7 +297,7 @@ https://blog.resoto.com/*                                                       
 /documentation/*                                                                      /docs/:splat
 /docs/edge/*                                                                          /docs/:splat
 /docs/2.x/*                                                                           /docs/:splat
-/docs/2.X/*                                                                           /docs/2.x/:splat
+/docs/2.X/*                                                                           /docs/:splat
 
 /news/2022/07/07/july-update                                                          https://some.engineering/blog/2022/07/07/july-2022-product-updates 301!
 /news/:year/:month/:date/v2.0.0*                                                      /news/2022/04/12/2.0.0

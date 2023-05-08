@@ -230,7 +230,7 @@ const config = {
       /** @type {import('@1password/docusaurus-plugin-stored-data').Options} */
       {
         data: {
-          ...['edge', ...versions.filter((version) => version !== '2.X')]
+          ...['edge', ...versions]
             .map((version) => ({
               [`aws-${version}-ResotoOrgList`]: resolve(
                 __dirname,

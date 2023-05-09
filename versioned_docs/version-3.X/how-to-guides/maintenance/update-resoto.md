@@ -1,5 +1,6 @@
 ---
 sidebar_label: Update Resoto
+sidebar_position: 1
 ---
 
 # How to Update Resoto

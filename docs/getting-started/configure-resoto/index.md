@@ -19,7 +19,7 @@ Resoto needs to be configured to authenticate with your cloud providers so it ca
 
 When you open Resoto UI for the first time, you will see a [Setup Wizard](../../reference/user-interface/setup-wizard.md) that will guide you through the initial setup process. The [Setup Wizard](../../reference/user-interface/setup-wizard.md) allows you to configure one or more cloud providers.
 
-![Resoto UI Setup Wizard](img/setup-wizard.png)
+![Resoto UI Setup Wizard](./img/setup-wizard.png)
 
 :::note
 
@@ -33,12 +33,12 @@ See [How to Roll Out Resoto AWS Permissions with CloudFormation](../../how-to-gu
 
 :::info
 
-The [Setup Wizard](../../reference/user-interface/setup-wizard.md) provides simplified configuration options to aid in the initial setup of a new Resoto install.
+**The [Setup Wizard](../../reference/user-interface/setup-wizard.md) provides simplified configuration options to aid in the initial setup of a new Resoto install.**
 
-More complex configuration options are available in the [Configuration Editor](../../reference/user-interface/configuration-editor.md).
+More complex configuration options are available in the [Configuration Editor](../../reference/user-interface/configuration-editor.md):
 
-**See [Data Sources How-To Guides](../../how-to-guides/data-sources/index.md) for detailed step-by-step directions on how to configure cloud providers.**
+![Configuration Editor](./img/configuration-editor.png)
 
-![Configuration Editor](img/configuration-editor.png)
+See [Data Sources How-To Guides](../../how-to-guides/data-sources/index.md) for detailed step-by-step directions on how to configure cloud providers.
 
 :::

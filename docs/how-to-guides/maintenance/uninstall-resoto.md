@@ -1,5 +1,6 @@
 ---
 sidebar_label: Uninstall Resoto
+sidebar_position: 2
 ---
 
 # How to Uninstall Resoto

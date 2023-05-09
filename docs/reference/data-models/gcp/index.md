@@ -1,8 +1,9 @@
 ---
-sidebar_label: Google Cloud Platform
+sidebar_label: Google Cloud
+slug: /reference/data-models/google-cloud
 ---
 
-# Google Cloud Platform Resource Data Models
+# Google Cloud Resource Data Models
 
 ```mdx-code-block
 import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
@@ -10,7 +11,7 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 
 :::info
 
-Please refer to [Configure Google Cloud Platform Resource Collection](../../../reference/configuration/cloudprovider/gcp.md) for details on how to set up Resoto to collect [Google Cloud Platform (GCP)](https://cloud.google.com) resources.
+See [How to Collect Google Cloud Resource Data](../../../how-to-guides/data-sources/collect-google-cloud-resource-data.md) for step-by-step directions to configure Resoto to collect [Google Cloud](https://cloud.google.com) resources.
 
 :::
 

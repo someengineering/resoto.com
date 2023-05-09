@@ -16,17 +16,20 @@ import Tabs from '@theme/Tabs';
 ## Prerequisites
 
 - [Helm](https://helm.sh) (version 3 or above)
+
 - [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)
+
 - Kubernetes cluster ([kind](https://kind.sigs.k8s.io) or [minikube](https://minikube.sigs.k8s.io) should work as well)
+
 - At least 2 CPU cores and 8 GB of RAM
 
-:::note
+  :::note
 
-Resoto performs CPU-intensive graph operations. In a production setup, we recommend at least four cores and 16 gigabytes of RAM. See [Configuring Resoto Worker](../../reference/configuration/worker.md#multi-core-machines) for more information.
+  Resoto performs CPU-intensive graph operations. In a production setup, we recommend at least four cores and 16 gigabytes of RAM. See [Configuring Resoto Worker](../../reference/configuration/worker.md#multi-core-machines) for more information.
 
-:::
+  :::
 
-## Installing Resoto
+## Directions
 
 <Tabs groupId="installation-method">
 <TabItem value="default" label="Default Installation">

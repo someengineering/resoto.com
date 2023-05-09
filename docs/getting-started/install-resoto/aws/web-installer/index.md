@@ -17,7 +17,7 @@ If you are not comfortable sharing your credentials, you can alternatively use t
 
 :::
 
-## Deploying Resoto
+## Directions
 
 1. Open the [Resoto web installer](https://install.resoto.com).
 

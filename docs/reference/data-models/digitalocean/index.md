@@ -10,7 +10,7 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 
 :::info
 
-Please refer to [Configure DigitalOcean Resource Collection](../../../reference/configuration/cloudprovider/digitalocean.md) for details on how to set up Resoto to collect [DigitalOcean](https://digitalocean.com) resources.
+See [How to Collect DigitalOcean Resource Data](../../../how-to-guides/data-sources/collect-digitalocean-resource-data.md) for step-by-step directions to configure Resoto to collect [DigitalOcean](https://digitalocean.com) resources.
 
 :::
 

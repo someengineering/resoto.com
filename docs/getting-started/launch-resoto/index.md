@@ -14,7 +14,7 @@ import Tabs from '@theme/Tabs';
 
 Resoto allows you to manage and explore your cloud infrastructure via a web or shell interface.
 
-## Launching Resoto UI
+## Resoto UI
 
 Resoto UI is a user-friendly web interface that simplifies managing and exploring your cloud infrastructure.
 
@@ -33,6 +33,8 @@ The steps to launch Resoto UI depend on how you installed Resoto.
 
 2. Resoto UI will start and guide you through the configuration. If it is your first time starting Resoto UI, the setup wizard will appear and help you configure Resoto:
 
+   ![Screenshot of Resoto UI setup wizard](./img/resoto-ui.png)
+
 </TabItem>
 <TabItem value="docker" label="Docker">
 
@@ -45,6 +47,8 @@ The steps to launch Resoto UI depend on how you installed Resoto.
    :::
 
 2. If it is your first time starting Resoto UI, the setup wizard will appear and help you configure Resoto:
+
+   ![Screenshot of Resoto UI setup wizard](./img/resoto-ui.png)
 
 </TabItem>
 <TabItem value="k8s" label="Kubernetes">
@@ -65,6 +69,8 @@ The steps to launch Resoto UI depend on how you installed Resoto.
 
 3. If it is your first time starting Resoto UI, the setup wizard will appear and help you configure Resoto:
 
+   ![Screenshot of Resoto UI setup wizard](./img/resoto-ui.png)
+
 </TabItem>
 <TabItem value="pip" label="pip">
 
@@ -78,12 +84,12 @@ The steps to launch Resoto UI depend on how you installed Resoto.
 
 2. If it is your first time starting Resoto UI, the setup wizard will appear and help you configure Resoto:
 
+   ![Screenshot of Resoto UI setup wizard](./img/resoto-ui.png)
+
 </TabItem>
 </Tabs>
 
-![Screenshot of Resoto UI setup wizard](./img/resoto-ui.png)
-
-## Launching Resoto Shell (optional)
+## Resoto Shell
 
 Resoto Shell is Resoto's command-line interface.
 
@@ -92,9 +98,18 @@ The steps to launch Resoto Shell depend on how you installed Resoto.
 <Tabs groupId="install-method">
 <TabItem value="aws" label="Amazon Web Services">
 
-1. Go to the [AWS CloudFormation](https://console.aws.amazon.com/cloudformation/home) console and select the ResotoEKS stack. ![Resoto EKS](img/cf_stack.png)
-2. In the outputs section, copy the value of the `ResotoEKSConfigCommandXXX` output. ![Resoto Shell](img/cf_output.png)
-3. Paste the value in your terminal and execute it. ![K8S Access](img/k8s_access.png)
+1. Go to the [AWS CloudFormation](https://console.aws.amazon.com/cloudformation/home) console and select the ResotoEKS stack.
+
+   ![Resoto EKS](./img/cf-stack.png)
+
+2. In the outputs section, copy the value of the `ResotoEKSConfigCommandXXX` output.
+
+   ![Resoto Shell](./img/cf-output.png)
+
+3. Paste the value in your terminal and execute it.
+
+   ![K8S Access](./img/k8s-access.png)
+
 4. Execute the following in your terminal to access the [Resoto Shell](../../reference/components/shell.md) interface:
 
    ```bash

@@ -13,19 +13,23 @@ import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
 
+[Docker](https://docker.com) provides the ability to run an application in a loosely isolated environment called a [container](https://docs.docker.com/get-started/overview#containers).
+
 ## Prerequisites
 
 - [Docker](https://docs.docker.com/get-started#download-and-install-docker)
+
 - [Docker Compose >= 1.29](https://docs.docker.com/compose/install)
+
 - At least 2 CPU cores and 8 GB of RAM
 
-:::note
+  :::note
 
-Resoto performs CPU-intensive graph operations. In a production setup, we recommend at least four cores and 16 gigabytes of RAM. See [Configuring Resoto Worker](../../reference/configuration/worker.md#multi-core-machines) for more information.
+  Resoto performs CPU-intensive graph operations. In a production setup, we recommend at least four cores and 16 gigabytes of RAM. See [Configuring Resoto Worker](../../reference/configuration/worker.md#multi-core-machines) for more information.
 
-:::
+  :::
 
-## Get and Run Docker Compose file
+## Directions
 
 1. Fetch the required files from the [`someengineering/resoto` GitHub repository](https://github.com/someengineering/resoto):
 

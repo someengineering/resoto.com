@@ -1,8 +1,8 @@
 ---
-sidebar_label: Kubernetes
+sidebar_label: Collect Kubernetes Resource Data
 ---
 
-# Configure Kubernetes Resource Collection
+# How to Collect Kubernetes Resource Data
 
 ```mdx-code-block
 import TabItem from '@theme/TabItem';
@@ -11,7 +11,13 @@ import Tabs from '@theme/Tabs';
 
 The [Kubernetes](../../reference/data-models/kubernetes/index.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs/index.md) in [Resoto Shell](../../reference/components/shell.md).
 
-## Enabling the Collector
+## Prerequisites
+
+This guide assumes that you have already [installed](../../getting-started/install-resoto/index.md) Resoto.
+
+## Directions
+
+### 1. Enable the Kubernetes Collector
 
 1. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
 
@@ -32,7 +38,7 @@ The [Kubernetes](../../reference/data-models/kubernetes/index.md) collector is c
    ...
    ```
 
-## Authentication
+### 2. Authenticate with Kubernetes
 
 **You can authenticate with Kubernetes via kubeconfig files, manual configuration, or both.**
 
@@ -89,7 +95,7 @@ The [Kubernetes](../../reference/data-models/kubernetes/index.md) collector is c
 
    :::info
 
-   For [pip installs](../install-resoto/pip.md), you can simply move or copy your kubeconfig file(s) to the `~/.kube` directory. (Since Resoto is running on your local machine, it can access the file(s) directly.)
+   Since Resoto is running on your local machine, it can access the file(s) directly. Move or copy your kubeconfig file(s) to the `~/.kube` directory.
 
    :::
 
@@ -166,7 +172,7 @@ The required values can be found in the [kubeconfig file](https://kubernetes.io/
 </TabItem>
 </Tabs>
 
-## Resource Collection
+### 3. Trigger Resource Collection
 
 By default, Resoto performs resource collection each hour. To immediately trigger a collect run, use the [`workflow run` command](../../reference/cli/action-commands/workflows/run.md) in [Resoto Shell](../../reference/components/shell):
 

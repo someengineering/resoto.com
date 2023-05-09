@@ -1,19 +1,25 @@
 ---
-sidebar_label: Google Cloud Platform
+sidebar_label: Collect Google Cloud Resource Data
 ---
 
-# Configure Google Cloud Platform Resource Collection
+# How to Collect Google Cloud Resource Data
 
 ```mdx-code-block
 import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
 
-The [Google Cloud Platform (GCP)](../../data-models/gcp/index.md) collector is configured within the [Resoto Worker configuration](../../configuration/index.md) via the [`config` command](../../cli/setup-commands/configs/index.md) in [Resoto Shell](../../components/shell.md).
+The [Google Cloud](../../reference/data-models/gcp/index.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs/index.md) in [Resoto Shell](../../reference/components/shell.md).
 
-## Enabling the Collector
+## Prerequisites
 
-1. Open the [Resoto Worker configuration](../../configuration/index.md) via the [`config` command](../../cli/setup-commands/configs) in [Resoto Shell](../../components/shell):
+This guide assumes that you have already [installed](../../getting-started/install-resoto/index.md) Resoto.
+
+## Directions
+
+### 1. Enable the Google Cloud Collector
+
+1. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
 
    ```bash
    > config edit resoto.worker
@@ -32,14 +38,14 @@ The [Google Cloud Platform (GCP)](../../data-models/gcp/index.md) collector is c
    ...
    ```
 
-## Authentication
+### 2. Authenticate with Google Cloud
 
-**You can authenticate with [Google Cloud Platform](../../data-models/gcp/index.md) via service account JSON files or automatic discovery.**
+**You can authenticate with [Google Cloud](../../reference/data-models/gcp/index.md) via service account JSON files or automatic discovery.**
 
 <Tabs>
 <TabItem value="service-account-json" label="Service Account JSON">
 
-1. Open the [Resoto Worker configuration](../../configuration/index.md) via the [`config` command](../../cli/setup-commands/configs) in [Resoto Shell](../../components/shell):
+1. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
 
 ```bash
 > config edit resoto.worker
@@ -77,7 +83,7 @@ The [Google Cloud Platform (GCP)](../../data-models/gcp/index.md) collector is c
 
    :::note
 
-   If you do not wish to save the contents of your service account JSON file(s) to Resoto's database, you can alternatively [mount the directory containing your service account JSON file(s) to the `resotoworker` container](../../configuration/worker#mounting-configuration-files-to-container-based-installations).
+   If you do not wish to save the contents of your service account JSON file(s) to Resoto's database, you can alternatively [mount the directory containing your service account JSON file(s) to the `resotoworker` container](../../reference/configuration/worker#mounting-configuration-files-to-container-based-installations).
 
    :::
 
@@ -115,7 +121,7 @@ The [Google Cloud Platform (GCP)](../../data-models/gcp/index.md) collector is c
 
 You can specify an empty string for the service account file, and Resoto will automatically discover the service account and all the projects it has access to.
 
-1. Open the [Resoto Worker configuration](../../configuration/index.md) via the [`config` command](../../cli/setup-commands/configs) in [Resoto Shell](../../components/shell):
+1. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
 
    ```bash
    > config edit resoto.worker
@@ -140,16 +146,16 @@ You can specify an empty string for the service account file, and Resoto will au
 </TabItem>
 </Tabs>
 
-## Resource Collection
+### 3. Trigger Resource Collection
 
-By default, Resoto performs resource collection each hour. To immediately trigger a collect run, use the [`workflow run` command](../../cli/action-commands/workflows/run.md) in [Resoto Shell](../../components/shell):
+1. By default, Resoto performs resource collection each hour. To immediately trigger a collect run, use the [`workflow run` command](../../reference/cli/action-commands/workflows/run.md) in [Resoto Shell](../../reference/components/shell):
 
-```bash
-> workflow run collect
-```
+   ```bash
+   > workflow run collect
+   ```
 
-Once the collect run completes, you can view a summary of collected <abbr title="Google Cloud Platform">GCP</abbr> resources using the following search:
+2. Once the collect run completes, you can view a summary of collected [Google Cloud resources](../../reference/data-models/gcp/index.md) using the following search:
 
-```bash
-> search is(gcp_resource) | count kind
-```
+   ```bash
+   > search is(gcp_resource) | count kind
+   ```

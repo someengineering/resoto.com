@@ -1,4 +1,8 @@
-# Update Resoto
+---
+sidebar_label: Update Resoto
+---
+
+# How to Update Resoto
 
 ```mdx-code-block
 import LatestRelease from '@site/src/components/LatestRelease';
@@ -7,9 +11,7 @@ import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
 
-We ship [new versions of Resoto](/news) regularly and recommend to update your installation.
-
-To update your instance, follow the steps below.
+We regularly release [new versions of Resoto](/news) with bug fixes and new features, and recommend keeping your Resoto installation up to date.
 
 <Tabs groupId="install-method">
 <TabItem value="aws" label="Amazon Web Services">
@@ -17,9 +19,10 @@ To update your instance, follow the steps below.
 ## Prerequisites
 
 - [AWS command-line interface](https://aws.amazon.com/cli)
+
 - [Helm](https://helm.sh) (version 3 or above)
 
-## Steps
+## Directions
 
 1. Log in to the [AWS CloudFormation console](https://console.aws.amazon.com/cloudformation).
 
@@ -27,17 +30,17 @@ To update your instance, follow the steps below.
 
 3. Enter `ResotoEKS` into the search box, and click on the stack you would like to upgrade.
 
-   ![Cloudformation Stacks](img/cf_stack.png)
+   ![Cloudformation Stacks](./img/cf-stack.png)
 
 4. Click the **Outputs** tab.
 
 5. Enter `ResotoEKSConfigCommand` into the search box. There should be exactly one entry. Copy the value (`aws eks ...`).
 
-   ![Cloudformation Stacks](img/cf_output.png)
+   ![Cloudformation Stacks](./img/cf-output.png)
 
 6. Open a terminal and execute the copied command.
 
-   ![Cloudformation Stacks](img/k8s_access.png)
+   ![Cloudformation Stacks](./img/k8s-access.png)
 
 7. List installed Helm charts:
 
@@ -77,9 +80,10 @@ To update your instance, follow the steps below.
 ## Prerequisites
 
 - [Docker](https://docs.docker.com/get-started#download-and-install-docker)
+
 - [Docker Compose >= 1.29](https://docs.docker.com/compose/install)
 
-## Steps
+## Directions
 
 1. Fetch the `docker-compose.yaml` file for the latest Resoto version. See the [list of versions](https://github.com/someengineering/resoto/releases) if you want to use a specific version.
 
@@ -120,7 +124,7 @@ To update your instance, follow the steps below.
 
 - [Helm](https://helm.sh) (version 3 or above)
 
-## Steps
+## Directions
 
 1. List installed Helm charts:
 

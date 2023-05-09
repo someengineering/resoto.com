@@ -1,19 +1,25 @@
 ---
-sidebar_label: DigitalOcean
+sidebar_label: Collect DigitalOcean Resource Data
 ---
 
-# Configure DigitalOcean Resource Collection
+# How to Collect DigitalOcean Resource Data
 
 ```mdx-code-block
 import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
 
-The [DigitalOcean](../../data-models/digitalocean/index.md) collector is configured within the [Resoto Worker configuration](../../configuration/index.md) via the [`config` command](../../cli/setup-commands/configs/index.md) in [Resoto Shell](../../components/shell.md).
+The [DigitalOcean](../../reference/data-models/digitalocean/index.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs/index.md) in [Resoto Shell](../../reference/components/shell.md).
 
-## Enabling the Collector
+## Prerequisites
 
-1. Open the [Resoto Worker configuration](../../configuration/index.md) via the [`config` command](../../cli/setup-commands/configs) in [Resoto Shell](../../components/shell):
+This guide assumes that you have already [installed](../../getting-started/install-resoto/index.md) Resoto.
+
+## Directions
+
+### 1. Enable the DigitalOcean Collector
+
+1. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
 
    ```bash
    > config edit resoto.worker
@@ -32,14 +38,14 @@ The [DigitalOcean](../../data-models/digitalocean/index.md) collector is configu
    ...
    ```
 
-## Authentication
+### 2. Authenticate with DigitalOcean
 
 **DigitalOcean uses [access tokens](https://cloud.digitalocean.com/account/api/tokens) to authenticate API requests.** You can provide access tokens to Resoto via the Resoto Worker configuration or environment variables.
 
 <Tabs groupId="auth-method">
 <TabItem value="configuration" label="Resoto Worker Configuration">
 
-1. Open the [Resoto Worker configuration](../../configuration/index.md) via the [`config` command](../../cli/setup-commands/configs) in [Resoto Shell](../../components/shell):
+1. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
 
    ```bash
    > config edit resoto.worker
@@ -62,7 +68,7 @@ The [DigitalOcean](../../data-models/digitalocean/index.md) collector is configu
 </TabItem>
 <TabItem value="environment" label="Environment Variables">
 
-**Instead of specifying API tokens or secret access keys in the [Resoto Worker configuration](../../configuration/index.md) directly, it is possible to define them using the [`--override` flag or `RESOTOWORKER_OVERRIDE` environment variable](../../configuration/index.md#overriding-individual-properties).**
+**Instead of specifying API tokens or secret access keys in the [Resoto Worker configuration](../../reference/configuration/index.md) directly, it is possible to define them using the [`--override` flag or `RESOTOWORKER_OVERRIDE` environment variable](../../reference/configuration/index.md#overriding-individual-properties).**
 
 1. Set the `RESOTOWORKER_OVERRIDE` environment variable:
 
@@ -147,16 +153,16 @@ The [DigitalOcean](../../data-models/digitalocean/index.md) collector is configu
 </TabItem>
 </Tabs>
 
-## Resource Collection
+### 3. Trigger Resource Collection
 
-By default, Resoto performs resource collection each hour. To immediately trigger a collect run, use the [`workflow run` command](../../cli/action-commands/workflows/run.md) in [Resoto Shell](../../components/shell):
+1. By default, Resoto performs resource collection each hour. To immediately trigger a collect run, use the [`workflow run` command](../../reference/cli/action-commands/workflows/run.md) in [Resoto Shell](../../reference/components/shell):
 
-```bash
-> workflow run collect
-```
+   ```bash
+   > workflow run collect
+   ```
 
-Once the collect run completes, you can view a summary of collected DigitalOcean resources using the following search:
+2. Once the collect run completes, you can view a summary of collected [DigitalOcean resources](../../reference/data-models/digitalocean/index.md) using the following search:
 
-```bash
-> search is(digitalocean_resource) | count kind
-```
+   ```bash
+   > search is(digitalocean_resource) | count kind
+   ```

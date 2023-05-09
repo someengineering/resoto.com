@@ -23,7 +23,7 @@ The [Resoto web installer](./web-installer/index.md) is the easiest way to get a
 - [`kubectl` command-line tool](https://kubernetes.io/docs/reference/kubectl)
 - [Node.js](https://nodejs.org)
 
-## Deploying Resoto
+## Directions
 
 1. Run the following commands in the terminal:
 

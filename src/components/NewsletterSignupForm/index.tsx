@@ -8,6 +8,7 @@ import {
   useNetlifyForm,
 } from 'react-netlify-forms';
 import * as Yup from 'yup';
+import homepageStyles from '../../pages/index.module.css';
 import styles from './index.module.css';
 
 export default function NewsletterSignupForm(): JSX.Element {
@@ -40,54 +41,69 @@ export default function NewsletterSignupForm(): JSX.Element {
   }, []);
 
   return (
-    <NetlifyFormProvider {...netlify}>
-      <NetlifyFormComponent onSubmit={handleSubmit} className={styles.form}>
-        <Honeypot />
-        {netlify.success ? (
-          <p
-            className={clsx('alert alert--success', styles.alert)}
-            role="alert"
-          >
-            Thank you for signing up! Please check your inbox to confirm your
-            subscription.
-          </p>
-        ) : netlify.error ? (
-          <p className={clsx('alert alert--danger', styles.alert)} role="alert">
-            Sorry, something went wrong.
-          </p>
-        ) : (
-          <>
-            <label htmlFor="email">Email address</label>
-            <div>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.email}
-                placeholder="Email address"
-              />
-              <button
-                type="submit"
-                className="button button--lg button--primary"
-                disabled={netlify.submitting || errors.email}
-              >
-                Subscribe
-              </button>
-            </div>
-            <p className={clsx(styles.error)} aria-live="polite">
-              {touched.email ? errors.email : <>&nbsp;</>}
-            </p>
-            <input
-              type="hidden"
-              name="referrer_url"
-              id="referrer_url"
-              value={values.referrer_url}
-            />
-          </>
-        )}
-      </NetlifyFormComponent>
-    </NetlifyFormProvider>
+    <section className={homepageStyles.section}>
+      <div className={clsx(homepageStyles.inner, styles.flex)}>
+        <div>
+          <h2 className={styles.heading}>
+            Resoto <br />
+            Newsletter
+          </h2>
+          <NetlifyFormProvider {...netlify}>
+            <NetlifyFormComponent
+              onSubmit={handleSubmit}
+              className={styles.form}
+            >
+              <Honeypot />
+              {netlify.success ? (
+                <p className={styles.alert} role="alert">
+                  Thank you for signing up! Please check your inbox to confirm
+                  your subscription.
+                </p>
+              ) : netlify.error ? (
+                <p className={styles.alert} role="alert">
+                  Sorry, something went wrong.
+                </p>
+              ) : (
+                <>
+                  <p className={clsx(styles.error)} aria-live="polite">
+                    {touched.email ? errors.email : <>&nbsp;</>}
+                  </p>
+                  <label htmlFor="email">Email address</label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.email}
+                    placeholder="Email address"
+                    className={
+                      touched.email && errors.email ? styles.inputError : ''
+                    }
+                  />
+                  <button
+                    type="submit"
+                    className={clsx(
+                      homepageStyles.button,
+                      homepageStyles.primaryButton
+                    )}
+                    disabled={netlify.submitting || errors.email}
+                  >
+                    Subscribe
+                  </button>
+                  <input
+                    type="hidden"
+                    name="referrer_url"
+                    id="referrer_url"
+                    value={values.referrer_url}
+                  />
+                </>
+              )}
+            </NetlifyFormComponent>
+          </NetlifyFormProvider>
+        </div>
+        <div className={styles.image} aria-hidden="true" />
+      </div>
+    </section>
   );
 }

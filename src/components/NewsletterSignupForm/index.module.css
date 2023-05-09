@@ -1,7 +1,23 @@
+.flex {
+  display: flex;
+}
+
+.flex div:first-child {
+  flex: 1 1 0%;
+  padding-right: 72px;
+}
+
+.heading {
+  text-transform: uppercase;
+  font-size: 72px;
+  line-height: 112%;
+  font-weight: 800;
+  margin-bottom: 36px;
+}
+
 .form {
-  --ifm-button-size-multiplier: 1.35;
-  margin: calc(var(--ifm-paragraph-margin-bottom) * 2) auto;
-  max-width: calc(var(--ifm-container-width) / 2);
+  display: flex;
+  flex-direction: column;
 }
 
 .form label {
@@ -9,42 +25,72 @@
 }
 
 .form input {
-  color: var(--ifm-color-gray-900);
-  background-color: var(--ifm-color-secondary);
-  border: var(--ifm-button-border-width) solid var(--ifm-color-secondary);
-  border-radius: var(--ifm-button-border-radius);
-  font-size: calc(0.875rem * var(--ifm-button-size-multiplier));
-  font-weight: var(--ifm-button-font-weight);
-  line-height: 1.5;
-  padding: calc(
-      var(--ifm-button-padding-vertical) * var(--ifm-button-size-multiplier)
-    )
-    calc(
-      var(--ifm-button-padding-horizontal) * var(--ifm-button-size-multiplier) /
-        2
-    );
-  flex-grow: 1;
+  height: 72px;
+  border-radius: 36px;
+  font-size: 20px;
+  line-height: 25px;
+  font-weight: 600;
+  padding: 0 42px;
+  margin-bottom: 18px;
+  border: 2px solid #ffffff;
+  background-color: #ffffff;
+  color: #000c1d;
 }
 
-.form > div {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.form > div > * {
-  margin: 0 0.25rem 0.25rem;
-}
-
-.form p {
-  font-size: calc(0.875rem * var(--ifm-button-size-multiplier)) !important;
-}
-
-p.alert {
-  border: none;
+.inputError {
+  border: 2px solid var(--ifm-color-danger-dark) !important;
 }
 
 p.error {
+  margin-bottom: 0;
   color: var(--ifm-color-danger-dark);
+  padding: 0 42px;
+}
+
+p.alert {
+  font-size: 24px;
+}
+
+.image {
+  width: 25vw;
+  height: 25vw;
+  max-width: 500px;
+  max-height: 500px;
+  background-image: url('./img/sheep-support.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top right;
+}
+
+@media (max-width: 1535px) {
+  .image {
+    width: 30vw;
+    height: 30vw;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .flex {
+    flex-direction: column;
+  }
+
+  .flex > div {
+    padding-right: 0 !important;
+  }
+
+  .heading {
+    font-size: 60px;
+  }
+
+  .image {
+    width: 45vw;
+    height: 45vw;
+    margin: 72px auto 0;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .heading {
+    font-size: 48px;
+  }
 }

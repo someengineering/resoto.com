@@ -1,21 +1,23 @@
 .hero {
   color: var(--ifm-color-content);
-  background-color: var(--ifm-background-color);
+  background-color: #ffffff;
   background-image: radial-gradient(
       farthest-corner at 60% 15%,
-      var(--ifm-color-content-secondary),
+      #af62f1,
       transparent 60%
     ),
-    radial-gradient(
-      farthest-side at 75% 175%,
-      var(--ifm-color-content-secondary),
-      transparent 75%
-    );
+    radial-gradient(farthest-side at 75% 175%, #af62f1, transparent 75%);
   background-blend-mode: screen;
 }
 
 html[data-theme='dark'] .hero {
-  background-color: var(--ifm-color-primary-contrast-background);
+  background-color: #24024f;
+  background-image: radial-gradient(
+      farthest-corner at 60% 15%,
+      #762dd7,
+      transparent 60%
+    ),
+    radial-gradient(farthest-side at 75% 175%, #762dd7, transparent 75%);
 }
 
 .inner {

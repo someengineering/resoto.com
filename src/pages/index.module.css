@@ -149,6 +149,10 @@ html[data-theme='dark'] .heroTitle strong {
   transition: background 0.25s ease;
 }
 
+.button:hover {
+  text-decoration: none;
+}
+
 .primaryButton {
   color: #ffffff;
   border-color: #762dd7;

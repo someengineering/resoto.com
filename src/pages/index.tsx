@@ -57,7 +57,6 @@ export default function Home(): JSX.Element {
                 <Link
                   to="/docs"
                   className={clsx(
-                    'button button--outline button--primary button--lg',
                     styles.button,
                     styles.outlinedButton,
                     styles.docsButton

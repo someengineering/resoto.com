@@ -2743,9 +2743,9 @@
     form-data "^3.0.0"
 
 "@types/node@*":
-  version "20.1.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.1.0.tgz#258805edc37c327cf706e64c6957f241ca4c4c20"
-  integrity sha512-O+z53uwx64xY7D6roOi4+jApDGFg0qn6WHcxe5QeqjMaTezBO/mxdfFXIVAVVyNWKx84OmPB3L8kbVYOTeN34A==
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.1.1.tgz#afc492e8dbe7f672dd3a13674823522b467a45ad"
+  integrity sha512-uKBEevTNb+l6/aCQaKVnUModfEMjAl98lw2Si9P5y4hLu9tm6AlX2ZIoXZX6Wh9lJueYPrGPKk5WMCNHg/u6/A==
 
 "@types/node@14 || 16 || 17", "@types/node@^17.0.5":
   version "17.0.45"
@@ -2753,9 +2753,9 @@
   integrity sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==
 
 "@types/node@^14.11.8":
-  version "14.18.45"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.18.45.tgz#d962a7409509dd4de3ce4838e83f49b5703ec09d"
-  integrity sha512-Nd+FPp60jEaJpm4LAxuLT3wIhB4k0Jdj9DAP4ydqGyMg8DhE+7oM1we+QkwOkpMySTjcqcNfPOWY5kBuAOhkeg==
+  version "14.18.46"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.18.46.tgz#ffc5a96cbe4fb5af9d16ac08e50229de30969487"
+  integrity sha512-n4yVT5FuY5NCcGHCosQSGvvCT74HhowymPN2OEcsHPw6U1NuxV9dvxWbrM2dnBukWjdMYzig1WfIkWdTTQJqng==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
@@ -2867,9 +2867,9 @@
   integrity sha512-5cJ8CB4yAx7BH1oMvdU0Jh9lrEXyPkar6F9G/ERswkCuvP4KQZfZkSjcMbAICCpQTN4OuZn8tz0HiKv9TGZgrQ==
 
 "@types/semver@^7.3.12":
-  version "7.3.13"
-  resolved "https://registry.yarnpkg.com/@types/semver/-/semver-7.3.13.tgz#da4bfd73f49bd541d28920ab0e2bf0ee80f71c91"
-  integrity sha512-21cFJr9z3g5dW8B0CVI9g2O9beqaThGQ6ZFBqHfwhzLDKUxaqTIy3vnfah/UPkfOiF2pLq+tGz+W8RyCskuslw==
+  version "7.5.0"
+  resolved "https://registry.yarnpkg.com/@types/semver/-/semver-7.5.0.tgz#591c1ce3a702c45ee15f47a42ade72c2fd78978a"
+  integrity sha512-G8hZ6XJiHnuhQKR7ZmysCeJWE08o8T0AXtk5darsCaTVsYZhhgUrq53jizaR2FvsoeCwJhlmwTjkXBY5Pn/ZHw==
 
 "@types/send@*":
   version "0.17.1"
@@ -5591,9 +5591,9 @@ ejs@^3.1.6:
     jake "^10.8.5"
 
 electron-to-chromium@^1.4.284:
-  version "1.4.385"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.385.tgz#1afd8d6280d510145148777b899ff481c65531ff"
-  integrity sha512-L9zlje9bIw0h+CwPQumiuVlfMcV4boxRjFIWDcLfFqTZNbkwOExBzfmswytHawObQX4OUhtNv8gIiB21kOurIg==
+  version "1.4.387"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.387.tgz#9a93ef1bd01b5898436026401ea3cabb1dd17d7a"
+  integrity sha512-tutLf+alr1/0YqJwKPdstVvDLmxmLb5xNyDLNS0RZmenHcEYk9qKfpKDCVZEKJ00JVbnayJm1MZAbYhYDFpcOw==
 
 elkjs@^0.8.2:
   version "0.8.2"
@@ -10478,6 +10478,11 @@ react-textarea-autosize@^8.3.2:
     "@babel/runtime" "^7.20.13"
     use-composed-ref "^1.3.0"
     use-latest "^1.2.1"
+
+react-wrap-balancer@0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/react-wrap-balancer/-/react-wrap-balancer-0.4.1.tgz#5b5500724879f5670ead177d7ab99cc9c5e36704"
+  integrity sha512-KbIwnnCBCxj5u4yr76NXKKriM94VL33LtO9bE0sedCp4yqdGYJD8TGU+2zlPxkguH5xxKxdapBtMYdMAODk/QQ==
 
 react-zoom-pan-pinch@3.0.7:
   version "3.0.7"

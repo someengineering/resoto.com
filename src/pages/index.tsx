@@ -79,16 +79,16 @@ export default function Home(): JSX.Element {
                 </Balancer>
               </h2>
               <div className={styles.logos}>
-                <Link to="/docs/getting-started/configure-resoto/aws">
+                <Link to="/docs/how-to-guides/data-sources/collect-aws-resource-data">
                   <AwsLogo />
                 </Link>
-                <Link to="/docs/getting-started/configure-resoto/gcp">
+                <Link to="/docs/how-to-guides/data-sources/collect-google-cloud-resource-data">
                   <GoogleCloudLogo />
                 </Link>
-                <Link to="/docs/getting-started/configure-resoto/digitalocean">
+                <Link to="/docs/how-to-guides/data-sources/collect-digitalocean-resource-data">
                   <DigitalOceanLogo />
                 </Link>
-                <Link to="/docs/getting-started/configure-resoto/kubernetes">
+                <Link to="/docs/how-to-guides/data-sources/collect-kubernetes-resource-data">
                   <KubernetesLogo />
                 </Link>
               </div>

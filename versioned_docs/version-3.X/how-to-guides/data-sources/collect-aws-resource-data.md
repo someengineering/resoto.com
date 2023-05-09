@@ -1,8 +1,8 @@
 ---
-sidebar_label: Amazon Web Services
+sidebar_label: Collect AWS Resource Data
 ---
 
-# Configure Amazon Web Services Resource Collection
+# How to Collect AWS Resource Data
 
 ```mdx-code-block
 import TabItem from '@theme/TabItem';
@@ -11,9 +11,13 @@ import Tabs from '@theme/Tabs';
 
 The [Amazon Web Services (AWS)](../../reference/data-models/aws/index.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell).
 
-https://youtu.be/6_nxUM0iFx4
+## Prerequisites
 
-## Enabling the Collector
+This guide assumes that you have already [installed](../../getting-started/install-resoto/index.md) Resoto.
+
+## Directions
+
+### 1. Enable the AWS Collector
 
 1. Open the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell):
 
@@ -34,7 +38,7 @@ https://youtu.be/6_nxUM0iFx4
    ...
    ```
 
-## Authentication
+### 2. Authenticate with AWS
 
 **Resoto supports the authentication mechanisms described in the [Boto3 SDK documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html).** You can authenticate with [<abbr title="Amazon Web Services">AWS</abbr>](../../reference/data-models/aws/index.md) via an instance profile, an access key, or profiles. These credentials can be defined in the Resoto Worker configuration or as environment variables.
 
@@ -78,7 +82,7 @@ https://youtu.be/6_nxUM0iFx4
 
    :::info
 
-   This step is not necessary for [pip installs](../install-resoto/pip.md). Since Resoto is running on your local machine, it can access the `credentials` file directly at `~/.aws/credentials`.
+   Since Resoto is running on your local machine, it can access the `credentials` file directly at `~/.aws/credentials`.
 
    :::
 
@@ -180,7 +184,7 @@ Access keys in the configuration are visible to anyone with access to your Resot
 
    :::info
 
-   This step is not necessary for [pip installs](../install-resoto/pip.md). Since Resoto is running on your local machine, it can access the `credentials` file directly at `~/.aws/credentials`.
+   Since Resoto is running on your local machine, it can access the `credentials` file directly at `~/.aws/credentials`.
 
    :::
 
@@ -336,22 +340,26 @@ You can specify a profile using `AWS_PROFILE` and, for local testing, SSO authen
 </TabItem>
 </Tabs>
 
-## Authorization
+### 3. Authorize Resoto Access to AWS
 
-See [How to Roll Out Resoto AWS Permissions with CloudFormation](../../how-to-guides/configuration/roll-out-resoto-aws-permissions-with-cloudformation/index.md) for a step-by-step guide on how to roll out Resoto [permissions](../../reference/permissions/aws.md) organization-wide.
+See [How to Roll Out Resoto AWS Permissions with CloudFormation](../configuration/roll-out-resoto-aws-permissions-with-cloudformation/index.md) for a step-by-step guide on how to roll out Resoto [permissions](../../reference/permissions/aws.md) organization-wide.
+
+:::info
 
 If you prefer to deploy the role yourself, the S3 URL of the template to create the `ResotoAccess` role is <https://resotopublic.s3.amazonaws.com/cf/resoto-role.template>.
 
-## Resource Collection
+:::
 
-By default, Resoto performs resource collection each hour. To immediately trigger a collect run, use the [`workflow run` command](../../reference/cli/action-commands/workflows/run.md) in [Resoto Shell](../../reference/components/shell):
+### 4. Trigger Resource Collection
 
-```bash
-> workflow run collect
-```
+1. By default, Resoto performs resource collection each hour. To immediately trigger a collect run, use the [`workflow run` command](../../reference/cli/action-commands/workflows/run.md) in [Resoto Shell](../../reference/components/shell):
 
-Once the collect run completes, you can view a summary of collected <abbr title="Amazon Web Services">AWS</abbr> resources using the following search:
+   ```bash
+   > workflow run collect
+   ```
 
-```bash
-> search is(aws_resource) | count kind
-```
+2. Once the collect run completes, you can view a summary of collected [<abbr title="Amazon Web Services">AWS</abbr> resources](../../reference/data-models/index.md) using the following search:
+
+   ```bash
+   > search is(aws_resource) | count kind
+   ```

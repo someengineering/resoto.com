@@ -71,9 +71,13 @@ https://blog.resoto.com/*                                                       
 /docs/getting-started/configuration/worker                                            /docs/reference/configuration/worker
 /docs/getting-started/configuration                                                   /docs/getting-started/configure-resoto
 /docs/getting-started/configuring-resoto                                              /docs/getting-started/configure-resoto
-/docs/getting-started/configuration/cloud-providers/*                                 /docs/getting-started/configure-resoto/:splat
-/docs/getting-started/configuration/worker/cloud-providers/*                          /docs/getting-started/configure-resoto/:splat
-/docs/getting-started/configure-cloud-provider-access/*                               /docs/getting-started/configure-resoto/:splat
+/docs/getting-started/configure-resoto/aws                                            /docs/how-to-guides/data-sources/collect-aws-resource-data
+/docs/getting-started/configure-resoto/digitalocean                                   /docs/how-to-guides/data-sources/collect-digitalocean-resource-data
+/docs/getting-started/configure-resoto/gcp                                            /docs/how-to-guides/data-sources/collect-google-cloud-resource-data
+/docs/getting-started/configure-resoto/kubernetes                                     /docs/how-to-guides/data-sources/collect-kubernetes-resource-data
+/docs/getting-started/configuration/cloud-providers/*                                 /docs/how-to-guides/data-sources
+/docs/getting-started/configuration/worker/cloud-providers/*                          /docs/how-to-guides/data-sources
+/docs/getting-started/configure-cloud-provider-access/*                               /docs/how-to-guides/data-sources
 
 /docs/getting-started/next-steps                                                      /docs/getting-started/explore-resoto
 
@@ -288,6 +292,7 @@ https://blog.resoto.com/*                                                       
 /docs/reference/resotocore-api                                                        /docs/reference/api
 
 /docs/reference/data-models/dockerhub                                                 /docs/reference/data-models/docker-hub
+/docs/reference/data-models/gcp                                                       /docs/reference/data-models/google-cloud
 /docs/reference/data-models/onprem                                                    /docs/reference/data-models/on-premises
 /docs/reference/resources/data-models                                                 /docs/reference/data-models
 /docs/reference/resources/*                                                           /docs/reference/data-models/:splat

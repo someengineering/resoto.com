@@ -19,7 +19,7 @@ html[data-theme='dark'] .hero {
 }
 
 .inner {
-  padding: 72px 144px;
+  padding: 72px;
   margin: 0 auto;
   max-width: var(--ifm-container-width-xxl);
 }
@@ -286,9 +286,12 @@ html[data-theme='dark'] .providersHeading strong {
 }
 
 @media (max-width: 1535px) {
-  .inner,
-  .section {
+  .inner {
     padding: 36px;
+  }
+
+  .content > .section + .section {
+    margin-top: 36px;
   }
 }
 
@@ -344,9 +347,9 @@ html[data-theme='dark'] .providersHeading strong {
   }
 
   .logos > a {
-    height: 3rem;
-    max-width: 15rem;
-    margin: 0 2rem 1.5rem;
+    height: 2.4rem;
+    max-width: 12rem;
+    margin: 0 1.6rem 1.2rem;
   }
 }
 

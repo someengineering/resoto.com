@@ -6,6 +6,8 @@ const { sortBy } = require('lodash');
 
 const a11yEmoji = require('@fec/remark-a11y-emoji');
 const oembed = require('remark-plugin-oembed');
+const math = require('remark-math');
+const katex = require('rehype-katex');
 
 const latestRelease = require('./latestRelease.json');
 const versions = require('./versions.json');
@@ -89,6 +91,13 @@ const config = {
       as: 'font',
       type: 'font/woff2',
       crossorigin: true,
+    },
+    {
+      href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
+      type: 'text/css',
+      integrity:
+        'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
+      crossorigin: 'anonymous',
     },
   ],
   scripts: isProd
@@ -196,6 +205,23 @@ const config = {
         }),
       };
     },
+    [
+      'content-docs',
+      /** @type {import('@docusaurus/plugin-content-docs').Options} */
+      ({
+        id: 'compare',
+        path: 'compare',
+        routeBasePath: 'compare',
+        sidebarPath: require.resolve('./sidebarsCompare.js'),
+        sidebarCollapsible: false,
+        editUrl: ({ versionDocsDirPath, docPath }) =>
+          `https://github.com/someengineering/resoto.com/edit/main/${versionDocsDirPath}/${docPath}`,
+        showLastUpdateAuthor: false,
+        showLastUpdateTime: true,
+        remarkPlugins: [a11yEmoji, math],
+        rehypePlugins: [katex],
+      }),
+    ],
     [
       'docusaurus-plugin-openapi-docs',
       {
@@ -372,7 +398,7 @@ const config = {
               },
             ],
           },
-          { to: '/about', label: 'About', position: 'right' },
+          { to: '/compare', label: 'Compare', position: 'right' },
           {
             label: 'Blog',
             href: 'https://some.engineering/blog',
@@ -460,6 +486,10 @@ const config = {
               {
                 label: 'News',
                 to: '/news',
+              },
+              {
+                label: 'Compare',
+                to: '/compare',
               },
               {
                 label: 'About',

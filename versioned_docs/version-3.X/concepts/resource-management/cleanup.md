@@ -8,7 +8,9 @@ Resoto is very good at helping you find problematic resources in your infrastruc
 
 :::info
 
-By default, [Resoto Worker](../../reference/components/worker.md) does not delete resources marked for deletion. Resources marked with `| clean` will stay this way without getting deleted unless [cleanup is enabled](#enabling-cleanup).
+**By default, [Resoto Worker](../../reference/components/worker.md) does not delete resources marked for deletion.**
+
+Resources marked with `| clean` will stay this way without getting deleted unless [cleanup is enabled](#enabling-cleanup).
 
 Cleanup can be performed manually in [Resoto Shell](../../reference/components/shell.md), automatically using a [cleanup plugin](../../reference/components/plugins/index.md), or via a scheduled [job](../automation/index.md#jobs).
 
@@ -34,7 +36,11 @@ The same search turned into an automated cleanup job:
 
 Additional search criteria like `and /ancestors.account.reported.id = "1234567"` to further restrict the search could be given.
 
+:::info
+
 See [Cleanup How-To Guides](../../how-to-guides/cleanup/index.md) for step-by-step instructions to clean up various types of resources.
+
+:::
 
 :::tip
 
@@ -56,7 +62,7 @@ You can also target specific resources to un-mark. For example, to quickly undo 
 
 When a resource is marked for cleanup, it is not immediately deleted. Rather, it is flagged for deletion during the [`collect_and_cleanup` workflow](../../reference/workflows/index.md#collect_and_cleanup-workflow), which runs each hour by default.
 
-:::info
+:::note
 
 Resources can only be cleaned up if they are not [protected](./protection.md).
 

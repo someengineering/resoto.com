@@ -181,6 +181,24 @@ module.exports = [
         label: 'Get the currently defined model as svg uml image.',
         className: 'api-method get',
       },
+      {
+        type: 'doc',
+        id: 'reference/api/get-the-currently-defined-model',
+        label: 'Get the currently defined model.',
+        className: 'api-method get',
+      },
+      {
+        type: 'doc',
+        id: 'reference/api/add-or-update-the-current-defined-model',
+        label: 'Add or update the current defined model.',
+        className: 'api-method patch',
+      },
+      {
+        type: 'doc',
+        id: 'reference/api/get-the-currently-defined-model-as-svg-uml-image',
+        label: 'Get the currently defined model as svg uml image.',
+        className: 'api-method get',
+      },
     ],
   },
   {

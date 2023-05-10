@@ -347,7 +347,6 @@ const config = {
             'Resoto consolidates resource data across your clouds, regions, and accounts. Open source and free to use.',
         },
         { property: 'og:type', content: 'website' },
-        { name: 'robots', content: 'nofollow' },
       ],
       tableOfContents: {
         minHeadingLevel: 2,

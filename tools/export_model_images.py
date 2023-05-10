@@ -46,7 +46,7 @@ def get_url(url: str, params: dict = None) -> Response:
 
 def get_kinds() -> Dict[str, List[Any]]:
     kinds = defaultdict(list)
-    for kind in get_url(f"{core}/model/resoto").json():
+    for kind in get_url(f"{core}/graph/resoto/model").json():
         groups = [a for a in providers if kind["fqn"].startswith(f"{a}_") and kind.get("aggregate_root", False)]
         if groups:
             kinds[groups[0]].append(kind)
@@ -59,7 +59,7 @@ def export_images(provider: str, kinds: list):
         name = kind["fqn"]
         print(f"Exporting {name}")
         with open(f"./{provider}/img/{name}.svg", "w+") as file:
-            image = get_url(f"{core}/model/uml", params={"show": name, "link_classes": "true"})
+            image = get_url(f"{core}/graph/resoto/model/uml", params={"show": name, "link_classes": "true"})
             file.write(image.text)
         with open(f"./{provider}/img/{name}_relationships.svg", "w+") as file:
             parms = {
@@ -73,7 +73,7 @@ def export_images(provider: str, kinds: list):
                 "with_properties": "false",
                 "link_classes": "true",
             }
-            image = get_url(f"{core}/model/resoto/uml", params=parms)
+            image = get_url(f"{core}/graph/resoto/model/uml", params=parms)
             file.write(image.text)
 
 

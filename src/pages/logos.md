@@ -16,6 +16,6 @@ Use the single-color or inverted single-color variants where the use of color is
 
 ## Clear Space
 
-Maintain a margin of one “center to pupil edge“ around the logo.
+Maintain a margin of one "center to pupil edge" around the logo.
 
 When using a variant without text, use a square box with the sheep‘s face centered within the area.

@@ -1,8 +1,8 @@
 *                     @TheCatLady
 
-latestRelease.json    @TheCatLady @lloesche @aquamatthias @meln1k @anjafr
-/docs/                @TheCatLady @lloesche @aquamatthias @meln1k @anjafr
-/news/                @TheCatLady @lloesche @aquamatthias @meln1k @anjafr
-/openapi/             @TheCatLady @lloesche @aquamatthias @meln1k @anjafr
+latestRelease.json    @TheCatLady @lloesche @aquamatthias @meln1k
+/docs/                @TheCatLady @lloesche @aquamatthias @meln1k
+/news/                @TheCatLady @lloesche @aquamatthias @meln1k
+/openapi/             @TheCatLady @lloesche @aquamatthias @meln1k
 
 /tools/*.py           @TheCatLady @aquamatthias

@@ -92,7 +92,7 @@ Resoto is an expert tool for engineers that runs on top of the [Resoto Core](/do
 
 - We start with collecting metrics from [AWS](https://aws.amazon.com) and [GCP](https://console.cloud.google.com) cloud services most relevant for users, and expand the number of supported services with each sprint based on what the community is telling us.
 
-- Because Resoto is extensible and open source, the community can build plug-ins and collect metrics from any [AWS](https://aws.amazon.com) or [GCP](https://console.cloud.google.com) service that we do not support yet. Our SDK makes it easy to build new custom plug-ins to collect data.
+- Because Resoto is extensible and open source, the community can build plugins and collect metrics from any [AWS](https://aws.amazon.com) or [GCP](https://console.cloud.google.com) service that we do not support yet. Our SDK makes it easy to build new custom plugins to collect data.
 
 #### 3-Year Vision
 
@@ -104,7 +104,7 @@ For example, Legal builds an inventory of workflows that verify ongoing infrastr
 
 By now, Resoto covers the major global ([AWS](https://aws.amazon.com), [GCP](https://console.cloud.google.com), [Azure](https://azure.microsoft.com), [Alibaba](https://www.alibabacloud.com)), specialized ([DigitalOcean](https://digitalocean.com), [Oracle](https://oracle.com), [IBM](https://cloud.ibm.com), etc.), and private/hybrid clouds such as [VMWare](https://cloud.vmware.com) and [Red Hat](https://cloud.redhat.com).
 
-We've expanded beyond the cloud, and also collect metadata from other infrastructure such as IoT devices—[Raspberry Pi](https://raspberrypi.org), industrial appliances, etc. Either directly, or through community-supported plug-ins. If something has an IP address, we can collect metadata and metrics—and that opens up new (vertical) use cases. Cloud computing is not the only infrastructure where it's useful to be able to search, query resources, build workflows or have metrics and have event triggers. In short, reacting to changes. Something changes, and you want to be able to react to it. That's useful for any digital infrastructure.
+We've expanded beyond the cloud, and also collect metadata from other infrastructure such as IoT devices—[Raspberry Pi](https://raspberrypi.org), industrial appliances, etc. Either directly, or through community-supported plugins. If something has an IP address, we can collect metadata and metrics—and that opens up new (vertical) use cases. Cloud computing is not the only infrastructure where it's useful to be able to search, query resources, build workflows or have metrics and have event triggers. In short, reacting to changes. Something changes, and you want to be able to react to it. That's useful for any digital infrastructure.
 
 Say the valves of a fertilizer plant have embedded sensors. The sensors only have an analog serial interface and are not connected to the Internet. If the plant operator retrofits each valve with a [Raspberry Pi](https://raspberrypi.org), then Resoto collects data from both the Pis and the sensors, and integrates them into the overall company infrastructure graph. The plant operator builds the Resoto plug-in for the valves and defines the valve-specific primitives / attributes (e.g. `pressure`, `throughput`, `temperature`) to collect, in addition to any applicable common attributes (e.g. `atime`, `ctime`). Resoto provides an [MQTT](https://mqtt.org) bridge that integrates with existing IoT infrastructure and allows attribute updates via an industry standard protocol.
 
@@ -142,7 +142,7 @@ As our use cases have expanded, our users want to start offering the benefits of
 
 In the example of the valves and the fertilizer plant, the plant operator retrofitted the valves by connecting them via [Raspberry Pis](https://raspberrypi.org) and writing the plug-in.
 
-Now, it's the valve manufacturers themselves who standardize and expose attributes of their valves, write the Resoto plug-ins, and define standard workflow templates. A workflow template could be a maintenance alert and dispatch when the valve achieves a certain age or total lifetime throughput.
+Now, it's the valve manufacturers themselves who standardize and expose attributes of their valves, write the Resoto plugins, and define standard workflow templates. A workflow template could be a maintenance alert and dispatch when the valve achieves a certain age or total lifetime throughput.
 
 Instead of "just" selling valves, a manufacturer bundles valve, [Raspberry Pi](https://raspberrypi.org), Resoto Core, plug-in and workflow templates into a subscription for a "digital valve" or a "valve cloud" that carries the manufacturer's own brand. The valve manufacturer also maintains connectivity to all valves across its customer base, collecting the aggregate data set. Because Resoto is open, standardized and abstracted, the "valve cloud" is plug-and-play and integrates with a plant operators' existing digital / cloud infrastructure. The valves and [Raspberry Pis](https://raspberrypi.org) again become searchable, discoverable and programmable.
 

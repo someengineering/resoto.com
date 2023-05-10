@@ -1,4 +1,5 @@
 import Link from '@docusaurus/Link';
+import { useActivePlugin } from '@docusaurus/plugin-content-docs/client';
 import { ThemeClassNames } from '@docusaurus/theme-common';
 import { useDocsVersion } from '@docusaurus/theme-common/internal';
 import type { WrapperProps } from '@docusaurus/types';
@@ -12,11 +13,12 @@ import React from 'react';
 type Props = WrapperProps<typeof DocSidebarItemsType>;
 
 export default function DocSidebarItemsWrapper(props: Props): JSX.Element {
+  const { pluginId } = useActivePlugin();
   const versionMetadata = useDocsVersion();
 
   return (
     <>
-      {props.level === 1 ? (
+      {pluginId == 'default' && props.level === 1 ? (
         <li
           className={clsx(
             ThemeClassNames.docs.docSidebarItemLink,

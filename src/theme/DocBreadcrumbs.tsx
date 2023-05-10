@@ -1,4 +1,5 @@
 import Link from '@docusaurus/Link';
+import { useActivePlugin } from '@docusaurus/plugin-content-docs/client';
 import { useSidebarBreadcrumbs } from '@docusaurus/theme-common/internal';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import React, { type ReactNode } from 'react';
@@ -51,8 +52,9 @@ function BreadcrumbsItem({
 
 export default function DocBreadcrumbs(): JSX.Element | null {
   const breadcrumbs = useSidebarBreadcrumbs();
+  const { pluginId } = useActivePlugin();
 
-  if (!breadcrumbs || !breadcrumbs.length) {
+  if (!breadcrumbs || !breadcrumbs.length || pluginId !== 'default') {
     return null;
   }
 

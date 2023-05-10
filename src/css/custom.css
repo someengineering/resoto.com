@@ -381,7 +381,10 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   text-decoration: var(--ifm-link-hover-decoration);
 }
 
-.tabs-container > .margin-top--md {
+.theme-doc-markdown
+  > :not(.theme-api-markdown)
+  .tabs-container
+  > .margin-top--md {
   margin-top: -3px !important;
   padding: var(--ifm-alert-padding-vertical) var(--ifm-alert-padding-horizontal);
   border: 1px solid var(--ifm-toc-border-color);
@@ -389,19 +392,21 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   box-shadow: var(--ifm-alert-shadow);
 }
 
-.tabs-container > .tabs {
+.theme-doc-markdown > :not(.theme-api-markdown) .tabs {
   overflow-x: visible;
   margin-left: var(--ifm-tabs-padding-horizontal);
 }
 
-.tabs-container > .tabs > .tabs__item {
+.theme-doc-markdown > :not(.theme-api-markdown) .tabs__item {
   padding: calc(var(--ifm-tabs-padding-vertical) / 2)
     var(--ifm-tabs-padding-horizontal) !important;
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
 }
 
-.tabs-container > .tabs > .tabs__item:not(.tabs__item--active):hover {
+.theme-doc-markdown
+  > :not(.theme-api-markdown)
+  .tabs__item:not(.tabs__item--active):hover {
   border-bottom-color: var(--ifm-toc-border-color);
 }
 

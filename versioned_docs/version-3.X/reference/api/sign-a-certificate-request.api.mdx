@@ -12,32 +12,32 @@ custom_edit_url: null
 ---
 
 import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiDemoPanel/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiDemoPanel/SecuritySchemes";
 import MimeTabs from "@theme/MimeTabs";
 import ParamsItem from "@theme/ParamsItem";
 import ResponseSamples from "@theme/ResponseSamples";
 import SchemaItem from "@theme/SchemaItem";
 import SchemaTabs from "@theme/SchemaTabs";
-import DiscriminatorTabs from "@theme/DiscriminatorTabs";
 import TabItem from "@theme/TabItem";
 
-## Sign a certificate request.
+<h1 className={"openapi__heading"}>Sign a certificate request.</h1>
+
+<MethodEndpoint method={"post"} path={"/ca/sign"}></MethodEndpoint>
+
+<SecuritySchemes infoPath={"versioned_docs/version-3.X/reference/api/resoto-core-rest-api"}></SecuritySchemes>
 
 Sign a certificate request.
 
-<MimeTabs><TabItem label={"application/pkcs10"} value={"application/pkcs10-schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Request Body</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}><div style={{"marginTop":"1rem","marginBottom":"1rem"}}>
+## Request
+
+<MimeTabs className={"openapi-tabs__mime"}><TabItem label={"application/pkcs10"} value={"application/pkcs10-schema"}><details style={{}} className={"openapi-markdown__details mime"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-mime"}><h3 className={"openapi-markdown__details-summary-header-body"}>Body</h3></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}><div style={{"marginTop":"1rem","marginBottom":"1rem"}}>
 
 The certificate signing request (csr) in pkcs10 format.
 
-</div></div><ul style={{"marginLeft":"1rem"}}><div style={{"marginTop":".5rem","marginBottom":".5rem","marginLeft":"1rem"}}>
-
-string
-
-</div></ul></details></TabItem></MimeTabs><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+</div></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"string"} required={false} schemaName={undefined} qualifierMessage={undefined} schema={{"type":"string","example":"-----BEGIN CERTIFICATE REQUEST-----\nMIICYDCCAUgCAQAwGzEZMBcGA1UEAwwQc29tZS5lbmdpbmVlcmluZzCCASIwDQYJ\nKoZIhvcNAQEBBQADggEPADCCAQoCggEBAM6QVB0C0G1yJRD1aWye8a1IscJa4cN4\n+PDWim+2qemCRpiIafgsict5AtlqmvDaYYs7uaLI8PLASMz0pnrxLaVbRVu5H7Ix\nKSh1Vz/WjsqTDNw5Q+qPpT/YPP5l02IrKrP/pdMNC0FYnDxr6Y4bXVuFqtMv+Zr2\namJSIpOET2wswo6MRflfiO9jh8mD5mdU+SqDHAvBpU7H3L4rd3cWyVsz3Q4cqpwa\nSDayhRMewxusI2MTj/uNEzZYTWiHb2TXUkYYSMYazdbVRUKFNWOsq+z1RPV1IUUe\ng0yjNS+tfYF0numPzwt9GNuB18O3X1G5rs2nHDRQL8pAbcy5Wjsuwf0CAwEAAaAA\nMA0GCSqGSIb3DQEBCwUAA4IBAQAuI5ijV9ahWtRhondwOYuYFMZL+i+tXPdn+O/B\nV7WFVdbaV13TpJ3giJBhCY3mlQ+Vb7BNDhgqdcsiXr4M1fDC0gf8J/GYA2s4yvrf\nfCqnFA97UET0AwpIA22+JZnZVs+FXqDsU2VMBgmGToU0QgzBSVi8/exSx3CWBgAk\nx2q98/r/Dhbi2KQkOYJ7yQx1t0416UiFB9xUnDIreg0k5chP5NF1YRbsatParYhG\nOviEEbELaTnWbmfnveBWjxAImv5w3tkF/dapH+QQ5yTIzDEl/UoG2pXC6QGRaRsp\nMft1XSBtZDykb6SrTTz/lUfjn3XX+zqQ7g466HvglAwqUfX1\n-----END CERTIFICATE REQUEST-----\n"}}></SchemaItem></ul></details></TabItem></MimeTabs><div><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
 
 The certificate in PEM format.
 
-</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/x-pem-file"} value={"application/x-pem-file"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><div style={{"marginTop":".5rem","marginBottom":".5rem","marginLeft":"1rem"}}>
-
-string
-
-</div></ul></details></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/x-pem-file"} value={"application/x-pem-file"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"string"} required={false} schemaName={undefined} qualifierMessage={undefined} schema={{"type":"string","example":"-----BEGIN CERTIFICATE-----\nMIIDUjCCAjqgAwIBAgIUEtDMkiSa2FYM5LVhZiPlspro39owDQYJKoZIhvcNAQEL\nBQAweDELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcM\nDVNhbiBGcmFuY2lzY28xHjAcBgNVBAoMFVNvbWUgRW5naW5lZXJpbmcgSW5jLjEc\nMBoGA1UEAwwTQ2xvdWRrZWVwZXIgUm9vdCBDQTAeFw0yMTEyMjIwOTQ1NDJaFw0y\nMjEyMjIwOTQ1NDJaMBsxGTAXBgNVBAMMEHNvbWUuZW5naW5lZXJpbmcwggEiMA0G\nCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC5VIgOTR95jIxWJZHXUo6FUv4CyDn/\nfZWxZQmFXC8c6SqspRNpXMgZq+riTm+yQ1l/kc2xVpr5S8tVeFGGjzaCcf51DMSx\nj7SaUXP2oDtMi7e9wkfTaoN3z3erVwJl39znKQviEL8G7vYPCn7oDqt1HHry7ctN\ncrEMWYSQXUYe4s++K1q65VyGNBp6AcIrmefoH0pGARZs4MbvR74U44xsj25VFS+W\nM3YSomBv4oB4QkqlcVWOU/Tlx7Tq7ASfkSqEkUigKMx/QKrdeQHxCkEtmjbiHhOk\nVaCYsVbi8pVvE5URNrycvzJXGdimSL8pVZ8M89gUDoxUoiAneSswoRZrAgMBAAGj\nMTAvMA4GA1UdDwEB/wQEAwIFoDAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUH\nAwIwDQYJKoZIhvcNAQELBQADggEBAA70yqOYfYtguJKji+IeIsZflNH2DH6lZ2Xe\nmv5suRbjuKEApSDUL59rpliT1dAcX6+cfKDQjzZ/7VWmp+XZmehGRlhRNWJMzsOz\nXv8/5l0LL59yN4w4FNq2cREcLj35RVYUU7lssNr/RNE9xNMHeqLdC4oW22PUi1lY\niq212G5yQTg31lVmzA9Uzvz+p/A8CG24tSBFbydSIogprmALS+5rnso0bWJ3Owf1\nCVz6Dc9UM4kBWDsb+iTffXwbgSDbG+lJ+9TEndcAzb7Zxs6ghMtv/PKR/tmw+O32\n3da9fAZE2eZoDvssH6LAUcFjtP9SFb8ZOdHJ15l279vzgCvWsvU=\n-----END CERTIFICATE-----\n"}}></SchemaItem></ul></details></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>

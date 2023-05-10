@@ -12,15 +12,21 @@ custom_edit_url: null
 ---
 
 import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiDemoPanel/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiDemoPanel/SecuritySchemes";
 import MimeTabs from "@theme/MimeTabs";
 import ParamsItem from "@theme/ParamsItem";
 import ResponseSamples from "@theme/ResponseSamples";
 import SchemaItem from "@theme/SchemaItem";
 import SchemaTabs from "@theme/SchemaTabs";
-import DiscriminatorTabs from "@theme/DiscriminatorTabs";
 import TabItem from "@theme/TabItem";
 
-## [WebSocket] Register as event listener and receive all events.
+<h1 className={"openapi__heading"}>[WebSocket] Register as event listener and receive all events.</h1>
+
+<MethodEndpoint method={"get"} path={"/events"}></MethodEndpoint>
+
+<SecuritySchemes infoPath={"versioned_docs/version-3.X/reference/api/resoto-core-rest-api"}></SecuritySchemes>
 
 ## WebSocket Endpoint
 
@@ -30,4 +36,6 @@ The client needs to send all the required headers for a ws connection and has to
 
 In case Resoto has a PSK infrastructure in place, the client needs to send a JWT token via the `Authorization` header or via the `resoto_authorization` cookie. It is also possible to omit header or cookie and send an Authorization message as first message on the websocket. Example { "kind": "authorization", "jwt": "Bearer <jwt\>" }
 
-<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Query Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"show","in":"query","description":"All events to show as a comma separated list","required":false,"explode":false,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"default"} value={"default"}><div></div><div></div></TabItem></ApiTabs></div>
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Query Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"show","in":"query","description":"All events to show as a comma separated list","required":false,"explode":false,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><div><div><ApiTabs><TabItem label={"default"} value={"default"}><div></div><div></div></TabItem></ApiTabs></div></div>

@@ -1,0 +1,31 @@
+---
+id: this-endpoint-is-used-to-get-the-user-information
+title: "This endpoint is used to get the user information."
+description: "Get the user information."
+sidebar_label: "This endpoint is used to get the user information."
+hide_title: true
+hide_table_of_contents: true
+api: {"tags":["authorization"],"description":"Get the user information.","responses":{"200":{"description":"The user information.","content":{"application/json":{"example":"{\n  \"email\": \"test@test.de\",\n  \"exp\": 1683660989,\n  \"roles\": \"admin\"\n}\n"}}}},"method":"get","path":"/authorization/user","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Resoto Core REST API","version":"V1"},"postman":{"name":"This endpoint is used to get the user information.","description":{"content":"Get the user information.","type":"text/plain"},"url":{"path":["authorization","user"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"key":"Accept","value":"application/json"}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/reference/api/resoto-core-rest-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## This endpoint is used to get the user information.
+
+Get the user information.
+
+<div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+The user information.
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}>any</ul></details></TabItem><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"email\": \"test@test.de\",\n  \"exp\": 1683660989,\n  \"roles\": \"admin\"\n}\n"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>

@@ -1,11 +1,11 @@
 ---
-id: get-the-currently-defined-model
-title: "Get the currently defined model."
-description: "Get the currently defined model."
-sidebar_label: "Get the currently defined model."
+id: deprecated-get-the-currently-defined-model
+title: "[Deprecated] Get the currently defined model."
+description: "Use /graph/{graph_id}/model instead."
+sidebar_label: "[Deprecated] Get the currently defined model."
 hide_title: true
 hide_table_of_contents: true
-api: {"tags":["model"],"parameters":[{"name":"graph_id","in":"path","description":"The identifier of the graph","example":"resoto","required":true,"schema":{"type":"string"}},{"name":"flat","description":"If true, the hierarchy of complex kinds is flattened, holding all properties and all merged metadata.","in":"query","schema":{"type":"boolean","default":false}}],"responses":{"200":{"description":"The list of all kinds.","content":{"application/json":{"schema":{"description":"Definition of a kind","type":"array","items":{"oneOf":[{"type":"object","title":"StringKind"},{"type":"object","title":"NumberKind"},{"type":"object","title":"BooleanKind"},{"type":"object","title":"DateTimeKind"},{"type":"object","title":"ArrayKind"},{"type":"object","title":"DateKind"},{"type":"object","title":"ComplexKind"},{"type":"object","description":"A simple dictionary where all keys and values are strings","title":"StringDictKind"}]},"example":[{"fqn":"test.dice","runtime_kind":"int32","description":"A dice has 6 sides.","minimum":1,"maximum":6},{"fqn":"test.social_security_number","runtime_kind":"string","description":"A dice has 6 sides.","pattern":"^(?!666|000|9\\d{2})\\d{3}-(?!00)\\d{2}-(?!0{4})\\d{4}$"},{"fqn":"test.base","properties":[{"name":"kind","kind":"string","required":true,"description":"The kind of this compound type."},{"name":"name","kind":"string","description":"The name of the resource.","required":true},{"name":"tags","kind":"dictionary[string, string]","description":"Tags that describe the resource.","required":false}]},{"fqn":"test.person","bases":["test.base"],"properties":[{"name":"fortune","kind":"test.dice","description":"The current dice value.","required":true},{"name":"ssn","kind":"test.social_security_number","description":"The social security number of this person.","required":true}]}],"title":"Kind"}}}}},"description":"Get the currently defined model.","method":"get","path":"/graph/{graph_id}/model","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Resoto Core REST API","version":"V1"},"postman":{"name":"Get the currently defined model.","description":{"type":"text/plain"},"url":{"path":["graph",":graph_id","model"],"host":["{{baseUrl}}"],"query":[{"disabled":false,"description":{"content":"If true, the hierarchy of complex kinds is flattened, holding all properties and all merged metadata.","type":"text/plain"},"key":"flat","value":""}],"variable":[{"disabled":false,"description":{"content":"(Required) The identifier of the graph","type":"text/plain"},"type":"any","value":"","key":"graph_id"}]},"header":[{"key":"Accept","value":"application/json"}],"method":"GET"}}
+api: {"description":"Use /graph/{graph_id}/model instead.","deprecated":true,"tags":["model"],"parameters":[{"name":"flat","description":"If true, the hierarchy of complex kinds is flattened, holding all properties and all merged metadata.","in":"query","schema":{"type":"boolean","default":false}}],"responses":{"200":{"description":"The list of all kinds.","content":{"application/json":{"schema":{"description":"Definition of a kind","type":"array","items":{"oneOf":[{"type":"object","title":"StringKind"},{"type":"object","title":"NumberKind"},{"type":"object","title":"BooleanKind"},{"type":"object","title":"DateTimeKind"},{"type":"object","title":"ArrayKind"},{"type":"object","title":"DateKind"},{"type":"object","title":"ComplexKind"},{"type":"object","description":"A simple dictionary where all keys and values are strings","title":"StringDictKind"}]},"example":[{"fqn":"test.dice","runtime_kind":"int32","description":"A dice has 6 sides.","minimum":1,"maximum":6},{"fqn":"test.social_security_number","runtime_kind":"string","description":"A dice has 6 sides.","pattern":"^(?!666|000|9\\d{2})\\d{3}-(?!00)\\d{2}-(?!0{4})\\d{4}$"},{"fqn":"test.base","properties":[{"name":"kind","kind":"string","required":true,"description":"The kind of this compound type."},{"name":"name","kind":"string","description":"The name of the resource.","required":true},{"name":"tags","kind":"dictionary[string, string]","description":"Tags that describe the resource.","required":false}]},{"fqn":"test.person","bases":["test.base"],"properties":[{"name":"fortune","kind":"test.dice","description":"The current dice value.","required":true},{"name":"ssn","kind":"test.social_security_number","description":"The social security number of this person.","required":true}]}],"title":"Kind"}}}}},"method":"get","path":"/model","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Resoto Core REST API","version":"V1"},"postman":{"name":"[Deprecated] Get the currently defined model.","description":{"content":"Use /graph/{graph_id}/model instead.","type":"text/plain"},"url":{"path":["model"],"host":["{{baseUrl}}"],"query":[{"disabled":false,"description":{"content":"If true, the hierarchy of complex kinds is flattened, holding all properties and all merged metadata.","type":"text/plain"},"key":"flat","value":""}],"variable":[]},"header":[{"key":"Accept","value":"application/json"}],"method":"GET"}}
 sidebar_class_name: "get api-method"
 info_path: docs/reference/api/resoto-core-rest-api
 custom_edit_url: null
@@ -20,11 +20,17 @@ import SchemaTabs from "@theme/SchemaTabs";
 import DiscriminatorTabs from "@theme/DiscriminatorTabs";
 import TabItem from "@theme/TabItem";
 
-## Get the currently defined model.
+## [Deprecated] Get the currently defined model.
 
-Get the currently defined model.
+:::caution deprecated
 
-<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Path Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"graph_id","in":"path","description":"The identifier of the graph","example":"resoto","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Query Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"flat","description":"If true, the hierarchy of complex kinds is flattened, holding all properties and all merged metadata.","in":"query","schema":{"type":"boolean","default":false}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+This endpoint has been deprecated and may be removed in future versions of the API.
+
+:::
+
+Use /graph/{graph_id}/model instead.
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Query Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"flat","description":"If true, the hierarchy of complex kinds is flattened, holding all properties and all merged metadata.","in":"query","schema":{"type":"boolean","default":false}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
 
 The list of all kinds.
 

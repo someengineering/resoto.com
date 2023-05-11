@@ -128,14 +128,14 @@ const config = {
             return sortBy(
               sidebarItems.filter(
                 (item) =>
-                  (item.type !== 'doc' || !item.id.endsWith('index')) &&
-                  (item.type !== 'category' ||
-                    item.link?.type !== 'doc' ||
-                    !item.link?.id.endsWith('reference/api/index'))
+                  item.type !== 'category' ||
+                  item.link?.type !== 'doc' ||
+                  !item.link?.id.endsWith('reference/api/index')
               ),
               ['label']
             );
           },
+          exclude: ['**/*-rest-api.info.mdx', '**/deprecated-*.mdx'],
           editUrl: ({ versionDocsDirPath, docPath }) =>
             `https://github.com/someengineering/resoto.com/edit/main/${versionDocsDirPath}/${docPath}`,
           showLastUpdateAuthor: false,

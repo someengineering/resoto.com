@@ -11,13 +11,22 @@ type Props = WrapperProps<typeof DocVersionBadgeType>;
 export default function DocVersionBadgeWrapper(props: Props): JSX.Element {
   const versionMetadata = useDocsVersion();
 
-  return (
+  return versionMetadata.version.substring(
+    0,
+    versionMetadata.version.indexOf('.')
+  ) ===
+    latestRelease[versionMetadata.version]?.substring(
+      0,
+      latestRelease[versionMetadata.version]?.indexOf('.')
+    ) ? (
     <Link
-      to={latestRelease[versionMetadata.version]?.link}
+      to={`/releases/${latestRelease[versionMetadata.version]}`}
       title="View release notes"
       className="sm-screens-only"
     >
       <DocVersionBadge {...props} />
     </Link>
+  ) : (
+    <DocVersionBadge {...props} />
   );
 }

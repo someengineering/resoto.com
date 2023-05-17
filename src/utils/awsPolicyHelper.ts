@@ -8,8 +8,7 @@ export interface AwsPolicyResponse {
 export type AwsPolicyName = 'ResotoOrgList' | 'ResotoCollect' | 'ResotoMutate';
 
 export const awsPolicyUrl = (version: string, name: AwsPolicyName): string => {
-  const directory =
-    version === 'edge' ? 'edge' : latestRelease[version]?.version;
+  const directory = version === 'edge' ? 'edge' : latestRelease[version];
 
   return directory
     ? `https://cdn.some.engineering/resoto/aws/${directory}/${name}.json`

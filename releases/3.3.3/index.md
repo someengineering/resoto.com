@@ -1,0 +1,28 @@
+---
+date: 2023-04-21
+---
+
+# 3.3.3
+
+## What's Changed
+
+### Features
+
+- [`7f52956b`](https://github.com/someengineering/resoto/commit/7f52956b) <span class="badge badge--secondary">resotocore</span> Parse and return query structure (#1545)
+- [`b2e09a19`](https://github.com/someengineering/resoto/commit/b2e09a19) <span class="badge badge--secondary">resotocore</span> Support search for infra apps (#1547)
+
+### Chores
+
+- [`fcf6a524`](https://github.com/someengineering/resoto/commit/fcf6a524) <span class="badge badge--secondary">resoto</span> Bump UI Version (#1548)
+- [`3b04236a`](https://github.com/someengineering/resoto/commit/3b04236a) <span class="badge badge--secondary">resoto</span> Update README (#1546)
+- [`b214dd37`](https://github.com/someengineering/resoto/commit/b214dd37) <span class="badge badge--secondary">resoto</span> Bump libraries (#1544)
+- [`48ccf03b`](https://github.com/someengineering/resoto/commit/48ccf03b) <span class="badge badge--secondary">resoto</span> Bump 3.3.3 (#1543)
+
+<!--truncate-->
+
+## Docker Images
+
+- `somecr.io/someengineering/resotocore:3.3.3`
+- `somecr.io/someengineering/resotoworker:3.3.3`
+- `somecr.io/someengineering/resotoshell:3.3.3`
+- `somecr.io/someengineering/resotometrics:3.3.3`

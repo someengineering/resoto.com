@@ -65,3 +65,36 @@ details.openapi-markdown__details .badge {
 .openapi__method-endpoint-path {
   margin-top: 0;
 }
+
+.openapi-markdown__details-summary-mime {
+  align-items: center;
+}
+
+.openapi-markdown__details-summary-mime > * + * {
+  margin-left: 0.5rem;
+}
+
+@media (pointer: fine) {
+  .openapi-tabs__code-list-container,
+  .openapi-explorer__playground-container {
+    scrollbar-width: thin;
+  }
+
+  .openapi-tabs__code-list-container::-webkit-scrollbar,
+  .openapi-explorer__playground-container::-webkit-scrollbar {
+    height: var(--ifm-scrollbar-size);
+    width: var(--ifm-scrollbar-size);
+  }
+
+  .openapi-tabs__code-list-container::-webkit-scrollbar-thumb,
+  .openapi-explorer__playground-container::-webkit-scrollbar-thumb {
+    background: var(--ifm-scrollbar-thumb-background-color);
+    border-radius: 10px;
+  }
+
+  .openapi-tabs__code-list-container::-webkit-scrollbar-track,
+  .openapi-explorer__playground-container::-webkit-scrollbar-track {
+    background: var(--ifm-scrollbar-track-background-color);
+    border-radius: 10px;
+  }
+}

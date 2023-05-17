@@ -1,0 +1,30 @@
+---
+date: 2023-04-28
+---
+
+# 3.4.0
+
+## What's Changed
+
+### Features
+
+- [`a9a43036`](https://github.com/someengineering/resoto/commit/a9a43036) <span class="badge badge--secondary">resotocore</span> Support local url as infa apps index (#1561)
+- [`c633f2b1`](https://github.com/someengineering/resoto/commit/c633f2b1) <span class="badge badge--secondary">resotocore</span> Bump Resoto UI 3.4.0 (#1562)
+- [`8494e68a`](https://github.com/someengineering/resoto/commit/8494e68a) <span class="badge badge--secondary">resotolib</span> Enable mypy linting (#1560)
+
+### Fixes
+
+- [`5309e480`](https://github.com/someengineering/resoto/commit/5309e480) <span class="badge badge--secondary">github</span> Turn on example collector for model generation (#1558)
+
+### Chores
+
+- [`9720298d`](https://github.com/someengineering/resoto/commit/9720298d) <span class="badge badge--secondary">resoto</span> Bump 3.4.0 (#1557)
+
+<!--truncate-->
+
+## Docker Images
+
+- `somecr.io/someengineering/resotocore:3.4.0`
+- `somecr.io/someengineering/resotoworker:3.4.0`
+- `somecr.io/someengineering/resotoshell:3.4.0`
+- `somecr.io/someengineering/resotometrics:3.4.0`

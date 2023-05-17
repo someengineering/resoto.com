@@ -34,12 +34,20 @@
   ],
   "shortcuts": [
     {
-      "name": "News",
-      "url": "./news"
+      "name": "Releases",
+      "url": "./releases"
     },
     {
       "name": "Docs",
       "url": "./docs"
+    },
+    {
+      "name": "Compare",
+      "url": "./compare"
+    },
+    {
+      "name": "About",
+      "url": "./about"
     }
   ]
 }

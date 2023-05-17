@@ -154,10 +154,10 @@ const config = {
             ...versions
               .map((version) => ({
                 [version]: {
-                  label: latestRelease[version].version.startsWith(
+                  label: latestRelease[version].startsWith(
                     version.substring(0, version.indexOf('X'))
                   )
-                    ? latestRelease[version].version
+                    ? latestRelease[version]
                     : version,
                   ...(version === versions[0]
                     ? null
@@ -168,12 +168,12 @@ const config = {
           },
         },
         blog: {
-          blogTitle: 'News',
-          blogDescription: 'Resoto release notes and updates',
-          blogSidebarTitle: 'Announcements',
+          blogTitle: 'Releases',
+          blogDescription: 'Resoto release notes',
+          blogSidebarTitle: 'Releases',
           blogSidebarCount: 'ALL',
-          path: 'news',
-          routeBasePath: 'news',
+          path: 'releases',
+          routeBasePath: 'releases',
           archiveBasePath: null,
           showReadingTime: false,
           feedOptions: {
@@ -354,11 +354,11 @@ const config = {
         maxHeadingLevel: 5,
       },
       announcementBar: {
-        id: `announcementBar-${latestRelease[versions[0]].version}`, // Increment on change
-        content: `<span aria-label="star-struck" role="img">🤩</span> <a href="${
-          latestRelease[versions[0]].link
+        id: `announcementBar-${latestRelease[versions[0]]}`, // Increment on change
+        content: `<span aria-label="star-struck" role="img">🤩</span> <a href="/releases/${
+          latestRelease[versions[0]]
         }">Check out what's new in Resoto ${
-          latestRelease[versions[0]].version
+          latestRelease[versions[0]]
         }</a>, and don't forget to <a href="https://github.com/someengineering/resoto" target="_blank" rel="noopener noreferrer">star the project on GitHub</a>! <span aria-label="sparkles" role="img">✨</span>`,
       },
       navbar: {
@@ -369,7 +369,7 @@ const config = {
           src: 'img/navbar-logo.svg',
         },
         items: [
-          { to: '/news', label: 'News', position: 'right' },
+          { to: '/releases', label: 'Releases', position: 'right' },
           {
             to: '/docs',
             label: 'Docs',
@@ -484,8 +484,8 @@ const config = {
                 href: 'https://some.engineering/blog',
               },
               {
-                label: 'News',
-                to: '/news',
+                label: 'Releases',
+                to: '/releases',
               },
               {
                 label: 'Compare',

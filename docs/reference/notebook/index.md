@@ -4,7 +4,7 @@ sidebar_label: Notebook
 
 # Resoto Notebook
 
-Resoto Notebook is a library that allows you to interact with [Resoto Core](./components/core.md) using [Jupyter](https://jupyter.org) Notebook, a web-based interactive [Python](https://python.org) shell. It is a powerful tool for interactive data analysis and visualization.
+Resoto Notebook is a library that allows you to interact with [Resoto Core](../components/core.md) using [Jupyter](https://jupyter.org) Notebook, a web-based interactive [Python](https://python.org) shell. It is a powerful tool for interactive data analysis and visualization.
 
 ## Installation
 
@@ -28,7 +28,7 @@ First, create a new notebook by clicking `New` &rarr; `Python 3`:
 
 ![Create a new notebook](./img/create_new_notebook.png)
 
-Then, instantiate the `ResotoNotebook` object with the URL and PSK (if configured) of your [Resoto Core](./components/core.md) instance:
+Then, instantiate the `ResotoNotebook` object with the URL and PSK (if configured) of your [Resoto Core](../components/core.md) instance:
 
 ```python
 from resotonotebook import ResotoNotebook

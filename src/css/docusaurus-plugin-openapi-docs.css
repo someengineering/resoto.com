@@ -57,3 +57,11 @@
   content: 'head';
   background-color: var(--ifm-color-secondary-darkest);
 }
+
+details.openapi-markdown__details .badge {
+  font-size: 100%;
+}
+
+.openapi__method-endpoint-path {
+  margin-top: 0;
+}

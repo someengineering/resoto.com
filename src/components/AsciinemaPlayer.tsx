@@ -5,8 +5,8 @@ import React, { useEffect, useRef } from 'react';
 type AsciinemaPlayerProps = {
   src: string;
   className?: string;
-  cols?: string;
-  rows?: string;
+  cols?: number;
+  rows?: number;
   autoPlay?: boolean;
   preload?: boolean;
   loop?: boolean | number;
@@ -15,8 +15,9 @@ type AsciinemaPlayerProps = {
   idleTimeLimit?: number;
   theme?: string;
   poster?: string;
-  fit?: string;
-  fontSize?: string;
+  fit?: 'width' | 'height' | 'both';
+  controls?: boolean | 'auto';
+  pauseOnMarkers?: boolean;
 };
 
 export default function AsciinemaPlayer({
@@ -43,11 +44,7 @@ export default function AsciinemaPlayer({
         return (
           <div
             ref={ref}
-            className={`video-container shadow--tl ${className ?? ''} ${
-              asciinemaOptions.autoPlay && asciinemaOptions.loop
-                ? 'noControls'
-                : ''
-            }`}
+            className={`video-container shadow--tl ${className ?? ''}`}
           />
         );
       }}

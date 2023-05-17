@@ -54,7 +54,7 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
 :::note
 
-Please refer to the [AWS Config documentation](https://aws.amazon.com/blogs/mt/aws-config-best-practices/) for details.
+Please refer to the [AWS Config documentation](https://aws.amazon.com/blogs/mt/aws-config-best-practices) for details.
 
 :::
 
@@ -67,4 +67,4 @@ Please refer to the [AWS Config documentation](https://aws.amazon.com/blogs/mt/a
 ## External Links
 
 - [CIS Amazon Web Services Benchmarks <span class="badge badge--secondary">cisecurity.org <IconExternalLink width="10" height="10" /></span>](https://cisecurity.org/benchmark/amazon_web_services)
-- [AWS Documentation <span class="badge badge--secondary">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://aws.amazon.com/blogs/mt/aws-config-best-practices/)
+- [AWS Documentation <span class="badge badge--secondary">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://aws.amazon.com/blogs/mt/aws-config-best-practices)

@@ -54,7 +54,7 @@ Enable client certificate. Mutual TLS is recommended and commonly used for busin
 
 :::note
 
-Please refer to the [AWS API Gateway documentation](https://aws.amazon.com/blogs/compute/introducing-mutual-tls-authentication-for-amazon-api-gateway/) for details.
+Please refer to the [AWS API Gateway documentation](https://aws.amazon.com/blogs/compute/introducing-mutual-tls-authentication-for-amazon-api-gateway) for details.
 
 :::
 
@@ -67,4 +67,4 @@ Please refer to the [AWS API Gateway documentation](https://aws.amazon.com/blogs
 ## External Links
 
 - [CIS Amazon Web Services Benchmarks <span class="badge badge--secondary">cisecurity.org <IconExternalLink width="10" height="10" /></span>](https://cisecurity.org/benchmark/amazon_web_services)
-- [AWS Documentation <span class="badge badge--secondary">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://aws.amazon.com/blogs/compute/introducing-mutual-tls-authentication-for-amazon-api-gateway/)
+- [AWS Documentation <span class="badge badge--secondary">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://aws.amazon.com/blogs/compute/introducing-mutual-tls-authentication-for-amazon-api-gateway)

@@ -54,7 +54,7 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
 :::note
 
-Please refer to the [AWS S3 documentation](https://aws.amazon.com/premiumsupport/knowledge-center/s3-bucket-policy-for-config-rule/) for details.
+Please refer to the [AWS S3 documentation](https://aws.amazon.com/premiumsupport/knowledge-center/s3-bucket-policy-for-config-rule) for details.
 
 :::
 
@@ -67,4 +67,4 @@ Please refer to the [AWS S3 documentation](https://aws.amazon.com/premiumsupport
 ## External Links
 
 - [CIS Amazon Web Services Benchmarks <span class="badge badge--secondary">cisecurity.org <IconExternalLink width="10" height="10" /></span>](https://cisecurity.org/benchmark/amazon_web_services)
-- [AWS Documentation <span class="badge badge--secondary">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://aws.amazon.com/premiumsupport/knowledge-center/s3-bucket-policy-for-config-rule/)
+- [AWS Documentation <span class="badge badge--secondary">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://aws.amazon.com/premiumsupport/knowledge-center/s3-bucket-policy-for-config-rule)

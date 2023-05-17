@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Configuration Editor gives you an easy way of editing Resoto [configurations](../configuration/).
+The Configuration Editor gives you an easy way of editing Resoto [configurations](../configuration/index.md).
 
 Configurations that are described in the model are rendered as an interface with input forms and buttons. If it is a custom configuration or it is not described in the model, the config will be displayed in a text editor.
 

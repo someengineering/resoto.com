@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Resoto Shell Lite is a version of the Resoto Shell that is accessible via the Resoto user interface in the browser. It gives you full access to [all the commands](../cli/) you would be able to execute in the full Resoto Shell.
+The Resoto Shell Lite is a version of the Resoto Shell that is accessible via the Resoto user interface in the browser. It gives you full access to [all the commands](../cli/index.md) you would be able to execute in the full Resoto Shell.
 
 Using the button on the **top left of the [main menu bar](./index.md#top-menu-bar)**, you can access a **pop-up version** of Resoto Shell Lite at any place in the UI. This is helpful to test commands or search queries while setting up a new Dashboard widget or getting more information about a certain node in Explore view.
 

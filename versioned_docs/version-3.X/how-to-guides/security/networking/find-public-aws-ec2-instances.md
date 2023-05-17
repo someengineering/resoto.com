@@ -54,7 +54,7 @@ Use an ALB and apply WAF ACL.
 
 :::note
 
-Please refer to the [AWS EC2 documentation](https://aws.amazon.com/blogs/aws/aws-web-application-firewall-waf-for-application-load-balancers/) for details.
+Please refer to the [AWS EC2 documentation](https://aws.amazon.com/blogs/aws/aws-web-application-firewall-waf-for-application-load-balancers) for details.
 
 :::
 
@@ -67,4 +67,4 @@ Please refer to the [AWS EC2 documentation](https://aws.amazon.com/blogs/aws/aws
 ## External Links
 
 - [CIS Amazon Web Services Benchmarks <span class="badge badge--secondary">cisecurity.org <IconExternalLink width="10" height="10" /></span>](https://cisecurity.org/benchmark/amazon_web_services)
-- [AWS Documentation <span class="badge badge--secondary">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://aws.amazon.com/blogs/aws/aws-web-application-firewall-waf-for-application-load-balancers/)
+- [AWS Documentation <span class="badge badge--secondary">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://aws.amazon.com/blogs/aws/aws-web-application-firewall-waf-for-application-load-balancers)

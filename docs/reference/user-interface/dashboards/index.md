@@ -2,7 +2,11 @@
 
 ## Overview
 
-The Dashboards feature provides you with rich insights about your infrastructure that is being scraped by Resoto. You can build dashboards or use pre-built dashboards that come out of the box. Dashboards are made up of different [widgets](./widgets/index.md) that display data in different visual ways, such as tables, charts, and maps. The widgets can use different data sources, including historic data from a time series database like Prometheus, or live data directly from Resoto Core.
+The Dashboards feature provides you with rich insights about your infrastructure that is being scraped by Resoto.
+
+You can build dashboards or use pre-built dashboards that come out of the box.
+
+Dashboards are made up of different [widgets](./widgets/index.md) that display data in different visual ways, such as tables, charts, and maps. Widgets can use different data sources, including historic data from a time series database like Prometheus, or live data directly from Resoto Core.
 
 Dashboards are saved in Resoto Core in JSON format and can be managed using the Configuration Editor.
 

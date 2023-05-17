@@ -11,7 +11,7 @@ You can search your infrastructure using the search box on the top right in the 
 **Using the search offers you three modes:**
 
 - Start typing in the search box to start a [full-text search](../search/full-text.md).
-- Begin your search with the keyword `search` to start a Resoto [search query](../search).
+- Begin your search with the keyword `search` to start a Resoto [search query](../search/index.md).
 - Begin your search with the keyword `aggregate` to start a Resoto [aggregation query](../search/aggregation.md)
 
 ## Search Results
@@ -20,7 +20,7 @@ You will be presented with the search or aggregation results right away.
 
 ### Search or Full-Text Search Results
 
-Clicking on a single search result takes you to the [Explore view](explore.md). Clicking on `more` shows you all results in [Explore List view](./explore.md#list-view).
+Clicking on a single search result takes you to the [Explore view](./explore.md). Clicking on `more` shows you all results in [Explore List view](./explore.md#list-view).
 
 ### Aggregation Results
 

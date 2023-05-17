@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Job Editor gives you an interface to quickly create and manage [Resoto jobs](../../concepts/automation/index.md#jobs).
+The Job Editor gives you an interface to quickly create and manage [jobs](../../concepts/automation/index.md#jobs).
 
 ## Interface
 

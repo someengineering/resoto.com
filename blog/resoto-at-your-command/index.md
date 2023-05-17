@@ -200,7 +200,7 @@ You can find the implementation of the `aws` command in the [someengineering/res
 
 :::
 
-If you have [configured collection of your <abbr title="Amazon Web Services">AWS</abbr> resources](/docs/getting-started/configure-cloud-provider-access/aws), you can use the `aws` command to see the configured identity using [`get-caller-identity`](https://docs.aws.amazon.com/cli/latest/reference/sts/get-caller-identity.html):
+If you have [configured collection of your <abbr title="Amazon Web Services">AWS</abbr> resources](/docs/how-to-guides/data-sources/collect-aws-resource-data), you can use the `aws` command to see the configured identity using [`get-caller-identity`](https://docs.aws.amazon.com/cli/latest/reference/sts/get-caller-identity.html):
 
 ```bash
 > aws sts get-caller-identity

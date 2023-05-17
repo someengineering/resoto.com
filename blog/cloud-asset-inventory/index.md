@@ -116,7 +116,7 @@ Cloud providers already offer native inventory tools that support their own reso
 
 ### What Is Resoto?
 
-**Resoto is an open-source cloud asset inventory platform and alternative to closed-source native tools.** Resoto is extensible through [plugins](/docs/concepts/components/plugins), so anyone can [build or modify a collector](/docs/contributing/plugins) to suit their needs.
+**Resoto is an open-source cloud asset inventory platform and alternative to closed-source native tools.** Resoto is extensible through [plugins](/docs/reference/components/plugins), so anyone can [build or modify a collector](/docs/contributing/plugins) to suit their needs.
 
 ### Resoto Cloud Asset Inventory Platform Features
 
@@ -128,11 +128,11 @@ In addition, Resoto adds unique capabilities that solve the three major problems
 
 2. **Tracking cloud resource and configuration changes**
 
-   You can't steer a fleet of tens of thousands of resources by individually reviewing each resource. Metrics are a better solution. Metrics describe the state of your inventory, reflecting business goals like cost, usage, or compliance. [Resoto Metrics](/docs/concepts/components/metrics) runs aggregation functions on inventory data and exposes them in [Prometheus](https://prometheus.io) format, which are easy to visualize in [Grafana dashboards](/blog/2022/06/09/building-actionable-cloud-infrastructure-metrics).
+   You can't steer a fleet of tens of thousands of resources by individually reviewing each resource. Metrics are a better solution. Metrics describe the state of your inventory, reflecting business goals like cost, usage, or compliance. [Resoto Metrics](/docs/reference/components/metrics) runs aggregation functions on inventory data and exposes them in [Prometheus](https://prometheus.io) format, which are easy to visualize in [Grafana dashboards](/blog/building-actionable-cloud-infrastructure-metrics).
 
 3. **Data for cost, security, and compliance use cases**
 
-   Many tools either provide reporting or take action, but not both. This places the burden of resolving issues upon the platform team. [Resoto Jobs](/docs/concepts/automation/job) automate actions based on your defined criteria and metrics. Actions include updating resource [tags](/docs/concepts/resource-management/tagging) and [cleaning up](/docs/concepts/resource-management/cleanup) unused resources.
+   Many tools either provide reporting or take action, but not both. This places the burden of resolving issues upon the platform team. [Resoto jobs](/docs/concepts/automation#jobs) automate actions based on your defined criteria and metrics. Actions include updating resource [tags](/docs/concepts/resource-management/tagging) and [cleaning up](/docs/concepts/resource-management/cleanup) unused resources.
 
 ### Resoto Use Case Scenario
 
@@ -144,7 +144,7 @@ Finding the instances that violate the policy is easy with Resoto's [search](/do
 > search is(aws_ec2_instance) and instance_cores > 32 and age > 24h
 ```
 
-Then, adding a [job](/docs/concepts/automation/job) to automate cleanup after each new inventory snapshot is as simple as:
+Then, adding a [job](/docs/concepts/automation#jobs) to automate cleanup after each new inventory snapshot is as simple as:
 
 ```bash
 > jobs add 32_core_instance_cleanup --wait-for-event post_collect 'search is(aws_ec2_instance) and instance_cores > 32 and age > 24h | clean'

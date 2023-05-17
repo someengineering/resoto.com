@@ -63,7 +63,7 @@ The following bugs have been squashed:
 
   **The AWS collector now fetches instance types from all regions.**
 
-- [Resoto Worker](/docs/concepts/components/worker) would unregister from [Resoto Core](/docs/concepts/components/core) when shutting down, causing any [workflow](/docs/concepts/automation/workflow) executions that were performed as the worker was shutting down to fail.
+- [Resoto Worker](/docs/reference/components/worker) would unregister from [Resoto Core](/docs/reference/components/core) when shutting down, causing any [workflow](/docs/reference/workflows) executions that were performed as the worker was shutting down to fail.
 
   **A workflow will now resume execution as soon as a new worker is available.**
 

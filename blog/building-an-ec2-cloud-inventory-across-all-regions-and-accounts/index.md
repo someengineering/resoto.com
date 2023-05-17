@@ -23,7 +23,7 @@ In this post, I'll describe how to use Resoto to build an EC2 cloud asset invent
 
 1. [Install Resoto.](/docs/getting-started/install-resoto)
 2. [Start Resoto Shell.](/docs/getting-started/launch-resoto#launching-resoto-shell)
-3. [Configure Resoto to collect AWS resources and trigger resource collection.](/docs/getting-started/configure-resoto/aws) During each "collect run," Resoto extracts and transforms data from cloud APIs, and stores snapshots of your infrastructure in its [graph database](/docs/concepts/asset-inventory-graph).
+3. [Configure Resoto to collect AWS resources and trigger resource collection.](/docs/how-to-guides/data-sources/collect-aws-resource-data) During each "collect run," Resoto extracts and transforms data from cloud APIs, and stores snapshots of your infrastructure in its [graph database](/docs/concepts/asset-inventory-graph).
 
 ## Creating Your First EC2 Inventory
 

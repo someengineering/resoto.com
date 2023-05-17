@@ -6,11 +6,11 @@ tags: [cli]
 
 # Resoto Shell Tab Completion
 
-Resoto has a [command-line interface](/docs/reference/cli) accessible via [Resoto Shell](/docs/concepts/components/shell). Commands are not executed locally, but interpreted on the server. As such, only [Resoto Shell](/docs/concepts/components/shell) is required client-side.
+Resoto has a [command-line interface](/docs/reference/cli) accessible via [Resoto Shell](/docs/reference/components/shell). Commands are not executed locally, but interpreted on the server. As such, only [Resoto Shell](/docs/reference/components/shell) is required client-side.
 
 Resoto offers commands like [`echo`](/docs/reference/cli/miscellaneous-commands/echo), [`tail`](/docs/reference/cli/miscellaneous-commands/tail), and [`jq`](/docs/reference/cli/miscellaneous-commands/jq)—old friends to veteran shell users—but these commands only account for a small fraction of the possibilities in Resoto's [command-line interface](/docs/reference/cli).
 
-Version 2.X of [Resoto Shell](/docs/concepts/components/shell) introduces tab completion, making the [command-line interface](/docs/reference/cli) easier to use than ever before! Press the tab key, and [Resoto Shell](/docs/concepts/components/shell) will present you with a list of available commands:
+Version 2.X of [Resoto Shell](/docs/reference/components/shell) introduces tab completion, making the [command-line interface](/docs/reference/cli) easier to use than ever before! Press the tab key, and [Resoto Shell](/docs/reference/components/shell) will present you with a list of available commands:
 
 ![List of commands](./img/list_of_commands.png)
 
@@ -38,6 +38,6 @@ The [`aggregate` command](/docs/reference/cli/search-commands/aggregate) also us
 
 As you can see, the autocomplete feature lists possible properties. There is also support for defining [`/ancestors` grouping variables](/docs/reference/search/merging-nodes#ancestors-and-descendants).
 
-As mentioned previously, [Resoto Shell](/docs/concepts/components/shell) is context-aware and will supply a list of possible aggregation functions. And since every grouping variable and every aggregation function can be renamed, the optional `as` clause is suggested as well.
+As mentioned previously, [Resoto Shell](/docs/reference/components/shell) is context-aware and will supply a list of possible aggregation functions. And since every grouping variable and every aggregation function can be renamed, the optional `as` clause is suggested as well.
 
 We hope that the new tab completion feature makes Resoto's [command-line interface](/docs/reference/cli) easier to use!

@@ -18,7 +18,7 @@ Cloud inventory has become a new type of technical debt, where organizations los
 
 <!--truncate-->
 
-Resoto provides a [searchable](/docs/concepts/search) snapshot of the current state of your cloud infrastructure, and can [automatically react to state changes](/docs/concepts/automation). Resoto also allows you to [aggregate](/docs/reference/search/aggregation) and [visualize](/docs/reference/notebook) this data, as my colleagues [Matthias](https://github.com/aquamatthias) and [Nikita](https://github.com/meln1k) described in previous [blog](/blog/2022/03/03/aggregating-search-data) [posts](/blog/2022/05/31/resoto-meets-jupyter-notebook).
+Resoto provides a [searchable](/docs/reference/search) snapshot of the current state of your cloud infrastructure, and can [automatically react to state changes](/docs/concepts/automation). Resoto also allows you to [aggregate](/docs/reference/search/aggregation) and [visualize](/docs/reference/notebook) this data, as my colleagues [Matthias](https://github.com/aquamatthias) and [Nikita](https://github.com/meln1k) described in previous [blog](/blog/aggregating-search-data) [posts](/blog/resoto-meets-jupyter-notebook).
 
 Here's an example of a heatmap that allows you to immediately see outliers (like when an account suddenly starts using a large number of expensive, high-core-count instances):
 
@@ -32,7 +32,7 @@ This allows you to [alert](https://prometheus.io/docs/alerting/latest/alertmanag
 
 Another use case is to quickly [identify anomalies](https://prometheus.io/docs/prometheus/latest/querying/functions/#aggregation_over_time) using [the 3σ rule](https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule). If cloud API credentials are leaked or an automated system goes haywire, you would immediately see the spike instead of receiving an unpleasant surprise on your next cloud bill. Best of all, it works across multiple clouds and accounts!
 
-Resoto comes with a handy metrics component, [Resoto Metrics](/docs/concepts/components/metrics), which takes aggregation results and exports them to [Prometheus](https://prometheus.io). This blog post describes how to [define your own metrics](#how-metrics-are-made), write some [PromQL queries](https://prometheus.io/docs/prometheus/latest/querying/basics/) and build a simple metrics dashboard using [Resoto Metrics](/docs/concepts/components/metrics), [Prometheus](https://prometheus.io), and [Grafana](https://grafana.com).
+Resoto comes with a handy metrics component, [Resoto Metrics](/docs/reference/components/metrics), which takes aggregation results and exports them to [Prometheus](https://prometheus.io). This blog post describes how to [define your own metrics](#how-metrics-are-made), write some [PromQL queries](https://prometheus.io/docs/prometheus/latest/querying/basics/) and build a simple metrics dashboard using [Resoto Metrics](/docs/reference/components/metrics), [Prometheus](https://prometheus.io), and [Grafana](https://grafana.com).
 
 ## Concepts and Terminology
 
@@ -40,11 +40,15 @@ If you are already familiar with graph and time series databases, metrics, sampl
 
 ### Collect
 
-Resoto creates an inventory of your cloud infrastructure by storing the metadata of your cloud resources inside of a [graph](/docs/concepts/graph). This is what we call the `collect` [step](/docs/concepts/automation/workflow). Each resource (e.g., compute instance, storage volume, security group, etc.) is represented by a graph [node](/docs/concepts/graph/node). [Nodes](/docs/concepts/graph/node) are connected via [edges](/docs/concepts/graph/edge). [Edges](/docs/concepts/graph/edge) represent the relationship between two [nodes](/docs/concepts/graph/node), like so (please excuse my MS Paint skills):
+Resoto creates an inventory of your cloud infrastructure by storing the metadata of your cloud resources inside of a [graph](/docs/concepts/asset-inventory-graph). This is what we call the [`collect` step](/docs/reference/events#collect-events).
+
+Each resource (e.g., compute instance, storage volume, security group, etc.) is represented by a graph [node](/docs/concepts/asset-inventory-graph#nodes). [Nodes](/docs/concepts/asset-inventory-graph#nodes) are connected via [edges](/docs/concepts/asset-inventory-graph#edges).
+
+[Edges](/docs/concepts/asset-inventory-graph#edges) represent the relationship between two [nodes](/docs/concepts/asset-inventory-graph#nodes), like so (please excuse my MS Paint skills):
 
 ![Graph visualization](./img/graph_visualization.png)
 
-A [node](/docs/concepts/graph/node) is essentially an indexed JSON document containing the metadata of a resource. The `aws_ec2_instance` from the graph picture above would look something like this:
+A [node](/docs/concepts/asset-inventory-graph#nodes) is essentially an indexed JSON document containing the metadata of a resource. The `aws_ec2_instance` from the graph picture above would look something like this:
 
 ```json
 {
@@ -68,7 +72,7 @@ A [node](/docs/concepts/graph/node) is essentially an indexed JSON document cont
 
 ### Search
 
-Among other things, Resoto allows you to [search this metadata](/blog/2022/02/04/resoto-search-101). Here's an example:
+Among other things, Resoto allows you to [search this metadata](/blog/resoto-search-101). Here's an example:
 
 ```bash
 > search is(aws_ec2_instance) and instance_cores > 4
@@ -88,7 +92,7 @@ The search returned a list of all EC2 instances with more than 4 cores. There ar
 
 ### Aggregation
 
-[Aggregating and grouping the results of a search](/blog/2022/03/03/aggregating-search-data) creates the samples of a metric.
+[Aggregating and grouping the results of a search](/blog/aggregating-search-data) creates the samples of a metric.
 
 ```bash
 > search aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account, /ancestors.region.reported.name as region, instance_type as type, instance_status as status: sum(1) as instances_total): is(instance)
@@ -130,7 +134,7 @@ So here's the plan. First we will learn how to [configure Prometheus to fetch da
 
 ## Getting Started
 
-If you are new to Resoto, [start the Resoto stack](/docs/getting-started/install-resoto) and [configure it to collect your cloud accounts](/docs/getting-started/configure-cloud-provider-access).
+If you are new to Resoto, [start the Resoto stack](/docs/getting-started/install-resoto) and [configure it to collect your cloud accounts](/docs/getting-started/configure-resoto).
 
 To check out the data Resoto Metrics generates open [`https://localhost:9955/metrics`](https://localhost:9955/metrics) in your browser (replacing `localhost` with the IP address or hostname of the machine where `resotometrics` is running). This data is updated [whenever Resoto runs the collection workflow](/docs/reference/configuration/core#workflow-schedules). You should see an output similar to this:
 
@@ -148,7 +152,7 @@ scrape_configs:
       - targets: ["localhost:9955"]
 ```
 
-Instead of skipping verification of the TLS certificate, you can also [download the Resoto CA certificate](/docs/concepts/security#retrieving-and-validating-the-ca-certificate) and [configure Prometheus to use it](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#tls_config).
+Instead of skipping verification of the TLS certificate, you can also [download the Resoto CA certificate](/docs/reference/security#retrieving-and-validating-the-ca-certificate) and [configure Prometheus to use it](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#tls_config).
 
 ## Querying a Metric
 
@@ -218,7 +222,7 @@ Want to see how storage has changed over time? Just change `resoto_instances_tot
 
 The [Prometheus](https://prometheus.io) web UI provides syntax help and autocomplete for available metric names. However, you may be wondering—how are you supposed to know which metrics exist? How do you find what other metrics exist and where a value (for example, `resoto_instances_total`) is defined?
 
-Metrics are defined in the `resoto.metrics` [configuration](/docs/reference/configuration). To edit metrics definitions, execute the following command in [Resoto Shell](/docs/concepts/components/shell):
+Metrics are defined in the `resoto.metrics` [configuration](/docs/reference/configuration). To edit metrics definitions, execute the following command in [Resoto Shell](/docs/reference/components/shell):
 
 ```bash
 > config edit resoto.metrics
@@ -240,7 +244,7 @@ resotometrics:
 
 As [described above](#aggregation), the `aggregate` expression in the `search` field is what creates the samples of a metric.
 
-Metrics configuration can be updated at runtime. When the `metrics` [workflow](/docs/concepts/automation/workflow) is run, [Resoto Metrics](/docs/concepts/components/metrics) will generate the new metric for [Prometheus](https://prometheus.io) to consume.
+Metrics configuration can be updated at runtime. When the `metrics` [workflow](/docs/reference/workflows) is run, [Resoto Metrics](/docs/reference/components/metrics) will generate the new metric for [Prometheus](https://prometheus.io) to consume.
 
 ```bash
 > workflow run metrics

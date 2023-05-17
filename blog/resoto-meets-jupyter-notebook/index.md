@@ -8,7 +8,7 @@ tags: [jupyter, visualization]
 
 We recently released [Resoto Notebook](/docs/reference/notebook), a library that allows for the visualization and exploration of the Resoto graph interactively using [Jupyter](https://jupyter.org) Notebook.
 
-[Resoto Notebook](/docs/reference/notebook) is similar to [Resoto Shell](/docs/concepts/components/shell) in the sense that you execute queries, but the results are returned in a [pandas](https://pandas.pydata.org) [`DataFrame` structure](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html). This gives you more flexibility in filtering, aggregation, visualization, etc.
+[Resoto Notebook](/docs/reference/notebook) is similar to [Resoto Shell](/docs/reference/components/shell) in the sense that you execute queries, but the results are returned in a [pandas](https://pandas.pydata.org) [`DataFrame` structure](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html). This gives you more flexibility in filtering, aggregation, visualization, etc.
 
 <!--truncate-->
 

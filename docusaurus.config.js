@@ -246,13 +246,13 @@ const config = {
     [
       '@docusaurus/plugin-content-blog',
       {
-        id: 'podcasts',
-        blogTitle: 'Podcasts',
-        blogDescription: 'Some Engineering Inc. podcasts',
+        id: 'podcast',
+        blogTitle: 'Podcast',
+        blogDescription: 'Some Engineering Inc. podcast episodes',
         blogSidebarTitle: 'Episodes',
         blogSidebarCount: 'ALL',
-        path: 'podcasts',
-        routeBasePath: 'podcasts',
+        path: 'podcast',
+        routeBasePath: 'podcast',
         archiveBasePath: null,
         showReadingTime: false,
         feedOptions: {

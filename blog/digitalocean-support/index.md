@@ -14,7 +14,7 @@ I worked on a plugin that allows collecting DigitalOcean resources over the past
 
 ## Getting Started
 
-To get started, add your DigitalOcean API tokens to [Resoto Worker](/docs/concepts/components/worker) via the [`config` command](/docs/reference/cli/setup-commands/configs) in [Resoto Shell](/docs/concepts/components/shell):
+To get started, add your DigitalOcean API tokens to [Resoto Worker](/docs/reference/components/worker) via the [`config` command](/docs/reference/cli/setup-commands/configs) in [Resoto Shell](/docs/reference/components/shell):
 
 ```bash
 > config edit resoto.worker
@@ -148,4 +148,4 @@ For example, we can add a job that will clean up droplets in a specific DigitalO
 
 Now, you can spin up new resources for testing without needing to worry about cleaning them up! 🎉
 
-Check out the [Resoto documentation](/docs/concepts/automation/job) for more information. I hope that this blog post was informative, and that you will try out the new DigitalOcean plugin!
+Check out the [Resoto documentation](/docs/concepts/automation) for more information. I hope that this blog post was informative, and that you will try out the new DigitalOcean plugin!

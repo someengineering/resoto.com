@@ -14,11 +14,11 @@ Furthermore, the relationships between your resources are also relevant: an EBS 
 
 <!--truncate-->
 
-We created Resoto to allow the user to effortlessly [search resources](/docs/concepts/search) and [automate workflows](/docs/concepts/automation/workflow). Resoto gathers data about your infrastructure and builds a directed acyclic [graph](/docs/concepts/graph), where resources are [vertices](/docs/concepts/graph/node) and their relationships/dependencies [edges](/docs/concepts/graph/edge). This graph is what makes Resoto so powerful, but we needed a way to allow users to query this data.
+We created Resoto to allow the user to effortlessly [search resources](/docs/reference/search) and [automate jobs](/docs/concepts/automation). Resoto gathers data about your infrastructure and builds a directed acyclic [graph](/docs/concepts/asset-inventory-graph), where resources are [vertices](/docs/concepts/asset-inventory-graph#nodes) and their relationships/dependencies [edges](/docs/concepts/asset-inventory-graph#edges). This graph is what makes Resoto so powerful, but we needed a way to allow users to query this data.
 
 Graph data is not relational, so SQL was not a good fit. And existing graph query languages like [Cypher](https://neo4j.com/developer/cypher), [Gremlin](https://tinkerpop.apache.org/gremlin.html), or [GSQL](https://tigergraph.com/gsql) have steep learning curves and are unnecessarily complex for this use case.
 
-And so, we developed our own search syntax tailored specifically to Resoto. The [Resoto Shell](/docs/concepts/components/shell) allows you to interact with your Resoto installation. In particular, it provides a [`search` command](/docs/reference/cli/search-commands/search).
+And so, we developed our own search syntax tailored specifically to Resoto. The [Resoto Shell](/docs/reference/components/shell) allows you to interact with your Resoto installation. In particular, it provides a [`search` command](/docs/reference/cli/search-commands/search).
 
 Let's try searching for all available EC2 instances. `is()` will match a specific or abstract type in a polymorphic fashion, checking all types and subtypes of the provided type. The `instance_cores` filter will limit results to only those instances with more than two cores. The query will automagically search your entire infrastructure, regardless of account or region!
 
@@ -100,7 +100,7 @@ The above examples only begin to scratch the surface of Resoto's [search syntax]
 
 This blog post showcases examples of working with [AWS resources](/docs/reference/data-models/aws), but Resoto also supports other resource types (and additional integrations with other providers are planned!):
 
-- [Google Cloud Platform (GCP)](/docs/reference/data-models/gcp)
+- [Google Cloud Platform (GCP)](/docs/reference/data-models/google-cloud)
 - [vSphere](/docs/reference/data-models/vsphere) (alpha)
 - [Kubernetes (K8s)](/docs/reference/data-models/kubernetes) (alpha)
 

@@ -104,10 +104,10 @@ Show resources that are older than one year and have not been accessed in the la
 
 Resoto has support for the following cloud providers:
 
-- [Amazon Web Services (AWS)](/docs/getting-started/configure-cloud-provider-access/aws)
-- [Google Cloud Platform (GCP)](/docs/getting-started/configure-cloud-provider-access/gcp)
-- [DigitalOcean](/docs/getting-started/configure-cloud-provider-access/digitalocean)
-- [Kubernetes](/docs/getting-started/configure-cloud-provider-access/kubernetes)
+- [Amazon Web Services (AWS)](/docs/how-to-guides/data-sources/collect-aws-resource-data)
+- [Google Cloud Platform (GCP)](/docs/how-to-guides/data-sources/collect-google-cloud-resource-data)
+- [DigitalOcean](/docs/how-to-guides/data-sources/collect-digitalocean-resource-data)
+- [Kubernetes](/docs/how-to-guides/data-sources/collect-kubernetes-resource-data)
 
 This section is most relevant for Resoto users with more than one resource provider.
 
@@ -171,7 +171,7 @@ More abstractions like this are available in Resoto. The following list shows th
 [Data models for all supported cloud resource can be found in the Resoto documentation](/docs/reference/data-models). This not only includes a complete list of properties but the hierarchy of the abstractions as well:
 
 - [Amazon Web Services Resource Data Models](/docs/reference/data-models/aws)
-- [Google Cloud Platform Resource Data Models](/docs/reference/data-models/gcp)
+- [Google Cloud Platform Resource Data Models](/docs/reference/data-models/google-cloud)
 - [Kubernetes Resource Data Models](/docs/reference/data-models/kubernetes)
 - [DigitalOcean Resource Data Models](/docs/reference/data-models/digitalocean)
 

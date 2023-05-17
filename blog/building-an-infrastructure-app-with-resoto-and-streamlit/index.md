@@ -328,7 +328,7 @@ Multiple conditions can be checked using the `and` and `or` operators:
 
 ### Resoto
 
-If you are new to Resoto, [start the Resoto stack](/docs/getting-started/install-resoto) and [configure it to collect your cloud accounts](/docs/getting-started/configure-cloud-provider-access).
+If you are new to Resoto, [start the Resoto stack](/docs/getting-started/install-resoto) and [configure it to collect your cloud accounts](/docs/getting-started/configure-resoto).
 
 ## The App
 

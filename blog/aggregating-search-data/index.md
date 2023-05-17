@@ -8,7 +8,7 @@ tags: [search]
 
 :::note
 
-This blog post is the second in a series about Resoto's powerful search functionality. The previous post, [Resoto Search 101](/blog/2022/02/04/resoto-search-101), provides an introduction to Resoto's search capabilities.
+This blog post is the second in a series about Resoto's powerful search functionality. The previous post, [Resoto Search 101](/blog/resoto-search-101), provides an introduction to Resoto's search capabilities.
 
 :::
 
@@ -28,7 +28,7 @@ The simplest example of search aggregation in Resoto is the [`count` command](/d
 # highlight-end
 ```
 
-Compute instances are of [kind](/docs/concepts/graph/node#kind) `instance` regardless of cloud provider, so `is(instance)` selects both [`aws_ec2_instance`](/docs/reference/data-models/aws#aws_ec2_instance)s _and_ [`gcp_instance`](/docs/reference/data-models/gcp#gcp_instance)s. The [`count` command](/docs/reference/cli/search-commands/count) then takes the results and returns the number of occurrences.
+Compute instances are of [kind](/docs/reference/data-models#kinds) `instance` regardless of cloud provider, so `is(instance)` selects both [`aws_ec2_instance`](/docs/reference/data-models/aws#aws_ec2_instance)s _and_ [`gcp_instance`](/docs/reference/data-models/google-cloud#gcp_instance)s. The [`count` command](/docs/reference/cli/search-commands/count) then takes the results and returns the number of occurrences.
 
 The `count` command also allows specifying a grouping value. The following search would return counts by `instance_status`:
 

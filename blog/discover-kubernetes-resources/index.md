@@ -18,7 +18,7 @@ Even a relatively simple setup quickly becomes tedious to manage as the resource
 
 ## Kubernetes Support in Resoto
 
-Kubernetes provides an API that returns information about a cluster's deployed resources. Resoto uses this API to build an index of resources in all of your Kubernetes clusters. Resoto continuously updates this index and the collected data is accessible via [Resoto Shell](/docs/concepts/components/shell), [Resoto Notebook](/docs/reference/notebook), or Resoto UI.
+Kubernetes provides an API that returns information about a cluster's deployed resources. Resoto uses this API to build an index of resources in all of your Kubernetes clusters. Resoto continuously updates this index and the collected data is accessible via [Resoto Shell](/docs/reference/components/shell), [Resoto Notebook](/docs/reference/notebook), or Resoto UI.
 
 ![Resoto Overview](./img/resoto_overview.png)
 
@@ -153,7 +153,7 @@ The result of this search is the same as the previous one since we were starting
 
 ## Use the ~~Force~~ Graph, Luke!
 
-[Walking the relationships of a resource graph](/blog/2022/05/17/a-walk-in-the-graph) can reveal a lot of useful information.
+[Walking the relationships of a resource graph](/blog/a-walk-in-the-graph) can reveal a lot of useful information.
 
 For example, let's say we want to know the amount of memory and the number of CPU cores available on the node running a specific pod:
 
@@ -264,7 +264,7 @@ The following table shows the results of the aggregation:
 | `dev-7u129`       | 10          | 2        | 1       |
 | `dev-7u121`       | 9           | 2        | 1       |
 
-While aggregation can be helpful for adhoc queries, we can also turn this data into a time series and watch the values over time. Please find the blog post about [Actionable Cloud Infrastructure Metrics](/blog/2022/06/09/building-actionable-cloud-infrastructure-metrics) for more details.
+While aggregation can be helpful for adhoc queries, we can also turn this data into a time series and watch the values over time. Please find the blog post about [Actionable Cloud Infrastructure Metrics](/blog/building-actionable-cloud-infrastructure-metrics) for more details.
 
 ## Heatmaps
 
@@ -318,4 +318,4 @@ We registered this job with the `post_collect` event, so it will be executed aut
 
 ## Kubernetes… and More!
 
-Resoto is not only able to collect resource metadata from Kubernetes, but also other cloud providers as well. Resoto is [open source](https://github.com/someengineering/resoto/blob/main/LICENSE) and free to use, and currently supports [<abbr title="Amazon Web Services">AWS</abbr>](/docs/getting-started/configure-cloud-provider-access/aws), [<abbr title="Google Cloud Platform">GCP</abbr>](/docs/getting-started/configure-cloud-provider-access/gcp), and [DigitalOcean](/docs/getting-started/configure-cloud-provider-access/digitalocean). [Install Resoto](/docs/getting-started/install-resoto) today!
+Resoto is not only able to collect resource metadata from Kubernetes, but also other cloud providers as well. Resoto is [open source](https://github.com/someengineering/resoto/blob/main/LICENSE) and free to use, and currently supports [<abbr title="Amazon Web Services">AWS</abbr>](/docs/how-to-guides/data-sources/collect-aws-resource-data), [<abbr title="Google Cloud Platform">GCP</abbr>](/docs/how-to-guides/data-sources/collect-google-cloud-resource-data), and [DigitalOcean](/docs/how-to-guides/data-sources/collect-digitalocean-resource-data). [Install Resoto](/docs/getting-started/install-resoto) today!

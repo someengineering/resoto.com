@@ -128,7 +128,7 @@ Double-check that all resources now carry the correct tag:
 
 Once you know the most common mistakes, it's time to set up automation. While the above process in Resoto Shell is already infinitely more comfortable than trying the same on <abbr title="Amazon Web Services">AWS</abbr> CLI, it is more of an exploratory step than an end-all solution.
 
-Resoto allows you to define and schedule [jobs](/docs/concepts/automation/job) with the [`jobs add` command](/docs/reference/cli/action-commands/jobs/add) to further reduce this kind of toil work:
+Resoto allows you to define and schedule [jobs](/docs/concepts/automation#jobs) with the [`jobs add` command](/docs/reference/cli/action-commands/jobs/add) to further reduce this kind of toil work:
 
 ```bash title="Create a job with the id 'repair_tags' that executes after the 'collect_done' event and runs the command to add a new tag to resources"
 > jobs add --id repair_tags --wait-for-event collect_done: search is(aws_ec2_volume) or is(aws_s3_bucket) and tags.CostCenter != null | tag update costcenter {tags.CostCenter}
@@ -173,11 +173,11 @@ See [Alerting How-To Guides](/docs/how-to-guides/alerting) for additional notifi
 
 Because Resoto has a complete view over your entire cloud asset inventory **and** because Resoto is service-agnostic the tag handling even of millions of resources is no longer a fight against windmills but becomes a treat instead! ✨
 
-Resoto is [open source](https://github.com/someengineering/resoto/blob/main/LICENSE) and free to use, and currently supports [<abbr title="Amazon Web Services">AWS</abbr>](/docs/getting-started/configure-cloud-provider-access/aws), [<abbr title="Google Cloud Platform">GCP</abbr>](/docs/getting-started/configure-cloud-provider-access/gcp), and [DigitalOcean](/docs/getting-started/configure-cloud-provider-access/digitalocean). [Install Resoto](/docs/getting-started/install-resoto) today!
+Resoto is [open source](https://github.com/someengineering/resoto/blob/main/LICENSE) and free to use, and currently supports [<abbr title="Amazon Web Services">AWS</abbr>](/docs/how-to-guides/data-sources/collect-aws-resource-data), [<abbr title="Google Cloud Platform">GCP</abbr>](/docs/how-to-guides/data-sources/collect-google-cloud-resource-data), and [DigitalOcean](/docs/how-to-guides/data-sources/collect-digitalocean-resource-data). [Install Resoto](/docs/getting-started/install-resoto) today!
 
 ## Further Reading
 
 - [Resource Tagging](/docs/concepts/resource-management/tagging)
 - [How to Find Untagged Resources](/docs/how-to-guides/search/find-untagged-resources)
 - [How to Clean Up Untagged Resources](/docs/how-to-guides/cleanup/clean-up-untagged-resources)
-- [`tagvalidator` Plugin](/docs/concepts/components/plugins/tagvalidator)
+- [`tagvalidator` Plugin](/docs/reference/components/plugins/tagvalidator)

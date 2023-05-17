@@ -37,7 +37,7 @@
     "@octokit/core": "4.2.0",
     "a11y-react-emoji": "1.2.0",
     "clsx": "1.2.1",
-    "docusaurus-plugin-openapi-docs": "0.0.0-beta.660",
+    "docusaurus-plugin-openapi-docs": "1.7.3",
     "docusaurus-theme-openapi-docs": "0.0.0-beta.660",
     "formik": "2.2.9",
     "github-slugger": "2.0.0",

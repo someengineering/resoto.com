@@ -1,9 +1,16 @@
 https://resoto.netlify.app/*                                                          https://resoto.com/:splat 301!
 https://resoto.some.engineering/*                                                     https://resoto.com/:splat 301!
 
+https://blog.resoto.com/:year/:month/:date/*                                          https://resoto.com/blog/:splat 301!
+https://blog.resoto.com/*                                                             https://resoto.com/blog/:splat 301!
 https://docs.resoto.com/*                                                             https://resoto.com/docs/:splat 301!
 https://documentation.resoto.com/*                                                    https://resoto.com/docs/:splat 301!
 https://news.resoto.com/*                                                             https://resoto.com/releases/:splat 301!
+https://podcast.resoto.com/:year/:month/:date/*                                       https://resoto.com/podcast/:splat 301!
+https://podcast.resoto.com/*                                                          https://resoto.com/podcast/:splat 301!
+https://podcasts.resoto.com/:year/:month/:date/*                                      https://resoto.com/podcast/:splat 301!
+https://podcasts.resoto.com/*                                                         https://resoto.com/podcast/:splat 301!
+https://release.resoto.com/*                                                          https://resoto.com/releases/:splat 301!
 https://releases.resoto.com/*                                                         https://resoto.com/releases/:splat 301!
 
 /js/script.js                                                                         https://plausible.io/js/script.js 200
@@ -12,8 +19,25 @@ https://releases.resoto.com/*                                                   
 /resoto/*                                                                             /
 /cloud2sql/*                                                                          https://cloud2sql.com 301!
 
-https://blog.resoto.com/*                                                             https://some.engineering/blog/:splat 301!
-/blog/*                                                                               https://some.engineering/blog/:splat 301!
+/blog/:year/:month/:date/*                                                            /blog/:splat
+/blog/resoto-query-language-101                                                       /blog/resoto-search-101
+/blog/resoto-search-syntax-101                                                        /blog/resoto-search-101
+/blog/resotonotebook                                                                  /blog/resoto-meets-jupyter-notebook
+/blog/cloud-infrastructure-metrics                                                    /blog/building-actionable-cloud-infrastructure-metrics
+/blog/what-is-cloud-asset-inventory                                                   /blog/cloud-asset-inventory
+/blog/cloud-resources-they-have-a-lot-in-common                                       /blog/multi-cloud-resource-management-with-resoto
+/blog/a-tale-of-two-tools                                                             /blog/solving-cloud-resource-management-challenges-with-resoto
+/blog/tagging-as-a-treat                                                              /blog/cloud-resource-tagging-with-resoto
+/blog/security-benchmarks-against-cloud-resources                                     /blog/cloud-resource-security-benchmarks
+/blog/cloud-management-with-an-effective-tagging-policy                               /blog/effective-cloud-management-tagging-policies
+/blog/july-2022-product-updates                                                       /blog/product-updates/2022/july
+/blog/january-2023-product-updates                                                    /blog/product-updates/2023/january
+/blog/february-2023-product-updates                                                   /blog/product-updates/2023/february
+/blog/march-2023-product-updates                                                      /blog/product-updates/2023/march
+/blog/april-2023-product-updates                                                      /blog/product-updates/2023/april
+/blog/product-updates                                                                 /blog/tags/product-updates
+/blog/product-updates/*                                                               /blog/tags/product-updates
+/blog/*                                                                               /blog
 
 /docs/concepts/components/library                                                     /docs/reference/components
 /docs/concepts/components/plugins/protect_snowflakes                                  /docs/reference/components/plugins/protector
@@ -305,13 +329,38 @@ https://blog.resoto.com/*                                                       
 /docs/2.x/*                                                                           /docs/:splat
 /docs/2.X/*                                                                           /docs/:splat
 
-/news/2022/07/07/july-update                                                          https://some.engineering/blog/2022/07/07/july-2022-product-updates 301!
+/podcasts/:year/:month/:date/*                                                        /podcast/:splat
+/podcasts/*                                                                           /podcast/:splat
+/podcast/:year/:month/:date/*                                                         /podcast/:splat
+/podcast/1                                                                            /podcast/how-to-purchase-from-cloud-vendors
+/podcast/2                                                                            /podcast/measuring-open-source-adoption
+/podcast/3                                                                            /podcast/combatting-waste-in-cloud-development
+/podcast/4                                                                            /podcast/the-shift-to-smart-cloud-native-applications
+/podcast/5                                                                            /podcast/shifting-from-finops-to-financial-engineering
+/podcast/6                                                                            /podcast/site-reliability-engineering-and-cloud-native-architecture
+/podcast/7                                                                            /podcast/a-shift-left-approach-to-building-serverless-fintech-applications
+/podcast/8                                                                            /podcast/how-to-build-for-the-cloud-on-your-laptop
+/podcast/9                                                                            /podcast/bringing-the-modern-data-stack-to-engineering-operations
+/podcast/10                                                                           /podcast/creating-operational-analytics-with-sql-and-git-repositories
+/podcast/11                                                                           /podcast/bitmaps-and-the-future-of-real-time-data-processing
+/podcast/12                                                                           /podcast/sql-plus-yaml-equals-dashboards
+/podcast/13                                                                           /podcast/data-integration-with-dbt
+/podcast/14                                                                           /podcast/what-is-apache-iceberg
+/podcast/15                                                                           /podcast/why-data-observability-needs-data-criticality
+/podcast/16                                                                           /podcast/elt-for-cloud-infrastructure-data
+/podcast/17                                                                           /podcast/itam-and-strategic-operations-at-wix
+/podcast/18                                                                           /podcast/how-cloud-costs-are-shifting-left
+/podcast/19                                                                           /podcast/security-at-lyft-with-cartography
+/podcast/*                                                                            /podcast
+
+/news/2022/07/07/july-update                                                          /blog/2022/07/07/july-2022-product-updates 301!
 /news/:year/:month/:date/v2.0.0*                                                      /releases/2.0.0
 /news/:year/:month/:date/v*                                                           /releases/:splat
 /news/:year/:month/:date/*                                                            /releases/:splat
-/news/tags/release-notes/*                                                            /releases
 /news/atom.xml                                                                        /releases/atom.xml
+/news/tags/release-notes/*                                                            /releases
 /news/*                                                                               /releases
+/release/*                                                                            /release/:splat
 /releases/*                                                                           /releases
 
 /support/*                                                                            /docs

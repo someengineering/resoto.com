@@ -1,0 +1,28 @@
+---
+date: 2022-11-16
+authors:
+  - lars
+  - name: Vitaly Gordon
+    title: Founder & CEO at Faros AI
+    url: https://linkedin.com/in/vitalygordon
+tags: [continuous integration, devops, metrics]
+image: ./img/banner-social.jpg
+---
+
+# Episode 9: Bringing the Modern Data Stack to Engineering Operations
+
+In the old world of software engineering, developer productivity was measured by lines of code. However, time has shown how code quantity is a poor measure of productivity. So, how come engineering organizations continue to rely on this metric? **Because they do not have a "single-pane" view across all the different systems that have data on various activities that actually correlate with productivity.**
+
+That's where [Faros AI](https://faros.ai) comes in. Faros AI connects the dots between engineering data sources—ticketing, source control, <abbr title="continuous integration">CI</abbr>/<abbr title="continuous delivery/deployment">CD</abbr>, and more—providing visibility and insight into a company's engineering processes.
+
+[**Vitaly Gordon**](https://linkedin.com/in/vitalygordon) is the founder and CEO of Faros AI. Vitaly came up with the concept for Faros AI when he was VP of Engineering in the Machine Learning Group at [Salesforce](https://salesforce.com). As an engineering leader, it's not always code; you also have business responsibilities. That meant interacting with other functions of the business, like sales and marketing.
+
+In those meetings, Vitaly realized that other functions used standardized metrics that measure the performance of their business. Examples are <abbr title="customer acquisition cost">CAC</abbr>, <abbr title="lifetime value">LTV</abbr>, or <abbr title="net dollar retention">NDR</abbr>. These functions built data pipelines to acquire the necessary data and compute these metrics. Surprisingly, engineering did not have that same understanding of their processes.
+
+An example of an engineering metrics framework is <abbr title="DevOps Research and Assessment Organization">DORA</abbr>. [DORA is an industry-standard benchmark that correlates deployment frequency, lead time, change failure rate, and time to restoration with actual business outcomes and employee satisfaction.](https://faros.ai/blog/all-you-need-to-know-about-the-dora-metrics-and-how-to-measure-them) For hyperscalers like [Google](https://google.com) and [Meta](https://meta.com), these metrics are so important that they employ thousands of people just to build and report them.
+
+So, how do you calculate <abbr title="DevOps Research and Assessment Organization">DORA</abbr> metrics for your business? With data, of course. **But, it turns out the data to calculate these metrics is locked inside the dozens of engineering tools used to build and deliver software.** While those tools have APIs, they are optimized for workflows, not for exporting data. If you're not a hyperscaler with the budget to employ thousands of people, what do you do? You can turn to Faros AI, which does all the heavy lifting of acquiring data and calculating metrics for you.
+
+The lessons learned from the modern data stack (MDS) come in when building data pipelines to connect data from disparate tools. In this episode, we explore the open-source [Faros Community Edition](https://community.faros.ai) and the data stack that powers it.
+
+https://youtu.be/O-7gcOFcgH8

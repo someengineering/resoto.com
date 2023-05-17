@@ -14,7 +14,7 @@ date: 2022-06-22
 
 #### Further Reading
 
-- [Kubernetes Support](https://some.engineering/blog/2022/06/22/kubernetes-support)
+- [Kubernetes Support](/blog/kubernetes-support)
 - [Install Resoto with Kubernetes](/docs/getting-started/install-resoto/kubernetes)
 - [How to Collect Kubernetes Resource Data](/docs/how-to-guides/data-sources/collect-kubernetes-resource-data)
 - [Kubernetes Resource Data Models](/docs/reference/data-models/kubernetes)

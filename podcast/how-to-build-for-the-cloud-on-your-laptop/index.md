@@ -1,0 +1,25 @@
+---
+date: 2022-10-18
+authors:
+  - lars
+  - name: Waldemar Hummer
+    title: Co-Founder & CTO at LocalStack
+    image_url: https://avatars.githubusercontent.com/u/2807888?v=4
+    url: https://linkedin.com/in/whummer
+tags: [cloud, open source, devops, aws]
+image: ./img/banner-social.jpg
+---
+
+# Episode 8: How to Build for the Cloud on Your Laptop!
+
+[**Waldemar Hummer**](https://linkedin.com/in/whummer) is Co-Founder and CTO at [LocalStack](https://localstack.cloud). LocalStack gives you a fully functional local cloud stack so you can develop and test your cloud and serverless apps offline. LocalStack is an open-source project that started at [Atlassian](https://atlassian.com), where its initial purpose was to keep developers productive on their daily commutes despite poor internet connectivity.
+
+LocalStack emulates [<abbr title="Amazon Web Services">AWS</abbr>](https://aws.amazon.com) cloud services on your laptop, increasing the number of phases in your infrastructure environment to four: local, test, staging, and production—with LocalStack efficiently covering the local and test phases (including <abbr title="continuous integration">CI</abbr> builds). LocalStack also integrates with a large set of other cloud tools, such as [Terraform](https://terraform.io), [Pulumi](https://pulumi.com), and [<abbr title="Cloud Development Kit">CDK</abbr>](https://aws.amazon.com/cdk).
+
+While the commute problem went mostly away with COVID, it became clear that a local development environment has speed, quality, and cost advantages. **Local provisioning of resources is faster and can speed up dev feedback cycles by an order of magnitude.** Developers can start their work without <abbr title="Identity and Access Management">IAM</abbr> enforcement, then later introduce security policies and migrate to the cloud. A local environment also reduces the cost of cloud sandbox accounts.
+
+A key requirement for LocalStack to be valuable is parity with cloud provider services, which means replicating services and <abbr title="application programming interface">API</abbr> responses. LocalStack is built in [Python](https://python.org), and Waldemar walks us through LocalStack's process of building out the platform to have 99% parity with <abbr title="Amazon Web Services">AWS</abbr>.
+
+In this episode, we also cover developer marketing, community building, and how LocalStack amassed [over 44,000 stars on GitHub](https://github.com/localstack/localstack/stargazers). Waldemar takes us through both a live LocalStack demo and a deep-dive into [LocalStack's GitHub repository](https://github.com/localstack/localstack).
+
+https://youtu.be/IzV0uTPejcc

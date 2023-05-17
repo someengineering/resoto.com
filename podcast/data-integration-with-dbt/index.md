@@ -1,0 +1,35 @@
+---
+date: 2023-01-06
+authors:
+  - lars
+  - name: Julia Schottenstein
+    title: Head of Product at dbt Labs
+    image_url: https://avatars.githubusercontent.com/u/6758803?v=4
+    url: https://linkedin.com/in/julia-schottenstein-25424318
+tags: [cloud, open source, analytics, continuous integration]
+image: ./img/banner-social.jpg
+---
+
+# Episode 13: Data Integration with dbt
+
+[dbt Labs](https://getdbt.com)' mission is to empower data practitioners to create and disseminate organizational knowledge with its open-source product dbt. dbt helps write and execute data transformation jobs by compiling code to SQL and running it against your cloud warehouse.
+
+When raw data from production or <abbr title="software as a service">SaaS</abbr> apps arrives in a cloud warehouse for analysis, it's not in a usable state. Analytics engineers need to prepare, clean, join, and transform the data to match business needs. These needs could include visualizing data for a sales forecast, feeding data into a machine learning model, or preparing operational analytics with infrastructure data. The analytics engineering workflow covers all the steps from raw data extraction to data modeling and end uses like reporting or data science.
+
+**Today, over 16,000 companies use dbt.** dbt has become a foundational technology for the analytics engineering workflow, which is very similar to the DevOps workflow. dbt applies software engineering principles to working with data. To "productionize" data, engineers develop, test, and integrate it—and then also provide observability and alerting once it's in production. All of this functionality is included in dbt Cloud, the commercial version of dbt.
+
+[**Julia Schottenstein**](https://linkedin.com/in/julia-schottenstein-25424318) heads Product at dbt Labs. In this episode, Julia walks us through the evolution of dbt from a tool for data teams at start-ups to enterprise deployments where sometimes thousands of analytics engineers collaborate through dbt. We cover all aspects of the modern data stack—cloud warehouses, ETL, data pipelines, and orchestration—with an outlook on the wider use of data in the enterprise by both humans and applications:
+
+- **dbt's semantic layer, which assigns definitions (e.g., revenue, customer, churn) to a specific metric**
+
+  The semantic layer in dbt contains the definitions for each metric, ensuring consistency and flexibility—users can slice and dice a metric along any dimension. Metrics are computed at the time of a query rather than pointing to an already materialized view.
+
+- **Continuous integration and deployment (CI/CD) for data**
+
+  Building data pipelines is expensive, and data transformation can take a long time with large data sets and complex queries. dbt Cloud ships a purpose-built <abbr title="continuous integration">CI</abbr> tool that builds the absolute minimum set of code and data to test changes.
+
+- **How dbt works, with its direct acyclic graph (DAG)**
+
+  The <abbr title="direct acyclic graph">DAG</abbr> is a visual representation of data models and the connections in-between them. dbt started out with SQL to run all transformations, but is now also inviting other languages such as Python.
+
+https://youtu.be/9piI07cqT_o

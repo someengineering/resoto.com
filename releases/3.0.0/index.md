@@ -6,6 +6,7 @@ date: 2022-12-02
 
 ```mdx-code-block
 import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
+import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
 ## Highlights
@@ -53,7 +54,7 @@ We currently support the following list of database servers:
 - [MariaDB](https://mariadb.org)
 - [SQLite](https://sqlite.org)
 
-See the the [someengineering/cloud2sql](https://github.com/someengineering/cloud2sql) repository for more details.
+See the the [someengineering/cloud2sql <span class="badge badge--secondary">github.com <IconExternalLink width="10" height="10" /></span>](https://github.com/someengineering/cloud2sql) repository for more details.
 
 ### Simplified Installation
 
@@ -71,7 +72,7 @@ Version 3.0.0 of Resoto does not only offer the current snapshot data and aggreg
 
 Think of an outage in your production cluster, and you want to know what happened in the last 2 hours before this outage. You can now use the history of changes to find out what has changed and how it has changed.
 
-If you think this topic is interesting, you can read more about it in [this blog post](https://some.engineering/blog/2022/12/23/what-we-can-learn-from-history). Find details and examples in the documentation of the [`history` command](/docs/reference/cli/search-commands/history).
+If you think this topic is interesting, you can read more about it in [this blog post](/blog/what-we-can-learn-from-history). Find details and examples in the documentation of the [`history` command](/docs/reference/cli/search-commands/history).
 
 ### Extend the List of Commands via Plugins
 

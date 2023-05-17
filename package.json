@@ -54,7 +54,7 @@
     "react-zoom-pan-pinch": "3.0.7",
     "rehype-katex": "5.0.0",
     "remark-math": "3.0.1",
-    "remark-plugin-oembed": "0.1.0",
+    "remark-plugin-oembed": "0.1.1",
     "url-loader": "4.1.1",
     "workbox-routing": "6.5.4",
     "workbox-strategies": "6.5.4",

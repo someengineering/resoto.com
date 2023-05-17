@@ -1,0 +1,25 @@
+---
+date: 2022-09-21
+authors:
+  - lars
+  - name: Jonathan Bernales
+    title: DevOps Engineer at Ekonoo
+    image_url: https://avatars.githubusercontent.com/u/74544894?v=4
+    url: https://linkedin.com/in/jonathan-bernales
+tags: [cloud, devops, finance, aws]
+image: ./img/banner-social.jpg
+---
+
+# Episode 7: A Shift-Left Approach to Building Serverless FinTech Applications
+
+There is a new generation of companies that are building their applications 100% cloud-native, with a pure serverless paradigm. One such company is [Ekonoo](https://ekonoo.com), a French FinTech startup that enables customers and organizations to efficiently invest in retirement funds.
+
+[**Jonathan Bernales**](https://linkedin.com/in/jonathan-bernales) is a DevOps Engineer at Ekonoo. In this interview, Jonathan walks us through Ekonoo's approach of giving developers the autonomy to build and deploy code along with the responsibility for security and cost.
+
+**Holding developers responsible for security and cost is a rather new part of "shift-left."** Cost awareness becomes part of the development culture. To keep cloud bills under control, Ekonoo developers are responsible for their individual test accounts and have access to the [<abbr title="Amazon Web Services">AWS</abbr> Billing Console](https://aws.amazon.com/aws-cost-management/aws-billing) and [<abbr title="Amazon Web Services">AWS</abbr> Cost Explorer](https://aws.amazon.com/aws-cost-management/aws-cost-explorer).
+
+At Ekonoo, there is no dedicated "production team." Rather, DevOps collaborates with developers to create guidelines and guardrails for architecture, automation, security, and cost. The entire Ekonoo stack runs on [<abbr title="Amazon Web Services">AWS</abbr>](https://aws.amazon.com) using native <abbr title="Amazon Web Services">AWS</abbr> services such as [CloudFormation](https://aws.amazon.com/cloudformation), [Lambda](https://aws.amazon.com/lambda), and [Step Functions](https://aws.amazon.com/step-functions).
+
+Watch this episode to learn about Ekonoo's transition to a microservices architecture and the lessons learned along the way.
+
+https://youtu.be/0KjSjT5HalU

@@ -1,0 +1,60 @@
+---
+date: 2023-04-08
+tags: [product updates]
+---
+
+# March 2023 Product Updates
+
+Last month, we merged a total of 64 pull requests and released [Resoto 3.3](/releases/3.3.0) just before the end of March. This release delivers the Security Benchmarks we announced in January, along with numerous smaller features and improvements.
+
+<!--truncate-->
+
+## Resoto
+
+### Security Benchmarks
+
+Resoto has always supported searching for security-relevant information within your cloud infrastructure. With the new Security Benchmarks feature, we have added a layer that enables you to define Checks and reuse them within Benchmarks. The initial Benchmark included in Resoto 3.3 is AWS CIS 1.5.
+
+![Resoto UI Security Benchmarks](./img/benchmarks.gif)
+
+Simply choose the Benchmark and a list of accounts, and within a few seconds, you will receive the results of thousands of tests conducted against your cloud infrastructure. Each test provides details about severity, a list of failing resources, and remediation information.
+
+### AWS
+
+Significant optimization efforts have been made to the AWS collector. By enhancing the session pool, we managed to decrease memory consumption by over 70% for simultaneous collections of multiple accounts, without compromising the high collection speed.
+
+### Accounts
+
+All cloud accounts now record a timestamp `/metadata.exported_at` as well as the corresponding time delta `/metadata.exported_age` indicating when they were last collected. This will enable us to introduce a garbage-collection feature for automatically removing outdated accounts that no longer exist from the Resoto infrastructure graph.
+
+### Files as config:
+
+Resoto config now recognizes "files" as a configuration value type. This means you can configure your e.g. `~/.aws/credentials` files in Resoto rather than mounting them into the worker.
+
+### Github
+
+The Github collector now contains repository statistics, such as top paths, and top referrers.
+
+### Other Resoto Improvements
+
+- Instead of the `example` collector being enabled by default, collector plugins can now automatically determine whether they should be enabled or not. So if for instance you are running on an AWS EC2 instance with a configured instance profile, Resoto will automatically configure itself to use that instance profile and enable the AWS collector.
+
+- YAML configuration now supports literal blocks, which are useful for embedding large blocks of text.
+
+- In AWS collector use a read/write lock instead of Python's standard lock. This improves performance during resource collection.
+
+- When the TSDB can't be reached retry the connection with exponential backoff.
+
+## Looking Ahead
+
+### Security Benchmarks in Resoto Shell
+
+We plan to introduce the report command within the Resoto Shell, enabling Security Benchmark reports to be viewed not only in the UI but also in the shell. This feature will function like every other resource in Resoto by returning a graph for reports. Consequently, you can direct failing resources into all existing alerting commands.
+
+### Infrastructure Apps
+
+Infrastructure Apps will allow you to execute sandboxed code within Resoto without the need for custom plugins. These low-code Jinja templates output Resoto commands and offer basic functionality such as variable assignment, conditionals, and loops. They can perform Resoto searches and utilize the results. This enables actions like looking up a user in Azure Active Directory, finding their cost-center, and creating a new cost-center tag on AWS resources created by that user.
+
+### GCP
+
+The new GCP collector is approaching its final stages before being merged and activated in the `main` branch. Similar to the AWS collector, this update will enrich GCP with an abundance of metadata previously unavailable.

@@ -9,6 +9,7 @@ pagination_next: how-to-guides/index
 
 ```mdx-code-block
 import DocCardList from '@theme/DocCardList';
+import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
 Resoto allows you to manage and explore your cloud infrastructure via a web or shell interface.
@@ -24,6 +25,6 @@ Not sure what to do next? Here are some suggestions:
 
 If you want to stay up to date with the latest Resoto news:
 
-- Watch the [`someengineering/resoto` GitHub repository](https://github.com/someengineering/resoto) and be the first to know about new features and releases.
+- Watch the [`someengineering/resoto` GitHub repository <span class="badge badge--secondary" aria-hidden="true">github.com <IconExternalLink width="10" height="10" /></span>](https://github.com/someengineering/resoto) and be the first to know about new features and releases.
 - You can get help with Resoto and connect with a growing community of cloud engineers in the [Some Engineering Discord server](https://discord.gg/someengineering).
 - Follow [Some Engineering on LinkedIn](https://linkedin.com/company/someengineering) for updates, insights, podcast episodes, sneak peeks, and more!

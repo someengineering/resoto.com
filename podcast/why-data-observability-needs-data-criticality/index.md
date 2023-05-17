@@ -1,0 +1,25 @@
+---
+date: 2022-02-24
+authors:
+  - lars
+  - name: Kevin Hu
+    title: Co-Founder & CEO at Metaplane
+    image_url: https://avatars.githubusercontent.com/u/1390391?v=4
+    url: https://linkedin.com/in/kevinzenghu
+tags: [cloud, analytics]
+image: ./img/banner-social.jpg
+---
+
+# Episode 15: Why Data Observability Needs Data Criticality
+
+In this episode, we interview [**Kevin Hu**](https://linkedin.com/in/kevinzenghu), co-founder and CEO at [Metaplane](https://metaplane.dev). Metaplane offers data observability for the modern data stack. Kevin calls Metaplane the "Datadog for data," in reference to observability for microservices and cloud-native stacks.
+
+As data volume and tool usage grow, so does the potential for something to break—resulting in errors and data downtime. In the modern data stack, the chain of SQL-based transformations between the original data source and the computed result is long and complex. For this reason, it's often nearly impossible to pinpoint the source of data errors.
+
+**Metaplane's focus is data criticality, and Metaplane has built instrumentation to understand exactly where errors occur.** When data is mission-critical to the business, data teams become "solution-aware."
+
+We take a walk down memory lane in this episode. We discuss the early days of the cloud warehouse market and the paradigm shift to separate storage and compute that, overnight, turned [Snowflake](https://snowflake.com) into a market leader.
+
+As a result of this shift, the market for analytics expanded and spawned a new generation of data tooling across categories like data integration and ETL, customer data platforms, data catalogs, reverse ETL, and data observability by companies like [RudderStack](https://rudderstack.com), [Airbyte](https://airbyte.com), [Census](https://getcensus.com), [Hightouch](https://hightouch.com), and, of course, Metaplane.
+
+https://youtu.be/2zMU-uCiA_s

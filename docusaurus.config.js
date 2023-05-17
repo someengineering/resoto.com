@@ -168,6 +168,7 @@ const config = {
           },
         },
         blog: {
+          id: 'releases',
           blogTitle: 'Releases',
           blogDescription: 'Resoto release notes',
           blogSidebarTitle: 'Releases',
@@ -222,6 +223,45 @@ const config = {
         remarkPlugins: [a11yEmoji, math],
         rehypePlugins: [katex],
       }),
+    ],
+    [
+      '@docusaurus/plugin-content-blog',
+      {
+        id: 'blog',
+        blogTitle: 'Blog',
+        blogDescription: 'Resoto blog',
+        blogSidebarTitle: 'Posts',
+        blogSidebarCount: 'ALL',
+        path: 'blog',
+        archiveBasePath: null,
+        routeBasePath: 'blog',
+        showReadingTime: true,
+        feedOptions: {
+          type: 'all',
+          copyright: `Copyright © ${new Date().getFullYear()} Some Engineering Inc.`,
+        },
+        remarkPlugins: [a11yEmoji, oembed],
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-blog',
+      {
+        id: 'podcast',
+        blogTitle: 'Podcast',
+        blogDescription: 'Some Engineering Inc. podcast episodes',
+        blogSidebarTitle: 'Episodes',
+        blogSidebarCount: 'ALL',
+        path: 'podcast',
+        routeBasePath: 'podcast',
+        archiveBasePath: null,
+        showReadingTime: false,
+        feedOptions: {
+          type: 'all',
+          copyright: `Copyright © ${new Date().getFullYear()} Some Engineering Inc.`,
+        },
+        remarkPlugins: [a11yEmoji, oembed, math],
+        rehypePlugins: [katex],
+      },
     ],
     [
       'docusaurus-plugin-openapi-docs',
@@ -347,7 +387,10 @@ const config = {
           content:
             'Resoto consolidates resource data across your clouds, regions, and accounts. Open source and free to use.',
         },
-        { property: 'og:type', content: 'website' },
+        {
+          property: 'og:type',
+          content: 'website',
+        },
       ],
       tableOfContents: {
         minHeadingLevel: 2,
@@ -369,10 +412,14 @@ const config = {
           src: 'img/navbar-logo.svg',
         },
         items: [
-          { to: '/releases', label: 'Releases', position: 'right' },
           {
-            to: '/docs',
+            label: 'Releases',
+            to: '/releases',
+            position: 'right',
+          },
+          {
             label: 'Docs',
+            to: '/docs',
             position: 'right',
             type: 'dropdown',
             items: [
@@ -398,10 +445,19 @@ const config = {
               },
             ],
           },
-          { to: '/compare', label: 'Compare', position: 'right' },
+          {
+            label: 'Compare',
+            to: '/compare',
+            position: 'right',
+          },
           {
             label: 'Blog',
-            href: 'https://some.engineering/blog',
+            href: '/blog',
+            position: 'right',
+          },
+          {
+            label: 'Podcast',
+            to: '/podcast',
             position: 'right',
           },
           {
@@ -480,10 +536,6 @@ const config = {
             title: 'More',
             items: [
               {
-                label: 'Blog',
-                href: 'https://some.engineering/blog',
-              },
-              {
                 label: 'Releases',
                 to: '/releases',
               },
@@ -494,6 +546,10 @@ const config = {
               {
                 label: 'About',
                 to: '/about',
+              },
+              {
+                label: 'Blog',
+                to: '/blog',
               },
               {
                 label: 'Logos',

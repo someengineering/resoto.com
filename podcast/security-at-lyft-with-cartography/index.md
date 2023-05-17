@@ -1,0 +1,25 @@
+---
+date: 2023-04-12
+authors:
+  - lars
+  - name: Alex Chantavy
+    title: Senior Software Engineer at Lyft
+    image_url: https://avatars.githubusercontent.com/u/46503781?v=4
+    url: https://linkedin.com/in/alexchantavy
+tags: [security, graph]
+image: ./img/banner-social.jpg
+---
+
+# Episode 19: Security at Lyft with Cartography
+
+[**Alex Chantavy**](https://linkedin.com/in/alexchantavy) is a Senior Software Engineer at [Lyft](https://lyft.com) and one of the maintainers of [Cartography](https://lyft.github.io/cartography).
+
+Cartography is a Python-based tool that collects infrastructure assets and their relationships into a graph view.
+
+Cartography is open-source and was developed in-house at Lyft to solve offensive security scenarios. Today, Cartography is also used at Lyft to solve other InfoSec use cases, like container vulnerability management.
+
+Cartography is built on top of the [Neo4j](https://neo4j.com) graph data platform. The power of the graph is that it facilitates the exploration of many-to-many relationships.
+
+In this episode, Alex and I discuss the origins of Cartography, how the engineering team at Lyft uses Cartography data for remediation of security issues, and how the graph powers an automated issue management system.
+
+https://youtu.be/rRFP5_5UDBM

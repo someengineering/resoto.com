@@ -1,6 +1,6 @@
 # Terms and Conditions
 
-These terms and conditions outline the rules and regulations for the use of Some Engineering Inc.'s Website, located at [https://resoto.com](https://resoto.com).
+These terms and conditions outline the rules and regulations for the use of Some Engineering Inc.'s Website, located at <https://resoto.com>.
 
 By accessing this website we assume you accept these terms and conditions. Do not continue to use Resoto if you do not agree to take all of the terms and conditions stated on this page.
 

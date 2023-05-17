@@ -5,6 +5,7 @@ sidebar_label: Components
 # Contributing to Components
 
 ```mdx-code-block
+import IconExternalLink from '@theme/Icon/ExternalLink';
 import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
@@ -16,7 +17,7 @@ Resoto is comprised of multiple [components](../reference/components/index.md), 
 - [Resoto Worker](../reference/components/worker.md) [<span class="badge badge--secondary">View on GitHub</span>](https://github.com/someengineering/resoto/tree/main/resotoworker)
 - [Resoto Metrics](../reference/components/metrics.md) [<span class="badge badge--secondary">View on GitHub</span>](https://github.com/someengineering/resoto/tree/main/resotometrics)
 
-The source code for Resoto lives in the [`someengineering/resoto` repository on GitHub](https://github.com/someengineering/resoto).
+The source code for Resoto lives in the [`someengineering/resoto` repository on GitHub <span class="badge badge--secondary" aria-hidden="true">github.com <IconExternalLink width="10" height="10" /></span>](https://github.com/someengineering/resoto).
 
 ## Authoring Changes
 

@@ -1,0 +1,35 @@
+---
+date: 2022-12-15
+authors:
+  - lars
+  - name: Higinio "H.O." Maycotte
+    title: Founder & CEO at FeatureBase
+    url: https://linkedin.com/in/maycotte
+tags: [analytics]
+image: ./img/banner-social.jpg
+---
+
+# Episode 11: Bitmaps and the Future of Real-Time Data Processing
+
+Some studies estimate that nine out of ten copies of data are precomputed. Precomputation requires a lot of engineering and batch processing. Compare this to what you can achieve when instead computing raw data, which reduces the amount of data you need to manage, store, and secure by up to 90%. Yet, some precomputation has often still been required because of bottlenecks in I/O, storage, or compute.
+
+**[FeatureBase](https://featurebase.com) is the first analytical database built entirely on [bitmaps](https://featurebase.com/blog/bitmaps-making-real-time-analytics-real).**
+
+Bitmaps lay out data differently from both the row-oriented layout of transactional databases and the columnar layout of analytical databases; bitmaps store data at the value. Due to the nature of bitmaps, the data pertaining to each unique value within a row or column can be accessed independently without having to scan the row or column. The I/O for typical analytical workloads is only a fraction of that of traditional analytical queries.
+
+Bitmaps are more efficient when it comes to storing, transporting, and managing data—they are orders of magnitude faster than today's popular cloud warehouses, and also an order of magnitude more efficient at storing data. Their efficiency makes them ideal for real-time processing and artificial intelligence workloads.
+
+In fact, that's what positions FeatureBase as the database between real-time streaming engines like [Kafka](https://kafka.apache.org) on one end, and cloud warehouses as long-term storage engines on the other end. FeatureBase is the working memory in-between the two.
+
+[**Higinio "H.O." Maycotte**](https://linkedin.com/in/maycotte) is Founder and CEO at FeatureBase. In this session, we explore the mathematical pillars of databases and bitmaps. We cover:
+
+- Large units of data, like "brontobytes" (1027 bytes)
+- [LFTC: latency, freshness, throughput, and concurrency](https://featurebase.com/blog/featurebase-technical-white-paper)
+- [Claude Shannon's 1936 master thesis ("A Symbolic Analysis of Relay and Switching Circuits")](https://en.wikipedia.org/wiki/A_Symbolic_Analysis_of_Relay_and_Switching_Circuits) and the use of Boolean algebra to perform computations
+- FeatureBase use cases in computer vision, language models, autonomous driving, and finance
+
+The data footprint and scale of some of FeatureBase's customers is nothing short of breathtaking. One of their advertising customers processes 120 billion updates a day—that's 1.38 million updates per second. FeatureBase allowed them to reduce their server count from 1,000 servers to just 11, saving them millions of dollars per year.
+
+The team at FeatureBase has invested over $30 million in <abbr title="research and development">R&D</abbr> and nine years of their lives to advance the use of bitmaps in databases. Watch this fascinating session with H.O. to learn more about math, bitmaps, and modern real-time processing data architecture.
+
+https://youtu.be/-XhLVZtlKmM

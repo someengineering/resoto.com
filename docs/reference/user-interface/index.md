@@ -1,5 +1,9 @@
 # User Interface
 
+```mdx-code-block
+import IconExternalLink from '@theme/Icon/ExternalLink';
+```
+
 Resoto UI offers a simple way to interact with your infrastructure in your web browser. It helps you to discover, interact and automate more easily. Being built using the [Godot Engine](https://godotengine.org), it uses a [web assembly](https://github.com/WebAssembly/design) application to run.
 
 ![Resoto UI](./img/resoto-ui-interface.jpg)
@@ -88,4 +92,4 @@ The [Wizard Editor](./settings-and-tools.md#wizard-editor) is also found here. W
 
 ## Contributing
 
-The Resoto User Interface is maintained in a separate [GitHub repository](https://github.com/someengineering/resoto-ui). We are looking forward to your contribution!
+The Resoto User Interface is maintained in a separate [GitHub repository <span class="badge badge--secondary" aria-hidden="true">github.com <IconExternalLink width="10" height="10" /></span>](https://github.com/someengineering/resoto-ui). We are looking forward to your contribution!

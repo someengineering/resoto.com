@@ -1,0 +1,65 @@
+---
+date: 2023-04-27
+authors: [lukas]
+tags: [tagging]
+---
+
+# Effective Cloud Management Tagging Policies
+
+Managing and tracking cloud resources can be challenging, especially when multiple teams are involved. Cloud resource tagging, which involves labeling resources with metadata, is essential for improving visibility and cost control over these resources.
+
+**Resoto, our infrastructure control plane, comes with TagGuard, a module that simplifies the tagging process.**
+
+In this blog post, we'll provide a brief overview of the benefits of implementing a tagging policy and best practices for creating and enforcing it, based on our [recently published white paper](https://cdn.some.engineering/resoto/whitepaper/Resoto_Cloud_Tagging_Strategy_White_Paper.pdf).
+
+<!--truncate-->
+
+## Benefits of Tagging Policies
+
+1. **Improved organization and visibility**
+
+   Consistent tagging allows for easy filtering and searching of resources, making it simpler to identify unused or abandoned resources, assess resource utilization, and optimize costs.
+
+2. **Simplified cost allocation**
+
+   By tagging resources with cost centers or project names, organizations can quickly identify resources used for specific projects or by certain departments, minimizing the risk of misallocated costs and budget overruns. Resoto's MetricMate module can utilize tags to export metrics for display in systems like Grafana or Tableau, providing valuable insights, data visualization, and near-real-time display of costs per user, project or cost center.
+
+3. **Enhanced security**
+
+   Applying tags based on sensitivity or risk level enables teams to identify high-risk resources and verify that they are properly secured, reducing attack surfaces and ensuring compliance requirements are met.
+
+4. **Effortless automation**
+
+   Consistently tagging resources facilitates automation. Resoto can automate tagging across multiple clouds and accounts. For instance, if a resource is tagged with a `creator`, Resoto can automatically add additional tags by looking up the information in another data source, such as Active Directory, streamlining the tagging process and enhancing resource management.
+
+## Tagging Best Practices
+
+1. **Use consistent and meaningful tag names**
+
+   Ensure tag names are concise, descriptive, and aligned with your organization's business needs. Define a standard format for tag names to maintain consistency.
+
+2. **Define clear tagging policies and guidelines**
+
+   Establish policies that include information on who is responsible for tagging resources, what tags should be applied, and rules for tag formatting and content. Provide examples of common tags and naming conventions. Resoto can help in automatically validating the presence and content of resource tags.
+
+3. **Enforce tagging policies across all cloud accounts**
+
+   Consistency across all accounts is key to effective cloud resource tagging. Enforce a uniform tagging policy across all accounts for accurate resource tracking and cost allocation.
+
+4. **Train users to correctly tag resources**
+
+   Provide training to all teams responsible for managing cloud resources, including the background and rationale behind tagging policies and how to choose and apply appropriate tags.
+
+5. **Enforce tagging policies using automated tools**
+
+   Automation can help ensure that tags are consistently and correctly applied to all resources. Use tools like Terraform to apply tags during resource creation and platforms like Resoto to find untagged resources or fix incorrect tags.
+
+6. **Routinely review and update tagging policies**
+
+   Regularly review and update your tagging policies to ensure they remain relevant and effective.
+
+## Summary
+
+An effective cloud resource tagging policy can significantly improve the management of your organization's cloud resources. By following best practices and maintaining consistency in tagging, organizations benefit from improved visibility, and cost control.
+
+For more detailed guidance and industry-specific examples, refer to our [Cloud Tagging Strategy White Paper](https://cdn.some.engineering/resoto/whitepaper/Resoto_Cloud_Tagging_Strategy_White_Paper.pdf).

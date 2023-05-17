@@ -22,7 +22,7 @@ This Data Source gives you an interface to build an [aggregation search](../../.
 
 This Data Source helps you build time series queries using the [configured metrics](../../../../reference/components/metrics.md) and the time series database that is set up.
 
-In [this blog post](https://some.engineering/blog/2022/06/09/building-actionable-cloud-infrastructure-metrics) about building actionable cloud metrics you can learn more about helpful queries.
+In [this blog post](/blog/building-actionable-cloud-infrastructure-metrics) about building actionable cloud metrics you can learn more about helpful queries.
 
 ## Search (Live Data)
 

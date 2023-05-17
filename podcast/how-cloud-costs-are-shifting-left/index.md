@@ -1,0 +1,41 @@
+---
+date: 2023-03-27
+authors:
+  - lars
+  - name: Hassan Khajeh-Hosseini
+    title: Co-Founder & CEO at Infracost
+    image_url: https://avatars.githubusercontent.com/u/1238825?v=4
+    url: https://linkedin.com/in/hassanhosseini
+tags: [cloud, finance]
+image: ./img/banner-social.jpg
+---
+
+# Episode 18: How Cloud Costs Are Shifting Left
+
+**When developers deploy resources, there is little to no insight for them to understand how much a resource is going to cost.**
+
+[Infracost](https://infracost.io) is changing this by shifting the cost component of cloud resources "left"—i.e. into the hands of developers in a new approach to FinOps.
+
+The existing paradigm of cloud financial management and the traditional FinOps way of managing cloud spend mean waiting for the cloud bill to arrive, then trying to identify opportunities for cost savings.
+
+First-generation FinOps companies like Flexera, Cloudability, and CloudHealth emerged around 2011. They provided an improved user interface for complex billing data, and followed the monthly billing cycle of cloud providers.
+
+However, a month is not sufficient with today's automated and dynamic cloud environments driven by infrastructure–as-code. A new generation of tools have shortened cycles, and delays between cloud bills and their analysis has come down to a day or less.
+
+**In broad terms, efforts to lower the cloud bill are based on a simple formula:**
+
+$$
+cost = usage \times price
+$$
+
+Existing approaches mostly focus on the "price" component of the equation. Procurement mechanisms to lower the price point of a cloud resource include reserved instances, enterprise discount programs, savings plans, etc. Finance "slices and dices" the cloud bill after resources have been deployed to optimize price points and the overall size of the cloud bill.
+
+However, the procurement-driven approach doesn't account for the "usage" component of the equation, which is a function of developer activity. **Finance lacks the context that developers have when deploying resources, while developers lack visibility into resource prices and the cost of their deployments.**
+
+Infracost is closing this gap by providing cloud cost estimates for Terraform in pull requests to show engineering teams how code changes affect their cloud bills. Infracost adds comments to pull requests (e.g., "this change will increase your cloud bill by 25%") which are visible to engineering management, FinOps, and product teams.
+
+[**Hassan Khajeh-Hosseini**](https://linkedin.com/in/hassanhosseini) is Co-Founder and CEO at Infracost, which he co-founded with his brother Ali Khajeh-Hosseini and their friend Alistair Scott. The founding team has a decade of cloud cost history together, with two previous cloud cost start-ups founded and exited.
+
+In this episode, Hassan walks us through the science and engineering behind building Infracost. We also discuss broader infrastructure trends, including "cloud financial engineering" and the general "shift left" of testing, security, and (of course) cost in the development process.
+
+https://youtu.be/w2HxugqiLlw

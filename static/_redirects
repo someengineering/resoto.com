@@ -3,7 +3,8 @@ https://resoto.some.engineering/*                                               
 
 https://docs.resoto.com/*                                                             https://resoto.com/docs/:splat 301!
 https://documentation.resoto.com/*                                                    https://resoto.com/docs/:splat 301!
-https://news.resoto.com/*                                                             https://resoto.com/news/:splat 301!
+https://news.resoto.com/*                                                             https://resoto.com/releases/:splat 301!
+https://releases.resoto.com/*                                                         https://resoto.com/releases/:splat 301!
 
 /js/script.js                                                                         https://plausible.io/js/script.js 200
 /api/event                                                                            https://plausible.io/api/event 200
@@ -305,9 +306,11 @@ https://blog.resoto.com/*                                                       
 /docs/2.X/*                                                                           /docs/:splat
 
 /news/2022/07/07/july-update                                                          https://some.engineering/blog/2022/07/07/july-2022-product-updates 301!
-/news/:year/:month/:date/v2.0.0*                                                      /news/2022/04/12/2.0.0
-/news/:year/:month/:date/v*                                                           /news/:year/:month/:date/:splat
-/news/tags/release-notes/*                                                            /news/tags/release-notes
-/news/*                                                                               /news
+/news/:year/:month/:date/v2.0.0*                                                      /releases/2.0.0
+/news/:year/:month/:date/v*                                                           /releases/:splat
+/news/:year/:month/:date/*                                                            /releases/:splat
+/news/tags/release-notes/*                                                            /releases
+/news/*                                                                               /releases
+/releases/*                                                                           /releases
 
 /support/*                                                                            /docs

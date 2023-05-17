@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
 
-We regularly release [new versions of Resoto](/news) with bug fixes and new features, and recommend keeping your Resoto installation up to date.
+We regularly release [new versions of Resoto](/releases) with bug fixes and new features, and recommend keeping your Resoto installation up to date.
 
 <Tabs groupId="install-method">
 <TabItem value="aws" label="Amazon Web Services">

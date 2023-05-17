@@ -20,7 +20,7 @@ export default function CodeBlock(props: Props): JSX.Element {
   const versionTag =
     versionMetadata?.version === 'current'
       ? null
-      : latestRelease[versionMetadata?.version ?? versions[0]].version;
+      : latestRelease[versionMetadata?.version ?? versions[0]];
 
   return (
     <OriginalCodeBlock {...props}>
@@ -29,7 +29,7 @@ export default function CodeBlock(props: Props): JSX.Element {
         .replace(/{{imageTag}}/g, versionTag ?? 'edge')
         .replace(
           /{{nonEdgeImageTag}}/g,
-          versionTag ?? latestRelease[versions[0]].version
+          versionTag ?? latestRelease[versions[0]]
         )
         .replace(/{{repoBranch}}/g, versionTag ?? 'main')
         .replace(

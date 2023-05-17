@@ -16,7 +16,7 @@ export default function InstallButton({
       className={`button button--primary button--lg ${className}`}
     >
       Install Resoto
-      {includeVersion ? ` ${latestRelease[versions[0]].version}` : ''}
+      {includeVersion ? ` ${latestRelease[versions[0]]}` : ''}
     </Link>
   );
 }

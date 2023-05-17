@@ -12,18 +12,3 @@ export const getGithubStars = async (
     return null;
   }
 };
-
-export const getLatestRelease = async (
-  owner: string,
-  repository: string
-): Promise<string | null> => {
-  try {
-    const res = await new Octokit().request(
-      `/repos/${owner}/${repository}/releases?per_page=1`
-    );
-
-    return res.data[0].tag_name;
-  } catch (err) {
-    return null;
-  }
-};

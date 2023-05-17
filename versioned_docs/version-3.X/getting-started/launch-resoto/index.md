@@ -33,7 +33,7 @@ The steps to launch Resoto UI depend on how you installed Resoto.
 
 2. Resoto UI will start and guide you through the configuration. If it is your first time starting Resoto UI, the setup wizard will appear and help you configure Resoto:
 
-   ![Screenshot of Resoto UI setup wizard](./img/resoto-ui.png)
+   ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
 
 </TabItem>
 <TabItem value="docker" label="Docker">
@@ -48,7 +48,7 @@ The steps to launch Resoto UI depend on how you installed Resoto.
 
 2. If it is your first time starting Resoto UI, the setup wizard will appear and help you configure Resoto:
 
-   ![Screenshot of Resoto UI setup wizard](./img/resoto-ui.png)
+   ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
 
 </TabItem>
 <TabItem value="k8s" label="Kubernetes">
@@ -69,7 +69,7 @@ The steps to launch Resoto UI depend on how you installed Resoto.
 
 3. If it is your first time starting Resoto UI, the setup wizard will appear and help you configure Resoto:
 
-   ![Screenshot of Resoto UI setup wizard](./img/resoto-ui.png)
+   ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
 
 </TabItem>
 <TabItem value="pip" label="pip">
@@ -84,7 +84,7 @@ The steps to launch Resoto UI depend on how you installed Resoto.
 
 2. If it is your first time starting Resoto UI, the setup wizard will appear and help you configure Resoto:
 
-   ![Screenshot of Resoto UI setup wizard](./img/resoto-ui.png)
+   ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
 
 </TabItem>
 </Tabs>
@@ -98,19 +98,25 @@ The steps to launch Resoto Shell depend on how you installed Resoto.
 <Tabs groupId="install-method">
 <TabItem value="aws" label="Amazon Web Services">
 
-1. Go to the [AWS CloudFormation](https://console.aws.amazon.com/cloudformation/home) console and select the ResotoEKS stack.
+1. Log in to the [AWS CloudFormation console](https://console.aws.amazon.com/cloudformation).
 
-   ![Resoto EKS](./img/cf-stack.png)
+2. Click **Stacks**.
 
-2. In the outputs section, copy the value of the `ResotoEKSConfigCommandXXX` output.
+3. Enter `ResotoEKS` into the search box, and click on the stack you would like to upgrade.
 
-   ![Resoto Shell](./img/cf-output.png)
+   ![ResotoEKS stack in AWS CloudFormation](./img/cf-stack.png)
 
-3. Paste the value in your terminal and execute it.
+4. Click the **Outputs** tab.
 
-   ![K8S Access](./img/k8s-access.png)
+5. Enter `ResotoEKSConfigCommand` into the search box. There should be exactly one entry. Copy the value (`aws eks ...`).
 
-4. Execute the following in your terminal to access the [Resoto Shell](../../reference/components/shell.md) interface:
+   ![ResotoEKS stack outputs in AWS CloudFormation](./img/cf-output.png)
+
+6. Open a terminal and execute the copied command.
+
+   ![Screenshot of ResotoEKS config command in terminal](./img/k8s-access.png)
+
+7. Execute the following in the terminal to access the [Resoto Shell](../../reference/components/shell.md) interface:
 
    ```bash
    $ kubectl exec -it service/resoto-resotocore -- resh
@@ -152,4 +158,4 @@ $ resh
 </TabItem>
 </Tabs>
 
-![Resoto Shell](./img/resoto-shell.png)
+![Screenshot of Resoto Shell](../explore-resoto/shell/img/shell.png)

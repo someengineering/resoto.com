@@ -6,7 +6,7 @@ You can search your infrastructure using the search box on the top right in the 
 
 ## Interface
 
-![Resoto UI Search](./img/resoto-ui-search.jpg)
+![Resoto UI Search](./img/resoto-ui-search.png)
 
 **Using the search offers you three modes:**
 

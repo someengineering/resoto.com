@@ -310,6 +310,7 @@ https://blog.resoto.com/*                                                       
 /news/:year/:month/:date/v*                                                           /releases/:splat
 /news/:year/:month/:date/*                                                            /releases/:splat
 /news/tags/release-notes/*                                                            /releases
+/news/atom.xml                                                                        /releases/atom.xml
 /news/*                                                                               /releases
 /releases/*                                                                           /releases
 

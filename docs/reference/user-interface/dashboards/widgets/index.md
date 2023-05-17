@@ -79,9 +79,9 @@ The Chart Widget displays time series data as a line chart. You can change setti
 
 ## Table
 
-![Resoto UI Table Widget](./img/resoto-ui-widgets-table.jpg)
-
 The Table Widget is a very flexible way to display [search](../../../../reference/cli/search-commands/index.md) or [aggregation](../../../../reference/cli/search-commands/aggregate.md) results. When using a [Search Data Source](../data-sources/index.md#search), a click on a row takes you to [Explore view](../../explore.md) to display the clicked resource.
+
+![Resoto UI Table Widget](./img/resoto-ui-widgets-table.jpg)
 
 **Data Sources**
 
@@ -112,9 +112,9 @@ You can export the displayed data directly from the widget by clicking the expor
 
 ## Heatmap
 
-![Resoto UI Heatmap Widget](./img/resoto-ui-widgets-heatmap.jpg)
-
 The Heatmap Widget provides a visual tool to quickly find hotspots of certain metrics in the infrastructure. A good example would be to display the core count or memory of compute instances.
+
+![Resoto UI Heatmap Widget](./img/resoto-ui-widgets-heatmap.jpg)
 
 **Data Sources**
 
@@ -139,9 +139,9 @@ The Heatmap Widget provides a visual tool to quickly find hotspots of certain me
 
 ## World Map
 
-![Resoto UI World Map Widget](./img/resoto-ui-widgets-world-map.jpg)
-
 The World Map Widget is a way of displaying elements grouped by the geolocation of their regions on a world map.
+
+![Resoto UI World Map Widget](./img/resoto-ui-widgets-world-map.jpg)
 
 **Data Sources**
 

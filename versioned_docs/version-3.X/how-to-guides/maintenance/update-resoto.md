@@ -31,17 +31,17 @@ We regularly release [new versions of Resoto](/releases) with bug fixes and new 
 
 3. Enter `ResotoEKS` into the search box, and click on the stack you would like to upgrade.
 
-   ![Cloudformation Stacks](./img/cf-stack.png)
+   ![ResotoEKS stack in AWS CloudFormation](./img/cf-stack.png)
 
 4. Click the **Outputs** tab.
 
 5. Enter `ResotoEKSConfigCommand` into the search box. There should be exactly one entry. Copy the value (`aws eks ...`).
 
-   ![Cloudformation Stacks](./img/cf-output.png)
+   ![ResotoEKS stack outputs in AWS CloudFormation](./img/cf-output.png)
 
 6. Open a terminal and execute the copied command.
 
-   ![Cloudformation Stacks](./img/k8s-access.png)
+   ![Screenshot of ResotoEKS config command in terminal](./img/k8s-access.png)
 
 7. List installed Helm charts:
 

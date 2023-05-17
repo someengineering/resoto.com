@@ -48,7 +48,7 @@ Dashboards are built by combining [widgets](./dashboards/widgets/index.md) using
 
 [Search](./search.md) your infrastructure simply and quickly.
 
-![Resoto UI Search](./img/resoto-ui-search.jpg)
+![Resoto UI Search](./img/resoto-ui-search.png)
 
 ### Explore
 

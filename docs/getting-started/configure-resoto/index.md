@@ -19,7 +19,7 @@ Resoto needs to be configured to authenticate with your cloud providers so it ca
 
 When you open Resoto UI for the first time, you will see a [Setup Wizard](../../reference/user-interface/setup-wizard.md) that will guide you through the initial setup process. The [Setup Wizard](../../reference/user-interface/setup-wizard.md) allows you to configure one or more cloud providers.
 
-![Resoto UI Setup Wizard](./img/setup-wizard.png)
+![Resoto UI Setup Wizard](../explore-resoto/ui/img/setup-wizard.png)
 
 :::note
 

@@ -98,3 +98,7 @@ details.openapi-markdown__details .badge {
     border-radius: 10px;
   }
 }
+
+ul > .openapi-params__list-item + .openapi-params__list-item {
+  margin-top: 1rem;
+}

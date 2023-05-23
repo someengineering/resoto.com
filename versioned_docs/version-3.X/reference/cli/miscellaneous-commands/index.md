@@ -6,6 +6,7 @@ sidebar_position: 5
 
 | Command                   | Description                                                                        |
 | ------------------------- | ---------------------------------------------------------------------------------- |
+| [`apps`](./apps/index.md) | Manage infrastructure apps                                                         |
 | [`chunk`](./chunk.md)     | Chunk incoming elements in batches                                                 |
 | [`echo`](./echo.md)       | Send the provided message to downstream                                            |
 | [`env`](./env.md)         | Retrieve the environment and pass it to the output stream                          |

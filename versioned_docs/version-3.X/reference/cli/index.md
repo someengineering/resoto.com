@@ -52,13 +52,14 @@ You can pipe commands using `|` and chain multiple commands using `;`.
 | Command                                          | Description                              |
 | ------------------------------------------------ | ---------------------------------------- |
 | [`certificate`](./setup-commands/certificate.md) | Create TLS certificates                  |
-| [`configs`](./setup-commands/configs/index.md)   | Manage configuration settings.           |
+| [`configs`](./setup-commands/configs/index.md)   | Manage configuration settings            |
 | [`system`](./setup-commands/system/index.md)     | Access and manage system wide properties |
 
 ### Miscellaneous Commands
 
 | Command                                          | Description                                                                        |
 | ------------------------------------------------ | ---------------------------------------------------------------------------------- |
+| [`apps`](./miscellaneous-commands/apps/index.md) | Manage infrastructure apps                                                         |
 | [`chunk`](./miscellaneous-commands/chunk.md)     | Chunk incoming elements in batches                                                 |
 | [`echo`](./miscellaneous-commands/echo.md)       | Send the provided message to downstream                                            |
 | [`env`](./miscellaneous-commands/env.md)         | Retrieve the environment and pass it to the output stream                          |

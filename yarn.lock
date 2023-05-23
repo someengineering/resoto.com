@@ -10,6 +10,14 @@
     "@docusaurus/utils-validation" "^2.2.0"
     fast-xml-parser "^4.0.11"
 
+"@akebifiky/remark-simple-plantuml@1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@akebifiky/remark-simple-plantuml/-/remark-simple-plantuml-1.0.2.tgz#c353e4be4e5338b0165f1d6060da4960c325bad5"
+  integrity sha512-y5rWgQvU+DMpLKx1KlXCsgUeqVooqQm1S3hePLF9iecZy6YhKRybznFdvAvoAoiV2GoGhObQDHnneAl93llIcg==
+  dependencies:
+    plantuml-encoder "^1.4.0"
+    unist-util-visit "^2.0.2"
+
 "@algolia/autocomplete-core@1.8.2":
   version "1.8.2"
   resolved "https://registry.yarnpkg.com/@algolia/autocomplete-core/-/autocomplete-core-1.8.2.tgz#8d758c8652742e2761450d2b615a841fca24e10e"
@@ -8357,7 +8365,7 @@ is-plain-obj@^3.0.0:
   resolved "https://registry.yarnpkg.com/is-plain-obj/-/is-plain-obj-3.0.0.tgz#af6f2ea14ac5a646183a5bbdb5baabbc156ad9d7"
   integrity sha512-gwsOE28k+23GP1B6vFl1oVh/WOzmawBrKwo5Ev6wMKzPkaXaCDIQKzLnvsA42DRlbVTWorkgTKIviAKCWkfUwA==
 
-is-plain-obj@^4.0.0, is-plain-obj@^4.1.0:
+is-plain-obj@^4.0.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/is-plain-obj/-/is-plain-obj-4.1.0.tgz#d65025edec3657ce032fd7db63c97883eaed71f0"
   integrity sha512-+Pgi+vMuUNkJyExiMBt5IlFoMyKnr5zhJ4Uspz58WOhBF5QoIZkFyNHIbBAtHwzVAgk5RtndVNsDRN61/mmDqg==
@@ -9111,11 +9119,6 @@ map-obj@^4.0.0:
   resolved "https://registry.yarnpkg.com/map-obj/-/map-obj-4.3.0.tgz#9304f906e93faae70880da102a9f1df0ea8bb05a"
   integrity sha512-hdN1wVrZbb29eBGiGjJbeP8JbKjq1urkHJ/LIP/NY48MZ1QVXUsQBV1G1zvYFHn1XE06cwjBsOI2K3Ulnj1YXQ==
 
-markdown-code-block-meta@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/markdown-code-block-meta/-/markdown-code-block-meta-0.0.2.tgz#5dd39bc6ca86c35eccf7003e0990625fabd0daef"
-  integrity sha512-ZHoiTBgMIEP71IN5HJo3eU/7F2A1J4on8LU0bzMe7+n09oANJMKht6/VGHQmA41OK117WZ225f7Imd4IF2bokw==
-
 markdown-escapes@^1.0.0:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/markdown-escapes/-/markdown-escapes-1.0.4.tgz#c95415ef451499d7602b91095f3c8e8975f78535"
@@ -9754,7 +9757,7 @@ node-fetch-h2@^2.3.0:
   dependencies:
     http2-client "^1.2.5"
 
-node-fetch@3.3.1, node-fetch@^3.3.1:
+node-fetch@3.3.1:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-3.3.1.tgz#b3eea7b54b3a48020e46f4f88b9c5a7430d20b2e"
   integrity sha512-cRVc/kyto/7E5shrWca1Wsea4y6tL9iYJE5FBCius3JQfb/4P4I295PfhgbJQBLTx6lATE4z+wK0rPM4VS2uow==
@@ -10159,14 +10162,6 @@ p-map@^4.0.0:
   dependencies:
     aggregate-error "^3.0.0"
 
-p-memoize@^7.1.1:
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/p-memoize/-/p-memoize-7.1.1.tgz#53b1d0e6007288f7261cfa11a7603b84c9261bfa"
-  integrity sha512-DZ/bONJILHkQ721hSr/E9wMz5Am/OTJ9P6LhLFo2Tu+jL8044tgc9LwHO8g4PiaYePnlVVRAJcKmgy8J9MVFrA==
-  dependencies:
-    mimic-fn "^4.0.0"
-    type-fest "^3.0.0"
-
 p-retry@^4.5.0:
   version "4.6.2"
   resolved "https://registry.yarnpkg.com/p-retry/-/p-retry-4.6.2.tgz#9baae7184057edd4e17231cee04264106e092a16"
@@ -10400,6 +10395,11 @@ pkg-up@^3.1.0:
   integrity sha512-nDywThFk1i4BQK4twPQ6TA4RT8bDY96yeuCVBWL3ePARCiEKDRSrNGbFIgUJpLp+XeIR65v8ra7WuJOFUBtkMA==
   dependencies:
     find-up "^3.0.0"
+
+plantuml-encoder@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/plantuml-encoder/-/plantuml-encoder-1.4.0.tgz#7899302cf785de956bf1a167e15420feee5975f7"
+  integrity sha512-sxMwpDw/ySY1WB2CE3+IdMuEcWibJ72DDOsXLkSmEaSzwEUaYBT6DWgOfBiHGCux4q433X6+OEFWjlVqp7gL6g==
 
 pluralize@^8.0.0:
   version "8.0.0"
@@ -11424,17 +11424,6 @@ remark-footnotes@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/remark-footnotes/-/remark-footnotes-2.0.0.tgz#9001c4c2ffebba55695d2dd80ffb8b82f7e6303f"
   integrity sha512-3Clt8ZMH75Ayjp9q4CorNeyjwIxHFcTkaektplKGl2A1jNGEUey8cKL0ZC5vJwfcD5GFGsNLImLG/NGzWIzoMQ==
-
-remark-kroki@0.2.8:
-  version "0.2.8"
-  resolved "https://registry.yarnpkg.com/remark-kroki/-/remark-kroki-0.2.8.tgz#fa551020a1d1e17a6449ebb57966fe40b2bde7b0"
-  integrity sha512-bYwcSSwwpKnlTRC/OKgofdgh2Nk1YG0jfjJg9dyLrwvQMuivG5F1Li+lABaKAcyigWTehvyg6+W4hFfCXBx73Q==
-  dependencies:
-    is-plain-obj "^4.1.0"
-    markdown-code-block-meta "^0.0.2"
-    node-fetch "^3.3.1"
-    p-memoize "^7.1.1"
-    unist-util-visit "^4.1.2"
 
 remark-math@3.0.1:
   version "3.0.1"
@@ -12860,11 +12849,6 @@ type-fest@^2.14.0, type-fest@^2.19.0, type-fest@^2.5.0:
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-2.19.0.tgz#88068015bb33036a598b952e55e9311a60fd3a9b"
   integrity sha512-RAH822pAdBgcNMAfWnCBU3CFZcfZ/i1eZjwFU/dsLKumyuuP3niueg2UAukXYF0E2AAoc82ZSSf9J0WQBinzHA==
 
-type-fest@^3.0.0:
-  version "3.11.0"
-  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-3.11.0.tgz#e78ea6b50d6a6b1e4609035fb9ea8f1e3c328194"
-  integrity sha512-JaPw5U9ixP0XcpUbQoVSbxSDcK/K4nww20C3kjm9yE6cDRRhptU28AH60VWf9ltXmCrIfIbtt9J+2OUk2Uqiaw==
-
 type-is@~1.6.18:
   version "1.6.18"
   resolved "https://registry.yarnpkg.com/type-is/-/type-is-1.6.18.tgz#4e552cd05df09467dcbc4ef739de89f2cf37c131"
@@ -13090,7 +13074,7 @@ unist-util-visit@2.0.3, unist-util-visit@^2.0.0, unist-util-visit@^2.0.2, unist-
     unist-util-is "^4.0.0"
     unist-util-visit-parents "^3.0.0"
 
-unist-util-visit@^4.0.0, unist-util-visit@^4.1.2:
+unist-util-visit@^4.0.0:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/unist-util-visit/-/unist-util-visit-4.1.2.tgz#125a42d1eb876283715a3cb5cceaa531828c72e2"
   integrity sha512-MSd8OUGISqHdVvfY9TPhyK2VdUrPgxkUtWSuMHF6XAAFuL4LokseigBnZtPnJMu+FbynTkFNnFlyjxpVKujMRg==

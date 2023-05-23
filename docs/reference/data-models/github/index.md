@@ -12,7 +12,7 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of github_account data model"
+```plantuml Diagram of github_account data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -67,7 +67,7 @@ account <|--- github_account
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of github_account resource relationships"
+```plantuml Diagram of github_account resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -106,7 +106,7 @@ class github_account [[#github_account]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of github_org data model"
+```plantuml Diagram of github_org data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -195,7 +195,7 @@ resource <|--- github_org
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of github_org resource relationships"
+```plantuml Diagram of github_org resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -234,7 +234,7 @@ class github_org [[#github_org]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of github_pull_request data model"
+```plantuml Diagram of github_pull_request data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -318,7 +318,7 @@ resource <|--- github_pull_request
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of github_pull_request resource relationships"
+```plantuml Diagram of github_pull_request resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -357,7 +357,7 @@ class github_pull_request [[#github_pull_request]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of github_region data model"
+```plantuml Diagram of github_region data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -412,7 +412,7 @@ region <|--- github_region
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of github_region resource relationships"
+```plantuml Diagram of github_region resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -451,7 +451,7 @@ class github_region [[#github_region]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of github_repo data model"
+```plantuml Diagram of github_repo data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -623,7 +623,7 @@ github_repo --> github_repo_views_traffic
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of github_repo resource relationships"
+```plantuml Diagram of github_repo resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -662,7 +662,7 @@ class github_repo [[#github_repo]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of github_user data model"
+```plantuml Diagram of github_user data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -762,7 +762,7 @@ user <|--- github_user
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of github_user resource relationships"
+```plantuml Diagram of github_user resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37

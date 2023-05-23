@@ -13,7 +13,7 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of onprem_instance data model"
+```plantuml Diagram of onprem_instance data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -77,7 +77,7 @@ instance <|--- onprem_instance
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of onprem_instance resource relationships"
+```plantuml Diagram of onprem_instance resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -116,7 +116,7 @@ class onprem_instance [[#onprem_instance]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of onprem_location data model"
+```plantuml Diagram of onprem_location data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -171,7 +171,7 @@ account <|--- onprem_location
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of onprem_location resource relationships"
+```plantuml Diagram of onprem_location resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -210,7 +210,7 @@ class onprem_location [[#onprem_location]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of onprem_network data model"
+```plantuml Diagram of onprem_network data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -269,7 +269,7 @@ network <|--- onprem_network
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of onprem_network resource relationships"
+```plantuml Diagram of onprem_network resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -308,7 +308,7 @@ class onprem_network [[#onprem_network]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of onprem_region data model"
+```plantuml Diagram of onprem_region data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -363,7 +363,7 @@ region <|--- onprem_region
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of onprem_region resource relationships"
+```plantuml Diagram of onprem_region resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37

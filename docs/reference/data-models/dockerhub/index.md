@@ -13,7 +13,7 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of dockerhub_namespace data model"
+```plantuml Diagram of dockerhub_namespace data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -72,7 +72,7 @@ account <|--- dockerhub_namespace
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of dockerhub_namespace resource relationships"
+```plantuml Diagram of dockerhub_namespace resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -111,7 +111,7 @@ class dockerhub_namespace [[#dockerhub_namespace]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of dockerhub_repository data model"
+```plantuml Diagram of dockerhub_repository data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -171,7 +171,7 @@ resource <|--- dockerhub_repository
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of dockerhub_repository resource relationships"
+```plantuml Diagram of dockerhub_repository resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37

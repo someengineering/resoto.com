@@ -12,7 +12,7 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of onelogin_account data model"
+```plantuml Diagram of onelogin_account data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -71,7 +71,7 @@ account <|--- onelogin_account
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of onelogin_account resource relationships"
+```plantuml Diagram of onelogin_account resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -110,7 +110,7 @@ class onelogin_account [[#onelogin_account]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of onelogin_region data model"
+```plantuml Diagram of onelogin_region data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -169,7 +169,7 @@ resource <|--- region
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of onelogin_region resource relationships"
+```plantuml Diagram of onelogin_region resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -208,7 +208,7 @@ class onelogin_region [[#onelogin_region]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of onelogin_user data model"
+```plantuml Diagram of onelogin_user data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -301,7 +301,7 @@ user <|--- onelogin_user
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of onelogin_user resource relationships"
+```plantuml Diagram of onelogin_user resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37

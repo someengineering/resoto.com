@@ -19,7 +19,7 @@ See [How to Collect Google Cloud Resource Data](../../../how-to-guides/data-sour
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_accelerator_type data model"
+```plantuml Diagram of gcp_accelerator_type data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -86,7 +86,7 @@ gcp_accelerator_type --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_accelerator_type resource relationships"
+```plantuml Diagram of gcp_accelerator_type resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -125,7 +125,7 @@ class gcp_accelerator_type [[#gcp_accelerator_type]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_address data model"
+```plantuml Diagram of gcp_address data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -202,7 +202,7 @@ gcp_address --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_address resource relationships"
+```plantuml Diagram of gcp_address resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -245,7 +245,7 @@ gcp_subnetwork -[#1A83AF]-> gcp_address
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_autoscaler data model"
+```plantuml Diagram of gcp_autoscaler data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -373,7 +373,7 @@ gcp_autoscaler --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_autoscaler resource relationships"
+```plantuml Diagram of gcp_autoscaler resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -416,7 +416,7 @@ gcp_autoscaler -[#1A83AF]-> gcp_instance_group_manager
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_backend_bucket data model"
+```plantuml Diagram of gcp_backend_bucket data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -513,7 +513,7 @@ gcp_backend_bucket_cdn_policy --> gcp_backend_bucket_cdn_policy_negative_caching
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_backend_bucket resource relationships"
+```plantuml Diagram of gcp_backend_bucket resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -552,7 +552,7 @@ class gcp_backend_bucket [[#gcp_backend_bucket]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_backend_service data model"
+```plantuml Diagram of gcp_backend_service data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -776,7 +776,7 @@ gcp_outlier_detection --> gcp_duration
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_backend_service resource relationships"
+```plantuml Diagram of gcp_backend_service resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -857,7 +857,7 @@ gcp_service_attachment -[#1A83AF]-> gcp_backend_service
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_billing_account data model"
+```plantuml Diagram of gcp_billing_account data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -926,7 +926,7 @@ gcp_billing_account --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_billing_account resource relationships"
+```plantuml Diagram of gcp_billing_account resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -969,7 +969,7 @@ gcp_billing_account -[#1A83AF]-> gcp_project_billing_info
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_bucket data model"
+```plantuml Diagram of gcp_bucket data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1166,7 +1166,7 @@ gcp_bucket --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_bucket resource relationships"
+```plantuml Diagram of gcp_bucket resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1205,7 +1205,7 @@ class gcp_bucket [[#gcp_bucket]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_commitment data model"
+```plantuml Diagram of gcp_commitment data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1345,7 +1345,7 @@ gcp_commitment --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_commitment resource relationships"
+```plantuml Diagram of gcp_commitment resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1384,7 +1384,7 @@ class gcp_commitment [[#gcp_commitment]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_container_cluster data model"
+```plantuml Diagram of gcp_container_cluster data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1884,7 +1884,7 @@ gcp_container_pub_sub --> gcp_container_filter
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_container_cluster resource relationships"
+```plantuml Diagram of gcp_container_cluster resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1927,7 +1927,7 @@ gcp_container_cluster -[#1A83AF]-> gcp_container_operation
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_container_operation data model"
+```plantuml Diagram of gcp_container_operation data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2030,7 +2030,7 @@ gcp_container_operation_progress --> gcp_container_metric
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_container_operation resource relationships"
+```plantuml Diagram of gcp_container_operation resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2073,7 +2073,7 @@ gcp_container_cluster -[#1A83AF]-> gcp_container_operation
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_disk data model"
+```plantuml Diagram of gcp_disk data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2190,7 +2190,7 @@ gcp_disk --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_disk resource relationships"
+```plantuml Diagram of gcp_disk resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2253,7 +2253,7 @@ gcp_disk_type -[#1A83AF]-> gcp_disk
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_disk_type data model"
+```plantuml Diagram of gcp_disk_type data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2341,7 +2341,7 @@ gcp_disk_type --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_disk_type resource relationships"
+```plantuml Diagram of gcp_disk_type resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2388,7 +2388,7 @@ gcp_disk_type -[#1A83AF]-> gcp_disk
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_external_vpn_gateway data model"
+```plantuml Diagram of gcp_external_vpn_gateway data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2461,7 +2461,7 @@ gcp_external_vpn_gateway --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_external_vpn_gateway resource relationships"
+```plantuml Diagram of gcp_external_vpn_gateway resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2500,7 +2500,7 @@ class gcp_external_vpn_gateway [[#gcp_external_vpn_gateway]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_firewall data model"
+```plantuml Diagram of gcp_firewall data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2594,7 +2594,7 @@ gcp_firewall --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_firewall resource relationships"
+```plantuml Diagram of gcp_firewall resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2637,7 +2637,7 @@ gcp_firewall -[#1A83AF]-> gcp_network
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_firewall_policy data model"
+```plantuml Diagram of gcp_firewall_policy data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2752,7 +2752,7 @@ gcp_firewall_policy_rule_matcher --> gcp_firewall_policy_rule_secure_tag
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_firewall_policy resource relationships"
+```plantuml Diagram of gcp_firewall_policy resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2795,7 +2795,7 @@ gcp_firewall_policy -[#1A83AF]-> gcp_network
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_forwarding_rule data model"
+```plantuml Diagram of gcp_forwarding_rule data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2899,7 +2899,7 @@ gcp_forwarding_rule --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_forwarding_rule resource relationships"
+```plantuml Diagram of gcp_forwarding_rule resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2971,7 +2971,7 @@ gcp_forwarding_rule -[#1A83AF]-> gcp_target_tcp_proxy
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_health_check data model"
+```plantuml Diagram of gcp_health_check data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3104,7 +3104,7 @@ gcp_health_check --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_health_check resource relationships"
+```plantuml Diagram of gcp_health_check resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3151,7 +3151,7 @@ gcp_backend_service -[#1A83AF]-> gcp_health_check
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_health_check_service data model"
+```plantuml Diagram of gcp_health_check_service data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3222,7 +3222,7 @@ gcp_health_check_service --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_health_check_service resource relationships"
+```plantuml Diagram of gcp_health_check_service resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3261,7 +3261,7 @@ class gcp_health_check_service [[#gcp_health_check_service]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_http_health_check data model"
+```plantuml Diagram of gcp_http_health_check data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3334,7 +3334,7 @@ gcp_http_health_check --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_http_health_check resource relationships"
+```plantuml Diagram of gcp_http_health_check resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3381,7 +3381,7 @@ gcp_backend_service -[#1A83AF]-> gcp_http_health_check
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_https_health_check data model"
+```plantuml Diagram of gcp_https_health_check data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3454,7 +3454,7 @@ gcp_https_health_check --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_https_health_check resource relationships"
+```plantuml Diagram of gcp_https_health_check resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3501,7 +3501,7 @@ gcp_backend_service -[#1A83AF]-> gcp_https_health_check
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_image data model"
+```plantuml Diagram of gcp_image data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3616,7 +3616,7 @@ gcp_initial_state_config --> gcp_file_content_buffer
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_image resource relationships"
+```plantuml Diagram of gcp_image resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3659,7 +3659,7 @@ gcp_disk -[#1A83AF]-> gcp_image
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_instance data model"
+```plantuml Diagram of gcp_instance data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3925,7 +3925,7 @@ gcp_scheduling --> gcp_scheduling_node_affinity
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_instance resource relationships"
+```plantuml Diagram of gcp_instance resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3991,7 +3991,7 @@ gcp_machine_type -[#1A83AF]-> gcp_instance
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_instance_group data model"
+```plantuml Diagram of gcp_instance_group data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4067,7 +4067,7 @@ gcp_resource --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_instance_group resource relationships"
+```plantuml Diagram of gcp_instance_group resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4124,7 +4124,7 @@ gcp_network -[#1A83AF]-> gcp_backend_service
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_instance_group_manager data model"
+```plantuml Diagram of gcp_instance_group_manager data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4283,7 +4283,7 @@ gcp_stateful_policy_preserved_state --> gcp_stateful_policy_preserved_state_disk
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_instance_group_manager resource relationships"
+```plantuml Diagram of gcp_instance_group_manager resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4342,7 +4342,7 @@ gcp_autoscaler -[#1A83AF]-> gcp_instance_group_manager
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_instance_template data model"
+```plantuml Diagram of gcp_instance_template data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4598,7 +4598,7 @@ gcp_source_instance_params --> gcp_disk_instantiation_config
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_instance_template resource relationships"
+```plantuml Diagram of gcp_instance_template resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4641,7 +4641,7 @@ gcp_machine_type -[#1A83AF]-> gcp_instance_template
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_interconnect data model"
+```plantuml Diagram of gcp_interconnect data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4741,7 +4741,7 @@ gcp_interconnect --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_interconnect resource relationships"
+```plantuml Diagram of gcp_interconnect resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4780,7 +4780,7 @@ class gcp_interconnect [[#gcp_interconnect]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_interconnect_attachment data model"
+```plantuml Diagram of gcp_interconnect_attachment data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4880,7 +4880,7 @@ gcp_interconnect_attachment --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_interconnect_attachment resource relationships"
+```plantuml Diagram of gcp_interconnect_attachment resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4923,7 +4923,7 @@ gcp_vpn_gateway -[#1A83AF]-> gcp_interconnect_attachment
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_interconnect_location data model"
+```plantuml Diagram of gcp_interconnect_location data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5005,7 +5005,7 @@ gcp_interconnect_location --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_interconnect_location resource relationships"
+```plantuml Diagram of gcp_interconnect_location resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5044,7 +5044,7 @@ class gcp_interconnect_location [[#gcp_interconnect_location]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_license data model"
+```plantuml Diagram of gcp_license data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5119,7 +5119,7 @@ gcp_license --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_license resource relationships"
+```plantuml Diagram of gcp_license resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5158,7 +5158,7 @@ class gcp_license [[#gcp_license]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_machine_image data model"
+```plantuml Diagram of gcp_machine_image data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5467,7 +5467,7 @@ gcp_source_disk_encryption_key --> gcp_customer_encryption_key
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_machine_image resource relationships"
+```plantuml Diagram of gcp_machine_image resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5510,7 +5510,7 @@ gcp_disk -[#1A83AF]-> gcp_machine_image
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_machine_type data model"
+```plantuml Diagram of gcp_machine_type data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5610,7 +5610,7 @@ quota <|--- type
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_machine_type resource relationships"
+```plantuml Diagram of gcp_machine_type resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5657,7 +5657,7 @@ gcp_machine_type -[#1A83AF]-> gcp_instance_template
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_network data model"
+```plantuml Diagram of gcp_network data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5750,7 +5750,7 @@ gcp_network --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_network resource relationships"
+```plantuml Diagram of gcp_network resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5848,7 +5848,7 @@ gcp_forwarding_rule -[#1A83AF]-> gcp_target_vpn_gateway
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_network_edge_security_service data model"
+```plantuml Diagram of gcp_network_edge_security_service data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5917,7 +5917,7 @@ gcp_network_edge_security_service --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_network_edge_security_service resource relationships"
+```plantuml Diagram of gcp_network_edge_security_service resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5956,7 +5956,7 @@ class gcp_network_edge_security_service [[#gcp_network_edge_security_service]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_network_endpoint_group data model"
+```plantuml Diagram of gcp_network_endpoint_group data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6056,7 +6056,7 @@ gcp_network_endpoint_group --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_network_endpoint_group resource relationships"
+```plantuml Diagram of gcp_network_endpoint_group resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6109,7 +6109,7 @@ gcp_network -[#1A83AF]-> gcp_backend_service
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_node_group data model"
+```plantuml Diagram of gcp_node_group data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6209,7 +6209,7 @@ gcp_node_group_maintenance_window --> gcp_duration
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_node_group resource relationships"
+```plantuml Diagram of gcp_node_group resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6252,7 +6252,7 @@ gcp_node_template -[#1A83AF]-> gcp_node_group
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_node_template data model"
+```plantuml Diagram of gcp_node_template data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6344,7 +6344,7 @@ gcp_node_template --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_node_template resource relationships"
+```plantuml Diagram of gcp_node_template resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6391,7 +6391,7 @@ gcp_disk_type -[#1A83AF]-> gcp_node_template
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_node_type data model"
+```plantuml Diagram of gcp_node_type data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6461,7 +6461,7 @@ gcp_node_type --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_node_type resource relationships"
+```plantuml Diagram of gcp_node_type resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6500,7 +6500,7 @@ class gcp_node_type [[#gcp_node_type]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_notification_endpoint data model"
+```plantuml Diagram of gcp_notification_endpoint data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6580,7 +6580,7 @@ gcp_notification_endpoint --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_notification_endpoint resource relationships"
+```plantuml Diagram of gcp_notification_endpoint resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6619,7 +6619,7 @@ class gcp_notification_endpoint [[#gcp_notification_endpoint]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_object data model"
+```plantuml Diagram of gcp_object data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6686,7 +6686,7 @@ gcp_object --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_object resource relationships"
+```plantuml Diagram of gcp_object resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6725,7 +6725,7 @@ class gcp_object [[#gcp_object]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_operation data model"
+```plantuml Diagram of gcp_operation data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6855,7 +6855,7 @@ gcp_warnings --> gcp_data
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_operation resource relationships"
+```plantuml Diagram of gcp_operation resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6898,7 +6898,7 @@ gcp_operation -[#1A83AF]-> gcp_disk
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_packet_mirroring data model"
+```plantuml Diagram of gcp_packet_mirroring data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7002,7 +7002,7 @@ gcp_packet_mirroring_mirrored_resource_info --> gcp_packet_mirroring_mirrored_re
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_packet_mirroring resource relationships"
+```plantuml Diagram of gcp_packet_mirroring resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7050,7 +7050,7 @@ gcp_subnetwork -[#1A83AF]-> gcp_packet_mirroring
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_project data model"
+```plantuml Diagram of gcp_project data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7122,7 +7122,7 @@ gcp_project --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_project resource relationships"
+```plantuml Diagram of gcp_project resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7161,7 +7161,7 @@ class gcp_project [[#gcp_project]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_project_billing_info data model"
+```plantuml Diagram of gcp_project_billing_info data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7230,7 +7230,7 @@ gcp_project_billing_info --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_project_billing_info resource relationships"
+```plantuml Diagram of gcp_project_billing_info resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7273,7 +7273,7 @@ gcp_billing_account -[#1A83AF]-> gcp_project_billing_info
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_public_advertised_prefix data model"
+```plantuml Diagram of gcp_public_advertised_prefix data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7353,7 +7353,7 @@ gcp_public_advertised_prefix --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_public_advertised_prefix resource relationships"
+```plantuml Diagram of gcp_public_advertised_prefix resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7396,7 +7396,7 @@ gcp_public_delegated_prefix -[#1A83AF]-> gcp_public_advertised_prefix
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_public_delegated_prefix data model"
+```plantuml Diagram of gcp_public_delegated_prefix data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7478,7 +7478,7 @@ gcp_public_delegated_prefix --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_public_delegated_prefix resource relationships"
+```plantuml Diagram of gcp_public_delegated_prefix resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7521,7 +7521,7 @@ gcp_public_delegated_prefix -[#1A83AF]-> gcp_public_advertised_prefix
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_quota data model"
+```plantuml Diagram of gcp_quota data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7600,7 +7600,7 @@ gcp_quota --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_quota resource relationships"
+```plantuml Diagram of gcp_quota resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7639,7 +7639,7 @@ class gcp_quota [[#gcp_quota]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_region data model"
+```plantuml Diagram of gcp_region data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7713,7 +7713,7 @@ gcp_region --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_region resource relationships"
+```plantuml Diagram of gcp_region resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7752,7 +7752,7 @@ class gcp_region [[#gcp_region]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_resource data model"
+```plantuml Diagram of gcp_resource data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7814,7 +7814,7 @@ gcp_resource --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_resource resource relationships"
+```plantuml Diagram of gcp_resource resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7853,7 +7853,7 @@ class gcp_resource [[#gcp_resource]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_resource_policy data model"
+```plantuml Diagram of gcp_resource_policy data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7993,7 +7993,7 @@ gcp_resource_policy --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_resource_policy resource relationships"
+```plantuml Diagram of gcp_resource_policy resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8032,7 +8032,7 @@ class gcp_resource_policy [[#gcp_resource_policy]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_route data model"
+```plantuml Diagram of gcp_route data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8129,7 +8129,7 @@ gcp_route --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_route resource relationships"
+```plantuml Diagram of gcp_route resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8172,7 +8172,7 @@ gcp_network -[#1A83AF]-> gcp_route
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_router data model"
+```plantuml Diagram of gcp_router data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8346,7 +8346,7 @@ gcp_router_nat --> gcp_router_nat_subnetwork_to_nat
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_router resource relationships"
+```plantuml Diagram of gcp_router resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8393,7 +8393,7 @@ gcp_vpn_tunnel -[#1A83AF]-> gcp_router
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_security_policy data model"
+```plantuml Diagram of gcp_security_policy data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8544,7 +8544,7 @@ gcp_security_policy_advanced_options_config --> gcp_security_policy_advanced_opt
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_security_policy resource relationships"
+```plantuml Diagram of gcp_security_policy resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8583,7 +8583,7 @@ class gcp_security_policy [[#gcp_security_policy]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_service data model"
+```plantuml Diagram of gcp_service data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8651,7 +8651,7 @@ gcp_service --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_service resource relationships"
+```plantuml Diagram of gcp_service resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8694,7 +8694,7 @@ gcp_service -[#1A83AF]-> gcp_sku
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_service_attachment data model"
+```plantuml Diagram of gcp_service_attachment data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8787,7 +8787,7 @@ gcp_service_attachment --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_service_attachment resource relationships"
+```plantuml Diagram of gcp_service_attachment resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8834,7 +8834,7 @@ gcp_service_attachment -[#1A83AF]-> gcp_backend_service
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_sku data model"
+```plantuml Diagram of gcp_sku data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8953,7 +8953,7 @@ gcp_tier_rate --> gcp_money
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_sku resource relationships"
+```plantuml Diagram of gcp_sku resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8996,7 +8996,7 @@ gcp_service -[#1A83AF]-> gcp_sku
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_snapshot data model"
+```plantuml Diagram of gcp_snapshot data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9091,7 +9091,7 @@ gcp_snapshot --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_snapshot resource relationships"
+```plantuml Diagram of gcp_snapshot resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9134,7 +9134,7 @@ gcp_disk -[#1A83AF]-> gcp_snapshot
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_sql_backup_run data model"
+```plantuml Diagram of gcp_sql_backup_run data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9218,7 +9218,7 @@ gcp_sql_backup_run --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_sql_backup_run resource relationships"
+```plantuml Diagram of gcp_sql_backup_run resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9257,7 +9257,7 @@ class gcp_sql_backup_run [[#gcp_sql_backup_run]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_sql_database data model"
+```plantuml Diagram of gcp_sql_database data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9334,7 +9334,7 @@ gcp_sql_database --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_sql_database resource relationships"
+```plantuml Diagram of gcp_sql_database resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9373,7 +9373,7 @@ class gcp_sql_database [[#gcp_sql_database]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_sql_database_instance data model"
+```plantuml Diagram of gcp_sql_database_instance data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9647,7 +9647,7 @@ gcp_sql_ip_configuration --> gcp_sql_acl_entry
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_sql_database_instance resource relationships"
+```plantuml Diagram of gcp_sql_database_instance resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9694,7 +9694,7 @@ gcp_ssl_certificate -[#1A83AF]-> gcp_sql_database_instance
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_sql_operation data model"
+```plantuml Diagram of gcp_sql_operation data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9833,7 +9833,7 @@ gcp_sql_bakimportoptions --> gcp_sql_encryptionoptions
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_sql_operation resource relationships"
+```plantuml Diagram of gcp_sql_operation resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9876,7 +9876,7 @@ gcp_sql_database_instance -[#1A83AF]-> gcp_sql_operation
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_sql_user data model"
+```plantuml Diagram of gcp_sql_user data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9969,7 +9969,7 @@ gcp_sql_user_password_validation_policy --> gcp_sql_password_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_sql_user resource relationships"
+```plantuml Diagram of gcp_sql_user resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10008,7 +10008,7 @@ class gcp_sql_user [[#gcp_sql_user]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_ssl_certificate data model"
+```plantuml Diagram of gcp_ssl_certificate data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10092,7 +10092,7 @@ gcp_ssl_certificate --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_ssl_certificate resource relationships"
+```plantuml Diagram of gcp_ssl_certificate resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10143,7 +10143,7 @@ gcp_ssl_certificate -[#1A83AF]-> gcp_sql_database_instance
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_ssl_policy data model"
+```plantuml Diagram of gcp_ssl_policy data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10226,7 +10226,7 @@ gcp_ssl_policy --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_ssl_policy resource relationships"
+```plantuml Diagram of gcp_ssl_policy resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10269,7 +10269,7 @@ gcp_ssl_policy -[#1A83AF]-> gcp_target_https_proxy
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_subnetwork data model"
+```plantuml Diagram of gcp_subnetwork data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10366,7 +10366,7 @@ gcp_subnetwork --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_subnetwork resource relationships"
+```plantuml Diagram of gcp_subnetwork resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10437,7 +10437,7 @@ gcp_service_attachment -[#1A83AF]-> gcp_subnetwork
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_target_grpc_proxy data model"
+```plantuml Diagram of gcp_target_grpc_proxy data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10507,7 +10507,7 @@ gcp_target_grpc_proxy --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_target_grpc_proxy resource relationships"
+```plantuml Diagram of gcp_target_grpc_proxy resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10554,7 +10554,7 @@ gcp_forwarding_rule -[#1A83AF]-> gcp_target_grpc_proxy
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_target_http_proxy data model"
+```plantuml Diagram of gcp_target_http_proxy data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10623,7 +10623,7 @@ gcp_target_http_proxy --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_target_http_proxy resource relationships"
+```plantuml Diagram of gcp_target_http_proxy resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10670,7 +10670,7 @@ gcp_forwarding_rule -[#1A83AF]-> gcp_target_http_proxy
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_target_https_proxy data model"
+```plantuml Diagram of gcp_target_https_proxy data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10745,7 +10745,7 @@ gcp_target_https_proxy --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_target_https_proxy resource relationships"
+```plantuml Diagram of gcp_target_https_proxy resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10800,7 +10800,7 @@ gcp_forwarding_rule -[#1A83AF]-> gcp_target_https_proxy
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_target_instance data model"
+```plantuml Diagram of gcp_target_instance data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10869,7 +10869,7 @@ gcp_target_instance --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_target_instance resource relationships"
+```plantuml Diagram of gcp_target_instance resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10917,7 +10917,7 @@ gcp_target_instance -[#1A83AF]-> gcp_instance
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_target_pool data model"
+```plantuml Diagram of gcp_target_pool data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10988,7 +10988,7 @@ gcp_target_pool --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_target_pool resource relationships"
+```plantuml Diagram of gcp_target_pool resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11031,7 +11031,7 @@ gcp_forwarding_rule -[#1A83AF]-> gcp_target_pool
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_target_ssl_proxy data model"
+```plantuml Diagram of gcp_target_ssl_proxy data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11102,7 +11102,7 @@ gcp_target_ssl_proxy --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_target_ssl_proxy resource relationships"
+```plantuml Diagram of gcp_target_ssl_proxy resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11153,7 +11153,7 @@ gcp_forwarding_rule -[#1A83AF]-> gcp_target_ssl_proxy
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_target_tcp_proxy data model"
+```plantuml Diagram of gcp_target_tcp_proxy data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11222,7 +11222,7 @@ gcp_target_tcp_proxy --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_target_tcp_proxy resource relationships"
+```plantuml Diagram of gcp_target_tcp_proxy resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11269,7 +11269,7 @@ gcp_forwarding_rule -[#1A83AF]-> gcp_target_tcp_proxy
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_target_vpn_gateway data model"
+```plantuml Diagram of gcp_target_vpn_gateway data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11339,7 +11339,7 @@ gcp_target_vpn_gateway --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_target_vpn_gateway resource relationships"
+```plantuml Diagram of gcp_target_vpn_gateway resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11391,7 +11391,7 @@ gcp_forwarding_rule -[#1A83AF]-> gcp_target_vpn_gateway
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_url_map data model"
+```plantuml Diagram of gcp_url_map data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11649,7 +11649,7 @@ gcp_url_map_test --> gcp_url_map_test_header
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_url_map resource relationships"
+```plantuml Diagram of gcp_url_map resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11704,7 +11704,7 @@ gcp_target_http_proxy -[#1A83AF]-> gcp_url_map
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_vpn_gateway data model"
+```plantuml Diagram of gcp_vpn_gateway data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11779,7 +11779,7 @@ gcp_vpn_gateway --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_vpn_gateway resource relationships"
+```plantuml Diagram of gcp_vpn_gateway resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11830,7 +11830,7 @@ gcp_vpn_tunnel -[#1A83AF]-> gcp_vpn_gateway
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_vpn_tunnel data model"
+```plantuml Diagram of gcp_vpn_tunnel data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11911,7 +11911,7 @@ gcp_vpn_tunnel --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_vpn_tunnel resource relationships"
+```plantuml Diagram of gcp_vpn_tunnel resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11962,7 +11962,7 @@ gcp_vpn_tunnel -[#1A83AF]-> gcp_target_vpn_gateway
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_zone data model"
+```plantuml Diagram of gcp_zone data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -12037,7 +12037,7 @@ gcp_zone --> gcp_deprecation_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of gcp_zone resource relationships"
+```plantuml Diagram of gcp_zone resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37

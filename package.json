@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@1password/docusaurus-plugin-stored-data": "0.1.0",
+    "@akebifiky/remark-simple-plantuml": "1.0.2",
     "@docusaurus/core": "2.4.1",
     "@docusaurus/plugin-pwa": "2.4.1",
     "@docusaurus/plugin-sitemap": "2.4.1",
@@ -53,7 +54,6 @@
     "react-wrap-balancer": "0.5.0",
     "react-zoom-pan-pinch": "3.0.7",
     "rehype-katex": "5.0.0",
-    "remark-kroki": "0.2.8",
     "remark-math": "3.0.1",
     "remark-plugin-oembed": "0.1.0",
     "url-loader": "4.1.1",

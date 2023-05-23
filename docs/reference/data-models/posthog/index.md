@@ -12,7 +12,7 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of posthog_event data model"
+```plantuml Diagram of posthog_event data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -80,7 +80,7 @@ resource <|--- posthog_event
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of posthog_event resource relationships"
+```plantuml Diagram of posthog_event resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -119,7 +119,7 @@ class posthog_event [[#posthog_event]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of posthog_project data model"
+```plantuml Diagram of posthog_project data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -194,7 +194,7 @@ account <|--- posthog_project
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of posthog_project resource relationships"
+```plantuml Diagram of posthog_project resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37

@@ -18,7 +18,7 @@ See [How to Collect DigitalOcean Resource Data](../../../how-to-guides/data-sour
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_alert_policy data model"
+```plantuml Diagram of digitalocean_alert_policy data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -76,7 +76,7 @@ resource <|--- digitalocean_alert_policy
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_alert_policy resource relationships"
+```plantuml Diagram of digitalocean_alert_policy resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -119,7 +119,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_alert_policy
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_app data model"
+```plantuml Diagram of digitalocean_app data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -179,7 +179,7 @@ resource <|--- digitalocean_app
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_app resource relationships"
+```plantuml Diagram of digitalocean_app resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -233,7 +233,7 @@ digitalocean_region -[#1A83AF]-> digitalocean_database
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_cdn_endpoint data model"
+```plantuml Diagram of digitalocean_cdn_endpoint data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -297,7 +297,7 @@ resource <|--- endpoint
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_cdn_endpoint resource relationships"
+```plantuml Diagram of digitalocean_cdn_endpoint resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -340,7 +340,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_cdn_endpoint
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_certificate data model"
+```plantuml Diagram of digitalocean_certificate data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -403,7 +403,7 @@ resource <|--- certificate
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_certificate resource relationships"
+```plantuml Diagram of digitalocean_certificate resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -446,7 +446,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_certificate
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_container_registry data model"
+```plantuml Diagram of digitalocean_container_registry data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -503,7 +503,7 @@ resource <|--- digitalocean_container_registry
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_container_registry resource relationships"
+```plantuml Diagram of digitalocean_container_registry resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -556,7 +556,7 @@ digitalocean_region -[#1A83AF]-> digitalocean_container_registry
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_container_registry_repository data model"
+```plantuml Diagram of digitalocean_container_registry_repository data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -613,7 +613,7 @@ resource <|--- digitalocean_container_registry_repository
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_container_registry_repository resource relationships"
+```plantuml Diagram of digitalocean_container_registry_repository resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -666,7 +666,7 @@ digitalocean_container_registry_repository -[#1A83AF]-> digitalocean_container_r
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_container_registry_repository_tag data model"
+```plantuml Diagram of digitalocean_container_registry_repository_tag data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -726,7 +726,7 @@ resource <|--- digitalocean_container_registry_repository_tag
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_container_registry_repository_tag resource relationships"
+```plantuml Diagram of digitalocean_container_registry_repository_tag resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -774,7 +774,7 @@ digitalocean_container_registry_repository -[#1A83AF]-> digitalocean_container_r
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_database data model"
+```plantuml Diagram of digitalocean_database data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -842,7 +842,7 @@ database <|--- digitalocean_database
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_database resource relationships"
+```plantuml Diagram of digitalocean_database resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -907,7 +907,7 @@ digitalocean_region -[#1A83AF]-> digitalocean_database
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_domain data model"
+```plantuml Diagram of digitalocean_domain data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -968,7 +968,7 @@ resource <|--- dns_zone
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_domain resource relationships"
+```plantuml Diagram of digitalocean_domain resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1021,7 +1021,7 @@ digitalocean_domain -[#1A83AF]-> digitalocean_domain_record
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_domain_record data model"
+```plantuml Diagram of digitalocean_domain_record data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1096,7 +1096,7 @@ dns_record <|--- digitalocean_domain_record
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_domain_record resource relationships"
+```plantuml Diagram of digitalocean_domain_record resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1144,7 +1144,7 @@ digitalocean_domain -[#1A83AF]-> digitalocean_domain_record
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_droplet data model"
+```plantuml Diagram of digitalocean_droplet data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1210,7 +1210,7 @@ resource <|--- instance
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_droplet resource relationships"
+```plantuml Diagram of digitalocean_droplet resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1320,7 +1320,7 @@ digitalocean_droplet_size -[#1A83AF]-> digitalocean_droplet
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_droplet_size data model"
+```plantuml Diagram of digitalocean_droplet_size data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1398,7 +1398,7 @@ instance_type <|--- digitalocean_droplet_size
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_droplet_size resource relationships"
+```plantuml Diagram of digitalocean_droplet_size resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1441,7 +1441,7 @@ digitalocean_droplet_size -[#1A83AF]-> digitalocean_droplet
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_firewall data model"
+```plantuml Diagram of digitalocean_firewall data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1497,7 +1497,7 @@ resource <|--- digitalocean_firewall
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_firewall resource relationships"
+```plantuml Diagram of digitalocean_firewall resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1545,7 +1545,7 @@ digitalocean_firewall -[#1A83AF]-> digitalocean_droplet
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_floating_ip data model"
+```plantuml Diagram of digitalocean_floating_ip data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1606,7 +1606,7 @@ resource <|--- ip_address
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_floating_ip resource relationships"
+```plantuml Diagram of digitalocean_floating_ip resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1666,7 +1666,7 @@ digitalocean_region -[#1A83AF]-> digitalocean_floating_ip
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_image data model"
+```plantuml Diagram of digitalocean_image data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1729,7 +1729,7 @@ resource <|--- digitalocean_image
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_image resource relationships"
+```plantuml Diagram of digitalocean_image resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1783,7 +1783,7 @@ digitalocean_region -[#1A83AF]-> digitalocean_image
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_kubernetes_cluster data model"
+```plantuml Diagram of digitalocean_kubernetes_cluster data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1848,7 +1848,7 @@ resource <|--- digitalocean_kubernetes_cluster
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_kubernetes_cluster resource relationships"
+```plantuml Diagram of digitalocean_kubernetes_cluster resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1915,7 +1915,7 @@ digitalocean_region -[#1A83AF]-> digitalocean_vpc
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_load_balancer data model"
+```plantuml Diagram of digitalocean_load_balancer data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1982,7 +1982,7 @@ resource <|--- load_balancer
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_load_balancer resource relationships"
+```plantuml Diagram of digitalocean_load_balancer resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2049,7 +2049,7 @@ digitalocean_load_balancer -[#1A83AF]-> digitalocean_droplet
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_project data model"
+```plantuml Diagram of digitalocean_project data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2110,7 +2110,7 @@ resource <|--- digitalocean_project
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_project resource relationships"
+```plantuml Diagram of digitalocean_project resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2197,7 +2197,7 @@ digitalocean_load_balancer -[#1A83AF]-> digitalocean_droplet
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_region data model"
+```plantuml Diagram of digitalocean_region data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2260,7 +2260,7 @@ region <|--- digitalocean_region
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_region resource relationships"
+```plantuml Diagram of digitalocean_region resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2368,7 +2368,7 @@ digitalocean_load_balancer -[#1A83AF]-> digitalocean_droplet
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_resource data model"
+```plantuml Diagram of digitalocean_resource data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2419,7 +2419,7 @@ resource <|--- digitalocean_resource
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_resource resource relationships"
+```plantuml Diagram of digitalocean_resource resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2462,7 +2462,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_resource
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_snapshot data model"
+```plantuml Diagram of digitalocean_snapshot data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2530,7 +2530,7 @@ resource <|--- snapshot
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_snapshot resource relationships"
+```plantuml Diagram of digitalocean_snapshot resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2590,7 +2590,7 @@ digitalocean_volume -[#1A83AF]-> digitalocean_snapshot
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_space data model"
+```plantuml Diagram of digitalocean_space data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2650,7 +2650,7 @@ resource <|--- bucket
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_space resource relationships"
+```plantuml Diagram of digitalocean_space resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2703,7 +2703,7 @@ digitalocean_region -[#1A83AF]-> digitalocean_space
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_ssh_key data model"
+```plantuml Diagram of digitalocean_ssh_key data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2763,7 +2763,7 @@ resource <|--- keypair
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_ssh_key resource relationships"
+```plantuml Diagram of digitalocean_ssh_key resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2806,7 +2806,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_ssh_key
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_tag data model"
+```plantuml Diagram of digitalocean_tag data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2862,7 +2862,7 @@ resource <|--- digitalocean_tag
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_tag resource relationships"
+```plantuml Diagram of digitalocean_tag resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2905,7 +2905,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_tag
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_team data model"
+```plantuml Diagram of digitalocean_team data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2965,7 +2965,7 @@ resource <|--- account
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_team resource relationships"
+```plantuml Diagram of digitalocean_team resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3139,7 +3139,7 @@ digitalocean_volume -[#1A83AF]-> digitalocean_snapshot
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_volume data model"
+```plantuml Diagram of digitalocean_volume data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3208,7 +3208,7 @@ resource <|--- volume
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_volume resource relationships"
+```plantuml Diagram of digitalocean_volume resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3268,7 +3268,7 @@ digitalocean_volume -[#1A83AF]-> digitalocean_snapshot
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_vpc data model"
+```plantuml Diagram of digitalocean_vpc data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3330,7 +3330,7 @@ network <|--- digitalocean_vpc
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of digitalocean_vpc resource relationships"
+```plantuml Diagram of digitalocean_vpc resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37

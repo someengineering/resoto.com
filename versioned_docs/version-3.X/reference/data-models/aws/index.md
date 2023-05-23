@@ -18,7 +18,7 @@ See [How to Collect AWS Resource Data](../../../how-to-guides/data-sources/colle
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_account data model"
+```plantuml Diagram of aws_account data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -101,7 +101,7 @@ aws_resource <|--- aws_account
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_account resource relationships"
+```plantuml Diagram of aws_account resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -152,7 +152,7 @@ aws_account -[#1A83AF]-> aws_root_user
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_alb data model"
+```plantuml Diagram of aws_alb data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -325,7 +325,7 @@ aws_alb_availability_zone --> aws_alb_load_balancer_address
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_alb resource relationships"
+```plantuml Diagram of aws_alb resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -401,7 +401,7 @@ aws_vpc -[#1A83AF]-> aws_alb
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_alb_target_group data model"
+```plantuml Diagram of aws_alb_target_group data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -493,7 +493,7 @@ aws_alb_target_group --> aws_alb_target_health_description
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_alb_target_group resource relationships"
+```plantuml Diagram of aws_alb_target_group resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -557,7 +557,7 @@ aws_ecs_service -[#1A83AF]-> aws_alb_target_group
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_api_gateway_authorizer data model"
+```plantuml Diagram of aws_api_gateway_authorizer data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -620,7 +620,7 @@ aws_resource <|--- aws_api_gateway_authorizer
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_api_gateway_authorizer resource relationships"
+```plantuml Diagram of aws_api_gateway_authorizer resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -678,7 +678,7 @@ aws_api_gateway_resource -[#1A83AF]-> aws_lambda_function
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_api_gateway_deployment data model"
+```plantuml Diagram of aws_api_gateway_deployment data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -735,7 +735,7 @@ aws_resource <|--- aws_api_gateway_deployment
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_api_gateway_deployment resource relationships"
+```plantuml Diagram of aws_api_gateway_deployment resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -782,7 +782,7 @@ aws_api_gateway_deployment -[#1A83AF]-> aws_api_gateway_stage
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_api_gateway_domain_name data model"
+```plantuml Diagram of aws_api_gateway_domain_name data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -862,7 +862,7 @@ aws_api_gateway_domain_name --> aws_api_gateway_mutual_tls_authentication
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_api_gateway_domain_name resource relationships"
+```plantuml Diagram of aws_api_gateway_domain_name resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -909,7 +909,7 @@ aws_api_gateway_domain_name -[#1A83AF]-> aws_vpc_endpoint
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_api_gateway_resource data model"
+```plantuml Diagram of aws_api_gateway_resource data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1014,7 +1014,7 @@ aws_api_gateway_method --> aws_api_gateway_integration
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_api_gateway_resource resource relationships"
+```plantuml Diagram of aws_api_gateway_resource resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1068,7 +1068,7 @@ aws_api_gateway_resource -[#1A83AF]-> aws_lambda_function
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_api_gateway_rest_api data model"
+```plantuml Diagram of aws_api_gateway_rest_api data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1136,7 +1136,7 @@ aws_api_gateway_rest_api --> aws_api_gateway_endpoint_configuration
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_api_gateway_rest_api resource relationships"
+```plantuml Diagram of aws_api_gateway_rest_api resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1198,7 +1198,7 @@ aws_api_gateway_resource -[#1A83AF]-> aws_lambda_function
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_api_gateway_stage data model"
+```plantuml Diagram of aws_api_gateway_stage data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1272,7 +1272,7 @@ aws_api_gateway_stage --> aws_api_gateway_canary_setting
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_api_gateway_stage resource relationships"
+```plantuml Diagram of aws_api_gateway_stage resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1315,7 +1315,7 @@ aws_api_gateway_deployment -[#1A83AF]-> aws_api_gateway_stage
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_athena_data_catalog data model"
+```plantuml Diagram of aws_athena_data_catalog data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1372,7 +1372,7 @@ aws_resource <|--- aws_athena_data_catalog
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_athena_data_catalog resource relationships"
+```plantuml Diagram of aws_athena_data_catalog resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1415,7 +1415,7 @@ aws_athena_data_catalog -[#1A83AF]-> aws_sagemaker_processing_job
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_athena_work_group data model"
+```plantuml Diagram of aws_athena_work_group data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1497,7 +1497,7 @@ aws_athena_work_group --> aws_athena_work_group_configuration
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_athena_work_group resource relationships"
+```plantuml Diagram of aws_athena_work_group resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1550,7 +1550,7 @@ aws_athena_work_group -[#1A83AF]-> aws_sagemaker_processing_job
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_autoscaling_group data model"
+```plantuml Diagram of aws_autoscaling_group data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1730,7 +1730,7 @@ resource <|--- autoscaling_group
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_autoscaling_group resource relationships"
+```plantuml Diagram of aws_autoscaling_group resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1791,7 +1791,7 @@ aws_eks_nodegroup -[#1A83AF]-> aws_autoscaling_group
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_beanstalk_application data model"
+```plantuml Diagram of aws_beanstalk_application data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1871,7 +1871,7 @@ aws_beanstalk_application_resource_lifecycle_config --> aws_beanstalk_applicatio
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_beanstalk_application resource relationships"
+```plantuml Diagram of aws_beanstalk_application resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1914,7 +1914,7 @@ aws_beanstalk_application -[#1A83AF]-> aws_beanstalk_environment
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_beanstalk_environment data model"
+```plantuml Diagram of aws_beanstalk_environment data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2019,7 +2019,7 @@ aws_beanstalk_environment_resources --> aws_beanstalk_queue_description
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_beanstalk_environment resource relationships"
+```plantuml Diagram of aws_beanstalk_environment resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2079,7 +2079,7 @@ aws_beanstalk_application -[#1A83AF]-> aws_beanstalk_environment
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cloud_formation_stack_instance_summary data model"
+```plantuml Diagram of aws_cloud_formation_stack_instance_summary data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2144,7 +2144,7 @@ aws_resource <|--- aws_cloud_formation_stack_instance_summary
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cloud_formation_stack_instance_summary resource relationships"
+```plantuml Diagram of aws_cloud_formation_stack_instance_summary resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2183,7 +2183,7 @@ class aws_cloud_formation_stack_instance_summary [[#aws_cloud_formation_stack_in
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cloud_trail data model"
+```plantuml Diagram of aws_cloud_trail data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2288,7 +2288,7 @@ aws_cloud_trail --> aws_cloud_trail_event_selector
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cloud_trail resource relationships"
+```plantuml Diagram of aws_cloud_trail resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2340,7 +2340,7 @@ aws_sns_topic -[#1A83AF]-> aws_kms_key
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cloudformation_stack data model"
+```plantuml Diagram of aws_cloudformation_stack data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2437,7 +2437,7 @@ aws_cloudformation_rollback_configuration --> aws_cloudformation_rollback_trigge
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cloudformation_stack resource relationships"
+```plantuml Diagram of aws_cloudformation_stack resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2480,7 +2480,7 @@ aws_region -[#1A83AF]-> aws_cloudformation_stack
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cloudformation_stack_set data model"
+```plantuml Diagram of aws_cloudformation_stack_set data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2547,7 +2547,7 @@ aws_cloudformation_stack_set --> aws_cloudformation_auto_deployment
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cloudformation_stack_set resource relationships"
+```plantuml Diagram of aws_cloudformation_stack_set resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2590,7 +2590,7 @@ aws_region -[#1A83AF]-> aws_cloudformation_stack_set
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cloudfront_cache_policy data model"
+```plantuml Diagram of aws_cloudfront_cache_policy data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2677,7 +2677,7 @@ aws_cloudfront_cache_policy --> aws_cloudfront_cache_policy_config
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cloudfront_cache_policy resource relationships"
+```plantuml Diagram of aws_cloudfront_cache_policy resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2720,7 +2720,7 @@ aws_cloudfront_distribution -[#1A83AF]-> aws_cloudfront_cache_policy
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cloudfront_distribution data model"
+```plantuml Diagram of aws_cloudfront_distribution data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2932,7 +2932,7 @@ aws_cloudfront_origin_group --> aws_cloudfront_origin_group_members
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cloudfront_distribution resource relationships"
+```plantuml Diagram of aws_cloudfront_distribution resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3007,7 +3007,7 @@ aws_cloudfront_distribution -[#1A83AF]-> aws_cloudfront_field_level_encryption_c
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cloudfront_field_level_encryption_config data model"
+```plantuml Diagram of aws_cloudfront_field_level_encryption_config data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3085,7 +3085,7 @@ aws_cloudfront_query_arg_profile_config --> aws_cloudfront_query_arg_profile
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cloudfront_field_level_encryption_config resource relationships"
+```plantuml Diagram of aws_cloudfront_field_level_encryption_config resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3132,7 +3132,7 @@ aws_cloudfront_field_level_encryption_config -[#1A83AF]-> aws_cloudfront_field_l
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cloudfront_field_level_encryption_profile data model"
+```plantuml Diagram of aws_cloudfront_field_level_encryption_profile data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3194,7 +3194,7 @@ aws_cloudfront_field_level_encryption_profile --> aws_cloudfront_encryption_enti
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cloudfront_field_level_encryption_profile resource relationships"
+```plantuml Diagram of aws_cloudfront_field_level_encryption_profile resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3241,7 +3241,7 @@ aws_cloudfront_field_level_encryption_config -[#1A83AF]-> aws_cloudfront_field_l
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cloudfront_function data model"
+```plantuml Diagram of aws_cloudfront_function data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3303,7 +3303,7 @@ aws_cloudfront_function --> aws_cloudfront_function_config
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cloudfront_function resource relationships"
+```plantuml Diagram of aws_cloudfront_function resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3346,7 +3346,7 @@ aws_cloudfront_distribution -[#1A83AF]-> aws_cloudfront_function
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cloudfront_origin_access_control data model"
+```plantuml Diagram of aws_cloudfront_origin_access_control data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3404,7 +3404,7 @@ aws_resource <|--- aws_cloudfront_origin_access_control
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cloudfront_origin_access_control resource relationships"
+```plantuml Diagram of aws_cloudfront_origin_access_control resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3447,7 +3447,7 @@ aws_cloudfront_distribution -[#1A83AF]-> aws_cloudfront_origin_access_control
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cloudfront_public_key data model"
+```plantuml Diagram of aws_cloudfront_public_key data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3503,7 +3503,7 @@ aws_resource <|--- aws_cloudfront_public_key
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cloudfront_public_key resource relationships"
+```plantuml Diagram of aws_cloudfront_public_key resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3546,7 +3546,7 @@ aws_cloudfront_field_level_encryption_profile -[#1A83AF]-> aws_cloudfront_public
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cloudfront_realtime_log_config data model"
+```plantuml Diagram of aws_cloudfront_realtime_log_config data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3613,7 +3613,7 @@ aws_cloudfront_realtime_log_config --> aws_cloudfront_end_point
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cloudfront_realtime_log_config resource relationships"
+```plantuml Diagram of aws_cloudfront_realtime_log_config resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3656,7 +3656,7 @@ aws_cloudfront_distribution -[#1A83AF]-> aws_cloudfront_realtime_log_config
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cloudfront_response_headers_policy data model"
+```plantuml Diagram of aws_cloudfront_response_headers_policy data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3780,7 +3780,7 @@ aws_cloudfront_response_headers_policy_config --> aws_cloudfront_response_header
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cloudfront_response_headers_policy resource relationships"
+```plantuml Diagram of aws_cloudfront_response_headers_policy resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3823,7 +3823,7 @@ aws_cloudfront_distribution -[#1A83AF]-> aws_cloudfront_response_headers_policy
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cloudfront_streaming_distribution data model"
+```plantuml Diagram of aws_cloudfront_streaming_distribution data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3883,7 +3883,7 @@ aws_resource <|--- aws_cloudfront_streaming_distribution
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cloudfront_streaming_distribution resource relationships"
+```plantuml Diagram of aws_cloudfront_streaming_distribution resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3922,7 +3922,7 @@ class aws_cloudfront_streaming_distribution [[#aws_cloudfront_streaming_distribu
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cloudwatch_alarm data model"
+```plantuml Diagram of aws_cloudwatch_alarm data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4029,7 +4029,7 @@ aws_cloudwatch_metric --> aws_cloudwatch_dimension
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cloudwatch_alarm resource relationships"
+```plantuml Diagram of aws_cloudwatch_alarm resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4085,7 +4085,7 @@ aws_cloudwatch_metric_filter -[#1A83AF]-> aws_cloudwatch_alarm
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cloudwatch_log_group data model"
+```plantuml Diagram of aws_cloudwatch_log_group data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4143,7 +4143,7 @@ aws_resource <|--- aws_cloudwatch_log_group
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cloudwatch_log_group resource relationships"
+```plantuml Diagram of aws_cloudwatch_log_group resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4190,7 +4190,7 @@ aws_cloudwatch_log_group -[#1A83AF]-> aws_cloudwatch_metric_filter
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cloudwatch_metric_filter data model"
+```plantuml Diagram of aws_cloudwatch_metric_filter data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4255,7 +4255,7 @@ aws_cloudwatch_metric_filter --> aws_cloudwatch_metric_transformation
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cloudwatch_metric_filter resource relationships"
+```plantuml Diagram of aws_cloudwatch_metric_filter resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4302,7 +4302,7 @@ aws_cloudwatch_metric_filter -[#1A83AF]-> aws_cloudwatch_alarm
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cognito_group data model"
+```plantuml Diagram of aws_cognito_group data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4360,7 +4360,7 @@ aws_resource <|--- aws_cognito_group
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cognito_group resource relationships"
+```plantuml Diagram of aws_cognito_group resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4412,7 +4412,7 @@ aws_sagemaker_workteam -[#1A83AF]-> aws_cognito_group
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cognito_user data model"
+```plantuml Diagram of aws_cognito_user data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4485,7 +4485,7 @@ resource <|--- user
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cognito_user resource relationships"
+```plantuml Diagram of aws_cognito_user resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4528,7 +4528,7 @@ aws_cognito_user_pool -[#1A83AF]-> aws_cognito_user
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cognito_user_pool data model"
+```plantuml Diagram of aws_cognito_user_pool data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4610,7 +4610,7 @@ aws_cognito_lambda_config_type --> aws_cognito_custom_email_lambda_version_confi
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_cognito_user_pool resource relationships"
+```plantuml Diagram of aws_cognito_user_pool resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4671,7 +4671,7 @@ aws_sagemaker_workteam -[#1A83AF]-> aws_cognito_group
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_config_recorder data model"
+```plantuml Diagram of aws_config_recorder data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4743,7 +4743,7 @@ aws_config_recorder --> aws_config_recorder_status
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_config_recorder resource relationships"
+```plantuml Diagram of aws_config_recorder resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4782,7 +4782,7 @@ class aws_config_recorder [[#aws_config_recorder]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_dynamo_db_global_table data model"
+```plantuml Diagram of aws_dynamo_db_global_table data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4860,7 +4860,7 @@ aws_dynamo_db_replica_description --> aws_dynamo_db_table_class_summary
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_dynamo_db_global_table resource relationships"
+```plantuml Diagram of aws_dynamo_db_global_table resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4903,7 +4903,7 @@ aws_dynamo_db_global_table -[#1A83AF]-> aws_kms_key
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_dynamo_db_table data model"
+```plantuml Diagram of aws_dynamo_db_table data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5076,7 +5076,7 @@ aws_dynamo_db_global_secondary_index_description --> aws_dynamo_db_provisioned_t
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_dynamo_db_table resource relationships"
+```plantuml Diagram of aws_dynamo_db_table resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5124,7 +5124,7 @@ aws_dynamo_db_table -[#1A83AF]-> aws_kms_key
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ec2_elastic_ip data model"
+```plantuml Diagram of aws_ec2_elastic_ip data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5195,7 +5195,7 @@ resource <|--- ip_address
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ec2_elastic_ip resource relationships"
+```plantuml Diagram of aws_ec2_elastic_ip resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5249,7 +5249,7 @@ aws_ec2_network_interface -[#1A83AF]-> aws_ec2_elastic_ip
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ec2_flow_log data model"
+```plantuml Diagram of aws_ec2_flow_log data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5322,7 +5322,7 @@ aws_ec2_flow_log --> aws_ec2_destination_option
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ec2_flow_log resource relationships"
+```plantuml Diagram of aws_ec2_flow_log resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5369,7 +5369,7 @@ aws_ec2_flow_log -[#1A83AF]-> aws_s3_bucket
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ec2_host data model"
+```plantuml Diagram of aws_ec2_host data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5463,7 +5463,7 @@ aws_ec2_host --> aws_ec2_host_instance
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ec2_host resource relationships"
+```plantuml Diagram of aws_ec2_host resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5506,7 +5506,7 @@ aws_ec2_host -[#1A83AF]-> aws_ec2_instance
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ec2_instance data model"
+```plantuml Diagram of aws_ec2_instance data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5756,7 +5756,7 @@ aws_ec2_capacity_reservation_specification_response --> aws_ec2_capacity_reserva
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ec2_instance resource relationships"
+```plantuml Diagram of aws_ec2_instance resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5866,7 +5866,7 @@ aws_ec2_host -[#1A83AF]-> aws_ec2_instance
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ec2_instance_type data model"
+```plantuml Diagram of aws_ec2_instance_type data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6067,7 +6067,7 @@ aws_ec2_inference_accelerator_info --> aws_ec2_inference_device_info
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ec2_instance_type resource relationships"
+```plantuml Diagram of aws_ec2_instance_type resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6124,7 +6124,7 @@ aws_service_quota -[#1A83AF]-> aws_ec2_instance_type
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ec2_internet_gateway data model"
+```plantuml Diagram of aws_ec2_internet_gateway data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6189,7 +6189,7 @@ aws_ec2_internet_gateway --> aws_ec2_internet_gateway_attachment
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ec2_internet_gateway resource relationships"
+```plantuml Diagram of aws_ec2_internet_gateway resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6237,7 +6237,7 @@ aws_vpc -[#1A83AF]-> aws_ec2_internet_gateway
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ec2_keypair data model"
+```plantuml Diagram of aws_ec2_keypair data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6294,7 +6294,7 @@ aws_resource <|--- aws_ec2_keypair
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ec2_keypair resource relationships"
+```plantuml Diagram of aws_ec2_keypair resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6342,7 +6342,7 @@ aws_region -[#1A83AF]-> aws_ec2_keypair
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ec2_nat_gateway data model"
+```plantuml Diagram of aws_ec2_nat_gateway data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6423,7 +6423,7 @@ aws_ec2_nat_gateway --> aws_ec2_provisioned_bandwidth
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ec2_nat_gateway resource relationships"
+```plantuml Diagram of aws_ec2_nat_gateway resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6484,7 +6484,7 @@ aws_ec2_nat_gateway -[#1A83AF]-> aws_ec2_network_interface
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ec2_network_acl data model"
+```plantuml Diagram of aws_ec2_network_acl data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6568,7 +6568,7 @@ aws_ec2_network_acl_entry --> aws_ec2_port_range
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ec2_network_acl resource relationships"
+```plantuml Diagram of aws_ec2_network_acl resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6622,7 +6622,7 @@ aws_vpc -[#1A83AF]-> aws_ec2_network_acl
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ec2_network_interface data model"
+```plantuml Diagram of aws_ec2_network_interface data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6742,7 +6742,7 @@ aws_ec2_network_interface_private_ip_address --> aws_ec2_network_interface_assoc
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ec2_network_interface resource relationships"
+```plantuml Diagram of aws_ec2_network_interface resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6839,7 +6839,7 @@ aws_sagemaker_notebook -[#1A83AF]-> aws_ec2_network_interface
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ec2_reserved_instances data model"
+```plantuml Diagram of aws_ec2_reserved_instances data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6915,7 +6915,7 @@ aws_ec2_reserved_instances --> aws_ec2_recurring_charge
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ec2_reserved_instances resource relationships"
+```plantuml Diagram of aws_ec2_reserved_instances resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6958,7 +6958,7 @@ aws_ec2_instance_type -[#1A83AF]-> aws_ec2_reserved_instances
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ec2_route_table data model"
+```plantuml Diagram of aws_ec2_route_table data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7054,7 +7054,7 @@ aws_ec2_route_table_association --> aws_ec2_route_table_association_state
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ec2_route_table resource relationships"
+```plantuml Diagram of aws_ec2_route_table resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7108,7 +7108,7 @@ aws_ec2_route_table -[#1A83AF]-> aws_vpc_endpoint
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ec2_security_group data model"
+```plantuml Diagram of aws_ec2_security_group data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7205,7 +7205,7 @@ aws_ec2_ip_permission --> aws_ec2_user_id_group_pair
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ec2_security_group resource relationships"
+```plantuml Diagram of aws_ec2_security_group resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7357,7 +7357,7 @@ aws_rds_cluster -[#1A83AF]-> aws_rds_instance
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ec2_snapshot data model"
+```plantuml Diagram of aws_ec2_snapshot data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7429,7 +7429,7 @@ resource <|--- snapshot
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ec2_snapshot resource relationships"
+```plantuml Diagram of aws_ec2_snapshot resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7482,7 +7482,7 @@ aws_ec2_volume -[#1A83AF]-> aws_kms_key
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ec2_subnet data model"
+```plantuml Diagram of aws_ec2_subnet data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7574,7 +7574,7 @@ aws_ec2_subnet_ipv6_cidr_block_association --> aws_ec2_subnet_cidr_block_state
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ec2_subnet resource relationships"
+```plantuml Diagram of aws_ec2_subnet resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7730,7 +7730,7 @@ aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_sagemaker_training_job
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ec2_volume data model"
+```plantuml Diagram of aws_ec2_volume data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7811,7 +7811,7 @@ aws_ec2_volume --> aws_ec2_volume_attachment
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ec2_volume resource relationships"
+```plantuml Diagram of aws_ec2_volume resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7874,7 +7874,7 @@ aws_ec2_volume -[#1A83AF]-> aws_kms_key
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ec2_volume_type data model"
+```plantuml Diagram of aws_ec2_volume_type data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7949,7 +7949,7 @@ resource <|--- phantom_resource
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ec2_volume_type resource relationships"
+```plantuml Diagram of aws_ec2_volume_type resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8002,7 +8002,7 @@ aws_ec2_volume_type -[#1A83AF]-> aws_ec2_volume
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ecs_capacity_provider data model"
+```plantuml Diagram of aws_ecs_capacity_provider data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8074,7 +8074,7 @@ aws_ecs_auto_scaling_group_provider --> aws_ecs_managed_scaling
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ecs_capacity_provider resource relationships"
+```plantuml Diagram of aws_ecs_capacity_provider resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8131,7 +8131,7 @@ aws_ecs_task -[#1A83AF]-> aws_ecs_capacity_provider
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ecs_cluster data model"
+```plantuml Diagram of aws_ecs_cluster data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8239,7 +8239,7 @@ aws_ecs_cluster --> aws_ecs_attachment
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ecs_cluster resource relationships"
+```plantuml Diagram of aws_ecs_cluster resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8305,7 +8305,7 @@ aws_ecs_task -[#1A83AF]-> aws_ecs_capacity_provider
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ecs_container_instance data model"
+```plantuml Diagram of aws_ecs_container_instance data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8421,7 +8421,7 @@ aws_ecs_attachment --> aws_ecs_key_value_pair
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ecs_container_instance resource relationships"
+```plantuml Diagram of aws_ecs_container_instance resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8473,7 +8473,7 @@ aws_ecs_task -[#1A83AF]-> aws_ecs_container_instance
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ecs_service data model"
+```plantuml Diagram of aws_ecs_service data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8667,7 +8667,7 @@ aws_ecs_deployment_configuration --> aws_ecs_deployment_circuit_breaker
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ecs_service resource relationships"
+```plantuml Diagram of aws_ecs_service resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8737,7 +8737,7 @@ aws_ecs_cluster -[#1A83AF]-> aws_ecs_service
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ecs_task data model"
+```plantuml Diagram of aws_ecs_task data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8921,7 +8921,7 @@ aws_ecs_container_override --> aws_ecs_resource_requirement
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ecs_task resource relationships"
+```plantuml Diagram of aws_ecs_task resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8983,7 +8983,7 @@ aws_ecs_task_definition -[#1A83AF]-> aws_ecs_task
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ecs_task_definition data model"
+```plantuml Diagram of aws_ecs_task_definition data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9274,7 +9274,7 @@ aws_ecs_task_definition --> aws_ecs_proxy_configuration
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_ecs_task_definition resource relationships"
+```plantuml Diagram of aws_ecs_task_definition resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9322,7 +9322,7 @@ aws_ecs_task_definition -[#1A83AF]-> aws_ecs_task
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_efs_access_point data model"
+```plantuml Diagram of aws_efs_access_point data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9398,7 +9398,7 @@ aws_efs_root_directory --> aws_efs_creation_info
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_efs_access_point resource relationships"
+```plantuml Diagram of aws_efs_access_point resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9441,7 +9441,7 @@ aws_efs_file_system -[#1A83AF]-> aws_efs_access_point
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_efs_file_system data model"
+```plantuml Diagram of aws_efs_file_system data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9512,7 +9512,7 @@ resource <|--- network_share
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_efs_file_system resource relationships"
+```plantuml Diagram of aws_efs_file_system resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9559,7 +9559,7 @@ aws_efs_file_system -[#1A83AF]-> aws_efs_access_point
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_efs_mount_target data model"
+```plantuml Diagram of aws_efs_mount_target data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9617,7 +9617,7 @@ aws_resource <|--- aws_efs_mount_target
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_efs_mount_target resource relationships"
+```plantuml Diagram of aws_efs_mount_target resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9660,7 +9660,7 @@ aws_ec2_network_interface -[#1A83AF]-> aws_efs_mount_target
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_eks_cluster data model"
+```plantuml Diagram of aws_eks_cluster data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9769,7 +9769,7 @@ aws_eks_logging --> aws_eks_log_setup
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_eks_cluster resource relationships"
+```plantuml Diagram of aws_eks_cluster resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9821,7 +9821,7 @@ aws_eks_cluster -[#1A83AF]-> aws_eks_nodegroup
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_eks_nodegroup data model"
+```plantuml Diagram of aws_eks_nodegroup data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9938,7 +9938,7 @@ aws_eks_nodegroup_health --> aws_eks_issue
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_eks_nodegroup resource relationships"
+```plantuml Diagram of aws_eks_nodegroup resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9985,7 +9985,7 @@ aws_eks_nodegroup -[#1A83AF]-> aws_autoscaling_group
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_elasticache_cache_cluster data model"
+```plantuml Diagram of aws_elasticache_cache_cluster data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10135,7 +10135,7 @@ aws_elasticache_pending_modified_values --> aws_elasticache_pending_log_delivery
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_elasticache_cache_cluster resource relationships"
+```plantuml Diagram of aws_elasticache_cache_cluster resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10186,7 +10186,7 @@ aws_elasticache_cache_cluster -[#1A83AF]-> aws_sns_topic
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_elasticache_replication_group data model"
+```plantuml Diagram of aws_elasticache_replication_group data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10334,7 +10334,7 @@ aws_elasticache_node_group_member --> aws_elasticache_endpoint
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_elasticache_replication_group resource relationships"
+```plantuml Diagram of aws_elasticache_replication_group resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10381,7 +10381,7 @@ aws_elasticache_replication_group -[#1A83AF]-> aws_elasticache_cache_cluster
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_elb data model"
+```plantuml Diagram of aws_elb data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10498,7 +10498,7 @@ aws_elb_listener_description --> aws_elb_listener
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_elb resource relationships"
+```plantuml Diagram of aws_elb resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10576,7 +10576,7 @@ aws_ecs_service -[#1A83AF]-> aws_elb
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_glacier_job data model"
+```plantuml Diagram of aws_glacier_job data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10688,7 +10688,7 @@ aws_glacier_job_output_location --> aws_glacier_job_bucket
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_glacier_job resource relationships"
+```plantuml Diagram of aws_glacier_job resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10735,7 +10735,7 @@ aws_glacier_job -[#1A83AF]-> aws_kms_key
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_glacier_vault data model"
+```plantuml Diagram of aws_glacier_vault data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10792,7 +10792,7 @@ resource <|--- aws_resource
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_glacier_vault resource relationships"
+```plantuml Diagram of aws_glacier_vault resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10835,7 +10835,7 @@ aws_glacier_vault -[#1A83AF]-> aws_glacier_job
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_iam_access_key data model"
+```plantuml Diagram of aws_iam_access_key data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10902,7 +10902,7 @@ resource <|--- access_key
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_iam_access_key resource relationships"
+```plantuml Diagram of aws_iam_access_key resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10941,7 +10941,7 @@ class aws_iam_access_key [[#aws_iam_access_key]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_iam_group data model"
+```plantuml Diagram of aws_iam_group data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11007,7 +11007,7 @@ resource <|--- group
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_iam_group resource relationships"
+```plantuml Diagram of aws_iam_group resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11061,7 +11061,7 @@ aws_region -[#1A83AF]-> aws_iam_user
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_iam_instance_profile data model"
+```plantuml Diagram of aws_iam_instance_profile data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11121,7 +11121,7 @@ resource <|--- instance_profile
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_iam_instance_profile resource relationships"
+```plantuml Diagram of aws_iam_instance_profile resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11169,7 +11169,7 @@ aws_iam_role -[#1A83AF]-> aws_iam_instance_profile
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_iam_policy data model"
+```plantuml Diagram of aws_iam_policy data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11242,7 +11242,7 @@ resource <|--- policy
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_iam_policy resource relationships"
+```plantuml Diagram of aws_iam_policy resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11301,7 +11301,7 @@ aws_iam_role -[#1A83AF]-> aws_iam_policy
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_iam_role data model"
+```plantuml Diagram of aws_iam_role data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11377,7 +11377,7 @@ aws_iam_role --> aws_iam_policy_detail
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_iam_role resource relationships"
+```plantuml Diagram of aws_iam_role resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11531,7 +11531,7 @@ aws_ecs_task_definition -[#1A83AF]-> aws_ecs_task
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_iam_server_certificate data model"
+```plantuml Diagram of aws_iam_server_certificate data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11593,7 +11593,7 @@ resource <|--- certificate
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_iam_server_certificate resource relationships"
+```plantuml Diagram of aws_iam_server_certificate resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11645,7 +11645,7 @@ aws_cloudfront_distribution -[#1A83AF]-> aws_iam_server_certificate
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_iam_user data model"
+```plantuml Diagram of aws_iam_user data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11728,7 +11728,7 @@ resource <|--- user
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_iam_user resource relationships"
+```plantuml Diagram of aws_iam_user resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11782,7 +11782,7 @@ aws_region -[#1A83AF]-> aws_iam_user
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_kinesis_stream data model"
+```plantuml Diagram of aws_kinesis_stream data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11866,7 +11866,7 @@ aws_kinesis_shard --> aws_kinesis_sequence_number_range
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_kinesis_stream resource relationships"
+```plantuml Diagram of aws_kinesis_stream resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11919,7 +11919,7 @@ aws_rds_cluster -[#1A83AF]-> aws_kms_key
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_kms_key data model"
+```plantuml Diagram of aws_kms_key data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -12014,7 +12014,7 @@ aws_kms_multiregion_config --> aws_kms_multiregion_replica_key
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_kms_key resource relationships"
+```plantuml Diagram of aws_kms_key resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -12196,7 +12196,7 @@ aws_rds_cluster -[#1A83AF]-> aws_rds_instance
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_lambda_function data model"
+```plantuml Diagram of aws_lambda_function data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -12357,7 +12357,7 @@ aws_lambda_function_url_config --> aws_lambda_cors
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_lambda_function resource relationships"
+```plantuml Diagram of aws_lambda_function resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -12445,7 +12445,7 @@ aws_cloudfront_distribution -[#1A83AF]-> aws_lambda_function
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_rds_cluster data model"
+```plantuml Diagram of aws_rds_cluster data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -12639,7 +12639,7 @@ aws_rds_cluster --> aws_rds_master_user_secret
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_rds_cluster resource relationships"
+```plantuml Diagram of aws_rds_cluster resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -12697,7 +12697,7 @@ aws_rds_cluster -[#1A83AF]-> aws_rds_instance
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_rds_instance data model"
+```plantuml Diagram of aws_rds_instance data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -12920,7 +12920,7 @@ aws_rds_db_subnet_group --> aws_rds_subnet
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_rds_instance resource relationships"
+```plantuml Diagram of aws_rds_instance resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -12990,7 +12990,7 @@ aws_rds_cluster -[#1A83AF]-> aws_rds_instance
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_redshift_cluster data model"
+```plantuml Diagram of aws_redshift_cluster data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -13223,7 +13223,7 @@ aws_redshift_cluster_parameter_group_status --> aws_redshift_cluster_parameter_s
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_redshift_cluster resource relationships"
+```plantuml Diagram of aws_redshift_cluster resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -13292,7 +13292,7 @@ aws_redshift_cluster -[#1A83AF]-> aws_sagemaker_processing_job
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_region data model"
+```plantuml Diagram of aws_region data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -13352,7 +13352,7 @@ aws_resource <|--- aws_region
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_region resource relationships"
+```plantuml Diagram of aws_region resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -13585,7 +13585,7 @@ aws_account -[#1A83AF]-> aws_region
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_resource data model"
+```plantuml Diagram of aws_resource data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -13636,7 +13636,7 @@ resource <|--- aws_resource
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_resource resource relationships"
+```plantuml Diagram of aws_resource resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -13675,7 +13675,7 @@ class aws_resource [[#aws_resource]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_root_user data model"
+```plantuml Diagram of aws_root_user data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -13745,7 +13745,7 @@ aws_root_user --> aws_iam_virtual_mfa_device
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_root_user resource relationships"
+```plantuml Diagram of aws_root_user resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -13788,7 +13788,7 @@ aws_account -[#1A83AF]-> aws_root_user
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_route53_resource_record data model"
+```plantuml Diagram of aws_route53_resource_record data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -13863,7 +13863,7 @@ dns_record <|--- aws_route53_resource_record
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_route53_resource_record resource relationships"
+```plantuml Diagram of aws_route53_resource_record resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -13906,7 +13906,7 @@ aws_route53_resource_record_set -[#1A83AF]-> aws_route53_resource_record
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_route53_resource_record_set data model"
+```plantuml Diagram of aws_route53_resource_record_set data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -13995,7 +13995,7 @@ resource <|--- dns_record_set
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_route53_resource_record_set resource relationships"
+```plantuml Diagram of aws_route53_resource_record_set resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -14042,7 +14042,7 @@ aws_route53_zone -[#1A83AF]-> aws_route53_resource_record_set
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_route53_zone data model"
+```plantuml Diagram of aws_route53_zone data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -14115,7 +14115,7 @@ aws_route53_zone --> aws_route53_linked_service
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_route53_zone resource relationships"
+```plantuml Diagram of aws_route53_zone resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -14162,7 +14162,7 @@ aws_route53_zone -[#1A83AF]-> aws_route53_resource_record_set
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_s3_account_settings data model"
+```plantuml Diagram of aws_s3_account_settings data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -14229,7 +14229,7 @@ aws_s3_account_settings --> aws_s3_public_access_block_configuration
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_s3_account_settings resource relationships"
+```plantuml Diagram of aws_s3_account_settings resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -14272,7 +14272,7 @@ aws_s3_account_settings -[#1A83AF]-> aws_account
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_s3_bucket data model"
+```plantuml Diagram of aws_s3_bucket data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -14386,7 +14386,7 @@ aws_s3_logging --> aws_s3_target_grant
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_s3_bucket resource relationships"
+```plantuml Diagram of aws_s3_bucket resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -14509,7 +14509,7 @@ aws_cloudfront_distribution -[#1A83AF]-> aws_s3_bucket
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_algorithm data model"
+```plantuml Diagram of aws_sagemaker_algorithm data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -14763,7 +14763,7 @@ aws_sagemaker_algorithm_status_details --> aws_sagemaker_algorithm_status_item
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_algorithm resource relationships"
+```plantuml Diagram of aws_sagemaker_algorithm resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -14811,7 +14811,7 @@ aws_sagemaker_training_job -[#1A83AF]-> aws_sagemaker_algorithm
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_app data model"
+```plantuml Diagram of aws_sagemaker_app data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -14880,7 +14880,7 @@ aws_sagemaker_app --> aws_sagemaker_resource_spec
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_app resource relationships"
+```plantuml Diagram of aws_sagemaker_app resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -14933,7 +14933,7 @@ aws_sagemaker_user_profile -[#1A83AF]-> aws_sagemaker_app
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_artifact data model"
+```plantuml Diagram of aws_sagemaker_artifact data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -15015,7 +15015,7 @@ aws_sagemaker_artifact_source --> aws_sagemaker_artifact_source_type
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_artifact resource relationships"
+```plantuml Diagram of aws_sagemaker_artifact resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -15072,7 +15072,7 @@ aws_sagemaker_project -[#1A83AF]-> aws_sagemaker_artifact
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_auto_ml_job data model"
+```plantuml Diagram of aws_sagemaker_auto_ml_job data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -15259,7 +15259,7 @@ aws_sagemaker_resolved_attributes --> aws_sagemaker_auto_ml_job_completion_crite
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_auto_ml_job resource relationships"
+```plantuml Diagram of aws_sagemaker_auto_ml_job resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -15343,7 +15343,7 @@ aws_sagemaker_transform_job -[#1A83AF]-> aws_s3_bucket
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_code_repository data model"
+```plantuml Diagram of aws_sagemaker_code_repository data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -15405,7 +15405,7 @@ aws_sagemaker_code_repository --> aws_sagemaker_git_config
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_code_repository resource relationships"
+```plantuml Diagram of aws_sagemaker_code_repository resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -15462,7 +15462,7 @@ aws_sagemaker_code_repository -[#1A83AF]-> aws_sagemaker_domain
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_compilation_job data model"
+```plantuml Diagram of aws_sagemaker_compilation_job data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -15563,7 +15563,7 @@ aws_sagemaker_output_config --> aws_sagemaker_target_platform
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_compilation_job resource relationships"
+```plantuml Diagram of aws_sagemaker_compilation_job resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -15622,7 +15622,7 @@ aws_sagemaker_compilation_job -[#1A83AF]-> aws_s3_bucket
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_domain data model"
+```plantuml Diagram of aws_sagemaker_domain data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -15784,7 +15784,7 @@ aws_sagemaker_r_studio_server_pro_domain_settings --> aws_sagemaker_resource_spe
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_domain resource relationships"
+```plantuml Diagram of aws_sagemaker_domain resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -15880,7 +15880,7 @@ aws_sagemaker_code_repository -[#1A83AF]-> aws_sagemaker_domain
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_edge_packaging_job data model"
+```plantuml Diagram of aws_sagemaker_edge_packaging_job data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -15961,7 +15961,7 @@ aws_sagemaker_edge_packaging_job --> aws_sagemaker_edge_preset_deployment_output
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_edge_packaging_job resource relationships"
+```plantuml Diagram of aws_sagemaker_edge_packaging_job resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -16018,7 +16018,7 @@ aws_sagemaker_edge_packaging_job -[#1A83AF]-> aws_s3_bucket
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_endpoint data model"
+```plantuml Diagram of aws_sagemaker_endpoint data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -16227,7 +16227,7 @@ aws_sagemaker_production_variant_summary --> aws_sagemaker_production_variant_se
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_endpoint resource relationships"
+```plantuml Diagram of aws_sagemaker_endpoint resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -16289,7 +16289,7 @@ aws_sagemaker_endpoint -[#1A83AF]-> aws_s3_bucket
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_experiment data model"
+```plantuml Diagram of aws_sagemaker_experiment data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -16350,7 +16350,7 @@ aws_sagemaker_experiment --> aws_sagemaker_experiment_source
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_experiment resource relationships"
+```plantuml Diagram of aws_sagemaker_experiment resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -16409,7 +16409,7 @@ aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_processing_job
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_hyper_parameter_tuning_job data model"
+```plantuml Diagram of aws_sagemaker_hyper_parameter_tuning_job data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -16679,7 +16679,7 @@ aws_sagemaker_hyper_parameter_training_job_summary --> aws_sagemaker_final_hyper
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_hyper_parameter_tuning_job resource relationships"
+```plantuml Diagram of aws_sagemaker_hyper_parameter_tuning_job resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -16747,7 +16747,7 @@ aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_s3_bucket
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_image data model"
+```plantuml Diagram of aws_sagemaker_image data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -16805,7 +16805,7 @@ aws_resource <|--- aws_sagemaker_image
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_image resource relationships"
+```plantuml Diagram of aws_sagemaker_image resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -16858,7 +16858,7 @@ aws_sagemaker_app -[#1A83AF]-> aws_sagemaker_image
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_inference_recommendations_job data model"
+```plantuml Diagram of aws_sagemaker_inference_recommendations_job data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -17033,7 +17033,7 @@ aws_sagemaker_recommendation_job_stopping_conditions --> aws_sagemaker_model_lat
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_inference_recommendations_job resource relationships"
+```plantuml Diagram of aws_sagemaker_inference_recommendations_job resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -17098,7 +17098,7 @@ aws_sagemaker_endpoint -[#1A83AF]-> aws_s3_bucket
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_job data model"
+```plantuml Diagram of aws_sagemaker_job data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -17153,7 +17153,7 @@ aws_resource <|--- aws_sagemaker_job
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_job resource relationships"
+```plantuml Diagram of aws_sagemaker_job resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -17192,7 +17192,7 @@ class aws_sagemaker_job [[#aws_sagemaker_job]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_labeling_job data model"
+```plantuml Diagram of aws_sagemaker_labeling_job data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -17343,7 +17343,7 @@ aws_sagemaker_human_task_config --> aws_sagemaker_public_workforce_task_price
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_labeling_job resource relationships"
+```plantuml Diagram of aws_sagemaker_labeling_job resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -17443,7 +17443,7 @@ aws_sagemaker_transform_job -[#1A83AF]-> aws_s3_bucket
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_model data model"
+```plantuml Diagram of aws_sagemaker_model data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -17524,7 +17524,7 @@ aws_sagemaker_container_definition --> aws_sagemaker_image_config
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_model resource relationships"
+```plantuml Diagram of aws_sagemaker_model resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -17599,7 +17599,7 @@ aws_sagemaker_edge_packaging_job -[#1A83AF]-> aws_s3_bucket
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_notebook data model"
+```plantuml Diagram of aws_sagemaker_notebook data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -17666,7 +17666,7 @@ aws_resource <|--- aws_sagemaker_notebook
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_notebook resource relationships"
+```plantuml Diagram of aws_sagemaker_notebook resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -17731,7 +17731,7 @@ aws_sagemaker_code_repository -[#1A83AF]-> aws_sagemaker_notebook
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_pipeline data model"
+```plantuml Diagram of aws_sagemaker_pipeline data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -17798,7 +17798,7 @@ aws_sagemaker_pipeline --> aws_sagemaker_user_context
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_pipeline resource relationships"
+```plantuml Diagram of aws_sagemaker_pipeline resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -17851,7 +17851,7 @@ aws_sagemaker_user_profile -[#1A83AF]-> aws_sagemaker_pipeline
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_processing_job data model"
+```plantuml Diagram of aws_sagemaker_processing_job data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -18018,7 +18018,7 @@ aws_sagemaker_processing_output --> aws_sagemaker_processing_s3_output
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_processing_job resource relationships"
+```plantuml Diagram of aws_sagemaker_processing_job resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -18125,7 +18125,7 @@ aws_athena_data_catalog -[#1A83AF]-> aws_sagemaker_processing_job
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_project data model"
+```plantuml Diagram of aws_sagemaker_project data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -18181,7 +18181,7 @@ aws_resource <|--- aws_sagemaker_project
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_project resource relationships"
+```plantuml Diagram of aws_sagemaker_project resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -18228,7 +18228,7 @@ aws_sagemaker_project -[#1A83AF]-> aws_sagemaker_artifact
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_training_job data model"
+```plantuml Diagram of aws_sagemaker_training_job data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -18480,7 +18480,7 @@ aws_sagemaker_debug_hook_config --> aws_sagemaker_collection_configuration
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_training_job resource relationships"
+```plantuml Diagram of aws_sagemaker_training_job resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -18592,7 +18592,7 @@ aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_processing_job
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_transform_job data model"
+```plantuml Diagram of aws_sagemaker_transform_job data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -18714,7 +18714,7 @@ aws_sagemaker_transform_job --> aws_sagemaker_data_processing
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_transform_job resource relationships"
+```plantuml Diagram of aws_sagemaker_transform_job resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -18788,7 +18788,7 @@ aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_transform_job
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_trial data model"
+```plantuml Diagram of aws_sagemaker_trial data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -18864,7 +18864,7 @@ aws_sagemaker_trial --> aws_sagemaker_metadata_properties
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_trial resource relationships"
+```plantuml Diagram of aws_sagemaker_trial resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -18941,7 +18941,7 @@ aws_sagemaker_project -[#1A83AF]-> aws_sagemaker_trial
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_user_profile data model"
+```plantuml Diagram of aws_sagemaker_user_profile data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -18997,7 +18997,7 @@ aws_resource <|--- aws_sagemaker_user_profile
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_user_profile resource relationships"
+```plantuml Diagram of aws_sagemaker_user_profile resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -19060,7 +19060,7 @@ aws_sagemaker_user_profile -[#1A83AF]-> aws_sagemaker_app
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_workteam data model"
+```plantuml Diagram of aws_sagemaker_workteam data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -19135,7 +19135,7 @@ aws_sagemaker_workteam --> aws_sagemaker_member_definition
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sagemaker_workteam resource relationships"
+```plantuml Diagram of aws_sagemaker_workteam resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -19192,7 +19192,7 @@ aws_sagemaker_workteam -[#1A83AF]-> aws_sagemaker_labeling_job
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_service_quota data model"
+```plantuml Diagram of aws_service_quota data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -19280,7 +19280,7 @@ resource <|--- phantom_resource
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_service_quota resource relationships"
+```plantuml Diagram of aws_service_quota resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -19355,7 +19355,7 @@ aws_vpc -[#1A83AF]-> aws_alb
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sns_endpoint data model"
+```plantuml Diagram of aws_sns_endpoint data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -19411,7 +19411,7 @@ aws_resource <|--- aws_sns_endpoint
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sns_endpoint resource relationships"
+```plantuml Diagram of aws_sns_endpoint resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -19454,7 +19454,7 @@ aws_sns_platform_application -[#1A83AF]-> aws_sns_endpoint
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sns_platform_application data model"
+```plantuml Diagram of aws_sns_platform_application data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -19515,7 +19515,7 @@ aws_resource <|--- aws_sns_platform_application
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sns_platform_application resource relationships"
+```plantuml Diagram of aws_sns_platform_application resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -19562,7 +19562,7 @@ aws_sns_platform_application -[#1A83AF]-> aws_sns_endpoint
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sns_subscription data model"
+```plantuml Diagram of aws_sns_subscription data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -19626,7 +19626,7 @@ aws_resource <|--- aws_sns_subscription
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sns_subscription resource relationships"
+```plantuml Diagram of aws_sns_subscription resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -19673,7 +19673,7 @@ aws_sns_topic -[#1A83AF]-> aws_sns_subscription
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sns_topic data model"
+```plantuml Diagram of aws_sns_topic data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -19737,7 +19737,7 @@ aws_resource <|--- aws_sns_topic
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sns_topic resource relationships"
+```plantuml Diagram of aws_sns_topic resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -19812,7 +19812,7 @@ aws_elasticache_cache_cluster -[#1A83AF]-> aws_sns_topic
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sqs_queue data model"
+```plantuml Diagram of aws_sqs_queue data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -19890,7 +19890,7 @@ aws_sqs_queue --> aws_sqs_redrive_policy
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_sqs_queue resource relationships"
+```plantuml Diagram of aws_sqs_queue resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -19937,7 +19937,7 @@ aws_beanstalk_environment -[#1A83AF]-> aws_sqs_queue
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_vpc data model"
+```plantuml Diagram of aws_vpc data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -20023,7 +20023,7 @@ aws_vpc_cidr_block_association --> aws_vpc_cidr_block_state
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_vpc resource relationships"
+```plantuml Diagram of aws_vpc resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -20178,7 +20178,7 @@ aws_vpc_endpoint -[#1A83AF]-> aws_ec2_network_interface
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_vpc_endpoint data model"
+```plantuml Diagram of aws_vpc_endpoint data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -20259,7 +20259,7 @@ resource <|--- endpoint
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_vpc_endpoint resource relationships"
+```plantuml Diagram of aws_vpc_endpoint resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -20341,7 +20341,7 @@ aws_api_gateway_domain_name -[#1A83AF]-> aws_vpc_endpoint
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_vpc_peering_connection data model"
+```plantuml Diagram of aws_vpc_peering_connection data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -20425,7 +20425,7 @@ resource <|--- peering_connection
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of aws_vpc_peering_connection resource relationships"
+```plantuml Diagram of aws_vpc_peering_connection resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37

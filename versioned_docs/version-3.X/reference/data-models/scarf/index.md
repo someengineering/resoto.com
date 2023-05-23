@@ -12,7 +12,7 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of scarf_organization data model"
+```plantuml Diagram of scarf_organization data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -73,7 +73,7 @@ account <|--- scarf_organization
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of scarf_organization resource relationships"
+```plantuml Diagram of scarf_organization resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -112,7 +112,7 @@ class scarf_organization [[#scarf_organization]] {
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of scarf_package data model"
+```plantuml Diagram of scarf_package data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -172,7 +172,7 @@ resource <|--- scarf_package
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of scarf_package resource relationships"
+```plantuml Diagram of scarf_package resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37

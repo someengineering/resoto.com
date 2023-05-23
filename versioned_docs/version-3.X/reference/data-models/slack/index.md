@@ -12,7 +12,7 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of slack_conversation data model"
+```plantuml Diagram of slack_conversation data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -93,7 +93,7 @@ resource <|--- slack_conversation
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of slack_conversation resource relationships"
+```plantuml Diagram of slack_conversation resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -141,7 +141,7 @@ slack_conversation -[#1A83AF]-> slack_user
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of slack_region data model"
+```plantuml Diagram of slack_region data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -200,7 +200,7 @@ region <|--- slack_region
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of slack_region resource relationships"
+```plantuml Diagram of slack_region resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -257,7 +257,7 @@ slack_usergroup -[#1A83AF]-> slack_user
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of slack_team data model"
+```plantuml Diagram of slack_team data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -318,7 +318,7 @@ account <|--- slack_team
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of slack_team resource relationships"
+```plantuml Diagram of slack_team resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -361,7 +361,7 @@ slack_team -[#1A83AF]-> slack_region
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of slack_user data model"
+```plantuml Diagram of slack_user data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -453,7 +453,7 @@ user <|--- slack_user
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of slack_user resource relationships"
+```plantuml Diagram of slack_user resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -506,7 +506,7 @@ slack_usergroup -[#1A83AF]-> slack_user
 
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of slack_usergroup data model"
+```plantuml Diagram of slack_usergroup data model
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -576,7 +576,7 @@ group <|--- slack_usergroup
 <div>
 <ZoomPanPinch>
 
-```plantuml alt="Diagram of slack_usergroup resource relationships"
+```plantuml Diagram of slack_usergroup resource relationships
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37

@@ -12,7 +12,53 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 
 <ZoomPanPinch>
 
-![Diagram of vsphere_cluster data model](./img/vsphere_cluster.svg)
+```plantuml alt="Diagram of vsphere_cluster data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
+}
+class zone [[#zone]] {
+
+}
+class vsphere_cluster [[#vsphere_cluster]] {
+
+}
+resource <|--- zone
+zone <|--- vsphere_cluster
+
+@enduml
+```
 
 </ZoomPanPinch>
 
@@ -21,7 +67,36 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 <div>
 <ZoomPanPinch>
 
-![Diagram of vsphere_cluster resource relationships](./img/vsphere_cluster_relationships.svg)
+```plantuml alt="Diagram of vsphere_cluster resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class vsphere_cluster [[#vsphere_cluster]] {
+
+}
+
+@enduml
+```
 
 </ZoomPanPinch>
 </div>
@@ -31,7 +106,53 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 
 <ZoomPanPinch>
 
-![Diagram of vsphere_data_center data model](./img/vsphere_data_center.svg)
+```plantuml alt="Diagram of vsphere_data_center data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
+}
+class region [[#region]] {
+
+}
+class vsphere_data_center [[#vsphere_data_center]] {
+
+}
+resource <|--- region
+region <|--- vsphere_data_center
+
+@enduml
+```
 
 </ZoomPanPinch>
 
@@ -40,7 +161,36 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 <div>
 <ZoomPanPinch>
 
-![Diagram of vsphere_data_center resource relationships](./img/vsphere_data_center_relationships.svg)
+```plantuml alt="Diagram of vsphere_data_center resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class vsphere_data_center [[#vsphere_data_center]] {
+
+}
+
+@enduml
+```
 
 </ZoomPanPinch>
 </div>
@@ -50,7 +200,49 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 
 <ZoomPanPinch>
 
-![Diagram of vsphere_datastore data model](./img/vsphere_datastore.svg)
+```plantuml alt="Diagram of vsphere_datastore data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
+}
+class vsphere_datastore [[#vsphere_datastore]] {
+
+}
+resource <|--- vsphere_datastore
+
+@enduml
+```
 
 </ZoomPanPinch>
 
@@ -59,7 +251,36 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 <div>
 <ZoomPanPinch>
 
-![Diagram of vsphere_datastore resource relationships](./img/vsphere_datastore_relationships.svg)
+```plantuml alt="Diagram of vsphere_datastore resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class vsphere_datastore [[#vsphere_datastore]] {
+
+}
+
+@enduml
+```
 
 </ZoomPanPinch>
 </div>
@@ -69,7 +290,49 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 
 <ZoomPanPinch>
 
-![Diagram of vsphere_datastore_cluster data model](./img/vsphere_datastore_cluster.svg)
+```plantuml alt="Diagram of vsphere_datastore_cluster data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
+}
+class vsphere_datastore_cluster [[#vsphere_datastore_cluster]] {
+
+}
+resource <|--- vsphere_datastore_cluster
+
+@enduml
+```
 
 </ZoomPanPinch>
 
@@ -78,7 +341,36 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 <div>
 <ZoomPanPinch>
 
-![Diagram of vsphere_datastore_cluster resource relationships](./img/vsphere_datastore_cluster_relationships.svg)
+```plantuml alt="Diagram of vsphere_datastore_cluster resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class vsphere_datastore_cluster [[#vsphere_datastore_cluster]] {
+
+}
+
+@enduml
+```
 
 </ZoomPanPinch>
 </div>
@@ -88,7 +380,49 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 
 <ZoomPanPinch>
 
-![Diagram of vsphere_esxi_host data model](./img/vsphere_esxi_host.svg)
+```plantuml alt="Diagram of vsphere_esxi_host data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
+}
+class vsphere_esxi_host [[#vsphere_esxi_host]] {
+
+}
+resource <|--- vsphere_esxi_host
+
+@enduml
+```
 
 </ZoomPanPinch>
 
@@ -97,7 +431,36 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 <div>
 <ZoomPanPinch>
 
-![Diagram of vsphere_esxi_host resource relationships](./img/vsphere_esxi_host_relationships.svg)
+```plantuml alt="Diagram of vsphere_esxi_host resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class vsphere_esxi_host [[#vsphere_esxi_host]] {
+
+}
+
+@enduml
+```
 
 </ZoomPanPinch>
 </div>
@@ -107,7 +470,53 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 
 <ZoomPanPinch>
 
-![Diagram of vsphere_host data model](./img/vsphere_host.svg)
+```plantuml alt="Diagram of vsphere_host data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
+}
+class account [[#account]] {
+
+}
+class vsphere_host [[#vsphere_host]] {
+
+}
+resource <|--- account
+account <|--- vsphere_host
+
+@enduml
+```
 
 </ZoomPanPinch>
 
@@ -116,7 +525,36 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 <div>
 <ZoomPanPinch>
 
-![Diagram of vsphere_host resource relationships](./img/vsphere_host_relationships.svg)
+```plantuml alt="Diagram of vsphere_host resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class vsphere_host [[#vsphere_host]] {
+
+}
+
+@enduml
+```
 
 </ZoomPanPinch>
 </div>
@@ -126,7 +564,60 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 
 <ZoomPanPinch>
 
-![Diagram of vsphere_instance data model](./img/vsphere_instance.svg)
+```plantuml alt="Diagram of vsphere_instance data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
+}
+class instance [[#instance]] {
+**instance_cores**: double
+**instance_memory**: double
+**instance_type**: string
+**instance_status**: instance_status
+}
+class vsphere_resource [[#vsphere_resource]] {
+
+}
+class vsphere_instance [[#vsphere_instance]] {
+
+}
+resource <|--- instance
+instance <|--- vsphere_instance
+vsphere_resource <|--- vsphere_instance
+
+@enduml
+```
 
 </ZoomPanPinch>
 
@@ -135,7 +626,36 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 <div>
 <ZoomPanPinch>
 
-![Diagram of vsphere_instance resource relationships](./img/vsphere_instance_relationships.svg)
+```plantuml alt="Diagram of vsphere_instance resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class vsphere_instance [[#vsphere_instance]] {
+
+}
+
+@enduml
+```
 
 </ZoomPanPinch>
 </div>
@@ -145,7 +665,49 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 
 <ZoomPanPinch>
 
-![Diagram of vsphere_resource_pool data model](./img/vsphere_resource_pool.svg)
+```plantuml alt="Diagram of vsphere_resource_pool data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
+}
+class vsphere_resource_pool [[#vsphere_resource_pool]] {
+
+}
+resource <|--- vsphere_resource_pool
+
+@enduml
+```
 
 </ZoomPanPinch>
 
@@ -154,7 +716,36 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 <div>
 <ZoomPanPinch>
 
-![Diagram of vsphere_resource_pool resource relationships](./img/vsphere_resource_pool_relationships.svg)
+```plantuml alt="Diagram of vsphere_resource_pool resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class vsphere_resource_pool [[#vsphere_resource_pool]] {
+
+}
+
+@enduml
+```
 
 </ZoomPanPinch>
 </div>
@@ -164,7 +755,53 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 
 <ZoomPanPinch>
 
-![Diagram of vsphere_template data model](./img/vsphere_template.svg)
+```plantuml alt="Diagram of vsphere_template data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
+}
+class vsphere_template [[#vsphere_template]] {
+
+}
+class vsphere_resource [[#vsphere_resource]] {
+
+}
+resource <|--- vsphere_template
+vsphere_resource <|--- vsphere_template
+
+@enduml
+```
 
 </ZoomPanPinch>
 
@@ -173,7 +810,36 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 <div>
 <ZoomPanPinch>
 
-![Diagram of vsphere_template resource relationships](./img/vsphere_template_relationships.svg)
+```plantuml alt="Diagram of vsphere_template resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class vsphere_template [[#vsphere_template]] {
+
+}
+
+@enduml
+```
 
 </ZoomPanPinch>
 </div>

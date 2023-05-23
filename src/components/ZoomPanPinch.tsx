@@ -9,10 +9,16 @@ export default function ZoomPanPinch({
 }): JSX.Element {
   const [show, setShow] = useState(false);
 
+  let img: React.ReactElement = children;
+
+  while (React.isValidElement(img.props.children)) {
+    img = img.props.children;
+  }
+
   return (
     <>
       <p style={{ textAlign: 'center' }}>
-        {React.cloneElement(children.props.children, {
+        {React.cloneElement(img, {
           onClick: () => setShow(true),
           onKeyDown: () => setShow(true),
           style: {
@@ -51,7 +57,7 @@ export default function ZoomPanPinch({
             fontSize: '1.2em',
           }}
         >
-          <span>{children.props.children.props.alt}</span>
+          <span>{img.props.alt}</span>
           <button
             type="button"
             aria-label="Close"
@@ -83,7 +89,7 @@ export default function ZoomPanPinch({
               height: '100%',
             }}
           >
-            {children.props.children}
+            {img}
           </TransformComponent>
         </TransformWrapper>
       </Modal>

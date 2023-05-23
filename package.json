@@ -53,6 +53,7 @@
     "react-wrap-balancer": "0.5.0",
     "react-zoom-pan-pinch": "3.0.7",
     "rehype-katex": "5.0.0",
+    "remark-kroki": "0.2.8",
     "remark-math": "3.0.1",
     "remark-plugin-oembed": "0.1.0",
     "url-loader": "4.1.1",

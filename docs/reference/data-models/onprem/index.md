@@ -13,7 +13,62 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 
 <ZoomPanPinch>
 
-![Diagram of onprem_instance data model](./img/onprem_instance.svg)
+```plantuml alt="Diagram of onprem_instance data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
+}
+class instance [[#instance]] {
+**instance_cores**: double
+**instance_memory**: double
+**instance_type**: string
+**instance_status**: instance_status
+}
+class onprem_instance [[#onprem_instance]] {
+**network_device**: string
+**network_ip4**: string
+**network_ip6**: string
+}
+class onprem_resource [[#onprem_resource]] {
+
+}
+resource <|--- instance
+onprem_resource <|--- onprem_instance
+instance <|--- onprem_instance
+
+@enduml
+```
 
 </ZoomPanPinch>
 
@@ -22,7 +77,36 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 <div>
 <ZoomPanPinch>
 
-![Diagram of onprem_instance resource relationships](./img/onprem_instance_relationships.svg)
+```plantuml alt="Diagram of onprem_instance resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class onprem_instance [[#onprem_instance]] {
+
+}
+
+@enduml
+```
 
 </ZoomPanPinch>
 </div>
@@ -32,7 +116,53 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 
 <ZoomPanPinch>
 
-![Diagram of onprem_location data model](./img/onprem_location.svg)
+```plantuml alt="Diagram of onprem_location data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class account [[#account]] {
+
+}
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
+}
+class onprem_location [[#onprem_location]] {
+
+}
+resource <|--- account
+account <|--- onprem_location
+
+@enduml
+```
 
 </ZoomPanPinch>
 
@@ -41,7 +171,36 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 <div>
 <ZoomPanPinch>
 
-![Diagram of onprem_location resource relationships](./img/onprem_location_relationships.svg)
+```plantuml alt="Diagram of onprem_location resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class onprem_location [[#onprem_location]] {
+
+}
+
+@enduml
+```
 
 </ZoomPanPinch>
 </div>
@@ -51,7 +210,57 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 
 <ZoomPanPinch>
 
-![Diagram of onprem_network data model](./img/onprem_network.svg)
+```plantuml alt="Diagram of onprem_network data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
+}
+class network [[#network]] {
+
+}
+class onprem_resource [[#onprem_resource]] {
+
+}
+class onprem_network [[#onprem_network]] {
+
+}
+resource <|--- network
+onprem_resource <|--- onprem_network
+network <|--- onprem_network
+
+@enduml
+```
 
 </ZoomPanPinch>
 
@@ -60,7 +269,36 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 <div>
 <ZoomPanPinch>
 
-![Diagram of onprem_network resource relationships](./img/onprem_network_relationships.svg)
+```plantuml alt="Diagram of onprem_network resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class onprem_network [[#onprem_network]] {
+
+}
+
+@enduml
+```
 
 </ZoomPanPinch>
 </div>
@@ -70,7 +308,53 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 
 <ZoomPanPinch>
 
-![Diagram of onprem_region data model](./img/onprem_region.svg)
+```plantuml alt="Diagram of onprem_region data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
+}
+class region [[#region]] {
+
+}
+class onprem_region [[#onprem_region]] {
+
+}
+resource <|--- region
+region <|--- onprem_region
+
+@enduml
+```
 
 </ZoomPanPinch>
 
@@ -79,7 +363,36 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 <div>
 <ZoomPanPinch>
 
-![Diagram of onprem_region resource relationships](./img/onprem_region_relationships.svg)
+```plantuml alt="Diagram of onprem_region resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+
+class onprem_region [[#onprem_region]] {
+
+}
+
+@enduml
+```
 
 </ZoomPanPinch>
 </div>

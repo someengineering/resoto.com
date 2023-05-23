@@ -3,7 +3,7 @@ import os.path
 import time
 from collections import defaultdict
 from itertools import takewhile
-from typing import Dict, List, Any
+from typing import Any, Dict, List
 
 import requests
 import urllib3
@@ -54,29 +54,6 @@ def get_kinds() -> Dict[str, List[Any]]:
     return kinds
 
 
-def export_images(provider: str, kinds: list):
-    for kind in kinds:
-        name = kind["fqn"]
-        print(f"Exporting {name}")
-        with open(f"./{provider}/img/{name}.svg", "w+") as file:
-            image = get_url(f"{core}/graph/resoto/model/uml", params={"show": name, "link_classes": "true"})
-            file.write(image.text)
-        with open(f"./{provider}/img/{name}_relationships.svg", "w+") as file:
-            parms = {
-                "show": name,
-                "dependency": "default",
-                "with_base_classes": "false",
-                "with_subclasses": "false",
-                "with_inheritance": "false",
-                "with_predecessors": "true",
-                "with_successors": "true",
-                "with_properties": "false",
-                "link_classes": "true",
-            }
-            image = get_url(f"{core}/graph/resoto/model/uml", params=parms)
-            file.write(image.text)
-
-
 def write_md(provider: str, kinds: list):
     if os.path.exists(f"./{provider}/index.md"):
         # in case the file exists, read the header section until the first h2 (##)
@@ -96,14 +73,39 @@ def write_md(provider: str, kinds: list):
 
         for name in sorted(a["fqn"] for a in kinds):
             file.write(f"## `{name}`\n\n")
-            file.write(f"<ZoomPanPinch>\n\n![Diagram of {name} data model](./img/{name}.svg)\n\n</ZoomPanPinch>\n\n")
-            file.write(f"<details>\n<summary>Relationships to Other Resources</summary>\n<div>\n<ZoomPanPinch>\n\n")
-            file.write(f"![Diagram of {name} resource relationships](./img/{name}_relationships.svg)\n\n")
-            file.write(f"</ZoomPanPinch>\n</div>\n</details>\n\n")
+            file.write(f"<ZoomPanPinch>\n\n")
+            file.write(f'```plantuml alt="Diagram of {name} data model"\n')
+            file.write(
+                get_url(
+                    f"{core}/graph/resoto/model/uml", params={"output": "puml", "show": name, "link_classes": "true"}
+                ).text
+            )
+            file.write("\n```\n\n")
+            file.write("</ZoomPanPinch>\n\n")
+            file.write(f"<details>\n<summary>Relationships to Other Resources</summary>\n<div>\n")
+            file.write(f'<ZoomPanPinch>\n\n```plantuml alt="Diagram of {name} resource relationships"\n')
+            file.write(
+                get_url(
+                    f"{core}/graph/resoto/model/uml",
+                    params={
+                        "output": "puml",
+                        "show": name,
+                        "dependency": "default",
+                        "with_base_classes": "false",
+                        "with_subclasses": "false",
+                        "with_inheritance": "false",
+                        "with_predecessors": "true",
+                        "with_successors": "true",
+                        "with_properties": "false",
+                        "link_classes": "true",
+                    },
+                ).text
+            )
+            file.write(f"\n```\n\n</ZoomPanPinch>\n</div>\n</details>\n\n")
 
 
 def load_valid_kinds() -> Dict[str, Any]:
-    for _ in range(30): # nr of retries
+    for _ in range(30):  # number of retries
         try:
             print("Get available kinds...")
             kinds = get_kinds()
@@ -128,6 +130,6 @@ def export() -> None:
             print("---------------------------")
             print(f"Create provider file: {provider} with {len(kinds[provider])} service kinds")
             write_md(provider, kinds[provider])
-            export_images(provider, kinds[provider])
+
 
 export()

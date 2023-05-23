@@ -34,7 +34,7 @@ While the reasons were known, D2iQ wanted to focus on growth and ship new produc
 
 Another issue was the per-unit cost of cloud-native resources. The monthly cost of a single micro instance may not justify the engineering effort required to clean it up; but when they number in the hundreds or thousands, the bills start to pile up.
 
-At peak, D2iQ was spending $561,000 on AWS and $20,000 on GCP each month. The accelerating cash consumption from cloud spend started to impact D2iQ's runway. **That's when D2iQ CEO [Tobi Knaup](https://linkedin.com/in/tobiasknaup) decided it was time to change the focus to efficient growth.**
+At peak, D2iQ was spending $561,000 on [<abbr title="Amazon Web Services">AWS</abbr>](https://aws.amazon.com) and $20,000 on [Google Cloud](https://cloud.google.com) each month. The accelerating cash consumption from cloud spend started to impact D2iQ's runway. **That's when D2iQ CEO [Tobi Knaup](https://linkedin.com/in/tobiasknaup) decided it was time to change the focus to efficient growth.**
 
 ## The Solution
 
@@ -70,11 +70,11 @@ In addition, D2iQ implemented a "Friday evening wipe." In certain dev and test a
 
 ## Results
 
-This new approach delivered dramatic cost savings for D2iQ.
+This new approach delivered dramatic cost savings for D2iQ:
 
-- D2iQ's AWS bill went from $561K per month down to $122K per month—a reduction of $439K or 78%.
+- D2iQ's <abbr title="Amazon Web Services">AWS</abbr> bill decreased from $561K to $122K per month—a reduction of $439K or 78%.
 
-- Their GCP bill dropped by 55% from $20K to $9K per month.
+- Their Google Cloud bill dropped by 55% from $20K to $9K per month.
 
 The cost reduction happened gradually within the 90 days of the project. In sum, this meant savings of $450K per month delivered at the end of the 90 days, or $5.4M per year. Cash that goes straight to D2iQ's bottom line. Enforcing the new lifecycle policy through tags meant that the cloud bill wouldn't slowly creep up again.
 
@@ -106,4 +106,4 @@ Our conclusion is that tactical clean up efforts don't work—your cloud bill wi
 
 We'd really like to thank D2iQ, in particular [Tobi Knaup](https://linkedin.com/in/tobiasknaup) (CEO), [Viktor Harutyunyan](https://linkedin.com/in/victorharutyunyan) (Director of Infrastructure), and [Jan Ulferts](https://linkedin.com/in/jan-ulferts-05175883) (Senior Staff Software Engineer) for helping us to develop Resoto's "data-driven cloud control" approach. Without their support, it would have been impossible to prove the efficacy of our model.
 
-If you want to follow D2iQ's example, you can start with Resoto to [build an EC2 asset inventory](../building-an-ec2-cloud-inventory-across-all-regions-and-accounts/index.md) or [clean up resources](/docs/how-to-guides/cleanup). We're also available on [Discord](https://discord.gg/someengineering) to answer questions and help you [get started with Resoto](/docs/getting-started).
+If you want to follow D2iQ's example, you can start with Resoto to [build an EC2 asset inventory](../building-an-ec2-cloud-inventory/index.md) or [clean up resources](/docs/how-to-guides/cleanup). We're also available on [Discord](https://discord.gg/someengineering) to answer questions and help you [get started with Resoto](/docs/getting-started).

@@ -72,13 +72,13 @@ Resoto indexes resources, captures dependencies, and maps out your infrastructur
 
 Resoto is the one place where developers and site reliability engineers go to search for resources in their cloud infrastructure. They create event-based workflows that automate high-value but also high-effort tasks such as deleting unused resources or documenting cloud inventory for audit purposes.
 
-Resoto is a horizontal product that supports [Amazon Web Services (AWS)](https://aws.amazon.com) and [Google Cloud Platform (GCP)](https://console.cloud.google.com). That is more for historic reasons than for market share reasons. Resoto started as an internal [D2iQ](https://d2iq.com) project, and [D2iQ](https://d2iq.com) runs on [AWS](https://aws.amazon.com) and [GCP](https://console.cloud.google.com).
+Resoto is a horizontal product that supports [Amazon Web Services (AWS)](/docs/how-to-guides/data-sources/collect-aws-resource-data) and [Google Cloud](/docs/how-to-guides/data-sources/collect-google-cloud-resource-data). That is more for historic reasons than for market share reasons. Resoto started as an internal [D2iQ](https://d2iq.com) project, and [D2iQ](https://d2iq.com) runs on [AWS](https://aws.amazon.com) and [Google Cloud](https://console.cloud.google.com).
 
 Resoto is an expert tool for engineers that runs on top of the [Resoto Core](/docs/reference/components/core) graph platform. They interact with Resoto via a [command-line interface (CLI)](/docs/reference/cli) which engineers are comfortable working with.
 
 - We keep their cloud infrastructure _permanently_ clean.
 
-- The [Resoto search syntax](/docs/reference/search) offers an abstraction layer for engineers to query and collect metrics from their infrastructure. Think `> match is(instance) and tags.owner ~ jane`, for example, to find all compute instances across [AWS](https://aws.amazon.com) and [GCP](https://console.cloud.google.com) owned by Jane.
+- The [Resoto search syntax](/docs/reference/search) offers an abstraction layer for engineers to query and collect metrics from their infrastructure. Think `> match is(instance) and tags.owner ~ jane`, for example, to find all compute instances across [AWS](https://aws.amazon.com) and [Google Cloud](https://cloud.google.com) owned by Jane.
 
 - We collect bare-metal information. Hardware specifications differ, even for the same type of instance. Pre-deployment we give developers estimates about the fastest and/or cheapest hardware per region, and once they have the instance let them know exactly what they got.
 
@@ -90,9 +90,9 @@ Resoto is an expert tool for engineers that runs on top of the [Resoto Core](/do
 
 - We offer an approval workflow within these tools ("Resoto will delete these resources. Are you OK with that?").
 
-- We start with collecting metrics from [AWS](https://aws.amazon.com) and [GCP](https://console.cloud.google.com) cloud services most relevant for users, and expand the number of supported services with each sprint based on what the community is telling us.
+- We start with collecting metrics from [AWS](/docs/how-to-guides/data-sources/collect-aws-resource-data) and [Google Cloud](/docs/how-to-guides/data-sources/collect-google-cloud-resource-data) cloud services most relevant for users, and expand the number of supported services with each sprint based on what the community is telling us.
 
-- Because Resoto is extensible and open source, the community can build plugins and collect metrics from any [AWS](https://aws.amazon.com) or [GCP](https://console.cloud.google.com) service that we do not support yet. Our SDK makes it easy to build new custom plugins to collect data.
+- Because Resoto is extensible and open source, the community can build plugins and collect metrics from any [AWS](/docs/how-to-guides/data-sources/collect-aws-resource-data) or [Google Cloud](/docs/how-to-guides/data-sources/collect-google-cloud-resource-data) service that we do not support yet. Our SDK makes it easy to build new custom plugins to collect data.
 
 #### 3-Year Vision
 
@@ -102,7 +102,7 @@ We make it easy for engineers and all other company stakeholders (Finance, Legal
 
 For example, Legal builds an inventory of workflows that verify ongoing infrastructure compliance with regulatory frameworks such as HIPAA, SOC or FedRAMP. Finance pulls cloud cost metrics down to the individual product and user level and exports them to their Snowflake data warehouse. For a sustainability report, engineering calculates a company's annual carbon footprint based on the hardware profiles of their cloud servers.
 
-By now, Resoto covers the major global ([AWS](https://aws.amazon.com), [GCP](https://console.cloud.google.com), [Azure](https://azure.microsoft.com), [Alibaba](https://www.alibabacloud.com)), specialized ([DigitalOcean](https://digitalocean.com), [Oracle](https://oracle.com), [IBM](https://cloud.ibm.com), etc.), and private/hybrid clouds such as [VMWare](https://cloud.vmware.com) and [Red Hat](https://cloud.redhat.com).
+By now, Resoto covers the major global ([AWS](https://aws.amazon.com), [Google Cloud](https://cloud.google.com), [Azure](https://azure.microsoft.com), [Alibaba](https://www.alibabacloud.com)), specialized ([DigitalOcean](https://digitalocean.com), [Oracle](https://oracle.com), [IBM](https://cloud.ibm.com), etc.), and private/hybrid clouds such as [VMWare](https://cloud.vmware.com) and [Red Hat](https://cloud.redhat.com).
 
 We've expanded beyond the cloud, and also collect metadata from other infrastructure such as IoT devices—[Raspberry Pi](https://raspberrypi.org), industrial appliances, etc. Either directly, or through community-supported plugins. If something has an IP address, we can collect metadata and metrics—and that opens up new (vertical) use cases. Cloud computing is not the only infrastructure where it's useful to be able to search, query resources, build workflows or have metrics and have event triggers. In short, reacting to changes. Something changes, and you want to be able to react to it. That's useful for any digital infrastructure.
 

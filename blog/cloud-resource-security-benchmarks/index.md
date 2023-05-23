@@ -44,7 +44,7 @@ There are several reasons why you should perform security benchmarks on your clo
 
 There are several security benchmarks available that you can use to evaluate the security posture of your cloud resources. Some of the popular ones are:
 
-- **[<abbr title="Center for Internet Security">CIS</abbr> Benchmarks](https://cisecurity.org)** provides security benchmarks for securing your cloud resources on various platforms (including AWS, Azure, and Google Cloud) based on best practices and industry standards.
+- **[<abbr title="Center for Internet Security">CIS</abbr> Benchmarks](https://cisecurity.org)** provides security benchmarks for securing your cloud resources on various platforms (including <abbr title="Amazon Web Services">AWS</abbr>, Azure, and Google Cloud) based on best practices and industry standards.
 
 - **[<abbr title="National Institute of Standards and Technology">NIST</abbr> Cybersecurity Framework](https://nist.gov/cyberframework)** provides a set of guidelines and best practices for improving cybersecurity across different sectors.
 

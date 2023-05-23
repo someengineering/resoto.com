@@ -55,6 +55,6 @@ We plan to introduce the report command within the Resoto Shell, enabling Securi
 
 Infrastructure Apps will allow you to execute sandboxed code within Resoto without the need for custom plugins. These low-code Jinja templates output Resoto commands and offer basic functionality such as variable assignment, conditionals, and loops. They can perform Resoto searches and utilize the results. This enables actions like looking up a user in Azure Active Directory, finding their cost-center, and creating a new cost-center tag on AWS resources created by that user.
 
-### GCP
+### Google Cloud
 
-The new GCP collector is approaching its final stages before being merged and activated in the `main` branch. Similar to the AWS collector, this update will enrich GCP with an abundance of metadata previously unavailable.
+The new Google Cloud collector is approaching its final stages before being merged and activated in the `main` branch. Similar to the AWS collector, this update will enrich Google Cloud resource data with previously unavailable metadata.

@@ -10,7 +10,7 @@ tags: [cloud2sql, graph, sql]
 import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 ```
 
-One of the key features of Resoto is its ability to collect data from a wide range of cloud providers, including Amazon Web Services (AWS), DigitalOcean, and Google Cloud Platform (GCP). This makes it easy to get a comprehensive view of your cloud infrastructure, no matter where it is deployed.
+One of the key features of Resoto is its ability to collect data from a wide range of cloud providers, including [Amazon Web Services (AWS)](/docs/how-to-guides/data-sources/collect-aws-resource-data), [DigitalOcean](/docs/how-to-guides/data-sources/collect-digitalocean-resource-data), and [Google Cloud](/docs/how-to-guides/data-sources/collect-google-cloud-resource-data). This makes it easy to get a comprehensive view of your cloud infrastructure, no matter where it is deployed.
 
 **But, what sets Resoto apart from other cloud data collection tools is its ability to enrich the data it collects and make additional connections.** This means that Resoto not only gathers raw data about your cloud resources, but also adds additional context and information that can help you better understand your cloud environment.
 
@@ -42,7 +42,7 @@ To represent an individual node, Resoto uses a unified data model with strict ty
 
 </ZoomPanPinch>
 
-As you can see, every `aws_elb` inherits `load_balancer`, which in turn inherits from `resource`. Each `aws_elb` also contains additional data like `aws_elb_policies`, which contain an `aws_elb_app_cookie_stickiness_policy` and `aws_elb_lb_cookie_stickiness_policy`, and so on.
+As you can see, every [`aws_elb`](/docs/reference/data-models/aws#aws_elb) inherits `load_balancer`, which in turn inherits from `resource`. Each [`aws_elb`](/docs/reference/data-models/aws#aws_elb) also contains additional data like `aws_elb_policies`, which contain an `aws_elb_app_cookie_stickiness_policy` and `aws_elb_lb_cookie_stickiness_policy`, and so on.
 
 <details>
 <summary>Example of an individual <code>aws_elb</code></summary>

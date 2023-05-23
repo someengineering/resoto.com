@@ -336,8 +336,8 @@ If you are new to Resoto, [start the Resoto stack](/docs/getting-started/install
 
 The steps below will guide you through creating an app with the following features:
 
-- **Instance metrics:** The current number of compute instances, CPU cores, and memory across all AWS and GCP accounts.
-- **Volume metrics:** The current number of storage volumes and their sizes, again across all AWS and GCP accounts.
+- **Instance metrics:** The current number of compute instances, CPU cores, and memory across all <abbr title="Amazon Web Services">AWS</abbr> and Google Cloud accounts.
+- **Volume metrics:** The current number of storage volumes and their sizes, again across all <abbr title="Amazon Web Services">AWS</abbr> and Google Cloud accounts.
 - **World map:** A visualization of where in the world instances are running. If anyone starts compute instances in a region we don't typically use, I can easily spot it on a map.
 - **Top accounts and regions by cost:** A list of accounts currently spending the most money.
 - **Instance age distribution:** The average age of compute instances per account. (It should be investigated if a development account has a lot of old instances, as they are typically short lived.)

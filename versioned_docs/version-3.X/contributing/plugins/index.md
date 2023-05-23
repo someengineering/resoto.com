@@ -43,7 +43,7 @@ The typical flow of the `collect` method is:
 Usually, the graph is structured as follows:
 
 1. The top-level node is the cloud itself. It is added by the collector plugin automatically.
-2. The next level is the account (e.g., an AWS account, GCP project, DigitalOcean team, etc.).
+2. The next level is the account (e.g., an AWS account, Google Cloud project, DigitalOcean team, etc.).
 3. Where applicable, the following level is the region (e.g., US-East-1, US-West-1, etc.).
 4. The remaining levels are cloud-specific resources.
 

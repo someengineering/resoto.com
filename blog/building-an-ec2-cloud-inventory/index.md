@@ -4,9 +4,9 @@ authors: [lars]
 tags: [aws]
 ---
 
-# Building an EC2 Cloud Inventory Across All Regions and Accounts
+# Building an EC2 Cloud Inventory
 
-EC2 instances often account for the largest portion of your AWS bill. Yet, it's notoriously difficult to get a simple list of all EC2 instances across all regions and accounts, as threads on [StackOverflow](https://stackoverflow.com/questions/42086712/how-to-see-all-running-amazon-ec2-instances-across-all-regions) and [Reddit](https://www.reddit.com/r/aws/comments/s83381/list_ec2_instances_from_all_accounts_in_all) show.
+EC2 instances often account for the largest portion of your <abbr title="Amazon Web Services">AWS</abbr> bill. Yet, it's notoriously difficult to get a simple list of all EC2 instances across all regions and accounts, as threads on [StackOverflow](https://stackoverflow.com/questions/42086712/how-to-see-all-running-amazon-ec2-instances-across-all-regions) and [Reddit](https://www.reddit.com/r/aws/comments/s83381/list_ec2_instances_from_all_accounts_in_all) show.
 
 You also then want to use that list to ask questions about your inventory, such as:
 
@@ -22,12 +22,16 @@ In this post, I'll describe how to use Resoto to build an EC2 cloud asset invent
 ## Getting Started with Resoto
 
 1. [Install Resoto.](/docs/getting-started/install-resoto)
+
 2. [Start Resoto Shell.](/docs/getting-started/launch-resoto#launching-resoto-shell)
-3. [Configure Resoto to collect AWS resources and trigger resource collection.](/docs/how-to-guides/data-sources/collect-aws-resource-data) During each "collect run," Resoto extracts and transforms data from cloud APIs, and stores snapshots of your infrastructure in its [graph database](/docs/concepts/asset-inventory-graph).
+
+3. [Configure Resoto to collect <abbr title="Amazon Web Services">AWS</abbr> resources and trigger resource collection.](/docs/how-to-guides/data-sources/collect-aws-resource-data)
+
+   During each "collect run," Resoto extracts and transforms data from cloud APIs to generate and store snapshots of your infrastructure in its [graph database](/docs/concepts/asset-inventory-graph).
 
 ## Creating Your First EC2 Inventory
 
-Once Resoto has completed collecting your AWS resources, run the following search, which I'll call our "baseline inventory":
+Once Resoto has completed collecting your <abbr title="Amazon Web Services">AWS</abbr> resources, run the following search, which I'll call our "baseline inventory":
 
 ```bash
 > search is(aws_ec2_instance) | list --markdown id,name,instance_type,ctime as create_time, age,/ancestors.region.reported.name as region,/ancestors.account.reported.name as account,instance_status,tags.owner,tags.expiration
@@ -146,7 +150,7 @@ Adding back in the formatting and writing to a file, the full command to build t
 
 ![Screenshot of search results imported into Google Sheets](./img/google-sheets.png)
 
-Exporting the inventory to a spreadsheet makes the data available to a wider audience, without the need for specific AWS skills like using the AWS Console.
+Exporting the inventory to a spreadsheet makes the data available to a wider audience, without the need for specific <abbr title="Amazon Web Services">AWS</abbr> skills like using the [AWS Console](https://aws.amazon.com/console).
 
 ## Building on Your Baseline EC2 Inventory
 

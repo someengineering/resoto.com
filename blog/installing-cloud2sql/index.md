@@ -14,7 +14,7 @@ import Tabs from '@theme/Tabs';
 
 [Cloud2SQL](https://cloud2sql.com) is a tool based on Resoto's collector plugins that allows you to collect data from various cloud infrastructure sources and export it to a database (like [Snowflake](https://snowflake.com), [PostgreSQL](https://postgresql.org), [MariaDB](https://mariadb.org), or [MySQL](https://mysql.com)) or write it as [Parquet](https://parquet.apache.org), [SQLite](https://sqlite.org), or [<abbr title="comma-separated values">CSV</abbr>](https://en.wikipedia.org/wiki/Comma-separated_values) files for ingestion in your data lake.
 
-**In this post, I will guide you through the process of installing Cloud2SQL and demonstrate how to export data from AWS to a local SQLite database file.**
+**In this post, I will guide you through the process of installing Cloud2SQL and demonstrate how to export data from <abbr title="Amazon Web Services">AWS</abbr> to a local SQLite database file.**
 
 Whether you are looking to integrate cloud data into your existing SQL workflows or simply want an easy way to access and analyze data from multiple cloud sources, Cloud2SQL is an excellent tool to consider.
 
@@ -46,7 +46,7 @@ Snowflake currently only supports Python 3.10. If you are using Python 3.11, use
 
 ## Configuration
 
-**Cloud2SQL supports all sources supported by Resoto.** By default, Cloud2SQL ships with AWS, Google Cloud, DigitalOcean, and Kubernetes source plugins pre-installed.
+**Cloud2SQL supports all sources supported by Resoto.** By default, Cloud2SQL ships with [<abbr title="Amazon Web Services">AWS</abbr>](https://cloud2sql.com/docs/configuration#aws), [Google Cloud](https://cloud2sql.com/docs/configuration#google-cloud), [DigitalOcean](https://cloud2sql.com/docs/configuration#digitalocean), and [Kubernetes](https://cloud2sql.com/docs/configuration#kubernetes) source plugins pre-installed.
 
 Let's load some AWS data into a local SQLite database file. For authentication with AWS, we have all options supported by the AWS CLI. You can either export `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, or create a profile in your AWS config file and export `AWS_PROFILE`.
 
@@ -115,7 +115,7 @@ destinations:
 ```
 
 </TabItem>
-<TabItem value="gcp-postgres" label="GCP / PostgreSQL">
+<TabItem value="gcp-postgres" label="Google Cloud / PostgreSQL">
 
 ```yaml
 sources:

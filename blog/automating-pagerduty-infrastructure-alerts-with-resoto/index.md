@@ -38,7 +38,7 @@ It is typically implemented at the router or firewall level to filter traffic ba
 
 Let's consider a baseline that requires ingress traffic be restricted to defined ranges of allowed IPv4 or IPv6 addresses.
 
-We can examine AWS EC2 security groups that control [access to VPCs](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html).
+We can examine <abbr title="Amazon Web Services">AWS</abbr> EC2 security groups that control [access to VPCs](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html).
 
 Looking at the [`aws_ec2_security_group` resource data model](/docs/reference/data-models/aws#aws_ec2_security_group), we see that the security group can define multiple IP permissions for ingress and egress, each of which is described as multiple IP ranges.
 
@@ -92,7 +92,7 @@ Now, let's combine our search with the `pagerduty` command:
 > search is(aws_ec2_security_group) and group_ip_permissions[*].{ip_protocol="-1" and (ip_ranges[*].cidr_ip="0.0.0.0/0" or ipv6_ranges[*].cidr_ipv6="::/0")} | pagerduty --summary "Security groups allow ingress from 0.0.0.0/0 or ::/0 to any port." --dedup-key allow_ingress_from_internet_to_any_port
 ```
 
-This command will search for AWS EC2 security groups that are not configured correctly.
+This command will search for <abbr title="Amazon Web Services">AWS</abbr> EC2 security groups that are not configured correctly.
 
 - If noncompliant groups are found, the `pagerduty` command which will create an PagerDuty alert with a list of those resources.
 - The static deduplication key ensures not to trigger multiple alerts if one is already open. If no security group violates our baseline, the `pagerduty` command is not invoked - no alert is created.

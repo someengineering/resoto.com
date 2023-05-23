@@ -71,9 +71,9 @@ The following bugs have been squashed:
 
   **Repeating errors are now accumulated and combined.**
 
-- In a migration from Python Data Classes to [attrs](https://attrs.org), we introduced a bug in the GCP collector which caused it to fail to collect data.
+- In a migration from Python Data Classes to [attrs](https://attrs.org), we introduced a bug in the Google Cloud collector which caused it to fail to collect data.
 
-  **The GCP collector has been fixed.**
+  **The [Google Cloud collector](/docs/how-to-guides/data-sources/collect-google-cloud-resource-data) has been fixed.**
 
 - Resoto hot-reloads most changes to its configuration. However, some configuration changes require a restart (e.g., changing the port or network interface to bind on). Resoto does this automatically, but there was a race-condition between listing currently running child processes and killing them.
 

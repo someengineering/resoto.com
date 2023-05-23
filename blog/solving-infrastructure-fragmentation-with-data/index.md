@@ -50,7 +50,7 @@ Without that knowledge, it's easy to break something. That fear holds a lot of p
 
 You can of course look at your cloud bill for more insights. But your bill will only tell you how much you're paying for resources. Not why they exist.
 
-Cloud providers have their own solutions to address cloud cost and inventory problems. But they are mostly incomplete and not interoperable. Cost and price information is often buried and hidden behind pricing APIs. Pricing API data is not easy to correlate with, since names differ between the billing API and the compute instance APIs. This is true for both AWS and GCP.
+Cloud providers have their own solutions to address cloud cost and inventory problems. But they are mostly incomplete and not interoperable. Cost and price information is often buried and hidden behind pricing APIs. Pricing API data is not easy to correlate with, since names differ between the billing API and the compute instance APIs. This is true for both <abbr title="Amazon Web Services">AWS</abbr> and Google Cloud.
 
 ## ELT for Infrastructure Data
 

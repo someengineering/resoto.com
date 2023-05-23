@@ -11,7 +11,7 @@ import Tabs from '@theme/Tabs';
 
 ## Configuration Files
 
-You may need make your AWS `credentials` file, GCP service account JSON files, Kubernetes kubeconfig files, etc. available to Resoto Worker so that it can collect your resources.
+You may need make your AWS `credentials` file, Google Cloud service account JSON files, Kubernetes kubeconfig files, etc. available to Resoto Worker so that it can collect your resources.
 
 ### Writing Configuration Files at Startup
 

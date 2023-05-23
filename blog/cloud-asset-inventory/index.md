@@ -22,7 +22,7 @@ Two hundred may not seem significant until you start looking at the <abbr title=
 
 ![](./img/aws-reinvent-keynote.png)[<span class="badge badge--secondary">AWS re:Invent 2021 - Keynote with Adam Selipsky</span>](https://youtube.com/watch?v=WGA2P_oH5Xc)
 
-With the emergence of containers and serverless functions, services have only become even more abstract, and the size of the individual deliverables smaller. And since cloud providers often match each other's portfolios, these trends apply to [Azure](https://azure.microsoft.com), [Google Cloud Platform (GCP)](https://cloud.google.com), [DigitalOcean](https://digitalocean.com), and others as well.
+With the emergence of containers and serverless functions, services have only become even more abstract, and the size of the individual deliverables smaller. And since cloud providers often match each other's portfolios, these trends apply to [Azure](https://azure.microsoft.com), [Google Cloud](https://cloud.google.com), [DigitalOcean](https://digitalocean.com), and others as well.
 
 ### Infrastructure Fragmentation, a New Type of Technical Debt
 

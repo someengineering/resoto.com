@@ -56,7 +56,7 @@ This feature can be useful in helping you stay on top of critical issues and ens
 
 ## Support for New Cloud Resources
 
-- AWS collector plugin now supports AWS CloudTrail.
+- [AWS collector](/docs/how-to-guides/data-sources/collect-aws-resource-data) plugin now supports AWS CloudTrail.
 
 - The vSphere collector now supports additional resources, thanks to a contribution by [@fatz](https://github.com/fatz).
 

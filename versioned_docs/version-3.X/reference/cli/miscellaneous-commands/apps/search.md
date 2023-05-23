@@ -9,10 +9,10 @@ The `apps search` command searches for apps in the index.
 ## Usage
 
 ```bash
-apps search [pattern]
+apps search <pattern>
 ```
 
-## Examples
+## Example
 
 ```bash
 > apps search cleanup

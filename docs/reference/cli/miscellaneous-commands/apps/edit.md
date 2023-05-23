@@ -12,7 +12,13 @@ The `apps edit` command allows to edit an app manifest. This is mostly useful fo
 apps edit <app_name>
 ```
 
-## Examples
+### Parameters
+
+| Parameter  | Description             | Required? | Default Value |
+| ---------- | ----------------------- | --------- | ------------- |
+| `app_name` | Infrastructure app name | ✔️        | N/A           |
+
+## Example
 
 ```bash
 > apps edit tagvalidator

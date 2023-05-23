@@ -9,11 +9,16 @@ The `apps update` command applies updates one or all apps.
 ## Usage
 
 ```bash
-apps update <app_name>|all
-
+apps update <app_name>
 ```
 
-## Examples
+### Parameters
+
+| Parameter  | Description                      | Required? | Default Value |
+| ---------- | -------------------------------- | --------- | ------------- |
+| `app_name` | `all` or infrastructure app name | ✔️        | N/A           |
+
+## Example
 
 ```bash
 > apps update all

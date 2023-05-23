@@ -12,7 +12,13 @@ The `apps uninstall` command uninstalls an app.
 apps uninstall <app_name>
 ```
 
-## Examples
+### Parameters
+
+| Parameter  | Description             | Required? | Default Value |
+| ---------- | ----------------------- | --------- | ------------- |
+| `app_name` | Infrastructure app name | ✔️        | N/A           |
+
+## Example
 
 ```bash
 > apps uninstall tagvalidator

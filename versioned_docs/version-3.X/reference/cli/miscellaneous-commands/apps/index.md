@@ -6,16 +6,16 @@ sidebar_label: apps
 
 The `apps` command allows for the management of infrastructure apps.
 
-| Command                                                                  | Description                                                                                       |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------- |
-| [`apps search`](./search.md) `[pattern]`                                 | Lists all apps available in the index (or other URL if specified). Supports filtering by pattern. |
-| [`apps info`](./info.md) `<app_name>`                                    | Show information about an app.                                                                    |
-| [`apps install`](./install.md) `<app_name>`                              | Install an app.                                                                                   |
-| [`apps edit`](./edit.md) `<app_name>`                                    | Edit an app.                                                                                      |
-| [`apps uninstall`](./uninstall.md) `<app_name>`                          | Uninstall an app.                                                                                 |
-| [`apps update`](./update.md) `<app_name>` &vert; `all`                   | Update an app or all apps.                                                                        |
-| [`apps list`](./list.md)                                                 | List all installed apps.                                                                          |
-| [`apps run`](./run.md) `<app_name> [--dry-run] [--config <config_name>]` | Run an app                                                                                        |
+| Command                            | Description                                  |
+| ---------------------------------- | -------------------------------------------- |
+| [`apps search`](./search.md)       | Search available infrastructure apps         |
+| [`apps info`](./info.md)           | Show information about an infrastructure app |
+| [`apps install`](./install.md)     | Install an infrastructure app                |
+| [`apps edit`](./edit.md)           | Edit an infrastructure app                   |
+| [`apps uninstall`](./uninstall.md) | Uninstall an infrastructure app              |
+| [`apps update`](./update.md)       | Update infrastructure apps                   |
+| [`apps list`](./list.md)           | List installed infrastructure apps.          |
+| [`apps run`](./run.md)             | Run an infrastructure app                    |
 
 ### Aliases
 

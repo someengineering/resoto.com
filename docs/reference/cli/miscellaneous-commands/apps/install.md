@@ -12,7 +12,13 @@ The `apps install` command installs an app.
 apps install <app_name>
 ```
 
-## Examples
+### Parameters
+
+| Parameter  | Description             | Required? | Default Value |
+| ---------- | ----------------------- | --------- | ------------- |
+| `app_name` | Infrastructure app name | ✔️        | N/A           |
+
+## Example
 
 ```bash
 > apps install tagvalidator

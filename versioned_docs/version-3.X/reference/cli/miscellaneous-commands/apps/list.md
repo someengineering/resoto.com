@@ -12,7 +12,7 @@ The `apps list` command lists all installed apps.
 apps list
 ```
 
-## Examples
+## Example
 
 ```bash
 > apps list

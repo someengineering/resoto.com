@@ -12,7 +12,13 @@ The `apps info` command shows information about an app.
 app info <app_name>
 ```
 
-## Examples
+### Parameters
+
+| Parameter  | Description             | Required? | Default Value |
+| ---------- | ----------------------- | --------- | ------------- |
+| `app_name` | Infrastructure app name | ✔️        | N/A           |
+
+## Example
 
 ```bash
 > app info tagvalidator

@@ -12,17 +12,22 @@ The `apps run` command runs an app.
 app run <app_name> [--dry-run] [--config <config_name>]
 ```
 
+### Options
+
+| Option                   | Description                     |
+| ------------------------ | ------------------------------- |
+| `--dry-run`              | Perform a dry run of the app \* |
+| `--config <config_name>` | Config identifier               |
+
+\* When using the `--dry-run` argument the app will not be executed, but the commands that would be executed will be shown instead.
+
 ### Parameters
 
-| Parameter   | Description       | Required? | Default Value |
-| ----------- | ----------------- | --------- | ------------- |
-| `app_name`  | App identifier    | ✔️        | N/A           |
-| `--dry-run` | Dry run the app   |           | N/A           |
-| `--config`  | Config identifier |           | N/A           |
+| Parameter  | Description             | Required? | Default Value |
+| ---------- | ----------------------- | --------- | ------------- |
+| `app_name` | Infrastructure app name | ✔️        | N/A           |
 
-When using the `--dry-run` argument the app will not be executed, but the commands that would be executed will be shown instead.
-
-## Examples
+## Example
 
 ```bash title="Dry run an app"
 > app run --dry-run cleanup-untagged

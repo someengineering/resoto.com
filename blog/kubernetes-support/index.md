@@ -6,9 +6,9 @@ tags: [kubernetes]
 
 # Kubernetes Support
 
-[Kubernetes](https://kubernetes.io) is the de-facto standard for orchestrating containerized applications. It is the go-to solution no matter where your infrastructure is running. Resoto can already collect resources in [Amazon Web Services](/docs/how-to-guides/data-sources/collect-aws-resource-data), [Google Cloud Platform](/docs/how-to-guides/data-sources/collect-google-cloud-resource-data), and [DigitalOcean](/docs/how-to-guides/data-sources/collect-digitalocean-resource-data), all of which support [Kubernetes](https://kubernetes.io).
+[Kubernetes](https://kubernetes.io) is the de-facto standard for orchestrating containerized applications. It is the go-to solution no matter where your infrastructure is running. Resoto can already collect resources in [Amazon Web Services](/docs/how-to-guides/data-sources/collect-aws-resource-data), [Google Cloud](/docs/how-to-guides/data-sources/collect-google-cloud-resource-data), and [DigitalOcean](/docs/how-to-guides/data-sources/collect-digitalocean-resource-data), all of which support Kubernetes.
 
-**I'm happy to announce that Resoto now has support for collecting [Kubernetes](/docs/reference/data-models/kubernetes) resources!**
+**I'm happy to announce that Resoto now supports [collecting Kubernetes resources](/docs/how-to-guides/data-sources/collect-kubernetes-resource-data)!**
 
 ![](./img/banner.png)
 
@@ -16,7 +16,7 @@ tags: [kubernetes]
 
 ## Getting Started
 
-To get started, configure Resoto to use your [kubeconfig file](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig) or copy the relevant sections as described in [Configure Kubernetes Access](/docs/how-to-guides/data-sources/collect-kubernetes-resource-data).
+To get started, configure Resoto to use your [kubeconfig file](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig) or copy the relevant sections as described in [Collect Kubernetes Resource Data](/docs/how-to-guides/data-sources/collect-kubernetes-resource-data).
 
 ```bash
 > config edit resoto.worker
@@ -79,7 +79,7 @@ Resoto has a common data model for resources that abstracts from the underlying 
 
 Every resource in Kubernetes is also of type `kubernetes_resource`, which brings in additional properties like a `resource_version`, `labels`, and an optional `namespace` property, which is defined for all namespaced resources. Annotations of a Kubernetes resource are available as `tags` and can be modified via the [`tag`](/docs/reference/cli/action-commands/tag) command.
 
-Common abstractions apply as well. A [PersistentVolume](/docs/reference/data-models/kubernetes#kubernetes_persistent_volume) is of base type `volume`. So it shares the same kind and properties with other volumes of other cloud providers, e.g. an [`EBSVolume`](/docs/reference/data-models/aws#aws_ec2_volume) in <abbr title="Amazon Web Services">AWS</abbr> or a [`Disk`](/docs/reference/data-models/google-cloud#gcp_disk) in <abbr title="Google Cloud Platform">GCP</abbr>. The same idea applies to a Kubernetes [node](/docs/reference/data-models/kubernetes#kubernetes_node) which is of base type `instance` etc.
+Common abstractions apply as well. A [PersistentVolume](/docs/reference/data-models/kubernetes#kubernetes_persistent_volume) is of base type `volume`. So it shares the same kind and properties with other volumes of other cloud providers, e.g. an [`EBSVolume`](/docs/reference/data-models/aws#aws_ec2_volume) in <abbr title="Amazon Web Services">AWS</abbr> or a [`Disk`](/docs/reference/data-models/google-cloud#gcp_disk) in Google Cloud. The same idea applies to a Kubernetes [node](/docs/reference/data-models/kubernetes#kubernetes_node) which is of base type `instance` etc.
 
 Kubernetes has its own way of describing a resource, which is available in Resoto as well. The three main sections `metadata`, `spec`, and `status` can be found in almost any resource. The data in the `metadata` section is basically covered by the base `resource` properties (`id`, `name`, `tags`, etc.). The `spec` section usually holds the desired state, while the `status` section holds the current state.
 
@@ -305,10 +305,10 @@ This query selects all volume claims that have no pod attached and then also sel
 
 ## Future Work
 
-We are currently working on the way to connect resources found in Kubernetes to resources found in the underlying cloud provider. Let's assume you have a Kubernetes cluster running on [Amazon Web Services](https://aws.amazon.com), [Google Cloud Platform](https://cloud.google.com), or [DigitalOcean](https://digitalocean.com) and we want to show the underlying persistent volume provided by the related cloud provider. This would show which compute instance a pod runs on or which underlying volume is provided.
+We are currently working on the way to connect resources found in Kubernetes to resources found in the underlying cloud provider. Let's assume you have a Kubernetes cluster running on [Amazon Web Services](/docs/how-to-guides/data-sources/collect-aws-resource-data), [Google Cloud](/docs/how-to-guides/data-sources/collect-google-cloud-resource-data), or [DigitalOcean](/docs/how-to-guides/data-sources/collect-digitalocean-resource-data) and we want to show the underlying persistent volume provided by the related cloud provider. This would show which compute instance a pod runs on or which underlying volume is provided.
 
 ## Further Reading
 
 - [Install Resoto with Kubernetes](/docs/getting-started/install-resoto/kubernetes)
-- [Configure Kubernetes Access](/docs/how-to-guides/data-sources/collect-kubernetes-resource-data)
+- [Collect Kubernetes Resource Data](/docs/how-to-guides/data-sources/collect-kubernetes-resource-data)
 - [Kubernetes Resource Data Models](/docs/reference/data-models/kubernetes)

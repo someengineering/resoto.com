@@ -16,7 +16,13 @@ The nodes represent the actual resources. The edges define the relationship betw
 
 This model makes it easy to capture not only the structure, but also makes the relationships explicit. You can think of the graph as a digital twin of your infrastructure metadata. Resoto allows you to explore and extract meaningful information from your infrastructure with a simple search.
 
-The following diagram shows an excerpt of the graph model for DigitalOcean droplets. Droplets are the compute instances in DigitalOcean, similar to EC2 instances in AWS. The full model is available in our [reference section](/docs/reference/data-models/digitalocean). Note this example uses DigitalOcean but works for [AWS](/docs/reference/data-models/aws) or [Google Cloud](/docs/reference/data-models/google-cloud) accordingly.
+The following diagram shows an excerpt of the graph model for DigitalOcean droplets. Droplets are the compute instances in DigitalOcean, similar to EC2 instances in <abbr title="Amazon Web Services">AWS</abbr>. (The full model is documented in [DigitalOcean Resource Data Models](/docs/reference/data-models/digitalocean).)
+
+:::note
+
+This example uses DigitalOcean but works for [<abbr title="Amazon Web Services">AWS</abbr>](/docs/reference/data-models/aws) or [Google Cloud](/docs/reference/data-models/google-cloud) accordingly.
+
+:::
 
 ![DigitalOcean Droplet](./img/digitalocean_droplet.svg)
 

@@ -51,8 +51,9 @@ Resoto uses collectors to retrieve data from a specific cloud provider. Those co
 
 :::tip Examples
 
-- A [Kubernetes](/docs/reference/data-models/kubernetes) node is running on an [AWS](/docs/reference/data-models/aws) EC2 instance. The [Kubernetes](/docs/reference/data-models/kubernetes) collector is unable to resolve the reference, since it points to a resource provided by [AWS](/docs/reference/data-models/aws).
-- A load balancer in [AWS](/docs/reference/data-models/aws) that points to compute resources in [Google Cloud](/docs/reference/data-models/google-cloud). The [AWS](/docs/reference/data-models/aws) collector does not know anything about [GCP](/docs/reference/data-models/google-cloud).
+- A [Kubernetes node](/docs/reference/data-models/kubernetes#kubernetes_node) is running on an [AWS EC2 instance](/docs/reference/data-models/aws#aws_ec2_instance). The [Kubernetes collector](/docs/how-to-guides/data-sources/collect-kubernetes-resource-data) is unable to resolve the reference, since it points to a resource provided by [AWS](/docs/how-to-guides/data-sources/collect-aws-resource-data).
+
+- A [load balancer in AWS](/docs/reference/data-models/aws#aws_alb) that points to [compute resources in Google Cloud](/docs/reference/data-models/google-cloud#gcp_instance). The [AWS collector](/docs/how-to-guides/data-sources/collect-aws-resource-data) does not know anything about [Google Cloud](/docs/how-to-guides/data-sources/collect-google-cloud-resource-data).
 
 :::
 

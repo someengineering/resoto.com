@@ -141,7 +141,7 @@ const config = {
             `https://github.com/someengineering/resoto.com/edit/main/${versionDocsDirPath}/${docPath}`,
           showLastUpdateAuthor: false,
           showLastUpdateTime: true,
-          remarkPlugins: [a11yEmoji, oembed],
+          remarkPlugins: [a11yEmoji, [oembed, { providers: ['youtube'] }]],
           docItemComponent: '@theme/ApiItem',
           lastVersion: versions[0],
           versions: {
@@ -240,7 +240,7 @@ const config = {
           type: 'all',
           copyright: `Copyright © ${new Date().getFullYear()} Some Engineering Inc.`,
         },
-        remarkPlugins: [a11yEmoji, oembed],
+        remarkPlugins: [a11yEmoji, [oembed, { providers: ['youtube'] }]],
       },
     ],
     [
@@ -259,7 +259,7 @@ const config = {
           type: 'all',
           copyright: `Copyright © ${new Date().getFullYear()} Some Engineering Inc.`,
         },
-        remarkPlugins: [a11yEmoji, oembed, math],
+        remarkPlugins: [a11yEmoji, [oembed, { providers: ['youtube'] }], math],
         rehypePlugins: [katex],
       },
     ],

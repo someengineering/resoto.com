@@ -160,8 +160,8 @@ By taking regular snapshots of your infrastructure, you can track changes over t
 
 See the [design doc](https://docs.google.com/document/d/1HZLyJXYiNZ06gdgF4RvyApZy_uf3BhaRnNX45vLgwvg/edit?usp=sharing). We are still working on the implementation, but we are hoping to ship this feature in Resoto 3.6 (with maybe a stealth release in Resoto 3.5).
 
-### Google Cloud Platform Collector
+### Google Cloud Collector
 
-**The new GCP collector is still in testing and will be released _Soon™_.**
+**The new Google Cloud collector is still in testing and will be released _Soon™_.**
 
-We are continuing to test the new collector. Since this collector will replace the existing GCP collector, we will perform thorough testing before merging its extensive changes. As such, there is currently no ETA for this feature.
+We are continuing to test the new collector. Since this collector will replace the existing Google Cloud collector, we will perform thorough testing before merging its extensive changes. As such, there is currently no ETA for this feature.

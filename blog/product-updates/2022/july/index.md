@@ -15,7 +15,7 @@ Last month we introduced our new config system, with the ability to edit your Re
 
 ## Kubernetes Support
 
-So far, Resoto has worked out-of-the-box for the "native" cloud providers [AWS](/docs/how-to-guides/data-sources/collect-aws-resource-data), [GCP](/docs/how-to-guides/data-sources/collect-google-cloud-resource-data), and [DigitalOcean](/docs/how-to-guides/data-sources/collect-digitalocean-resource-data). But our users have been telling us that they're not just running "bare metal" on these clouds. No surprise—most of them use Kubernetes for orchestration. You can now [point Resoto to your kubeconfig file](/docs/how-to-guides/data-sources/collect-kubernetes-resource-data), with which Resoto will collect all available contexts.
+So far, Resoto has worked out-of-the-box for the "native" cloud providers [<abbr title="Amazon Web Services">AWS</abbr>](/docs/how-to-guides/data-sources/collect-aws-resource-data), [Google Cloud](/docs/how-to-guides/data-sources/collect-google-cloud-resource-data), and [DigitalOcean](/docs/how-to-guides/data-sources/collect-digitalocean-resource-data). But our users have been telling us that they're not just running "bare metal" on these clouds. No surprise—most of them use Kubernetes for orchestration. You can now [point Resoto to your kubeconfig file](/docs/how-to-guides/data-sources/collect-kubernetes-resource-data), with which Resoto will collect all available contexts.
 
 :::note
 

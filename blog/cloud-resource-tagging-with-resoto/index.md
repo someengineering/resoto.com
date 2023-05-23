@@ -15,7 +15,7 @@ Cloud tagging strategies and policies are hailed as one of the most efficient wa
 
 ## Cloud Resource Tagging
 
-Generally, the idea is that every piece of cloud service gets tagged (or _labeled_, in case of <abbr title="Google Cloud Platform">GCP</abbr>) by the developers or maintainers who work with it. This could be accomplished with infrastructure-as-code (IaC) tools (such as [Terraform](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/guides/resource-tagging)), with a command-line interface (CLI), or in the cloud UI.
+Generally, the idea is that every piece of cloud service gets tagged (or _labeled_, in case of Google Cloud) by the developers or maintainers who work with it. This could be accomplished with infrastructure-as-code (IaC) tools (such as [Terraform](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/guides/resource-tagging)), with a command-line interface (CLI), or in the cloud UI.
 
 ### Cloud Resource Tagging Policies
 
@@ -173,7 +173,7 @@ See [Alerting How-To Guides](/docs/how-to-guides/alerting) for additional notifi
 
 Because Resoto has a complete view over your entire cloud asset inventory **and** because Resoto is service-agnostic the tag handling even of millions of resources is no longer a fight against windmills but becomes a treat instead! ✨
 
-Resoto is [open source](https://github.com/someengineering/resoto/blob/main/LICENSE) and free to use, and currently supports [<abbr title="Amazon Web Services">AWS</abbr>](/docs/how-to-guides/data-sources/collect-aws-resource-data), [<abbr title="Google Cloud Platform">GCP</abbr>](/docs/how-to-guides/data-sources/collect-google-cloud-resource-data), and [DigitalOcean](/docs/how-to-guides/data-sources/collect-digitalocean-resource-data). [Install Resoto](/docs/getting-started/install-resoto) today!
+Resoto is [open source](https://github.com/someengineering/resoto/blob/main/LICENSE) and free to use, and currently supports [<abbr title="Amazon Web Services">AWS</abbr>](/docs/how-to-guides/data-sources/collect-aws-resource-data), [Google Cloud](/docs/how-to-guides/data-sources/collect-google-cloud-resource-data), and [DigitalOcean](/docs/how-to-guides/data-sources/collect-digitalocean-resource-data). [Install Resoto](/docs/getting-started/install-resoto) today!
 
 ## Further Reading
 

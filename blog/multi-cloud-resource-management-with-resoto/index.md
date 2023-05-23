@@ -16,7 +16,7 @@ Properties in different services may have different names but the same meaning, 
 
 <!--truncate-->
 
-[Map the Cloud](https://mapthe.cloud) shows that [<abbr title="Amazon Web Services">AWS</abbr>](https://aws.amazon.com) offers 324 services, [Azure](https://azure.microsoft.com) 222 services, and [<abbr title="Google Cloud Platform">GCP</abbr>](https://cloud.google.com) 52 services.
+[Map the Cloud](https://mapthe.cloud) shows that [<abbr title="Amazon Web Services">AWS</abbr>](https://aws.amazon.com) offers 324 services, [Azure](https://azure.microsoft.com) 222 services, and [Google Cloud](https://cloud.google.com) 52 services.
 
 Applications built in the cloud typically use several provided services, including computing, storage, databases, networking, etc. Each cloud provider's offerings are unique, so it should come as no surprise that no two services have the exact same data model.
 
@@ -102,10 +102,10 @@ Show resources that are older than one year and have not been accessed in the la
 
 :::info
 
-Resoto has support for the following cloud providers:
+Resoto currently supports the following cloud providers:
 
 - [Amazon Web Services (AWS)](/docs/how-to-guides/data-sources/collect-aws-resource-data)
-- [Google Cloud Platform (GCP)](/docs/how-to-guides/data-sources/collect-google-cloud-resource-data)
+- [Google Cloud](/docs/how-to-guides/data-sources/collect-google-cloud-resource-data)
 - [DigitalOcean](/docs/how-to-guides/data-sources/collect-digitalocean-resource-data)
 - [Kubernetes](/docs/how-to-guides/data-sources/collect-kubernetes-resource-data)
 
@@ -123,7 +123,7 @@ For example, let's take the representation of a volume in Resoto:
 
 The above image shows a [<abbr title="Unified Modeling Language">UML</abbr>](https://en.wikipedia.org/wiki/Unified_Modeling_Language) class diagram of the `volume` abstraction in Resoto. The arrow signifies that volumes are resources, and that volumes have all the properties of a resource in addition to additional properties (size, throughput, etc.).
 
-This abstract idea of a volume holds whether it is a persistent volume in Kubernetes, a block device in <abbr title="Amazon Web Services">AWS</abbr>, or a disk in <abbr title="Google Cloud Platform">GCP</abbr>. Since the specific resource in a particular cloud provider has its own set of unique properties, we can not simply use the volume definition directly but use it again as one level of abstraction.
+This abstract idea of a volume holds whether it is a persistent volume in Kubernetes, a block device in <abbr title="Amazon Web Services">AWS</abbr>, or a disk in Google Cloud. Since the specific resource in a particular cloud provider has its own set of unique properties, we can not simply use the volume definition directly but use it again as one level of abstraction.
 
 The following image shows the `resource` and `volume` abstraction, as well as all the possible concrete definitions:
 
@@ -137,7 +137,7 @@ To give you an idea of what that means: the size of a volume can be defined in M
 
 ### Searching and Aggregating Multi-Cloud Data in Resoto
 
-As an example, we will search all volumes and aggregate data by volume type, counting all available volumes and the size in GB. The result contains volumes from <abbr title="Amazon Web Services">AWS</abbr> (`gp3`), <abbr title="Google Cloud Platform">GCP</abbr> (`pd-ssd`), and DigitalOcean (`do-block-storage`).
+As an example, we will search all volumes and aggregate data by volume type, counting all available volumes and the size in GB. The result contains volumes from <abbr title="Amazon Web Services">AWS</abbr> (`gp3`), Google Cloud (`pd-ssd`), and DigitalOcean (`do-block-storage`).
 
 ```bash
 $ search is(volume) | aggregate volume_type: sum(volume_size) as total_size, sum(1) as count

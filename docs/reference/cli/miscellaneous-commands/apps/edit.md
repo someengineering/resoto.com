@@ -1,0 +1,41 @@
+---
+sidebar_label: edit
+---
+
+# `apps edit` Command
+
+The `apps edit` command allows to edit an app manifest. This is mostly useful for app development.
+
+## Usage
+
+```bash
+apps edit <app_name>
+```
+
+## Examples
+
+```bash
+> apps edit tagvalidator
+# highlight-start
+args_schema: null
+categories:
+- tagging
+config_schema:
+- aggregate_root: true
+  allow_unknown_props: false
+  bases: []
+  fqn: tagvalidator
+  metadata: null
+  properties:
+  - description: List of kinds to validate expiration tags on.
+    kind: dictionary[string, string]
+    name: default
+    required: false
+  - description: List of kinds to validate expiration tags on.
+    kind: string[]
+    name: kinds
+    required: false
+...
+...
+# highlight-end
+```

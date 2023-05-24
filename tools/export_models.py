@@ -1,5 +1,6 @@
 import os
 import os.path
+import re
 import time
 from collections import defaultdict
 from itertools import takewhile
@@ -76,9 +77,11 @@ def write_md(provider: str, kinds: list):
             file.write(f"<ZoomPanPinch>\n\n")
             file.write(f'```kroki imgType="plantuml" imgAlt="Diagram of {name} data model"\n')
             file.write(
-                get_url(
-                    f"{core}/graph/resoto/model/uml", params={"output": "puml", "show": name, "link_classes": "true"}
-                ).text
+                re.sub(
+                    r"\n+",
+                    "\n",
+                    get_url(f"{core}/graph/resoto/model/uml", params={"output": "puml", "show": name}).text,
+                ).strip()
             )
             file.write("\n```\n\n")
             file.write("</ZoomPanPinch>\n\n")
@@ -87,21 +90,24 @@ def write_md(provider: str, kinds: list):
                 f'<ZoomPanPinch>\n\n```kroki imgType="plantuml" imgAlt="Diagram of {name} resource relationships"\n'
             )
             file.write(
-                get_url(
-                    f"{core}/graph/resoto/model/uml",
-                    params={
-                        "output": "puml",
-                        "show": name,
-                        "dependency": "default",
-                        "with_base_classes": "false",
-                        "with_subclasses": "false",
-                        "with_inheritance": "false",
-                        "with_predecessors": "true",
-                        "with_successors": "true",
-                        "with_properties": "false",
-                        "link_classes": "true",
-                    },
-                ).text
+                re.sub(
+                    r"\n+",
+                    "\n",
+                    get_url(
+                        f"{core}/graph/resoto/model/uml",
+                        params={
+                            "output": "puml",
+                            "show": name,
+                            "dependency": "default",
+                            "with_base_classes": "false",
+                            "with_subclasses": "false",
+                            "with_inheritance": "false",
+                            "with_predecessors": "true",
+                            "with_successors": "true",
+                            "with_properties": "false",
+                        },
+                    ).text,
+                ).strip()
             )
             file.write(f"\n```\n\n</ZoomPanPinch>\n</div>\n</details>\n\n")
 

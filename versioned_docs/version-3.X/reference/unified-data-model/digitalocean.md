@@ -41,8 +41,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -54,10 +53,10 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class digitalocean_resource [[#digitalocean_resource]] {
+class digitalocean_resource {
 **urn**: string
 }
-class digitalocean_alert_policy [[#digitalocean_alert_policy]] {
+class digitalocean_alert_policy {
 **policy_type**: string
 **description**: string
 **is_enabled**: boolean
@@ -65,7 +64,6 @@ class digitalocean_alert_policy [[#digitalocean_alert_policy]] {
 resource <|--- digitalocean_resource
 digitalocean_resource <|--- digitalocean_alert_policy
 resource <|--- digitalocean_alert_policy
-
 @enduml
 ```
 
@@ -99,15 +97,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class digitalocean_team [[#digitalocean_team]] {
-
+class digitalocean_team {
 }
-class digitalocean_alert_policy [[#digitalocean_alert_policy]] {
-
+class digitalocean_alert_policy {
 }
 digitalocean_team -[#1A83AF]-> digitalocean_alert_policy
-
 @enduml
 ```
 
@@ -142,8 +136,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -155,10 +148,10 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class digitalocean_resource [[#digitalocean_resource]] {
+class digitalocean_resource {
 **urn**: string
 }
-class digitalocean_app [[#digitalocean_app]] {
+class digitalocean_app {
 **tier_slug**: string
 **default_ingress**: string
 **live_url**: string
@@ -168,7 +161,6 @@ class digitalocean_app [[#digitalocean_app]] {
 resource <|--- digitalocean_resource
 digitalocean_resource <|--- digitalocean_app
 resource <|--- digitalocean_app
-
 @enduml
 ```
 
@@ -202,26 +194,20 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class digitalocean_app [[#digitalocean_app]] {
-
+class digitalocean_database {
 }
-class digitalocean_database [[#digitalocean_database]] {
-
+class digitalocean_app {
 }
-class digitalocean_team [[#digitalocean_team]] {
-
+class digitalocean_region {
 }
-class digitalocean_region [[#digitalocean_region]] {
-
+class digitalocean_team {
 }
 digitalocean_database -[#1A83AF]-> digitalocean_app
-digitalocean_team -[#1A83AF]-> digitalocean_app
-digitalocean_team -[#1A83AF]-> digitalocean_region
-digitalocean_team -[#1A83AF]-> digitalocean_database
 digitalocean_region -[#1A83AF]-> digitalocean_app
 digitalocean_region -[#1A83AF]-> digitalocean_database
-
+digitalocean_team -[#1A83AF]-> digitalocean_database
+digitalocean_team -[#1A83AF]-> digitalocean_app
+digitalocean_team -[#1A83AF]-> digitalocean_region
 @enduml
 ```
 
@@ -256,8 +242,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -269,13 +254,12 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class digitalocean_resource [[#digitalocean_resource]] {
+class digitalocean_resource {
 **urn**: string
 }
-class endpoint [[#endpoint]] {
-
+class endpoint {
 }
-class digitalocean_cdn_endpoint [[#digitalocean_cdn_endpoint]] {
+class digitalocean_cdn_endpoint {
 **origin**: string
 **endpoint**: string
 **certificate_id**: string
@@ -286,7 +270,6 @@ resource <|--- digitalocean_resource
 resource <|--- endpoint
 digitalocean_resource <|--- digitalocean_cdn_endpoint
 endpoint <|--- digitalocean_cdn_endpoint
-
 @enduml
 ```
 
@@ -320,15 +303,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class digitalocean_team [[#digitalocean_team]] {
-
+class digitalocean_cdn_endpoint {
 }
-class digitalocean_cdn_endpoint [[#digitalocean_cdn_endpoint]] {
-
+class digitalocean_team {
 }
 digitalocean_team -[#1A83AF]-> digitalocean_cdn_endpoint
-
 @enduml
 ```
 
@@ -363,8 +342,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -376,23 +354,22 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class digitalocean_resource [[#digitalocean_resource]] {
+class digitalocean_resource {
 **urn**: string
 }
-class certificate [[#certificate]] {
+class digitalocean_certificate {
+**certificate_state**: string
+**certificate_type**: string
+}
+class certificate {
 **expires**: datetime
 **dns_names**: string[]
 **sha1_fingerprint**: string
 }
-class digitalocean_certificate [[#digitalocean_certificate]] {
-**certificate_state**: string
-**certificate_type**: string
-}
 resource <|--- digitalocean_resource
-resource <|--- certificate
 digitalocean_resource <|--- digitalocean_certificate
 certificate <|--- digitalocean_certificate
-
+resource <|--- certificate
 @enduml
 ```
 
@@ -426,15 +403,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class digitalocean_team [[#digitalocean_team]] {
-
+class digitalocean_certificate {
 }
-class digitalocean_certificate [[#digitalocean_certificate]] {
-
+class digitalocean_team {
 }
 digitalocean_team -[#1A83AF]-> digitalocean_certificate
-
 @enduml
 ```
 
@@ -469,8 +442,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -482,17 +454,16 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class digitalocean_resource [[#digitalocean_resource]] {
+class digitalocean_resource {
 **urn**: string
 }
-class digitalocean_container_registry [[#digitalocean_container_registry]] {
+class digitalocean_container_registry {
 **storage_usage_bytes**: int64
 **is_read_only**: boolean
 }
 resource <|--- digitalocean_resource
 digitalocean_resource <|--- digitalocean_container_registry
 resource <|--- digitalocean_container_registry
-
 @enduml
 ```
 
@@ -526,25 +497,19 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class digitalocean_team [[#digitalocean_team]] {
-
+class digitalocean_region {
 }
-class digitalocean_region [[#digitalocean_region]] {
-
+class digitalocean_container_registry {
 }
-class digitalocean_container_registry_repository [[#digitalocean_container_registry_repository]] {
-
+class digitalocean_container_registry_repository {
 }
-class digitalocean_container_registry [[#digitalocean_container_registry]] {
-
+class digitalocean_team {
 }
-digitalocean_team -[#1A83AF]-> digitalocean_region
-digitalocean_team -[#1A83AF]-> digitalocean_container_registry_repository
-digitalocean_team -[#1A83AF]-> digitalocean_container_registry
 digitalocean_region -[#1A83AF]-> digitalocean_container_registry
 digitalocean_container_registry -[#1A83AF]-> digitalocean_container_registry_repository
-
+digitalocean_team -[#1A83AF]-> digitalocean_container_registry
+digitalocean_team -[#1A83AF]-> digitalocean_container_registry_repository
+digitalocean_team -[#1A83AF]-> digitalocean_region
 @enduml
 ```
 
@@ -579,8 +544,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -592,17 +556,16 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class digitalocean_resource [[#digitalocean_resource]] {
+class digitalocean_resource {
 **urn**: string
 }
-class digitalocean_container_registry_repository [[#digitalocean_container_registry_repository]] {
+class digitalocean_container_registry_repository {
 **tag_count**: int64
 **manifest_count**: int64
 }
 resource <|--- digitalocean_resource
 digitalocean_resource <|--- digitalocean_container_registry_repository
 resource <|--- digitalocean_container_registry_repository
-
 @enduml
 ```
 
@@ -636,25 +599,19 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class digitalocean_team [[#digitalocean_team]] {
-
+class digitalocean_container_registry_repository_tag {
 }
-class digitalocean_container_registry_repository [[#digitalocean_container_registry_repository]] {
-
+class digitalocean_container_registry {
 }
-class digitalocean_container_registry [[#digitalocean_container_registry]] {
-
+class digitalocean_container_registry_repository {
 }
-class digitalocean_container_registry_repository_tag [[#digitalocean_container_registry_repository_tag]] {
-
+class digitalocean_team {
 }
-digitalocean_team -[#1A83AF]-> digitalocean_container_registry_repository
-digitalocean_team -[#1A83AF]-> digitalocean_container_registry
-digitalocean_team -[#1A83AF]-> digitalocean_container_registry_repository_tag
-digitalocean_container_registry_repository -[#1A83AF]-> digitalocean_container_registry_repository_tag
 digitalocean_container_registry -[#1A83AF]-> digitalocean_container_registry_repository
-
+digitalocean_container_registry_repository -[#1A83AF]-> digitalocean_container_registry_repository_tag
+digitalocean_team -[#1A83AF]-> digitalocean_container_registry_repository_tag
+digitalocean_team -[#1A83AF]-> digitalocean_container_registry
+digitalocean_team -[#1A83AF]-> digitalocean_container_registry_repository
 @enduml
 ```
 
@@ -689,8 +646,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -702,10 +658,10 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class digitalocean_resource [[#digitalocean_resource]] {
+class digitalocean_resource {
 **urn**: string
 }
-class digitalocean_container_registry_repository_tag [[#digitalocean_container_registry_repository_tag]] {
+class digitalocean_container_registry_repository_tag {
 **registry_name**: string
 **repository_name**: string
 **manifest_digest**: string
@@ -715,7 +671,6 @@ class digitalocean_container_registry_repository_tag [[#digitalocean_container_r
 resource <|--- digitalocean_resource
 digitalocean_resource <|--- digitalocean_container_registry_repository_tag
 resource <|--- digitalocean_container_registry_repository_tag
-
 @enduml
 ```
 
@@ -749,20 +704,15 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class digitalocean_team [[#digitalocean_team]] {
-
+class digitalocean_container_registry_repository_tag {
 }
-class digitalocean_container_registry_repository [[#digitalocean_container_registry_repository]] {
-
+class digitalocean_container_registry_repository {
 }
-class digitalocean_container_registry_repository_tag [[#digitalocean_container_registry_repository_tag]] {
-
+class digitalocean_team {
 }
-digitalocean_team -[#1A83AF]-> digitalocean_container_registry_repository
-digitalocean_team -[#1A83AF]-> digitalocean_container_registry_repository_tag
 digitalocean_container_registry_repository -[#1A83AF]-> digitalocean_container_registry_repository_tag
-
+digitalocean_team -[#1A83AF]-> digitalocean_container_registry_repository_tag
+digitalocean_team -[#1A83AF]-> digitalocean_container_registry_repository
 @enduml
 ```
 
@@ -797,8 +747,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -810,10 +759,12 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class digitalocean_resource [[#digitalocean_resource]] {
+class digitalocean_resource {
 **urn**: string
 }
-class database [[#database]] {
+class digitalocean_database {
+}
+class database {
 **db_type**: string
 **db_status**: string
 **db_endpoint**: string
@@ -824,14 +775,10 @@ class database [[#database]] {
 **volume_iops**: int64
 **volume_encrypted**: boolean
 }
-class digitalocean_database [[#digitalocean_database]] {
-
-}
 resource <|--- digitalocean_resource
-resource <|--- database
 digitalocean_resource <|--- digitalocean_database
 database <|--- digitalocean_database
-
+resource <|--- database
 @enduml
 ```
 
@@ -865,37 +812,29 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class digitalocean_app [[#digitalocean_app]] {
-
+class digitalocean_vpc {
 }
-class digitalocean_database [[#digitalocean_database]] {
-
+class digitalocean_database {
 }
-class digitalocean_vpc [[#digitalocean_vpc]] {
-
+class digitalocean_app {
 }
-class digitalocean_team [[#digitalocean_team]] {
-
+class digitalocean_region {
 }
-class digitalocean_region [[#digitalocean_region]] {
-
+class digitalocean_project {
 }
-class digitalocean_project [[#digitalocean_project]] {
-
+class digitalocean_team {
 }
-digitalocean_database -[#1A83AF]-> digitalocean_app
 digitalocean_vpc -[#1A83AF]-> digitalocean_database
-digitalocean_team -[#1A83AF]-> digitalocean_app
-digitalocean_team -[#1A83AF]-> digitalocean_region
-digitalocean_team -[#1A83AF]-> digitalocean_database
-digitalocean_team -[#1A83AF]-> digitalocean_vpc
-digitalocean_team -[#1A83AF]-> digitalocean_project
-digitalocean_region -[#1A83AF]-> digitalocean_vpc
+digitalocean_database -[#1A83AF]-> digitalocean_app
 digitalocean_region -[#1A83AF]-> digitalocean_app
+digitalocean_region -[#1A83AF]-> digitalocean_vpc
 digitalocean_region -[#1A83AF]-> digitalocean_database
 digitalocean_project -[#1A83AF]-> digitalocean_database
-
+digitalocean_team -[#1A83AF]-> digitalocean_database
+digitalocean_team -[#1A83AF]-> digitalocean_app
+digitalocean_team -[#1A83AF]-> digitalocean_region
+digitalocean_team -[#1A83AF]-> digitalocean_vpc
+digitalocean_team -[#1A83AF]-> digitalocean_project
 @enduml
 ```
 
@@ -930,8 +869,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -943,13 +881,12 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class digitalocean_resource [[#digitalocean_resource]] {
+class digitalocean_resource {
 **urn**: string
 }
-class dns_zone [[#dns_zone]] {
-
+class dns_zone {
 }
-class digitalocean_domain [[#digitalocean_domain]] {
+class digitalocean_domain {
 **ttl**: int64
 **zone_file**: string
 }
@@ -957,7 +894,6 @@ resource <|--- digitalocean_resource
 resource <|--- dns_zone
 digitalocean_resource <|--- digitalocean_domain
 dns_zone <|--- digitalocean_domain
-
 @enduml
 ```
 
@@ -991,25 +927,19 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class digitalocean_domain [[#digitalocean_domain]] {
-
+class digitalocean_domain_record {
 }
-class digitalocean_domain_record [[#digitalocean_domain_record]] {
-
+class digitalocean_domain {
 }
-class digitalocean_team [[#digitalocean_team]] {
-
+class digitalocean_project {
 }
-class digitalocean_project [[#digitalocean_project]] {
-
+class digitalocean_team {
 }
 digitalocean_domain -[#1A83AF]-> digitalocean_domain_record
+digitalocean_project -[#1A83AF]-> digitalocean_domain
 digitalocean_team -[#1A83AF]-> digitalocean_domain
 digitalocean_team -[#1A83AF]-> digitalocean_domain_record
 digitalocean_team -[#1A83AF]-> digitalocean_project
-digitalocean_project -[#1A83AF]-> digitalocean_domain
-
 @enduml
 ```
 
@@ -1044,8 +974,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -1057,10 +986,13 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class digitalocean_resource [[#digitalocean_resource]] {
+class digitalocean_domain_record {
+**domain_name**: string
+}
+class digitalocean_resource {
 **urn**: string
 }
-class dns_record [[#dns_record]] {
+class dns_record {
 **record_ttl**: int64
 **record_type**: string
 **record_data**: string
@@ -1078,14 +1010,10 @@ class dns_record [[#dns_record]] {
 **record_expire**: int64
 **record_minimum**: int64
 }
-class digitalocean_domain_record [[#digitalocean_domain_record]] {
-**domain_name**: string
-}
-resource <|--- digitalocean_resource
-resource <|--- dns_record
 digitalocean_resource <|--- digitalocean_domain_record
 dns_record <|--- digitalocean_domain_record
-
+resource <|--- digitalocean_resource
+resource <|--- dns_record
 @enduml
 ```
 
@@ -1119,20 +1047,15 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class digitalocean_domain [[#digitalocean_domain]] {
-
+class digitalocean_domain_record {
 }
-class digitalocean_domain_record [[#digitalocean_domain_record]] {
-
+class digitalocean_domain {
 }
-class digitalocean_team [[#digitalocean_team]] {
-
+class digitalocean_team {
 }
 digitalocean_domain -[#1A83AF]-> digitalocean_domain_record
 digitalocean_team -[#1A83AF]-> digitalocean_domain
 digitalocean_team -[#1A83AF]-> digitalocean_domain_record
-
 @enduml
 ```
 
@@ -1167,8 +1090,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -1180,16 +1102,16 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class digitalocean_resource [[#digitalocean_resource]] {
+class digitalocean_resource {
 **urn**: string
 }
-class digitalocean_droplet [[#digitalocean_droplet]] {
+class digitalocean_droplet {
 **droplet_backup_ids**: string[]
 **is_locked**: boolean
 **droplet_features**: string[]
 **droplet_image**: string
 }
-class instance [[#instance]] {
+class instance {
 **instance_cores**: double
 **instance_memory**: double
 **instance_type**: string
@@ -1199,7 +1121,6 @@ resource <|--- digitalocean_resource
 digitalocean_resource <|--- digitalocean_droplet
 instance <|--- digitalocean_droplet
 resource <|--- instance
-
 @enduml
 ```
 
@@ -1233,82 +1154,67 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class digitalocean_load_balancer [[#digitalocean_load_balancer]] {
-
+class digitalocean_load_balancer {
 }
-class digitalocean_droplet [[#digitalocean_droplet]] {
-
+class digitalocean_droplet {
 }
-class digitalocean_snapshot [[#digitalocean_snapshot]] {
-
+class digitalocean_vpc {
 }
-class digitalocean_floating_ip [[#digitalocean_floating_ip]] {
-
+class digitalocean_kubernetes_cluster {
 }
-class digitalocean_vpc [[#digitalocean_vpc]] {
-
+class digitalocean_snapshot {
 }
-class digitalocean_kubernetes_cluster [[#digitalocean_kubernetes_cluster]] {
-
+class digitalocean_volume {
 }
-class digitalocean_firewall [[#digitalocean_firewall]] {
-
+class digitalocean_image {
 }
-class digitalocean_team [[#digitalocean_team]] {
-
+class digitalocean_floating_ip {
 }
-class digitalocean_region [[#digitalocean_region]] {
-
+class digitalocean_droplet_size {
 }
-class digitalocean_image [[#digitalocean_image]] {
-
+class digitalocean_region {
 }
-class digitalocean_volume [[#digitalocean_volume]] {
-
+class digitalocean_firewall {
 }
-class digitalocean_project [[#digitalocean_project]] {
-
+class digitalocean_project {
 }
-class digitalocean_droplet_size [[#digitalocean_droplet_size]] {
-
+class digitalocean_team {
 }
 digitalocean_load_balancer -[#1A83AF]-> digitalocean_droplet
 digitalocean_droplet -[#1A83AF]-> digitalocean_floating_ip
 digitalocean_droplet -[#1A83AF]-> digitalocean_volume
 digitalocean_droplet -[#1A83AF]-> digitalocean_snapshot
-digitalocean_vpc -[#1A83AF]-> digitalocean_kubernetes_cluster
 digitalocean_vpc -[#1A83AF]-> digitalocean_droplet
+digitalocean_vpc -[#1A83AF]-> digitalocean_kubernetes_cluster
 digitalocean_vpc -[#1A83AF]-> digitalocean_load_balancer
 digitalocean_kubernetes_cluster -[#1A83AF]-> digitalocean_droplet
-digitalocean_firewall -[#1A83AF]-> digitalocean_droplet
-digitalocean_team -[#1A83AF]-> digitalocean_droplet
-digitalocean_team -[#1A83AF]-> digitalocean_region
-digitalocean_team -[#1A83AF]-> digitalocean_snapshot
-digitalocean_team -[#1A83AF]-> digitalocean_floating_ip
-digitalocean_team -[#1A83AF]-> digitalocean_image
-digitalocean_team -[#1A83AF]-> digitalocean_vpc
-digitalocean_team -[#1A83AF]-> digitalocean_volume
-digitalocean_team -[#1A83AF]-> digitalocean_firewall
-digitalocean_team -[#1A83AF]-> digitalocean_load_balancer
-digitalocean_team -[#1A83AF]-> digitalocean_kubernetes_cluster
-digitalocean_team -[#1A83AF]-> digitalocean_project
+digitalocean_volume -[#1A83AF]-> digitalocean_snapshot
+digitalocean_image -[#1A83AF]-> digitalocean_droplet
+digitalocean_droplet_size -[#1A83AF]-> digitalocean_droplet
 digitalocean_region -[#1A83AF]-> digitalocean_floating_ip
-digitalocean_region -[#1A83AF]-> digitalocean_image
-digitalocean_region -[#1A83AF]-> digitalocean_load_balancer
-digitalocean_region -[#1A83AF]-> digitalocean_vpc
 digitalocean_region -[#1A83AF]-> digitalocean_kubernetes_cluster
 digitalocean_region -[#1A83AF]-> digitalocean_droplet
+digitalocean_region -[#1A83AF]-> digitalocean_image
+digitalocean_region -[#1A83AF]-> digitalocean_vpc
 digitalocean_region -[#1A83AF]-> digitalocean_snapshot
-digitalocean_image -[#1A83AF]-> digitalocean_droplet
-digitalocean_volume -[#1A83AF]-> digitalocean_snapshot
+digitalocean_region -[#1A83AF]-> digitalocean_load_balancer
+digitalocean_firewall -[#1A83AF]-> digitalocean_droplet
 digitalocean_project -[#1A83AF]-> digitalocean_floating_ip
-digitalocean_project -[#1A83AF]-> digitalocean_load_balancer
-digitalocean_project -[#1A83AF]-> digitalocean_volume
 digitalocean_project -[#1A83AF]-> digitalocean_kubernetes_cluster
 digitalocean_project -[#1A83AF]-> digitalocean_droplet
-digitalocean_droplet_size -[#1A83AF]-> digitalocean_droplet
-
+digitalocean_project -[#1A83AF]-> digitalocean_volume
+digitalocean_project -[#1A83AF]-> digitalocean_load_balancer
+digitalocean_team -[#1A83AF]-> digitalocean_kubernetes_cluster
+digitalocean_team -[#1A83AF]-> digitalocean_droplet
+digitalocean_team -[#1A83AF]-> digitalocean_firewall
+digitalocean_team -[#1A83AF]-> digitalocean_region
+digitalocean_team -[#1A83AF]-> digitalocean_volume
+digitalocean_team -[#1A83AF]-> digitalocean_floating_ip
+digitalocean_team -[#1A83AF]-> digitalocean_vpc
+digitalocean_team -[#1A83AF]-> digitalocean_project
+digitalocean_team -[#1A83AF]-> digitalocean_image
+digitalocean_team -[#1A83AF]-> digitalocean_snapshot
+digitalocean_team -[#1A83AF]-> digitalocean_load_balancer
 @enduml
 ```
 
@@ -1343,8 +1249,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -1356,38 +1261,34 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class digitalocean_resource [[#digitalocean_resource]] {
+class digitalocean_resource {
 **urn**: string
 }
-class quota [[#quota]] {
-**quota**: double
-**usage**: double
-**quota_type**: string
+class phantom_resource {
 }
-class phantom_resource [[#phantom_resource]] {
-
-}
-class type [[#type]] {
-
-}
-class instance_type [[#instance_type]] {
+class instance_type {
 **instance_type**: string
 **instance_cores**: double
 **instance_memory**: double
 **ondemand_cost**: double
 **reservations**: int64
 }
-class digitalocean_droplet_size [[#digitalocean_droplet_size]] {
-
+class type {
+}
+class quota {
+**quota**: double
+**usage**: double
+**quota_type**: string
+}
+class digitalocean_droplet_size {
 }
 resource <|--- digitalocean_resource
-phantom_resource <|--- quota
 resource <|--- phantom_resource
-quota <|--- type
 type <|--- instance_type
+quota <|--- type
+phantom_resource <|--- quota
 digitalocean_resource <|--- digitalocean_droplet_size
 instance_type <|--- digitalocean_droplet_size
-
 @enduml
 ```
 
@@ -1421,15 +1322,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class digitalocean_droplet [[#digitalocean_droplet]] {
-
+class digitalocean_droplet {
 }
-class digitalocean_droplet_size [[#digitalocean_droplet_size]] {
-
+class digitalocean_droplet_size {
 }
 digitalocean_droplet_size -[#1A83AF]-> digitalocean_droplet
-
 @enduml
 ```
 
@@ -1464,8 +1361,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -1477,16 +1373,15 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class digitalocean_resource [[#digitalocean_resource]] {
+class digitalocean_resource {
 **urn**: string
 }
-class digitalocean_firewall [[#digitalocean_firewall]] {
+class digitalocean_firewall {
 **firewall_status**: string
 }
 resource <|--- digitalocean_resource
 digitalocean_resource <|--- digitalocean_firewall
 resource <|--- digitalocean_firewall
-
 @enduml
 ```
 
@@ -1520,20 +1415,15 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class digitalocean_droplet [[#digitalocean_droplet]] {
-
+class digitalocean_droplet {
 }
-class digitalocean_firewall [[#digitalocean_firewall]] {
-
+class digitalocean_firewall {
 }
-class digitalocean_team [[#digitalocean_team]] {
-
+class digitalocean_team {
 }
 digitalocean_firewall -[#1A83AF]-> digitalocean_droplet
 digitalocean_team -[#1A83AF]-> digitalocean_droplet
 digitalocean_team -[#1A83AF]-> digitalocean_firewall
-
 @enduml
 ```
 
@@ -1568,8 +1458,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -1581,13 +1470,13 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class digitalocean_resource [[#digitalocean_resource]] {
+class digitalocean_resource {
 **urn**: string
 }
-class digitalocean_floating_ip [[#digitalocean_floating_ip]] {
+class digitalocean_floating_ip {
 **is_locked**: boolean
 }
-class ip_address [[#ip_address]] {
+class ip_address {
 **ip_address**: string
 **ip_address_family**: string
 }
@@ -1595,7 +1484,6 @@ resource <|--- digitalocean_resource
 digitalocean_resource <|--- digitalocean_floating_ip
 ip_address <|--- digitalocean_floating_ip
 resource <|--- ip_address
-
 @enduml
 ```
 
@@ -1629,32 +1517,25 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class digitalocean_droplet [[#digitalocean_droplet]] {
-
+class digitalocean_droplet {
 }
-class digitalocean_floating_ip [[#digitalocean_floating_ip]] {
-
+class digitalocean_floating_ip {
 }
-class digitalocean_team [[#digitalocean_team]] {
-
+class digitalocean_region {
 }
-class digitalocean_region [[#digitalocean_region]] {
-
+class digitalocean_project {
 }
-class digitalocean_project [[#digitalocean_project]] {
-
+class digitalocean_team {
 }
 digitalocean_droplet -[#1A83AF]-> digitalocean_floating_ip
-digitalocean_team -[#1A83AF]-> digitalocean_droplet
-digitalocean_team -[#1A83AF]-> digitalocean_region
-digitalocean_team -[#1A83AF]-> digitalocean_floating_ip
-digitalocean_team -[#1A83AF]-> digitalocean_project
 digitalocean_region -[#1A83AF]-> digitalocean_floating_ip
 digitalocean_region -[#1A83AF]-> digitalocean_droplet
 digitalocean_project -[#1A83AF]-> digitalocean_floating_ip
 digitalocean_project -[#1A83AF]-> digitalocean_droplet
-
+digitalocean_team -[#1A83AF]-> digitalocean_droplet
+digitalocean_team -[#1A83AF]-> digitalocean_region
+digitalocean_team -[#1A83AF]-> digitalocean_floating_ip
+digitalocean_team -[#1A83AF]-> digitalocean_project
 @enduml
 ```
 
@@ -1689,8 +1570,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -1702,10 +1582,10 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class digitalocean_resource [[#digitalocean_resource]] {
+class digitalocean_resource {
 **urn**: string
 }
-class digitalocean_image [[#digitalocean_image]] {
+class digitalocean_image {
 **distribution**: string
 **image_slug**: string
 **is_public**: boolean
@@ -1718,7 +1598,6 @@ class digitalocean_image [[#digitalocean_image]] {
 resource <|--- digitalocean_resource
 digitalocean_resource <|--- digitalocean_image
 resource <|--- digitalocean_image
-
 @enduml
 ```
 
@@ -1752,26 +1631,20 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class digitalocean_droplet [[#digitalocean_droplet]] {
-
+class digitalocean_droplet {
 }
-class digitalocean_team [[#digitalocean_team]] {
-
+class digitalocean_image {
 }
-class digitalocean_region [[#digitalocean_region]] {
-
+class digitalocean_region {
 }
-class digitalocean_image [[#digitalocean_image]] {
-
+class digitalocean_team {
 }
+digitalocean_image -[#1A83AF]-> digitalocean_droplet
+digitalocean_region -[#1A83AF]-> digitalocean_droplet
+digitalocean_region -[#1A83AF]-> digitalocean_image
 digitalocean_team -[#1A83AF]-> digitalocean_droplet
 digitalocean_team -[#1A83AF]-> digitalocean_region
 digitalocean_team -[#1A83AF]-> digitalocean_image
-digitalocean_region -[#1A83AF]-> digitalocean_image
-digitalocean_region -[#1A83AF]-> digitalocean_droplet
-digitalocean_image -[#1A83AF]-> digitalocean_droplet
-
 @enduml
 ```
 
@@ -1806,8 +1679,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -1819,10 +1691,10 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class digitalocean_resource [[#digitalocean_resource]] {
+class digitalocean_resource {
 **urn**: string
 }
-class digitalocean_kubernetes_cluster [[#digitalocean_kubernetes_cluster]] {
+class digitalocean_kubernetes_cluster {
 **k8s_version**: string
 **k8s_cluster_subnet**: string
 **k8s_service_subnet**: string
@@ -1837,7 +1709,6 @@ class digitalocean_kubernetes_cluster [[#digitalocean_kubernetes_cluster]] {
 resource <|--- digitalocean_resource
 digitalocean_resource <|--- digitalocean_kubernetes_cluster
 resource <|--- digitalocean_kubernetes_cluster
-
 @enduml
 ```
 
@@ -1871,39 +1742,31 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class digitalocean_droplet [[#digitalocean_droplet]] {
-
+class digitalocean_droplet {
 }
-class digitalocean_vpc [[#digitalocean_vpc]] {
-
+class digitalocean_vpc {
 }
-class digitalocean_kubernetes_cluster [[#digitalocean_kubernetes_cluster]] {
-
+class digitalocean_kubernetes_cluster {
 }
-class digitalocean_team [[#digitalocean_team]] {
-
+class digitalocean_region {
 }
-class digitalocean_region [[#digitalocean_region]] {
-
+class digitalocean_project {
 }
-class digitalocean_project [[#digitalocean_project]] {
-
+class digitalocean_team {
 }
-digitalocean_vpc -[#1A83AF]-> digitalocean_kubernetes_cluster
 digitalocean_vpc -[#1A83AF]-> digitalocean_droplet
+digitalocean_vpc -[#1A83AF]-> digitalocean_kubernetes_cluster
 digitalocean_kubernetes_cluster -[#1A83AF]-> digitalocean_droplet
+digitalocean_region -[#1A83AF]-> digitalocean_kubernetes_cluster
+digitalocean_region -[#1A83AF]-> digitalocean_droplet
+digitalocean_region -[#1A83AF]-> digitalocean_vpc
+digitalocean_project -[#1A83AF]-> digitalocean_kubernetes_cluster
+digitalocean_project -[#1A83AF]-> digitalocean_droplet
+digitalocean_team -[#1A83AF]-> digitalocean_kubernetes_cluster
 digitalocean_team -[#1A83AF]-> digitalocean_droplet
 digitalocean_team -[#1A83AF]-> digitalocean_region
 digitalocean_team -[#1A83AF]-> digitalocean_vpc
-digitalocean_team -[#1A83AF]-> digitalocean_kubernetes_cluster
 digitalocean_team -[#1A83AF]-> digitalocean_project
-digitalocean_region -[#1A83AF]-> digitalocean_vpc
-digitalocean_region -[#1A83AF]-> digitalocean_kubernetes_cluster
-digitalocean_region -[#1A83AF]-> digitalocean_droplet
-digitalocean_project -[#1A83AF]-> digitalocean_kubernetes_cluster
-digitalocean_project -[#1A83AF]-> digitalocean_droplet
-
 @enduml
 ```
 
@@ -1938,8 +1801,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -1951,15 +1813,10 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class digitalocean_resource [[#digitalocean_resource]] {
+class digitalocean_resource {
 **urn**: string
 }
-class load_balancer [[#load_balancer]] {
-**lb_type**: string
-**public_ip_address**: string
-**backends**: string[]
-}
-class digitalocean_load_balancer [[#digitalocean_load_balancer]] {
+class digitalocean_load_balancer {
 **nr_nodes**: int64
 **loadbalancer_status**: string
 **redirect_http_to_https**: boolean
@@ -1967,11 +1824,15 @@ class digitalocean_load_balancer [[#digitalocean_load_balancer]] {
 **enable_backend_keepalive**: boolean
 **disable_lets_encrypt_dns_records**: boolean
 }
+class load_balancer {
+**lb_type**: string
+**public_ip_address**: string
+**backends**: string[]
+}
 resource <|--- digitalocean_resource
-resource <|--- load_balancer
 digitalocean_resource <|--- digitalocean_load_balancer
 load_balancer <|--- digitalocean_load_balancer
-
+resource <|--- load_balancer
 @enduml
 ```
 
@@ -2005,39 +1866,31 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class digitalocean_load_balancer [[#digitalocean_load_balancer]] {
-
+class digitalocean_load_balancer {
 }
-class digitalocean_droplet [[#digitalocean_droplet]] {
-
+class digitalocean_droplet {
 }
-class digitalocean_vpc [[#digitalocean_vpc]] {
-
+class digitalocean_vpc {
 }
-class digitalocean_team [[#digitalocean_team]] {
-
+class digitalocean_region {
 }
-class digitalocean_region [[#digitalocean_region]] {
-
+class digitalocean_project {
 }
-class digitalocean_project [[#digitalocean_project]] {
-
+class digitalocean_team {
 }
 digitalocean_load_balancer -[#1A83AF]-> digitalocean_droplet
 digitalocean_vpc -[#1A83AF]-> digitalocean_droplet
 digitalocean_vpc -[#1A83AF]-> digitalocean_load_balancer
+digitalocean_region -[#1A83AF]-> digitalocean_droplet
+digitalocean_region -[#1A83AF]-> digitalocean_vpc
+digitalocean_region -[#1A83AF]-> digitalocean_load_balancer
+digitalocean_project -[#1A83AF]-> digitalocean_droplet
+digitalocean_project -[#1A83AF]-> digitalocean_load_balancer
 digitalocean_team -[#1A83AF]-> digitalocean_droplet
 digitalocean_team -[#1A83AF]-> digitalocean_region
 digitalocean_team -[#1A83AF]-> digitalocean_vpc
-digitalocean_team -[#1A83AF]-> digitalocean_load_balancer
 digitalocean_team -[#1A83AF]-> digitalocean_project
-digitalocean_region -[#1A83AF]-> digitalocean_load_balancer
-digitalocean_region -[#1A83AF]-> digitalocean_vpc
-digitalocean_region -[#1A83AF]-> digitalocean_droplet
-digitalocean_project -[#1A83AF]-> digitalocean_load_balancer
-digitalocean_project -[#1A83AF]-> digitalocean_droplet
-
+digitalocean_team -[#1A83AF]-> digitalocean_load_balancer
 @enduml
 ```
 
@@ -2072,8 +1925,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -2085,10 +1937,10 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class digitalocean_resource [[#digitalocean_resource]] {
+class digitalocean_resource {
 **urn**: string
 }
-class digitalocean_project [[#digitalocean_project]] {
+class digitalocean_project {
 **owner_uuid**: string
 **owner_id**: string
 **description**: string
@@ -2099,7 +1951,6 @@ class digitalocean_project [[#digitalocean_project]] {
 resource <|--- digitalocean_resource
 digitalocean_resource <|--- digitalocean_project
 resource <|--- digitalocean_project
-
 @enduml
 ```
 
@@ -2133,59 +1984,47 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class digitalocean_load_balancer [[#digitalocean_load_balancer]] {
-
+class digitalocean_load_balancer {
 }
-class digitalocean_droplet [[#digitalocean_droplet]] {
-
+class digitalocean_droplet {
 }
-class digitalocean_space [[#digitalocean_space]] {
-
+class digitalocean_domain {
 }
-class digitalocean_database [[#digitalocean_database]] {
-
+class digitalocean_database {
 }
-class digitalocean_floating_ip [[#digitalocean_floating_ip]] {
-
+class digitalocean_kubernetes_cluster {
 }
-class digitalocean_kubernetes_cluster [[#digitalocean_kubernetes_cluster]] {
-
+class digitalocean_volume {
 }
-class digitalocean_domain [[#digitalocean_domain]] {
-
+class digitalocean_space {
 }
-class digitalocean_team [[#digitalocean_team]] {
-
+class digitalocean_floating_ip {
 }
-class digitalocean_volume [[#digitalocean_volume]] {
-
+class digitalocean_project {
 }
-class digitalocean_project [[#digitalocean_project]] {
-
+class digitalocean_team {
 }
 digitalocean_load_balancer -[#1A83AF]-> digitalocean_droplet
 digitalocean_droplet -[#1A83AF]-> digitalocean_floating_ip
 digitalocean_droplet -[#1A83AF]-> digitalocean_volume
 digitalocean_kubernetes_cluster -[#1A83AF]-> digitalocean_droplet
-digitalocean_team -[#1A83AF]-> digitalocean_droplet
-digitalocean_team -[#1A83AF]-> digitalocean_domain
-digitalocean_team -[#1A83AF]-> digitalocean_database
-digitalocean_team -[#1A83AF]-> digitalocean_floating_ip
-digitalocean_team -[#1A83AF]-> digitalocean_space
-digitalocean_team -[#1A83AF]-> digitalocean_volume
-digitalocean_team -[#1A83AF]-> digitalocean_load_balancer
-digitalocean_team -[#1A83AF]-> digitalocean_kubernetes_cluster
-digitalocean_team -[#1A83AF]-> digitalocean_project
 digitalocean_project -[#1A83AF]-> digitalocean_floating_ip
-digitalocean_project -[#1A83AF]-> digitalocean_load_balancer
-digitalocean_project -[#1A83AF]-> digitalocean_space
-digitalocean_project -[#1A83AF]-> digitalocean_volume
+digitalocean_project -[#1A83AF]-> digitalocean_domain
 digitalocean_project -[#1A83AF]-> digitalocean_kubernetes_cluster
 digitalocean_project -[#1A83AF]-> digitalocean_droplet
+digitalocean_project -[#1A83AF]-> digitalocean_space
 digitalocean_project -[#1A83AF]-> digitalocean_database
-digitalocean_project -[#1A83AF]-> digitalocean_domain
-
+digitalocean_project -[#1A83AF]-> digitalocean_volume
+digitalocean_project -[#1A83AF]-> digitalocean_load_balancer
+digitalocean_team -[#1A83AF]-> digitalocean_domain
+digitalocean_team -[#1A83AF]-> digitalocean_kubernetes_cluster
+digitalocean_team -[#1A83AF]-> digitalocean_space
+digitalocean_team -[#1A83AF]-> digitalocean_database
+digitalocean_team -[#1A83AF]-> digitalocean_droplet
+digitalocean_team -[#1A83AF]-> digitalocean_volume
+digitalocean_team -[#1A83AF]-> digitalocean_floating_ip
+digitalocean_team -[#1A83AF]-> digitalocean_project
+digitalocean_team -[#1A83AF]-> digitalocean_load_balancer
 @enduml
 ```
 
@@ -2220,8 +2059,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -2233,13 +2071,12 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class digitalocean_resource [[#digitalocean_resource]] {
+class digitalocean_resource {
 **urn**: string
 }
-class region [[#region]] {
-
+class region {
 }
-class digitalocean_region [[#digitalocean_region]] {
+class digitalocean_region {
 **do_region_slug**: string
 **do_region_features**: string[]
 **is_available**: boolean
@@ -2249,7 +2086,6 @@ resource <|--- digitalocean_resource
 resource <|--- region
 digitalocean_resource <|--- digitalocean_region
 region <|--- digitalocean_region
-
 @enduml
 ```
 
@@ -2283,80 +2119,65 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class digitalocean_load_balancer [[#digitalocean_load_balancer]] {
-
+class digitalocean_load_balancer {
 }
-class digitalocean_droplet [[#digitalocean_droplet]] {
-
+class digitalocean_droplet {
 }
-class digitalocean_snapshot [[#digitalocean_snapshot]] {
-
+class digitalocean_vpc {
 }
-class digitalocean_space [[#digitalocean_space]] {
-
+class digitalocean_database {
 }
-class digitalocean_app [[#digitalocean_app]] {
-
+class digitalocean_kubernetes_cluster {
 }
-class digitalocean_database [[#digitalocean_database]] {
-
+class digitalocean_snapshot {
 }
-class digitalocean_floating_ip [[#digitalocean_floating_ip]] {
-
+class digitalocean_image {
 }
-class digitalocean_vpc [[#digitalocean_vpc]] {
-
+class digitalocean_space {
 }
-class digitalocean_kubernetes_cluster [[#digitalocean_kubernetes_cluster]] {
-
+class digitalocean_floating_ip {
 }
-class digitalocean_team [[#digitalocean_team]] {
-
+class digitalocean_app {
 }
-class digitalocean_region [[#digitalocean_region]] {
-
+class digitalocean_region {
 }
-class digitalocean_image [[#digitalocean_image]] {
-
+class digitalocean_container_registry {
 }
-class digitalocean_container_registry [[#digitalocean_container_registry]] {
-
+class digitalocean_team {
 }
 digitalocean_load_balancer -[#1A83AF]-> digitalocean_droplet
 digitalocean_droplet -[#1A83AF]-> digitalocean_floating_ip
 digitalocean_droplet -[#1A83AF]-> digitalocean_snapshot
-digitalocean_database -[#1A83AF]-> digitalocean_app
-digitalocean_vpc -[#1A83AF]-> digitalocean_kubernetes_cluster
 digitalocean_vpc -[#1A83AF]-> digitalocean_droplet
 digitalocean_vpc -[#1A83AF]-> digitalocean_database
+digitalocean_vpc -[#1A83AF]-> digitalocean_kubernetes_cluster
 digitalocean_vpc -[#1A83AF]-> digitalocean_load_balancer
+digitalocean_database -[#1A83AF]-> digitalocean_app
 digitalocean_kubernetes_cluster -[#1A83AF]-> digitalocean_droplet
-digitalocean_team -[#1A83AF]-> digitalocean_app
-digitalocean_team -[#1A83AF]-> digitalocean_droplet
-digitalocean_team -[#1A83AF]-> digitalocean_region
-digitalocean_team -[#1A83AF]-> digitalocean_snapshot
-digitalocean_team -[#1A83AF]-> digitalocean_database
-digitalocean_team -[#1A83AF]-> digitalocean_floating_ip
-digitalocean_team -[#1A83AF]-> digitalocean_image
-digitalocean_team -[#1A83AF]-> digitalocean_vpc
-digitalocean_team -[#1A83AF]-> digitalocean_space
-digitalocean_team -[#1A83AF]-> digitalocean_container_registry
-digitalocean_team -[#1A83AF]-> digitalocean_load_balancer
-digitalocean_team -[#1A83AF]-> digitalocean_kubernetes_cluster
+digitalocean_image -[#1A83AF]-> digitalocean_droplet
 digitalocean_region -[#1A83AF]-> digitalocean_floating_ip
-digitalocean_region -[#1A83AF]-> digitalocean_image
-digitalocean_region -[#1A83AF]-> digitalocean_load_balancer
-digitalocean_region -[#1A83AF]-> digitalocean_vpc
-digitalocean_region -[#1A83AF]-> digitalocean_space
 digitalocean_region -[#1A83AF]-> digitalocean_app
 digitalocean_region -[#1A83AF]-> digitalocean_kubernetes_cluster
+digitalocean_region -[#1A83AF]-> digitalocean_container_registry
 digitalocean_region -[#1A83AF]-> digitalocean_droplet
+digitalocean_region -[#1A83AF]-> digitalocean_space
+digitalocean_region -[#1A83AF]-> digitalocean_image
+digitalocean_region -[#1A83AF]-> digitalocean_vpc
 digitalocean_region -[#1A83AF]-> digitalocean_snapshot
 digitalocean_region -[#1A83AF]-> digitalocean_database
-digitalocean_region -[#1A83AF]-> digitalocean_container_registry
-digitalocean_image -[#1A83AF]-> digitalocean_droplet
-
+digitalocean_region -[#1A83AF]-> digitalocean_load_balancer
+digitalocean_team -[#1A83AF]-> digitalocean_kubernetes_cluster
+digitalocean_team -[#1A83AF]-> digitalocean_space
+digitalocean_team -[#1A83AF]-> digitalocean_database
+digitalocean_team -[#1A83AF]-> digitalocean_app
+digitalocean_team -[#1A83AF]-> digitalocean_container_registry
+digitalocean_team -[#1A83AF]-> digitalocean_droplet
+digitalocean_team -[#1A83AF]-> digitalocean_region
+digitalocean_team -[#1A83AF]-> digitalocean_floating_ip
+digitalocean_team -[#1A83AF]-> digitalocean_vpc
+digitalocean_team -[#1A83AF]-> digitalocean_image
+digitalocean_team -[#1A83AF]-> digitalocean_snapshot
+digitalocean_team -[#1A83AF]-> digitalocean_load_balancer
 @enduml
 ```
 
@@ -2391,8 +2212,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -2404,11 +2224,10 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class digitalocean_resource [[#digitalocean_resource]] {
+class digitalocean_resource {
 **urn**: string
 }
 resource <|--- digitalocean_resource
-
 @enduml
 ```
 
@@ -2442,15 +2261,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class digitalocean_resource [[#digitalocean_resource]] {
-
+class digitalocean_resource {
 }
-class digitalocean_team [[#digitalocean_team]] {
-
+class digitalocean_team {
 }
 digitalocean_team -[#1A83AF]-> digitalocean_resource
-
 @enduml
 ```
 
@@ -2485,8 +2300,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -2498,15 +2312,15 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class digitalocean_resource [[#digitalocean_resource]] {
+class digitalocean_resource {
 **urn**: string
 }
-class digitalocean_snapshot [[#digitalocean_snapshot]] {
+class digitalocean_snapshot {
 **snapshot_size_gigabytes**: int64
 **resource_id**: string
 **resource_type**: string
 }
-class snapshot [[#snapshot]] {
+class snapshot {
 **snapshot_status**: string
 **description**: string
 **volume_id**: string
@@ -2519,7 +2333,6 @@ resource <|--- digitalocean_resource
 digitalocean_resource <|--- digitalocean_snapshot
 snapshot <|--- digitalocean_snapshot
 resource <|--- snapshot
-
 @enduml
 ```
 
@@ -2553,32 +2366,25 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class digitalocean_droplet [[#digitalocean_droplet]] {
-
+class digitalocean_droplet {
 }
-class digitalocean_snapshot [[#digitalocean_snapshot]] {
-
+class digitalocean_snapshot {
 }
-class digitalocean_team [[#digitalocean_team]] {
-
+class digitalocean_volume {
 }
-class digitalocean_region [[#digitalocean_region]] {
-
+class digitalocean_region {
 }
-class digitalocean_volume [[#digitalocean_volume]] {
-
+class digitalocean_team {
 }
 digitalocean_droplet -[#1A83AF]-> digitalocean_volume
 digitalocean_droplet -[#1A83AF]-> digitalocean_snapshot
-digitalocean_team -[#1A83AF]-> digitalocean_droplet
-digitalocean_team -[#1A83AF]-> digitalocean_region
-digitalocean_team -[#1A83AF]-> digitalocean_snapshot
-digitalocean_team -[#1A83AF]-> digitalocean_volume
+digitalocean_volume -[#1A83AF]-> digitalocean_snapshot
 digitalocean_region -[#1A83AF]-> digitalocean_droplet
 digitalocean_region -[#1A83AF]-> digitalocean_snapshot
-digitalocean_volume -[#1A83AF]-> digitalocean_snapshot
-
+digitalocean_team -[#1A83AF]-> digitalocean_droplet
+digitalocean_team -[#1A83AF]-> digitalocean_region
+digitalocean_team -[#1A83AF]-> digitalocean_volume
+digitalocean_team -[#1A83AF]-> digitalocean_snapshot
 @enduml
 ```
 
@@ -2613,8 +2419,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -2626,20 +2431,17 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class digitalocean_resource [[#digitalocean_resource]] {
+class digitalocean_resource {
 **urn**: string
 }
-class digitalocean_space [[#digitalocean_space]] {
-
+class bucket {
 }
-class bucket [[#bucket]] {
-
+class digitalocean_space {
 }
 resource <|--- digitalocean_resource
+resource <|--- bucket
 digitalocean_resource <|--- digitalocean_space
 bucket <|--- digitalocean_space
-resource <|--- bucket
-
 @enduml
 ```
 
@@ -2673,25 +2475,19 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class digitalocean_space [[#digitalocean_space]] {
-
+class digitalocean_space {
 }
-class digitalocean_team [[#digitalocean_team]] {
-
+class digitalocean_region {
 }
-class digitalocean_region [[#digitalocean_region]] {
-
+class digitalocean_project {
 }
-class digitalocean_project [[#digitalocean_project]] {
-
+class digitalocean_team {
 }
-digitalocean_team -[#1A83AF]-> digitalocean_region
-digitalocean_team -[#1A83AF]-> digitalocean_space
-digitalocean_team -[#1A83AF]-> digitalocean_project
 digitalocean_region -[#1A83AF]-> digitalocean_space
 digitalocean_project -[#1A83AF]-> digitalocean_space
-
+digitalocean_team -[#1A83AF]-> digitalocean_space
+digitalocean_team -[#1A83AF]-> digitalocean_region
+digitalocean_team -[#1A83AF]-> digitalocean_project
 @enduml
 ```
 
@@ -2726,8 +2522,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -2739,20 +2534,19 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class digitalocean_ssh_key [[#digitalocean_ssh_key]] {
-**public_key**: string
-}
-class digitalocean_resource [[#digitalocean_resource]] {
+class digitalocean_resource {
 **urn**: string
 }
-class keypair [[#keypair]] {
+class digitalocean_ssh_key {
+**public_key**: string
+}
+class keypair {
 **fingerprint**: string
 }
+resource <|--- digitalocean_resource
 digitalocean_resource <|--- digitalocean_ssh_key
 keypair <|--- digitalocean_ssh_key
-resource <|--- digitalocean_resource
 resource <|--- keypair
-
 @enduml
 ```
 
@@ -2786,15 +2580,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class digitalocean_ssh_key [[#digitalocean_ssh_key]] {
-
+class digitalocean_ssh_key {
 }
-class digitalocean_team [[#digitalocean_team]] {
-
+class digitalocean_team {
 }
 digitalocean_team -[#1A83AF]-> digitalocean_ssh_key
-
 @enduml
 ```
 
@@ -2829,8 +2619,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -2842,16 +2631,14 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class digitalocean_resource [[#digitalocean_resource]] {
+class digitalocean_resource {
 **urn**: string
 }
-class digitalocean_tag [[#digitalocean_tag]] {
-
+class digitalocean_tag {
 }
 resource <|--- digitalocean_resource
 digitalocean_resource <|--- digitalocean_tag
 resource <|--- digitalocean_tag
-
 @enduml
 ```
 
@@ -2885,15 +2672,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class digitalocean_team [[#digitalocean_team]] {
-
+class digitalocean_tag {
 }
-class digitalocean_tag [[#digitalocean_tag]] {
-
+class digitalocean_team {
 }
 digitalocean_team -[#1A83AF]-> digitalocean_tag
-
 @enduml
 ```
 
@@ -2928,8 +2711,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -2941,20 +2723,17 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class digitalocean_resource [[#digitalocean_resource]] {
+class digitalocean_resource {
 **urn**: string
 }
-class account [[#account]] {
-
+class account {
 }
-class digitalocean_team [[#digitalocean_team]] {
-
+class digitalocean_team {
 }
 resource <|--- digitalocean_resource
 resource <|--- account
 digitalocean_resource <|--- digitalocean_team
 account <|--- digitalocean_team
-
 @enduml
 ```
 
@@ -2988,146 +2767,118 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class digitalocean_ssh_key [[#digitalocean_ssh_key]] {
-
+class digitalocean_domain_record {
 }
-class digitalocean_resource [[#digitalocean_resource]] {
-
+class digitalocean_resource {
 }
-class digitalocean_load_balancer [[#digitalocean_load_balancer]] {
-
+class digitalocean_load_balancer {
 }
-class digitalocean_droplet [[#digitalocean_droplet]] {
-
+class digitalocean_droplet {
 }
-class digitalocean_snapshot [[#digitalocean_snapshot]] {
-
+class digitalocean_domain {
 }
-class digitalocean_space [[#digitalocean_space]] {
-
+class digitalocean_ssh_key {
 }
-class digitalocean_app [[#digitalocean_app]] {
-
+class digitalocean_tag {
 }
-class digitalocean_database [[#digitalocean_database]] {
-
+class digitalocean_cdn_endpoint {
 }
-class digitalocean_floating_ip [[#digitalocean_floating_ip]] {
-
+class digitalocean_vpc {
 }
-class digitalocean_vpc [[#digitalocean_vpc]] {
-
+class digitalocean_database {
 }
-class digitalocean_kubernetes_cluster [[#digitalocean_kubernetes_cluster]] {
-
+class digitalocean_kubernetes_cluster {
 }
-class digitalocean_domain [[#digitalocean_domain]] {
-
+class digitalocean_snapshot {
 }
-class digitalocean_domain_record [[#digitalocean_domain_record]] {
-
+class digitalocean_volume {
 }
-class digitalocean_firewall [[#digitalocean_firewall]] {
-
+class digitalocean_image {
 }
-class digitalocean_team [[#digitalocean_team]] {
-
+class digitalocean_container_registry_repository_tag {
 }
-class digitalocean_alert_policy [[#digitalocean_alert_policy]] {
-
+class digitalocean_space {
 }
-class digitalocean_tag [[#digitalocean_tag]] {
-
+class digitalocean_floating_ip {
 }
-class digitalocean_certificate [[#digitalocean_certificate]] {
-
+class digitalocean_app {
 }
-class digitalocean_region [[#digitalocean_region]] {
-
+class digitalocean_certificate {
 }
-class digitalocean_image [[#digitalocean_image]] {
-
+class digitalocean_region {
 }
-class digitalocean_volume [[#digitalocean_volume]] {
-
+class digitalocean_container_registry {
 }
-class digitalocean_container_registry_repository [[#digitalocean_container_registry_repository]] {
-
+class digitalocean_container_registry_repository {
 }
-class digitalocean_cdn_endpoint [[#digitalocean_cdn_endpoint]] {
-
+class digitalocean_firewall {
 }
-class digitalocean_container_registry [[#digitalocean_container_registry]] {
-
+class digitalocean_project {
 }
-class digitalocean_container_registry_repository_tag [[#digitalocean_container_registry_repository_tag]] {
-
+class digitalocean_team {
 }
-class digitalocean_project [[#digitalocean_project]] {
-
+class digitalocean_alert_policy {
 }
 digitalocean_load_balancer -[#1A83AF]-> digitalocean_droplet
 digitalocean_droplet -[#1A83AF]-> digitalocean_floating_ip
 digitalocean_droplet -[#1A83AF]-> digitalocean_volume
 digitalocean_droplet -[#1A83AF]-> digitalocean_snapshot
-digitalocean_database -[#1A83AF]-> digitalocean_app
-digitalocean_vpc -[#1A83AF]-> digitalocean_kubernetes_cluster
+digitalocean_domain -[#1A83AF]-> digitalocean_domain_record
 digitalocean_vpc -[#1A83AF]-> digitalocean_droplet
 digitalocean_vpc -[#1A83AF]-> digitalocean_database
+digitalocean_vpc -[#1A83AF]-> digitalocean_kubernetes_cluster
 digitalocean_vpc -[#1A83AF]-> digitalocean_load_balancer
+digitalocean_database -[#1A83AF]-> digitalocean_app
 digitalocean_kubernetes_cluster -[#1A83AF]-> digitalocean_droplet
-digitalocean_domain -[#1A83AF]-> digitalocean_domain_record
-digitalocean_firewall -[#1A83AF]-> digitalocean_droplet
-digitalocean_team -[#1A83AF]-> digitalocean_resource
-digitalocean_team -[#1A83AF]-> digitalocean_alert_policy
-digitalocean_team -[#1A83AF]-> digitalocean_app
-digitalocean_team -[#1A83AF]-> digitalocean_tag
-digitalocean_team -[#1A83AF]-> digitalocean_droplet
-digitalocean_team -[#1A83AF]-> digitalocean_domain
-digitalocean_team -[#1A83AF]-> digitalocean_certificate
-digitalocean_team -[#1A83AF]-> digitalocean_region
-digitalocean_team -[#1A83AF]-> digitalocean_ssh_key
-digitalocean_team -[#1A83AF]-> digitalocean_snapshot
-digitalocean_team -[#1A83AF]-> digitalocean_database
-digitalocean_team -[#1A83AF]-> digitalocean_floating_ip
-digitalocean_team -[#1A83AF]-> digitalocean_image
-digitalocean_team -[#1A83AF]-> digitalocean_vpc
-digitalocean_team -[#1A83AF]-> digitalocean_space
-digitalocean_team -[#1A83AF]-> digitalocean_volume
-digitalocean_team -[#1A83AF]-> digitalocean_container_registry_repository
-digitalocean_team -[#1A83AF]-> digitalocean_firewall
-digitalocean_team -[#1A83AF]-> digitalocean_cdn_endpoint
-digitalocean_team -[#1A83AF]-> digitalocean_container_registry
-digitalocean_team -[#1A83AF]-> digitalocean_load_balancer
-digitalocean_team -[#1A83AF]-> digitalocean_domain_record
-digitalocean_team -[#1A83AF]-> digitalocean_container_registry_repository_tag
-digitalocean_team -[#1A83AF]-> digitalocean_kubernetes_cluster
-digitalocean_team -[#1A83AF]-> digitalocean_project
+digitalocean_volume -[#1A83AF]-> digitalocean_snapshot
+digitalocean_image -[#1A83AF]-> digitalocean_droplet
 digitalocean_region -[#1A83AF]-> digitalocean_floating_ip
-digitalocean_region -[#1A83AF]-> digitalocean_image
-digitalocean_region -[#1A83AF]-> digitalocean_load_balancer
-digitalocean_region -[#1A83AF]-> digitalocean_vpc
-digitalocean_region -[#1A83AF]-> digitalocean_space
 digitalocean_region -[#1A83AF]-> digitalocean_app
 digitalocean_region -[#1A83AF]-> digitalocean_kubernetes_cluster
+digitalocean_region -[#1A83AF]-> digitalocean_container_registry
 digitalocean_region -[#1A83AF]-> digitalocean_droplet
+digitalocean_region -[#1A83AF]-> digitalocean_space
+digitalocean_region -[#1A83AF]-> digitalocean_image
+digitalocean_region -[#1A83AF]-> digitalocean_vpc
 digitalocean_region -[#1A83AF]-> digitalocean_snapshot
 digitalocean_region -[#1A83AF]-> digitalocean_database
-digitalocean_region -[#1A83AF]-> digitalocean_container_registry
-digitalocean_image -[#1A83AF]-> digitalocean_droplet
-digitalocean_volume -[#1A83AF]-> digitalocean_snapshot
-digitalocean_container_registry_repository -[#1A83AF]-> digitalocean_container_registry_repository_tag
+digitalocean_region -[#1A83AF]-> digitalocean_load_balancer
 digitalocean_container_registry -[#1A83AF]-> digitalocean_container_registry_repository
+digitalocean_container_registry_repository -[#1A83AF]-> digitalocean_container_registry_repository_tag
+digitalocean_firewall -[#1A83AF]-> digitalocean_droplet
 digitalocean_project -[#1A83AF]-> digitalocean_floating_ip
-digitalocean_project -[#1A83AF]-> digitalocean_load_balancer
-digitalocean_project -[#1A83AF]-> digitalocean_space
-digitalocean_project -[#1A83AF]-> digitalocean_volume
+digitalocean_project -[#1A83AF]-> digitalocean_domain
 digitalocean_project -[#1A83AF]-> digitalocean_kubernetes_cluster
 digitalocean_project -[#1A83AF]-> digitalocean_droplet
+digitalocean_project -[#1A83AF]-> digitalocean_space
 digitalocean_project -[#1A83AF]-> digitalocean_database
-digitalocean_project -[#1A83AF]-> digitalocean_domain
-
+digitalocean_project -[#1A83AF]-> digitalocean_volume
+digitalocean_project -[#1A83AF]-> digitalocean_load_balancer
+digitalocean_team -[#1A83AF]-> digitalocean_resource
+digitalocean_team -[#1A83AF]-> digitalocean_domain
+digitalocean_team -[#1A83AF]-> digitalocean_kubernetes_cluster
+digitalocean_team -[#1A83AF]-> digitalocean_tag
+digitalocean_team -[#1A83AF]-> digitalocean_space
+digitalocean_team -[#1A83AF]-> digitalocean_domain_record
+digitalocean_team -[#1A83AF]-> digitalocean_database
+digitalocean_team -[#1A83AF]-> digitalocean_ssh_key
+digitalocean_team -[#1A83AF]-> digitalocean_app
+digitalocean_team -[#1A83AF]-> digitalocean_container_registry_repository_tag
+digitalocean_team -[#1A83AF]-> digitalocean_certificate
+digitalocean_team -[#1A83AF]-> digitalocean_container_registry
+digitalocean_team -[#1A83AF]-> digitalocean_droplet
+digitalocean_team -[#1A83AF]-> digitalocean_container_registry_repository
+digitalocean_team -[#1A83AF]-> digitalocean_firewall
+digitalocean_team -[#1A83AF]-> digitalocean_region
+digitalocean_team -[#1A83AF]-> digitalocean_volume
+digitalocean_team -[#1A83AF]-> digitalocean_floating_ip
+digitalocean_team -[#1A83AF]-> digitalocean_cdn_endpoint
+digitalocean_team -[#1A83AF]-> digitalocean_vpc
+digitalocean_team -[#1A83AF]-> digitalocean_project
+digitalocean_team -[#1A83AF]-> digitalocean_alert_policy
+digitalocean_team -[#1A83AF]-> digitalocean_image
+digitalocean_team -[#1A83AF]-> digitalocean_snapshot
+digitalocean_team -[#1A83AF]-> digitalocean_load_balancer
 @enduml
 ```
 
@@ -3162,8 +2913,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -3175,10 +2925,10 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class digitalocean_resource [[#digitalocean_resource]] {
+class digitalocean_resource {
 **urn**: string
 }
-class volume [[#volume]] {
+class volume {
 **volume_size**: int64
 **volume_type**: string
 **volume_status**: volume_status
@@ -3187,7 +2937,7 @@ class volume [[#volume]] {
 **volume_encrypted**: boolean
 **snapshot_before_delete**: boolean
 }
-class digitalocean_volume [[#digitalocean_volume]] {
+class digitalocean_volume {
 **description**: string
 **filesystem_type**: string
 **filesystem_label**: string
@@ -3197,7 +2947,6 @@ resource <|--- digitalocean_resource
 resource <|--- volume
 digitalocean_resource <|--- digitalocean_volume
 volume <|--- digitalocean_volume
-
 @enduml
 ```
 
@@ -3231,32 +2980,25 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class digitalocean_droplet [[#digitalocean_droplet]] {
-
+class digitalocean_droplet {
 }
-class digitalocean_snapshot [[#digitalocean_snapshot]] {
-
+class digitalocean_snapshot {
 }
-class digitalocean_team [[#digitalocean_team]] {
-
+class digitalocean_volume {
 }
-class digitalocean_volume [[#digitalocean_volume]] {
-
+class digitalocean_project {
 }
-class digitalocean_project [[#digitalocean_project]] {
-
+class digitalocean_team {
 }
 digitalocean_droplet -[#1A83AF]-> digitalocean_volume
 digitalocean_droplet -[#1A83AF]-> digitalocean_snapshot
+digitalocean_volume -[#1A83AF]-> digitalocean_snapshot
+digitalocean_project -[#1A83AF]-> digitalocean_droplet
+digitalocean_project -[#1A83AF]-> digitalocean_volume
 digitalocean_team -[#1A83AF]-> digitalocean_droplet
-digitalocean_team -[#1A83AF]-> digitalocean_snapshot
 digitalocean_team -[#1A83AF]-> digitalocean_volume
 digitalocean_team -[#1A83AF]-> digitalocean_project
-digitalocean_volume -[#1A83AF]-> digitalocean_snapshot
-digitalocean_project -[#1A83AF]-> digitalocean_volume
-digitalocean_project -[#1A83AF]-> digitalocean_droplet
-
+digitalocean_team -[#1A83AF]-> digitalocean_snapshot
 @enduml
 ```
 
@@ -3291,8 +3033,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -3304,22 +3045,20 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class network [[#network]] {
-
-}
-class digitalocean_resource [[#digitalocean_resource]] {
+class digitalocean_resource {
 **urn**: string
 }
-class digitalocean_vpc [[#digitalocean_vpc]] {
+class network {
+}
+class digitalocean_vpc {
 **ip_range**: string
 **description**: string
 **is_default**: boolean
 }
-resource <|--- network
 resource <|--- digitalocean_resource
+resource <|--- network
 digitalocean_resource <|--- digitalocean_vpc
 network <|--- digitalocean_vpc
-
 @enduml
 ```
 
@@ -3353,46 +3092,37 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class digitalocean_load_balancer [[#digitalocean_load_balancer]] {
-
+class digitalocean_load_balancer {
 }
-class digitalocean_droplet [[#digitalocean_droplet]] {
-
+class digitalocean_droplet {
 }
-class digitalocean_database [[#digitalocean_database]] {
-
+class digitalocean_vpc {
 }
-class digitalocean_vpc [[#digitalocean_vpc]] {
-
+class digitalocean_database {
 }
-class digitalocean_kubernetes_cluster [[#digitalocean_kubernetes_cluster]] {
-
+class digitalocean_kubernetes_cluster {
 }
-class digitalocean_team [[#digitalocean_team]] {
-
+class digitalocean_region {
 }
-class digitalocean_region [[#digitalocean_region]] {
-
+class digitalocean_team {
 }
 digitalocean_load_balancer -[#1A83AF]-> digitalocean_droplet
-digitalocean_vpc -[#1A83AF]-> digitalocean_kubernetes_cluster
 digitalocean_vpc -[#1A83AF]-> digitalocean_droplet
 digitalocean_vpc -[#1A83AF]-> digitalocean_database
+digitalocean_vpc -[#1A83AF]-> digitalocean_kubernetes_cluster
 digitalocean_vpc -[#1A83AF]-> digitalocean_load_balancer
 digitalocean_kubernetes_cluster -[#1A83AF]-> digitalocean_droplet
-digitalocean_team -[#1A83AF]-> digitalocean_droplet
-digitalocean_team -[#1A83AF]-> digitalocean_region
-digitalocean_team -[#1A83AF]-> digitalocean_database
-digitalocean_team -[#1A83AF]-> digitalocean_vpc
-digitalocean_team -[#1A83AF]-> digitalocean_load_balancer
-digitalocean_team -[#1A83AF]-> digitalocean_kubernetes_cluster
-digitalocean_region -[#1A83AF]-> digitalocean_load_balancer
-digitalocean_region -[#1A83AF]-> digitalocean_vpc
 digitalocean_region -[#1A83AF]-> digitalocean_kubernetes_cluster
 digitalocean_region -[#1A83AF]-> digitalocean_droplet
+digitalocean_region -[#1A83AF]-> digitalocean_vpc
 digitalocean_region -[#1A83AF]-> digitalocean_database
-
+digitalocean_region -[#1A83AF]-> digitalocean_load_balancer
+digitalocean_team -[#1A83AF]-> digitalocean_kubernetes_cluster
+digitalocean_team -[#1A83AF]-> digitalocean_database
+digitalocean_team -[#1A83AF]-> digitalocean_droplet
+digitalocean_team -[#1A83AF]-> digitalocean_region
+digitalocean_team -[#1A83AF]-> digitalocean_vpc
+digitalocean_team -[#1A83AF]-> digitalocean_load_balancer
 @enduml
 ```
 

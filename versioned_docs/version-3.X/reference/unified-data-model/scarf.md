@@ -35,8 +35,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -48,21 +47,18 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class account [[#account]] {
-
+class account {
 }
-class scarf_resource [[#scarf_resource]] {
-
-}
-class scarf_organization [[#scarf_organization]] {
+class scarf_organization {
 **description**: string
 **billing_email**: string
 **website**: string
 }
+class scarf_resource {
+}
 resource <|--- account
 scarf_resource <|--- scarf_organization
 account <|--- scarf_organization
-
 @enduml
 ```
 
@@ -96,11 +92,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class scarf_organization [[#scarf_organization]] {
-
+class scarf_organization {
 }
-
 @enduml
 ```
 
@@ -135,8 +128,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -148,10 +140,9 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class scarf_resource [[#scarf_resource]] {
-
+class scarf_resource {
 }
-class scarf_package [[#scarf_package]] {
+class scarf_package {
 **short_description**: string
 **long_description**: string
 **website**: string
@@ -161,7 +152,6 @@ class scarf_package [[#scarf_package]] {
 }
 scarf_resource <|--- scarf_package
 resource <|--- scarf_package
-
 @enduml
 ```
 
@@ -195,11 +185,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class scarf_package [[#scarf_package]] {
-
+class scarf_package {
 }
-
 @enduml
 ```
 

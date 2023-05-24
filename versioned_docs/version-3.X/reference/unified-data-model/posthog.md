@@ -35,8 +35,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -48,10 +47,7 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class posthog_resource [[#posthog_resource]] {
-
-}
-class posthog_event [[#posthog_event]] {
+class posthog_event {
 **project_id**: int64
 **count**: int64
 **description**: string
@@ -67,9 +63,10 @@ class posthog_event [[#posthog_event]] {
 **last_calculated_at**: string
 **post_to_slack**: boolean
 }
+class posthog_resource {
+}
 posthog_resource <|--- posthog_event
 resource <|--- posthog_event
-
 @enduml
 ```
 
@@ -103,11 +100,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class posthog_event [[#posthog_event]] {
-
+class posthog_event {
 }
-
 @enduml
 ```
 
@@ -142,8 +136,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -155,13 +148,11 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class account [[#account]] {
-
+class account {
 }
-class posthog_resource [[#posthog_resource]] {
-
+class posthog_resource {
 }
-class posthog_project [[#posthog_project]] {
+class posthog_project {
 **project_id**: int64
 **app_urls**: string[]
 **slack_incoming_webhook**: string[]
@@ -183,7 +174,6 @@ class posthog_project [[#posthog_project]] {
 resource <|--- account
 posthog_resource <|--- posthog_project
 account <|--- posthog_project
-
 @enduml
 ```
 
@@ -217,11 +207,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class posthog_project [[#posthog_project]] {
-
+class posthog_project {
 }
-
 @enduml
 ```
 

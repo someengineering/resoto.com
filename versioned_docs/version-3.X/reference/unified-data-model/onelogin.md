@@ -35,8 +35,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -48,19 +47,15 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class account [[#account]] {
-
+class onelogin_resource {
 }
-class onelogin_resource [[#onelogin_resource]] {
-
+class account {
 }
-class onelogin_account [[#onelogin_account]] {
-
+class onelogin_account {
 }
 resource <|--- account
 onelogin_resource <|--- onelogin_account
 account <|--- onelogin_account
-
 @enduml
 ```
 
@@ -94,11 +89,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class onelogin_account [[#onelogin_account]] {
-
+class onelogin_account {
 }
-
 @enduml
 ```
 
@@ -133,8 +125,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -146,19 +137,15 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class region [[#region]] {
-
+class onelogin_region {
 }
-class onelogin_region [[#onelogin_region]] {
-
+class onelogin_resource {
 }
-class onelogin_resource [[#onelogin_resource]] {
-
+class region {
 }
-resource <|--- region
 onelogin_resource <|--- onelogin_region
 region <|--- onelogin_region
-
+resource <|--- region
 @enduml
 ```
 
@@ -192,11 +179,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class onelogin_region [[#onelogin_region]] {
-
+class onelogin_region {
 }
-
 @enduml
 ```
 
@@ -231,8 +215,9 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class user {
+}
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -244,13 +229,9 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class user [[#user]] {
-
+class onelogin_resource {
 }
-class onelogin_resource [[#onelogin_resource]] {
-
-}
-class onelogin_user [[#onelogin_user]] {
+class onelogin_user {
 **user_id**: int64
 **external_id**: string
 **email**: string
@@ -290,7 +271,6 @@ class onelogin_user [[#onelogin_user]] {
 resource <|--- user
 onelogin_resource <|--- onelogin_user
 user <|--- onelogin_user
-
 @enduml
 ```
 
@@ -324,11 +304,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class onelogin_user [[#onelogin_user]] {
-
+class onelogin_user {
 }
-
 @enduml
 ```
 

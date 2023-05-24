@@ -35,28 +35,24 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
+class account {
+}
+class github_account {
+}
+class resource {
 **age**: duration
-**mtime**: datetime
-**last_update**: duration
 **atime**: datetime
-**last_access**: duration
+**ctime**: datetime
+**id**: string
 **kind**: string
-}
-class account [[#account]] {
-
-}
-class github_account [[#github_account]] {
-
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
 }
 resource <|--- account
 account <|--- github_account
-
 @enduml
 ```
 
@@ -90,11 +86,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class github_account [[#github_account]] {
-
+class github_account {
 }
-
 @enduml
 ```
 
@@ -129,23 +122,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class github_resource [[#github_resource]] {
-
-}
-class github_org [[#github_org]] {
+class github_org {
 **avatar_url**: string
 **billing_email**: string
 **blog**: string
@@ -164,12 +141,13 @@ class github_org [[#github_org]] {
 **has_repository_projects**: boolean
 **hooks_url**: string
 **html_url**: string
-**org_id**: int64
 **issues_url**: string
-**org_location**: string
 **login**: string
 **members_can_create_repositories**: boolean
 **members_url**: string
+**org_id**: int64
+**org_location**: string
+**org_type**: string
 **owned_private_repos**: int64
 **private_gists**: int64
 **public_gists**: int64
@@ -178,13 +156,25 @@ class github_org [[#github_org]] {
 **repos_url**: string
 **total_private_repos**: int64
 **two_factor_requirement_enabled**: boolean
-**org_type**: string
 **updated_at**: datetime
 **url**: string
 }
+class github_resource {
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 github_resource <|--- github_org
 resource <|--- github_org
-
 @enduml
 ```
 
@@ -218,11 +208,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class github_org [[#github_org]] {
-
+class github_org {
 }
-
 @enduml
 ```
 
@@ -257,20 +244,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class github_pull_request [[#github_pull_request]] {
+class github_pull_request {
 **additions**: int64
 **body**: string
 **changed_files**: int64
@@ -284,8 +258,8 @@ class github_pull_request [[#github_pull_request]] {
 **diff_url**: string
 **draft**: boolean
 **html_url**: string
-**pr_id**: int64
 **issue_url**: string
+**maintainer_can_modify**: boolean
 **merge_commit_sha**: string
 **mergeable**: boolean
 **mergeable_state**: string
@@ -293,6 +267,7 @@ class github_pull_request [[#github_pull_request]] {
 **merged_at**: datetime
 **number**: int64
 **patch_url**: string
+**pr_id**: int64
 **rebaseable**: boolean
 **review_comments**: int64
 **review_comments_url**: string
@@ -300,14 +275,23 @@ class github_pull_request [[#github_pull_request]] {
 **title**: string
 **updated_at**: datetime
 **url**: string
-**maintainer_can_modify**: boolean
 }
-class github_resource [[#github_resource]] {
-
+class github_resource {
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
 }
 github_resource <|--- github_pull_request
 resource <|--- github_pull_request
-
 @enduml
 ```
 
@@ -341,11 +325,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class github_pull_request [[#github_pull_request]] {
-
+class github_pull_request {
 }
-
 @enduml
 ```
 
@@ -380,28 +361,24 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
+class github_region {
+}
+class region {
+}
+class resource {
 **age**: duration
-**mtime**: datetime
-**last_update**: duration
 **atime**: datetime
-**last_access**: duration
+**ctime**: datetime
+**id**: string
 **kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
 }
-class region [[#region]] {
-
-}
-class github_region [[#github_region]] {
-
-}
-resource <|--- region
 region <|--- github_region
-
+resource <|--- region
 @enduml
 ```
 
@@ -435,11 +412,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class github_region [[#github_region]] {
-
+class github_region {
 }
-
 @enduml
 ```
 
@@ -474,53 +448,12 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class github_repo_clones [[#github_repo_clones]] {
-**timestamp**: datetime
-**count**: int64
-**uniques**: int64
-}
-class github_repo_view [[#github_repo_view]] {
-**timestamp**: datetime
-**count**: int64
-**uniques**: int64
-}
-class github_repo_views_traffic [[#github_repo_views_traffic]] {
-**count**: int64
-**uniques**: int64
-**views**: github_repo_view[]
-}
-class github_repo_clones_traffic [[#github_repo_clones_traffic]] {
-**count**: int64
-**uniques**: int64
-**clones**: github_repo_clones[]
-}
-class github_repo_top_referrer [[#github_repo_top_referrer]] {
-**referrer**: string
-**count**: int64
-**uniques**: int64
-}
-class github_resource [[#github_resource]] {
-
-}
-class github_repo [[#github_repo]] {
+class github_repo {
 **allow_merge_commit**: boolean
 **allow_rebase_merge**: boolean
 **allow_squash_merge**: boolean
-**archived**: boolean
 **archive_url**: string
+**archived**: boolean
 **assignees_url**: string
 **blobs_url**: string
 **branches_url**: string
@@ -557,7 +490,6 @@ class github_repo [[#github_repo]] {
 **homepage**: string
 **hooks_url**: string
 **html_url**: string
-**repo_id**: int64
 **issue_comment_url**: string
 **issue_events_url**: string
 **issues_url**: string
@@ -578,6 +510,7 @@ class github_repo [[#github_repo]] {
 **pulls_url**: string
 **pushed_at**: datetime
 **releases_url**: string
+**repo_id**: int64
 **size**: int64
 **ssh_url**: string
 **stargazers_count**: int64
@@ -594,25 +527,63 @@ class github_repo [[#github_repo]] {
 **trees_url**: string
 **updated_at**: datetime
 **url**: string
+**views_traffic**: github_repo_views_traffic
 **watchers**: int64
 **watchers_count**: int64
-**views_traffic**: github_repo_views_traffic
 }
-class github_repo_top_path [[#github_repo_top_path]] {
-**title**: string
-**path**: string
+class github_repo_clones {
+**count**: int64
+**timestamp**: datetime
+**uniques**: int64
+}
+class github_repo_clones_traffic {
+**clones**: github_repo_clones[]
 **count**: int64
 **uniques**: int64
 }
-github_repo_views_traffic --> github_repo_view
-github_repo_clones_traffic --> github_repo_clones
-github_resource <|--- github_repo
-resource <|--- github_repo
+class github_repo_top_path {
+**count**: int64
+**path**: string
+**title**: string
+**uniques**: int64
+}
+class github_repo_top_referrer {
+**count**: int64
+**referrer**: string
+**uniques**: int64
+}
+class github_repo_view {
+**count**: int64
+**timestamp**: datetime
+**uniques**: int64
+}
+class github_repo_views_traffic {
+**count**: int64
+**uniques**: int64
+**views**: github_repo_view[]
+}
+class github_resource {
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 github_repo --> github_repo_clones_traffic
 github_repo --> github_repo_top_path
 github_repo --> github_repo_top_referrer
 github_repo --> github_repo_views_traffic
-
+github_resource <|--- github_repo
+resource <|--- github_repo
+github_repo_clones_traffic --> github_repo_clones
+github_repo_views_traffic --> github_repo_view
 @enduml
 ```
 
@@ -646,11 +617,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class github_repo [[#github_repo]] {
-
+class github_repo {
 }
-
 @enduml
 ```
 
@@ -685,26 +653,9 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class github_resource {
 }
-class user [[#user]] {
-
-}
-class github_resource [[#github_resource]] {
-
-}
-class github_user [[#github_user]] {
+class github_user {
 **avatar_url**: string
 **bio**: string
 **blog**: string
@@ -723,9 +674,7 @@ class github_user [[#github_user]] {
 **gravatar_id**: string
 **hireable**: boolean
 **html_url**: string
-**user_id**: int64
 **invitation_teams_url**: string
-**user_location**: string
 **login**: string
 **name**: string
 **node_id**: int64
@@ -744,14 +693,29 @@ class github_user [[#github_user]] {
 **team_count**: int64
 **total_private_repos**: int64
 **twitter_username**: string
-**user_type**: string
 **updated_at**: datetime
 **url**: string
+**user_id**: int64
+**user_location**: string
+**user_type**: string
 }
-resource <|--- user
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class user {
+}
 github_resource <|--- github_user
 user <|--- github_user
-
+resource <|--- user
 @enduml
 ```
 
@@ -785,11 +749,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class github_user [[#github_user]] {
-
+class github_user {
 }
-
 @enduml
 ```
 

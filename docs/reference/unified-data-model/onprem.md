@@ -36,37 +36,34 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class instance [[#instance]] {
+class instance {
 **instance_cores**: double
 **instance_memory**: double
-**instance_type**: string
 **instance_status**: instance_status
+**instance_type**: string
 }
-class onprem_resource [[#onprem_resource]] {
-
-}
-class onprem_instance [[#onprem_instance]] {
+class onprem_instance {
 **network_device**: string
 **network_ip4**: string
 **network_ip6**: string
 }
+class onprem_resource {
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 resource <|--- instance
-onprem_resource <|--- onprem_instance
 instance <|--- onprem_instance
-
+onprem_resource <|--- onprem_instance
 @enduml
 ```
 
@@ -100,11 +97,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class onprem_instance [[#onprem_instance]] {
-
+class onprem_instance {
 }
-
 @enduml
 ```
 
@@ -139,28 +133,24 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
+class account {
+}
+class onprem_location {
+}
+class resource {
 **age**: duration
-**mtime**: datetime
-**last_update**: duration
 **atime**: datetime
-**last_access**: duration
+**ctime**: datetime
+**id**: string
 **kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
 }
-class onprem_location [[#onprem_location]] {
-
-}
-class account [[#account]] {
-
-}
-account <|--- onprem_location
 resource <|--- account
-
+account <|--- onprem_location
 @enduml
 ```
 
@@ -194,11 +184,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class onprem_location [[#onprem_location]] {
-
+class onprem_location {
 }
-
 @enduml
 ```
 
@@ -233,32 +220,27 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
+class network {
+}
+class onprem_network {
+}
+class onprem_resource {
+}
+class resource {
 **age**: duration
-**mtime**: datetime
-**last_update**: duration
 **atime**: datetime
-**last_access**: duration
+**ctime**: datetime
+**id**: string
 **kind**: string
-}
-class network [[#network]] {
-
-}
-class onprem_resource [[#onprem_resource]] {
-
-}
-class onprem_network [[#onprem_network]] {
-
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
 }
 resource <|--- network
-onprem_resource <|--- onprem_network
 network <|--- onprem_network
-
+onprem_resource <|--- onprem_network
 @enduml
 ```
 
@@ -292,11 +274,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class onprem_network [[#onprem_network]] {
-
+class onprem_network {
 }
-
 @enduml
 ```
 
@@ -331,28 +310,24 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
+class onprem_region {
+}
+class region {
+}
+class resource {
 **age**: duration
-**mtime**: datetime
-**last_update**: duration
 **atime**: datetime
-**last_access**: duration
+**ctime**: datetime
+**id**: string
 **kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
 }
-class region [[#region]] {
-
-}
-class onprem_region [[#onprem_region]] {
-
-}
-resource <|--- region
 region <|--- onprem_region
-
+resource <|--- region
 @enduml
 ```
 
@@ -386,11 +361,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class onprem_region [[#onprem_region]] {
-
+class onprem_region {
 }
-
 @enduml
 ```
 

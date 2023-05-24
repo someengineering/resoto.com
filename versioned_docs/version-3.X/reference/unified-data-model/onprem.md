@@ -36,8 +36,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -49,24 +48,22 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class onprem_instance [[#onprem_instance]] {
-**network_device**: string
-**network_ip4**: string
-**network_ip6**: string
+class onprem_resource {
 }
-class onprem_resource [[#onprem_resource]] {
-
-}
-class instance [[#instance]] {
+class instance {
 **instance_cores**: double
 **instance_memory**: double
 **instance_type**: string
 **instance_status**: instance_status
 }
+class onprem_instance {
+**network_device**: string
+**network_ip4**: string
+**network_ip6**: string
+}
+resource <|--- instance
 onprem_resource <|--- onprem_instance
 instance <|--- onprem_instance
-resource <|--- instance
-
 @enduml
 ```
 
@@ -100,11 +97,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class onprem_instance [[#onprem_instance]] {
-
+class onprem_instance {
 }
-
 @enduml
 ```
 
@@ -139,8 +133,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -152,15 +145,12 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class account [[#account]] {
-
+class account {
 }
-class onprem_location [[#onprem_location]] {
-
+class onprem_location {
 }
 resource <|--- account
 account <|--- onprem_location
-
 @enduml
 ```
 
@@ -194,11 +184,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class onprem_location [[#onprem_location]] {
-
+class onprem_location {
 }
-
 @enduml
 ```
 
@@ -233,8 +220,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -246,19 +232,15 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class network [[#network]] {
-
+class onprem_network {
 }
-class onprem_resource [[#onprem_resource]] {
-
+class onprem_resource {
 }
-class onprem_network [[#onprem_network]] {
-
+class network {
 }
-resource <|--- network
 onprem_resource <|--- onprem_network
 network <|--- onprem_network
-
+resource <|--- network
 @enduml
 ```
 
@@ -292,11 +274,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class onprem_network [[#onprem_network]] {
-
+class onprem_network {
 }
-
 @enduml
 ```
 
@@ -331,8 +310,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -344,15 +322,12 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class region [[#region]] {
-
+class region {
 }
-class onprem_region [[#onprem_region]] {
-
+class onprem_region {
 }
 resource <|--- region
 region <|--- onprem_region
-
 @enduml
 ```
 
@@ -386,11 +361,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class onprem_region [[#onprem_region]] {
-
+class onprem_region {
 }
-
 @enduml
 ```
 

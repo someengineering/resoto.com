@@ -35,34 +35,30 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
+class account {
+}
+class resource {
 **age**: duration
-**mtime**: datetime
-**last_update**: duration
 **atime**: datetime
-**last_access**: duration
+**ctime**: datetime
+**id**: string
 **kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
 }
-class account [[#account]] {
-
-}
-class scarf_resource [[#scarf_resource]] {
-
-}
-class scarf_organization [[#scarf_organization]] {
-**description**: string
+class scarf_organization {
 **billing_email**: string
+**description**: string
 **website**: string
 }
+class scarf_resource {
+}
 resource <|--- account
-scarf_resource <|--- scarf_organization
 account <|--- scarf_organization
-
+scarf_resource <|--- scarf_organization
 @enduml
 ```
 
@@ -96,11 +92,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class scarf_organization [[#scarf_organization]] {
-
+class scarf_organization {
 }
-
 @enduml
 ```
 
@@ -135,33 +128,30 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
+class resource {
 **age**: duration
-**mtime**: datetime
-**last_update**: duration
 **atime**: datetime
-**last_access**: duration
+**ctime**: datetime
+**id**: string
 **kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
 }
-class scarf_resource [[#scarf_resource]] {
-
-}
-class scarf_package [[#scarf_package]] {
-**short_description**: string
-**long_description**: string
-**website**: string
+class scarf_package {
 **library_type**: string
+**long_description**: string
 **owner**: string
 **pull_count**: int64
+**short_description**: string
+**website**: string
 }
-scarf_resource <|--- scarf_package
+class scarf_resource {
+}
 resource <|--- scarf_package
-
+scarf_resource <|--- scarf_package
 @enduml
 ```
 
@@ -195,11 +185,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class scarf_package [[#scarf_package]] {
-
+class scarf_package {
 }
-
 @enduml
 ```
 

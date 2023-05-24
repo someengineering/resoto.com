@@ -42,40 +42,38 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
+class gcp_accelerator_type {
+**type_maximum_cards_per_instance**: int64
 }
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class resource {
 **age**: duration
-**mtime**: datetime
-**last_update**: duration
 **atime**: datetime
-**last_access**: duration
+**ctime**: datetime
+**id**: string
 **kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
 }
-class gcp_accelerator_type [[#gcp_accelerator_type]] {
-**type_maximum_cards_per_instance**: int64
-}
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_accelerator_type
 gcp_accelerator_type --> gcp_deprecation_status
-
+gcp_resource <|--- gcp_accelerator_type
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
 @enduml
 ```
 
@@ -109,11 +107,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_accelerator_type [[#gcp_accelerator_type]] {
-
+class gcp_accelerator_type {
 }
-
 @enduml
 ```
 
@@ -148,33 +143,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
-**deleted**: string
-**deprecated**: string
-**obsolete**: string
-**replacement**: string
-**state**: string
-}
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class gcp_address [[#gcp_address]] {
+class gcp_address {
 **address**: string
 **address_type**: string
 **ip_version**: string
@@ -187,11 +156,35 @@ class gcp_address [[#gcp_address]] {
 **subnetwork**: string
 **users**: string[]
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_address
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_address --> gcp_deprecation_status
-
+gcp_resource <|--- gcp_address
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
 @enduml
 ```
 
@@ -225,15 +218,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_subnetwork [[#gcp_subnetwork]] {
-
+class gcp_address {
 }
-class gcp_address [[#gcp_address]] {
-
+class gcp_subnetwork {
 }
 gcp_subnetwork -[#1A83AF]-> gcp_address
-
 @enduml
 ```
 
@@ -268,41 +257,19 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
+class gcp_autoscaler {
+**autoscaler_autoscaling_policy**: gcp_autoscaling_policy
+**autoscaler_recommended_size**: int64
+**autoscaler_scaling_schedule_status**: dictionary[string, gcp_scaling_schedule_status]
+**autoscaler_status**: string
+**autoscaler_status_details**: gcp_autoscaler_status_details[]
+**autoscaler_target**: string
 }
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
-**deleted**: string
-**deprecated**: string
-**obsolete**: string
-**replacement**: string
-**state**: string
+class gcp_autoscaler_status_details {
+**message**: string
+**type**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class gcp_autoscaling_policy_scaling_schedule [[#gcp_autoscaling_policy_scaling_schedule]] {
-**description**: string
-**disabled**: boolean
-**duration_sec**: int64
-**min_required_replicas**: int64
-**schedule**: string
-**time_zone**: string
-}
-class gcp_autoscaling_policy [[#gcp_autoscaling_policy]] {
+class gcp_autoscaling_policy {
 **cool_down_period_sec**: int64
 **cpu_utilization**: gcp_autoscaling_policy_cpu_utilization
 **custom_metric_utilizations**: gcp_autoscaling_policy_custom_metric_utilization[]
@@ -313,56 +280,76 @@ class gcp_autoscaling_policy [[#gcp_autoscaling_policy]] {
 **scale_in_control**: gcp_autoscaling_policy_scale_in_control
 **scaling_schedules**: dictionary[string, gcp_autoscaling_policy_scaling_schedule]
 }
-class gcp_autoscaling_policy_cpu_utilization [[#gcp_autoscaling_policy_cpu_utilization]] {
+class gcp_autoscaling_policy_cpu_utilization {
 **predictive_method**: string
 **utilization_target**: double
 }
-class gcp_autoscaling_policy_custom_metric_utilization [[#gcp_autoscaling_policy_custom_metric_utilization]] {
+class gcp_autoscaling_policy_custom_metric_utilization {
 **filter**: string
 **metric**: string
 **single_instance_assignment**: double
 **utilization_target**: double
 **utilization_target_type**: string
 }
-class gcp_autoscaling_policy_scale_in_control [[#gcp_autoscaling_policy_scale_in_control]] {
+class gcp_autoscaling_policy_scale_in_control {
 **max_scaled_in_replicas**: gcp_fixed_or_percent
 **time_window_sec**: int64
 }
-class gcp_fixed_or_percent [[#gcp_fixed_or_percent]] {
+class gcp_autoscaling_policy_scaling_schedule {
+**description**: string
+**disabled**: boolean
+**duration_sec**: int64
+**min_required_replicas**: int64
+**schedule**: string
+**time_zone**: string
+}
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
+}
+class gcp_fixed_or_percent {
 **calculated**: int64
 **fixed**: int64
 **percent**: int64
 }
-class gcp_scaling_schedule_status [[#gcp_scaling_schedule_status]] {
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class gcp_scaling_schedule_status {
 **last_start_time**: datetime
 **next_start_time**: datetime
 **scaling_schedule_status_state**: string
 }
-class gcp_autoscaler [[#gcp_autoscaler]] {
-**autoscaler_autoscaling_policy**: gcp_autoscaling_policy
-**autoscaler_recommended_size**: int64
-**autoscaler_scaling_schedule_status**: dictionary[string, gcp_scaling_schedule_status]
-**autoscaler_status**: string
-**autoscaler_status_details**: gcp_autoscaler_status_details[]
-**autoscaler_target**: string
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
 }
-class gcp_autoscaler_status_details [[#gcp_autoscaler_status_details]] {
-**message**: string
-**type**: string
-}
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
+gcp_autoscaler --> gcp_autoscaler_status_details
+gcp_autoscaler --> gcp_autoscaling_policy
+gcp_autoscaler --> gcp_deprecation_status
+gcp_resource <|--- gcp_autoscaler
+gcp_autoscaler --> gcp_scaling_schedule_status
 gcp_autoscaling_policy --> gcp_autoscaling_policy_cpu_utilization
 gcp_autoscaling_policy --> gcp_autoscaling_policy_custom_metric_utilization
 gcp_autoscaling_policy --> gcp_autoscaling_policy_scale_in_control
 gcp_autoscaling_policy --> gcp_autoscaling_policy_scaling_schedule
 gcp_autoscaling_policy_scale_in_control --> gcp_fixed_or_percent
-gcp_resource <|--- gcp_autoscaler
-gcp_autoscaler --> gcp_autoscaling_policy
-gcp_autoscaler --> gcp_scaling_schedule_status
-gcp_autoscaler --> gcp_autoscaler_status_details
-gcp_autoscaler --> gcp_deprecation_status
-
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
 @enduml
 ```
 
@@ -396,15 +383,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_instance_group_manager [[#gcp_instance_group_manager]] {
-
+class gcp_autoscaler {
 }
-class gcp_autoscaler [[#gcp_autoscaler]] {
-
+class gcp_instance_group_manager {
 }
 gcp_autoscaler -[#1A83AF]-> gcp_instance_group_manager
-
 @enduml
 ```
 
@@ -439,41 +422,15 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
-**deleted**: string
-**deprecated**: string
-**obsolete**: string
-**replacement**: string
-**state**: string
-}
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class gcp_backend_bucket [[#gcp_backend_bucket]] {
-**bucket_name**: string
+class gcp_backend_bucket {
 **backend_bucket_cdn_policy**: gcp_backend_bucket_cdn_policy
+**bucket_name**: string
 **compression_mode**: string
 **custom_response_headers**: string[]
 **edge_security_policy**: string
 **enable_cdn**: boolean
 }
-class gcp_backend_bucket_cdn_policy [[#gcp_backend_bucket_cdn_policy]] {
+class gcp_backend_bucket_cdn_policy {
 **bypass_cache_on_request_headers**: string[]
 **cache_key_policy**: gcp_backend_bucket_cdn_policy_cache_key_policy
 **cache_mode**: string
@@ -487,22 +444,46 @@ class gcp_backend_bucket_cdn_policy [[#gcp_backend_bucket_cdn_policy]] {
 **signed_url_cache_max_age_sec**: string
 **signed_url_key_names**: string[]
 }
-class gcp_backend_bucket_cdn_policy_cache_key_policy [[#gcp_backend_bucket_cdn_policy_cache_key_policy]] {
+class gcp_backend_bucket_cdn_policy_cache_key_policy {
 **include_http_headers**: string[]
 **query_string_whitelist**: string[]
 }
-class gcp_backend_bucket_cdn_policy_negative_caching_policy [[#gcp_backend_bucket_cdn_policy_negative_caching_policy]] {
+class gcp_backend_bucket_cdn_policy_negative_caching_policy {
 **code**: int64
 **ttl**: int64
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_backend_bucket
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_backend_bucket --> gcp_backend_bucket_cdn_policy
 gcp_backend_bucket --> gcp_deprecation_status
+gcp_resource <|--- gcp_backend_bucket
 gcp_backend_bucket_cdn_policy --> gcp_backend_bucket_cdn_policy_cache_key_policy
 gcp_backend_bucket_cdn_policy --> gcp_backend_bucket_cdn_policy_negative_caching_policy
-
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
 @enduml
 ```
 
@@ -536,11 +517,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_backend_bucket [[#gcp_backend_bucket]] {
-
+class gcp_backend_bucket {
 }
-
 @enduml
 ```
 
@@ -575,11 +553,25 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_backend_service [[#gcp_backend_service]] {
+class gcp_backend {
+**balancing_mode**: string
+**capacity_scaler**: double
+**description**: string
+**failover**: boolean
+**group**: string
+**max_connections**: int64
+**max_connections_per_endpoint**: int64
+**max_connections_per_instance**: int64
+**max_rate**: int64
+**max_rate_per_endpoint**: double
+**max_rate_per_instance**: double
+**max_utilization**: double
+}
+class gcp_backend_service {
 **affinity_cookie_ttl_sec**: int64
 **backend_service_backends**: gcp_backend[]
 **backend_service_cdn_policy**: gcp_backend_service_cdn_policy
+**backend_service_log_config**: gcp_backend_service_log_config
 **circuit_breakers**: gcp_circuit_breakers
 **compression_mode**: string
 **connection_draining**: int64
@@ -596,7 +588,6 @@ class gcp_backend_service [[#gcp_backend_service]] {
 **load_balancing_scheme**: string
 **locality_lb_policies**: gcp_backend_service_locality_load_balancing_policy_config[]
 **locality_lb_policy**: string
-**backend_service_log_config**: gcp_backend_service_log_config
 **max_stream_duration**: gcp_duration
 **network**: string
 **outlier_detection**: gcp_outlier_detection
@@ -610,27 +601,7 @@ class gcp_backend_service [[#gcp_backend_service]] {
 **subsetting**: string
 **timeout_sec**: int64
 }
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_backend [[#gcp_backend]] {
-**balancing_mode**: string
-**capacity_scaler**: double
-**description**: string
-**failover**: boolean
-**group**: string
-**max_connections**: int64
-**max_connections_per_endpoint**: int64
-**max_connections_per_instance**: int64
-**max_rate**: int64
-**max_rate_per_endpoint**: double
-**max_rate_per_instance**: double
-**max_utilization**: double
-}
-class gcp_backend_service_cdn_policy [[#gcp_backend_service_cdn_policy]] {
+class gcp_backend_service_cdn_policy {
 **bypass_cache_on_request_headers**: string[]
 **cache_key_policy**: gcp_cache_key_policy
 **cache_mode**: string
@@ -644,7 +615,40 @@ class gcp_backend_service_cdn_policy [[#gcp_backend_service_cdn_policy]] {
 **signed_url_cache_max_age_sec**: string
 **signed_url_key_names**: string[]
 }
-class gcp_cache_key_policy [[#gcp_cache_key_policy]] {
+class gcp_backend_service_cdn_policy_negative_caching_policy {
+**code**: int64
+**ttl**: int64
+}
+class gcp_backend_service_connection_tracking_policy {
+**connection_persistence_on_unhealthy_backends**: string
+**enable_strong_affinity**: boolean
+**idle_timeout_sec**: int64
+**tracking_mode**: string
+}
+class gcp_backend_service_failover_policy {
+**disable_connection_drain_on_failover**: boolean
+**drop_traffic_if_unhealthy**: boolean
+**failover_ratio**: double
+}
+class gcp_backend_service_iap {
+**enabled**: boolean
+**oauth2_client_id**: string
+**oauth2_client_secret**: string
+**oauth2_client_secret_sha256**: string
+}
+class gcp_backend_service_locality_load_balancing_policy_config {
+**custom_policy**: gcp_backend_service_locality_load_balancing_policy_config_custom_policy
+**policy**: string
+}
+class gcp_backend_service_locality_load_balancing_policy_config_custom_policy {
+**data**: string
+**name**: string
+}
+class gcp_backend_service_log_config {
+**enable**: boolean
+**sample_rate**: double
+}
+class gcp_cache_key_policy {
 **include_host**: boolean
 **include_http_headers**: string[]
 **include_named_cookies**: string[]
@@ -653,61 +657,35 @@ class gcp_cache_key_policy [[#gcp_cache_key_policy]] {
 **query_string_blacklist**: string[]
 **query_string_whitelist**: string[]
 }
-class gcp_backend_service_cdn_policy_negative_caching_policy [[#gcp_backend_service_cdn_policy_negative_caching_policy]] {
-**code**: int64
-**ttl**: int64
-}
-class gcp_circuit_breakers [[#gcp_circuit_breakers]] {
+class gcp_circuit_breakers {
 **max_connections**: int64
 **max_pending_requests**: int64
 **max_requests**: int64
 **max_requests_per_connection**: int64
 **max_retries**: int64
 }
-class gcp_backend_service_connection_tracking_policy [[#gcp_backend_service_connection_tracking_policy]] {
-**connection_persistence_on_unhealthy_backends**: string
-**enable_strong_affinity**: boolean
-**idle_timeout_sec**: int64
-**tracking_mode**: string
-}
-class gcp_consistent_hash_load_balancer_settings [[#gcp_consistent_hash_load_balancer_settings]] {
+class gcp_consistent_hash_load_balancer_settings {
 **http_cookie**: gcp_consistent_hash_load_balancer_settings_http_cookie
 **http_header_name**: string
 **minimum_ring_size**: string
 }
-class gcp_consistent_hash_load_balancer_settings_http_cookie [[#gcp_consistent_hash_load_balancer_settings_http_cookie]] {
+class gcp_consistent_hash_load_balancer_settings_http_cookie {
 **name**: string
 **path**: string
 **ttl**: gcp_duration
 }
-class gcp_duration [[#gcp_duration]] {
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
+}
+class gcp_duration {
 **nanos**: int64
 **seconds**: string
 }
-class gcp_backend_service_failover_policy [[#gcp_backend_service_failover_policy]] {
-**disable_connection_drain_on_failover**: boolean
-**drop_traffic_if_unhealthy**: boolean
-**failover_ratio**: double
-}
-class gcp_backend_service_iap [[#gcp_backend_service_iap]] {
-**enabled**: boolean
-**oauth2_client_id**: string
-**oauth2_client_secret**: string
-**oauth2_client_secret_sha256**: string
-}
-class gcp_backend_service_locality_load_balancing_policy_config [[#gcp_backend_service_locality_load_balancing_policy_config]] {
-**custom_policy**: gcp_backend_service_locality_load_balancing_policy_config_custom_policy
-**policy**: string
-}
-class gcp_backend_service_locality_load_balancing_policy_config_custom_policy [[#gcp_backend_service_locality_load_balancing_policy_config_custom_policy]] {
-**data**: string
-**name**: string
-}
-class gcp_backend_service_log_config [[#gcp_backend_service_log_config]] {
-**enable**: boolean
-**sample_rate**: double
-}
-class gcp_outlier_detection [[#gcp_outlier_detection]] {
+class gcp_outlier_detection {
 **base_ejection_time**: gcp_duration
 **consecutive_errors**: int64
 **consecutive_gateway_failure**: int64
@@ -720,52 +698,50 @@ class gcp_outlier_detection [[#gcp_outlier_detection]] {
 **success_rate_request_volume**: int64
 **success_rate_stdev_factor**: int64
 }
-class gcp_security_settings [[#gcp_security_settings]] {
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class gcp_security_settings {
 **client_tls_policy**: string
 **subject_alt_names**: string[]
 }
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
-**deleted**: string
-**deprecated**: string
-**obsolete**: string
-**replacement**: string
-**state**: string
-}
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
+class resource {
 **age**: duration
-**mtime**: datetime
-**last_update**: duration
 **atime**: datetime
-**last_access**: duration
+**ctime**: datetime
+**id**: string
 **kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
 }
-gcp_resource <|--- gcp_backend_service
 gcp_backend_service --> gcp_backend
 gcp_backend_service --> gcp_backend_service_cdn_policy
-gcp_backend_service --> gcp_circuit_breakers
 gcp_backend_service --> gcp_backend_service_connection_tracking_policy
-gcp_backend_service --> gcp_consistent_hash_load_balancer_settings
 gcp_backend_service --> gcp_backend_service_failover_policy
 gcp_backend_service --> gcp_backend_service_iap
 gcp_backend_service --> gcp_backend_service_locality_load_balancing_policy_config
 gcp_backend_service --> gcp_backend_service_log_config
+gcp_backend_service --> gcp_circuit_breakers
+gcp_backend_service --> gcp_consistent_hash_load_balancer_settings
+gcp_backend_service --> gcp_deprecation_status
 gcp_backend_service --> gcp_duration
 gcp_backend_service --> gcp_outlier_detection
+gcp_resource <|--- gcp_backend_service
 gcp_backend_service --> gcp_security_settings
-gcp_backend_service --> gcp_deprecation_status
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_backend_service_cdn_policy --> gcp_cache_key_policy
 gcp_backend_service_cdn_policy --> gcp_backend_service_cdn_policy_negative_caching_policy
+gcp_backend_service_cdn_policy --> gcp_cache_key_policy
+gcp_backend_service_locality_load_balancing_policy_config --> gcp_backend_service_locality_load_balancing_policy_config_custom_policy
 gcp_consistent_hash_load_balancer_settings --> gcp_consistent_hash_load_balancer_settings_http_cookie
 gcp_consistent_hash_load_balancer_settings_http_cookie --> gcp_duration
-gcp_backend_service_locality_load_balancing_policy_config --> gcp_backend_service_locality_load_balancing_policy_config_custom_policy
 gcp_outlier_detection --> gcp_duration
-
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
 @enduml
 ```
 
@@ -799,53 +775,40 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_backend_service [[#gcp_backend_service]] {
-
+class gcp_backend_service {
 }
-class gcp_target_tcp_proxy [[#gcp_target_tcp_proxy]] {
-
+class gcp_health_check {
 }
-class gcp_target_ssl_proxy [[#gcp_target_ssl_proxy]] {
-
+class gcp_http_health_check {
 }
-class gcp_instance_group [[#gcp_instance_group]] {
-
+class gcp_https_health_check {
 }
-class gcp_health_check [[#gcp_health_check]] {
-
+class gcp_instance_group {
 }
-class gcp_network_endpoint_group [[#gcp_network_endpoint_group]] {
-
+class gcp_network {
 }
-class gcp_http_health_check [[#gcp_http_health_check]] {
-
+class gcp_network_endpoint_group {
 }
-class gcp_https_health_check [[#gcp_https_health_check]] {
-
+class gcp_service_attachment {
 }
-class gcp_network [[#gcp_network]] {
-
+class gcp_target_ssl_proxy {
 }
-class gcp_service_attachment [[#gcp_service_attachment]] {
-
+class gcp_target_tcp_proxy {
 }
-class gcp_url_map [[#gcp_url_map]] {
-
+class gcp_url_map {
 }
-gcp_backend_service -[#1A83AF]-> gcp_instance_group
 gcp_backend_service -[#1A83AF]-> gcp_health_check
-gcp_backend_service -[#1A83AF]-> gcp_network_endpoint_group
 gcp_backend_service -[#1A83AF]-> gcp_http_health_check
 gcp_backend_service -[#1A83AF]-> gcp_https_health_check
-gcp_target_tcp_proxy -[#1A83AF]-> gcp_backend_service
-gcp_target_ssl_proxy -[#1A83AF]-> gcp_backend_service
+gcp_backend_service -[#1A83AF]-> gcp_instance_group
+gcp_backend_service -[#1A83AF]-> gcp_network_endpoint_group
+gcp_network -[#1A83AF]-> gcp_backend_service
 gcp_network -[#1A83AF]-> gcp_instance_group
 gcp_network -[#1A83AF]-> gcp_network_endpoint_group
-gcp_network -[#1A83AF]-> gcp_backend_service
 gcp_service_attachment -[#1A83AF]-> gcp_backend_service
+gcp_target_ssl_proxy -[#1A83AF]-> gcp_backend_service
+gcp_target_tcp_proxy -[#1A83AF]-> gcp_backend_service
 gcp_url_map -[#1A83AF]-> gcp_backend_service
-
 @enduml
 ```
 
@@ -880,42 +843,40 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
+class gcp_billing_account {
+**display_name**: string
+**master_billing_account**: string
+**open**: boolean
 }
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class resource {
 **age**: duration
-**mtime**: datetime
-**last_update**: duration
 **atime**: datetime
-**last_access**: duration
+**ctime**: datetime
+**id**: string
 **kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
 }
-class gcp_billing_account [[#gcp_billing_account]] {
-**display_name**: string
-**master_billing_account**: string
-**open**: boolean
-}
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_billing_account
 gcp_billing_account --> gcp_deprecation_status
-
+gcp_resource <|--- gcp_billing_account
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
 @enduml
 ```
 
@@ -949,15 +910,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_billing_account [[#gcp_billing_account]] {
-
+class gcp_billing_account {
 }
-class gcp_project_billing_info [[#gcp_project_billing_info]] {
-
+class gcp_project_billing_info {
 }
 gcp_billing_account -[#1A83AF]-> gcp_project_billing_info
-
 @enduml
 ```
 
@@ -992,37 +949,56 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_projectteam [[#gcp_projectteam]] {
+class gcp_action {
+**storage_class**: string
+**type**: string
+}
+class gcp_autoclass {
+**enabled**: boolean
+**toggle_time**: string
+}
+class gcp_bucket {
+**acl**: gcp_bucket_access_control[]
+**autoclass**: gcp_autoclass
+**bucket_owner**: gcp_owner
+**bucket_website**: gcp_website
+**cors**: gcp_cors[]
+**custom_placement_config_data_locations**: string[]
+**default_event_based_hold**: boolean
+**default_object_acl**: gcp_object_access_control[]
+**encryption_default_kms_key_name**: string
+**etag**: string
+**iam_configuration**: gcp_iamconfiguration
+**lifecycle_rule**: gcp_rule[]
+**location**: string
+**location_type**: string
+**logging**: gcp_logging
+**metageneration**: string
 **project_number**: string
-**team**: string
+**requester_pays**: boolean
+**retention_policy**: gcp_retentionpolicy
+**rpo**: string
+**satisfies_pzs**: boolean
+**storage_class**: string
+**time_created**: string
+**updated**: string
+**versioning_enabled**: boolean
 }
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
+class gcp_bucket_access_control {
+**bucket**: string
+**domain**: string
+**email**: string
+**entity**: string
+**entity_id**: string
+**etag**: string
+**project_team**: gcp_projectteam
+**role**: string
 }
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
-**deleted**: string
-**deprecated**: string
-**obsolete**: string
-**replacement**: string
-**state**: string
+class gcp_bucketpolicyonly {
+**enabled**: boolean
+**locked_time**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class gcp_condition [[#gcp_condition]] {
+class gcp_condition {
 **age**: int64
 **created_before**: string
 **custom_time_before**: string
@@ -1036,32 +1012,29 @@ class gcp_condition [[#gcp_condition]] {
 **noncurrent_time_before**: string
 **num_newer_versions**: int64
 }
-class gcp_retentionpolicy [[#gcp_retentionpolicy]] {
-**effective_time**: string
-**is_locked**: boolean
-**retention_period**: string
+class gcp_cors {
+**max_age_seconds**: int64
+**method**: string[]
+**origin**: string[]
+**response_header**: string[]
 }
-class gcp_website [[#gcp_website]] {
-**main_page_suffix**: string
-**not_found_page**: string
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
 }
-class gcp_logging [[#gcp_logging]] {
+class gcp_iamconfiguration {
+**bucket_policy_only**: gcp_bucketpolicyonly
+**public_access_prevention**: string
+**uniform_bucket_level_access**: gcp_uniformbucketlevelaccess
+}
+class gcp_logging {
 **log_bucket**: string
 **log_object_prefix**: string
 }
-class gcp_owner [[#gcp_owner]] {
-**entity**: string
-**entity_id**: string
-}
-class gcp_rule [[#gcp_rule]] {
-**action**: gcp_action
-**condition**: gcp_condition
-}
-class gcp_action [[#gcp_action]] {
-**storage_class**: string
-**type**: string
-}
-class gcp_object_access_control [[#gcp_object_access_control]] {
+class gcp_object_access_control {
 **bucket**: string
 **domain**: string
 **email**: string
@@ -1075,87 +1048,69 @@ class gcp_object_access_control [[#gcp_object_access_control]] {
 **role**: string
 **self_link**: string
 }
-class gcp_autoclass [[#gcp_autoclass]] {
-**enabled**: boolean
-**toggle_time**: string
-}
-class gcp_bucketpolicyonly [[#gcp_bucketpolicyonly]] {
-**enabled**: boolean
-**locked_time**: string
-}
-class gcp_bucket [[#gcp_bucket]] {
-**acl**: gcp_bucket_access_control[]
-**autoclass**: gcp_autoclass
-**cors**: gcp_cors[]
-**custom_placement_config_data_locations**: string[]
-**default_event_based_hold**: boolean
-**default_object_acl**: gcp_object_access_control[]
-**encryption_default_kms_key_name**: string
-**etag**: string
-**iam_configuration**: gcp_iamconfiguration
-**location**: string
-**location_type**: string
-**logging**: gcp_logging
-**metageneration**: string
-**bucket_owner**: gcp_owner
-**project_number**: string
-**retention_policy**: gcp_retentionpolicy
-**rpo**: string
-**satisfies_pzs**: boolean
-**storage_class**: string
-**time_created**: string
-**updated**: string
-**bucket_website**: gcp_website
-**requester_pays**: boolean
-**versioning_enabled**: boolean
-**lifecycle_rule**: gcp_rule[]
-}
-class gcp_bucket_access_control [[#gcp_bucket_access_control]] {
-**bucket**: string
-**domain**: string
-**email**: string
+class gcp_owner {
 **entity**: string
 **entity_id**: string
-**etag**: string
-**project_team**: gcp_projectteam
-**role**: string
 }
-class gcp_cors [[#gcp_cors]] {
-**max_age_seconds**: int64
-**method**: string[]
-**origin**: string[]
-**response_header**: string[]
+class gcp_projectteam {
+**project_number**: string
+**team**: string
 }
-class gcp_iamconfiguration [[#gcp_iamconfiguration]] {
-**bucket_policy_only**: gcp_bucketpolicyonly
-**public_access_prevention**: string
-**uniform_bucket_level_access**: gcp_uniformbucketlevelaccess
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
 }
-class gcp_uniformbucketlevelaccess [[#gcp_uniformbucketlevelaccess]] {
+class gcp_retentionpolicy {
+**effective_time**: string
+**is_locked**: boolean
+**retention_period**: string
+}
+class gcp_rule {
+**action**: gcp_action
+**condition**: gcp_condition
+}
+class gcp_uniformbucketlevelaccess {
 **enabled**: boolean
 **locked_time**: string
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_rule --> gcp_action
-gcp_rule --> gcp_condition
-gcp_object_access_control --> gcp_projectteam
-gcp_resource <|--- gcp_bucket
-gcp_bucket --> gcp_bucket_access_control
+class gcp_website {
+**main_page_suffix**: string
+**not_found_page**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_bucket --> gcp_autoclass
+gcp_bucket --> gcp_bucket_access_control
 gcp_bucket --> gcp_cors
-gcp_bucket --> gcp_object_access_control
+gcp_bucket --> gcp_deprecation_status
 gcp_bucket --> gcp_iamconfiguration
 gcp_bucket --> gcp_logging
+gcp_bucket --> gcp_object_access_control
 gcp_bucket --> gcp_owner
+gcp_resource <|--- gcp_bucket
 gcp_bucket --> gcp_retentionpolicy
-gcp_bucket --> gcp_website
 gcp_bucket --> gcp_rule
-gcp_bucket --> gcp_deprecation_status
+gcp_bucket --> gcp_website
 gcp_bucket_access_control --> gcp_projectteam
 gcp_iamconfiguration --> gcp_bucketpolicyonly
 gcp_iamconfiguration --> gcp_uniformbucketlevelaccess
-
+gcp_object_access_control --> gcp_projectteam
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+gcp_rule --> gcp_action
+gcp_rule --> gcp_condition
 @enduml
 ```
 
@@ -1189,11 +1144,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_bucket [[#gcp_bucket]] {
-
+class gcp_bucket {
 }
-
 @enduml
 ```
 
@@ -1228,85 +1180,28 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
+class gcp_accelerator_config {
+**accelerator_count**: int64
+**accelerator_type**: string
 }
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
-**deleted**: string
-**deprecated**: string
-**obsolete**: string
-**replacement**: string
-**state**: string
-}
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class gcp_allocation_specific_sku_allocation_allocated_instance_properties_reserved_disk [[#gcp_allocation_specific_sku_allocation_allocated_instance_properties_reserved_disk]] {
+class gcp_allocation_specific_sku_allocation_allocated_instance_properties_reserved_disk {
 **disk_size_gb**: string
 **interface**: string
 }
-class gcp_allocation_specific_sku_reservation [[#gcp_allocation_specific_sku_reservation]] {
-**assured_count**: string
-**count**: string
-**in_use_count**: string
-**instance_properties**: gcp_allocation_specific_sku_allocation_reserved_instance_properties
-}
-class gcp_allocation_specific_sku_allocation_reserved_instance_properties [[#gcp_allocation_specific_sku_allocation_reserved_instance_properties]] {
+class gcp_allocation_specific_sku_allocation_reserved_instance_properties {
 **guest_accelerators**: gcp_accelerator_config[]
 **local_ssds**: gcp_allocation_specific_sku_allocation_allocated_instance_properties_reserved_disk[]
 **location_hint**: string
 **machine_type**: string
 **min_cpu_platform**: string
 }
-class gcp_accelerator_config [[#gcp_accelerator_config]] {
-**accelerator_count**: int64
-**accelerator_type**: string
+class gcp_allocation_specific_sku_reservation {
+**assured_count**: string
+**count**: string
+**in_use_count**: string
+**instance_properties**: gcp_allocation_specific_sku_allocation_reserved_instance_properties
 }
-class gcp_share_settings [[#gcp_share_settings]] {
-**project_map**: dictionary[string, gcp_share_settings_project_config]
-**share_type**: string
-}
-class gcp_share_settings_project_config [[#gcp_share_settings_project_config]] {
-**project_id**: string
-}
-class gcp_license_resource_commitment [[#gcp_license_resource_commitment]] {
-**amount**: string
-**cores_per_license**: string
-**license**: string
-}
-class gcp_reservation [[#gcp_reservation]] {
-**commitment**: string
-**creation_timestamp**: datetime
-**description**: string
-**id**: string
-**name**: string
-**satisfies_pzs**: boolean
-**self_link**: string
-**share_settings**: gcp_share_settings
-**specific_reservation**: gcp_allocation_specific_sku_reservation
-**specific_reservation_required**: boolean
-**status**: string
-**zone**: string
-}
-class gcp_resource_commitment [[#gcp_resource_commitment]] {
-**accelerator_type**: string
-**amount**: string
-**type**: string
-}
-class gcp_commitment [[#gcp_commitment]] {
+class gcp_commitment {
 **auto_renew**: boolean
 **commitment_category**: string
 **end_timestamp**: datetime
@@ -1321,20 +1216,75 @@ class gcp_commitment [[#gcp_commitment]] {
 **status_message**: string
 **type**: string
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_allocation_specific_sku_reservation --> gcp_allocation_specific_sku_allocation_reserved_instance_properties
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
+}
+class gcp_license_resource_commitment {
+**amount**: string
+**cores_per_license**: string
+**license**: string
+}
+class gcp_reservation {
+**commitment**: string
+**creation_timestamp**: datetime
+**description**: string
+**id**: string
+**name**: string
+**satisfies_pzs**: boolean
+**self_link**: string
+**share_settings**: gcp_share_settings
+**specific_reservation**: gcp_allocation_specific_sku_reservation
+**specific_reservation_required**: boolean
+**status**: string
+**zone**: string
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class gcp_resource_commitment {
+**accelerator_type**: string
+**amount**: string
+**type**: string
+}
+class gcp_share_settings {
+**project_map**: dictionary[string, gcp_share_settings_project_config]
+**share_type**: string
+}
+class gcp_share_settings_project_config {
+**project_id**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_allocation_specific_sku_allocation_reserved_instance_properties --> gcp_accelerator_config
 gcp_allocation_specific_sku_allocation_reserved_instance_properties --> gcp_allocation_specific_sku_allocation_allocated_instance_properties_reserved_disk
-gcp_share_settings --> gcp_share_settings_project_config
-gcp_reservation --> gcp_share_settings
-gcp_reservation --> gcp_allocation_specific_sku_reservation
-gcp_resource <|--- gcp_commitment
+gcp_allocation_specific_sku_reservation --> gcp_allocation_specific_sku_allocation_reserved_instance_properties
+gcp_commitment --> gcp_deprecation_status
 gcp_commitment --> gcp_license_resource_commitment
 gcp_commitment --> gcp_reservation
+gcp_resource <|--- gcp_commitment
 gcp_commitment --> gcp_resource_commitment
-gcp_commitment --> gcp_deprecation_status
-
+gcp_reservation --> gcp_allocation_specific_sku_reservation
+gcp_reservation --> gcp_share_settings
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+gcp_share_settings --> gcp_share_settings_project_config
 @enduml
 ```
 
@@ -1368,11 +1318,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_commitment [[#gcp_commitment]] {
-
+class gcp_commitment {
 }
-
 @enduml
 ```
 
@@ -1407,59 +1354,68 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
+class gcp_container_accelerator_config {
+**accelerator_count**: string
+**accelerator_type**: string
+**gpu_partition_size**: string
+**gpu_sharing_config**: gcp_container_gpu_sharing_config
+}
+class gcp_container_addons_config {
+**cloud_run_config**: gcp_container_cloud_run_config
+**config_connector_config**: boolean
+**dns_cache_config**: boolean
+**gce_persistent_disk_csi_driver_config**: boolean
+**gcp_filestore_csi_driver_config**: boolean
+**gke_backup_agent_config**: boolean
+**horizontal_pod_autoscaling**: boolean
+**http_load_balancing**: boolean
+**kubernetes_dashboard**: boolean
+**network_policy_config**: boolean
+}
+class gcp_container_authenticator_groups_config {
+**enabled**: boolean
+**security_group**: string
+}
+class gcp_container_auto_upgrade_options {
+**auto_upgrade_start_time**: datetime
 **description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
 }
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
-**deleted**: string
-**deprecated**: string
-**obsolete**: string
-**replacement**: string
-**state**: string
+class gcp_container_autoprovisioning_node_pool_defaults {
+**boot_disk_kms_key**: string
+**disk_size_gb**: int64
+**disk_type**: string
+**image_type**: string
+**management**: gcp_container_node_management
+**min_cpu_platform**: string
+**oauth_scopes**: string[]
+**service_account**: string
+**shielded_instance_config**: gcp_container_shielded_instance_config
+**upgrade_settings**: gcp_container_upgrade_settings
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class gcp_container_binary_authorization {
+**enabled**: boolean
+**evaluation_mode**: string
 }
-class gcp_container_private_cluster_config [[#gcp_container_private_cluster_config]] {
-**enable_private_endpoint**: boolean
-**enable_private_nodes**: boolean
-**master_global_access_config**: boolean
-**master_ipv4_cidr_block**: string
-**peering_name**: string
-**private_endpoint**: string
-**public_endpoint**: string
-}
-class gcp_container_status_condition [[#gcp_container_status_condition]] {
-**canonical_code**: string
-**code**: string
-**message**: string
-}
-class gcp_container_dns_config [[#gcp_container_dns_config]] {
-**cluster_dns**: string
-**cluster_dns_domain**: string
-**cluster_dns_scope**: string
-}
-class gcp_container_blue_green_info [[#gcp_container_blue_green_info]] {
+class gcp_container_blue_green_info {
 **blue_instance_group_urls**: string[]
 **blue_pool_deletion_start_time**: datetime
 **green_instance_group_urls**: string[]
 **green_pool_version**: string
 **phase**: string
 }
-class gcp_container_cluster [[#gcp_container_cluster]] {
+class gcp_container_blue_green_settings {
+**node_pool_soak_duration**: string
+**standard_rollout_policy**: gcp_container_standard_rollout_policy
+}
+class gcp_container_cidr_block {
+**cidr_block**: string
+**display_name**: string
+}
+class gcp_container_cloud_run_config {
+**disabled**: boolean
+**load_balancer_type**: string
+}
+class gcp_container_cluster {
 **addons_config**: gcp_container_addons_config
 **authenticator_groups_config**: gcp_container_authenticator_groups_config
 **autopilot**: boolean
@@ -1468,6 +1424,7 @@ class gcp_container_cluster [[#gcp_container_cluster]] {
 **cluster_ipv4_cidr**: string
 **conditions**: gcp_container_status_condition[]
 **confidential_nodes**: boolean
+**container_cluster_maintenance_policy**: gcp_container_maintenance_policy
 **cost_management_config**: boolean
 **create_time**: datetime
 **current_master_version**: string
@@ -1490,7 +1447,6 @@ class gcp_container_cluster [[#gcp_container_cluster]] {
 **locations**: string[]
 **logging_config**: gcp_container_logging_config
 **logging_service**: string
-**container_cluster_maintenance_policy**: gcp_container_maintenance_policy
 **master_auth**: gcp_container_master_auth
 **master_authorized_networks_config**: gcp_container_master_authorized_networks_config
 **mesh_certificates**: boolean
@@ -1518,87 +1474,34 @@ class gcp_container_cluster [[#gcp_container_cluster]] {
 **vertical_pod_autoscaling**: boolean
 **workload_identity_config**: string
 }
-class gcp_container_addons_config [[#gcp_container_addons_config]] {
-**cloud_run_config**: gcp_container_cloud_run_config
-**config_connector_config**: boolean
-**dns_cache_config**: boolean
-**gce_persistent_disk_csi_driver_config**: boolean
-**gcp_filestore_csi_driver_config**: boolean
-**gke_backup_agent_config**: boolean
-**horizontal_pod_autoscaling**: boolean
-**http_load_balancing**: boolean
-**kubernetes_dashboard**: boolean
-**network_policy_config**: boolean
-}
-class gcp_container_cloud_run_config [[#gcp_container_cloud_run_config]] {
-**disabled**: boolean
-**load_balancer_type**: string
-}
-class gcp_container_authenticator_groups_config [[#gcp_container_authenticator_groups_config]] {
-**enabled**: boolean
-**security_group**: string
-}
-class gcp_container_cluster_autoscaling [[#gcp_container_cluster_autoscaling]] {
+class gcp_container_cluster_autoscaling {
 **autoprovisioning_locations**: string[]
 **autoprovisioning_node_pool_defaults**: gcp_container_autoprovisioning_node_pool_defaults
 **autoscaling_profile**: string
 **enable_node_autoprovisioning**: boolean
 **resource_limits**: gcp_container_resource_limit[]
 }
-class gcp_container_autoprovisioning_node_pool_defaults [[#gcp_container_autoprovisioning_node_pool_defaults]] {
-**boot_disk_kms_key**: string
-**disk_size_gb**: int64
-**disk_type**: string
-**image_type**: string
-**management**: gcp_container_node_management
-**min_cpu_platform**: string
-**oauth_scopes**: string[]
-**service_account**: string
-**shielded_instance_config**: gcp_container_shielded_instance_config
-**upgrade_settings**: gcp_container_upgrade_settings
+class gcp_container_daily_maintenance_window {
+**duration**: string
+**start_time**: datetime
 }
-class gcp_container_node_management [[#gcp_container_node_management]] {
-**auto_repair**: boolean
-**auto_upgrade**: boolean
-**upgrade_options**: gcp_container_auto_upgrade_options
-}
-class gcp_container_auto_upgrade_options [[#gcp_container_auto_upgrade_options]] {
-**auto_upgrade_start_time**: datetime
-**description**: string
-}
-class gcp_container_shielded_instance_config [[#gcp_container_shielded_instance_config]] {
-**enable_integrity_monitoring**: boolean
-**enable_secure_boot**: boolean
-}
-class gcp_container_upgrade_settings [[#gcp_container_upgrade_settings]] {
-**blue_green_settings**: gcp_container_blue_green_settings
-**max_surge**: int64
-**max_unavailable**: int64
-**strategy**: string
-}
-class gcp_container_blue_green_settings [[#gcp_container_blue_green_settings]] {
-**node_pool_soak_duration**: string
-**standard_rollout_policy**: gcp_container_standard_rollout_policy
-}
-class gcp_container_standard_rollout_policy [[#gcp_container_standard_rollout_policy]] {
-**batch_node_count**: int64
-**batch_percentage**: double
-**batch_soak_duration**: string
-}
-class gcp_container_resource_limit [[#gcp_container_resource_limit]] {
-**maximum**: string
-**minimum**: string
-**resource_type**: string
-}
-class gcp_container_binary_authorization [[#gcp_container_binary_authorization]] {
-**enabled**: boolean
-**evaluation_mode**: string
-}
-class gcp_container_database_encryption [[#gcp_container_database_encryption]] {
+class gcp_container_database_encryption {
 **key_name**: string
 **state**: string
 }
-class gcp_container_ip_allocation_policy [[#gcp_container_ip_allocation_policy]] {
+class gcp_container_dns_config {
+**cluster_dns**: string
+**cluster_dns_domain**: string
+**cluster_dns_scope**: string
+}
+class gcp_container_filter {
+**event_type**: string[]
+}
+class gcp_container_gpu_sharing_config {
+**gpu_sharing_strategy**: string
+**max_shared_clients_per_gpu**: string
+}
+class gcp_container_ip_allocation_policy {
 **cluster_ipv4_cidr**: string
 **cluster_ipv4_cidr_block**: string
 **cluster_secondary_range_name**: string
@@ -1615,35 +1518,25 @@ class gcp_container_ip_allocation_policy [[#gcp_container_ip_allocation_policy]]
 **use_ip_aliases**: boolean
 **use_routes**: boolean
 }
-class gcp_container_logging_config [[#gcp_container_logging_config]] {
-**component_config**: gcp_container_logging_component_config
+class gcp_container_linux_node_config {
+**sysctls**: dictionary[string, string]
 }
-class gcp_container_logging_component_config [[#gcp_container_logging_component_config]] {
+class gcp_container_logging_component_config {
 **enable_components**: string[]
 }
-class gcp_container_maintenance_policy [[#gcp_container_maintenance_policy]] {
+class gcp_container_logging_config {
+**component_config**: gcp_container_logging_component_config
+}
+class gcp_container_maintenance_policy {
 **resource_version**: string
 **window**: gcp_container_maintenance_window
 }
-class gcp_container_maintenance_window [[#gcp_container_maintenance_window]] {
+class gcp_container_maintenance_window {
 **daily_maintenance_window**: gcp_container_daily_maintenance_window
 **maintenance_exclusions**: dictionary[string, gcp_container_time_window]
 **recurring_window**: gcp_container_recurring_time_window
 }
-class gcp_container_daily_maintenance_window [[#gcp_container_daily_maintenance_window]] {
-**duration**: string
-**start_time**: datetime
-}
-class gcp_container_time_window [[#gcp_container_time_window]] {
-**end_time**: datetime
-**maintenance_exclusion_options**: string
-**start_time**: datetime
-}
-class gcp_container_recurring_time_window [[#gcp_container_recurring_time_window]] {
-**recurrence**: string
-**window**: gcp_container_time_window
-}
-class gcp_container_master_auth [[#gcp_container_master_auth]] {
+class gcp_container_master_auth {
 **client_certificate**: string
 **client_certificate_config**: boolean
 **client_key**: string
@@ -1651,22 +1544,18 @@ class gcp_container_master_auth [[#gcp_container_master_auth]] {
 **password**: string
 **username**: string
 }
-class gcp_container_master_authorized_networks_config [[#gcp_container_master_authorized_networks_config]] {
+class gcp_container_master_authorized_networks_config {
 **cidr_blocks**: gcp_container_cidr_block[]
 **enabled**: boolean
 }
-class gcp_container_cidr_block [[#gcp_container_cidr_block]] {
-**cidr_block**: string
-**display_name**: string
+class gcp_container_monitoring_component_config {
+**enable_components**: string[]
 }
-class gcp_container_monitoring_config [[#gcp_container_monitoring_config]] {
+class gcp_container_monitoring_config {
 **component_config**: gcp_container_monitoring_component_config
 **managed_prometheus_config**: boolean
 }
-class gcp_container_monitoring_component_config [[#gcp_container_monitoring_component_config]] {
-**enable_components**: string[]
-}
-class gcp_container_network_config [[#gcp_container_network_config]] {
+class gcp_container_network_config {
 **datapath_provider**: string
 **default_snat_status**: boolean
 **dns_config**: gcp_container_dns_config
@@ -1677,11 +1566,14 @@ class gcp_container_network_config [[#gcp_container_network_config]] {
 **service_external_ips_config**: boolean
 **subnetwork**: string
 }
-class gcp_container_network_policy [[#gcp_container_network_policy]] {
+class gcp_container_network_policy {
 **enabled**: boolean
 **provider**: string
 }
-class gcp_container_node_config [[#gcp_container_node_config]] {
+class gcp_container_network_tags {
+**tags**: string[]
+}
+class gcp_container_node_config {
 **accelerators**: gcp_container_accelerator_config[]
 **advanced_machine_features**: string
 **boot_disk_kms_key**: string
@@ -1711,52 +1603,28 @@ class gcp_container_node_config [[#gcp_container_node_config]] {
 **taints**: gcp_container_node_taint[]
 **workload_metadata_config**: string
 }
-class gcp_container_accelerator_config [[#gcp_container_accelerator_config]] {
-**accelerator_count**: string
-**accelerator_type**: string
-**gpu_partition_size**: string
-**gpu_sharing_config**: gcp_container_gpu_sharing_config
+class gcp_container_node_config_defaults {
+**gcfs_config**: boolean
+**logging_config**: gcp_container_node_pool_logging_config
 }
-class gcp_container_gpu_sharing_config [[#gcp_container_gpu_sharing_config]] {
-**gpu_sharing_strategy**: string
-**max_shared_clients_per_gpu**: string
-}
-class gcp_container_node_kubelet_config [[#gcp_container_node_kubelet_config]] {
+class gcp_container_node_kubelet_config {
 **cpu_cfs_quota**: boolean
 **cpu_cfs_quota_period**: string
 **cpu_manager_policy**: string
 **pod_pids_limit**: string
 }
-class gcp_container_linux_node_config [[#gcp_container_linux_node_config]] {
-**sysctls**: dictionary[string, string]
+class gcp_container_node_management {
+**auto_repair**: boolean
+**auto_upgrade**: boolean
+**upgrade_options**: gcp_container_auto_upgrade_options
 }
-class gcp_container_node_pool_logging_config [[#gcp_container_node_pool_logging_config]] {
-**variant_config**: string
+class gcp_container_node_network_config {
+**create_pod_range**: boolean
+**network_performance_config**: string
+**pod_ipv4_cidr_block**: string
+**pod_range**: string
 }
-class gcp_container_reservation_affinity [[#gcp_container_reservation_affinity]] {
-**consume_reservation_type**: string
-**key**: string
-**values**: string[]
-}
-class gcp_container_node_taint [[#gcp_container_node_taint]] {
-**effect**: string
-**key**: string
-**value**: string
-}
-class gcp_container_node_pool_auto_config [[#gcp_container_node_pool_auto_config]] {
-**network_tags**: gcp_container_network_tags
-}
-class gcp_container_network_tags [[#gcp_container_network_tags]] {
-**tags**: string[]
-}
-class gcp_container_node_pool_defaults [[#gcp_container_node_pool_defaults]] {
-**node_config_defaults**: gcp_container_node_config_defaults
-}
-class gcp_container_node_config_defaults [[#gcp_container_node_config_defaults]] {
-**gcfs_config**: boolean
-**logging_config**: gcp_container_node_pool_logging_config
-}
-class gcp_container_node_pool [[#gcp_container_node_pool]] {
+class gcp_container_node_pool {
 **autoscaling**: gcp_container_node_pool_autoscaling
 **conditions**: gcp_container_status_condition[]
 **config**: gcp_container_node_config
@@ -1775,7 +1643,10 @@ class gcp_container_node_pool [[#gcp_container_node_pool]] {
 **upgrade_settings**: gcp_container_upgrade_settings
 **version**: string
 }
-class gcp_container_node_pool_autoscaling [[#gcp_container_node_pool_autoscaling]] {
+class gcp_container_node_pool_auto_config {
+**network_tags**: gcp_container_network_tags
+}
+class gcp_container_node_pool_autoscaling {
 **autoprovisioned**: boolean
 **enabled**: boolean
 **location_policy**: string
@@ -1784,39 +1655,116 @@ class gcp_container_node_pool_autoscaling [[#gcp_container_node_pool_autoscaling
 **total_max_node_count**: int64
 **total_min_node_count**: int64
 }
-class gcp_container_node_network_config [[#gcp_container_node_network_config]] {
-**create_pod_range**: boolean
-**network_performance_config**: string
-**pod_ipv4_cidr_block**: string
-**pod_range**: string
+class gcp_container_node_pool_defaults {
+**node_config_defaults**: gcp_container_node_config_defaults
 }
-class gcp_container_update_info [[#gcp_container_update_info]] {
-**blue_green_info**: gcp_container_blue_green_info
+class gcp_container_node_pool_logging_config {
+**variant_config**: string
 }
-class gcp_container_notification_config [[#gcp_container_notification_config]] {
+class gcp_container_node_taint {
+**effect**: string
+**key**: string
+**value**: string
+}
+class gcp_container_notification_config {
 **pubsub**: gcp_container_pub_sub
 }
-class gcp_container_pub_sub [[#gcp_container_pub_sub]] {
+class gcp_container_private_cluster_config {
+**enable_private_endpoint**: boolean
+**enable_private_nodes**: boolean
+**master_global_access_config**: boolean
+**master_ipv4_cidr_block**: string
+**peering_name**: string
+**private_endpoint**: string
+**public_endpoint**: string
+}
+class gcp_container_pub_sub {
 **enabled**: boolean
 **filter**: gcp_container_filter
 **topic**: string
 }
-class gcp_container_filter [[#gcp_container_filter]] {
-**event_type**: string[]
+class gcp_container_recurring_time_window {
+**recurrence**: string
+**window**: gcp_container_time_window
 }
-class gcp_container_resource_usage_export_config [[#gcp_container_resource_usage_export_config]] {
+class gcp_container_reservation_affinity {
+**consume_reservation_type**: string
+**key**: string
+**values**: string[]
+}
+class gcp_container_resource_limit {
+**maximum**: string
+**minimum**: string
+**resource_type**: string
+}
+class gcp_container_resource_usage_export_config {
 **bigquery_destination**: string
 **consumption_metering_config**: boolean
 **enable_network_egress_metering**: boolean
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_container_cluster
+class gcp_container_shielded_instance_config {
+**enable_integrity_monitoring**: boolean
+**enable_secure_boot**: boolean
+}
+class gcp_container_standard_rollout_policy {
+**batch_node_count**: int64
+**batch_percentage**: double
+**batch_soak_duration**: string
+}
+class gcp_container_status_condition {
+**canonical_code**: string
+**code**: string
+**message**: string
+}
+class gcp_container_time_window {
+**end_time**: datetime
+**maintenance_exclusion_options**: string
+**start_time**: datetime
+}
+class gcp_container_update_info {
+**blue_green_info**: gcp_container_blue_green_info
+}
+class gcp_container_upgrade_settings {
+**blue_green_settings**: gcp_container_blue_green_settings
+**max_surge**: int64
+**max_unavailable**: int64
+**strategy**: string
+}
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+gcp_container_accelerator_config --> gcp_container_gpu_sharing_config
+gcp_container_addons_config --> gcp_container_cloud_run_config
+gcp_container_autoprovisioning_node_pool_defaults --> gcp_container_node_management
+gcp_container_autoprovisioning_node_pool_defaults --> gcp_container_shielded_instance_config
+gcp_container_autoprovisioning_node_pool_defaults --> gcp_container_upgrade_settings
+gcp_container_blue_green_settings --> gcp_container_standard_rollout_policy
 gcp_container_cluster --> gcp_container_addons_config
 gcp_container_cluster --> gcp_container_authenticator_groups_config
-gcp_container_cluster --> gcp_container_cluster_autoscaling
 gcp_container_cluster --> gcp_container_binary_authorization
-gcp_container_cluster --> gcp_container_status_condition
+gcp_container_cluster --> gcp_container_cluster_autoscaling
 gcp_container_cluster --> gcp_container_database_encryption
 gcp_container_cluster --> gcp_container_ip_allocation_policy
 gcp_container_cluster --> gcp_container_logging_config
@@ -1827,53 +1775,50 @@ gcp_container_cluster --> gcp_container_monitoring_config
 gcp_container_cluster --> gcp_container_network_config
 gcp_container_cluster --> gcp_container_network_policy
 gcp_container_cluster --> gcp_container_node_config
+gcp_container_cluster --> gcp_container_node_pool
 gcp_container_cluster --> gcp_container_node_pool_auto_config
 gcp_container_cluster --> gcp_container_node_pool_defaults
-gcp_container_cluster --> gcp_container_node_pool
 gcp_container_cluster --> gcp_container_notification_config
 gcp_container_cluster --> gcp_container_private_cluster_config
 gcp_container_cluster --> gcp_container_resource_usage_export_config
+gcp_container_cluster --> gcp_container_status_condition
 gcp_container_cluster --> gcp_deprecation_status
-gcp_container_addons_config --> gcp_container_cloud_run_config
+gcp_resource <|--- gcp_container_cluster
 gcp_container_cluster_autoscaling --> gcp_container_autoprovisioning_node_pool_defaults
 gcp_container_cluster_autoscaling --> gcp_container_resource_limit
-gcp_container_autoprovisioning_node_pool_defaults --> gcp_container_node_management
-gcp_container_autoprovisioning_node_pool_defaults --> gcp_container_shielded_instance_config
-gcp_container_autoprovisioning_node_pool_defaults --> gcp_container_upgrade_settings
-gcp_container_node_management --> gcp_container_auto_upgrade_options
-gcp_container_upgrade_settings --> gcp_container_blue_green_settings
-gcp_container_blue_green_settings --> gcp_container_standard_rollout_policy
 gcp_container_logging_config --> gcp_container_logging_component_config
 gcp_container_maintenance_policy --> gcp_container_maintenance_window
 gcp_container_maintenance_window --> gcp_container_daily_maintenance_window
-gcp_container_maintenance_window --> gcp_container_time_window
 gcp_container_maintenance_window --> gcp_container_recurring_time_window
-gcp_container_recurring_time_window --> gcp_container_time_window
+gcp_container_maintenance_window --> gcp_container_time_window
 gcp_container_master_authorized_networks_config --> gcp_container_cidr_block
 gcp_container_monitoring_config --> gcp_container_monitoring_component_config
 gcp_container_network_config --> gcp_container_dns_config
 gcp_container_node_config --> gcp_container_accelerator_config
-gcp_container_node_config --> gcp_container_node_kubelet_config
 gcp_container_node_config --> gcp_container_linux_node_config
+gcp_container_node_config --> gcp_container_node_kubelet_config
 gcp_container_node_config --> gcp_container_node_pool_logging_config
+gcp_container_node_config --> gcp_container_node_taint
 gcp_container_node_config --> gcp_container_reservation_affinity
 gcp_container_node_config --> gcp_container_shielded_instance_config
-gcp_container_node_config --> gcp_container_node_taint
-gcp_container_accelerator_config --> gcp_container_gpu_sharing_config
-gcp_container_node_pool_auto_config --> gcp_container_network_tags
-gcp_container_node_pool_defaults --> gcp_container_node_config_defaults
 gcp_container_node_config_defaults --> gcp_container_node_pool_logging_config
-gcp_container_node_pool --> gcp_container_node_pool_autoscaling
-gcp_container_node_pool --> gcp_container_status_condition
+gcp_container_node_management --> gcp_container_auto_upgrade_options
 gcp_container_node_pool --> gcp_container_node_config
 gcp_container_node_pool --> gcp_container_node_management
 gcp_container_node_pool --> gcp_container_node_network_config
+gcp_container_node_pool --> gcp_container_node_pool_autoscaling
+gcp_container_node_pool --> gcp_container_status_condition
 gcp_container_node_pool --> gcp_container_update_info
 gcp_container_node_pool --> gcp_container_upgrade_settings
-gcp_container_update_info --> gcp_container_blue_green_info
+gcp_container_node_pool_auto_config --> gcp_container_network_tags
+gcp_container_node_pool_defaults --> gcp_container_node_config_defaults
 gcp_container_notification_config --> gcp_container_pub_sub
 gcp_container_pub_sub --> gcp_container_filter
-
+gcp_container_recurring_time_window --> gcp_container_time_window
+gcp_container_update_info --> gcp_container_blue_green_info
+gcp_container_upgrade_settings --> gcp_container_blue_green_settings
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
 @enduml
 ```
 
@@ -1907,15 +1852,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_container_cluster [[#gcp_container_cluster]] {
-
+class gcp_container_cluster {
 }
-class gcp_container_operation [[#gcp_container_operation]] {
-
+class gcp_container_operation {
 }
 gcp_container_cluster -[#1A83AF]-> gcp_container_operation
-
 @enduml
 ```
 
@@ -1950,76 +1891,74 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
+class gcp_container_metric {
+**double_value**: double
+**int_value**: string
+**name**: string
+**string_value**: string
 }
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_container_operation {
+**cluster_conditions**: gcp_container_status_condition[]
+**container_operation_error**: gcp_container_status
+**container_operation_progress**: gcp_container_operation_progress
+**detail**: string
+**end_time**: datetime
+**location**: string
+**nodepool_conditions**: gcp_container_status_condition[]
+**operation_type**: string
+**start_time**: datetime
+**status**: string
+**status_message**: string
+**target_link**: string
+}
+class gcp_container_operation_progress {
+**metrics**: gcp_container_metric[]
+**name**: string
+**status**: string
+}
+class gcp_container_status {
+**code**: int64
+**details**: dictionary[string, any][]
+**message**: string
+}
+class gcp_container_status_condition {
+**canonical_code**: string
+**code**: string
+**message**: string
+}
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class resource {
 **age**: duration
-**mtime**: datetime
-**last_update**: duration
 **atime**: datetime
-**last_access**: duration
+**ctime**: datetime
+**id**: string
 **kind**: string
-}
-class gcp_container_status_condition [[#gcp_container_status_condition]] {
-**canonical_code**: string
-**code**: string
-**message**: string
-}
-class gcp_container_metric [[#gcp_container_metric]] {
-**double_value**: double
-**int_value**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
 **name**: string
-**string_value**: string
+**tags**: dictionary[string, string]
 }
-class gcp_container_operation [[#gcp_container_operation]] {
-**cluster_conditions**: gcp_container_status_condition[]
-**detail**: string
-**end_time**: datetime
-**container_operation_error**: gcp_container_status
-**location**: string
-**nodepool_conditions**: gcp_container_status_condition[]
-**operation_type**: string
-**container_operation_progress**: gcp_container_operation_progress
-**start_time**: datetime
-**status**: string
-**status_message**: string
-**target_link**: string
-}
-class gcp_container_operation_progress [[#gcp_container_operation_progress]] {
-**metrics**: gcp_container_metric[]
-**name**: string
-**status**: string
-}
-class gcp_container_status [[#gcp_container_status]] {
-**code**: int64
-**details**: dictionary[string, any][]
-**message**: string
-}
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_container_operation
-gcp_container_operation --> gcp_container_status_condition
-gcp_container_operation --> gcp_container_status
 gcp_container_operation --> gcp_container_operation_progress
+gcp_container_operation --> gcp_container_status
+gcp_container_operation --> gcp_container_status_condition
 gcp_container_operation --> gcp_deprecation_status
+gcp_resource <|--- gcp_container_operation
 gcp_container_operation_progress --> gcp_container_metric
-
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
 @enduml
 ```
 
@@ -2053,15 +1992,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_container_cluster [[#gcp_container_cluster]] {
-
+class gcp_container_cluster {
 }
-class gcp_container_operation [[#gcp_container_operation]] {
-
+class gcp_container_operation {
 }
 gcp_container_cluster -[#1A83AF]-> gcp_container_operation
-
 @enduml
 ```
 
@@ -2096,51 +2031,24 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
-**deleted**: string
-**deprecated**: string
-**obsolete**: string
-**replacement**: string
-**state**: string
-}
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class volume [[#volume]] {
-**volume_size**: int64
-**volume_type**: string
-**volume_status**: volume_status
-**volume_iops**: int64
-**volume_throughput**: int64
-**volume_encrypted**: boolean
-**snapshot_before_delete**: boolean
-}
-class gcp_customer_encryption_key [[#gcp_customer_encryption_key]] {
+class gcp_customer_encryption_key {
 **kms_key_name**: string
 **kms_key_service_account**: string
 **raw_key**: string
 **rsa_encrypted_key**: string
 **sha256**: string
 }
-class gcp_disk [[#gcp_disk]] {
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
+}
+class gcp_disk {
 **architecture**: string
 **disk_encryption_key**: gcp_customer_encryption_key
+**disk_params**: gcp_disk_params
 **guest_os_features**: string[]
 **last_attach_timestamp**: datetime
 **last_detach_timestamp**: datetime
@@ -2148,7 +2056,6 @@ class gcp_disk [[#gcp_disk]] {
 **licenses**: string[]
 **location_hint**: string
 **options**: string
-**disk_params**: gcp_disk_params
 **physical_block_size_bytes**: string
 **provisioned_iops**: string
 **replica_zones**: string[]
@@ -2168,18 +2075,44 @@ class gcp_disk [[#gcp_disk]] {
 **type**: string
 **users**: string[]
 }
-class gcp_disk_params [[#gcp_disk_params]] {
+class gcp_disk_params {
 **resource_manager_tags**: dictionary[string, string]
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-resource <|--- volume
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class volume {
+**snapshot_before_delete**: boolean
+**volume_encrypted**: boolean
+**volume_iops**: int64
+**volume_size**: int64
+**volume_status**: volume_status
+**volume_throughput**: int64
+**volume_type**: string
+}
+gcp_disk --> gcp_customer_encryption_key
+gcp_disk --> gcp_deprecation_status
+gcp_disk --> gcp_disk_params
 gcp_resource <|--- gcp_disk
 volume <|--- gcp_disk
-gcp_disk --> gcp_customer_encryption_key
-gcp_disk --> gcp_disk_params
-gcp_disk --> gcp_deprecation_status
-
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+resource <|--- volume
 @enduml
 ```
 
@@ -2213,35 +2146,26 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_instance [[#gcp_instance]] {
-
+class gcp_disk {
 }
-class gcp_image [[#gcp_image]] {
-
+class gcp_disk_type {
 }
-class gcp_disk [[#gcp_disk]] {
-
+class gcp_image {
 }
-class gcp_operation [[#gcp_operation]] {
-
+class gcp_instance {
 }
-class gcp_disk_type [[#gcp_disk_type]] {
-
+class gcp_machine_image {
 }
-class gcp_snapshot [[#gcp_snapshot]] {
-
+class gcp_operation {
 }
-class gcp_machine_image [[#gcp_machine_image]] {
-
+class gcp_snapshot {
 }
-gcp_instance -[#1A83AF]-> gcp_disk
-gcp_disk -[#1A83AF]-> gcp_snapshot
 gcp_disk -[#1A83AF]-> gcp_image
 gcp_disk -[#1A83AF]-> gcp_machine_image
-gcp_operation -[#1A83AF]-> gcp_disk
+gcp_disk -[#1A83AF]-> gcp_snapshot
 gcp_disk_type -[#1A83AF]-> gcp_disk
-
+gcp_instance -[#1A83AF]-> gcp_disk
+gcp_operation -[#1A83AF]-> gcp_disk
 @enduml
 ```
 
@@ -2276,61 +2200,57 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class type [[#type]] {
-
-}
-class quota [[#quota]] {
-**quota**: double
-**usage**: double
-**quota_type**: string
-}
-class phantom_resource [[#phantom_resource]] {
-
-}
-class gcp_disk_type [[#gcp_disk_type]] {
+class gcp_disk_type {
 **default_disk_size_gb**: string
 **valid_disk_size**: string
 }
-class volume_type [[#volume_type]] {
-**volume_type**: string
-**ondemand_cost**: double
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-quota <|--- type
-phantom_resource <|--- quota
-resource <|--- phantom_resource
+class phantom_resource {
+}
+class quota {
+**quota**: double
+**quota_type**: string
+**usage**: double
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class type {
+}
+class volume_type {
+**ondemand_cost**: double
+**volume_type**: string
+}
+gcp_disk_type --> gcp_deprecation_status
 gcp_resource <|--- gcp_disk_type
 volume_type <|--- gcp_disk_type
-gcp_disk_type --> gcp_deprecation_status
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+resource <|--- phantom_resource
+phantom_resource <|--- quota
+quota <|--- type
 type <|--- volume_type
-
 @enduml
 ```
 
@@ -2364,19 +2284,14 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_disk [[#gcp_disk]] {
-
+class gcp_disk {
 }
-class gcp_disk_type [[#gcp_disk_type]] {
-
+class gcp_disk_type {
 }
-class gcp_node_template [[#gcp_node_template]] {
-
+class gcp_node_template {
 }
 gcp_disk_type -[#1A83AF]-> gcp_disk
 gcp_disk_type -[#1A83AF]-> gcp_node_template
-
 @enduml
 ```
 
@@ -2411,46 +2326,44 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class gcp_external_vpn_gateway_interface [[#gcp_external_vpn_gateway_interface]] {
-**id**: int64
-**ip_address**: string
-}
-class gcp_external_vpn_gateway [[#gcp_external_vpn_gateway]] {
+class gcp_external_vpn_gateway {
 **external_vpn_gateway_interfaces**: gcp_external_vpn_gateway_interface[]
 **redundancy_type**: string
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_external_vpn_gateway
-gcp_external_vpn_gateway --> gcp_external_vpn_gateway_interface
+class gcp_external_vpn_gateway_interface {
+**id**: int64
+**ip_address**: string
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_external_vpn_gateway --> gcp_deprecation_status
-
+gcp_external_vpn_gateway --> gcp_external_vpn_gateway_interface
+gcp_resource <|--- gcp_external_vpn_gateway
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
 @enduml
 ```
 
@@ -2484,11 +2397,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_external_vpn_gateway [[#gcp_external_vpn_gateway]] {
-
+class gcp_external_vpn_gateway {
 }
-
 @enduml
 ```
 
@@ -2523,37 +2433,22 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_denied [[#gcp_denied]] {
+class gcp_allowed {
 **ip_protocol**: string
 **ports**: string[]
 }
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
+class gcp_denied {
+**ip_protocol**: string
+**ports**: string[]
 }
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class gcp_firewall [[#gcp_firewall]] {
+class gcp_firewall {
 **allowed**: gcp_allowed[]
 **denied**: gcp_denied[]
 **destination_ranges**: string[]
@@ -2568,22 +2463,35 @@ class gcp_firewall [[#gcp_firewall]] {
 **target_service_accounts**: string[]
 **target_tags**: string[]
 }
-class gcp_allowed [[#gcp_allowed]] {
-**ip_protocol**: string
-**ports**: string[]
-}
-class gcp_firewall_log_config [[#gcp_firewall_log_config]] {
+class gcp_firewall_log_config {
 **enable**: boolean
 **metadata**: string
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_firewall
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_firewall --> gcp_allowed
 gcp_firewall --> gcp_denied
-gcp_firewall --> gcp_firewall_log_config
 gcp_firewall --> gcp_deprecation_status
-
+gcp_firewall --> gcp_firewall_log_config
+gcp_resource <|--- gcp_firewall
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
 @enduml
 ```
 
@@ -2617,15 +2525,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_network [[#gcp_network]] {
-
+class gcp_firewall {
 }
-class gcp_firewall [[#gcp_firewall]] {
-
+class gcp_network {
 }
 gcp_firewall -[#1A83AF]-> gcp_network
-
 @enduml
 ```
 
@@ -2660,50 +2564,31 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class gcp_firewall_policy [[#gcp_firewall_policy]] {
+class gcp_firewall_policy {
 **associations**: gcp_firewall_policy_association[]
 **display_name**: string
 **fingerprint**: string
+**firewall_policy_rules**: gcp_firewall_policy_rule[]
 **parent**: string
 **rule_tuple_count**: int64
-**firewall_policy_rules**: gcp_firewall_policy_rule[]
 **self_link_with_id**: string
 **short_name**: string
 }
-class gcp_firewall_policy_association [[#gcp_firewall_policy_association]] {
+class gcp_firewall_policy_association {
 **attachment_target**: string
 **display_name**: string
 **firewall_policy_id**: string
 **name**: string
 **short_name**: string
 }
-class gcp_firewall_policy_rule [[#gcp_firewall_policy_rule]] {
+class gcp_firewall_policy_rule {
 **action**: string
 **description**: string
 **direction**: string
@@ -2717,31 +2602,48 @@ class gcp_firewall_policy_rule [[#gcp_firewall_policy_rule]] {
 **target_secure_tags**: gcp_firewall_policy_rule_secure_tag[]
 **target_service_accounts**: string[]
 }
-class gcp_firewall_policy_rule_matcher [[#gcp_firewall_policy_rule_matcher]] {
+class gcp_firewall_policy_rule_matcher {
 **dest_ip_ranges**: string[]
 **layer4_configs**: gcp_firewall_policy_rule_matcher_layer4_config[]
 **src_ip_ranges**: string[]
 **src_secure_tags**: gcp_firewall_policy_rule_secure_tag[]
 }
-class gcp_firewall_policy_rule_matcher_layer4_config [[#gcp_firewall_policy_rule_matcher_layer4_config]] {
+class gcp_firewall_policy_rule_matcher_layer4_config {
 **ip_protocol**: string
 **ports**: string[]
 }
-class gcp_firewall_policy_rule_secure_tag [[#gcp_firewall_policy_rule_secure_tag]] {
-**name**: string
+class gcp_firewall_policy_rule_secure_tag {
 **firewall_policy_rule_secure_tag_state**: string
+**name**: string
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_firewall_policy
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+gcp_firewall_policy --> gcp_deprecation_status
 gcp_firewall_policy --> gcp_firewall_policy_association
 gcp_firewall_policy --> gcp_firewall_policy_rule
-gcp_firewall_policy --> gcp_deprecation_status
+gcp_resource <|--- gcp_firewall_policy
 gcp_firewall_policy_rule --> gcp_firewall_policy_rule_matcher
 gcp_firewall_policy_rule --> gcp_firewall_policy_rule_secure_tag
 gcp_firewall_policy_rule_matcher --> gcp_firewall_policy_rule_matcher_layer4_config
 gcp_firewall_policy_rule_matcher --> gcp_firewall_policy_rule_secure_tag
-
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
 @enduml
 ```
 
@@ -2775,15 +2677,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_firewall_policy [[#gcp_firewall_policy]] {
-
+class gcp_firewall_policy {
 }
-class gcp_network [[#gcp_network]] {
-
+class gcp_network {
 }
 gcp_firewall_policy -[#1A83AF]-> gcp_network
-
 @enduml
 ```
 
@@ -2818,39 +2716,20 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class gcp_forwarding_rule [[#gcp_forwarding_rule]] {
-**ip_address**: string
-**ip_protocol**: string
+class gcp_forwarding_rule {
 **all_ports**: boolean
 **allow_global_access**: boolean
 **backend_service**: string
 **fingerprint**: string
+**ip_address**: string
+**ip_protocol**: string
 **ip_version**: string
 **is_mirroring_collector**: boolean
 **load_balancing_scheme**: string
@@ -2868,27 +2747,44 @@ class gcp_forwarding_rule [[#gcp_forwarding_rule]] {
 **subnetwork**: string
 **target**: string
 }
-class gcp_metadata_filter [[#gcp_metadata_filter]] {
-**filter_labels**: gcp_metadata_filter_label_match[]
-**filter_match_criteria**: string
-}
-class gcp_metadata_filter_label_match [[#gcp_metadata_filter_label_match]] {
-**name**: string
-**value**: string
-}
-class gcp_forwarding_rule_service_directory_registration [[#gcp_forwarding_rule_service_directory_registration]] {
+class gcp_forwarding_rule_service_directory_registration {
 **namespace**: string
 **service**: string
 **service_directory_region**: string
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_forwarding_rule
-gcp_forwarding_rule --> gcp_metadata_filter
-gcp_forwarding_rule --> gcp_forwarding_rule_service_directory_registration
+class gcp_metadata_filter {
+**filter_labels**: gcp_metadata_filter_label_match[]
+**filter_match_criteria**: string
+}
+class gcp_metadata_filter_label_match {
+**name**: string
+**value**: string
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_forwarding_rule --> gcp_deprecation_status
+gcp_forwarding_rule --> gcp_forwarding_rule_service_directory_registration
+gcp_forwarding_rule --> gcp_metadata_filter
+gcp_resource <|--- gcp_forwarding_rule
 gcp_metadata_filter --> gcp_metadata_filter_label_match
-
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
 @enduml
 ```
 
@@ -2922,44 +2818,33 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_target_tcp_proxy [[#gcp_target_tcp_proxy]] {
-
+class gcp_forwarding_rule {
 }
-class gcp_target_ssl_proxy [[#gcp_target_ssl_proxy]] {
-
+class gcp_network {
 }
-class gcp_network [[#gcp_network]] {
-
+class gcp_target_grpc_proxy {
 }
-class gcp_forwarding_rule [[#gcp_forwarding_rule]] {
-
+class gcp_target_http_proxy {
 }
-class gcp_target_vpn_gateway [[#gcp_target_vpn_gateway]] {
-
+class gcp_target_https_proxy {
 }
-class gcp_target_grpc_proxy [[#gcp_target_grpc_proxy]] {
-
+class gcp_target_pool {
 }
-class gcp_target_pool [[#gcp_target_pool]] {
-
+class gcp_target_ssl_proxy {
 }
-class gcp_target_http_proxy [[#gcp_target_http_proxy]] {
-
+class gcp_target_tcp_proxy {
 }
-class gcp_target_https_proxy [[#gcp_target_https_proxy]] {
-
+class gcp_target_vpn_gateway {
 }
-gcp_network -[#1A83AF]-> gcp_target_vpn_gateway
-gcp_network -[#1A83AF]-> gcp_forwarding_rule
-gcp_forwarding_rule -[#1A83AF]-> gcp_target_tcp_proxy
-gcp_forwarding_rule -[#1A83AF]-> gcp_target_vpn_gateway
 gcp_forwarding_rule -[#1A83AF]-> gcp_target_grpc_proxy
-gcp_forwarding_rule -[#1A83AF]-> gcp_target_pool
 gcp_forwarding_rule -[#1A83AF]-> gcp_target_http_proxy
 gcp_forwarding_rule -[#1A83AF]-> gcp_target_https_proxy
+gcp_forwarding_rule -[#1A83AF]-> gcp_target_pool
 gcp_forwarding_rule -[#1A83AF]-> gcp_target_ssl_proxy
-
+gcp_forwarding_rule -[#1A83AF]-> gcp_target_tcp_proxy
+gcp_forwarding_rule -[#1A83AF]-> gcp_target_vpn_gateway
+gcp_network -[#1A83AF]-> gcp_forwarding_rule
+gcp_network -[#1A83AF]-> gcp_target_vpn_gateway
 @enduml
 ```
 
@@ -2994,106 +2879,104 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class gcp_health_check [[#gcp_health_check]] {
+class gcp_grpc_health_check {
+**grpc_service_name**: string
+**port**: int64
+**port_name**: string
+**port_specification**: string
+}
+class gcp_health_check {
 **check_interval_sec**: int64
 **grpc_health_check**: gcp_grpc_health_check
+**health_check_log_config**: boolean
 **healthy_threshold**: int64
 **http2_health_check**: gcp_http2_health_check
 **http_health_check**: gcp_http_health_check_spec
 **https_health_check**: gcp_https_health_check_spec
-**health_check_log_config**: boolean
 **ssl_health_check**: gcp_ssl_health_check
 **tcp_health_check**: gcp_tcp_health_check
 **timeout_sec**: int64
 **type**: string
 **unhealthy_threshold**: int64
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
+class gcp_http2_health_check {
+**host**: string
+**port**: int64
+**port_name**: string
+**port_specification**: string
+**proxy_header**: string
+**request_path**: string
+**response**: string
+}
+class gcp_http_health_check_spec {
+**host**: string
+**port**: int64
+**port_name**: string
+**port_specification**: string
+**proxy_header**: string
+**request_path**: string
+**response**: string
+}
+class gcp_https_health_check_spec {
+**host**: string
+**port**: int64
+**port_name**: string
+**port_specification**: string
+**proxy_header**: string
+**request_path**: string
+**response**: string
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class gcp_ssl_health_check {
+**port**: int64
+**port_name**: string
+**port_specification**: string
+**proxy_header**: string
+**request**: string
+**response**: string
+}
+class gcp_tcp_health_check {
+**port**: int64
+**port_name**: string
+**port_specification**: string
+**proxy_header**: string
+**request**: string
+**response**: string
+}
+class resource {
 **age**: duration
-**mtime**: datetime
-**last_update**: duration
 **atime**: datetime
-**last_access**: duration
+**ctime**: datetime
+**id**: string
 **kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
 }
-class gcp_grpc_health_check [[#gcp_grpc_health_check]] {
-**grpc_service_name**: string
-**port**: int64
-**port_name**: string
-**port_specification**: string
-}
-class gcp_https_health_check_spec [[#gcp_https_health_check_spec]] {
-**host**: string
-**port**: int64
-**port_name**: string
-**port_specification**: string
-**proxy_header**: string
-**request_path**: string
-**response**: string
-}
-class gcp_ssl_health_check [[#gcp_ssl_health_check]] {
-**port**: int64
-**port_name**: string
-**port_specification**: string
-**proxy_header**: string
-**request**: string
-**response**: string
-}
-class gcp_tcp_health_check [[#gcp_tcp_health_check]] {
-**port**: int64
-**port_name**: string
-**port_specification**: string
-**proxy_header**: string
-**request**: string
-**response**: string
-}
-class gcp_http2_health_check [[#gcp_http2_health_check]] {
-**host**: string
-**port**: int64
-**port_name**: string
-**port_specification**: string
-**proxy_header**: string
-**request_path**: string
-**response**: string
-}
-class gcp_http_health_check_spec [[#gcp_http_health_check_spec]] {
-**host**: string
-**port**: int64
-**port_name**: string
-**port_specification**: string
-**proxy_header**: string
-**request_path**: string
-**response**: string
-}
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_health_check
+gcp_health_check --> gcp_deprecation_status
 gcp_health_check --> gcp_grpc_health_check
 gcp_health_check --> gcp_http2_health_check
 gcp_health_check --> gcp_http_health_check_spec
 gcp_health_check --> gcp_https_health_check_spec
+gcp_resource <|--- gcp_health_check
 gcp_health_check --> gcp_ssl_health_check
 gcp_health_check --> gcp_tcp_health_check
-gcp_health_check --> gcp_deprecation_status
-
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
 @enduml
 ```
 
@@ -3127,19 +3010,14 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_backend_service [[#gcp_backend_service]] {
-
+class gcp_backend_service {
 }
-class gcp_health_check [[#gcp_health_check]] {
-
+class gcp_health_check {
 }
-class gcp_instance_group_manager [[#gcp_instance_group_manager]] {
-
+class gcp_instance_group_manager {
 }
 gcp_backend_service -[#1A83AF]-> gcp_health_check
 gcp_instance_group_manager -[#1A83AF]-> gcp_health_check
-
 @enduml
 ```
 
@@ -3174,44 +3052,42 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class gcp_health_check_service [[#gcp_health_check_service]] {
+class gcp_health_check_service {
 **fingerprint**: string
 **health_checks**: string[]
 **health_status_aggregation_policy**: string
 **network_endpoint_groups**: string[]
 **notification_endpoints**: string[]
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_health_check_service
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_health_check_service --> gcp_deprecation_status
-
+gcp_resource <|--- gcp_health_check_service
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
 @enduml
 ```
 
@@ -3245,11 +3121,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_health_check_service [[#gcp_health_check_service]] {
-
+class gcp_health_check_service {
 }
-
 @enduml
 ```
 
@@ -3284,21 +3157,14 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class gcp_http_health_check [[#gcp_http_health_check]] {
+class gcp_http_health_check {
 **check_interval_sec**: int64
 **healthy_threshold**: int64
 **host**: string
@@ -3307,23 +3173,28 @@ class gcp_http_health_check [[#gcp_http_health_check]] {
 **timeout_sec**: int64
 **unhealthy_threshold**: int64
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_http_health_check
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_http_health_check --> gcp_deprecation_status
-
+gcp_resource <|--- gcp_http_health_check
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
 @enduml
 ```
 
@@ -3357,19 +3228,14 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_backend_service [[#gcp_backend_service]] {
-
+class gcp_backend_service {
 }
-class gcp_http_health_check [[#gcp_http_health_check]] {
-
+class gcp_http_health_check {
 }
-class gcp_instance_group_manager [[#gcp_instance_group_manager]] {
-
+class gcp_instance_group_manager {
 }
 gcp_backend_service -[#1A83AF]-> gcp_http_health_check
 gcp_instance_group_manager -[#1A83AF]-> gcp_http_health_check
-
 @enduml
 ```
 
@@ -3404,21 +3270,14 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class gcp_https_health_check [[#gcp_https_health_check]] {
+class gcp_https_health_check {
 **check_interval_sec**: int64
 **healthy_threshold**: int64
 **host**: string
@@ -3427,23 +3286,28 @@ class gcp_https_health_check [[#gcp_https_health_check]] {
 **timeout_sec**: int64
 **unhealthy_threshold**: int64
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_https_health_check
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_https_health_check --> gcp_deprecation_status
-
+gcp_resource <|--- gcp_https_health_check
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
 @enduml
 ```
 
@@ -3477,19 +3341,14 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_backend_service [[#gcp_backend_service]] {
-
+class gcp_backend_service {
 }
-class gcp_https_health_check [[#gcp_https_health_check]] {
-
+class gcp_https_health_check {
 }
-class gcp_instance_group_manager [[#gcp_instance_group_manager]] {
-
+class gcp_instance_group_manager {
 }
 gcp_backend_service -[#1A83AF]-> gcp_https_health_check
 gcp_instance_group_manager -[#1A83AF]-> gcp_https_health_check
-
 @enduml
 ```
 
@@ -3524,40 +3383,25 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
-**deleted**: string
-**deprecated**: string
-**obsolete**: string
-**replacement**: string
-**state**: string
-}
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class gcp_customer_encryption_key [[#gcp_customer_encryption_key]] {
+class gcp_customer_encryption_key {
 **kms_key_name**: string
 **kms_key_service_account**: string
 **raw_key**: string
 **rsa_encrypted_key**: string
 **sha256**: string
 }
-class gcp_image [[#gcp_image]] {
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
+}
+class gcp_file_content_buffer {
+**content**: string
+**file_type**: string
+}
+class gcp_image {
 **architecture**: string
 **archive_size_bytes**: string
 **disk_size_gb**: string
@@ -3582,30 +3426,43 @@ class gcp_image [[#gcp_image]] {
 **status**: string
 **storage_locations**: string[]
 }
-class gcp_rawdisk [[#gcp_rawdisk]] {
-**container_type**: string
-**sha1_checksum**: string
-**source**: string
-}
-class gcp_initial_state_config [[#gcp_initial_state_config]] {
+class gcp_initial_state_config {
 **dbs**: gcp_file_content_buffer[]
 **dbxs**: gcp_file_content_buffer[]
 **keks**: gcp_file_content_buffer[]
 **pk**: gcp_file_content_buffer
 }
-class gcp_file_content_buffer [[#gcp_file_content_buffer]] {
-**content**: string
-**file_type**: string
+class gcp_rawdisk {
+**container_type**: string
+**sha1_checksum**: string
+**source**: string
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_image
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_image --> gcp_customer_encryption_key
-gcp_image --> gcp_rawdisk
-gcp_image --> gcp_initial_state_config
 gcp_image --> gcp_deprecation_status
+gcp_image --> gcp_initial_state_config
+gcp_image --> gcp_rawdisk
+gcp_resource <|--- gcp_image
 gcp_initial_state_config --> gcp_file_content_buffer
-
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
 @enduml
 ```
 
@@ -3639,15 +3496,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_image [[#gcp_image]] {
-
+class gcp_disk {
 }
-class gcp_disk [[#gcp_disk]] {
-
+class gcp_image {
 }
 gcp_disk -[#1A83AF]-> gcp_image
-
 @enduml
 ```
 
@@ -3682,113 +3535,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
+class gcp_accelerator_config {
+**accelerator_count**: int64
+**accelerator_type**: string
 }
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
-**deleted**: string
-**deprecated**: string
-**obsolete**: string
-**replacement**: string
-**state**: string
-}
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class gcp_reservation_affinity [[#gcp_reservation_affinity]] {
-**consume_reservation_type**: string
-**key**: string
-**values**: string[]
-}
-class gcp_attached_disk_initialize_params [[#gcp_attached_disk_initialize_params]] {
-**architecture**: string
-**description**: string
-**disk_name**: string
-**disk_size_gb**: string
-**disk_type**: string
-**labels**: dictionary[string, string]
-**licenses**: string[]
-**on_update_action**: string
-**provisioned_iops**: string
-**resource_manager_tags**: dictionary[string, string]
-**resource_policies**: string[]
-**source_image**: string
-**source_image_encryption_key**: gcp_customer_encryption_key
-**source_snapshot**: string
-**source_snapshot_encryption_key**: gcp_customer_encryption_key
-}
-class gcp_customer_encryption_key [[#gcp_customer_encryption_key]] {
-**kms_key_name**: string
-**kms_key_service_account**: string
-**raw_key**: string
-**rsa_encrypted_key**: string
-**sha256**: string
-}
-class gcp_instance [[#gcp_instance]] {
-**advanced_machine_features**: gcp_advanced_machine_features
-**can_ip_forward**: boolean
-**confidential_instance_config**: boolean
-**cpu_platform**: string
-**deletion_protection**: boolean
-**disks**: gcp_attached_disk[]
-**display_device**: boolean
-**fingerprint**: string
-**guest_accelerators**: gcp_accelerator_config[]
-**hostname**: string
-**key_revocation_action_type**: string
-**last_start_timestamp**: datetime
-**last_stop_timestamp**: datetime
-**last_suspended_timestamp**: datetime
-**machine_type**: string
-**instance_metadata**: gcp_metadata
-**min_cpu_platform**: string
-**network_interfaces**: gcp_network_interface[]
-**network_performance_config**: string
-**instance_params**: gcp_instance_params
-**private_ipv6_google_access**: string
-**reservation_affinity**: gcp_reservation_affinity
-**resource_policies**: string[]
-**resource_status**: string
-**satisfies_pzs**: boolean
-**scheduling**: gcp_scheduling
-**service_accounts**: gcp_service_account[]
-**shielded_instance_config**: gcp_shielded_instance_config
-**shielded_instance_integrity_policy**: boolean
-**source_machine_image**: string
-**source_machine_image_encryption_key**: gcp_customer_encryption_key
-**start_restricted**: boolean
-**status**: string
-**status_message**: string
-**instance_tags**: gcp_tags
-}
-class gcp_service_account [[#gcp_service_account]] {
-**email**: string
-**scopes**: string[]
-}
-class gcp_initial_state_config [[#gcp_initial_state_config]] {
-**dbs**: gcp_file_content_buffer[]
-**dbxs**: gcp_file_content_buffer[]
-**keks**: gcp_file_content_buffer[]
-**pk**: gcp_file_content_buffer
-}
-class gcp_file_content_buffer [[#gcp_file_content_buffer]] {
-**content**: string
-**file_type**: string
-}
-class gcp_access_config [[#gcp_access_config]] {
+class gcp_access_config {
 **external_ipv6**: string
 **external_ipv6_prefix_length**: int64
 **name**: string
@@ -3798,46 +3549,17 @@ class gcp_access_config [[#gcp_access_config]] {
 **set_public_ptr**: boolean
 **type**: string
 }
-class gcp_scheduling [[#gcp_scheduling]] {
-**automatic_restart**: boolean
-**instance_termination_action**: string
-**location_hint**: string
-**min_node_cpus**: int64
-**node_affinities**: gcp_scheduling_node_affinity[]
-**on_host_maintenance**: string
-**preemptible**: boolean
-**provisioning_model**: string
-}
-class gcp_scheduling_node_affinity [[#gcp_scheduling_node_affinity]] {
-**key**: string
-**operator**: string
-**values**: string[]
-}
-class instance [[#instance]] {
-**instance_cores**: double
-**instance_memory**: double
-**instance_type**: string
-**instance_status**: instance_status
-}
-class gcp_advanced_machine_features [[#gcp_advanced_machine_features]] {
+class gcp_advanced_machine_features {
 **enable_nested_virtualization**: boolean
 **enable_uefi_networking**: boolean
 **threads_per_core**: int64
 **visible_core_count**: int64
 }
-class gcp_items [[#gcp_items]] {
-**key**: string
-**value**: string
+class gcp_alias_ip_range {
+**ip_cidr_range**: string
+**subnetwork_range_name**: string
 }
-class gcp_accelerator_config [[#gcp_accelerator_config]] {
-**accelerator_count**: int64
-**accelerator_type**: string
-}
-class gcp_metadata [[#gcp_metadata]] {
-**fingerprint**: string
-**items**: gcp_items[]
-}
-class gcp_attached_disk [[#gcp_attached_disk]] {
+class gcp_attached_disk {
 **architecture**: string
 **auto_delete**: boolean
 **boot**: boolean
@@ -3855,7 +3577,96 @@ class gcp_attached_disk [[#gcp_attached_disk]] {
 **source**: string
 **type**: string
 }
-class gcp_network_interface [[#gcp_network_interface]] {
+class gcp_attached_disk_initialize_params {
+**architecture**: string
+**description**: string
+**disk_name**: string
+**disk_size_gb**: string
+**disk_type**: string
+**labels**: dictionary[string, string]
+**licenses**: string[]
+**on_update_action**: string
+**provisioned_iops**: string
+**resource_manager_tags**: dictionary[string, string]
+**resource_policies**: string[]
+**source_image**: string
+**source_image_encryption_key**: gcp_customer_encryption_key
+**source_snapshot**: string
+**source_snapshot_encryption_key**: gcp_customer_encryption_key
+}
+class gcp_customer_encryption_key {
+**kms_key_name**: string
+**kms_key_service_account**: string
+**raw_key**: string
+**rsa_encrypted_key**: string
+**sha256**: string
+}
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
+}
+class gcp_file_content_buffer {
+**content**: string
+**file_type**: string
+}
+class gcp_initial_state_config {
+**dbs**: gcp_file_content_buffer[]
+**dbxs**: gcp_file_content_buffer[]
+**keks**: gcp_file_content_buffer[]
+**pk**: gcp_file_content_buffer
+}
+class gcp_instance {
+**advanced_machine_features**: gcp_advanced_machine_features
+**can_ip_forward**: boolean
+**confidential_instance_config**: boolean
+**cpu_platform**: string
+**deletion_protection**: boolean
+**disks**: gcp_attached_disk[]
+**display_device**: boolean
+**fingerprint**: string
+**guest_accelerators**: gcp_accelerator_config[]
+**hostname**: string
+**instance_metadata**: gcp_metadata
+**instance_params**: gcp_instance_params
+**instance_tags**: gcp_tags
+**key_revocation_action_type**: string
+**last_start_timestamp**: datetime
+**last_stop_timestamp**: datetime
+**last_suspended_timestamp**: datetime
+**machine_type**: string
+**min_cpu_platform**: string
+**network_interfaces**: gcp_network_interface[]
+**network_performance_config**: string
+**private_ipv6_google_access**: string
+**reservation_affinity**: gcp_reservation_affinity
+**resource_policies**: string[]
+**resource_status**: string
+**satisfies_pzs**: boolean
+**scheduling**: gcp_scheduling
+**service_accounts**: gcp_service_account[]
+**shielded_instance_config**: gcp_shielded_instance_config
+**shielded_instance_integrity_policy**: boolean
+**source_machine_image**: string
+**source_machine_image_encryption_key**: gcp_customer_encryption_key
+**start_restricted**: boolean
+**status**: string
+**status_message**: string
+}
+class gcp_instance_params {
+**resource_manager_tags**: dictionary[string, string]
+}
+class gcp_items {
+**key**: string
+**value**: string
+}
+class gcp_metadata {
+**fingerprint**: string
+**items**: gcp_items[]
+}
+class gcp_network_interface {
 **access_configs**: gcp_access_config[]
 **alias_ip_ranges**: gcp_alias_ip_range[]
 **fingerprint**: string
@@ -3871,50 +3682,90 @@ class gcp_network_interface [[#gcp_network_interface]] {
 **stack_type**: string
 **subnetwork**: string
 }
-class gcp_alias_ip_range [[#gcp_alias_ip_range]] {
-**ip_cidr_range**: string
-**subnetwork_range_name**: string
+class gcp_reservation_affinity {
+**consume_reservation_type**: string
+**key**: string
+**values**: string[]
 }
-class gcp_instance_params [[#gcp_instance_params]] {
-**resource_manager_tags**: dictionary[string, string]
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
 }
-class gcp_shielded_instance_config [[#gcp_shielded_instance_config]] {
+class gcp_scheduling {
+**automatic_restart**: boolean
+**instance_termination_action**: string
+**location_hint**: string
+**min_node_cpus**: int64
+**node_affinities**: gcp_scheduling_node_affinity[]
+**on_host_maintenance**: string
+**preemptible**: boolean
+**provisioning_model**: string
+}
+class gcp_scheduling_node_affinity {
+**key**: string
+**operator**: string
+**values**: string[]
+}
+class gcp_service_account {
+**email**: string
+**scopes**: string[]
+}
+class gcp_shielded_instance_config {
 **enable_integrity_monitoring**: boolean
 **enable_secure_boot**: boolean
 **enable_vtpm**: boolean
 }
-class gcp_tags [[#gcp_tags]] {
+class gcp_tags {
 **fingerprint**: string
 **items**: string[]
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
+class instance {
+**instance_cores**: double
+**instance_memory**: double
+**instance_status**: instance_status
+**instance_type**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+gcp_attached_disk --> gcp_attached_disk_initialize_params
+gcp_attached_disk --> gcp_customer_encryption_key
+gcp_attached_disk --> gcp_initial_state_config
 gcp_attached_disk_initialize_params --> gcp_customer_encryption_key
-gcp_resource <|--- gcp_instance
-instance <|--- gcp_instance
+gcp_initial_state_config --> gcp_file_content_buffer
+gcp_instance --> gcp_accelerator_config
 gcp_instance --> gcp_advanced_machine_features
 gcp_instance --> gcp_attached_disk
-gcp_instance --> gcp_accelerator_config
+gcp_instance --> gcp_customer_encryption_key
+gcp_instance --> gcp_deprecation_status
+gcp_instance --> gcp_instance_params
 gcp_instance --> gcp_metadata
 gcp_instance --> gcp_network_interface
-gcp_instance --> gcp_instance_params
 gcp_instance --> gcp_reservation_affinity
+gcp_resource <|--- gcp_instance
 gcp_instance --> gcp_scheduling
 gcp_instance --> gcp_service_account
 gcp_instance --> gcp_shielded_instance_config
-gcp_instance --> gcp_customer_encryption_key
 gcp_instance --> gcp_tags
-gcp_instance --> gcp_deprecation_status
-gcp_initial_state_config --> gcp_file_content_buffer
-gcp_scheduling --> gcp_scheduling_node_affinity
-resource <|--- instance
+instance <|--- gcp_instance
 gcp_metadata --> gcp_items
-gcp_attached_disk --> gcp_customer_encryption_key
-gcp_attached_disk --> gcp_attached_disk_initialize_params
-gcp_attached_disk --> gcp_initial_state_config
 gcp_network_interface --> gcp_access_config
 gcp_network_interface --> gcp_alias_ip_range
-
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+gcp_scheduling --> gcp_scheduling_node_affinity
+resource <|--- instance
 @enduml
 ```
 
@@ -3948,38 +3799,29 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_network [[#gcp_network]] {
-
+class gcp_disk {
 }
-class gcp_machine_type [[#gcp_machine_type]] {
-
+class gcp_instance {
 }
-class gcp_instance [[#gcp_instance]] {
-
+class gcp_machine_type {
 }
-class gcp_subnetwork [[#gcp_subnetwork]] {
-
+class gcp_network {
 }
-class gcp_packet_mirroring [[#gcp_packet_mirroring]] {
-
+class gcp_packet_mirroring {
 }
-class gcp_disk [[#gcp_disk]] {
-
+class gcp_subnetwork {
 }
-class gcp_target_instance [[#gcp_target_instance]] {
-
+class gcp_target_instance {
 }
-gcp_network -[#1A83AF]-> gcp_instance
-gcp_network -[#1A83AF]-> gcp_target_instance
-gcp_network -[#1A83AF]-> gcp_subnetwork
-gcp_machine_type -[#1A83AF]-> gcp_instance
-gcp_instance -[#1A83AF]-> gcp_packet_mirroring
 gcp_instance -[#1A83AF]-> gcp_disk
-gcp_subnetwork -[#1A83AF]-> gcp_packet_mirroring
+gcp_instance -[#1A83AF]-> gcp_packet_mirroring
+gcp_machine_type -[#1A83AF]-> gcp_instance
+gcp_network -[#1A83AF]-> gcp_instance
+gcp_network -[#1A83AF]-> gcp_subnetwork
+gcp_network -[#1A83AF]-> gcp_target_instance
 gcp_subnetwork -[#1A83AF]-> gcp_instance
+gcp_subnetwork -[#1A83AF]-> gcp_packet_mirroring
 gcp_target_instance -[#1A83AF]-> gcp_instance
-
 @enduml
 ```
 
@@ -4014,49 +3856,47 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class gcp_instance_group [[#gcp_instance_group]] {
+class gcp_instance_group {
 **fingerprint**: string
 **named_ports**: gcp_named_port[]
 **network**: string
 **size**: int64
 **subnetwork**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class gcp_named_port [[#gcp_named_port]] {
+class gcp_named_port {
 **name**: string
 **port**: int64
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_instance_group
-gcp_instance_group --> gcp_named_port
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_instance_group --> gcp_deprecation_status
-
+gcp_instance_group --> gcp_named_port
+gcp_resource <|--- gcp_instance_group
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
 @enduml
 ```
 
@@ -4090,29 +3930,22 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_backend_service [[#gcp_backend_service]] {
-
+class gcp_backend_service {
 }
-class gcp_instance_group [[#gcp_instance_group]] {
-
+class gcp_instance_group {
 }
-class gcp_network [[#gcp_network]] {
-
+class gcp_instance_group_manager {
 }
-class gcp_subnetwork [[#gcp_subnetwork]] {
-
+class gcp_network {
 }
-class gcp_instance_group_manager [[#gcp_instance_group_manager]] {
-
+class gcp_subnetwork {
 }
 gcp_backend_service -[#1A83AF]-> gcp_instance_group
 gcp_instance_group -[#1A83AF]-> gcp_instance_group_manager
-gcp_network -[#1A83AF]-> gcp_instance_group
 gcp_network -[#1A83AF]-> gcp_backend_service
+gcp_network -[#1A83AF]-> gcp_instance_group
 gcp_network -[#1A83AF]-> gcp_subnetwork
 gcp_subnetwork -[#1A83AF]-> gcp_instance_group
-
 @enduml
 ```
 
@@ -4147,86 +3980,40 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class gcp_distribution_policy {
+**target_shape**: string
+**zones**: string[]
 }
-class gcp_stateful_policy [[#gcp_stateful_policy]] {
-**preserved_state**: gcp_stateful_policy_preserved_state
-}
-class gcp_stateful_policy_preserved_state [[#gcp_stateful_policy_preserved_state]] {
-**stateful_policy_preserved_state_disks**: dictionary[string, gcp_stateful_policy_preserved_state_disk_device]
-}
-class gcp_stateful_policy_preserved_state_disk_device [[#gcp_stateful_policy_preserved_state_disk_device]] {
-**auto_delete**: string
-}
-class gcp_instance_group_manager_auto_healing_policy [[#gcp_instance_group_manager_auto_healing_policy]] {
-**health_check**: string
-**initial_delay_sec**: int64
-}
-class gcp_fixed_or_percent [[#gcp_fixed_or_percent]] {
+class gcp_fixed_or_percent {
 **calculated**: int64
 **fixed**: int64
 **percent**: int64
 }
-class gcp_named_port [[#gcp_named_port]] {
-**name**: string
-**port**: int64
-}
-class gcp_instance_group_manager_update_policy [[#gcp_instance_group_manager_update_policy]] {
-**instance_redistribution_type**: string
-**max_surge**: gcp_fixed_or_percent
-**max_unavailable**: gcp_fixed_or_percent
-**minimal_action**: string
-**most_disruptive_allowed_action**: string
-**replacement_method**: string
-**type**: string
-}
-class gcp_instance_group_manager_version [[#gcp_instance_group_manager_version]] {
-**instance_template**: string
-**name**: string
-**target_size**: gcp_fixed_or_percent
-}
-class gcp_instance_group_manager [[#gcp_instance_group_manager]] {
+class gcp_instance_group_manager {
 **auto_healing_policies**: gcp_instance_group_manager_auto_healing_policy[]
 **base_instance_name**: string
 **current_actions**: gcp_instance_group_manager_actions_summary
 **distribution_policy**: gcp_distribution_policy
 **fingerprint**: string
 **instance_group**: string
+**instance_group_manager_status**: gcp_instance_group_manager_status
 **instance_template**: string
 **list_managed_instances_results**: string
 **named_ports**: gcp_named_port[]
 **stateful_policy**: gcp_stateful_policy
-**instance_group_manager_status**: gcp_instance_group_manager_status
 **target_pools**: string[]
 **target_size**: int64
 **update_policy**: gcp_instance_group_manager_update_policy
 **versions**: gcp_instance_group_manager_version[]
 }
-class gcp_instance_group_manager_actions_summary [[#gcp_instance_group_manager_actions_summary]] {
+class gcp_instance_group_manager_actions_summary {
 **abandoning**: int64
 **creating**: int64
 **creating_without_retries**: int64
@@ -4241,38 +4028,82 @@ class gcp_instance_group_manager_actions_summary [[#gcp_instance_group_manager_a
 **suspending**: int64
 **verifying**: int64
 }
-class gcp_distribution_policy [[#gcp_distribution_policy]] {
-**target_shape**: string
-**zones**: string[]
+class gcp_instance_group_manager_auto_healing_policy {
+**health_check**: string
+**initial_delay_sec**: int64
 }
-class gcp_instance_group_manager_status [[#gcp_instance_group_manager_status]] {
+class gcp_instance_group_manager_status {
 **autoscaler**: string
 **is_stable**: boolean
 **stateful**: gcp_instance_group_manager_status_stateful
 **version_target**: boolean
 }
-class gcp_instance_group_manager_status_stateful [[#gcp_instance_group_manager_status_stateful]] {
+class gcp_instance_group_manager_status_stateful {
 **has_stateful_config**: boolean
 **per_instance_configs**: boolean
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_stateful_policy --> gcp_stateful_policy_preserved_state
-gcp_stateful_policy_preserved_state --> gcp_stateful_policy_preserved_state_disk_device
-gcp_instance_group_manager_update_policy --> gcp_fixed_or_percent
-gcp_instance_group_manager_version --> gcp_fixed_or_percent
-gcp_resource <|--- gcp_instance_group_manager
-gcp_instance_group_manager --> gcp_instance_group_manager_auto_healing_policy
-gcp_instance_group_manager --> gcp_instance_group_manager_actions_summary
+class gcp_instance_group_manager_update_policy {
+**instance_redistribution_type**: string
+**max_surge**: gcp_fixed_or_percent
+**max_unavailable**: gcp_fixed_or_percent
+**minimal_action**: string
+**most_disruptive_allowed_action**: string
+**replacement_method**: string
+**type**: string
+}
+class gcp_instance_group_manager_version {
+**instance_template**: string
+**name**: string
+**target_size**: gcp_fixed_or_percent
+}
+class gcp_named_port {
+**name**: string
+**port**: int64
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class gcp_stateful_policy {
+**preserved_state**: gcp_stateful_policy_preserved_state
+}
+class gcp_stateful_policy_preserved_state {
+**stateful_policy_preserved_state_disks**: dictionary[string, gcp_stateful_policy_preserved_state_disk_device]
+}
+class gcp_stateful_policy_preserved_state_disk_device {
+**auto_delete**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+gcp_instance_group_manager --> gcp_deprecation_status
 gcp_instance_group_manager --> gcp_distribution_policy
-gcp_instance_group_manager --> gcp_named_port
-gcp_instance_group_manager --> gcp_stateful_policy
+gcp_instance_group_manager --> gcp_instance_group_manager_actions_summary
+gcp_instance_group_manager --> gcp_instance_group_manager_auto_healing_policy
 gcp_instance_group_manager --> gcp_instance_group_manager_status
 gcp_instance_group_manager --> gcp_instance_group_manager_update_policy
 gcp_instance_group_manager --> gcp_instance_group_manager_version
-gcp_instance_group_manager --> gcp_deprecation_status
+gcp_instance_group_manager --> gcp_named_port
+gcp_resource <|--- gcp_instance_group_manager
+gcp_instance_group_manager --> gcp_stateful_policy
 gcp_instance_group_manager_status --> gcp_instance_group_manager_status_stateful
-
+gcp_instance_group_manager_update_policy --> gcp_fixed_or_percent
+gcp_instance_group_manager_version --> gcp_fixed_or_percent
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+gcp_stateful_policy --> gcp_stateful_policy_preserved_state
+gcp_stateful_policy_preserved_state --> gcp_stateful_policy_preserved_state_disk_device
 @enduml
 ```
 
@@ -4306,31 +4137,23 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_instance_group [[#gcp_instance_group]] {
-
+class gcp_autoscaler {
 }
-class gcp_health_check [[#gcp_health_check]] {
-
+class gcp_health_check {
 }
-class gcp_http_health_check [[#gcp_http_health_check]] {
-
+class gcp_http_health_check {
 }
-class gcp_https_health_check [[#gcp_https_health_check]] {
-
+class gcp_https_health_check {
 }
-class gcp_instance_group_manager [[#gcp_instance_group_manager]] {
-
+class gcp_instance_group {
 }
-class gcp_autoscaler [[#gcp_autoscaler]] {
-
+class gcp_instance_group_manager {
 }
+gcp_autoscaler -[#1A83AF]-> gcp_instance_group_manager
 gcp_instance_group -[#1A83AF]-> gcp_instance_group_manager
-gcp_instance_group_manager -[#1A83AF]-> gcp_https_health_check
 gcp_instance_group_manager -[#1A83AF]-> gcp_health_check
 gcp_instance_group_manager -[#1A83AF]-> gcp_http_health_check
-gcp_autoscaler -[#1A83AF]-> gcp_instance_group_manager
-
+gcp_instance_group_manager -[#1A83AF]-> gcp_https_health_check
 @enduml
 ```
 
@@ -4365,81 +4188,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
+class gcp_accelerator_config {
+**accelerator_count**: int64
+**accelerator_type**: string
 }
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
-**deleted**: string
-**deprecated**: string
-**obsolete**: string
-**replacement**: string
-**state**: string
-}
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class gcp_reservation_affinity [[#gcp_reservation_affinity]] {
-**consume_reservation_type**: string
-**key**: string
-**values**: string[]
-}
-class gcp_attached_disk_initialize_params [[#gcp_attached_disk_initialize_params]] {
-**architecture**: string
-**description**: string
-**disk_name**: string
-**disk_size_gb**: string
-**disk_type**: string
-**labels**: dictionary[string, string]
-**licenses**: string[]
-**on_update_action**: string
-**provisioned_iops**: string
-**resource_manager_tags**: dictionary[string, string]
-**resource_policies**: string[]
-**source_image**: string
-**source_image_encryption_key**: gcp_customer_encryption_key
-**source_snapshot**: string
-**source_snapshot_encryption_key**: gcp_customer_encryption_key
-}
-class gcp_customer_encryption_key [[#gcp_customer_encryption_key]] {
-**kms_key_name**: string
-**kms_key_service_account**: string
-**raw_key**: string
-**rsa_encrypted_key**: string
-**sha256**: string
-}
-class gcp_instance_template [[#gcp_instance_template]] {
-**properties**: gcp_instance_properties
-**source_instance**: string
-**source_instance_params**: gcp_source_instance_params
-}
-class gcp_service_account [[#gcp_service_account]] {
-**email**: string
-**scopes**: string[]
-}
-class gcp_initial_state_config [[#gcp_initial_state_config]] {
-**dbs**: gcp_file_content_buffer[]
-**dbxs**: gcp_file_content_buffer[]
-**keks**: gcp_file_content_buffer[]
-**pk**: gcp_file_content_buffer
-}
-class gcp_file_content_buffer [[#gcp_file_content_buffer]] {
-**content**: string
-**file_type**: string
-}
-class gcp_access_config [[#gcp_access_config]] {
+class gcp_access_config {
 **external_ipv6**: string
 **external_ipv6_prefix_length**: int64
 **name**: string
@@ -4449,40 +4202,17 @@ class gcp_access_config [[#gcp_access_config]] {
 **set_public_ptr**: boolean
 **type**: string
 }
-class gcp_scheduling [[#gcp_scheduling]] {
-**automatic_restart**: boolean
-**instance_termination_action**: string
-**location_hint**: string
-**min_node_cpus**: int64
-**node_affinities**: gcp_scheduling_node_affinity[]
-**on_host_maintenance**: string
-**preemptible**: boolean
-**provisioning_model**: string
-}
-class gcp_scheduling_node_affinity [[#gcp_scheduling_node_affinity]] {
-**key**: string
-**operator**: string
-**values**: string[]
-}
-class gcp_advanced_machine_features [[#gcp_advanced_machine_features]] {
+class gcp_advanced_machine_features {
 **enable_nested_virtualization**: boolean
 **enable_uefi_networking**: boolean
 **threads_per_core**: int64
 **visible_core_count**: int64
 }
-class gcp_items [[#gcp_items]] {
-**key**: string
-**value**: string
+class gcp_alias_ip_range {
+**ip_cidr_range**: string
+**subnetwork_range_name**: string
 }
-class gcp_accelerator_config [[#gcp_accelerator_config]] {
-**accelerator_count**: int64
-**accelerator_type**: string
-}
-class gcp_metadata [[#gcp_metadata]] {
-**fingerprint**: string
-**items**: gcp_items[]
-}
-class gcp_attached_disk [[#gcp_attached_disk]] {
+class gcp_attached_disk {
 **architecture**: string
 **auto_delete**: boolean
 **boot**: boolean
@@ -4500,36 +4230,54 @@ class gcp_attached_disk [[#gcp_attached_disk]] {
 **source**: string
 **type**: string
 }
-class gcp_network_interface [[#gcp_network_interface]] {
-**access_configs**: gcp_access_config[]
-**alias_ip_ranges**: gcp_alias_ip_range[]
-**fingerprint**: string
-**internal_ipv6_prefix_length**: int64
-**ipv6_access_configs**: gcp_access_config[]
-**ipv6_access_type**: string
-**ipv6_address**: string
-**name**: string
-**network**: string
-**network_ip**: string
-**nic_type**: string
-**queue_count**: int64
-**stack_type**: string
-**subnetwork**: string
+class gcp_attached_disk_initialize_params {
+**architecture**: string
+**description**: string
+**disk_name**: string
+**disk_size_gb**: string
+**disk_type**: string
+**labels**: dictionary[string, string]
+**licenses**: string[]
+**on_update_action**: string
+**provisioned_iops**: string
+**resource_manager_tags**: dictionary[string, string]
+**resource_policies**: string[]
+**source_image**: string
+**source_image_encryption_key**: gcp_customer_encryption_key
+**source_snapshot**: string
+**source_snapshot_encryption_key**: gcp_customer_encryption_key
 }
-class gcp_alias_ip_range [[#gcp_alias_ip_range]] {
-**ip_cidr_range**: string
-**subnetwork_range_name**: string
+class gcp_customer_encryption_key {
+**kms_key_name**: string
+**kms_key_service_account**: string
+**raw_key**: string
+**rsa_encrypted_key**: string
+**sha256**: string
 }
-class gcp_shielded_instance_config [[#gcp_shielded_instance_config]] {
-**enable_integrity_monitoring**: boolean
-**enable_secure_boot**: boolean
-**enable_vtpm**: boolean
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
 }
-class gcp_tags [[#gcp_tags]] {
-**fingerprint**: string
-**items**: string[]
+class gcp_disk_instantiation_config {
+**auto_delete**: boolean
+**custom_image**: string
+**device_name**: string
+**instantiate_from**: string
 }
-class gcp_instance_properties [[#gcp_instance_properties]] {
+class gcp_file_content_buffer {
+**content**: string
+**file_type**: string
+}
+class gcp_initial_state_config {
+**dbs**: gcp_file_content_buffer[]
+**dbxs**: gcp_file_content_buffer[]
+**keks**: gcp_file_content_buffer[]
+**pk**: gcp_file_content_buffer
+}
+class gcp_instance_properties {
 **advanced_machine_features**: gcp_advanced_machine_features
 **can_ip_forward**: boolean
 **confidential_instance_config**: boolean
@@ -4552,33 +4300,97 @@ class gcp_instance_properties [[#gcp_instance_properties]] {
 **shielded_instance_config**: gcp_shielded_instance_config
 **tags**: gcp_tags
 }
-class gcp_source_instance_params [[#gcp_source_instance_params]] {
+class gcp_instance_template {
+**properties**: gcp_instance_properties
+**source_instance**: string
+**source_instance_params**: gcp_source_instance_params
+}
+class gcp_items {
+**key**: string
+**value**: string
+}
+class gcp_metadata {
+**fingerprint**: string
+**items**: gcp_items[]
+}
+class gcp_network_interface {
+**access_configs**: gcp_access_config[]
+**alias_ip_ranges**: gcp_alias_ip_range[]
+**fingerprint**: string
+**internal_ipv6_prefix_length**: int64
+**ipv6_access_configs**: gcp_access_config[]
+**ipv6_access_type**: string
+**ipv6_address**: string
+**name**: string
+**network**: string
+**network_ip**: string
+**nic_type**: string
+**queue_count**: int64
+**stack_type**: string
+**subnetwork**: string
+}
+class gcp_reservation_affinity {
+**consume_reservation_type**: string
+**key**: string
+**values**: string[]
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class gcp_scheduling {
+**automatic_restart**: boolean
+**instance_termination_action**: string
+**location_hint**: string
+**min_node_cpus**: int64
+**node_affinities**: gcp_scheduling_node_affinity[]
+**on_host_maintenance**: string
+**preemptible**: boolean
+**provisioning_model**: string
+}
+class gcp_scheduling_node_affinity {
+**key**: string
+**operator**: string
+**values**: string[]
+}
+class gcp_service_account {
+**email**: string
+**scopes**: string[]
+}
+class gcp_shielded_instance_config {
+**enable_integrity_monitoring**: boolean
+**enable_secure_boot**: boolean
+**enable_vtpm**: boolean
+}
+class gcp_source_instance_params {
 **disk_configs**: gcp_disk_instantiation_config[]
 }
-class gcp_disk_instantiation_config [[#gcp_disk_instantiation_config]] {
-**auto_delete**: boolean
-**custom_image**: string
-**device_name**: string
-**instantiate_from**: string
+class gcp_tags {
+**fingerprint**: string
+**items**: string[]
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_attached_disk_initialize_params --> gcp_customer_encryption_key
-gcp_resource <|--- gcp_instance_template
-gcp_instance_template --> gcp_instance_properties
-gcp_instance_template --> gcp_source_instance_params
-gcp_instance_template --> gcp_deprecation_status
-gcp_initial_state_config --> gcp_file_content_buffer
-gcp_scheduling --> gcp_scheduling_node_affinity
-gcp_metadata --> gcp_items
-gcp_attached_disk --> gcp_customer_encryption_key
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_attached_disk --> gcp_attached_disk_initialize_params
+gcp_attached_disk --> gcp_customer_encryption_key
 gcp_attached_disk --> gcp_initial_state_config
-gcp_network_interface --> gcp_access_config
-gcp_network_interface --> gcp_alias_ip_range
+gcp_attached_disk_initialize_params --> gcp_customer_encryption_key
+gcp_initial_state_config --> gcp_file_content_buffer
+gcp_instance_properties --> gcp_accelerator_config
 gcp_instance_properties --> gcp_advanced_machine_features
 gcp_instance_properties --> gcp_attached_disk
-gcp_instance_properties --> gcp_accelerator_config
 gcp_instance_properties --> gcp_metadata
 gcp_instance_properties --> gcp_network_interface
 gcp_instance_properties --> gcp_reservation_affinity
@@ -4586,8 +4398,17 @@ gcp_instance_properties --> gcp_scheduling
 gcp_instance_properties --> gcp_service_account
 gcp_instance_properties --> gcp_shielded_instance_config
 gcp_instance_properties --> gcp_tags
+gcp_instance_template --> gcp_deprecation_status
+gcp_instance_template --> gcp_instance_properties
+gcp_resource <|--- gcp_instance_template
+gcp_instance_template --> gcp_source_instance_params
+gcp_metadata --> gcp_items
+gcp_network_interface --> gcp_access_config
+gcp_network_interface --> gcp_alias_ip_range
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+gcp_scheduling --> gcp_scheduling_node_affinity
 gcp_source_instance_params --> gcp_disk_instantiation_config
-
 @enduml
 ```
 
@@ -4621,15 +4442,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_machine_type [[#gcp_machine_type]] {
-
+class gcp_instance_template {
 }
-class gcp_instance_template [[#gcp_instance_template]] {
-
+class gcp_machine_type {
 }
 gcp_machine_type -[#1A83AF]-> gcp_instance_template
-
 @enduml
 ```
 
@@ -4664,38 +4481,14 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class gcp_interconnect_circuit_info [[#gcp_interconnect_circuit_info]] {
-**customer_demarc_id**: string
-**google_circuit_id**: string
-**google_demarc_id**: string
-}
-class gcp_interconnect [[#gcp_interconnect]] {
+class gcp_interconnect {
 **admin_enabled**: boolean
 **circuit_infos**: gcp_interconnect_circuit_info[]
 **customer_name**: string
@@ -4703,6 +4496,7 @@ class gcp_interconnect [[#gcp_interconnect]] {
 **google_ip_address**: string
 **google_reference_id**: string
 **interconnect_attachments**: string[]
+**interconnect_state**: string
 **interconnect_type**: string
 **link_type**: string
 **location**: string
@@ -4712,9 +4506,13 @@ class gcp_interconnect [[#gcp_interconnect]] {
 **provisioned_link_count**: int64
 **requested_link_count**: int64
 **satisfies_pzs**: boolean
-**interconnect_state**: string
 }
-class gcp_interconnect_outage_notification [[#gcp_interconnect_outage_notification]] {
+class gcp_interconnect_circuit_info {
+**customer_demarc_id**: string
+**google_circuit_id**: string
+**google_demarc_id**: string
+}
+class gcp_interconnect_outage_notification {
 **affected_circuits**: string[]
 **description**: string
 **end_time**: string
@@ -4724,13 +4522,30 @@ class gcp_interconnect_outage_notification [[#gcp_interconnect_outage_notificati
 **start_time**: string
 **state**: string
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_interconnect
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+gcp_interconnect --> gcp_deprecation_status
 gcp_interconnect --> gcp_interconnect_circuit_info
 gcp_interconnect --> gcp_interconnect_outage_notification
-gcp_interconnect --> gcp_deprecation_status
-
+gcp_resource <|--- gcp_interconnect
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
 @enduml
 ```
 
@@ -4764,11 +4579,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_interconnect [[#gcp_interconnect]] {
-
+class gcp_interconnect {
 }
-
 @enduml
 ```
 
@@ -4803,38 +4615,14 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class gcp_interconnect_attachment_partner_metadata [[#gcp_interconnect_attachment_partner_metadata]] {
-**interconnect_name**: string
-**partner_name**: string
-**portal_url**: string
-}
-class gcp_interconnect_attachment [[#gcp_interconnect_attachment]] {
+class gcp_interconnect_attachment {
 **admin_enabled**: boolean
 **bandwidth**: string
 **candidate_ipv6_subnets**: string[]
@@ -4850,6 +4638,7 @@ class gcp_interconnect_attachment [[#gcp_interconnect_attachment]] {
 **encryption**: string
 **google_reference_id**: string
 **interconnect**: string
+**interconnect_attachment_state**: string
 **ipsec_internal_addresses**: string[]
 **mtu**: int64
 **operational_status**: string
@@ -4860,16 +4649,37 @@ class gcp_interconnect_attachment [[#gcp_interconnect_attachment]] {
 **router**: string
 **satisfies_pzs**: boolean
 **stack_type**: string
-**interconnect_attachment_state**: string
 **type**: string
 **vlan_tag8021q**: int64
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_interconnect_attachment
-gcp_interconnect_attachment --> gcp_interconnect_attachment_partner_metadata
+class gcp_interconnect_attachment_partner_metadata {
+**interconnect_name**: string
+**partner_name**: string
+**portal_url**: string
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_interconnect_attachment --> gcp_deprecation_status
-
+gcp_interconnect_attachment --> gcp_interconnect_attachment_partner_metadata
+gcp_resource <|--- gcp_interconnect_attachment
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
 @enduml
 ```
 
@@ -4903,15 +4713,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_vpn_gateway [[#gcp_vpn_gateway]] {
-
+class gcp_interconnect_attachment {
 }
-class gcp_interconnect_attachment [[#gcp_interconnect_attachment]] {
-
+class gcp_vpn_gateway {
 }
 gcp_vpn_gateway -[#1A83AF]-> gcp_interconnect_attachment
-
 @enduml
 ```
 
@@ -4946,38 +4752,14 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class gcp_interconnect_location_region_info [[#gcp_interconnect_location_region_info]] {
-**expected_rtt_ms**: string
-**location_presence**: string
-**region**: string
-}
-class gcp_interconnect_location [[#gcp_interconnect_location]] {
+class gcp_interconnect_location {
 **address**: string
 **availability_zone**: string
 **city**: string
@@ -4989,12 +4771,34 @@ class gcp_interconnect_location [[#gcp_interconnect_location]] {
 **status**: string
 **supports_pzs**: boolean
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_interconnect_location
-gcp_interconnect_location --> gcp_interconnect_location_region_info
+class gcp_interconnect_location_region_info {
+**expected_rtt_ms**: string
+**location_presence**: string
+**region**: string
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_interconnect_location --> gcp_deprecation_status
-
+gcp_interconnect_location --> gcp_interconnect_location_region_info
+gcp_resource <|--- gcp_interconnect_location
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
 @enduml
 ```
 
@@ -5028,11 +4832,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_interconnect_location [[#gcp_interconnect_location]] {
-
+class gcp_interconnect_location {
 }
-
 @enduml
 ```
 
@@ -5067,48 +4868,46 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class gcp_license [[#gcp_license]] {
+class gcp_license {
 **charges_use_fee**: boolean
 **license_code**: string
 **resource_requirements**: gcp_license_resource_requirements
 **transferable**: boolean
 }
-class gcp_license_resource_requirements [[#gcp_license_resource_requirements]] {
+class gcp_license_resource_requirements {
 **min_guest_cpu_count**: int64
 **min_memory_mb**: int64
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_license
-gcp_license --> gcp_license_resource_requirements
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_license --> gcp_deprecation_status
-
+gcp_license --> gcp_license_resource_requirements
+gcp_resource <|--- gcp_license
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
 @enduml
 ```
 
@@ -5142,11 +4941,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_license [[#gcp_license]] {
-
+class gcp_license {
 }
-
 @enduml
 ```
 
@@ -5181,82 +4977,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
+class gcp_accelerator_config {
+**accelerator_count**: int64
+**accelerator_type**: string
 }
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
-**deleted**: string
-**deprecated**: string
-**obsolete**: string
-**replacement**: string
-**state**: string
-}
-class gcp_saved_disk [[#gcp_saved_disk]] {
-**architecture**: string
-**source_disk**: string
-**storage_bytes**: string
-**storage_bytes_status**: string
-}
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class gcp_reservation_affinity [[#gcp_reservation_affinity]] {
-**consume_reservation_type**: string
-**key**: string
-**values**: string[]
-}
-class gcp_attached_disk_initialize_params [[#gcp_attached_disk_initialize_params]] {
-**architecture**: string
-**description**: string
-**disk_name**: string
-**disk_size_gb**: string
-**disk_type**: string
-**labels**: dictionary[string, string]
-**licenses**: string[]
-**on_update_action**: string
-**provisioned_iops**: string
-**resource_manager_tags**: dictionary[string, string]
-**resource_policies**: string[]
-**source_image**: string
-**source_image_encryption_key**: gcp_customer_encryption_key
-**source_snapshot**: string
-**source_snapshot_encryption_key**: gcp_customer_encryption_key
-}
-class gcp_customer_encryption_key [[#gcp_customer_encryption_key]] {
-**kms_key_name**: string
-**kms_key_service_account**: string
-**raw_key**: string
-**rsa_encrypted_key**: string
-**sha256**: string
-}
-class gcp_service_account [[#gcp_service_account]] {
-**email**: string
-**scopes**: string[]
-}
-class gcp_initial_state_config [[#gcp_initial_state_config]] {
-**dbs**: gcp_file_content_buffer[]
-**dbxs**: gcp_file_content_buffer[]
-**keks**: gcp_file_content_buffer[]
-**pk**: gcp_file_content_buffer
-}
-class gcp_file_content_buffer [[#gcp_file_content_buffer]] {
-**content**: string
-**file_type**: string
-}
-class gcp_access_config [[#gcp_access_config]] {
+class gcp_access_config {
 **external_ipv6**: string
 **external_ipv6_prefix_length**: int64
 **name**: string
@@ -5266,40 +4991,17 @@ class gcp_access_config [[#gcp_access_config]] {
 **set_public_ptr**: boolean
 **type**: string
 }
-class gcp_scheduling [[#gcp_scheduling]] {
-**automatic_restart**: boolean
-**instance_termination_action**: string
-**location_hint**: string
-**min_node_cpus**: int64
-**node_affinities**: gcp_scheduling_node_affinity[]
-**on_host_maintenance**: string
-**preemptible**: boolean
-**provisioning_model**: string
-}
-class gcp_scheduling_node_affinity [[#gcp_scheduling_node_affinity]] {
-**key**: string
-**operator**: string
-**values**: string[]
-}
-class gcp_advanced_machine_features [[#gcp_advanced_machine_features]] {
+class gcp_advanced_machine_features {
 **enable_nested_virtualization**: boolean
 **enable_uefi_networking**: boolean
 **threads_per_core**: int64
 **visible_core_count**: int64
 }
-class gcp_items [[#gcp_items]] {
-**key**: string
-**value**: string
+class gcp_alias_ip_range {
+**ip_cidr_range**: string
+**subnetwork_range_name**: string
 }
-class gcp_accelerator_config [[#gcp_accelerator_config]] {
-**accelerator_count**: int64
-**accelerator_type**: string
-}
-class gcp_metadata [[#gcp_metadata]] {
-**fingerprint**: string
-**items**: gcp_items[]
-}
-class gcp_attached_disk [[#gcp_attached_disk]] {
+class gcp_attached_disk {
 **architecture**: string
 **auto_delete**: boolean
 **boot**: boolean
@@ -5317,53 +5019,48 @@ class gcp_attached_disk [[#gcp_attached_disk]] {
 **source**: string
 **type**: string
 }
-class gcp_network_interface [[#gcp_network_interface]] {
-**access_configs**: gcp_access_config[]
-**alias_ip_ranges**: gcp_alias_ip_range[]
-**fingerprint**: string
-**internal_ipv6_prefix_length**: int64
-**ipv6_access_configs**: gcp_access_config[]
-**ipv6_access_type**: string
-**ipv6_address**: string
-**name**: string
-**network**: string
-**network_ip**: string
-**nic_type**: string
-**queue_count**: int64
-**stack_type**: string
-**subnetwork**: string
-}
-class gcp_alias_ip_range [[#gcp_alias_ip_range]] {
-**ip_cidr_range**: string
-**subnetwork_range_name**: string
-}
-class gcp_shielded_instance_config [[#gcp_shielded_instance_config]] {
-**enable_integrity_monitoring**: boolean
-**enable_secure_boot**: boolean
-**enable_vtpm**: boolean
-}
-class gcp_tags [[#gcp_tags]] {
-**fingerprint**: string
-**items**: string[]
-}
-class gcp_saved_attached_disk [[#gcp_saved_attached_disk]] {
-**auto_delete**: boolean
-**boot**: boolean
-**device_name**: string
-**disk_encryption_key**: gcp_customer_encryption_key
+class gcp_attached_disk_initialize_params {
+**architecture**: string
+**description**: string
+**disk_name**: string
 **disk_size_gb**: string
 **disk_type**: string
-**guest_os_features**: string[]
-**index**: int64
-**interface**: string
+**labels**: dictionary[string, string]
 **licenses**: string[]
-**mode**: string
-**source**: string
-**storage_bytes**: string
-**storage_bytes_status**: string
-**type**: string
+**on_update_action**: string
+**provisioned_iops**: string
+**resource_manager_tags**: dictionary[string, string]
+**resource_policies**: string[]
+**source_image**: string
+**source_image_encryption_key**: gcp_customer_encryption_key
+**source_snapshot**: string
+**source_snapshot_encryption_key**: gcp_customer_encryption_key
 }
-class gcp_instance_properties [[#gcp_instance_properties]] {
+class gcp_customer_encryption_key {
+**kms_key_name**: string
+**kms_key_service_account**: string
+**raw_key**: string
+**rsa_encrypted_key**: string
+**sha256**: string
+}
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
+}
+class gcp_file_content_buffer {
+**content**: string
+**file_type**: string
+}
+class gcp_initial_state_config {
+**dbs**: gcp_file_content_buffer[]
+**dbxs**: gcp_file_content_buffer[]
+**keks**: gcp_file_content_buffer[]
+**pk**: gcp_file_content_buffer
+}
+class gcp_instance_properties {
 **advanced_machine_features**: gcp_advanced_machine_features
 **can_ip_forward**: boolean
 **confidential_instance_config**: boolean
@@ -5386,11 +5083,11 @@ class gcp_instance_properties [[#gcp_instance_properties]] {
 **shielded_instance_config**: gcp_shielded_instance_config
 **tags**: gcp_tags
 }
-class gcp_source_disk_encryption_key [[#gcp_source_disk_encryption_key]] {
-**disk_encryption_key**: gcp_customer_encryption_key
-**source_disk**: string
+class gcp_items {
+**key**: string
+**value**: string
 }
-class gcp_machine_image [[#gcp_machine_image]] {
+class gcp_machine_image {
 **guest_flush**: boolean
 **instance_properties**: gcp_instance_properties
 **machine_image_encryption_key**: gcp_customer_encryption_key
@@ -5403,11 +5100,92 @@ class gcp_machine_image [[#gcp_machine_image]] {
 **storage_locations**: string[]
 **total_storage_bytes**: string
 }
-class gcp_source_instance_properties [[#gcp_source_instance_properties]] {
+class gcp_metadata {
+**fingerprint**: string
+**items**: gcp_items[]
+}
+class gcp_network_interface {
+**access_configs**: gcp_access_config[]
+**alias_ip_ranges**: gcp_alias_ip_range[]
+**fingerprint**: string
+**internal_ipv6_prefix_length**: int64
+**ipv6_access_configs**: gcp_access_config[]
+**ipv6_access_type**: string
+**ipv6_address**: string
+**name**: string
+**network**: string
+**network_ip**: string
+**nic_type**: string
+**queue_count**: int64
+**stack_type**: string
+**subnetwork**: string
+}
+class gcp_reservation_affinity {
+**consume_reservation_type**: string
+**key**: string
+**values**: string[]
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class gcp_saved_attached_disk {
+**auto_delete**: boolean
+**boot**: boolean
+**device_name**: string
+**disk_encryption_key**: gcp_customer_encryption_key
+**disk_size_gb**: string
+**disk_type**: string
+**guest_os_features**: string[]
+**index**: int64
+**interface**: string
+**licenses**: string[]
+**mode**: string
+**source**: string
+**storage_bytes**: string
+**storage_bytes_status**: string
+**type**: string
+}
+class gcp_saved_disk {
+**architecture**: string
+**source_disk**: string
+**storage_bytes**: string
+**storage_bytes_status**: string
+}
+class gcp_scheduling {
+**automatic_restart**: boolean
+**instance_termination_action**: string
+**location_hint**: string
+**min_node_cpus**: int64
+**node_affinities**: gcp_scheduling_node_affinity[]
+**on_host_maintenance**: string
+**preemptible**: boolean
+**provisioning_model**: string
+}
+class gcp_scheduling_node_affinity {
+**key**: string
+**operator**: string
+**values**: string[]
+}
+class gcp_service_account {
+**email**: string
+**scopes**: string[]
+}
+class gcp_shielded_instance_config {
+**enable_integrity_monitoring**: boolean
+**enable_secure_boot**: boolean
+**enable_vtpm**: boolean
+}
+class gcp_source_disk_encryption_key {
+**disk_encryption_key**: gcp_customer_encryption_key
+**source_disk**: string
+}
+class gcp_source_instance_properties {
 **can_ip_forward**: boolean
 **deletion_protection**: boolean
 **description**: string
-**saved_disks**: gcp_saved_attached_disk[]
 **guest_accelerators**: gcp_accelerator_config[]
 **key_revocation_action_type**: string
 **labels**: dictionary[string, string]
@@ -5415,25 +5193,35 @@ class gcp_source_instance_properties [[#gcp_source_instance_properties]] {
 **metadata**: gcp_metadata
 **min_cpu_platform**: string
 **network_interfaces**: gcp_network_interface[]
+**saved_disks**: gcp_saved_attached_disk[]
 **scheduling**: gcp_scheduling
 **service_accounts**: gcp_service_account[]
 **tags**: gcp_tags
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
+class gcp_tags {
+**fingerprint**: string
+**items**: string[]
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+gcp_attached_disk --> gcp_attached_disk_initialize_params
+gcp_attached_disk --> gcp_customer_encryption_key
+gcp_attached_disk --> gcp_initial_state_config
 gcp_attached_disk_initialize_params --> gcp_customer_encryption_key
 gcp_initial_state_config --> gcp_file_content_buffer
-gcp_scheduling --> gcp_scheduling_node_affinity
-gcp_metadata --> gcp_items
-gcp_attached_disk --> gcp_customer_encryption_key
-gcp_attached_disk --> gcp_attached_disk_initialize_params
-gcp_attached_disk --> gcp_initial_state_config
-gcp_network_interface --> gcp_access_config
-gcp_network_interface --> gcp_alias_ip_range
-gcp_saved_attached_disk --> gcp_customer_encryption_key
+gcp_instance_properties --> gcp_accelerator_config
 gcp_instance_properties --> gcp_advanced_machine_features
 gcp_instance_properties --> gcp_attached_disk
-gcp_instance_properties --> gcp_accelerator_config
 gcp_instance_properties --> gcp_metadata
 gcp_instance_properties --> gcp_network_interface
 gcp_instance_properties --> gcp_reservation_affinity
@@ -5441,22 +5229,28 @@ gcp_instance_properties --> gcp_scheduling
 gcp_instance_properties --> gcp_service_account
 gcp_instance_properties --> gcp_shielded_instance_config
 gcp_instance_properties --> gcp_tags
-gcp_source_disk_encryption_key --> gcp_customer_encryption_key
-gcp_resource <|--- gcp_machine_image
-gcp_machine_image --> gcp_instance_properties
 gcp_machine_image --> gcp_customer_encryption_key
+gcp_machine_image --> gcp_deprecation_status
+gcp_machine_image --> gcp_instance_properties
+gcp_resource <|--- gcp_machine_image
 gcp_machine_image --> gcp_saved_disk
 gcp_machine_image --> gcp_source_disk_encryption_key
 gcp_machine_image --> gcp_source_instance_properties
-gcp_machine_image --> gcp_deprecation_status
-gcp_source_instance_properties --> gcp_saved_attached_disk
+gcp_metadata --> gcp_items
+gcp_network_interface --> gcp_access_config
+gcp_network_interface --> gcp_alias_ip_range
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+gcp_saved_attached_disk --> gcp_customer_encryption_key
+gcp_scheduling --> gcp_scheduling_node_affinity
+gcp_source_disk_encryption_key --> gcp_customer_encryption_key
 gcp_source_instance_properties --> gcp_accelerator_config
 gcp_source_instance_properties --> gcp_metadata
 gcp_source_instance_properties --> gcp_network_interface
+gcp_source_instance_properties --> gcp_saved_attached_disk
 gcp_source_instance_properties --> gcp_scheduling
 gcp_source_instance_properties --> gcp_service_account
 gcp_source_instance_properties --> gcp_tags
-
 @enduml
 ```
 
@@ -5490,15 +5284,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_disk [[#gcp_disk]] {
-
+class gcp_disk {
 }
-class gcp_machine_image [[#gcp_machine_image]] {
-
+class gcp_machine_image {
 }
 gcp_disk -[#1A83AF]-> gcp_machine_image
-
 @enduml
 ```
 
@@ -5533,43 +5323,18 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
+class gcp_accelerators {
+**guest_accelerator_count**: int64
+**guest_accelerator_type**: string
 }
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class instance_type [[#instance_type]] {
-**instance_type**: string
-**instance_cores**: double
-**instance_memory**: double
-**ondemand_cost**: double
-**reservations**: int64
-}
-class type [[#type]] {
-
-}
-class gcp_machine_type [[#gcp_machine_type]] {
+class gcp_machine_type {
 **accelerators**: gcp_accelerators[]
 **image_space_gb**: int64
 **is_shared_cpu**: boolean
@@ -5577,29 +5342,50 @@ class gcp_machine_type [[#gcp_machine_type]] {
 **maximum_persistent_disks_size_gb**: string
 **scratch_disks**: int64[]
 }
-class gcp_accelerators [[#gcp_accelerators]] {
-**guest_accelerator_count**: int64
-**guest_accelerator_type**: string
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
 }
-class quota [[#quota]] {
+class instance_type {
+**instance_cores**: double
+**instance_memory**: double
+**instance_type**: string
+**ondemand_cost**: double
+**reservations**: int64
+}
+class phantom_resource {
+}
+class quota {
 **quota**: double
-**usage**: double
 **quota_type**: string
+**usage**: double
 }
-class phantom_resource [[#phantom_resource]] {
-
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-type <|--- instance_type
-quota <|--- type
-gcp_resource <|--- gcp_machine_type
-instance_type <|--- gcp_machine_type
+class type {
+}
 gcp_machine_type --> gcp_accelerators
 gcp_machine_type --> gcp_deprecation_status
-phantom_resource <|--- quota
+gcp_resource <|--- gcp_machine_type
+instance_type <|--- gcp_machine_type
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+type <|--- instance_type
 resource <|--- phantom_resource
-
+phantom_resource <|--- quota
+quota <|--- type
 @enduml
 ```
 
@@ -5633,19 +5419,14 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_machine_type [[#gcp_machine_type]] {
-
+class gcp_instance {
 }
-class gcp_instance_template [[#gcp_instance_template]] {
-
+class gcp_instance_template {
 }
-class gcp_instance [[#gcp_instance]] {
-
+class gcp_machine_type {
 }
-gcp_machine_type -[#1A83AF]-> gcp_instance_template
 gcp_machine_type -[#1A83AF]-> gcp_instance
-
+gcp_machine_type -[#1A83AF]-> gcp_instance_template
 @enduml
 ```
 
@@ -5680,39 +5461,20 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class gcp_network [[#gcp_network]] {
-**ipv4_range**: string
+class gcp_network {
 **auto_create_subnetworks**: boolean
 **enable_ula_internal_ipv6**: boolean
 **firewall_policy**: string
 **gateway_i_pv4**: string
 **internal_ipv6_range**: string
+**ipv4_range**: string
 **mtu**: int64
 **network_firewall_policy_enforcement_order**: string
 **peerings**: gcp_network_peering[]
@@ -5720,7 +5482,7 @@ class gcp_network [[#gcp_network]] {
 **self_link_with_id**: string
 **subnetworks**: string[]
 }
-class gcp_network_peering [[#gcp_network_peering]] {
+class gcp_network_peering {
 **auto_create_routes**: boolean
 **exchange_subnet_routes**: boolean
 **export_custom_routes**: boolean
@@ -5729,17 +5491,34 @@ class gcp_network_peering [[#gcp_network_peering]] {
 **import_subnet_routes_with_public_ip**: boolean
 **name**: string
 **network**: string
+**network_peering_state**: string
 **peer_mtu**: int64
 **stack_type**: string
-**network_peering_state**: string
 **state_details**: string
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_network
-gcp_network --> gcp_network_peering
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_network --> gcp_deprecation_status
-
+gcp_network --> gcp_network_peering
+gcp_resource <|--- gcp_network
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
 @enduml
 ```
 
@@ -5773,70 +5552,54 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_backend_service [[#gcp_backend_service]] {
-
+class gcp_backend_service {
 }
-class gcp_instance_group [[#gcp_instance_group]] {
-
+class gcp_firewall {
 }
-class gcp_network_endpoint_group [[#gcp_network_endpoint_group]] {
-
+class gcp_firewall_policy {
 }
-class gcp_firewall_policy [[#gcp_firewall_policy]] {
-
+class gcp_forwarding_rule {
 }
-class gcp_network [[#gcp_network]] {
-
+class gcp_instance {
 }
-class gcp_instance [[#gcp_instance]] {
-
+class gcp_instance_group {
 }
-class gcp_firewall [[#gcp_firewall]] {
-
+class gcp_network {
 }
-class gcp_forwarding_rule [[#gcp_forwarding_rule]] {
-
+class gcp_network_endpoint_group {
 }
-class gcp_target_vpn_gateway [[#gcp_target_vpn_gateway]] {
-
+class gcp_route {
 }
-class gcp_subnetwork [[#gcp_subnetwork]] {
-
+class gcp_router {
 }
-class gcp_router [[#gcp_router]] {
-
+class gcp_subnetwork {
 }
-class gcp_target_instance [[#gcp_target_instance]] {
-
+class gcp_target_instance {
 }
-class gcp_vpn_gateway [[#gcp_vpn_gateway]] {
-
+class gcp_target_vpn_gateway {
 }
-class gcp_route [[#gcp_route]] {
-
+class gcp_vpn_gateway {
 }
 gcp_backend_service -[#1A83AF]-> gcp_instance_group
 gcp_backend_service -[#1A83AF]-> gcp_network_endpoint_group
+gcp_firewall -[#1A83AF]-> gcp_network
 gcp_firewall_policy -[#1A83AF]-> gcp_network
-gcp_network -[#1A83AF]-> gcp_instance_group
-gcp_network -[#1A83AF]-> gcp_router
+gcp_forwarding_rule -[#1A83AF]-> gcp_target_vpn_gateway
+gcp_network -[#1A83AF]-> gcp_backend_service
+gcp_network -[#1A83AF]-> gcp_forwarding_rule
 gcp_network -[#1A83AF]-> gcp_instance
+gcp_network -[#1A83AF]-> gcp_instance_group
 gcp_network -[#1A83AF]-> gcp_network_endpoint_group
+gcp_network -[#1A83AF]-> gcp_route
+gcp_network -[#1A83AF]-> gcp_router
+gcp_network -[#1A83AF]-> gcp_subnetwork
 gcp_network -[#1A83AF]-> gcp_target_instance
 gcp_network -[#1A83AF]-> gcp_target_vpn_gateway
 gcp_network -[#1A83AF]-> gcp_vpn_gateway
-gcp_network -[#1A83AF]-> gcp_backend_service
-gcp_network -[#1A83AF]-> gcp_subnetwork
-gcp_network -[#1A83AF]-> gcp_route
-gcp_network -[#1A83AF]-> gcp_forwarding_rule
-gcp_firewall -[#1A83AF]-> gcp_network
-gcp_forwarding_rule -[#1A83AF]-> gcp_target_vpn_gateway
-gcp_subnetwork -[#1A83AF]-> gcp_instance_group
 gcp_subnetwork -[#1A83AF]-> gcp_instance
+gcp_subnetwork -[#1A83AF]-> gcp_instance_group
 gcp_subnetwork -[#1A83AF]-> gcp_network_endpoint_group
 gcp_target_instance -[#1A83AF]-> gcp_instance
-
 @enduml
 ```
 
@@ -5871,42 +5634,40 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class gcp_network_edge_security_service [[#gcp_network_edge_security_service]] {
+class gcp_network_edge_security_service {
 **service_fingerprint**: string
 **service_security_policy**: string
 **service_self_link_with_id**: string
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_network_edge_security_service
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_network_edge_security_service --> gcp_deprecation_status
-
+gcp_resource <|--- gcp_network_edge_security_service
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
 @enduml
 ```
 
@@ -5940,11 +5701,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_network_edge_security_service [[#gcp_network_edge_security_service]] {
-
+class gcp_network_edge_security_service {
 }
-
 @enduml
 ```
 
@@ -5979,21 +5737,14 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class gcp_network_endpoint_group [[#gcp_network_endpoint_group]] {
+class gcp_network_endpoint_group {
 **annotations**: dictionary[string, string]
 **app_engine**: gcp_network_endpoint_group_app_engine
 **cloud_function**: gcp_network_endpoint_group_cloud_function
@@ -6006,46 +5757,51 @@ class gcp_network_endpoint_group [[#gcp_network_endpoint_group]] {
 **size**: int64
 **subnetwork**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class gcp_network_endpoint_group_cloud_run [[#gcp_network_endpoint_group_cloud_run]] {
-**service**: string
-**tag**: string
-**url_mask**: string
-}
-class gcp_network_endpoint_group_cloud_function [[#gcp_network_endpoint_group_cloud_function]] {
-**function**: string
-**url_mask**: string
-}
-class gcp_network_endpoint_group_psc_data [[#gcp_network_endpoint_group_psc_data]] {
-**consumer_psc_address**: string
-**psc_connection_id**: string
-**psc_connection_status**: string
-}
-class gcp_network_endpoint_group_app_engine [[#gcp_network_endpoint_group_app_engine]] {
+class gcp_network_endpoint_group_app_engine {
 **service**: string
 **url_mask**: string
 **version**: string
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_network_endpoint_group
+class gcp_network_endpoint_group_cloud_function {
+**function**: string
+**url_mask**: string
+}
+class gcp_network_endpoint_group_cloud_run {
+**service**: string
+**tag**: string
+**url_mask**: string
+}
+class gcp_network_endpoint_group_psc_data {
+**consumer_psc_address**: string
+**psc_connection_id**: string
+**psc_connection_status**: string
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+gcp_network_endpoint_group --> gcp_deprecation_status
 gcp_network_endpoint_group --> gcp_network_endpoint_group_app_engine
 gcp_network_endpoint_group --> gcp_network_endpoint_group_cloud_function
 gcp_network_endpoint_group --> gcp_network_endpoint_group_cloud_run
 gcp_network_endpoint_group --> gcp_network_endpoint_group_psc_data
-gcp_network_endpoint_group --> gcp_deprecation_status
-
+gcp_resource <|--- gcp_network_endpoint_group
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
 @enduml
 ```
 
@@ -6079,25 +5835,19 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_backend_service [[#gcp_backend_service]] {
-
+class gcp_backend_service {
 }
-class gcp_network_endpoint_group [[#gcp_network_endpoint_group]] {
-
+class gcp_network {
 }
-class gcp_network [[#gcp_network]] {
-
+class gcp_network_endpoint_group {
 }
-class gcp_subnetwork [[#gcp_subnetwork]] {
-
+class gcp_subnetwork {
 }
 gcp_backend_service -[#1A83AF]-> gcp_network_endpoint_group
-gcp_network -[#1A83AF]-> gcp_network_endpoint_group
 gcp_network -[#1A83AF]-> gcp_backend_service
+gcp_network -[#1A83AF]-> gcp_network_endpoint_group
 gcp_network -[#1A83AF]-> gcp_subnetwork
 gcp_subnetwork -[#1A83AF]-> gcp_network_endpoint_group
-
 @enduml
 ```
 
@@ -6132,48 +5882,18 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_duration [[#gcp_duration]] {
-**nanos**: int64
-**seconds**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class gcp_duration {
+**nanos**: int64
+**seconds**: string
 }
-class gcp_node_group_maintenance_window [[#gcp_node_group_maintenance_window]] {
-**maintenance_duration**: gcp_duration
-**start_time**: string
-}
-class gcp_share_settings [[#gcp_share_settings]] {
-**project_map**: dictionary[string, gcp_share_settings_project_config]
-**share_type**: string
-}
-class gcp_share_settings_project_config [[#gcp_share_settings_project_config]] {
-**project_id**: string
-}
-class gcp_node_group [[#gcp_node_group]] {
+class gcp_node_group {
 **autoscaling_policy**: gcp_node_group_autoscaling_policy
 **fingerprint**: string
 **location_hint**: string
@@ -6184,21 +5904,49 @@ class gcp_node_group [[#gcp_node_group]] {
 **size**: int64
 **status**: string
 }
-class gcp_node_group_autoscaling_policy [[#gcp_node_group_autoscaling_policy]] {
+class gcp_node_group_autoscaling_policy {
 **max_nodes**: int64
 **min_nodes**: int64
 **mode**: string
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_node_group_maintenance_window --> gcp_duration
-gcp_share_settings --> gcp_share_settings_project_config
-gcp_resource <|--- gcp_node_group
+class gcp_node_group_maintenance_window {
+**maintenance_duration**: gcp_duration
+**start_time**: string
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class gcp_share_settings {
+**project_map**: dictionary[string, gcp_share_settings_project_config]
+**share_type**: string
+}
+class gcp_share_settings_project_config {
+**project_id**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+gcp_node_group --> gcp_deprecation_status
 gcp_node_group --> gcp_node_group_autoscaling_policy
 gcp_node_group --> gcp_node_group_maintenance_window
+gcp_resource <|--- gcp_node_group
 gcp_node_group --> gcp_share_settings
-gcp_node_group --> gcp_deprecation_status
-
+gcp_node_group_maintenance_window --> gcp_duration
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+gcp_share_settings --> gcp_share_settings_project_config
 @enduml
 ```
 
@@ -6232,15 +5980,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_node_group [[#gcp_node_group]] {
-
+class gcp_node_group {
 }
-class gcp_node_template [[#gcp_node_template]] {
-
+class gcp_node_template {
 }
 gcp_node_template -[#1A83AF]-> gcp_node_group
-
 @enduml
 ```
 
@@ -6275,39 +6019,25 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
+class gcp_accelerator_config {
+**accelerator_count**: int64
+**accelerator_type**: string
 }
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class gcp_local_disk {
+**disk_count**: int64
+**disk_size_gb**: int64
+**disk_type**: string
 }
-class gcp_accelerator_config [[#gcp_accelerator_config]] {
-**accelerator_count**: int64
-**accelerator_type**: string
-}
-class gcp_node_template [[#gcp_node_template]] {
-**guest_accelerators**: gcp_accelerator_config[]
+class gcp_node_template {
 **cpu_overcommit_type**: string
+**guest_accelerators**: gcp_accelerator_config[]
 **local_disks**: gcp_local_disk[]
 **node_affinity_labels**: dictionary[string, string]
 **node_type**: string
@@ -6316,24 +6046,36 @@ class gcp_node_template [[#gcp_node_template]] {
 **status**: string
 **status_message**: string
 }
-class gcp_node_template_node_type_flexibility [[#gcp_node_template_node_type_flexibility]] {
+class gcp_node_template_node_type_flexibility {
 **cpus**: string
 **local_ssd**: string
 **memory**: string
 }
-class gcp_local_disk [[#gcp_local_disk]] {
-**disk_count**: int64
-**disk_size_gb**: int64
-**disk_type**: string
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_node_template
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_node_template --> gcp_accelerator_config
+gcp_node_template --> gcp_deprecation_status
 gcp_node_template --> gcp_local_disk
 gcp_node_template --> gcp_node_template_node_type_flexibility
-gcp_node_template --> gcp_deprecation_status
-
+gcp_resource <|--- gcp_node_template
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
 @enduml
 ```
 
@@ -6367,19 +6109,14 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_node_group [[#gcp_node_group]] {
-
+class gcp_disk_type {
 }
-class gcp_disk_type [[#gcp_disk_type]] {
-
+class gcp_node_group {
 }
-class gcp_node_template [[#gcp_node_template]] {
-
+class gcp_node_template {
 }
 gcp_disk_type -[#1A83AF]-> gcp_node_template
 gcp_node_template -[#1A83AF]-> gcp_node_group
-
 @enduml
 ```
 
@@ -6414,43 +6151,41 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class gcp_node_type [[#gcp_node_type]] {
+class gcp_node_type {
 **cpu_platform**: string
 **guest_cpus**: int64
 **local_ssd_gb**: int64
 **memory_mb**: int64
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_node_type
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_node_type --> gcp_deprecation_status
-
+gcp_resource <|--- gcp_node_type
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
 @enduml
 ```
 
@@ -6484,11 +6219,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_node_type [[#gcp_node_type]] {
-
+class gcp_node_type {
 }
-
 @enduml
 ```
 
@@ -6523,53 +6255,51 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_duration [[#gcp_duration]] {
-**nanos**: int64
-**seconds**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class gcp_duration {
+**nanos**: int64
+**seconds**: string
 }
-class gcp_notification_endpoint [[#gcp_notification_endpoint]] {
+class gcp_notification_endpoint {
 **grpc_settings**: gcp_notification_endpoint_grpc_settings
 }
-class gcp_notification_endpoint_grpc_settings [[#gcp_notification_endpoint_grpc_settings]] {
+class gcp_notification_endpoint_grpc_settings {
 **authority**: string
 **endpoint**: string
 **payload_name**: string
 **resend_interval**: gcp_duration
 **retry_duration_sec**: int64
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_notification_endpoint
-gcp_notification_endpoint --> gcp_notification_endpoint_grpc_settings
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_notification_endpoint --> gcp_deprecation_status
+gcp_notification_endpoint --> gcp_notification_endpoint_grpc_settings
+gcp_resource <|--- gcp_notification_endpoint
 gcp_notification_endpoint_grpc_settings --> gcp_duration
-
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
 @enduml
 ```
 
@@ -6603,11 +6333,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_notification_endpoint [[#gcp_notification_endpoint]] {
-
+class gcp_notification_endpoint {
 }
-
 @enduml
 ```
 
@@ -6642,40 +6369,37 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
+class gcp_object {
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class resource {
 **age**: duration
-**mtime**: datetime
-**last_update**: duration
 **atime**: datetime
-**last_access**: duration
+**ctime**: datetime
+**id**: string
 **kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
 }
-class gcp_object [[#gcp_object]] {
-
-}
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_object
 gcp_object --> gcp_deprecation_status
-
+gcp_resource <|--- gcp_object
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
 @enduml
 ```
 
@@ -6709,11 +6433,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_object [[#gcp_object]] {
-
+class gcp_object {
 }
-
 @enduml
 ```
 
@@ -6748,54 +6469,48 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
+class gcp_data {
+**key**: string
+**value**: string
 }
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class gcp_error {
+**errors**: gcp_errors[]
 }
-class gcp_help [[#gcp_help]] {
-**links**: gcp_help_link[]
-}
-class gcp_help_link [[#gcp_help_link]] {
-**description**: string
-**url**: string
-}
-class gcp_data [[#gcp_data]] {
-**key**: string
-**value**: string
-}
-class gcp_warnings [[#gcp_warnings]] {
-**code**: string
-**data**: gcp_data[]
-**message**: string
-}
-class gcp_error_info [[#gcp_error_info]] {
+class gcp_error_info {
 **domain**: string
 **metadatas**: dictionary[string, string]
 **reason**: string
 }
-class gcp_operation [[#gcp_operation]] {
+class gcp_errordetails {
+**error_info**: gcp_error_info
+**help**: gcp_help
+**localized_message**: gcp_localized_message
+}
+class gcp_errors {
+**code**: string
+**error_details**: gcp_errordetails[]
+**location**: string
+**message**: string
+}
+class gcp_help {
+**links**: gcp_help_link[]
+}
+class gcp_help_link {
+**description**: string
+**url**: string
+}
+class gcp_localized_message {
+**locale**: string
+**message**: string
+}
+class gcp_operation {
 **client_operation_id**: string
 **end_time**: datetime
 **error**: gcp_error
@@ -6813,38 +6528,42 @@ class gcp_operation [[#gcp_operation]] {
 **user**: string
 **warnings**: gcp_warnings[]
 }
-class gcp_error [[#gcp_error]] {
-**errors**: gcp_errors[]
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
 }
-class gcp_errors [[#gcp_errors]] {
+class gcp_warnings {
 **code**: string
-**error_details**: gcp_errordetails[]
-**location**: string
+**data**: gcp_data[]
 **message**: string
 }
-class gcp_errordetails [[#gcp_errordetails]] {
-**error_info**: gcp_error_info
-**help**: gcp_help
-**localized_message**: gcp_localized_message
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
 }
-class gcp_localized_message [[#gcp_localized_message]] {
-**locale**: string
-**message**: string
-}
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_help --> gcp_help_link
-gcp_warnings --> gcp_data
-gcp_resource <|--- gcp_operation
-gcp_operation --> gcp_error
-gcp_operation --> gcp_warnings
-gcp_operation --> gcp_deprecation_status
 gcp_error --> gcp_errors
-gcp_errors --> gcp_errordetails
 gcp_errordetails --> gcp_error_info
 gcp_errordetails --> gcp_help
 gcp_errordetails --> gcp_localized_message
-
+gcp_errors --> gcp_errordetails
+gcp_help --> gcp_help_link
+gcp_operation --> gcp_deprecation_status
+gcp_operation --> gcp_error
+gcp_resource <|--- gcp_operation
+gcp_operation --> gcp_warnings
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+gcp_warnings --> gcp_data
 @enduml
 ```
 
@@ -6878,15 +6597,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_disk [[#gcp_disk]] {
-
+class gcp_disk {
 }
-class gcp_operation [[#gcp_operation]] {
-
+class gcp_operation {
 }
 gcp_operation -[#1A83AF]-> gcp_disk
-
 @enduml
 ```
 
@@ -6921,37 +6636,14 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class gcp_packet_mirroring_mirrored_resource_info_subnet_info [[#gcp_packet_mirroring_mirrored_resource_info_subnet_info]] {
-**canonical_url**: string
-**url**: string
-}
-class gcp_packet_mirroring [[#gcp_packet_mirroring]] {
+class gcp_packet_mirroring {
 **collector_ilb**: gcp_packet_mirroring_forwarding_rule_info
 **enable**: string
 **filter**: gcp_packet_mirroring_filter
@@ -6959,39 +6651,60 @@ class gcp_packet_mirroring [[#gcp_packet_mirroring]] {
 **packet_mirroring_network**: gcp_packet_mirroring_network_info
 **priority**: int64
 }
-class gcp_packet_mirroring_forwarding_rule_info [[#gcp_packet_mirroring_forwarding_rule_info]] {
+class gcp_packet_mirroring_filter {
+**cidr_ranges**: string[]
+**direction**: string
+**ip_protocols**: string[]
+}
+class gcp_packet_mirroring_forwarding_rule_info {
 **canonical_url**: string
 **url**: string
 }
-class gcp_packet_mirroring_mirrored_resource_info [[#gcp_packet_mirroring_mirrored_resource_info]] {
+class gcp_packet_mirroring_mirrored_resource_info {
 **instances**: gcp_packet_mirroring_mirrored_resource_info_instance_info[]
 **subnetworks**: gcp_packet_mirroring_mirrored_resource_info_subnet_info[]
 **tags**: string[]
 }
-class gcp_packet_mirroring_mirrored_resource_info_instance_info [[#gcp_packet_mirroring_mirrored_resource_info_instance_info]] {
+class gcp_packet_mirroring_mirrored_resource_info_instance_info {
 **canonical_url**: string
 **url**: string
 }
-class gcp_packet_mirroring_filter [[#gcp_packet_mirroring_filter]] {
-**ip_protocols**: string[]
-**cidr_ranges**: string[]
-**direction**: string
-}
-class gcp_packet_mirroring_network_info [[#gcp_packet_mirroring_network_info]] {
+class gcp_packet_mirroring_mirrored_resource_info_subnet_info {
 **canonical_url**: string
 **url**: string
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_packet_mirroring
-gcp_packet_mirroring --> gcp_packet_mirroring_forwarding_rule_info
+class gcp_packet_mirroring_network_info {
+**canonical_url**: string
+**url**: string
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+gcp_packet_mirroring --> gcp_deprecation_status
 gcp_packet_mirroring --> gcp_packet_mirroring_filter
+gcp_packet_mirroring --> gcp_packet_mirroring_forwarding_rule_info
 gcp_packet_mirroring --> gcp_packet_mirroring_mirrored_resource_info
 gcp_packet_mirroring --> gcp_packet_mirroring_network_info
-gcp_packet_mirroring --> gcp_deprecation_status
+gcp_resource <|--- gcp_packet_mirroring
 gcp_packet_mirroring_mirrored_resource_info --> gcp_packet_mirroring_mirrored_resource_info_instance_info
 gcp_packet_mirroring_mirrored_resource_info --> gcp_packet_mirroring_mirrored_resource_info_subnet_info
-
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
 @enduml
 ```
 
@@ -7025,20 +6738,15 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_instance [[#gcp_instance]] {
-
+class gcp_instance {
 }
-class gcp_subnetwork [[#gcp_subnetwork]] {
-
+class gcp_packet_mirroring {
 }
-class gcp_packet_mirroring [[#gcp_packet_mirroring]] {
-
+class gcp_subnetwork {
 }
 gcp_instance -[#1A83AF]-> gcp_packet_mirroring
-gcp_subnetwork -[#1A83AF]-> gcp_packet_mirroring
 gcp_subnetwork -[#1A83AF]-> gcp_instance
-
+gcp_subnetwork -[#1A83AF]-> gcp_packet_mirroring
 @enduml
 ```
 
@@ -7073,45 +6781,41 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
+class account {
 }
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
+class gcp_project {
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class resource {
 **age**: duration
-**mtime**: datetime
-**last_update**: duration
 **atime**: datetime
-**last_access**: duration
+**ctime**: datetime
+**id**: string
 **kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
 }
-class account [[#account]] {
-
-}
-class gcp_project [[#gcp_project]] {
-
-}
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
 resource <|--- account
-gcp_resource <|--- gcp_project
 account <|--- gcp_project
 gcp_project --> gcp_deprecation_status
-
+gcp_resource <|--- gcp_project
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
 @enduml
 ```
 
@@ -7145,11 +6849,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_project [[#gcp_project]] {
-
+class gcp_project {
 }
-
 @enduml
 ```
 
@@ -7184,42 +6885,40 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class gcp_project_billing_info [[#gcp_project_billing_info]] {
+class gcp_project_billing_info {
 **billing_account_name**: string
 **billing_enabled**: boolean
 **project_billing_info_project_id**: string
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_project_billing_info
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_project_billing_info --> gcp_deprecation_status
-
+gcp_resource <|--- gcp_project_billing_info
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
 @enduml
 ```
 
@@ -7253,15 +6952,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_billing_account [[#gcp_billing_account]] {
-
+class gcp_billing_account {
 }
-class gcp_project_billing_info [[#gcp_project_billing_info]] {
-
+class gcp_project_billing_info {
 }
 gcp_billing_account -[#1A83AF]-> gcp_project_billing_info
-
 @enduml
 ```
 
@@ -7296,33 +6991,14 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class gcp_public_advertised_prefix [[#gcp_public_advertised_prefix]] {
+class gcp_public_advertised_prefix {
 **dns_verification_ip**: string
 **fingerprint**: string
 **ip_cidr_range**: string
@@ -7330,19 +7006,36 @@ class gcp_public_advertised_prefix [[#gcp_public_advertised_prefix]] {
 **shared_secret**: string
 **status**: string
 }
-class gcp_public_advertised_prefix_public_delegated_prefix [[#gcp_public_advertised_prefix_public_delegated_prefix]] {
+class gcp_public_advertised_prefix_public_delegated_prefix {
 **ip_range**: string
 **name**: string
 **project**: string
 **region**: string
 **status**: string
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_public_advertised_prefix
-gcp_public_advertised_prefix --> gcp_public_advertised_prefix_public_delegated_prefix
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_public_advertised_prefix --> gcp_deprecation_status
-
+gcp_public_advertised_prefix --> gcp_public_advertised_prefix_public_delegated_prefix
+gcp_resource <|--- gcp_public_advertised_prefix
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
 @enduml
 ```
 
@@ -7376,15 +7069,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_public_advertised_prefix [[#gcp_public_advertised_prefix]] {
-
+class gcp_public_advertised_prefix {
 }
-class gcp_public_delegated_prefix [[#gcp_public_delegated_prefix]] {
-
+class gcp_public_delegated_prefix {
 }
 gcp_public_delegated_prefix -[#1A83AF]-> gcp_public_advertised_prefix
-
 @enduml
 ```
 
@@ -7419,33 +7108,22 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class gcp_public_delegated_prefix {
+**fingerprint**: string
+**ip_cidr_range**: string
+**is_live_migration**: boolean
+**parent_prefix**: string
+**public_delegated_sub_prefixs**: gcp_public_delegated_prefix_public_delegated_sub_prefix[]
+**status**: string
 }
-class gcp_public_delegated_prefix_public_delegated_sub_prefix [[#gcp_public_delegated_prefix_public_delegated_sub_prefix]] {
+class gcp_public_delegated_prefix_public_delegated_sub_prefix {
 **delegatee_project**: string
 **description**: string
 **ip_cidr_range**: string
@@ -7454,20 +7132,29 @@ class gcp_public_delegated_prefix_public_delegated_sub_prefix [[#gcp_public_dele
 **region**: string
 **status**: string
 }
-class gcp_public_delegated_prefix [[#gcp_public_delegated_prefix]] {
-**fingerprint**: string
-**ip_cidr_range**: string
-**is_live_migration**: boolean
-**parent_prefix**: string
-**public_delegated_sub_prefixs**: gcp_public_delegated_prefix_public_delegated_sub_prefix[]
-**status**: string
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_public_delegated_prefix
-gcp_public_delegated_prefix --> gcp_public_delegated_prefix_public_delegated_sub_prefix
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_public_delegated_prefix --> gcp_deprecation_status
-
+gcp_public_delegated_prefix --> gcp_public_delegated_prefix_public_delegated_sub_prefix
+gcp_resource <|--- gcp_public_delegated_prefix
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
 @enduml
 ```
 
@@ -7501,15 +7188,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_public_advertised_prefix [[#gcp_public_advertised_prefix]] {
-
+class gcp_public_advertised_prefix {
 }
-class gcp_public_delegated_prefix [[#gcp_public_delegated_prefix]] {
-
+class gcp_public_delegated_prefix {
 }
 gcp_public_delegated_prefix -[#1A83AF]-> gcp_public_advertised_prefix
-
 @enduml
 ```
 
@@ -7544,52 +7227,49 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class quota [[#quota]] {
-**quota**: double
-**usage**: double
-**quota_type**: string
-}
-class phantom_resource [[#phantom_resource]] {
-
-}
-class gcp_quota [[#gcp_quota]] {
+class gcp_quota {
 **limit**: double
 **owner**: string
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-phantom_resource <|--- quota
-resource <|--- phantom_resource
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class phantom_resource {
+}
+class quota {
+**quota**: double
+**quota_type**: string
+**usage**: double
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+gcp_quota --> gcp_deprecation_status
 gcp_resource <|--- gcp_quota
 quota <|--- gcp_quota
-gcp_quota --> gcp_deprecation_status
-
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+resource <|--- phantom_resource
+phantom_resource <|--- quota
 @enduml
 ```
 
@@ -7623,11 +7303,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_quota [[#gcp_quota]] {
-
+class gcp_quota {
 }
-
 @enduml
 ```
 
@@ -7662,47 +7339,44 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class region [[#region]] {
-
-}
-class gcp_region [[#gcp_region]] {
-**status**: string
+class gcp_region {
 **region_deprecated**: gcp_deprecation_status
 **region_supports_pzs**: boolean
+**status**: string
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-resource <|--- region
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class region {
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+gcp_region --> gcp_deprecation_status
 gcp_resource <|--- gcp_region
 region <|--- gcp_region
-gcp_region --> gcp_deprecation_status
-
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+resource <|--- region
 @enduml
 ```
 
@@ -7736,11 +7410,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_region [[#gcp_region]] {
-
+class gcp_region {
 }
-
 @enduml
 ```
 
@@ -7775,35 +7446,33 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
 }
-resource <|--- gcp_resource
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_resource --> gcp_deprecation_status
-
+resource <|--- gcp_resource
 @enduml
 ```
 
@@ -7837,11 +7506,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-
+class gcp_resource {
 }
-
 @enduml
 ```
 
@@ -7876,98 +7542,104 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
 }
-class gcp_resource_policy_snapshot_schedule_policy_snapshot_properties [[#gcp_resource_policy_snapshot_schedule_policy_snapshot_properties]] {
-**chain_name**: string
-**guest_flush**: boolean
-**labels**: dictionary[string, string]
-**storage_locations**: string[]
-}
-class gcp_resource_policy_snapshot_schedule_policy [[#gcp_resource_policy_snapshot_schedule_policy]] {
-**retention_policy**: gcp_resource_policy_snapshot_schedule_policy_retention_policy
-**schedule**: gcp_resource_policy_snapshot_schedule_policy_schedule
-**snapshot_properties**: gcp_resource_policy_snapshot_schedule_policy_snapshot_properties
-}
-class gcp_resource_policy_snapshot_schedule_policy_retention_policy [[#gcp_resource_policy_snapshot_schedule_policy_retention_policy]] {
-**max_retention_days**: int64
-**on_source_disk_delete**: string
-}
-class gcp_resource_policy_snapshot_schedule_policy_schedule [[#gcp_resource_policy_snapshot_schedule_policy_schedule]] {
-**daily_schedule**: gcp_resource_policy_daily_cycle
-**hourly_schedule**: gcp_resource_policy_hourly_cycle
-**weekly_schedule**: gcp_resource_policy_weekly_cycle
-}
-class gcp_resource_policy_daily_cycle [[#gcp_resource_policy_daily_cycle]] {
-**days_in_cycle**: int64
-**duration**: string
-**start_time**: string
-}
-class gcp_resource_policy_hourly_cycle [[#gcp_resource_policy_hourly_cycle]] {
-**duration**: string
-**hours_in_cycle**: int64
-**start_time**: string
-}
-class gcp_resource_policy_weekly_cycle [[#gcp_resource_policy_weekly_cycle]] {
-**day_of_weeks**: gcp_resource_policy_weekly_cycle_day_of_week[]
-}
-class gcp_resource_policy_weekly_cycle_day_of_week [[#gcp_resource_policy_weekly_cycle_day_of_week]] {
-**day**: string
-**duration**: string
-**start_time**: string
-}
-class gcp_resource_policy_group_placement_policy [[#gcp_resource_policy_group_placement_policy]] {
-**availability_domain_count**: int64
-**collocation**: string
-**vm_count**: int64
-}
-class gcp_resource_policy_resource_status_instance_schedule_policy_status [[#gcp_resource_policy_resource_status_instance_schedule_policy_status]] {
-**last_run_start_time**: datetime
-**next_run_start_time**: datetime
-}
-class gcp_resource_policy_resource_status [[#gcp_resource_policy_resource_status]] {
-**instance_schedule_policy**: gcp_resource_policy_resource_status_instance_schedule_policy_status
-}
-class gcp_resource_policy [[#gcp_resource_policy]] {
+class gcp_resource_policy {
 **group_placement_policy**: gcp_resource_policy_group_placement_policy
 **instance_schedule_policy**: gcp_resource_policy_instance_schedule_policy
 **resource_policy_resource_status**: gcp_resource_policy_resource_status
 **snapshot_schedule_policy**: gcp_resource_policy_snapshot_schedule_policy
 **status**: string
 }
-class gcp_resource_policy_instance_schedule_policy [[#gcp_resource_policy_instance_schedule_policy]] {
+class gcp_resource_policy_daily_cycle {
+**days_in_cycle**: int64
+**duration**: string
+**start_time**: string
+}
+class gcp_resource_policy_group_placement_policy {
+**availability_domain_count**: int64
+**collocation**: string
+**vm_count**: int64
+}
+class gcp_resource_policy_hourly_cycle {
+**duration**: string
+**hours_in_cycle**: int64
+**start_time**: string
+}
+class gcp_resource_policy_instance_schedule_policy {
 **expiration_time**: datetime
 **start_time**: datetime
 **time_zone**: string
 **vm_start_schedule**: string
 **vm_stop_schedule**: string
 }
-resource <|--- gcp_resource
+class gcp_resource_policy_resource_status {
+**instance_schedule_policy**: gcp_resource_policy_resource_status_instance_schedule_policy_status
+}
+class gcp_resource_policy_resource_status_instance_schedule_policy_status {
+**last_run_start_time**: datetime
+**next_run_start_time**: datetime
+}
+class gcp_resource_policy_snapshot_schedule_policy {
+**retention_policy**: gcp_resource_policy_snapshot_schedule_policy_retention_policy
+**schedule**: gcp_resource_policy_snapshot_schedule_policy_schedule
+**snapshot_properties**: gcp_resource_policy_snapshot_schedule_policy_snapshot_properties
+}
+class gcp_resource_policy_snapshot_schedule_policy_retention_policy {
+**max_retention_days**: int64
+**on_source_disk_delete**: string
+}
+class gcp_resource_policy_snapshot_schedule_policy_schedule {
+**daily_schedule**: gcp_resource_policy_daily_cycle
+**hourly_schedule**: gcp_resource_policy_hourly_cycle
+**weekly_schedule**: gcp_resource_policy_weekly_cycle
+}
+class gcp_resource_policy_snapshot_schedule_policy_snapshot_properties {
+**chain_name**: string
+**guest_flush**: boolean
+**labels**: dictionary[string, string]
+**storage_locations**: string[]
+}
+class gcp_resource_policy_weekly_cycle {
+**day_of_weeks**: gcp_resource_policy_weekly_cycle_day_of_week[]
+}
+class gcp_resource_policy_weekly_cycle_day_of_week {
+**day**: string
+**duration**: string
+**start_time**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+gcp_resource_policy --> gcp_deprecation_status
+gcp_resource <|--- gcp_resource_policy
+gcp_resource_policy --> gcp_resource_policy_group_placement_policy
+gcp_resource_policy --> gcp_resource_policy_instance_schedule_policy
+gcp_resource_policy --> gcp_resource_policy_resource_status
+gcp_resource_policy --> gcp_resource_policy_snapshot_schedule_policy
+gcp_resource_policy_resource_status --> gcp_resource_policy_resource_status_instance_schedule_policy_status
 gcp_resource_policy_snapshot_schedule_policy --> gcp_resource_policy_snapshot_schedule_policy_retention_policy
 gcp_resource_policy_snapshot_schedule_policy --> gcp_resource_policy_snapshot_schedule_policy_schedule
 gcp_resource_policy_snapshot_schedule_policy --> gcp_resource_policy_snapshot_schedule_policy_snapshot_properties
@@ -7975,14 +7647,6 @@ gcp_resource_policy_snapshot_schedule_policy_schedule --> gcp_resource_policy_da
 gcp_resource_policy_snapshot_schedule_policy_schedule --> gcp_resource_policy_hourly_cycle
 gcp_resource_policy_snapshot_schedule_policy_schedule --> gcp_resource_policy_weekly_cycle
 gcp_resource_policy_weekly_cycle --> gcp_resource_policy_weekly_cycle_day_of_week
-gcp_resource_policy_resource_status --> gcp_resource_policy_resource_status_instance_schedule_policy_status
-gcp_resource <|--- gcp_resource_policy
-gcp_resource_policy --> gcp_resource_policy_group_placement_policy
-gcp_resource_policy --> gcp_resource_policy_instance_schedule_policy
-gcp_resource_policy --> gcp_resource_policy_resource_status
-gcp_resource_policy --> gcp_resource_policy_snapshot_schedule_policy
-gcp_resource_policy --> gcp_deprecation_status
-
 @enduml
 ```
 
@@ -8016,11 +7680,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource_policy [[#gcp_resource_policy]] {
-
+class gcp_resource_policy {
 }
-
 @enduml
 ```
 
@@ -8055,46 +7716,24 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
+class gcp_data {
+**key**: string
+**value**: string
 }
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
 }
-class gcp_data [[#gcp_data]] {
-**key**: string
-**value**: string
-}
-class gcp_warnings [[#gcp_warnings]] {
-**code**: string
-**data**: gcp_data[]
-**message**: string
-}
-class gcp_route_as_path [[#gcp_route_as_path]] {
-**as_lists**: int64[]
-**path_segment_type**: string
-}
-class gcp_route [[#gcp_route]] {
+class gcp_route {
 **as_paths**: gcp_route_as_path[]
 **dest_range**: string
 **network**: string
@@ -8107,18 +7746,38 @@ class gcp_route [[#gcp_route]] {
 **next_hop_vpn_tunnel**: string
 **priority**: int64
 **route_status**: string
-**route_type**: string
 **route_tags**: string[]
+**route_type**: string
 **warnings**: gcp_warnings[]
 }
-resource <|--- gcp_resource
+class gcp_route_as_path {
+**as_lists**: int64[]
+**path_segment_type**: string
+}
+class gcp_warnings {
+**code**: string
+**data**: gcp_data[]
+**message**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_resource --> gcp_deprecation_status
-gcp_warnings --> gcp_data
+resource <|--- gcp_resource
+gcp_route --> gcp_deprecation_status
 gcp_resource <|--- gcp_route
 gcp_route --> gcp_route_as_path
 gcp_route --> gcp_warnings
-gcp_route --> gcp_deprecation_status
-
+gcp_warnings --> gcp_data
 @enduml
 ```
 
@@ -8152,15 +7811,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_network [[#gcp_network]] {
-
+class gcp_network {
 }
-class gcp_route [[#gcp_route]] {
-
+class gcp_route {
 }
 gcp_network -[#1A83AF]-> gcp_route
-
 @enduml
 ```
 
@@ -8195,64 +7850,40 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_router_nat_subnetwork_to_nat [[#gcp_router_nat_subnetwork_to_nat]] {
-**name**: string
-**secondary_ip_range_names**: string[]
-**source_ip_ranges_to_nat**: string[]
-}
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
 }
-class gcp_router_bgp_peer_bfd [[#gcp_router_bgp_peer_bfd]] {
-**min_receive_interval**: int64
-**min_transmit_interval**: int64
-**multiplier**: int64
-**session_initialization_mode**: string
-}
-class gcp_router [[#gcp_router]] {
+class gcp_router {
 **bgp**: gcp_router_bgp
 **bgp_peers**: gcp_router_bgp_peer[]
 **encrypted_interconnect_router**: boolean
-**router_interfaces**: gcp_router_interface[]
 **md5_authentication_keys**: gcp_router_md5_authentication_key[]
 **nats**: gcp_router_nat[]
 **network**: string
+**router_interfaces**: gcp_router_interface[]
 }
-class gcp_router_bgp [[#gcp_router_bgp]] {
+class gcp_router_advertised_ip_range {
+**description**: string
+**range**: string
+}
+class gcp_router_bgp {
 **advertise_mode**: string
 **advertised_groups**: string[]
 **advertised_ip_ranges**: gcp_router_advertised_ip_range[]
 **asn**: int64
 **keepalive_interval**: int64
 }
-class gcp_router_advertised_ip_range [[#gcp_router_advertised_ip_range]] {
-**description**: string
-**range**: string
-}
-class gcp_router_bgp_peer [[#gcp_router_bgp_peer]] {
+class gcp_router_bgp_peer {
 **advertise_mode**: string
 **advertised_groups**: string[]
 **advertised_ip_ranges**: gcp_router_advertised_ip_range[]
@@ -8271,7 +7902,13 @@ class gcp_router_bgp_peer [[#gcp_router_bgp_peer]] {
 **peer_ipv6_nexthop_address**: string
 **router_appliance_instance**: string
 }
-class gcp_router_interface [[#gcp_router_interface]] {
+class gcp_router_bgp_peer_bfd {
+**min_receive_interval**: int64
+**min_transmit_interval**: int64
+**multiplier**: int64
+**session_initialization_mode**: string
+}
+class gcp_router_interface {
 **ip_range**: string
 **linked_interconnect_attachment**: string
 **linked_vpn_tunnel**: string
@@ -8281,22 +7918,22 @@ class gcp_router_interface [[#gcp_router_interface]] {
 **redundant_interface**: string
 **subnetwork**: string
 }
-class gcp_router_md5_authentication_key [[#gcp_router_md5_authentication_key]] {
+class gcp_router_md5_authentication_key {
 **key**: string
 **name**: string
 }
-class gcp_router_nat [[#gcp_router_nat]] {
+class gcp_router_nat {
 **drain_nat_ips**: string[]
 **enable_dynamic_port_allocation**: boolean
 **enable_endpoint_independent_mapping**: boolean
 **endpoint_types**: string[]
 **icmp_idle_timeout_sec**: int64
-**router_nat_log_config**: gcp_router_nat_log_config
 **max_ports_per_vm**: int64
 **min_ports_per_vm**: int64
 **name**: string
 **nat_ip_allocate_option**: string
 **nat_ips**: string[]
+**router_nat_log_config**: gcp_router_nat_log_config
 **router_nat_rules**: gcp_router_nat_rule[]
 **source_subnetwork_ip_ranges_to_nat**: string
 **subnetworks**: gcp_router_nat_subnetwork_to_nat[]
@@ -8305,29 +7942,46 @@ class gcp_router_nat [[#gcp_router_nat]] {
 **tcp_transitory_idle_timeout_sec**: int64
 **udp_idle_timeout_sec**: int64
 }
-class gcp_router_nat_log_config [[#gcp_router_nat_log_config]] {
+class gcp_router_nat_log_config {
 **enable**: boolean
 **filter**: string
 }
-class gcp_router_nat_rule [[#gcp_router_nat_rule]] {
+class gcp_router_nat_rule {
 **action**: gcp_router_nat_rule_action
 **description**: string
 **match**: string
 **rule_number**: int64
 }
-class gcp_router_nat_rule_action [[#gcp_router_nat_rule_action]] {
+class gcp_router_nat_rule_action {
 **source_nat_active_ips**: string[]
 **source_nat_drain_ips**: string[]
 }
-resource <|--- gcp_resource
+class gcp_router_nat_subnetwork_to_nat {
+**name**: string
+**secondary_ip_range_names**: string[]
+**source_ip_ranges_to_nat**: string[]
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+gcp_router --> gcp_deprecation_status
 gcp_resource <|--- gcp_router
 gcp_router --> gcp_router_bgp
 gcp_router --> gcp_router_bgp_peer
 gcp_router --> gcp_router_interface
 gcp_router --> gcp_router_md5_authentication_key
 gcp_router --> gcp_router_nat
-gcp_router --> gcp_deprecation_status
 gcp_router_bgp --> gcp_router_advertised_ip_range
 gcp_router_bgp_peer --> gcp_router_advertised_ip_range
 gcp_router_bgp_peer --> gcp_router_bgp_peer_bfd
@@ -8335,7 +7989,6 @@ gcp_router_nat --> gcp_router_nat_log_config
 gcp_router_nat --> gcp_router_nat_rule
 gcp_router_nat --> gcp_router_nat_subnetwork_to_nat
 gcp_router_nat_rule --> gcp_router_nat_rule_action
-
 @enduml
 ```
 
@@ -8369,19 +8022,14 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_network [[#gcp_network]] {
-
+class gcp_network {
 }
-class gcp_router [[#gcp_router]] {
-
+class gcp_router {
 }
-class gcp_vpn_tunnel [[#gcp_vpn_tunnel]] {
-
+class gcp_vpn_tunnel {
 }
 gcp_network -[#1A83AF]-> gcp_router
 gcp_vpn_tunnel -[#1A83AF]-> gcp_router
-
 @enduml
 ```
 
@@ -8416,58 +8064,50 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class gcp_expr {
+**description**: string
+**expression**: string
+**location**: string
+**title**: string
 }
-class gcp_security_policy_rule_matcher_config [[#gcp_security_policy_rule_matcher_config]] {
-**src_ip_ranges**: string[]
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
 }
-class gcp_security_policy_rule_http_header_action_http_header_option [[#gcp_security_policy_rule_http_header_action_http_header_option]] {
-**header_name**: string
-**header_value**: string
-}
-class gcp_security_policy_rule_rate_limit_options [[#gcp_security_policy_rule_rate_limit_options]] {
-**ban_duration_sec**: int64
-**ban_threshold**: gcp_security_policy_rule_rate_limit_options_threshold
-**conform_action**: string
-**enforce_on_key**: string
-**enforce_on_key_name**: string
-**exceed_action**: string
-**exceed_redirect_options**: gcp_security_policy_rule_redirect_options
-**rate_limit_threshold**: gcp_security_policy_rule_rate_limit_options_threshold
-}
-class gcp_security_policy_rule_rate_limit_options_threshold [[#gcp_security_policy_rule_rate_limit_options_threshold]] {
-**count**: int64
-**interval_sec**: int64
-}
-class gcp_security_policy_rule_redirect_options [[#gcp_security_policy_rule_redirect_options]] {
-**target**: string
+class gcp_security_policy {
+**adaptive_protection_config**: gcp_security_policy_adaptive_protection_config
+**advanced_options_config**: gcp_security_policy_advanced_options_config
+**ddos_protection_config**: string
+**fingerprint**: string
+**recaptcha_options_config**: string
+**security_policy_rules**: gcp_security_policy_rule[]
 **type**: string
 }
-class gcp_security_policy_rule [[#gcp_security_policy_rule]] {
+class gcp_security_policy_adaptive_protection_config {
+**layer7_ddos_defense_config**: gcp_security_policy_adaptive_protection_config_layer7_ddos_defense_config
+}
+class gcp_security_policy_adaptive_protection_config_layer7_ddos_defense_config {
+**enable**: boolean
+**rule_visibility**: string
+}
+class gcp_security_policy_advanced_options_config {
+**json_custom_config**: gcp_security_policy_advanced_options_config_json_custom_config
+**json_parsing**: string
+**log_level**: string
+}
+class gcp_security_policy_advanced_options_config_json_custom_config {
+**content_types**: string[]
+}
+class gcp_security_policy_rule {
 **action**: string
 **description**: string
 **header_action**: gcp_security_policy_rule_http_header_action
@@ -8477,63 +8117,69 @@ class gcp_security_policy_rule [[#gcp_security_policy_rule]] {
 **rate_limit_options**: gcp_security_policy_rule_rate_limit_options
 **redirect_options**: gcp_security_policy_rule_redirect_options
 }
-class gcp_security_policy_rule_http_header_action [[#gcp_security_policy_rule_http_header_action]] {
+class gcp_security_policy_rule_http_header_action {
 **request_headers_to_adds**: gcp_security_policy_rule_http_header_action_http_header_option[]
 }
-class gcp_security_policy_rule_matcher [[#gcp_security_policy_rule_matcher]] {
+class gcp_security_policy_rule_http_header_action_http_header_option {
+**header_name**: string
+**header_value**: string
+}
+class gcp_security_policy_rule_matcher {
 **config**: gcp_security_policy_rule_matcher_config
 **expr**: gcp_expr
 **versioned_expr**: string
 }
-class gcp_expr [[#gcp_expr]] {
-**description**: string
-**expression**: string
-**location**: string
-**title**: string
+class gcp_security_policy_rule_matcher_config {
+**src_ip_ranges**: string[]
 }
-class gcp_security_policy_adaptive_protection_config_layer7_ddos_defense_config [[#gcp_security_policy_adaptive_protection_config_layer7_ddos_defense_config]] {
-**enable**: boolean
-**rule_visibility**: string
+class gcp_security_policy_rule_rate_limit_options {
+**ban_duration_sec**: int64
+**ban_threshold**: gcp_security_policy_rule_rate_limit_options_threshold
+**conform_action**: string
+**enforce_on_key**: string
+**enforce_on_key_name**: string
+**exceed_action**: string
+**exceed_redirect_options**: gcp_security_policy_rule_redirect_options
+**rate_limit_threshold**: gcp_security_policy_rule_rate_limit_options_threshold
 }
-class gcp_security_policy_adaptive_protection_config [[#gcp_security_policy_adaptive_protection_config]] {
-**layer7_ddos_defense_config**: gcp_security_policy_adaptive_protection_config_layer7_ddos_defense_config
+class gcp_security_policy_rule_rate_limit_options_threshold {
+**count**: int64
+**interval_sec**: int64
 }
-class gcp_security_policy [[#gcp_security_policy]] {
-**adaptive_protection_config**: gcp_security_policy_adaptive_protection_config
-**advanced_options_config**: gcp_security_policy_advanced_options_config
-**ddos_protection_config**: string
-**fingerprint**: string
-**recaptcha_options_config**: string
-**security_policy_rules**: gcp_security_policy_rule[]
+class gcp_security_policy_rule_redirect_options {
+**target**: string
 **type**: string
 }
-class gcp_security_policy_advanced_options_config [[#gcp_security_policy_advanced_options_config]] {
-**json_custom_config**: gcp_security_policy_advanced_options_config_json_custom_config
-**json_parsing**: string
-**log_level**: string
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
 }
-class gcp_security_policy_advanced_options_config_json_custom_config [[#gcp_security_policy_advanced_options_config_json_custom_config]] {
-**content_types**: string[]
-}
-resource <|--- gcp_resource
 gcp_resource --> gcp_deprecation_status
-gcp_security_policy_rule_rate_limit_options --> gcp_security_policy_rule_rate_limit_options_threshold
-gcp_security_policy_rule_rate_limit_options --> gcp_security_policy_rule_redirect_options
+resource <|--- gcp_resource
+gcp_security_policy --> gcp_deprecation_status
+gcp_resource <|--- gcp_security_policy
+gcp_security_policy --> gcp_security_policy_adaptive_protection_config
+gcp_security_policy --> gcp_security_policy_advanced_options_config
+gcp_security_policy --> gcp_security_policy_rule
+gcp_security_policy_adaptive_protection_config --> gcp_security_policy_adaptive_protection_config_layer7_ddos_defense_config
+gcp_security_policy_advanced_options_config --> gcp_security_policy_advanced_options_config_json_custom_config
 gcp_security_policy_rule --> gcp_security_policy_rule_http_header_action
 gcp_security_policy_rule --> gcp_security_policy_rule_matcher
 gcp_security_policy_rule --> gcp_security_policy_rule_rate_limit_options
 gcp_security_policy_rule --> gcp_security_policy_rule_redirect_options
 gcp_security_policy_rule_http_header_action --> gcp_security_policy_rule_http_header_action_http_header_option
-gcp_security_policy_rule_matcher --> gcp_security_policy_rule_matcher_config
 gcp_security_policy_rule_matcher --> gcp_expr
-gcp_security_policy_adaptive_protection_config --> gcp_security_policy_adaptive_protection_config_layer7_ddos_defense_config
-gcp_resource <|--- gcp_security_policy
-gcp_security_policy --> gcp_security_policy_adaptive_protection_config
-gcp_security_policy --> gcp_security_policy_advanced_options_config
-gcp_security_policy --> gcp_security_policy_rule
-gcp_security_policy --> gcp_deprecation_status
-gcp_security_policy_advanced_options_config --> gcp_security_policy_advanced_options_config_json_custom_config
-
+gcp_security_policy_rule_matcher --> gcp_security_policy_rule_matcher_config
+gcp_security_policy_rule_rate_limit_options --> gcp_security_policy_rule_rate_limit_options_threshold
+gcp_security_policy_rule_rate_limit_options --> gcp_security_policy_rule_redirect_options
 @enduml
 ```
 
@@ -8567,11 +8213,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_security_policy [[#gcp_security_policy]] {
-
+class gcp_security_policy {
 }
-
 @enduml
 ```
 
@@ -8606,41 +8249,39 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
 }
-class gcp_service [[#gcp_service]] {
+class gcp_service {
 **business_entity_name**: string
 **display_name**: string
 }
-resource <|--- gcp_resource
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_service
+resource <|--- gcp_resource
 gcp_service --> gcp_deprecation_status
-
+gcp_resource <|--- gcp_service
 @enduml
 ```
 
@@ -8674,15 +8315,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_sku [[#gcp_sku]] {
-
+class gcp_service {
 }
-class gcp_service [[#gcp_service]] {
-
+class gcp_sku {
 }
 gcp_service -[#1A83AF]-> gcp_sku
-
 @enduml
 ```
 
@@ -8717,33 +8354,20 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
 }
-class gcp_service_attachment [[#gcp_service_attachment]] {
+class gcp_service_attachment {
 **connected_endpoints**: gcp_service_attachment_connected_endpoint[]
 **connection_preference**: string
 **consumer_accept_lists**: gcp_service_attachment_consumer_project_limit[]
@@ -8756,27 +8380,38 @@ class gcp_service_attachment [[#gcp_service_attachment]] {
 **psc_service_attachment_id**: gcp_uint128
 **target_service**: string
 }
-class gcp_service_attachment_connected_endpoint [[#gcp_service_attachment_connected_endpoint]] {
+class gcp_service_attachment_connected_endpoint {
 **endpoint**: string
 **psc_connection_id**: string
 **status**: string
 }
-class gcp_service_attachment_consumer_project_limit [[#gcp_service_attachment_consumer_project_limit]] {
+class gcp_service_attachment_consumer_project_limit {
 **connection_limit**: int64
 **project_id_or_num**: string
 }
-class gcp_uint128 [[#gcp_uint128]] {
+class gcp_uint128 {
 **high**: string
 **low**: string
 }
-resource <|--- gcp_resource
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+gcp_service_attachment --> gcp_deprecation_status
 gcp_resource <|--- gcp_service_attachment
 gcp_service_attachment --> gcp_service_attachment_connected_endpoint
 gcp_service_attachment --> gcp_service_attachment_consumer_project_limit
 gcp_service_attachment --> gcp_uint128
-gcp_service_attachment --> gcp_deprecation_status
-
 @enduml
 ```
 
@@ -8810,19 +8445,14 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_backend_service [[#gcp_backend_service]] {
-
+class gcp_backend_service {
 }
-class gcp_service_attachment [[#gcp_service_attachment]] {
-
+class gcp_service_attachment {
 }
-class gcp_subnetwork [[#gcp_subnetwork]] {
-
+class gcp_subnetwork {
 }
-gcp_service_attachment -[#1A83AF]-> gcp_subnetwork
 gcp_service_attachment -[#1A83AF]-> gcp_backend_service
-
+gcp_service_attachment -[#1A83AF]-> gcp_subnetwork
 @enduml
 ```
 
@@ -8857,48 +8487,34 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
+class gcp_aggregation_info {
+**aggregation_count**: int64
+**aggregation_interval**: string
+**aggregation_level**: string
 }
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_category {
+**resource_family**: string
+**resource_group**: string
+**service_display_name**: string
+**usage_type**: string
+}
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class gcp_geo_taxonomy {
+**regions**: string[]
+**type**: string
 }
-class gcp_money [[#gcp_money]] {
+class gcp_money {
 **currency_code**: string
 **nanos**: int64
 **units**: string
 }
-class gcp_tier_rate [[#gcp_tier_rate]] {
-**start_usage_amount**: double
-**unit_price**: gcp_money
-}
-class gcp_category [[#gcp_category]] {
-**resource_family**: string
-**resource_group**: string
-**service_display_name**: string
-**usage_type**: string
-}
-class gcp_pricing_expression [[#gcp_pricing_expression]] {
+class gcp_pricing_expression {
 **base_unit**: string
 **base_unit_conversion_factor**: double
 **base_unit_description**: string
@@ -8907,42 +8523,54 @@ class gcp_pricing_expression [[#gcp_pricing_expression]] {
 **usage_unit**: string
 **usage_unit_description**: string
 }
-class gcp_sku [[#gcp_sku]] {
-**category**: gcp_category
-**geo_taxonomy**: gcp_geo_taxonomy
-**sku_pricing_info**: gcp_pricing_info[]
-**service_provider_name**: string
-**service_regions**: string[]
-**usage_unit_nanos**: int64
-}
-class gcp_geo_taxonomy [[#gcp_geo_taxonomy]] {
-**regions**: string[]
-**type**: string
-}
-class gcp_pricing_info [[#gcp_pricing_info]] {
+class gcp_pricing_info {
 **aggregation_info**: gcp_aggregation_info
 **currency_conversion_rate**: double
 **effective_time**: datetime
 **pricing_expression**: gcp_pricing_expression
 **summary**: string
 }
-class gcp_aggregation_info [[#gcp_aggregation_info]] {
-**aggregation_count**: int64
-**aggregation_interval**: string
-**aggregation_level**: string
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_tier_rate --> gcp_money
+class gcp_sku {
+**category**: gcp_category
+**geo_taxonomy**: gcp_geo_taxonomy
+**service_provider_name**: string
+**service_regions**: string[]
+**sku_pricing_info**: gcp_pricing_info[]
+**usage_unit_nanos**: int64
+}
+class gcp_tier_rate {
+**start_usage_amount**: double
+**unit_price**: gcp_money
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_pricing_expression --> gcp_tier_rate
-gcp_resource <|--- gcp_sku
-gcp_sku --> gcp_category
-gcp_sku --> gcp_geo_taxonomy
-gcp_sku --> gcp_pricing_info
-gcp_sku --> gcp_deprecation_status
 gcp_pricing_info --> gcp_aggregation_info
 gcp_pricing_info --> gcp_pricing_expression
-
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+gcp_sku --> gcp_category
+gcp_sku --> gcp_deprecation_status
+gcp_sku --> gcp_geo_taxonomy
+gcp_sku --> gcp_pricing_info
+gcp_resource <|--- gcp_sku
+gcp_tier_rate --> gcp_money
 @enduml
 ```
 
@@ -8976,15 +8604,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_sku [[#gcp_sku]] {
-
+class gcp_service {
 }
-class gcp_service [[#gcp_service]] {
-
+class gcp_sku {
 }
 gcp_service -[#1A83AF]-> gcp_sku
-
 @enduml
 ```
 
@@ -9019,40 +8643,27 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
-**deleted**: string
-**deprecated**: string
-**obsolete**: string
-**replacement**: string
-**state**: string
-}
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class gcp_customer_encryption_key [[#gcp_customer_encryption_key]] {
+class gcp_customer_encryption_key {
 **kms_key_name**: string
 **kms_key_service_account**: string
 **raw_key**: string
 **rsa_encrypted_key**: string
 **sha256**: string
 }
-class gcp_snapshot [[#gcp_snapshot]] {
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class gcp_snapshot {
 **snapshot_architecture**: string
 **snapshot_auto_created**: boolean
 **snapshot_chain_name**: string
@@ -9075,12 +8686,23 @@ class gcp_snapshot [[#gcp_snapshot]] {
 **snapshot_storage_bytes_status**: string
 **snapshot_storage_locations**: string[]
 }
-resource <|--- gcp_resource
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_snapshot
+resource <|--- gcp_resource
 gcp_snapshot --> gcp_customer_encryption_key
 gcp_snapshot --> gcp_deprecation_status
-
+gcp_resource <|--- gcp_snapshot
 @enduml
 ```
 
@@ -9114,15 +8736,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_disk [[#gcp_disk]] {
-
+class gcp_disk {
 }
-class gcp_snapshot [[#gcp_snapshot]] {
-
+class gcp_snapshot {
 }
 gcp_disk -[#1A83AF]-> gcp_snapshot
-
 @enduml
 ```
 
@@ -9157,57 +8775,55 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
 }
-class gcp_sql_operation_error [[#gcp_sql_operation_error]] {
-**code**: string
-**message**: string
-}
-class gcp_sql_backup_run [[#gcp_sql_backup_run]] {
+class gcp_sql_backup_run {
 **backup_kind**: string
 **disk_encryption_configuration**: string
 **disk_encryption_status**: string
 **end_time**: datetime
 **enqueued_time**: datetime
-**sql_operation_error**: gcp_sql_operation_error
 **instance**: string
 **location**: string
+**sql_operation_error**: gcp_sql_operation_error
 **start_time**: datetime
 **status**: string
 **time_zone**: string
 **type**: string
 **window_start_time**: datetime
 }
-resource <|--- gcp_resource
+class gcp_sql_operation_error {
+**code**: string
+**message**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+gcp_sql_backup_run --> gcp_deprecation_status
 gcp_resource <|--- gcp_sql_backup_run
 gcp_sql_backup_run --> gcp_sql_operation_error
-gcp_sql_backup_run --> gcp_deprecation_status
-
 @enduml
 ```
 
@@ -9241,11 +8857,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_sql_backup_run [[#gcp_sql_backup_run]] {
-
+class gcp_sql_backup_run {
 }
-
 @enduml
 ```
 
@@ -9280,37 +8893,20 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
 }
-class gcp_sql_sql_server_database_details [[#gcp_sql_sql_server_database_details]] {
-**compatibility_level**: int64
-**recovery_model**: string
-}
-class gcp_sql_database [[#gcp_sql_database]] {
+class gcp_sql_database {
 **charset**: string
 **collation**: string
 **etag**: string
@@ -9318,12 +8914,27 @@ class gcp_sql_database [[#gcp_sql_database]] {
 **project**: string
 **sqlserver_database_details**: gcp_sql_sql_server_database_details
 }
-resource <|--- gcp_resource
+class gcp_sql_sql_server_database_details {
+**compatibility_level**: int64
+**recovery_model**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+gcp_sql_database --> gcp_deprecation_status
 gcp_resource <|--- gcp_sql_database
 gcp_sql_database --> gcp_sql_sql_server_database_details
-gcp_sql_database --> gcp_deprecation_status
-
 @enduml
 ```
 
@@ -9357,11 +8968,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_sql_database [[#gcp_sql_database]] {
-
+class gcp_sql_database {
 }
-
 @enduml
 ```
 
@@ -9396,21 +9004,25 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class gcp_sql_backup_configuration [[#gcp_sql_backup_configuration]] {
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class gcp_sql_acl_entry {
+**expiration_time**: datetime
+**name**: string
+**value**: string
+}
+class gcp_sql_backup_configuration {
 **backup_retention_settings**: gcp_sql_backup_retention_settings
 **binary_log_enabled**: boolean
 **enabled**: boolean
@@ -9420,33 +9032,15 @@ class gcp_sql_backup_configuration [[#gcp_sql_backup_configuration]] {
 **start_time**: string
 **transaction_log_retention_days**: int64
 }
-class gcp_sql_backup_retention_settings [[#gcp_sql_backup_retention_settings]] {
+class gcp_sql_backup_retention_settings {
 **retained_backups**: int64
 **retention_unit**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
+class gcp_sql_database_flags {
 **name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+**value**: string
 }
-class gcp_sql_sql_server_audit_config [[#gcp_sql_sql_server_audit_config]] {
-**bucket**: string
-**retention_interval**: string
-**upload_interval**: string
-}
-class gcp_sql_location_preference [[#gcp_sql_location_preference]] {
-**follow_gae_application**: string
-**secondary_zone**: string
-**zone**: string
-}
-class gcp_sql_database_instance [[#gcp_sql_database_instance]] {
+class gcp_sql_database_instance {
 **available_maintenance_versions**: string[]
 **backend_type**: string
 **connection_name**: string
@@ -9480,56 +9074,50 @@ class gcp_sql_database_instance [[#gcp_sql_database_instance]] {
 **sql_database_instance_state**: string
 **suspension_reason**: string[]
 }
-class gcp_sql_deny_maintenance_period [[#gcp_sql_deny_maintenance_period]] {
+class gcp_sql_deny_maintenance_period {
 **end_date**: string
 **start_date**: string
 **time**: string
 }
-class gcp_sql_ip_configuration [[#gcp_sql_ip_configuration]] {
+class gcp_sql_failoverreplica {
+**available**: boolean
+**name**: string
+}
+class gcp_sql_insights_config {
+**query_insights_enabled**: boolean
+**query_plans_per_minute**: int64
+**query_string_length**: int64
+**record_application_tags**: boolean
+**record_client_address**: boolean
+}
+class gcp_sql_instance_reference {
+**name**: string
+**project**: string
+**region**: string
+}
+class gcp_sql_ip_configuration {
 **allocated_ip_range**: string
 **authorized_networks**: gcp_sql_acl_entry[]
 **ipv4_enabled**: boolean
 **private_network**: string
 **require_ssl**: boolean
 }
-class gcp_sql_acl_entry [[#gcp_sql_acl_entry]] {
-**expiration_time**: datetime
-**name**: string
-**value**: string
-}
-class gcp_sql_failoverreplica [[#gcp_sql_failoverreplica]] {
-**available**: boolean
-**name**: string
-}
-class gcp_sql_ip_mapping [[#gcp_sql_ip_mapping]] {
+class gcp_sql_ip_mapping {
 **ip_address**: string
 **time_to_retire**: string
 **type**: string
 }
-class gcp_sql_on_premises_configuration [[#gcp_sql_on_premises_configuration]] {
-**ca_certificate**: string
-**client_certificate**: string
-**client_key**: string
-**dump_file_path**: string
-**host_port**: string
-**password**: string
-**source_instance**: gcp_sql_instance_reference
-**username**: string
+class gcp_sql_location_preference {
+**follow_gae_application**: string
+**secondary_zone**: string
+**zone**: string
 }
-class gcp_sql_instance_reference [[#gcp_sql_instance_reference]] {
-**name**: string
-**project**: string
-**region**: string
+class gcp_sql_maintenance_window {
+**day**: int64
+**hour**: int64
+**update_track**: string
 }
-class gcp_sql_sql_out_of_disk_report [[#gcp_sql_sql_out_of_disk_report]] {
-**sql_min_recommended_increase_size_gb**: int64
-**sql_out_of_disk_state**: string
-}
-class gcp_sql_replica_configuration [[#gcp_sql_replica_configuration]] {
-**failover_target**: boolean
-**mysql_replica_configuration**: gcp_sql_my_sql_replica_configuration
-}
-class gcp_sql_my_sql_replica_configuration [[#gcp_sql_my_sql_replica_configuration]] {
+class gcp_sql_my_sql_replica_configuration {
 **ca_certificate**: string
 **client_certificate**: string
 **client_key**: string
@@ -9541,23 +9129,29 @@ class gcp_sql_my_sql_replica_configuration [[#gcp_sql_my_sql_replica_configurati
 **username**: string
 **verify_server_certificate**: boolean
 }
-class gcp_sql_sql_scheduled_maintenance [[#gcp_sql_sql_scheduled_maintenance]] {
-**can_defer**: boolean
-**can_reschedule**: boolean
-**schedule_deadline_time**: datetime
-**start_time**: datetime
+class gcp_sql_on_premises_configuration {
+**ca_certificate**: string
+**client_certificate**: string
+**client_key**: string
+**dump_file_path**: string
+**host_port**: string
+**password**: string
+**source_instance**: gcp_sql_instance_reference
+**username**: string
 }
-class gcp_sql_ssl_cert [[#gcp_sql_ssl_cert]] {
-**cert**: string
-**cert_serial_number**: string
-**common_name**: string
-**create_time**: datetime
-**expiration_time**: datetime
-**instance**: string
-**self_link**: string
-**sha1_fingerprint**: string
+class gcp_sql_password_validation_policy {
+**complexity**: string
+**disallow_username_substring**: boolean
+**enable_password_policy**: boolean
+**min_length**: int64
+**password_change_interval**: string
+**reuse_interval**: int64
 }
-class gcp_sql_settings [[#gcp_sql_settings]] {
+class gcp_sql_replica_configuration {
+**failover_target**: boolean
+**mysql_replica_configuration**: gcp_sql_my_sql_replica_configuration
+}
+class gcp_sql_settings {
 **activation_policy**: string
 **active_directory_config**: string
 **authorized_gae_applications**: string[]
@@ -9587,43 +9181,56 @@ class gcp_sql_settings [[#gcp_sql_settings]] {
 **time_zone**: string
 **user_labels**: dictionary[string, string]
 }
-class gcp_sql_database_flags [[#gcp_sql_database_flags]] {
+class gcp_sql_sql_out_of_disk_report {
+**sql_min_recommended_increase_size_gb**: int64
+**sql_out_of_disk_state**: string
+}
+class gcp_sql_sql_scheduled_maintenance {
+**can_defer**: boolean
+**can_reschedule**: boolean
+**schedule_deadline_time**: datetime
+**start_time**: datetime
+}
+class gcp_sql_sql_server_audit_config {
+**bucket**: string
+**retention_interval**: string
+**upload_interval**: string
+}
+class gcp_sql_ssl_cert {
+**cert**: string
+**cert_serial_number**: string
+**common_name**: string
+**create_time**: datetime
+**expiration_time**: datetime
+**instance**: string
+**self_link**: string
+**sha1_fingerprint**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
 **name**: string
-**value**: string
+**tags**: dictionary[string, string]
 }
-class gcp_sql_insights_config [[#gcp_sql_insights_config]] {
-**query_insights_enabled**: boolean
-**query_plans_per_minute**: int64
-**query_string_length**: int64
-**record_application_tags**: boolean
-**record_client_address**: boolean
-}
-class gcp_sql_maintenance_window [[#gcp_sql_maintenance_window]] {
-**day**: int64
-**hour**: int64
-**update_track**: string
-}
-class gcp_sql_password_validation_policy [[#gcp_sql_password_validation_policy]] {
-**complexity**: string
-**disallow_username_substring**: boolean
-**enable_password_policy**: boolean
-**min_length**: int64
-**password_change_interval**: string
-**reuse_interval**: int64
-}
-resource <|--- gcp_resource
 gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
 gcp_sql_backup_configuration --> gcp_sql_backup_retention_settings
+gcp_sql_database_instance --> gcp_deprecation_status
 gcp_resource <|--- gcp_sql_database_instance
 gcp_sql_database_instance --> gcp_sql_failoverreplica
 gcp_sql_database_instance --> gcp_sql_ip_mapping
 gcp_sql_database_instance --> gcp_sql_on_premises_configuration
-gcp_sql_database_instance --> gcp_sql_sql_out_of_disk_report
 gcp_sql_database_instance --> gcp_sql_replica_configuration
+gcp_sql_database_instance --> gcp_sql_settings
+gcp_sql_database_instance --> gcp_sql_sql_out_of_disk_report
 gcp_sql_database_instance --> gcp_sql_sql_scheduled_maintenance
 gcp_sql_database_instance --> gcp_sql_ssl_cert
-gcp_sql_database_instance --> gcp_sql_settings
-gcp_sql_database_instance --> gcp_deprecation_status
 gcp_sql_ip_configuration --> gcp_sql_acl_entry
 gcp_sql_on_premises_configuration --> gcp_sql_instance_reference
 gcp_sql_replica_configuration --> gcp_sql_my_sql_replica_configuration
@@ -9636,7 +9243,6 @@ gcp_sql_settings --> gcp_sql_location_preference
 gcp_sql_settings --> gcp_sql_maintenance_window
 gcp_sql_settings --> gcp_sql_password_validation_policy
 gcp_sql_settings --> gcp_sql_sql_server_audit_config
-
 @enduml
 ```
 
@@ -9670,19 +9276,14 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_ssl_certificate [[#gcp_ssl_certificate]] {
-
+class gcp_sql_database_instance {
 }
-class gcp_sql_database_instance [[#gcp_sql_database_instance]] {
-
+class gcp_sql_operation {
 }
-class gcp_sql_operation [[#gcp_sql_operation]] {
-
+class gcp_ssl_certificate {
 }
-gcp_ssl_certificate -[#1A83AF]-> gcp_sql_database_instance
 gcp_sql_database_instance -[#1A83AF]-> gcp_sql_operation
-
+gcp_ssl_certificate -[#1A83AF]-> gcp_sql_database_instance
 @enduml
 ```
 
@@ -9717,71 +9318,30 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
 }
-class gcp_sql_export_context [[#gcp_sql_export_context]] {
-**csv_export_options**: gcp_sql_csvexportoptions
-**databases**: string[]
-**file_type**: string
-**offload**: boolean
-**sql_export_options**: gcp_sql_sqlexportoptions
-**uri**: string
+class gcp_sql_bakimportoptions {
+**encryption_options**: gcp_sql_encryptionoptions
 }
-class gcp_sql_csvexportoptions [[#gcp_sql_csvexportoptions]] {
+class gcp_sql_csvexportoptions {
 **escape_character**: string
 **fields_terminated_by**: string
 **lines_terminated_by**: string
 **quote_character**: string
 **select_query**: string
 }
-class gcp_sql_sqlexportoptions [[#gcp_sql_sqlexportoptions]] {
-**mysql_export_options**: gcp_sql_mysqlexportoptions
-**schema_only**: boolean
-**tables**: string[]
-}
-class gcp_sql_mysqlexportoptions [[#gcp_sql_mysqlexportoptions]] {
-**master_data**: int64
-}
-class gcp_sql_operation [[#gcp_sql_operation]] {
-**backup_context**: string
-**end_time**: datetime
-**sql_operation_errors**: gcp_sql_operation_error[]
-**export_context**: gcp_sql_export_context
-**import_context**: gcp_sql_import_context
-**insert_time**: datetime
-**operation_type**: string
-**start_time**: datetime
-**status**: string
-**target_id**: string
-**target_link**: string
-**target_project**: string
-**user**: string
-}
-class gcp_sql_csvimportoptions [[#gcp_sql_csvimportoptions]] {
+class gcp_sql_csvimportoptions {
 **columns**: string[]
 **escape_character**: string
 **fields_terminated_by**: string
@@ -9789,7 +9349,20 @@ class gcp_sql_csvimportoptions [[#gcp_sql_csvimportoptions]] {
 **quote_character**: string
 **table**: string
 }
-class gcp_sql_import_context [[#gcp_sql_import_context]] {
+class gcp_sql_encryptionoptions {
+**cert_path**: string
+**pvk_password**: string
+**pvk_path**: string
+}
+class gcp_sql_export_context {
+**csv_export_options**: gcp_sql_csvexportoptions
+**databases**: string[]
+**file_type**: string
+**offload**: boolean
+**sql_export_options**: gcp_sql_sqlexportoptions
+**uri**: string
+}
+class gcp_sql_import_context {
 **bak_import_options**: gcp_sql_bakimportoptions
 **csv_import_options**: gcp_sql_csvimportoptions
 **database**: string
@@ -9797,32 +9370,58 @@ class gcp_sql_import_context [[#gcp_sql_import_context]] {
 **import_user**: string
 **uri**: string
 }
-class gcp_sql_bakimportoptions [[#gcp_sql_bakimportoptions]] {
-**encryption_options**: gcp_sql_encryptionoptions
+class gcp_sql_mysqlexportoptions {
+**master_data**: int64
 }
-class gcp_sql_encryptionoptions [[#gcp_sql_encryptionoptions]] {
-**cert_path**: string
-**pvk_password**: string
-**pvk_path**: string
+class gcp_sql_operation {
+**backup_context**: string
+**end_time**: datetime
+**export_context**: gcp_sql_export_context
+**import_context**: gcp_sql_import_context
+**insert_time**: datetime
+**operation_type**: string
+**sql_operation_errors**: gcp_sql_operation_error[]
+**start_time**: datetime
+**status**: string
+**target_id**: string
+**target_link**: string
+**target_project**: string
+**user**: string
 }
-class gcp_sql_operation_error [[#gcp_sql_operation_error]] {
+class gcp_sql_operation_error {
 **code**: string
 **message**: string
 }
-resource <|--- gcp_resource
+class gcp_sql_sqlexportoptions {
+**mysql_export_options**: gcp_sql_mysqlexportoptions
+**schema_only**: boolean
+**tables**: string[]
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+gcp_sql_bakimportoptions --> gcp_sql_encryptionoptions
 gcp_sql_export_context --> gcp_sql_csvexportoptions
 gcp_sql_export_context --> gcp_sql_sqlexportoptions
-gcp_sql_sqlexportoptions --> gcp_sql_mysqlexportoptions
-gcp_resource <|--- gcp_sql_operation
-gcp_sql_operation --> gcp_sql_operation_error
-gcp_sql_operation --> gcp_sql_export_context
-gcp_sql_operation --> gcp_sql_import_context
-gcp_sql_operation --> gcp_deprecation_status
 gcp_sql_import_context --> gcp_sql_bakimportoptions
 gcp_sql_import_context --> gcp_sql_csvimportoptions
-gcp_sql_bakimportoptions --> gcp_sql_encryptionoptions
-
+gcp_sql_operation --> gcp_deprecation_status
+gcp_resource <|--- gcp_sql_operation
+gcp_sql_operation --> gcp_sql_export_context
+gcp_sql_operation --> gcp_sql_import_context
+gcp_sql_operation --> gcp_sql_operation_error
+gcp_sql_sqlexportoptions --> gcp_sql_mysqlexportoptions
 @enduml
 ```
 
@@ -9856,15 +9455,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_sql_database_instance [[#gcp_sql_database_instance]] {
-
+class gcp_sql_database_instance {
 }
-class gcp_sql_operation [[#gcp_sql_operation]] {
-
+class gcp_sql_operation {
 }
 gcp_sql_database_instance -[#1A83AF]-> gcp_sql_operation
-
 @enduml
 ```
 
@@ -9899,48 +9494,28 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
 }
-class gcp_sql_user_password_validation_policy [[#gcp_sql_user_password_validation_policy]] {
-**allowed_failed_attempts**: int64
-**enable_failed_attempts_check**: boolean
-**enable_password_verification**: boolean
-**password_expiration_duration**: string
-**status**: gcp_sql_password_status
-}
-class gcp_sql_password_status [[#gcp_sql_password_status]] {
+class gcp_sql_password_status {
 **locked**: boolean
 **password_expiration_time**: datetime
 }
-class gcp_sql_sql_server_user_details [[#gcp_sql_sql_server_user_details]] {
+class gcp_sql_sql_server_user_details {
 **disabled**: boolean
 **server_roles**: string[]
 }
-class gcp_sql_user [[#gcp_sql_user]] {
+class gcp_sql_user {
 **dual_password_type**: string
 **etag**: string
 **host**: string
@@ -9951,14 +9526,32 @@ class gcp_sql_user [[#gcp_sql_user]] {
 **sqlserver_user_details**: gcp_sql_sql_server_user_details
 **type**: string
 }
-resource <|--- gcp_resource
+class gcp_sql_user_password_validation_policy {
+**allowed_failed_attempts**: int64
+**enable_failed_attempts_check**: boolean
+**enable_password_verification**: boolean
+**password_expiration_duration**: string
+**status**: gcp_sql_password_status
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_resource --> gcp_deprecation_status
-gcp_sql_user_password_validation_policy --> gcp_sql_password_status
-gcp_resource <|--- gcp_sql_user
-gcp_sql_user --> gcp_sql_user_password_validation_policy
-gcp_sql_user --> gcp_sql_sql_server_user_details
+resource <|--- gcp_resource
 gcp_sql_user --> gcp_deprecation_status
-
+gcp_resource <|--- gcp_sql_user
+gcp_sql_user --> gcp_sql_sql_server_user_details
+gcp_sql_user --> gcp_sql_user_password_validation_policy
+gcp_sql_user_password_validation_policy --> gcp_sql_password_status
 @enduml
 ```
 
@@ -9992,11 +9585,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_sql_user [[#gcp_sql_user]] {
-
+class gcp_sql_user {
 }
-
 @enduml
 ```
 
@@ -10031,33 +9621,20 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
 }
-class gcp_ssl_certificate [[#gcp_ssl_certificate]] {
+class gcp_ssl_certificate {
 **certificate**: string
 **expire_time**: datetime
 **managed**: gcp_ssl_certificate_managed_ssl_certificate
@@ -10066,22 +9643,33 @@ class gcp_ssl_certificate [[#gcp_ssl_certificate]] {
 **subject_alternative_names**: string[]
 **type**: string
 }
-class gcp_ssl_certificate_managed_ssl_certificate [[#gcp_ssl_certificate_managed_ssl_certificate]] {
+class gcp_ssl_certificate_managed_ssl_certificate {
 **domain_status**: dictionary[string, string]
 **domains**: string[]
 **status**: string
 }
-class gcp_ssl_certificate_self_managed_ssl_certificate [[#gcp_ssl_certificate_self_managed_ssl_certificate]] {
+class gcp_ssl_certificate_self_managed_ssl_certificate {
 **certificate**: string
 **private_key**: string
 }
-resource <|--- gcp_resource
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+gcp_ssl_certificate --> gcp_deprecation_status
 gcp_resource <|--- gcp_ssl_certificate
 gcp_ssl_certificate --> gcp_ssl_certificate_managed_ssl_certificate
 gcp_ssl_certificate --> gcp_ssl_certificate_self_managed_ssl_certificate
-gcp_ssl_certificate --> gcp_deprecation_status
-
 @enduml
 ```
 
@@ -10115,23 +9703,17 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_target_ssl_proxy [[#gcp_target_ssl_proxy]] {
-
+class gcp_sql_database_instance {
 }
-class gcp_target_https_proxy [[#gcp_target_https_proxy]] {
-
+class gcp_ssl_certificate {
 }
-class gcp_ssl_certificate [[#gcp_ssl_certificate]] {
-
+class gcp_target_https_proxy {
 }
-class gcp_sql_database_instance [[#gcp_sql_database_instance]] {
-
+class gcp_target_ssl_proxy {
 }
-gcp_target_ssl_proxy -[#1A83AF]-> gcp_ssl_certificate
-gcp_ssl_certificate -[#1A83AF]-> gcp_target_https_proxy
 gcp_ssl_certificate -[#1A83AF]-> gcp_sql_database_instance
-
+gcp_ssl_certificate -[#1A83AF]-> gcp_target_https_proxy
+gcp_target_ssl_proxy -[#1A83AF]-> gcp_ssl_certificate
 @enduml
 ```
 
@@ -10166,42 +9748,24 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
+class gcp_data {
+**key**: string
+**value**: string
 }
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
 }
-class gcp_data [[#gcp_data]] {
-**key**: string
-**value**: string
-}
-class gcp_warnings [[#gcp_warnings]] {
-**code**: string
-**data**: gcp_data[]
-**message**: string
-}
-class gcp_ssl_policy [[#gcp_ssl_policy]] {
+class gcp_ssl_policy {
 **custom_features**: string[]
 **enabled_features**: string[]
 **fingerprint**: string
@@ -10209,13 +9773,29 @@ class gcp_ssl_policy [[#gcp_ssl_policy]] {
 **profile**: string
 **warnings**: gcp_warnings[]
 }
-resource <|--- gcp_resource
+class gcp_warnings {
+**code**: string
+**data**: gcp_data[]
+**message**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_resource --> gcp_deprecation_status
-gcp_warnings --> gcp_data
+resource <|--- gcp_resource
+gcp_ssl_policy --> gcp_deprecation_status
 gcp_resource <|--- gcp_ssl_policy
 gcp_ssl_policy --> gcp_warnings
-gcp_ssl_policy --> gcp_deprecation_status
-
+gcp_warnings --> gcp_data
 @enduml
 ```
 
@@ -10249,15 +9829,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_target_https_proxy [[#gcp_target_https_proxy]] {
-
+class gcp_ssl_policy {
 }
-class gcp_ssl_policy [[#gcp_ssl_policy]] {
-
+class gcp_target_https_proxy {
 }
 gcp_ssl_policy -[#1A83AF]-> gcp_target_https_proxy
-
 @enduml
 ```
 
@@ -10292,33 +9868,20 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
 }
-class gcp_subnetwork [[#gcp_subnetwork]] {
+class gcp_subnetwork {
 **enable_flow_logs**: boolean
 **external_ipv6_prefix**: string
 **fingerprint**: string
@@ -10327,7 +9890,6 @@ class gcp_subnetwork [[#gcp_subnetwork]] {
 **ip_cidr_range**: string
 **ipv6_access_type**: string
 **ipv6_cidr_range**: string
-**subnetwork_log_config**: gcp_subnetwork_log_config
 **network**: string
 **private_ip_google_access**: boolean
 **private_ipv6_google_access**: string
@@ -10335,9 +9897,10 @@ class gcp_subnetwork [[#gcp_subnetwork]] {
 **role**: string
 **secondary_ip_ranges**: gcp_subnetwork_secondary_range[]
 **stack_type**: string
+**subnetwork_log_config**: gcp_subnetwork_log_config
 **subnetwork_state**: string
 }
-class gcp_subnetwork_log_config [[#gcp_subnetwork_log_config]] {
+class gcp_subnetwork_log_config {
 **aggregation_interval**: string
 **enable**: boolean
 **filter_expr**: string
@@ -10345,17 +9908,28 @@ class gcp_subnetwork_log_config [[#gcp_subnetwork_log_config]] {
 **metadata**: string
 **metadata_fields**: string[]
 }
-class gcp_subnetwork_secondary_range [[#gcp_subnetwork_secondary_range]] {
+class gcp_subnetwork_secondary_range {
 **ip_cidr_range**: string
 **range_name**: string
 }
-resource <|--- gcp_resource
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+gcp_subnetwork --> gcp_deprecation_status
 gcp_resource <|--- gcp_subnetwork
 gcp_subnetwork --> gcp_subnetwork_log_config
 gcp_subnetwork --> gcp_subnetwork_secondary_range
-gcp_subnetwork --> gcp_deprecation_status
-
 @enduml
 ```
 
@@ -10389,43 +9963,33 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_instance_group [[#gcp_instance_group]] {
-
+class gcp_address {
 }
-class gcp_network_endpoint_group [[#gcp_network_endpoint_group]] {
-
+class gcp_instance {
 }
-class gcp_network [[#gcp_network]] {
-
+class gcp_instance_group {
 }
-class gcp_instance [[#gcp_instance]] {
-
+class gcp_network {
 }
-class gcp_service_attachment [[#gcp_service_attachment]] {
-
+class gcp_network_endpoint_group {
 }
-class gcp_subnetwork [[#gcp_subnetwork]] {
-
+class gcp_packet_mirroring {
 }
-class gcp_packet_mirroring [[#gcp_packet_mirroring]] {
-
+class gcp_service_attachment {
 }
-class gcp_address [[#gcp_address]] {
-
+class gcp_subnetwork {
 }
-gcp_network -[#1A83AF]-> gcp_instance_group
+gcp_instance -[#1A83AF]-> gcp_packet_mirroring
 gcp_network -[#1A83AF]-> gcp_instance
+gcp_network -[#1A83AF]-> gcp_instance_group
 gcp_network -[#1A83AF]-> gcp_network_endpoint_group
 gcp_network -[#1A83AF]-> gcp_subnetwork
-gcp_instance -[#1A83AF]-> gcp_packet_mirroring
 gcp_service_attachment -[#1A83AF]-> gcp_subnetwork
-gcp_subnetwork -[#1A83AF]-> gcp_packet_mirroring
-gcp_subnetwork -[#1A83AF]-> gcp_instance_group
-gcp_subnetwork -[#1A83AF]-> gcp_instance
 gcp_subnetwork -[#1A83AF]-> gcp_address
+gcp_subnetwork -[#1A83AF]-> gcp_instance
+gcp_subnetwork -[#1A83AF]-> gcp_instance_group
 gcp_subnetwork -[#1A83AF]-> gcp_network_endpoint_group
-
+gcp_subnetwork -[#1A83AF]-> gcp_packet_mirroring
 @enduml
 ```
 
@@ -10460,43 +10024,41 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
 }
-class gcp_target_grpc_proxy [[#gcp_target_grpc_proxy]] {
+class gcp_target_grpc_proxy {
 **fingerprint**: string
 **self_link_with_id**: string
 **url_map**: string
 **validate_for_proxyless**: boolean
 }
-resource <|--- gcp_resource
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_target_grpc_proxy
+resource <|--- gcp_resource
 gcp_target_grpc_proxy --> gcp_deprecation_status
-
+gcp_resource <|--- gcp_target_grpc_proxy
 @enduml
 ```
 
@@ -10530,19 +10092,14 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_forwarding_rule [[#gcp_forwarding_rule]] {
-
+class gcp_forwarding_rule {
 }
-class gcp_target_grpc_proxy [[#gcp_target_grpc_proxy]] {
-
+class gcp_target_grpc_proxy {
 }
-class gcp_url_map [[#gcp_url_map]] {
-
+class gcp_url_map {
 }
 gcp_forwarding_rule -[#1A83AF]-> gcp_target_grpc_proxy
 gcp_target_grpc_proxy -[#1A83AF]-> gcp_url_map
-
 @enduml
 ```
 
@@ -10577,42 +10134,40 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
 }
-class gcp_target_http_proxy [[#gcp_target_http_proxy]] {
+class gcp_target_http_proxy {
 **fingerprint**: string
 **proxy_bind**: boolean
 **url_map**: string
 }
-resource <|--- gcp_resource
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_target_http_proxy
+resource <|--- gcp_resource
 gcp_target_http_proxy --> gcp_deprecation_status
-
+gcp_resource <|--- gcp_target_http_proxy
 @enduml
 ```
 
@@ -10646,19 +10201,14 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_forwarding_rule [[#gcp_forwarding_rule]] {
-
+class gcp_forwarding_rule {
 }
-class gcp_target_http_proxy [[#gcp_target_http_proxy]] {
-
+class gcp_target_http_proxy {
 }
-class gcp_url_map [[#gcp_url_map]] {
-
+class gcp_url_map {
 }
 gcp_forwarding_rule -[#1A83AF]-> gcp_target_http_proxy
 gcp_target_http_proxy -[#1A83AF]-> gcp_url_map
-
 @enduml
 ```
 
@@ -10693,33 +10243,20 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
 }
-class gcp_target_https_proxy [[#gcp_target_https_proxy]] {
+class gcp_target_https_proxy {
 **authorization_policy**: string
 **certificate_map**: string
 **fingerprint**: string
@@ -10730,11 +10267,22 @@ class gcp_target_https_proxy [[#gcp_target_https_proxy]] {
 **ssl_policy**: string
 **url_map**: string
 }
-resource <|--- gcp_resource
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_target_https_proxy
+resource <|--- gcp_resource
 gcp_target_https_proxy --> gcp_deprecation_status
-
+gcp_resource <|--- gcp_target_https_proxy
 @enduml
 ```
 
@@ -10768,27 +10316,20 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_forwarding_rule [[#gcp_forwarding_rule]] {
-
+class gcp_forwarding_rule {
 }
-class gcp_target_https_proxy [[#gcp_target_https_proxy]] {
-
+class gcp_ssl_certificate {
 }
-class gcp_ssl_certificate [[#gcp_ssl_certificate]] {
-
+class gcp_ssl_policy {
 }
-class gcp_url_map [[#gcp_url_map]] {
-
+class gcp_target_https_proxy {
 }
-class gcp_ssl_policy [[#gcp_ssl_policy]] {
-
+class gcp_url_map {
 }
 gcp_forwarding_rule -[#1A83AF]-> gcp_target_https_proxy
-gcp_target_https_proxy -[#1A83AF]-> gcp_url_map
 gcp_ssl_certificate -[#1A83AF]-> gcp_target_https_proxy
 gcp_ssl_policy -[#1A83AF]-> gcp_target_https_proxy
-
+gcp_target_https_proxy -[#1A83AF]-> gcp_url_map
 @enduml
 ```
 
@@ -10823,42 +10364,40 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
 }
-class gcp_target_instance [[#gcp_target_instance]] {
+class gcp_target_instance {
 **instance**: string
 **nat_policy**: string
 **network**: string
 }
-resource <|--- gcp_resource
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_target_instance
+resource <|--- gcp_resource
 gcp_target_instance --> gcp_deprecation_status
-
+gcp_resource <|--- gcp_target_instance
 @enduml
 ```
 
@@ -10892,20 +10431,15 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_network [[#gcp_network]] {
-
+class gcp_instance {
 }
-class gcp_instance [[#gcp_instance]] {
-
+class gcp_network {
 }
-class gcp_target_instance [[#gcp_target_instance]] {
-
+class gcp_target_instance {
 }
 gcp_network -[#1A83AF]-> gcp_instance
 gcp_network -[#1A83AF]-> gcp_target_instance
 gcp_target_instance -[#1A83AF]-> gcp_instance
-
 @enduml
 ```
 
@@ -10940,44 +10474,42 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
 }
-class gcp_target_pool [[#gcp_target_pool]] {
+class gcp_target_pool {
 **backup_pool**: string
 **failover_ratio**: double
 **health_checks**: string[]
 **instances**: string[]
 **session_affinity**: string
 }
-resource <|--- gcp_resource
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_target_pool
+resource <|--- gcp_resource
 gcp_target_pool --> gcp_deprecation_status
-
+gcp_resource <|--- gcp_target_pool
 @enduml
 ```
 
@@ -11011,15 +10543,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_forwarding_rule [[#gcp_forwarding_rule]] {
-
+class gcp_forwarding_rule {
 }
-class gcp_target_pool [[#gcp_target_pool]] {
-
+class gcp_target_pool {
 }
 gcp_forwarding_rule -[#1A83AF]-> gcp_target_pool
-
 @enduml
 ```
 
@@ -11054,44 +10582,42 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class gcp_target_ssl_proxy [[#gcp_target_ssl_proxy]] {
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class gcp_target_ssl_proxy {
 **certificate_map**: string
 **proxy_header**: string
 **service**: string
 **ssl_certificates**: string[]
 **ssl_policy**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
+class resource {
 **age**: duration
-**mtime**: datetime
-**last_update**: duration
 **atime**: datetime
-**last_access**: duration
+**ctime**: datetime
+**id**: string
 **kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
 }
-resource <|--- gcp_resource
 gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_target_ssl_proxy
+resource <|--- gcp_resource
 gcp_target_ssl_proxy --> gcp_deprecation_status
-
+gcp_resource <|--- gcp_target_ssl_proxy
 @enduml
 ```
 
@@ -11125,23 +10651,17 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_backend_service [[#gcp_backend_service]] {
-
+class gcp_backend_service {
 }
-class gcp_target_ssl_proxy [[#gcp_target_ssl_proxy]] {
-
+class gcp_forwarding_rule {
 }
-class gcp_forwarding_rule [[#gcp_forwarding_rule]] {
-
+class gcp_ssl_certificate {
 }
-class gcp_ssl_certificate [[#gcp_ssl_certificate]] {
-
+class gcp_target_ssl_proxy {
 }
+gcp_forwarding_rule -[#1A83AF]-> gcp_target_ssl_proxy
 gcp_target_ssl_proxy -[#1A83AF]-> gcp_backend_service
 gcp_target_ssl_proxy -[#1A83AF]-> gcp_ssl_certificate
-gcp_forwarding_rule -[#1A83AF]-> gcp_target_ssl_proxy
-
 @enduml
 ```
 
@@ -11176,42 +10696,40 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class gcp_target_tcp_proxy [[#gcp_target_tcp_proxy]] {
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class gcp_target_tcp_proxy {
 **proxy_bind**: boolean
 **proxy_header**: string
 **service**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
+class resource {
 **age**: duration
-**mtime**: datetime
-**last_update**: duration
 **atime**: datetime
-**last_access**: duration
+**ctime**: datetime
+**id**: string
 **kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
 }
-resource <|--- gcp_resource
 gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_target_tcp_proxy
+resource <|--- gcp_resource
 gcp_target_tcp_proxy --> gcp_deprecation_status
-
+gcp_resource <|--- gcp_target_tcp_proxy
 @enduml
 ```
 
@@ -11245,19 +10763,14 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_backend_service [[#gcp_backend_service]] {
-
+class gcp_backend_service {
 }
-class gcp_target_tcp_proxy [[#gcp_target_tcp_proxy]] {
-
+class gcp_forwarding_rule {
 }
-class gcp_forwarding_rule [[#gcp_forwarding_rule]] {
-
+class gcp_target_tcp_proxy {
 }
-gcp_target_tcp_proxy -[#1A83AF]-> gcp_backend_service
 gcp_forwarding_rule -[#1A83AF]-> gcp_target_tcp_proxy
-
+gcp_target_tcp_proxy -[#1A83AF]-> gcp_backend_service
 @enduml
 ```
 
@@ -11292,43 +10805,41 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
 }
-class gcp_target_vpn_gateway [[#gcp_target_vpn_gateway]] {
+class gcp_target_vpn_gateway {
 **forwarding_rules**: string[]
 **network**: string
 **status**: string
 **tunnels**: string[]
 }
-resource <|--- gcp_resource
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_target_vpn_gateway
+resource <|--- gcp_resource
 gcp_target_vpn_gateway --> gcp_deprecation_status
-
+gcp_resource <|--- gcp_target_vpn_gateway
 @enduml
 ```
 
@@ -11362,24 +10873,18 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_network [[#gcp_network]] {
-
+class gcp_forwarding_rule {
 }
-class gcp_forwarding_rule [[#gcp_forwarding_rule]] {
-
+class gcp_network {
 }
-class gcp_target_vpn_gateway [[#gcp_target_vpn_gateway]] {
-
+class gcp_target_vpn_gateway {
 }
-class gcp_vpn_tunnel [[#gcp_vpn_tunnel]] {
-
+class gcp_vpn_tunnel {
 }
-gcp_network -[#1A83AF]-> gcp_target_vpn_gateway
-gcp_network -[#1A83AF]-> gcp_forwarding_rule
 gcp_forwarding_rule -[#1A83AF]-> gcp_target_vpn_gateway
+gcp_network -[#1A83AF]-> gcp_forwarding_rule
+gcp_network -[#1A83AF]-> gcp_target_vpn_gateway
 gcp_vpn_tunnel -[#1A83AF]-> gcp_target_vpn_gateway
-
 @enduml
 ```
 
@@ -11414,88 +10919,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_duration [[#gcp_duration]] {
-**nanos**: int64
-**seconds**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
-**deleted**: string
-**deprecated**: string
-**obsolete**: string
-**replacement**: string
-**state**: string
-}
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class gcp_url_map_test_header [[#gcp_url_map_test_header]] {
-**name**: string
-**value**: string
-}
-class gcp_url_map_test [[#gcp_url_map_test]] {
-**description**: string
-**expected_output_url**: string
-**expected_redirect_response_code**: int64
-**headers**: gcp_url_map_test_header[]
-**host**: string
-**path**: string
-**service**: string
-}
-class gcp_weighted_backend_service [[#gcp_weighted_backend_service]] {
-**backend_service**: string
-**header_action**: gcp_http_header_action
-**weight**: int64
-}
-class gcp_http_header_action [[#gcp_http_header_action]] {
-**request_headers_to_add**: gcp_http_header_option[]
-**request_headers_to_remove**: string[]
-**response_headers_to_add**: gcp_http_header_option[]
-**response_headers_to_remove**: string[]
-}
-class gcp_http_header_option [[#gcp_http_header_option]] {
-**header_name**: string
-**header_value**: string
-**replace**: boolean
-}
-class gcp_metadata_filter [[#gcp_metadata_filter]] {
-**filter_labels**: gcp_metadata_filter_label_match[]
-**filter_match_criteria**: string
-}
-class gcp_metadata_filter_label_match [[#gcp_metadata_filter_label_match]] {
-**name**: string
-**value**: string
-}
-class gcp_http_fault_delay [[#gcp_http_fault_delay]] {
-**fixed_delay**: gcp_duration
-**percentage**: double
-}
-class gcp_http_route_action [[#gcp_http_route_action]] {
-**cors_policy**: gcp_cors_policy
-**fault_injection_policy**: gcp_http_fault_injection
-**max_stream_duration**: gcp_duration
-**request_mirror_policy**: string
-**retry_policy**: gcp_http_retry_policy
-**timeout**: gcp_duration
-**url_rewrite**: gcp_url_rewrite
-**weighted_backend_services**: gcp_weighted_backend_service[]
-}
-class gcp_cors_policy [[#gcp_cors_policy]] {
+class gcp_cors_policy {
 **allow_credentials**: boolean
 **allow_headers**: string[]
 **allow_methods**: string[]
@@ -11505,70 +10929,41 @@ class gcp_cors_policy [[#gcp_cors_policy]] {
 **expose_headers**: string[]
 **max_age**: int64
 }
-class gcp_http_fault_injection [[#gcp_http_fault_injection]] {
-**abort**: gcp_http_fault_abort
-**delay**: gcp_http_fault_delay
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
 }
-class gcp_http_fault_abort [[#gcp_http_fault_abort]] {
+class gcp_duration {
+**nanos**: int64
+**seconds**: string
+}
+class gcp_host_rule {
+**description**: string
+**hosts**: string[]
+**path_matcher**: string
+}
+class gcp_http_fault_abort {
 **http_status**: int64
 **percentage**: double
 }
-class gcp_http_retry_policy [[#gcp_http_retry_policy]] {
-**num_retries**: int64
-**per_try_timeout**: gcp_duration
-**retry_conditions**: string[]
+class gcp_http_fault_delay {
+**fixed_delay**: gcp_duration
+**percentage**: double
 }
-class gcp_url_rewrite [[#gcp_url_rewrite]] {
-**host_rewrite**: string
-**path_prefix_rewrite**: string
+class gcp_http_fault_injection {
+**abort**: gcp_http_fault_abort
+**delay**: gcp_http_fault_delay
 }
-class gcp_path_rule [[#gcp_path_rule]] {
-**paths**: string[]
-**route_action**: gcp_http_route_action
-**service**: string
-**url_redirect**: gcp_http_redirect_action
+class gcp_http_header_action {
+**request_headers_to_add**: gcp_http_header_option[]
+**request_headers_to_remove**: string[]
+**response_headers_to_add**: gcp_http_header_option[]
+**response_headers_to_remove**: string[]
 }
-class gcp_http_redirect_action [[#gcp_http_redirect_action]] {
-**host_redirect**: string
-**https_redirect**: boolean
-**path_redirect**: string
-**prefix_redirect**: string
-**redirect_response_code**: string
-**strip_query**: boolean
-}
-class gcp_url_map [[#gcp_url_map]] {
-**default_route_action**: gcp_http_route_action
-**default_service**: string
-**default_url_redirect**: gcp_http_redirect_action
-**fingerprint**: string
-**header_action**: gcp_http_header_action
-**host_rules**: gcp_host_rule[]
-**path_matchers**: gcp_path_matcher[]
-**map_tests**: gcp_url_map_test[]
-}
-class gcp_int64_range_match [[#gcp_int64_range_match]] {
-**range_end**: string
-**range_start**: string
-}
-class gcp_http_route_rule [[#gcp_http_route_rule]] {
-**description**: string
-**header_action**: gcp_http_header_action
-**match_rules**: gcp_http_route_rule_match[]
-**priority**: int64
-**route_action**: gcp_http_route_action
-**service**: string
-**url_redirect**: gcp_http_redirect_action
-}
-class gcp_http_route_rule_match [[#gcp_http_route_rule_match]] {
-**full_path_match**: string
-**header_matches**: gcp_http_header_match[]
-**ignore_case**: boolean
-**metadata_filters**: gcp_metadata_filter[]
-**prefix_match**: string
-**query_parameter_matches**: gcp_http_query_parameter_match[]
-**regex_match**: string
-}
-class gcp_http_header_match [[#gcp_http_header_match]] {
+class gcp_http_header_match {
 **exact_match**: string
 **header_name**: string
 **invert_match**: boolean
@@ -11578,18 +10973,71 @@ class gcp_http_header_match [[#gcp_http_header_match]] {
 **regex_match**: string
 **suffix_match**: string
 }
-class gcp_http_query_parameter_match [[#gcp_http_query_parameter_match]] {
+class gcp_http_header_option {
+**header_name**: string
+**header_value**: string
+**replace**: boolean
+}
+class gcp_http_query_parameter_match {
 **exact_match**: string
 **name**: string
 **present_match**: boolean
 **regex_match**: string
 }
-class gcp_host_rule [[#gcp_host_rule]] {
-**description**: string
-**hosts**: string[]
-**path_matcher**: string
+class gcp_http_redirect_action {
+**host_redirect**: string
+**https_redirect**: boolean
+**path_redirect**: string
+**prefix_redirect**: string
+**redirect_response_code**: string
+**strip_query**: boolean
 }
-class gcp_path_matcher [[#gcp_path_matcher]] {
+class gcp_http_retry_policy {
+**num_retries**: int64
+**per_try_timeout**: gcp_duration
+**retry_conditions**: string[]
+}
+class gcp_http_route_action {
+**cors_policy**: gcp_cors_policy
+**fault_injection_policy**: gcp_http_fault_injection
+**max_stream_duration**: gcp_duration
+**request_mirror_policy**: string
+**retry_policy**: gcp_http_retry_policy
+**timeout**: gcp_duration
+**url_rewrite**: gcp_url_rewrite
+**weighted_backend_services**: gcp_weighted_backend_service[]
+}
+class gcp_http_route_rule {
+**description**: string
+**header_action**: gcp_http_header_action
+**match_rules**: gcp_http_route_rule_match[]
+**priority**: int64
+**route_action**: gcp_http_route_action
+**service**: string
+**url_redirect**: gcp_http_redirect_action
+}
+class gcp_http_route_rule_match {
+**full_path_match**: string
+**header_matches**: gcp_http_header_match[]
+**ignore_case**: boolean
+**metadata_filters**: gcp_metadata_filter[]
+**prefix_match**: string
+**query_parameter_matches**: gcp_http_query_parameter_match[]
+**regex_match**: string
+}
+class gcp_int64_range_match {
+**range_end**: string
+**range_start**: string
+}
+class gcp_metadata_filter {
+**filter_labels**: gcp_metadata_filter_label_match[]
+**filter_match_criteria**: string
+}
+class gcp_metadata_filter_label_match {
+**name**: string
+**value**: string
+}
+class gcp_path_matcher {
 **default_route_action**: gcp_http_route_action
 **default_service**: string
 **default_url_redirect**: gcp_http_redirect_action
@@ -11599,46 +11047,101 @@ class gcp_path_matcher [[#gcp_path_matcher]] {
 **path_rules**: gcp_path_rule[]
 **route_rules**: gcp_http_route_rule[]
 }
-resource <|--- gcp_resource
-gcp_resource --> gcp_deprecation_status
-gcp_url_map_test --> gcp_url_map_test_header
-gcp_weighted_backend_service --> gcp_http_header_action
-gcp_http_header_action --> gcp_http_header_option
-gcp_metadata_filter --> gcp_metadata_filter_label_match
+class gcp_path_rule {
+**paths**: string[]
+**route_action**: gcp_http_route_action
+**service**: string
+**url_redirect**: gcp_http_redirect_action
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class gcp_url_map {
+**default_route_action**: gcp_http_route_action
+**default_service**: string
+**default_url_redirect**: gcp_http_redirect_action
+**fingerprint**: string
+**header_action**: gcp_http_header_action
+**host_rules**: gcp_host_rule[]
+**map_tests**: gcp_url_map_test[]
+**path_matchers**: gcp_path_matcher[]
+}
+class gcp_url_map_test {
+**description**: string
+**expected_output_url**: string
+**expected_redirect_response_code**: int64
+**headers**: gcp_url_map_test_header[]
+**host**: string
+**path**: string
+**service**: string
+}
+class gcp_url_map_test_header {
+**name**: string
+**value**: string
+}
+class gcp_url_rewrite {
+**host_rewrite**: string
+**path_prefix_rewrite**: string
+}
+class gcp_weighted_backend_service {
+**backend_service**: string
+**header_action**: gcp_http_header_action
+**weight**: int64
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_http_fault_delay --> gcp_duration
+gcp_http_fault_injection --> gcp_http_fault_abort
+gcp_http_fault_injection --> gcp_http_fault_delay
+gcp_http_header_action --> gcp_http_header_option
+gcp_http_header_match --> gcp_int64_range_match
+gcp_http_retry_policy --> gcp_duration
 gcp_http_route_action --> gcp_cors_policy
-gcp_http_route_action --> gcp_http_fault_injection
 gcp_http_route_action --> gcp_duration
+gcp_http_route_action --> gcp_http_fault_injection
 gcp_http_route_action --> gcp_http_retry_policy
 gcp_http_route_action --> gcp_url_rewrite
 gcp_http_route_action --> gcp_weighted_backend_service
-gcp_http_fault_injection --> gcp_http_fault_abort
-gcp_http_fault_injection --> gcp_http_fault_delay
-gcp_http_retry_policy --> gcp_duration
-gcp_path_rule --> gcp_http_route_action
-gcp_path_rule --> gcp_http_redirect_action
-gcp_resource <|--- gcp_url_map
-gcp_url_map --> gcp_http_route_action
-gcp_url_map --> gcp_http_redirect_action
-gcp_url_map --> gcp_http_header_action
-gcp_url_map --> gcp_host_rule
-gcp_url_map --> gcp_path_matcher
-gcp_url_map --> gcp_url_map_test
-gcp_url_map --> gcp_deprecation_status
 gcp_http_route_rule --> gcp_http_header_action
-gcp_http_route_rule --> gcp_http_route_rule_match
-gcp_http_route_rule --> gcp_http_route_action
 gcp_http_route_rule --> gcp_http_redirect_action
+gcp_http_route_rule --> gcp_http_route_action
+gcp_http_route_rule --> gcp_http_route_rule_match
 gcp_http_route_rule_match --> gcp_http_header_match
-gcp_http_route_rule_match --> gcp_metadata_filter
 gcp_http_route_rule_match --> gcp_http_query_parameter_match
-gcp_http_header_match --> gcp_int64_range_match
-gcp_path_matcher --> gcp_http_route_action
-gcp_path_matcher --> gcp_http_redirect_action
+gcp_http_route_rule_match --> gcp_metadata_filter
+gcp_metadata_filter --> gcp_metadata_filter_label_match
 gcp_path_matcher --> gcp_http_header_action
-gcp_path_matcher --> gcp_path_rule
+gcp_path_matcher --> gcp_http_redirect_action
+gcp_path_matcher --> gcp_http_route_action
 gcp_path_matcher --> gcp_http_route_rule
-
+gcp_path_matcher --> gcp_path_rule
+gcp_path_rule --> gcp_http_redirect_action
+gcp_path_rule --> gcp_http_route_action
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+gcp_url_map --> gcp_deprecation_status
+gcp_url_map --> gcp_host_rule
+gcp_url_map --> gcp_http_header_action
+gcp_url_map --> gcp_http_redirect_action
+gcp_url_map --> gcp_http_route_action
+gcp_url_map --> gcp_path_matcher
+gcp_resource <|--- gcp_url_map
+gcp_url_map --> gcp_url_map_test
+gcp_url_map_test --> gcp_url_map_test_header
+gcp_weighted_backend_service --> gcp_http_header_action
 @enduml
 ```
 
@@ -11672,27 +11175,20 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_backend_service [[#gcp_backend_service]] {
-
+class gcp_backend_service {
 }
-class gcp_target_grpc_proxy [[#gcp_target_grpc_proxy]] {
-
+class gcp_target_grpc_proxy {
 }
-class gcp_target_http_proxy [[#gcp_target_http_proxy]] {
-
+class gcp_target_http_proxy {
 }
-class gcp_target_https_proxy [[#gcp_target_https_proxy]] {
-
+class gcp_target_https_proxy {
 }
-class gcp_url_map [[#gcp_url_map]] {
-
+class gcp_url_map {
 }
 gcp_target_grpc_proxy -[#1A83AF]-> gcp_url_map
 gcp_target_http_proxy -[#1A83AF]-> gcp_url_map
 gcp_target_https_proxy -[#1A83AF]-> gcp_url_map
 gcp_url_map -[#1A83AF]-> gcp_backend_service
-
 @enduml
 ```
 
@@ -11727,48 +11223,46 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_vpn_gateway_vpn_gateway_interface [[#gcp_vpn_gateway_vpn_gateway_interface]] {
-**id**: int64
-**interconnect_attachment**: string
-**ip_address**: string
-}
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
 }
-class gcp_vpn_gateway [[#gcp_vpn_gateway]] {
+class gcp_vpn_gateway {
 **network**: string
 **stack_type**: string
 **vpn_interfaces**: gcp_vpn_gateway_vpn_gateway_interface[]
 }
-resource <|--- gcp_resource
+class gcp_vpn_gateway_vpn_gateway_interface {
+**id**: int64
+**interconnect_attachment**: string
+**ip_address**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+gcp_vpn_gateway --> gcp_deprecation_status
 gcp_resource <|--- gcp_vpn_gateway
 gcp_vpn_gateway --> gcp_vpn_gateway_vpn_gateway_interface
-gcp_vpn_gateway --> gcp_deprecation_status
-
 @enduml
 ```
 
@@ -11802,23 +11296,17 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_network [[#gcp_network]] {
-
+class gcp_interconnect_attachment {
 }
-class gcp_vpn_gateway [[#gcp_vpn_gateway]] {
-
+class gcp_network {
 }
-class gcp_interconnect_attachment [[#gcp_interconnect_attachment]] {
-
+class gcp_vpn_gateway {
 }
-class gcp_vpn_tunnel [[#gcp_vpn_tunnel]] {
-
+class gcp_vpn_tunnel {
 }
 gcp_network -[#1A83AF]-> gcp_vpn_gateway
 gcp_vpn_gateway -[#1A83AF]-> gcp_interconnect_attachment
 gcp_vpn_tunnel -[#1A83AF]-> gcp_vpn_gateway
-
 @enduml
 ```
 
@@ -11853,33 +11341,20 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
 }
-class gcp_vpn_tunnel [[#gcp_vpn_tunnel]] {
+class gcp_vpn_tunnel {
 **detailed_status**: string
 **ike_version**: int64
 **local_traffic_selector**: string[]
@@ -11896,11 +11371,22 @@ class gcp_vpn_tunnel [[#gcp_vpn_tunnel]] {
 **vpn_gateway**: string
 **vpn_gateway_interface**: int64
 }
-resource <|--- gcp_resource
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 gcp_resource --> gcp_deprecation_status
-gcp_resource <|--- gcp_vpn_tunnel
+resource <|--- gcp_resource
 gcp_vpn_tunnel --> gcp_deprecation_status
-
+gcp_resource <|--- gcp_vpn_tunnel
 @enduml
 ```
 
@@ -11934,23 +11420,17 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_target_vpn_gateway [[#gcp_target_vpn_gateway]] {
-
+class gcp_router {
 }
-class gcp_router [[#gcp_router]] {
-
+class gcp_target_vpn_gateway {
 }
-class gcp_vpn_gateway [[#gcp_vpn_gateway]] {
-
+class gcp_vpn_gateway {
 }
-class gcp_vpn_tunnel [[#gcp_vpn_tunnel]] {
-
+class gcp_vpn_tunnel {
 }
 gcp_vpn_tunnel -[#1A83AF]-> gcp_router
 gcp_vpn_tunnel -[#1A83AF]-> gcp_target_vpn_gateway
 gcp_vpn_tunnel -[#1A83AF]-> gcp_vpn_gateway
-
 @enduml
 ```
 
@@ -11985,48 +11465,45 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_resource [[#gcp_resource]] {
-**description**: string
-**deprecation_status**: gcp_deprecation_status
-**link**: string
-**label_fingerprint**: string
-}
-class gcp_deprecation_status [[#gcp_deprecation_status]] {
+class gcp_deprecation_status {
 **deleted**: string
 **deprecated**: string
 **obsolete**: string
 **replacement**: string
 **state**: string
 }
-class zone [[#zone]] {
-
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class gcp_zone [[#gcp_zone]] {
+class gcp_zone {
 **status**: string
 **zone_available_cpu_platforms**: string[]
 **zone_deprecated**: gcp_deprecation_status
 **zone_supports_pzs**: boolean
 }
-resource <|--- gcp_resource
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class zone {
+}
 gcp_resource --> gcp_deprecation_status
-resource <|--- zone
+resource <|--- gcp_resource
+gcp_zone --> gcp_deprecation_status
 gcp_resource <|--- gcp_zone
 zone <|--- gcp_zone
-gcp_zone --> gcp_deprecation_status
-
+resource <|--- zone
 @enduml
 ```
 
@@ -12060,11 +11537,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class gcp_zone [[#gcp_zone]] {
-
+class gcp_zone {
 }
-
 @enduml
 ```
 

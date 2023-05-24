@@ -35,32 +35,27 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
+class account {
+}
+class onelogin_account {
+}
+class onelogin_resource {
+}
+class resource {
 **age**: duration
-**mtime**: datetime
-**last_update**: duration
 **atime**: datetime
-**last_access**: duration
+**ctime**: datetime
+**id**: string
 **kind**: string
-}
-class account [[#account]] {
-
-}
-class onelogin_account [[#onelogin_account]] {
-
-}
-class onelogin_resource [[#onelogin_resource]] {
-
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
 }
 resource <|--- account
-onelogin_resource <|--- onelogin_account
 account <|--- onelogin_account
-
+onelogin_resource <|--- onelogin_account
 @enduml
 ```
 
@@ -94,11 +89,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class onelogin_account [[#onelogin_account]] {
-
+class onelogin_account {
 }
-
 @enduml
 ```
 
@@ -133,32 +125,27 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
+class onelogin_region {
+}
+class onelogin_resource {
+}
+class region {
+}
+class resource {
 **age**: duration
-**mtime**: datetime
-**last_update**: duration
 **atime**: datetime
-**last_access**: duration
+**ctime**: datetime
+**id**: string
 **kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
 }
-class region [[#region]] {
-
-}
-class onelogin_resource [[#onelogin_resource]] {
-
-}
-class onelogin_region [[#onelogin_region]] {
-
-}
-resource <|--- region
 onelogin_resource <|--- onelogin_region
 region <|--- onelogin_region
-
+resource <|--- region
 @enduml
 ```
 
@@ -192,11 +179,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class onelogin_region [[#onelogin_region]] {
-
+class onelogin_region {
 }
-
 @enduml
 ```
 
@@ -231,66 +215,62 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class onelogin_resource {
 }
-class onelogin_resource [[#onelogin_resource]] {
-
-}
-class user [[#user]] {
-
-}
-class onelogin_user [[#onelogin_user]] {
-**user_id**: int64
-**external_id**: string
-**email**: string
-**username**: string
-**firstname**: string
-**lastname**: string
-**distinguished_name**: string
-**phone**: string
-**company**: string
-**department**: string
-**title**: string
-**status_code**: int64
-**member_of**: string
-**samaccountname**: string
-**userprincipalname**: string
-**group_id**: int64
-**role_ids**: int64[]
-**custom_attributes**: dictionary[string, string]
-**openid_name**: string
-**locale_code**: string
-**comment**: string
-**directory_id**: int64
-**manager_ad_id**: int64
-**trusted_idp_id**: int64
-**manager_user_id**: string
+class onelogin_user {
 **activated_at**: datetime
+**comment**: string
+**company**: string
 **created_at**: datetime
-**updated_at**: datetime
-**password_changed_at**: datetime
-**invitation_sent_at**: datetime
+**custom_attributes**: dictionary[string, string]
+**department**: string
+**directory_id**: int64
+**distinguished_name**: string
+**email**: string
+**external_id**: string
+**firstname**: string
+**group_id**: int64
 **invalid_login_attempts**: int64
+**invitation_sent_at**: datetime
 **last_login**: datetime
+**lastname**: string
+**locale_code**: string
 **locked_until**: datetime
-**state**: string
+**manager_ad_id**: int64
+**manager_user_id**: string
+**member_of**: string
+**openid_name**: string
 **password_age**: duration
+**password_changed_at**: datetime
+**phone**: string
+**role_ids**: int64[]
+**samaccountname**: string
+**state**: string
+**status_code**: int64
+**title**: string
+**trusted_idp_id**: int64
+**updated_at**: datetime
+**user_id**: int64
+**username**: string
+**userprincipalname**: string
 }
-resource <|--- user
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class user {
+}
 onelogin_resource <|--- onelogin_user
 user <|--- onelogin_user
-
+resource <|--- user
 @enduml
 ```
 
@@ -324,11 +304,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class onelogin_user [[#onelogin_user]] {
-
+class onelogin_user {
 }
-
 @enduml
 ```
 

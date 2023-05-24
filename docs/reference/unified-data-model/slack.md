@@ -35,23 +35,19 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
+class resource {
 **age**: duration
-**mtime**: datetime
-**last_update**: duration
 **atime**: datetime
-**last_access**: duration
+**ctime**: datetime
+**id**: string
 **kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
 }
-class slack_resource [[#slack_resource]] {
-
-}
-class slack_conversation [[#slack_conversation]] {
+class slack_conversation {
 **creator**: string
 **is_archived**: boolean
 **is_channel**: boolean
@@ -71,18 +67,19 @@ class slack_conversation [[#slack_conversation]] {
 **pending_connected_team_ids**: string[]
 **pending_shared**: string[]
 **previous_names**: string[]
-**shared_team_ids**: string[]
-**unlinked**: int64
-**topic**: string
-**topic_creator**: string
-**topic_last_set**: int64
 **purpose**: string
 **purpose_creator**: string
 **purpose_last_set**: int64
+**shared_team_ids**: string[]
+**topic**: string
+**topic_creator**: string
+**topic_last_set**: int64
+**unlinked**: int64
 }
-slack_resource <|--- slack_conversation
+class slack_resource {
+}
 resource <|--- slack_conversation
-
+slack_resource <|--- slack_conversation
 @enduml
 ```
 
@@ -116,20 +113,15 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class slack_region [[#slack_region]] {
-
+class slack_conversation {
 }
-class slack_user [[#slack_user]] {
-
+class slack_region {
 }
-class slack_conversation [[#slack_conversation]] {
-
+class slack_user {
 }
-slack_region -[#1A83AF]-> slack_user
-slack_region -[#1A83AF]-> slack_conversation
 slack_conversation -[#1A83AF]-> slack_user
-
+slack_region -[#1A83AF]-> slack_conversation
+slack_region -[#1A83AF]-> slack_user
 @enduml
 ```
 
@@ -164,32 +156,27 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
+class region {
+}
+class resource {
 **age**: duration
-**mtime**: datetime
-**last_update**: duration
 **atime**: datetime
-**last_access**: duration
+**ctime**: datetime
+**id**: string
 **kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
 }
-class slack_region [[#slack_region]] {
-
+class slack_region {
 }
-class slack_resource [[#slack_resource]] {
-
+class slack_resource {
 }
-class region [[#region]] {
-
-}
-slack_resource <|--- slack_region
-region <|--- slack_region
 resource <|--- region
-
+region <|--- slack_region
+slack_resource <|--- slack_region
 @enduml
 ```
 
@@ -223,29 +210,22 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class slack_region [[#slack_region]] {
-
+class slack_conversation {
 }
-class slack_user [[#slack_user]] {
-
+class slack_region {
 }
-class slack_conversation [[#slack_conversation]] {
-
+class slack_team {
 }
-class slack_usergroup [[#slack_usergroup]] {
-
+class slack_user {
 }
-class slack_team [[#slack_team]] {
-
+class slack_usergroup {
 }
-slack_region -[#1A83AF]-> slack_user
-slack_region -[#1A83AF]-> slack_conversation
-slack_region -[#1A83AF]-> slack_usergroup
 slack_conversation -[#1A83AF]-> slack_user
-slack_usergroup -[#1A83AF]-> slack_user
+slack_region -[#1A83AF]-> slack_conversation
+slack_region -[#1A83AF]-> slack_user
+slack_region -[#1A83AF]-> slack_usergroup
 slack_team -[#1A83AF]-> slack_region
-
+slack_usergroup -[#1A83AF]-> slack_user
 @enduml
 ```
 
@@ -280,34 +260,30 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
+class account {
+}
+class resource {
 **age**: duration
-**mtime**: datetime
-**last_update**: duration
 **atime**: datetime
-**last_access**: duration
+**ctime**: datetime
+**id**: string
 **kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
 }
-class slack_resource [[#slack_resource]] {
-
+class slack_resource {
 }
-class account [[#account]] {
-
-}
-class slack_team [[#slack_team]] {
+class slack_team {
 **domain**: string
 **email_domain**: string
 **icon**: string
 }
 resource <|--- account
-slack_resource <|--- slack_team
 account <|--- slack_team
-
+slack_resource <|--- slack_team
 @enduml
 ```
 
@@ -341,15 +317,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class slack_region [[#slack_region]] {
-
+class slack_region {
 }
-class slack_team [[#slack_team]] {
-
+class slack_team {
 }
 slack_team -[#1A83AF]-> slack_region
-
 @enduml
 ```
 
@@ -384,30 +356,34 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
+class resource {
 **age**: duration
-**mtime**: datetime
-**last_update**: duration
 **atime**: datetime
-**last_access**: duration
+**ctime**: datetime
+**id**: string
 **kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
 }
-class slack_resource [[#slack_resource]] {
-
+class slack_resource {
 }
-class slack_user [[#slack_user]] {
-**real_name**: string
-**team_id**: string
-**deleted**: boolean
+class slack_user {
 **color**: string
-**tz**: string
-**tz_label**: string
-**tz_offset**: int64
+**deleted**: boolean
+**display_name**: string
+**display_name_normalized**: string
+**email**: string
+**first_name**: string
+**guest_invited_by**: string
+**image_192**: string
+**image_24**: string
+**image_32**: string
+**image_48**: string
+**image_512**: string
+**image_72**: string
 **is_admin**: boolean
 **is_app_user**: boolean
 **is_bot**: boolean
@@ -415,34 +391,26 @@ class slack_user [[#slack_user]] {
 **is_primary_owner**: boolean
 **is_restricted**: boolean
 **is_ultra_restricted**: boolean
-**email**: string
+**last_name**: string
 **phone**: string
+**real_name**: string
+**real_name_normalized**: string
+**skype**: string
 **status_emoji**: string
 **status_expiration**: int64
 **status_text**: string
 **status_text_canonical**: string
+**team_id**: string
 **title**: string
-**guest_invited_by**: string
-**first_name**: string
-**last_name**: string
-**skype**: string
-**display_name**: string
-**display_name_normalized**: string
-**image_24**: string
-**image_32**: string
-**image_48**: string
-**image_72**: string
-**image_192**: string
-**image_512**: string
-**real_name_normalized**: string
+**tz**: string
+**tz_label**: string
+**tz_offset**: int64
 }
-class user [[#user]] {
-
+class user {
 }
 slack_resource <|--- slack_user
 user <|--- slack_user
 resource <|--- user
-
 @enduml
 ```
 
@@ -476,25 +444,19 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class slack_region [[#slack_region]] {
-
+class slack_conversation {
 }
-class slack_user [[#slack_user]] {
-
+class slack_region {
 }
-class slack_conversation [[#slack_conversation]] {
-
+class slack_user {
 }
-class slack_usergroup [[#slack_usergroup]] {
-
+class slack_usergroup {
 }
-slack_region -[#1A83AF]-> slack_user
-slack_region -[#1A83AF]-> slack_conversation
-slack_region -[#1A83AF]-> slack_usergroup
 slack_conversation -[#1A83AF]-> slack_user
+slack_region -[#1A83AF]-> slack_conversation
+slack_region -[#1A83AF]-> slack_user
+slack_region -[#1A83AF]-> slack_usergroup
 slack_usergroup -[#1A83AF]-> slack_user
-
 @enduml
 ```
 
@@ -529,23 +491,23 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
+class group {
+}
+class resource {
 **age**: duration
-**mtime**: datetime
-**last_update**: duration
 **atime**: datetime
-**last_access**: duration
+**ctime**: datetime
+**id**: string
 **kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
 }
-class slack_resource [[#slack_resource]] {
-
+class slack_resource {
 }
-class slack_usergroup [[#slack_usergroup]] {
+class slack_usergroup {
 **auto_provision**: boolean
 **auto_type**: string
 **created_by**: string
@@ -559,13 +521,9 @@ class slack_usergroup [[#slack_usergroup]] {
 **updated_by**: string
 **user_count**: int64
 }
-class group [[#group]] {
-
-}
-slack_resource <|--- slack_usergroup
-group <|--- slack_usergroup
 resource <|--- group
-
+group <|--- slack_usergroup
+slack_resource <|--- slack_usergroup
 @enduml
 ```
 
@@ -599,20 +557,15 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class slack_region [[#slack_region]] {
-
+class slack_region {
 }
-class slack_user [[#slack_user]] {
-
+class slack_user {
 }
-class slack_usergroup [[#slack_usergroup]] {
-
+class slack_usergroup {
 }
 slack_region -[#1A83AF]-> slack_user
 slack_region -[#1A83AF]-> slack_usergroup
 slack_usergroup -[#1A83AF]-> slack_user
-
 @enduml
 ```
 

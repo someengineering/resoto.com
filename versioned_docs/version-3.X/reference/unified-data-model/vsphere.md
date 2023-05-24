@@ -35,8 +35,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -48,15 +47,12 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class zone [[#zone]] {
-
+class zone {
 }
-class vsphere_cluster [[#vsphere_cluster]] {
-
+class vsphere_cluster {
 }
 resource <|--- zone
 zone <|--- vsphere_cluster
-
 @enduml
 ```
 
@@ -90,11 +86,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class vsphere_cluster [[#vsphere_cluster]] {
-
+class vsphere_cluster {
 }
-
 @enduml
 ```
 
@@ -129,8 +122,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -142,15 +134,12 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class region [[#region]] {
-
+class region {
 }
-class vsphere_data_center [[#vsphere_data_center]] {
-
+class vsphere_data_center {
 }
 resource <|--- region
 region <|--- vsphere_data_center
-
 @enduml
 ```
 
@@ -184,11 +173,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class vsphere_data_center [[#vsphere_data_center]] {
-
+class vsphere_data_center {
 }
-
 @enduml
 ```
 
@@ -223,8 +209,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -236,11 +221,9 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class vsphere_datastore [[#vsphere_datastore]] {
-
+class vsphere_datastore {
 }
 resource <|--- vsphere_datastore
-
 @enduml
 ```
 
@@ -274,11 +257,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class vsphere_datastore [[#vsphere_datastore]] {
-
+class vsphere_datastore {
 }
-
 @enduml
 ```
 
@@ -313,8 +293,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -326,11 +305,9 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class vsphere_datastore_cluster [[#vsphere_datastore_cluster]] {
-
+class vsphere_datastore_cluster {
 }
 resource <|--- vsphere_datastore_cluster
-
 @enduml
 ```
 
@@ -364,11 +341,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class vsphere_datastore_cluster [[#vsphere_datastore_cluster]] {
-
+class vsphere_datastore_cluster {
 }
-
 @enduml
 ```
 
@@ -403,8 +377,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -416,11 +389,9 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class vsphere_esxi_host [[#vsphere_esxi_host]] {
-
+class vsphere_esxi_host {
 }
 resource <|--- vsphere_esxi_host
-
 @enduml
 ```
 
@@ -454,11 +425,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class vsphere_esxi_host [[#vsphere_esxi_host]] {
-
+class vsphere_esxi_host {
 }
-
 @enduml
 ```
 
@@ -493,8 +461,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -506,15 +473,12 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class account [[#account]] {
-
+class account {
 }
-class vsphere_host [[#vsphere_host]] {
-
+class vsphere_host {
 }
 resource <|--- account
 account <|--- vsphere_host
-
 @enduml
 ```
 
@@ -548,11 +512,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class vsphere_host [[#vsphere_host]] {
-
+class vsphere_host {
 }
-
 @enduml
 ```
 
@@ -587,8 +548,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -600,22 +560,19 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class vsphere_resource [[#vsphere_resource]] {
-
-}
-class instance [[#instance]] {
+class instance {
 **instance_cores**: double
 **instance_memory**: double
 **instance_type**: string
 **instance_status**: instance_status
 }
-class vsphere_instance [[#vsphere_instance]] {
-
+class vsphere_resource {
+}
+class vsphere_instance {
 }
 resource <|--- instance
 instance <|--- vsphere_instance
 vsphere_resource <|--- vsphere_instance
-
 @enduml
 ```
 
@@ -649,11 +606,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class vsphere_instance [[#vsphere_instance]] {
-
+class vsphere_instance {
 }
-
 @enduml
 ```
 
@@ -688,8 +642,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -701,11 +654,9 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class vsphere_resource_pool [[#vsphere_resource_pool]] {
-
+class vsphere_resource_pool {
 }
 resource <|--- vsphere_resource_pool
-
 @enduml
 ```
 
@@ -739,11 +690,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class vsphere_resource_pool [[#vsphere_resource_pool]] {
-
+class vsphere_resource_pool {
 }
-
 @enduml
 ```
 
@@ -778,8 +726,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
+class resource {
 **id**: string
 **tags**: dictionary[string, string]
 **name**: string
@@ -791,15 +738,12 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class vsphere_template [[#vsphere_template]] {
-
+class vsphere_template {
 }
-class vsphere_resource [[#vsphere_resource]] {
-
+class vsphere_resource {
 }
 resource <|--- vsphere_template
 vsphere_resource <|--- vsphere_template
-
 @enduml
 ```
 
@@ -833,11 +777,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class vsphere_template [[#vsphere_template]] {
-
+class vsphere_template {
 }
-
 @enduml
 ```
 

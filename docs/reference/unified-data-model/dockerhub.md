@@ -36,32 +36,28 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class account {
 }
-class account [[#account]] {
-
-}
-class dockerhub_resource [[#dockerhub_resource]] {
-
-}
-class dockerhub_namespace [[#dockerhub_namespace]] {
+class dockerhub_namespace {
 **count**: int64
 }
+class dockerhub_resource {
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
 resource <|--- account
-dockerhub_resource <|--- dockerhub_namespace
 account <|--- dockerhub_namespace
-
+dockerhub_resource <|--- dockerhub_namespace
 @enduml
 ```
 
@@ -95,11 +91,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class dockerhub_namespace [[#dockerhub_namespace]] {
-
+class dockerhub_namespace {
 }
-
 @enduml
 ```
 
@@ -134,33 +127,30 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class dockerhub_repository [[#dockerhub_repository]] {
-**repository_type**: string
-**is_private**: boolean
-**star_count**: int64
-**pull_count**: int64
+class dockerhub_repository {
 **affiliation**: string
+**is_private**: boolean
 **media_types**: string[]
+**pull_count**: int64
+**repository_type**: string
+**star_count**: int64
 }
-class dockerhub_resource [[#dockerhub_resource]] {
-
+class dockerhub_resource {
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
 }
 dockerhub_resource <|--- dockerhub_repository
 resource <|--- dockerhub_repository
-
 @enduml
 ```
 
@@ -194,11 +184,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-
-class dockerhub_repository [[#dockerhub_repository]] {
-
+class dockerhub_repository {
 }
-
 @enduml
 ```
 

@@ -17,10 +17,6 @@ const isProd =
   process.env.NODE_ENV !== 'development' &&
   !!process.env.NETLIFY &&
   process.env.CONTEXT !== 'deploy-preview';
-const isProd =
-  process.env.NODE_ENV !== 'development' &&
-  !!process.env.NETLIFY &&
-  process.env.CONTEXT !== 'deploy-preview';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -564,5 +560,4 @@ const config = {
     }),
 };
 
-module.exports = config;
 module.exports = config;

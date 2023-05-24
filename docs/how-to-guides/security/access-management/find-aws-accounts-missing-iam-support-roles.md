@@ -46,7 +46,7 @@ This guide assumes that you have already [installed](../../../getting-started/in
    # highlight-end
    ```
 
-   The command output will list the details of all non-compliant [`aws_account` resources](../../../reference/data-models/aws/index.md#aws_account).
+   The command output will list the details of all non-compliant [`aws_account` resources](../../../reference/data-models/aws.md#aws_account).
 
 ## Remediation
 
@@ -62,7 +62,7 @@ Please refer to the [AWS IAM documentation](https://docs.aws.amazon.com/awssuppo
 
 - [Search](../../../reference/search/index.md)
 - [Command-Line Interface](../../../reference/cli/index.md)
-- [`aws_account` Resource Data Model](../../../reference/data-models/aws/index.md#aws_account)
+- [`aws_account` Resource Data Model](../../../reference/data-models/aws.md#aws_account)
 
 ## External Links
 

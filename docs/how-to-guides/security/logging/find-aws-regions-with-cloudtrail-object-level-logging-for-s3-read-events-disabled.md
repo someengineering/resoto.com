@@ -46,7 +46,7 @@ This guide assumes that you have already [installed](../../../getting-started/in
    # highlight-end
    ```
 
-   The command output will list the details of all non-compliant [`aws_region` resources](../../../reference/data-models/aws/index.md#aws_region).
+   The command output will list the details of all non-compliant [`aws_region` resources](../../../reference/data-models/aws.md#aws_region).
 
 ## Remediation
 
@@ -64,7 +64,7 @@ Please refer to the [AWS CloudTrail documentation](https://docs.aws.amazon.com/A
 
 - [Search](../../../reference/search/index.md)
 - [Command-Line Interface](../../../reference/cli/index.md)
-- [`aws_region` Resource Data Model](../../../reference/data-models/aws/index.md#aws_region)
+- [`aws_region` Resource Data Model](../../../reference/data-models/aws.md#aws_region)
 
 ## External Links
 

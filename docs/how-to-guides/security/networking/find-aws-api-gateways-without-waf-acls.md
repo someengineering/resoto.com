@@ -46,7 +46,7 @@ This guide assumes that you have already [installed](../../../getting-started/in
    # highlight-end
    ```
 
-   The command output will list the details of all non-compliant [`aws_api_gateway_stage` resources](../../../reference/data-models/aws/index.md#aws_api_gateway_stage).
+   The command output will list the details of all non-compliant [`aws_api_gateway_stage` resources](../../../reference/data-models/aws.md#aws_api_gateway_stage).
 
 ## Remediation
 
@@ -62,7 +62,7 @@ Please refer to the [AWS API Gateway documentation](https://docs.aws.amazon.com/
 
 - [Search](../../../reference/search/index.md)
 - [Command-Line Interface](../../../reference/cli/index.md)
-- [`aws_api_gateway_stage` Resource Data Model](../../../reference/data-models/aws/index.md#aws_api_gateway_stage)
+- [`aws_api_gateway_stage` Resource Data Model](../../../reference/data-models/aws.md#aws_api_gateway_stage)
 
 ## External Links
 

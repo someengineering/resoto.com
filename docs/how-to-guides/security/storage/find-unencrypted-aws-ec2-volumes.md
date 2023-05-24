@@ -46,7 +46,7 @@ This guide assumes that you have already [installed](../../../getting-started/in
    # highlight-end
    ```
 
-   The command output will list the details of all non-compliant [`aws_ec2_volume` resources](../../../reference/data-models/aws/index.md#aws_ec2_volume).
+   The command output will list the details of all non-compliant [`aws_ec2_volume` resources](../../../reference/data-models/aws.md#aws_ec2_volume).
 
 ## Remediation
 
@@ -64,7 +64,7 @@ Please refer to the [AWS EC2 documentation](https://docs.aws.amazon.com/AWSEC2/l
 
 - [Search](../../../reference/search/index.md)
 - [Command-Line Interface](../../../reference/cli/index.md)
-- [`aws_ec2_volume` Resource Data Model](../../../reference/data-models/aws/index.md#aws_ec2_volume)
+- [`aws_ec2_volume` Resource Data Model](../../../reference/data-models/aws.md#aws_ec2_volume)
 
 ## External Links
 

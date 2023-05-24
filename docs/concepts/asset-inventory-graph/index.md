@@ -49,7 +49,7 @@ The kind of resource is defined in the `kind` property of the resource.
 
 <ZoomPanPinch>
 
-![Diagram of aws_ec2_volume resource relationships](../../reference/data-models/aws/img/aws_ec2_volume.svg)
+![Diagram of aws_ec2_volume resource relationships](./img/aws_ec2_volume.svg)
 
 </ZoomPanPinch>
 
@@ -71,7 +71,7 @@ The list of possible edges are also defined explicitly in our [data model refere
 
 <ZoomPanPinch>
 
-![Diagram of aws_ec2_volume resource relationships](../../reference/data-models/aws/img/aws_ec2_volume_relationships.svg)
+![Diagram of aws_ec2_volume resource relationships](./img/aws_ec2_volume_relationships.svg)
 
 </ZoomPanPinch>
 

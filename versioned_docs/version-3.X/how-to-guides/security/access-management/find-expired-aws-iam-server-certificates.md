@@ -46,7 +46,7 @@ This guide assumes that you have already [installed](../../../getting-started/in
    # highlight-end
    ```
 
-   The command output will list the details of all non-compliant [`aws_iam_server_certificate` resources](../../../reference/data-models/aws/index.md#aws_iam_server_certificate).
+   The command output will list the details of all non-compliant [`aws_iam_server_certificate` resources](../../../reference/data-models/aws.md#aws_iam_server_certificate).
 
 ## Remediation
 
@@ -64,7 +64,7 @@ Please refer to the [AWS IAM documentation](https://docs.aws.amazon.com/IAM/late
 
 - [Search](../../../reference/search/index.md)
 - [Command-Line Interface](../../../reference/cli/index.md)
-- [`aws_iam_server_certificate` Resource Data Model](../../../reference/data-models/aws/index.md#aws_iam_server_certificate)
+- [`aws_iam_server_certificate` Resource Data Model](../../../reference/data-models/aws.md#aws_iam_server_certificate)
 
 ## External Links
 

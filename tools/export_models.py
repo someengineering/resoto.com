@@ -55,9 +55,9 @@ def get_kinds() -> Dict[str, List[Any]]:
 
 
 def write_md(provider: str, kinds: list):
-    if os.path.exists(f"./{provider}/index.md"):
+    if os.path.exists(f"./{provider}.md"):
         # in case the file exists, read the header section until the first h2 (##)
-        with (open(f"./{provider}/index.md", "r+")) as file:
+        with (open(f"./{provider}.md", "r+")) as file:
             lines = takewhile(lambda l: not l.startswith("## "), file.readlines())
     else:
         # provider file does not exist, create default header
@@ -67,7 +67,7 @@ def write_md(provider: str, kinds: list):
             "```mdx-code-block\nimport ZoomPanPinch from '@site/src/components/ZoomPanPinch';\n```\n\n",
         ]
 
-    with open(f"./{provider}/index.md", "w+") as file:
+    with open(f"./{provider}.md", "w+") as file:
         for line in lines:
             file.write(line)
 

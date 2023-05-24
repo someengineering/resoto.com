@@ -10,7 +10,7 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 
 :::info
 
-See [How to Collect Kubernetes Resource Data](../../../how-to-guides/data-sources/collect-kubernetes-resource-data.md) for step-by-step directions to configure Resoto to collect [Kuberenetes](https://kubernetes.io) resources.
+See [How to Collect Kubernetes Resource Data](../../how-to-guides/data-sources/collect-kubernetes-resource-data.md) for step-by-step directions to configure Resoto to collect [Kuberenetes](https://kubernetes.io) resources.
 
 :::
 
@@ -42,11 +42,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_resource [[#kubernetes_resource]] {
-**resource_version**: string
-**namespace**: string
-**labels**: dictionary[string, string]
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -62,17 +57,22 @@ class resource [[#resource]] {
 class account [[#account]] {
 
 }
+class kubernetes_resource [[#kubernetes_resource]] {
+**resource_version**: string
+**namespace**: string
+**labels**: dictionary[string, string]
+}
+class kubernetes_cluster [[#kubernetes_cluster]] {
+**cluster_info**: kubernetes_cluster_info
+}
 class kubernetes_cluster_info [[#kubernetes_cluster_info]] {
 **major**: string
 **minor**: string
 **platform**: string
 **server_url**: string
 }
-class kubernetes_cluster [[#kubernetes_cluster]] {
-**cluster_info**: kubernetes_cluster_info
-}
-resource <|--- kubernetes_resource
 resource <|--- account
+resource <|--- kubernetes_resource
 kubernetes_resource <|--- kubernetes_cluster
 account <|--- kubernetes_cluster
 kubernetes_cluster --> kubernetes_cluster_info
@@ -111,25 +111,34 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_persistent_volume [[#kubernetes_persistent_volume]] {
-
-}
-class kubernetes_cluster_role_binding [[#kubernetes_cluster_role_binding]] {
-
-}
-class kubernetes_csi_node [[#kubernetes_csi_node]] {
+class kubernetes_priority_level_configuration [[#kubernetes_priority_level_configuration]] {
 
 }
 class kubernetes_validating_webhook_configuration [[#kubernetes_validating_webhook_configuration]] {
 
 }
+class kubernetes_ingress_class [[#kubernetes_ingress_class]] {
+
+}
+class kubernetes_storage_class [[#kubernetes_storage_class]] {
+
+}
 class kubernetes_node [[#kubernetes_node]] {
 
 }
-class kubernetes_mutating_webhook_configuration [[#kubernetes_mutating_webhook_configuration]] {
+class kubernetes_cluster [[#kubernetes_cluster]] {
 
 }
-class kubernetes_volume_attachment [[#kubernetes_volume_attachment]] {
+class kubernetes_csi_driver [[#kubernetes_csi_driver]] {
+
+}
+class kubernetes_flow_schema [[#kubernetes_flow_schema]] {
+
+}
+class kubernetes_cluster_role_binding [[#kubernetes_cluster_role_binding]] {
+
+}
+class kubernetes_persistent_volume [[#kubernetes_persistent_volume]] {
 
 }
 class kubernetes_priority_class [[#kubernetes_priority_class]] {
@@ -138,43 +147,34 @@ class kubernetes_priority_class [[#kubernetes_priority_class]] {
 class kubernetes_cluster_role [[#kubernetes_cluster_role]] {
 
 }
-class kubernetes_flow_schema [[#kubernetes_flow_schema]] {
+class kubernetes_volume_attachment [[#kubernetes_volume_attachment]] {
 
 }
 class kubernetes_namespace [[#kubernetes_namespace]] {
 
 }
-class kubernetes_priority_level_configuration [[#kubernetes_priority_level_configuration]] {
+class kubernetes_csi_node [[#kubernetes_csi_node]] {
 
 }
-class kubernetes_csi_driver [[#kubernetes_csi_driver]] {
-
-}
-class kubernetes_cluster [[#kubernetes_cluster]] {
-
-}
-class kubernetes_storage_class [[#kubernetes_storage_class]] {
-
-}
-class kubernetes_ingress_class [[#kubernetes_ingress_class]] {
+class kubernetes_mutating_webhook_configuration [[#kubernetes_mutating_webhook_configuration]] {
 
 }
 kubernetes_node -[#1A83AF]-> kubernetes_csi_node
-kubernetes_cluster -[#1A83AF]-> kubernetes_priority_level_configuration
-kubernetes_cluster -[#1A83AF]-> kubernetes_storage_class
+kubernetes_cluster -[#1A83AF]-> kubernetes_csi_driver
+kubernetes_cluster -[#1A83AF]-> kubernetes_validating_webhook_configuration
 kubernetes_cluster -[#1A83AF]-> kubernetes_node
+kubernetes_cluster -[#1A83AF]-> kubernetes_flow_schema
 kubernetes_cluster -[#1A83AF]-> kubernetes_cluster_role_binding
-kubernetes_cluster -[#1A83AF]-> kubernetes_namespace
+kubernetes_cluster -[#1A83AF]-> kubernetes_persistent_volume
 kubernetes_cluster -[#1A83AF]-> kubernetes_priority_class
 kubernetes_cluster -[#1A83AF]-> kubernetes_cluster_role
-kubernetes_cluster -[#1A83AF]-> kubernetes_flow_schema
 kubernetes_cluster -[#1A83AF]-> kubernetes_volume_attachment
-kubernetes_cluster -[#1A83AF]-> kubernetes_validating_webhook_configuration
-kubernetes_cluster -[#1A83AF]-> kubernetes_mutating_webhook_configuration
-kubernetes_cluster -[#1A83AF]-> kubernetes_csi_driver
+kubernetes_cluster -[#1A83AF]-> kubernetes_namespace
 kubernetes_cluster -[#1A83AF]-> kubernetes_csi_node
 kubernetes_cluster -[#1A83AF]-> kubernetes_ingress_class
-kubernetes_cluster -[#1A83AF]-> kubernetes_persistent_volume
+kubernetes_cluster -[#1A83AF]-> kubernetes_storage_class
+kubernetes_cluster -[#1A83AF]-> kubernetes_mutating_webhook_configuration
+kubernetes_cluster -[#1A83AF]-> kubernetes_priority_level_configuration
 
 @enduml
 ```
@@ -211,11 +211,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_resource [[#kubernetes_resource]] {
-**resource_version**: string
-**namespace**: string
-**labels**: dictionary[string, string]
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -227,6 +222,11 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class kubernetes_resource [[#kubernetes_resource]] {
+**resource_version**: string
+**namespace**: string
+**labels**: dictionary[string, string]
 }
 class kubernetes_cluster_role [[#kubernetes_cluster_role]] {
 
@@ -268,10 +268,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_cluster_role [[#kubernetes_cluster_role]] {
+class kubernetes_cluster [[#kubernetes_cluster]] {
 
 }
-class kubernetes_cluster [[#kubernetes_cluster]] {
+class kubernetes_cluster_role [[#kubernetes_cluster_role]] {
 
 }
 kubernetes_cluster -[#1A83AF]-> kubernetes_cluster_role
@@ -311,11 +311,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_resource [[#kubernetes_resource]] {
-**resource_version**: string
-**namespace**: string
-**labels**: dictionary[string, string]
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -327,6 +322,11 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class kubernetes_resource [[#kubernetes_resource]] {
+**resource_version**: string
+**namespace**: string
+**labels**: dictionary[string, string]
 }
 class kubernetes_cluster_role_binding [[#kubernetes_cluster_role_binding]] {
 
@@ -368,10 +368,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_cluster_role_binding [[#kubernetes_cluster_role_binding]] {
+class kubernetes_cluster [[#kubernetes_cluster]] {
 
 }
-class kubernetes_cluster [[#kubernetes_cluster]] {
+class kubernetes_cluster_role_binding [[#kubernetes_cluster_role_binding]] {
 
 }
 kubernetes_cluster -[#1A83AF]-> kubernetes_cluster_role_binding
@@ -411,11 +411,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_resource [[#kubernetes_resource]] {
-**resource_version**: string
-**namespace**: string
-**labels**: dictionary[string, string]
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -427,6 +422,11 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class kubernetes_resource [[#kubernetes_resource]] {
+**resource_version**: string
+**namespace**: string
+**labels**: dictionary[string, string]
 }
 class kubernetes_config_map [[#kubernetes_config_map]] {
 
@@ -471,10 +471,10 @@ skinparam stereotypeIBackgroundColor #e98df7
 class kubernetes_pod [[#kubernetes_pod]] {
 
 }
-class kubernetes_namespace [[#kubernetes_namespace]] {
+class kubernetes_config_map [[#kubernetes_config_map]] {
 
 }
-class kubernetes_config_map [[#kubernetes_config_map]] {
+class kubernetes_namespace [[#kubernetes_namespace]] {
 
 }
 kubernetes_pod -[#1A83AF]-> kubernetes_config_map
@@ -516,14 +516,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_resource [[#kubernetes_resource]] {
-**resource_version**: string
-**namespace**: string
-**labels**: dictionary[string, string]
-}
-class kubernetes_controller_revision [[#kubernetes_controller_revision]] {
-
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -535,6 +527,14 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class kubernetes_resource [[#kubernetes_resource]] {
+**resource_version**: string
+**namespace**: string
+**labels**: dictionary[string, string]
+}
+class kubernetes_controller_revision [[#kubernetes_controller_revision]] {
+
 }
 resource <|--- kubernetes_resource
 kubernetes_resource <|--- kubernetes_controller_revision
@@ -573,6 +573,9 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class kubernetes_daemon_set [[#kubernetes_daemon_set]] {
+
+}
 class kubernetes_stateful_set [[#kubernetes_stateful_set]] {
 
 }
@@ -582,14 +585,11 @@ class kubernetes_controller_revision [[#kubernetes_controller_revision]] {
 class kubernetes_namespace [[#kubernetes_namespace]] {
 
 }
-class kubernetes_daemon_set [[#kubernetes_daemon_set]] {
-
-}
+kubernetes_daemon_set -[#1A83AF]-> kubernetes_controller_revision
 kubernetes_stateful_set -[#1A83AF]-> kubernetes_controller_revision
+kubernetes_namespace -[#1A83AF]-> kubernetes_stateful_set
 kubernetes_namespace -[#1A83AF]-> kubernetes_controller_revision
 kubernetes_namespace -[#1A83AF]-> kubernetes_daemon_set
-kubernetes_namespace -[#1A83AF]-> kubernetes_stateful_set
-kubernetes_daemon_set -[#1A83AF]-> kubernetes_controller_revision
 
 @enduml
 ```
@@ -626,10 +626,34 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
+}
 class kubernetes_resource [[#kubernetes_resource]] {
 **resource_version**: string
 **namespace**: string
 **labels**: dictionary[string, string]
+}
+class kubernetes_job_spec [[#kubernetes_job_spec]] {
+**active_deadline_seconds**: int64
+**backoff_limit**: int64
+**completion_mode**: string
+**completions**: int64
+**manual_selector**: boolean
+**parallelism**: int64
+**selector**: kubernetes_label_selector
+**suspend**: boolean
+**template**: kubernetes_pod_template_spec
+**ttl_seconds_after_finished**: int64
 }
 class kubernetes_label_selector [[#kubernetes_label_selector]] {
 **match_expressions**: kubernetes_label_selector_requirement[]
@@ -775,17 +799,20 @@ class kubernetes_volume [[#kubernetes_volume]] {
 **storageos**: any
 **vsphere_volume**: any
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
+class kubernetes_cron_job [[#kubernetes_cron_job]] {
+**cron_job_status**: kubernetes_cron_job_status
+**cron_job_spec**: kubernetes_cron_job_spec
+}
+class kubernetes_job_template_spec [[#kubernetes_job_template_spec]] {
+**spec**: kubernetes_job_spec
+}
+class kubernetes_cron_job_status_active [[#kubernetes_cron_job_status_active]] {
+**api_version**: string
+**field_path**: string
 **name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+**namespace**: string
+**resource_version**: string
+**uid**: string
 }
 class kubernetes_cron_job_spec [[#kubernetes_cron_job_spec]] {
 **concurrency_policy**: string
@@ -797,39 +824,14 @@ class kubernetes_cron_job_spec [[#kubernetes_cron_job_spec]] {
 **suspend**: boolean
 **time_zone**: string
 }
-class kubernetes_job_template_spec [[#kubernetes_job_template_spec]] {
-**spec**: kubernetes_job_spec
-}
-class kubernetes_job_spec [[#kubernetes_job_spec]] {
-**active_deadline_seconds**: int64
-**backoff_limit**: int64
-**completion_mode**: string
-**completions**: int64
-**manual_selector**: boolean
-**parallelism**: int64
-**selector**: kubernetes_label_selector
-**suspend**: boolean
-**template**: kubernetes_pod_template_spec
-**ttl_seconds_after_finished**: int64
-}
-class kubernetes_cron_job [[#kubernetes_cron_job]] {
-**cron_job_status**: kubernetes_cron_job_status
-**cron_job_spec**: kubernetes_cron_job_spec
-}
-class kubernetes_cron_job_status_active [[#kubernetes_cron_job_status_active]] {
-**api_version**: string
-**field_path**: string
-**name**: string
-**namespace**: string
-**resource_version**: string
-**uid**: string
-}
 class kubernetes_cron_job_status [[#kubernetes_cron_job_status]] {
 **active**: kubernetes_cron_job_status_active[]
 **last_schedule_time**: datetime
 **last_successful_time**: datetime
 }
 resource <|--- kubernetes_resource
+kubernetes_job_spec --> kubernetes_label_selector
+kubernetes_job_spec --> kubernetes_pod_template_spec
 kubernetes_label_selector --> kubernetes_label_selector_requirement
 kubernetes_pod_template_spec --> kubernetes_pod_spec
 kubernetes_pod_spec --> kubernetes_container
@@ -841,13 +843,11 @@ kubernetes_container --> kubernetes_resource_requirements
 kubernetes_container --> kubernetes_security_context
 kubernetes_container --> kubernetes_volume_device
 kubernetes_container --> kubernetes_volume_mount
-kubernetes_cron_job_spec --> kubernetes_job_template_spec
-kubernetes_job_template_spec --> kubernetes_job_spec
-kubernetes_job_spec --> kubernetes_label_selector
-kubernetes_job_spec --> kubernetes_pod_template_spec
 kubernetes_resource <|--- kubernetes_cron_job
 kubernetes_cron_job --> kubernetes_cron_job_status
 kubernetes_cron_job --> kubernetes_cron_job_spec
+kubernetes_job_template_spec --> kubernetes_job_spec
+kubernetes_cron_job_spec --> kubernetes_job_template_spec
 kubernetes_cron_job_status --> kubernetes_cron_job_status_active
 
 @enduml
@@ -884,18 +884,18 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_namespace [[#kubernetes_namespace]] {
-
-}
 class kubernetes_job [[#kubernetes_job]] {
 
 }
 class kubernetes_cron_job [[#kubernetes_cron_job]] {
 
 }
+class kubernetes_namespace [[#kubernetes_namespace]] {
+
+}
+kubernetes_cron_job -[#1A83AF]-> kubernetes_job
 kubernetes_namespace -[#1A83AF]-> kubernetes_job
 kubernetes_namespace -[#1A83AF]-> kubernetes_cron_job
-kubernetes_cron_job -[#1A83AF]-> kubernetes_job
 
 @enduml
 ```
@@ -932,11 +932,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_resource [[#kubernetes_resource]] {
-**resource_version**: string
-**namespace**: string
-**labels**: dictionary[string, string]
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -948,6 +943,11 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class kubernetes_resource [[#kubernetes_resource]] {
+**resource_version**: string
+**namespace**: string
+**labels**: dictionary[string, string]
 }
 class kubernetes_csi_driver [[#kubernetes_csi_driver]] {
 
@@ -989,10 +989,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_csi_driver [[#kubernetes_csi_driver]] {
+class kubernetes_cluster [[#kubernetes_cluster]] {
 
 }
-class kubernetes_cluster [[#kubernetes_cluster]] {
+class kubernetes_csi_driver [[#kubernetes_csi_driver]] {
 
 }
 kubernetes_cluster -[#1A83AF]-> kubernetes_csi_driver
@@ -1032,11 +1032,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_resource [[#kubernetes_resource]] {
-**resource_version**: string
-**namespace**: string
-**labels**: dictionary[string, string]
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -1048,6 +1043,11 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class kubernetes_resource [[#kubernetes_resource]] {
+**resource_version**: string
+**namespace**: string
+**labels**: dictionary[string, string]
 }
 class kubernetes_csi_node [[#kubernetes_csi_node]] {
 
@@ -1089,13 +1089,13 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_csi_node [[#kubernetes_csi_node]] {
-
-}
 class kubernetes_node [[#kubernetes_node]] {
 
 }
 class kubernetes_cluster [[#kubernetes_cluster]] {
+
+}
+class kubernetes_csi_node [[#kubernetes_csi_node]] {
 
 }
 kubernetes_node -[#1A83AF]-> kubernetes_csi_node
@@ -1137,11 +1137,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_resource [[#kubernetes_resource]] {
-**resource_version**: string
-**namespace**: string
-**labels**: dictionary[string, string]
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -1153,6 +1148,11 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class kubernetes_resource [[#kubernetes_resource]] {
+**resource_version**: string
+**namespace**: string
+**labels**: dictionary[string, string]
 }
 class kubernetes_csi_storage_capacity [[#kubernetes_csi_storage_capacity]] {
 
@@ -1233,16 +1233,41 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
+}
+class kubernetes_daemon_set_status [[#kubernetes_daemon_set_status]] {
+**collision_count**: int64
+**conditions**: kubernetes_daemon_set_status_conditions[]
+**current_number_scheduled**: int64
+**desired_number_scheduled**: int64
+**number_available**: int64
+**number_misscheduled**: int64
+**number_ready**: int64
+**number_unavailable**: int64
+**observed_generation**: int64
+**updated_number_scheduled**: int64
+}
+class kubernetes_daemon_set_status_conditions [[#kubernetes_daemon_set_status_conditions]] {
+**last_transition_time**: datetime
+**message**: string
+**reason**: string
+**status**: string
+**type**: string
+}
 class kubernetes_resource [[#kubernetes_resource]] {
 **resource_version**: string
 **namespace**: string
 **labels**: dictionary[string, string]
-}
-class kubernetes_daemon_set_spec [[#kubernetes_daemon_set_spec]] {
-**min_ready_seconds**: int64
-**revision_history_limit**: int64
-**selector**: kubernetes_label_selector
-**template**: kubernetes_pod_template_spec
 }
 class kubernetes_label_selector [[#kubernetes_label_selector]] {
 **match_expressions**: kubernetes_label_selector_requirement[]
@@ -1388,44 +1413,18 @@ class kubernetes_volume [[#kubernetes_volume]] {
 **storageos**: any
 **vsphere_volume**: any
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class kubernetes_daemon_set_status_conditions [[#kubernetes_daemon_set_status_conditions]] {
-**last_transition_time**: datetime
-**message**: string
-**reason**: string
-**status**: string
-**type**: string
-}
-class kubernetes_daemon_set_status [[#kubernetes_daemon_set_status]] {
-**collision_count**: int64
-**conditions**: kubernetes_daemon_set_status_conditions[]
-**current_number_scheduled**: int64
-**desired_number_scheduled**: int64
-**number_available**: int64
-**number_misscheduled**: int64
-**number_ready**: int64
-**number_unavailable**: int64
-**observed_generation**: int64
-**updated_number_scheduled**: int64
-}
 class kubernetes_daemon_set [[#kubernetes_daemon_set]] {
 **daemon_set_status**: kubernetes_daemon_set_status
 **daemon_set_spec**: kubernetes_daemon_set_spec
 }
+class kubernetes_daemon_set_spec [[#kubernetes_daemon_set_spec]] {
+**min_ready_seconds**: int64
+**revision_history_limit**: int64
+**selector**: kubernetes_label_selector
+**template**: kubernetes_pod_template_spec
+}
+kubernetes_daemon_set_status --> kubernetes_daemon_set_status_conditions
 resource <|--- kubernetes_resource
-kubernetes_daemon_set_spec --> kubernetes_label_selector
-kubernetes_daemon_set_spec --> kubernetes_pod_template_spec
 kubernetes_label_selector --> kubernetes_label_selector_requirement
 kubernetes_pod_template_spec --> kubernetes_pod_spec
 kubernetes_pod_spec --> kubernetes_container
@@ -1437,10 +1436,11 @@ kubernetes_container --> kubernetes_resource_requirements
 kubernetes_container --> kubernetes_security_context
 kubernetes_container --> kubernetes_volume_device
 kubernetes_container --> kubernetes_volume_mount
-kubernetes_daemon_set_status --> kubernetes_daemon_set_status_conditions
 kubernetes_resource <|--- kubernetes_daemon_set
 kubernetes_daemon_set --> kubernetes_daemon_set_status
 kubernetes_daemon_set --> kubernetes_daemon_set_spec
+kubernetes_daemon_set_spec --> kubernetes_label_selector
+kubernetes_daemon_set_spec --> kubernetes_pod_template_spec
 
 @enduml
 ```
@@ -1479,20 +1479,20 @@ skinparam stereotypeIBackgroundColor #e98df7
 class kubernetes_pod [[#kubernetes_pod]] {
 
 }
+class kubernetes_daemon_set [[#kubernetes_daemon_set]] {
+
+}
 class kubernetes_controller_revision [[#kubernetes_controller_revision]] {
 
 }
 class kubernetes_namespace [[#kubernetes_namespace]] {
 
 }
-class kubernetes_daemon_set [[#kubernetes_daemon_set]] {
-
-}
+kubernetes_daemon_set -[#1A83AF]-> kubernetes_pod
+kubernetes_daemon_set -[#1A83AF]-> kubernetes_controller_revision
 kubernetes_namespace -[#1A83AF]-> kubernetes_pod
 kubernetes_namespace -[#1A83AF]-> kubernetes_controller_revision
 kubernetes_namespace -[#1A83AF]-> kubernetes_daemon_set
-kubernetes_daemon_set -[#1A83AF]-> kubernetes_pod
-kubernetes_daemon_set -[#1A83AF]-> kubernetes_controller_revision
 
 @enduml
 ```
@@ -1529,6 +1529,18 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
+}
 class kubernetes_resource [[#kubernetes_resource]] {
 **resource_version**: string
 **namespace**: string
@@ -1678,36 +1690,6 @@ class kubernetes_volume [[#kubernetes_volume]] {
 **storageos**: any
 **vsphere_volume**: any
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class kubernetes_deployment_status_condition [[#kubernetes_deployment_status_condition]] {
-**last_transition_time**: datetime
-**last_update_time**: datetime
-**message**: string
-**reason**: string
-**status**: string
-**type**: string
-}
-class kubernetes_deployment_status [[#kubernetes_deployment_status]] {
-**available_replicas**: int64
-**collision_count**: int64
-**conditions**: kubernetes_deployment_status_condition[]
-**observed_generation**: int64
-**ready_replicas**: int64
-**replicas**: int64
-**unavailable_replicas**: int64
-**updated_replicas**: int64
-}
 class kubernetes_deployment [[#kubernetes_deployment]] {
 **deployment_status**: kubernetes_deployment_status
 **deployment_spec**: kubernetes_deployment_spec
@@ -1730,6 +1712,24 @@ class kubernetes_rolling_update_deployment [[#kubernetes_rolling_update_deployme
 **max_surge**: any
 **max_unavailable**: any
 }
+class kubernetes_deployment_status [[#kubernetes_deployment_status]] {
+**available_replicas**: int64
+**collision_count**: int64
+**conditions**: kubernetes_deployment_status_condition[]
+**observed_generation**: int64
+**ready_replicas**: int64
+**replicas**: int64
+**unavailable_replicas**: int64
+**updated_replicas**: int64
+}
+class kubernetes_deployment_status_condition [[#kubernetes_deployment_status_condition]] {
+**last_transition_time**: datetime
+**last_update_time**: datetime
+**message**: string
+**reason**: string
+**status**: string
+**type**: string
+}
 resource <|--- kubernetes_resource
 kubernetes_label_selector --> kubernetes_label_selector_requirement
 kubernetes_pod_template_spec --> kubernetes_pod_spec
@@ -1742,7 +1742,6 @@ kubernetes_container --> kubernetes_resource_requirements
 kubernetes_container --> kubernetes_security_context
 kubernetes_container --> kubernetes_volume_device
 kubernetes_container --> kubernetes_volume_mount
-kubernetes_deployment_status --> kubernetes_deployment_status_condition
 kubernetes_resource <|--- kubernetes_deployment
 kubernetes_deployment --> kubernetes_deployment_status
 kubernetes_deployment --> kubernetes_deployment_spec
@@ -1750,6 +1749,7 @@ kubernetes_deployment_spec --> kubernetes_label_selector
 kubernetes_deployment_spec --> kubernetes_deployment_strategy
 kubernetes_deployment_spec --> kubernetes_pod_template_spec
 kubernetes_deployment_strategy --> kubernetes_rolling_update_deployment
+kubernetes_deployment_status --> kubernetes_deployment_status_condition
 
 @enduml
 ```
@@ -1785,18 +1785,18 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_deployment [[#kubernetes_deployment]] {
+class kubernetes_replica_set [[#kubernetes_replica_set]] {
 
 }
-class kubernetes_replica_set [[#kubernetes_replica_set]] {
+class kubernetes_deployment [[#kubernetes_deployment]] {
 
 }
 class kubernetes_namespace [[#kubernetes_namespace]] {
 
 }
 kubernetes_deployment -[#1A83AF]-> kubernetes_replica_set
-kubernetes_namespace -[#1A83AF]-> kubernetes_replica_set
 kubernetes_namespace -[#1A83AF]-> kubernetes_deployment
+kubernetes_namespace -[#1A83AF]-> kubernetes_replica_set
 
 @enduml
 ```
@@ -1833,14 +1833,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_resource [[#kubernetes_resource]] {
-**resource_version**: string
-**namespace**: string
-**labels**: dictionary[string, string]
-}
-class kubernetes_endpoint [[#kubernetes_endpoint]] {
-**subsets**: kubernetes_endpoint_subset[]
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -1853,10 +1845,18 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
+class kubernetes_resource [[#kubernetes_resource]] {
+**resource_version**: string
+**namespace**: string
+**labels**: dictionary[string, string]
+}
 class kubernetes_endpoint_port [[#kubernetes_endpoint_port]] {
 **name**: string
 **port**: int64
 **protocol**: string
+}
+class kubernetes_endpoint [[#kubernetes_endpoint]] {
+**subsets**: kubernetes_endpoint_subset[]
 }
 class kubernetes_endpoint_subset [[#kubernetes_endpoint_subset]] {
 **addresses**: kubernetes_endpoint_address[]
@@ -1906,13 +1906,13 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_endpoint_slice [[#kubernetes_endpoint_slice]] {
+class kubernetes_pod [[#kubernetes_pod]] {
 
 }
 class kubernetes_endpoint [[#kubernetes_endpoint]] {
 
 }
-class kubernetes_pod [[#kubernetes_pod]] {
+class kubernetes_endpoint_slice [[#kubernetes_endpoint_slice]] {
 
 }
 class kubernetes_node [[#kubernetes_node]] {
@@ -1921,13 +1921,13 @@ class kubernetes_node [[#kubernetes_node]] {
 class kubernetes_namespace [[#kubernetes_namespace]] {
 
 }
+kubernetes_endpoint -[#1A83AF]-> kubernetes_pod
 kubernetes_endpoint -[#1A83AF]-> kubernetes_endpoint_slice
 kubernetes_endpoint -[#1A83AF]-> kubernetes_node
-kubernetes_endpoint -[#1A83AF]-> kubernetes_pod
 kubernetes_node -[#1A83AF]-> kubernetes_pod
-kubernetes_namespace -[#1A83AF]-> kubernetes_endpoint
 kubernetes_namespace -[#1A83AF]-> kubernetes_pod
 kubernetes_namespace -[#1A83AF]-> kubernetes_endpoint_slice
+kubernetes_namespace -[#1A83AF]-> kubernetes_endpoint
 
 @enduml
 ```
@@ -1964,14 +1964,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_endpoint_slice [[#kubernetes_endpoint_slice]] {
-
-}
-class kubernetes_resource [[#kubernetes_resource]] {
-**resource_version**: string
-**namespace**: string
-**labels**: dictionary[string, string]
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -1984,8 +1976,16 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-kubernetes_resource <|--- kubernetes_endpoint_slice
+class kubernetes_resource [[#kubernetes_resource]] {
+**resource_version**: string
+**namespace**: string
+**labels**: dictionary[string, string]
+}
+class kubernetes_endpoint_slice [[#kubernetes_endpoint_slice]] {
+
+}
 resource <|--- kubernetes_resource
+kubernetes_resource <|--- kubernetes_endpoint_slice
 
 @enduml
 ```
@@ -2021,23 +2021,23 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_endpoint_slice [[#kubernetes_endpoint_slice]] {
-
-}
 class kubernetes_endpoint [[#kubernetes_endpoint]] {
 
 }
-class kubernetes_service [[#kubernetes_service]] {
+class kubernetes_endpoint_slice [[#kubernetes_endpoint_slice]] {
 
 }
 class kubernetes_namespace [[#kubernetes_namespace]] {
 
 }
+class kubernetes_service [[#kubernetes_service]] {
+
+}
 kubernetes_endpoint -[#1A83AF]-> kubernetes_endpoint_slice
-kubernetes_service -[#1A83AF]-> kubernetes_endpoint_slice
-kubernetes_namespace -[#1A83AF]-> kubernetes_endpoint
-kubernetes_namespace -[#1A83AF]-> kubernetes_service
 kubernetes_namespace -[#1A83AF]-> kubernetes_endpoint_slice
+kubernetes_namespace -[#1A83AF]-> kubernetes_service
+kubernetes_namespace -[#1A83AF]-> kubernetes_endpoint
+kubernetes_service -[#1A83AF]-> kubernetes_endpoint_slice
 
 @enduml
 ```
@@ -2074,11 +2074,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_resource [[#kubernetes_resource]] {
-**resource_version**: string
-**namespace**: string
-**labels**: dictionary[string, string]
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -2091,11 +2086,10 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class kubernetes_flow_schema [[#kubernetes_flow_schema]] {
-**flow_schema_status**: kubernetes_flow_schema_status
-}
-class kubernetes_flow_schema_status [[#kubernetes_flow_schema_status]] {
-**conditions**: kubernetes_flow_schema_status_conditions[]
+class kubernetes_resource [[#kubernetes_resource]] {
+**resource_version**: string
+**namespace**: string
+**labels**: dictionary[string, string]
 }
 class kubernetes_flow_schema_status_conditions [[#kubernetes_flow_schema_status_conditions]] {
 **last_transition_time**: datetime
@@ -2103,6 +2097,12 @@ class kubernetes_flow_schema_status_conditions [[#kubernetes_flow_schema_status_
 **reason**: string
 **status**: string
 **type**: string
+}
+class kubernetes_flow_schema [[#kubernetes_flow_schema]] {
+**flow_schema_status**: kubernetes_flow_schema_status
+}
+class kubernetes_flow_schema_status [[#kubernetes_flow_schema_status]] {
+**conditions**: kubernetes_flow_schema_status_conditions[]
 }
 resource <|--- kubernetes_resource
 kubernetes_resource <|--- kubernetes_flow_schema
@@ -2143,10 +2143,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_flow_schema [[#kubernetes_flow_schema]] {
+class kubernetes_cluster [[#kubernetes_cluster]] {
 
 }
-class kubernetes_cluster [[#kubernetes_cluster]] {
+class kubernetes_flow_schema [[#kubernetes_flow_schema]] {
 
 }
 kubernetes_cluster -[#1A83AF]-> kubernetes_flow_schema
@@ -2186,11 +2186,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_resource [[#kubernetes_resource]] {
-**resource_version**: string
-**namespace**: string
-**labels**: dictionary[string, string]
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -2203,20 +2198,15 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class kubernetes_horizontal_pod_autoscaler_spec [[#kubernetes_horizontal_pod_autoscaler_spec]] {
-**max_replicas**: int64
-**min_replicas**: int64
-**scale_target_ref**: kubernetes_cross_object_reference
-**target_cpu_utilization_percentage**: int64
+class kubernetes_resource [[#kubernetes_resource]] {
+**resource_version**: string
+**namespace**: string
+**labels**: dictionary[string, string]
 }
 class kubernetes_cross_object_reference [[#kubernetes_cross_object_reference]] {
 **api_version**: string
 **resource_kind**: string
 **name**: string
-}
-class kubernetes_horizontal_pod_autoscaler [[#kubernetes_horizontal_pod_autoscaler]] {
-**horizontal_pod_autoscaler_status**: kubernetes_horizontal_pod_autoscaler_status
-**horizontal_pod_autoscaler_spec**: kubernetes_horizontal_pod_autoscaler_spec
 }
 class kubernetes_horizontal_pod_autoscaler_status [[#kubernetes_horizontal_pod_autoscaler_status]] {
 **current_cpu_utilization_percentage**: int64
@@ -2224,6 +2214,16 @@ class kubernetes_horizontal_pod_autoscaler_status [[#kubernetes_horizontal_pod_a
 **desired_replicas**: int64
 **last_scale_time**: datetime
 **observed_generation**: int64
+}
+class kubernetes_horizontal_pod_autoscaler_spec [[#kubernetes_horizontal_pod_autoscaler_spec]] {
+**max_replicas**: int64
+**min_replicas**: int64
+**scale_target_ref**: kubernetes_cross_object_reference
+**target_cpu_utilization_percentage**: int64
+}
+class kubernetes_horizontal_pod_autoscaler [[#kubernetes_horizontal_pod_autoscaler]] {
+**horizontal_pod_autoscaler_status**: kubernetes_horizontal_pod_autoscaler_status
+**horizontal_pod_autoscaler_spec**: kubernetes_horizontal_pod_autoscaler_spec
 }
 resource <|--- kubernetes_resource
 kubernetes_horizontal_pod_autoscaler_spec --> kubernetes_cross_object_reference
@@ -2304,21 +2304,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_resource [[#kubernetes_resource]] {
-**resource_version**: string
-**namespace**: string
-**labels**: dictionary[string, string]
-}
-class kubernetes_ingress_status_loadbalancer_ingress [[#kubernetes_ingress_status_loadbalancer_ingress]] {
-**hostname**: string
-**ip**: string
-**ports**: kubernetes_ingress_status_loadbalancer_ingress_ports[]
-}
-class kubernetes_ingress_status_loadbalancer_ingress_ports [[#kubernetes_ingress_status_loadbalancer_ingress_ports]] {
-**error**: string
-**port**: int64
-**protocol**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -2331,27 +2316,23 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class kubernetes_ingress_spec [[#kubernetes_ingress_spec]] {
-**ingress_class_name**: string
-**rules**: kubernetes_ingress_rule[]
-**tls**: kubernetes_ingress_tls[]
-}
-class kubernetes_ingress_rule [[#kubernetes_ingress_rule]] {
-**host**: string
-**http**: any
-}
-class kubernetes_ingress_tls [[#kubernetes_ingress_tls]] {
-**hosts**: string[]
-**secret_name**: string
-}
-class kubernetes_ingress [[#kubernetes_ingress]] {
-**ingress_status**: kubernetes_ingress_status
-**ingress_spec**: kubernetes_ingress_spec
+class kubernetes_resource [[#kubernetes_resource]] {
+**resource_version**: string
+**namespace**: string
+**labels**: dictionary[string, string]
 }
 class load_balancer [[#load_balancer]] {
 **lb_type**: string
 **public_ip_address**: string
 **backends**: string[]
+}
+class kubernetes_ingress_rule [[#kubernetes_ingress_rule]] {
+**host**: string
+**http**: any
+}
+class kubernetes_ingress [[#kubernetes_ingress]] {
+**ingress_status**: kubernetes_ingress_status
+**ingress_spec**: kubernetes_ingress_spec
 }
 class kubernetes_ingress_status [[#kubernetes_ingress_status]] {
 **load_balancer**: kubernetes_ingress_status_loadbalancer
@@ -2359,17 +2340,36 @@ class kubernetes_ingress_status [[#kubernetes_ingress_status]] {
 class kubernetes_ingress_status_loadbalancer [[#kubernetes_ingress_status_loadbalancer]] {
 **ingress**: kubernetes_ingress_status_loadbalancer_ingress[]
 }
+class kubernetes_ingress_status_loadbalancer_ingress [[#kubernetes_ingress_status_loadbalancer_ingress]] {
+**hostname**: string
+**ip**: string
+**ports**: kubernetes_ingress_status_loadbalancer_ingress_ports[]
+}
+class kubernetes_ingress_status_loadbalancer_ingress_ports [[#kubernetes_ingress_status_loadbalancer_ingress_ports]] {
+**error**: string
+**port**: int64
+**protocol**: string
+}
+class kubernetes_ingress_spec [[#kubernetes_ingress_spec]] {
+**ingress_class_name**: string
+**rules**: kubernetes_ingress_rule[]
+**tls**: kubernetes_ingress_tls[]
+}
+class kubernetes_ingress_tls [[#kubernetes_ingress_tls]] {
+**hosts**: string[]
+**secret_name**: string
+}
 resource <|--- kubernetes_resource
-kubernetes_ingress_status_loadbalancer_ingress --> kubernetes_ingress_status_loadbalancer_ingress_ports
-kubernetes_ingress_spec --> kubernetes_ingress_rule
-kubernetes_ingress_spec --> kubernetes_ingress_tls
+resource <|--- load_balancer
 kubernetes_resource <|--- kubernetes_ingress
 load_balancer <|--- kubernetes_ingress
 kubernetes_ingress --> kubernetes_ingress_status
 kubernetes_ingress --> kubernetes_ingress_spec
-resource <|--- load_balancer
 kubernetes_ingress_status --> kubernetes_ingress_status_loadbalancer
 kubernetes_ingress_status_loadbalancer --> kubernetes_ingress_status_loadbalancer_ingress
+kubernetes_ingress_status_loadbalancer_ingress --> kubernetes_ingress_status_loadbalancer_ingress_ports
+kubernetes_ingress_spec --> kubernetes_ingress_rule
+kubernetes_ingress_spec --> kubernetes_ingress_tls
 
 @enduml
 ```
@@ -2444,11 +2444,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_resource [[#kubernetes_resource]] {
-**resource_version**: string
-**namespace**: string
-**labels**: dictionary[string, string]
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -2460,6 +2455,11 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class kubernetes_resource [[#kubernetes_resource]] {
+**resource_version**: string
+**namespace**: string
+**labels**: dictionary[string, string]
 }
 class kubernetes_ingress_class [[#kubernetes_ingress_class]] {
 
@@ -2501,10 +2501,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_cluster [[#kubernetes_cluster]] {
+class kubernetes_ingress_class [[#kubernetes_ingress_class]] {
 
 }
-class kubernetes_ingress_class [[#kubernetes_ingress_class]] {
+class kubernetes_cluster [[#kubernetes_cluster]] {
 
 }
 kubernetes_cluster -[#1A83AF]-> kubernetes_ingress_class
@@ -2544,10 +2544,56 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
+}
+class kubernetes_job [[#kubernetes_job]] {
+**job_status**: kubernetes_job_status
+**job_spec**: kubernetes_job_spec
+}
 class kubernetes_resource [[#kubernetes_resource]] {
 **resource_version**: string
 **namespace**: string
 **labels**: dictionary[string, string]
+}
+class kubernetes_job_status [[#kubernetes_job_status]] {
+**active**: int64
+**completed_indexes**: string
+**completion_time**: datetime
+**conditions**: kubernetes_job_status_conditions[]
+**failed**: int64
+**ready**: int64
+**start_time**: datetime
+**succeeded**: int64
+}
+class kubernetes_job_status_conditions [[#kubernetes_job_status_conditions]] {
+**last_probe_time**: datetime
+**last_transition_time**: datetime
+**message**: string
+**reason**: string
+**status**: string
+**type**: string
+}
+class kubernetes_job_spec [[#kubernetes_job_spec]] {
+**active_deadline_seconds**: int64
+**backoff_limit**: int64
+**completion_mode**: string
+**completions**: int64
+**manual_selector**: boolean
+**parallelism**: int64
+**selector**: kubernetes_label_selector
+**suspend**: boolean
+**template**: kubernetes_pod_template_spec
+**ttl_seconds_after_finished**: int64
 }
 class kubernetes_label_selector [[#kubernetes_label_selector]] {
 **match_expressions**: kubernetes_label_selector_requirement[]
@@ -2693,53 +2739,13 @@ class kubernetes_volume [[#kubernetes_volume]] {
 **storageos**: any
 **vsphere_volume**: any
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class kubernetes_job_spec [[#kubernetes_job_spec]] {
-**active_deadline_seconds**: int64
-**backoff_limit**: int64
-**completion_mode**: string
-**completions**: int64
-**manual_selector**: boolean
-**parallelism**: int64
-**selector**: kubernetes_label_selector
-**suspend**: boolean
-**template**: kubernetes_pod_template_spec
-**ttl_seconds_after_finished**: int64
-}
-class kubernetes_job_status [[#kubernetes_job_status]] {
-**active**: int64
-**completed_indexes**: string
-**completion_time**: datetime
-**conditions**: kubernetes_job_status_conditions[]
-**failed**: int64
-**ready**: int64
-**start_time**: datetime
-**succeeded**: int64
-}
-class kubernetes_job_status_conditions [[#kubernetes_job_status_conditions]] {
-**last_probe_time**: datetime
-**last_transition_time**: datetime
-**message**: string
-**reason**: string
-**status**: string
-**type**: string
-}
-class kubernetes_job [[#kubernetes_job]] {
-**job_status**: kubernetes_job_status
-**job_spec**: kubernetes_job_spec
-}
+kubernetes_resource <|--- kubernetes_job
+kubernetes_job --> kubernetes_job_status
+kubernetes_job --> kubernetes_job_spec
 resource <|--- kubernetes_resource
+kubernetes_job_status --> kubernetes_job_status_conditions
+kubernetes_job_spec --> kubernetes_label_selector
+kubernetes_job_spec --> kubernetes_pod_template_spec
 kubernetes_label_selector --> kubernetes_label_selector_requirement
 kubernetes_pod_template_spec --> kubernetes_pod_spec
 kubernetes_pod_spec --> kubernetes_container
@@ -2751,12 +2757,6 @@ kubernetes_container --> kubernetes_resource_requirements
 kubernetes_container --> kubernetes_security_context
 kubernetes_container --> kubernetes_volume_device
 kubernetes_container --> kubernetes_volume_mount
-kubernetes_job_spec --> kubernetes_label_selector
-kubernetes_job_spec --> kubernetes_pod_template_spec
-kubernetes_job_status --> kubernetes_job_status_conditions
-kubernetes_resource <|--- kubernetes_job
-kubernetes_job --> kubernetes_job_status
-kubernetes_job --> kubernetes_job_spec
 
 @enduml
 ```
@@ -2792,23 +2792,23 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_pod [[#kubernetes_pod]] {
-
-}
-class kubernetes_namespace [[#kubernetes_namespace]] {
-
-}
 class kubernetes_job [[#kubernetes_job]] {
+
+}
+class kubernetes_pod [[#kubernetes_pod]] {
 
 }
 class kubernetes_cron_job [[#kubernetes_cron_job]] {
 
 }
-kubernetes_namespace -[#1A83AF]-> kubernetes_pod
-kubernetes_namespace -[#1A83AF]-> kubernetes_job
-kubernetes_namespace -[#1A83AF]-> kubernetes_cron_job
+class kubernetes_namespace [[#kubernetes_namespace]] {
+
+}
 kubernetes_job -[#1A83AF]-> kubernetes_pod
 kubernetes_cron_job -[#1A83AF]-> kubernetes_job
+kubernetes_namespace -[#1A83AF]-> kubernetes_job
+kubernetes_namespace -[#1A83AF]-> kubernetes_pod
+kubernetes_namespace -[#1A83AF]-> kubernetes_cron_job
 
 @enduml
 ```
@@ -2845,11 +2845,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_resource [[#kubernetes_resource]] {
-**resource_version**: string
-**namespace**: string
-**labels**: dictionary[string, string]
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -2861,6 +2856,11 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class kubernetes_resource [[#kubernetes_resource]] {
+**resource_version**: string
+**namespace**: string
+**labels**: dictionary[string, string]
 }
 class kubernetes_limit_range [[#kubernetes_limit_range]] {
 
@@ -2941,11 +2941,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_resource [[#kubernetes_resource]] {
-**resource_version**: string
-**namespace**: string
-**labels**: dictionary[string, string]
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -2957,6 +2952,11 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class kubernetes_resource [[#kubernetes_resource]] {
+**resource_version**: string
+**namespace**: string
+**labels**: dictionary[string, string]
 }
 class kubernetes_mutating_webhook_configuration [[#kubernetes_mutating_webhook_configuration]] {
 
@@ -2998,10 +2998,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_mutating_webhook_configuration [[#kubernetes_mutating_webhook_configuration]] {
+class kubernetes_cluster [[#kubernetes_cluster]] {
 
 }
-class kubernetes_cluster [[#kubernetes_cluster]] {
+class kubernetes_mutating_webhook_configuration [[#kubernetes_mutating_webhook_configuration]] {
 
 }
 kubernetes_cluster -[#1A83AF]-> kubernetes_mutating_webhook_configuration
@@ -3041,11 +3041,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_resource [[#kubernetes_resource]] {
-**resource_version**: string
-**namespace**: string
-**labels**: dictionary[string, string]
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -3058,15 +3053,13 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
+class kubernetes_resource [[#kubernetes_resource]] {
+**resource_version**: string
+**namespace**: string
+**labels**: dictionary[string, string]
+}
 class region [[#region]] {
 
-}
-class kubernetes_namespace_status_conditions [[#kubernetes_namespace_status_conditions]] {
-**last_transition_time**: datetime
-**message**: string
-**reason**: string
-**status**: string
-**type**: string
 }
 class kubernetes_namespace [[#kubernetes_namespace]] {
 **namespace_status**: kubernetes_namespace_status
@@ -3074,6 +3067,13 @@ class kubernetes_namespace [[#kubernetes_namespace]] {
 class kubernetes_namespace_status [[#kubernetes_namespace_status]] {
 **conditions**: kubernetes_namespace_status_conditions[]
 **phase**: string
+}
+class kubernetes_namespace_status_conditions [[#kubernetes_namespace_status_conditions]] {
+**last_transition_time**: datetime
+**message**: string
+**reason**: string
+**status**: string
+**type**: string
 }
 resource <|--- kubernetes_resource
 resource <|--- region
@@ -3116,101 +3116,101 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_endpoint_slice [[#kubernetes_endpoint_slice]] {
-
-}
-class kubernetes_endpoint [[#kubernetes_endpoint]] {
-
-}
-class kubernetes_service [[#kubernetes_service]] {
-
-}
-class kubernetes_stateful_set [[#kubernetes_stateful_set]] {
+class kubernetes_job [[#kubernetes_job]] {
 
 }
 class kubernetes_pod [[#kubernetes_pod]] {
 
 }
-class kubernetes_controller_revision [[#kubernetes_controller_revision]] {
-
-}
-class kubernetes_role [[#kubernetes_role]] {
-
-}
-class kubernetes_deployment [[#kubernetes_deployment]] {
-
-}
-class kubernetes_replica_set [[#kubernetes_replica_set]] {
+class kubernetes_cron_job [[#kubernetes_cron_job]] {
 
 }
 class kubernetes_role_binding [[#kubernetes_role_binding]] {
 
 }
-class kubernetes_namespace [[#kubernetes_namespace]] {
+class kubernetes_replica_set [[#kubernetes_replica_set]] {
 
 }
-class kubernetes_persistent_volume_claim [[#kubernetes_persistent_volume_claim]] {
-
-}
-class kubernetes_config_map [[#kubernetes_config_map]] {
-
-}
-class kubernetes_service_account [[#kubernetes_service_account]] {
+class kubernetes_deployment [[#kubernetes_deployment]] {
 
 }
 class kubernetes_secret [[#kubernetes_secret]] {
 
 }
-class kubernetes_pod_disruption_budget [[#kubernetes_pod_disruption_budget]] {
+class kubernetes_config_map [[#kubernetes_config_map]] {
+
+}
+class kubernetes_persistent_volume_claim [[#kubernetes_persistent_volume_claim]] {
 
 }
 class kubernetes_daemon_set [[#kubernetes_daemon_set]] {
 
 }
-class kubernetes_job [[#kubernetes_job]] {
+class kubernetes_stateful_set [[#kubernetes_stateful_set]] {
 
 }
-class kubernetes_cron_job [[#kubernetes_cron_job]] {
+class kubernetes_controller_revision [[#kubernetes_controller_revision]] {
+
+}
+class kubernetes_pod_disruption_budget [[#kubernetes_pod_disruption_budget]] {
+
+}
+class kubernetes_endpoint [[#kubernetes_endpoint]] {
+
+}
+class kubernetes_endpoint_slice [[#kubernetes_endpoint_slice]] {
+
+}
+class kubernetes_service_account [[#kubernetes_service_account]] {
 
 }
 class kubernetes_cluster [[#kubernetes_cluster]] {
 
 }
-kubernetes_endpoint -[#1A83AF]-> kubernetes_endpoint_slice
-kubernetes_endpoint -[#1A83AF]-> kubernetes_pod
-kubernetes_service -[#1A83AF]-> kubernetes_endpoint_slice
-kubernetes_service -[#1A83AF]-> kubernetes_pod
-kubernetes_stateful_set -[#1A83AF]-> kubernetes_pod
-kubernetes_stateful_set -[#1A83AF]-> kubernetes_controller_revision
-kubernetes_pod -[#1A83AF]-> kubernetes_persistent_volume_claim
+class kubernetes_namespace [[#kubernetes_namespace]] {
+
+}
+class kubernetes_service [[#kubernetes_service]] {
+
+}
+class kubernetes_role [[#kubernetes_role]] {
+
+}
+kubernetes_job -[#1A83AF]-> kubernetes_pod
 kubernetes_pod -[#1A83AF]-> kubernetes_secret
 kubernetes_pod -[#1A83AF]-> kubernetes_config_map
-kubernetes_deployment -[#1A83AF]-> kubernetes_replica_set
+kubernetes_pod -[#1A83AF]-> kubernetes_persistent_volume_claim
+kubernetes_cron_job -[#1A83AF]-> kubernetes_job
 kubernetes_replica_set -[#1A83AF]-> kubernetes_pod
-kubernetes_namespace -[#1A83AF]-> kubernetes_endpoint
-kubernetes_namespace -[#1A83AF]-> kubernetes_persistent_volume_claim
-kubernetes_namespace -[#1A83AF]-> kubernetes_service
-kubernetes_namespace -[#1A83AF]-> kubernetes_role
-kubernetes_namespace -[#1A83AF]-> kubernetes_pod
-kubernetes_namespace -[#1A83AF]-> kubernetes_controller_revision
-kubernetes_namespace -[#1A83AF]-> kubernetes_replica_set
-kubernetes_namespace -[#1A83AF]-> kubernetes_config_map
-kubernetes_namespace -[#1A83AF]-> kubernetes_service_account
-kubernetes_namespace -[#1A83AF]-> kubernetes_deployment
-kubernetes_namespace -[#1A83AF]-> kubernetes_secret
-kubernetes_namespace -[#1A83AF]-> kubernetes_role_binding
-kubernetes_namespace -[#1A83AF]-> kubernetes_pod_disruption_budget
-kubernetes_namespace -[#1A83AF]-> kubernetes_daemon_set
-kubernetes_namespace -[#1A83AF]-> kubernetes_endpoint_slice
-kubernetes_namespace -[#1A83AF]-> kubernetes_job
-kubernetes_namespace -[#1A83AF]-> kubernetes_stateful_set
-kubernetes_namespace -[#1A83AF]-> kubernetes_cron_job
-kubernetes_service_account -[#1A83AF]-> kubernetes_secret
+kubernetes_deployment -[#1A83AF]-> kubernetes_replica_set
 kubernetes_daemon_set -[#1A83AF]-> kubernetes_pod
 kubernetes_daemon_set -[#1A83AF]-> kubernetes_controller_revision
-kubernetes_job -[#1A83AF]-> kubernetes_pod
-kubernetes_cron_job -[#1A83AF]-> kubernetes_job
+kubernetes_stateful_set -[#1A83AF]-> kubernetes_pod
+kubernetes_stateful_set -[#1A83AF]-> kubernetes_controller_revision
+kubernetes_endpoint -[#1A83AF]-> kubernetes_pod
+kubernetes_endpoint -[#1A83AF]-> kubernetes_endpoint_slice
+kubernetes_service_account -[#1A83AF]-> kubernetes_secret
 kubernetes_cluster -[#1A83AF]-> kubernetes_namespace
+kubernetes_namespace -[#1A83AF]-> kubernetes_persistent_volume_claim
+kubernetes_namespace -[#1A83AF]-> kubernetes_role_binding
+kubernetes_namespace -[#1A83AF]-> kubernetes_job
+kubernetes_namespace -[#1A83AF]-> kubernetes_pod
+kubernetes_namespace -[#1A83AF]-> kubernetes_endpoint_slice
+kubernetes_namespace -[#1A83AF]-> kubernetes_cron_job
+kubernetes_namespace -[#1A83AF]-> kubernetes_stateful_set
+kubernetes_namespace -[#1A83AF]-> kubernetes_service_account
+kubernetes_namespace -[#1A83AF]-> kubernetes_config_map
+kubernetes_namespace -[#1A83AF]-> kubernetes_controller_revision
+kubernetes_namespace -[#1A83AF]-> kubernetes_secret
+kubernetes_namespace -[#1A83AF]-> kubernetes_pod_disruption_budget
+kubernetes_namespace -[#1A83AF]-> kubernetes_deployment
+kubernetes_namespace -[#1A83AF]-> kubernetes_replica_set
+kubernetes_namespace -[#1A83AF]-> kubernetes_service
+kubernetes_namespace -[#1A83AF]-> kubernetes_daemon_set
+kubernetes_namespace -[#1A83AF]-> kubernetes_role
+kubernetes_namespace -[#1A83AF]-> kubernetes_endpoint
+kubernetes_service -[#1A83AF]-> kubernetes_pod
+kubernetes_service -[#1A83AF]-> kubernetes_endpoint_slice
 
 @enduml
 ```
@@ -3247,11 +3247,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_resource [[#kubernetes_resource]] {
-**resource_version**: string
-**namespace**: string
-**labels**: dictionary[string, string]
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -3264,6 +3259,11 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
+class kubernetes_resource [[#kubernetes_resource]] {
+**resource_version**: string
+**namespace**: string
+**labels**: dictionary[string, string]
+}
 class kubernetes_network_policy_status_conditions [[#kubernetes_network_policy_status_conditions]] {
 **last_transition_time**: datetime
 **message**: string
@@ -3272,16 +3272,16 @@ class kubernetes_network_policy_status_conditions [[#kubernetes_network_policy_s
 **status**: string
 **type**: string
 }
-class kubernetes_network_policy_status [[#kubernetes_network_policy_status]] {
-**conditions**: kubernetes_network_policy_status_conditions[]
-}
 class kubernetes_network_policy [[#kubernetes_network_policy]] {
 **network_policy_status**: kubernetes_network_policy_status
 }
+class kubernetes_network_policy_status [[#kubernetes_network_policy_status]] {
+**conditions**: kubernetes_network_policy_status_conditions[]
+}
 resource <|--- kubernetes_resource
-kubernetes_network_policy_status --> kubernetes_network_policy_status_conditions
 kubernetes_resource <|--- kubernetes_network_policy
 kubernetes_network_policy --> kubernetes_network_policy_status
+kubernetes_network_policy_status --> kubernetes_network_policy_status_conditions
 
 @enduml
 ```
@@ -3356,14 +3356,58 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
+}
+class kubernetes_taint [[#kubernetes_taint]] {
+**effect**: string
+**key**: string
+**time_added**: datetime
+**value**: string
+}
 class kubernetes_resource [[#kubernetes_resource]] {
 **resource_version**: string
 **namespace**: string
 **labels**: dictionary[string, string]
 }
-class kubernetes_attached_volume [[#kubernetes_attached_volume]] {
-**device_path**: string
-**name**: string
+class kubernetes_node_status_images [[#kubernetes_node_status_images]] {
+**names**: string[]
+**size_bytes**: int64
+}
+class kubernetes_node_status_conditions [[#kubernetes_node_status_conditions]] {
+**last_heartbeat_time**: datetime
+**last_transition_time**: datetime
+**message**: string
+**reason**: string
+**status**: string
+**type**: string
+}
+class instance [[#instance]] {
+**instance_cores**: double
+**instance_memory**: double
+**instance_type**: string
+**instance_status**: instance_status
+}
+class kubernetes_node_system_info [[#kubernetes_node_system_info]] {
+**architecture**: string
+**boot_id**: string
+**container_runtime_version**: string
+**kernel_version**: string
+**kube_proxy_version**: string
+**kubelet_version**: string
+**machine_id**: string
+**operating_system**: string
+**os_image**: string
+**system_uuid**: string
 }
 class kubernetes_node_status_config [[#kubernetes_node_status_config]] {
 **active**: kubernetes_node_status_config_active
@@ -3380,42 +3424,25 @@ class kubernetes_node_status_config_active_configmap [[#kubernetes_node_status_c
 **resource_version**: string
 **uid**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class kubernetes_daemon_endpoint [[#kubernetes_daemon_endpoint]] {
+**port**: int64
 }
-class kubernetes_node_status_conditions [[#kubernetes_node_status_conditions]] {
-**last_heartbeat_time**: datetime
-**last_transition_time**: datetime
-**message**: string
-**reason**: string
-**status**: string
-**type**: string
-}
-class instance [[#instance]] {
-**instance_cores**: double
-**instance_memory**: double
-**instance_type**: string
-**instance_status**: instance_status
+class kubernetes_node_spec [[#kubernetes_node_spec]] {
+**external_id**: string
+**pod_cidr**: string
+**pod_cidrs**: string[]
+**provider_id**: string
+**taints**: kubernetes_taint[]
+**unschedulable**: boolean
 }
 class kubernetes_node [[#kubernetes_node]] {
 **provider_id**: string
 **node_status**: kubernetes_node_status
 **node_spec**: kubernetes_node_spec
 }
-class kubernetes_node_daemon_endpoint [[#kubernetes_node_daemon_endpoint]] {
-**kubelet_endpoint**: kubernetes_daemon_endpoint
-}
-class kubernetes_daemon_endpoint [[#kubernetes_daemon_endpoint]] {
-**port**: int64
+class kubernetes_attached_volume [[#kubernetes_attached_volume]] {
+**device_path**: string
+**name**: string
 }
 class kubernetes_node_status [[#kubernetes_node_status]] {
 **addresses**: kubernetes_node_status_addresses[]
@@ -3433,45 +3460,18 @@ class kubernetes_node_status_addresses [[#kubernetes_node_status_addresses]] {
 **address**: string
 **type**: string
 }
-class kubernetes_node_status_images [[#kubernetes_node_status_images]] {
-**names**: string[]
-**size_bytes**: int64
-}
-class kubernetes_node_system_info [[#kubernetes_node_system_info]] {
-**architecture**: string
-**boot_id**: string
-**container_runtime_version**: string
-**kernel_version**: string
-**kube_proxy_version**: string
-**kubelet_version**: string
-**machine_id**: string
-**operating_system**: string
-**os_image**: string
-**system_uuid**: string
-}
-class kubernetes_taint [[#kubernetes_taint]] {
-**effect**: string
-**key**: string
-**time_added**: datetime
-**value**: string
-}
-class kubernetes_node_spec [[#kubernetes_node_spec]] {
-**external_id**: string
-**pod_cidr**: string
-**pod_cidrs**: string[]
-**provider_id**: string
-**taints**: kubernetes_taint[]
-**unschedulable**: boolean
+class kubernetes_node_daemon_endpoint [[#kubernetes_node_daemon_endpoint]] {
+**kubelet_endpoint**: kubernetes_daemon_endpoint
 }
 resource <|--- kubernetes_resource
+resource <|--- instance
 kubernetes_node_status_config --> kubernetes_node_status_config_active
 kubernetes_node_status_config_active --> kubernetes_node_status_config_active_configmap
-resource <|--- instance
+kubernetes_node_spec --> kubernetes_taint
 kubernetes_resource <|--- kubernetes_node
 instance <|--- kubernetes_node
 kubernetes_node --> kubernetes_node_status
 kubernetes_node --> kubernetes_node_spec
-kubernetes_node_daemon_endpoint --> kubernetes_daemon_endpoint
 kubernetes_node_status --> kubernetes_node_status_addresses
 kubernetes_node_status --> kubernetes_node_status_conditions
 kubernetes_node_status --> kubernetes_node_status_config
@@ -3479,7 +3479,7 @@ kubernetes_node_status --> kubernetes_node_daemon_endpoint
 kubernetes_node_status --> kubernetes_node_status_images
 kubernetes_node_status --> kubernetes_node_system_info
 kubernetes_node_status --> kubernetes_attached_volume
-kubernetes_node_spec --> kubernetes_taint
+kubernetes_node_daemon_endpoint --> kubernetes_daemon_endpoint
 
 @enduml
 ```
@@ -3515,13 +3515,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_endpoint [[#kubernetes_endpoint]] {
-
-}
 class kubernetes_pod [[#kubernetes_pod]] {
 
 }
-class kubernetes_csi_node [[#kubernetes_csi_node]] {
+class kubernetes_endpoint [[#kubernetes_endpoint]] {
 
 }
 class kubernetes_node [[#kubernetes_node]] {
@@ -3530,8 +3527,11 @@ class kubernetes_node [[#kubernetes_node]] {
 class kubernetes_cluster [[#kubernetes_cluster]] {
 
 }
-kubernetes_endpoint -[#1A83AF]-> kubernetes_node
+class kubernetes_csi_node [[#kubernetes_csi_node]] {
+
+}
 kubernetes_endpoint -[#1A83AF]-> kubernetes_pod
+kubernetes_endpoint -[#1A83AF]-> kubernetes_node
 kubernetes_node -[#1A83AF]-> kubernetes_pod
 kubernetes_node -[#1A83AF]-> kubernetes_csi_node
 kubernetes_cluster -[#1A83AF]-> kubernetes_node
@@ -3572,14 +3572,17 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_resource [[#kubernetes_resource]] {
-**resource_version**: string
-**namespace**: string
-**labels**: dictionary[string, string]
-}
-class kubernetes_persistent_volume [[#kubernetes_persistent_volume]] {
-**persistent_volume_status**: kubernetes_persistent_volume_status
-**persistent_volume_spec**: kubernetes_persistent_volume_spec
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
 }
 class volume [[#volume]] {
 **volume_size**: int64
@@ -3589,6 +3592,15 @@ class volume [[#volume]] {
 **volume_throughput**: int64
 **volume_encrypted**: boolean
 **snapshot_before_delete**: boolean
+}
+class kubernetes_resource [[#kubernetes_resource]] {
+**resource_version**: string
+**namespace**: string
+**labels**: dictionary[string, string]
+}
+class kubernetes_persistent_volume [[#kubernetes_persistent_volume]] {
+**persistent_volume_status**: kubernetes_persistent_volume_status
+**persistent_volume_spec**: kubernetes_persistent_volume_spec
 }
 class kubernetes_persistent_volume_status [[#kubernetes_persistent_volume_status]] {
 **message**: string
@@ -3631,24 +3643,12 @@ class kubernetes_persistent_volume_spec_aws_elastic_block_store [[#kubernetes_pe
 **volume_id**: string
 **fs_type**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
+resource <|--- volume
 resource <|--- kubernetes_resource
 kubernetes_resource <|--- kubernetes_persistent_volume
 volume <|--- kubernetes_persistent_volume
 kubernetes_persistent_volume --> kubernetes_persistent_volume_status
 kubernetes_persistent_volume --> kubernetes_persistent_volume_spec
-resource <|--- volume
 kubernetes_persistent_volume_spec --> kubernetes_persistent_volume_spec_aws_elastic_block_store
 
 @enduml
@@ -3685,13 +3685,13 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_persistent_volume [[#kubernetes_persistent_volume]] {
-
-}
 class kubernetes_persistent_volume_claim [[#kubernetes_persistent_volume_claim]] {
 
 }
 class kubernetes_cluster [[#kubernetes_cluster]] {
+
+}
+class kubernetes_persistent_volume [[#kubernetes_persistent_volume]] {
 
 }
 kubernetes_persistent_volume_claim -[#1A83AF]-> kubernetes_persistent_volume
@@ -3732,6 +3732,18 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
+}
 class kubernetes_resource [[#kubernetes_resource]] {
 **resource_version**: string
 **namespace**: string
@@ -3750,17 +3762,9 @@ class kubernetes_resource_requirements [[#kubernetes_resource_requirements]] {
 **limits**: any
 **requests**: any
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class kubernetes_persistent_volume_claim [[#kubernetes_persistent_volume_claim]] {
+**persistent_volume_claim_status**: kubernetes_persistent_volume_claim_status
+**persistent_volume_claim_spec**: kubernetes_persistent_volume_claim_spec
 }
 class kubernetes_persistent_volume_claim_spec [[#kubernetes_persistent_volume_claim_spec]] {
 **access_modes**: string[]
@@ -3785,18 +3789,14 @@ class kubernetes_persistent_volume_claim_status_conditions [[#kubernetes_persist
 **status**: string
 **type**: string
 }
-class kubernetes_persistent_volume_claim [[#kubernetes_persistent_volume_claim]] {
-**persistent_volume_claim_status**: kubernetes_persistent_volume_claim_status
-**persistent_volume_claim_spec**: kubernetes_persistent_volume_claim_spec
-}
 resource <|--- kubernetes_resource
 kubernetes_label_selector --> kubernetes_label_selector_requirement
-kubernetes_persistent_volume_claim_spec --> kubernetes_resource_requirements
-kubernetes_persistent_volume_claim_spec --> kubernetes_label_selector
-kubernetes_persistent_volume_claim_status --> kubernetes_persistent_volume_claim_status_conditions
 kubernetes_resource <|--- kubernetes_persistent_volume_claim
 kubernetes_persistent_volume_claim --> kubernetes_persistent_volume_claim_status
 kubernetes_persistent_volume_claim --> kubernetes_persistent_volume_claim_spec
+kubernetes_persistent_volume_claim_spec --> kubernetes_resource_requirements
+kubernetes_persistent_volume_claim_spec --> kubernetes_label_selector
+kubernetes_persistent_volume_claim_status --> kubernetes_persistent_volume_claim_status_conditions
 
 @enduml
 ```
@@ -3835,19 +3835,19 @@ skinparam stereotypeIBackgroundColor #e98df7
 class kubernetes_pod [[#kubernetes_pod]] {
 
 }
+class kubernetes_persistent_volume_claim [[#kubernetes_persistent_volume_claim]] {
+
+}
 class kubernetes_persistent_volume [[#kubernetes_persistent_volume]] {
 
 }
 class kubernetes_namespace [[#kubernetes_namespace]] {
 
 }
-class kubernetes_persistent_volume_claim [[#kubernetes_persistent_volume_claim]] {
-
-}
 kubernetes_pod -[#1A83AF]-> kubernetes_persistent_volume_claim
+kubernetes_persistent_volume_claim -[#1A83AF]-> kubernetes_persistent_volume
 kubernetes_namespace -[#1A83AF]-> kubernetes_persistent_volume_claim
 kubernetes_namespace -[#1A83AF]-> kubernetes_pod
-kubernetes_persistent_volume_claim -[#1A83AF]-> kubernetes_persistent_volume
 
 @enduml
 ```
@@ -3884,6 +3884,18 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
+}
 class kubernetes_resource [[#kubernetes_resource]] {
 **resource_version**: string
 **namespace**: string
@@ -4025,33 +4037,20 @@ class kubernetes_pod [[#kubernetes_pod]] {
 **pod_status**: kubernetes_pod_status
 **pod_spec**: kubernetes_pod_spec
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class kubernetes_container_state_terminated [[#kubernetes_container_state_terminated]] {
-**container_id**: string
-**exit_code**: int64
-**finished_at**: datetime
+class kubernetes_pod_status [[#kubernetes_pod_status]] {
+**conditions**: kubernetes_pod_status_conditions[]
+**container_statuses**: kubernetes_container_status[]
+**ephemeral_container_statuses**: kubernetes_container_state[]
+**host_ip**: string
+**init_container_statuses**: kubernetes_container_status[]
 **message**: string
+**nominated_node_name**: string
+**phase**: string
+**pod_ip**: string
+**pod_ips**: kubernetes_pod_ips[]
+**qos_class**: string
 **reason**: string
-**signal**: int64
-**started_at**: datetime
-}
-class kubernetes_pod_ips [[#kubernetes_pod_ips]] {
-**ip**: string
-}
-class kubernetes_container_state_waiting [[#kubernetes_container_state_waiting]] {
-**message**: string
-**reason**: string
+**start_time**: datetime
 }
 class kubernetes_pod_status_conditions [[#kubernetes_pod_status_conditions]] {
 **last_probe_time**: datetime
@@ -4080,20 +4079,21 @@ class kubernetes_container_state [[#kubernetes_container_state]] {
 class kubernetes_container_state_running [[#kubernetes_container_state_running]] {
 **started_at**: datetime
 }
-class kubernetes_pod_status [[#kubernetes_pod_status]] {
-**conditions**: kubernetes_pod_status_conditions[]
-**container_statuses**: kubernetes_container_status[]
-**ephemeral_container_statuses**: kubernetes_container_state[]
-**host_ip**: string
-**init_container_statuses**: kubernetes_container_status[]
+class kubernetes_container_state_terminated [[#kubernetes_container_state_terminated]] {
+**container_id**: string
+**exit_code**: int64
+**finished_at**: datetime
 **message**: string
-**nominated_node_name**: string
-**phase**: string
-**pod_ip**: string
-**pod_ips**: kubernetes_pod_ips[]
-**qos_class**: string
 **reason**: string
-**start_time**: datetime
+**signal**: int64
+**started_at**: datetime
+}
+class kubernetes_container_state_waiting [[#kubernetes_container_state_waiting]] {
+**message**: string
+**reason**: string
+}
+class kubernetes_pod_ips [[#kubernetes_pod_ips]] {
+**ip**: string
 }
 resource <|--- kubernetes_resource
 kubernetes_pod_spec --> kubernetes_container
@@ -4108,14 +4108,14 @@ kubernetes_container --> kubernetes_volume_mount
 kubernetes_resource <|--- kubernetes_pod
 kubernetes_pod --> kubernetes_pod_status
 kubernetes_pod --> kubernetes_pod_spec
-kubernetes_container_status --> kubernetes_container_state
-kubernetes_container_state --> kubernetes_container_state_running
-kubernetes_container_state --> kubernetes_container_state_terminated
-kubernetes_container_state --> kubernetes_container_state_waiting
 kubernetes_pod_status --> kubernetes_pod_status_conditions
 kubernetes_pod_status --> kubernetes_container_status
 kubernetes_pod_status --> kubernetes_container_state
 kubernetes_pod_status --> kubernetes_pod_ips
+kubernetes_container_status --> kubernetes_container_state
+kubernetes_container_state --> kubernetes_container_state_running
+kubernetes_container_state --> kubernetes_container_state_terminated
+kubernetes_container_state --> kubernetes_container_state_waiting
 
 @enduml
 ```
@@ -4151,63 +4151,63 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_endpoint [[#kubernetes_endpoint]] {
-
-}
-class kubernetes_service [[#kubernetes_service]] {
-
-}
-class kubernetes_stateful_set [[#kubernetes_stateful_set]] {
+class kubernetes_job [[#kubernetes_job]] {
 
 }
 class kubernetes_pod [[#kubernetes_pod]] {
 
 }
-class kubernetes_node [[#kubernetes_node]] {
-
-}
 class kubernetes_replica_set [[#kubernetes_replica_set]] {
-
-}
-class kubernetes_namespace [[#kubernetes_namespace]] {
-
-}
-class kubernetes_persistent_volume_claim [[#kubernetes_persistent_volume_claim]] {
-
-}
-class kubernetes_config_map [[#kubernetes_config_map]] {
 
 }
 class kubernetes_secret [[#kubernetes_secret]] {
 
 }
+class kubernetes_config_map [[#kubernetes_config_map]] {
+
+}
+class kubernetes_persistent_volume_claim [[#kubernetes_persistent_volume_claim]] {
+
+}
 class kubernetes_daemon_set [[#kubernetes_daemon_set]] {
 
 }
-class kubernetes_job [[#kubernetes_job]] {
+class kubernetes_stateful_set [[#kubernetes_stateful_set]] {
 
 }
-kubernetes_endpoint -[#1A83AF]-> kubernetes_node
-kubernetes_endpoint -[#1A83AF]-> kubernetes_pod
-kubernetes_service -[#1A83AF]-> kubernetes_pod
-kubernetes_stateful_set -[#1A83AF]-> kubernetes_pod
-kubernetes_pod -[#1A83AF]-> kubernetes_persistent_volume_claim
+class kubernetes_endpoint [[#kubernetes_endpoint]] {
+
+}
+class kubernetes_node [[#kubernetes_node]] {
+
+}
+class kubernetes_namespace [[#kubernetes_namespace]] {
+
+}
+class kubernetes_service [[#kubernetes_service]] {
+
+}
+kubernetes_job -[#1A83AF]-> kubernetes_pod
 kubernetes_pod -[#1A83AF]-> kubernetes_secret
 kubernetes_pod -[#1A83AF]-> kubernetes_config_map
-kubernetes_node -[#1A83AF]-> kubernetes_pod
+kubernetes_pod -[#1A83AF]-> kubernetes_persistent_volume_claim
 kubernetes_replica_set -[#1A83AF]-> kubernetes_pod
-kubernetes_namespace -[#1A83AF]-> kubernetes_endpoint
+kubernetes_daemon_set -[#1A83AF]-> kubernetes_pod
+kubernetes_stateful_set -[#1A83AF]-> kubernetes_pod
+kubernetes_endpoint -[#1A83AF]-> kubernetes_pod
+kubernetes_endpoint -[#1A83AF]-> kubernetes_node
+kubernetes_node -[#1A83AF]-> kubernetes_pod
 kubernetes_namespace -[#1A83AF]-> kubernetes_persistent_volume_claim
-kubernetes_namespace -[#1A83AF]-> kubernetes_service
+kubernetes_namespace -[#1A83AF]-> kubernetes_job
 kubernetes_namespace -[#1A83AF]-> kubernetes_pod
-kubernetes_namespace -[#1A83AF]-> kubernetes_replica_set
+kubernetes_namespace -[#1A83AF]-> kubernetes_stateful_set
 kubernetes_namespace -[#1A83AF]-> kubernetes_config_map
 kubernetes_namespace -[#1A83AF]-> kubernetes_secret
+kubernetes_namespace -[#1A83AF]-> kubernetes_replica_set
+kubernetes_namespace -[#1A83AF]-> kubernetes_service
 kubernetes_namespace -[#1A83AF]-> kubernetes_daemon_set
-kubernetes_namespace -[#1A83AF]-> kubernetes_job
-kubernetes_namespace -[#1A83AF]-> kubernetes_stateful_set
-kubernetes_daemon_set -[#1A83AF]-> kubernetes_pod
-kubernetes_job -[#1A83AF]-> kubernetes_pod
+kubernetes_namespace -[#1A83AF]-> kubernetes_endpoint
+kubernetes_service -[#1A83AF]-> kubernetes_pod
 
 @enduml
 ```
@@ -4244,6 +4244,18 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
+}
 class kubernetes_resource [[#kubernetes_resource]] {
 **resource_version**: string
 **namespace**: string
@@ -4258,17 +4270,14 @@ class kubernetes_label_selector_requirement [[#kubernetes_label_selector_require
 **operator**: string
 **values**: string[]
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class kubernetes_pod_disruption_budget_spec [[#kubernetes_pod_disruption_budget_spec]] {
+**max_unavailable**: any
+**min_available**: any
+**selector**: kubernetes_label_selector
+}
+class kubernetes_pod_disruption_budget [[#kubernetes_pod_disruption_budget]] {
+**pod_disruption_budget_status**: kubernetes_pod_disruption_budget_status
+**pod_disruption_budget_spec**: kubernetes_pod_disruption_budget_spec
 }
 class kubernetes_pod_disruption_budget_status [[#kubernetes_pod_disruption_budget_status]] {
 **conditions**: kubernetes_pod_disruption_budget_status_conditions[]
@@ -4287,22 +4296,13 @@ class kubernetes_pod_disruption_budget_status_conditions [[#kubernetes_pod_disru
 **status**: string
 **type**: string
 }
-class kubernetes_pod_disruption_budget_spec [[#kubernetes_pod_disruption_budget_spec]] {
-**max_unavailable**: any
-**min_available**: any
-**selector**: kubernetes_label_selector
-}
-class kubernetes_pod_disruption_budget [[#kubernetes_pod_disruption_budget]] {
-**pod_disruption_budget_status**: kubernetes_pod_disruption_budget_status
-**pod_disruption_budget_spec**: kubernetes_pod_disruption_budget_spec
-}
 resource <|--- kubernetes_resource
 kubernetes_label_selector --> kubernetes_label_selector_requirement
-kubernetes_pod_disruption_budget_status --> kubernetes_pod_disruption_budget_status_conditions
 kubernetes_pod_disruption_budget_spec --> kubernetes_label_selector
 kubernetes_resource <|--- kubernetes_pod_disruption_budget
 kubernetes_pod_disruption_budget --> kubernetes_pod_disruption_budget_status
 kubernetes_pod_disruption_budget --> kubernetes_pod_disruption_budget_spec
+kubernetes_pod_disruption_budget_status --> kubernetes_pod_disruption_budget_status_conditions
 
 @enduml
 ```
@@ -4338,10 +4338,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_namespace [[#kubernetes_namespace]] {
+class kubernetes_pod_disruption_budget [[#kubernetes_pod_disruption_budget]] {
 
 }
-class kubernetes_pod_disruption_budget [[#kubernetes_pod_disruption_budget]] {
+class kubernetes_namespace [[#kubernetes_namespace]] {
 
 }
 kubernetes_namespace -[#1A83AF]-> kubernetes_pod_disruption_budget
@@ -4381,11 +4381,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_resource [[#kubernetes_resource]] {
-**resource_version**: string
-**namespace**: string
-**labels**: dictionary[string, string]
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -4397,6 +4392,11 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class kubernetes_resource [[#kubernetes_resource]] {
+**resource_version**: string
+**namespace**: string
+**labels**: dictionary[string, string]
 }
 class kubernetes_pod_template [[#kubernetes_pod_template]] {
 
@@ -4477,11 +4477,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_resource [[#kubernetes_resource]] {
-**resource_version**: string
-**namespace**: string
-**labels**: dictionary[string, string]
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -4493,6 +4488,11 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class kubernetes_resource [[#kubernetes_resource]] {
+**resource_version**: string
+**namespace**: string
+**labels**: dictionary[string, string]
 }
 class kubernetes_priority_class [[#kubernetes_priority_class]] {
 
@@ -4534,10 +4534,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_priority_class [[#kubernetes_priority_class]] {
+class kubernetes_cluster [[#kubernetes_cluster]] {
 
 }
-class kubernetes_cluster [[#kubernetes_cluster]] {
+class kubernetes_priority_class [[#kubernetes_priority_class]] {
 
 }
 kubernetes_cluster -[#1A83AF]-> kubernetes_priority_class
@@ -4577,11 +4577,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_resource [[#kubernetes_resource]] {
-**resource_version**: string
-**namespace**: string
-**labels**: dictionary[string, string]
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -4594,6 +4589,14 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
+class kubernetes_resource [[#kubernetes_resource]] {
+**resource_version**: string
+**namespace**: string
+**labels**: dictionary[string, string]
+}
+class kubernetes_priority_level_configuration [[#kubernetes_priority_level_configuration]] {
+**priority_level_configuration_status**: kubernetes_priority_level_configuration_status
+}
 class kubernetes_priority_level_configuration_status [[#kubernetes_priority_level_configuration_status]] {
 **conditions**: kubernetes_priority_level_configuration_status_conditions[]
 }
@@ -4604,13 +4607,10 @@ class kubernetes_priority_level_configuration_status_conditions [[#kubernetes_pr
 **status**: string
 **type**: string
 }
-class kubernetes_priority_level_configuration [[#kubernetes_priority_level_configuration]] {
-**priority_level_configuration_status**: kubernetes_priority_level_configuration_status
-}
 resource <|--- kubernetes_resource
-kubernetes_priority_level_configuration_status --> kubernetes_priority_level_configuration_status_conditions
 kubernetes_resource <|--- kubernetes_priority_level_configuration
 kubernetes_priority_level_configuration --> kubernetes_priority_level_configuration_status
+kubernetes_priority_level_configuration_status --> kubernetes_priority_level_configuration_status_conditions
 
 @enduml
 ```
@@ -4689,17 +4689,22 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
+}
 class kubernetes_resource [[#kubernetes_resource]] {
 **resource_version**: string
 **namespace**: string
 **labels**: dictionary[string, string]
-}
-class kubernetes_replica_set_status_conditions [[#kubernetes_replica_set_status_conditions]] {
-**last_transition_time**: datetime
-**message**: string
-**reason**: string
-**status**: string
-**type**: string
 }
 class kubernetes_label_selector [[#kubernetes_label_selector]] {
 **match_expressions**: kubernetes_label_selector_requirement[]
@@ -4845,18 +4850,6 @@ class kubernetes_volume [[#kubernetes_volume]] {
 **storageos**: any
 **vsphere_volume**: any
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
 class kubernetes_replica_set [[#kubernetes_replica_set]] {
 **replica_set_status**: kubernetes_replica_set_status
 **replica_set_spec**: kubernetes_replica_set_spec
@@ -4868,6 +4861,13 @@ class kubernetes_replica_set_status [[#kubernetes_replica_set_status]] {
 **observed_generation**: int64
 **ready_replicas**: int64
 **replicas**: int64
+}
+class kubernetes_replica_set_status_conditions [[#kubernetes_replica_set_status_conditions]] {
+**last_transition_time**: datetime
+**message**: string
+**reason**: string
+**status**: string
+**type**: string
 }
 class kubernetes_replica_set_spec [[#kubernetes_replica_set_spec]] {
 **min_ready_seconds**: int64
@@ -4931,20 +4931,20 @@ skinparam stereotypeIBackgroundColor #e98df7
 class kubernetes_pod [[#kubernetes_pod]] {
 
 }
-class kubernetes_deployment [[#kubernetes_deployment]] {
+class kubernetes_replica_set [[#kubernetes_replica_set]] {
 
 }
-class kubernetes_replica_set [[#kubernetes_replica_set]] {
+class kubernetes_deployment [[#kubernetes_deployment]] {
 
 }
 class kubernetes_namespace [[#kubernetes_namespace]] {
 
 }
-kubernetes_deployment -[#1A83AF]-> kubernetes_replica_set
 kubernetes_replica_set -[#1A83AF]-> kubernetes_pod
+kubernetes_deployment -[#1A83AF]-> kubernetes_replica_set
 kubernetes_namespace -[#1A83AF]-> kubernetes_pod
-kubernetes_namespace -[#1A83AF]-> kubernetes_replica_set
 kubernetes_namespace -[#1A83AF]-> kubernetes_deployment
+kubernetes_namespace -[#1A83AF]-> kubernetes_replica_set
 
 @enduml
 ```
@@ -4981,11 +4981,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_resource [[#kubernetes_resource]] {
-**resource_version**: string
-**namespace**: string
-**labels**: dictionary[string, string]
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -4998,13 +4993,10 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class kubernetes_replication_controller_status [[#kubernetes_replication_controller_status]] {
-**available_replicas**: int64
-**conditions**: kubernetes_replication_controller_status_conditions[]
-**fully_labeled_replicas**: int64
-**observed_generation**: int64
-**ready_replicas**: int64
-**replicas**: int64
+class kubernetes_resource [[#kubernetes_resource]] {
+**resource_version**: string
+**namespace**: string
+**labels**: dictionary[string, string]
 }
 class kubernetes_replication_controller_status_conditions [[#kubernetes_replication_controller_status_conditions]] {
 **last_transition_time**: datetime
@@ -5016,10 +5008,18 @@ class kubernetes_replication_controller_status_conditions [[#kubernetes_replicat
 class kubernetes_replication_controller [[#kubernetes_replication_controller]] {
 **replication_controller_status**: kubernetes_replication_controller_status
 }
+class kubernetes_replication_controller_status [[#kubernetes_replication_controller_status]] {
+**available_replicas**: int64
+**conditions**: kubernetes_replication_controller_status_conditions[]
+**fully_labeled_replicas**: int64
+**observed_generation**: int64
+**ready_replicas**: int64
+**replicas**: int64
+}
 resource <|--- kubernetes_resource
-kubernetes_replication_controller_status --> kubernetes_replication_controller_status_conditions
 kubernetes_resource <|--- kubernetes_replication_controller
 kubernetes_replication_controller --> kubernetes_replication_controller_status
+kubernetes_replication_controller_status --> kubernetes_replication_controller_status_conditions
 
 @enduml
 ```
@@ -5094,11 +5094,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_resource [[#kubernetes_resource]] {
-**resource_version**: string
-**namespace**: string
-**labels**: dictionary[string, string]
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -5110,6 +5105,11 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class kubernetes_resource [[#kubernetes_resource]] {
+**resource_version**: string
+**namespace**: string
+**labels**: dictionary[string, string]
 }
 resource <|--- kubernetes_resource
 
@@ -5186,11 +5186,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_resource [[#kubernetes_resource]] {
-**resource_version**: string
-**namespace**: string
-**labels**: dictionary[string, string]
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -5208,6 +5203,11 @@ class quota [[#quota]] {
 **usage**: double
 **quota_type**: string
 }
+class kubernetes_resource [[#kubernetes_resource]] {
+**resource_version**: string
+**namespace**: string
+**labels**: dictionary[string, string]
+}
 class phantom_resource [[#phantom_resource]] {
 
 }
@@ -5224,8 +5224,8 @@ class kubernetes_resource_quota [[#kubernetes_resource_quota]] {
 **resource_quota_status**: kubernetes_resource_quota_status
 **resource_quota_spec**: kubernetes_resource_quota_spec
 }
-resource <|--- kubernetes_resource
 phantom_resource <|--- quota
+resource <|--- kubernetes_resource
 resource <|--- phantom_resource
 kubernetes_resource <|--- kubernetes_resource_quota
 quota <|--- kubernetes_resource_quota
@@ -5305,11 +5305,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_resource [[#kubernetes_resource]] {
-**resource_version**: string
-**namespace**: string
-**labels**: dictionary[string, string]
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -5321,6 +5316,11 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class kubernetes_resource [[#kubernetes_resource]] {
+**resource_version**: string
+**namespace**: string
+**labels**: dictionary[string, string]
 }
 class kubernetes_role [[#kubernetes_role]] {
 
@@ -5362,10 +5362,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_role [[#kubernetes_role]] {
+class kubernetes_namespace [[#kubernetes_namespace]] {
 
 }
-class kubernetes_namespace [[#kubernetes_namespace]] {
+class kubernetes_role [[#kubernetes_role]] {
 
 }
 kubernetes_namespace -[#1A83AF]-> kubernetes_role
@@ -5405,11 +5405,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_resource [[#kubernetes_resource]] {
-**resource_version**: string
-**namespace**: string
-**labels**: dictionary[string, string]
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -5421,6 +5416,11 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class kubernetes_resource [[#kubernetes_resource]] {
+**resource_version**: string
+**namespace**: string
+**labels**: dictionary[string, string]
 }
 class kubernetes_role_binding [[#kubernetes_role_binding]] {
 
@@ -5505,11 +5505,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_resource [[#kubernetes_resource]] {
-**resource_version**: string
-**namespace**: string
-**labels**: dictionary[string, string]
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -5521,6 +5516,11 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class kubernetes_resource [[#kubernetes_resource]] {
+**resource_version**: string
+**namespace**: string
+**labels**: dictionary[string, string]
 }
 class kubernetes_runtime_class [[#kubernetes_runtime_class]] {
 
@@ -5601,11 +5601,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_resource [[#kubernetes_resource]] {
-**resource_version**: string
-**namespace**: string
-**labels**: dictionary[string, string]
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -5617,6 +5612,11 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class kubernetes_resource [[#kubernetes_resource]] {
+**resource_version**: string
+**namespace**: string
+**labels**: dictionary[string, string]
 }
 class kubernetes_secret [[#kubernetes_secret]] {
 
@@ -5661,20 +5661,20 @@ skinparam stereotypeIBackgroundColor #e98df7
 class kubernetes_pod [[#kubernetes_pod]] {
 
 }
-class kubernetes_namespace [[#kubernetes_namespace]] {
+class kubernetes_secret [[#kubernetes_secret]] {
 
 }
 class kubernetes_service_account [[#kubernetes_service_account]] {
 
 }
-class kubernetes_secret [[#kubernetes_secret]] {
+class kubernetes_namespace [[#kubernetes_namespace]] {
 
 }
 kubernetes_pod -[#1A83AF]-> kubernetes_secret
+kubernetes_service_account -[#1A83AF]-> kubernetes_secret
 kubernetes_namespace -[#1A83AF]-> kubernetes_pod
 kubernetes_namespace -[#1A83AF]-> kubernetes_service_account
 kubernetes_namespace -[#1A83AF]-> kubernetes_secret
-kubernetes_service_account -[#1A83AF]-> kubernetes_secret
 
 @enduml
 ```
@@ -5711,15 +5711,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_resource [[#kubernetes_resource]] {
-**resource_version**: string
-**namespace**: string
-**labels**: dictionary[string, string]
-}
-class kubernetes_service [[#kubernetes_service]] {
-**service_status**: kubernetes_service_status
-**service_spec**: kubernetes_service_spec
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -5732,30 +5723,10 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class kubernetes_loadbalancer_ingress [[#kubernetes_loadbalancer_ingress]] {
-**hostname**: string
-**ip**: string
-**ports**: kubernetes_loadbalancer_ingress_ports[]
-}
-class kubernetes_loadbalancer_ingress_ports [[#kubernetes_loadbalancer_ingress_ports]] {
-**error**: string
-**port**: int64
-**protocol**: string
-}
-class kubernetes_service_status [[#kubernetes_service_status]] {
-**conditions**: kubernetes_service_status_conditions[]
-**load_balancer**: kubernetes_loadbalancer_status
-}
-class kubernetes_service_status_conditions [[#kubernetes_service_status_conditions]] {
-**last_transition_time**: datetime
-**message**: string
-**observed_generation**: int64
-**reason**: string
-**status**: string
-**type**: string
-}
-class kubernetes_loadbalancer_status [[#kubernetes_loadbalancer_status]] {
-**ingress**: kubernetes_loadbalancer_ingress[]
+class kubernetes_resource [[#kubernetes_resource]] {
+**resource_version**: string
+**namespace**: string
+**labels**: dictionary[string, string]
 }
 class kubernetes_service_spec [[#kubernetes_service_spec]] {
 **allocate_load_balancer_node_ports**: boolean
@@ -5784,15 +5755,44 @@ class kubernetes_service_port [[#kubernetes_service_port]] {
 **protocol**: string
 **target_port**: any
 }
+class kubernetes_loadbalancer_ingress [[#kubernetes_loadbalancer_ingress]] {
+**hostname**: string
+**ip**: string
+**ports**: kubernetes_loadbalancer_ingress_ports[]
+}
+class kubernetes_loadbalancer_ingress_ports [[#kubernetes_loadbalancer_ingress_ports]] {
+**error**: string
+**port**: int64
+**protocol**: string
+}
+class kubernetes_service [[#kubernetes_service]] {
+**service_status**: kubernetes_service_status
+**service_spec**: kubernetes_service_spec
+}
+class kubernetes_service_status [[#kubernetes_service_status]] {
+**conditions**: kubernetes_service_status_conditions[]
+**load_balancer**: kubernetes_loadbalancer_status
+}
+class kubernetes_service_status_conditions [[#kubernetes_service_status_conditions]] {
+**last_transition_time**: datetime
+**message**: string
+**observed_generation**: int64
+**reason**: string
+**status**: string
+**type**: string
+}
+class kubernetes_loadbalancer_status [[#kubernetes_loadbalancer_status]] {
+**ingress**: kubernetes_loadbalancer_ingress[]
+}
 resource <|--- kubernetes_resource
+kubernetes_service_spec --> kubernetes_service_port
+kubernetes_loadbalancer_ingress --> kubernetes_loadbalancer_ingress_ports
 kubernetes_resource <|--- kubernetes_service
 kubernetes_service --> kubernetes_service_status
 kubernetes_service --> kubernetes_service_spec
-kubernetes_loadbalancer_ingress --> kubernetes_loadbalancer_ingress_ports
 kubernetes_service_status --> kubernetes_service_status_conditions
 kubernetes_service_status --> kubernetes_loadbalancer_status
 kubernetes_loadbalancer_status --> kubernetes_loadbalancer_ingress
-kubernetes_service_spec --> kubernetes_service_port
 
 @enduml
 ```
@@ -5828,23 +5828,23 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_endpoint_slice [[#kubernetes_endpoint_slice]] {
-
-}
-class kubernetes_service [[#kubernetes_service]] {
-
-}
 class kubernetes_pod [[#kubernetes_pod]] {
+
+}
+class kubernetes_endpoint_slice [[#kubernetes_endpoint_slice]] {
 
 }
 class kubernetes_namespace [[#kubernetes_namespace]] {
 
 }
-kubernetes_service -[#1A83AF]-> kubernetes_endpoint_slice
-kubernetes_service -[#1A83AF]-> kubernetes_pod
-kubernetes_namespace -[#1A83AF]-> kubernetes_service
+class kubernetes_service [[#kubernetes_service]] {
+
+}
 kubernetes_namespace -[#1A83AF]-> kubernetes_pod
 kubernetes_namespace -[#1A83AF]-> kubernetes_endpoint_slice
+kubernetes_namespace -[#1A83AF]-> kubernetes_service
+kubernetes_service -[#1A83AF]-> kubernetes_pod
+kubernetes_service -[#1A83AF]-> kubernetes_endpoint_slice
 
 @enduml
 ```
@@ -5881,11 +5881,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_resource [[#kubernetes_resource]] {
-**resource_version**: string
-**namespace**: string
-**labels**: dictionary[string, string]
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -5897,6 +5892,11 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class kubernetes_resource [[#kubernetes_resource]] {
+**resource_version**: string
+**namespace**: string
+**labels**: dictionary[string, string]
 }
 class kubernetes_service_account [[#kubernetes_service_account]] {
 
@@ -5938,18 +5938,18 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_namespace [[#kubernetes_namespace]] {
+class kubernetes_secret [[#kubernetes_secret]] {
 
 }
 class kubernetes_service_account [[#kubernetes_service_account]] {
 
 }
-class kubernetes_secret [[#kubernetes_secret]] {
+class kubernetes_namespace [[#kubernetes_namespace]] {
 
 }
+kubernetes_service_account -[#1A83AF]-> kubernetes_secret
 kubernetes_namespace -[#1A83AF]-> kubernetes_service_account
 kubernetes_namespace -[#1A83AF]-> kubernetes_secret
-kubernetes_service_account -[#1A83AF]-> kubernetes_secret
 
 @enduml
 ```
@@ -5986,6 +5986,18 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
+}
 class kubernetes_resource [[#kubernetes_resource]] {
 **resource_version**: string
 **namespace**: string
@@ -6139,6 +6151,13 @@ class kubernetes_stateful_set [[#kubernetes_stateful_set]] {
 **stateful_set_status**: kubernetes_stateful_set_status
 **stateful_set_spec**: kubernetes_stateful_set_spec
 }
+class kubernetes_stateful_set_status_condition [[#kubernetes_stateful_set_status_condition]] {
+**last_transition_time**: datetime
+**message**: string
+**reason**: string
+**status**: string
+**type**: string
+}
 class kubernetes_stateful_set_status [[#kubernetes_stateful_set_status]] {
 **available_replicas**: int64
 **collision_count**: int64
@@ -6151,13 +6170,6 @@ class kubernetes_stateful_set_status [[#kubernetes_stateful_set_status]] {
 **update_revision**: string
 **updated_replicas**: int64
 }
-class kubernetes_stateful_set_status_condition [[#kubernetes_stateful_set_status_condition]] {
-**last_transition_time**: datetime
-**message**: string
-**reason**: string
-**status**: string
-**type**: string
-}
 class kubernetes_stateful_set_spec [[#kubernetes_stateful_set_spec]] {
 **min_ready_seconds**: int64
 **pod_management_policy**: string
@@ -6166,18 +6178,6 @@ class kubernetes_stateful_set_spec [[#kubernetes_stateful_set_spec]] {
 **selector**: kubernetes_label_selector
 **service_name**: string
 **template**: kubernetes_pod_template_spec
-}
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
 }
 resource <|--- kubernetes_resource
 kubernetes_label_selector --> kubernetes_label_selector_requirement
@@ -6232,10 +6232,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_stateful_set [[#kubernetes_stateful_set]] {
+class kubernetes_pod [[#kubernetes_pod]] {
 
 }
-class kubernetes_pod [[#kubernetes_pod]] {
+class kubernetes_stateful_set [[#kubernetes_stateful_set]] {
 
 }
 class kubernetes_controller_revision [[#kubernetes_controller_revision]] {
@@ -6247,8 +6247,8 @@ class kubernetes_namespace [[#kubernetes_namespace]] {
 kubernetes_stateful_set -[#1A83AF]-> kubernetes_pod
 kubernetes_stateful_set -[#1A83AF]-> kubernetes_controller_revision
 kubernetes_namespace -[#1A83AF]-> kubernetes_pod
-kubernetes_namespace -[#1A83AF]-> kubernetes_controller_revision
 kubernetes_namespace -[#1A83AF]-> kubernetes_stateful_set
+kubernetes_namespace -[#1A83AF]-> kubernetes_controller_revision
 
 @enduml
 ```
@@ -6285,11 +6285,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_resource [[#kubernetes_resource]] {
-**resource_version**: string
-**namespace**: string
-**labels**: dictionary[string, string]
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -6301,6 +6296,11 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class kubernetes_resource [[#kubernetes_resource]] {
+**resource_version**: string
+**namespace**: string
+**labels**: dictionary[string, string]
 }
 class kubernetes_storage_class [[#kubernetes_storage_class]] {
 
@@ -6342,10 +6342,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_cluster [[#kubernetes_cluster]] {
+class kubernetes_storage_class [[#kubernetes_storage_class]] {
 
 }
-class kubernetes_storage_class [[#kubernetes_storage_class]] {
+class kubernetes_cluster [[#kubernetes_cluster]] {
 
 }
 kubernetes_cluster -[#1A83AF]-> kubernetes_storage_class
@@ -6385,11 +6385,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_resource [[#kubernetes_resource]] {
-**resource_version**: string
-**namespace**: string
-**labels**: dictionary[string, string]
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -6401,6 +6396,11 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class kubernetes_resource [[#kubernetes_resource]] {
+**resource_version**: string
+**namespace**: string
+**labels**: dictionary[string, string]
 }
 class kubernetes_validating_webhook_configuration [[#kubernetes_validating_webhook_configuration]] {
 
@@ -6485,11 +6485,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_resource [[#kubernetes_resource]] {
-**resource_version**: string
-**namespace**: string
-**labels**: dictionary[string, string]
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -6502,14 +6497,10 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class kubernetes_volume_attachment_spec [[#kubernetes_volume_attachment_spec]] {
-**attacher**: string
-**node_name**: string
-**source**: any
-}
-class kubernetes_volume_attachment [[#kubernetes_volume_attachment]] {
-**volume_attachment_status**: kubernetes_volume_attachment_status
-**volume_attachment_spec**: kubernetes_volume_attachment_spec
+class kubernetes_resource [[#kubernetes_resource]] {
+**resource_version**: string
+**namespace**: string
+**labels**: dictionary[string, string]
 }
 class kubernetes_volume_attachment_status [[#kubernetes_volume_attachment_status]] {
 **attach_error**: kubernetes_volume_error
@@ -6521,11 +6512,20 @@ class kubernetes_volume_error [[#kubernetes_volume_error]] {
 **message**: string
 **time**: datetime
 }
+class kubernetes_volume_attachment [[#kubernetes_volume_attachment]] {
+**volume_attachment_status**: kubernetes_volume_attachment_status
+**volume_attachment_spec**: kubernetes_volume_attachment_spec
+}
+class kubernetes_volume_attachment_spec [[#kubernetes_volume_attachment_spec]] {
+**attacher**: string
+**node_name**: string
+**source**: any
+}
 resource <|--- kubernetes_resource
+kubernetes_volume_attachment_status --> kubernetes_volume_error
 kubernetes_resource <|--- kubernetes_volume_attachment
 kubernetes_volume_attachment --> kubernetes_volume_attachment_status
 kubernetes_volume_attachment --> kubernetes_volume_attachment_spec
-kubernetes_volume_attachment_status --> kubernetes_volume_error
 
 @enduml
 ```
@@ -6561,10 +6561,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class kubernetes_volume_attachment [[#kubernetes_volume_attachment]] {
+class kubernetes_cluster [[#kubernetes_cluster]] {
 
 }
-class kubernetes_cluster [[#kubernetes_cluster]] {
+class kubernetes_volume_attachment [[#kubernetes_volume_attachment]] {
 
 }
 kubernetes_cluster -[#1A83AF]-> kubernetes_volume_attachment

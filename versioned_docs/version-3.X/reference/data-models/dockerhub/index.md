@@ -13,7 +13,7 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 
 <ZoomPanPinch>
 
-```plantuml Diagram of dockerhub_namespace data model
+```kroki imgType="plantuml" imgTitle="Diagram of dockerhub_namespace data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -37,9 +37,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class dockerhub_resource [[#dockerhub_resource]] {
-
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -52,15 +49,18 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class account [[#account]] {
-
-}
 class dockerhub_namespace [[#dockerhub_namespace]] {
 **count**: int64
 }
-resource <|--- account
+class dockerhub_resource [[#dockerhub_resource]] {
+
+}
+class account [[#account]] {
+
+}
 dockerhub_resource <|--- dockerhub_namespace
 account <|--- dockerhub_namespace
+resource <|--- account
 
 @enduml
 ```
@@ -72,7 +72,7 @@ account <|--- dockerhub_namespace
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of dockerhub_namespace resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of dockerhub_namespace resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -111,7 +111,7 @@ class dockerhub_namespace [[#dockerhub_namespace]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of dockerhub_repository data model
+```kroki imgType="plantuml" imgTitle="Diagram of dockerhub_repository data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -135,17 +135,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class dockerhub_repository [[#dockerhub_repository]] {
-**repository_type**: string
-**is_private**: boolean
-**star_count**: int64
-**pull_count**: int64
-**affiliation**: string
-**media_types**: string[]
-}
-class dockerhub_resource [[#dockerhub_resource]] {
-
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -157,6 +146,17 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class dockerhub_resource [[#dockerhub_resource]] {
+
+}
+class dockerhub_repository [[#dockerhub_repository]] {
+**repository_type**: string
+**is_private**: boolean
+**star_count**: int64
+**pull_count**: int64
+**affiliation**: string
+**media_types**: string[]
 }
 dockerhub_resource <|--- dockerhub_repository
 resource <|--- dockerhub_repository
@@ -171,7 +171,7 @@ resource <|--- dockerhub_repository
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of dockerhub_repository resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of dockerhub_repository resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37

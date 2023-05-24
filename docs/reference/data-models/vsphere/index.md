@@ -12,7 +12,7 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 
 <ZoomPanPinch>
 
-```plantuml Diagram of vsphere_cluster data model
+```kroki imgType="plantuml" imgTitle="Diagram of vsphere_cluster data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -67,7 +67,7 @@ zone <|--- vsphere_cluster
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of vsphere_cluster resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of vsphere_cluster resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -106,7 +106,7 @@ class vsphere_cluster [[#vsphere_cluster]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of vsphere_data_center data model
+```kroki imgType="plantuml" imgTitle="Diagram of vsphere_data_center data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -142,14 +142,14 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class vsphere_data_center [[#vsphere_data_center]] {
-
-}
 class region [[#region]] {
 
 }
-region <|--- vsphere_data_center
+class vsphere_data_center [[#vsphere_data_center]] {
+
+}
 resource <|--- region
+region <|--- vsphere_data_center
 
 @enduml
 ```
@@ -161,7 +161,7 @@ resource <|--- region
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of vsphere_data_center resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of vsphere_data_center resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -200,7 +200,7 @@ class vsphere_data_center [[#vsphere_data_center]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of vsphere_datastore data model
+```kroki imgType="plantuml" imgTitle="Diagram of vsphere_datastore data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -251,7 +251,7 @@ resource <|--- vsphere_datastore
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of vsphere_datastore resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of vsphere_datastore resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -290,7 +290,7 @@ class vsphere_datastore [[#vsphere_datastore]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of vsphere_datastore_cluster data model
+```kroki imgType="plantuml" imgTitle="Diagram of vsphere_datastore_cluster data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -341,7 +341,7 @@ resource <|--- vsphere_datastore_cluster
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of vsphere_datastore_cluster resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of vsphere_datastore_cluster resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -380,7 +380,7 @@ class vsphere_datastore_cluster [[#vsphere_datastore_cluster]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of vsphere_esxi_host data model
+```kroki imgType="plantuml" imgTitle="Diagram of vsphere_esxi_host data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -431,7 +431,7 @@ resource <|--- vsphere_esxi_host
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of vsphere_esxi_host resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of vsphere_esxi_host resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -470,7 +470,7 @@ class vsphere_esxi_host [[#vsphere_esxi_host]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of vsphere_host data model
+```kroki imgType="plantuml" imgTitle="Diagram of vsphere_host data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -494,9 +494,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class account [[#account]] {
-
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -508,6 +505,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class account [[#account]] {
+
 }
 class vsphere_host [[#vsphere_host]] {
 
@@ -525,7 +525,7 @@ account <|--- vsphere_host
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of vsphere_host resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of vsphere_host resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -564,7 +564,7 @@ class vsphere_host [[#vsphere_host]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of vsphere_instance data model
+```kroki imgType="plantuml" imgTitle="Diagram of vsphere_instance data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -600,6 +600,9 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
+class vsphere_resource [[#vsphere_resource]] {
+
+}
 class instance [[#instance]] {
 **instance_cores**: double
 **instance_memory**: double
@@ -607,9 +610,6 @@ class instance [[#instance]] {
 **instance_status**: instance_status
 }
 class vsphere_instance [[#vsphere_instance]] {
-
-}
-class vsphere_resource [[#vsphere_resource]] {
 
 }
 resource <|--- instance
@@ -626,7 +626,7 @@ vsphere_resource <|--- vsphere_instance
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of vsphere_instance resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of vsphere_instance resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -665,7 +665,7 @@ class vsphere_instance [[#vsphere_instance]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of vsphere_resource_pool data model
+```kroki imgType="plantuml" imgTitle="Diagram of vsphere_resource_pool data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -716,7 +716,7 @@ resource <|--- vsphere_resource_pool
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of vsphere_resource_pool resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of vsphere_resource_pool resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -755,7 +755,7 @@ class vsphere_resource_pool [[#vsphere_resource_pool]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of vsphere_template data model
+```kroki imgType="plantuml" imgTitle="Diagram of vsphere_template data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -810,7 +810,7 @@ vsphere_resource <|--- vsphere_template
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of vsphere_template resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of vsphere_template resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37

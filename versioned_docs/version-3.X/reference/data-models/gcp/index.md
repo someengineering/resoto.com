@@ -19,7 +19,7 @@ See [How to Collect Google Cloud Resource Data](../../../how-to-guides/data-sour
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_accelerator_type data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_accelerator_type data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -62,7 +62,7 @@ gcp_resource <|--- gcp_accelerator_type
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_accelerator_type resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_accelerator_type resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -101,7 +101,7 @@ class gcp_accelerator_type [[#gcp_accelerator_type]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_address data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_address data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -154,7 +154,7 @@ gcp_resource <|--- gcp_address
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_address resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_address resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -193,7 +193,7 @@ class gcp_address [[#gcp_address]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_autoscaler data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_autoscaler data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -233,16 +233,16 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class gcp_autoscaler [[#gcp_autoscaler]] {
-
-}
 class autoscaling_group [[#autoscaling_group]] {
 **min_size**: int64
 **max_size**: int64
 }
+class gcp_autoscaler [[#gcp_autoscaler]] {
+
+}
+resource <|--- autoscaling_group
 gcp_resource <|--- gcp_autoscaler
 autoscaling_group <|--- gcp_autoscaler
-resource <|--- autoscaling_group
 
 @enduml
 ```
@@ -254,7 +254,7 @@ resource <|--- autoscaling_group
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_autoscaler resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_autoscaler resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -284,17 +284,17 @@ class gcp_instance_group_manager [[#gcp_instance_group_manager]] {
 class gcp_region [[#gcp_region]] {
 
 }
-class gcp_zone [[#gcp_zone]] {
-
-}
 class gcp_autoscaler [[#gcp_autoscaler]] {
 
 }
+class gcp_zone [[#gcp_zone]] {
+
+}
 gcp_region -[#1A83AF]-> gcp_instance_group_manager
-gcp_region -[#1A83AF]-> gcp_zone
 gcp_region -[#1A83AF]-> gcp_autoscaler
-gcp_zone -[#1A83AF]-> gcp_autoscaler
+gcp_region -[#1A83AF]-> gcp_zone
 gcp_autoscaler -[#1A83AF]-> gcp_instance_group_manager
+gcp_zone -[#1A83AF]-> gcp_autoscaler
 
 @enduml
 ```
@@ -307,7 +307,7 @@ gcp_autoscaler -[#1A83AF]-> gcp_instance_group_manager
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_backend_bucket data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_backend_bucket data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -380,7 +380,7 @@ gcp_backend_bucket_cdn_policy --> gcp_backend_bucket_cdn_policy_negative_caching
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_backend_bucket resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_backend_bucket resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -419,7 +419,7 @@ class gcp_backend_bucket [[#gcp_backend_bucket]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_backend_service data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_backend_service data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -475,7 +475,7 @@ resource <|--- gcp_backend_service
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_backend_service resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_backend_service resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -505,7 +505,13 @@ class gcp_service_attachment [[#gcp_service_attachment]] {
 class gcp_backend_service [[#gcp_backend_service]] {
 
 }
-class gcp_url_map [[#gcp_url_map]] {
+class gcp_instance_group [[#gcp_instance_group]] {
+
+}
+class gcp_http_health_check [[#gcp_http_health_check]] {
+
+}
+class gcp_network_endpoint_group [[#gcp_network_endpoint_group]] {
 
 }
 class gcp_health_check [[#gcp_health_check]] {
@@ -514,48 +520,42 @@ class gcp_health_check [[#gcp_health_check]] {
 class gcp_https_health_check [[#gcp_https_health_check]] {
 
 }
-class gcp_http_health_check [[#gcp_http_health_check]] {
+class gcp_target_tcp_proxy [[#gcp_target_tcp_proxy]] {
 
 }
 class gcp_target_ssl_proxy [[#gcp_target_ssl_proxy]] {
 
 }
-class gcp_region [[#gcp_region]] {
-
-}
-class gcp_network_endpoint_group [[#gcp_network_endpoint_group]] {
-
-}
-class gcp_instance_group [[#gcp_instance_group]] {
+class gcp_url_map [[#gcp_url_map]] {
 
 }
 class gcp_project [[#gcp_project]] {
 
 }
-class gcp_target_tcp_proxy [[#gcp_target_tcp_proxy]] {
+class gcp_region [[#gcp_region]] {
 
 }
 gcp_service_attachment -[#1A83AF]-> gcp_backend_service
-gcp_backend_service -[#1A83AF]-> gcp_network_endpoint_group
+gcp_backend_service -[#1A83AF]-> gcp_instance_group
 gcp_backend_service -[#1A83AF]-> gcp_http_health_check
+gcp_backend_service -[#1A83AF]-> gcp_network_endpoint_group
 gcp_backend_service -[#1A83AF]-> gcp_health_check
 gcp_backend_service -[#1A83AF]-> gcp_https_health_check
-gcp_backend_service -[#1A83AF]-> gcp_instance_group
-gcp_url_map -[#1A83AF]-> gcp_backend_service
-gcp_target_ssl_proxy -[#1A83AF]-> gcp_backend_service
-gcp_region -[#1A83AF]-> gcp_url_map
-gcp_region -[#1A83AF]-> gcp_network_endpoint_group
-gcp_region -[#1A83AF]-> gcp_health_check
-gcp_region -[#1A83AF]-> gcp_instance_group
-gcp_region -[#1A83AF]-> gcp_backend_service
-gcp_project -[#1A83AF]-> gcp_http_health_check
-gcp_project -[#1A83AF]-> gcp_target_tcp_proxy
-gcp_project -[#1A83AF]-> gcp_target_ssl_proxy
-gcp_project -[#1A83AF]-> gcp_region
-gcp_project -[#1A83AF]-> gcp_https_health_check
-gcp_project -[#1A83AF]-> gcp_health_check
-gcp_project -[#1A83AF]-> gcp_backend_service
 gcp_target_tcp_proxy -[#1A83AF]-> gcp_backend_service
+gcp_target_ssl_proxy -[#1A83AF]-> gcp_backend_service
+gcp_url_map -[#1A83AF]-> gcp_backend_service
+gcp_project -[#1A83AF]-> gcp_http_health_check
+gcp_project -[#1A83AF]-> gcp_backend_service
+gcp_project -[#1A83AF]-> gcp_region
+gcp_project -[#1A83AF]-> gcp_target_ssl_proxy
+gcp_project -[#1A83AF]-> gcp_health_check
+gcp_project -[#1A83AF]-> gcp_https_health_check
+gcp_project -[#1A83AF]-> gcp_target_tcp_proxy
+gcp_region -[#1A83AF]-> gcp_instance_group
+gcp_region -[#1A83AF]-> gcp_network_endpoint_group
+gcp_region -[#1A83AF]-> gcp_backend_service
+gcp_region -[#1A83AF]-> gcp_health_check
+gcp_region -[#1A83AF]-> gcp_url_map
 
 @enduml
 ```
@@ -568,7 +568,7 @@ gcp_target_tcp_proxy -[#1A83AF]-> gcp_backend_service
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_billing_account data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_billing_account data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -613,7 +613,7 @@ gcp_resource <|--- gcp_billing_account
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_billing_account resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_billing_account resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -656,7 +656,7 @@ gcp_billing_account -[#1A83AF]-> gcp_project_billing_info
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_bucket data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_bucket data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -696,18 +696,18 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
+class bucket [[#bucket]] {
+
+}
 class gcp_bucket [[#gcp_bucket]] {
 **bucket_location**: string
 **bucket_location_type**: string
 **storage_class**: string
 **zone_separation**: boolean
 }
-class bucket [[#bucket]] {
-
-}
+resource <|--- bucket
 gcp_resource <|--- gcp_bucket
 bucket <|--- gcp_bucket
-resource <|--- bucket
 
 @enduml
 ```
@@ -719,7 +719,7 @@ resource <|--- bucket
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_bucket resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_bucket resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -762,7 +762,7 @@ gcp_project -[#1A83AF]-> gcp_bucket
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_commitment data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_commitment data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -878,7 +878,7 @@ gcp_allocation_specific_sku_allocation_reserved_instance_properties --> gcp_allo
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_commitment resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_commitment resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -917,7 +917,7 @@ class gcp_commitment [[#gcp_commitment]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_container_cluster data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_container_cluster data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1393,7 +1393,7 @@ gcp_container_notification_config --> gcp_container_pub_sub
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_container_cluster resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_container_cluster resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1436,7 +1436,7 @@ gcp_container_cluster -[#1A83AF]-> gcp_container_operation
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_container_operation data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_container_operation data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1515,7 +1515,7 @@ gcp_container_operation --> gcp_container_operation_progress
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_container_operation resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_container_operation resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1558,7 +1558,7 @@ gcp_container_cluster -[#1A83AF]-> gcp_container_operation
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_database data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_database data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1586,20 +1586,6 @@ class gcp_resource [[#gcp_resource]] {
 **link**: string
 **label_fingerprint**: string
 }
-class gcp_database [[#gcp_database]] {
-
-}
-class database [[#database]] {
-**db_type**: string
-**db_status**: string
-**db_endpoint**: string
-**db_version**: string
-**db_publicly_accessible**: boolean
-**instance_type**: string
-**volume_size**: int64
-**volume_iops**: int64
-**volume_encrypted**: boolean
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -1612,9 +1598,23 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
+class database [[#database]] {
+**db_type**: string
+**db_status**: string
+**db_endpoint**: string
+**db_version**: string
+**db_publicly_accessible**: boolean
+**instance_type**: string
+**volume_size**: int64
+**volume_iops**: int64
+**volume_encrypted**: boolean
+}
+class gcp_database [[#gcp_database]] {
+
+}
+resource <|--- database
 gcp_resource <|--- gcp_database
 database <|--- gcp_database
-resource <|--- database
 
 @enduml
 ```
@@ -1626,7 +1626,7 @@ resource <|--- database
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_database resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_database resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1650,17 +1650,17 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class gcp_database [[#gcp_database]] {
+class gcp_region [[#gcp_region]] {
 
 }
-class gcp_region [[#gcp_region]] {
+class gcp_database [[#gcp_database]] {
 
 }
 class gcp_zone [[#gcp_zone]] {
 
 }
-gcp_region -[#1A83AF]-> gcp_zone
 gcp_region -[#1A83AF]-> gcp_database
+gcp_region -[#1A83AF]-> gcp_zone
 gcp_zone -[#1A83AF]-> gcp_database
 
 @enduml
@@ -1674,7 +1674,7 @@ gcp_zone -[#1A83AF]-> gcp_database
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_disk data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_disk data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1741,7 +1741,7 @@ resource <|--- volume
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_disk resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_disk resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1771,10 +1771,7 @@ class gcp_operation [[#gcp_operation]] {
 class gcp_disk [[#gcp_disk]] {
 
 }
-class gcp_region [[#gcp_region]] {
-
-}
-class gcp_zone [[#gcp_zone]] {
+class gcp_instance [[#gcp_instance]] {
 
 }
 class gcp_disk_type [[#gcp_disk_type]] {
@@ -1783,19 +1780,22 @@ class gcp_disk_type [[#gcp_disk_type]] {
 class gcp_snapshot [[#gcp_snapshot]] {
 
 }
-class gcp_instance [[#gcp_instance]] {
+class gcp_region [[#gcp_region]] {
+
+}
+class gcp_zone [[#gcp_zone]] {
 
 }
 gcp_operation -[#1A83AF]-> gcp_disk
 gcp_disk -[#1A83AF]-> gcp_snapshot
-gcp_region -[#1A83AF]-> gcp_zone
-gcp_region -[#1A83AF]-> gcp_disk_type
-gcp_region -[#1A83AF]-> gcp_disk
-gcp_zone -[#1A83AF]-> gcp_disk_type
-gcp_zone -[#1A83AF]-> gcp_instance
-gcp_zone -[#1A83AF]-> gcp_disk
-gcp_disk_type -[#1A83AF]-> gcp_disk
 gcp_instance -[#1A83AF]-> gcp_disk
+gcp_disk_type -[#1A83AF]-> gcp_disk
+gcp_region -[#1A83AF]-> gcp_disk
+gcp_region -[#1A83AF]-> gcp_disk_type
+gcp_region -[#1A83AF]-> gcp_zone
+gcp_zone -[#1A83AF]-> gcp_disk_type
+gcp_zone -[#1A83AF]-> gcp_disk
+gcp_zone -[#1A83AF]-> gcp_instance
 
 @enduml
 ```
@@ -1808,7 +1808,7 @@ gcp_instance -[#1A83AF]-> gcp_disk
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_disk_type data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_disk_type data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1848,6 +1848,14 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
+class quota [[#quota]] {
+**quota**: double
+**usage**: double
+**quota_type**: string
+}
+class phantom_resource [[#phantom_resource]] {
+
+}
 class gcp_disk_type [[#gcp_disk_type]] {
 
 }
@@ -1858,20 +1866,12 @@ class volume_type [[#volume_type]] {
 class type [[#type]] {
 
 }
-class quota [[#quota]] {
-**quota**: double
-**usage**: double
-**quota_type**: string
-}
-class phantom_resource [[#phantom_resource]] {
-
-}
+phantom_resource <|--- quota
+resource <|--- phantom_resource
 gcp_resource <|--- gcp_disk_type
 volume_type <|--- gcp_disk_type
 type <|--- volume_type
 quota <|--- type
-phantom_resource <|--- quota
-resource <|--- phantom_resource
 
 @enduml
 ```
@@ -1883,7 +1883,7 @@ resource <|--- phantom_resource
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_disk_type resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_disk_type resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1910,25 +1910,25 @@ skinparam stereotypeIBackgroundColor #e98df7
 class gcp_disk [[#gcp_disk]] {
 
 }
+class gcp_service_sku [[#gcp_service_sku]] {
+
+}
+class gcp_disk_type [[#gcp_disk_type]] {
+
+}
 class gcp_region [[#gcp_region]] {
 
 }
 class gcp_zone [[#gcp_zone]] {
 
 }
-class gcp_disk_type [[#gcp_disk_type]] {
-
-}
-class gcp_service_sku [[#gcp_service_sku]] {
-
-}
-gcp_region -[#1A83AF]-> gcp_zone
-gcp_region -[#1A83AF]-> gcp_disk_type
+gcp_service_sku -[#1A83AF]-> gcp_disk_type
+gcp_disk_type -[#1A83AF]-> gcp_disk
 gcp_region -[#1A83AF]-> gcp_disk
+gcp_region -[#1A83AF]-> gcp_disk_type
+gcp_region -[#1A83AF]-> gcp_zone
 gcp_zone -[#1A83AF]-> gcp_disk_type
 gcp_zone -[#1A83AF]-> gcp_disk
-gcp_disk_type -[#1A83AF]-> gcp_disk
-gcp_service_sku -[#1A83AF]-> gcp_disk_type
 
 @enduml
 ```
@@ -1941,7 +1941,7 @@ gcp_service_sku -[#1A83AF]-> gcp_disk_type
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_external_vpn_gateway data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_external_vpn_gateway data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1990,7 +1990,7 @@ gcp_external_vpn_gateway --> gcp_external_vpn_gateway_interface
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_external_vpn_gateway resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_external_vpn_gateway resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2029,7 +2029,7 @@ class gcp_external_vpn_gateway [[#gcp_external_vpn_gateway]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_firewall data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_firewall data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2099,7 +2099,7 @@ gcp_firewall --> gcp_firewall_log_config
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_firewall resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_firewall resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2142,7 +2142,7 @@ gcp_firewall -[#1A83AF]-> gcp_network
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_firewall_policy data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_firewall_policy data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2233,7 +2233,7 @@ gcp_firewall_policy --> gcp_firewall_policy_rule
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_firewall_policy resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_firewall_policy resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2276,7 +2276,7 @@ gcp_firewall_policy -[#1A83AF]-> gcp_network
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_forwarding_rule data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_forwarding_rule data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2316,6 +2316,11 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
+class load_balancer [[#load_balancer]] {
+**lb_type**: string
+**public_ip_address**: string
+**backends**: string[]
+}
 class gcp_forwarding_rule [[#gcp_forwarding_rule]] {
 **ip_address**: string
 **ip_protocol**: string
@@ -2323,14 +2328,9 @@ class gcp_forwarding_rule [[#gcp_forwarding_rule]] {
 **network_tier**: string
 **port_range**: string
 }
-class load_balancer [[#load_balancer]] {
-**lb_type**: string
-**public_ip_address**: string
-**backends**: string[]
-}
+resource <|--- load_balancer
 gcp_resource <|--- gcp_forwarding_rule
 load_balancer <|--- gcp_forwarding_rule
-resource <|--- load_balancer
 
 @enduml
 ```
@@ -2342,7 +2342,7 @@ resource <|--- load_balancer
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_forwarding_rule resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_forwarding_rule resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2369,16 +2369,22 @@ skinparam stereotypeIBackgroundColor #e98df7
 class gcp_target_https_proxy [[#gcp_target_https_proxy]] {
 
 }
-class gcp_target_http_proxy [[#gcp_target_http_proxy]] {
-
-}
-class gcp_target_grpc_proxy [[#gcp_target_grpc_proxy]] {
+class gcp_target_tcp_proxy [[#gcp_target_tcp_proxy]] {
 
 }
 class gcp_target_ssl_proxy [[#gcp_target_ssl_proxy]] {
 
 }
+class gcp_target_grpc_proxy [[#gcp_target_grpc_proxy]] {
+
+}
 class gcp_forwarding_rule [[#gcp_forwarding_rule]] {
+
+}
+class gcp_project [[#gcp_project]] {
+
+}
+class gcp_target_http_proxy [[#gcp_target_http_proxy]] {
 
 }
 class gcp_region [[#gcp_region]] {
@@ -2390,31 +2396,25 @@ class gcp_target_pool [[#gcp_target_pool]] {
 class gcp_target_vpn_gateway [[#gcp_target_vpn_gateway]] {
 
 }
-class gcp_project [[#gcp_project]] {
-
-}
-class gcp_target_tcp_proxy [[#gcp_target_tcp_proxy]] {
-
-}
-gcp_forwarding_rule -[#1A83AF]-> gcp_target_https_proxy
-gcp_forwarding_rule -[#1A83AF]-> gcp_target_tcp_proxy
-gcp_forwarding_rule -[#1A83AF]-> gcp_target_ssl_proxy
 gcp_forwarding_rule -[#1A83AF]-> gcp_target_http_proxy
 gcp_forwarding_rule -[#1A83AF]-> gcp_target_grpc_proxy
+gcp_forwarding_rule -[#1A83AF]-> gcp_target_https_proxy
 gcp_forwarding_rule -[#1A83AF]-> gcp_target_vpn_gateway
+gcp_forwarding_rule -[#1A83AF]-> gcp_target_ssl_proxy
 gcp_forwarding_rule -[#1A83AF]-> gcp_target_pool
-gcp_region -[#1A83AF]-> gcp_target_https_proxy
-gcp_region -[#1A83AF]-> gcp_forwarding_rule
-gcp_region -[#1A83AF]-> gcp_target_http_proxy
-gcp_region -[#1A83AF]-> gcp_target_pool
-gcp_region -[#1A83AF]-> gcp_target_vpn_gateway
-gcp_project -[#1A83AF]-> gcp_target_https_proxy
+gcp_forwarding_rule -[#1A83AF]-> gcp_target_tcp_proxy
 gcp_project -[#1A83AF]-> gcp_forwarding_rule
-gcp_project -[#1A83AF]-> gcp_target_tcp_proxy
-gcp_project -[#1A83AF]-> gcp_target_ssl_proxy
-gcp_project -[#1A83AF]-> gcp_region
 gcp_project -[#1A83AF]-> gcp_target_http_proxy
 gcp_project -[#1A83AF]-> gcp_target_grpc_proxy
+gcp_project -[#1A83AF]-> gcp_region
+gcp_project -[#1A83AF]-> gcp_target_https_proxy
+gcp_project -[#1A83AF]-> gcp_target_ssl_proxy
+gcp_project -[#1A83AF]-> gcp_target_tcp_proxy
+gcp_region -[#1A83AF]-> gcp_target_https_proxy
+gcp_region -[#1A83AF]-> gcp_target_pool
+gcp_region -[#1A83AF]-> gcp_target_http_proxy
+gcp_region -[#1A83AF]-> gcp_forwarding_rule
+gcp_region -[#1A83AF]-> gcp_target_vpn_gateway
 
 @enduml
 ```
@@ -2427,7 +2427,7 @@ gcp_project -[#1A83AF]-> gcp_target_grpc_proxy
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_gke_cluster data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_gke_cluster data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2486,7 +2486,7 @@ resource <|--- gcp_gke_cluster
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_gke_cluster resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_gke_cluster resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2510,17 +2510,17 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class gcp_gke_cluster [[#gcp_gke_cluster]] {
+
+}
 class gcp_region [[#gcp_region]] {
 
 }
 class gcp_zone [[#gcp_zone]] {
 
 }
-class gcp_gke_cluster [[#gcp_gke_cluster]] {
-
-}
-gcp_region -[#1A83AF]-> gcp_zone
 gcp_region -[#1A83AF]-> gcp_gke_cluster
+gcp_region -[#1A83AF]-> gcp_zone
 gcp_zone -[#1A83AF]-> gcp_gke_cluster
 
 @enduml
@@ -2534,7 +2534,7 @@ gcp_zone -[#1A83AF]-> gcp_gke_cluster
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_global_forwarding_rule data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_global_forwarding_rule data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2574,6 +2574,11 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
+class load_balancer [[#load_balancer]] {
+**lb_type**: string
+**public_ip_address**: string
+**backends**: string[]
+}
 class gcp_global_forwarding_rule [[#gcp_global_forwarding_rule]] {
 
 }
@@ -2584,15 +2589,10 @@ class gcp_forwarding_rule [[#gcp_forwarding_rule]] {
 **network_tier**: string
 **port_range**: string
 }
-class load_balancer [[#load_balancer]] {
-**lb_type**: string
-**public_ip_address**: string
-**backends**: string[]
-}
+resource <|--- load_balancer
 gcp_forwarding_rule <|--- gcp_global_forwarding_rule
 gcp_resource <|--- gcp_forwarding_rule
 load_balancer <|--- gcp_forwarding_rule
-resource <|--- load_balancer
 
 @enduml
 ```
@@ -2604,7 +2604,7 @@ resource <|--- load_balancer
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_global_forwarding_rule resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_global_forwarding_rule resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2631,16 +2631,19 @@ skinparam stereotypeIBackgroundColor #e98df7
 class gcp_target_https_proxy [[#gcp_target_https_proxy]] {
 
 }
-class gcp_target_http_proxy [[#gcp_target_http_proxy]] {
-
-}
-class gcp_target_grpc_proxy [[#gcp_target_grpc_proxy]] {
+class gcp_target_tcp_proxy [[#gcp_target_tcp_proxy]] {
 
 }
 class gcp_target_ssl_proxy [[#gcp_target_ssl_proxy]] {
 
 }
+class gcp_target_grpc_proxy [[#gcp_target_grpc_proxy]] {
+
+}
 class gcp_global_forwarding_rule [[#gcp_global_forwarding_rule]] {
+
+}
+class gcp_target_http_proxy [[#gcp_target_http_proxy]] {
 
 }
 class gcp_target_pool [[#gcp_target_pool]] {
@@ -2649,16 +2652,13 @@ class gcp_target_pool [[#gcp_target_pool]] {
 class gcp_target_vpn_gateway [[#gcp_target_vpn_gateway]] {
 
 }
-class gcp_target_tcp_proxy [[#gcp_target_tcp_proxy]] {
-
-}
-gcp_global_forwarding_rule -[#1A83AF]-> gcp_target_https_proxy
-gcp_global_forwarding_rule -[#1A83AF]-> gcp_target_tcp_proxy
-gcp_global_forwarding_rule -[#1A83AF]-> gcp_target_ssl_proxy
 gcp_global_forwarding_rule -[#1A83AF]-> gcp_target_http_proxy
 gcp_global_forwarding_rule -[#1A83AF]-> gcp_target_grpc_proxy
+gcp_global_forwarding_rule -[#1A83AF]-> gcp_target_https_proxy
 gcp_global_forwarding_rule -[#1A83AF]-> gcp_target_vpn_gateway
+gcp_global_forwarding_rule -[#1A83AF]-> gcp_target_ssl_proxy
 gcp_global_forwarding_rule -[#1A83AF]-> gcp_target_pool
+gcp_global_forwarding_rule -[#1A83AF]-> gcp_target_tcp_proxy
 
 @enduml
 ```
@@ -2671,7 +2671,7 @@ gcp_global_forwarding_rule -[#1A83AF]-> gcp_target_pool
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_global_network_endpoint_group data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_global_network_endpoint_group data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2728,7 +2728,7 @@ resource <|--- gcp_global_network_endpoint_group
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_global_network_endpoint_group resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_global_network_endpoint_group resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2776,7 +2776,7 @@ gcp_network -[#1A83AF]-> gcp_global_network_endpoint_group
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_health_check data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_health_check data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2840,7 +2840,7 @@ resource <|--- health_check
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_health_check resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_health_check resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2867,26 +2867,26 @@ skinparam stereotypeIBackgroundColor #e98df7
 class gcp_backend_service [[#gcp_backend_service]] {
 
 }
-class gcp_instance_group_manager [[#gcp_instance_group_manager]] {
-
-}
 class gcp_health_check [[#gcp_health_check]] {
 
 }
-class gcp_region [[#gcp_region]] {
+class gcp_instance_group_manager [[#gcp_instance_group_manager]] {
 
 }
 class gcp_project [[#gcp_project]] {
 
 }
+class gcp_region [[#gcp_region]] {
+
+}
 gcp_backend_service -[#1A83AF]-> gcp_health_check
 gcp_instance_group_manager -[#1A83AF]-> gcp_health_check
-gcp_region -[#1A83AF]-> gcp_instance_group_manager
-gcp_region -[#1A83AF]-> gcp_health_check
-gcp_region -[#1A83AF]-> gcp_backend_service
+gcp_project -[#1A83AF]-> gcp_backend_service
 gcp_project -[#1A83AF]-> gcp_region
 gcp_project -[#1A83AF]-> gcp_health_check
-gcp_project -[#1A83AF]-> gcp_backend_service
+gcp_region -[#1A83AF]-> gcp_instance_group_manager
+gcp_region -[#1A83AF]-> gcp_backend_service
+gcp_region -[#1A83AF]-> gcp_health_check
 
 @enduml
 ```
@@ -2899,7 +2899,7 @@ gcp_project -[#1A83AF]-> gcp_backend_service
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_health_check_service data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_health_check_service data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2946,7 +2946,7 @@ gcp_resource <|--- gcp_health_check_service
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_health_check_service resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_health_check_service resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2985,7 +2985,7 @@ class gcp_health_check_service [[#gcp_health_check_service]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_http_health_check data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_http_health_check data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3051,7 +3051,7 @@ resource <|--- health_check
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_http_health_check resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_http_health_check resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3078,23 +3078,23 @@ skinparam stereotypeIBackgroundColor #e98df7
 class gcp_backend_service [[#gcp_backend_service]] {
 
 }
-class gcp_instance_group_manager [[#gcp_instance_group_manager]] {
-
-}
 class gcp_http_health_check [[#gcp_http_health_check]] {
 
 }
-class gcp_target_pool [[#gcp_target_pool]] {
+class gcp_instance_group_manager [[#gcp_instance_group_manager]] {
 
 }
 class gcp_project [[#gcp_project]] {
 
 }
+class gcp_target_pool [[#gcp_target_pool]] {
+
+}
 gcp_backend_service -[#1A83AF]-> gcp_http_health_check
 gcp_instance_group_manager -[#1A83AF]-> gcp_http_health_check
-gcp_target_pool -[#1A83AF]-> gcp_http_health_check
 gcp_project -[#1A83AF]-> gcp_http_health_check
 gcp_project -[#1A83AF]-> gcp_backend_service
+gcp_target_pool -[#1A83AF]-> gcp_http_health_check
 
 @enduml
 ```
@@ -3107,7 +3107,7 @@ gcp_project -[#1A83AF]-> gcp_backend_service
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_https_health_check data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_https_health_check data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3147,13 +3147,13 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class gcp_https_health_check [[#gcp_https_health_check]] {
-
-}
 class gcp_http_health_check [[#gcp_http_health_check]] {
 **host**: string
 **request_path**: string
 **port**: int64
+}
+class gcp_https_health_check [[#gcp_https_health_check]] {
+
 }
 class health_check [[#health_check]] {
 **check_interval**: int64
@@ -3162,9 +3162,9 @@ class health_check [[#health_check]] {
 **timeout**: int64
 **health_check_type**: string
 }
-gcp_http_health_check <|--- gcp_https_health_check
 gcp_resource <|--- gcp_http_health_check
 health_check <|--- gcp_http_health_check
+gcp_http_health_check <|--- gcp_https_health_check
 resource <|--- health_check
 
 @enduml
@@ -3177,7 +3177,7 @@ resource <|--- health_check
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_https_health_check resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_https_health_check resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3204,23 +3204,23 @@ skinparam stereotypeIBackgroundColor #e98df7
 class gcp_backend_service [[#gcp_backend_service]] {
 
 }
-class gcp_instance_group_manager [[#gcp_instance_group_manager]] {
-
-}
 class gcp_https_health_check [[#gcp_https_health_check]] {
 
 }
-class gcp_target_pool [[#gcp_target_pool]] {
+class gcp_instance_group_manager [[#gcp_instance_group_manager]] {
 
 }
 class gcp_project [[#gcp_project]] {
 
 }
+class gcp_target_pool [[#gcp_target_pool]] {
+
+}
 gcp_backend_service -[#1A83AF]-> gcp_https_health_check
 gcp_instance_group_manager -[#1A83AF]-> gcp_https_health_check
-gcp_target_pool -[#1A83AF]-> gcp_https_health_check
-gcp_project -[#1A83AF]-> gcp_https_health_check
 gcp_project -[#1A83AF]-> gcp_backend_service
+gcp_project -[#1A83AF]-> gcp_https_health_check
+gcp_target_pool -[#1A83AF]-> gcp_https_health_check
 
 @enduml
 ```
@@ -3233,7 +3233,7 @@ gcp_project -[#1A83AF]-> gcp_backend_service
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_image data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_image data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3324,7 +3324,7 @@ gcp_image --> gcp_initial_state_config
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_image resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_image resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3363,7 +3363,7 @@ class gcp_image [[#gcp_image]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_instance data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_instance data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3426,7 +3426,7 @@ resource <|--- instance
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_instance resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_instance resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3459,12 +3459,6 @@ class gcp_network [[#gcp_network]] {
 class gcp_disk [[#gcp_disk]] {
 
 }
-class gcp_zone [[#gcp_zone]] {
-
-}
-class gcp_target_pool [[#gcp_target_pool]] {
-
-}
 class gcp_instance_group [[#gcp_instance_group]] {
 
 }
@@ -3474,22 +3468,28 @@ class gcp_instance [[#gcp_instance]] {
 class gcp_machine_type [[#gcp_machine_type]] {
 
 }
+class gcp_target_pool [[#gcp_target_pool]] {
+
+}
+class gcp_zone [[#gcp_zone]] {
+
+}
 class gcp_target_instance [[#gcp_target_instance]] {
 
 }
-gcp_subnetwork -[#1A83AF]-> gcp_instance
 gcp_subnetwork -[#1A83AF]-> gcp_instance_group
-gcp_network -[#1A83AF]-> gcp_instance
+gcp_subnetwork -[#1A83AF]-> gcp_instance
 gcp_network -[#1A83AF]-> gcp_instance_group
 gcp_network -[#1A83AF]-> gcp_subnetwork
-gcp_zone -[#1A83AF]-> gcp_instance
-gcp_zone -[#1A83AF]-> gcp_instance_group
-gcp_zone -[#1A83AF]-> gcp_disk
-gcp_zone -[#1A83AF]-> gcp_machine_type
-gcp_target_pool -[#1A83AF]-> gcp_instance
+gcp_network -[#1A83AF]-> gcp_instance
 gcp_instance_group -[#1A83AF]-> gcp_instance
 gcp_instance -[#1A83AF]-> gcp_disk
 gcp_machine_type -[#1A83AF]-> gcp_instance
+gcp_target_pool -[#1A83AF]-> gcp_instance
+gcp_zone -[#1A83AF]-> gcp_instance_group
+gcp_zone -[#1A83AF]-> gcp_machine_type
+gcp_zone -[#1A83AF]-> gcp_disk
+gcp_zone -[#1A83AF]-> gcp_instance
 gcp_target_instance -[#1A83AF]-> gcp_instance
 
 @enduml
@@ -3503,7 +3503,7 @@ gcp_target_instance -[#1A83AF]-> gcp_instance
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_instance_group data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_instance_group data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3559,7 +3559,7 @@ resource <|--- gcp_instance_group
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_instance_group resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_instance_group resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3592,7 +3592,13 @@ class gcp_network [[#gcp_network]] {
 class gcp_backend_service [[#gcp_backend_service]] {
 
 }
+class gcp_instance_group [[#gcp_instance_group]] {
+
+}
 class gcp_instance_group_manager [[#gcp_instance_group_manager]] {
+
+}
+class gcp_instance [[#gcp_instance]] {
 
 }
 class gcp_region [[#gcp_region]] {
@@ -3601,27 +3607,21 @@ class gcp_region [[#gcp_region]] {
 class gcp_zone [[#gcp_zone]] {
 
 }
-class gcp_instance_group [[#gcp_instance_group]] {
-
-}
-class gcp_instance [[#gcp_instance]] {
-
-}
-gcp_subnetwork -[#1A83AF]-> gcp_instance
 gcp_subnetwork -[#1A83AF]-> gcp_instance_group
-gcp_network -[#1A83AF]-> gcp_instance
+gcp_subnetwork -[#1A83AF]-> gcp_instance
 gcp_network -[#1A83AF]-> gcp_instance_group
 gcp_network -[#1A83AF]-> gcp_subnetwork
+gcp_network -[#1A83AF]-> gcp_instance
 gcp_backend_service -[#1A83AF]-> gcp_instance_group
-gcp_region -[#1A83AF]-> gcp_instance_group_manager
-gcp_region -[#1A83AF]-> gcp_zone
-gcp_region -[#1A83AF]-> gcp_subnetwork
-gcp_region -[#1A83AF]-> gcp_instance_group
-gcp_region -[#1A83AF]-> gcp_backend_service
-gcp_zone -[#1A83AF]-> gcp_instance
-gcp_zone -[#1A83AF]-> gcp_instance_group
 gcp_instance_group -[#1A83AF]-> gcp_instance_group_manager
 gcp_instance_group -[#1A83AF]-> gcp_instance
+gcp_region -[#1A83AF]-> gcp_instance_group
+gcp_region -[#1A83AF]-> gcp_instance_group_manager
+gcp_region -[#1A83AF]-> gcp_backend_service
+gcp_region -[#1A83AF]-> gcp_subnetwork
+gcp_region -[#1A83AF]-> gcp_zone
+gcp_zone -[#1A83AF]-> gcp_instance_group
+gcp_zone -[#1A83AF]-> gcp_instance
 
 @enduml
 ```
@@ -3634,7 +3634,7 @@ gcp_instance_group -[#1A83AF]-> gcp_instance
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_instance_group_manager data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_instance_group_manager data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3690,7 +3690,7 @@ resource <|--- gcp_instance_group_manager
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_instance_group_manager resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_instance_group_manager resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3714,7 +3714,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class gcp_instance_group_manager [[#gcp_instance_group_manager]] {
+class gcp_instance_group [[#gcp_instance_group]] {
+
+}
+class gcp_http_health_check [[#gcp_http_health_check]] {
 
 }
 class gcp_health_check [[#gcp_health_check]] {
@@ -3723,7 +3726,7 @@ class gcp_health_check [[#gcp_health_check]] {
 class gcp_https_health_check [[#gcp_https_health_check]] {
 
 }
-class gcp_http_health_check [[#gcp_http_health_check]] {
+class gcp_instance_group_manager [[#gcp_instance_group_manager]] {
 
 }
 class gcp_region [[#gcp_region]] {
@@ -3732,18 +3735,15 @@ class gcp_region [[#gcp_region]] {
 class gcp_autoscaler [[#gcp_autoscaler]] {
 
 }
-class gcp_instance_group [[#gcp_instance_group]] {
-
-}
-gcp_instance_group_manager -[#1A83AF]-> gcp_health_check
+gcp_instance_group -[#1A83AF]-> gcp_instance_group_manager
 gcp_instance_group_manager -[#1A83AF]-> gcp_https_health_check
 gcp_instance_group_manager -[#1A83AF]-> gcp_http_health_check
-gcp_region -[#1A83AF]-> gcp_instance_group_manager
-gcp_region -[#1A83AF]-> gcp_autoscaler
-gcp_region -[#1A83AF]-> gcp_health_check
+gcp_instance_group_manager -[#1A83AF]-> gcp_health_check
 gcp_region -[#1A83AF]-> gcp_instance_group
+gcp_region -[#1A83AF]-> gcp_instance_group_manager
+gcp_region -[#1A83AF]-> gcp_health_check
+gcp_region -[#1A83AF]-> gcp_autoscaler
 gcp_autoscaler -[#1A83AF]-> gcp_instance_group_manager
-gcp_instance_group -[#1A83AF]-> gcp_instance_group_manager
 
 @enduml
 ```
@@ -3756,7 +3756,7 @@ gcp_instance_group -[#1A83AF]-> gcp_instance_group_manager
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_instance_template data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_instance_template data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3812,7 +3812,7 @@ resource <|--- gcp_instance_template
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_instance_template resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_instance_template resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3855,7 +3855,7 @@ gcp_machine_type -[#1A83AF]-> gcp_instance_template
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_interconnect data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_interconnect data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3931,7 +3931,7 @@ gcp_interconnect --> gcp_interconnect_outage_notification
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_interconnect resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_interconnect resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3970,7 +3970,7 @@ class gcp_interconnect [[#gcp_interconnect]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_interconnect_attachment data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_interconnect_attachment data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4046,7 +4046,7 @@ gcp_interconnect_attachment --> gcp_interconnect_attachment_partner_metadata
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_interconnect_attachment resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_interconnect_attachment resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4085,7 +4085,7 @@ class gcp_interconnect_attachment [[#gcp_interconnect_attachment]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_interconnect_location data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_interconnect_location data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4143,7 +4143,7 @@ gcp_interconnect_location --> gcp_interconnect_location_region_info
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_interconnect_location resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_interconnect_location resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4182,7 +4182,7 @@ class gcp_interconnect_location [[#gcp_interconnect_location]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_license data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_license data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4233,7 +4233,7 @@ gcp_license --> gcp_license_resource_requirements
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_license resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_license resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4272,7 +4272,7 @@ class gcp_license [[#gcp_license]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_machine_image data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_machine_image data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4557,7 +4557,7 @@ gcp_saved_attached_disk --> gcp_customer_encryption_key
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_machine_image resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_machine_image resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4596,7 +4596,7 @@ class gcp_machine_image [[#gcp_machine_image]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_machine_type data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_machine_type data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4636,9 +4636,6 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class type [[#type]] {
-
-}
 class quota [[#quota]] {
 **quota**: double
 **usage**: double
@@ -4650,6 +4647,9 @@ class phantom_resource [[#phantom_resource]] {
 class gcp_machine_type [[#gcp_machine_type]] {
 
 }
+class type [[#type]] {
+
+}
 class instance_type [[#instance_type]] {
 **instance_type**: string
 **instance_cores**: double
@@ -4657,11 +4657,11 @@ class instance_type [[#instance_type]] {
 **ondemand_cost**: double
 **reservations**: int64
 }
-quota <|--- type
 phantom_resource <|--- quota
 resource <|--- phantom_resource
 gcp_resource <|--- gcp_machine_type
 instance_type <|--- gcp_machine_type
+quota <|--- type
 type <|--- instance_type
 
 @enduml
@@ -4674,7 +4674,7 @@ type <|--- instance_type
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_machine_type resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_machine_type resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4698,9 +4698,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class gcp_zone [[#gcp_zone]] {
-
-}
 class gcp_instance [[#gcp_instance]] {
 
 }
@@ -4710,14 +4707,17 @@ class gcp_service_sku [[#gcp_service_sku]] {
 class gcp_machine_type [[#gcp_machine_type]] {
 
 }
+class gcp_zone [[#gcp_zone]] {
+
+}
 class gcp_instance_template [[#gcp_instance_template]] {
 
 }
-gcp_zone -[#1A83AF]-> gcp_instance
-gcp_zone -[#1A83AF]-> gcp_machine_type
 gcp_service_sku -[#1A83AF]-> gcp_machine_type
-gcp_machine_type -[#1A83AF]-> gcp_instance
 gcp_machine_type -[#1A83AF]-> gcp_instance_template
+gcp_machine_type -[#1A83AF]-> gcp_instance
+gcp_zone -[#1A83AF]-> gcp_machine_type
+gcp_zone -[#1A83AF]-> gcp_instance
 
 @enduml
 ```
@@ -4730,7 +4730,7 @@ gcp_machine_type -[#1A83AF]-> gcp_instance_template
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_network data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_network data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4790,7 +4790,7 @@ resource <|--- network
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_network resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_network resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4826,25 +4826,25 @@ class gcp_network [[#gcp_network]] {
 class gcp_firewall [[#gcp_firewall]] {
 
 }
-class gcp_network_endpoint_group [[#gcp_network_endpoint_group]] {
-
-}
-class gcp_router [[#gcp_router]] {
-
-}
 class gcp_instance_group [[#gcp_instance_group]] {
 
 }
-class gcp_target_vpn_gateway [[#gcp_target_vpn_gateway]] {
+class gcp_network_endpoint_group [[#gcp_network_endpoint_group]] {
 
 }
-class gcp_project [[#gcp_project]] {
+class gcp_instance [[#gcp_instance]] {
 
 }
 class gcp_route [[#gcp_route]] {
 
 }
-class gcp_instance [[#gcp_instance]] {
+class gcp_project [[#gcp_project]] {
+
+}
+class gcp_target_vpn_gateway [[#gcp_target_vpn_gateway]] {
+
+}
+class gcp_router [[#gcp_router]] {
 
 }
 class gcp_global_network_endpoint_group [[#gcp_global_network_endpoint_group]] {
@@ -4853,25 +4853,25 @@ class gcp_global_network_endpoint_group [[#gcp_global_network_endpoint_group]] {
 class gcp_vpn_gateway [[#gcp_vpn_gateway]] {
 
 }
-gcp_subnetwork -[#1A83AF]-> gcp_instance
-gcp_subnetwork -[#1A83AF]-> gcp_network_endpoint_group
 gcp_subnetwork -[#1A83AF]-> gcp_global_network_endpoint_group
 gcp_subnetwork -[#1A83AF]-> gcp_instance_group
+gcp_subnetwork -[#1A83AF]-> gcp_instance
+gcp_subnetwork -[#1A83AF]-> gcp_network_endpoint_group
 gcp_firewall_policy -[#1A83AF]-> gcp_network
-gcp_network -[#1A83AF]-> gcp_instance
-gcp_network -[#1A83AF]-> gcp_network_endpoint_group
-gcp_network -[#1A83AF]-> gcp_router
-gcp_network -[#1A83AF]-> gcp_vpn_gateway
 gcp_network -[#1A83AF]-> gcp_instance_group
+gcp_network -[#1A83AF]-> gcp_vpn_gateway
+gcp_network -[#1A83AF]-> gcp_network_endpoint_group
 gcp_network -[#1A83AF]-> gcp_subnetwork
 gcp_network -[#1A83AF]-> gcp_target_vpn_gateway
-gcp_network -[#1A83AF]-> gcp_route
 gcp_network -[#1A83AF]-> gcp_global_network_endpoint_group
+gcp_network -[#1A83AF]-> gcp_instance
+gcp_network -[#1A83AF]-> gcp_route
+gcp_network -[#1A83AF]-> gcp_router
 gcp_firewall -[#1A83AF]-> gcp_network
 gcp_instance_group -[#1A83AF]-> gcp_instance
-gcp_project -[#1A83AF]-> gcp_network
-gcp_project -[#1A83AF]-> gcp_subnetwork
 gcp_project -[#1A83AF]-> gcp_route
+gcp_project -[#1A83AF]-> gcp_subnetwork
+gcp_project -[#1A83AF]-> gcp_network
 
 @enduml
 ```
@@ -4884,7 +4884,7 @@ gcp_project -[#1A83AF]-> gcp_route
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_network_edge_security_service data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_network_edge_security_service data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4929,7 +4929,7 @@ gcp_resource <|--- gcp_network_edge_security_service
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_network_edge_security_service resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_network_edge_security_service resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4968,7 +4968,7 @@ class gcp_network_edge_security_service [[#gcp_network_edge_security_service]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_network_endpoint_group data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_network_endpoint_group data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5025,7 +5025,7 @@ resource <|--- gcp_network_endpoint_group
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_network_endpoint_group resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_network_endpoint_group resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5058,23 +5058,23 @@ class gcp_network [[#gcp_network]] {
 class gcp_backend_service [[#gcp_backend_service]] {
 
 }
+class gcp_network_endpoint_group [[#gcp_network_endpoint_group]] {
+
+}
 class gcp_region [[#gcp_region]] {
 
 }
 class gcp_zone [[#gcp_zone]] {
 
 }
-class gcp_network_endpoint_group [[#gcp_network_endpoint_group]] {
-
-}
 gcp_subnetwork -[#1A83AF]-> gcp_network_endpoint_group
 gcp_network -[#1A83AF]-> gcp_network_endpoint_group
 gcp_network -[#1A83AF]-> gcp_subnetwork
 gcp_backend_service -[#1A83AF]-> gcp_network_endpoint_group
-gcp_region -[#1A83AF]-> gcp_zone
-gcp_region -[#1A83AF]-> gcp_subnetwork
 gcp_region -[#1A83AF]-> gcp_network_endpoint_group
 gcp_region -[#1A83AF]-> gcp_backend_service
+gcp_region -[#1A83AF]-> gcp_subnetwork
+gcp_region -[#1A83AF]-> gcp_zone
 gcp_zone -[#1A83AF]-> gcp_network_endpoint_group
 
 @enduml
@@ -5088,7 +5088,7 @@ gcp_zone -[#1A83AF]-> gcp_network_endpoint_group
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_node_group data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_node_group data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5164,7 +5164,7 @@ gcp_node_group_maintenance_window --> gcp_duration
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_node_group resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_node_group resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5207,7 +5207,7 @@ gcp_node_template -[#1A83AF]-> gcp_node_group
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_node_template data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_node_template data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5275,7 +5275,7 @@ gcp_node_template --> gcp_node_template_node_type_flexibility
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_node_template resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_node_template resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5318,7 +5318,7 @@ gcp_node_template -[#1A83AF]-> gcp_node_group
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_node_type data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_node_type data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5364,7 +5364,7 @@ gcp_resource <|--- gcp_node_type
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_node_type resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_node_type resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5403,7 +5403,7 @@ class gcp_node_type [[#gcp_node_type]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_notification_endpoint data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_notification_endpoint data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5459,7 +5459,7 @@ gcp_notification_endpoint_grpc_settings --> gcp_duration
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_notification_endpoint resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_notification_endpoint resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5498,7 +5498,7 @@ class gcp_notification_endpoint [[#gcp_notification_endpoint]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_object data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_object data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5541,7 +5541,7 @@ gcp_resource <|--- gcp_object
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_object resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_object resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5580,7 +5580,7 @@ class gcp_object [[#gcp_object]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_operation data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_operation data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5686,7 +5686,7 @@ gcp_operation --> gcp_warnings
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_operation resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_operation resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5729,7 +5729,7 @@ gcp_operation -[#1A83AF]-> gcp_disk
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_packet_mirroring data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_packet_mirroring data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5809,7 +5809,7 @@ gcp_packet_mirroring --> gcp_packet_mirroring_network_info
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_packet_mirroring resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_packet_mirroring resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5848,7 +5848,7 @@ class gcp_packet_mirroring [[#gcp_packet_mirroring]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_project data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_project data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5908,7 +5908,7 @@ account <|--- gcp_project
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_project resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_project resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5944,10 +5944,7 @@ class gcp_network [[#gcp_network]] {
 class gcp_backend_service [[#gcp_backend_service]] {
 
 }
-class gcp_target_http_proxy [[#gcp_target_http_proxy]] {
-
-}
-class gcp_target_grpc_proxy [[#gcp_target_grpc_proxy]] {
+class gcp_http_health_check [[#gcp_http_health_check]] {
 
 }
 class gcp_health_check [[#gcp_health_check]] {
@@ -5956,10 +5953,16 @@ class gcp_health_check [[#gcp_health_check]] {
 class gcp_https_health_check [[#gcp_https_health_check]] {
 
 }
-class gcp_http_health_check [[#gcp_http_health_check]] {
+class gcp_target_tcp_proxy [[#gcp_target_tcp_proxy]] {
 
 }
 class gcp_target_ssl_proxy [[#gcp_target_ssl_proxy]] {
+
+}
+class gcp_service [[#gcp_service]] {
+
+}
+class gcp_target_grpc_proxy [[#gcp_target_grpc_proxy]] {
 
 }
 class gcp_ssl_certificate [[#gcp_ssl_certificate]] {
@@ -5968,7 +5971,10 @@ class gcp_ssl_certificate [[#gcp_ssl_certificate]] {
 class gcp_forwarding_rule [[#gcp_forwarding_rule]] {
 
 }
-class gcp_region [[#gcp_region]] {
+class gcp_route [[#gcp_route]] {
+
+}
+class gcp_snapshot [[#gcp_snapshot]] {
 
 }
 class gcp_project [[#gcp_project]] {
@@ -5977,16 +5983,10 @@ class gcp_project [[#gcp_project]] {
 class gcp_bucket [[#gcp_bucket]] {
 
 }
-class gcp_target_tcp_proxy [[#gcp_target_tcp_proxy]] {
+class gcp_target_http_proxy [[#gcp_target_http_proxy]] {
 
 }
-class gcp_service [[#gcp_service]] {
-
-}
-class gcp_snapshot [[#gcp_snapshot]] {
-
-}
-class gcp_route [[#gcp_route]] {
+class gcp_region [[#gcp_region]] {
 
 }
 gcp_target_https_proxy -[#1A83AF]-> gcp_ssl_certificate
@@ -5995,40 +5995,40 @@ gcp_network -[#1A83AF]-> gcp_route
 gcp_backend_service -[#1A83AF]-> gcp_http_health_check
 gcp_backend_service -[#1A83AF]-> gcp_health_check
 gcp_backend_service -[#1A83AF]-> gcp_https_health_check
-gcp_target_grpc_proxy -[#1A83AF]-> gcp_ssl_certificate
-gcp_target_ssl_proxy -[#1A83AF]-> gcp_backend_service
+gcp_target_tcp_proxy -[#1A83AF]-> gcp_backend_service
 gcp_target_ssl_proxy -[#1A83AF]-> gcp_ssl_certificate
-gcp_forwarding_rule -[#1A83AF]-> gcp_target_https_proxy
-gcp_forwarding_rule -[#1A83AF]-> gcp_target_tcp_proxy
-gcp_forwarding_rule -[#1A83AF]-> gcp_target_ssl_proxy
+gcp_target_ssl_proxy -[#1A83AF]-> gcp_backend_service
+gcp_target_grpc_proxy -[#1A83AF]-> gcp_ssl_certificate
 gcp_forwarding_rule -[#1A83AF]-> gcp_target_http_proxy
 gcp_forwarding_rule -[#1A83AF]-> gcp_target_grpc_proxy
-gcp_region -[#1A83AF]-> gcp_target_https_proxy
-gcp_region -[#1A83AF]-> gcp_subnetwork
-gcp_region -[#1A83AF]-> gcp_forwarding_rule
-gcp_region -[#1A83AF]-> gcp_target_http_proxy
-gcp_region -[#1A83AF]-> gcp_ssl_certificate
-gcp_region -[#1A83AF]-> gcp_health_check
-gcp_region -[#1A83AF]-> gcp_backend_service
-gcp_project -[#1A83AF]-> gcp_http_health_check
-gcp_project -[#1A83AF]-> gcp_target_https_proxy
-gcp_project -[#1A83AF]-> gcp_forwarding_rule
+gcp_forwarding_rule -[#1A83AF]-> gcp_target_https_proxy
+gcp_forwarding_rule -[#1A83AF]-> gcp_target_ssl_proxy
+gcp_forwarding_rule -[#1A83AF]-> gcp_target_tcp_proxy
+gcp_project -[#1A83AF]-> gcp_snapshot
 gcp_project -[#1A83AF]-> gcp_bucket
-gcp_project -[#1A83AF]-> gcp_target_tcp_proxy
-gcp_project -[#1A83AF]-> gcp_ssl_certificate
-gcp_project -[#1A83AF]-> gcp_target_ssl_proxy
-gcp_project -[#1A83AF]-> gcp_service
-gcp_project -[#1A83AF]-> gcp_region
+gcp_project -[#1A83AF]-> gcp_forwarding_rule
 gcp_project -[#1A83AF]-> gcp_target_http_proxy
 gcp_project -[#1A83AF]-> gcp_target_grpc_proxy
-gcp_project -[#1A83AF]-> gcp_network
-gcp_project -[#1A83AF]-> gcp_snapshot
-gcp_project -[#1A83AF]-> gcp_subnetwork
-gcp_project -[#1A83AF]-> gcp_https_health_check
-gcp_project -[#1A83AF]-> gcp_health_check
-gcp_project -[#1A83AF]-> gcp_route
+gcp_project -[#1A83AF]-> gcp_ssl_certificate
+gcp_project -[#1A83AF]-> gcp_service
+gcp_project -[#1A83AF]-> gcp_http_health_check
 gcp_project -[#1A83AF]-> gcp_backend_service
-gcp_target_tcp_proxy -[#1A83AF]-> gcp_backend_service
+gcp_project -[#1A83AF]-> gcp_route
+gcp_project -[#1A83AF]-> gcp_region
+gcp_project -[#1A83AF]-> gcp_target_https_proxy
+gcp_project -[#1A83AF]-> gcp_subnetwork
+gcp_project -[#1A83AF]-> gcp_target_ssl_proxy
+gcp_project -[#1A83AF]-> gcp_health_check
+gcp_project -[#1A83AF]-> gcp_https_health_check
+gcp_project -[#1A83AF]-> gcp_target_tcp_proxy
+gcp_project -[#1A83AF]-> gcp_network
+gcp_region -[#1A83AF]-> gcp_target_https_proxy
+gcp_region -[#1A83AF]-> gcp_target_http_proxy
+gcp_region -[#1A83AF]-> gcp_backend_service
+gcp_region -[#1A83AF]-> gcp_subnetwork
+gcp_region -[#1A83AF]-> gcp_health_check
+gcp_region -[#1A83AF]-> gcp_ssl_certificate
+gcp_region -[#1A83AF]-> gcp_forwarding_rule
 
 @enduml
 ```
@@ -6041,7 +6041,7 @@ gcp_target_tcp_proxy -[#1A83AF]-> gcp_backend_service
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_project_billing_info data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_project_billing_info data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6086,7 +6086,7 @@ gcp_resource <|--- gcp_project_billing_info
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_project_billing_info resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_project_billing_info resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6129,7 +6129,7 @@ gcp_billing_account -[#1A83AF]-> gcp_project_billing_info
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_public_advertised_prefix data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_public_advertised_prefix data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6185,7 +6185,7 @@ gcp_public_advertised_prefix --> gcp_public_advertised_prefix_public_delegated_p
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_public_advertised_prefix resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_public_advertised_prefix resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6228,7 +6228,7 @@ gcp_public_delegated_prefix -[#1A83AF]-> gcp_public_advertised_prefix
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_public_delegated_prefix data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_public_delegated_prefix data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6286,7 +6286,7 @@ gcp_public_delegated_prefix --> gcp_public_delegated_prefix_public_delegated_sub
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_public_delegated_prefix resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_public_delegated_prefix resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6329,7 +6329,7 @@ gcp_public_delegated_prefix -[#1A83AF]-> gcp_public_advertised_prefix
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_quota data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_quota data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6369,9 +6369,6 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class gcp_quota [[#gcp_quota]] {
-
-}
 class quota [[#quota]] {
 **quota**: double
 **usage**: double
@@ -6380,10 +6377,13 @@ class quota [[#quota]] {
 class phantom_resource [[#phantom_resource]] {
 
 }
-gcp_resource <|--- gcp_quota
-quota <|--- gcp_quota
+class gcp_quota [[#gcp_quota]] {
+
+}
 phantom_resource <|--- quota
 resource <|--- phantom_resource
+gcp_resource <|--- gcp_quota
+quota <|--- gcp_quota
 
 @enduml
 ```
@@ -6395,7 +6395,7 @@ resource <|--- phantom_resource
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_quota resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_quota resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6438,7 +6438,7 @@ gcp_region -[#1A83AF]-> gcp_quota
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_region data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_region data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6498,7 +6498,7 @@ region <|--- gcp_region
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_region resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_region resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6534,121 +6534,121 @@ class gcp_backend_service [[#gcp_backend_service]] {
 class gcp_disk [[#gcp_disk]] {
 
 }
-class gcp_database [[#gcp_database]] {
-
-}
-class gcp_url_map [[#gcp_url_map]] {
-
-}
-class gcp_target_http_proxy [[#gcp_target_http_proxy]] {
-
-}
-class gcp_instance_group_manager [[#gcp_instance_group_manager]] {
-
-}
-class gcp_health_check [[#gcp_health_check]] {
-
-}
-class gcp_ssl_certificate [[#gcp_ssl_certificate]] {
-
-}
-class gcp_forwarding_rule [[#gcp_forwarding_rule]] {
-
-}
-class gcp_region [[#gcp_region]] {
-
-}
-class gcp_zone [[#gcp_zone]] {
-
-}
-class gcp_quota [[#gcp_quota]] {
-
-}
-class gcp_disk_type [[#gcp_disk_type]] {
+class gcp_instance_group [[#gcp_instance_group]] {
 
 }
 class gcp_network_endpoint_group [[#gcp_network_endpoint_group]] {
 
 }
-class gcp_router [[#gcp_router]] {
+class gcp_health_check [[#gcp_health_check]] {
 
 }
-class gcp_autoscaler [[#gcp_autoscaler]] {
+class gcp_instance_group_manager [[#gcp_instance_group_manager]] {
 
 }
-class gcp_target_pool [[#gcp_target_pool]] {
+class gcp_ssl_certificate [[#gcp_ssl_certificate]] {
+
+}
+class gcp_url_map [[#gcp_url_map]] {
+
+}
+class gcp_forwarding_rule [[#gcp_forwarding_rule]] {
+
+}
+class gcp_disk_type [[#gcp_disk_type]] {
 
 }
 class gcp_gke_cluster [[#gcp_gke_cluster]] {
 
 }
-class gcp_instance_group [[#gcp_instance_group]] {
+class gcp_project [[#gcp_project]] {
 
 }
-class gcp_target_vpn_gateway [[#gcp_target_vpn_gateway]] {
+class gcp_target_http_proxy [[#gcp_target_http_proxy]] {
+
+}
+class gcp_region [[#gcp_region]] {
+
+}
+class gcp_target_pool [[#gcp_target_pool]] {
+
+}
+class gcp_database [[#gcp_database]] {
 
 }
 class gcp_vpn_tunnel [[#gcp_vpn_tunnel]] {
 
 }
-class gcp_project [[#gcp_project]] {
+class gcp_autoscaler [[#gcp_autoscaler]] {
 
 }
-gcp_subnetwork -[#1A83AF]-> gcp_network_endpoint_group
+class gcp_quota [[#gcp_quota]] {
+
+}
+class gcp_zone [[#gcp_zone]] {
+
+}
+class gcp_target_vpn_gateway [[#gcp_target_vpn_gateway]] {
+
+}
+class gcp_router [[#gcp_router]] {
+
+}
 gcp_subnetwork -[#1A83AF]-> gcp_instance_group
-gcp_target_https_proxy -[#1A83AF]-> gcp_url_map
+gcp_subnetwork -[#1A83AF]-> gcp_network_endpoint_group
 gcp_target_https_proxy -[#1A83AF]-> gcp_ssl_certificate
+gcp_target_https_proxy -[#1A83AF]-> gcp_url_map
+gcp_backend_service -[#1A83AF]-> gcp_instance_group
 gcp_backend_service -[#1A83AF]-> gcp_network_endpoint_group
 gcp_backend_service -[#1A83AF]-> gcp_health_check
-gcp_backend_service -[#1A83AF]-> gcp_instance_group
-gcp_url_map -[#1A83AF]-> gcp_backend_service
-gcp_target_http_proxy -[#1A83AF]-> gcp_url_map
+gcp_instance_group -[#1A83AF]-> gcp_instance_group_manager
 gcp_instance_group_manager -[#1A83AF]-> gcp_health_check
-gcp_forwarding_rule -[#1A83AF]-> gcp_target_https_proxy
+gcp_url_map -[#1A83AF]-> gcp_backend_service
 gcp_forwarding_rule -[#1A83AF]-> gcp_target_http_proxy
+gcp_forwarding_rule -[#1A83AF]-> gcp_target_https_proxy
 gcp_forwarding_rule -[#1A83AF]-> gcp_target_vpn_gateway
 gcp_forwarding_rule -[#1A83AF]-> gcp_target_pool
-gcp_region -[#1A83AF]-> gcp_instance_group_manager
-gcp_region -[#1A83AF]-> gcp_target_https_proxy
-gcp_region -[#1A83AF]-> gcp_zone
-gcp_region -[#1A83AF]-> gcp_url_map
-gcp_region -[#1A83AF]-> gcp_subnetwork
-gcp_region -[#1A83AF]-> gcp_quota
-gcp_region -[#1A83AF]-> gcp_disk_type
-gcp_region -[#1A83AF]-> gcp_network_endpoint_group
-gcp_region -[#1A83AF]-> gcp_router
-gcp_region -[#1A83AF]-> gcp_forwarding_rule
-gcp_region -[#1A83AF]-> gcp_autoscaler
-gcp_region -[#1A83AF]-> gcp_database
-gcp_region -[#1A83AF]-> gcp_target_http_proxy
-gcp_region -[#1A83AF]-> gcp_disk
-gcp_region -[#1A83AF]-> gcp_target_pool
-gcp_region -[#1A83AF]-> gcp_gke_cluster
-gcp_region -[#1A83AF]-> gcp_ssl_certificate
-gcp_region -[#1A83AF]-> gcp_health_check
-gcp_region -[#1A83AF]-> gcp_instance_group
-gcp_region -[#1A83AF]-> gcp_target_vpn_gateway
-gcp_region -[#1A83AF]-> gcp_vpn_tunnel
-gcp_region -[#1A83AF]-> gcp_backend_service
-gcp_zone -[#1A83AF]-> gcp_disk_type
-gcp_zone -[#1A83AF]-> gcp_network_endpoint_group
-gcp_zone -[#1A83AF]-> gcp_gke_cluster
-gcp_zone -[#1A83AF]-> gcp_autoscaler
-gcp_zone -[#1A83AF]-> gcp_database
-gcp_zone -[#1A83AF]-> gcp_instance_group
-gcp_zone -[#1A83AF]-> gcp_disk
 gcp_disk_type -[#1A83AF]-> gcp_disk
-gcp_autoscaler -[#1A83AF]-> gcp_instance_group_manager
-gcp_instance_group -[#1A83AF]-> gcp_instance_group_manager
-gcp_vpn_tunnel -[#1A83AF]-> gcp_target_vpn_gateway
-gcp_project -[#1A83AF]-> gcp_target_https_proxy
 gcp_project -[#1A83AF]-> gcp_forwarding_rule
-gcp_project -[#1A83AF]-> gcp_ssl_certificate
-gcp_project -[#1A83AF]-> gcp_region
 gcp_project -[#1A83AF]-> gcp_target_http_proxy
+gcp_project -[#1A83AF]-> gcp_ssl_certificate
+gcp_project -[#1A83AF]-> gcp_backend_service
+gcp_project -[#1A83AF]-> gcp_region
+gcp_project -[#1A83AF]-> gcp_target_https_proxy
 gcp_project -[#1A83AF]-> gcp_subnetwork
 gcp_project -[#1A83AF]-> gcp_health_check
-gcp_project -[#1A83AF]-> gcp_backend_service
+gcp_target_http_proxy -[#1A83AF]-> gcp_url_map
+gcp_region -[#1A83AF]-> gcp_database
+gcp_region -[#1A83AF]-> gcp_gke_cluster
+gcp_region -[#1A83AF]-> gcp_instance_group
+gcp_region -[#1A83AF]-> gcp_instance_group_manager
+gcp_region -[#1A83AF]-> gcp_vpn_tunnel
+gcp_region -[#1A83AF]-> gcp_target_https_proxy
+gcp_region -[#1A83AF]-> gcp_disk
+gcp_region -[#1A83AF]-> gcp_target_pool
+gcp_region -[#1A83AF]-> gcp_target_http_proxy
+gcp_region -[#1A83AF]-> gcp_network_endpoint_group
+gcp_region -[#1A83AF]-> gcp_backend_service
+gcp_region -[#1A83AF]-> gcp_subnetwork
+gcp_region -[#1A83AF]-> gcp_health_check
+gcp_region -[#1A83AF]-> gcp_url_map
+gcp_region -[#1A83AF]-> gcp_autoscaler
+gcp_region -[#1A83AF]-> gcp_ssl_certificate
+gcp_region -[#1A83AF]-> gcp_forwarding_rule
+gcp_region -[#1A83AF]-> gcp_disk_type
+gcp_region -[#1A83AF]-> gcp_quota
+gcp_region -[#1A83AF]-> gcp_zone
+gcp_region -[#1A83AF]-> gcp_target_vpn_gateway
+gcp_region -[#1A83AF]-> gcp_router
+gcp_vpn_tunnel -[#1A83AF]-> gcp_target_vpn_gateway
+gcp_autoscaler -[#1A83AF]-> gcp_instance_group_manager
+gcp_zone -[#1A83AF]-> gcp_database
+gcp_zone -[#1A83AF]-> gcp_instance_group
+gcp_zone -[#1A83AF]-> gcp_gke_cluster
+gcp_zone -[#1A83AF]-> gcp_disk_type
+gcp_zone -[#1A83AF]-> gcp_autoscaler
+gcp_zone -[#1A83AF]-> gcp_network_endpoint_group
+gcp_zone -[#1A83AF]-> gcp_disk
 
 @enduml
 ```
@@ -6661,7 +6661,7 @@ gcp_project -[#1A83AF]-> gcp_backend_service
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_resource_policy data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_resource_policy data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6777,7 +6777,7 @@ gcp_resource_policy --> gcp_resource_policy_snapshot_schedule_policy
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_resource_policy resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_resource_policy resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6816,7 +6816,7 @@ class gcp_resource_policy [[#gcp_resource_policy]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_route data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_route data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6872,7 +6872,7 @@ resource <|--- gcp_route
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_route resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_route resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6899,15 +6899,15 @@ skinparam stereotypeIBackgroundColor #e98df7
 class gcp_network [[#gcp_network]] {
 
 }
-class gcp_project [[#gcp_project]] {
-
-}
 class gcp_route [[#gcp_route]] {
 
 }
+class gcp_project [[#gcp_project]] {
+
+}
 gcp_network -[#1A83AF]-> gcp_route
-gcp_project -[#1A83AF]-> gcp_network
 gcp_project -[#1A83AF]-> gcp_route
+gcp_project -[#1A83AF]-> gcp_network
 
 @enduml
 ```
@@ -6920,7 +6920,7 @@ gcp_project -[#1A83AF]-> gcp_route
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_router data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_router data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6948,6 +6948,9 @@ class gcp_resource [[#gcp_resource]] {
 **link**: string
 **label_fingerprint**: string
 }
+class gateway [[#gateway]] {
+
+}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -6963,12 +6966,9 @@ class resource [[#resource]] {
 class gcp_router [[#gcp_router]] {
 
 }
-class gateway [[#gateway]] {
-
-}
+resource <|--- gateway
 gcp_resource <|--- gcp_router
 gateway <|--- gcp_router
-resource <|--- gateway
 
 @enduml
 ```
@@ -6980,7 +6980,7 @@ resource <|--- gateway
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_router resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_router resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7027,7 +7027,7 @@ gcp_region -[#1A83AF]-> gcp_router
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_security_policy data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_security_policy data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7067,15 +7067,15 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class gcp_security_policy [[#gcp_security_policy]] {
-
-}
 class policy [[#policy]] {
 
 }
+class gcp_security_policy [[#gcp_security_policy]] {
+
+}
+resource <|--- policy
 gcp_resource <|--- gcp_security_policy
 policy <|--- gcp_security_policy
-resource <|--- policy
 
 @enduml
 ```
@@ -7087,7 +7087,7 @@ resource <|--- policy
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_security_policy resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_security_policy resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7111,10 +7111,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class gcp_security_policy [[#gcp_security_policy]] {
+class gcp_zone [[#gcp_zone]] {
 
 }
-class gcp_zone [[#gcp_zone]] {
+class gcp_security_policy [[#gcp_security_policy]] {
 
 }
 gcp_zone -[#1A83AF]-> gcp_security_policy
@@ -7130,7 +7130,7 @@ gcp_zone -[#1A83AF]-> gcp_security_policy
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_service data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_service data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7190,7 +7190,7 @@ resource <|--- phantom_resource
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_service resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_service resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7214,17 +7214,17 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class gcp_project [[#gcp_project]] {
-
-}
 class gcp_service [[#gcp_service]] {
 
 }
 class gcp_service_sku [[#gcp_service_sku]] {
 
 }
-gcp_project -[#1A83AF]-> gcp_service
+class gcp_project [[#gcp_project]] {
+
+}
 gcp_service -[#1A83AF]-> gcp_service_sku
+gcp_project -[#1A83AF]-> gcp_service
 
 @enduml
 ```
@@ -7237,7 +7237,7 @@ gcp_service -[#1A83AF]-> gcp_service_sku
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_service_attachment data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_service_attachment data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7306,7 +7306,7 @@ gcp_service_attachment --> gcp_uint128
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_service_attachment resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_service_attachment resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7353,7 +7353,7 @@ gcp_service_attachment -[#1A83AF]-> gcp_backend_service
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_service_sku data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_service_sku data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7420,7 +7420,7 @@ phantom_resource <|--- gcp_service_sku
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_service_sku resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_service_sku resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7444,9 +7444,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class gcp_disk_type [[#gcp_disk_type]] {
-
-}
 class gcp_service [[#gcp_service]] {
 
 }
@@ -7456,9 +7453,12 @@ class gcp_service_sku [[#gcp_service_sku]] {
 class gcp_machine_type [[#gcp_machine_type]] {
 
 }
+class gcp_disk_type [[#gcp_disk_type]] {
+
+}
 gcp_service -[#1A83AF]-> gcp_service_sku
-gcp_service_sku -[#1A83AF]-> gcp_disk_type
 gcp_service_sku -[#1A83AF]-> gcp_machine_type
+gcp_service_sku -[#1A83AF]-> gcp_disk_type
 
 @enduml
 ```
@@ -7471,7 +7471,7 @@ gcp_service_sku -[#1A83AF]-> gcp_machine_type
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_sku data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_sku data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7566,7 +7566,7 @@ gcp_sku --> gcp_pricing_info
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_sku resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_sku resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7605,7 +7605,7 @@ class gcp_sku [[#gcp_sku]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_snapshot data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_snapshot data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7645,9 +7645,6 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class gcp_snapshot [[#gcp_snapshot]] {
-**storage_bytes**: int64
-}
 class snapshot [[#snapshot]] {
 **snapshot_status**: string
 **description**: string
@@ -7657,9 +7654,12 @@ class snapshot [[#snapshot]] {
 **owner_id**: string
 **owner_alias**: string
 }
+class gcp_snapshot [[#gcp_snapshot]] {
+**storage_bytes**: int64
+}
+resource <|--- snapshot
 gcp_resource <|--- gcp_snapshot
 snapshot <|--- gcp_snapshot
-resource <|--- snapshot
 
 @enduml
 ```
@@ -7671,7 +7671,7 @@ resource <|--- snapshot
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_snapshot resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_snapshot resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7698,10 +7698,10 @@ skinparam stereotypeIBackgroundColor #e98df7
 class gcp_disk [[#gcp_disk]] {
 
 }
-class gcp_project [[#gcp_project]] {
+class gcp_snapshot [[#gcp_snapshot]] {
 
 }
-class gcp_snapshot [[#gcp_snapshot]] {
+class gcp_project [[#gcp_project]] {
 
 }
 gcp_disk -[#1A83AF]-> gcp_snapshot
@@ -7718,7 +7718,7 @@ gcp_project -[#1A83AF]-> gcp_snapshot
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_sql_backup_run data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_sql_backup_run data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7778,7 +7778,7 @@ gcp_sql_backup_run --> gcp_sql_operation_error
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_sql_backup_run resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_sql_backup_run resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7817,7 +7817,7 @@ class gcp_sql_backup_run [[#gcp_sql_backup_run]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_sql_database data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_sql_database data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7870,7 +7870,7 @@ gcp_sql_database --> gcp_sql_sql_server_database_details
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_sql_database resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_sql_database resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7909,7 +7909,7 @@ class gcp_sql_database [[#gcp_sql_database]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_sql_database_instance data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_sql_database_instance data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8159,7 +8159,7 @@ gcp_sql_database_instance --> gcp_sql_settings
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_sql_database_instance resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_sql_database_instance resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8202,7 +8202,7 @@ gcp_sql_database_instance -[#1A83AF]-> gcp_sql_operation
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_sql_operation data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_sql_operation data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8317,7 +8317,7 @@ gcp_sql_import_context --> gcp_sql_csvimportoptions
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_sql_operation resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_sql_operation resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8360,7 +8360,7 @@ gcp_sql_database_instance -[#1A83AF]-> gcp_sql_operation
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_sql_user data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_sql_user data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8429,7 +8429,7 @@ gcp_sql_user_password_validation_policy --> gcp_sql_password_status
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_sql_user resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_sql_user resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8468,7 +8468,7 @@ class gcp_sql_user [[#gcp_sql_user]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_ssl_certificate data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_ssl_certificate data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8534,7 +8534,7 @@ resource <|--- certificate
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_ssl_certificate resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_ssl_certificate resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8561,31 +8561,31 @@ skinparam stereotypeIBackgroundColor #e98df7
 class gcp_target_https_proxy [[#gcp_target_https_proxy]] {
 
 }
-class gcp_target_grpc_proxy [[#gcp_target_grpc_proxy]] {
+class gcp_target_ssl_proxy [[#gcp_target_ssl_proxy]] {
 
 }
-class gcp_target_ssl_proxy [[#gcp_target_ssl_proxy]] {
+class gcp_target_grpc_proxy [[#gcp_target_grpc_proxy]] {
 
 }
 class gcp_ssl_certificate [[#gcp_ssl_certificate]] {
 
 }
-class gcp_region [[#gcp_region]] {
-
-}
 class gcp_project [[#gcp_project]] {
 
 }
+class gcp_region [[#gcp_region]] {
+
+}
 gcp_target_https_proxy -[#1A83AF]-> gcp_ssl_certificate
-gcp_target_grpc_proxy -[#1A83AF]-> gcp_ssl_certificate
 gcp_target_ssl_proxy -[#1A83AF]-> gcp_ssl_certificate
+gcp_target_grpc_proxy -[#1A83AF]-> gcp_ssl_certificate
+gcp_project -[#1A83AF]-> gcp_target_grpc_proxy
+gcp_project -[#1A83AF]-> gcp_ssl_certificate
+gcp_project -[#1A83AF]-> gcp_region
+gcp_project -[#1A83AF]-> gcp_target_https_proxy
+gcp_project -[#1A83AF]-> gcp_target_ssl_proxy
 gcp_region -[#1A83AF]-> gcp_target_https_proxy
 gcp_region -[#1A83AF]-> gcp_ssl_certificate
-gcp_project -[#1A83AF]-> gcp_target_https_proxy
-gcp_project -[#1A83AF]-> gcp_ssl_certificate
-gcp_project -[#1A83AF]-> gcp_target_ssl_proxy
-gcp_project -[#1A83AF]-> gcp_region
-gcp_project -[#1A83AF]-> gcp_target_grpc_proxy
 
 @enduml
 ```
@@ -8598,7 +8598,7 @@ gcp_project -[#1A83AF]-> gcp_target_grpc_proxy
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_ssl_policy data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_ssl_policy data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8657,7 +8657,7 @@ gcp_warnings --> gcp_data
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_ssl_policy resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_ssl_policy resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8700,7 +8700,7 @@ gcp_ssl_policy -[#1A83AF]-> gcp_target_https_proxy
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_subnetwork data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_subnetwork data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8760,7 +8760,7 @@ resource <|--- subnet
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_subnetwork resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_subnetwork resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8793,41 +8793,41 @@ class gcp_network [[#gcp_network]] {
 class gcp_service_attachment [[#gcp_service_attachment]] {
 
 }
-class gcp_region [[#gcp_region]] {
+class gcp_instance_group [[#gcp_instance_group]] {
 
 }
 class gcp_network_endpoint_group [[#gcp_network_endpoint_group]] {
 
 }
-class gcp_instance_group [[#gcp_instance_group]] {
+class gcp_instance [[#gcp_instance]] {
 
 }
 class gcp_project [[#gcp_project]] {
 
 }
-class gcp_instance [[#gcp_instance]] {
+class gcp_region [[#gcp_region]] {
 
 }
 class gcp_global_network_endpoint_group [[#gcp_global_network_endpoint_group]] {
 
 }
-gcp_subnetwork -[#1A83AF]-> gcp_instance
-gcp_subnetwork -[#1A83AF]-> gcp_network_endpoint_group
 gcp_subnetwork -[#1A83AF]-> gcp_global_network_endpoint_group
 gcp_subnetwork -[#1A83AF]-> gcp_instance_group
-gcp_network -[#1A83AF]-> gcp_instance
-gcp_network -[#1A83AF]-> gcp_network_endpoint_group
+gcp_subnetwork -[#1A83AF]-> gcp_instance
+gcp_subnetwork -[#1A83AF]-> gcp_network_endpoint_group
 gcp_network -[#1A83AF]-> gcp_instance_group
+gcp_network -[#1A83AF]-> gcp_network_endpoint_group
 gcp_network -[#1A83AF]-> gcp_subnetwork
 gcp_network -[#1A83AF]-> gcp_global_network_endpoint_group
+gcp_network -[#1A83AF]-> gcp_instance
 gcp_service_attachment -[#1A83AF]-> gcp_subnetwork
-gcp_region -[#1A83AF]-> gcp_subnetwork
-gcp_region -[#1A83AF]-> gcp_network_endpoint_group
-gcp_region -[#1A83AF]-> gcp_instance_group
 gcp_instance_group -[#1A83AF]-> gcp_instance
 gcp_project -[#1A83AF]-> gcp_region
-gcp_project -[#1A83AF]-> gcp_network
 gcp_project -[#1A83AF]-> gcp_subnetwork
+gcp_project -[#1A83AF]-> gcp_network
+gcp_region -[#1A83AF]-> gcp_instance_group
+gcp_region -[#1A83AF]-> gcp_network_endpoint_group
+gcp_region -[#1A83AF]-> gcp_subnetwork
 
 @enduml
 ```
@@ -8840,7 +8840,7 @@ gcp_project -[#1A83AF]-> gcp_subnetwork
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_target_grpc_proxy data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_target_grpc_proxy data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8896,7 +8896,7 @@ resource <|--- gcp_target_grpc_proxy
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_target_grpc_proxy resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_target_grpc_proxy resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8920,13 +8920,13 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class gcp_url_map [[#gcp_url_map]] {
-
-}
 class gcp_target_grpc_proxy [[#gcp_target_grpc_proxy]] {
 
 }
 class gcp_ssl_certificate [[#gcp_ssl_certificate]] {
+
+}
+class gcp_url_map [[#gcp_url_map]] {
 
 }
 class gcp_global_forwarding_rule [[#gcp_global_forwarding_rule]] {
@@ -8938,13 +8938,13 @@ class gcp_forwarding_rule [[#gcp_forwarding_rule]] {
 class gcp_project [[#gcp_project]] {
 
 }
-gcp_target_grpc_proxy -[#1A83AF]-> gcp_url_map
 gcp_target_grpc_proxy -[#1A83AF]-> gcp_ssl_certificate
+gcp_target_grpc_proxy -[#1A83AF]-> gcp_url_map
 gcp_global_forwarding_rule -[#1A83AF]-> gcp_target_grpc_proxy
 gcp_forwarding_rule -[#1A83AF]-> gcp_target_grpc_proxy
 gcp_project -[#1A83AF]-> gcp_forwarding_rule
-gcp_project -[#1A83AF]-> gcp_ssl_certificate
 gcp_project -[#1A83AF]-> gcp_target_grpc_proxy
+gcp_project -[#1A83AF]-> gcp_ssl_certificate
 
 @enduml
 ```
@@ -8957,7 +8957,7 @@ gcp_project -[#1A83AF]-> gcp_target_grpc_proxy
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_target_http_proxy data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_target_http_proxy data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9013,7 +9013,7 @@ resource <|--- gcp_target_http_proxy
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_target_http_proxy resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_target_http_proxy resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9040,30 +9040,30 @@ skinparam stereotypeIBackgroundColor #e98df7
 class gcp_url_map [[#gcp_url_map]] {
 
 }
-class gcp_target_http_proxy [[#gcp_target_http_proxy]] {
-
-}
 class gcp_global_forwarding_rule [[#gcp_global_forwarding_rule]] {
 
 }
 class gcp_forwarding_rule [[#gcp_forwarding_rule]] {
 
 }
-class gcp_region [[#gcp_region]] {
-
-}
 class gcp_project [[#gcp_project]] {
 
 }
-gcp_target_http_proxy -[#1A83AF]-> gcp_url_map
+class gcp_target_http_proxy [[#gcp_target_http_proxy]] {
+
+}
+class gcp_region [[#gcp_region]] {
+
+}
 gcp_global_forwarding_rule -[#1A83AF]-> gcp_target_http_proxy
 gcp_forwarding_rule -[#1A83AF]-> gcp_target_http_proxy
+gcp_project -[#1A83AF]-> gcp_forwarding_rule
+gcp_project -[#1A83AF]-> gcp_target_http_proxy
+gcp_project -[#1A83AF]-> gcp_region
+gcp_target_http_proxy -[#1A83AF]-> gcp_url_map
+gcp_region -[#1A83AF]-> gcp_target_http_proxy
 gcp_region -[#1A83AF]-> gcp_url_map
 gcp_region -[#1A83AF]-> gcp_forwarding_rule
-gcp_region -[#1A83AF]-> gcp_target_http_proxy
-gcp_project -[#1A83AF]-> gcp_forwarding_rule
-gcp_project -[#1A83AF]-> gcp_region
-gcp_project -[#1A83AF]-> gcp_target_http_proxy
 
 @enduml
 ```
@@ -9076,7 +9076,7 @@ gcp_project -[#1A83AF]-> gcp_target_http_proxy
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_target_https_proxy data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_target_https_proxy data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9132,7 +9132,7 @@ resource <|--- gcp_target_https_proxy
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_target_https_proxy resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_target_https_proxy resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9162,10 +9162,10 @@ class gcp_ssl_policy [[#gcp_ssl_policy]] {
 class gcp_target_https_proxy [[#gcp_target_https_proxy]] {
 
 }
-class gcp_url_map [[#gcp_url_map]] {
+class gcp_ssl_certificate [[#gcp_ssl_certificate]] {
 
 }
-class gcp_ssl_certificate [[#gcp_ssl_certificate]] {
+class gcp_url_map [[#gcp_url_map]] {
 
 }
 class gcp_global_forwarding_rule [[#gcp_global_forwarding_rule]] {
@@ -9174,25 +9174,25 @@ class gcp_global_forwarding_rule [[#gcp_global_forwarding_rule]] {
 class gcp_forwarding_rule [[#gcp_forwarding_rule]] {
 
 }
-class gcp_region [[#gcp_region]] {
-
-}
 class gcp_project [[#gcp_project]] {
 
 }
+class gcp_region [[#gcp_region]] {
+
+}
 gcp_ssl_policy -[#1A83AF]-> gcp_target_https_proxy
-gcp_target_https_proxy -[#1A83AF]-> gcp_url_map
 gcp_target_https_proxy -[#1A83AF]-> gcp_ssl_certificate
+gcp_target_https_proxy -[#1A83AF]-> gcp_url_map
 gcp_global_forwarding_rule -[#1A83AF]-> gcp_target_https_proxy
 gcp_forwarding_rule -[#1A83AF]-> gcp_target_https_proxy
-gcp_region -[#1A83AF]-> gcp_target_https_proxy
-gcp_region -[#1A83AF]-> gcp_url_map
-gcp_region -[#1A83AF]-> gcp_forwarding_rule
-gcp_region -[#1A83AF]-> gcp_ssl_certificate
-gcp_project -[#1A83AF]-> gcp_target_https_proxy
 gcp_project -[#1A83AF]-> gcp_forwarding_rule
 gcp_project -[#1A83AF]-> gcp_ssl_certificate
 gcp_project -[#1A83AF]-> gcp_region
+gcp_project -[#1A83AF]-> gcp_target_https_proxy
+gcp_region -[#1A83AF]-> gcp_target_https_proxy
+gcp_region -[#1A83AF]-> gcp_url_map
+gcp_region -[#1A83AF]-> gcp_ssl_certificate
+gcp_region -[#1A83AF]-> gcp_forwarding_rule
 
 @enduml
 ```
@@ -9205,7 +9205,7 @@ gcp_project -[#1A83AF]-> gcp_region
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_target_instance data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_target_instance data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9261,7 +9261,7 @@ resource <|--- gcp_target_instance
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_target_instance resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_target_instance resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9304,7 +9304,7 @@ gcp_target_instance -[#1A83AF]-> gcp_instance
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_target_pool data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_target_pool data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9361,7 +9361,7 @@ resource <|--- gcp_target_pool
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_target_pool resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_target_pool resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9385,10 +9385,13 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class gcp_http_health_check [[#gcp_http_health_check]] {
+
+}
 class gcp_https_health_check [[#gcp_https_health_check]] {
 
 }
-class gcp_http_health_check [[#gcp_http_health_check]] {
+class gcp_instance [[#gcp_instance]] {
 
 }
 class gcp_global_forwarding_rule [[#gcp_global_forwarding_rule]] {
@@ -9403,15 +9406,12 @@ class gcp_region [[#gcp_region]] {
 class gcp_target_pool [[#gcp_target_pool]] {
 
 }
-class gcp_instance [[#gcp_instance]] {
-
-}
 gcp_global_forwarding_rule -[#1A83AF]-> gcp_target_pool
 gcp_forwarding_rule -[#1A83AF]-> gcp_target_pool
-gcp_region -[#1A83AF]-> gcp_forwarding_rule
 gcp_region -[#1A83AF]-> gcp_target_pool
-gcp_target_pool -[#1A83AF]-> gcp_instance
+gcp_region -[#1A83AF]-> gcp_forwarding_rule
 gcp_target_pool -[#1A83AF]-> gcp_https_health_check
+gcp_target_pool -[#1A83AF]-> gcp_instance
 gcp_target_pool -[#1A83AF]-> gcp_http_health_check
 
 @enduml
@@ -9425,7 +9425,7 @@ gcp_target_pool -[#1A83AF]-> gcp_http_health_check
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_target_ssl_proxy data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_target_ssl_proxy data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9481,7 +9481,7 @@ resource <|--- gcp_target_ssl_proxy
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_target_ssl_proxy resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_target_ssl_proxy resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9523,14 +9523,14 @@ class gcp_forwarding_rule [[#gcp_forwarding_rule]] {
 class gcp_project [[#gcp_project]] {
 
 }
-gcp_target_ssl_proxy -[#1A83AF]-> gcp_backend_service
 gcp_target_ssl_proxy -[#1A83AF]-> gcp_ssl_certificate
+gcp_target_ssl_proxy -[#1A83AF]-> gcp_backend_service
 gcp_global_forwarding_rule -[#1A83AF]-> gcp_target_ssl_proxy
 gcp_forwarding_rule -[#1A83AF]-> gcp_target_ssl_proxy
 gcp_project -[#1A83AF]-> gcp_forwarding_rule
 gcp_project -[#1A83AF]-> gcp_ssl_certificate
-gcp_project -[#1A83AF]-> gcp_target_ssl_proxy
 gcp_project -[#1A83AF]-> gcp_backend_service
+gcp_project -[#1A83AF]-> gcp_target_ssl_proxy
 
 @enduml
 ```
@@ -9543,7 +9543,7 @@ gcp_project -[#1A83AF]-> gcp_backend_service
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_target_tcp_proxy data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_target_tcp_proxy data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9599,7 +9599,7 @@ resource <|--- gcp_target_tcp_proxy
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_target_tcp_proxy resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_target_tcp_proxy resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9626,6 +9626,9 @@ skinparam stereotypeIBackgroundColor #e98df7
 class gcp_backend_service [[#gcp_backend_service]] {
 
 }
+class gcp_target_tcp_proxy [[#gcp_target_tcp_proxy]] {
+
+}
 class gcp_global_forwarding_rule [[#gcp_global_forwarding_rule]] {
 
 }
@@ -9635,15 +9638,12 @@ class gcp_forwarding_rule [[#gcp_forwarding_rule]] {
 class gcp_project [[#gcp_project]] {
 
 }
-class gcp_target_tcp_proxy [[#gcp_target_tcp_proxy]] {
-
-}
+gcp_target_tcp_proxy -[#1A83AF]-> gcp_backend_service
 gcp_global_forwarding_rule -[#1A83AF]-> gcp_target_tcp_proxy
 gcp_forwarding_rule -[#1A83AF]-> gcp_target_tcp_proxy
 gcp_project -[#1A83AF]-> gcp_forwarding_rule
-gcp_project -[#1A83AF]-> gcp_target_tcp_proxy
 gcp_project -[#1A83AF]-> gcp_backend_service
-gcp_target_tcp_proxy -[#1A83AF]-> gcp_backend_service
+gcp_project -[#1A83AF]-> gcp_target_tcp_proxy
 
 @enduml
 ```
@@ -9656,7 +9656,7 @@ gcp_target_tcp_proxy -[#1A83AF]-> gcp_backend_service
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_target_vpn_gateway data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_target_vpn_gateway data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9684,6 +9684,9 @@ class gcp_resource [[#gcp_resource]] {
 **link**: string
 **label_fingerprint**: string
 }
+class gateway [[#gateway]] {
+
+}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -9699,12 +9702,9 @@ class resource [[#resource]] {
 class gcp_target_vpn_gateway [[#gcp_target_vpn_gateway]] {
 
 }
-class gateway [[#gateway]] {
-
-}
+resource <|--- gateway
 gcp_resource <|--- gcp_target_vpn_gateway
 gateway <|--- gcp_target_vpn_gateway
-resource <|--- gateway
 
 @enduml
 ```
@@ -9716,7 +9716,7 @@ resource <|--- gateway
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_target_vpn_gateway resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_target_vpn_gateway resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9752,18 +9752,18 @@ class gcp_forwarding_rule [[#gcp_forwarding_rule]] {
 class gcp_region [[#gcp_region]] {
 
 }
-class gcp_target_vpn_gateway [[#gcp_target_vpn_gateway]] {
+class gcp_vpn_tunnel [[#gcp_vpn_tunnel]] {
 
 }
-class gcp_vpn_tunnel [[#gcp_vpn_tunnel]] {
+class gcp_target_vpn_gateway [[#gcp_target_vpn_gateway]] {
 
 }
 gcp_network -[#1A83AF]-> gcp_target_vpn_gateway
 gcp_global_forwarding_rule -[#1A83AF]-> gcp_target_vpn_gateway
 gcp_forwarding_rule -[#1A83AF]-> gcp_target_vpn_gateway
+gcp_region -[#1A83AF]-> gcp_vpn_tunnel
 gcp_region -[#1A83AF]-> gcp_forwarding_rule
 gcp_region -[#1A83AF]-> gcp_target_vpn_gateway
-gcp_region -[#1A83AF]-> gcp_vpn_tunnel
 gcp_vpn_tunnel -[#1A83AF]-> gcp_target_vpn_gateway
 
 @enduml
@@ -9777,7 +9777,7 @@ gcp_vpn_tunnel -[#1A83AF]-> gcp_target_vpn_gateway
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_url_map data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_url_map data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9833,7 +9833,7 @@ resource <|--- gcp_url_map
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_url_map resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_url_map resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9863,26 +9863,26 @@ class gcp_target_https_proxy [[#gcp_target_https_proxy]] {
 class gcp_backend_service [[#gcp_backend_service]] {
 
 }
+class gcp_target_grpc_proxy [[#gcp_target_grpc_proxy]] {
+
+}
 class gcp_url_map [[#gcp_url_map]] {
 
 }
 class gcp_target_http_proxy [[#gcp_target_http_proxy]] {
 
 }
-class gcp_target_grpc_proxy [[#gcp_target_grpc_proxy]] {
-
-}
 class gcp_region [[#gcp_region]] {
 
 }
 gcp_target_https_proxy -[#1A83AF]-> gcp_url_map
+gcp_target_grpc_proxy -[#1A83AF]-> gcp_url_map
 gcp_url_map -[#1A83AF]-> gcp_backend_service
 gcp_target_http_proxy -[#1A83AF]-> gcp_url_map
-gcp_target_grpc_proxy -[#1A83AF]-> gcp_url_map
 gcp_region -[#1A83AF]-> gcp_target_https_proxy
-gcp_region -[#1A83AF]-> gcp_url_map
 gcp_region -[#1A83AF]-> gcp_target_http_proxy
 gcp_region -[#1A83AF]-> gcp_backend_service
+gcp_region -[#1A83AF]-> gcp_url_map
 
 @enduml
 ```
@@ -9895,7 +9895,7 @@ gcp_region -[#1A83AF]-> gcp_backend_service
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_vpn_gateway data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_vpn_gateway data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9923,6 +9923,9 @@ class gcp_resource [[#gcp_resource]] {
 **link**: string
 **label_fingerprint**: string
 }
+class gateway [[#gateway]] {
+
+}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -9934,9 +9937,6 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
-}
-class gateway [[#gateway]] {
-
 }
 class gcp_vpn_gateway [[#gcp_vpn_gateway]] {
 
@@ -9955,7 +9955,7 @@ gateway <|--- gcp_vpn_gateway
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_vpn_gateway resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_vpn_gateway resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9998,7 +9998,7 @@ gcp_network -[#1A83AF]-> gcp_vpn_gateway
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_vpn_tunnel data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_vpn_tunnel data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10058,7 +10058,7 @@ resource <|--- tunnel
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_vpn_tunnel resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_vpn_tunnel resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10085,14 +10085,14 @@ skinparam stereotypeIBackgroundColor #e98df7
 class gcp_region [[#gcp_region]] {
 
 }
-class gcp_target_vpn_gateway [[#gcp_target_vpn_gateway]] {
-
-}
 class gcp_vpn_tunnel [[#gcp_vpn_tunnel]] {
 
 }
-gcp_region -[#1A83AF]-> gcp_target_vpn_gateway
+class gcp_target_vpn_gateway [[#gcp_target_vpn_gateway]] {
+
+}
 gcp_region -[#1A83AF]-> gcp_vpn_tunnel
+gcp_region -[#1A83AF]-> gcp_target_vpn_gateway
 gcp_vpn_tunnel -[#1A83AF]-> gcp_target_vpn_gateway
 
 @enduml
@@ -10106,7 +10106,7 @@ gcp_vpn_tunnel -[#1A83AF]-> gcp_target_vpn_gateway
 
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_zone data model
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_zone data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10146,15 +10146,15 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class gcp_zone [[#gcp_zone]] {
-**zone_status**: string
-}
 class zone [[#zone]] {
 
 }
+class gcp_zone [[#gcp_zone]] {
+**zone_status**: string
+}
+resource <|--- zone
 gcp_resource <|--- gcp_zone
 zone <|--- gcp_zone
-resource <|--- zone
 
 @enduml
 ```
@@ -10166,7 +10166,7 @@ resource <|--- zone
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of gcp_zone resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of gcp_zone resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10193,31 +10193,10 @@ skinparam stereotypeIBackgroundColor #e98df7
 class gcp_disk [[#gcp_disk]] {
 
 }
-class gcp_database [[#gcp_database]] {
-
-}
-class gcp_security_policy [[#gcp_security_policy]] {
-
-}
-class gcp_region [[#gcp_region]] {
-
-}
-class gcp_zone [[#gcp_zone]] {
-
-}
-class gcp_disk_type [[#gcp_disk_type]] {
+class gcp_instance_group [[#gcp_instance_group]] {
 
 }
 class gcp_network_endpoint_group [[#gcp_network_endpoint_group]] {
-
-}
-class gcp_autoscaler [[#gcp_autoscaler]] {
-
-}
-class gcp_gke_cluster [[#gcp_gke_cluster]] {
-
-}
-class gcp_instance_group [[#gcp_instance_group]] {
 
 }
 class gcp_instance [[#gcp_instance]] {
@@ -10226,28 +10205,49 @@ class gcp_instance [[#gcp_instance]] {
 class gcp_machine_type [[#gcp_machine_type]] {
 
 }
-gcp_region -[#1A83AF]-> gcp_zone
-gcp_region -[#1A83AF]-> gcp_disk_type
-gcp_region -[#1A83AF]-> gcp_network_endpoint_group
-gcp_region -[#1A83AF]-> gcp_autoscaler
-gcp_region -[#1A83AF]-> gcp_database
-gcp_region -[#1A83AF]-> gcp_disk
-gcp_region -[#1A83AF]-> gcp_gke_cluster
-gcp_region -[#1A83AF]-> gcp_instance_group
-gcp_zone -[#1A83AF]-> gcp_disk_type
-gcp_zone -[#1A83AF]-> gcp_instance
-gcp_zone -[#1A83AF]-> gcp_network_endpoint_group
-gcp_zone -[#1A83AF]-> gcp_gke_cluster
-gcp_zone -[#1A83AF]-> gcp_autoscaler
-gcp_zone -[#1A83AF]-> gcp_database
-gcp_zone -[#1A83AF]-> gcp_instance_group
-gcp_zone -[#1A83AF]-> gcp_disk
-gcp_zone -[#1A83AF]-> gcp_machine_type
-gcp_zone -[#1A83AF]-> gcp_security_policy
-gcp_disk_type -[#1A83AF]-> gcp_disk
+class gcp_disk_type [[#gcp_disk_type]] {
+
+}
+class gcp_gke_cluster [[#gcp_gke_cluster]] {
+
+}
+class gcp_region [[#gcp_region]] {
+
+}
+class gcp_database [[#gcp_database]] {
+
+}
+class gcp_autoscaler [[#gcp_autoscaler]] {
+
+}
+class gcp_zone [[#gcp_zone]] {
+
+}
+class gcp_security_policy [[#gcp_security_policy]] {
+
+}
 gcp_instance_group -[#1A83AF]-> gcp_instance
 gcp_instance -[#1A83AF]-> gcp_disk
 gcp_machine_type -[#1A83AF]-> gcp_instance
+gcp_disk_type -[#1A83AF]-> gcp_disk
+gcp_region -[#1A83AF]-> gcp_database
+gcp_region -[#1A83AF]-> gcp_gke_cluster
+gcp_region -[#1A83AF]-> gcp_instance_group
+gcp_region -[#1A83AF]-> gcp_disk
+gcp_region -[#1A83AF]-> gcp_network_endpoint_group
+gcp_region -[#1A83AF]-> gcp_autoscaler
+gcp_region -[#1A83AF]-> gcp_disk_type
+gcp_region -[#1A83AF]-> gcp_zone
+gcp_zone -[#1A83AF]-> gcp_database
+gcp_zone -[#1A83AF]-> gcp_instance_group
+gcp_zone -[#1A83AF]-> gcp_machine_type
+gcp_zone -[#1A83AF]-> gcp_gke_cluster
+gcp_zone -[#1A83AF]-> gcp_disk_type
+gcp_zone -[#1A83AF]-> gcp_autoscaler
+gcp_zone -[#1A83AF]-> gcp_security_policy
+gcp_zone -[#1A83AF]-> gcp_network_endpoint_group
+gcp_zone -[#1A83AF]-> gcp_disk
+gcp_zone -[#1A83AF]-> gcp_instance
 
 @enduml
 ```

@@ -12,7 +12,7 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 
 <ZoomPanPinch>
 
-```plantuml Diagram of scarf_organization data model
+```kroki imgType="plantuml" imgTitle="Diagram of scarf_organization data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -51,13 +51,13 @@ class resource [[#resource]] {
 class account [[#account]] {
 
 }
+class scarf_resource [[#scarf_resource]] {
+
+}
 class scarf_organization [[#scarf_organization]] {
 **description**: string
 **billing_email**: string
 **website**: string
-}
-class scarf_resource [[#scarf_resource]] {
-
 }
 resource <|--- account
 scarf_resource <|--- scarf_organization
@@ -73,7 +73,7 @@ account <|--- scarf_organization
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of scarf_organization resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of scarf_organization resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -112,7 +112,7 @@ class scarf_organization [[#scarf_organization]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of scarf_package data model
+```kroki imgType="plantuml" imgTitle="Diagram of scarf_package data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -172,7 +172,7 @@ resource <|--- scarf_package
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of scarf_package resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of scarf_package resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37

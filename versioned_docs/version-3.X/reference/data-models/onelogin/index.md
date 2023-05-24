@@ -12,7 +12,7 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 
 <ZoomPanPinch>
 
-```plantuml Diagram of onelogin_account data model
+```kroki imgType="plantuml" imgTitle="Diagram of onelogin_account data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -48,10 +48,10 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class onelogin_resource [[#onelogin_resource]] {
+class account [[#account]] {
 
 }
-class account [[#account]] {
+class onelogin_resource [[#onelogin_resource]] {
 
 }
 class onelogin_account [[#onelogin_account]] {
@@ -71,7 +71,7 @@ account <|--- onelogin_account
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of onelogin_account resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of onelogin_account resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -110,7 +110,7 @@ class onelogin_account [[#onelogin_account]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of onelogin_region data model
+```kroki imgType="plantuml" imgTitle="Diagram of onelogin_region data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -146,18 +146,18 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
+class region [[#region]] {
+
+}
 class onelogin_region [[#onelogin_region]] {
 
 }
 class onelogin_resource [[#onelogin_resource]] {
 
 }
-class region [[#region]] {
-
-}
+resource <|--- region
 onelogin_resource <|--- onelogin_region
 region <|--- onelogin_region
-resource <|--- region
 
 @enduml
 ```
@@ -169,7 +169,7 @@ resource <|--- region
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of onelogin_region resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of onelogin_region resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -208,7 +208,7 @@ class onelogin_region [[#onelogin_region]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of onelogin_user data model
+```kroki imgType="plantuml" imgTitle="Diagram of onelogin_user data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -244,10 +244,10 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class onelogin_resource [[#onelogin_resource]] {
+class user [[#user]] {
 
 }
-class user [[#user]] {
+class onelogin_resource [[#onelogin_resource]] {
 
 }
 class onelogin_user [[#onelogin_user]] {
@@ -301,7 +301,7 @@ user <|--- onelogin_user
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of onelogin_user resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of onelogin_user resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37

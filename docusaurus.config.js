@@ -8,11 +8,15 @@ const a11yEmoji = require('@fec/remark-a11y-emoji');
 const oembed = require('remark-plugin-oembed');
 const math = require('remark-math');
 const katex = require('rehype-katex');
-const plantuml = require('@akebifiky/remark-simple-plantuml');
+const kroki = require('remark-kroki-plugin');
 
 const latestRelease = require('./latestRelease.json');
 const versions = require('./versions.json');
 
+const isProd =
+  process.env.NODE_ENV !== 'development' &&
+  !!process.env.NETLIFY &&
+  process.env.CONTEXT !== 'deploy-preview';
 const isProd =
   process.env.NODE_ENV !== 'development' &&
   !!process.env.NETLIFY &&
@@ -30,69 +34,15 @@ const config = {
   trailingSlash: false,
   noIndex: !isProd,
   stylesheets: [
-    {
-      rel: 'preload',
-      href: 'https://cdn.some.engineering/fonts/Barlow100.woff2',
-      as: 'font',
-      type: 'font/woff2',
-      crossorigin: true,
-    },
-    {
-      rel: 'preload',
-      href: 'https://cdn.some.engineering/fonts/Barlow200.woff2',
-      as: 'font',
-      type: 'font/woff2',
-      crossorigin: true,
-    },
-    {
-      rel: 'preload',
-      href: 'https://cdn.some.engineering/fonts/Barlow300.woff2',
-      as: 'font',
-      type: 'font/woff2',
-      crossorigin: true,
-    },
-    {
-      rel: 'preload',
-      href: 'https://cdn.some.engineering/fonts/Barlow400.woff2',
-      as: 'font',
-      type: 'font/woff2',
-      crossorigin: true,
-    },
-    {
-      rel: 'preload',
-      href: 'https://cdn.some.engineering/fonts/Barlow500.woff2',
-      as: 'font',
-      type: 'font/woff2',
-      crossorigin: true,
-    },
-    {
-      rel: 'preload',
-      href: 'https://cdn.some.engineering/fonts/Barlow600.woff2',
-      as: 'font',
-      type: 'font/woff2',
-      crossorigin: true,
-    },
-    {
-      rel: 'preload',
-      href: 'https://cdn.some.engineering/fonts/Barlow700.woff2',
-      as: 'font',
-      type: 'font/woff2',
-      crossorigin: true,
-    },
-    {
-      rel: 'preload',
-      href: 'https://cdn.some.engineering/fonts/Barlow800.woff2',
-      as: 'font',
-      type: 'font/woff2',
-      crossorigin: true,
-    },
-    {
-      rel: 'preload',
-      href: 'https://cdn.some.engineering/fonts/Barlow900.woff2',
-      as: 'font',
-      type: 'font/woff2',
-      crossorigin: true,
-    },
+    ...Array(9)
+      .fill()
+      .map((_, i) => ({
+        rel: 'preload',
+        href: `https://cdn.some.engineering/fonts/Barlow${i + 1}00.woff2`,
+        as: 'font',
+        type: 'font/woff2',
+        crossorigin: true,
+      })),
     {
       href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
       type: 'text/css',
@@ -145,7 +95,15 @@ const config = {
           remarkPlugins: [
             a11yEmoji,
             [oembed, { providers: ['youtube'] }],
-            [plantuml, { baseUrl: 'https://www.plantuml.com/plantuml/svg' }],
+            [
+              kroki,
+              {
+                krokiBase: 'https://kroki.some.engineering',
+                lang: 'kroki',
+                imgRefDir: '/img/kroki',
+                imgDir: 'static/img/kroki',
+              },
+            ],
           ],
           docItemComponent: '@theme/ApiItem',
           lastVersion: versions[0],
@@ -606,4 +564,5 @@ const config = {
     }),
 };
 
+module.exports = config;
 module.exports = config;

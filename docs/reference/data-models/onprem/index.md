@@ -13,7 +13,7 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 
 <ZoomPanPinch>
 
-```plantuml Diagram of onprem_instance data model
+```kroki imgType="plantuml" imgTitle="Diagram of onprem_instance data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -55,13 +55,13 @@ class instance [[#instance]] {
 **instance_type**: string
 **instance_status**: instance_status
 }
+class onprem_resource [[#onprem_resource]] {
+
+}
 class onprem_instance [[#onprem_instance]] {
 **network_device**: string
 **network_ip4**: string
 **network_ip6**: string
-}
-class onprem_resource [[#onprem_resource]] {
-
 }
 resource <|--- instance
 onprem_resource <|--- onprem_instance
@@ -77,7 +77,7 @@ instance <|--- onprem_instance
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of onprem_instance resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of onprem_instance resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -116,7 +116,7 @@ class onprem_instance [[#onprem_instance]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of onprem_location data model
+```kroki imgType="plantuml" imgTitle="Diagram of onprem_location data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -140,9 +140,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class account [[#account]] {
-
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -154,6 +151,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class account [[#account]] {
+
 }
 class onprem_location [[#onprem_location]] {
 
@@ -171,7 +171,7 @@ account <|--- onprem_location
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of onprem_location resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of onprem_location resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -210,7 +210,7 @@ class onprem_location [[#onprem_location]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of onprem_network data model
+```kroki imgType="plantuml" imgTitle="Diagram of onprem_network data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -249,10 +249,10 @@ class resource [[#resource]] {
 class network [[#network]] {
 
 }
-class onprem_resource [[#onprem_resource]] {
+class onprem_network [[#onprem_network]] {
 
 }
-class onprem_network [[#onprem_network]] {
+class onprem_resource [[#onprem_resource]] {
 
 }
 resource <|--- network
@@ -269,7 +269,7 @@ network <|--- onprem_network
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of onprem_network resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of onprem_network resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -308,7 +308,7 @@ class onprem_network [[#onprem_network]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of onprem_region data model
+```kroki imgType="plantuml" imgTitle="Diagram of onprem_region data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -363,7 +363,7 @@ region <|--- onprem_region
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of onprem_region resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of onprem_region resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37

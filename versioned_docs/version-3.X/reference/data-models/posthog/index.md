@@ -12,7 +12,7 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 
 <ZoomPanPinch>
 
-```plantuml Diagram of posthog_event data model
+```kroki imgType="plantuml" imgTitle="Diagram of posthog_event data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -48,6 +48,9 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
+class posthog_resource [[#posthog_resource]] {
+
+}
 class posthog_event [[#posthog_event]] {
 **project_id**: int64
 **count**: int64
@@ -64,9 +67,6 @@ class posthog_event [[#posthog_event]] {
 **last_calculated_at**: string
 **post_to_slack**: boolean
 }
-class posthog_resource [[#posthog_resource]] {
-
-}
 posthog_resource <|--- posthog_event
 resource <|--- posthog_event
 
@@ -80,7 +80,7 @@ resource <|--- posthog_event
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of posthog_event resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of posthog_event resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -119,7 +119,7 @@ class posthog_event [[#posthog_event]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of posthog_project data model
+```kroki imgType="plantuml" imgTitle="Diagram of posthog_project data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -194,7 +194,7 @@ account <|--- posthog_project
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of posthog_project resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of posthog_project resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37

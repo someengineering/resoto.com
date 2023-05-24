@@ -12,7 +12,7 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 
 <ZoomPanPinch>
 
-```plantuml Diagram of posthog_event data model
+```kroki imgType="plantuml" imgTitle="Diagram of posthog_event data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -80,7 +80,7 @@ resource <|--- posthog_event
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of posthog_event resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of posthog_event resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -119,7 +119,7 @@ class posthog_event [[#posthog_event]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of posthog_project data model
+```kroki imgType="plantuml" imgTitle="Diagram of posthog_project data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -143,9 +143,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class account [[#account]] {
-
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -157,6 +154,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class account [[#account]] {
+
 }
 class posthog_resource [[#posthog_resource]] {
 
@@ -194,7 +194,7 @@ account <|--- posthog_project
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of posthog_project resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of posthog_project resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37

@@ -12,7 +12,7 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 
 <ZoomPanPinch>
 
-```plantuml Diagram of github_account data model
+```kroki imgType="plantuml" imgTitle="Diagram of github_account data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -67,7 +67,7 @@ account <|--- github_account
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of github_account resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of github_account resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -106,7 +106,7 @@ class github_account [[#github_account]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of github_org data model
+```kroki imgType="plantuml" imgTitle="Diagram of github_org data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -195,7 +195,7 @@ resource <|--- github_org
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of github_org resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of github_org resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -234,7 +234,7 @@ class github_org [[#github_org]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of github_pull_request data model
+```kroki imgType="plantuml" imgTitle="Diagram of github_pull_request data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -318,7 +318,7 @@ resource <|--- github_pull_request
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of github_pull_request resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of github_pull_request resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -357,7 +357,7 @@ class github_pull_request [[#github_pull_request]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of github_region data model
+```kroki imgType="plantuml" imgTitle="Diagram of github_region data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -412,7 +412,7 @@ region <|--- github_region
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of github_region resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of github_region resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -451,7 +451,7 @@ class github_region [[#github_region]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of github_repo data model
+```kroki imgType="plantuml" imgTitle="Diagram of github_repo data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -486,30 +486,6 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
-}
-class github_repo_clones_traffic [[#github_repo_clones_traffic]] {
-**count**: int64
-**uniques**: int64
-**clones**: github_repo_clones[]
-}
-class github_repo_clones [[#github_repo_clones]] {
-**timestamp**: datetime
-**count**: int64
-**uniques**: int64
-}
-class github_resource [[#github_resource]] {
-
-}
-class github_repo_view [[#github_repo_view]] {
-**timestamp**: datetime
-**count**: int64
-**uniques**: int64
-}
-class github_repo_top_path [[#github_repo_top_path]] {
-**title**: string
-**path**: string
-**count**: int64
-**uniques**: int64
 }
 class github_repo [[#github_repo]] {
 **allow_merge_commit**: boolean
@@ -594,6 +570,25 @@ class github_repo [[#github_repo]] {
 **watchers_count**: int64
 **views_traffic**: github_repo_views_traffic
 }
+class github_resource [[#github_resource]] {
+
+}
+class github_repo_clones_traffic [[#github_repo_clones_traffic]] {
+**count**: int64
+**uniques**: int64
+**clones**: github_repo_clones[]
+}
+class github_repo_clones [[#github_repo_clones]] {
+**timestamp**: datetime
+**count**: int64
+**uniques**: int64
+}
+class github_repo_top_path [[#github_repo_top_path]] {
+**title**: string
+**path**: string
+**count**: int64
+**uniques**: int64
+}
 class github_repo_top_referrer [[#github_repo_top_referrer]] {
 **referrer**: string
 **count**: int64
@@ -604,13 +599,18 @@ class github_repo_views_traffic [[#github_repo_views_traffic]] {
 **uniques**: int64
 **views**: github_repo_view[]
 }
-github_repo_clones_traffic --> github_repo_clones
+class github_repo_view [[#github_repo_view]] {
+**timestamp**: datetime
+**count**: int64
+**uniques**: int64
+}
 github_resource <|--- github_repo
 resource <|--- github_repo
 github_repo --> github_repo_clones_traffic
 github_repo --> github_repo_top_path
 github_repo --> github_repo_top_referrer
 github_repo --> github_repo_views_traffic
+github_repo_clones_traffic --> github_repo_clones
 github_repo_views_traffic --> github_repo_view
 
 @enduml
@@ -623,7 +623,7 @@ github_repo_views_traffic --> github_repo_view
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of github_repo resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of github_repo resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -662,7 +662,7 @@ class github_repo [[#github_repo]] {
 
 <ZoomPanPinch>
 
-```plantuml Diagram of github_user data model
+```kroki imgType="plantuml" imgTitle="Diagram of github_user data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -762,7 +762,7 @@ user <|--- github_user
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of github_user resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of github_user resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37

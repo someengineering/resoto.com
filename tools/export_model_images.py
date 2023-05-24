@@ -74,7 +74,7 @@ def write_md(provider: str, kinds: list):
         for name in sorted(a["fqn"] for a in kinds):
             file.write(f"## `{name}`\n\n")
             file.write(f"<ZoomPanPinch>\n\n")
-            file.write(f"```plantuml Diagram of {name} data model\n")
+            file.write(f'```kroki imgType="plantuml" imgTitle="Diagram of {name} data model"\n')
             file.write(
                 get_url(
                     f"{core}/graph/resoto/model/uml", params={"output": "puml", "show": name, "link_classes": "true"}
@@ -83,7 +83,7 @@ def write_md(provider: str, kinds: list):
             file.write("\n```\n\n")
             file.write("</ZoomPanPinch>\n\n")
             file.write(f"<details>\n<summary>Relationships to Other Resources</summary>\n<div>\n")
-            file.write(f"<ZoomPanPinch>\n\n```plantuml Diagram of {name} resource relationships\n")
+            file.write(f'<ZoomPanPinch>\n\n```kroki imgType="plantuml" imgTitle="Diagram of {name} resource relationships"\n')
             file.write(
                 get_url(
                     f"{core}/graph/resoto/model/uml",

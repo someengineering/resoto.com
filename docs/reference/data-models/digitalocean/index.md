@@ -18,7 +18,7 @@ See [How to Collect DigitalOcean Resource Data](../../../how-to-guides/data-sour
 
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_alert_policy data model
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_alert_policy data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -76,7 +76,7 @@ resource <|--- digitalocean_alert_policy
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_alert_policy resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_alert_policy resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -119,7 +119,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_alert_policy
 
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_app data model
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_app data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -179,7 +179,7 @@ resource <|--- digitalocean_app
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_app resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_app resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -203,24 +203,24 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class digitalocean_region [[#digitalocean_region]] {
-
-}
 class digitalocean_database [[#digitalocean_database]] {
 
 }
 class digitalocean_app [[#digitalocean_app]] {
 
 }
+class digitalocean_region [[#digitalocean_region]] {
+
+}
 class digitalocean_team [[#digitalocean_team]] {
 
 }
-digitalocean_region -[#1A83AF]-> digitalocean_database
-digitalocean_region -[#1A83AF]-> digitalocean_app
 digitalocean_database -[#1A83AF]-> digitalocean_app
-digitalocean_team -[#1A83AF]-> digitalocean_database
+digitalocean_region -[#1A83AF]-> digitalocean_app
+digitalocean_region -[#1A83AF]-> digitalocean_database
 digitalocean_team -[#1A83AF]-> digitalocean_region
 digitalocean_team -[#1A83AF]-> digitalocean_app
+digitalocean_team -[#1A83AF]-> digitalocean_database
 
 @enduml
 ```
@@ -233,7 +233,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_app
 
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_cdn_endpoint data model
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_cdn_endpoint data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -269,11 +269,11 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class digitalocean_resource [[#digitalocean_resource]] {
-**urn**: string
-}
 class endpoint [[#endpoint]] {
 
+}
+class digitalocean_resource [[#digitalocean_resource]] {
+**urn**: string
 }
 class digitalocean_cdn_endpoint [[#digitalocean_cdn_endpoint]] {
 **origin**: string
@@ -282,8 +282,8 @@ class digitalocean_cdn_endpoint [[#digitalocean_cdn_endpoint]] {
 **custom_domain**: string
 **ttl**: int64
 }
-resource <|--- digitalocean_resource
 resource <|--- endpoint
+resource <|--- digitalocean_resource
 digitalocean_resource <|--- digitalocean_cdn_endpoint
 endpoint <|--- digitalocean_cdn_endpoint
 
@@ -297,7 +297,7 @@ endpoint <|--- digitalocean_cdn_endpoint
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_cdn_endpoint resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_cdn_endpoint resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -340,7 +340,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_cdn_endpoint
 
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_certificate data model
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_certificate data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -403,7 +403,7 @@ certificate <|--- digitalocean_certificate
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_certificate resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_certificate resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -427,10 +427,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class digitalocean_certificate [[#digitalocean_certificate]] {
+class digitalocean_team [[#digitalocean_team]] {
 
 }
-class digitalocean_team [[#digitalocean_team]] {
+class digitalocean_certificate [[#digitalocean_certificate]] {
 
 }
 digitalocean_team -[#1A83AF]-> digitalocean_certificate
@@ -446,7 +446,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_certificate
 
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_container_registry data model
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_container_registry data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -503,7 +503,7 @@ resource <|--- digitalocean_container_registry
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_container_registry resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_container_registry resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -527,13 +527,13 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class digitalocean_container_registry_repository [[#digitalocean_container_registry_repository]] {
+
+}
 class digitalocean_region [[#digitalocean_region]] {
 
 }
 class digitalocean_container_registry [[#digitalocean_container_registry]] {
-
-}
-class digitalocean_container_registry_repository [[#digitalocean_container_registry_repository]] {
 
 }
 class digitalocean_team [[#digitalocean_team]] {
@@ -542,8 +542,8 @@ class digitalocean_team [[#digitalocean_team]] {
 digitalocean_region -[#1A83AF]-> digitalocean_container_registry
 digitalocean_container_registry -[#1A83AF]-> digitalocean_container_registry_repository
 digitalocean_team -[#1A83AF]-> digitalocean_container_registry
-digitalocean_team -[#1A83AF]-> digitalocean_container_registry_repository
 digitalocean_team -[#1A83AF]-> digitalocean_region
+digitalocean_team -[#1A83AF]-> digitalocean_container_registry_repository
 
 @enduml
 ```
@@ -556,7 +556,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_region
 
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_container_registry_repository data model
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_container_registry_repository data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -613,7 +613,7 @@ resource <|--- digitalocean_container_registry_repository
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_container_registry_repository resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_container_registry_repository resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -637,23 +637,23 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class digitalocean_container_registry [[#digitalocean_container_registry]] {
-
-}
 class digitalocean_container_registry_repository [[#digitalocean_container_registry_repository]] {
 
 }
 class digitalocean_container_registry_repository_tag [[#digitalocean_container_registry_repository_tag]] {
 
 }
+class digitalocean_container_registry [[#digitalocean_container_registry]] {
+
+}
 class digitalocean_team [[#digitalocean_team]] {
 
 }
-digitalocean_container_registry -[#1A83AF]-> digitalocean_container_registry_repository
 digitalocean_container_registry_repository -[#1A83AF]-> digitalocean_container_registry_repository_tag
+digitalocean_container_registry -[#1A83AF]-> digitalocean_container_registry_repository
 digitalocean_team -[#1A83AF]-> digitalocean_container_registry
-digitalocean_team -[#1A83AF]-> digitalocean_container_registry_repository
 digitalocean_team -[#1A83AF]-> digitalocean_container_registry_repository_tag
+digitalocean_team -[#1A83AF]-> digitalocean_container_registry_repository
 
 @enduml
 ```
@@ -666,7 +666,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_container_registry_repository_tag
 
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_container_registry_repository_tag data model
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_container_registry_repository_tag data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -726,7 +726,7 @@ resource <|--- digitalocean_container_registry_repository_tag
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_container_registry_repository_tag resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_container_registry_repository_tag resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -760,8 +760,8 @@ class digitalocean_team [[#digitalocean_team]] {
 
 }
 digitalocean_container_registry_repository -[#1A83AF]-> digitalocean_container_registry_repository_tag
-digitalocean_team -[#1A83AF]-> digitalocean_container_registry_repository
 digitalocean_team -[#1A83AF]-> digitalocean_container_registry_repository_tag
+digitalocean_team -[#1A83AF]-> digitalocean_container_registry_repository
 
 @enduml
 ```
@@ -774,7 +774,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_container_registry_repository_tag
 
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_database data model
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_database data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -842,7 +842,7 @@ database <|--- digitalocean_database
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_database resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_database resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -866,35 +866,35 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class digitalocean_region [[#digitalocean_region]] {
-
-}
 class digitalocean_database [[#digitalocean_database]] {
-
-}
-class digitalocean_vpc [[#digitalocean_vpc]] {
 
 }
 class digitalocean_app [[#digitalocean_app]] {
 
 }
-class digitalocean_project [[#digitalocean_project]] {
+class digitalocean_region [[#digitalocean_region]] {
+
+}
+class digitalocean_vpc [[#digitalocean_vpc]] {
 
 }
 class digitalocean_team [[#digitalocean_team]] {
 
 }
-digitalocean_region -[#1A83AF]-> digitalocean_database
+class digitalocean_project [[#digitalocean_project]] {
+
+}
+digitalocean_database -[#1A83AF]-> digitalocean_app
 digitalocean_region -[#1A83AF]-> digitalocean_vpc
 digitalocean_region -[#1A83AF]-> digitalocean_app
-digitalocean_database -[#1A83AF]-> digitalocean_app
+digitalocean_region -[#1A83AF]-> digitalocean_database
 digitalocean_vpc -[#1A83AF]-> digitalocean_database
-digitalocean_project -[#1A83AF]-> digitalocean_database
-digitalocean_team -[#1A83AF]-> digitalocean_database
-digitalocean_team -[#1A83AF]-> digitalocean_project
-digitalocean_team -[#1A83AF]-> digitalocean_region
 digitalocean_team -[#1A83AF]-> digitalocean_vpc
+digitalocean_team -[#1A83AF]-> digitalocean_region
 digitalocean_team -[#1A83AF]-> digitalocean_app
+digitalocean_team -[#1A83AF]-> digitalocean_project
+digitalocean_team -[#1A83AF]-> digitalocean_database
+digitalocean_project -[#1A83AF]-> digitalocean_database
 
 @enduml
 ```
@@ -907,7 +907,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_app
 
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_domain data model
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_domain data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -943,20 +943,20 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class digitalocean_domain [[#digitalocean_domain]] {
-**ttl**: int64
-**zone_file**: string
-}
 class digitalocean_resource [[#digitalocean_resource]] {
 **urn**: string
 }
 class dns_zone [[#dns_zone]] {
 
 }
-digitalocean_resource <|--- digitalocean_domain
-dns_zone <|--- digitalocean_domain
+class digitalocean_domain [[#digitalocean_domain]] {
+**ttl**: int64
+**zone_file**: string
+}
 resource <|--- digitalocean_resource
 resource <|--- dns_zone
+digitalocean_resource <|--- digitalocean_domain
+dns_zone <|--- digitalocean_domain
 
 @enduml
 ```
@@ -968,7 +968,7 @@ resource <|--- dns_zone
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_domain resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_domain resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -998,17 +998,17 @@ class digitalocean_domain [[#digitalocean_domain]] {
 class digitalocean_domain_record [[#digitalocean_domain_record]] {
 
 }
-class digitalocean_project [[#digitalocean_project]] {
-
-}
 class digitalocean_team [[#digitalocean_team]] {
 
 }
+class digitalocean_project [[#digitalocean_project]] {
+
+}
 digitalocean_domain -[#1A83AF]-> digitalocean_domain_record
-digitalocean_project -[#1A83AF]-> digitalocean_domain
-digitalocean_team -[#1A83AF]-> digitalocean_domain
-digitalocean_team -[#1A83AF]-> digitalocean_project
 digitalocean_team -[#1A83AF]-> digitalocean_domain_record
+digitalocean_team -[#1A83AF]-> digitalocean_project
+digitalocean_team -[#1A83AF]-> digitalocean_domain
+digitalocean_project -[#1A83AF]-> digitalocean_domain
 
 @enduml
 ```
@@ -1021,7 +1021,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_domain_record
 
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_domain_record data model
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_domain_record data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1059,9 +1059,6 @@ class resource [[#resource]] {
 }
 class digitalocean_resource [[#digitalocean_resource]] {
 **urn**: string
-}
-class digitalocean_domain_record [[#digitalocean_domain_record]] {
-**domain_name**: string
 }
 class dns_record [[#dns_record]] {
 **record_ttl**: int64
@@ -1081,10 +1078,13 @@ class dns_record [[#dns_record]] {
 **record_expire**: int64
 **record_minimum**: int64
 }
+class digitalocean_domain_record [[#digitalocean_domain_record]] {
+**domain_name**: string
+}
 resource <|--- digitalocean_resource
+resource <|--- dns_record
 digitalocean_resource <|--- digitalocean_domain_record
 dns_record <|--- digitalocean_domain_record
-resource <|--- dns_record
 
 @enduml
 ```
@@ -1096,7 +1096,7 @@ resource <|--- dns_record
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_domain_record resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_domain_record resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1130,8 +1130,8 @@ class digitalocean_team [[#digitalocean_team]] {
 
 }
 digitalocean_domain -[#1A83AF]-> digitalocean_domain_record
-digitalocean_team -[#1A83AF]-> digitalocean_domain
 digitalocean_team -[#1A83AF]-> digitalocean_domain_record
+digitalocean_team -[#1A83AF]-> digitalocean_domain
 
 @enduml
 ```
@@ -1144,7 +1144,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_domain_record
 
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_droplet data model
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_droplet data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1180,14 +1180,14 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
+class digitalocean_resource [[#digitalocean_resource]] {
+**urn**: string
+}
 class instance [[#instance]] {
 **instance_cores**: double
 **instance_memory**: double
 **instance_type**: string
 **instance_status**: instance_status
-}
-class digitalocean_resource [[#digitalocean_resource]] {
-**urn**: string
 }
 class digitalocean_droplet [[#digitalocean_droplet]] {
 **droplet_backup_ids**: string[]
@@ -1195,8 +1195,8 @@ class digitalocean_droplet [[#digitalocean_droplet]] {
 **droplet_features**: string[]
 **droplet_image**: string
 }
-resource <|--- instance
 resource <|--- digitalocean_resource
+resource <|--- instance
 digitalocean_resource <|--- digitalocean_droplet
 instance <|--- digitalocean_droplet
 
@@ -1210,7 +1210,7 @@ instance <|--- digitalocean_droplet
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_droplet resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_droplet resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1234,80 +1234,80 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class digitalocean_droplet_size [[#digitalocean_droplet_size]] {
-
-}
-class digitalocean_droplet [[#digitalocean_droplet]] {
-
-}
-class digitalocean_firewall [[#digitalocean_firewall]] {
-
-}
-class digitalocean_region [[#digitalocean_region]] {
-
-}
-class digitalocean_snapshot [[#digitalocean_snapshot]] {
-
-}
 class digitalocean_floating_ip [[#digitalocean_floating_ip]] {
-
-}
-class digitalocean_image [[#digitalocean_image]] {
 
 }
 class digitalocean_load_balancer [[#digitalocean_load_balancer]] {
 
 }
-class digitalocean_vpc [[#digitalocean_vpc]] {
-
-}
-class digitalocean_kubernetes_cluster [[#digitalocean_kubernetes_cluster]] {
-
-}
-class digitalocean_project [[#digitalocean_project]] {
+class digitalocean_droplet [[#digitalocean_droplet]] {
 
 }
 class digitalocean_volume [[#digitalocean_volume]] {
 
 }
+class digitalocean_snapshot [[#digitalocean_snapshot]] {
+
+}
+class digitalocean_firewall [[#digitalocean_firewall]] {
+
+}
+class digitalocean_kubernetes_cluster [[#digitalocean_kubernetes_cluster]] {
+
+}
+class digitalocean_region [[#digitalocean_region]] {
+
+}
+class digitalocean_image [[#digitalocean_image]] {
+
+}
+class digitalocean_vpc [[#digitalocean_vpc]] {
+
+}
+class digitalocean_droplet_size [[#digitalocean_droplet_size]] {
+
+}
 class digitalocean_team [[#digitalocean_team]] {
 
 }
-digitalocean_droplet_size -[#1A83AF]-> digitalocean_droplet
+class digitalocean_project [[#digitalocean_project]] {
+
+}
+digitalocean_load_balancer -[#1A83AF]-> digitalocean_droplet
 digitalocean_droplet -[#1A83AF]-> digitalocean_volume
-digitalocean_droplet -[#1A83AF]-> digitalocean_floating_ip
 digitalocean_droplet -[#1A83AF]-> digitalocean_snapshot
+digitalocean_droplet -[#1A83AF]-> digitalocean_floating_ip
+digitalocean_volume -[#1A83AF]-> digitalocean_snapshot
 digitalocean_firewall -[#1A83AF]-> digitalocean_droplet
-digitalocean_region -[#1A83AF]-> digitalocean_droplet
-digitalocean_region -[#1A83AF]-> digitalocean_snapshot
+digitalocean_kubernetes_cluster -[#1A83AF]-> digitalocean_droplet
 digitalocean_region -[#1A83AF]-> digitalocean_floating_ip
-digitalocean_region -[#1A83AF]-> digitalocean_image
 digitalocean_region -[#1A83AF]-> digitalocean_load_balancer
+digitalocean_region -[#1A83AF]-> digitalocean_image
+digitalocean_region -[#1A83AF]-> digitalocean_snapshot
 digitalocean_region -[#1A83AF]-> digitalocean_vpc
+digitalocean_region -[#1A83AF]-> digitalocean_droplet
 digitalocean_region -[#1A83AF]-> digitalocean_kubernetes_cluster
 digitalocean_image -[#1A83AF]-> digitalocean_droplet
-digitalocean_load_balancer -[#1A83AF]-> digitalocean_droplet
+digitalocean_vpc -[#1A83AF]-> digitalocean_kubernetes_cluster
 digitalocean_vpc -[#1A83AF]-> digitalocean_droplet
 digitalocean_vpc -[#1A83AF]-> digitalocean_load_balancer
-digitalocean_vpc -[#1A83AF]-> digitalocean_kubernetes_cluster
-digitalocean_kubernetes_cluster -[#1A83AF]-> digitalocean_droplet
-digitalocean_project -[#1A83AF]-> digitalocean_droplet
-digitalocean_project -[#1A83AF]-> digitalocean_floating_ip
-digitalocean_project -[#1A83AF]-> digitalocean_volume
-digitalocean_project -[#1A83AF]-> digitalocean_load_balancer
-digitalocean_project -[#1A83AF]-> digitalocean_kubernetes_cluster
-digitalocean_volume -[#1A83AF]-> digitalocean_snapshot
-digitalocean_team -[#1A83AF]-> digitalocean_floating_ip
-digitalocean_team -[#1A83AF]-> digitalocean_firewall
+digitalocean_droplet_size -[#1A83AF]-> digitalocean_droplet
 digitalocean_team -[#1A83AF]-> digitalocean_droplet
-digitalocean_team -[#1A83AF]-> digitalocean_kubernetes_cluster
-digitalocean_team -[#1A83AF]-> digitalocean_snapshot
-digitalocean_team -[#1A83AF]-> digitalocean_volume
-digitalocean_team -[#1A83AF]-> digitalocean_load_balancer
-digitalocean_team -[#1A83AF]-> digitalocean_project
+digitalocean_team -[#1A83AF]-> digitalocean_floating_ip
 digitalocean_team -[#1A83AF]-> digitalocean_image
-digitalocean_team -[#1A83AF]-> digitalocean_region
+digitalocean_team -[#1A83AF]-> digitalocean_load_balancer
 digitalocean_team -[#1A83AF]-> digitalocean_vpc
+digitalocean_team -[#1A83AF]-> digitalocean_snapshot
+digitalocean_team -[#1A83AF]-> digitalocean_region
+digitalocean_team -[#1A83AF]-> digitalocean_kubernetes_cluster
+digitalocean_team -[#1A83AF]-> digitalocean_project
+digitalocean_team -[#1A83AF]-> digitalocean_volume
+digitalocean_team -[#1A83AF]-> digitalocean_firewall
+digitalocean_project -[#1A83AF]-> digitalocean_volume
+digitalocean_project -[#1A83AF]-> digitalocean_floating_ip
+digitalocean_project -[#1A83AF]-> digitalocean_load_balancer
+digitalocean_project -[#1A83AF]-> digitalocean_droplet
+digitalocean_project -[#1A83AF]-> digitalocean_kubernetes_cluster
 
 @enduml
 ```
@@ -1320,7 +1320,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_vpc
 
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_droplet_size data model
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_droplet_size data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1356,10 +1356,12 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class digitalocean_resource [[#digitalocean_resource]] {
-**urn**: string
+class quota [[#quota]] {
+**quota**: double
+**usage**: double
+**quota_type**: string
 }
-class digitalocean_droplet_size [[#digitalocean_droplet_size]] {
+class phantom_resource [[#phantom_resource]] {
 
 }
 class instance_type [[#instance_type]] {
@@ -1369,24 +1371,22 @@ class instance_type [[#instance_type]] {
 **ondemand_cost**: double
 **reservations**: int64
 }
-class quota [[#quota]] {
-**quota**: double
-**usage**: double
-**quota_type**: string
-}
-class phantom_resource [[#phantom_resource]] {
-
+class digitalocean_resource [[#digitalocean_resource]] {
+**urn**: string
 }
 class type [[#type]] {
 
 }
-resource <|--- digitalocean_resource
-digitalocean_resource <|--- digitalocean_droplet_size
-instance_type <|--- digitalocean_droplet_size
-type <|--- instance_type
+class digitalocean_droplet_size [[#digitalocean_droplet_size]] {
+
+}
 phantom_resource <|--- quota
 resource <|--- phantom_resource
+type <|--- instance_type
+resource <|--- digitalocean_resource
 quota <|--- type
+digitalocean_resource <|--- digitalocean_droplet_size
+instance_type <|--- digitalocean_droplet_size
 
 @enduml
 ```
@@ -1398,7 +1398,7 @@ quota <|--- type
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_droplet_size resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_droplet_size resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1422,10 +1422,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class digitalocean_droplet_size [[#digitalocean_droplet_size]] {
+class digitalocean_droplet [[#digitalocean_droplet]] {
 
 }
-class digitalocean_droplet [[#digitalocean_droplet]] {
+class digitalocean_droplet_size [[#digitalocean_droplet_size]] {
 
 }
 digitalocean_droplet_size -[#1A83AF]-> digitalocean_droplet
@@ -1441,7 +1441,7 @@ digitalocean_droplet_size -[#1A83AF]-> digitalocean_droplet
 
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_firewall data model
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_firewall data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1497,7 +1497,7 @@ resource <|--- digitalocean_firewall
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_firewall resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_firewall resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1531,8 +1531,8 @@ class digitalocean_team [[#digitalocean_team]] {
 
 }
 digitalocean_firewall -[#1A83AF]-> digitalocean_droplet
-digitalocean_team -[#1A83AF]-> digitalocean_firewall
 digitalocean_team -[#1A83AF]-> digitalocean_droplet
+digitalocean_team -[#1A83AF]-> digitalocean_firewall
 
 @enduml
 ```
@@ -1545,7 +1545,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_droplet
 
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_floating_ip data model
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_floating_ip data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1581,19 +1581,19 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class digitalocean_resource [[#digitalocean_resource]] {
-**urn**: string
-}
 class digitalocean_floating_ip [[#digitalocean_floating_ip]] {
 **is_locked**: boolean
+}
+class digitalocean_resource [[#digitalocean_resource]] {
+**urn**: string
 }
 class ip_address [[#ip_address]] {
 **ip_address**: string
 **ip_address_family**: string
 }
-resource <|--- digitalocean_resource
 digitalocean_resource <|--- digitalocean_floating_ip
 ip_address <|--- digitalocean_floating_ip
+resource <|--- digitalocean_resource
 resource <|--- ip_address
 
 @enduml
@@ -1606,7 +1606,7 @@ resource <|--- ip_address
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_floating_ip resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_floating_ip resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1630,30 +1630,30 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class digitalocean_floating_ip [[#digitalocean_floating_ip]] {
+
+}
 class digitalocean_droplet [[#digitalocean_droplet]] {
 
 }
 class digitalocean_region [[#digitalocean_region]] {
 
 }
-class digitalocean_floating_ip [[#digitalocean_floating_ip]] {
+class digitalocean_team [[#digitalocean_team]] {
 
 }
 class digitalocean_project [[#digitalocean_project]] {
 
 }
-class digitalocean_team [[#digitalocean_team]] {
-
-}
 digitalocean_droplet -[#1A83AF]-> digitalocean_floating_ip
-digitalocean_region -[#1A83AF]-> digitalocean_droplet
 digitalocean_region -[#1A83AF]-> digitalocean_floating_ip
-digitalocean_project -[#1A83AF]-> digitalocean_droplet
-digitalocean_project -[#1A83AF]-> digitalocean_floating_ip
-digitalocean_team -[#1A83AF]-> digitalocean_floating_ip
+digitalocean_region -[#1A83AF]-> digitalocean_droplet
 digitalocean_team -[#1A83AF]-> digitalocean_droplet
-digitalocean_team -[#1A83AF]-> digitalocean_project
+digitalocean_team -[#1A83AF]-> digitalocean_floating_ip
 digitalocean_team -[#1A83AF]-> digitalocean_region
+digitalocean_team -[#1A83AF]-> digitalocean_project
+digitalocean_project -[#1A83AF]-> digitalocean_floating_ip
+digitalocean_project -[#1A83AF]-> digitalocean_droplet
 
 @enduml
 ```
@@ -1666,7 +1666,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_region
 
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_image data model
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_image data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1729,7 +1729,7 @@ resource <|--- digitalocean_image
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_image resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_image resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1765,8 +1765,8 @@ class digitalocean_image [[#digitalocean_image]] {
 class digitalocean_team [[#digitalocean_team]] {
 
 }
-digitalocean_region -[#1A83AF]-> digitalocean_droplet
 digitalocean_region -[#1A83AF]-> digitalocean_image
+digitalocean_region -[#1A83AF]-> digitalocean_droplet
 digitalocean_image -[#1A83AF]-> digitalocean_droplet
 digitalocean_team -[#1A83AF]-> digitalocean_droplet
 digitalocean_team -[#1A83AF]-> digitalocean_image
@@ -1783,7 +1783,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_region
 
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_kubernetes_cluster data model
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_kubernetes_cluster data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1848,7 +1848,7 @@ resource <|--- digitalocean_kubernetes_cluster
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_kubernetes_cluster resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_kubernetes_cluster resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1875,34 +1875,34 @@ skinparam stereotypeIBackgroundColor #e98df7
 class digitalocean_droplet [[#digitalocean_droplet]] {
 
 }
+class digitalocean_kubernetes_cluster [[#digitalocean_kubernetes_cluster]] {
+
+}
 class digitalocean_region [[#digitalocean_region]] {
 
 }
 class digitalocean_vpc [[#digitalocean_vpc]] {
 
 }
-class digitalocean_kubernetes_cluster [[#digitalocean_kubernetes_cluster]] {
+class digitalocean_team [[#digitalocean_team]] {
 
 }
 class digitalocean_project [[#digitalocean_project]] {
 
 }
-class digitalocean_team [[#digitalocean_team]] {
-
-}
-digitalocean_region -[#1A83AF]-> digitalocean_droplet
-digitalocean_region -[#1A83AF]-> digitalocean_vpc
-digitalocean_region -[#1A83AF]-> digitalocean_kubernetes_cluster
-digitalocean_vpc -[#1A83AF]-> digitalocean_droplet
-digitalocean_vpc -[#1A83AF]-> digitalocean_kubernetes_cluster
 digitalocean_kubernetes_cluster -[#1A83AF]-> digitalocean_droplet
-digitalocean_project -[#1A83AF]-> digitalocean_droplet
-digitalocean_project -[#1A83AF]-> digitalocean_kubernetes_cluster
+digitalocean_region -[#1A83AF]-> digitalocean_vpc
+digitalocean_region -[#1A83AF]-> digitalocean_droplet
+digitalocean_region -[#1A83AF]-> digitalocean_kubernetes_cluster
+digitalocean_vpc -[#1A83AF]-> digitalocean_kubernetes_cluster
+digitalocean_vpc -[#1A83AF]-> digitalocean_droplet
 digitalocean_team -[#1A83AF]-> digitalocean_droplet
+digitalocean_team -[#1A83AF]-> digitalocean_vpc
+digitalocean_team -[#1A83AF]-> digitalocean_region
 digitalocean_team -[#1A83AF]-> digitalocean_kubernetes_cluster
 digitalocean_team -[#1A83AF]-> digitalocean_project
-digitalocean_team -[#1A83AF]-> digitalocean_region
-digitalocean_team -[#1A83AF]-> digitalocean_vpc
+digitalocean_project -[#1A83AF]-> digitalocean_droplet
+digitalocean_project -[#1A83AF]-> digitalocean_kubernetes_cluster
 
 @enduml
 ```
@@ -1915,7 +1915,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_vpc
 
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_load_balancer data model
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_load_balancer data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1982,7 +1982,7 @@ load_balancer <|--- digitalocean_load_balancer
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_load_balancer resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_load_balancer resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2006,37 +2006,37 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class digitalocean_load_balancer [[#digitalocean_load_balancer]] {
+
+}
 class digitalocean_droplet [[#digitalocean_droplet]] {
 
 }
 class digitalocean_region [[#digitalocean_region]] {
 
 }
-class digitalocean_load_balancer [[#digitalocean_load_balancer]] {
-
-}
 class digitalocean_vpc [[#digitalocean_vpc]] {
-
-}
-class digitalocean_project [[#digitalocean_project]] {
 
 }
 class digitalocean_team [[#digitalocean_team]] {
 
 }
-digitalocean_region -[#1A83AF]-> digitalocean_droplet
+class digitalocean_project [[#digitalocean_project]] {
+
+}
+digitalocean_load_balancer -[#1A83AF]-> digitalocean_droplet
 digitalocean_region -[#1A83AF]-> digitalocean_load_balancer
 digitalocean_region -[#1A83AF]-> digitalocean_vpc
-digitalocean_load_balancer -[#1A83AF]-> digitalocean_droplet
+digitalocean_region -[#1A83AF]-> digitalocean_droplet
 digitalocean_vpc -[#1A83AF]-> digitalocean_droplet
 digitalocean_vpc -[#1A83AF]-> digitalocean_load_balancer
-digitalocean_project -[#1A83AF]-> digitalocean_droplet
-digitalocean_project -[#1A83AF]-> digitalocean_load_balancer
 digitalocean_team -[#1A83AF]-> digitalocean_droplet
 digitalocean_team -[#1A83AF]-> digitalocean_load_balancer
-digitalocean_team -[#1A83AF]-> digitalocean_project
-digitalocean_team -[#1A83AF]-> digitalocean_region
 digitalocean_team -[#1A83AF]-> digitalocean_vpc
+digitalocean_team -[#1A83AF]-> digitalocean_region
+digitalocean_team -[#1A83AF]-> digitalocean_project
+digitalocean_project -[#1A83AF]-> digitalocean_load_balancer
+digitalocean_project -[#1A83AF]-> digitalocean_droplet
 
 @enduml
 ```
@@ -2049,7 +2049,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_vpc
 
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_project data model
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_project data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2110,7 +2110,7 @@ resource <|--- digitalocean_project
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_project resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_project resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2134,7 +2134,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class digitalocean_domain [[#digitalocean_domain]] {
+class digitalocean_floating_ip [[#digitalocean_floating_ip]] {
+
+}
+class digitalocean_load_balancer [[#digitalocean_load_balancer]] {
 
 }
 class digitalocean_droplet [[#digitalocean_droplet]] {
@@ -2143,48 +2146,45 @@ class digitalocean_droplet [[#digitalocean_droplet]] {
 class digitalocean_database [[#digitalocean_database]] {
 
 }
-class digitalocean_floating_ip [[#digitalocean_floating_ip]] {
-
-}
-class digitalocean_load_balancer [[#digitalocean_load_balancer]] {
-
-}
-class digitalocean_space [[#digitalocean_space]] {
+class digitalocean_volume [[#digitalocean_volume]] {
 
 }
 class digitalocean_kubernetes_cluster [[#digitalocean_kubernetes_cluster]] {
 
 }
-class digitalocean_project [[#digitalocean_project]] {
+class digitalocean_space [[#digitalocean_space]] {
 
 }
-class digitalocean_volume [[#digitalocean_volume]] {
+class digitalocean_domain [[#digitalocean_domain]] {
 
 }
 class digitalocean_team [[#digitalocean_team]] {
 
 }
+class digitalocean_project [[#digitalocean_project]] {
+
+}
+digitalocean_load_balancer -[#1A83AF]-> digitalocean_droplet
 digitalocean_droplet -[#1A83AF]-> digitalocean_volume
 digitalocean_droplet -[#1A83AF]-> digitalocean_floating_ip
-digitalocean_load_balancer -[#1A83AF]-> digitalocean_droplet
 digitalocean_kubernetes_cluster -[#1A83AF]-> digitalocean_droplet
-digitalocean_project -[#1A83AF]-> digitalocean_database
+digitalocean_team -[#1A83AF]-> digitalocean_droplet
+digitalocean_team -[#1A83AF]-> digitalocean_floating_ip
+digitalocean_team -[#1A83AF]-> digitalocean_load_balancer
+digitalocean_team -[#1A83AF]-> digitalocean_space
+digitalocean_team -[#1A83AF]-> digitalocean_kubernetes_cluster
+digitalocean_team -[#1A83AF]-> digitalocean_project
+digitalocean_team -[#1A83AF]-> digitalocean_volume
+digitalocean_team -[#1A83AF]-> digitalocean_domain
+digitalocean_team -[#1A83AF]-> digitalocean_database
+digitalocean_project -[#1A83AF]-> digitalocean_volume
+digitalocean_project -[#1A83AF]-> digitalocean_floating_ip
+digitalocean_project -[#1A83AF]-> digitalocean_load_balancer
 digitalocean_project -[#1A83AF]-> digitalocean_domain
 digitalocean_project -[#1A83AF]-> digitalocean_droplet
-digitalocean_project -[#1A83AF]-> digitalocean_floating_ip
-digitalocean_project -[#1A83AF]-> digitalocean_volume
-digitalocean_project -[#1A83AF]-> digitalocean_load_balancer
 digitalocean_project -[#1A83AF]-> digitalocean_space
 digitalocean_project -[#1A83AF]-> digitalocean_kubernetes_cluster
-digitalocean_team -[#1A83AF]-> digitalocean_database
-digitalocean_team -[#1A83AF]-> digitalocean_domain
-digitalocean_team -[#1A83AF]-> digitalocean_floating_ip
-digitalocean_team -[#1A83AF]-> digitalocean_space
-digitalocean_team -[#1A83AF]-> digitalocean_droplet
-digitalocean_team -[#1A83AF]-> digitalocean_kubernetes_cluster
-digitalocean_team -[#1A83AF]-> digitalocean_volume
-digitalocean_team -[#1A83AF]-> digitalocean_load_balancer
-digitalocean_team -[#1A83AF]-> digitalocean_project
+digitalocean_project -[#1A83AF]-> digitalocean_database
 
 @enduml
 ```
@@ -2197,7 +2197,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_project
 
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_region data model
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_region data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2260,7 +2260,7 @@ region <|--- digitalocean_region
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_region resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_region resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2284,25 +2284,34 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class digitalocean_droplet [[#digitalocean_droplet]] {
+class digitalocean_floating_ip [[#digitalocean_floating_ip]] {
 
 }
-class digitalocean_region [[#digitalocean_region]] {
+class digitalocean_load_balancer [[#digitalocean_load_balancer]] {
+
+}
+class digitalocean_droplet [[#digitalocean_droplet]] {
 
 }
 class digitalocean_database [[#digitalocean_database]] {
 
 }
+class digitalocean_app [[#digitalocean_app]] {
+
+}
 class digitalocean_snapshot [[#digitalocean_snapshot]] {
 
 }
-class digitalocean_floating_ip [[#digitalocean_floating_ip]] {
+class digitalocean_kubernetes_cluster [[#digitalocean_kubernetes_cluster]] {
+
+}
+class digitalocean_region [[#digitalocean_region]] {
 
 }
 class digitalocean_image [[#digitalocean_image]] {
 
 }
-class digitalocean_load_balancer [[#digitalocean_load_balancer]] {
+class digitalocean_container_registry [[#digitalocean_container_registry]] {
 
 }
 class digitalocean_vpc [[#digitalocean_vpc]] {
@@ -2311,51 +2320,42 @@ class digitalocean_vpc [[#digitalocean_vpc]] {
 class digitalocean_space [[#digitalocean_space]] {
 
 }
-class digitalocean_container_registry [[#digitalocean_container_registry]] {
-
-}
-class digitalocean_kubernetes_cluster [[#digitalocean_kubernetes_cluster]] {
-
-}
-class digitalocean_app [[#digitalocean_app]] {
-
-}
 class digitalocean_team [[#digitalocean_team]] {
 
 }
-digitalocean_droplet -[#1A83AF]-> digitalocean_floating_ip
-digitalocean_droplet -[#1A83AF]-> digitalocean_snapshot
-digitalocean_region -[#1A83AF]-> digitalocean_database
-digitalocean_region -[#1A83AF]-> digitalocean_droplet
-digitalocean_region -[#1A83AF]-> digitalocean_snapshot
-digitalocean_region -[#1A83AF]-> digitalocean_floating_ip
-digitalocean_region -[#1A83AF]-> digitalocean_image
-digitalocean_region -[#1A83AF]-> digitalocean_load_balancer
-digitalocean_region -[#1A83AF]-> digitalocean_vpc
-digitalocean_region -[#1A83AF]-> digitalocean_space
-digitalocean_region -[#1A83AF]-> digitalocean_container_registry
-digitalocean_region -[#1A83AF]-> digitalocean_kubernetes_cluster
-digitalocean_region -[#1A83AF]-> digitalocean_app
-digitalocean_database -[#1A83AF]-> digitalocean_app
-digitalocean_image -[#1A83AF]-> digitalocean_droplet
 digitalocean_load_balancer -[#1A83AF]-> digitalocean_droplet
+digitalocean_droplet -[#1A83AF]-> digitalocean_snapshot
+digitalocean_droplet -[#1A83AF]-> digitalocean_floating_ip
+digitalocean_database -[#1A83AF]-> digitalocean_app
+digitalocean_kubernetes_cluster -[#1A83AF]-> digitalocean_droplet
+digitalocean_region -[#1A83AF]-> digitalocean_floating_ip
+digitalocean_region -[#1A83AF]-> digitalocean_load_balancer
+digitalocean_region -[#1A83AF]-> digitalocean_image
+digitalocean_region -[#1A83AF]-> digitalocean_snapshot
+digitalocean_region -[#1A83AF]-> digitalocean_container_registry
+digitalocean_region -[#1A83AF]-> digitalocean_vpc
+digitalocean_region -[#1A83AF]-> digitalocean_droplet
+digitalocean_region -[#1A83AF]-> digitalocean_space
+digitalocean_region -[#1A83AF]-> digitalocean_app
+digitalocean_region -[#1A83AF]-> digitalocean_kubernetes_cluster
+digitalocean_region -[#1A83AF]-> digitalocean_database
+digitalocean_image -[#1A83AF]-> digitalocean_droplet
 digitalocean_vpc -[#1A83AF]-> digitalocean_database
+digitalocean_vpc -[#1A83AF]-> digitalocean_kubernetes_cluster
 digitalocean_vpc -[#1A83AF]-> digitalocean_droplet
 digitalocean_vpc -[#1A83AF]-> digitalocean_load_balancer
-digitalocean_vpc -[#1A83AF]-> digitalocean_kubernetes_cluster
-digitalocean_kubernetes_cluster -[#1A83AF]-> digitalocean_droplet
-digitalocean_team -[#1A83AF]-> digitalocean_database
-digitalocean_team -[#1A83AF]-> digitalocean_floating_ip
-digitalocean_team -[#1A83AF]-> digitalocean_space
 digitalocean_team -[#1A83AF]-> digitalocean_container_registry
 digitalocean_team -[#1A83AF]-> digitalocean_droplet
-digitalocean_team -[#1A83AF]-> digitalocean_kubernetes_cluster
-digitalocean_team -[#1A83AF]-> digitalocean_snapshot
-digitalocean_team -[#1A83AF]-> digitalocean_load_balancer
+digitalocean_team -[#1A83AF]-> digitalocean_floating_ip
 digitalocean_team -[#1A83AF]-> digitalocean_image
-digitalocean_team -[#1A83AF]-> digitalocean_region
+digitalocean_team -[#1A83AF]-> digitalocean_load_balancer
 digitalocean_team -[#1A83AF]-> digitalocean_vpc
+digitalocean_team -[#1A83AF]-> digitalocean_snapshot
+digitalocean_team -[#1A83AF]-> digitalocean_region
+digitalocean_team -[#1A83AF]-> digitalocean_space
 digitalocean_team -[#1A83AF]-> digitalocean_app
+digitalocean_team -[#1A83AF]-> digitalocean_kubernetes_cluster
+digitalocean_team -[#1A83AF]-> digitalocean_database
 
 @enduml
 ```
@@ -2368,7 +2368,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_app
 
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_resource data model
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_resource data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2419,7 +2419,7 @@ resource <|--- digitalocean_resource
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_resource resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_resource resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2462,7 +2462,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_resource
 
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_snapshot data model
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_snapshot data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2501,6 +2501,11 @@ class resource [[#resource]] {
 class digitalocean_resource [[#digitalocean_resource]] {
 **urn**: string
 }
+class digitalocean_snapshot [[#digitalocean_snapshot]] {
+**snapshot_size_gigabytes**: int64
+**resource_id**: string
+**resource_type**: string
+}
 class snapshot [[#snapshot]] {
 **snapshot_status**: string
 **description**: string
@@ -2510,15 +2515,10 @@ class snapshot [[#snapshot]] {
 **owner_id**: string
 **owner_alias**: string
 }
-class digitalocean_snapshot [[#digitalocean_snapshot]] {
-**snapshot_size_gigabytes**: int64
-**resource_id**: string
-**resource_type**: string
-}
 resource <|--- digitalocean_resource
-resource <|--- snapshot
 digitalocean_resource <|--- digitalocean_snapshot
 snapshot <|--- digitalocean_snapshot
+resource <|--- snapshot
 
 @enduml
 ```
@@ -2530,7 +2530,7 @@ snapshot <|--- digitalocean_snapshot
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_snapshot resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_snapshot resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2557,13 +2557,13 @@ skinparam stereotypeIBackgroundColor #e98df7
 class digitalocean_droplet [[#digitalocean_droplet]] {
 
 }
-class digitalocean_region [[#digitalocean_region]] {
+class digitalocean_volume [[#digitalocean_volume]] {
 
 }
 class digitalocean_snapshot [[#digitalocean_snapshot]] {
 
 }
-class digitalocean_volume [[#digitalocean_volume]] {
+class digitalocean_region [[#digitalocean_region]] {
 
 }
 class digitalocean_team [[#digitalocean_team]] {
@@ -2571,13 +2571,13 @@ class digitalocean_team [[#digitalocean_team]] {
 }
 digitalocean_droplet -[#1A83AF]-> digitalocean_volume
 digitalocean_droplet -[#1A83AF]-> digitalocean_snapshot
-digitalocean_region -[#1A83AF]-> digitalocean_droplet
-digitalocean_region -[#1A83AF]-> digitalocean_snapshot
 digitalocean_volume -[#1A83AF]-> digitalocean_snapshot
+digitalocean_region -[#1A83AF]-> digitalocean_snapshot
+digitalocean_region -[#1A83AF]-> digitalocean_droplet
 digitalocean_team -[#1A83AF]-> digitalocean_droplet
 digitalocean_team -[#1A83AF]-> digitalocean_snapshot
-digitalocean_team -[#1A83AF]-> digitalocean_volume
 digitalocean_team -[#1A83AF]-> digitalocean_region
+digitalocean_team -[#1A83AF]-> digitalocean_volume
 
 @enduml
 ```
@@ -2590,7 +2590,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_region
 
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_space data model
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_space data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2629,16 +2629,16 @@ class resource [[#resource]] {
 class digitalocean_resource [[#digitalocean_resource]] {
 **urn**: string
 }
-class digitalocean_space [[#digitalocean_space]] {
-
-}
 class bucket [[#bucket]] {
 
 }
+class digitalocean_space [[#digitalocean_space]] {
+
+}
 resource <|--- digitalocean_resource
+resource <|--- bucket
 digitalocean_resource <|--- digitalocean_space
 bucket <|--- digitalocean_space
-resource <|--- bucket
 
 @enduml
 ```
@@ -2650,7 +2650,7 @@ resource <|--- bucket
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_space resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_space resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2680,17 +2680,17 @@ class digitalocean_region [[#digitalocean_region]] {
 class digitalocean_space [[#digitalocean_space]] {
 
 }
-class digitalocean_project [[#digitalocean_project]] {
-
-}
 class digitalocean_team [[#digitalocean_team]] {
 
 }
+class digitalocean_project [[#digitalocean_project]] {
+
+}
 digitalocean_region -[#1A83AF]-> digitalocean_space
-digitalocean_project -[#1A83AF]-> digitalocean_space
+digitalocean_team -[#1A83AF]-> digitalocean_region
 digitalocean_team -[#1A83AF]-> digitalocean_space
 digitalocean_team -[#1A83AF]-> digitalocean_project
-digitalocean_team -[#1A83AF]-> digitalocean_region
+digitalocean_project -[#1A83AF]-> digitalocean_space
 
 @enduml
 ```
@@ -2703,7 +2703,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_region
 
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_ssh_key data model
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_ssh_key data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2763,7 +2763,7 @@ keypair <|--- digitalocean_ssh_key
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_ssh_key resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_ssh_key resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2787,10 +2787,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class digitalocean_team [[#digitalocean_team]] {
+class digitalocean_ssh_key [[#digitalocean_ssh_key]] {
 
 }
-class digitalocean_ssh_key [[#digitalocean_ssh_key]] {
+class digitalocean_team [[#digitalocean_team]] {
 
 }
 digitalocean_team -[#1A83AF]-> digitalocean_ssh_key
@@ -2806,7 +2806,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_ssh_key
 
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_tag data model
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_tag data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2862,7 +2862,7 @@ resource <|--- digitalocean_tag
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_tag resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_tag resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2886,10 +2886,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class digitalocean_tag [[#digitalocean_tag]] {
+class digitalocean_team [[#digitalocean_team]] {
 
 }
-class digitalocean_team [[#digitalocean_team]] {
+class digitalocean_tag [[#digitalocean_tag]] {
 
 }
 digitalocean_team -[#1A83AF]-> digitalocean_tag
@@ -2905,7 +2905,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_tag
 
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_team data model
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_team data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2929,9 +2929,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class account [[#account]] {
-
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -2947,11 +2944,14 @@ class resource [[#resource]] {
 class digitalocean_resource [[#digitalocean_resource]] {
 **urn**: string
 }
+class account [[#account]] {
+
+}
 class digitalocean_team [[#digitalocean_team]] {
 
 }
-resource <|--- account
 resource <|--- digitalocean_resource
+resource <|--- account
 digitalocean_resource <|--- digitalocean_team
 account <|--- digitalocean_team
 
@@ -2965,7 +2965,7 @@ account <|--- digitalocean_team
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_team resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_team resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2989,49 +2989,19 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class digitalocean_domain [[#digitalocean_domain]] {
+class digitalocean_floating_ip [[#digitalocean_floating_ip]] {
 
 }
 class digitalocean_resource [[#digitalocean_resource]] {
 
 }
-class digitalocean_domain_record [[#digitalocean_domain_record]] {
+class digitalocean_load_balancer [[#digitalocean_load_balancer]] {
 
 }
 class digitalocean_droplet [[#digitalocean_droplet]] {
 
 }
-class digitalocean_firewall [[#digitalocean_firewall]] {
-
-}
-class digitalocean_region [[#digitalocean_region]] {
-
-}
 class digitalocean_database [[#digitalocean_database]] {
-
-}
-class digitalocean_snapshot [[#digitalocean_snapshot]] {
-
-}
-class digitalocean_floating_ip [[#digitalocean_floating_ip]] {
-
-}
-class digitalocean_image [[#digitalocean_image]] {
-
-}
-class digitalocean_load_balancer [[#digitalocean_load_balancer]] {
-
-}
-class digitalocean_vpc [[#digitalocean_vpc]] {
-
-}
-class digitalocean_space [[#digitalocean_space]] {
-
-}
-class digitalocean_container_registry [[#digitalocean_container_registry]] {
-
-}
-class digitalocean_kubernetes_cluster [[#digitalocean_kubernetes_cluster]] {
 
 }
 class digitalocean_app [[#digitalocean_app]] {
@@ -3043,16 +3013,49 @@ class digitalocean_container_registry_repository [[#digitalocean_container_regis
 class digitalocean_container_registry_repository_tag [[#digitalocean_container_registry_repository_tag]] {
 
 }
+class digitalocean_volume [[#digitalocean_volume]] {
+
+}
+class digitalocean_snapshot [[#digitalocean_snapshot]] {
+
+}
+class digitalocean_firewall [[#digitalocean_firewall]] {
+
+}
 class digitalocean_alert_policy [[#digitalocean_alert_policy]] {
+
+}
+class digitalocean_kubernetes_cluster [[#digitalocean_kubernetes_cluster]] {
+
+}
+class digitalocean_region [[#digitalocean_region]] {
+
+}
+class digitalocean_image [[#digitalocean_image]] {
+
+}
+class digitalocean_container_registry [[#digitalocean_container_registry]] {
+
+}
+class digitalocean_vpc [[#digitalocean_vpc]] {
+
+}
+class digitalocean_space [[#digitalocean_space]] {
 
 }
 class digitalocean_cdn_endpoint [[#digitalocean_cdn_endpoint]] {
 
 }
-class digitalocean_project [[#digitalocean_project]] {
+class digitalocean_ssh_key [[#digitalocean_ssh_key]] {
 
 }
-class digitalocean_volume [[#digitalocean_volume]] {
+class digitalocean_domain [[#digitalocean_domain]] {
+
+}
+class digitalocean_domain_record [[#digitalocean_domain_record]] {
+
+}
+class digitalocean_team [[#digitalocean_team]] {
 
 }
 class digitalocean_certificate [[#digitalocean_certificate]] {
@@ -3061,72 +3064,69 @@ class digitalocean_certificate [[#digitalocean_certificate]] {
 class digitalocean_tag [[#digitalocean_tag]] {
 
 }
-class digitalocean_team [[#digitalocean_team]] {
+class digitalocean_project [[#digitalocean_project]] {
 
 }
-class digitalocean_ssh_key [[#digitalocean_ssh_key]] {
-
-}
-digitalocean_domain -[#1A83AF]-> digitalocean_domain_record
-digitalocean_droplet -[#1A83AF]-> digitalocean_volume
-digitalocean_droplet -[#1A83AF]-> digitalocean_floating_ip
-digitalocean_droplet -[#1A83AF]-> digitalocean_snapshot
-digitalocean_firewall -[#1A83AF]-> digitalocean_droplet
-digitalocean_region -[#1A83AF]-> digitalocean_database
-digitalocean_region -[#1A83AF]-> digitalocean_droplet
-digitalocean_region -[#1A83AF]-> digitalocean_snapshot
-digitalocean_region -[#1A83AF]-> digitalocean_floating_ip
-digitalocean_region -[#1A83AF]-> digitalocean_image
-digitalocean_region -[#1A83AF]-> digitalocean_load_balancer
-digitalocean_region -[#1A83AF]-> digitalocean_vpc
-digitalocean_region -[#1A83AF]-> digitalocean_space
-digitalocean_region -[#1A83AF]-> digitalocean_container_registry
-digitalocean_region -[#1A83AF]-> digitalocean_kubernetes_cluster
-digitalocean_region -[#1A83AF]-> digitalocean_app
-digitalocean_database -[#1A83AF]-> digitalocean_app
-digitalocean_image -[#1A83AF]-> digitalocean_droplet
 digitalocean_load_balancer -[#1A83AF]-> digitalocean_droplet
+digitalocean_droplet -[#1A83AF]-> digitalocean_volume
+digitalocean_droplet -[#1A83AF]-> digitalocean_snapshot
+digitalocean_droplet -[#1A83AF]-> digitalocean_floating_ip
+digitalocean_database -[#1A83AF]-> digitalocean_app
+digitalocean_container_registry_repository -[#1A83AF]-> digitalocean_container_registry_repository_tag
+digitalocean_volume -[#1A83AF]-> digitalocean_snapshot
+digitalocean_firewall -[#1A83AF]-> digitalocean_droplet
+digitalocean_kubernetes_cluster -[#1A83AF]-> digitalocean_droplet
+digitalocean_region -[#1A83AF]-> digitalocean_floating_ip
+digitalocean_region -[#1A83AF]-> digitalocean_load_balancer
+digitalocean_region -[#1A83AF]-> digitalocean_image
+digitalocean_region -[#1A83AF]-> digitalocean_snapshot
+digitalocean_region -[#1A83AF]-> digitalocean_container_registry
+digitalocean_region -[#1A83AF]-> digitalocean_vpc
+digitalocean_region -[#1A83AF]-> digitalocean_droplet
+digitalocean_region -[#1A83AF]-> digitalocean_space
+digitalocean_region -[#1A83AF]-> digitalocean_app
+digitalocean_region -[#1A83AF]-> digitalocean_kubernetes_cluster
+digitalocean_region -[#1A83AF]-> digitalocean_database
+digitalocean_image -[#1A83AF]-> digitalocean_droplet
+digitalocean_container_registry -[#1A83AF]-> digitalocean_container_registry_repository
 digitalocean_vpc -[#1A83AF]-> digitalocean_database
+digitalocean_vpc -[#1A83AF]-> digitalocean_kubernetes_cluster
 digitalocean_vpc -[#1A83AF]-> digitalocean_droplet
 digitalocean_vpc -[#1A83AF]-> digitalocean_load_balancer
-digitalocean_vpc -[#1A83AF]-> digitalocean_kubernetes_cluster
-digitalocean_container_registry -[#1A83AF]-> digitalocean_container_registry_repository
-digitalocean_kubernetes_cluster -[#1A83AF]-> digitalocean_droplet
-digitalocean_container_registry_repository -[#1A83AF]-> digitalocean_container_registry_repository_tag
-digitalocean_project -[#1A83AF]-> digitalocean_database
+digitalocean_domain -[#1A83AF]-> digitalocean_domain_record
+digitalocean_team -[#1A83AF]-> digitalocean_resource
+digitalocean_team -[#1A83AF]-> digitalocean_certificate
+digitalocean_team -[#1A83AF]-> digitalocean_container_registry
+digitalocean_team -[#1A83AF]-> digitalocean_droplet
+digitalocean_team -[#1A83AF]-> digitalocean_container_registry_repository_tag
+digitalocean_team -[#1A83AF]-> digitalocean_floating_ip
+digitalocean_team -[#1A83AF]-> digitalocean_cdn_endpoint
+digitalocean_team -[#1A83AF]-> digitalocean_image
+digitalocean_team -[#1A83AF]-> digitalocean_load_balancer
+digitalocean_team -[#1A83AF]-> digitalocean_ssh_key
+digitalocean_team -[#1A83AF]-> digitalocean_vpc
+digitalocean_team -[#1A83AF]-> digitalocean_snapshot
+digitalocean_team -[#1A83AF]-> digitalocean_region
+digitalocean_team -[#1A83AF]-> digitalocean_domain_record
+digitalocean_team -[#1A83AF]-> digitalocean_space
+digitalocean_team -[#1A83AF]-> digitalocean_app
+digitalocean_team -[#1A83AF]-> digitalocean_tag
+digitalocean_team -[#1A83AF]-> digitalocean_kubernetes_cluster
+digitalocean_team -[#1A83AF]-> digitalocean_project
+digitalocean_team -[#1A83AF]-> digitalocean_volume
+digitalocean_team -[#1A83AF]-> digitalocean_alert_policy
+digitalocean_team -[#1A83AF]-> digitalocean_container_registry_repository
+digitalocean_team -[#1A83AF]-> digitalocean_domain
+digitalocean_team -[#1A83AF]-> digitalocean_firewall
+digitalocean_team -[#1A83AF]-> digitalocean_database
+digitalocean_project -[#1A83AF]-> digitalocean_volume
+digitalocean_project -[#1A83AF]-> digitalocean_floating_ip
+digitalocean_project -[#1A83AF]-> digitalocean_load_balancer
 digitalocean_project -[#1A83AF]-> digitalocean_domain
 digitalocean_project -[#1A83AF]-> digitalocean_droplet
-digitalocean_project -[#1A83AF]-> digitalocean_floating_ip
-digitalocean_project -[#1A83AF]-> digitalocean_volume
-digitalocean_project -[#1A83AF]-> digitalocean_load_balancer
 digitalocean_project -[#1A83AF]-> digitalocean_space
 digitalocean_project -[#1A83AF]-> digitalocean_kubernetes_cluster
-digitalocean_volume -[#1A83AF]-> digitalocean_snapshot
-digitalocean_team -[#1A83AF]-> digitalocean_resource
-digitalocean_team -[#1A83AF]-> digitalocean_database
-digitalocean_team -[#1A83AF]-> digitalocean_domain
-digitalocean_team -[#1A83AF]-> digitalocean_floating_ip
-digitalocean_team -[#1A83AF]-> digitalocean_ssh_key
-digitalocean_team -[#1A83AF]-> digitalocean_firewall
-digitalocean_team -[#1A83AF]-> digitalocean_space
-digitalocean_team -[#1A83AF]-> digitalocean_container_registry
-digitalocean_team -[#1A83AF]-> digitalocean_certificate
-digitalocean_team -[#1A83AF]-> digitalocean_droplet
-digitalocean_team -[#1A83AF]-> digitalocean_alert_policy
-digitalocean_team -[#1A83AF]-> digitalocean_kubernetes_cluster
-digitalocean_team -[#1A83AF]-> digitalocean_snapshot
-digitalocean_team -[#1A83AF]-> digitalocean_volume
-digitalocean_team -[#1A83AF]-> digitalocean_load_balancer
-digitalocean_team -[#1A83AF]-> digitalocean_project
-digitalocean_team -[#1A83AF]-> digitalocean_tag
-digitalocean_team -[#1A83AF]-> digitalocean_cdn_endpoint
-digitalocean_team -[#1A83AF]-> digitalocean_domain_record
-digitalocean_team -[#1A83AF]-> digitalocean_container_registry_repository
-digitalocean_team -[#1A83AF]-> digitalocean_container_registry_repository_tag
-digitalocean_team -[#1A83AF]-> digitalocean_image
-digitalocean_team -[#1A83AF]-> digitalocean_region
-digitalocean_team -[#1A83AF]-> digitalocean_vpc
-digitalocean_team -[#1A83AF]-> digitalocean_app
+digitalocean_project -[#1A83AF]-> digitalocean_database
 
 @enduml
 ```
@@ -3139,7 +3139,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_app
 
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_volume data model
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_volume data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3163,6 +3163,15 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class volume [[#volume]] {
+**volume_size**: int64
+**volume_type**: string
+**volume_status**: volume_status
+**volume_iops**: int64
+**volume_throughput**: int64
+**volume_encrypted**: boolean
+**snapshot_before_delete**: boolean
+}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -3174,15 +3183,6 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
-}
-class volume [[#volume]] {
-**volume_size**: int64
-**volume_type**: string
-**volume_status**: volume_status
-**volume_iops**: int64
-**volume_throughput**: int64
-**volume_encrypted**: boolean
-**snapshot_before_delete**: boolean
 }
 class digitalocean_resource [[#digitalocean_resource]] {
 **urn**: string
@@ -3208,7 +3208,7 @@ volume <|--- digitalocean_volume
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_volume resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_volume resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3235,27 +3235,27 @@ skinparam stereotypeIBackgroundColor #e98df7
 class digitalocean_droplet [[#digitalocean_droplet]] {
 
 }
-class digitalocean_snapshot [[#digitalocean_snapshot]] {
-
-}
-class digitalocean_project [[#digitalocean_project]] {
-
-}
 class digitalocean_volume [[#digitalocean_volume]] {
+
+}
+class digitalocean_snapshot [[#digitalocean_snapshot]] {
 
 }
 class digitalocean_team [[#digitalocean_team]] {
 
 }
+class digitalocean_project [[#digitalocean_project]] {
+
+}
 digitalocean_droplet -[#1A83AF]-> digitalocean_volume
 digitalocean_droplet -[#1A83AF]-> digitalocean_snapshot
-digitalocean_project -[#1A83AF]-> digitalocean_droplet
-digitalocean_project -[#1A83AF]-> digitalocean_volume
 digitalocean_volume -[#1A83AF]-> digitalocean_snapshot
 digitalocean_team -[#1A83AF]-> digitalocean_droplet
 digitalocean_team -[#1A83AF]-> digitalocean_snapshot
-digitalocean_team -[#1A83AF]-> digitalocean_volume
 digitalocean_team -[#1A83AF]-> digitalocean_project
+digitalocean_team -[#1A83AF]-> digitalocean_volume
+digitalocean_project -[#1A83AF]-> digitalocean_volume
+digitalocean_project -[#1A83AF]-> digitalocean_droplet
 
 @enduml
 ```
@@ -3268,7 +3268,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_project
 
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_vpc data model
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_vpc data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3304,19 +3304,19 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class network [[#network]] {
-
-}
 class digitalocean_resource [[#digitalocean_resource]] {
 **urn**: string
+}
+class network [[#network]] {
+
 }
 class digitalocean_vpc [[#digitalocean_vpc]] {
 **ip_range**: string
 **description**: string
 **is_default**: boolean
 }
-resource <|--- network
 resource <|--- digitalocean_resource
+resource <|--- network
 digitalocean_resource <|--- digitalocean_vpc
 network <|--- digitalocean_vpc
 
@@ -3330,7 +3330,7 @@ network <|--- digitalocean_vpc
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of digitalocean_vpc resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_vpc resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3354,44 +3354,44 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class digitalocean_droplet [[#digitalocean_droplet]] {
+class digitalocean_load_balancer [[#digitalocean_load_balancer]] {
 
 }
-class digitalocean_region [[#digitalocean_region]] {
+class digitalocean_droplet [[#digitalocean_droplet]] {
 
 }
 class digitalocean_database [[#digitalocean_database]] {
 
 }
-class digitalocean_load_balancer [[#digitalocean_load_balancer]] {
+class digitalocean_kubernetes_cluster [[#digitalocean_kubernetes_cluster]] {
+
+}
+class digitalocean_region [[#digitalocean_region]] {
 
 }
 class digitalocean_vpc [[#digitalocean_vpc]] {
 
 }
-class digitalocean_kubernetes_cluster [[#digitalocean_kubernetes_cluster]] {
-
-}
 class digitalocean_team [[#digitalocean_team]] {
 
 }
-digitalocean_region -[#1A83AF]-> digitalocean_database
-digitalocean_region -[#1A83AF]-> digitalocean_droplet
+digitalocean_load_balancer -[#1A83AF]-> digitalocean_droplet
+digitalocean_kubernetes_cluster -[#1A83AF]-> digitalocean_droplet
 digitalocean_region -[#1A83AF]-> digitalocean_load_balancer
 digitalocean_region -[#1A83AF]-> digitalocean_vpc
+digitalocean_region -[#1A83AF]-> digitalocean_droplet
 digitalocean_region -[#1A83AF]-> digitalocean_kubernetes_cluster
-digitalocean_load_balancer -[#1A83AF]-> digitalocean_droplet
+digitalocean_region -[#1A83AF]-> digitalocean_database
 digitalocean_vpc -[#1A83AF]-> digitalocean_database
+digitalocean_vpc -[#1A83AF]-> digitalocean_kubernetes_cluster
 digitalocean_vpc -[#1A83AF]-> digitalocean_droplet
 digitalocean_vpc -[#1A83AF]-> digitalocean_load_balancer
-digitalocean_vpc -[#1A83AF]-> digitalocean_kubernetes_cluster
-digitalocean_kubernetes_cluster -[#1A83AF]-> digitalocean_droplet
-digitalocean_team -[#1A83AF]-> digitalocean_database
 digitalocean_team -[#1A83AF]-> digitalocean_droplet
-digitalocean_team -[#1A83AF]-> digitalocean_kubernetes_cluster
 digitalocean_team -[#1A83AF]-> digitalocean_load_balancer
-digitalocean_team -[#1A83AF]-> digitalocean_region
 digitalocean_team -[#1A83AF]-> digitalocean_vpc
+digitalocean_team -[#1A83AF]-> digitalocean_region
+digitalocean_team -[#1A83AF]-> digitalocean_kubernetes_cluster
+digitalocean_team -[#1A83AF]-> digitalocean_database
 
 @enduml
 ```

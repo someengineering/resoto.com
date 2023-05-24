@@ -12,7 +12,7 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 
 <ZoomPanPinch>
 
-```plantuml Diagram of slack_conversation data model
+```kroki imgType="plantuml" imgTitle="Diagram of slack_conversation data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -93,7 +93,7 @@ resource <|--- slack_conversation
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of slack_conversation resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of slack_conversation resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -126,8 +126,8 @@ class slack_conversation [[#slack_conversation]] {
 class slack_user [[#slack_user]] {
 
 }
-slack_region -[#1A83AF]-> slack_conversation
 slack_region -[#1A83AF]-> slack_user
+slack_region -[#1A83AF]-> slack_conversation
 slack_conversation -[#1A83AF]-> slack_user
 
 @enduml
@@ -141,7 +141,7 @@ slack_conversation -[#1A83AF]-> slack_user
 
 <ZoomPanPinch>
 
-```plantuml Diagram of slack_region data model
+```kroki imgType="plantuml" imgTitle="Diagram of slack_region data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -177,18 +177,18 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class region [[#region]] {
-
-}
 class slack_resource [[#slack_resource]] {
 
 }
 class slack_region [[#slack_region]] {
 
 }
-resource <|--- region
+class region [[#region]] {
+
+}
 slack_resource <|--- slack_region
 region <|--- slack_region
+resource <|--- region
 
 @enduml
 ```
@@ -200,7 +200,7 @@ region <|--- slack_region
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of slack_region resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of slack_region resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -240,9 +240,9 @@ class slack_usergroup [[#slack_usergroup]] {
 
 }
 slack_team -[#1A83AF]-> slack_region
-slack_region -[#1A83AF]-> slack_conversation
 slack_region -[#1A83AF]-> slack_usergroup
 slack_region -[#1A83AF]-> slack_user
+slack_region -[#1A83AF]-> slack_conversation
 slack_conversation -[#1A83AF]-> slack_user
 slack_usergroup -[#1A83AF]-> slack_user
 
@@ -257,7 +257,7 @@ slack_usergroup -[#1A83AF]-> slack_user
 
 <ZoomPanPinch>
 
-```plantuml Diagram of slack_team data model
+```kroki imgType="plantuml" imgTitle="Diagram of slack_team data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -318,7 +318,7 @@ account <|--- slack_team
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of slack_team resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of slack_team resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -361,7 +361,7 @@ slack_team -[#1A83AF]-> slack_region
 
 <ZoomPanPinch>
 
-```plantuml Diagram of slack_user data model
+```kroki imgType="plantuml" imgTitle="Diagram of slack_user data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -397,10 +397,10 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class slack_resource [[#slack_resource]] {
+class user [[#user]] {
 
 }
-class user [[#user]] {
+class slack_resource [[#slack_resource]] {
 
 }
 class slack_user [[#slack_user]] {
@@ -453,7 +453,7 @@ user <|--- slack_user
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of slack_user resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of slack_user resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -489,9 +489,9 @@ class slack_user [[#slack_user]] {
 class slack_usergroup [[#slack_usergroup]] {
 
 }
-slack_region -[#1A83AF]-> slack_conversation
 slack_region -[#1A83AF]-> slack_usergroup
 slack_region -[#1A83AF]-> slack_user
+slack_region -[#1A83AF]-> slack_conversation
 slack_conversation -[#1A83AF]-> slack_user
 slack_usergroup -[#1A83AF]-> slack_user
 
@@ -506,7 +506,7 @@ slack_usergroup -[#1A83AF]-> slack_user
 
 <ZoomPanPinch>
 
-```plantuml Diagram of slack_usergroup data model
+```kroki imgType="plantuml" imgTitle="Diagram of slack_usergroup data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -542,10 +542,10 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class group [[#group]] {
+class slack_resource [[#slack_resource]] {
 
 }
-class slack_resource [[#slack_resource]] {
+class group [[#group]] {
 
 }
 class slack_usergroup [[#slack_usergroup]] {
@@ -576,7 +576,7 @@ group <|--- slack_usergroup
 <div>
 <ZoomPanPinch>
 
-```plantuml Diagram of slack_usergroup resource relationships
+```kroki imgType="plantuml" imgTitle="Diagram of slack_usergroup resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37

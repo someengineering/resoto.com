@@ -13,11 +13,10 @@ const kroki = require('remark-kroki-plugin');
 const latestRelease = require('./latestRelease.json');
 const versions = require('./versions.json');
 
-const isBuildFast = !!process.env.BUILD_FAST;
+const isDev = process.env.NODE_ENV === 'development';
+const isBuildFast = isDev || !!process.env.BUILD_FAST;
 const isProd =
-  process.env.NODE_ENV !== 'development' &&
-  !!process.env.NETLIFY &&
-  process.env.CONTEXT !== 'deploy-preview';
+  !isDev && !!process.env.NETLIFY && process.env.CONTEXT !== 'deploy-preview';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {

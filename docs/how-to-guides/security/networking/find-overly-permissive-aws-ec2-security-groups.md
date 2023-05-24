@@ -46,7 +46,7 @@ This guide assumes that you have already [installed](../../../getting-started/in
    # highlight-end
    ```
 
-   The command output will list the details of all non-compliant [`aws_ec2_security_group` resources](../../../reference/data-models/aws.md#aws_ec2_security_group).
+   The command output will list the details of all non-compliant [`aws_ec2_security_group` resources](../../../reference/unified-data-model/aws.md#aws_ec2_security_group).
 
 ## Remediation
 
@@ -64,7 +64,7 @@ Please refer to the [AWS EC2 documentation](https://docs.aws.amazon.com/vpc/late
 
 - [Search](../../../reference/search/index.md)
 - [Command-Line Interface](../../../reference/cli/index.md)
-- [`aws_ec2_security_group` Resource Data Model](../../../reference/data-models/aws.md#aws_ec2_security_group)
+- [`aws_ec2_security_group` Resource Data Model](../../../reference/unified-data-model/aws.md#aws_ec2_security_group)
 
 ## External Links
 

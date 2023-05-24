@@ -13,6 +13,7 @@ const kroki = require('remark-kroki-plugin');
 const latestRelease = require('./latestRelease.json');
 const versions = require('./versions.json');
 
+const isBuildFast = !!process.env.BUILD_FAST;
 const isProd =
   process.env.NODE_ENV !== 'development' &&
   !!process.env.NETLIFY &&
@@ -91,15 +92,19 @@ const config = {
           remarkPlugins: [
             a11yEmoji,
             [oembed, { providers: ['youtube'] }],
-            [
-              kroki,
-              {
-                krokiBase: 'https://kroki.some.engineering',
-                lang: 'kroki',
-                imgRefDir: '/img/kroki',
-                imgDir: 'static/img/kroki',
-              },
-            ],
+            ...(!isBuildFast
+              ? [
+                  [
+                    kroki,
+                    {
+                      krokiBase: 'https://kroki.some.engineering',
+                      lang: 'kroki',
+                      imgRefDir: '/img/kroki',
+                      imgDir: 'static/img/kroki',
+                    },
+                  ],
+                ]
+              : []),
           ],
           docItemComponent: '@theme/ApiItem',
           lastVersion: versions[0],
@@ -111,18 +116,22 @@ const config = {
               badge: false,
             },
             ...versions
-              .map((version) => ({
-                [version]: {
-                  label: latestRelease[version].startsWith(
-                    version.substring(0, version.indexOf('X'))
-                  )
-                    ? latestRelease[version]
-                    : version,
-                  ...(version === versions[0]
-                    ? null
-                    : { path: `/${version.toLowerCase()}` }),
-                },
-              }))
+              .map((version) =>
+                !isBuildFast || version === versions[0]
+                  ? {
+                      [version]: {
+                        label: latestRelease[version].startsWith(
+                          version.substring(0, version.indexOf('X'))
+                        )
+                          ? latestRelease[version]
+                          : version,
+                        ...(version === versions[0]
+                          ? null
+                          : { path: `/${version.toLowerCase()}` }),
+                      },
+                    }
+                  : {}
+              )
               .reduce((acc, cur) => ({ ...acc, ...cur }), {}),
           },
         },
@@ -411,7 +420,7 @@ const config = {
           },
           {
             label: 'Blog',
-            href: '/blog',
+            to: '/blog',
             position: 'right',
           },
           {

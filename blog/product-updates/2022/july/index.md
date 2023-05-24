@@ -19,7 +19,7 @@ So far, Resoto has worked out-of-the-box for the "native" cloud providers [<abbr
 
 :::note
 
-Resoto's [unified data model](/docs/reference/data-models) still applies. Common Resoto types like `resource`, `instance`, and `volume` are still relevant with Kubernetes. We went "deep" on Kubernetes from day one, meaning we support the entire set of 100+ Kubernetes properties. Full-text search, piping commands, and performing jobs (like tag and cleanup) also work for Kubernetes.
+Resoto's [unified data model](/docs/reference/unified-data-model) still applies. Common Resoto types like `resource`, `instance`, and `volume` are still relevant with Kubernetes. We went "deep" on Kubernetes from day one, meaning we support the entire set of 100+ Kubernetes properties. Full-text search, piping commands, and performing jobs (like tag and cleanup) also work for Kubernetes.
 
 :::
 

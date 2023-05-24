@@ -168,12 +168,12 @@ More abstractions like this are available in Resoto. The following list shows th
 
 :::info
 
-[Data models for all supported cloud resource can be found in the Resoto documentation](/docs/reference/data-models). This not only includes a complete list of properties but the hierarchy of the abstractions as well:
+See [Unified Data Model](/docs/reference/unified-data-model) for data models of all supported cloud resources. The models describe not only properties but the hierarchy of the abstractions as well:
 
-- [Amazon Web Services Resource Data Models](/docs/reference/data-models/aws)
-- [Google Cloud Platform Resource Data Models](/docs/reference/data-models/google-cloud)
-- [Kubernetes Resource Data Models](/docs/reference/data-models/kubernetes)
-- [DigitalOcean Resource Data Models](/docs/reference/data-models/digitalocean)
+- [Amazon Web Services Resource Data Models](/docs/reference/unified-data-model/aws)
+- [Google Cloud Platform Resource Data Models](/docs/reference/unified-data-model/google-cloud)
+- [Kubernetes Resource Data Models](/docs/reference/unified-data-model/kubernetes)
+- [DigitalOcean Resource Data Models](/docs/reference/unified-data-model/digitalocean)
 
 :::
 

@@ -1,6 +1,6 @@
 ---
 sidebar_label: Docker Hub
-slug: /reference/data-models/docker-hub
+slug: /reference/unified-data-model/docker-hub
 ---
 
 # Docker Hub Resource Data Models
@@ -49,18 +49,18 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class dockerhub_namespace [[#dockerhub_namespace]] {
-**count**: int64
+class account [[#account]] {
+
 }
 class dockerhub_resource [[#dockerhub_resource]] {
 
 }
-class account [[#account]] {
-
+class dockerhub_namespace [[#dockerhub_namespace]] {
+**count**: int64
 }
+resource <|--- account
 dockerhub_resource <|--- dockerhub_namespace
 account <|--- dockerhub_namespace
-resource <|--- account
 
 @enduml
 ```
@@ -147,9 +147,6 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class dockerhub_resource [[#dockerhub_resource]] {
-
-}
 class dockerhub_repository [[#dockerhub_repository]] {
 **repository_type**: string
 **is_private**: boolean
@@ -157,6 +154,9 @@ class dockerhub_repository [[#dockerhub_repository]] {
 **pull_count**: int64
 **affiliation**: string
 **media_types**: string[]
+}
+class dockerhub_resource [[#dockerhub_resource]] {
+
 }
 dockerhub_resource <|--- dockerhub_repository
 resource <|--- dockerhub_repository

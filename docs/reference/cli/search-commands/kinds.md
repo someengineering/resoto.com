@@ -69,4 +69,4 @@ kinds [-p <property_path>] <name>
 ## Further Reading
 
 - [Asset Inventory Graph](../../../concepts/asset-inventory-graph/index.md)
-- [Resource Data Models](../../data-models/index.md)
+- [Unified Data Model](../../unified-data-model/index.md)

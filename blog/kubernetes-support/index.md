@@ -79,13 +79,13 @@ Resoto has a common data model for resources that abstracts from the underlying 
 
 Every resource in Kubernetes is also of type `kubernetes_resource`, which brings in additional properties like a `resource_version`, `labels`, and an optional `namespace` property, which is defined for all namespaced resources. Annotations of a Kubernetes resource are available as `tags` and can be modified via the [`tag`](/docs/reference/cli/action-commands/tag) command.
 
-Common abstractions apply as well. A [PersistentVolume](/docs/reference/data-models/kubernetes#kubernetes_persistent_volume) is of base type `volume`. So it shares the same kind and properties with other volumes of other cloud providers, e.g. an [`EBSVolume`](/docs/reference/data-models/aws#aws_ec2_volume) in <abbr title="Amazon Web Services">AWS</abbr> or a [`Disk`](/docs/reference/data-models/google-cloud#gcp_disk) in Google Cloud. The same idea applies to a Kubernetes [node](/docs/reference/data-models/kubernetes#kubernetes_node) which is of base type `instance` etc.
+Common abstractions apply as well. A [PersistentVolume](/docs/reference/unified-data-model/kubernetes#kubernetes_persistent_volume) is of base type `volume`. So it shares the same kind and properties with other volumes of other cloud providers, e.g. an [`EBSVolume`](/docs/reference/unified-data-model/aws#aws_ec2_volume) in <abbr title="Amazon Web Services">AWS</abbr> or a [`Disk`](/docs/reference/unified-data-model/google-cloud#gcp_disk) in Google Cloud. The same idea applies to a Kubernetes [node](/docs/reference/unified-data-model/kubernetes#kubernetes_node) which is of base type `instance` etc.
 
 Kubernetes has its own way of describing a resource, which is available in Resoto as well. The three main sections `metadata`, `spec`, and `status` can be found in almost any resource. The data in the `metadata` section is basically covered by the base `resource` properties (`id`, `name`, `tags`, etc.). The `spec` section usually holds the desired state, while the `status` section holds the current state.
 
 Both sections are unique to the resource type. Since Resoto allows searching on any resource property, we made the `spec` and `status` section unique to the resource type. So a `Pod` in Resoto has a `pod_spec` and `pod_status` section, while a `Deployment` has a `deployment_spec` and `deployment_status` section. The relevant spec and status sections have the same specific data model as the Kubernetes resource.
 
-You can find a complete reference at [Kubernetes Resource Data Models](/docs/reference/data-models/kubernetes).
+You can find a complete reference at [Kubernetes Resource Data Models](/docs/reference/unified-data-model/kubernetes).
 
 ## Searching the Graph
 
@@ -311,4 +311,4 @@ We are currently working on the way to connect resources found in Kubernetes to 
 
 - [Install Resoto with Kubernetes](/docs/getting-started/install-resoto/kubernetes)
 - [Collect Kubernetes Resource Data](/docs/how-to-guides/data-sources/collect-kubernetes-resource-data)
-- [Kubernetes Resource Data Models](/docs/reference/data-models/kubernetes)
+- [Kubernetes Resource Data Models](/docs/reference/unified-data-model/kubernetes)

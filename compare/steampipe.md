@@ -1,0 +1,35 @@
+# Resoto vs. Steampipe
+
+**Resoto can be used as an alternative to Steampipe.**
+
+[Steampipe](https://steampipe.io) is an open-source project that uses SQL to query cloud infrastructure, SaaS, code, logs, and more.
+
+Steampipe uses [foreign data wrappers](https://wiki.postgresql.org/wiki/Foreign_data_wrappers) to create a [PostgreSQL](https://postgresql.org) abstraction on top of APIs.
+
+Steampipe is developed and maintained by [Turbot](https://turbot.com), a cloud governance platform.
+
+## Similarities Between Resoto and Steampipe
+
+Just like Resoto, Steampipe queries cloud APIs to deliver resource metadata.
+
+With both Resoto and Steampipe, you can:
+
+- Write queries to ask questions about your cloud infrastructure
+- Correlate data from different sources (e.g., a GitHub repo and a cloud resource)
+- Run security and compliance checks write the output of a query to a CSV file
+
+## Differences Between Resoto and Steampipe
+
+At its core, Steampipe is a CLI tool with a wrapper around an embedded PostgreSQL instance.
+
+The PostgreSQL instance starts and stops with the tool—i.e., Steampipe does not store any data. That makes Steampipe suitable for ad-hoc queries, but less ideal for exploration and tracking metrics.
+
+|  | Resoto | Steampipe |
+| --- | --- | --- |
+| **Full-Text Search** | Creates an [inventory](/docs/concepts/asset-inventory-graph) of discovered resources and offers [full-text search](/docs/reference/search/full-text) as an easy way to explore your cloud inventory. | Does not offer full-text search capabilities. |
+| **Remediation** | Integrates analytics and governance into a single product to enforce policies and [perform actions on resources](/docs/concepts/resource-management).<br /><br /> Offers [commands](/docs/reference/cli) and [jobs](/docs/concepts/automation#jobs) to automate remediation.<br /><br />Can be used to write custom code and rules for any resource in a cloud-agnostic way. | Only runs queries and does not make changes to the state of resources.<br /><br />An infrastructure-as-code tool (e.g., [Terraform](https://terraform.io)) or governance tool (e.g., [Cloud Custodian](https://cloudcustodian.io)) is required to modify resources,introducing friction, delays, and human error. |
+| **Data Collection** | Runs an <abbr title="extract, transform, load">ETL</abbr> process that [syncs data on a regular schedule](/docs/concepts/cloud-data-sync) into a [graph database](/docs/concepts/asset-inventory-graph).<br /><br />Also exports metrics automatically to a time-series database. | Performs ad-hoc queries to cloud APIs and does not store data. |
+| **Context** | Provides context for each resource through its [asset inventory graph](/docs/concepts/asset-inventory-graph). | Collects a list of resources, but not their dependencies and relationships.<br /><br />(For example, Steampipe can surface a non-compliant resource, but not the "blast radius" that would result from deleting the resource.) |
+| **Performance** | Separates [data ingest](/docs/concepts/cloud-data-sync), transformations, [storage](/docs/concepts/asset-inventory-graph), and [queries](/docs/reference/search) for a scalable approach to analyzing infrastructure. | Works well for ad-hoc queries in smaller environments.<br /><br />For larger infrastructures with hundreds of different accounts or complex queries, triggers a lot of connections and can stall during initialization. Every query opens up a new live connection.<br /><br />Performing data collection in all accounts takes time and is resource intensive.<br /><br />Let's say a user wants to query 100 Google Cloud projects with 85 services and 100 AWS accounts with 380 services. That's $(100 \times 85) + (100 \times 380) = 46,500$ PostgreSQL tables to initialize (all foreign tables containing no data). |
+| **Resources** | Supports popular data sources and allows you to [build your own plugins](/docs/contributing/plugins) to collect data from any source. | Currently supports more platforms and resources than Resoto. |
+| **License** | Uses the permissive [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0). | Licensed under [AGPLv3](https://www.gnu.org/licenses/agpl-3.0.en.html), a restrictive copy-left license. |

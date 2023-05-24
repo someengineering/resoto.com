@@ -46,7 +46,7 @@ This guide assumes that you have already [installed](../../../getting-started/in
    # highlight-end
    ```
 
-   The command output will list the details of all non-compliant [`aws_vpc` resources](../../../reference/data-models/aws.md#aws_vpc).
+   The command output will list the details of all non-compliant [`aws_vpc` resources](../../../reference/unified-data-model/aws.md#aws_vpc).
 
 ## Remediation
 
@@ -62,7 +62,7 @@ Please refer to the [AWS EC2 documentation](https://docs.aws.amazon.com/vpc/late
 
 - [Search](../../../reference/search/index.md)
 - [Command-Line Interface](../../../reference/cli/index.md)
-- [`aws_vpc` Resource Data Model](../../../reference/data-models/aws.md#aws_vpc)
+- [`aws_vpc` Resource Data Model](../../../reference/unified-data-model/aws.md#aws_vpc)
 
 ## External Links
 

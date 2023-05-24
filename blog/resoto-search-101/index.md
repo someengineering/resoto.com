@@ -98,10 +98,10 @@ The above examples only begin to scratch the surface of Resoto's [search syntax]
 
 :::note
 
-This blog post showcases examples of working with [AWS resources](/docs/reference/data-models/aws), but Resoto also supports other resource types (and additional integrations with other providers are planned!):
+This blog post showcases examples of working with [AWS resources](/docs/reference/unified-data-model/aws), but Resoto also supports other resource types (and additional integrations with other providers are planned!):
 
-- [Google Cloud](/docs/reference/data-models/google-cloud)
-- [vSphere](/docs/reference/data-models/vsphere) (alpha)
-- [Kubernetes (K8s)](/docs/reference/data-models/kubernetes) (alpha)
+- [Google Cloud](/docs/reference/unified-data-model/google-cloud)
+- [vSphere](/docs/reference/unified-data-model/vsphere) (alpha)
+- [Kubernetes (K8s)](/docs/reference/unified-data-model/kubernetes) (alpha)
 
 :::

@@ -231,7 +231,7 @@ We could then find all certificates expiring in the next thirty days:
 # highlight-end
 ```
 
-See [Resource Data Models](/docs/reference/data-models) for a full list of currently supported resources.
+See [Unified Data Model](/docs/reference/unified-data-model) for a full list of currently supported resources.
 
 ## Conclusion
 

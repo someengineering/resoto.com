@@ -40,7 +40,7 @@ Let's consider a baseline that requires ingress traffic be restricted to defined
 
 We can examine <abbr title="Amazon Web Services">AWS</abbr> EC2 security groups that control [access to VPCs](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html).
 
-Looking at the [`aws_ec2_security_group` resource data model](/docs/reference/data-models/aws#aws_ec2_security_group), we see that the security group can define multiple IP permissions for ingress and egress, each of which is described as multiple IP ranges.
+Looking at the [`aws_ec2_security_group` resource data model](/docs/reference/unified-data-model/aws#aws_ec2_security_group), we see that the security group can define multiple IP permissions for ingress and egress, each of which is described as multiple IP ranges.
 
 The following Resoto search reveals all security groups that violate the rule by defining at least one permission set for ingress either:
 

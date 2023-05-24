@@ -96,7 +96,7 @@ At the most basic level, Resoto has two components that integrate with each othe
 1. An analytical layer that collects raw infrastructure metadata.
 2. A governance layer that uses that infrastructure metadata as an input to write code.
 
-Users can write and invoke Resoto code from a [command-line interface](/docs/reference/cli) or from a low-code user interface. The link between the two components is a unified [data model](/docs/reference/data-models).
+Users can write and invoke Resoto code from a [command-line interface](/docs/reference/cli) or from a low-code user interface. The link between the two components is a [unified data model](/docs/reference/unified-data-model).
 
 So, what's the benefit of integrating analytics with governance? I can now use data to write code that discovers resources and reconciles any undesired changes, from a single UI. My code knows how to understand and then change the state of a resource. That opens the way to put infrastructure on autopilot, and continuously reduce the need for human intervention.
 
@@ -125,9 +125,9 @@ Resoto's search syntax is inspired by the Unix shell and designed to be both hum
 
 The data models for cloud APIs differ, meaning to join data, you'd need to have a detailed understanding of each service's data model. Without that expertise, it becomes hard to combine data sets.
 
-Resoto solves that problem with abstraction. [Resoto's unified data model](/docs/reference/data-models) is cloud-agnostic and supports static-typing and inheritance. Inheritance represents the idea that a resource kind (a "child" resource) inherits properties from another resource kind (a "parent" resource). The child resource has the properties of the parent resource in addition to its own child-specific properties.
+Resoto solves that problem with abstraction. [Resoto's unified data model](/docs/reference/unified-data-model) is cloud-agnostic and supports static-typing and inheritance. Inheritance represents the idea that a resource kind (a "child" resource) inherits properties from another resource kind (a "parent" resource). The child resource has the properties of the parent resource in addition to its own child-specific properties.
 
-The highest-level abstraction and base kind in Resoto is a [resource](/docs/reference/data-models#resources). Seven properties are common to all resources:
+The highest-level abstraction and base kind in Resoto is a [resource](/docs/reference/unified-data-model#resource-base-kind). Seven properties are common to all resources:
 
 ![Data model of Resoto's `resource` entity](./img/resource-data-model.svg)
 

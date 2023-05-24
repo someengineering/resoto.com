@@ -46,7 +46,7 @@ This guide assumes that you have already [installed](../../../getting-started/in
    # highlight-end
    ```
 
-   The command output will list the details of all non-compliant [`aws_efs_file_system` resources](../../../reference/data-models/aws.md#aws_efs_file_system).
+   The command output will list the details of all non-compliant [`aws_efs_file_system` resources](../../../reference/unified-data-model/aws.md#aws_efs_file_system).
 
 ## Remediation
 
@@ -63,7 +63,7 @@ Please refer to the [AWS EFS documentation](https://docs.aws.amazon.com/efs/late
 
 - [Search](../../../reference/search/index.md)
 - [Command-Line Interface](../../../reference/cli/index.md)
-- [`aws_efs_file_system` Resource Data Model](../../../reference/data-models/aws.md#aws_efs_file_system)
+- [`aws_efs_file_system` Resource Data Model](../../../reference/unified-data-model/aws.md#aws_efs_file_system)
 
 ## External Links
 

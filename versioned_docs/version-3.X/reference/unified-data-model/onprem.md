@@ -1,6 +1,6 @@
 ---
 sidebar_label: On-Premises
-slug: /reference/data-models/on-premises
+slug: /reference/unified-data-model/on-premises
 ---
 
 # On-Premises Resource Data Models
@@ -49,23 +49,23 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
+class onprem_instance [[#onprem_instance]] {
+**network_device**: string
+**network_ip4**: string
+**network_ip6**: string
+}
+class onprem_resource [[#onprem_resource]] {
+
+}
 class instance [[#instance]] {
 **instance_cores**: double
 **instance_memory**: double
 **instance_type**: string
 **instance_status**: instance_status
 }
-class onprem_resource [[#onprem_resource]] {
-
-}
-class onprem_instance [[#onprem_instance]] {
-**network_device**: string
-**network_ip4**: string
-**network_ip6**: string
-}
-resource <|--- instance
 onprem_resource <|--- onprem_instance
 instance <|--- onprem_instance
+resource <|--- instance
 
 @enduml
 ```
@@ -152,14 +152,14 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class onprem_location [[#onprem_location]] {
-
-}
 class account [[#account]] {
 
 }
-account <|--- onprem_location
+class onprem_location [[#onprem_location]] {
+
+}
 resource <|--- account
+account <|--- onprem_location
 
 @enduml
 ```

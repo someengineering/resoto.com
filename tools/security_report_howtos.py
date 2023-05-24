@@ -102,7 +102,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
    # highlight-end
    ```
 
-   The command output will list the details of all non-compliant [`{result_kind}` resources](../../reference/data-models/aws.md#{result_kind}).
+   The command output will list the details of all non-compliant [`{result_kind}` resources](../../reference/unified-data-model/aws.md#{result_kind}).
 
 3. Fix detected issues by following the [remediation steps](#remediation):
 
@@ -118,7 +118,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
 - [Search](../../reference/search/index.md)
 - [Command-Line Interface](../../reference/cli/index.md)
-- [`{result_kind}` Resource Data Model](../../reference/data-models/aws.md#{result_kind})
+- [`{result_kind}` Resource Data Model](../../reference/unified-data-model/aws.md#{result_kind})
 
 ## External Links
 

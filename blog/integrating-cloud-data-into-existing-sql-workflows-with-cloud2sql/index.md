@@ -42,7 +42,7 @@ To represent an individual node, Resoto uses a unified data model with strict ty
 
 </ZoomPanPinch>
 
-As you can see, every [`aws_elb`](/docs/reference/data-models/aws#aws_elb) inherits `load_balancer`, which in turn inherits from `resource`. Each [`aws_elb`](/docs/reference/data-models/aws#aws_elb) also contains additional data like `aws_elb_policies`, which contain an `aws_elb_app_cookie_stickiness_policy` and `aws_elb_lb_cookie_stickiness_policy`, and so on.
+As you can see, every [`aws_elb`](/docs/reference/unified-data-model/aws#aws_elb) inherits `load_balancer`, which in turn inherits from `resource`. Each [`aws_elb`](/docs/reference/unified-data-model/aws#aws_elb) also contains additional data like `aws_elb_policies`, which contain an `aws_elb_app_cookie_stickiness_policy` and `aws_elb_lb_cookie_stickiness_policy`, and so on.
 
 <details>
 <summary>Example of an individual <code>aws_elb</code></summary>

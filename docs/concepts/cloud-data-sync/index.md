@@ -18,7 +18,7 @@ Resoto's pluggable architecture allows it to collect data from multiple [cloud p
 
 ![Collect](./img/collect.png)
 
-Each collector plugin includes logic to extract data from the cloud provider API and map it to Resoto's [data models](../../reference/data-models/index.md). This mapping allows you to interact with resources across cloud providers in a consistent fashion. Each resource has `id`, `name`, `kind`, `tags`, `created_at`, and `updated_at` properties, in addition to `cloud`, `account`, and `region` data denoting the location of the resource.
+Each collector plugin includes logic to extract data from the cloud provider API and map it to Resoto's [data models](../../reference/unified-data-model/index.md). This mapping allows you to interact with resources across cloud providers in a consistent fashion. Each resource has `id`, `name`, `kind`, `tags`, `created_at`, and `updated_at` properties, in addition to `cloud`, `account`, and `region` data denoting the location of the resource.
 
 Resource collector plugins not only index your infrastructure, but also gather data about resource relationships to connect resources in the [asset inventory graph](../asset-inventory-graph/index.md).
 

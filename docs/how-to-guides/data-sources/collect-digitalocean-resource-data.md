@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
 
-The [DigitalOcean](../../reference/data-models/digitalocean.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs/index.md) in [Resoto Shell](../../reference/components/shell.md).
+The [DigitalOcean](../../reference/unified-data-model/digitalocean.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs/index.md) in [Resoto Shell](../../reference/components/shell.md).
 
 ## Prerequisites
 
@@ -161,7 +161,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
    > workflow run collect
    ```
 
-2. Once the collect run completes, you can view a summary of collected [DigitalOcean resources](../../reference/data-models/digitalocean.md) using the following search:
+2. Once the collect run completes, you can view a summary of collected [DigitalOcean resources](../../reference/unified-data-model/digitalocean.md) using the following search:
 
    ```bash
    > search is(digitalocean_resource) | count kind

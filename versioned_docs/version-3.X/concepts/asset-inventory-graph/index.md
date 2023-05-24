@@ -43,7 +43,7 @@ The kind of resource is defined in the `kind` property of the resource.
 
 :::info
 
-[Resource Data Models](../../reference/data-models/index.md) lists all available resource kinds.
+[Unified Data Model](../../reference/unified-data-model/index.md) lists all available resource kinds.
 
 :::
 
@@ -67,7 +67,7 @@ The [`kinds` command](../../reference/cli/search-commands/kinds.md) allows you t
 
 Resoto also captures the relationships between resources by encoding the relationships as edges in the graph. This makes it possible to traverse the graph and walk from one resource to another based on a specific relationship. The relationship itself does not have any additional properties.
 
-The list of possible edges are also defined explicitly in our [data model reference section](../../reference/data-models/index.md). Another option is the [`kinds`](../../reference/cli/search-commands/kinds.md) command to get the same information on the command line.
+The list of possible edges are also defined explicitly in [Unified Data Model](../../reference/unified-data-model/index.md). Alternatively, use the [`kinds` command](../../reference/cli/search-commands/kinds.md) to get the same information on the command line.
 
 <ZoomPanPinch>
 

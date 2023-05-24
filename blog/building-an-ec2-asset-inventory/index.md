@@ -4,7 +4,7 @@ authors: [lars]
 tags: [aws]
 ---
 
-# Building an EC2 Cloud Inventory
+# Building an EC2 Asset Inventory
 
 EC2 instances often account for the largest portion of your <abbr title="Amazon Web Services">AWS</abbr> bill. Yet, it's notoriously difficult to get a simple list of all EC2 instances across all regions and accounts, as threads on [StackOverflow](https://stackoverflow.com/questions/42086712/how-to-see-all-running-amazon-ec2-instances-across-all-regions) and [Reddit](https://www.reddit.com/r/aws/comments/s83381/list_ec2_instances_from_all_accounts_in_all) show.
 

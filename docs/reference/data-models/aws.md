@@ -18,7 +18,7 @@ See [How to Collect AWS Resource Data](../../how-to-guides/data-sources/collect-
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_account data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_account data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -42,9 +42,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -56,6 +53,12 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
+class account [[#account]] {
+
 }
 class aws_account [[#aws_account]] {
 **account_alias**: string
@@ -83,13 +86,10 @@ class aws_account [[#aws_account]] {
 **password_reuse_prevention**: int64
 **hard_expiry**: boolean
 }
-class account [[#account]] {
-
-}
 resource <|--- aws_resource
+resource <|--- account
 account <|--- aws_account
 aws_resource <|--- aws_account
-resource <|--- account
 
 @enduml
 ```
@@ -101,7 +101,7 @@ resource <|--- account
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_account resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_account resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -125,21 +125,21 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_s3_account_settings [[#aws_s3_account_settings]] {
+class aws_root_user [[#aws_root_user]] {
 
 }
 class aws_account [[#aws_account]] {
 
 }
-class aws_root_user [[#aws_root_user]] {
-
-}
 class aws_region [[#aws_region]] {
 
 }
-aws_s3_account_settings -[#1A83AF]-> aws_account
+class aws_s3_account_settings [[#aws_s3_account_settings]] {
+
+}
 aws_account -[#1A83AF]-> aws_root_user
 aws_account -[#1A83AF]-> aws_region
+aws_s3_account_settings -[#1A83AF]-> aws_account
 
 @enduml
 ```
@@ -152,7 +152,7 @@ aws_account -[#1A83AF]-> aws_region
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_alb data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_alb data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -176,8 +176,32 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
+}
 class aws_resource [[#aws_resource]] {
 **arn**: string
+}
+class aws_alb_availability_zone [[#aws_alb_availability_zone]] {
+**zone_name**: string
+**subnet_id**: string
+**outpost_id**: string
+**load_balancer_addresses**: aws_alb_load_balancer_address[]
+}
+class aws_alb_load_balancer_address [[#aws_alb_load_balancer_address]] {
+**ip_address**: string
+**allocation_id**: string
+**private_i_pv4_address**: string
+**i_pv6_address**: string
 }
 class aws_alb [[#aws_alb]] {
 **alb_dns_name**: string
@@ -191,28 +215,36 @@ class aws_alb [[#aws_alb]] {
 **alb_type**: string
 **alb_listener**: aws_alb_listener[]
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class aws_alb_authenticate_oidc_action_config [[#aws_alb_authenticate_oidc_action_config]] {
+**issuer**: string
+**authorization_endpoint**: string
+**token_endpoint**: string
+**user_info_endpoint**: string
+**client_id**: string
+**client_secret**: string
+**session_cookie_name**: string
+**scope**: string
+**session_timeout**: int64
+**authentication_request_extra_params**: dictionary[string, string]
+**on_unauthenticated_request**: string
+**use_existing_client_secret**: boolean
+}
+class aws_alb_forward_action_config [[#aws_alb_forward_action_config]] {
+**target_groups**: aws_alb_target_group_tuple[]
+**target_group_stickiness_config**: aws_alb_target_group_stickiness_config
+}
+class aws_alb_target_group_tuple [[#aws_alb_target_group_tuple]] {
+**target_group_arn**: string
+**weight**: int64
+}
+class aws_alb_target_group_stickiness_config [[#aws_alb_target_group_stickiness_config]] {
+**enabled**: boolean
+**duration_seconds**: int64
 }
 class load_balancer [[#load_balancer]] {
 **lb_type**: string
 **public_ip_address**: string
 **backends**: string[]
-}
-class aws_alb_load_balancer_address [[#aws_alb_load_balancer_address]] {
-**ip_address**: string
-**allocation_id**: string
-**private_i_pv4_address**: string
-**i_pv6_address**: string
 }
 class aws_alb_certificate [[#aws_alb_certificate]] {
 **certificate_arn**: string
@@ -231,20 +263,6 @@ class aws_alb_action [[#aws_alb_action]] {
 **redirect_config**: aws_alb_redirect_action_config
 **fixed_response_config**: aws_alb_fixed_response_action_config
 **forward_config**: aws_alb_forward_action_config
-}
-class aws_alb_authenticate_oidc_action_config [[#aws_alb_authenticate_oidc_action_config]] {
-**issuer**: string
-**authorization_endpoint**: string
-**token_endpoint**: string
-**user_info_endpoint**: string
-**client_id**: string
-**client_secret**: string
-**session_cookie_name**: string
-**scope**: string
-**session_timeout**: int64
-**authentication_request_extra_params**: dictionary[string, string]
-**on_unauthenticated_request**: string
-**use_existing_client_secret**: boolean
 }
 class aws_alb_authenticate_cognito_action_config [[#aws_alb_authenticate_cognito_action_config]] {
 **user_pool_arn**: string
@@ -269,18 +287,6 @@ class aws_alb_fixed_response_action_config [[#aws_alb_fixed_response_action_conf
 **status_code**: string
 **content_type**: string
 }
-class aws_alb_forward_action_config [[#aws_alb_forward_action_config]] {
-**target_groups**: aws_alb_target_group_tuple[]
-**target_group_stickiness_config**: aws_alb_target_group_stickiness_config
-}
-class aws_alb_target_group_tuple [[#aws_alb_target_group_tuple]] {
-**target_group_arn**: string
-**weight**: int64
-}
-class aws_alb_target_group_stickiness_config [[#aws_alb_target_group_stickiness_config]] {
-**enabled**: boolean
-**duration_seconds**: int64
-}
 class aws_alb_listener [[#aws_alb_listener]] {
 **listener_arn**: string
 **load_balancer_arn**: string
@@ -291,29 +297,23 @@ class aws_alb_listener [[#aws_alb_listener]] {
 **default_actions**: aws_alb_action[]
 **alpn_policy**: string[]
 }
-class aws_alb_availability_zone [[#aws_alb_availability_zone]] {
-**zone_name**: string
-**subnet_id**: string
-**outpost_id**: string
-**load_balancer_addresses**: aws_alb_load_balancer_address[]
-}
 resource <|--- aws_resource
+aws_alb_availability_zone --> aws_alb_load_balancer_address
 aws_resource <|--- aws_alb
 load_balancer <|--- aws_alb
 aws_alb --> aws_alb_load_balancer_state
 aws_alb --> aws_alb_availability_zone
 aws_alb --> aws_alb_listener
+aws_alb_forward_action_config --> aws_alb_target_group_tuple
+aws_alb_forward_action_config --> aws_alb_target_group_stickiness_config
 resource <|--- load_balancer
 aws_alb_action --> aws_alb_authenticate_oidc_action_config
 aws_alb_action --> aws_alb_authenticate_cognito_action_config
 aws_alb_action --> aws_alb_redirect_action_config
 aws_alb_action --> aws_alb_fixed_response_action_config
 aws_alb_action --> aws_alb_forward_action_config
-aws_alb_forward_action_config --> aws_alb_target_group_tuple
-aws_alb_forward_action_config --> aws_alb_target_group_stickiness_config
 aws_alb_listener --> aws_alb_certificate
 aws_alb_listener --> aws_alb_action
-aws_alb_availability_zone --> aws_alb_load_balancer_address
 
 @enduml
 ```
@@ -325,7 +325,7 @@ aws_alb_availability_zone --> aws_alb_load_balancer_address
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_alb resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_alb resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -349,46 +349,46 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_alb_target_group [[#aws_alb_target_group]] {
-
-}
-class aws_alb [[#aws_alb]] {
-
-}
-class aws_beanstalk_environment [[#aws_beanstalk_environment]] {
+class aws_vpc [[#aws_vpc]] {
 
 }
 class aws_ec2_subnet [[#aws_ec2_subnet]] {
 
 }
-class aws_service_quota [[#aws_service_quota]] {
-
-}
-class aws_vpc [[#aws_vpc]] {
-
-}
 class aws_ec2_security_group [[#aws_ec2_security_group]] {
+
+}
+class aws_alb [[#aws_alb]] {
 
 }
 class aws_region [[#aws_region]] {
 
 }
-aws_alb -[#1A83AF]-> aws_alb_target_group
-aws_beanstalk_environment -[#1A83AF]-> aws_alb
-aws_ec2_subnet -[#1A83AF]-> aws_alb
-aws_service_quota -[#1A83AF]-> aws_vpc
-aws_service_quota -[#1A83AF]-> aws_alb
-aws_vpc -[#1A83AF]-> aws_ec2_subnet
-aws_vpc -[#1A83AF]-> aws_alb
+class aws_service_quota [[#aws_service_quota]] {
+
+}
+class aws_alb_target_group [[#aws_alb_target_group]] {
+
+}
+class aws_beanstalk_environment [[#aws_beanstalk_environment]] {
+
+}
 aws_vpc -[#1A83AF]-> aws_alb_target_group
 aws_vpc -[#1A83AF]-> aws_ec2_security_group
+aws_vpc -[#1A83AF]-> aws_ec2_subnet
+aws_vpc -[#1A83AF]-> aws_alb
+aws_ec2_subnet -[#1A83AF]-> aws_alb
 aws_ec2_security_group -[#1A83AF]-> aws_alb
-aws_region -[#1A83AF]-> aws_vpc
-aws_region -[#1A83AF]-> aws_ec2_subnet
-aws_region -[#1A83AF]-> aws_alb_target_group
-aws_region -[#1A83AF]-> aws_ec2_security_group
-aws_region -[#1A83AF]-> aws_alb
+aws_alb -[#1A83AF]-> aws_alb_target_group
 aws_region -[#1A83AF]-> aws_service_quota
+aws_region -[#1A83AF]-> aws_vpc
+aws_region -[#1A83AF]-> aws_ec2_security_group
+aws_region -[#1A83AF]-> aws_alb_target_group
+aws_region -[#1A83AF]-> aws_ec2_subnet
+aws_region -[#1A83AF]-> aws_alb
+aws_service_quota -[#1A83AF]-> aws_vpc
+aws_service_quota -[#1A83AF]-> aws_alb
+aws_beanstalk_environment -[#1A83AF]-> aws_alb
 
 @enduml
 ```
@@ -401,7 +401,7 @@ aws_region -[#1A83AF]-> aws_service_quota
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_alb_target_group data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_alb_target_group data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -425,6 +425,21 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
 class aws_alb_target_group [[#aws_alb_target_group]] {
 **target_type**: string
 **protocol**: string
@@ -441,9 +456,6 @@ class aws_alb_target_group [[#aws_alb_target_group]] {
 **alb_protocol_version**: string
 **alb_ip_address_type**: string
 **alb_target_health**: aws_alb_target_health_description[]
-}
-class aws_resource [[#aws_resource]] {
-**arn**: string
 }
 class aws_alb_matcher [[#aws_alb_matcher]] {
 **http_code**: string
@@ -464,22 +476,10 @@ class aws_alb_target_health [[#aws_alb_target_health]] {
 **reason**: string
 **description**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
+resource <|--- aws_resource
 aws_resource <|--- aws_alb_target_group
 aws_alb_target_group --> aws_alb_matcher
 aws_alb_target_group --> aws_alb_target_health_description
-resource <|--- aws_resource
 aws_alb_target_health_description --> aws_alb_target_description
 aws_alb_target_health_description --> aws_alb_target_health
 
@@ -493,7 +493,7 @@ aws_alb_target_health_description --> aws_alb_target_health
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_alb_target_group resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_alb_target_group resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -517,7 +517,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_alb_target_group [[#aws_alb_target_group]] {
+class aws_vpc [[#aws_vpc]] {
+
+}
+class aws_ec2_instance [[#aws_ec2_instance]] {
 
 }
 class aws_ecs_service [[#aws_ecs_service]] {
@@ -526,25 +529,22 @@ class aws_ecs_service [[#aws_ecs_service]] {
 class aws_alb [[#aws_alb]] {
 
 }
-class aws_ec2_instance [[#aws_ec2_instance]] {
-
-}
-class aws_vpc [[#aws_vpc]] {
-
-}
 class aws_region [[#aws_region]] {
 
 }
-aws_alb_target_group -[#1A83AF]-> aws_ec2_instance
-aws_ecs_service -[#1A83AF]-> aws_alb_target_group
-aws_alb -[#1A83AF]-> aws_alb_target_group
+class aws_alb_target_group [[#aws_alb_target_group]] {
+
+}
+aws_vpc -[#1A83AF]-> aws_alb_target_group
 aws_vpc -[#1A83AF]-> aws_ec2_instance
 aws_vpc -[#1A83AF]-> aws_alb
-aws_vpc -[#1A83AF]-> aws_alb_target_group
+aws_ecs_service -[#1A83AF]-> aws_alb_target_group
+aws_alb -[#1A83AF]-> aws_alb_target_group
+aws_region -[#1A83AF]-> aws_ec2_instance
 aws_region -[#1A83AF]-> aws_vpc
 aws_region -[#1A83AF]-> aws_alb_target_group
-aws_region -[#1A83AF]-> aws_ec2_instance
 aws_region -[#1A83AF]-> aws_alb
+aws_alb_target_group -[#1A83AF]-> aws_ec2_instance
 
 @enduml
 ```
@@ -557,7 +557,7 @@ aws_region -[#1A83AF]-> aws_alb
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_api_gateway_authorizer data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_api_gateway_authorizer data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -581,9 +581,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -595,6 +592,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_api_gateway_authorizer [[#aws_api_gateway_authorizer]] {
 **authorizer_type**: string
@@ -620,7 +620,7 @@ aws_resource <|--- aws_api_gateway_authorizer
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_api_gateway_authorizer resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_api_gateway_authorizer resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -647,10 +647,10 @@ skinparam stereotypeIBackgroundColor #e98df7
 class aws_lambda_function [[#aws_lambda_function]] {
 
 }
-class aws_api_gateway_resource [[#aws_api_gateway_resource]] {
+class aws_api_gateway_authorizer [[#aws_api_gateway_authorizer]] {
 
 }
-class aws_api_gateway_authorizer [[#aws_api_gateway_authorizer]] {
+class aws_api_gateway_resource [[#aws_api_gateway_resource]] {
 
 }
 class aws_api_gateway_rest_api [[#aws_api_gateway_rest_api]] {
@@ -659,12 +659,12 @@ class aws_api_gateway_rest_api [[#aws_api_gateway_rest_api]] {
 class aws_iam_role [[#aws_iam_role]] {
 
 }
-aws_api_gateway_resource -[#1A83AF]-> aws_lambda_function
-aws_api_gateway_resource -[#1A83AF]-> aws_api_gateway_authorizer
 aws_api_gateway_authorizer -[#1A83AF]-> aws_lambda_function
-aws_api_gateway_rest_api -[#1A83AF]-> aws_lambda_function
-aws_api_gateway_rest_api -[#1A83AF]-> aws_api_gateway_resource
+aws_api_gateway_resource -[#1A83AF]-> aws_api_gateway_authorizer
+aws_api_gateway_resource -[#1A83AF]-> aws_lambda_function
 aws_api_gateway_rest_api -[#1A83AF]-> aws_api_gateway_authorizer
+aws_api_gateway_rest_api -[#1A83AF]-> aws_api_gateway_resource
+aws_api_gateway_rest_api -[#1A83AF]-> aws_lambda_function
 aws_iam_role -[#1A83AF]-> aws_api_gateway_authorizer
 
 @enduml
@@ -678,7 +678,7 @@ aws_iam_role -[#1A83AF]-> aws_api_gateway_authorizer
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_api_gateway_deployment data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_api_gateway_deployment data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -702,9 +702,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -716,6 +713,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_api_gateway_deployment [[#aws_api_gateway_deployment]] {
 **description**: string
@@ -735,7 +735,7 @@ aws_resource <|--- aws_api_gateway_deployment
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_api_gateway_deployment resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_api_gateway_deployment resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -762,10 +762,10 @@ skinparam stereotypeIBackgroundColor #e98df7
 class aws_api_gateway_rest_api [[#aws_api_gateway_rest_api]] {
 
 }
-class aws_api_gateway_deployment [[#aws_api_gateway_deployment]] {
+class aws_api_gateway_stage [[#aws_api_gateway_stage]] {
 
 }
-class aws_api_gateway_stage [[#aws_api_gateway_stage]] {
+class aws_api_gateway_deployment [[#aws_api_gateway_deployment]] {
 
 }
 aws_api_gateway_rest_api -[#1A83AF]-> aws_api_gateway_deployment
@@ -782,7 +782,7 @@ aws_api_gateway_deployment -[#1A83AF]-> aws_api_gateway_stage
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_api_gateway_domain_name data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_api_gateway_domain_name data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -806,6 +806,18 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
+}
 class aws_resource [[#aws_resource]] {
 **arn**: string
 }
@@ -826,26 +838,14 @@ class aws_api_gateway_domain_name [[#aws_api_gateway_domain_name]] {
 **domain_mutual_tls_authentication**: aws_api_gateway_mutual_tls_authentication
 **domain_ownership_verification_certificate_arn**: string
 }
-class aws_api_gateway_endpoint_configuration [[#aws_api_gateway_endpoint_configuration]] {
-**types**: string[]
-**vpc_endpoint_ids**: string[]
-}
 class aws_api_gateway_mutual_tls_authentication [[#aws_api_gateway_mutual_tls_authentication]] {
 **truststore_uri**: string
 **truststore_version**: string
 **truststore_warnings**: string[]
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class aws_api_gateway_endpoint_configuration [[#aws_api_gateway_endpoint_configuration]] {
+**types**: string[]
+**vpc_endpoint_ids**: string[]
 }
 resource <|--- aws_resource
 aws_resource <|--- aws_api_gateway_domain_name
@@ -862,7 +862,7 @@ aws_api_gateway_domain_name --> aws_api_gateway_mutual_tls_authentication
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_api_gateway_domain_name resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_api_gateway_domain_name resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -886,17 +886,17 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_api_gateway_domain_name [[#aws_api_gateway_domain_name]] {
-
-}
 class aws_vpc_endpoint [[#aws_vpc_endpoint]] {
 
 }
 class aws_route53_zone [[#aws_route53_zone]] {
 
 }
-aws_api_gateway_domain_name -[#1A83AF]-> aws_vpc_endpoint
+class aws_api_gateway_domain_name [[#aws_api_gateway_domain_name]] {
+
+}
 aws_api_gateway_domain_name -[#1A83AF]-> aws_route53_zone
+aws_api_gateway_domain_name -[#1A83AF]-> aws_vpc_endpoint
 
 @enduml
 ```
@@ -909,7 +909,7 @@ aws_api_gateway_domain_name -[#1A83AF]-> aws_route53_zone
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_api_gateway_resource data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_api_gateway_resource data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -933,9 +933,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -948,23 +945,15 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class aws_api_gateway_method [[#aws_api_gateway_method]] {
-**http_method**: string
-**authorization_type**: string
-**authorizer_id**: string
-**api_key_required**: boolean
-**request_validator_id**: string
-**operation_name**: string
-**request_parameters**: dictionary[string, boolean]
-**request_models**: dictionary[string, string]
-**method_responses**: dictionary[string, aws_api_gateway_method_response]
-**method_integration**: aws_api_gateway_integration
-**authorization_scopes**: string[]
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
-class aws_api_gateway_method_response [[#aws_api_gateway_method_response]] {
-**status_code**: string
-**response_parameters**: dictionary[string, boolean]
-**response_models**: dictionary[string, string]
+class aws_api_gateway_resource [[#aws_api_gateway_resource]] {
+**resource_parent_id**: string
+**resource_path_part**: string
+**resource_path**: string
+**resource_methods**: dictionary[string, aws_api_gateway_method]
+**api_link**: string
 }
 class aws_api_gateway_integration [[#aws_api_gateway_integration]] {
 **integration_type**: string
@@ -990,19 +979,30 @@ class aws_api_gateway_integration_response [[#aws_api_gateway_integration_respon
 **response_templates**: dictionary[string, string]
 **content_handling**: string
 }
-class aws_api_gateway_resource [[#aws_api_gateway_resource]] {
-**resource_parent_id**: string
-**resource_path_part**: string
-**resource_path**: string
-**resource_methods**: dictionary[string, aws_api_gateway_method]
-**api_link**: string
+class aws_api_gateway_method [[#aws_api_gateway_method]] {
+**http_method**: string
+**authorization_type**: string
+**authorizer_id**: string
+**api_key_required**: boolean
+**request_validator_id**: string
+**operation_name**: string
+**request_parameters**: dictionary[string, boolean]
+**request_models**: dictionary[string, string]
+**method_responses**: dictionary[string, aws_api_gateway_method_response]
+**method_integration**: aws_api_gateway_integration
+**authorization_scopes**: string[]
+}
+class aws_api_gateway_method_response [[#aws_api_gateway_method_response]] {
+**status_code**: string
+**response_parameters**: dictionary[string, boolean]
+**response_models**: dictionary[string, string]
 }
 resource <|--- aws_resource
-aws_api_gateway_method --> aws_api_gateway_method_response
-aws_api_gateway_method --> aws_api_gateway_integration
-aws_api_gateway_integration --> aws_api_gateway_integration_response
 aws_resource <|--- aws_api_gateway_resource
 aws_api_gateway_resource --> aws_api_gateway_method
+aws_api_gateway_integration --> aws_api_gateway_integration_response
+aws_api_gateway_method --> aws_api_gateway_method_response
+aws_api_gateway_method --> aws_api_gateway_integration
 
 @enduml
 ```
@@ -1014,7 +1014,7 @@ aws_api_gateway_resource --> aws_api_gateway_method
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_api_gateway_resource resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_api_gateway_resource resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1041,21 +1041,21 @@ skinparam stereotypeIBackgroundColor #e98df7
 class aws_lambda_function [[#aws_lambda_function]] {
 
 }
-class aws_api_gateway_resource [[#aws_api_gateway_resource]] {
+class aws_api_gateway_authorizer [[#aws_api_gateway_authorizer]] {
 
 }
-class aws_api_gateway_authorizer [[#aws_api_gateway_authorizer]] {
+class aws_api_gateway_resource [[#aws_api_gateway_resource]] {
 
 }
 class aws_api_gateway_rest_api [[#aws_api_gateway_rest_api]] {
 
 }
-aws_api_gateway_resource -[#1A83AF]-> aws_lambda_function
-aws_api_gateway_resource -[#1A83AF]-> aws_api_gateway_authorizer
 aws_api_gateway_authorizer -[#1A83AF]-> aws_lambda_function
-aws_api_gateway_rest_api -[#1A83AF]-> aws_lambda_function
-aws_api_gateway_rest_api -[#1A83AF]-> aws_api_gateway_resource
+aws_api_gateway_resource -[#1A83AF]-> aws_api_gateway_authorizer
+aws_api_gateway_resource -[#1A83AF]-> aws_lambda_function
 aws_api_gateway_rest_api -[#1A83AF]-> aws_api_gateway_authorizer
+aws_api_gateway_rest_api -[#1A83AF]-> aws_api_gateway_resource
+aws_api_gateway_rest_api -[#1A83AF]-> aws_lambda_function
 
 @enduml
 ```
@@ -1068,7 +1068,7 @@ aws_api_gateway_rest_api -[#1A83AF]-> aws_api_gateway_authorizer
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_api_gateway_rest_api data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_api_gateway_rest_api data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1092,13 +1092,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
-class aws_api_gateway_endpoint_configuration [[#aws_api_gateway_endpoint_configuration]] {
-**types**: string[]
-**vpc_endpoint_ids**: string[]
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -1111,6 +1104,9 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
 class aws_api_gateway_rest_api [[#aws_api_gateway_rest_api]] {
 **description**: string
 **api_version**: string
@@ -1121,6 +1117,10 @@ class aws_api_gateway_rest_api [[#aws_api_gateway_rest_api]] {
 **api_endpoint_configuration**: aws_api_gateway_endpoint_configuration
 **api_policy**: string
 **api_disable_execute_api_endpoint**: boolean
+}
+class aws_api_gateway_endpoint_configuration [[#aws_api_gateway_endpoint_configuration]] {
+**types**: string[]
+**vpc_endpoint_ids**: string[]
 }
 resource <|--- aws_resource
 aws_resource <|--- aws_api_gateway_rest_api
@@ -1136,7 +1136,7 @@ aws_api_gateway_rest_api --> aws_api_gateway_endpoint_configuration
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_api_gateway_rest_api resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_api_gateway_rest_api resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1160,16 +1160,16 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_vpc_endpoint [[#aws_vpc_endpoint]] {
-
-}
 class aws_lambda_function [[#aws_lambda_function]] {
 
 }
-class aws_api_gateway_resource [[#aws_api_gateway_resource]] {
+class aws_api_gateway_authorizer [[#aws_api_gateway_authorizer]] {
 
 }
-class aws_api_gateway_authorizer [[#aws_api_gateway_authorizer]] {
+class aws_vpc_endpoint [[#aws_vpc_endpoint]] {
+
+}
+class aws_api_gateway_resource [[#aws_api_gateway_resource]] {
 
 }
 class aws_api_gateway_rest_api [[#aws_api_gateway_rest_api]] {
@@ -1178,13 +1178,13 @@ class aws_api_gateway_rest_api [[#aws_api_gateway_rest_api]] {
 class aws_api_gateway_deployment [[#aws_api_gateway_deployment]] {
 
 }
-aws_api_gateway_resource -[#1A83AF]-> aws_lambda_function
-aws_api_gateway_resource -[#1A83AF]-> aws_api_gateway_authorizer
 aws_api_gateway_authorizer -[#1A83AF]-> aws_lambda_function
-aws_api_gateway_rest_api -[#1A83AF]-> aws_lambda_function
-aws_api_gateway_rest_api -[#1A83AF]-> aws_api_gateway_deployment
-aws_api_gateway_rest_api -[#1A83AF]-> aws_api_gateway_resource
+aws_api_gateway_resource -[#1A83AF]-> aws_api_gateway_authorizer
+aws_api_gateway_resource -[#1A83AF]-> aws_lambda_function
 aws_api_gateway_rest_api -[#1A83AF]-> aws_api_gateway_authorizer
+aws_api_gateway_rest_api -[#1A83AF]-> aws_api_gateway_resource
+aws_api_gateway_rest_api -[#1A83AF]-> aws_api_gateway_deployment
+aws_api_gateway_rest_api -[#1A83AF]-> aws_lambda_function
 aws_api_gateway_rest_api -[#1A83AF]-> aws_vpc_endpoint
 
 @enduml
@@ -1198,7 +1198,7 @@ aws_api_gateway_rest_api -[#1A83AF]-> aws_vpc_endpoint
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_api_gateway_stage data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_api_gateway_stage data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1222,9 +1222,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -1237,11 +1234,8 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class aws_api_gateway_canary_setting [[#aws_api_gateway_canary_setting]] {
-**percent_traffic**: int64
-**deployment_id**: string
-**stage_variable_overrides**: dictionary[string, string]
-**use_stage_cache**: boolean
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_api_gateway_stage [[#aws_api_gateway_stage]] {
 **description**: string
@@ -1258,6 +1252,12 @@ class aws_api_gateway_stage [[#aws_api_gateway_stage]] {
 **stage_web_acl_arn**: string
 **api_link**: string
 }
+class aws_api_gateway_canary_setting [[#aws_api_gateway_canary_setting]] {
+**percent_traffic**: int64
+**deployment_id**: string
+**stage_variable_overrides**: dictionary[string, string]
+**use_stage_cache**: boolean
+}
 resource <|--- aws_resource
 aws_resource <|--- aws_api_gateway_stage
 aws_api_gateway_stage --> aws_api_gateway_canary_setting
@@ -1272,7 +1272,7 @@ aws_api_gateway_stage --> aws_api_gateway_canary_setting
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_api_gateway_stage resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_api_gateway_stage resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1296,10 +1296,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_api_gateway_deployment [[#aws_api_gateway_deployment]] {
+class aws_api_gateway_stage [[#aws_api_gateway_stage]] {
 
 }
-class aws_api_gateway_stage [[#aws_api_gateway_stage]] {
+class aws_api_gateway_deployment [[#aws_api_gateway_deployment]] {
 
 }
 aws_api_gateway_deployment -[#1A83AF]-> aws_api_gateway_stage
@@ -1315,7 +1315,7 @@ aws_api_gateway_deployment -[#1A83AF]-> aws_api_gateway_stage
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_athena_data_catalog data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_athena_data_catalog data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1339,9 +1339,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -1353,6 +1350,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_athena_data_catalog [[#aws_athena_data_catalog]] {
 **description**: string
@@ -1372,7 +1372,7 @@ aws_resource <|--- aws_athena_data_catalog
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_athena_data_catalog resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_athena_data_catalog resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1415,7 +1415,7 @@ aws_athena_data_catalog -[#1A83AF]-> aws_sagemaker_processing_job
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_athena_work_group data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_athena_work_group data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1439,9 +1439,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -1454,10 +1451,8 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class aws_athena_work_group [[#aws_athena_work_group]] {
-**workgroup_state**: string
-**workgroup_configuration**: aws_athena_work_group_configuration
-**description**: string
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_athena_work_group_configuration [[#aws_athena_work_group_configuration]] {
 **result_configuration**: aws_athena_result_configuration
@@ -1480,12 +1475,17 @@ class aws_athena_engine_version [[#aws_athena_engine_version]] {
 **selected_engine_version**: string
 **effective_engine_version**: string
 }
+class aws_athena_work_group [[#aws_athena_work_group]] {
+**workgroup_state**: string
+**workgroup_configuration**: aws_athena_work_group_configuration
+**description**: string
+}
 resource <|--- aws_resource
-aws_resource <|--- aws_athena_work_group
-aws_athena_work_group --> aws_athena_work_group_configuration
 aws_athena_work_group_configuration --> aws_athena_result_configuration
 aws_athena_work_group_configuration --> aws_athena_engine_version
 aws_athena_result_configuration --> aws_athena_encryption_configuration
+aws_resource <|--- aws_athena_work_group
+aws_athena_work_group --> aws_athena_work_group_configuration
 
 @enduml
 ```
@@ -1497,7 +1497,7 @@ aws_athena_result_configuration --> aws_athena_encryption_configuration
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_athena_work_group resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_athena_work_group resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1536,8 +1536,8 @@ class aws_athena_work_group [[#aws_athena_work_group]] {
 aws_sagemaker_processing_job -[#1A83AF]-> aws_kms_key
 aws_sagemaker_processing_job -[#1A83AF]-> aws_s3_bucket
 aws_athena_work_group -[#1A83AF]-> aws_kms_key
-aws_athena_work_group -[#1A83AF]-> aws_sagemaker_processing_job
 aws_athena_work_group -[#1A83AF]-> aws_s3_bucket
+aws_athena_work_group -[#1A83AF]-> aws_sagemaker_processing_job
 
 @enduml
 ```
@@ -1550,7 +1550,7 @@ aws_athena_work_group -[#1A83AF]-> aws_s3_bucket
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_autoscaling_group data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_autoscaling_group data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1574,9 +1574,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -1589,21 +1586,61 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class aws_autoscaling_instance [[#aws_autoscaling_instance]] {
-**instance_id**: string
-**instance_type**: string
-**availability_zone**: string
-**lifecycle_state**: string
-**health_status**: string
-**launch_configuration_name**: string
-**launch_template**: aws_autoscaling_launch_template_specification
-**protected_from_scale_in**: boolean
-**weighted_capacity**: string
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
+class autoscaling_group [[#autoscaling_group]] {
+**min_size**: int64
+**max_size**: int64
+}
+class aws_autoscaling_min_max [[#aws_autoscaling_min_max]] {
+**min**: int64
+**max**: int64
+}
+class aws_autoscaling_group [[#aws_autoscaling_group]] {
+**autoscaling_launch_configuration_name**: string
+**autoscaling_launch_template**: aws_autoscaling_launch_template_specification
+**autoscaling_mixed_instances_policy**: aws_autoscaling_mixed_instances_policy
+**autoscaling_predicted_capacity**: int64
+**autoscaling_default_cooldown**: int64
+**autoscaling_availability_zones**: string[]
+**autoscaling_load_balancer_names**: string[]
+**autoscaling_target_group_ar_ns**: string[]
+**autoscaling_health_check_type**: string
+**autoscaling_health_check_grace_period**: int64
+**autoscaling_instances**: aws_autoscaling_instance[]
+**autoscaling_suspended_processes**: aws_autoscaling_suspended_process[]
+**autoscaling_placement_group**: string
+**autoscaling_vpc_zone_identifier**: string
+**autoscaling_enabled_metrics**: aws_autoscaling_enabled_metric[]
+**autoscaling_status**: string
+**autoscaling_termination_policies**: string[]
+**autoscaling_new_instances_protected_from_scale_in**: boolean
+**autoscaling_service_linked_role_arn**: string
+**autoscaling_max_instance_lifetime**: int64
+**autoscaling_capacity_rebalance**: boolean
+**autoscaling_warm_pool_configuration**: aws_autoscaling_warm_pool_configuration
+**autoscaling_warm_pool_size**: int64
+**autoscaling_context**: string
+**autoscaling_desired_capacity_type**: string
+**autoscaling_default_instance_warmup**: int64
 }
 class aws_autoscaling_launch_template_specification [[#aws_autoscaling_launch_template_specification]] {
 **launch_template_id**: string
 **launch_template_name**: string
 **version**: string
+}
+class aws_autoscaling_enabled_metric [[#aws_autoscaling_enabled_metric]] {
+**metric**: string
+**granularity**: string
+}
+class aws_autoscaling_suspended_process [[#aws_autoscaling_suspended_process]] {
+**process_name**: string
+**suspension_reason**: string
+}
+class aws_autoscaling_launch_template [[#aws_autoscaling_launch_template]] {
+**launch_template_specification**: aws_autoscaling_launch_template_specification
+**overrides**: aws_autoscaling_launch_template_overrides[]
 }
 class aws_autoscaling_launch_template_overrides [[#aws_autoscaling_launch_template_overrides]] {
 **instance_type**: string
@@ -1634,17 +1671,20 @@ class aws_autoscaling_instance_requirements [[#aws_autoscaling_instance_requirem
 **accelerator_names**: string[]
 **accelerator_total_memory_mi_b**: aws_autoscaling_min_max
 }
-class aws_autoscaling_min_max [[#aws_autoscaling_min_max]] {
-**min**: int64
-**max**: int64
+class aws_autoscaling_instance [[#aws_autoscaling_instance]] {
+**instance_id**: string
+**instance_type**: string
+**availability_zone**: string
+**lifecycle_state**: string
+**health_status**: string
+**launch_configuration_name**: string
+**launch_template**: aws_autoscaling_launch_template_specification
+**protected_from_scale_in**: boolean
+**weighted_capacity**: string
 }
 class aws_autoscaling_mixed_instances_policy [[#aws_autoscaling_mixed_instances_policy]] {
 **launch_template**: aws_autoscaling_launch_template
 **instances_distribution**: aws_autoscaling_instances_distribution
-}
-class aws_autoscaling_launch_template [[#aws_autoscaling_launch_template]] {
-**launch_template_specification**: aws_autoscaling_launch_template_specification
-**overrides**: aws_autoscaling_launch_template_overrides[]
 }
 class aws_autoscaling_instances_distribution [[#aws_autoscaling_instances_distribution]] {
 **on_demand_allocation_strategy**: string
@@ -1661,55 +1701,8 @@ class aws_autoscaling_warm_pool_configuration [[#aws_autoscaling_warm_pool_confi
 **status**: string
 **instance_reuse_policy**: boolean
 }
-class aws_autoscaling_group [[#aws_autoscaling_group]] {
-**autoscaling_launch_configuration_name**: string
-**autoscaling_launch_template**: aws_autoscaling_launch_template_specification
-**autoscaling_mixed_instances_policy**: aws_autoscaling_mixed_instances_policy
-**autoscaling_predicted_capacity**: int64
-**autoscaling_default_cooldown**: int64
-**autoscaling_availability_zones**: string[]
-**autoscaling_load_balancer_names**: string[]
-**autoscaling_target_group_ar_ns**: string[]
-**autoscaling_health_check_type**: string
-**autoscaling_health_check_grace_period**: int64
-**autoscaling_instances**: aws_autoscaling_instance[]
-**autoscaling_suspended_processes**: aws_autoscaling_suspended_process[]
-**autoscaling_placement_group**: string
-**autoscaling_vpc_zone_identifier**: string
-**autoscaling_enabled_metrics**: aws_autoscaling_enabled_metric[]
-**autoscaling_status**: string
-**autoscaling_termination_policies**: string[]
-**autoscaling_new_instances_protected_from_scale_in**: boolean
-**autoscaling_service_linked_role_arn**: string
-**autoscaling_max_instance_lifetime**: int64
-**autoscaling_capacity_rebalance**: boolean
-**autoscaling_warm_pool_configuration**: aws_autoscaling_warm_pool_configuration
-**autoscaling_warm_pool_size**: int64
-**autoscaling_context**: string
-**autoscaling_desired_capacity_type**: string
-**autoscaling_default_instance_warmup**: int64
-}
-class autoscaling_group [[#autoscaling_group]] {
-**min_size**: int64
-**max_size**: int64
-}
-class aws_autoscaling_suspended_process [[#aws_autoscaling_suspended_process]] {
-**process_name**: string
-**suspension_reason**: string
-}
-class aws_autoscaling_enabled_metric [[#aws_autoscaling_enabled_metric]] {
-**metric**: string
-**granularity**: string
-}
 resource <|--- aws_resource
-aws_autoscaling_instance --> aws_autoscaling_launch_template_specification
-aws_autoscaling_launch_template_overrides --> aws_autoscaling_launch_template_specification
-aws_autoscaling_launch_template_overrides --> aws_autoscaling_instance_requirements
-aws_autoscaling_instance_requirements --> aws_autoscaling_min_max
-aws_autoscaling_mixed_instances_policy --> aws_autoscaling_launch_template
-aws_autoscaling_mixed_instances_policy --> aws_autoscaling_instances_distribution
-aws_autoscaling_launch_template --> aws_autoscaling_launch_template_specification
-aws_autoscaling_launch_template --> aws_autoscaling_launch_template_overrides
+resource <|--- autoscaling_group
 aws_resource <|--- aws_autoscaling_group
 autoscaling_group <|--- aws_autoscaling_group
 aws_autoscaling_group --> aws_autoscaling_launch_template_specification
@@ -1718,7 +1711,14 @@ aws_autoscaling_group --> aws_autoscaling_instance
 aws_autoscaling_group --> aws_autoscaling_suspended_process
 aws_autoscaling_group --> aws_autoscaling_enabled_metric
 aws_autoscaling_group --> aws_autoscaling_warm_pool_configuration
-resource <|--- autoscaling_group
+aws_autoscaling_launch_template --> aws_autoscaling_launch_template_specification
+aws_autoscaling_launch_template --> aws_autoscaling_launch_template_overrides
+aws_autoscaling_launch_template_overrides --> aws_autoscaling_launch_template_specification
+aws_autoscaling_launch_template_overrides --> aws_autoscaling_instance_requirements
+aws_autoscaling_instance_requirements --> aws_autoscaling_min_max
+aws_autoscaling_instance --> aws_autoscaling_launch_template_specification
+aws_autoscaling_mixed_instances_policy --> aws_autoscaling_launch_template
+aws_autoscaling_mixed_instances_policy --> aws_autoscaling_instances_distribution
 
 @enduml
 ```
@@ -1730,7 +1730,7 @@ resource <|--- autoscaling_group
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_autoscaling_group resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_autoscaling_group resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1757,28 +1757,28 @@ skinparam stereotypeIBackgroundColor #e98df7
 class aws_ec2_instance [[#aws_ec2_instance]] {
 
 }
+class aws_eks_nodegroup [[#aws_eks_nodegroup]] {
+
+}
+class aws_autoscaling_group [[#aws_autoscaling_group]] {
+
+}
+class aws_region [[#aws_region]] {
+
+}
 class aws_ecs_capacity_provider [[#aws_ecs_capacity_provider]] {
 
 }
 class aws_beanstalk_environment [[#aws_beanstalk_environment]] {
 
 }
-class aws_autoscaling_group [[#aws_autoscaling_group]] {
-
-}
-class aws_eks_nodegroup [[#aws_eks_nodegroup]] {
-
-}
-class aws_region [[#aws_region]] {
-
-}
+aws_eks_nodegroup -[#1A83AF]-> aws_autoscaling_group
+aws_autoscaling_group -[#1A83AF]-> aws_ec2_instance
+aws_region -[#1A83AF]-> aws_ec2_instance
+aws_region -[#1A83AF]-> aws_autoscaling_group
 aws_ecs_capacity_provider -[#1A83AF]-> aws_autoscaling_group
 aws_beanstalk_environment -[#1A83AF]-> aws_ec2_instance
 aws_beanstalk_environment -[#1A83AF]-> aws_autoscaling_group
-aws_autoscaling_group -[#1A83AF]-> aws_ec2_instance
-aws_eks_nodegroup -[#1A83AF]-> aws_autoscaling_group
-aws_region -[#1A83AF]-> aws_ec2_instance
-aws_region -[#1A83AF]-> aws_autoscaling_group
 
 @enduml
 ```
@@ -1791,7 +1791,7 @@ aws_region -[#1A83AF]-> aws_autoscaling_group
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_beanstalk_application data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_beanstalk_application data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1815,9 +1815,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -1830,14 +1827,21 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class aws_beanstalk_max_count_rule [[#aws_beanstalk_max_count_rule]] {
-**enabled**: boolean
-**max_count**: int64
-**delete_source_from_s3**: boolean
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
+class aws_beanstalk_application_resource_lifecycle_config [[#aws_beanstalk_application_resource_lifecycle_config]] {
+**service_role**: string
+**version_lifecycle_config**: aws_beanstalk_application_version_lifecycle_config
 }
 class aws_beanstalk_application_version_lifecycle_config [[#aws_beanstalk_application_version_lifecycle_config]] {
 **max_count_rule**: aws_beanstalk_max_count_rule
 **max_age_rule**: aws_beanstalk_max_age_rule
+}
+class aws_beanstalk_max_count_rule [[#aws_beanstalk_max_count_rule]] {
+**enabled**: boolean
+**max_count**: int64
+**delete_source_from_s3**: boolean
 }
 class aws_beanstalk_max_age_rule [[#aws_beanstalk_max_age_rule]] {
 **enabled**: boolean
@@ -1850,16 +1854,12 @@ class aws_beanstalk_application [[#aws_beanstalk_application]] {
 **beanstalk_configuration_templates**: string[]
 **beanstalk_resource_lifecycle_config**: aws_beanstalk_application_resource_lifecycle_config
 }
-class aws_beanstalk_application_resource_lifecycle_config [[#aws_beanstalk_application_resource_lifecycle_config]] {
-**service_role**: string
-**version_lifecycle_config**: aws_beanstalk_application_version_lifecycle_config
-}
 resource <|--- aws_resource
+aws_beanstalk_application_resource_lifecycle_config --> aws_beanstalk_application_version_lifecycle_config
 aws_beanstalk_application_version_lifecycle_config --> aws_beanstalk_max_count_rule
 aws_beanstalk_application_version_lifecycle_config --> aws_beanstalk_max_age_rule
 aws_resource <|--- aws_beanstalk_application
 aws_beanstalk_application --> aws_beanstalk_application_resource_lifecycle_config
-aws_beanstalk_application_resource_lifecycle_config --> aws_beanstalk_application_version_lifecycle_config
 
 @enduml
 ```
@@ -1871,7 +1871,7 @@ aws_beanstalk_application_resource_lifecycle_config --> aws_beanstalk_applicatio
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_beanstalk_application resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_beanstalk_application resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1895,10 +1895,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_beanstalk_environment [[#aws_beanstalk_environment]] {
+class aws_beanstalk_application [[#aws_beanstalk_application]] {
 
 }
-class aws_beanstalk_application [[#aws_beanstalk_application]] {
+class aws_beanstalk_environment [[#aws_beanstalk_environment]] {
 
 }
 aws_beanstalk_application -[#1A83AF]-> aws_beanstalk_environment
@@ -1914,7 +1914,7 @@ aws_beanstalk_application -[#1A83AF]-> aws_beanstalk_environment
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_beanstalk_environment data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_beanstalk_environment data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1938,9 +1938,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -1952,6 +1949,32 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
+class aws_beanstalk_auto_scaling_group_description [[#aws_beanstalk_auto_scaling_group_description]] {
+**auto_scaling_group_name**: string
+}
+class aws_beanstalk_instances_description [[#aws_beanstalk_instances_description]] {
+**instance_id**: string
+}
+class aws_beanstalk_environment_link [[#aws_beanstalk_environment_link]] {
+**link_name**: string
+**environment_name**: string
+}
+class aws_beanstalk_queue_description [[#aws_beanstalk_queue_description]] {
+**queue_name**: string
+**queue_url**: string
+}
+class aws_beanstalk_environment_resources [[#aws_beanstalk_environment_resources]] {
+**auto_scaling_groups**: aws_beanstalk_auto_scaling_group_description[]
+**instances**: aws_beanstalk_instances_description[]
+**load_balancers**: aws_beanstalk_load_balancer_description[]
+**queues**: aws_beanstalk_queue_description[]
+}
+class aws_beanstalk_load_balancer_description [[#aws_beanstalk_load_balancer_description]] {
+**load_balancer_name**: string
 }
 class aws_beanstalk_environment [[#aws_beanstalk_environment]] {
 **description**: string
@@ -1971,43 +1994,20 @@ class aws_beanstalk_environment [[#aws_beanstalk_environment]] {
 **beanstalk_environment_links**: aws_beanstalk_environment_link[]
 **beanstalk_operations_role**: string
 }
-class aws_beanstalk_load_balancer_description [[#aws_beanstalk_load_balancer_description]] {
-**load_balancer_name**: string
-}
-class aws_beanstalk_environment_resources [[#aws_beanstalk_environment_resources]] {
-**auto_scaling_groups**: aws_beanstalk_auto_scaling_group_description[]
-**instances**: aws_beanstalk_instances_description[]
-**load_balancers**: aws_beanstalk_load_balancer_description[]
-**queues**: aws_beanstalk_queue_description[]
-}
-class aws_beanstalk_auto_scaling_group_description [[#aws_beanstalk_auto_scaling_group_description]] {
-**auto_scaling_group_name**: string
-}
-class aws_beanstalk_instances_description [[#aws_beanstalk_instances_description]] {
-**instance_id**: string
-}
-class aws_beanstalk_queue_description [[#aws_beanstalk_queue_description]] {
-**queue_name**: string
-**queue_url**: string
-}
 class aws_beanstalk_environment_tier [[#aws_beanstalk_environment_tier]] {
 **name**: string
 **type**: string
 **version**: string
 }
-class aws_beanstalk_environment_link [[#aws_beanstalk_environment_link]] {
-**link_name**: string
-**environment_name**: string
-}
 resource <|--- aws_resource
-aws_resource <|--- aws_beanstalk_environment
-aws_beanstalk_environment --> aws_beanstalk_environment_resources
-aws_beanstalk_environment --> aws_beanstalk_environment_tier
-aws_beanstalk_environment --> aws_beanstalk_environment_link
 aws_beanstalk_environment_resources --> aws_beanstalk_auto_scaling_group_description
 aws_beanstalk_environment_resources --> aws_beanstalk_instances_description
 aws_beanstalk_environment_resources --> aws_beanstalk_load_balancer_description
 aws_beanstalk_environment_resources --> aws_beanstalk_queue_description
+aws_resource <|--- aws_beanstalk_environment
+aws_beanstalk_environment --> aws_beanstalk_environment_resources
+aws_beanstalk_environment --> aws_beanstalk_environment_tier
+aws_beanstalk_environment --> aws_beanstalk_environment_link
 
 @enduml
 ```
@@ -2019,7 +2019,7 @@ aws_beanstalk_environment_resources --> aws_beanstalk_queue_description
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_beanstalk_environment resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_beanstalk_environment resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2043,30 +2043,30 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_alb [[#aws_alb]] {
-
-}
 class aws_ec2_instance [[#aws_ec2_instance]] {
 
 }
-class aws_sqs_queue [[#aws_sqs_queue]] {
-
-}
-class aws_beanstalk_environment [[#aws_beanstalk_environment]] {
+class aws_alb [[#aws_alb]] {
 
 }
 class aws_autoscaling_group [[#aws_autoscaling_group]] {
 
 }
+class aws_sqs_queue [[#aws_sqs_queue]] {
+
+}
 class aws_beanstalk_application [[#aws_beanstalk_application]] {
 
 }
+class aws_beanstalk_environment [[#aws_beanstalk_environment]] {
+
+}
+aws_autoscaling_group -[#1A83AF]-> aws_ec2_instance
+aws_beanstalk_application -[#1A83AF]-> aws_beanstalk_environment
 aws_beanstalk_environment -[#1A83AF]-> aws_ec2_instance
 aws_beanstalk_environment -[#1A83AF]-> aws_sqs_queue
 aws_beanstalk_environment -[#1A83AF]-> aws_alb
 aws_beanstalk_environment -[#1A83AF]-> aws_autoscaling_group
-aws_autoscaling_group -[#1A83AF]-> aws_ec2_instance
-aws_beanstalk_application -[#1A83AF]-> aws_beanstalk_environment
 
 @enduml
 ```
@@ -2079,7 +2079,7 @@ aws_beanstalk_application -[#1A83AF]-> aws_beanstalk_environment
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cloud_formation_stack_instance_summary data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cloud_formation_stack_instance_summary data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2103,9 +2103,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -2117,6 +2114,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_cloud_formation_stack_instance_summary [[#aws_cloud_formation_stack_instance_summary]] {
 **stack_instance_stack_set_id**: string
@@ -2144,7 +2144,7 @@ aws_resource <|--- aws_cloud_formation_stack_instance_summary
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cloud_formation_stack_instance_summary resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cloud_formation_stack_instance_summary resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2183,7 +2183,7 @@ class aws_cloud_formation_stack_instance_summary [[#aws_cloud_formation_stack_in
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cloud_trail data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cloud_trail data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2207,9 +2207,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -2221,6 +2218,32 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
+class aws_cloud_trail_status [[#aws_cloud_trail_status]] {
+**is_logging**: boolean
+**latest_delivery_error**: string
+**latest_notification_error**: string
+**latest_delivery_time**: datetime
+**latest_notification_time**: datetime
+**start_logging_time**: datetime
+**stop_logging_time**: datetime
+**latest_cloud_watch_logs_delivery_error**: string
+**latest_cloud_watch_logs_delivery_time**: datetime
+**latest_digest_delivery_time**: datetime
+**latest_digest_delivery_error**: string
+**latest_delivery_attempt_time**: datetime
+**latest_notification_attempt_time**: datetime
+**latest_notification_attempt_succeeded**: datetime
+**latest_delivery_attempt_succeeded**: datetime
+**time_logging_started**: datetime
+**time_logging_stopped**: datetime
+}
+class aws_cloud_trail_event_selector [[#aws_cloud_trail_event_selector]] {
+**name**: string
+**field_selectors**: dictionary[string, aws_cloud_trail_advanced_field_selector]
 }
 class aws_cloud_trail_advanced_field_selector [[#aws_cloud_trail_advanced_field_selector]] {
 **equals**: string[]
@@ -2249,34 +2272,11 @@ class aws_cloud_trail [[#aws_cloud_trail]] {
 **trail_event_selectors**: aws_cloud_trail_event_selector[]
 **trail_insight_selectors**: string[]
 }
-class aws_cloud_trail_status [[#aws_cloud_trail_status]] {
-**is_logging**: boolean
-**latest_delivery_error**: string
-**latest_notification_error**: string
-**latest_delivery_time**: datetime
-**latest_notification_time**: datetime
-**start_logging_time**: datetime
-**stop_logging_time**: datetime
-**latest_cloud_watch_logs_delivery_error**: string
-**latest_cloud_watch_logs_delivery_time**: datetime
-**latest_digest_delivery_time**: datetime
-**latest_digest_delivery_error**: string
-**latest_delivery_attempt_time**: datetime
-**latest_notification_attempt_time**: datetime
-**latest_notification_attempt_succeeded**: datetime
-**latest_delivery_attempt_succeeded**: datetime
-**time_logging_started**: datetime
-**time_logging_stopped**: datetime
-}
-class aws_cloud_trail_event_selector [[#aws_cloud_trail_event_selector]] {
-**name**: string
-**field_selectors**: dictionary[string, aws_cloud_trail_advanced_field_selector]
-}
 resource <|--- aws_resource
+aws_cloud_trail_event_selector --> aws_cloud_trail_advanced_field_selector
 aws_resource <|--- aws_cloud_trail
 aws_cloud_trail --> aws_cloud_trail_status
 aws_cloud_trail --> aws_cloud_trail_event_selector
-aws_cloud_trail_event_selector --> aws_cloud_trail_advanced_field_selector
 
 @enduml
 ```
@@ -2288,7 +2288,7 @@ aws_cloud_trail_event_selector --> aws_cloud_trail_advanced_field_selector
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cloud_trail resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cloud_trail resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2312,6 +2312,9 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class aws_sns_topic [[#aws_sns_topic]] {
+
+}
 class aws_s3_bucket [[#aws_s3_bucket]] {
 
 }
@@ -2321,13 +2324,10 @@ class aws_kms_key [[#aws_kms_key]] {
 class aws_cloud_trail [[#aws_cloud_trail]] {
 
 }
-class aws_sns_topic [[#aws_sns_topic]] {
-
-}
+aws_sns_topic -[#1A83AF]-> aws_kms_key
 aws_cloud_trail -[#1A83AF]-> aws_kms_key
 aws_cloud_trail -[#1A83AF]-> aws_sns_topic
 aws_cloud_trail -[#1A83AF]-> aws_s3_bucket
-aws_sns_topic -[#1A83AF]-> aws_kms_key
 
 @enduml
 ```
@@ -2340,7 +2340,7 @@ aws_sns_topic -[#1A83AF]-> aws_kms_key
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cloudformation_stack data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cloudformation_stack data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2364,9 +2364,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -2379,11 +2376,13 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class aws_cloudformation_output [[#aws_cloudformation_output]] {
-**output_key**: string
-**output_value**: string
-**description**: string
-**export_name**: string
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
+class stack [[#stack]] {
+**stack_status**: string
+**stack_status_reason**: string
+**stack_parameters**: dictionary[string, string]
 }
 class aws_cloudformation_stack [[#aws_cloudformation_stack]] {
 **stack_change_set_id**: string
@@ -2401,10 +2400,15 @@ class aws_cloudformation_stack [[#aws_cloudformation_stack]] {
 **stack_root_id**: string
 **stack_drift_information**: aws_cloudformation_stack_drift_information
 }
-class stack [[#stack]] {
-**stack_status**: string
-**stack_status_reason**: string
-**stack_parameters**: dictionary[string, string]
+class aws_cloudformation_stack_drift_information [[#aws_cloudformation_stack_drift_information]] {
+**stack_drift_status**: string
+**last_check_timestamp**: datetime
+}
+class aws_cloudformation_output [[#aws_cloudformation_output]] {
+**output_key**: string
+**output_value**: string
+**description**: string
+**export_name**: string
 }
 class aws_cloudformation_rollback_configuration [[#aws_cloudformation_rollback_configuration]] {
 **rollback_triggers**: aws_cloudformation_rollback_trigger[]
@@ -2414,17 +2418,13 @@ class aws_cloudformation_rollback_trigger [[#aws_cloudformation_rollback_trigger
 **arn**: string
 **type**: string
 }
-class aws_cloudformation_stack_drift_information [[#aws_cloudformation_stack_drift_information]] {
-**stack_drift_status**: string
-**last_check_timestamp**: datetime
-}
 resource <|--- aws_resource
+resource <|--- stack
 aws_resource <|--- aws_cloudformation_stack
 stack <|--- aws_cloudformation_stack
 aws_cloudformation_stack --> aws_cloudformation_rollback_configuration
 aws_cloudformation_stack --> aws_cloudformation_output
 aws_cloudformation_stack --> aws_cloudformation_stack_drift_information
-resource <|--- stack
 aws_cloudformation_rollback_configuration --> aws_cloudformation_rollback_trigger
 
 @enduml
@@ -2437,7 +2437,7 @@ aws_cloudformation_rollback_configuration --> aws_cloudformation_rollback_trigge
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cloudformation_stack resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cloudformation_stack resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2461,10 +2461,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_cloudformation_stack [[#aws_cloudformation_stack]] {
+class aws_region [[#aws_region]] {
 
 }
-class aws_region [[#aws_region]] {
+class aws_cloudformation_stack [[#aws_cloudformation_stack]] {
 
 }
 aws_region -[#1A83AF]-> aws_cloudformation_stack
@@ -2480,7 +2480,7 @@ aws_region -[#1A83AF]-> aws_cloudformation_stack
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cloudformation_stack_set data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cloudformation_stack_set data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2504,9 +2504,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -2518,6 +2515,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_cloudformation_stack_set [[#aws_cloudformation_stack_set]] {
 **description**: string
@@ -2547,7 +2547,7 @@ aws_cloudformation_stack_set --> aws_cloudformation_auto_deployment
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cloudformation_stack_set resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cloudformation_stack_set resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2590,7 +2590,7 @@ aws_region -[#1A83AF]-> aws_cloudformation_stack_set
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cloudfront_cache_policy data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cloudfront_cache_policy data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2614,9 +2614,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -2628,6 +2625,21 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
+class aws_cloudfront_cache_policy_headers_config [[#aws_cloudfront_cache_policy_headers_config]] {
+**header_behavior**: string
+**headers**: string[]
+}
+class aws_cloudfront_cache_policy_query_strings_config [[#aws_cloudfront_cache_policy_query_strings_config]] {
+**query_string_behavior**: string
+**query_strings**: string[]
+}
+class aws_cloudfront_cache_policy_cookies_config [[#aws_cloudfront_cache_policy_cookies_config]] {
+**cookie_behavior**: string
+**cookies**: string[]
 }
 class aws_cloudfront_cache_policy [[#aws_cloudfront_cache_policy]] {
 **cache_policy_config**: aws_cloudfront_cache_policy_config
@@ -2647,18 +2659,6 @@ class aws_cloudfront_parameters_in_cache_key_and_forwarded_to_origin [[#aws_clou
 **cookies_config**: aws_cloudfront_cache_policy_cookies_config
 **query_strings_config**: aws_cloudfront_cache_policy_query_strings_config
 }
-class aws_cloudfront_cache_policy_headers_config [[#aws_cloudfront_cache_policy_headers_config]] {
-**header_behavior**: string
-**headers**: string[]
-}
-class aws_cloudfront_cache_policy_cookies_config [[#aws_cloudfront_cache_policy_cookies_config]] {
-**cookie_behavior**: string
-**cookies**: string[]
-}
-class aws_cloudfront_cache_policy_query_strings_config [[#aws_cloudfront_cache_policy_query_strings_config]] {
-**query_string_behavior**: string
-**query_strings**: string[]
-}
 resource <|--- aws_resource
 aws_resource <|--- aws_cloudfront_cache_policy
 aws_cloudfront_cache_policy --> aws_cloudfront_cache_policy_config
@@ -2677,7 +2677,7 @@ aws_cloudfront_parameters_in_cache_key_and_forwarded_to_origin --> aws_cloudfron
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cloudfront_cache_policy resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cloudfront_cache_policy resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2701,10 +2701,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_cloudfront_cache_policy [[#aws_cloudfront_cache_policy]] {
+class aws_cloudfront_distribution [[#aws_cloudfront_distribution]] {
 
 }
-class aws_cloudfront_distribution [[#aws_cloudfront_distribution]] {
+class aws_cloudfront_cache_policy [[#aws_cloudfront_cache_policy]] {
 
 }
 aws_cloudfront_distribution -[#1A83AF]-> aws_cloudfront_cache_policy
@@ -2720,7 +2720,7 @@ aws_cloudfront_distribution -[#1A83AF]-> aws_cloudfront_cache_policy
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cloudfront_distribution data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cloudfront_distribution data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2744,9 +2744,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -2758,6 +2755,16 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_cloudfront_alias_icp_recordal [[#aws_cloudfront_alias_icp_recordal]] {
+**cname**: string
+**icp_recordal_status**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
+class aws_cloudfront_restrictions [[#aws_cloudfront_restrictions]] {
+**geo_restriction**: string[]
 }
 class aws_cloudfront_distribution [[#aws_cloudfront_distribution]] {
 **distribution_status**: string
@@ -2778,46 +2785,17 @@ class aws_cloudfront_distribution [[#aws_cloudfront_distribution]] {
 **distribution_is_ipv6_enabled**: boolean
 **distribution_alias_icp_recordals**: aws_cloudfront_alias_icp_recordal[]
 }
-class aws_cloudfront_origin [[#aws_cloudfront_origin]] {
-**id**: string
-**domain_name**: string
-**origin_path**: string
-**custom_header**: aws_cloudfront_origin_custom_header[]
-**s3_origin_config**: string
-**custom_origin_config**: aws_cloudfront_custom_origin_config
-**connection_attempts**: int64
-**connection_timeout**: int64
-**origin_shield**: aws_cloudfront_origin_shield
-**origin_access_control_id**: string
+class aws_cloudfront_viewer_certificate [[#aws_cloudfront_viewer_certificate]] {
+**cloudfront_default_certificate**: boolean
+**iam_certificate_id**: string
+**acm_certificate_arn**: string
+**ssl_support_method**: string
+**minimum_protocol_version**: string
+**certificate**: string
+**certificate_source**: string
 }
-class aws_cloudfront_origin_custom_header [[#aws_cloudfront_origin_custom_header]] {
-**header_name**: string
-**header_value**: string
-}
-class aws_cloudfront_custom_origin_config [[#aws_cloudfront_custom_origin_config]] {
-**http_port**: int64
-**https_port**: int64
-**origin_protocol_policy**: string
-**origin_ssl_protocol**: string[]
-**origin_read_timeout**: int64
-**origin_keepalive_timeout**: int64
-}
-class aws_cloudfront_origin_shield [[#aws_cloudfront_origin_shield]] {
-**enabled**: boolean
-**origin_shield_region**: string
-}
-class aws_cloudfront_origin_group [[#aws_cloudfront_origin_group]] {
-**id**: string
-**failover_criteria**: aws_cloudfront_origin_group_failover_criteria
-**members**: aws_cloudfront_origin_group_members[]
-}
-class aws_cloudfront_origin_group_failover_criteria [[#aws_cloudfront_origin_group_failover_criteria]] {
-**status_codes**: string[]
-}
-class aws_cloudfront_origin_group_members [[#aws_cloudfront_origin_group_members]] {
-**members**: string
-}
-class aws_cloudfront_default_cache_behavior [[#aws_cloudfront_default_cache_behavior]] {
+class aws_cloudfront_cache_behavior [[#aws_cloudfront_cache_behavior]] {
+**path_pattern**: string
 **target_origin_id**: string
 **trusted_signers**: string[]
 **trusted_key_groups**: string[]
@@ -2856,8 +2834,15 @@ class aws_cloudfront_cookie_preference [[#aws_cloudfront_cookie_preference]] {
 **forward**: string
 **whitelisted_names**: string[]
 }
-class aws_cloudfront_cache_behavior [[#aws_cloudfront_cache_behavior]] {
-**path_pattern**: string
+class aws_cloudfront_custom_origin_config [[#aws_cloudfront_custom_origin_config]] {
+**http_port**: int64
+**https_port**: int64
+**origin_protocol_policy**: string
+**origin_ssl_protocol**: string[]
+**origin_read_timeout**: int64
+**origin_keepalive_timeout**: int64
+}
+class aws_cloudfront_default_cache_behavior [[#aws_cloudfront_default_cache_behavior]] {
 **target_origin_id**: string
 **trusted_signers**: string[]
 **trusted_key_groups**: string[]
@@ -2877,27 +2862,42 @@ class aws_cloudfront_cache_behavior [[#aws_cloudfront_cache_behavior]] {
 **default_ttl**: int64
 **max_ttl**: int64
 }
+class aws_cloudfront_origin_shield [[#aws_cloudfront_origin_shield]] {
+**enabled**: boolean
+**origin_shield_region**: string
+}
+class aws_cloudfront_origin [[#aws_cloudfront_origin]] {
+**id**: string
+**domain_name**: string
+**origin_path**: string
+**custom_header**: aws_cloudfront_origin_custom_header[]
+**s3_origin_config**: string
+**custom_origin_config**: aws_cloudfront_custom_origin_config
+**connection_attempts**: int64
+**connection_timeout**: int64
+**origin_shield**: aws_cloudfront_origin_shield
+**origin_access_control_id**: string
+}
+class aws_cloudfront_origin_custom_header [[#aws_cloudfront_origin_custom_header]] {
+**header_name**: string
+**header_value**: string
+}
+class aws_cloudfront_origin_group [[#aws_cloudfront_origin_group]] {
+**id**: string
+**failover_criteria**: aws_cloudfront_origin_group_failover_criteria
+**members**: aws_cloudfront_origin_group_members[]
+}
+class aws_cloudfront_origin_group_failover_criteria [[#aws_cloudfront_origin_group_failover_criteria]] {
+**status_codes**: string[]
+}
+class aws_cloudfront_origin_group_members [[#aws_cloudfront_origin_group_members]] {
+**members**: string
+}
 class aws_cloudfront_custom_error_response [[#aws_cloudfront_custom_error_response]] {
 **error_code**: int64
 **response_page_path**: string
 **response_code**: string
 **error_caching_min_ttl**: int64
-}
-class aws_cloudfront_viewer_certificate [[#aws_cloudfront_viewer_certificate]] {
-**cloudfront_default_certificate**: boolean
-**iam_certificate_id**: string
-**acm_certificate_arn**: string
-**ssl_support_method**: string
-**minimum_protocol_version**: string
-**certificate**: string
-**certificate_source**: string
-}
-class aws_cloudfront_restrictions [[#aws_cloudfront_restrictions]] {
-**geo_restriction**: string[]
-}
-class aws_cloudfront_alias_icp_recordal [[#aws_cloudfront_alias_icp_recordal]] {
-**cname**: string
-**icp_recordal_status**: string
 }
 resource <|--- aws_resource
 aws_resource <|--- aws_cloudfront_distribution
@@ -2909,18 +2909,18 @@ aws_cloudfront_distribution --> aws_cloudfront_custom_error_response
 aws_cloudfront_distribution --> aws_cloudfront_viewer_certificate
 aws_cloudfront_distribution --> aws_cloudfront_restrictions
 aws_cloudfront_distribution --> aws_cloudfront_alias_icp_recordal
+aws_cloudfront_cache_behavior --> aws_cloudfront_lambda_function_association
+aws_cloudfront_cache_behavior --> aws_cloudfront_function_association
+aws_cloudfront_cache_behavior --> aws_cloudfront_forwarded_values
+aws_cloudfront_forwarded_values --> aws_cloudfront_cookie_preference
+aws_cloudfront_default_cache_behavior --> aws_cloudfront_lambda_function_association
+aws_cloudfront_default_cache_behavior --> aws_cloudfront_function_association
+aws_cloudfront_default_cache_behavior --> aws_cloudfront_forwarded_values
 aws_cloudfront_origin --> aws_cloudfront_origin_custom_header
 aws_cloudfront_origin --> aws_cloudfront_custom_origin_config
 aws_cloudfront_origin --> aws_cloudfront_origin_shield
 aws_cloudfront_origin_group --> aws_cloudfront_origin_group_failover_criteria
 aws_cloudfront_origin_group --> aws_cloudfront_origin_group_members
-aws_cloudfront_default_cache_behavior --> aws_cloudfront_lambda_function_association
-aws_cloudfront_default_cache_behavior --> aws_cloudfront_function_association
-aws_cloudfront_default_cache_behavior --> aws_cloudfront_forwarded_values
-aws_cloudfront_forwarded_values --> aws_cloudfront_cookie_preference
-aws_cloudfront_cache_behavior --> aws_cloudfront_lambda_function_association
-aws_cloudfront_cache_behavior --> aws_cloudfront_function_association
-aws_cloudfront_cache_behavior --> aws_cloudfront_forwarded_values
 
 @enduml
 ```
@@ -2932,7 +2932,7 @@ aws_cloudfront_cache_behavior --> aws_cloudfront_forwarded_values
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cloudfront_distribution resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cloudfront_distribution resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2956,22 +2956,28 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class aws_lambda_function [[#aws_lambda_function]] {
+
+}
 class aws_s3_bucket [[#aws_s3_bucket]] {
 
 }
-class aws_cloudfront_cache_policy [[#aws_cloudfront_cache_policy]] {
-
-}
-class aws_lambda_function [[#aws_lambda_function]] {
+class aws_iam_server_certificate [[#aws_iam_server_certificate]] {
 
 }
 class aws_cloudfront_distribution [[#aws_cloudfront_distribution]] {
 
 }
-class aws_cloudfront_field_level_encryption_config [[#aws_cloudfront_field_level_encryption_config]] {
+class aws_cloudfront_function [[#aws_cloudfront_function]] {
 
 }
-class aws_cloudfront_function [[#aws_cloudfront_function]] {
+class aws_cloudfront_cache_policy [[#aws_cloudfront_cache_policy]] {
+
+}
+class aws_cloudfront_realtime_log_config [[#aws_cloudfront_realtime_log_config]] {
+
+}
+class aws_cloudfront_field_level_encryption_config [[#aws_cloudfront_field_level_encryption_config]] {
 
 }
 class aws_cloudfront_origin_access_control [[#aws_cloudfront_origin_access_control]] {
@@ -2980,21 +2986,15 @@ class aws_cloudfront_origin_access_control [[#aws_cloudfront_origin_access_contr
 class aws_cloudfront_response_headers_policy [[#aws_cloudfront_response_headers_policy]] {
 
 }
-class aws_cloudfront_realtime_log_config [[#aws_cloudfront_realtime_log_config]] {
-
-}
-class aws_iam_server_certificate [[#aws_iam_server_certificate]] {
-
-}
 aws_cloudfront_distribution -[#1A83AF]-> aws_cloudfront_cache_policy
+aws_cloudfront_distribution -[#1A83AF]-> aws_cloudfront_realtime_log_config
+aws_cloudfront_distribution -[#1A83AF]-> aws_cloudfront_field_level_encryption_config
 aws_cloudfront_distribution -[#1A83AF]-> aws_lambda_function
 aws_cloudfront_distribution -[#1A83AF]-> aws_s3_bucket
-aws_cloudfront_distribution -[#1A83AF]-> aws_cloudfront_field_level_encryption_config
-aws_cloudfront_distribution -[#1A83AF]-> aws_cloudfront_function
 aws_cloudfront_distribution -[#1A83AF]-> aws_cloudfront_origin_access_control
-aws_cloudfront_distribution -[#1A83AF]-> aws_cloudfront_response_headers_policy
-aws_cloudfront_distribution -[#1A83AF]-> aws_cloudfront_realtime_log_config
 aws_cloudfront_distribution -[#1A83AF]-> aws_iam_server_certificate
+aws_cloudfront_distribution -[#1A83AF]-> aws_cloudfront_response_headers_policy
+aws_cloudfront_distribution -[#1A83AF]-> aws_cloudfront_function
 
 @enduml
 ```
@@ -3007,7 +3007,7 @@ aws_cloudfront_distribution -[#1A83AF]-> aws_iam_server_certificate
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cloudfront_field_level_encryption_config data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cloudfront_field_level_encryption_config data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3031,9 +3031,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -3045,6 +3042,18 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
+class aws_cloudfront_content_type_profile_config [[#aws_cloudfront_content_type_profile_config]] {
+**forward_when_content_type_is_unknown**: boolean
+**content_type_profiles**: aws_cloudfront_content_type_profile[]
+}
+class aws_cloudfront_content_type_profile [[#aws_cloudfront_content_type_profile]] {
+**format**: string
+**profile_id**: string
+**content_type**: string
 }
 class aws_cloudfront_field_level_encryption_config [[#aws_cloudfront_field_level_encryption_config]] {
 **field_level_encryption_config_comment**: string
@@ -3059,21 +3068,12 @@ class aws_cloudfront_query_arg_profile [[#aws_cloudfront_query_arg_profile]] {
 **query_arg**: string
 **profile_id**: string
 }
-class aws_cloudfront_content_type_profile_config [[#aws_cloudfront_content_type_profile_config]] {
-**forward_when_content_type_is_unknown**: boolean
-**content_type_profiles**: aws_cloudfront_content_type_profile[]
-}
-class aws_cloudfront_content_type_profile [[#aws_cloudfront_content_type_profile]] {
-**format**: string
-**profile_id**: string
-**content_type**: string
-}
 resource <|--- aws_resource
+aws_cloudfront_content_type_profile_config --> aws_cloudfront_content_type_profile
 aws_resource <|--- aws_cloudfront_field_level_encryption_config
 aws_cloudfront_field_level_encryption_config --> aws_cloudfront_query_arg_profile_config
 aws_cloudfront_field_level_encryption_config --> aws_cloudfront_content_type_profile_config
 aws_cloudfront_query_arg_profile_config --> aws_cloudfront_query_arg_profile
-aws_cloudfront_content_type_profile_config --> aws_cloudfront_content_type_profile
 
 @enduml
 ```
@@ -3085,7 +3085,7 @@ aws_cloudfront_content_type_profile_config --> aws_cloudfront_content_type_profi
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cloudfront_field_level_encryption_config resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cloudfront_field_level_encryption_config resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3112,10 +3112,10 @@ skinparam stereotypeIBackgroundColor #e98df7
 class aws_cloudfront_distribution [[#aws_cloudfront_distribution]] {
 
 }
-class aws_cloudfront_field_level_encryption_config [[#aws_cloudfront_field_level_encryption_config]] {
+class aws_cloudfront_field_level_encryption_profile [[#aws_cloudfront_field_level_encryption_profile]] {
 
 }
-class aws_cloudfront_field_level_encryption_profile [[#aws_cloudfront_field_level_encryption_profile]] {
+class aws_cloudfront_field_level_encryption_config [[#aws_cloudfront_field_level_encryption_config]] {
 
 }
 aws_cloudfront_distribution -[#1A83AF]-> aws_cloudfront_field_level_encryption_config
@@ -3132,7 +3132,7 @@ aws_cloudfront_field_level_encryption_config -[#1A83AF]-> aws_cloudfront_field_l
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cloudfront_field_level_encryption_profile data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cloudfront_field_level_encryption_profile data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3156,9 +3156,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -3171,14 +3168,17 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class aws_cloudfront_encryption_entity [[#aws_cloudfront_encryption_entity]] {
-**public_key_id**: string
-**provider_id**: string
-**field_patterns**: string[]
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_cloudfront_field_level_encryption_profile [[#aws_cloudfront_field_level_encryption_profile]] {
 **field_level_encryption_profile_encryption_entities**: aws_cloudfront_encryption_entity[]
 **field_level_encryption_profile_comment**: string
+}
+class aws_cloudfront_encryption_entity [[#aws_cloudfront_encryption_entity]] {
+**public_key_id**: string
+**provider_id**: string
+**field_patterns**: string[]
 }
 resource <|--- aws_resource
 aws_resource <|--- aws_cloudfront_field_level_encryption_profile
@@ -3194,7 +3194,7 @@ aws_cloudfront_field_level_encryption_profile --> aws_cloudfront_encryption_enti
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cloudfront_field_level_encryption_profile resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cloudfront_field_level_encryption_profile resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3218,17 +3218,17 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_cloudfront_field_level_encryption_config [[#aws_cloudfront_field_level_encryption_config]] {
-
-}
 class aws_cloudfront_field_level_encryption_profile [[#aws_cloudfront_field_level_encryption_profile]] {
 
 }
 class aws_cloudfront_public_key [[#aws_cloudfront_public_key]] {
 
 }
-aws_cloudfront_field_level_encryption_config -[#1A83AF]-> aws_cloudfront_field_level_encryption_profile
+class aws_cloudfront_field_level_encryption_config [[#aws_cloudfront_field_level_encryption_config]] {
+
+}
 aws_cloudfront_field_level_encryption_profile -[#1A83AF]-> aws_cloudfront_public_key
+aws_cloudfront_field_level_encryption_config -[#1A83AF]-> aws_cloudfront_field_level_encryption_profile
 
 @enduml
 ```
@@ -3241,7 +3241,7 @@ aws_cloudfront_field_level_encryption_profile -[#1A83AF]-> aws_cloudfront_public
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cloudfront_function data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cloudfront_function data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3265,9 +3265,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -3279,6 +3276,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_cloudfront_function [[#aws_cloudfront_function]] {
 **function_status**: string
@@ -3303,7 +3303,7 @@ aws_cloudfront_function --> aws_cloudfront_function_config
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cloudfront_function resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cloudfront_function resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3346,7 +3346,7 @@ aws_cloudfront_distribution -[#1A83AF]-> aws_cloudfront_function
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cloudfront_origin_access_control data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cloudfront_origin_access_control data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3370,9 +3370,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -3384,6 +3381,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_cloudfront_origin_access_control [[#aws_cloudfront_origin_access_control]] {
 **origin_access_control_description**: string
@@ -3404,7 +3404,7 @@ aws_resource <|--- aws_cloudfront_origin_access_control
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cloudfront_origin_access_control resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cloudfront_origin_access_control resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3447,7 +3447,7 @@ aws_cloudfront_distribution -[#1A83AF]-> aws_cloudfront_origin_access_control
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cloudfront_public_key data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cloudfront_public_key data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3471,9 +3471,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -3485,6 +3482,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_cloudfront_public_key [[#aws_cloudfront_public_key]] {
 **public_key_encoded_key**: string
@@ -3503,7 +3503,7 @@ aws_resource <|--- aws_cloudfront_public_key
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cloudfront_public_key resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cloudfront_public_key resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3546,7 +3546,7 @@ aws_cloudfront_field_level_encryption_profile -[#1A83AF]-> aws_cloudfront_public
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cloudfront_realtime_log_config data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cloudfront_realtime_log_config data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3570,8 +3570,13 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
+class aws_cloudfront_end_point [[#aws_cloudfront_end_point]] {
+**stream_type**: string
+**kinesis_stream_config**: aws_cloudfront_kinesis_stream_config
+}
+class aws_cloudfront_kinesis_stream_config [[#aws_cloudfront_kinesis_stream_config]] {
+**role_arn**: string
+**stream_arn**: string
 }
 class resource [[#resource]] {
 **id**: string
@@ -3585,23 +3590,18 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
 class aws_cloudfront_realtime_log_config [[#aws_cloudfront_realtime_log_config]] {
 **realtime_log_sampling_rate**: int64
 **realtime_log_end_points**: aws_cloudfront_end_point[]
 **realtime_log_fields**: string[]
 }
-class aws_cloudfront_end_point [[#aws_cloudfront_end_point]] {
-**stream_type**: string
-**kinesis_stream_config**: aws_cloudfront_kinesis_stream_config
-}
-class aws_cloudfront_kinesis_stream_config [[#aws_cloudfront_kinesis_stream_config]] {
-**role_arn**: string
-**stream_arn**: string
-}
+aws_cloudfront_end_point --> aws_cloudfront_kinesis_stream_config
 resource <|--- aws_resource
 aws_resource <|--- aws_cloudfront_realtime_log_config
 aws_cloudfront_realtime_log_config --> aws_cloudfront_end_point
-aws_cloudfront_end_point --> aws_cloudfront_kinesis_stream_config
 
 @enduml
 ```
@@ -3613,7 +3613,7 @@ aws_cloudfront_end_point --> aws_cloudfront_kinesis_stream_config
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cloudfront_realtime_log_config resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cloudfront_realtime_log_config resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3656,7 +3656,7 @@ aws_cloudfront_distribution -[#1A83AF]-> aws_cloudfront_realtime_log_config
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cloudfront_response_headers_policy data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cloudfront_response_headers_policy data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3680,9 +3680,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -3694,6 +3691,28 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
+class aws_cloudfront_response_headers_policy_xss_protection [[#aws_cloudfront_response_headers_policy_xss_protection]] {
+**override**: boolean
+**protection**: boolean
+**mode_block**: boolean
+**report_uri**: string
+}
+class aws_cloudfront_response_headers_policy_frame_options [[#aws_cloudfront_response_headers_policy_frame_options]] {
+**override**: boolean
+**frame_option**: string
+}
+class aws_cloudfront_response_headers_policy_cors_config [[#aws_cloudfront_response_headers_policy_cors_config]] {
+**access_control_allow_origins**: string[]
+**access_control_allow_headers**: string[]
+**access_control_allow_methods**: string[]
+**access_control_allow_credentials**: boolean
+**access_control_expose_headers**: string[]
+**access_control_max_age_sec**: int64
+**origin_override**: boolean
 }
 class aws_cloudfront_response_headers_policy [[#aws_cloudfront_response_headers_policy]] {
 **response_headers_policy_type**: string
@@ -3710,16 +3729,6 @@ class aws_cloudfront_response_headers_policy_security_headers_config [[#aws_clou
 **content_security_policy**: aws_cloudfront_response_headers_policy_content_security_policy
 **content_type_options**: boolean
 **strict_transport_security**: aws_cloudfront_response_headers_policy_strict_transport_security
-}
-class aws_cloudfront_response_headers_policy_xss_protection [[#aws_cloudfront_response_headers_policy_xss_protection]] {
-**override**: boolean
-**protection**: boolean
-**mode_block**: boolean
-**report_uri**: string
-}
-class aws_cloudfront_response_headers_policy_frame_options [[#aws_cloudfront_response_headers_policy_frame_options]] {
-**override**: boolean
-**frame_option**: string
 }
 class aws_cloudfront_response_headers_policy_referrer_policy [[#aws_cloudfront_response_headers_policy_referrer_policy]] {
 **override**: boolean
@@ -3748,15 +3757,6 @@ class aws_cloudfront_response_headers_policy_config [[#aws_cloudfront_response_h
 **server_timing_headers_config**: aws_cloudfront_response_headers_policy_server_timing_headers_config
 **custom_headers_config**: aws_cloudfront_response_headers_policy_custom_header[]
 }
-class aws_cloudfront_response_headers_policy_cors_config [[#aws_cloudfront_response_headers_policy_cors_config]] {
-**access_control_allow_origins**: string[]
-**access_control_allow_headers**: string[]
-**access_control_allow_methods**: string[]
-**access_control_allow_credentials**: boolean
-**access_control_expose_headers**: string[]
-**access_control_max_age_sec**: int64
-**origin_override**: boolean
-}
 resource <|--- aws_resource
 aws_resource <|--- aws_cloudfront_response_headers_policy
 aws_cloudfront_response_headers_policy --> aws_cloudfront_response_headers_policy_config
@@ -3780,7 +3780,7 @@ aws_cloudfront_response_headers_policy_config --> aws_cloudfront_response_header
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cloudfront_response_headers_policy resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cloudfront_response_headers_policy resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3823,7 +3823,7 @@ aws_cloudfront_distribution -[#1A83AF]-> aws_cloudfront_response_headers_policy
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cloudfront_streaming_distribution data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cloudfront_streaming_distribution data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3847,9 +3847,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -3861,6 +3858,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_cloudfront_streaming_distribution [[#aws_cloudfront_streaming_distribution]] {
 **streaming_distribution_status**: string
@@ -3883,7 +3883,7 @@ aws_resource <|--- aws_cloudfront_streaming_distribution
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cloudfront_streaming_distribution resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cloudfront_streaming_distribution resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3922,7 +3922,7 @@ class aws_cloudfront_streaming_distribution [[#aws_cloudfront_streaming_distribu
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cloudwatch_alarm data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cloudwatch_alarm data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3946,9 +3946,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -3961,29 +3958,8 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class aws_cloudwatch_metric [[#aws_cloudwatch_metric]] {
-**namespace**: string
-**metric_name**: string
-**dimensions**: aws_cloudwatch_dimension[]
-}
-class aws_cloudwatch_dimension [[#aws_cloudwatch_dimension]] {
-**name**: string
-**value**: string
-}
-class aws_cloudwatch_metric_data_query [[#aws_cloudwatch_metric_data_query]] {
-**id**: string
-**metric_stat**: aws_cloudwatch_metric_stat
-**expression**: string
-**label**: string
-**return_data**: boolean
-**period**: int64
-**account_id**: string
-}
-class aws_cloudwatch_metric_stat [[#aws_cloudwatch_metric_stat]] {
-**metric**: aws_cloudwatch_metric
-**period**: int64
-**stat**: string
-**unit**: string
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_cloudwatch_alarm [[#aws_cloudwatch_alarm]] {
 **cloudwatch_alarm_description**: string
@@ -4011,13 +3987,37 @@ class aws_cloudwatch_alarm [[#aws_cloudwatch_alarm]] {
 **cloudwatch_metrics**: aws_cloudwatch_metric_data_query[]
 **cloudwatch_threshold_metric_id**: string
 }
+class aws_cloudwatch_dimension [[#aws_cloudwatch_dimension]] {
+**name**: string
+**value**: string
+}
+class aws_cloudwatch_metric_data_query [[#aws_cloudwatch_metric_data_query]] {
+**id**: string
+**metric_stat**: aws_cloudwatch_metric_stat
+**expression**: string
+**label**: string
+**return_data**: boolean
+**period**: int64
+**account_id**: string
+}
+class aws_cloudwatch_metric_stat [[#aws_cloudwatch_metric_stat]] {
+**metric**: aws_cloudwatch_metric
+**period**: int64
+**stat**: string
+**unit**: string
+}
+class aws_cloudwatch_metric [[#aws_cloudwatch_metric]] {
+**namespace**: string
+**metric_name**: string
+**dimensions**: aws_cloudwatch_dimension[]
+}
 resource <|--- aws_resource
-aws_cloudwatch_metric --> aws_cloudwatch_dimension
-aws_cloudwatch_metric_data_query --> aws_cloudwatch_metric_stat
-aws_cloudwatch_metric_stat --> aws_cloudwatch_metric
 aws_resource <|--- aws_cloudwatch_alarm
 aws_cloudwatch_alarm --> aws_cloudwatch_dimension
 aws_cloudwatch_alarm --> aws_cloudwatch_metric_data_query
+aws_cloudwatch_metric_data_query --> aws_cloudwatch_metric_stat
+aws_cloudwatch_metric_stat --> aws_cloudwatch_metric
+aws_cloudwatch_metric --> aws_cloudwatch_dimension
 
 @enduml
 ```
@@ -4029,7 +4029,7 @@ aws_cloudwatch_alarm --> aws_cloudwatch_metric_data_query
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cloudwatch_alarm resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cloudwatch_alarm resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4056,9 +4056,6 @@ skinparam stereotypeIBackgroundColor #e98df7
 class aws_ec2_instance [[#aws_ec2_instance]] {
 
 }
-class aws_sagemaker_endpoint [[#aws_sagemaker_endpoint]] {
-
-}
 class aws_cloudwatch_alarm [[#aws_cloudwatch_alarm]] {
 
 }
@@ -4068,11 +4065,14 @@ class aws_cloudwatch_metric_filter [[#aws_cloudwatch_metric_filter]] {
 class aws_region [[#aws_region]] {
 
 }
+class aws_sagemaker_endpoint [[#aws_sagemaker_endpoint]] {
+
+}
 aws_ec2_instance -[#1A83AF]-> aws_cloudwatch_alarm
-aws_sagemaker_endpoint -[#1A83AF]-> aws_cloudwatch_alarm
 aws_cloudwatch_metric_filter -[#1A83AF]-> aws_cloudwatch_alarm
-aws_region -[#1A83AF]-> aws_cloudwatch_alarm
 aws_region -[#1A83AF]-> aws_ec2_instance
+aws_region -[#1A83AF]-> aws_cloudwatch_alarm
+aws_sagemaker_endpoint -[#1A83AF]-> aws_cloudwatch_alarm
 
 @enduml
 ```
@@ -4085,7 +4085,7 @@ aws_region -[#1A83AF]-> aws_ec2_instance
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cloudwatch_log_group data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cloudwatch_log_group data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4109,9 +4109,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -4123,6 +4120,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_cloudwatch_log_group [[#aws_cloudwatch_log_group]] {
 **group_retention_in_days**: int64
@@ -4143,7 +4143,7 @@ aws_resource <|--- aws_cloudwatch_log_group
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cloudwatch_log_group resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cloudwatch_log_group resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4170,14 +4170,14 @@ skinparam stereotypeIBackgroundColor #e98df7
 class aws_kms_key [[#aws_kms_key]] {
 
 }
-class aws_cloudwatch_log_group [[#aws_cloudwatch_log_group]] {
-
-}
 class aws_cloudwatch_metric_filter [[#aws_cloudwatch_metric_filter]] {
 
 }
-aws_cloudwatch_log_group -[#1A83AF]-> aws_cloudwatch_metric_filter
+class aws_cloudwatch_log_group [[#aws_cloudwatch_log_group]] {
+
+}
 aws_cloudwatch_log_group -[#1A83AF]-> aws_kms_key
+aws_cloudwatch_log_group -[#1A83AF]-> aws_cloudwatch_metric_filter
 
 @enduml
 ```
@@ -4190,7 +4190,7 @@ aws_cloudwatch_log_group -[#1A83AF]-> aws_kms_key
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cloudwatch_metric_filter data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cloudwatch_metric_filter data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4214,9 +4214,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -4228,6 +4225,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_cloudwatch_metric_filter [[#aws_cloudwatch_metric_filter]] {
 **filter_pattern**: string
@@ -4255,7 +4255,7 @@ aws_cloudwatch_metric_filter --> aws_cloudwatch_metric_transformation
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cloudwatch_metric_filter resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cloudwatch_metric_filter resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4282,14 +4282,14 @@ skinparam stereotypeIBackgroundColor #e98df7
 class aws_cloudwatch_alarm [[#aws_cloudwatch_alarm]] {
 
 }
-class aws_cloudwatch_log_group [[#aws_cloudwatch_log_group]] {
-
-}
 class aws_cloudwatch_metric_filter [[#aws_cloudwatch_metric_filter]] {
 
 }
-aws_cloudwatch_log_group -[#1A83AF]-> aws_cloudwatch_metric_filter
+class aws_cloudwatch_log_group [[#aws_cloudwatch_log_group]] {
+
+}
 aws_cloudwatch_metric_filter -[#1A83AF]-> aws_cloudwatch_alarm
+aws_cloudwatch_log_group -[#1A83AF]-> aws_cloudwatch_metric_filter
 
 @enduml
 ```
@@ -4302,7 +4302,7 @@ aws_cloudwatch_metric_filter -[#1A83AF]-> aws_cloudwatch_alarm
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cognito_group data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cognito_group data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4326,9 +4326,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -4340,6 +4337,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_cognito_group [[#aws_cognito_group]] {
 **user_pool_id**: string
@@ -4360,7 +4360,7 @@ aws_resource <|--- aws_cognito_group
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cognito_group resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cognito_group resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4384,22 +4384,22 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_sagemaker_workteam [[#aws_sagemaker_workteam]] {
+class aws_cognito_user_pool [[#aws_cognito_user_pool]] {
 
 }
 class aws_cognito_group [[#aws_cognito_group]] {
 
 }
-class aws_cognito_user_pool [[#aws_cognito_user_pool]] {
-
-}
 class aws_iam_role [[#aws_iam_role]] {
 
 }
-aws_sagemaker_workteam -[#1A83AF]-> aws_cognito_group
-aws_sagemaker_workteam -[#1A83AF]-> aws_cognito_user_pool
+class aws_sagemaker_workteam [[#aws_sagemaker_workteam]] {
+
+}
 aws_cognito_user_pool -[#1A83AF]-> aws_cognito_group
 aws_iam_role -[#1A83AF]-> aws_cognito_group
+aws_sagemaker_workteam -[#1A83AF]-> aws_cognito_user_pool
+aws_sagemaker_workteam -[#1A83AF]-> aws_cognito_group
 
 @enduml
 ```
@@ -4412,7 +4412,7 @@ aws_iam_role -[#1A83AF]-> aws_cognito_group
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cognito_user data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cognito_user data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4436,9 +4436,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -4451,12 +4448,15 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class user [[#user]] {
-
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_cognito_attribute_type [[#aws_cognito_attribute_type]] {
 **name**: string
 **value**: string
+}
+class user [[#user]] {
+
 }
 class aws_cognito_user [[#aws_cognito_user]] {
 **user_attributes**: aws_cognito_attribute_type[]
@@ -4485,7 +4485,7 @@ aws_cognito_user --> aws_cognito_mfa_option_type
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cognito_user resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cognito_user resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4528,7 +4528,7 @@ aws_cognito_user_pool -[#1A83AF]-> aws_cognito_user
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cognito_user_pool data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cognito_user_pool data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4552,9 +4552,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -4567,13 +4564,12 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
 class aws_cognito_user_pool [[#aws_cognito_user_pool]] {
 **lambda_config**: aws_cognito_lambda_config_type
 **status**: string
-}
-class aws_cognito_custom_email_lambda_version_config_type [[#aws_cognito_custom_email_lambda_version_config_type]] {
-**lambda_version**: string
-**lambda_arn**: string
 }
 class aws_cognito_lambda_config_type [[#aws_cognito_lambda_config_type]] {
 **pre_sign_up**: string
@@ -4594,6 +4590,10 @@ class aws_cognito_custom_sms_lambda_version_config_type [[#aws_cognito_custom_sm
 **lambda_version**: string
 **lambda_arn**: string
 }
+class aws_cognito_custom_email_lambda_version_config_type [[#aws_cognito_custom_email_lambda_version_config_type]] {
+**lambda_version**: string
+**lambda_arn**: string
+}
 resource <|--- aws_resource
 aws_resource <|--- aws_cognito_user_pool
 aws_cognito_user_pool --> aws_cognito_lambda_config_type
@@ -4610,7 +4610,7 @@ aws_cognito_lambda_config_type --> aws_cognito_custom_email_lambda_version_confi
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_cognito_user_pool resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_cognito_user_pool resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4634,31 +4634,31 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_kms_key [[#aws_kms_key]] {
-
-}
 class aws_lambda_function [[#aws_lambda_function]] {
 
 }
-class aws_sagemaker_workteam [[#aws_sagemaker_workteam]] {
-
-}
-class aws_cognito_group [[#aws_cognito_group]] {
+class aws_kms_key [[#aws_kms_key]] {
 
 }
 class aws_cognito_user_pool [[#aws_cognito_user_pool]] {
 
 }
+class aws_cognito_group [[#aws_cognito_group]] {
+
+}
 class aws_cognito_user [[#aws_cognito_user]] {
 
 }
+class aws_sagemaker_workteam [[#aws_sagemaker_workteam]] {
+
+}
 aws_lambda_function -[#1A83AF]-> aws_kms_key
-aws_sagemaker_workteam -[#1A83AF]-> aws_cognito_group
-aws_sagemaker_workteam -[#1A83AF]-> aws_cognito_user_pool
-aws_cognito_user_pool -[#1A83AF]-> aws_lambda_function
-aws_cognito_user_pool -[#1A83AF]-> aws_cognito_group
 aws_cognito_user_pool -[#1A83AF]-> aws_kms_key
+aws_cognito_user_pool -[#1A83AF]-> aws_cognito_group
+aws_cognito_user_pool -[#1A83AF]-> aws_lambda_function
 aws_cognito_user_pool -[#1A83AF]-> aws_cognito_user
+aws_sagemaker_workteam -[#1A83AF]-> aws_cognito_user_pool
+aws_sagemaker_workteam -[#1A83AF]-> aws_cognito_group
 
 @enduml
 ```
@@ -4671,7 +4671,7 @@ aws_cognito_user_pool -[#1A83AF]-> aws_cognito_user
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_config_recorder data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_config_recorder data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4695,9 +4695,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -4710,10 +4707,8 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class aws_config_recording_group [[#aws_config_recording_group]] {
-**all_supported**: boolean
-**include_global_resource_types**: boolean
-**resource_types**: string[]
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_config_recorder_status [[#aws_config_recorder_status]] {
 **last_start_time**: datetime
@@ -4727,6 +4722,11 @@ class aws_config_recorder_status [[#aws_config_recorder_status]] {
 class aws_config_recorder [[#aws_config_recorder]] {
 **recorder_group**: aws_config_recording_group
 **recorder_status**: aws_config_recorder_status
+}
+class aws_config_recording_group [[#aws_config_recording_group]] {
+**all_supported**: boolean
+**include_global_resource_types**: boolean
+**resource_types**: string[]
 }
 resource <|--- aws_resource
 aws_resource <|--- aws_config_recorder
@@ -4743,7 +4743,7 @@ aws_config_recorder --> aws_config_recorder_status
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_config_recorder resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_config_recorder resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4782,7 +4782,7 @@ class aws_config_recorder [[#aws_config_recorder]] {
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_dynamo_db_global_table data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_dynamo_db_global_table data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4806,9 +4806,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -4820,6 +4817,13 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
+class aws_dynamo_db_global_table [[#aws_dynamo_db_global_table]] {
+**dynamodb_replication_group**: aws_dynamo_db_replica_description[]
+**dynamodb_global_table_status**: string
 }
 class aws_dynamo_db_replica_description [[#aws_dynamo_db_replica_description]] {
 **region_name**: string
@@ -4840,15 +4844,11 @@ class aws_dynamo_db_table_class_summary [[#aws_dynamo_db_table_class_summary]] {
 **table_class**: string
 **last_update_date_time**: datetime
 }
-class aws_dynamo_db_global_table [[#aws_dynamo_db_global_table]] {
-**dynamodb_replication_group**: aws_dynamo_db_replica_description[]
-**dynamodb_global_table_status**: string
-}
 resource <|--- aws_resource
-aws_dynamo_db_replica_description --> aws_dynamo_db_replica_global_secondary_index_description
-aws_dynamo_db_replica_description --> aws_dynamo_db_table_class_summary
 aws_resource <|--- aws_dynamo_db_global_table
 aws_dynamo_db_global_table --> aws_dynamo_db_replica_description
+aws_dynamo_db_replica_description --> aws_dynamo_db_replica_global_secondary_index_description
+aws_dynamo_db_replica_description --> aws_dynamo_db_table_class_summary
 
 @enduml
 ```
@@ -4860,7 +4860,7 @@ aws_dynamo_db_global_table --> aws_dynamo_db_replica_description
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_dynamo_db_global_table resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_dynamo_db_global_table resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4903,7 +4903,7 @@ aws_dynamo_db_global_table -[#1A83AF]-> aws_kms_key
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_dynamo_db_table data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_dynamo_db_table data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4927,8 +4927,11 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
+class aws_dynamo_db_sse_description [[#aws_dynamo_db_sse_description]] {
+**status**: string
+**sse_type**: string
+**kms_master_key_arn**: string
+**inaccessible_encryption_date_time**: datetime
 }
 class resource [[#resource]] {
 **id**: string
@@ -4942,71 +4945,8 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class aws_dynamo_db_table [[#aws_dynamo_db_table]] {
-**dynamodb_attribute_definitions**: aws_dynamo_db_attribute_definition[]
-**dynamodb_key_schema**: aws_dynamo_db_key_schema_element[]
-**dynamodb_table_status**: string
-**dynamodb_provisioned_throughput**: aws_dynamo_db_provisioned_throughput_description
-**dynamodb_table_size_bytes**: int64
-**dynamodb_item_count**: int64
-**dynamodb_billing_mode_summary**: aws_dynamo_db_billing_mode_summary
-**dynamodb_local_secondary_indexes**: aws_dynamo_db_local_secondary_index_description[]
-**dynamodb_global_secondary_indexes**: aws_dynamo_db_global_secondary_index_description[]
-**dynamodb_stream_specification**: aws_dynamo_db_stream_specification
-**dynamodb_latest_stream_label**: string
-**dynamodb_latest_stream_arn**: string
-**dynamodb_global_table_version**: string
-**dynamodb_replicas**: aws_dynamo_db_replica_description[]
-**dynamodb_restore_summary**: aws_dynamo_db_restore_summary
-**dynamodb_sse_description**: aws_dynamo_db_sse_description
-**dynamodb_archival_summary**: aws_dynamo_db_archival_summary
-**dynamodb_table_class_summary**: aws_dynamo_db_table_class_summary
-}
-class aws_dynamo_db_attribute_definition [[#aws_dynamo_db_attribute_definition]] {
-**attribute_name**: string
-**attribute_type**: string
-}
-class aws_dynamo_db_key_schema_element [[#aws_dynamo_db_key_schema_element]] {
-**attribute_name**: string
-**key_type**: string
-}
-class aws_dynamo_db_provisioned_throughput_description [[#aws_dynamo_db_provisioned_throughput_description]] {
-**last_increase_date_time**: datetime
-**last_decrease_date_time**: datetime
-**number_of_decreases_today**: int64
-**read_capacity_units**: int64
-**write_capacity_units**: int64
-}
-class aws_dynamo_db_billing_mode_summary [[#aws_dynamo_db_billing_mode_summary]] {
-**billing_mode**: string
-**last_update_to_pay_per_request_date_time**: datetime
-}
-class aws_dynamo_db_local_secondary_index_description [[#aws_dynamo_db_local_secondary_index_description]] {
-**index_name**: string
-**key_schema**: aws_dynamo_db_key_schema_element[]
-**projection**: aws_dynamo_db_projection
-**index_size_bytes**: int64
-**item_count**: int64
-**index_arn**: string
-}
-class aws_dynamo_db_projection [[#aws_dynamo_db_projection]] {
-**projection_type**: string
-**non_key_attributes**: string[]
-}
-class aws_dynamo_db_global_secondary_index_description [[#aws_dynamo_db_global_secondary_index_description]] {
-**index_name**: string
-**key_schema**: aws_dynamo_db_key_schema_element[]
-**projection**: aws_dynamo_db_projection
-**index_status**: string
-**backfilling**: boolean
-**provisioned_throughput**: aws_dynamo_db_provisioned_throughput_description
-**index_size_bytes**: int64
-**item_count**: int64
-**index_arn**: string
-}
-class aws_dynamo_db_stream_specification [[#aws_dynamo_db_stream_specification]] {
-**stream_enabled**: boolean
-**stream_view_type**: string
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_dynamo_db_replica_description [[#aws_dynamo_db_replica_description]] {
 **region_name**: string
@@ -5033,11 +4973,71 @@ class aws_dynamo_db_restore_summary [[#aws_dynamo_db_restore_summary]] {
 **restore_date_time**: datetime
 **restore_in_progress**: boolean
 }
-class aws_dynamo_db_sse_description [[#aws_dynamo_db_sse_description]] {
-**status**: string
-**sse_type**: string
-**kms_master_key_arn**: string
-**inaccessible_encryption_date_time**: datetime
+class aws_dynamo_db_provisioned_throughput_description [[#aws_dynamo_db_provisioned_throughput_description]] {
+**last_increase_date_time**: datetime
+**last_decrease_date_time**: datetime
+**number_of_decreases_today**: int64
+**read_capacity_units**: int64
+**write_capacity_units**: int64
+}
+class aws_dynamo_db_global_secondary_index_description [[#aws_dynamo_db_global_secondary_index_description]] {
+**index_name**: string
+**key_schema**: aws_dynamo_db_key_schema_element[]
+**projection**: aws_dynamo_db_projection
+**index_status**: string
+**backfilling**: boolean
+**provisioned_throughput**: aws_dynamo_db_provisioned_throughput_description
+**index_size_bytes**: int64
+**item_count**: int64
+**index_arn**: string
+}
+class aws_dynamo_db_key_schema_element [[#aws_dynamo_db_key_schema_element]] {
+**attribute_name**: string
+**key_type**: string
+}
+class aws_dynamo_db_projection [[#aws_dynamo_db_projection]] {
+**projection_type**: string
+**non_key_attributes**: string[]
+}
+class aws_dynamo_db_stream_specification [[#aws_dynamo_db_stream_specification]] {
+**stream_enabled**: boolean
+**stream_view_type**: string
+}
+class aws_dynamo_db_table [[#aws_dynamo_db_table]] {
+**dynamodb_attribute_definitions**: aws_dynamo_db_attribute_definition[]
+**dynamodb_key_schema**: aws_dynamo_db_key_schema_element[]
+**dynamodb_table_status**: string
+**dynamodb_provisioned_throughput**: aws_dynamo_db_provisioned_throughput_description
+**dynamodb_table_size_bytes**: int64
+**dynamodb_item_count**: int64
+**dynamodb_billing_mode_summary**: aws_dynamo_db_billing_mode_summary
+**dynamodb_local_secondary_indexes**: aws_dynamo_db_local_secondary_index_description[]
+**dynamodb_global_secondary_indexes**: aws_dynamo_db_global_secondary_index_description[]
+**dynamodb_stream_specification**: aws_dynamo_db_stream_specification
+**dynamodb_latest_stream_label**: string
+**dynamodb_latest_stream_arn**: string
+**dynamodb_global_table_version**: string
+**dynamodb_replicas**: aws_dynamo_db_replica_description[]
+**dynamodb_restore_summary**: aws_dynamo_db_restore_summary
+**dynamodb_sse_description**: aws_dynamo_db_sse_description
+**dynamodb_archival_summary**: aws_dynamo_db_archival_summary
+**dynamodb_table_class_summary**: aws_dynamo_db_table_class_summary
+}
+class aws_dynamo_db_billing_mode_summary [[#aws_dynamo_db_billing_mode_summary]] {
+**billing_mode**: string
+**last_update_to_pay_per_request_date_time**: datetime
+}
+class aws_dynamo_db_attribute_definition [[#aws_dynamo_db_attribute_definition]] {
+**attribute_name**: string
+**attribute_type**: string
+}
+class aws_dynamo_db_local_secondary_index_description [[#aws_dynamo_db_local_secondary_index_description]] {
+**index_name**: string
+**key_schema**: aws_dynamo_db_key_schema_element[]
+**projection**: aws_dynamo_db_projection
+**index_size_bytes**: int64
+**item_count**: int64
+**index_arn**: string
 }
 class aws_dynamo_db_archival_summary [[#aws_dynamo_db_archival_summary]] {
 **archival_date_time**: datetime
@@ -5045,6 +5045,11 @@ class aws_dynamo_db_archival_summary [[#aws_dynamo_db_archival_summary]] {
 **archival_backup_arn**: string
 }
 resource <|--- aws_resource
+aws_dynamo_db_replica_description --> aws_dynamo_db_replica_global_secondary_index_description
+aws_dynamo_db_replica_description --> aws_dynamo_db_table_class_summary
+aws_dynamo_db_global_secondary_index_description --> aws_dynamo_db_key_schema_element
+aws_dynamo_db_global_secondary_index_description --> aws_dynamo_db_projection
+aws_dynamo_db_global_secondary_index_description --> aws_dynamo_db_provisioned_throughput_description
 aws_resource <|--- aws_dynamo_db_table
 aws_dynamo_db_table --> aws_dynamo_db_attribute_definition
 aws_dynamo_db_table --> aws_dynamo_db_key_schema_element
@@ -5060,11 +5065,6 @@ aws_dynamo_db_table --> aws_dynamo_db_archival_summary
 aws_dynamo_db_table --> aws_dynamo_db_table_class_summary
 aws_dynamo_db_local_secondary_index_description --> aws_dynamo_db_key_schema_element
 aws_dynamo_db_local_secondary_index_description --> aws_dynamo_db_projection
-aws_dynamo_db_global_secondary_index_description --> aws_dynamo_db_key_schema_element
-aws_dynamo_db_global_secondary_index_description --> aws_dynamo_db_projection
-aws_dynamo_db_global_secondary_index_description --> aws_dynamo_db_provisioned_throughput_description
-aws_dynamo_db_replica_description --> aws_dynamo_db_replica_global_secondary_index_description
-aws_dynamo_db_replica_description --> aws_dynamo_db_table_class_summary
 
 @enduml
 ```
@@ -5076,7 +5076,7 @@ aws_dynamo_db_replica_description --> aws_dynamo_db_table_class_summary
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_dynamo_db_table resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_dynamo_db_table resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5103,15 +5103,15 @@ skinparam stereotypeIBackgroundColor #e98df7
 class aws_kms_key [[#aws_kms_key]] {
 
 }
-class aws_dynamo_db_table [[#aws_dynamo_db_table]] {
-
-}
 class aws_kinesis_stream [[#aws_kinesis_stream]] {
 
 }
-aws_dynamo_db_table -[#1A83AF]-> aws_kinesis_stream
-aws_dynamo_db_table -[#1A83AF]-> aws_kms_key
+class aws_dynamo_db_table [[#aws_dynamo_db_table]] {
+
+}
 aws_kinesis_stream -[#1A83AF]-> aws_kms_key
+aws_dynamo_db_table -[#1A83AF]-> aws_kms_key
+aws_dynamo_db_table -[#1A83AF]-> aws_kinesis_stream
 
 @enduml
 ```
@@ -5124,7 +5124,7 @@ aws_kinesis_stream -[#1A83AF]-> aws_kms_key
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ec2_elastic_ip data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_elastic_ip data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5148,9 +5148,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -5163,9 +5160,8 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class ip_address [[#ip_address]] {
-**ip_address**: string
-**ip_address_family**: string
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_ec2_elastic_ip [[#aws_ec2_elastic_ip]] {
 **public_ip**: string
@@ -5180,10 +5176,14 @@ class aws_ec2_elastic_ip [[#aws_ec2_elastic_ip]] {
 **ip_customer_owned_ipv4_pool**: string
 **ip_carrier_ip**: string
 }
+class ip_address [[#ip_address]] {
+**ip_address**: string
+**ip_address_family**: string
+}
 resource <|--- aws_resource
-resource <|--- ip_address
 aws_resource <|--- aws_ec2_elastic_ip
 ip_address <|--- aws_ec2_elastic_ip
+resource <|--- ip_address
 
 @enduml
 ```
@@ -5195,7 +5195,7 @@ ip_address <|--- aws_ec2_elastic_ip
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ec2_elastic_ip resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_elastic_ip resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5219,10 +5219,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_ec2_instance [[#aws_ec2_instance]] {
+class aws_ec2_network_interface [[#aws_ec2_network_interface]] {
 
 }
-class aws_ec2_network_interface [[#aws_ec2_network_interface]] {
+class aws_ec2_instance [[#aws_ec2_instance]] {
 
 }
 class aws_ec2_elastic_ip [[#aws_ec2_elastic_ip]] {
@@ -5231,11 +5231,11 @@ class aws_ec2_elastic_ip [[#aws_ec2_elastic_ip]] {
 class aws_region [[#aws_region]] {
 
 }
-aws_ec2_instance -[#1A83AF]-> aws_ec2_network_interface
-aws_ec2_instance -[#1A83AF]-> aws_ec2_elastic_ip
 aws_ec2_network_interface -[#1A83AF]-> aws_ec2_elastic_ip
-aws_region -[#1A83AF]-> aws_ec2_elastic_ip
+aws_ec2_instance -[#1A83AF]-> aws_ec2_elastic_ip
+aws_ec2_instance -[#1A83AF]-> aws_ec2_network_interface
 aws_region -[#1A83AF]-> aws_ec2_instance
+aws_region -[#1A83AF]-> aws_ec2_elastic_ip
 aws_region -[#1A83AF]-> aws_ec2_network_interface
 
 @enduml
@@ -5249,7 +5249,7 @@ aws_region -[#1A83AF]-> aws_ec2_network_interface
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ec2_flow_log data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_flow_log data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5273,9 +5273,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -5287,6 +5284,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_ec2_flow_log [[#aws_ec2_flow_log]] {
 **deliver_logs_error_message**: string
@@ -5322,7 +5322,7 @@ aws_ec2_flow_log --> aws_ec2_destination_option
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ec2_flow_log resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_flow_log resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5346,17 +5346,17 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class aws_vpc [[#aws_vpc]] {
+
+}
 class aws_s3_bucket [[#aws_s3_bucket]] {
 
 }
 class aws_ec2_flow_log [[#aws_ec2_flow_log]] {
 
 }
-class aws_vpc [[#aws_vpc]] {
-
-}
-aws_ec2_flow_log -[#1A83AF]-> aws_s3_bucket
 aws_vpc -[#1A83AF]-> aws_ec2_flow_log
+aws_ec2_flow_log -[#1A83AF]-> aws_s3_bucket
 
 @enduml
 ```
@@ -5369,7 +5369,7 @@ aws_vpc -[#1A83AF]-> aws_ec2_flow_log
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ec2_host data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_host data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5393,9 +5393,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -5407,6 +5404,23 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
+class aws_ec2_available_capacity [[#aws_ec2_available_capacity]] {
+**available_instance_capacity**: aws_ec2_instance_capacity[]
+**available_v_cpus**: int64
+}
+class aws_ec2_instance_capacity [[#aws_ec2_instance_capacity]] {
+**available_capacity**: int64
+**instance_type**: string
+**total_capacity**: int64
+}
+class aws_ec2_host_instance [[#aws_ec2_host_instance]] {
+**instance_id**: string
+**instance_type**: string
+**owner_id**: string
 }
 class aws_ec2_host [[#aws_ec2_host]] {
 **host_auto_placement**: string
@@ -5425,15 +5439,6 @@ class aws_ec2_host [[#aws_ec2_host]] {
 **host_member_of_service_linked_resource_group**: boolean
 **host_outpost_arn**: string
 }
-class aws_ec2_available_capacity [[#aws_ec2_available_capacity]] {
-**available_instance_capacity**: aws_ec2_instance_capacity[]
-**available_v_cpus**: int64
-}
-class aws_ec2_instance_capacity [[#aws_ec2_instance_capacity]] {
-**available_capacity**: int64
-**instance_type**: string
-**total_capacity**: int64
-}
 class aws_ec2_host_properties [[#aws_ec2_host_properties]] {
 **cores**: int64
 **instance_type**: string
@@ -5441,17 +5446,12 @@ class aws_ec2_host_properties [[#aws_ec2_host_properties]] {
 **sockets**: int64
 **total_v_cpus**: int64
 }
-class aws_ec2_host_instance [[#aws_ec2_host_instance]] {
-**instance_id**: string
-**instance_type**: string
-**owner_id**: string
-}
 resource <|--- aws_resource
+aws_ec2_available_capacity --> aws_ec2_instance_capacity
 aws_resource <|--- aws_ec2_host
 aws_ec2_host --> aws_ec2_available_capacity
 aws_ec2_host --> aws_ec2_host_properties
 aws_ec2_host --> aws_ec2_host_instance
-aws_ec2_available_capacity --> aws_ec2_instance_capacity
 
 @enduml
 ```
@@ -5463,7 +5463,7 @@ aws_ec2_available_capacity --> aws_ec2_instance_capacity
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ec2_host resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_host resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5506,7 +5506,7 @@ aws_ec2_host -[#1A83AF]-> aws_ec2_instance
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ec2_instance data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_instance data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5530,8 +5530,62 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
+}
 class aws_resource [[#aws_resource]] {
 **arn**: string
+}
+class aws_ec2_instance_network_interface [[#aws_ec2_instance_network_interface]] {
+**association**: aws_ec2_instance_network_interface_association
+**attachment**: aws_ec2_instance_network_interface_attachment
+**description**: string
+**groups**: aws_ec2_group_identifier[]
+**ipv6_addresses**: string[]
+**mac_address**: string
+**network_interface_id**: string
+**private_dns_name**: string
+**private_ip_address**: string
+**private_ip_addresses**: aws_ec2_instance_private_ip_address[]
+**source_dest_check**: boolean
+**status**: string
+**interface_type**: string
+**ipv4_prefixes**: string[]
+**ipv6_prefixes**: string[]
+}
+class aws_ec2_instance_network_interface_association [[#aws_ec2_instance_network_interface_association]] {
+**carrier_ip**: string
+**customer_owned_ip**: string
+**owner_id**: string
+**public_dns_name**: string
+**public_ip**: string
+}
+class aws_ec2_instance_network_interface_attachment [[#aws_ec2_instance_network_interface_attachment]] {
+**attach_time**: datetime
+**attachment_id**: string
+**delete_on_termination**: boolean
+**device_index**: int64
+**status**: string
+**network_card_index**: int64
+}
+class aws_ec2_group_identifier [[#aws_ec2_group_identifier]] {
+**group_name**: string
+**group_id**: string
+}
+class aws_ec2_instance_private_ip_address [[#aws_ec2_instance_private_ip_address]] {
+**association**: aws_ec2_instance_network_interface_association
+**primary**: boolean
+**private_dns_name**: string
+**private_ip_address**: string
 }
 class aws_ec2_instance [[#aws_ec2_instance]] {
 **instance_ami_launch_index**: int64
@@ -5587,51 +5641,13 @@ class aws_ec2_instance [[#aws_ec2_instance]] {
 **instance_tpm_support**: string
 **instance_maintenance_options**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class aws_ec2_instance_network_interface_attachment [[#aws_ec2_instance_network_interface_attachment]] {
-**attach_time**: datetime
-**attachment_id**: string
-**delete_on_termination**: boolean
-**device_index**: int64
-**status**: string
-**network_card_index**: int64
-}
-class aws_ec2_iam_instance_profile [[#aws_ec2_iam_instance_profile]] {
-**arn**: string
-**id**: string
-}
-class aws_ec2_capacity_reservation_specification_response [[#aws_ec2_capacity_reservation_specification_response]] {
-**capacity_reservation_preference**: string
-**capacity_reservation_target**: aws_ec2_capacity_reservation_target_response
+class aws_ec2_product_code [[#aws_ec2_product_code]] {
+**product_code_id**: string
+**product_code_type**: string
 }
 class aws_ec2_capacity_reservation_target_response [[#aws_ec2_capacity_reservation_target_response]] {
 **capacity_reservation_id**: string
 **capacity_reservation_resource_group_arn**: string
-}
-class instance [[#instance]] {
-**instance_cores**: double
-**instance_memory**: double
-**instance_type**: string
-**instance_status**: instance_status
-}
-class aws_ec2_cpu_options [[#aws_ec2_cpu_options]] {
-**core_count**: int64
-**threads_per_core**: int64
-}
-class aws_ec2_instance_state [[#aws_ec2_instance_state]] {
-**code**: int64
-**name**: string
 }
 class aws_ec2_placement [[#aws_ec2_placement]] {
 **availability_zone**: string
@@ -5643,13 +5659,9 @@ class aws_ec2_placement [[#aws_ec2_placement]] {
 **spread_domain**: string
 **host_resource_group_arn**: string
 }
-class aws_ec2_product_code [[#aws_ec2_product_code]] {
-**product_code_id**: string
-**product_code_type**: string
-}
-class aws_ec2_instance_block_device_mapping [[#aws_ec2_instance_block_device_mapping]] {
-**device_name**: string
-**ebs**: aws_ec2_ebs_instance_block_device
+class aws_ec2_state_reason [[#aws_ec2_state_reason]] {
+**code**: string
+**message**: string
 }
 class aws_ec2_ebs_instance_block_device [[#aws_ec2_ebs_instance_block_device]] {
 **attach_time**: datetime
@@ -5657,55 +5669,17 @@ class aws_ec2_ebs_instance_block_device [[#aws_ec2_ebs_instance_block_device]] {
 **status**: string
 **volume_id**: string
 }
+class instance [[#instance]] {
+**instance_cores**: double
+**instance_memory**: double
+**instance_type**: string
+**instance_status**: instance_status
+}
 class aws_ec2_elastic_gpu_association [[#aws_ec2_elastic_gpu_association]] {
 **elastic_gpu_id**: string
 **elastic_gpu_association_id**: string
 **elastic_gpu_association_state**: string
 **elastic_gpu_association_time**: string
-}
-class aws_ec2_elastic_inference_accelerator_association [[#aws_ec2_elastic_inference_accelerator_association]] {
-**elastic_inference_accelerator_arn**: string
-**elastic_inference_accelerator_association_id**: string
-**elastic_inference_accelerator_association_state**: string
-**elastic_inference_accelerator_association_time**: datetime
-}
-class aws_ec2_instance_network_interface [[#aws_ec2_instance_network_interface]] {
-**association**: aws_ec2_instance_network_interface_association
-**attachment**: aws_ec2_instance_network_interface_attachment
-**description**: string
-**groups**: aws_ec2_group_identifier[]
-**ipv6_addresses**: string[]
-**mac_address**: string
-**network_interface_id**: string
-**private_dns_name**: string
-**private_ip_address**: string
-**private_ip_addresses**: aws_ec2_instance_private_ip_address[]
-**source_dest_check**: boolean
-**status**: string
-**interface_type**: string
-**ipv4_prefixes**: string[]
-**ipv6_prefixes**: string[]
-}
-class aws_ec2_instance_network_interface_association [[#aws_ec2_instance_network_interface_association]] {
-**carrier_ip**: string
-**customer_owned_ip**: string
-**owner_id**: string
-**public_dns_name**: string
-**public_ip**: string
-}
-class aws_ec2_group_identifier [[#aws_ec2_group_identifier]] {
-**group_name**: string
-**group_id**: string
-}
-class aws_ec2_instance_private_ip_address [[#aws_ec2_instance_private_ip_address]] {
-**association**: aws_ec2_instance_network_interface_association
-**primary**: boolean
-**private_dns_name**: string
-**private_ip_address**: string
-}
-class aws_ec2_state_reason [[#aws_ec2_state_reason]] {
-**code**: string
-**message**: string
 }
 class aws_ec2_instance_metadata_options_response [[#aws_ec2_instance_metadata_options_response]] {
 **state**: string
@@ -5720,7 +5694,38 @@ class aws_ec2_private_dns_name_options_response [[#aws_ec2_private_dns_name_opti
 **enable_resource_name_dns_a_record**: boolean
 **enable_resource_name_dns_aaaa_record**: boolean
 }
+class aws_ec2_iam_instance_profile [[#aws_ec2_iam_instance_profile]] {
+**arn**: string
+**id**: string
+}
+class aws_ec2_capacity_reservation_specification_response [[#aws_ec2_capacity_reservation_specification_response]] {
+**capacity_reservation_preference**: string
+**capacity_reservation_target**: aws_ec2_capacity_reservation_target_response
+}
+class aws_ec2_cpu_options [[#aws_ec2_cpu_options]] {
+**core_count**: int64
+**threads_per_core**: int64
+}
+class aws_ec2_instance_state [[#aws_ec2_instance_state]] {
+**code**: int64
+**name**: string
+}
+class aws_ec2_instance_block_device_mapping [[#aws_ec2_instance_block_device_mapping]] {
+**device_name**: string
+**ebs**: aws_ec2_ebs_instance_block_device
+}
+class aws_ec2_elastic_inference_accelerator_association [[#aws_ec2_elastic_inference_accelerator_association]] {
+**elastic_inference_accelerator_arn**: string
+**elastic_inference_accelerator_association_id**: string
+**elastic_inference_accelerator_association_state**: string
+**elastic_inference_accelerator_association_time**: datetime
+}
 resource <|--- aws_resource
+aws_ec2_instance_network_interface --> aws_ec2_instance_network_interface_association
+aws_ec2_instance_network_interface --> aws_ec2_instance_network_interface_attachment
+aws_ec2_instance_network_interface --> aws_ec2_group_identifier
+aws_ec2_instance_network_interface --> aws_ec2_instance_private_ip_address
+aws_ec2_instance_private_ip_address --> aws_ec2_instance_network_interface_association
 aws_resource <|--- aws_ec2_instance
 instance <|--- aws_ec2_instance
 aws_ec2_instance --> aws_ec2_placement
@@ -5737,14 +5742,9 @@ aws_ec2_instance --> aws_ec2_cpu_options
 aws_ec2_instance --> aws_ec2_capacity_reservation_specification_response
 aws_ec2_instance --> aws_ec2_instance_metadata_options_response
 aws_ec2_instance --> aws_ec2_private_dns_name_options_response
-aws_ec2_capacity_reservation_specification_response --> aws_ec2_capacity_reservation_target_response
 resource <|--- instance
+aws_ec2_capacity_reservation_specification_response --> aws_ec2_capacity_reservation_target_response
 aws_ec2_instance_block_device_mapping --> aws_ec2_ebs_instance_block_device
-aws_ec2_instance_network_interface --> aws_ec2_instance_network_interface_association
-aws_ec2_instance_network_interface --> aws_ec2_instance_network_interface_attachment
-aws_ec2_instance_network_interface --> aws_ec2_group_identifier
-aws_ec2_instance_network_interface --> aws_ec2_instance_private_ip_address
-aws_ec2_instance_private_ip_address --> aws_ec2_instance_network_interface_association
 
 @enduml
 ```
@@ -5756,7 +5756,7 @@ aws_ec2_instance_private_ip_address --> aws_ec2_instance_network_interface_assoc
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ec2_instance resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_instance resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5780,80 +5780,80 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_alb_target_group [[#aws_alb_target_group]] {
-
-}
-class aws_ec2_instance [[#aws_ec2_instance]] {
-
-}
-class aws_ecs_container_instance [[#aws_ecs_container_instance]] {
-
-}
-class aws_beanstalk_environment [[#aws_beanstalk_environment]] {
-
-}
-class aws_elb [[#aws_elb]] {
+class aws_vpc [[#aws_vpc]] {
 
 }
 class aws_ec2_network_interface [[#aws_ec2_network_interface]] {
 
 }
-class aws_vpc [[#aws_vpc]] {
+class aws_ecs_container_instance [[#aws_ecs_container_instance]] {
 
 }
-class aws_ec2_instance_type [[#aws_ec2_instance_type]] {
-
-}
-class aws_ec2_host [[#aws_ec2_host]] {
-
-}
-class aws_autoscaling_group [[#aws_autoscaling_group]] {
-
-}
-class aws_cloudwatch_alarm [[#aws_cloudwatch_alarm]] {
-
-}
-class aws_ec2_volume [[#aws_ec2_volume]] {
+class aws_ec2_instance [[#aws_ec2_instance]] {
 
 }
 class aws_ec2_elastic_ip [[#aws_ec2_elastic_ip]] {
 
 }
-class aws_ec2_keypair [[#aws_ec2_keypair]] {
+class aws_cloudwatch_alarm [[#aws_cloudwatch_alarm]] {
+
+}
+class aws_elb [[#aws_elb]] {
+
+}
+class aws_autoscaling_group [[#aws_autoscaling_group]] {
 
 }
 class aws_region [[#aws_region]] {
 
 }
-aws_alb_target_group -[#1A83AF]-> aws_ec2_instance
-aws_ec2_instance -[#1A83AF]-> aws_cloudwatch_alarm
-aws_ec2_instance -[#1A83AF]-> aws_ec2_network_interface
-aws_ec2_instance -[#1A83AF]-> aws_ec2_elastic_ip
-aws_ec2_instance -[#1A83AF]-> aws_ec2_volume
-aws_ec2_instance -[#1A83AF]-> aws_ec2_keypair
-aws_ecs_container_instance -[#1A83AF]-> aws_ec2_instance
-aws_beanstalk_environment -[#1A83AF]-> aws_ec2_instance
-aws_beanstalk_environment -[#1A83AF]-> aws_autoscaling_group
-aws_elb -[#1A83AF]-> aws_ec2_instance
-aws_ec2_network_interface -[#1A83AF]-> aws_ec2_elastic_ip
-aws_vpc -[#1A83AF]-> aws_ec2_instance
-aws_vpc -[#1A83AF]-> aws_ec2_network_interface
-aws_vpc -[#1A83AF]-> aws_alb_target_group
+class aws_ec2_keypair [[#aws_ec2_keypair]] {
+
+}
+class aws_ec2_volume [[#aws_ec2_volume]] {
+
+}
+class aws_ec2_instance_type [[#aws_ec2_instance_type]] {
+
+}
+class aws_alb_target_group [[#aws_alb_target_group]] {
+
+}
+class aws_beanstalk_environment [[#aws_beanstalk_environment]] {
+
+}
+class aws_ec2_host [[#aws_ec2_host]] {
+
+}
 aws_vpc -[#1A83AF]-> aws_elb
-aws_ec2_instance_type -[#1A83AF]-> aws_ec2_instance
-aws_ec2_host -[#1A83AF]-> aws_ec2_instance
+aws_vpc -[#1A83AF]-> aws_alb_target_group
+aws_vpc -[#1A83AF]-> aws_ec2_network_interface
+aws_vpc -[#1A83AF]-> aws_ec2_instance
+aws_ec2_network_interface -[#1A83AF]-> aws_ec2_elastic_ip
+aws_ecs_container_instance -[#1A83AF]-> aws_ec2_instance
+aws_ec2_instance -[#1A83AF]-> aws_ec2_elastic_ip
+aws_ec2_instance -[#1A83AF]-> aws_ec2_network_interface
+aws_ec2_instance -[#1A83AF]-> aws_ec2_volume
+aws_ec2_instance -[#1A83AF]-> aws_cloudwatch_alarm
+aws_ec2_instance -[#1A83AF]-> aws_ec2_keypair
+aws_elb -[#1A83AF]-> aws_ec2_instance
 aws_autoscaling_group -[#1A83AF]-> aws_ec2_instance
-aws_region -[#1A83AF]-> aws_vpc
+aws_region -[#1A83AF]-> aws_ec2_instance
 aws_region -[#1A83AF]-> aws_ec2_volume
-aws_region -[#1A83AF]-> aws_ec2_keypair
-aws_region -[#1A83AF]-> aws_cloudwatch_alarm
 aws_region -[#1A83AF]-> aws_elb
+aws_region -[#1A83AF]-> aws_vpc
 aws_region -[#1A83AF]-> aws_ec2_instance_type
+aws_region -[#1A83AF]-> aws_cloudwatch_alarm
+aws_region -[#1A83AF]-> aws_ec2_keypair
 aws_region -[#1A83AF]-> aws_ec2_elastic_ip
 aws_region -[#1A83AF]-> aws_alb_target_group
-aws_region -[#1A83AF]-> aws_ec2_instance
 aws_region -[#1A83AF]-> aws_ec2_network_interface
 aws_region -[#1A83AF]-> aws_autoscaling_group
+aws_ec2_instance_type -[#1A83AF]-> aws_ec2_instance
+aws_alb_target_group -[#1A83AF]-> aws_ec2_instance
+aws_beanstalk_environment -[#1A83AF]-> aws_ec2_instance
+aws_beanstalk_environment -[#1A83AF]-> aws_autoscaling_group
+aws_ec2_host -[#1A83AF]-> aws_ec2_instance
 
 @enduml
 ```
@@ -5866,7 +5866,7 @@ aws_region -[#1A83AF]-> aws_autoscaling_group
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ec2_instance_type data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_instance_type data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5890,9 +5890,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -5905,15 +5902,91 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
+class instance_type [[#instance_type]] {
+**instance_type**: string
+**instance_cores**: double
+**instance_memory**: double
+**ondemand_cost**: double
+**reservations**: int64
+}
+class type [[#type]] {
+
+}
+class aws_ec2_network_info [[#aws_ec2_network_info]] {
+**network_performance**: string
+**maximum_network_interfaces**: int64
+**maximum_network_cards**: int64
+**default_network_card_index**: int64
+**network_cards**: aws_ec2_network_card_info[]
+**ipv4_addresses_per_interface**: int64
+**ipv6_addresses_per_interface**: int64
+**ipv6_supported**: boolean
+**ena_support**: string
+**efa_supported**: boolean
+**efa_info**: int64
+**encryption_in_transit_supported**: boolean
+}
 class aws_ec2_network_card_info [[#aws_ec2_network_card_info]] {
 **network_card_index**: int64
 **network_performance**: string
 **maximum_network_interfaces**: int64
 }
+class aws_ec2_instance_storage_info [[#aws_ec2_instance_storage_info]] {
+**total_size_in_gb**: int64
+**disks**: aws_ec2_disk_info[]
+**nvme_support**: string
+**encryption_support**: string
+}
+class aws_ec2_disk_info [[#aws_ec2_disk_info]] {
+**size_in_gb**: int64
+**count**: int64
+**type**: string
+}
+class aws_ec2_inference_accelerator_info [[#aws_ec2_inference_accelerator_info]] {
+**accelerators**: aws_ec2_inference_device_info[]
+}
+class aws_ec2_inference_device_info [[#aws_ec2_inference_device_info]] {
+**count**: int64
+**name**: string
+**manufacturer**: string
+}
 class quota [[#quota]] {
 **quota**: double
 **usage**: double
 **quota_type**: string
+}
+class phantom_resource [[#phantom_resource]] {
+
+}
+class aws_ec2_ebs_info [[#aws_ec2_ebs_info]] {
+**ebs_optimized_support**: string
+**encryption_support**: string
+**ebs_optimized_info**: aws_ec2_ebs_optimized_info
+**nvme_support**: string
+}
+class aws_ec2_ebs_optimized_info [[#aws_ec2_ebs_optimized_info]] {
+**baseline_bandwidth_in_mbps**: int64
+**baseline_throughput_in_mbps**: double
+**baseline_iops**: int64
+**maximum_bandwidth_in_mbps**: int64
+**maximum_throughput_in_mbps**: double
+**maximum_iops**: int64
+}
+class aws_ec2_fpga_info [[#aws_ec2_fpga_info]] {
+**fpgas**: aws_ec2_fpga_device_info[]
+**total_fpga_memory_in_mi_b**: int64
+}
+class aws_ec2_fpga_device_info [[#aws_ec2_fpga_device_info]] {
+**name**: string
+**manufacturer**: string
+**count**: int64
+**memory_info**: int64
+}
+class aws_ec2_placement_group_info [[#aws_ec2_placement_group_info]] {
+**supported_strategies**: string[]
 }
 class aws_ec2_instance_type [[#aws_ec2_instance_type]] {
 **current_generation**: boolean
@@ -5940,15 +6013,11 @@ class aws_ec2_instance_type [[#aws_ec2_instance_type]] {
 **auto_recovery_supported**: boolean
 **supported_boot_modes**: string[]
 }
-class phantom_resource [[#phantom_resource]] {
-
-}
-class instance_type [[#instance_type]] {
-**instance_type**: string
-**instance_cores**: double
-**instance_memory**: double
-**ondemand_cost**: double
-**reservations**: int64
+class aws_ec2_gpu_device_info [[#aws_ec2_gpu_device_info]] {
+**name**: string
+**manufacturer**: string
+**count**: int64
+**memory_info**: int64
 }
 class aws_ec2_processor_info [[#aws_ec2_processor_info]] {
 **supported_architectures**: string[]
@@ -5961,81 +6030,20 @@ class aws_ec2_v_cpu_info [[#aws_ec2_v_cpu_info]] {
 **valid_cores**: int64[]
 **valid_threads_per_core**: int64[]
 }
-class aws_ec2_instance_storage_info [[#aws_ec2_instance_storage_info]] {
-**total_size_in_gb**: int64
-**disks**: aws_ec2_disk_info[]
-**nvme_support**: string
-**encryption_support**: string
-}
-class aws_ec2_disk_info [[#aws_ec2_disk_info]] {
-**size_in_gb**: int64
-**count**: int64
-**type**: string
-}
-class aws_ec2_ebs_info [[#aws_ec2_ebs_info]] {
-**ebs_optimized_support**: string
-**encryption_support**: string
-**ebs_optimized_info**: aws_ec2_ebs_optimized_info
-**nvme_support**: string
-}
-class aws_ec2_ebs_optimized_info [[#aws_ec2_ebs_optimized_info]] {
-**baseline_bandwidth_in_mbps**: int64
-**baseline_throughput_in_mbps**: double
-**baseline_iops**: int64
-**maximum_bandwidth_in_mbps**: int64
-**maximum_throughput_in_mbps**: double
-**maximum_iops**: int64
-}
-class aws_ec2_network_info [[#aws_ec2_network_info]] {
-**network_performance**: string
-**maximum_network_interfaces**: int64
-**maximum_network_cards**: int64
-**default_network_card_index**: int64
-**network_cards**: aws_ec2_network_card_info[]
-**ipv4_addresses_per_interface**: int64
-**ipv6_addresses_per_interface**: int64
-**ipv6_supported**: boolean
-**ena_support**: string
-**efa_supported**: boolean
-**efa_info**: int64
-**encryption_in_transit_supported**: boolean
-}
 class aws_ec2_gpu_info [[#aws_ec2_gpu_info]] {
 **gpus**: aws_ec2_gpu_device_info[]
 **total_gpu_memory_in_mi_b**: int64
 }
-class aws_ec2_gpu_device_info [[#aws_ec2_gpu_device_info]] {
-**name**: string
-**manufacturer**: string
-**count**: int64
-**memory_info**: int64
-}
-class aws_ec2_fpga_info [[#aws_ec2_fpga_info]] {
-**fpgas**: aws_ec2_fpga_device_info[]
-**total_fpga_memory_in_mi_b**: int64
-}
-class aws_ec2_fpga_device_info [[#aws_ec2_fpga_device_info]] {
-**name**: string
-**manufacturer**: string
-**count**: int64
-**memory_info**: int64
-}
-class aws_ec2_placement_group_info [[#aws_ec2_placement_group_info]] {
-**supported_strategies**: string[]
-}
-class aws_ec2_inference_accelerator_info [[#aws_ec2_inference_accelerator_info]] {
-**accelerators**: aws_ec2_inference_device_info[]
-}
-class aws_ec2_inference_device_info [[#aws_ec2_inference_device_info]] {
-**count**: int64
-**name**: string
-**manufacturer**: string
-}
-class type [[#type]] {
-
-}
 resource <|--- aws_resource
+type <|--- instance_type
+quota <|--- type
+aws_ec2_network_info --> aws_ec2_network_card_info
+aws_ec2_instance_storage_info --> aws_ec2_disk_info
+aws_ec2_inference_accelerator_info --> aws_ec2_inference_device_info
 phantom_resource <|--- quota
+resource <|--- phantom_resource
+aws_ec2_ebs_info --> aws_ec2_ebs_optimized_info
+aws_ec2_fpga_info --> aws_ec2_fpga_device_info
 aws_resource <|--- aws_ec2_instance_type
 instance_type <|--- aws_ec2_instance_type
 aws_ec2_instance_type --> aws_ec2_processor_info
@@ -6047,15 +6055,7 @@ aws_ec2_instance_type --> aws_ec2_gpu_info
 aws_ec2_instance_type --> aws_ec2_fpga_info
 aws_ec2_instance_type --> aws_ec2_placement_group_info
 aws_ec2_instance_type --> aws_ec2_inference_accelerator_info
-resource <|--- phantom_resource
-type <|--- instance_type
-aws_ec2_instance_storage_info --> aws_ec2_disk_info
-aws_ec2_ebs_info --> aws_ec2_ebs_optimized_info
-aws_ec2_network_info --> aws_ec2_network_card_info
 aws_ec2_gpu_info --> aws_ec2_gpu_device_info
-aws_ec2_fpga_info --> aws_ec2_fpga_device_info
-aws_ec2_inference_accelerator_info --> aws_ec2_inference_device_info
-quota <|--- type
 
 @enduml
 ```
@@ -6067,7 +6067,7 @@ quota <|--- type
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ec2_instance_type resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_instance_type resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6094,6 +6094,9 @@ skinparam stereotypeIBackgroundColor #e98df7
 class aws_ec2_instance [[#aws_ec2_instance]] {
 
 }
+class aws_region [[#aws_region]] {
+
+}
 class aws_service_quota [[#aws_service_quota]] {
 
 }
@@ -6103,15 +6106,12 @@ class aws_ec2_instance_type [[#aws_ec2_instance_type]] {
 class aws_ec2_reserved_instances [[#aws_ec2_reserved_instances]] {
 
 }
-class aws_region [[#aws_region]] {
-
-}
+aws_region -[#1A83AF]-> aws_ec2_instance
+aws_region -[#1A83AF]-> aws_service_quota
+aws_region -[#1A83AF]-> aws_ec2_instance_type
 aws_service_quota -[#1A83AF]-> aws_ec2_instance_type
 aws_ec2_instance_type -[#1A83AF]-> aws_ec2_instance
 aws_ec2_instance_type -[#1A83AF]-> aws_ec2_reserved_instances
-aws_region -[#1A83AF]-> aws_ec2_instance_type
-aws_region -[#1A83AF]-> aws_ec2_instance
-aws_region -[#1A83AF]-> aws_service_quota
 
 @enduml
 ```
@@ -6124,7 +6124,7 @@ aws_region -[#1A83AF]-> aws_service_quota
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ec2_internet_gateway data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_internet_gateway data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6148,9 +6148,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -6163,21 +6160,24 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class aws_ec2_internet_gateway_attachment [[#aws_ec2_internet_gateway_attachment]] {
-**state**: string
-**vpc_id**: string
-}
-class aws_ec2_internet_gateway [[#aws_ec2_internet_gateway]] {
-**gateway_attachments**: aws_ec2_internet_gateway_attachment[]
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class gateway [[#gateway]] {
 
 }
+class aws_ec2_internet_gateway [[#aws_ec2_internet_gateway]] {
+**gateway_attachments**: aws_ec2_internet_gateway_attachment[]
+}
+class aws_ec2_internet_gateway_attachment [[#aws_ec2_internet_gateway_attachment]] {
+**state**: string
+**vpc_id**: string
+}
 resource <|--- aws_resource
+resource <|--- gateway
 aws_resource <|--- aws_ec2_internet_gateway
 gateway <|--- aws_ec2_internet_gateway
 aws_ec2_internet_gateway --> aws_ec2_internet_gateway_attachment
-resource <|--- gateway
 
 @enduml
 ```
@@ -6189,7 +6189,7 @@ resource <|--- gateway
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ec2_internet_gateway resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_internet_gateway resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6216,15 +6216,15 @@ skinparam stereotypeIBackgroundColor #e98df7
 class aws_vpc [[#aws_vpc]] {
 
 }
-class aws_ec2_internet_gateway [[#aws_ec2_internet_gateway]] {
-
-}
 class aws_region [[#aws_region]] {
 
 }
+class aws_ec2_internet_gateway [[#aws_ec2_internet_gateway]] {
+
+}
 aws_vpc -[#1A83AF]-> aws_ec2_internet_gateway
-aws_region -[#1A83AF]-> aws_vpc
 aws_region -[#1A83AF]-> aws_ec2_internet_gateway
+aws_region -[#1A83AF]-> aws_vpc
 
 @enduml
 ```
@@ -6237,7 +6237,7 @@ aws_region -[#1A83AF]-> aws_ec2_internet_gateway
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ec2_keypair data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_keypair data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6261,9 +6261,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -6275,6 +6272,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_ec2_keypair [[#aws_ec2_keypair]] {
 **key_fingerprint**: string
@@ -6294,7 +6294,7 @@ aws_resource <|--- aws_ec2_keypair
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ec2_keypair resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_keypair resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6321,15 +6321,15 @@ skinparam stereotypeIBackgroundColor #e98df7
 class aws_ec2_instance [[#aws_ec2_instance]] {
 
 }
-class aws_ec2_keypair [[#aws_ec2_keypair]] {
-
-}
 class aws_region [[#aws_region]] {
 
 }
+class aws_ec2_keypair [[#aws_ec2_keypair]] {
+
+}
 aws_ec2_instance -[#1A83AF]-> aws_ec2_keypair
-aws_region -[#1A83AF]-> aws_ec2_keypair
 aws_region -[#1A83AF]-> aws_ec2_instance
+aws_region -[#1A83AF]-> aws_ec2_keypair
 
 @enduml
 ```
@@ -6342,7 +6342,7 @@ aws_region -[#1A83AF]-> aws_ec2_instance
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ec2_nat_gateway data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_nat_gateway data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6366,9 +6366,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -6390,12 +6387,8 @@ class aws_ec2_nat_gateway [[#aws_ec2_nat_gateway]] {
 **nat_state**: string
 **nat_connectivity_type**: string
 }
-class aws_ec2_provisioned_bandwidth [[#aws_ec2_provisioned_bandwidth]] {
-**provision_time**: datetime
-**provisioned**: string
-**request_time**: datetime
-**requested**: string
-**status**: string
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class gateway [[#gateway]] {
 
@@ -6406,11 +6399,18 @@ class aws_ec2_nat_gateway_address [[#aws_ec2_nat_gateway_address]] {
 **private_ip**: string
 **public_ip**: string
 }
-resource <|--- aws_resource
+class aws_ec2_provisioned_bandwidth [[#aws_ec2_provisioned_bandwidth]] {
+**provision_time**: datetime
+**provisioned**: string
+**request_time**: datetime
+**requested**: string
+**status**: string
+}
 aws_resource <|--- aws_ec2_nat_gateway
 gateway <|--- aws_ec2_nat_gateway
 aws_ec2_nat_gateway --> aws_ec2_nat_gateway_address
 aws_ec2_nat_gateway --> aws_ec2_provisioned_bandwidth
+resource <|--- aws_resource
 resource <|--- gateway
 
 @enduml
@@ -6423,7 +6423,7 @@ resource <|--- gateway
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ec2_nat_gateway resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_nat_gateway resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6447,31 +6447,31 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_ec2_subnet [[#aws_ec2_subnet]] {
-
-}
-class aws_ec2_network_interface [[#aws_ec2_network_interface]] {
-
-}
 class aws_ec2_nat_gateway [[#aws_ec2_nat_gateway]] {
 
 }
 class aws_vpc [[#aws_vpc]] {
 
 }
+class aws_ec2_network_interface [[#aws_ec2_network_interface]] {
+
+}
+class aws_ec2_subnet [[#aws_ec2_subnet]] {
+
+}
 class aws_region [[#aws_region]] {
 
 }
-aws_ec2_subnet -[#1A83AF]-> aws_ec2_network_interface
-aws_ec2_nat_gateway -[#1A83AF]-> aws_ec2_subnet
 aws_ec2_nat_gateway -[#1A83AF]-> aws_vpc
 aws_ec2_nat_gateway -[#1A83AF]-> aws_ec2_network_interface
-aws_vpc -[#1A83AF]-> aws_ec2_subnet
+aws_ec2_nat_gateway -[#1A83AF]-> aws_ec2_subnet
 aws_vpc -[#1A83AF]-> aws_ec2_network_interface
-aws_region -[#1A83AF]-> aws_vpc
-aws_region -[#1A83AF]-> aws_ec2_subnet
+aws_vpc -[#1A83AF]-> aws_ec2_subnet
+aws_ec2_subnet -[#1A83AF]-> aws_ec2_network_interface
 aws_region -[#1A83AF]-> aws_ec2_nat_gateway
+aws_region -[#1A83AF]-> aws_vpc
 aws_region -[#1A83AF]-> aws_ec2_network_interface
+aws_region -[#1A83AF]-> aws_ec2_subnet
 
 @enduml
 ```
@@ -6484,7 +6484,7 @@ aws_region -[#1A83AF]-> aws_ec2_network_interface
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ec2_network_acl data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_network_acl data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6508,9 +6508,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -6522,6 +6519,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_ec2_network_acl [[#aws_ec2_network_acl]] {
 **acl_associations**: aws_ec2_network_acl_association[]
@@ -6568,7 +6568,7 @@ aws_ec2_network_acl_entry --> aws_ec2_port_range
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ec2_network_acl resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_network_acl resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6592,24 +6592,24 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_ec2_subnet [[#aws_ec2_subnet]] {
-
-}
-class aws_ec2_network_acl [[#aws_ec2_network_acl]] {
-
-}
 class aws_vpc [[#aws_vpc]] {
+
+}
+class aws_ec2_subnet [[#aws_ec2_subnet]] {
 
 }
 class aws_region [[#aws_region]] {
 
 }
-aws_ec2_network_acl -[#1A83AF]-> aws_ec2_subnet
-aws_vpc -[#1A83AF]-> aws_ec2_network_acl
+class aws_ec2_network_acl [[#aws_ec2_network_acl]] {
+
+}
 aws_vpc -[#1A83AF]-> aws_ec2_subnet
+aws_vpc -[#1A83AF]-> aws_ec2_network_acl
 aws_region -[#1A83AF]-> aws_vpc
 aws_region -[#1A83AF]-> aws_ec2_network_acl
 aws_region -[#1A83AF]-> aws_ec2_subnet
+aws_ec2_network_acl -[#1A83AF]-> aws_ec2_subnet
 
 @enduml
 ```
@@ -6622,7 +6622,7 @@ aws_region -[#1A83AF]-> aws_ec2_subnet
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ec2_network_interface data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_network_interface data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6646,18 +6646,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
-class network_interface [[#network_interface]] {
-**network_interface_status**: string
-**network_interface_type**: string
-**mac**: string
-**private_ips**: string[]
-**public_ips**: string[]
-**v6_ips**: string[]
-**description**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -6669,6 +6657,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_ec2_network_interface [[#aws_ec2_network_interface]] {
 **nic_association**: aws_ec2_network_interface_association
@@ -6690,11 +6681,18 @@ class aws_ec2_network_interface [[#aws_ec2_network_interface]] {
 **nic_ipv6_native**: boolean
 **nic_ipv6_address**: string
 }
-class aws_ec2_network_interface_private_ip_address [[#aws_ec2_network_interface_private_ip_address]] {
-**association**: aws_ec2_network_interface_association
-**primary**: boolean
-**private_dns_name**: string
-**private_ip_address**: string
+class aws_ec2_group_identifier [[#aws_ec2_group_identifier]] {
+**group_name**: string
+**group_id**: string
+}
+class network_interface [[#network_interface]] {
+**network_interface_status**: string
+**network_interface_type**: string
+**mac**: string
+**private_ips**: string[]
+**public_ips**: string[]
+**v6_ips**: string[]
+**description**: string
 }
 class aws_ec2_network_interface_association [[#aws_ec2_network_interface_association]] {
 **allocation_id**: string
@@ -6703,10 +6701,6 @@ class aws_ec2_network_interface_association [[#aws_ec2_network_interface_associa
 **public_ip**: string
 **customer_owned_ip**: string
 **carrier_ip**: string
-}
-class aws_ec2_group_identifier [[#aws_ec2_group_identifier]] {
-**group_name**: string
-**group_id**: string
 }
 class aws_ec2_network_interface_attachment [[#aws_ec2_network_interface_attachment]] {
 **attach_time**: datetime
@@ -6717,12 +6711,17 @@ class aws_ec2_network_interface_attachment [[#aws_ec2_network_interface_attachme
 **instance_id**: string
 **status**: string
 }
+class aws_ec2_network_interface_private_ip_address [[#aws_ec2_network_interface_private_ip_address]] {
+**association**: aws_ec2_network_interface_association
+**primary**: boolean
+**private_dns_name**: string
+**private_ip_address**: string
+}
 class aws_ec2_tag [[#aws_ec2_tag]] {
 **key**: string
 **value**: string
 }
 resource <|--- aws_resource
-resource <|--- network_interface
 aws_resource <|--- aws_ec2_network_interface
 network_interface <|--- aws_ec2_network_interface
 aws_ec2_network_interface --> aws_ec2_network_interface_association
@@ -6730,6 +6729,7 @@ aws_ec2_network_interface --> aws_ec2_network_interface_attachment
 aws_ec2_network_interface --> aws_ec2_group_identifier
 aws_ec2_network_interface --> aws_ec2_network_interface_private_ip_address
 aws_ec2_network_interface --> aws_ec2_tag
+resource <|--- network_interface
 aws_ec2_network_interface_private_ip_address --> aws_ec2_network_interface_association
 
 @enduml
@@ -6742,7 +6742,7 @@ aws_ec2_network_interface_private_ip_address --> aws_ec2_network_interface_assoc
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ec2_network_interface resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_network_interface resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6766,28 +6766,19 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_ec2_instance [[#aws_ec2_instance]] {
-
-}
-class aws_vpc_endpoint [[#aws_vpc_endpoint]] {
-
-}
-class aws_ec2_subnet [[#aws_ec2_subnet]] {
-
-}
-class aws_ec2_network_interface [[#aws_ec2_network_interface]] {
-
-}
-class aws_sagemaker_notebook [[#aws_sagemaker_notebook]] {
-
-}
 class aws_ec2_nat_gateway [[#aws_ec2_nat_gateway]] {
 
 }
 class aws_vpc [[#aws_vpc]] {
 
 }
-class aws_ec2_security_group [[#aws_ec2_security_group]] {
+class aws_ec2_network_interface [[#aws_ec2_network_interface]] {
+
+}
+class aws_ec2_subnet [[#aws_ec2_subnet]] {
+
+}
+class aws_ec2_instance [[#aws_ec2_instance]] {
 
 }
 class aws_ec2_elastic_ip [[#aws_ec2_elastic_ip]] {
@@ -6796,37 +6787,46 @@ class aws_ec2_elastic_ip [[#aws_ec2_elastic_ip]] {
 class aws_efs_mount_target [[#aws_efs_mount_target]] {
 
 }
+class aws_sagemaker_notebook [[#aws_sagemaker_notebook]] {
+
+}
+class aws_vpc_endpoint [[#aws_vpc_endpoint]] {
+
+}
+class aws_ec2_security_group [[#aws_ec2_security_group]] {
+
+}
 class aws_region [[#aws_region]] {
 
 }
-aws_ec2_instance -[#1A83AF]-> aws_ec2_network_interface
-aws_ec2_instance -[#1A83AF]-> aws_ec2_elastic_ip
-aws_vpc_endpoint -[#1A83AF]-> aws_ec2_network_interface
-aws_ec2_subnet -[#1A83AF]-> aws_vpc_endpoint
-aws_ec2_subnet -[#1A83AF]-> aws_ec2_network_interface
-aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_notebook
-aws_ec2_network_interface -[#1A83AF]-> aws_ec2_elastic_ip
-aws_ec2_network_interface -[#1A83AF]-> aws_efs_mount_target
-aws_sagemaker_notebook -[#1A83AF]-> aws_ec2_network_interface
-aws_ec2_nat_gateway -[#1A83AF]-> aws_ec2_subnet
 aws_ec2_nat_gateway -[#1A83AF]-> aws_vpc
 aws_ec2_nat_gateway -[#1A83AF]-> aws_ec2_network_interface
-aws_vpc -[#1A83AF]-> aws_ec2_instance
-aws_vpc -[#1A83AF]-> aws_vpc_endpoint
-aws_vpc -[#1A83AF]-> aws_ec2_subnet
+aws_ec2_nat_gateway -[#1A83AF]-> aws_ec2_subnet
 aws_vpc -[#1A83AF]-> aws_ec2_network_interface
+aws_vpc -[#1A83AF]-> aws_ec2_instance
 aws_vpc -[#1A83AF]-> aws_ec2_security_group
+aws_vpc -[#1A83AF]-> aws_ec2_subnet
+aws_vpc -[#1A83AF]-> aws_vpc_endpoint
+aws_ec2_network_interface -[#1A83AF]-> aws_ec2_elastic_ip
+aws_ec2_network_interface -[#1A83AF]-> aws_efs_mount_target
+aws_ec2_subnet -[#1A83AF]-> aws_ec2_network_interface
+aws_ec2_subnet -[#1A83AF]-> aws_vpc_endpoint
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_notebook
+aws_ec2_instance -[#1A83AF]-> aws_ec2_elastic_ip
+aws_ec2_instance -[#1A83AF]-> aws_ec2_network_interface
+aws_sagemaker_notebook -[#1A83AF]-> aws_ec2_network_interface
+aws_vpc_endpoint -[#1A83AF]-> aws_ec2_network_interface
 aws_ec2_security_group -[#1A83AF]-> aws_vpc_endpoint
-aws_ec2_security_group -[#1A83AF]-> aws_ec2_network_interface
 aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_notebook
+aws_ec2_security_group -[#1A83AF]-> aws_ec2_network_interface
+aws_region -[#1A83AF]-> aws_ec2_nat_gateway
+aws_region -[#1A83AF]-> aws_ec2_instance
 aws_region -[#1A83AF]-> aws_vpc
 aws_region -[#1A83AF]-> aws_vpc_endpoint
-aws_region -[#1A83AF]-> aws_ec2_subnet
-aws_region -[#1A83AF]-> aws_ec2_elastic_ip
-aws_region -[#1A83AF]-> aws_ec2_nat_gateway
 aws_region -[#1A83AF]-> aws_ec2_security_group
-aws_region -[#1A83AF]-> aws_ec2_instance
+aws_region -[#1A83AF]-> aws_ec2_elastic_ip
 aws_region -[#1A83AF]-> aws_ec2_network_interface
+aws_region -[#1A83AF]-> aws_ec2_subnet
 
 @enduml
 ```
@@ -6839,7 +6839,7 @@ aws_region -[#1A83AF]-> aws_ec2_network_interface
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ec2_reserved_instances data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_reserved_instances data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6863,9 +6863,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -6877,6 +6874,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_ec2_reserved_instances [[#aws_ec2_reserved_instances]] {
 **availability_zone**: string
@@ -6915,7 +6915,7 @@ aws_ec2_reserved_instances --> aws_ec2_recurring_charge
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ec2_reserved_instances resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_reserved_instances resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6958,7 +6958,7 @@ aws_ec2_instance_type -[#1A83AF]-> aws_ec2_reserved_instances
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ec2_route_table data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_route_table data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -6982,9 +6982,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -6997,14 +6994,21 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class routing_table [[#routing_table]] {
-
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
+class aws_ec2_route_table_association_state [[#aws_ec2_route_table_association_state]] {
+**state**: string
+**status_message**: string
 }
 class aws_ec2_route_table [[#aws_ec2_route_table]] {
 **route_table_associations**: aws_ec2_route_table_association[]
 **route_table_propagating_vgws**: string[]
 **route_table_routes**: aws_ec2_route[]
 **owner_id**: string
+}
+class routing_table [[#routing_table]] {
+
 }
 class aws_ec2_route_table_association [[#aws_ec2_route_table_association]] {
 **main**: boolean
@@ -7013,10 +7017,6 @@ class aws_ec2_route_table_association [[#aws_ec2_route_table_association]] {
 **subnet_id**: string
 **gateway_id**: string
 **association_state**: aws_ec2_route_table_association_state
-}
-class aws_ec2_route_table_association_state [[#aws_ec2_route_table_association_state]] {
-**state**: string
-**status_message**: string
 }
 class aws_ec2_route [[#aws_ec2_route]] {
 **destination_cidr_block**: string
@@ -7037,11 +7037,11 @@ class aws_ec2_route [[#aws_ec2_route]] {
 **core_network_arn**: string
 }
 resource <|--- aws_resource
-resource <|--- routing_table
 aws_resource <|--- aws_ec2_route_table
 routing_table <|--- aws_ec2_route_table
 aws_ec2_route_table --> aws_ec2_route_table_association
 aws_ec2_route_table --> aws_ec2_route
+resource <|--- routing_table
 aws_ec2_route_table_association --> aws_ec2_route_table_association_state
 
 @enduml
@@ -7054,7 +7054,7 @@ aws_ec2_route_table_association --> aws_ec2_route_table_association_state
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ec2_route_table resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_route_table resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7078,24 +7078,24 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_vpc_endpoint [[#aws_vpc_endpoint]] {
-
-}
 class aws_vpc [[#aws_vpc]] {
 
 }
-class aws_ec2_route_table [[#aws_ec2_route_table]] {
+class aws_vpc_endpoint [[#aws_vpc_endpoint]] {
 
 }
 class aws_region [[#aws_region]] {
 
 }
+class aws_ec2_route_table [[#aws_ec2_route_table]] {
+
+}
 aws_vpc -[#1A83AF]-> aws_ec2_route_table
 aws_vpc -[#1A83AF]-> aws_vpc_endpoint
-aws_ec2_route_table -[#1A83AF]-> aws_vpc_endpoint
 aws_region -[#1A83AF]-> aws_vpc
-aws_region -[#1A83AF]-> aws_vpc_endpoint
 aws_region -[#1A83AF]-> aws_ec2_route_table
+aws_region -[#1A83AF]-> aws_vpc_endpoint
+aws_ec2_route_table -[#1A83AF]-> aws_vpc_endpoint
 
 @enduml
 ```
@@ -7108,7 +7108,7 @@ aws_region -[#1A83AF]-> aws_ec2_route_table
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ec2_security_group data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_security_group data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7132,9 +7132,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -7147,21 +7144,16 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class aws_ec2_ip_range [[#aws_ec2_ip_range]] {
-**cidr_ip**: string
-**description**: string
-}
-class aws_ec2_ipv6_range [[#aws_ec2_ipv6_range]] {
-**cidr_ipv6**: string
-**description**: string
-}
-class security_group [[#security_group]] {
-
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_ec2_security_group [[#aws_ec2_security_group]] {
 **description**: string
 **group_ip_permissions**: aws_ec2_ip_permission[]
 **group_ip_permissions_egress**: aws_ec2_ip_permission[]
+}
+class security_group [[#security_group]] {
+
 }
 class aws_ec2_ip_permission [[#aws_ec2_ip_permission]] {
 **from_port**: int64
@@ -7171,6 +7163,14 @@ class aws_ec2_ip_permission [[#aws_ec2_ip_permission]] {
 **prefix_list_ids**: aws_ec2_prefix_list_id[]
 **to_port**: int64
 **user_id_group_pairs**: aws_ec2_user_id_group_pair[]
+}
+class aws_ec2_ip_range [[#aws_ec2_ip_range]] {
+**cidr_ip**: string
+**description**: string
+}
+class aws_ec2_ipv6_range [[#aws_ec2_ipv6_range]] {
+**cidr_ipv6**: string
+**description**: string
 }
 class aws_ec2_prefix_list_id [[#aws_ec2_prefix_list_id]] {
 **description**: string
@@ -7186,10 +7186,10 @@ class aws_ec2_user_id_group_pair [[#aws_ec2_user_id_group_pair]] {
 **vpc_peering_connection_id**: string
 }
 resource <|--- aws_resource
-resource <|--- security_group
 aws_resource <|--- aws_ec2_security_group
 security_group <|--- aws_ec2_security_group
 aws_ec2_security_group --> aws_ec2_ip_permission
+resource <|--- security_group
 aws_ec2_ip_permission --> aws_ec2_ip_range
 aws_ec2_ip_permission --> aws_ec2_ipv6_range
 aws_ec2_ip_permission --> aws_ec2_prefix_list_id
@@ -7205,7 +7205,7 @@ aws_ec2_ip_permission --> aws_ec2_user_id_group_pair
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ec2_security_group resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_security_group resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7229,37 +7229,28 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_ecs_service [[#aws_ecs_service]] {
+class aws_vpc [[#aws_vpc]] {
 
 }
-class aws_alb [[#aws_alb]] {
-
-}
-class aws_vpc_endpoint [[#aws_vpc_endpoint]] {
-
-}
-class aws_lambda_function [[#aws_lambda_function]] {
+class aws_ec2_network_interface [[#aws_ec2_network_interface]] {
 
 }
 class aws_sagemaker_labeling_job [[#aws_sagemaker_labeling_job]] {
 
 }
-class aws_elb [[#aws_elb]] {
+class aws_lambda_function [[#aws_lambda_function]] {
 
 }
-class aws_sagemaker_hyper_parameter_tuning_job [[#aws_sagemaker_hyper_parameter_tuning_job]] {
+class aws_sagemaker_training_job [[#aws_sagemaker_training_job]] {
 
 }
-class aws_sagemaker_processing_job [[#aws_sagemaker_processing_job]] {
+class aws_sagemaker_notebook [[#aws_sagemaker_notebook]] {
 
 }
-class aws_sagemaker_model [[#aws_sagemaker_model]] {
+class aws_vpc_endpoint [[#aws_vpc_endpoint]] {
 
 }
-class aws_sagemaker_auto_ml_job [[#aws_sagemaker_auto_ml_job]] {
-
-}
-class aws_sagemaker_inference_recommendations_job [[#aws_sagemaker_inference_recommendations_job]] {
+class aws_ec2_security_group [[#aws_ec2_security_group]] {
 
 }
 class aws_rds_instance [[#aws_rds_instance]] {
@@ -7268,83 +7259,92 @@ class aws_rds_instance [[#aws_rds_instance]] {
 class aws_sagemaker_domain [[#aws_sagemaker_domain]] {
 
 }
-class aws_ec2_network_interface [[#aws_ec2_network_interface]] {
+class aws_elb [[#aws_elb]] {
+
+}
+class aws_ecs_service [[#aws_ecs_service]] {
+
+}
+class aws_sagemaker_auto_ml_job [[#aws_sagemaker_auto_ml_job]] {
 
 }
 class aws_sagemaker_compilation_job [[#aws_sagemaker_compilation_job]] {
 
 }
-class aws_sagemaker_notebook [[#aws_sagemaker_notebook]] {
+class aws_elasticache_cache_cluster [[#aws_elasticache_cache_cluster]] {
 
 }
-class aws_sagemaker_training_job [[#aws_sagemaker_training_job]] {
+class aws_sagemaker_inference_recommendations_job [[#aws_sagemaker_inference_recommendations_job]] {
+
+}
+class aws_sagemaker_hyper_parameter_tuning_job [[#aws_sagemaker_hyper_parameter_tuning_job]] {
+
+}
+class aws_sagemaker_model [[#aws_sagemaker_model]] {
 
 }
 class aws_redshift_cluster [[#aws_redshift_cluster]] {
 
 }
-class aws_vpc [[#aws_vpc]] {
-
-}
-class aws_ec2_security_group [[#aws_ec2_security_group]] {
-
-}
-class aws_elasticache_cache_cluster [[#aws_elasticache_cache_cluster]] {
+class aws_sagemaker_processing_job [[#aws_sagemaker_processing_job]] {
 
 }
 class aws_rds_cluster [[#aws_rds_cluster]] {
 
 }
+class aws_alb [[#aws_alb]] {
+
+}
 class aws_region [[#aws_region]] {
 
 }
-aws_ecs_service -[#1A83AF]-> aws_elb
-aws_vpc_endpoint -[#1A83AF]-> aws_ec2_network_interface
+aws_vpc -[#1A83AF]-> aws_rds_instance
+aws_vpc -[#1A83AF]-> aws_elb
+aws_vpc -[#1A83AF]-> aws_ec2_network_interface
+aws_vpc -[#1A83AF]-> aws_ec2_security_group
+aws_vpc -[#1A83AF]-> aws_redshift_cluster
+aws_vpc -[#1A83AF]-> aws_lambda_function
+aws_vpc -[#1A83AF]-> aws_alb
+aws_vpc -[#1A83AF]-> aws_vpc_endpoint
 aws_sagemaker_labeling_job -[#1A83AF]-> aws_lambda_function
 aws_sagemaker_labeling_job -[#1A83AF]-> aws_sagemaker_training_job
-aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_sagemaker_training_job
-aws_sagemaker_processing_job -[#1A83AF]-> aws_sagemaker_training_job
-aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_labeling_job
-aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_training_job
-aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_processing_job
 aws_sagemaker_notebook -[#1A83AF]-> aws_ec2_network_interface
-aws_redshift_cluster -[#1A83AF]-> aws_sagemaker_processing_job
-aws_vpc -[#1A83AF]-> aws_lambda_function
-aws_vpc -[#1A83AF]-> aws_vpc_endpoint
-aws_vpc -[#1A83AF]-> aws_rds_instance
-aws_vpc -[#1A83AF]-> aws_alb
-aws_vpc -[#1A83AF]-> aws_ec2_network_interface
-aws_vpc -[#1A83AF]-> aws_elb
-aws_vpc -[#1A83AF]-> aws_redshift_cluster
-aws_vpc -[#1A83AF]-> aws_ec2_security_group
-aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_hyper_parameter_tuning_job
+aws_vpc_endpoint -[#1A83AF]-> aws_ec2_network_interface
 aws_ec2_security_group -[#1A83AF]-> aws_rds_instance
-aws_ec2_security_group -[#1A83AF]-> aws_vpc_endpoint
-aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_inference_recommendations_job
-aws_ec2_security_group -[#1A83AF]-> aws_redshift_cluster
-aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_labeling_job
-aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_model
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_domain
+aws_ec2_security_group -[#1A83AF]-> aws_elb
 aws_ec2_security_group -[#1A83AF]-> aws_ecs_service
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_training_job
+aws_ec2_security_group -[#1A83AF]-> aws_vpc_endpoint
 aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_auto_ml_job
 aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_compilation_job
-aws_ec2_security_group -[#1A83AF]-> aws_elb
-aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_training_job
 aws_ec2_security_group -[#1A83AF]-> aws_lambda_function
 aws_ec2_security_group -[#1A83AF]-> aws_elasticache_cache_cluster
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_notebook
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_inference_recommendations_job
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_hyper_parameter_tuning_job
+aws_ec2_security_group -[#1A83AF]-> aws_ec2_network_interface
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_model
+aws_ec2_security_group -[#1A83AF]-> aws_redshift_cluster
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_processing_job
 aws_ec2_security_group -[#1A83AF]-> aws_rds_cluster
 aws_ec2_security_group -[#1A83AF]-> aws_alb
-aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_domain
-aws_ec2_security_group -[#1A83AF]-> aws_ec2_network_interface
-aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_notebook
-aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_processing_job
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_labeling_job
+aws_ecs_service -[#1A83AF]-> aws_elb
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_processing_job
+aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_labeling_job
+aws_redshift_cluster -[#1A83AF]-> aws_sagemaker_processing_job
+aws_sagemaker_processing_job -[#1A83AF]-> aws_sagemaker_training_job
 aws_rds_cluster -[#1A83AF]-> aws_rds_instance
-aws_region -[#1A83AF]-> aws_vpc
 aws_region -[#1A83AF]-> aws_rds_instance
-aws_region -[#1A83AF]-> aws_vpc_endpoint
 aws_region -[#1A83AF]-> aws_elb
+aws_region -[#1A83AF]-> aws_vpc
+aws_region -[#1A83AF]-> aws_vpc_endpoint
 aws_region -[#1A83AF]-> aws_ec2_security_group
-aws_region -[#1A83AF]-> aws_alb
 aws_region -[#1A83AF]-> aws_ec2_network_interface
+aws_region -[#1A83AF]-> aws_alb
 
 @enduml
 ```
@@ -7357,7 +7357,7 @@ aws_region -[#1A83AF]-> aws_ec2_network_interface
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ec2_snapshot data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_snapshot data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7381,9 +7381,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -7396,14 +7393,8 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class snapshot [[#snapshot]] {
-**snapshot_status**: string
-**description**: string
-**volume_id**: string
-**volume_size**: int64
-**encrypted**: boolean
-**owner_id**: string
-**owner_alias**: string
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_ec2_snapshot [[#aws_ec2_snapshot]] {
 **snapshot_data_encryption_key_id**: string
@@ -7414,10 +7405,19 @@ class aws_ec2_snapshot [[#aws_ec2_snapshot]] {
 **snapshot_storage_tier**: string
 **snapshot_restore_expiry_time**: datetime
 }
+class snapshot [[#snapshot]] {
+**snapshot_status**: string
+**description**: string
+**volume_id**: string
+**volume_size**: int64
+**encrypted**: boolean
+**owner_id**: string
+**owner_alias**: string
+}
 resource <|--- aws_resource
-resource <|--- snapshot
 aws_resource <|--- aws_ec2_snapshot
 snapshot <|--- aws_ec2_snapshot
+resource <|--- snapshot
 
 @enduml
 ```
@@ -7429,7 +7429,7 @@ snapshot <|--- aws_ec2_snapshot
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ec2_snapshot resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_snapshot resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7456,20 +7456,20 @@ skinparam stereotypeIBackgroundColor #e98df7
 class aws_kms_key [[#aws_kms_key]] {
 
 }
-class aws_ec2_snapshot [[#aws_ec2_snapshot]] {
+class aws_region [[#aws_region]] {
 
 }
 class aws_ec2_volume [[#aws_ec2_volume]] {
 
 }
-class aws_region [[#aws_region]] {
+class aws_ec2_snapshot [[#aws_ec2_snapshot]] {
 
 }
-aws_ec2_snapshot -[#1A83AF]-> aws_kms_key
-aws_ec2_volume -[#1A83AF]-> aws_ec2_snapshot
-aws_ec2_volume -[#1A83AF]-> aws_kms_key
-aws_region -[#1A83AF]-> aws_ec2_snapshot
 aws_region -[#1A83AF]-> aws_ec2_volume
+aws_region -[#1A83AF]-> aws_ec2_snapshot
+aws_ec2_volume -[#1A83AF]-> aws_kms_key
+aws_ec2_volume -[#1A83AF]-> aws_ec2_snapshot
+aws_ec2_snapshot -[#1A83AF]-> aws_kms_key
 
 @enduml
 ```
@@ -7482,7 +7482,7 @@ aws_region -[#1A83AF]-> aws_ec2_volume
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ec2_subnet data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_subnet data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7506,9 +7506,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -7520,6 +7517,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_ec2_subnet [[#aws_ec2_subnet]] {
 **subnet_availability_zone**: string
@@ -7539,6 +7539,10 @@ class aws_ec2_subnet [[#aws_ec2_subnet]] {
 **subnet_ipv6_native**: boolean
 **subnet_private_dns_name_options_on_launch**: aws_ec2_private_dns_name_options_on_launch
 }
+class aws_ec2_subnet_cidr_block_state [[#aws_ec2_subnet_cidr_block_state]] {
+**state**: string
+**status_message**: string
+}
 class subnet [[#subnet]] {
 
 }
@@ -7546,10 +7550,6 @@ class aws_ec2_subnet_ipv6_cidr_block_association [[#aws_ec2_subnet_ipv6_cidr_blo
 **association_id**: string
 **ipv6_cidr_block**: string
 **ipv6_cidr_block_state**: aws_ec2_subnet_cidr_block_state
-}
-class aws_ec2_subnet_cidr_block_state [[#aws_ec2_subnet_cidr_block_state]] {
-**state**: string
-**status_message**: string
 }
 class aws_ec2_private_dns_name_options_on_launch [[#aws_ec2_private_dns_name_options_on_launch]] {
 **hostname_type**: string
@@ -7574,7 +7574,7 @@ aws_ec2_subnet_ipv6_cidr_block_association --> aws_ec2_subnet_cidr_block_state
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ec2_subnet resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_subnet resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7598,40 +7598,31 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_ecs_service [[#aws_ecs_service]] {
+class aws_ec2_nat_gateway [[#aws_ec2_nat_gateway]] {
 
 }
-class aws_alb [[#aws_alb]] {
+class aws_vpc [[#aws_vpc]] {
 
 }
-class aws_vpc_endpoint [[#aws_vpc_endpoint]] {
+class aws_ec2_network_interface [[#aws_ec2_network_interface]] {
 
 }
 class aws_ec2_subnet [[#aws_ec2_subnet]] {
 
 }
-class aws_lambda_function [[#aws_lambda_function]] {
-
-}
 class aws_sagemaker_labeling_job [[#aws_sagemaker_labeling_job]] {
 
 }
-class aws_elb [[#aws_elb]] {
+class aws_lambda_function [[#aws_lambda_function]] {
 
 }
-class aws_sagemaker_hyper_parameter_tuning_job [[#aws_sagemaker_hyper_parameter_tuning_job]] {
+class aws_sagemaker_training_job [[#aws_sagemaker_training_job]] {
 
 }
-class aws_sagemaker_processing_job [[#aws_sagemaker_processing_job]] {
+class aws_sagemaker_notebook [[#aws_sagemaker_notebook]] {
 
 }
-class aws_sagemaker_model [[#aws_sagemaker_model]] {
-
-}
-class aws_sagemaker_auto_ml_job [[#aws_sagemaker_auto_ml_job]] {
-
-}
-class aws_sagemaker_inference_recommendations_job [[#aws_sagemaker_inference_recommendations_job]] {
+class aws_vpc_endpoint [[#aws_vpc_endpoint]] {
 
 }
 class aws_rds_instance [[#aws_rds_instance]] {
@@ -7640,84 +7631,93 @@ class aws_rds_instance [[#aws_rds_instance]] {
 class aws_sagemaker_domain [[#aws_sagemaker_domain]] {
 
 }
-class aws_ec2_network_interface [[#aws_ec2_network_interface]] {
+class aws_elb [[#aws_elb]] {
+
+}
+class aws_ecs_service [[#aws_ecs_service]] {
+
+}
+class aws_sagemaker_auto_ml_job [[#aws_sagemaker_auto_ml_job]] {
 
 }
 class aws_sagemaker_compilation_job [[#aws_sagemaker_compilation_job]] {
 
 }
-class aws_sagemaker_notebook [[#aws_sagemaker_notebook]] {
+class aws_sagemaker_inference_recommendations_job [[#aws_sagemaker_inference_recommendations_job]] {
 
 }
-class aws_sagemaker_training_job [[#aws_sagemaker_training_job]] {
+class aws_sagemaker_hyper_parameter_tuning_job [[#aws_sagemaker_hyper_parameter_tuning_job]] {
+
+}
+class aws_sagemaker_model [[#aws_sagemaker_model]] {
 
 }
 class aws_redshift_cluster [[#aws_redshift_cluster]] {
 
 }
-class aws_ec2_network_acl [[#aws_ec2_network_acl]] {
+class aws_sagemaker_processing_job [[#aws_sagemaker_processing_job]] {
 
 }
-class aws_ec2_nat_gateway [[#aws_ec2_nat_gateway]] {
-
-}
-class aws_vpc [[#aws_vpc]] {
+class aws_alb [[#aws_alb]] {
 
 }
 class aws_region [[#aws_region]] {
 
 }
-aws_ecs_service -[#1A83AF]-> aws_elb
-aws_vpc_endpoint -[#1A83AF]-> aws_ec2_network_interface
-aws_ec2_subnet -[#1A83AF]-> aws_lambda_function
-aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_labeling_job
-aws_ec2_subnet -[#1A83AF]-> aws_elb
-aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_hyper_parameter_tuning_job
-aws_ec2_subnet -[#1A83AF]-> aws_vpc_endpoint
-aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_processing_job
-aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_model
-aws_ec2_subnet -[#1A83AF]-> aws_ecs_service
-aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_auto_ml_job
-aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_inference_recommendations_job
-aws_ec2_subnet -[#1A83AF]-> aws_rds_instance
-aws_ec2_subnet -[#1A83AF]-> aws_alb
-aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_domain
-aws_ec2_subnet -[#1A83AF]-> aws_ec2_network_interface
-aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_compilation_job
-aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_notebook
-aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_training_job
-aws_ec2_subnet -[#1A83AF]-> aws_redshift_cluster
-aws_sagemaker_labeling_job -[#1A83AF]-> aws_lambda_function
-aws_sagemaker_labeling_job -[#1A83AF]-> aws_sagemaker_training_job
-aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_sagemaker_training_job
-aws_sagemaker_processing_job -[#1A83AF]-> aws_sagemaker_training_job
-aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_labeling_job
-aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_training_job
-aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_processing_job
-aws_sagemaker_notebook -[#1A83AF]-> aws_ec2_network_interface
-aws_redshift_cluster -[#1A83AF]-> aws_sagemaker_processing_job
-aws_ec2_network_acl -[#1A83AF]-> aws_ec2_subnet
-aws_ec2_nat_gateway -[#1A83AF]-> aws_ec2_subnet
+class aws_ec2_network_acl [[#aws_ec2_network_acl]] {
+
+}
 aws_ec2_nat_gateway -[#1A83AF]-> aws_vpc
 aws_ec2_nat_gateway -[#1A83AF]-> aws_ec2_network_interface
-aws_vpc -[#1A83AF]-> aws_lambda_function
-aws_vpc -[#1A83AF]-> aws_vpc_endpoint
-aws_vpc -[#1A83AF]-> aws_ec2_network_acl
-aws_vpc -[#1A83AF]-> aws_ec2_subnet
+aws_ec2_nat_gateway -[#1A83AF]-> aws_ec2_subnet
 aws_vpc -[#1A83AF]-> aws_rds_instance
-aws_vpc -[#1A83AF]-> aws_alb
-aws_vpc -[#1A83AF]-> aws_ec2_network_interface
 aws_vpc -[#1A83AF]-> aws_elb
+aws_vpc -[#1A83AF]-> aws_ec2_network_interface
 aws_vpc -[#1A83AF]-> aws_redshift_cluster
-aws_region -[#1A83AF]-> aws_vpc
+aws_vpc -[#1A83AF]-> aws_lambda_function
+aws_vpc -[#1A83AF]-> aws_ec2_subnet
+aws_vpc -[#1A83AF]-> aws_ec2_network_acl
+aws_vpc -[#1A83AF]-> aws_alb
+aws_vpc -[#1A83AF]-> aws_vpc_endpoint
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_hyper_parameter_tuning_job
+aws_ec2_subnet -[#1A83AF]-> aws_rds_instance
+aws_ec2_subnet -[#1A83AF]-> aws_elb
+aws_ec2_subnet -[#1A83AF]-> aws_ec2_network_interface
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_model
+aws_ec2_subnet -[#1A83AF]-> aws_redshift_cluster
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_domain
+aws_ec2_subnet -[#1A83AF]-> aws_ecs_service
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_compilation_job
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_training_job
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_processing_job
+aws_ec2_subnet -[#1A83AF]-> aws_lambda_function
+aws_ec2_subnet -[#1A83AF]-> aws_alb
+aws_ec2_subnet -[#1A83AF]-> aws_vpc_endpoint
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_notebook
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_inference_recommendations_job
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_labeling_job
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_auto_ml_job
+aws_sagemaker_labeling_job -[#1A83AF]-> aws_lambda_function
+aws_sagemaker_labeling_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_notebook -[#1A83AF]-> aws_ec2_network_interface
+aws_vpc_endpoint -[#1A83AF]-> aws_ec2_network_interface
+aws_ecs_service -[#1A83AF]-> aws_elb
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_processing_job
+aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_labeling_job
+aws_redshift_cluster -[#1A83AF]-> aws_sagemaker_processing_job
+aws_sagemaker_processing_job -[#1A83AF]-> aws_sagemaker_training_job
 aws_region -[#1A83AF]-> aws_rds_instance
-aws_region -[#1A83AF]-> aws_vpc_endpoint
-aws_region -[#1A83AF]-> aws_ec2_network_acl
-aws_region -[#1A83AF]-> aws_ec2_subnet
-aws_region -[#1A83AF]-> aws_elb
 aws_region -[#1A83AF]-> aws_ec2_nat_gateway
-aws_region -[#1A83AF]-> aws_alb
+aws_region -[#1A83AF]-> aws_elb
+aws_region -[#1A83AF]-> aws_vpc
+aws_region -[#1A83AF]-> aws_ec2_network_acl
+aws_region -[#1A83AF]-> aws_vpc_endpoint
 aws_region -[#1A83AF]-> aws_ec2_network_interface
+aws_region -[#1A83AF]-> aws_ec2_subnet
+aws_region -[#1A83AF]-> aws_alb
+aws_ec2_network_acl -[#1A83AF]-> aws_ec2_subnet
 
 @enduml
 ```
@@ -7730,7 +7730,7 @@ aws_region -[#1A83AF]-> aws_ec2_network_interface
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ec2_volume data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_volume data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7754,26 +7754,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
-class aws_ec2_volume_attachment [[#aws_ec2_volume_attachment]] {
-**attach_time**: datetime
-**device**: string
-**instance_id**: string
-**state**: string
-**volume_id**: string
-**delete_on_termination**: boolean
-}
-class volume [[#volume]] {
-**volume_size**: int64
-**volume_type**: string
-**volume_status**: volume_status
-**volume_iops**: int64
-**volume_throughput**: int64
-**volume_encrypted**: boolean
-**snapshot_before_delete**: boolean
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -7786,6 +7766,18 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
+class volume [[#volume]] {
+**volume_size**: int64
+**volume_type**: string
+**volume_status**: volume_status
+**volume_iops**: int64
+**volume_throughput**: int64
+**volume_encrypted**: boolean
+**snapshot_before_delete**: boolean
+}
 class aws_ec2_volume [[#aws_ec2_volume]] {
 **volume_attachments**: aws_ec2_volume_attachment[]
 **availability_zone**: string
@@ -7794,6 +7786,14 @@ class aws_ec2_volume [[#aws_ec2_volume]] {
 **volume_snapshot_id**: string
 **volume_fast_restored**: boolean
 **volume_multi_attach_enabled**: boolean
+}
+class aws_ec2_volume_attachment [[#aws_ec2_volume_attachment]] {
+**attach_time**: datetime
+**device**: string
+**instance_id**: string
+**state**: string
+**volume_id**: string
+**delete_on_termination**: boolean
 }
 resource <|--- aws_resource
 resource <|--- volume
@@ -7811,7 +7811,7 @@ aws_ec2_volume --> aws_ec2_volume_attachment
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ec2_volume resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_volume resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7835,33 +7835,33 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_ec2_instance [[#aws_ec2_instance]] {
-
-}
 class aws_kms_key [[#aws_kms_key]] {
 
 }
-class aws_ec2_volume_type [[#aws_ec2_volume_type]] {
-
-}
-class aws_ec2_snapshot [[#aws_ec2_snapshot]] {
-
-}
-class aws_ec2_volume [[#aws_ec2_volume]] {
+class aws_ec2_instance [[#aws_ec2_instance]] {
 
 }
 class aws_region [[#aws_region]] {
 
 }
+class aws_ec2_volume [[#aws_ec2_volume]] {
+
+}
+class aws_ec2_snapshot [[#aws_ec2_snapshot]] {
+
+}
+class aws_ec2_volume_type [[#aws_ec2_volume_type]] {
+
+}
 aws_ec2_instance -[#1A83AF]-> aws_ec2_volume
-aws_ec2_volume_type -[#1A83AF]-> aws_ec2_volume
-aws_ec2_snapshot -[#1A83AF]-> aws_kms_key
-aws_ec2_volume -[#1A83AF]-> aws_ec2_snapshot
-aws_ec2_volume -[#1A83AF]-> aws_kms_key
-aws_region -[#1A83AF]-> aws_ec2_snapshot
-aws_region -[#1A83AF]-> aws_ec2_volume
-aws_region -[#1A83AF]-> aws_ec2_volume_type
 aws_region -[#1A83AF]-> aws_ec2_instance
+aws_region -[#1A83AF]-> aws_ec2_volume
+aws_region -[#1A83AF]-> aws_ec2_snapshot
+aws_region -[#1A83AF]-> aws_ec2_volume_type
+aws_ec2_volume -[#1A83AF]-> aws_kms_key
+aws_ec2_volume -[#1A83AF]-> aws_ec2_snapshot
+aws_ec2_snapshot -[#1A83AF]-> aws_kms_key
+aws_ec2_volume_type -[#1A83AF]-> aws_ec2_volume
 
 @enduml
 ```
@@ -7874,7 +7874,7 @@ aws_region -[#1A83AF]-> aws_ec2_instance
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ec2_volume_type data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_volume_type data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7898,9 +7898,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -7913,31 +7910,34 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
+class type [[#type]] {
+
+}
 class quota [[#quota]] {
 **quota**: double
 **usage**: double
 **quota_type**: string
 }
-class aws_ec2_volume_type [[#aws_ec2_volume_type]] {
+class phantom_resource [[#phantom_resource]] {
 
 }
-class phantom_resource [[#phantom_resource]] {
+class aws_ec2_volume_type [[#aws_ec2_volume_type]] {
 
 }
 class volume_type [[#volume_type]] {
 **volume_type**: string
 **ondemand_cost**: double
 }
-class type [[#type]] {
-
-}
 resource <|--- aws_resource
+quota <|--- type
 phantom_resource <|--- quota
+resource <|--- phantom_resource
 aws_resource <|--- aws_ec2_volume_type
 volume_type <|--- aws_ec2_volume_type
-resource <|--- phantom_resource
 type <|--- volume_type
-quota <|--- type
 
 @enduml
 ```
@@ -7949,7 +7949,7 @@ quota <|--- type
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ec2_volume_type resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_volume_type resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -7973,23 +7973,23 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class aws_region [[#aws_region]] {
+
+}
+class aws_ec2_volume [[#aws_ec2_volume]] {
+
+}
 class aws_service_quota [[#aws_service_quota]] {
 
 }
 class aws_ec2_volume_type [[#aws_ec2_volume_type]] {
 
 }
-class aws_ec2_volume [[#aws_ec2_volume]] {
-
-}
-class aws_region [[#aws_region]] {
-
-}
+aws_region -[#1A83AF]-> aws_ec2_volume
+aws_region -[#1A83AF]-> aws_service_quota
+aws_region -[#1A83AF]-> aws_ec2_volume_type
 aws_service_quota -[#1A83AF]-> aws_ec2_volume_type
 aws_ec2_volume_type -[#1A83AF]-> aws_ec2_volume
-aws_region -[#1A83AF]-> aws_ec2_volume
-aws_region -[#1A83AF]-> aws_ec2_volume_type
-aws_region -[#1A83AF]-> aws_service_quota
 
 @enduml
 ```
@@ -8002,7 +8002,7 @@ aws_region -[#1A83AF]-> aws_service_quota
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ecs_capacity_provider data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ecs_capacity_provider data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8026,15 +8026,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
-class aws_ecs_capacity_provider [[#aws_ecs_capacity_provider]] {
-**status**: string
-**capacity_provider_auto_scaling_group_provider**: aws_ecs_auto_scaling_group_provider
-**capacity_provider_update_status**: string
-**capacity_provider_update_status_reason**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -8047,10 +8038,8 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class aws_ecs_auto_scaling_group_provider [[#aws_ecs_auto_scaling_group_provider]] {
-**auto_scaling_group_arn**: string
-**managed_scaling**: aws_ecs_managed_scaling
-**managed_termination_protection**: string
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_ecs_managed_scaling [[#aws_ecs_managed_scaling]] {
 **status**: string
@@ -8058,6 +8047,17 @@ class aws_ecs_managed_scaling [[#aws_ecs_managed_scaling]] {
 **minimum_scaling_step_size**: int64
 **maximum_scaling_step_size**: int64
 **instance_warmup_period**: int64
+}
+class aws_ecs_capacity_provider [[#aws_ecs_capacity_provider]] {
+**status**: string
+**capacity_provider_auto_scaling_group_provider**: aws_ecs_auto_scaling_group_provider
+**capacity_provider_update_status**: string
+**capacity_provider_update_status_reason**: string
+}
+class aws_ecs_auto_scaling_group_provider [[#aws_ecs_auto_scaling_group_provider]] {
+**auto_scaling_group_arn**: string
+**managed_scaling**: aws_ecs_managed_scaling
+**managed_termination_protection**: string
 }
 resource <|--- aws_resource
 aws_resource <|--- aws_ecs_capacity_provider
@@ -8074,7 +8074,7 @@ aws_ecs_auto_scaling_group_provider --> aws_ecs_managed_scaling
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ecs_capacity_provider resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ecs_capacity_provider resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8101,24 +8101,24 @@ skinparam stereotypeIBackgroundColor #e98df7
 class aws_ecs_service [[#aws_ecs_service]] {
 
 }
-class aws_ecs_cluster [[#aws_ecs_cluster]] {
-
-}
-class aws_ecs_capacity_provider [[#aws_ecs_capacity_provider]] {
+class aws_autoscaling_group [[#aws_autoscaling_group]] {
 
 }
 class aws_ecs_task [[#aws_ecs_task]] {
 
 }
-class aws_autoscaling_group [[#aws_autoscaling_group]] {
+class aws_ecs_capacity_provider [[#aws_ecs_capacity_provider]] {
+
+}
+class aws_ecs_cluster [[#aws_ecs_cluster]] {
 
 }
 aws_ecs_service -[#1A83AF]-> aws_ecs_capacity_provider
-aws_ecs_cluster -[#1A83AF]-> aws_ecs_service
-aws_ecs_cluster -[#1A83AF]-> aws_ecs_capacity_provider
-aws_ecs_cluster -[#1A83AF]-> aws_ecs_task
-aws_ecs_capacity_provider -[#1A83AF]-> aws_autoscaling_group
 aws_ecs_task -[#1A83AF]-> aws_ecs_capacity_provider
+aws_ecs_capacity_provider -[#1A83AF]-> aws_autoscaling_group
+aws_ecs_cluster -[#1A83AF]-> aws_ecs_capacity_provider
+aws_ecs_cluster -[#1A83AF]-> aws_ecs_service
+aws_ecs_cluster -[#1A83AF]-> aws_ecs_task
 
 @enduml
 ```
@@ -8131,7 +8131,7 @@ aws_ecs_task -[#1A83AF]-> aws_ecs_capacity_provider
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ecs_cluster data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ecs_cluster data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8155,22 +8155,35 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
+}
 class aws_resource [[#aws_resource]] {
 **arn**: string
 }
-class aws_ecs_cluster [[#aws_ecs_cluster]] {
-**cluster_configuration**: aws_ecs_cluster_configuration
-**cluster_status**: string
-**cluster_registered_container_instances_count**: int64
-**cluster_running_tasks_count**: int64
-**cluster_pending_tasks_count**: int64
-**cluster_active_services_count**: int64
-**cluster_statistics**: aws_ecs_key_value_pair[]
-**cluster_settings**: aws_ecs_cluster_setting[]
-**cluster_capacity_providers**: string[]
-**cluster_default_capacity_provider_strategy**: aws_ecs_capacity_provider_strategy_item[]
-**cluster_attachments**: aws_ecs_attachment[]
-**cluster_attachments_status**: string
+class aws_ecs_key_value_pair [[#aws_ecs_key_value_pair]] {
+**name**: string
+**value**: string
+}
+class aws_ecs_attachment [[#aws_ecs_attachment]] {
+**id**: string
+**type**: string
+**status**: string
+**details**: aws_ecs_key_value_pair[]
+}
+class aws_ecs_capacity_provider_strategy_item [[#aws_ecs_capacity_provider_strategy_item]] {
+**capacity_provider**: string
+**weight**: int64
+**base**: int64
 }
 class aws_ecs_cluster_configuration [[#aws_ecs_cluster_configuration]] {
 **execute_command_configuration**: aws_ecs_execute_command_configuration
@@ -8187,47 +8200,34 @@ class aws_ecs_execute_command_log_configuration [[#aws_ecs_execute_command_log_c
 **s3_encryption_enabled**: boolean
 **s3_key_prefix**: string
 }
-class aws_ecs_key_value_pair [[#aws_ecs_key_value_pair]] {
-**name**: string
-**value**: string
+class aws_ecs_cluster [[#aws_ecs_cluster]] {
+**cluster_configuration**: aws_ecs_cluster_configuration
+**cluster_status**: string
+**cluster_registered_container_instances_count**: int64
+**cluster_running_tasks_count**: int64
+**cluster_pending_tasks_count**: int64
+**cluster_active_services_count**: int64
+**cluster_statistics**: aws_ecs_key_value_pair[]
+**cluster_settings**: aws_ecs_cluster_setting[]
+**cluster_capacity_providers**: string[]
+**cluster_default_capacity_provider_strategy**: aws_ecs_capacity_provider_strategy_item[]
+**cluster_attachments**: aws_ecs_attachment[]
+**cluster_attachments_status**: string
 }
 class aws_ecs_cluster_setting [[#aws_ecs_cluster_setting]] {
 **name**: string
 **value**: string
 }
-class aws_ecs_capacity_provider_strategy_item [[#aws_ecs_capacity_provider_strategy_item]] {
-**capacity_provider**: string
-**weight**: int64
-**base**: int64
-}
-class aws_ecs_attachment [[#aws_ecs_attachment]] {
-**id**: string
-**type**: string
-**status**: string
-**details**: aws_ecs_key_value_pair[]
-}
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
 resource <|--- aws_resource
+aws_ecs_attachment --> aws_ecs_key_value_pair
+aws_ecs_cluster_configuration --> aws_ecs_execute_command_configuration
+aws_ecs_execute_command_configuration --> aws_ecs_execute_command_log_configuration
 aws_resource <|--- aws_ecs_cluster
 aws_ecs_cluster --> aws_ecs_cluster_configuration
 aws_ecs_cluster --> aws_ecs_key_value_pair
 aws_ecs_cluster --> aws_ecs_cluster_setting
 aws_ecs_cluster --> aws_ecs_capacity_provider_strategy_item
 aws_ecs_cluster --> aws_ecs_attachment
-aws_ecs_cluster_configuration --> aws_ecs_execute_command_configuration
-aws_ecs_execute_command_configuration --> aws_ecs_execute_command_log_configuration
-aws_ecs_attachment --> aws_ecs_key_value_pair
 
 @enduml
 ```
@@ -8239,7 +8239,7 @@ aws_ecs_attachment --> aws_ecs_key_value_pair
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ecs_cluster resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ecs_cluster resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8263,36 +8263,36 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_ecs_service [[#aws_ecs_service]] {
-
-}
-class aws_ecs_cluster [[#aws_ecs_cluster]] {
-
-}
 class aws_s3_bucket [[#aws_s3_bucket]] {
-
-}
-class aws_ecs_container_instance [[#aws_ecs_container_instance]] {
-
-}
-class aws_ecs_capacity_provider [[#aws_ecs_capacity_provider]] {
-
-}
-class aws_ecs_task [[#aws_ecs_task]] {
 
 }
 class aws_kms_key [[#aws_kms_key]] {
 
 }
+class aws_ecs_container_instance [[#aws_ecs_container_instance]] {
+
+}
+class aws_ecs_service [[#aws_ecs_service]] {
+
+}
+class aws_ecs_task [[#aws_ecs_task]] {
+
+}
+class aws_ecs_capacity_provider [[#aws_ecs_capacity_provider]] {
+
+}
+class aws_ecs_cluster [[#aws_ecs_cluster]] {
+
+}
 aws_ecs_service -[#1A83AF]-> aws_ecs_capacity_provider
-aws_ecs_cluster -[#1A83AF]-> aws_s3_bucket
-aws_ecs_cluster -[#1A83AF]-> aws_ecs_service
-aws_ecs_cluster -[#1A83AF]-> aws_ecs_container_instance
-aws_ecs_cluster -[#1A83AF]-> aws_ecs_capacity_provider
-aws_ecs_cluster -[#1A83AF]-> aws_ecs_task
-aws_ecs_cluster -[#1A83AF]-> aws_kms_key
 aws_ecs_task -[#1A83AF]-> aws_ecs_capacity_provider
 aws_ecs_task -[#1A83AF]-> aws_ecs_container_instance
+aws_ecs_cluster -[#1A83AF]-> aws_ecs_capacity_provider
+aws_ecs_cluster -[#1A83AF]-> aws_ecs_service
+aws_ecs_cluster -[#1A83AF]-> aws_ecs_task
+aws_ecs_cluster -[#1A83AF]-> aws_ecs_container_instance
+aws_ecs_cluster -[#1A83AF]-> aws_s3_bucket
+aws_ecs_cluster -[#1A83AF]-> aws_kms_key
 
 @enduml
 ```
@@ -8305,7 +8305,7 @@ aws_ecs_task -[#1A83AF]-> aws_ecs_container_instance
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ecs_container_instance data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ecs_container_instance data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8329,18 +8329,24 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
+}
 class aws_resource [[#aws_resource]] {
 **arn**: string
 }
 class aws_ecs_key_value_pair [[#aws_ecs_key_value_pair]] {
 **name**: string
 **value**: string
-}
-class aws_ecs_attachment [[#aws_ecs_attachment]] {
-**id**: string
-**type**: string
-**status**: string
-**details**: aws_ecs_key_value_pair[]
 }
 class aws_ecs_container_instance [[#aws_ecs_container_instance]] {
 **ec2_instance_id**: string
@@ -8360,28 +8366,30 @@ class aws_ecs_container_instance [[#aws_ecs_container_instance]] {
 **health_status**: aws_ecs_container_instance_health_status
 **cluster_link**: string
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
 class aws_ecs_version_info [[#aws_ecs_version_info]] {
 **agent_version**: string
 **agent_hash**: string
 **docker_version**: string
+}
+class aws_ecs_resource [[#aws_ecs_resource]] {
+**name**: string
+**type**: string
+**double_value**: double
+**long_value**: int64
+**integer_value**: int64
+**string_set_value**: string[]
 }
 class aws_ecs_attribute [[#aws_ecs_attribute]] {
 **name**: string
 **value**: string
 **target_type**: string
 **target_id**: string
+}
+class aws_ecs_attachment [[#aws_ecs_attachment]] {
+**id**: string
+**type**: string
+**status**: string
+**details**: aws_ecs_key_value_pair[]
 }
 class aws_ecs_container_instance_health_status [[#aws_ecs_container_instance_health_status]] {
 **overall_status**: string
@@ -8393,22 +8401,14 @@ class aws_ecs_instance_health_check_result [[#aws_ecs_instance_health_check_resu
 **last_updated**: datetime
 **last_status_change**: datetime
 }
-class aws_ecs_resource [[#aws_ecs_resource]] {
-**name**: string
-**type**: string
-**double_value**: double
-**long_value**: int64
-**integer_value**: int64
-**string_set_value**: string[]
-}
 resource <|--- aws_resource
-aws_ecs_attachment --> aws_ecs_key_value_pair
 aws_resource <|--- aws_ecs_container_instance
 aws_ecs_container_instance --> aws_ecs_version_info
 aws_ecs_container_instance --> aws_ecs_resource
 aws_ecs_container_instance --> aws_ecs_attribute
 aws_ecs_container_instance --> aws_ecs_attachment
 aws_ecs_container_instance --> aws_ecs_container_instance_health_status
+aws_ecs_attachment --> aws_ecs_key_value_pair
 aws_ecs_container_instance_health_status --> aws_ecs_instance_health_check_result
 
 @enduml
@@ -8421,7 +8421,7 @@ aws_ecs_container_instance_health_status --> aws_ecs_instance_health_check_resul
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ecs_container_instance resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ecs_container_instance resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8445,22 +8445,22 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_ec2_instance [[#aws_ec2_instance]] {
-
-}
-class aws_ecs_cluster [[#aws_ecs_cluster]] {
-
-}
 class aws_ecs_container_instance [[#aws_ecs_container_instance]] {
+
+}
+class aws_ec2_instance [[#aws_ec2_instance]] {
 
 }
 class aws_ecs_task [[#aws_ecs_task]] {
 
 }
-aws_ecs_cluster -[#1A83AF]-> aws_ecs_container_instance
-aws_ecs_cluster -[#1A83AF]-> aws_ecs_task
+class aws_ecs_cluster [[#aws_ecs_cluster]] {
+
+}
 aws_ecs_container_instance -[#1A83AF]-> aws_ec2_instance
 aws_ecs_task -[#1A83AF]-> aws_ecs_container_instance
+aws_ecs_cluster -[#1A83AF]-> aws_ecs_task
+aws_ecs_cluster -[#1A83AF]-> aws_ecs_container_instance
 
 @enduml
 ```
@@ -8473,7 +8473,7 @@ aws_ecs_task -[#1A83AF]-> aws_ecs_container_instance
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ecs_service data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ecs_service data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8497,8 +8497,26 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
+}
 class aws_resource [[#aws_resource]] {
 **arn**: string
+}
+class aws_ecs_load_balancer [[#aws_ecs_load_balancer]] {
+**target_group_arn**: string
+**load_balancer_name**: string
+**container_name**: string
+**container_port**: int64
 }
 class aws_ecs_service [[#aws_ecs_service]] {
 **status**: string
@@ -8529,37 +8547,19 @@ class aws_ecs_service [[#aws_ecs_service]] {
 **service_propagate_tags**: string
 **service_enable_execute_command**: boolean
 }
-class aws_ecs_scale [[#aws_ecs_scale]] {
-**value**: double
-**unit**: string
-}
 class aws_ecs_capacity_provider_strategy_item [[#aws_ecs_capacity_provider_strategy_item]] {
 **capacity_provider**: string
 **weight**: int64
 **base**: int64
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class aws_ecs_scale [[#aws_ecs_scale]] {
+**value**: double
+**unit**: string
 }
 class aws_ecs_aws_vpc_configuration [[#aws_ecs_aws_vpc_configuration]] {
 **subnets**: string[]
 **security_groups**: string[]
 **assign_public_ip**: string
-}
-class aws_ecs_load_balancer [[#aws_ecs_load_balancer]] {
-**target_group_arn**: string
-**load_balancer_name**: string
-**container_name**: string
-**container_port**: int64
 }
 class aws_ecs_service_registry [[#aws_ecs_service_registry]] {
 **registry_arn**: string
@@ -8667,7 +8667,7 @@ aws_ecs_deployment --> aws_ecs_network_configuration
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ecs_service resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ecs_service resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8691,40 +8691,40 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_alb_target_group [[#aws_alb_target_group]] {
-
-}
-class aws_ecs_service [[#aws_ecs_service]] {
-
-}
-class aws_ecs_cluster [[#aws_ecs_cluster]] {
-
-}
-class aws_ecs_capacity_provider [[#aws_ecs_capacity_provider]] {
-
-}
 class aws_ec2_subnet [[#aws_ec2_subnet]] {
-
-}
-class aws_elb [[#aws_elb]] {
 
 }
 class aws_ec2_security_group [[#aws_ec2_security_group]] {
 
 }
+class aws_elb [[#aws_elb]] {
+
+}
+class aws_ecs_service [[#aws_ecs_service]] {
+
+}
+class aws_ecs_capacity_provider [[#aws_ecs_capacity_provider]] {
+
+}
 class aws_iam_role [[#aws_iam_role]] {
 
 }
-aws_ecs_service -[#1A83AF]-> aws_ecs_capacity_provider
-aws_ecs_service -[#1A83AF]-> aws_elb
-aws_ecs_service -[#1A83AF]-> aws_alb_target_group
-aws_ecs_cluster -[#1A83AF]-> aws_ecs_service
-aws_ecs_cluster -[#1A83AF]-> aws_ecs_capacity_provider
+class aws_alb_target_group [[#aws_alb_target_group]] {
+
+}
+class aws_ecs_cluster [[#aws_ecs_cluster]] {
+
+}
 aws_ec2_subnet -[#1A83AF]-> aws_elb
 aws_ec2_subnet -[#1A83AF]-> aws_ecs_service
-aws_ec2_security_group -[#1A83AF]-> aws_ecs_service
 aws_ec2_security_group -[#1A83AF]-> aws_elb
+aws_ec2_security_group -[#1A83AF]-> aws_ecs_service
+aws_ecs_service -[#1A83AF]-> aws_alb_target_group
+aws_ecs_service -[#1A83AF]-> aws_elb
+aws_ecs_service -[#1A83AF]-> aws_ecs_capacity_provider
 aws_iam_role -[#1A83AF]-> aws_ecs_service
+aws_ecs_cluster -[#1A83AF]-> aws_ecs_capacity_provider
+aws_ecs_cluster -[#1A83AF]-> aws_ecs_service
 
 @enduml
 ```
@@ -8737,7 +8737,7 @@ aws_iam_role -[#1A83AF]-> aws_ecs_service
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ecs_task data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ecs_task data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8761,6 +8761,18 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
+}
 class aws_resource [[#aws_resource]] {
 **arn**: string
 }
@@ -8768,11 +8780,53 @@ class aws_ecs_key_value_pair [[#aws_ecs_key_value_pair]] {
 **name**: string
 **value**: string
 }
+class aws_ecs_attribute [[#aws_ecs_attribute]] {
+**name**: string
+**value**: string
+**target_type**: string
+**target_id**: string
+}
 class aws_ecs_attachment [[#aws_ecs_attachment]] {
 **id**: string
 **type**: string
 **status**: string
 **details**: aws_ecs_key_value_pair[]
+}
+class aws_ecs_network_interface [[#aws_ecs_network_interface]] {
+**attachment_id**: string
+**private_ipv4_address**: string
+**ipv6_address**: string
+}
+class aws_ecs_container_override [[#aws_ecs_container_override]] {
+**name**: string
+**command**: string[]
+**environment**: aws_ecs_key_value_pair[]
+**environment_files**: aws_ecs_environment_file[]
+**cpu**: int64
+**memory**: int64
+**memory_reservation**: int64
+**resource_requirements**: aws_ecs_resource_requirement[]
+}
+class aws_ecs_environment_file [[#aws_ecs_environment_file]] {
+**value**: string
+**type**: string
+}
+class aws_ecs_resource_requirement [[#aws_ecs_resource_requirement]] {
+**value**: string
+**type**: string
+}
+class aws_ecs_task_override [[#aws_ecs_task_override]] {
+**container_overrides**: aws_ecs_container_override[]
+**cpu**: string
+**inference_accelerator_overrides**: aws_ecs_inference_accelerator[]
+**execution_role_arn**: string
+**memory**: string
+**task_role_arn**: string
+**ephemeral_storage**: int64
+}
+class aws_ecs_inference_accelerator [[#aws_ecs_inference_accelerator]] {
+**device_name**: string
+**device_type**: string
 }
 class aws_ecs_task [[#aws_ecs_task]] {
 **task_attachments**: aws_ecs_attachment[]
@@ -8809,72 +8863,6 @@ class aws_ecs_task [[#aws_ecs_task]] {
 **task_version**: int64
 **task_ephemeral_storage**: int64
 }
-class aws_ecs_resource_requirement [[#aws_ecs_resource_requirement]] {
-**value**: string
-**type**: string
-}
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class aws_ecs_environment_file [[#aws_ecs_environment_file]] {
-**value**: string
-**type**: string
-}
-class aws_ecs_managed_agent [[#aws_ecs_managed_agent]] {
-**last_started_at**: datetime
-**name**: string
-**reason**: string
-**last_status**: string
-}
-class aws_ecs_network_binding [[#aws_ecs_network_binding]] {
-**bind_ip**: string
-**container_port**: int64
-**host_port**: int64
-**protocol**: string
-}
-class aws_ecs_attribute [[#aws_ecs_attribute]] {
-**name**: string
-**value**: string
-**target_type**: string
-**target_id**: string
-}
-class aws_ecs_inference_accelerator [[#aws_ecs_inference_accelerator]] {
-**device_name**: string
-**device_type**: string
-}
-class aws_ecs_network_interface [[#aws_ecs_network_interface]] {
-**attachment_id**: string
-**private_ipv4_address**: string
-**ipv6_address**: string
-}
-class aws_ecs_container_override [[#aws_ecs_container_override]] {
-**name**: string
-**command**: string[]
-**environment**: aws_ecs_key_value_pair[]
-**environment_files**: aws_ecs_environment_file[]
-**cpu**: int64
-**memory**: int64
-**memory_reservation**: int64
-**resource_requirements**: aws_ecs_resource_requirement[]
-}
-class aws_ecs_task_override [[#aws_ecs_task_override]] {
-**container_overrides**: aws_ecs_container_override[]
-**cpu**: string
-**inference_accelerator_overrides**: aws_ecs_inference_accelerator[]
-**execution_role_arn**: string
-**memory**: string
-**task_role_arn**: string
-**ephemeral_storage**: int64
-}
 class aws_ecs_container [[#aws_ecs_container]] {
 **container_arn**: string
 **task_arn**: string
@@ -8894,19 +8882,31 @@ class aws_ecs_container [[#aws_ecs_container]] {
 **memory_reservation**: string
 **gpu_ids**: string[]
 }
+class aws_ecs_network_binding [[#aws_ecs_network_binding]] {
+**bind_ip**: string
+**container_port**: int64
+**host_port**: int64
+**protocol**: string
+}
+class aws_ecs_managed_agent [[#aws_ecs_managed_agent]] {
+**last_started_at**: datetime
+**name**: string
+**reason**: string
+**last_status**: string
+}
 resource <|--- aws_resource
 aws_ecs_attachment --> aws_ecs_key_value_pair
+aws_ecs_container_override --> aws_ecs_key_value_pair
+aws_ecs_container_override --> aws_ecs_environment_file
+aws_ecs_container_override --> aws_ecs_resource_requirement
+aws_ecs_task_override --> aws_ecs_container_override
+aws_ecs_task_override --> aws_ecs_inference_accelerator
 aws_resource <|--- aws_ecs_task
 aws_ecs_task --> aws_ecs_attachment
 aws_ecs_task --> aws_ecs_attribute
 aws_ecs_task --> aws_ecs_container
 aws_ecs_task --> aws_ecs_inference_accelerator
 aws_ecs_task --> aws_ecs_task_override
-aws_ecs_container_override --> aws_ecs_key_value_pair
-aws_ecs_container_override --> aws_ecs_environment_file
-aws_ecs_container_override --> aws_ecs_resource_requirement
-aws_ecs_task_override --> aws_ecs_container_override
-aws_ecs_task_override --> aws_ecs_inference_accelerator
 aws_ecs_container --> aws_ecs_network_binding
 aws_ecs_container --> aws_ecs_network_interface
 aws_ecs_container --> aws_ecs_managed_agent
@@ -8921,7 +8921,7 @@ aws_ecs_container --> aws_ecs_managed_agent
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ecs_task resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ecs_task resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -8945,31 +8945,31 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_ecs_cluster [[#aws_ecs_cluster]] {
-
-}
 class aws_ecs_container_instance [[#aws_ecs_container_instance]] {
-
-}
-class aws_ecs_capacity_provider [[#aws_ecs_capacity_provider]] {
 
 }
 class aws_ecs_task [[#aws_ecs_task]] {
 
 }
+class aws_ecs_capacity_provider [[#aws_ecs_capacity_provider]] {
+
+}
 class aws_iam_role [[#aws_iam_role]] {
+
+}
+class aws_ecs_cluster [[#aws_ecs_cluster]] {
 
 }
 class aws_ecs_task_definition [[#aws_ecs_task_definition]] {
 
 }
-aws_ecs_cluster -[#1A83AF]-> aws_ecs_container_instance
-aws_ecs_cluster -[#1A83AF]-> aws_ecs_capacity_provider
-aws_ecs_cluster -[#1A83AF]-> aws_ecs_task
 aws_ecs_task -[#1A83AF]-> aws_ecs_capacity_provider
 aws_ecs_task -[#1A83AF]-> aws_ecs_container_instance
-aws_iam_role -[#1A83AF]-> aws_ecs_task
 aws_iam_role -[#1A83AF]-> aws_ecs_task_definition
+aws_iam_role -[#1A83AF]-> aws_ecs_task
+aws_ecs_cluster -[#1A83AF]-> aws_ecs_capacity_provider
+aws_ecs_cluster -[#1A83AF]-> aws_ecs_task
+aws_ecs_cluster -[#1A83AF]-> aws_ecs_container_instance
 aws_ecs_task_definition -[#1A83AF]-> aws_ecs_task
 
 @enduml
@@ -8983,7 +8983,7 @@ aws_ecs_task_definition -[#1A83AF]-> aws_ecs_task
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ecs_task_definition data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ecs_task_definition data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9007,16 +9007,28 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
+class aws_ecs_linux_parameters [[#aws_ecs_linux_parameters]] {
+**capabilities**: aws_ecs_kernel_capabilities
+**devices**: aws_ecs_device[]
+**init_process_enabled**: boolean
+**shared_memory_size**: int64
+**tmpfs**: aws_ecs_tmpfs[]
+**max_swap**: int64
+**swappiness**: int64
 }
-class aws_ecs_key_value_pair [[#aws_ecs_key_value_pair]] {
-**name**: string
-**value**: string
+class aws_ecs_kernel_capabilities [[#aws_ecs_kernel_capabilities]] {
+**add**: string[]
+**drop**: string[]
 }
-class aws_ecs_resource_requirement [[#aws_ecs_resource_requirement]] {
-**value**: string
-**type**: string
+class aws_ecs_device [[#aws_ecs_device]] {
+**host_path**: string
+**container_path**: string
+**permissions**: string[]
+}
+class aws_ecs_tmpfs [[#aws_ecs_tmpfs]] {
+**container_path**: string
+**size**: int64
+**mount_options**: string[]
 }
 class resource [[#resource]] {
 **id**: string
@@ -9029,6 +9041,69 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
+class aws_ecs_key_value_pair [[#aws_ecs_key_value_pair]] {
+**name**: string
+**value**: string
+}
+class aws_ecs_attribute [[#aws_ecs_attribute]] {
+**name**: string
+**value**: string
+**target_type**: string
+**target_id**: string
+}
+class aws_ecs_docker_volume_configuration [[#aws_ecs_docker_volume_configuration]] {
+**scope**: string
+**autoprovision**: boolean
+**driver**: string
+**driver_opts**: dictionary[string, string]
+**labels**: dictionary[string, string]
+}
+class aws_ecs_runtime_platform [[#aws_ecs_runtime_platform]] {
+**cpu_architecture**: string
+**operating_system_family**: string
+}
+class aws_ecs_environment_file [[#aws_ecs_environment_file]] {
+**value**: string
+**type**: string
+}
+class aws_ecs_resource_requirement [[#aws_ecs_resource_requirement]] {
+**value**: string
+**type**: string
+}
+class aws_ecs_inference_accelerator [[#aws_ecs_inference_accelerator]] {
+**device_name**: string
+**device_type**: string
+}
+class aws_ecs_container_dependency [[#aws_ecs_container_dependency]] {
+**container_name**: string
+**condition**: string
+}
+class aws_ecs_volume_from [[#aws_ecs_volume_from]] {
+**source_container**: string
+**read_only**: boolean
+}
+class aws_ecs_host_entry [[#aws_ecs_host_entry]] {
+**hostname**: string
+**ip_address**: string
+}
+class aws_ecs_efs_volume_configuration [[#aws_ecs_efs_volume_configuration]] {
+**file_system_id**: string
+**root_directory**: string
+**transit_encryption**: string
+**transit_encryption_port**: int64
+**authorization_config**: aws_ecs_efs_authorization_config
+}
+class aws_ecs_efs_authorization_config [[#aws_ecs_efs_authorization_config]] {
+**access_point_id**: string
+**iam**: string
+}
+class aws_ecs_task_definition_placement_constraint [[#aws_ecs_task_definition_placement_constraint]] {
+**type**: string
+**expression**: string
 }
 class aws_ecs_f_sx_windows_file_server_authorization_config [[#aws_ecs_f_sx_windows_file_server_authorization_config]] {
 **credentials_parameter**: string
@@ -9080,53 +9155,14 @@ class aws_ecs_port_mapping [[#aws_ecs_port_mapping]] {
 **host_port**: int64
 **protocol**: string
 }
-class aws_ecs_environment_file [[#aws_ecs_environment_file]] {
-**value**: string
-**type**: string
-}
 class aws_ecs_mount_point [[#aws_ecs_mount_point]] {
 **source_volume**: string
 **container_path**: string
 **read_only**: boolean
 }
-class aws_ecs_volume_from [[#aws_ecs_volume_from]] {
-**source_container**: string
-**read_only**: boolean
-}
-class aws_ecs_linux_parameters [[#aws_ecs_linux_parameters]] {
-**capabilities**: aws_ecs_kernel_capabilities
-**devices**: aws_ecs_device[]
-**init_process_enabled**: boolean
-**shared_memory_size**: int64
-**tmpfs**: aws_ecs_tmpfs[]
-**max_swap**: int64
-**swappiness**: int64
-}
-class aws_ecs_kernel_capabilities [[#aws_ecs_kernel_capabilities]] {
-**add**: string[]
-**drop**: string[]
-}
-class aws_ecs_device [[#aws_ecs_device]] {
-**host_path**: string
-**container_path**: string
-**permissions**: string[]
-}
-class aws_ecs_tmpfs [[#aws_ecs_tmpfs]] {
-**container_path**: string
-**size**: int64
-**mount_options**: string[]
-}
 class aws_ecs_secret [[#aws_ecs_secret]] {
 **name**: string
 **value_from**: string
-}
-class aws_ecs_container_dependency [[#aws_ecs_container_dependency]] {
-**container_name**: string
-**condition**: string
-}
-class aws_ecs_host_entry [[#aws_ecs_host_entry]] {
-**hostname**: string
-**ip_address**: string
 }
 class aws_ecs_ulimit [[#aws_ecs_ulimit]] {
 **name**: string
@@ -9163,10 +9199,6 @@ class aws_ecs_proxy_configuration [[#aws_ecs_proxy_configuration]] {
 **container_name**: string
 **properties**: aws_ecs_key_value_pair[]
 }
-class aws_ecs_efs_authorization_config [[#aws_ecs_efs_authorization_config]] {
-**access_point_id**: string
-**iam**: string
-}
 class aws_ecs_task_definition [[#aws_ecs_task_definition]] {
 **container_definitions**: aws_ecs_container_definition[]
 **family**: string
@@ -9197,39 +9229,11 @@ class aws_ecs_volume [[#aws_ecs_volume]] {
 **efs_volume_configuration**: aws_ecs_efs_volume_configuration
 **fsx_windows_file_server_volume_configuration**: aws_ecs_f_sx_windows_file_server_volume_configuration
 }
-class aws_ecs_docker_volume_configuration [[#aws_ecs_docker_volume_configuration]] {
-**scope**: string
-**autoprovision**: boolean
-**driver**: string
-**driver_opts**: dictionary[string, string]
-**labels**: dictionary[string, string]
-}
-class aws_ecs_efs_volume_configuration [[#aws_ecs_efs_volume_configuration]] {
-**file_system_id**: string
-**root_directory**: string
-**transit_encryption**: string
-**transit_encryption_port**: int64
-**authorization_config**: aws_ecs_efs_authorization_config
-}
-class aws_ecs_attribute [[#aws_ecs_attribute]] {
-**name**: string
-**value**: string
-**target_type**: string
-**target_id**: string
-}
-class aws_ecs_task_definition_placement_constraint [[#aws_ecs_task_definition_placement_constraint]] {
-**type**: string
-**expression**: string
-}
-class aws_ecs_runtime_platform [[#aws_ecs_runtime_platform]] {
-**cpu_architecture**: string
-**operating_system_family**: string
-}
-class aws_ecs_inference_accelerator [[#aws_ecs_inference_accelerator]] {
-**device_name**: string
-**device_type**: string
-}
+aws_ecs_linux_parameters --> aws_ecs_kernel_capabilities
+aws_ecs_linux_parameters --> aws_ecs_device
+aws_ecs_linux_parameters --> aws_ecs_tmpfs
 resource <|--- aws_resource
+aws_ecs_efs_volume_configuration --> aws_ecs_efs_authorization_config
 aws_ecs_container_definition --> aws_ecs_port_mapping
 aws_ecs_container_definition --> aws_ecs_key_value_pair
 aws_ecs_container_definition --> aws_ecs_environment_file
@@ -9245,9 +9249,6 @@ aws_ecs_container_definition --> aws_ecs_health_check
 aws_ecs_container_definition --> aws_ecs_system_control
 aws_ecs_container_definition --> aws_ecs_resource_requirement
 aws_ecs_container_definition --> aws_ecs_firelens_configuration
-aws_ecs_linux_parameters --> aws_ecs_kernel_capabilities
-aws_ecs_linux_parameters --> aws_ecs_device
-aws_ecs_linux_parameters --> aws_ecs_tmpfs
 aws_ecs_log_configuration --> aws_ecs_secret
 aws_ecs_f_sx_windows_file_server_volume_configuration --> aws_ecs_f_sx_windows_file_server_authorization_config
 aws_ecs_proxy_configuration --> aws_ecs_key_value_pair
@@ -9262,7 +9263,6 @@ aws_ecs_task_definition --> aws_ecs_proxy_configuration
 aws_ecs_volume --> aws_ecs_docker_volume_configuration
 aws_ecs_volume --> aws_ecs_efs_volume_configuration
 aws_ecs_volume --> aws_ecs_f_sx_windows_file_server_volume_configuration
-aws_ecs_efs_volume_configuration --> aws_ecs_efs_authorization_config
 
 @enduml
 ```
@@ -9274,7 +9274,7 @@ aws_ecs_efs_volume_configuration --> aws_ecs_efs_authorization_config
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_ecs_task_definition resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ecs_task_definition resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9307,8 +9307,8 @@ class aws_iam_role [[#aws_iam_role]] {
 class aws_ecs_task_definition [[#aws_ecs_task_definition]] {
 
 }
-aws_iam_role -[#1A83AF]-> aws_ecs_task
 aws_iam_role -[#1A83AF]-> aws_ecs_task_definition
+aws_iam_role -[#1A83AF]-> aws_ecs_task
 aws_ecs_task_definition -[#1A83AF]-> aws_ecs_task
 
 @enduml
@@ -9322,7 +9322,7 @@ aws_ecs_task_definition -[#1A83AF]-> aws_ecs_task
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_efs_access_point data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_efs_access_point data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9346,9 +9346,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -9360,6 +9357,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_efs_access_point [[#aws_efs_access_point]] {
 **client_token**: string
@@ -9398,7 +9398,7 @@ aws_efs_root_directory --> aws_efs_creation_info
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_efs_access_point resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_efs_access_point resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9441,7 +9441,7 @@ aws_efs_file_system -[#1A83AF]-> aws_efs_access_point
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_efs_file_system data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_efs_file_system data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9465,9 +9465,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -9479,6 +9476,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class network_share [[#network_share]] {
 **share_size**: int64
@@ -9512,7 +9512,7 @@ network_share <|--- aws_efs_file_system
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_efs_file_system resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_efs_file_system resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9545,8 +9545,8 @@ class aws_efs_access_point [[#aws_efs_access_point]] {
 class aws_efs_file_system [[#aws_efs_file_system]] {
 
 }
-aws_efs_file_system -[#1A83AF]-> aws_efs_access_point
 aws_efs_file_system -[#1A83AF]-> aws_kms_key
+aws_efs_file_system -[#1A83AF]-> aws_efs_access_point
 
 @enduml
 ```
@@ -9559,7 +9559,7 @@ aws_efs_file_system -[#1A83AF]-> aws_kms_key
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_efs_mount_target data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_efs_mount_target data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9583,9 +9583,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -9597,6 +9594,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_efs_mount_target [[#aws_efs_mount_target]] {
 **owner_id**: string
@@ -9617,7 +9617,7 @@ aws_resource <|--- aws_efs_mount_target
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_efs_mount_target resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_efs_mount_target resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9660,7 +9660,7 @@ aws_ec2_network_interface -[#1A83AF]-> aws_efs_mount_target
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_eks_cluster data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_eks_cluster data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9684,9 +9684,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -9699,21 +9696,8 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class aws_eks_logging [[#aws_eks_logging]] {
-**cluster_logging**: aws_eks_log_setup[]
-}
-class aws_eks_log_setup [[#aws_eks_log_setup]] {
-**types**: string[]
-**enabled**: boolean
-}
-class aws_eks_vpc_config_response [[#aws_eks_vpc_config_response]] {
-**subnet_ids**: string[]
-**security_group_ids**: string[]
-**cluster_security_group_id**: string
-**vpc_id**: string
-**endpoint_public_access**: boolean
-**endpoint_private_access**: boolean
-**public_access_cidrs**: string[]
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_eks_cluster [[#aws_eks_cluster]] {
 **cluster_version**: string
@@ -9730,17 +9714,33 @@ class aws_eks_cluster [[#aws_eks_cluster]] {
 **cluster_encryption_config**: aws_eks_encryption_config[]
 **cluster_connector_config**: aws_eks_connector_config
 }
+class aws_eks_vpc_config_response [[#aws_eks_vpc_config_response]] {
+**subnet_ids**: string[]
+**security_group_ids**: string[]
+**cluster_security_group_id**: string
+**vpc_id**: string
+**endpoint_public_access**: boolean
+**endpoint_private_access**: boolean
+**public_access_cidrs**: string[]
+}
+class aws_eks_kubernetes_network_config_response [[#aws_eks_kubernetes_network_config_response]] {
+**service_ipv4_cidr**: string
+**service_ipv6_cidr**: string
+**ip_family**: string
+}
+class aws_eks_logging [[#aws_eks_logging]] {
+**cluster_logging**: aws_eks_log_setup[]
+}
+class aws_eks_log_setup [[#aws_eks_log_setup]] {
+**types**: string[]
+**enabled**: boolean
+}
 class aws_eks_identity [[#aws_eks_identity]] {
 **oidc**: string
 }
 class aws_eks_encryption_config [[#aws_eks_encryption_config]] {
 **resources**: string[]
 **provider**: string
-}
-class aws_eks_kubernetes_network_config_response [[#aws_eks_kubernetes_network_config_response]] {
-**service_ipv4_cidr**: string
-**service_ipv6_cidr**: string
-**ip_family**: string
 }
 class aws_eks_connector_config [[#aws_eks_connector_config]] {
 **activation_id**: string
@@ -9750,7 +9750,6 @@ class aws_eks_connector_config [[#aws_eks_connector_config]] {
 **role_arn**: string
 }
 resource <|--- aws_resource
-aws_eks_logging --> aws_eks_log_setup
 aws_resource <|--- aws_eks_cluster
 aws_eks_cluster --> aws_eks_vpc_config_response
 aws_eks_cluster --> aws_eks_kubernetes_network_config_response
@@ -9758,6 +9757,7 @@ aws_eks_cluster --> aws_eks_logging
 aws_eks_cluster --> aws_eks_identity
 aws_eks_cluster --> aws_eks_encryption_config
 aws_eks_cluster --> aws_eks_connector_config
+aws_eks_logging --> aws_eks_log_setup
 
 @enduml
 ```
@@ -9769,7 +9769,7 @@ aws_eks_cluster --> aws_eks_connector_config
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_eks_cluster resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_eks_cluster resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9793,22 +9793,22 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_eks_nodegroup [[#aws_eks_nodegroup]] {
-
-}
-class aws_iam_role [[#aws_iam_role]] {
-
-}
 class aws_eks_cluster [[#aws_eks_cluster]] {
+
+}
+class aws_eks_nodegroup [[#aws_eks_nodegroup]] {
 
 }
 class aws_region [[#aws_region]] {
 
 }
-aws_iam_role -[#1A83AF]-> aws_eks_cluster
+class aws_iam_role [[#aws_iam_role]] {
+
+}
 aws_eks_cluster -[#1A83AF]-> aws_eks_nodegroup
-aws_region -[#1A83AF]-> aws_eks_cluster
 aws_region -[#1A83AF]-> aws_iam_role
+aws_region -[#1A83AF]-> aws_eks_cluster
+aws_iam_role -[#1A83AF]-> aws_eks_cluster
 
 @enduml
 ```
@@ -9821,7 +9821,7 @@ aws_region -[#1A83AF]-> aws_iam_role
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_eks_nodegroup data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_eks_nodegroup data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9845,9 +9845,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -9860,9 +9857,12 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class aws_eks_remote_access_config [[#aws_eks_remote_access_config]] {
-**ec2_ssh_key**: string
-**source_security_groups**: string[]
+class aws_eks_nodegroup_update_config [[#aws_eks_nodegroup_update_config]] {
+**max_unavailable**: int64
+**max_unavailable_percentage**: int64
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_eks_nodegroup [[#aws_eks_nodegroup]] {
 **cluster_name**: string
@@ -9886,6 +9886,15 @@ class aws_eks_nodegroup [[#aws_eks_nodegroup]] {
 **group_update_config**: aws_eks_nodegroup_update_config
 **group_launch_template**: aws_eks_launch_template_specification
 }
+class aws_eks_nodegroup_scaling_config [[#aws_eks_nodegroup_scaling_config]] {
+**min_size**: int64
+**max_size**: int64
+**desired_size**: int64
+}
+class aws_eks_remote_access_config [[#aws_eks_remote_access_config]] {
+**ec2_ssh_key**: string
+**source_security_groups**: string[]
+}
 class aws_eks_taint [[#aws_eks_taint]] {
 **key**: string
 **value**: string
@@ -9895,22 +9904,13 @@ class aws_eks_nodegroup_resources [[#aws_eks_nodegroup_resources]] {
 **auto_scaling_groups**: string[]
 **remote_access_security_group**: string
 }
+class aws_eks_nodegroup_health [[#aws_eks_nodegroup_health]] {
+**issues**: aws_eks_issue[]
+}
 class aws_eks_issue [[#aws_eks_issue]] {
 **code**: string
 **message**: string
 **resource_ids**: string[]
-}
-class aws_eks_nodegroup_health [[#aws_eks_nodegroup_health]] {
-**issues**: aws_eks_issue[]
-}
-class aws_eks_nodegroup_update_config [[#aws_eks_nodegroup_update_config]] {
-**max_unavailable**: int64
-**max_unavailable_percentage**: int64
-}
-class aws_eks_nodegroup_scaling_config [[#aws_eks_nodegroup_scaling_config]] {
-**min_size**: int64
-**max_size**: int64
-**desired_size**: int64
 }
 class aws_eks_launch_template_specification [[#aws_eks_launch_template_specification]] {
 **name**: string
@@ -9938,7 +9938,7 @@ aws_eks_nodegroup_health --> aws_eks_issue
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_eks_nodegroup resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_eks_nodegroup resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -9962,17 +9962,17 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_autoscaling_group [[#aws_autoscaling_group]] {
+class aws_eks_cluster [[#aws_eks_cluster]] {
 
 }
 class aws_eks_nodegroup [[#aws_eks_nodegroup]] {
 
 }
-class aws_eks_cluster [[#aws_eks_cluster]] {
+class aws_autoscaling_group [[#aws_autoscaling_group]] {
 
 }
-aws_eks_nodegroup -[#1A83AF]-> aws_autoscaling_group
 aws_eks_cluster -[#1A83AF]-> aws_eks_nodegroup
+aws_eks_nodegroup -[#1A83AF]-> aws_autoscaling_group
 
 @enduml
 ```
@@ -9985,7 +9985,7 @@ aws_eks_cluster -[#1A83AF]-> aws_eks_nodegroup
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_elasticache_cache_cluster data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_elasticache_cache_cluster data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10009,9 +10009,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -10024,62 +10021,8 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class aws_elasticache_pending_log_delivery_configuration [[#aws_elasticache_pending_log_delivery_configuration]] {
-**log_type**: string
-**destination_type**: string
-**destination_details**: aws_elasticache_destination_details
-**log_format**: string
-}
-class aws_elasticache_destination_details [[#aws_elasticache_destination_details]] {
-**cloud_watch_logs_details**: string
-**kinesis_firehose_details**: string
-}
-class aws_elasticache_log_delivery_configuration [[#aws_elasticache_log_delivery_configuration]] {
-**log_type**: string
-**destination_type**: string
-**destination_details**: aws_elasticache_destination_details
-**log_format**: string
-**status**: string
-**message**: string
-}
-class aws_elasticache_notification_configuration [[#aws_elasticache_notification_configuration]] {
-**topic_arn**: string
-**topic_status**: string
-}
-class aws_elasticache_security_group_membership [[#aws_elasticache_security_group_membership]] {
-**security_group_id**: string
-**status**: string
-}
-class aws_elasticache_cache_parameter_group_status [[#aws_elasticache_cache_parameter_group_status]] {
-**cache_parameter_group_name**: string
-**parameter_apply_status**: string
-**cache_node_ids_to_reboot**: string[]
-}
-class aws_elasticache_cache_node [[#aws_elasticache_cache_node]] {
-**cache_node_id**: string
-**cache_node_status**: string
-**cache_node_create_time**: datetime
-**endpoint**: aws_elasticache_endpoint
-**parameter_group_status**: string
-**source_cache_node_id**: string
-**customer_availability_zone**: string
-**customer_outpost_arn**: string
-}
-class aws_elasticache_endpoint [[#aws_elasticache_endpoint]] {
-**address**: string
-**port**: int64
-}
-class aws_elasticache_pending_modified_values [[#aws_elasticache_pending_modified_values]] {
-**num_cache_nodes**: int64
-**cache_node_ids_to_remove**: string[]
-**engine_version**: string
-**cache_node_type**: string
-**auth_token_status**: string
-**log_delivery_configurations**: aws_elasticache_pending_log_delivery_configuration[]
-}
-class aws_elasticache_cache_security_group_membership [[#aws_elasticache_cache_security_group_membership]] {
-**cache_security_group_name**: string
-**status**: string
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_elasticache_cache_cluster [[#aws_elasticache_cache_cluster]] {
 **cluster_configuration_endpoint**: aws_elasticache_endpoint
@@ -10110,11 +10053,64 @@ class aws_elasticache_cache_cluster [[#aws_elasticache_cache_cluster]] {
 **cluster_replication_group_log_delivery_enabled**: boolean
 **cluster_log_delivery_configurations**: aws_elasticache_log_delivery_configuration[]
 }
+class aws_elasticache_destination_details [[#aws_elasticache_destination_details]] {
+**cloud_watch_logs_details**: string
+**kinesis_firehose_details**: string
+}
+class aws_elasticache_endpoint [[#aws_elasticache_endpoint]] {
+**address**: string
+**port**: int64
+}
+class aws_elasticache_pending_modified_values [[#aws_elasticache_pending_modified_values]] {
+**num_cache_nodes**: int64
+**cache_node_ids_to_remove**: string[]
+**engine_version**: string
+**cache_node_type**: string
+**auth_token_status**: string
+**log_delivery_configurations**: aws_elasticache_pending_log_delivery_configuration[]
+}
+class aws_elasticache_pending_log_delivery_configuration [[#aws_elasticache_pending_log_delivery_configuration]] {
+**log_type**: string
+**destination_type**: string
+**destination_details**: aws_elasticache_destination_details
+**log_format**: string
+}
+class aws_elasticache_notification_configuration [[#aws_elasticache_notification_configuration]] {
+**topic_arn**: string
+**topic_status**: string
+}
+class aws_elasticache_cache_security_group_membership [[#aws_elasticache_cache_security_group_membership]] {
+**cache_security_group_name**: string
+**status**: string
+}
+class aws_elasticache_cache_parameter_group_status [[#aws_elasticache_cache_parameter_group_status]] {
+**cache_parameter_group_name**: string
+**parameter_apply_status**: string
+**cache_node_ids_to_reboot**: string[]
+}
+class aws_elasticache_cache_node [[#aws_elasticache_cache_node]] {
+**cache_node_id**: string
+**cache_node_status**: string
+**cache_node_create_time**: datetime
+**endpoint**: aws_elasticache_endpoint
+**parameter_group_status**: string
+**source_cache_node_id**: string
+**customer_availability_zone**: string
+**customer_outpost_arn**: string
+}
+class aws_elasticache_security_group_membership [[#aws_elasticache_security_group_membership]] {
+**security_group_id**: string
+**status**: string
+}
+class aws_elasticache_log_delivery_configuration [[#aws_elasticache_log_delivery_configuration]] {
+**log_type**: string
+**destination_type**: string
+**destination_details**: aws_elasticache_destination_details
+**log_format**: string
+**status**: string
+**message**: string
+}
 resource <|--- aws_resource
-aws_elasticache_pending_log_delivery_configuration --> aws_elasticache_destination_details
-aws_elasticache_log_delivery_configuration --> aws_elasticache_destination_details
-aws_elasticache_cache_node --> aws_elasticache_endpoint
-aws_elasticache_pending_modified_values --> aws_elasticache_pending_log_delivery_configuration
 aws_resource <|--- aws_elasticache_cache_cluster
 aws_elasticache_cache_cluster --> aws_elasticache_endpoint
 aws_elasticache_cache_cluster --> aws_elasticache_pending_modified_values
@@ -10124,6 +10120,10 @@ aws_elasticache_cache_cluster --> aws_elasticache_cache_parameter_group_status
 aws_elasticache_cache_cluster --> aws_elasticache_cache_node
 aws_elasticache_cache_cluster --> aws_elasticache_security_group_membership
 aws_elasticache_cache_cluster --> aws_elasticache_log_delivery_configuration
+aws_elasticache_pending_modified_values --> aws_elasticache_pending_log_delivery_configuration
+aws_elasticache_pending_log_delivery_configuration --> aws_elasticache_destination_details
+aws_elasticache_cache_node --> aws_elasticache_endpoint
+aws_elasticache_log_delivery_configuration --> aws_elasticache_destination_details
 
 @enduml
 ```
@@ -10135,7 +10135,7 @@ aws_elasticache_cache_cluster --> aws_elasticache_log_delivery_configuration
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_elasticache_cache_cluster resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_elasticache_cache_cluster resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10186,7 +10186,7 @@ aws_elasticache_replication_group -[#1A83AF]-> aws_elasticache_cache_cluster
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_elasticache_replication_group data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_elasticache_replication_group data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10210,9 +10210,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -10225,34 +10222,22 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class aws_elasticache_replication_group_pending_modified_values [[#aws_elasticache_replication_group_pending_modified_values]] {
-**primary_cluster_id**: string
-**automatic_failover_status**: string
-**resharding**: aws_elasticache_resharding_status
-**auth_token_status**: string
-**user_groups**: aws_elasticache_user_groups_update_status
-**log_delivery_configurations**: aws_elasticache_pending_log_delivery_configuration[]
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
-class aws_elasticache_resharding_status [[#aws_elasticache_resharding_status]] {
-**slot_migration**: double
+class aws_elasticache_destination_details [[#aws_elasticache_destination_details]] {
+**cloud_watch_logs_details**: string
+**kinesis_firehose_details**: string
 }
-class aws_elasticache_user_groups_update_status [[#aws_elasticache_user_groups_update_status]] {
-**user_group_ids_to_add**: string[]
-**user_group_ids_to_remove**: string[]
+class aws_elasticache_endpoint [[#aws_elasticache_endpoint]] {
+**address**: string
+**port**: int64
 }
 class aws_elasticache_pending_log_delivery_configuration [[#aws_elasticache_pending_log_delivery_configuration]] {
 **log_type**: string
 **destination_type**: string
 **destination_details**: aws_elasticache_destination_details
 **log_format**: string
-}
-class aws_elasticache_destination_details [[#aws_elasticache_destination_details]] {
-**cloud_watch_logs_details**: string
-**kinesis_firehose_details**: string
-}
-class aws_elasticache_global_replication_group_info [[#aws_elasticache_global_replication_group_info]] {
-**global_replication_group_id**: string
-**global_replication_group_member_role**: string
 }
 class aws_elasticache_log_delivery_configuration [[#aws_elasticache_log_delivery_configuration]] {
 **log_type**: string
@@ -10261,10 +10246,6 @@ class aws_elasticache_log_delivery_configuration [[#aws_elasticache_log_delivery
 **log_format**: string
 **status**: string
 **message**: string
-}
-class aws_elasticache_endpoint [[#aws_elasticache_endpoint]] {
-**address**: string
-**port**: int64
 }
 class aws_elasticache_replication_group [[#aws_elasticache_replication_group]] {
 **replication_group_description**: string
@@ -10292,6 +10273,25 @@ class aws_elasticache_replication_group [[#aws_elasticache_replication_group]] {
 **replication_group_log_delivery_configurations**: aws_elasticache_log_delivery_configuration[]
 **replication_group_data_tiering**: string
 }
+class aws_elasticache_global_replication_group_info [[#aws_elasticache_global_replication_group_info]] {
+**global_replication_group_id**: string
+**global_replication_group_member_role**: string
+}
+class aws_elasticache_replication_group_pending_modified_values [[#aws_elasticache_replication_group_pending_modified_values]] {
+**primary_cluster_id**: string
+**automatic_failover_status**: string
+**resharding**: aws_elasticache_resharding_status
+**auth_token_status**: string
+**user_groups**: aws_elasticache_user_groups_update_status
+**log_delivery_configurations**: aws_elasticache_pending_log_delivery_configuration[]
+}
+class aws_elasticache_resharding_status [[#aws_elasticache_resharding_status]] {
+**slot_migration**: double
+}
+class aws_elasticache_user_groups_update_status [[#aws_elasticache_user_groups_update_status]] {
+**user_group_ids_to_add**: string[]
+**user_group_ids_to_remove**: string[]
+}
 class aws_elasticache_node_group [[#aws_elasticache_node_group]] {
 **node_group_id**: string
 **status**: string
@@ -10309,9 +10309,6 @@ class aws_elasticache_node_group_member [[#aws_elasticache_node_group_member]] {
 **current_role**: string
 }
 resource <|--- aws_resource
-aws_elasticache_replication_group_pending_modified_values --> aws_elasticache_resharding_status
-aws_elasticache_replication_group_pending_modified_values --> aws_elasticache_user_groups_update_status
-aws_elasticache_replication_group_pending_modified_values --> aws_elasticache_pending_log_delivery_configuration
 aws_elasticache_pending_log_delivery_configuration --> aws_elasticache_destination_details
 aws_elasticache_log_delivery_configuration --> aws_elasticache_destination_details
 aws_resource <|--- aws_elasticache_replication_group
@@ -10320,6 +10317,9 @@ aws_elasticache_replication_group --> aws_elasticache_replication_group_pending_
 aws_elasticache_replication_group --> aws_elasticache_node_group
 aws_elasticache_replication_group --> aws_elasticache_endpoint
 aws_elasticache_replication_group --> aws_elasticache_log_delivery_configuration
+aws_elasticache_replication_group_pending_modified_values --> aws_elasticache_resharding_status
+aws_elasticache_replication_group_pending_modified_values --> aws_elasticache_user_groups_update_status
+aws_elasticache_replication_group_pending_modified_values --> aws_elasticache_pending_log_delivery_configuration
 aws_elasticache_node_group --> aws_elasticache_endpoint
 aws_elasticache_node_group --> aws_elasticache_node_group_member
 aws_elasticache_node_group_member --> aws_elasticache_endpoint
@@ -10334,7 +10334,7 @@ aws_elasticache_node_group_member --> aws_elasticache_endpoint
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_elasticache_replication_group resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_elasticache_replication_group resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10367,8 +10367,8 @@ class aws_elasticache_cache_cluster [[#aws_elasticache_cache_cluster]] {
 class aws_elasticache_replication_group [[#aws_elasticache_replication_group]] {
 
 }
-aws_elasticache_replication_group -[#1A83AF]-> aws_elasticache_cache_cluster
 aws_elasticache_replication_group -[#1A83AF]-> aws_kms_key
+aws_elasticache_replication_group -[#1A83AF]-> aws_elasticache_cache_cluster
 
 @enduml
 ```
@@ -10381,7 +10381,7 @@ aws_elasticache_replication_group -[#1A83AF]-> aws_kms_key
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_elb data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_elb data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10405,9 +10405,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -10420,6 +10417,9 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
 class aws_elb [[#aws_elb]] {
 **scheme**: string
 **elb_canonical_hosted_zone_name**: string
@@ -10430,6 +10430,18 @@ class aws_elb [[#aws_elb]] {
 **elb_availability_zones**: string[]
 **elb_health_check**: aws_elb_health_check
 **elb_source_security_group**: aws_elb_source_security_group
+}
+class aws_elb_lb_cookie_stickiness_policy [[#aws_elb_lb_cookie_stickiness_policy]] {
+**policy_name**: string
+**cookie_expiration_period**: int64
+}
+class aws_elb_source_security_group [[#aws_elb_source_security_group]] {
+**owner_alias**: string
+**group_name**: string
+}
+class aws_elb_listener_description [[#aws_elb_listener_description]] {
+**listener**: aws_elb_listener
+**policy_names**: string[]
 }
 class aws_elb_listener [[#aws_elb_listener]] {
 **protocol**: string
@@ -10443,22 +10455,18 @@ class load_balancer [[#load_balancer]] {
 **public_ip_address**: string
 **backends**: string[]
 }
-class aws_elb_backend_server_description [[#aws_elb_backend_server_description]] {
-**instance_port**: int64
-**policy_names**: string[]
-}
-class aws_elb_app_cookie_stickiness_policy [[#aws_elb_app_cookie_stickiness_policy]] {
-**policy_name**: string
-**cookie_name**: string
-}
 class aws_elb_policies [[#aws_elb_policies]] {
 **app_cookie_stickiness_policies**: aws_elb_app_cookie_stickiness_policy[]
 **lb_cookie_stickiness_policies**: aws_elb_lb_cookie_stickiness_policy[]
 **other_policies**: string[]
 }
-class aws_elb_lb_cookie_stickiness_policy [[#aws_elb_lb_cookie_stickiness_policy]] {
+class aws_elb_app_cookie_stickiness_policy [[#aws_elb_app_cookie_stickiness_policy]] {
 **policy_name**: string
-**cookie_expiration_period**: int64
+**cookie_name**: string
+}
+class aws_elb_backend_server_description [[#aws_elb_backend_server_description]] {
+**instance_port**: int64
+**policy_names**: string[]
 }
 class aws_elb_health_check [[#aws_elb_health_check]] {
 **target**: string
@@ -10466,14 +10474,6 @@ class aws_elb_health_check [[#aws_elb_health_check]] {
 **timeout**: int64
 **unhealthy_threshold**: int64
 **healthy_threshold**: int64
-}
-class aws_elb_source_security_group [[#aws_elb_source_security_group]] {
-**owner_alias**: string
-**group_name**: string
-}
-class aws_elb_listener_description [[#aws_elb_listener_description]] {
-**listener**: aws_elb_listener
-**policy_names**: string[]
 }
 resource <|--- aws_resource
 aws_resource <|--- aws_elb
@@ -10483,10 +10483,10 @@ aws_elb --> aws_elb_policies
 aws_elb --> aws_elb_backend_server_description
 aws_elb --> aws_elb_health_check
 aws_elb --> aws_elb_source_security_group
+aws_elb_listener_description --> aws_elb_listener
 resource <|--- load_balancer
 aws_elb_policies --> aws_elb_app_cookie_stickiness_policy
 aws_elb_policies --> aws_elb_lb_cookie_stickiness_policy
-aws_elb_listener_description --> aws_elb_listener
 
 @enduml
 ```
@@ -10498,7 +10498,7 @@ aws_elb_listener_description --> aws_elb_listener
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_elb resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_elb resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10522,48 +10522,48 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_ecs_service [[#aws_ecs_service]] {
-
-}
-class aws_ec2_instance [[#aws_ec2_instance]] {
+class aws_vpc [[#aws_vpc]] {
 
 }
 class aws_ec2_subnet [[#aws_ec2_subnet]] {
 
 }
-class aws_elb [[#aws_elb]] {
-
-}
-class aws_service_quota [[#aws_service_quota]] {
-
-}
-class aws_vpc [[#aws_vpc]] {
+class aws_ec2_instance [[#aws_ec2_instance]] {
 
 }
 class aws_ec2_security_group [[#aws_ec2_security_group]] {
 
 }
+class aws_elb [[#aws_elb]] {
+
+}
+class aws_ecs_service [[#aws_ecs_service]] {
+
+}
 class aws_region [[#aws_region]] {
 
 }
-aws_ecs_service -[#1A83AF]-> aws_elb
+class aws_service_quota [[#aws_service_quota]] {
+
+}
+aws_vpc -[#1A83AF]-> aws_elb
+aws_vpc -[#1A83AF]-> aws_ec2_instance
+aws_vpc -[#1A83AF]-> aws_ec2_security_group
+aws_vpc -[#1A83AF]-> aws_ec2_subnet
 aws_ec2_subnet -[#1A83AF]-> aws_elb
 aws_ec2_subnet -[#1A83AF]-> aws_ecs_service
-aws_elb -[#1A83AF]-> aws_ec2_instance
-aws_service_quota -[#1A83AF]-> aws_vpc
-aws_service_quota -[#1A83AF]-> aws_elb
-aws_vpc -[#1A83AF]-> aws_ec2_instance
-aws_vpc -[#1A83AF]-> aws_ec2_subnet
-aws_vpc -[#1A83AF]-> aws_elb
-aws_vpc -[#1A83AF]-> aws_ec2_security_group
-aws_ec2_security_group -[#1A83AF]-> aws_ecs_service
 aws_ec2_security_group -[#1A83AF]-> aws_elb
-aws_region -[#1A83AF]-> aws_vpc
-aws_region -[#1A83AF]-> aws_ec2_subnet
-aws_region -[#1A83AF]-> aws_elb
-aws_region -[#1A83AF]-> aws_ec2_security_group
+aws_ec2_security_group -[#1A83AF]-> aws_ecs_service
+aws_elb -[#1A83AF]-> aws_ec2_instance
+aws_ecs_service -[#1A83AF]-> aws_elb
 aws_region -[#1A83AF]-> aws_ec2_instance
 aws_region -[#1A83AF]-> aws_service_quota
+aws_region -[#1A83AF]-> aws_elb
+aws_region -[#1A83AF]-> aws_vpc
+aws_region -[#1A83AF]-> aws_ec2_security_group
+aws_region -[#1A83AF]-> aws_ec2_subnet
+aws_service_quota -[#1A83AF]-> aws_elb
+aws_service_quota -[#1A83AF]-> aws_vpc
 
 @enduml
 ```
@@ -10576,7 +10576,7 @@ aws_region -[#1A83AF]-> aws_service_quota
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_glacier_job data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_glacier_job data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10600,9 +10600,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -10615,38 +10612,8 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class aws_glacier_job [[#aws_glacier_job]] {
-**description**: string
-**glacier_job_action**: string
-**glacier_job_archive_id**: string
-**glacier_job_vault_arn**: string
-**glacier_job_completed**: boolean
-**glacier_job_status_code**: string
-**glacier_job_status_message**: string
-**glacier_job_archive_size_in_bytes**: int64
-**glacier_job_inventory_size_in_bytes**: int64
-**glacier_job_sns_topic**: string
-**glacier_job_completion_date**: string
-**glacier_job_sha256_tree_hash**: string
-**glacier_job_archive_sha256_tree_hash**: string
-**glacier_job_retrieval_byte_range**: string
-**glacier_job_tier**: string
-**glacier_job_inventory_retrieval_parameters**: aws_glacier_job_inventory_retrieval_parameters
-**glacier_job_output_path**: string
-**glacier_job_select_parameters**: aws_glacier_job_select_parameters
-**glacier_job_output_location**: aws_glacier_job_output_location
-}
-class aws_glacier_job_inventory_retrieval_parameters [[#aws_glacier_job_inventory_retrieval_parameters]] {
-**output_format**: string
-**start_date**: string
-**end_date**: string
-**limit**: string
-}
-class aws_glacier_job_select_parameters [[#aws_glacier_job_select_parameters]] {
-**input_serialization**: dictionary[string, dictionary[string, string]]
-**expression_type**: string
-**expression**: string
-**output_serialization**: dictionary[string, dictionary[string, string]]
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_glacier_job_output_location [[#aws_glacier_job_output_location]] {
 **s3**: aws_glacier_job_bucket
@@ -10669,14 +10636,47 @@ class aws_glacier_acl [[#aws_glacier_acl]] {
 **grantee**: dictionary[string, string]
 **permission**: string
 }
+class aws_glacier_job_inventory_retrieval_parameters [[#aws_glacier_job_inventory_retrieval_parameters]] {
+**output_format**: string
+**start_date**: string
+**end_date**: string
+**limit**: string
+}
+class aws_glacier_job_select_parameters [[#aws_glacier_job_select_parameters]] {
+**input_serialization**: dictionary[string, dictionary[string, string]]
+**expression_type**: string
+**expression**: string
+**output_serialization**: dictionary[string, dictionary[string, string]]
+}
+class aws_glacier_job [[#aws_glacier_job]] {
+**description**: string
+**glacier_job_action**: string
+**glacier_job_archive_id**: string
+**glacier_job_vault_arn**: string
+**glacier_job_completed**: boolean
+**glacier_job_status_code**: string
+**glacier_job_status_message**: string
+**glacier_job_archive_size_in_bytes**: int64
+**glacier_job_inventory_size_in_bytes**: int64
+**glacier_job_sns_topic**: string
+**glacier_job_completion_date**: string
+**glacier_job_sha256_tree_hash**: string
+**glacier_job_archive_sha256_tree_hash**: string
+**glacier_job_retrieval_byte_range**: string
+**glacier_job_tier**: string
+**glacier_job_inventory_retrieval_parameters**: aws_glacier_job_inventory_retrieval_parameters
+**glacier_job_output_path**: string
+**glacier_job_select_parameters**: aws_glacier_job_select_parameters
+**glacier_job_output_location**: aws_glacier_job_output_location
+}
 resource <|--- aws_resource
+aws_glacier_job_output_location --> aws_glacier_job_bucket
+aws_glacier_job_bucket --> aws_glacier_bucket_encryption
+aws_glacier_job_bucket --> aws_glacier_acl
 aws_resource <|--- aws_glacier_job
 aws_glacier_job --> aws_glacier_job_inventory_retrieval_parameters
 aws_glacier_job --> aws_glacier_job_select_parameters
 aws_glacier_job --> aws_glacier_job_output_location
-aws_glacier_job_output_location --> aws_glacier_job_bucket
-aws_glacier_job_bucket --> aws_glacier_bucket_encryption
-aws_glacier_job_bucket --> aws_glacier_acl
 
 @enduml
 ```
@@ -10688,7 +10688,7 @@ aws_glacier_job_bucket --> aws_glacier_acl
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_glacier_job resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_glacier_job resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10735,7 +10735,7 @@ aws_glacier_vault -[#1A83AF]-> aws_glacier_job
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_glacier_vault data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_glacier_vault data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10759,9 +10759,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -10773,6 +10770,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_glacier_vault [[#aws_glacier_vault]] {
 **glacier_last_inventory_date**: string
@@ -10792,7 +10792,7 @@ aws_resource <|--- aws_glacier_vault
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_glacier_vault resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_glacier_vault resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10835,7 +10835,7 @@ aws_glacier_vault -[#1A83AF]-> aws_glacier_job
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_iam_access_key data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_iam_access_key data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10859,9 +10859,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -10874,11 +10871,8 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class aws_iam_access_key [[#aws_iam_access_key]] {
-**access_key_last_used**: aws_iam_access_key_last_used
-}
-class access_key [[#access_key]] {
-**access_key_status**: string
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_iam_access_key_last_used [[#aws_iam_access_key_last_used]] {
 **last_used**: datetime
@@ -10886,11 +10880,17 @@ class aws_iam_access_key_last_used [[#aws_iam_access_key_last_used]] {
 **service_name**: string
 **region**: string
 }
+class access_key [[#access_key]] {
+**access_key_status**: string
+}
+class aws_iam_access_key [[#aws_iam_access_key]] {
+**access_key_last_used**: aws_iam_access_key_last_used
+}
 resource <|--- aws_resource
+resource <|--- access_key
 aws_resource <|--- aws_iam_access_key
 access_key <|--- aws_iam_access_key
 aws_iam_access_key --> aws_iam_access_key_last_used
-resource <|--- access_key
 
 @enduml
 ```
@@ -10902,7 +10902,7 @@ resource <|--- access_key
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_iam_access_key resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_iam_access_key resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10941,7 +10941,7 @@ class aws_iam_access_key [[#aws_iam_access_key]] {
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_iam_group data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_iam_group data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -10965,9 +10965,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -10980,22 +10977,25 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class aws_iam_policy_detail [[#aws_iam_policy_detail]] {
-**policy_name**: string
-**policy_document**: dictionary[string, any]
-}
-class group [[#group]] {
-
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_iam_group [[#aws_iam_group]] {
 **path**: string
 **group_policies**: aws_iam_policy_detail[]
 }
+class group [[#group]] {
+
+}
+class aws_iam_policy_detail [[#aws_iam_policy_detail]] {
+**policy_name**: string
+**policy_document**: dictionary[string, any]
+}
 resource <|--- aws_resource
-resource <|--- group
 aws_resource <|--- aws_iam_group
 group <|--- aws_iam_group
 aws_iam_group --> aws_iam_policy_detail
+resource <|--- group
 
 @enduml
 ```
@@ -11007,7 +11007,7 @@ aws_iam_group --> aws_iam_policy_detail
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_iam_group resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_iam_group resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11031,24 +11031,24 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class aws_iam_group [[#aws_iam_group]] {
+
+}
 class aws_iam_user [[#aws_iam_user]] {
 
 }
 class aws_iam_policy [[#aws_iam_policy]] {
 
 }
-class aws_iam_group [[#aws_iam_group]] {
-
-}
 class aws_region [[#aws_region]] {
 
 }
-aws_iam_user -[#1A83AF]-> aws_iam_policy
 aws_iam_group -[#1A83AF]-> aws_iam_user
 aws_iam_group -[#1A83AF]-> aws_iam_policy
+aws_iam_user -[#1A83AF]-> aws_iam_policy
+aws_region -[#1A83AF]-> aws_iam_user
 aws_region -[#1A83AF]-> aws_iam_policy
 aws_region -[#1A83AF]-> aws_iam_group
-aws_region -[#1A83AF]-> aws_iam_user
 
 @enduml
 ```
@@ -11061,7 +11061,7 @@ aws_region -[#1A83AF]-> aws_iam_user
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_iam_instance_profile data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_iam_instance_profile data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11085,9 +11085,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -11100,16 +11097,19 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class instance_profile [[#instance_profile]] {
-
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_iam_instance_profile [[#aws_iam_instance_profile]] {
 **instance_profile_path**: string
 }
+class instance_profile [[#instance_profile]] {
+
+}
 resource <|--- aws_resource
-resource <|--- instance_profile
 aws_resource <|--- aws_iam_instance_profile
 instance_profile <|--- aws_iam_instance_profile
+resource <|--- instance_profile
 
 @enduml
 ```
@@ -11121,7 +11121,7 @@ instance_profile <|--- aws_iam_instance_profile
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_iam_instance_profile resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_iam_instance_profile resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11145,18 +11145,18 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_iam_role [[#aws_iam_role]] {
+class aws_region [[#aws_region]] {
 
 }
 class aws_iam_instance_profile [[#aws_iam_instance_profile]] {
 
 }
-class aws_region [[#aws_region]] {
+class aws_iam_role [[#aws_iam_role]] {
 
 }
-aws_iam_role -[#1A83AF]-> aws_iam_instance_profile
 aws_region -[#1A83AF]-> aws_iam_instance_profile
 aws_region -[#1A83AF]-> aws_iam_role
+aws_iam_role -[#1A83AF]-> aws_iam_instance_profile
 
 @enduml
 ```
@@ -11169,7 +11169,7 @@ aws_region -[#1A83AF]-> aws_iam_role
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_iam_policy data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_iam_policy data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11193,9 +11193,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -11208,6 +11205,9 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
 class aws_iam_policy [[#aws_iam_policy]] {
 **path**: string
 **policy_default_version_id**: string
@@ -11217,14 +11217,14 @@ class aws_iam_policy [[#aws_iam_policy]] {
 **policy_description**: string
 **policy_document**: aws_iam_policy_version
 }
-class policy [[#policy]] {
-
-}
 class aws_iam_policy_version [[#aws_iam_policy_version]] {
 **document**: dictionary[string, any]
 **version_id**: string
 **is_default_version**: boolean
 **create_date**: datetime
+}
+class policy [[#policy]] {
+
 }
 resource <|--- aws_resource
 aws_resource <|--- aws_iam_policy
@@ -11242,7 +11242,7 @@ resource <|--- policy
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_iam_policy resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_iam_policy resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11266,29 +11266,29 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class aws_iam_group [[#aws_iam_group]] {
+
+}
 class aws_iam_user [[#aws_iam_user]] {
 
 }
 class aws_iam_policy [[#aws_iam_policy]] {
 
 }
-class aws_iam_role [[#aws_iam_role]] {
-
-}
-class aws_iam_group [[#aws_iam_group]] {
-
-}
 class aws_region [[#aws_region]] {
 
 }
-aws_iam_user -[#1A83AF]-> aws_iam_policy
-aws_iam_role -[#1A83AF]-> aws_iam_policy
+class aws_iam_role [[#aws_iam_role]] {
+
+}
 aws_iam_group -[#1A83AF]-> aws_iam_user
 aws_iam_group -[#1A83AF]-> aws_iam_policy
-aws_region -[#1A83AF]-> aws_iam_policy
-aws_region -[#1A83AF]-> aws_iam_group
+aws_iam_user -[#1A83AF]-> aws_iam_policy
 aws_region -[#1A83AF]-> aws_iam_role
 aws_region -[#1A83AF]-> aws_iam_user
+aws_region -[#1A83AF]-> aws_iam_policy
+aws_region -[#1A83AF]-> aws_iam_group
+aws_iam_role -[#1A83AF]-> aws_iam_policy
 
 @enduml
 ```
@@ -11301,7 +11301,7 @@ aws_region -[#1A83AF]-> aws_iam_user
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_iam_role data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_iam_role data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11325,9 +11325,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -11340,13 +11337,12 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
 class aws_iam_policy_detail [[#aws_iam_policy_detail]] {
 **policy_name**: string
 **policy_document**: dictionary[string, any]
-}
-class aws_iam_attached_permissions_boundary [[#aws_iam_attached_permissions_boundary]] {
-**permissions_boundary_type**: string
-**permissions_boundary_arn**: string
 }
 class aws_iam_role [[#aws_iam_role]] {
 **path**: string
@@ -11356,6 +11352,10 @@ class aws_iam_role [[#aws_iam_role]] {
 **role_permissions_boundary**: aws_iam_attached_permissions_boundary
 **role_last_used**: aws_iam_role_last_used
 **role_policies**: aws_iam_policy_detail[]
+}
+class aws_iam_attached_permissions_boundary [[#aws_iam_attached_permissions_boundary]] {
+**permissions_boundary_type**: string
+**permissions_boundary_arn**: string
 }
 class aws_iam_role_last_used [[#aws_iam_role_last_used]] {
 **last_used**: datetime
@@ -11377,7 +11377,7 @@ aws_iam_role --> aws_iam_policy_detail
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_iam_role resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_iam_role resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11401,43 +11401,49 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_ecs_service [[#aws_ecs_service]] {
-
-}
-class aws_ecs_task [[#aws_ecs_task]] {
-
-}
 class aws_sagemaker_labeling_job [[#aws_sagemaker_labeling_job]] {
-
-}
-class aws_sagemaker_hyper_parameter_tuning_job [[#aws_sagemaker_hyper_parameter_tuning_job]] {
-
-}
-class aws_sagemaker_processing_job [[#aws_sagemaker_processing_job]] {
-
-}
-class aws_sagemaker_model [[#aws_sagemaker_model]] {
-
-}
-class aws_sagemaker_auto_ml_job [[#aws_sagemaker_auto_ml_job]] {
-
-}
-class aws_sagemaker_inference_recommendations_job [[#aws_sagemaker_inference_recommendations_job]] {
-
-}
-class aws_sagemaker_domain [[#aws_sagemaker_domain]] {
-
-}
-class aws_sagemaker_compilation_job [[#aws_sagemaker_compilation_job]] {
-
-}
-class aws_sagemaker_notebook [[#aws_sagemaker_notebook]] {
 
 }
 class aws_sagemaker_training_job [[#aws_sagemaker_training_job]] {
 
 }
+class aws_api_gateway_authorizer [[#aws_api_gateway_authorizer]] {
+
+}
+class aws_sagemaker_notebook [[#aws_sagemaker_notebook]] {
+
+}
+class aws_eks_cluster [[#aws_eks_cluster]] {
+
+}
+class aws_sagemaker_domain [[#aws_sagemaker_domain]] {
+
+}
+class aws_ecs_service [[#aws_ecs_service]] {
+
+}
+class aws_sagemaker_auto_ml_job [[#aws_sagemaker_auto_ml_job]] {
+
+}
+class aws_sagemaker_compilation_job [[#aws_sagemaker_compilation_job]] {
+
+}
+class aws_sagemaker_inference_recommendations_job [[#aws_sagemaker_inference_recommendations_job]] {
+
+}
+class aws_sagemaker_hyper_parameter_tuning_job [[#aws_sagemaker_hyper_parameter_tuning_job]] {
+
+}
+class aws_sagemaker_model [[#aws_sagemaker_model]] {
+
+}
 class aws_redshift_cluster [[#aws_redshift_cluster]] {
+
+}
+class aws_sagemaker_processing_job [[#aws_sagemaker_processing_job]] {
+
+}
+class aws_sns_subscription [[#aws_sns_subscription]] {
 
 }
 class aws_sagemaker_image [[#aws_sagemaker_image]] {
@@ -11449,76 +11455,70 @@ class aws_sagemaker_pipeline [[#aws_sagemaker_pipeline]] {
 class aws_iam_policy [[#aws_iam_policy]] {
 
 }
-class aws_api_gateway_authorizer [[#aws_api_gateway_authorizer]] {
+class aws_region [[#aws_region]] {
+
+}
+class aws_ecs_task [[#aws_ecs_task]] {
 
 }
 class aws_cognito_group [[#aws_cognito_group]] {
 
 }
-class aws_sagemaker_edge_packaging_job [[#aws_sagemaker_edge_packaging_job]] {
+class aws_iam_instance_profile [[#aws_iam_instance_profile]] {
 
 }
 class aws_iam_role [[#aws_iam_role]] {
 
 }
-class aws_iam_instance_profile [[#aws_iam_instance_profile]] {
-
-}
-class aws_sagemaker_algorithm [[#aws_sagemaker_algorithm]] {
-
-}
-class aws_eks_cluster [[#aws_eks_cluster]] {
+class aws_sagemaker_edge_packaging_job [[#aws_sagemaker_edge_packaging_job]] {
 
 }
 class aws_ecs_task_definition [[#aws_ecs_task_definition]] {
 
 }
-class aws_sns_subscription [[#aws_sns_subscription]] {
-
-}
-class aws_region [[#aws_region]] {
+class aws_sagemaker_algorithm [[#aws_sagemaker_algorithm]] {
 
 }
 aws_sagemaker_labeling_job -[#1A83AF]-> aws_sagemaker_training_job
-aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_sagemaker_training_job
-aws_sagemaker_processing_job -[#1A83AF]-> aws_sagemaker_training_job
-aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_edge_packaging_job
-aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_labeling_job
+aws_sagemaker_training_job -[#1A83AF]-> aws_sagemaker_algorithm
+aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_pipeline
+aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_image
 aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_training_job
 aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_processing_job
-aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_image
-aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_pipeline
-aws_sagemaker_training_job -[#1A83AF]-> aws_sagemaker_algorithm
+aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_edge_packaging_job
+aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_labeling_job
 aws_redshift_cluster -[#1A83AF]-> aws_sagemaker_processing_job
+aws_sagemaker_processing_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_region -[#1A83AF]-> aws_iam_instance_profile
+aws_region -[#1A83AF]-> aws_iam_role
+aws_region -[#1A83AF]-> aws_eks_cluster
+aws_region -[#1A83AF]-> aws_iam_policy
 aws_iam_role -[#1A83AF]-> aws_iam_instance_profile
-aws_iam_role -[#1A83AF]-> aws_sagemaker_hyper_parameter_tuning_job
-aws_iam_role -[#1A83AF]-> aws_sagemaker_algorithm
-aws_iam_role -[#1A83AF]-> aws_ecs_task
-aws_iam_role -[#1A83AF]-> aws_sagemaker_inference_recommendations_job
-aws_iam_role -[#1A83AF]-> aws_redshift_cluster
-aws_iam_role -[#1A83AF]-> aws_sagemaker_labeling_job
-aws_iam_role -[#1A83AF]-> aws_sagemaker_model
+aws_iam_role -[#1A83AF]-> aws_sagemaker_domain
 aws_iam_role -[#1A83AF]-> aws_ecs_service
-aws_iam_role -[#1A83AF]-> aws_sagemaker_auto_ml_job
-aws_iam_role -[#1A83AF]-> aws_api_gateway_authorizer
-aws_iam_role -[#1A83AF]-> aws_sagemaker_compilation_job
 aws_iam_role -[#1A83AF]-> aws_sagemaker_training_job
-aws_iam_role -[#1A83AF]-> aws_sagemaker_pipeline
+aws_iam_role -[#1A83AF]-> aws_sagemaker_image
+aws_iam_role -[#1A83AF]-> aws_eks_cluster
+aws_iam_role -[#1A83AF]-> aws_sagemaker_auto_ml_job
 aws_iam_role -[#1A83AF]-> aws_sagemaker_edge_packaging_job
+aws_iam_role -[#1A83AF]-> aws_api_gateway_authorizer
+aws_iam_role -[#1A83AF]-> aws_sns_subscription
+aws_iam_role -[#1A83AF]-> aws_sagemaker_compilation_job
 aws_iam_role -[#1A83AF]-> aws_iam_policy
 aws_iam_role -[#1A83AF]-> aws_cognito_group
-aws_iam_role -[#1A83AF]-> aws_eks_cluster
-aws_iam_role -[#1A83AF]-> aws_sagemaker_image
 aws_iam_role -[#1A83AF]-> aws_ecs_task_definition
-aws_iam_role -[#1A83AF]-> aws_sagemaker_domain
-aws_iam_role -[#1A83AF]-> aws_sns_subscription
 aws_iam_role -[#1A83AF]-> aws_sagemaker_notebook
+aws_iam_role -[#1A83AF]-> aws_sagemaker_inference_recommendations_job
+aws_iam_role -[#1A83AF]-> aws_sagemaker_hyper_parameter_tuning_job
+aws_iam_role -[#1A83AF]-> aws_sagemaker_model
+aws_iam_role -[#1A83AF]-> aws_redshift_cluster
+aws_iam_role -[#1A83AF]-> aws_ecs_task
 aws_iam_role -[#1A83AF]-> aws_sagemaker_processing_job
+aws_iam_role -[#1A83AF]-> aws_sagemaker_pipeline
+aws_iam_role -[#1A83AF]-> aws_sagemaker_algorithm
+aws_iam_role -[#1A83AF]-> aws_sagemaker_labeling_job
 aws_ecs_task_definition -[#1A83AF]-> aws_ecs_task
-aws_region -[#1A83AF]-> aws_iam_instance_profile
-aws_region -[#1A83AF]-> aws_iam_policy
-aws_region -[#1A83AF]-> aws_eks_cluster
-aws_region -[#1A83AF]-> aws_iam_role
 
 @enduml
 ```
@@ -11531,7 +11531,7 @@ aws_region -[#1A83AF]-> aws_iam_role
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_iam_server_certificate data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_iam_server_certificate data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11555,9 +11555,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -11569,6 +11566,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_iam_server_certificate [[#aws_iam_server_certificate]] {
 **path**: string
@@ -11593,7 +11593,7 @@ resource <|--- certificate
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_iam_server_certificate resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_iam_server_certificate resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11617,22 +11617,22 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_cloudfront_distribution [[#aws_cloudfront_distribution]] {
-
-}
 class aws_iam_server_certificate [[#aws_iam_server_certificate]] {
 
 }
-class aws_service_quota [[#aws_service_quota]] {
+class aws_cloudfront_distribution [[#aws_cloudfront_distribution]] {
 
 }
 class aws_region [[#aws_region]] {
 
 }
+class aws_service_quota [[#aws_service_quota]] {
+
+}
 aws_cloudfront_distribution -[#1A83AF]-> aws_iam_server_certificate
-aws_service_quota -[#1A83AF]-> aws_iam_server_certificate
-aws_region -[#1A83AF]-> aws_iam_server_certificate
 aws_region -[#1A83AF]-> aws_service_quota
+aws_region -[#1A83AF]-> aws_iam_server_certificate
+aws_service_quota -[#1A83AF]-> aws_iam_server_certificate
 
 @enduml
 ```
@@ -11645,7 +11645,7 @@ aws_region -[#1A83AF]-> aws_service_quota
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_iam_user data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_iam_user data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11669,9 +11669,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -11684,12 +11681,16 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
+class aws_iam_virtual_mfa_device [[#aws_iam_virtual_mfa_device]] {
+**serial_number**: string
+**enable_date**: datetime
+}
 class aws_iam_policy_detail [[#aws_iam_policy_detail]] {
 **policy_name**: string
 **policy_document**: dictionary[string, any]
-}
-class user [[#user]] {
-
 }
 class aws_iam_user [[#aws_iam_user]] {
 **path**: string
@@ -11702,21 +11703,20 @@ class aws_iam_user [[#aws_iam_user]] {
 **mfa_active**: boolean
 **user_virtual_mfa_devices**: aws_iam_virtual_mfa_device[]
 }
+class user [[#user]] {
+
+}
 class aws_iam_attached_permissions_boundary [[#aws_iam_attached_permissions_boundary]] {
 **permissions_boundary_type**: string
 **permissions_boundary_arn**: string
 }
-class aws_iam_virtual_mfa_device [[#aws_iam_virtual_mfa_device]] {
-**serial_number**: string
-**enable_date**: datetime
-}
 resource <|--- aws_resource
-resource <|--- user
 aws_resource <|--- aws_iam_user
 user <|--- aws_iam_user
 aws_iam_user --> aws_iam_policy_detail
 aws_iam_user --> aws_iam_attached_permissions_boundary
 aws_iam_user --> aws_iam_virtual_mfa_device
+resource <|--- user
 
 @enduml
 ```
@@ -11728,7 +11728,7 @@ aws_iam_user --> aws_iam_virtual_mfa_device
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_iam_user resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_iam_user resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11752,24 +11752,24 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class aws_iam_group [[#aws_iam_group]] {
+
+}
 class aws_iam_user [[#aws_iam_user]] {
 
 }
 class aws_iam_policy [[#aws_iam_policy]] {
 
 }
-class aws_iam_group [[#aws_iam_group]] {
-
-}
 class aws_region [[#aws_region]] {
 
 }
-aws_iam_user -[#1A83AF]-> aws_iam_policy
 aws_iam_group -[#1A83AF]-> aws_iam_user
 aws_iam_group -[#1A83AF]-> aws_iam_policy
+aws_iam_user -[#1A83AF]-> aws_iam_policy
+aws_region -[#1A83AF]-> aws_iam_user
 aws_region -[#1A83AF]-> aws_iam_policy
 aws_region -[#1A83AF]-> aws_iam_group
-aws_region -[#1A83AF]-> aws_iam_user
 
 @enduml
 ```
@@ -11782,7 +11782,7 @@ aws_region -[#1A83AF]-> aws_iam_user
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_kinesis_stream data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_kinesis_stream data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11806,9 +11806,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -11821,15 +11818,8 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class aws_kinesis_stream [[#aws_kinesis_stream]] {
-**kinesis_stream_status**: string
-**kinesis_stream_mode_details**: string
-**kinesis_shards**: aws_kinesis_shard[]
-**kinesis_has_more_shards**: boolean
-**kinesis_retention_period_hours**: int64
-**kinesis_enhanced_monitoring**: aws_kinesis_enhanced_metrics[]
-**kinesis_encryption_type**: string
-**kinesis_key_id**: string
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_kinesis_shard [[#aws_kinesis_shard]] {
 **shard_id**: string
@@ -11849,12 +11839,22 @@ class aws_kinesis_sequence_number_range [[#aws_kinesis_sequence_number_range]] {
 class aws_kinesis_enhanced_metrics [[#aws_kinesis_enhanced_metrics]] {
 **shard_level_metrics**: string[]
 }
+class aws_kinesis_stream [[#aws_kinesis_stream]] {
+**kinesis_stream_status**: string
+**kinesis_stream_mode_details**: string
+**kinesis_shards**: aws_kinesis_shard[]
+**kinesis_has_more_shards**: boolean
+**kinesis_retention_period_hours**: int64
+**kinesis_enhanced_monitoring**: aws_kinesis_enhanced_metrics[]
+**kinesis_encryption_type**: string
+**kinesis_key_id**: string
+}
 resource <|--- aws_resource
+aws_kinesis_shard --> aws_kinesis_hash_key_range
+aws_kinesis_shard --> aws_kinesis_sequence_number_range
 aws_resource <|--- aws_kinesis_stream
 aws_kinesis_stream --> aws_kinesis_shard
 aws_kinesis_stream --> aws_kinesis_enhanced_metrics
-aws_kinesis_shard --> aws_kinesis_hash_key_range
-aws_kinesis_shard --> aws_kinesis_sequence_number_range
 
 @enduml
 ```
@@ -11866,7 +11866,7 @@ aws_kinesis_shard --> aws_kinesis_sequence_number_range
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_kinesis_stream resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_kinesis_stream resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11893,20 +11893,20 @@ skinparam stereotypeIBackgroundColor #e98df7
 class aws_kms_key [[#aws_kms_key]] {
 
 }
-class aws_dynamo_db_table [[#aws_dynamo_db_table]] {
+class aws_rds_cluster [[#aws_rds_cluster]] {
 
 }
 class aws_kinesis_stream [[#aws_kinesis_stream]] {
 
 }
-class aws_rds_cluster [[#aws_rds_cluster]] {
+class aws_dynamo_db_table [[#aws_dynamo_db_table]] {
 
 }
-aws_dynamo_db_table -[#1A83AF]-> aws_kinesis_stream
-aws_dynamo_db_table -[#1A83AF]-> aws_kms_key
-aws_kinesis_stream -[#1A83AF]-> aws_kms_key
-aws_rds_cluster -[#1A83AF]-> aws_kinesis_stream
 aws_rds_cluster -[#1A83AF]-> aws_kms_key
+aws_rds_cluster -[#1A83AF]-> aws_kinesis_stream
+aws_kinesis_stream -[#1A83AF]-> aws_kms_key
+aws_dynamo_db_table -[#1A83AF]-> aws_kms_key
+aws_dynamo_db_table -[#1A83AF]-> aws_kinesis_stream
 
 @enduml
 ```
@@ -11919,7 +11919,7 @@ aws_rds_cluster -[#1A83AF]-> aws_kms_key
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_kms_key data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_kms_key data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -11943,6 +11943,18 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
+}
 class aws_resource [[#aws_resource]] {
 **arn**: string
 }
@@ -11968,25 +11980,6 @@ class aws_kms_key [[#aws_kms_key]] {
 **kms_mac_algorithms**: string[]
 **kms_key_rotation_enabled**: boolean
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
-}
-class access_key [[#access_key]] {
-**access_key_status**: string
-}
-class aws_kms_multiregion_replica_key [[#aws_kms_multiregion_replica_key]] {
-**arn**: string
-**region**: string
-}
 class aws_kms_multiregion_config [[#aws_kms_multiregion_config]] {
 **multi_region_key_type**: string
 **primary_key**: aws_kms_multiregion_primary_key
@@ -11996,13 +11989,20 @@ class aws_kms_multiregion_primary_key [[#aws_kms_multiregion_primary_key]] {
 **arn**: string
 **region**: string
 }
+class aws_kms_multiregion_replica_key [[#aws_kms_multiregion_replica_key]] {
+**arn**: string
+**region**: string
+}
+class access_key [[#access_key]] {
+**access_key_status**: string
+}
 resource <|--- aws_resource
 aws_resource <|--- aws_kms_key
 access_key <|--- aws_kms_key
 aws_kms_key --> aws_kms_multiregion_config
-resource <|--- access_key
 aws_kms_multiregion_config --> aws_kms_multiregion_primary_key
 aws_kms_multiregion_config --> aws_kms_multiregion_replica_key
+resource <|--- access_key
 
 @enduml
 ```
@@ -12014,7 +12014,7 @@ aws_kms_multiregion_config --> aws_kms_multiregion_replica_key
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_kms_key resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_kms_key resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -12038,31 +12038,28 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_ecs_cluster [[#aws_ecs_cluster]] {
+class aws_sagemaker_labeling_job [[#aws_sagemaker_labeling_job]] {
 
 }
-class aws_kms_key [[#aws_kms_key]] {
-
-}
-class aws_sqs_queue [[#aws_sqs_queue]] {
+class aws_sns_topic [[#aws_sns_topic]] {
 
 }
 class aws_lambda_function [[#aws_lambda_function]] {
 
 }
-class aws_sagemaker_labeling_job [[#aws_sagemaker_labeling_job]] {
+class aws_sagemaker_training_job [[#aws_sagemaker_training_job]] {
 
 }
-class aws_sagemaker_hyper_parameter_tuning_job [[#aws_sagemaker_hyper_parameter_tuning_job]] {
+class aws_sagemaker_transform_job [[#aws_sagemaker_transform_job]] {
 
 }
-class aws_sagemaker_processing_job [[#aws_sagemaker_processing_job]] {
+class aws_kms_key [[#aws_kms_key]] {
 
 }
-class aws_sagemaker_auto_ml_job [[#aws_sagemaker_auto_ml_job]] {
+class aws_dynamo_db_global_table [[#aws_dynamo_db_global_table]] {
 
 }
-class aws_sagemaker_inference_recommendations_job [[#aws_sagemaker_inference_recommendations_job]] {
+class aws_sagemaker_notebook [[#aws_sagemaker_notebook]] {
 
 }
 class aws_rds_instance [[#aws_rds_instance]] {
@@ -12071,28 +12068,61 @@ class aws_rds_instance [[#aws_rds_instance]] {
 class aws_sagemaker_domain [[#aws_sagemaker_domain]] {
 
 }
+class aws_sagemaker_auto_ml_job [[#aws_sagemaker_auto_ml_job]] {
+
+}
 class aws_sagemaker_compilation_job [[#aws_sagemaker_compilation_job]] {
 
 }
-class aws_sagemaker_notebook [[#aws_sagemaker_notebook]] {
+class aws_sagemaker_inference_recommendations_job [[#aws_sagemaker_inference_recommendations_job]] {
 
 }
-class aws_sagemaker_training_job [[#aws_sagemaker_training_job]] {
+class aws_sagemaker_hyper_parameter_tuning_job [[#aws_sagemaker_hyper_parameter_tuning_job]] {
 
 }
 class aws_redshift_cluster [[#aws_redshift_cluster]] {
 
 }
+class aws_sagemaker_processing_job [[#aws_sagemaker_processing_job]] {
+
+}
+class aws_rds_cluster [[#aws_rds_cluster]] {
+
+}
+class aws_cognito_user_pool [[#aws_cognito_user_pool]] {
+
+}
+class aws_elasticache_replication_group [[#aws_elasticache_replication_group]] {
+
+}
+class aws_cloudwatch_log_group [[#aws_cloudwatch_log_group]] {
+
+}
+class aws_ec2_volume [[#aws_ec2_volume]] {
+
+}
+class aws_ec2_snapshot [[#aws_ec2_snapshot]] {
+
+}
+class aws_kinesis_stream [[#aws_kinesis_stream]] {
+
+}
+class aws_ecs_cluster [[#aws_ecs_cluster]] {
+
+}
+class aws_sqs_queue [[#aws_sqs_queue]] {
+
+}
 class aws_glacier_job [[#aws_glacier_job]] {
 
 }
-class aws_sagemaker_transform_job [[#aws_sagemaker_transform_job]] {
+class aws_sagemaker_edge_packaging_job [[#aws_sagemaker_edge_packaging_job]] {
 
 }
 class aws_dynamo_db_table [[#aws_dynamo_db_table]] {
 
 }
-class aws_kinesis_stream [[#aws_kinesis_stream]] {
+class aws_sagemaker_endpoint [[#aws_sagemaker_endpoint]] {
 
 }
 class aws_athena_work_group [[#aws_athena_work_group]] {
@@ -12101,89 +12131,59 @@ class aws_athena_work_group [[#aws_athena_work_group]] {
 class aws_cloud_trail [[#aws_cloud_trail]] {
 
 }
-class aws_sns_topic [[#aws_sns_topic]] {
-
-}
-class aws_cognito_user_pool [[#aws_cognito_user_pool]] {
-
-}
-class aws_sagemaker_edge_packaging_job [[#aws_sagemaker_edge_packaging_job]] {
-
-}
-class aws_sagemaker_endpoint [[#aws_sagemaker_endpoint]] {
-
-}
-class aws_ec2_snapshot [[#aws_ec2_snapshot]] {
-
-}
-class aws_ec2_volume [[#aws_ec2_volume]] {
-
-}
-class aws_cloudwatch_log_group [[#aws_cloudwatch_log_group]] {
-
-}
 class aws_efs_file_system [[#aws_efs_file_system]] {
 
 }
-class aws_dynamo_db_global_table [[#aws_dynamo_db_global_table]] {
-
-}
-class aws_rds_cluster [[#aws_rds_cluster]] {
-
-}
-class aws_elasticache_replication_group [[#aws_elasticache_replication_group]] {
-
-}
-aws_ecs_cluster -[#1A83AF]-> aws_kms_key
-aws_sqs_queue -[#1A83AF]-> aws_kms_key
-aws_lambda_function -[#1A83AF]-> aws_kms_key
-aws_sagemaker_labeling_job -[#1A83AF]-> aws_lambda_function
-aws_sagemaker_labeling_job -[#1A83AF]-> aws_sagemaker_transform_job
 aws_sagemaker_labeling_job -[#1A83AF]-> aws_sns_topic
+aws_sagemaker_labeling_job -[#1A83AF]-> aws_lambda_function
 aws_sagemaker_labeling_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_labeling_job -[#1A83AF]-> aws_sagemaker_transform_job
 aws_sagemaker_labeling_job -[#1A83AF]-> aws_kms_key
-aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_sagemaker_training_job
-aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_kms_key
-aws_sagemaker_processing_job -[#1A83AF]-> aws_sagemaker_training_job
-aws_sagemaker_processing_job -[#1A83AF]-> aws_kms_key
-aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_kms_key
+aws_sns_topic -[#1A83AF]-> aws_kms_key
+aws_lambda_function -[#1A83AF]-> aws_kms_key
+aws_sagemaker_training_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_transform_job -[#1A83AF]-> aws_kms_key
+aws_dynamo_db_global_table -[#1A83AF]-> aws_kms_key
+aws_sagemaker_notebook -[#1A83AF]-> aws_kms_key
+aws_rds_instance -[#1A83AF]-> aws_kms_key
+aws_sagemaker_domain -[#1A83AF]-> aws_kms_key
 aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_transform_job
 aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_training_job
 aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_processing_job
-aws_sagemaker_inference_recommendations_job -[#1A83AF]-> aws_sagemaker_endpoint
-aws_sagemaker_inference_recommendations_job -[#1A83AF]-> aws_kms_key
-aws_rds_instance -[#1A83AF]-> aws_kms_key
-aws_sagemaker_domain -[#1A83AF]-> aws_kms_key
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_kms_key
 aws_sagemaker_compilation_job -[#1A83AF]-> aws_kms_key
-aws_sagemaker_notebook -[#1A83AF]-> aws_kms_key
-aws_sagemaker_training_job -[#1A83AF]-> aws_kms_key
-aws_redshift_cluster -[#1A83AF]-> aws_sagemaker_processing_job
+aws_sagemaker_inference_recommendations_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_inference_recommendations_job -[#1A83AF]-> aws_sagemaker_endpoint
+aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_sagemaker_training_job
 aws_redshift_cluster -[#1A83AF]-> aws_kms_key
-aws_glacier_job -[#1A83AF]-> aws_kms_key
-aws_sagemaker_transform_job -[#1A83AF]-> aws_kms_key
-aws_dynamo_db_table -[#1A83AF]-> aws_kinesis_stream
-aws_dynamo_db_table -[#1A83AF]-> aws_kms_key
+aws_redshift_cluster -[#1A83AF]-> aws_sagemaker_processing_job
+aws_sagemaker_processing_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_processing_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_rds_cluster -[#1A83AF]-> aws_kms_key
+aws_rds_cluster -[#1A83AF]-> aws_rds_instance
+aws_rds_cluster -[#1A83AF]-> aws_kinesis_stream
+aws_cognito_user_pool -[#1A83AF]-> aws_kms_key
+aws_cognito_user_pool -[#1A83AF]-> aws_lambda_function
+aws_elasticache_replication_group -[#1A83AF]-> aws_kms_key
+aws_cloudwatch_log_group -[#1A83AF]-> aws_kms_key
+aws_ec2_volume -[#1A83AF]-> aws_kms_key
+aws_ec2_volume -[#1A83AF]-> aws_ec2_snapshot
+aws_ec2_snapshot -[#1A83AF]-> aws_kms_key
 aws_kinesis_stream -[#1A83AF]-> aws_kms_key
+aws_ecs_cluster -[#1A83AF]-> aws_kms_key
+aws_sqs_queue -[#1A83AF]-> aws_kms_key
+aws_glacier_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_edge_packaging_job -[#1A83AF]-> aws_kms_key
+aws_dynamo_db_table -[#1A83AF]-> aws_kms_key
+aws_dynamo_db_table -[#1A83AF]-> aws_kinesis_stream
+aws_sagemaker_endpoint -[#1A83AF]-> aws_kms_key
+aws_sagemaker_endpoint -[#1A83AF]-> aws_sns_topic
 aws_athena_work_group -[#1A83AF]-> aws_kms_key
 aws_athena_work_group -[#1A83AF]-> aws_sagemaker_processing_job
 aws_cloud_trail -[#1A83AF]-> aws_kms_key
 aws_cloud_trail -[#1A83AF]-> aws_sns_topic
-aws_sns_topic -[#1A83AF]-> aws_kms_key
-aws_cognito_user_pool -[#1A83AF]-> aws_lambda_function
-aws_cognito_user_pool -[#1A83AF]-> aws_kms_key
-aws_sagemaker_edge_packaging_job -[#1A83AF]-> aws_kms_key
-aws_sagemaker_endpoint -[#1A83AF]-> aws_sns_topic
-aws_sagemaker_endpoint -[#1A83AF]-> aws_kms_key
-aws_ec2_snapshot -[#1A83AF]-> aws_kms_key
-aws_ec2_volume -[#1A83AF]-> aws_ec2_snapshot
-aws_ec2_volume -[#1A83AF]-> aws_kms_key
-aws_cloudwatch_log_group -[#1A83AF]-> aws_kms_key
 aws_efs_file_system -[#1A83AF]-> aws_kms_key
-aws_dynamo_db_global_table -[#1A83AF]-> aws_kms_key
-aws_rds_cluster -[#1A83AF]-> aws_kinesis_stream
-aws_rds_cluster -[#1A83AF]-> aws_rds_instance
-aws_rds_cluster -[#1A83AF]-> aws_kms_key
-aws_elasticache_replication_group -[#1A83AF]-> aws_kms_key
 
 @enduml
 ```
@@ -12196,7 +12196,7 @@ aws_elasticache_replication_group -[#1A83AF]-> aws_kms_key
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_lambda_function data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_lambda_function data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -12220,9 +12220,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -12234,6 +12231,15 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_lambda_layer [[#aws_lambda_layer]] {
+**arn**: string
+**code_size**: int64
+**signing_profile_version_arn**: string
+**signing_job_arn**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_lambda_function [[#aws_lambda_function]] {
 **function_runtime**: string
@@ -12268,24 +12274,6 @@ class aws_lambda_function [[#aws_lambda_function]] {
 **function_policy**: aws_lambda_policy
 **function_url_config**: aws_lambda_function_url_config
 }
-class aws_lambda_environment_response [[#aws_lambda_environment_response]] {
-**variables**: dictionary[string, string]
-**error**: aws_lambda_environment_error
-}
-class aws_lambda_environment_error [[#aws_lambda_environment_error]] {
-**error_code**: string
-**message**: string
-}
-class aws_lambda_file_system_config [[#aws_lambda_file_system_config]] {
-**arn**: string
-**local_mount_source_arn**: string
-}
-class aws_lambda_layer [[#aws_lambda_layer]] {
-**arn**: string
-**code_size**: int64
-**signing_profile_version_arn**: string
-**signing_job_arn**: string
-}
 class aws_lambda_image_config_response [[#aws_lambda_image_config_response]] {
 **image_config**: aws_lambda_image_config
 **error**: aws_lambda_image_config_error
@@ -12309,6 +12297,18 @@ class aws_lambda_policy_statement [[#aws_lambda_policy_statement]] {
 }
 class serverless_function [[#serverless_function]] {
 
+}
+class aws_lambda_environment_response [[#aws_lambda_environment_response]] {
+**variables**: dictionary[string, string]
+**error**: aws_lambda_environment_error
+}
+class aws_lambda_environment_error [[#aws_lambda_environment_error]] {
+**error_code**: string
+**message**: string
+}
+class aws_lambda_file_system_config [[#aws_lambda_file_system_config]] {
+**arn**: string
+**local_mount_source_arn**: string
 }
 class aws_lambda_policy [[#aws_lambda_policy]] {
 **id**: string
@@ -12340,10 +12340,10 @@ aws_lambda_function --> aws_lambda_file_system_config
 aws_lambda_function --> aws_lambda_image_config_response
 aws_lambda_function --> aws_lambda_policy
 aws_lambda_function --> aws_lambda_function_url_config
-aws_lambda_environment_response --> aws_lambda_environment_error
 aws_lambda_image_config_response --> aws_lambda_image_config
 aws_lambda_image_config_response --> aws_lambda_image_config_error
 resource <|--- serverless_function
+aws_lambda_environment_response --> aws_lambda_environment_error
 aws_lambda_policy --> aws_lambda_policy_statement
 aws_lambda_function_url_config --> aws_lambda_cors
 
@@ -12357,7 +12357,7 @@ aws_lambda_function_url_config --> aws_lambda_cors
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_lambda_function resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_lambda_function resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -12381,28 +12381,28 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_kms_key [[#aws_kms_key]] {
+class aws_vpc [[#aws_vpc]] {
 
 }
 class aws_ec2_subnet [[#aws_ec2_subnet]] {
 
 }
-class aws_lambda_function [[#aws_lambda_function]] {
-
-}
 class aws_sagemaker_labeling_job [[#aws_sagemaker_labeling_job]] {
 
 }
-class aws_cloudfront_distribution [[#aws_cloudfront_distribution]] {
+class aws_lambda_function [[#aws_lambda_function]] {
 
 }
-class aws_vpc [[#aws_vpc]] {
-
-}
-class aws_api_gateway_resource [[#aws_api_gateway_resource]] {
+class aws_kms_key [[#aws_kms_key]] {
 
 }
 class aws_api_gateway_authorizer [[#aws_api_gateway_authorizer]] {
+
+}
+class aws_ec2_security_group [[#aws_ec2_security_group]] {
+
+}
+class aws_api_gateway_resource [[#aws_api_gateway_resource]] {
 
 }
 class aws_cognito_user_pool [[#aws_cognito_user_pool]] {
@@ -12411,28 +12411,28 @@ class aws_cognito_user_pool [[#aws_cognito_user_pool]] {
 class aws_api_gateway_rest_api [[#aws_api_gateway_rest_api]] {
 
 }
-class aws_ec2_security_group [[#aws_ec2_security_group]] {
+class aws_cloudfront_distribution [[#aws_cloudfront_distribution]] {
 
 }
-aws_ec2_subnet -[#1A83AF]-> aws_lambda_function
-aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_labeling_job
-aws_lambda_function -[#1A83AF]-> aws_kms_key
-aws_sagemaker_labeling_job -[#1A83AF]-> aws_lambda_function
-aws_sagemaker_labeling_job -[#1A83AF]-> aws_kms_key
-aws_cloudfront_distribution -[#1A83AF]-> aws_lambda_function
+aws_vpc -[#1A83AF]-> aws_ec2_security_group
 aws_vpc -[#1A83AF]-> aws_lambda_function
 aws_vpc -[#1A83AF]-> aws_ec2_subnet
-aws_vpc -[#1A83AF]-> aws_ec2_security_group
-aws_api_gateway_resource -[#1A83AF]-> aws_lambda_function
-aws_api_gateway_resource -[#1A83AF]-> aws_api_gateway_authorizer
+aws_ec2_subnet -[#1A83AF]-> aws_lambda_function
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_labeling_job
+aws_sagemaker_labeling_job -[#1A83AF]-> aws_lambda_function
+aws_sagemaker_labeling_job -[#1A83AF]-> aws_kms_key
+aws_lambda_function -[#1A83AF]-> aws_kms_key
 aws_api_gateway_authorizer -[#1A83AF]-> aws_lambda_function
-aws_cognito_user_pool -[#1A83AF]-> aws_lambda_function
-aws_cognito_user_pool -[#1A83AF]-> aws_kms_key
-aws_api_gateway_rest_api -[#1A83AF]-> aws_lambda_function
-aws_api_gateway_rest_api -[#1A83AF]-> aws_api_gateway_resource
-aws_api_gateway_rest_api -[#1A83AF]-> aws_api_gateway_authorizer
-aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_labeling_job
 aws_ec2_security_group -[#1A83AF]-> aws_lambda_function
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_labeling_job
+aws_api_gateway_resource -[#1A83AF]-> aws_api_gateway_authorizer
+aws_api_gateway_resource -[#1A83AF]-> aws_lambda_function
+aws_cognito_user_pool -[#1A83AF]-> aws_kms_key
+aws_cognito_user_pool -[#1A83AF]-> aws_lambda_function
+aws_api_gateway_rest_api -[#1A83AF]-> aws_api_gateway_authorizer
+aws_api_gateway_rest_api -[#1A83AF]-> aws_api_gateway_resource
+aws_api_gateway_rest_api -[#1A83AF]-> aws_lambda_function
+aws_cloudfront_distribution -[#1A83AF]-> aws_lambda_function
 
 @enduml
 ```
@@ -12445,7 +12445,7 @@ aws_ec2_security_group -[#1A83AF]-> aws_lambda_function
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_rds_cluster data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_rds_cluster data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -12469,15 +12469,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
-class aws_rds_domain_membership [[#aws_rds_domain_membership]] {
-**domain**: string
-**status**: string
-**fqdn**: string
-**iam_role_name**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -12490,57 +12481,8 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class database [[#database]] {
-**db_type**: string
-**db_status**: string
-**db_endpoint**: string
-**db_version**: string
-**db_publicly_accessible**: boolean
-**instance_type**: string
-**volume_size**: int64
-**volume_iops**: int64
-**volume_encrypted**: boolean
-}
-class aws_rds_scaling_configuration_info [[#aws_rds_scaling_configuration_info]] {
-**min_capacity**: int64
-**max_capacity**: int64
-**auto_pause**: boolean
-**seconds_until_auto_pause**: int64
-**timeout_action**: string
-**seconds_before_timeout**: int64
-}
-class aws_rds_pending_cloudwatch_logs_exports [[#aws_rds_pending_cloudwatch_logs_exports]] {
-**log_types_to_enable**: string[]
-**log_types_to_disable**: string[]
-}
-class aws_rds_vpc_security_group_membership [[#aws_rds_vpc_security_group_membership]] {
-**vpc_security_group_id**: string
-**status**: string
-}
-class aws_rds_db_role [[#aws_rds_db_role]] {
-**role_arn**: string
-**feature_name**: string
-**status**: string
-}
-class aws_rds_db_cluster_member [[#aws_rds_db_cluster_member]] {
-**db_instance_identifier**: string
-**is_cluster_writer**: boolean
-**db_cluster_parameter_group_status**: string
-**promotion_tier**: int64
-}
-class aws_rds_cluster_pending_modified_values [[#aws_rds_cluster_pending_modified_values]] {
-**pending_cloudwatch_logs_exports**: aws_rds_pending_cloudwatch_logs_exports
-**db_cluster_identifier**: string
-**master_user_password**: string
-**iam_database_authentication_enabled**: boolean
-**engine_version**: string
-**backup_retention_period**: int64
-**allocated_storage**: int64
-**iops**: int64
-}
-class aws_rds_serverless_v2_scaling_configuration_info [[#aws_rds_serverless_v2_scaling_configuration_info]] {
-**min_capacity**: double
-**max_capacity**: double
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_rds_cluster [[#aws_rds_cluster]] {
 **rds_allocated_storage**: int64
@@ -12614,9 +12556,65 @@ class aws_rds_db_cluster_option_group_status [[#aws_rds_db_cluster_option_group_
 **db_cluster_option_group_name**: string
 **status**: string
 }
+class database [[#database]] {
+**db_type**: string
+**db_status**: string
+**db_endpoint**: string
+**db_version**: string
+**db_publicly_accessible**: boolean
+**instance_type**: string
+**volume_size**: int64
+**volume_iops**: int64
+**volume_encrypted**: boolean
+}
+class aws_rds_db_cluster_member [[#aws_rds_db_cluster_member]] {
+**db_instance_identifier**: string
+**is_cluster_writer**: boolean
+**db_cluster_parameter_group_status**: string
+**promotion_tier**: int64
+}
+class aws_rds_vpc_security_group_membership [[#aws_rds_vpc_security_group_membership]] {
+**vpc_security_group_id**: string
+**status**: string
+}
+class aws_rds_db_role [[#aws_rds_db_role]] {
+**role_arn**: string
+**feature_name**: string
+**status**: string
+}
+class aws_rds_scaling_configuration_info [[#aws_rds_scaling_configuration_info]] {
+**min_capacity**: int64
+**max_capacity**: int64
+**auto_pause**: boolean
+**seconds_until_auto_pause**: int64
+**timeout_action**: string
+**seconds_before_timeout**: int64
+}
+class aws_rds_domain_membership [[#aws_rds_domain_membership]] {
+**domain**: string
+**status**: string
+**fqdn**: string
+**iam_role_name**: string
+}
+class aws_rds_cluster_pending_modified_values [[#aws_rds_cluster_pending_modified_values]] {
+**pending_cloudwatch_logs_exports**: aws_rds_pending_cloudwatch_logs_exports
+**db_cluster_identifier**: string
+**master_user_password**: string
+**iam_database_authentication_enabled**: boolean
+**engine_version**: string
+**backup_retention_period**: int64
+**allocated_storage**: int64
+**iops**: int64
+}
+class aws_rds_pending_cloudwatch_logs_exports [[#aws_rds_pending_cloudwatch_logs_exports]] {
+**log_types_to_enable**: string[]
+**log_types_to_disable**: string[]
+}
+class aws_rds_serverless_v2_scaling_configuration_info [[#aws_rds_serverless_v2_scaling_configuration_info]] {
+**min_capacity**: double
+**max_capacity**: double
+}
 resource <|--- aws_resource
-resource <|--- database
-aws_rds_cluster_pending_modified_values --> aws_rds_pending_cloudwatch_logs_exports
 aws_resource <|--- aws_rds_cluster
 database <|--- aws_rds_cluster
 aws_rds_cluster --> aws_rds_db_cluster_option_group_status
@@ -12628,6 +12626,8 @@ aws_rds_cluster --> aws_rds_domain_membership
 aws_rds_cluster --> aws_rds_cluster_pending_modified_values
 aws_rds_cluster --> aws_rds_serverless_v2_scaling_configuration_info
 aws_rds_cluster --> aws_rds_master_user_secret
+resource <|--- database
+aws_rds_cluster_pending_modified_values --> aws_rds_pending_cloudwatch_logs_exports
 
 @enduml
 ```
@@ -12639,7 +12639,7 @@ aws_rds_cluster --> aws_rds_master_user_secret
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_rds_cluster resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_rds_cluster resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -12666,25 +12666,25 @@ skinparam stereotypeIBackgroundColor #e98df7
 class aws_kms_key [[#aws_kms_key]] {
 
 }
-class aws_rds_instance [[#aws_rds_instance]] {
-
-}
-class aws_kinesis_stream [[#aws_kinesis_stream]] {
-
-}
 class aws_ec2_security_group [[#aws_ec2_security_group]] {
+
+}
+class aws_rds_instance [[#aws_rds_instance]] {
 
 }
 class aws_rds_cluster [[#aws_rds_cluster]] {
 
 }
-aws_rds_instance -[#1A83AF]-> aws_kms_key
-aws_kinesis_stream -[#1A83AF]-> aws_kms_key
+class aws_kinesis_stream [[#aws_kinesis_stream]] {
+
+}
 aws_ec2_security_group -[#1A83AF]-> aws_rds_instance
 aws_ec2_security_group -[#1A83AF]-> aws_rds_cluster
-aws_rds_cluster -[#1A83AF]-> aws_kinesis_stream
-aws_rds_cluster -[#1A83AF]-> aws_rds_instance
+aws_rds_instance -[#1A83AF]-> aws_kms_key
 aws_rds_cluster -[#1A83AF]-> aws_kms_key
+aws_rds_cluster -[#1A83AF]-> aws_rds_instance
+aws_rds_cluster -[#1A83AF]-> aws_kinesis_stream
+aws_kinesis_stream -[#1A83AF]-> aws_kms_key
 
 @enduml
 ```
@@ -12697,7 +12697,7 @@ aws_rds_cluster -[#1A83AF]-> aws_kms_key
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_rds_instance data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_rds_instance data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -12721,15 +12721,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
-class aws_rds_domain_membership [[#aws_rds_domain_membership]] {
-**domain**: string
-**status**: string
-**fqdn**: string
-**iam_role_name**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -12741,6 +12732,13 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
+class aws_rds_db_security_group_membership [[#aws_rds_db_security_group_membership]] {
+**db_security_group_name**: string
+**status**: string
 }
 class aws_rds_instance [[#aws_rds_instance]] {
 **rds_automatic_restart_time**: datetime
@@ -12805,6 +12803,31 @@ class aws_rds_instance [[#aws_rds_instance]] {
 **rds_backup_target**: string
 **rds_network_type**: string
 }
+class aws_rds_db_subnet_group [[#aws_rds_db_subnet_group]] {
+**db_subnet_group_name**: string
+**db_subnet_group_description**: string
+**vpc_id**: string
+**subnet_group_status**: string
+**subnets**: aws_rds_subnet[]
+**db_subnet_group_arn**: string
+**supported_network_types**: string[]
+}
+class aws_rds_subnet [[#aws_rds_subnet]] {
+**subnet_identifier**: string
+**subnet_availability_zone**: string
+**subnet_outpost**: string
+**subnet_status**: string
+}
+class aws_rds_db_instance_status_info [[#aws_rds_db_instance_status_info]] {
+**status_type**: string
+**normal**: boolean
+**status**: string
+**message**: string
+}
+class aws_rds_option_group_membership [[#aws_rds_option_group_membership]] {
+**option_group_name**: string
+**status**: string
+}
 class database [[#database]] {
 **db_type**: string
 **db_status**: string
@@ -12816,15 +12839,28 @@ class database [[#database]] {
 **volume_iops**: int64
 **volume_encrypted**: boolean
 }
+class aws_rds_vpc_security_group_membership [[#aws_rds_vpc_security_group_membership]] {
+**vpc_security_group_id**: string
+**status**: string
+}
+class aws_rds_db_role [[#aws_rds_db_role]] {
+**role_arn**: string
+**feature_name**: string
+**status**: string
+}
+class aws_rds_domain_membership [[#aws_rds_domain_membership]] {
+**domain**: string
+**status**: string
+**fqdn**: string
+**iam_role_name**: string
+}
+class aws_rds_pending_cloudwatch_logs_exports [[#aws_rds_pending_cloudwatch_logs_exports]] {
+**log_types_to_enable**: string[]
+**log_types_to_disable**: string[]
+}
 class aws_rds_db_parameter_group_status [[#aws_rds_db_parameter_group_status]] {
 **db_parameter_group_name**: string
 **parameter_apply_status**: string
-}
-class aws_rds_subnet [[#aws_rds_subnet]] {
-**subnet_identifier**: string
-**subnet_availability_zone**: string
-**subnet_outpost**: string
-**subnet_status**: string
 }
 class aws_rds_pending_modified_values [[#aws_rds_pending_modified_values]] {
 **db_instance_class**: string
@@ -12846,45 +12882,9 @@ class aws_rds_pending_modified_values [[#aws_rds_pending_modified_values]] {
 **automation_mode**: string
 **resume_full_automation_mode_time**: datetime
 }
-class aws_rds_pending_cloudwatch_logs_exports [[#aws_rds_pending_cloudwatch_logs_exports]] {
-**log_types_to_enable**: string[]
-**log_types_to_disable**: string[]
-}
 class aws_rds_processor_feature [[#aws_rds_processor_feature]] {
 **name**: string
 **value**: string
-}
-class aws_rds_db_security_group_membership [[#aws_rds_db_security_group_membership]] {
-**db_security_group_name**: string
-**status**: string
-}
-class aws_rds_vpc_security_group_membership [[#aws_rds_vpc_security_group_membership]] {
-**vpc_security_group_id**: string
-**status**: string
-}
-class aws_rds_db_subnet_group [[#aws_rds_db_subnet_group]] {
-**db_subnet_group_name**: string
-**db_subnet_group_description**: string
-**vpc_id**: string
-**subnet_group_status**: string
-**subnets**: aws_rds_subnet[]
-**db_subnet_group_arn**: string
-**supported_network_types**: string[]
-}
-class aws_rds_option_group_membership [[#aws_rds_option_group_membership]] {
-**option_group_name**: string
-**status**: string
-}
-class aws_rds_db_instance_status_info [[#aws_rds_db_instance_status_info]] {
-**status_type**: string
-**normal**: boolean
-**status**: string
-**message**: string
-}
-class aws_rds_db_role [[#aws_rds_db_role]] {
-**role_arn**: string
-**feature_name**: string
-**status**: string
 }
 class aws_rds_endpoint [[#aws_rds_endpoint]] {
 **address**: string
@@ -12905,10 +12905,10 @@ aws_rds_instance --> aws_rds_domain_membership
 aws_rds_instance --> aws_rds_processor_feature
 aws_rds_instance --> aws_rds_db_role
 aws_rds_instance --> aws_rds_endpoint
+aws_rds_db_subnet_group --> aws_rds_subnet
 resource <|--- database
 aws_rds_pending_modified_values --> aws_rds_pending_cloudwatch_logs_exports
 aws_rds_pending_modified_values --> aws_rds_processor_feature
-aws_rds_db_subnet_group --> aws_rds_subnet
 
 @enduml
 ```
@@ -12920,7 +12920,7 @@ aws_rds_db_subnet_group --> aws_rds_subnet
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_rds_instance resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_rds_instance resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -12944,19 +12944,19 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_kms_key [[#aws_kms_key]] {
+class aws_vpc [[#aws_vpc]] {
 
 }
 class aws_ec2_subnet [[#aws_ec2_subnet]] {
 
 }
-class aws_rds_instance [[#aws_rds_instance]] {
-
-}
-class aws_vpc [[#aws_vpc]] {
+class aws_kms_key [[#aws_kms_key]] {
 
 }
 class aws_ec2_security_group [[#aws_ec2_security_group]] {
+
+}
+class aws_rds_instance [[#aws_rds_instance]] {
 
 }
 class aws_rds_cluster [[#aws_rds_cluster]] {
@@ -12965,19 +12965,19 @@ class aws_rds_cluster [[#aws_rds_cluster]] {
 class aws_region [[#aws_region]] {
 
 }
-aws_ec2_subnet -[#1A83AF]-> aws_rds_instance
-aws_rds_instance -[#1A83AF]-> aws_kms_key
-aws_vpc -[#1A83AF]-> aws_ec2_subnet
 aws_vpc -[#1A83AF]-> aws_rds_instance
 aws_vpc -[#1A83AF]-> aws_ec2_security_group
+aws_vpc -[#1A83AF]-> aws_ec2_subnet
+aws_ec2_subnet -[#1A83AF]-> aws_rds_instance
 aws_ec2_security_group -[#1A83AF]-> aws_rds_instance
 aws_ec2_security_group -[#1A83AF]-> aws_rds_cluster
-aws_rds_cluster -[#1A83AF]-> aws_rds_instance
+aws_rds_instance -[#1A83AF]-> aws_kms_key
 aws_rds_cluster -[#1A83AF]-> aws_kms_key
-aws_region -[#1A83AF]-> aws_vpc
+aws_rds_cluster -[#1A83AF]-> aws_rds_instance
 aws_region -[#1A83AF]-> aws_rds_instance
-aws_region -[#1A83AF]-> aws_ec2_subnet
+aws_region -[#1A83AF]-> aws_vpc
 aws_region -[#1A83AF]-> aws_ec2_security_group
+aws_region -[#1A83AF]-> aws_ec2_subnet
 
 @enduml
 ```
@@ -12990,7 +12990,7 @@ aws_region -[#1A83AF]-> aws_ec2_security_group
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_redshift_cluster data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_redshift_cluster data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -13014,13 +13014,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_redshift_cluster_iam_role [[#aws_redshift_cluster_iam_role]] {
-**iam_role_arn**: string
-**apply_status**: string
-}
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -13032,6 +13025,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_redshift_cluster [[#aws_redshift_cluster]] {
 **redshift_node_type**: string
@@ -13084,20 +13080,6 @@ class aws_redshift_cluster [[#aws_redshift_cluster]] {
 **redshift_default_iam_role_arn**: string
 **redshift_reserved_node_exchange_status**: aws_redshift_reserved_node_exchange_status
 }
-class aws_redshift_cluster_snapshot_copy_status [[#aws_redshift_cluster_snapshot_copy_status]] {
-**destination_region**: string
-**retention_period**: int64
-**manual_snapshot_retention_period**: int64
-**snapshot_copy_grant_name**: string
-}
-class aws_redshift_restore_status [[#aws_redshift_restore_status]] {
-**status**: string
-**current_restore_rate_in_mega_bytes_per_second**: double
-**snapshot_size_in_mega_bytes**: int64
-**progress_in_mega_bytes**: int64
-**elapsed_time_in_seconds**: int64
-**estimated_time_to_completion_in_seconds**: int64
-}
 class aws_redshift_endpoint [[#aws_redshift_endpoint]] {
 **address**: string
 **port**: int64
@@ -13113,37 +13095,6 @@ class aws_redshift_network_interface [[#aws_redshift_network_interface]] {
 **subnet_id**: string
 **private_ip_address**: string
 **availability_zone**: string
-}
-class aws_redshift_hsm_status [[#aws_redshift_hsm_status]] {
-**hsm_client_certificate_identifier**: string
-**hsm_configuration_identifier**: string
-**status**: string
-}
-class aws_redshift_elastic_ip_status [[#aws_redshift_elastic_ip_status]] {
-**elastic_ip**: string
-**status**: string
-}
-class aws_redshift_resize_info [[#aws_redshift_resize_info]] {
-**resize_type**: string
-**allow_cancel_resize**: boolean
-}
-class aws_redshift_pending_modified_values [[#aws_redshift_pending_modified_values]] {
-**master_user_password**: string
-**node_type**: string
-**number_of_nodes**: int64
-**cluster_type**: string
-**cluster_version**: string
-**automated_snapshot_retention_period**: int64
-**cluster_identifier**: string
-**publicly_accessible**: boolean
-**enhanced_vpc_routing**: boolean
-**maintenance_track_name**: string
-**encryption_type**: string
-}
-class aws_redshift_deferred_maintenance_window [[#aws_redshift_deferred_maintenance_window]] {
-**defer_maintenance_identifier**: string
-**defer_maintenance_start_time**: datetime
-**defer_maintenance_end_time**: datetime
 }
 class aws_redshift_cluster_security_group_membership [[#aws_redshift_cluster_security_group_membership]] {
 **cluster_security_group_name**: string
@@ -13163,6 +13114,27 @@ class aws_redshift_cluster_parameter_status [[#aws_redshift_cluster_parameter_st
 **parameter_apply_status**: string
 **parameter_apply_error_description**: string
 }
+class aws_redshift_pending_modified_values [[#aws_redshift_pending_modified_values]] {
+**master_user_password**: string
+**node_type**: string
+**number_of_nodes**: int64
+**cluster_type**: string
+**cluster_version**: string
+**automated_snapshot_retention_period**: int64
+**cluster_identifier**: string
+**publicly_accessible**: boolean
+**enhanced_vpc_routing**: boolean
+**maintenance_track_name**: string
+**encryption_type**: string
+}
+class aws_redshift_restore_status [[#aws_redshift_restore_status]] {
+**status**: string
+**current_restore_rate_in_mega_bytes_per_second**: double
+**snapshot_size_in_mega_bytes**: int64
+**progress_in_mega_bytes**: int64
+**elapsed_time_in_seconds**: int64
+**estimated_time_to_completion_in_seconds**: int64
+}
 class aws_redshift_data_transfer_progress [[#aws_redshift_data_transfer_progress]] {
 **status**: string
 **current_rate_in_mega_bytes_per_second**: double
@@ -13171,10 +13143,38 @@ class aws_redshift_data_transfer_progress [[#aws_redshift_data_transfer_progress
 **estimated_time_to_completion_in_seconds**: int64
 **elapsed_time_in_seconds**: int64
 }
+class aws_redshift_hsm_status [[#aws_redshift_hsm_status]] {
+**hsm_client_certificate_identifier**: string
+**hsm_configuration_identifier**: string
+**status**: string
+}
+class aws_redshift_cluster_snapshot_copy_status [[#aws_redshift_cluster_snapshot_copy_status]] {
+**destination_region**: string
+**retention_period**: int64
+**manual_snapshot_retention_period**: int64
+**snapshot_copy_grant_name**: string
+}
 class aws_redshift_cluster_node [[#aws_redshift_cluster_node]] {
 **node_role**: string
 **private_ip_address**: string
 **public_ip_address**: string
+}
+class aws_redshift_elastic_ip_status [[#aws_redshift_elastic_ip_status]] {
+**elastic_ip**: string
+**status**: string
+}
+class aws_redshift_cluster_iam_role [[#aws_redshift_cluster_iam_role]] {
+**iam_role_arn**: string
+**apply_status**: string
+}
+class aws_redshift_deferred_maintenance_window [[#aws_redshift_deferred_maintenance_window]] {
+**defer_maintenance_identifier**: string
+**defer_maintenance_start_time**: datetime
+**defer_maintenance_end_time**: datetime
+}
+class aws_redshift_resize_info [[#aws_redshift_resize_info]] {
+**resize_type**: string
+**allow_cancel_resize**: boolean
 }
 class aws_redshift_aqua_configuration [[#aws_redshift_aqua_configuration]] {
 **aqua_status**: string
@@ -13223,7 +13223,7 @@ aws_redshift_cluster_parameter_group_status --> aws_redshift_cluster_parameter_s
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_redshift_cluster resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_redshift_cluster resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -13247,37 +13247,37 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_kms_key [[#aws_kms_key]] {
+class aws_vpc [[#aws_vpc]] {
 
 }
 class aws_ec2_subnet [[#aws_ec2_subnet]] {
 
 }
-class aws_sagemaker_processing_job [[#aws_sagemaker_processing_job]] {
-
-}
-class aws_redshift_cluster [[#aws_redshift_cluster]] {
-
-}
-class aws_vpc [[#aws_vpc]] {
+class aws_kms_key [[#aws_kms_key]] {
 
 }
 class aws_ec2_security_group [[#aws_ec2_security_group]] {
 
 }
+class aws_redshift_cluster [[#aws_redshift_cluster]] {
+
+}
+class aws_sagemaker_processing_job [[#aws_sagemaker_processing_job]] {
+
+}
 class aws_iam_role [[#aws_iam_role]] {
 
 }
-aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_processing_job
-aws_ec2_subnet -[#1A83AF]-> aws_redshift_cluster
-aws_sagemaker_processing_job -[#1A83AF]-> aws_kms_key
-aws_redshift_cluster -[#1A83AF]-> aws_sagemaker_processing_job
-aws_redshift_cluster -[#1A83AF]-> aws_kms_key
-aws_vpc -[#1A83AF]-> aws_ec2_subnet
-aws_vpc -[#1A83AF]-> aws_redshift_cluster
 aws_vpc -[#1A83AF]-> aws_ec2_security_group
+aws_vpc -[#1A83AF]-> aws_redshift_cluster
+aws_vpc -[#1A83AF]-> aws_ec2_subnet
+aws_ec2_subnet -[#1A83AF]-> aws_redshift_cluster
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_processing_job
 aws_ec2_security_group -[#1A83AF]-> aws_redshift_cluster
 aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_processing_job
+aws_redshift_cluster -[#1A83AF]-> aws_kms_key
+aws_redshift_cluster -[#1A83AF]-> aws_sagemaker_processing_job
+aws_sagemaker_processing_job -[#1A83AF]-> aws_kms_key
 aws_iam_role -[#1A83AF]-> aws_redshift_cluster
 aws_iam_role -[#1A83AF]-> aws_sagemaker_processing_job
 
@@ -13292,7 +13292,7 @@ aws_iam_role -[#1A83AF]-> aws_sagemaker_processing_job
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_region data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_region data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -13316,9 +13316,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -13330,6 +13327,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class region [[#region]] {
 
@@ -13352,7 +13352,7 @@ aws_resource <|--- aws_region
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_region resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_region resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -13376,52 +13376,58 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_alb_target_group [[#aws_alb_target_group]] {
-
-}
-class aws_alb [[#aws_alb]] {
-
-}
-class aws_ec2_instance [[#aws_ec2_instance]] {
-
-}
-class aws_vpc_endpoint [[#aws_vpc_endpoint]] {
-
-}
-class aws_s3_bucket [[#aws_s3_bucket]] {
-
-}
-class aws_ec2_subnet [[#aws_ec2_subnet]] {
-
-}
-class aws_elb [[#aws_elb]] {
-
-}
-class aws_rds_instance [[#aws_rds_instance]] {
-
-}
-class aws_ec2_network_interface [[#aws_ec2_network_interface]] {
-
-}
-class aws_ec2_network_acl [[#aws_ec2_network_acl]] {
-
-}
 class aws_ec2_nat_gateway [[#aws_ec2_nat_gateway]] {
-
-}
-class aws_iam_server_certificate [[#aws_iam_server_certificate]] {
-
-}
-class aws_service_quota [[#aws_service_quota]] {
 
 }
 class aws_vpc [[#aws_vpc]] {
 
 }
-class aws_ec2_volume_type [[#aws_ec2_volume_type]] {
+class aws_ec2_network_interface [[#aws_ec2_network_interface]] {
 
 }
-class aws_ec2_instance_type [[#aws_ec2_instance_type]] {
+class aws_ec2_subnet [[#aws_ec2_subnet]] {
+
+}
+class aws_s3_bucket [[#aws_s3_bucket]] {
+
+}
+class aws_ec2_instance [[#aws_ec2_instance]] {
+
+}
+class aws_cloudformation_stack_set [[#aws_cloudformation_stack_set]] {
+
+}
+class aws_ec2_elastic_ip [[#aws_ec2_elastic_ip]] {
+
+}
+class aws_vpc_endpoint [[#aws_vpc_endpoint]] {
+
+}
+class aws_eks_cluster [[#aws_eks_cluster]] {
+
+}
+class aws_iam_server_certificate [[#aws_iam_server_certificate]] {
+
+}
+class aws_cloudwatch_alarm [[#aws_cloudwatch_alarm]] {
+
+}
+class aws_ec2_security_group [[#aws_ec2_security_group]] {
+
+}
+class aws_rds_instance [[#aws_rds_instance]] {
+
+}
+class aws_elb [[#aws_elb]] {
+
+}
+class aws_alb [[#aws_alb]] {
+
+}
+class aws_vpc_peering_connection [[#aws_vpc_peering_connection]] {
+
+}
+class aws_iam_group [[#aws_iam_group]] {
 
 }
 class aws_iam_user [[#aws_iam_user]] {
@@ -13430,149 +13436,143 @@ class aws_iam_user [[#aws_iam_user]] {
 class aws_iam_policy [[#aws_iam_policy]] {
 
 }
-class aws_account [[#aws_account]] {
-
-}
 class aws_autoscaling_group [[#aws_autoscaling_group]] {
 
 }
-class aws_ec2_internet_gateway [[#aws_ec2_internet_gateway]] {
-
-}
-class aws_cloudwatch_alarm [[#aws_cloudwatch_alarm]] {
-
-}
-class aws_ec2_snapshot [[#aws_ec2_snapshot]] {
-
-}
-class aws_ec2_route_table [[#aws_ec2_route_table]] {
-
-}
-class aws_vpc_peering_connection [[#aws_vpc_peering_connection]] {
-
-}
-class aws_ec2_security_group [[#aws_ec2_security_group]] {
-
-}
-class aws_iam_role [[#aws_iam_role]] {
-
-}
-class aws_iam_instance_profile [[#aws_iam_instance_profile]] {
-
-}
-class aws_eks_cluster [[#aws_eks_cluster]] {
-
-}
-class aws_ec2_volume [[#aws_ec2_volume]] {
-
-}
-class aws_ec2_elastic_ip [[#aws_ec2_elastic_ip]] {
-
-}
-class aws_ec2_keypair [[#aws_ec2_keypair]] {
-
-}
-class aws_cloudformation_stack [[#aws_cloudformation_stack]] {
-
-}
-class aws_cloudformation_stack_set [[#aws_cloudformation_stack_set]] {
-
-}
-class aws_iam_group [[#aws_iam_group]] {
+class aws_account [[#aws_account]] {
 
 }
 class aws_region [[#aws_region]] {
 
 }
-aws_alb_target_group -[#1A83AF]-> aws_ec2_instance
-aws_alb -[#1A83AF]-> aws_alb_target_group
-aws_ec2_instance -[#1A83AF]-> aws_cloudwatch_alarm
-aws_ec2_instance -[#1A83AF]-> aws_ec2_network_interface
-aws_ec2_instance -[#1A83AF]-> aws_ec2_elastic_ip
-aws_ec2_instance -[#1A83AF]-> aws_ec2_volume
-aws_ec2_instance -[#1A83AF]-> aws_ec2_keypair
-aws_vpc_endpoint -[#1A83AF]-> aws_ec2_network_interface
-aws_ec2_subnet -[#1A83AF]-> aws_elb
-aws_ec2_subnet -[#1A83AF]-> aws_vpc_endpoint
-aws_ec2_subnet -[#1A83AF]-> aws_rds_instance
-aws_ec2_subnet -[#1A83AF]-> aws_alb
-aws_ec2_subnet -[#1A83AF]-> aws_ec2_network_interface
-aws_elb -[#1A83AF]-> aws_ec2_instance
-aws_ec2_network_interface -[#1A83AF]-> aws_ec2_elastic_ip
-aws_ec2_network_acl -[#1A83AF]-> aws_ec2_subnet
-aws_ec2_nat_gateway -[#1A83AF]-> aws_ec2_subnet
+class aws_ec2_keypair [[#aws_ec2_keypair]] {
+
+}
+class aws_ec2_volume [[#aws_ec2_volume]] {
+
+}
+class aws_ec2_snapshot [[#aws_ec2_snapshot]] {
+
+}
+class aws_ec2_internet_gateway [[#aws_ec2_internet_gateway]] {
+
+}
+class aws_iam_instance_profile [[#aws_iam_instance_profile]] {
+
+}
+class aws_service_quota [[#aws_service_quota]] {
+
+}
+class aws_cloudformation_stack [[#aws_cloudformation_stack]] {
+
+}
+class aws_iam_role [[#aws_iam_role]] {
+
+}
+class aws_ec2_route_table [[#aws_ec2_route_table]] {
+
+}
+class aws_ec2_instance_type [[#aws_ec2_instance_type]] {
+
+}
+class aws_ec2_network_acl [[#aws_ec2_network_acl]] {
+
+}
+class aws_ec2_volume_type [[#aws_ec2_volume_type]] {
+
+}
+class aws_alb_target_group [[#aws_alb_target_group]] {
+
+}
 aws_ec2_nat_gateway -[#1A83AF]-> aws_vpc
 aws_ec2_nat_gateway -[#1A83AF]-> aws_ec2_network_interface
-aws_service_quota -[#1A83AF]-> aws_vpc
-aws_service_quota -[#1A83AF]-> aws_elb
-aws_service_quota -[#1A83AF]-> aws_ec2_volume_type
-aws_service_quota -[#1A83AF]-> aws_iam_server_certificate
-aws_service_quota -[#1A83AF]-> aws_alb
-aws_service_quota -[#1A83AF]-> aws_ec2_instance_type
+aws_ec2_nat_gateway -[#1A83AF]-> aws_ec2_subnet
+aws_vpc -[#1A83AF]-> aws_rds_instance
+aws_vpc -[#1A83AF]-> aws_elb
+aws_vpc -[#1A83AF]-> aws_alb_target_group
+aws_vpc -[#1A83AF]-> aws_ec2_network_interface
+aws_vpc -[#1A83AF]-> aws_ec2_instance
+aws_vpc -[#1A83AF]-> aws_ec2_security_group
 aws_vpc -[#1A83AF]-> aws_ec2_route_table
 aws_vpc -[#1A83AF]-> aws_ec2_internet_gateway
-aws_vpc -[#1A83AF]-> aws_ec2_instance
-aws_vpc -[#1A83AF]-> aws_vpc_endpoint
-aws_vpc -[#1A83AF]-> aws_ec2_network_acl
 aws_vpc -[#1A83AF]-> aws_vpc_peering_connection
 aws_vpc -[#1A83AF]-> aws_ec2_subnet
-aws_vpc -[#1A83AF]-> aws_rds_instance
+aws_vpc -[#1A83AF]-> aws_ec2_network_acl
 aws_vpc -[#1A83AF]-> aws_alb
-aws_vpc -[#1A83AF]-> aws_ec2_network_interface
-aws_vpc -[#1A83AF]-> aws_alb_target_group
-aws_vpc -[#1A83AF]-> aws_elb
-aws_vpc -[#1A83AF]-> aws_ec2_security_group
-aws_ec2_volume_type -[#1A83AF]-> aws_ec2_volume
-aws_ec2_instance_type -[#1A83AF]-> aws_ec2_instance
-aws_iam_user -[#1A83AF]-> aws_iam_policy
-aws_account -[#1A83AF]-> aws_region
-aws_autoscaling_group -[#1A83AF]-> aws_ec2_instance
-aws_ec2_route_table -[#1A83AF]-> aws_vpc_endpoint
+aws_vpc -[#1A83AF]-> aws_vpc_endpoint
+aws_ec2_network_interface -[#1A83AF]-> aws_ec2_elastic_ip
+aws_ec2_subnet -[#1A83AF]-> aws_rds_instance
+aws_ec2_subnet -[#1A83AF]-> aws_elb
+aws_ec2_subnet -[#1A83AF]-> aws_ec2_network_interface
+aws_ec2_subnet -[#1A83AF]-> aws_alb
+aws_ec2_subnet -[#1A83AF]-> aws_vpc_endpoint
+aws_ec2_instance -[#1A83AF]-> aws_ec2_elastic_ip
+aws_ec2_instance -[#1A83AF]-> aws_ec2_network_interface
+aws_ec2_instance -[#1A83AF]-> aws_ec2_volume
+aws_ec2_instance -[#1A83AF]-> aws_cloudwatch_alarm
+aws_ec2_instance -[#1A83AF]-> aws_ec2_keypair
+aws_vpc_endpoint -[#1A83AF]-> aws_ec2_network_interface
 aws_ec2_security_group -[#1A83AF]-> aws_rds_instance
-aws_ec2_security_group -[#1A83AF]-> aws_vpc_endpoint
 aws_ec2_security_group -[#1A83AF]-> aws_elb
-aws_ec2_security_group -[#1A83AF]-> aws_alb
+aws_ec2_security_group -[#1A83AF]-> aws_vpc_endpoint
 aws_ec2_security_group -[#1A83AF]-> aws_ec2_network_interface
-aws_iam_role -[#1A83AF]-> aws_iam_instance_profile
-aws_iam_role -[#1A83AF]-> aws_iam_policy
-aws_iam_role -[#1A83AF]-> aws_eks_cluster
-aws_ec2_volume -[#1A83AF]-> aws_ec2_snapshot
+aws_ec2_security_group -[#1A83AF]-> aws_alb
+aws_elb -[#1A83AF]-> aws_ec2_instance
+aws_alb -[#1A83AF]-> aws_alb_target_group
 aws_iam_group -[#1A83AF]-> aws_iam_user
 aws_iam_group -[#1A83AF]-> aws_iam_policy
-aws_region -[#1A83AF]-> aws_ec2_snapshot
-aws_region -[#1A83AF]-> aws_iam_instance_profile
-aws_region -[#1A83AF]-> aws_vpc
-aws_region -[#1A83AF]-> aws_ec2_internet_gateway
-aws_region -[#1A83AF]-> aws_vpc_peering_connection
+aws_iam_user -[#1A83AF]-> aws_iam_policy
+aws_autoscaling_group -[#1A83AF]-> aws_ec2_instance
+aws_account -[#1A83AF]-> aws_region
 aws_region -[#1A83AF]-> aws_rds_instance
+aws_region -[#1A83AF]-> aws_ec2_nat_gateway
+aws_region -[#1A83AF]-> aws_ec2_internet_gateway
+aws_region -[#1A83AF]-> aws_ec2_instance
 aws_region -[#1A83AF]-> aws_ec2_volume
-aws_region -[#1A83AF]-> aws_ec2_keypair
+aws_region -[#1A83AF]-> aws_iam_instance_profile
+aws_region -[#1A83AF]-> aws_service_quota
+aws_region -[#1A83AF]-> aws_cloudformation_stack
+aws_region -[#1A83AF]-> aws_iam_role
+aws_region -[#1A83AF]-> aws_elb
+aws_region -[#1A83AF]-> aws_vpc
+aws_region -[#1A83AF]-> aws_ec2_route_table
+aws_region -[#1A83AF]-> aws_ec2_instance_type
+aws_region -[#1A83AF]-> aws_ec2_network_acl
+aws_region -[#1A83AF]-> aws_cloudformation_stack_set
 aws_region -[#1A83AF]-> aws_vpc_endpoint
 aws_region -[#1A83AF]-> aws_cloudwatch_alarm
-aws_region -[#1A83AF]-> aws_ec2_network_acl
+aws_region -[#1A83AF]-> aws_eks_cluster
+aws_region -[#1A83AF]-> aws_ec2_snapshot
+aws_region -[#1A83AF]-> aws_ec2_keypair
+aws_region -[#1A83AF]-> aws_iam_user
+aws_region -[#1A83AF]-> aws_ec2_security_group
+aws_region -[#1A83AF]-> aws_iam_policy
 aws_region -[#1A83AF]-> aws_ec2_volume_type
-aws_region -[#1A83AF]-> aws_ec2_subnet
-aws_region -[#1A83AF]-> aws_iam_server_certificate
-aws_region -[#1A83AF]-> aws_elb
-aws_region -[#1A83AF]-> aws_ec2_instance_type
-aws_region -[#1A83AF]-> aws_cloudformation_stack_set
 aws_region -[#1A83AF]-> aws_ec2_elastic_ip
 aws_region -[#1A83AF]-> aws_alb_target_group
-aws_region -[#1A83AF]-> aws_iam_policy
-aws_region -[#1A83AF]-> aws_ec2_nat_gateway
-aws_region -[#1A83AF]-> aws_ec2_security_group
-aws_region -[#1A83AF]-> aws_eks_cluster
-aws_region -[#1A83AF]-> aws_ec2_route_table
-aws_region -[#1A83AF]-> aws_iam_group
-aws_region -[#1A83AF]-> aws_s3_bucket
-aws_region -[#1A83AF]-> aws_iam_role
-aws_region -[#1A83AF]-> aws_ec2_instance
-aws_region -[#1A83AF]-> aws_cloudformation_stack
-aws_region -[#1A83AF]-> aws_alb
 aws_region -[#1A83AF]-> aws_ec2_network_interface
+aws_region -[#1A83AF]-> aws_vpc_peering_connection
+aws_region -[#1A83AF]-> aws_ec2_subnet
+aws_region -[#1A83AF]-> aws_alb
+aws_region -[#1A83AF]-> aws_s3_bucket
+aws_region -[#1A83AF]-> aws_iam_server_certificate
+aws_region -[#1A83AF]-> aws_iam_group
 aws_region -[#1A83AF]-> aws_autoscaling_group
-aws_region -[#1A83AF]-> aws_iam_user
-aws_region -[#1A83AF]-> aws_service_quota
+aws_ec2_volume -[#1A83AF]-> aws_ec2_snapshot
+aws_service_quota -[#1A83AF]-> aws_elb
+aws_service_quota -[#1A83AF]-> aws_vpc
+aws_service_quota -[#1A83AF]-> aws_ec2_instance_type
+aws_service_quota -[#1A83AF]-> aws_alb
+aws_service_quota -[#1A83AF]-> aws_ec2_volume_type
+aws_service_quota -[#1A83AF]-> aws_iam_server_certificate
+aws_iam_role -[#1A83AF]-> aws_iam_instance_profile
+aws_iam_role -[#1A83AF]-> aws_eks_cluster
+aws_iam_role -[#1A83AF]-> aws_iam_policy
+aws_ec2_route_table -[#1A83AF]-> aws_vpc_endpoint
+aws_ec2_instance_type -[#1A83AF]-> aws_ec2_instance
+aws_ec2_network_acl -[#1A83AF]-> aws_ec2_subnet
+aws_ec2_volume_type -[#1A83AF]-> aws_ec2_volume
+aws_alb_target_group -[#1A83AF]-> aws_ec2_instance
 
 @enduml
 ```
@@ -13585,7 +13585,7 @@ aws_region -[#1A83AF]-> aws_service_quota
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_resource data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_resource data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -13609,9 +13609,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -13623,6 +13620,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 resource <|--- aws_resource
 
@@ -13636,7 +13636,7 @@ resource <|--- aws_resource
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_resource resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_resource resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -13675,7 +13675,7 @@ class aws_resource [[#aws_resource]] {
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_root_user data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_root_user data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -13699,9 +13699,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -13714,8 +13711,8 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class user [[#user]] {
-
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_iam_virtual_mfa_device [[#aws_iam_virtual_mfa_device]] {
 **serial_number**: string
@@ -13729,11 +13726,14 @@ class aws_root_user [[#aws_root_user]] {
 **mfa_active**: boolean
 **user_virtual_mfa_devices**: aws_iam_virtual_mfa_device[]
 }
+class user [[#user]] {
+
+}
 resource <|--- aws_resource
-resource <|--- user
 aws_resource <|--- aws_root_user
 user <|--- aws_root_user
 aws_root_user --> aws_iam_virtual_mfa_device
+resource <|--- user
 
 @enduml
 ```
@@ -13745,7 +13745,7 @@ aws_root_user --> aws_iam_virtual_mfa_device
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_root_user resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_root_user resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -13769,10 +13769,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_account [[#aws_account]] {
+class aws_root_user [[#aws_root_user]] {
 
 }
-class aws_root_user [[#aws_root_user]] {
+class aws_account [[#aws_account]] {
 
 }
 aws_account -[#1A83AF]-> aws_root_user
@@ -13788,7 +13788,7 @@ aws_account -[#1A83AF]-> aws_root_user
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_route53_resource_record data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_route53_resource_record data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -13812,9 +13812,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -13826,6 +13823,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class dns_record [[#dns_record]] {
 **record_ttl**: int64
@@ -13863,7 +13863,7 @@ dns_record <|--- aws_route53_resource_record
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_route53_resource_record resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_route53_resource_record resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -13906,7 +13906,7 @@ aws_route53_resource_record_set -[#1A83AF]-> aws_route53_resource_record
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_route53_resource_record_set data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_route53_resource_record_set data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -13930,9 +13930,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -13945,24 +13942,8 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class dns_record_set [[#dns_record_set]] {
-**record_ttl**: int64
-**record_type**: string
-**record_values**: string[]
-}
-class aws_route53_alias_target [[#aws_route53_alias_target]] {
-**hosted_zone_id**: string
-**dns_name**: string
-**evaluate_target_health**: boolean
-}
-class aws_route53_geo_location [[#aws_route53_geo_location]] {
-**continent_code**: string
-**country_code**: string
-**subdivision_code**: string
-}
-class aws_route53_cidr_routing_config [[#aws_route53_cidr_routing_config]] {
-**collection_id**: string
-**location_name**: string
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_route53_resource_record_set [[#aws_route53_resource_record_set]] {
 **record_name**: string
@@ -13977,13 +13958,32 @@ class aws_route53_resource_record_set [[#aws_route53_resource_record_set]] {
 **record_traffic_policy_instance_id**: string
 **record_cidr_routing_config**: aws_route53_cidr_routing_config
 }
+class dns_record_set [[#dns_record_set]] {
+**record_ttl**: int64
+**record_type**: string
+**record_values**: string[]
+}
+class aws_route53_geo_location [[#aws_route53_geo_location]] {
+**continent_code**: string
+**country_code**: string
+**subdivision_code**: string
+}
+class aws_route53_alias_target [[#aws_route53_alias_target]] {
+**hosted_zone_id**: string
+**dns_name**: string
+**evaluate_target_health**: boolean
+}
+class aws_route53_cidr_routing_config [[#aws_route53_cidr_routing_config]] {
+**collection_id**: string
+**location_name**: string
+}
 resource <|--- aws_resource
-resource <|--- dns_record_set
 aws_resource <|--- aws_route53_resource_record_set
 dns_record_set <|--- aws_route53_resource_record_set
 aws_route53_resource_record_set --> aws_route53_geo_location
 aws_route53_resource_record_set --> aws_route53_alias_target
 aws_route53_resource_record_set --> aws_route53_cidr_routing_config
+resource <|--- dns_record_set
 
 @enduml
 ```
@@ -13995,7 +13995,7 @@ aws_route53_resource_record_set --> aws_route53_cidr_routing_config
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_route53_resource_record_set resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_route53_resource_record_set resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -14042,7 +14042,7 @@ aws_route53_resource_record_set -[#1A83AF]-> aws_route53_resource_record
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_route53_zone data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_route53_zone data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -14066,15 +14066,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
-class aws_route53_zone [[#aws_route53_zone]] {
-**zone_caller_reference**: string
-**zone_config**: aws_route53_zone_config
-**zone_resource_record_set_count**: int64
-**zone_linked_service**: aws_route53_linked_service
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -14087,8 +14078,17 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
 class dns_zone [[#dns_zone]] {
 
+}
+class aws_route53_zone [[#aws_route53_zone]] {
+**zone_caller_reference**: string
+**zone_config**: aws_route53_zone_config
+**zone_resource_record_set_count**: int64
+**zone_linked_service**: aws_route53_linked_service
 }
 class aws_route53_zone_config [[#aws_route53_zone_config]] {
 **comment**: string
@@ -14099,11 +14099,11 @@ class aws_route53_linked_service [[#aws_route53_linked_service]] {
 **description**: string
 }
 resource <|--- aws_resource
+resource <|--- dns_zone
 aws_resource <|--- aws_route53_zone
 dns_zone <|--- aws_route53_zone
 aws_route53_zone --> aws_route53_zone_config
 aws_route53_zone --> aws_route53_linked_service
-resource <|--- dns_zone
 
 @enduml
 ```
@@ -14115,7 +14115,7 @@ resource <|--- dns_zone
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_route53_zone resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_route53_zone resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -14139,17 +14139,17 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_api_gateway_domain_name [[#aws_api_gateway_domain_name]] {
-
-}
 class aws_route53_zone [[#aws_route53_zone]] {
 
 }
 class aws_route53_resource_record_set [[#aws_route53_resource_record_set]] {
 
 }
-aws_api_gateway_domain_name -[#1A83AF]-> aws_route53_zone
+class aws_api_gateway_domain_name [[#aws_api_gateway_domain_name]] {
+
+}
 aws_route53_zone -[#1A83AF]-> aws_route53_resource_record_set
+aws_api_gateway_domain_name -[#1A83AF]-> aws_route53_zone
 
 @enduml
 ```
@@ -14162,7 +14162,7 @@ aws_route53_zone -[#1A83AF]-> aws_route53_resource_record_set
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_s3_account_settings data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_s3_account_settings data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -14186,9 +14186,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -14201,8 +14198,8 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class aws_s3_account_settings [[#aws_s3_account_settings]] {
-**bucket_public_access_block_configuration**: aws_s3_public_access_block_configuration
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class phantom_resource [[#phantom_resource]] {
 
@@ -14213,11 +14210,14 @@ class aws_s3_public_access_block_configuration [[#aws_s3_public_access_block_con
 **block_public_policy**: boolean
 **restrict_public_buckets**: boolean
 }
+class aws_s3_account_settings [[#aws_s3_account_settings]] {
+**bucket_public_access_block_configuration**: aws_s3_public_access_block_configuration
+}
 resource <|--- aws_resource
+resource <|--- phantom_resource
 aws_resource <|--- aws_s3_account_settings
 phantom_resource <|--- aws_s3_account_settings
 aws_s3_account_settings --> aws_s3_public_access_block_configuration
-resource <|--- phantom_resource
 
 @enduml
 ```
@@ -14229,7 +14229,7 @@ resource <|--- phantom_resource
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_s3_account_settings resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_s3_account_settings resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -14253,10 +14253,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_s3_account_settings [[#aws_s3_account_settings]] {
+class aws_account [[#aws_account]] {
 
 }
-class aws_account [[#aws_account]] {
+class aws_s3_account_settings [[#aws_s3_account_settings]] {
 
 }
 aws_s3_account_settings -[#1A83AF]-> aws_account
@@ -14272,7 +14272,7 @@ aws_s3_account_settings -[#1A83AF]-> aws_account
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_s3_bucket data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_s3_bucket data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -14296,18 +14296,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
-class aws_s3_bucket [[#aws_s3_bucket]] {
-**bucket_encryption_rules**: aws_s3_server_side_encryption_rule[]
-**bucket_policy**: dictionary[string, any]
-**bucket_versioning**: boolean
-**bucket_mfa_delete**: boolean
-**bucket_public_access_block_configuration**: aws_s3_public_access_block_configuration
-**bucket_acl**: aws_s3_bucket_acl
-**bucket_logging**: aws_s3_logging
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -14320,13 +14308,26 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class aws_s3_bucket_acl [[#aws_s3_bucket_acl]] {
-**owner**: aws_s3_owner
-**grants**: aws_s3_grant[]
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
-class aws_s3_owner [[#aws_s3_owner]] {
-**display_name**: string
-**id**: string
+class aws_s3_bucket [[#aws_s3_bucket]] {
+**bucket_encryption_rules**: aws_s3_server_side_encryption_rule[]
+**bucket_policy**: dictionary[string, any]
+**bucket_versioning**: boolean
+**bucket_mfa_delete**: boolean
+**bucket_public_access_block_configuration**: aws_s3_public_access_block_configuration
+**bucket_acl**: aws_s3_bucket_acl
+**bucket_logging**: aws_s3_logging
+}
+class aws_s3_public_access_block_configuration [[#aws_s3_public_access_block_configuration]] {
+**block_public_acls**: boolean
+**ignore_public_acls**: boolean
+**block_public_policy**: boolean
+**restrict_public_buckets**: boolean
+}
+class bucket [[#bucket]] {
+
 }
 class aws_s3_grant [[#aws_s3_grant]] {
 **grantee**: aws_s3_grantee
@@ -14338,6 +14339,14 @@ class aws_s3_grantee [[#aws_s3_grantee]] {
 **id**: string
 **type**: string
 **uri**: string
+}
+class aws_s3_bucket_acl [[#aws_s3_bucket_acl]] {
+**owner**: aws_s3_owner
+**grants**: aws_s3_grant[]
+}
+class aws_s3_owner [[#aws_s3_owner]] {
+**display_name**: string
+**id**: string
 }
 class aws_s3_server_side_encryption_rule [[#aws_s3_server_side_encryption_rule]] {
 **sse_algorithm**: string
@@ -14353,15 +14362,6 @@ class aws_s3_logging [[#aws_s3_logging]] {
 **target_grants**: aws_s3_target_grant[]
 **target_prefix**: string
 }
-class aws_s3_public_access_block_configuration [[#aws_s3_public_access_block_configuration]] {
-**block_public_acls**: boolean
-**ignore_public_acls**: boolean
-**block_public_policy**: boolean
-**restrict_public_buckets**: boolean
-}
-class bucket [[#bucket]] {
-
-}
 resource <|--- aws_resource
 aws_resource <|--- aws_s3_bucket
 bucket <|--- aws_s3_bucket
@@ -14369,12 +14369,12 @@ aws_s3_bucket --> aws_s3_server_side_encryption_rule
 aws_s3_bucket --> aws_s3_public_access_block_configuration
 aws_s3_bucket --> aws_s3_bucket_acl
 aws_s3_bucket --> aws_s3_logging
+resource <|--- bucket
+aws_s3_grant --> aws_s3_grantee
 aws_s3_bucket_acl --> aws_s3_owner
 aws_s3_bucket_acl --> aws_s3_grant
-aws_s3_grant --> aws_s3_grantee
 aws_s3_target_grant --> aws_s3_grantee
 aws_s3_logging --> aws_s3_target_grant
-resource <|--- bucket
 
 @enduml
 ```
@@ -14386,7 +14386,7 @@ resource <|--- bucket
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_s3_bucket resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_s3_bucket resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -14410,52 +14410,46 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_ecs_cluster [[#aws_ecs_cluster]] {
-
-}
-class aws_s3_bucket [[#aws_s3_bucket]] {
-
-}
 class aws_sagemaker_labeling_job [[#aws_sagemaker_labeling_job]] {
-
-}
-class aws_sagemaker_hyper_parameter_tuning_job [[#aws_sagemaker_hyper_parameter_tuning_job]] {
-
-}
-class aws_sagemaker_processing_job [[#aws_sagemaker_processing_job]] {
-
-}
-class aws_sagemaker_model [[#aws_sagemaker_model]] {
-
-}
-class aws_sagemaker_auto_ml_job [[#aws_sagemaker_auto_ml_job]] {
-
-}
-class aws_sagemaker_inference_recommendations_job [[#aws_sagemaker_inference_recommendations_job]] {
-
-}
-class aws_sagemaker_domain [[#aws_sagemaker_domain]] {
-
-}
-class aws_sagemaker_compilation_job [[#aws_sagemaker_compilation_job]] {
 
 }
 class aws_sagemaker_training_job [[#aws_sagemaker_training_job]] {
 
 }
-class aws_ec2_flow_log [[#aws_ec2_flow_log]] {
-
-}
 class aws_sagemaker_transform_job [[#aws_sagemaker_transform_job]] {
 
 }
-class aws_athena_work_group [[#aws_athena_work_group]] {
+class aws_s3_bucket [[#aws_s3_bucket]] {
+
+}
+class aws_sagemaker_domain [[#aws_sagemaker_domain]] {
+
+}
+class aws_sagemaker_auto_ml_job [[#aws_sagemaker_auto_ml_job]] {
+
+}
+class aws_sagemaker_compilation_job [[#aws_sagemaker_compilation_job]] {
+
+}
+class aws_sagemaker_inference_recommendations_job [[#aws_sagemaker_inference_recommendations_job]] {
+
+}
+class aws_sagemaker_hyper_parameter_tuning_job [[#aws_sagemaker_hyper_parameter_tuning_job]] {
+
+}
+class aws_sagemaker_model [[#aws_sagemaker_model]] {
+
+}
+class aws_sagemaker_processing_job [[#aws_sagemaker_processing_job]] {
 
 }
 class aws_cloudfront_distribution [[#aws_cloudfront_distribution]] {
 
 }
-class aws_cloud_trail [[#aws_cloud_trail]] {
+class aws_region [[#aws_region]] {
+
+}
+class aws_ecs_cluster [[#aws_ecs_cluster]] {
 
 }
 class aws_sagemaker_edge_packaging_job [[#aws_sagemaker_edge_packaging_job]] {
@@ -14464,39 +14458,45 @@ class aws_sagemaker_edge_packaging_job [[#aws_sagemaker_edge_packaging_job]] {
 class aws_sagemaker_endpoint [[#aws_sagemaker_endpoint]] {
 
 }
-class aws_region [[#aws_region]] {
+class aws_athena_work_group [[#aws_athena_work_group]] {
 
 }
-aws_ecs_cluster -[#1A83AF]-> aws_s3_bucket
-aws_sagemaker_labeling_job -[#1A83AF]-> aws_s3_bucket
-aws_sagemaker_labeling_job -[#1A83AF]-> aws_sagemaker_transform_job
+class aws_ec2_flow_log [[#aws_ec2_flow_log]] {
+
+}
+class aws_cloud_trail [[#aws_cloud_trail]] {
+
+}
 aws_sagemaker_labeling_job -[#1A83AF]-> aws_sagemaker_training_job
-aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_sagemaker_training_job
-aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_s3_bucket
-aws_sagemaker_processing_job -[#1A83AF]-> aws_sagemaker_training_job
-aws_sagemaker_processing_job -[#1A83AF]-> aws_s3_bucket
-aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_transform_job
-aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_edge_packaging_job
-aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_labeling_job
-aws_sagemaker_model -[#1A83AF]-> aws_s3_bucket
-aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_labeling_job -[#1A83AF]-> aws_sagemaker_transform_job
+aws_sagemaker_labeling_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_training_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_transform_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_domain -[#1A83AF]-> aws_s3_bucket
 aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_transform_job
 aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_training_job
 aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_processing_job
-aws_sagemaker_inference_recommendations_job -[#1A83AF]-> aws_sagemaker_endpoint
-aws_sagemaker_inference_recommendations_job -[#1A83AF]-> aws_s3_bucket
-aws_sagemaker_domain -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_s3_bucket
 aws_sagemaker_compilation_job -[#1A83AF]-> aws_s3_bucket
-aws_sagemaker_training_job -[#1A83AF]-> aws_s3_bucket
-aws_ec2_flow_log -[#1A83AF]-> aws_s3_bucket
-aws_sagemaker_transform_job -[#1A83AF]-> aws_s3_bucket
-aws_athena_work_group -[#1A83AF]-> aws_sagemaker_processing_job
-aws_athena_work_group -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_inference_recommendations_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_inference_recommendations_job -[#1A83AF]-> aws_sagemaker_endpoint
+aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_edge_packaging_job
+aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_transform_job
+aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_labeling_job
+aws_sagemaker_model -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_processing_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_processing_job -[#1A83AF]-> aws_sagemaker_training_job
 aws_cloudfront_distribution -[#1A83AF]-> aws_s3_bucket
-aws_cloud_trail -[#1A83AF]-> aws_s3_bucket
+aws_region -[#1A83AF]-> aws_s3_bucket
+aws_ecs_cluster -[#1A83AF]-> aws_s3_bucket
 aws_sagemaker_edge_packaging_job -[#1A83AF]-> aws_s3_bucket
 aws_sagemaker_endpoint -[#1A83AF]-> aws_s3_bucket
-aws_region -[#1A83AF]-> aws_s3_bucket
+aws_athena_work_group -[#1A83AF]-> aws_s3_bucket
+aws_athena_work_group -[#1A83AF]-> aws_sagemaker_processing_job
+aws_ec2_flow_log -[#1A83AF]-> aws_s3_bucket
+aws_cloud_trail -[#1A83AF]-> aws_s3_bucket
 
 @enduml
 ```
@@ -14509,7 +14509,7 @@ aws_region -[#1A83AF]-> aws_s3_bucket
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_algorithm data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_algorithm data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -14533,18 +14533,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
-class aws_sagemaker_parameter_range [[#aws_sagemaker_parameter_range]] {
-**integer_parameter_range_specification**: aws_sagemaker_integer_parameter_range_specification
-**continuous_parameter_range_specification**: aws_sagemaker_integer_parameter_range_specification
-**categorical_parameter_range_specification**: string[]
-}
-class aws_sagemaker_integer_parameter_range_specification [[#aws_sagemaker_integer_parameter_range_specification]] {
-**min_value**: string
-**max_value**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -14556,6 +14544,100 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
+class aws_sagemaker_algorithm_status_details [[#aws_sagemaker_algorithm_status_details]] {
+**validation_statuses**: aws_sagemaker_algorithm_status_item[]
+**image_scan_statuses**: aws_sagemaker_algorithm_status_item[]
+}
+class aws_sagemaker_algorithm_status_item [[#aws_sagemaker_algorithm_status_item]] {
+**name**: string
+**status**: string
+**failure_reason**: string
+}
+class aws_sagemaker_stopping_condition [[#aws_sagemaker_stopping_condition]] {
+**max_runtime_in_seconds**: int64
+**max_wait_time_in_seconds**: int64
+}
+class aws_sagemaker_transform_data_source [[#aws_sagemaker_transform_data_source]] {
+**s3_data_source**: aws_sagemaker_transform_s3_data_source
+}
+class aws_sagemaker_transform_s3_data_source [[#aws_sagemaker_transform_s3_data_source]] {
+**s3_data_type**: string
+**s3_uri**: string
+}
+class aws_sagemaker_resource_config [[#aws_sagemaker_resource_config]] {
+**instance_type**: string
+**instance_count**: int64
+**volume_size_in_gb**: int64
+**volume_kms_key_id**: string
+**instance_groups**: aws_sagemaker_instance_group[]
+**keep_alive_period_in_seconds**: int64
+}
+class aws_sagemaker_instance_group [[#aws_sagemaker_instance_group]] {
+**instance_type**: string
+**instance_count**: int64
+**instance_group_name**: string
+}
+class aws_sagemaker_transform_input [[#aws_sagemaker_transform_input]] {
+**data_source**: aws_sagemaker_transform_data_source
+**content_type**: string
+**compression_type**: string
+**split_type**: string
+}
+class aws_sagemaker_output_data_config [[#aws_sagemaker_output_data_config]] {
+**kms_key_id**: string
+**s3_output_path**: string
+}
+class aws_sagemaker_transform_job_definition [[#aws_sagemaker_transform_job_definition]] {
+**max_concurrent_transforms**: int64
+**max_payload_in_mb**: int64
+**batch_strategy**: string
+**environment**: dictionary[string, string]
+**transform_input**: aws_sagemaker_transform_input
+**transform_output**: aws_sagemaker_transform_output
+**transform_resources**: aws_sagemaker_transform_resources
+}
+class aws_sagemaker_transform_output [[#aws_sagemaker_transform_output]] {
+**s3_output_path**: string
+**accept**: string
+**assemble_with**: string
+**kms_key_id**: string
+}
+class aws_sagemaker_transform_resources [[#aws_sagemaker_transform_resources]] {
+**instance_type**: string
+**instance_count**: int64
+**volume_kms_key_id**: string
+}
+class aws_sagemaker_model_package_container_definition [[#aws_sagemaker_model_package_container_definition]] {
+**container_hostname**: string
+**image**: string
+**image_digest**: string
+**model_data_url**: string
+**product_id**: string
+**environment**: dictionary[string, string]
+**model_input**: string
+**framework**: string
+**framework_version**: string
+**nearest_model_name**: string
+}
+class aws_sagemaker_inference_specification [[#aws_sagemaker_inference_specification]] {
+**containers**: aws_sagemaker_model_package_container_definition[]
+**supported_transform_instance_types**: string[]
+**supported_realtime_inference_instance_types**: string[]
+**supported_content_types**: string[]
+**supported_response_mime_types**: string[]
+}
+class aws_sagemaker_parameter_range [[#aws_sagemaker_parameter_range]] {
+**integer_parameter_range_specification**: aws_sagemaker_integer_parameter_range_specification
+**continuous_parameter_range_specification**: aws_sagemaker_integer_parameter_range_specification
+**categorical_parameter_range_specification**: string[]
+}
+class aws_sagemaker_integer_parameter_range_specification [[#aws_sagemaker_integer_parameter_range_specification]] {
+**min_value**: string
+**max_value**: string
 }
 class aws_sagemaker_metric_definition [[#aws_sagemaker_metric_definition]] {
 **name**: string
@@ -14600,27 +14682,6 @@ class aws_sagemaker_data_source [[#aws_sagemaker_data_source]] {
 **s3_data_source**: aws_sagemaker_s3_data_source
 **file_system_data_source**: aws_sagemaker_file_system_data_source
 }
-class aws_sagemaker_output_data_config [[#aws_sagemaker_output_data_config]] {
-**kms_key_id**: string
-**s3_output_path**: string
-}
-class aws_sagemaker_resource_config [[#aws_sagemaker_resource_config]] {
-**instance_type**: string
-**instance_count**: int64
-**volume_size_in_gb**: int64
-**volume_kms_key_id**: string
-**instance_groups**: aws_sagemaker_instance_group[]
-**keep_alive_period_in_seconds**: int64
-}
-class aws_sagemaker_instance_group [[#aws_sagemaker_instance_group]] {
-**instance_type**: string
-**instance_count**: int64
-**instance_group_name**: string
-}
-class aws_sagemaker_stopping_condition [[#aws_sagemaker_stopping_condition]] {
-**max_runtime_in_seconds**: int64
-**max_wait_time_in_seconds**: int64
-}
 class aws_sagemaker_training_job_definition [[#aws_sagemaker_training_job_definition]] {
 **training_input_mode**: string
 **hyper_parameters**: dictionary[string, string]
@@ -14629,10 +14690,6 @@ class aws_sagemaker_training_job_definition [[#aws_sagemaker_training_job_defini
 **resource_config**: aws_sagemaker_resource_config
 **stopping_condition**: aws_sagemaker_stopping_condition
 }
-class aws_sagemaker_transform_s3_data_source [[#aws_sagemaker_transform_s3_data_source]] {
-**s3_data_type**: string
-**s3_uri**: string
-}
 class aws_sagemaker_channel_specification [[#aws_sagemaker_channel_specification]] {
 **name**: string
 **description**: string
@@ -14640,26 +14697,6 @@ class aws_sagemaker_channel_specification [[#aws_sagemaker_channel_specification
 **supported_content_types**: string[]
 **supported_compression_types**: string[]
 **supported_input_modes**: string[]
-}
-class aws_sagemaker_transform_input [[#aws_sagemaker_transform_input]] {
-**data_source**: aws_sagemaker_transform_data_source
-**content_type**: string
-**compression_type**: string
-**split_type**: string
-}
-class aws_sagemaker_transform_data_source [[#aws_sagemaker_transform_data_source]] {
-**s3_data_source**: aws_sagemaker_transform_s3_data_source
-}
-class aws_sagemaker_transform_output [[#aws_sagemaker_transform_output]] {
-**s3_output_path**: string
-**accept**: string
-**assemble_with**: string
-**kms_key_id**: string
-}
-class aws_sagemaker_transform_resources [[#aws_sagemaker_transform_resources]] {
-**instance_type**: string
-**instance_count**: int64
-**volume_kms_key_id**: string
 }
 class aws_sagemaker_algorithm [[#aws_sagemaker_algorithm]] {
 **algorithm_description**: string
@@ -14676,15 +14713,6 @@ class aws_sagemaker_algorithm_validation_profile [[#aws_sagemaker_algorithm_vali
 **training_job_definition**: aws_sagemaker_training_job_definition
 **transform_job_definition**: aws_sagemaker_transform_job_definition
 }
-class aws_sagemaker_transform_job_definition [[#aws_sagemaker_transform_job_definition]] {
-**max_concurrent_transforms**: int64
-**max_payload_in_mb**: int64
-**batch_strategy**: string
-**environment**: dictionary[string, string]
-**transform_input**: aws_sagemaker_transform_input
-**transform_output**: aws_sagemaker_transform_output
-**transform_resources**: aws_sagemaker_transform_resources
-}
 class aws_sagemaker_training_specification [[#aws_sagemaker_training_specification]] {
 **training_image**: string
 **training_image_digest**: string
@@ -14695,47 +14723,24 @@ class aws_sagemaker_training_specification [[#aws_sagemaker_training_specificati
 **training_channels**: aws_sagemaker_channel_specification[]
 **supported_tuning_job_objective_metrics**: aws_sagemaker_hyper_parameter_tuning_job_objective[]
 }
-class aws_sagemaker_inference_specification [[#aws_sagemaker_inference_specification]] {
-**containers**: aws_sagemaker_model_package_container_definition[]
-**supported_transform_instance_types**: string[]
-**supported_realtime_inference_instance_types**: string[]
-**supported_content_types**: string[]
-**supported_response_mime_types**: string[]
-}
-class aws_sagemaker_model_package_container_definition [[#aws_sagemaker_model_package_container_definition]] {
-**container_hostname**: string
-**image**: string
-**image_digest**: string
-**model_data_url**: string
-**product_id**: string
-**environment**: dictionary[string, string]
-**model_input**: string
-**framework**: string
-**framework_version**: string
-**nearest_model_name**: string
-}
-class aws_sagemaker_algorithm_status_details [[#aws_sagemaker_algorithm_status_details]] {
-**validation_statuses**: aws_sagemaker_algorithm_status_item[]
-**image_scan_statuses**: aws_sagemaker_algorithm_status_item[]
-}
-class aws_sagemaker_algorithm_status_item [[#aws_sagemaker_algorithm_status_item]] {
-**name**: string
-**status**: string
-**failure_reason**: string
-}
 resource <|--- aws_resource
+aws_sagemaker_algorithm_status_details --> aws_sagemaker_algorithm_status_item
+aws_sagemaker_transform_data_source --> aws_sagemaker_transform_s3_data_source
+aws_sagemaker_resource_config --> aws_sagemaker_instance_group
+aws_sagemaker_transform_input --> aws_sagemaker_transform_data_source
+aws_sagemaker_transform_job_definition --> aws_sagemaker_transform_input
+aws_sagemaker_transform_job_definition --> aws_sagemaker_transform_output
+aws_sagemaker_transform_job_definition --> aws_sagemaker_transform_resources
+aws_sagemaker_inference_specification --> aws_sagemaker_model_package_container_definition
 aws_sagemaker_parameter_range --> aws_sagemaker_integer_parameter_range_specification
 aws_sagemaker_hyper_parameter_specification --> aws_sagemaker_parameter_range
 aws_sagemaker_channel --> aws_sagemaker_data_source
 aws_sagemaker_data_source --> aws_sagemaker_s3_data_source
 aws_sagemaker_data_source --> aws_sagemaker_file_system_data_source
-aws_sagemaker_resource_config --> aws_sagemaker_instance_group
 aws_sagemaker_training_job_definition --> aws_sagemaker_channel
 aws_sagemaker_training_job_definition --> aws_sagemaker_output_data_config
 aws_sagemaker_training_job_definition --> aws_sagemaker_resource_config
 aws_sagemaker_training_job_definition --> aws_sagemaker_stopping_condition
-aws_sagemaker_transform_input --> aws_sagemaker_transform_data_source
-aws_sagemaker_transform_data_source --> aws_sagemaker_transform_s3_data_source
 aws_resource <|--- aws_sagemaker_algorithm
 aws_sagemaker_algorithm --> aws_sagemaker_training_specification
 aws_sagemaker_algorithm --> aws_sagemaker_inference_specification
@@ -14743,15 +14748,10 @@ aws_sagemaker_algorithm --> aws_sagemaker_algorithm_validation_profile
 aws_sagemaker_algorithm --> aws_sagemaker_algorithm_status_details
 aws_sagemaker_algorithm_validation_profile --> aws_sagemaker_training_job_definition
 aws_sagemaker_algorithm_validation_profile --> aws_sagemaker_transform_job_definition
-aws_sagemaker_transform_job_definition --> aws_sagemaker_transform_input
-aws_sagemaker_transform_job_definition --> aws_sagemaker_transform_output
-aws_sagemaker_transform_job_definition --> aws_sagemaker_transform_resources
 aws_sagemaker_training_specification --> aws_sagemaker_hyper_parameter_specification
 aws_sagemaker_training_specification --> aws_sagemaker_metric_definition
 aws_sagemaker_training_specification --> aws_sagemaker_channel_specification
 aws_sagemaker_training_specification --> aws_sagemaker_hyper_parameter_tuning_job_objective
-aws_sagemaker_inference_specification --> aws_sagemaker_model_package_container_definition
-aws_sagemaker_algorithm_status_details --> aws_sagemaker_algorithm_status_item
 
 @enduml
 ```
@@ -14763,7 +14763,7 @@ aws_sagemaker_algorithm_status_details --> aws_sagemaker_algorithm_status_item
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_algorithm resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_algorithm resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -14797,8 +14797,8 @@ class aws_sagemaker_algorithm [[#aws_sagemaker_algorithm]] {
 
 }
 aws_sagemaker_training_job -[#1A83AF]-> aws_sagemaker_algorithm
-aws_iam_role -[#1A83AF]-> aws_sagemaker_algorithm
 aws_iam_role -[#1A83AF]-> aws_sagemaker_training_job
+aws_iam_role -[#1A83AF]-> aws_sagemaker_algorithm
 
 @enduml
 ```
@@ -14811,7 +14811,7 @@ aws_iam_role -[#1A83AF]-> aws_sagemaker_training_job
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_app data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_app data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -14835,9 +14835,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -14849,6 +14846,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_sagemaker_resource_spec [[#aws_sagemaker_resource_spec]] {
 **sage_maker_image_arn**: string
@@ -14880,7 +14880,7 @@ aws_sagemaker_app --> aws_sagemaker_resource_spec
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_app resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_app resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -14910,17 +14910,17 @@ class aws_sagemaker_domain [[#aws_sagemaker_domain]] {
 class aws_sagemaker_image [[#aws_sagemaker_image]] {
 
 }
-class aws_sagemaker_app [[#aws_sagemaker_app]] {
-
-}
 class aws_sagemaker_user_profile [[#aws_sagemaker_user_profile]] {
 
 }
-aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_image
+class aws_sagemaker_app [[#aws_sagemaker_app]] {
+
+}
 aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_app
 aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_user_profile
-aws_sagemaker_app -[#1A83AF]-> aws_sagemaker_image
+aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_image
 aws_sagemaker_user_profile -[#1A83AF]-> aws_sagemaker_app
+aws_sagemaker_app -[#1A83AF]-> aws_sagemaker_image
 
 @enduml
 ```
@@ -14933,7 +14933,7 @@ aws_sagemaker_user_profile -[#1A83AF]-> aws_sagemaker_app
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_artifact data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_artifact data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -14957,9 +14957,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -14972,6 +14969,9 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
 class aws_sagemaker_artifact [[#aws_sagemaker_artifact]] {
 **artifact_source**: aws_sagemaker_artifact_source
 **artifact_artifact_type**: string
@@ -14981,11 +14981,6 @@ class aws_sagemaker_artifact [[#aws_sagemaker_artifact]] {
 **artifact_metadata_properties**: aws_sagemaker_metadata_properties
 **artifact_lineage_group_arn**: string
 }
-class aws_sagemaker_user_context [[#aws_sagemaker_user_context]] {
-**user_profile_arn**: string
-**user_profile_name**: string
-**domain_id**: string
-}
 class aws_sagemaker_artifact_source [[#aws_sagemaker_artifact_source]] {
 **source_uri**: string
 **source_types**: aws_sagemaker_artifact_source_type[]
@@ -14993,6 +14988,11 @@ class aws_sagemaker_artifact_source [[#aws_sagemaker_artifact_source]] {
 class aws_sagemaker_artifact_source_type [[#aws_sagemaker_artifact_source_type]] {
 **source_id_type**: string
 **value**: string
+}
+class aws_sagemaker_user_context [[#aws_sagemaker_user_context]] {
+**user_profile_arn**: string
+**user_profile_name**: string
+**domain_id**: string
 }
 class aws_sagemaker_metadata_properties [[#aws_sagemaker_metadata_properties]] {
 **commit_id**: string
@@ -15015,7 +15015,7 @@ aws_sagemaker_artifact_source --> aws_sagemaker_artifact_source_type
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_artifact resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_artifact resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -15039,13 +15039,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_sagemaker_domain [[#aws_sagemaker_domain]] {
-
-}
 class aws_sagemaker_artifact [[#aws_sagemaker_artifact]] {
 
 }
-class aws_sagemaker_user_profile [[#aws_sagemaker_user_profile]] {
+class aws_sagemaker_domain [[#aws_sagemaker_domain]] {
 
 }
 class aws_sagemaker_project [[#aws_sagemaker_project]] {
@@ -15054,12 +15051,15 @@ class aws_sagemaker_project [[#aws_sagemaker_project]] {
 class aws_sagemaker_code_repository [[#aws_sagemaker_code_repository]] {
 
 }
-aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_artifact
+class aws_sagemaker_user_profile [[#aws_sagemaker_user_profile]] {
+
+}
 aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_user_profile
-aws_sagemaker_user_profile -[#1A83AF]-> aws_sagemaker_artifact
+aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_artifact
 aws_sagemaker_project -[#1A83AF]-> aws_sagemaker_artifact
-aws_sagemaker_code_repository -[#1A83AF]-> aws_sagemaker_domain
 aws_sagemaker_code_repository -[#1A83AF]-> aws_sagemaker_artifact
+aws_sagemaker_code_repository -[#1A83AF]-> aws_sagemaker_domain
+aws_sagemaker_user_profile -[#1A83AF]-> aws_sagemaker_artifact
 
 @enduml
 ```
@@ -15072,7 +15072,7 @@ aws_sagemaker_code_repository -[#1A83AF]-> aws_sagemaker_artifact
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_auto_ml_job data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_auto_ml_job data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -15096,57 +15096,14 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_sagemaker_auto_ml_data_source [[#aws_sagemaker_auto_ml_data_source]] {
-**s3_data_source**: aws_sagemaker_auto_mls3_data_source
+class aws_sagemaker_auto_ml_security_config [[#aws_sagemaker_auto_ml_security_config]] {
+**volume_kms_key_id**: string
+**enable_inter_container_traffic_encryption**: boolean
+**vpc_config**: aws_sagemaker_vpc_config
 }
-class aws_sagemaker_auto_mls3_data_source [[#aws_sagemaker_auto_mls3_data_source]] {
-**s3_data_type**: string
-**s3_uri**: string
-}
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
-class aws_sagemaker_auto_ml_candidate [[#aws_sagemaker_auto_ml_candidate]] {
-**candidate_name**: string
-**final_auto_ml_job_objective_metric**: aws_sagemaker_final_auto_ml_job_objective_metric
-**objective_status**: string
-**candidate_steps**: aws_sagemaker_auto_ml_candidate_step[]
-**candidate_status**: string
-**inference_containers**: aws_sagemaker_auto_ml_container_definition[]
-**creation_time**: datetime
-**end_time**: datetime
-**last_modified_time**: datetime
-**failure_reason**: string
-**candidate_properties**: aws_sagemaker_candidate_properties
-}
-class aws_sagemaker_final_auto_ml_job_objective_metric [[#aws_sagemaker_final_auto_ml_job_objective_metric]] {
-**type**: string
-**metric_name**: string
-**value**: double
-}
-class aws_sagemaker_auto_ml_candidate_step [[#aws_sagemaker_auto_ml_candidate_step]] {
-**candidate_step_type**: string
-**candidate_step_arn**: string
-**candidate_step_name**: string
-}
-class aws_sagemaker_auto_ml_container_definition [[#aws_sagemaker_auto_ml_container_definition]] {
-**image**: string
-**model_data_url**: string
-**environment**: dictionary[string, string]
-}
-class aws_sagemaker_candidate_properties [[#aws_sagemaker_candidate_properties]] {
-**candidate_artifact_locations**: aws_sagemaker_candidate_artifact_locations
-**candidate_metrics**: aws_sagemaker_metric_datum[]
-}
-class aws_sagemaker_candidate_artifact_locations [[#aws_sagemaker_candidate_artifact_locations]] {
-**explainability**: string
-**model_insights**: string
-}
-class aws_sagemaker_metric_datum [[#aws_sagemaker_metric_datum]] {
-**metric_name**: string
-**value**: double
-**set**: string
-**standard_metric_name**: string
+class aws_sagemaker_vpc_config [[#aws_sagemaker_vpc_config]] {
+**security_group_ids**: string[]
+**subnets**: string[]
 }
 class resource [[#resource]] {
 **id**: string
@@ -15159,6 +15116,22 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
+class aws_sagemaker_job [[#aws_sagemaker_job]] {
+
+}
+class aws_sagemaker_metric_datum [[#aws_sagemaker_metric_datum]] {
+**metric_name**: string
+**value**: double
+**set**: string
+**standard_metric_name**: string
+}
+class aws_sagemaker_candidate_artifact_locations [[#aws_sagemaker_candidate_artifact_locations]] {
+**explainability**: string
+**model_insights**: string
 }
 class aws_sagemaker_auto_ml_job [[#aws_sagemaker_auto_ml_job]] {
 **auto_ml_job_input_data_config**: aws_sagemaker_auto_ml_channel[]
@@ -15178,6 +15151,49 @@ class aws_sagemaker_auto_ml_job [[#aws_sagemaker_auto_ml_job]] {
 **auto_ml_job_model_deploy_config**: aws_sagemaker_model_deploy_config
 **auto_ml_job_model_deploy_result**: string
 }
+class aws_sagemaker_final_auto_ml_job_objective_metric [[#aws_sagemaker_final_auto_ml_job_objective_metric]] {
+**type**: string
+**metric_name**: string
+**value**: double
+}
+class aws_sagemaker_candidate_properties [[#aws_sagemaker_candidate_properties]] {
+**candidate_artifact_locations**: aws_sagemaker_candidate_artifact_locations
+**candidate_metrics**: aws_sagemaker_metric_datum[]
+}
+class aws_sagemaker_auto_ml_candidate_step [[#aws_sagemaker_auto_ml_candidate_step]] {
+**candidate_step_type**: string
+**candidate_step_arn**: string
+**candidate_step_name**: string
+}
+class aws_sagemaker_auto_ml_output_data_config [[#aws_sagemaker_auto_ml_output_data_config]] {
+**kms_key_id**: string
+**s3_output_path**: string
+}
+class aws_sagemaker_auto_ml_data_source [[#aws_sagemaker_auto_ml_data_source]] {
+**s3_data_source**: aws_sagemaker_auto_mls3_data_source
+}
+class aws_sagemaker_auto_mls3_data_source [[#aws_sagemaker_auto_mls3_data_source]] {
+**s3_data_type**: string
+**s3_uri**: string
+}
+class aws_sagemaker_auto_ml_candidate [[#aws_sagemaker_auto_ml_candidate]] {
+**candidate_name**: string
+**final_auto_ml_job_objective_metric**: aws_sagemaker_final_auto_ml_job_objective_metric
+**objective_status**: string
+**candidate_steps**: aws_sagemaker_auto_ml_candidate_step[]
+**candidate_status**: string
+**inference_containers**: aws_sagemaker_auto_ml_container_definition[]
+**creation_time**: datetime
+**end_time**: datetime
+**last_modified_time**: datetime
+**failure_reason**: string
+**candidate_properties**: aws_sagemaker_candidate_properties
+}
+class aws_sagemaker_auto_ml_container_definition [[#aws_sagemaker_auto_ml_container_definition]] {
+**image**: string
+**model_data_url**: string
+**environment**: dictionary[string, string]
+}
 class aws_sagemaker_resolved_attributes [[#aws_sagemaker_resolved_attributes]] {
 **auto_ml_job_objective**: string
 **problem_type**: string
@@ -15188,9 +15204,6 @@ class aws_sagemaker_auto_ml_job_completion_criteria [[#aws_sagemaker_auto_ml_job
 **max_runtime_per_training_job_in_seconds**: int64
 **max_auto_ml_job_runtime_in_seconds**: int64
 }
-class aws_sagemaker_job [[#aws_sagemaker_job]] {
-
-}
 class aws_sagemaker_auto_ml_channel [[#aws_sagemaker_auto_ml_channel]] {
 **data_source**: aws_sagemaker_auto_ml_data_source
 **compression_type**: string
@@ -15198,25 +15211,12 @@ class aws_sagemaker_auto_ml_channel [[#aws_sagemaker_auto_ml_channel]] {
 **content_type**: string
 **channel_type**: string
 }
-class aws_sagemaker_auto_ml_output_data_config [[#aws_sagemaker_auto_ml_output_data_config]] {
-**kms_key_id**: string
-**s3_output_path**: string
-}
 class aws_sagemaker_auto_ml_job_config [[#aws_sagemaker_auto_ml_job_config]] {
 **completion_criteria**: aws_sagemaker_auto_ml_job_completion_criteria
 **security_config**: aws_sagemaker_auto_ml_security_config
 **data_split_config**: double
 **candidate_generation_config**: string
 **mode**: string
-}
-class aws_sagemaker_auto_ml_security_config [[#aws_sagemaker_auto_ml_security_config]] {
-**volume_kms_key_id**: string
-**enable_inter_container_traffic_encryption**: boolean
-**vpc_config**: aws_sagemaker_vpc_config
-}
-class aws_sagemaker_vpc_config [[#aws_sagemaker_vpc_config]] {
-**security_group_ids**: string[]
-**subnets**: string[]
 }
 class aws_sagemaker_auto_ml_job_artifacts [[#aws_sagemaker_auto_ml_job_artifacts]] {
 **candidate_definition_notebook_location**: string
@@ -15226,14 +15226,9 @@ class aws_sagemaker_model_deploy_config [[#aws_sagemaker_model_deploy_config]] {
 **auto_generate_endpoint_name**: boolean
 **endpoint_name**: string
 }
-aws_sagemaker_auto_ml_data_source --> aws_sagemaker_auto_mls3_data_source
+aws_sagemaker_auto_ml_security_config --> aws_sagemaker_vpc_config
 resource <|--- aws_resource
-aws_sagemaker_auto_ml_candidate --> aws_sagemaker_final_auto_ml_job_objective_metric
-aws_sagemaker_auto_ml_candidate --> aws_sagemaker_auto_ml_candidate_step
-aws_sagemaker_auto_ml_candidate --> aws_sagemaker_auto_ml_container_definition
-aws_sagemaker_auto_ml_candidate --> aws_sagemaker_candidate_properties
-aws_sagemaker_candidate_properties --> aws_sagemaker_candidate_artifact_locations
-aws_sagemaker_candidate_properties --> aws_sagemaker_metric_datum
+aws_resource <|--- aws_sagemaker_job
 aws_sagemaker_job <|--- aws_sagemaker_auto_ml_job
 aws_sagemaker_auto_ml_job --> aws_sagemaker_auto_ml_channel
 aws_sagemaker_auto_ml_job --> aws_sagemaker_auto_ml_output_data_config
@@ -15242,12 +15237,17 @@ aws_sagemaker_auto_ml_job --> aws_sagemaker_auto_ml_candidate
 aws_sagemaker_auto_ml_job --> aws_sagemaker_auto_ml_job_artifacts
 aws_sagemaker_auto_ml_job --> aws_sagemaker_resolved_attributes
 aws_sagemaker_auto_ml_job --> aws_sagemaker_model_deploy_config
+aws_sagemaker_candidate_properties --> aws_sagemaker_candidate_artifact_locations
+aws_sagemaker_candidate_properties --> aws_sagemaker_metric_datum
+aws_sagemaker_auto_ml_data_source --> aws_sagemaker_auto_mls3_data_source
+aws_sagemaker_auto_ml_candidate --> aws_sagemaker_final_auto_ml_job_objective_metric
+aws_sagemaker_auto_ml_candidate --> aws_sagemaker_auto_ml_candidate_step
+aws_sagemaker_auto_ml_candidate --> aws_sagemaker_auto_ml_container_definition
+aws_sagemaker_auto_ml_candidate --> aws_sagemaker_candidate_properties
 aws_sagemaker_resolved_attributes --> aws_sagemaker_auto_ml_job_completion_criteria
-aws_resource <|--- aws_sagemaker_job
 aws_sagemaker_auto_ml_channel --> aws_sagemaker_auto_ml_data_source
 aws_sagemaker_auto_ml_job_config --> aws_sagemaker_auto_ml_job_completion_criteria
 aws_sagemaker_auto_ml_job_config --> aws_sagemaker_auto_ml_security_config
-aws_sagemaker_auto_ml_security_config --> aws_sagemaker_vpc_config
 
 @enduml
 ```
@@ -15259,7 +15259,7 @@ aws_sagemaker_auto_ml_security_config --> aws_sagemaker_vpc_config
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_auto_ml_job resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_auto_ml_job resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -15283,19 +15283,7 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_s3_bucket [[#aws_s3_bucket]] {
-
-}
-class aws_kms_key [[#aws_kms_key]] {
-
-}
 class aws_ec2_subnet [[#aws_ec2_subnet]] {
-
-}
-class aws_sagemaker_processing_job [[#aws_sagemaker_processing_job]] {
-
-}
-class aws_sagemaker_auto_ml_job [[#aws_sagemaker_auto_ml_job]] {
 
 }
 class aws_sagemaker_training_job [[#aws_sagemaker_training_job]] {
@@ -15304,32 +15292,44 @@ class aws_sagemaker_training_job [[#aws_sagemaker_training_job]] {
 class aws_sagemaker_transform_job [[#aws_sagemaker_transform_job]] {
 
 }
+class aws_s3_bucket [[#aws_s3_bucket]] {
+
+}
+class aws_kms_key [[#aws_kms_key]] {
+
+}
 class aws_ec2_security_group [[#aws_ec2_security_group]] {
+
+}
+class aws_sagemaker_auto_ml_job [[#aws_sagemaker_auto_ml_job]] {
+
+}
+class aws_sagemaker_processing_job [[#aws_sagemaker_processing_job]] {
 
 }
 class aws_iam_role [[#aws_iam_role]] {
 
 }
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_training_job
 aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_processing_job
 aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_auto_ml_job
-aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_training_job
-aws_sagemaker_processing_job -[#1A83AF]-> aws_sagemaker_training_job
-aws_sagemaker_processing_job -[#1A83AF]-> aws_kms_key
-aws_sagemaker_processing_job -[#1A83AF]-> aws_s3_bucket
-aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_kms_key
-aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_s3_bucket
-aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_transform_job
-aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_training_job
-aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_processing_job
 aws_sagemaker_training_job -[#1A83AF]-> aws_kms_key
 aws_sagemaker_training_job -[#1A83AF]-> aws_s3_bucket
 aws_sagemaker_transform_job -[#1A83AF]-> aws_kms_key
 aws_sagemaker_transform_job -[#1A83AF]-> aws_s3_bucket
-aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_auto_ml_job
 aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_training_job
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_auto_ml_job
 aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_processing_job
-aws_iam_role -[#1A83AF]-> aws_sagemaker_auto_ml_job
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_transform_job
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_processing_job
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_processing_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_processing_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_processing_job -[#1A83AF]-> aws_sagemaker_training_job
 aws_iam_role -[#1A83AF]-> aws_sagemaker_training_job
+aws_iam_role -[#1A83AF]-> aws_sagemaker_auto_ml_job
 aws_iam_role -[#1A83AF]-> aws_sagemaker_processing_job
 
 @enduml
@@ -15343,7 +15343,7 @@ aws_iam_role -[#1A83AF]-> aws_sagemaker_processing_job
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_code_repository data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_code_repository data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -15367,9 +15367,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -15382,14 +15379,17 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class aws_sagemaker_git_config [[#aws_sagemaker_git_config]] {
-**repository_url**: string
-**branch**: string
-**secret_arn**: string
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_sagemaker_code_repository [[#aws_sagemaker_code_repository]] {
 **code_repository_git_config**: aws_sagemaker_git_config
 **code_repository_url**: string
+}
+class aws_sagemaker_git_config [[#aws_sagemaker_git_config]] {
+**repository_url**: string
+**branch**: string
+**secret_arn**: string
 }
 resource <|--- aws_resource
 aws_resource <|--- aws_sagemaker_code_repository
@@ -15405,7 +15405,7 @@ aws_sagemaker_code_repository --> aws_sagemaker_git_config
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_code_repository resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_code_repository resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -15429,13 +15429,13 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_sagemaker_domain [[#aws_sagemaker_domain]] {
+class aws_sagemaker_artifact [[#aws_sagemaker_artifact]] {
 
 }
 class aws_sagemaker_notebook [[#aws_sagemaker_notebook]] {
 
 }
-class aws_sagemaker_artifact [[#aws_sagemaker_artifact]] {
+class aws_sagemaker_domain [[#aws_sagemaker_domain]] {
 
 }
 class aws_sagemaker_trial [[#aws_sagemaker_trial]] {
@@ -15444,12 +15444,12 @@ class aws_sagemaker_trial [[#aws_sagemaker_trial]] {
 class aws_sagemaker_code_repository [[#aws_sagemaker_code_repository]] {
 
 }
-aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_artifact
 aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_trial
-aws_sagemaker_code_repository -[#1A83AF]-> aws_sagemaker_domain
+aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_artifact
 aws_sagemaker_code_repository -[#1A83AF]-> aws_sagemaker_notebook
-aws_sagemaker_code_repository -[#1A83AF]-> aws_sagemaker_trial
 aws_sagemaker_code_repository -[#1A83AF]-> aws_sagemaker_artifact
+aws_sagemaker_code_repository -[#1A83AF]-> aws_sagemaker_trial
+aws_sagemaker_code_repository -[#1A83AF]-> aws_sagemaker_domain
 
 @enduml
 ```
@@ -15462,7 +15462,7 @@ aws_sagemaker_code_repository -[#1A83AF]-> aws_sagemaker_artifact
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_compilation_job data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_compilation_job data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -15486,9 +15486,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -15500,6 +15497,16 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
+class aws_sagemaker_job [[#aws_sagemaker_job]] {
+
+}
+class aws_sagemaker_stopping_condition [[#aws_sagemaker_stopping_condition]] {
+**max_runtime_in_seconds**: int64
+**max_wait_time_in_seconds**: int64
 }
 class aws_sagemaker_compilation_job [[#aws_sagemaker_compilation_job]] {
 **compilation_job_status**: string
@@ -15515,27 +15522,16 @@ class aws_sagemaker_compilation_job [[#aws_sagemaker_compilation_job]] {
 **compilation_job_output_config**: aws_sagemaker_output_config
 **compilation_job_vpc_config**: aws_sagemaker_neo_vpc_config
 }
-class aws_sagemaker_job [[#aws_sagemaker_job]] {
-
-}
-class aws_sagemaker_neo_vpc_config [[#aws_sagemaker_neo_vpc_config]] {
-**security_group_ids**: string[]
-**subnets**: string[]
-}
-class aws_sagemaker_stopping_condition [[#aws_sagemaker_stopping_condition]] {
-**max_runtime_in_seconds**: int64
-**max_wait_time_in_seconds**: int64
+class aws_sagemaker_target_platform [[#aws_sagemaker_target_platform]] {
+**os**: string
+**arch**: string
+**accelerator**: string
 }
 class aws_sagemaker_input_config [[#aws_sagemaker_input_config]] {
 **s3_uri**: string
 **data_input_config**: string
 **framework**: string
 **framework_version**: string
-}
-class aws_sagemaker_target_platform [[#aws_sagemaker_target_platform]] {
-**os**: string
-**arch**: string
-**accelerator**: string
 }
 class aws_sagemaker_output_config [[#aws_sagemaker_output_config]] {
 **s3_output_location**: string
@@ -15544,13 +15540,17 @@ class aws_sagemaker_output_config [[#aws_sagemaker_output_config]] {
 **compiler_options**: string
 **kms_key_id**: string
 }
+class aws_sagemaker_neo_vpc_config [[#aws_sagemaker_neo_vpc_config]] {
+**security_group_ids**: string[]
+**subnets**: string[]
+}
 resource <|--- aws_resource
+aws_resource <|--- aws_sagemaker_job
 aws_sagemaker_job <|--- aws_sagemaker_compilation_job
 aws_sagemaker_compilation_job --> aws_sagemaker_stopping_condition
 aws_sagemaker_compilation_job --> aws_sagemaker_input_config
 aws_sagemaker_compilation_job --> aws_sagemaker_output_config
 aws_sagemaker_compilation_job --> aws_sagemaker_neo_vpc_config
-aws_resource <|--- aws_sagemaker_job
 aws_sagemaker_output_config --> aws_sagemaker_target_platform
 
 @enduml
@@ -15563,7 +15563,7 @@ aws_sagemaker_output_config --> aws_sagemaker_target_platform
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_compilation_job resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_compilation_job resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -15587,28 +15587,28 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class aws_ec2_subnet [[#aws_ec2_subnet]] {
+
+}
 class aws_s3_bucket [[#aws_s3_bucket]] {
 
 }
 class aws_kms_key [[#aws_kms_key]] {
 
 }
-class aws_ec2_subnet [[#aws_ec2_subnet]] {
+class aws_ec2_security_group [[#aws_ec2_security_group]] {
 
 }
 class aws_sagemaker_compilation_job [[#aws_sagemaker_compilation_job]] {
-
-}
-class aws_ec2_security_group [[#aws_ec2_security_group]] {
 
 }
 class aws_iam_role [[#aws_iam_role]] {
 
 }
 aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_compilation_job
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_compilation_job
 aws_sagemaker_compilation_job -[#1A83AF]-> aws_kms_key
 aws_sagemaker_compilation_job -[#1A83AF]-> aws_s3_bucket
-aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_compilation_job
 aws_iam_role -[#1A83AF]-> aws_sagemaker_compilation_job
 
 @enduml
@@ -15622,7 +15622,7 @@ aws_iam_role -[#1A83AF]-> aws_sagemaker_compilation_job
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_domain data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_domain data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -15646,9 +15646,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -15661,34 +15658,8 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class aws_sagemaker_r_studio_server_pro_app_settings [[#aws_sagemaker_r_studio_server_pro_app_settings]] {
-**access_status**: string
-**user_group**: string
-}
-class aws_sagemaker_canvas_app_settings [[#aws_sagemaker_canvas_app_settings]] {
-**time_series_forecasting_settings**: aws_sagemaker_time_series_forecasting_settings
-}
-class aws_sagemaker_time_series_forecasting_settings [[#aws_sagemaker_time_series_forecasting_settings]] {
-**status**: string
-**amazon_forecast_role_arn**: string
-}
-class aws_sagemaker_domain [[#aws_sagemaker_domain]] {
-**domain_home_efs_file_system_id**: string
-**domain_single_sign_on_managed_application_instance_id**: string
-**domain_status**: string
-**domain_failure_reason**: string
-**domain_auth_mode**: string
-**domain_default_user_settings**: aws_sagemaker_user_settings
-**domain_app_network_access_type**: string
-**domain_home_efs_file_system_kms_key_id**: string
-**domain_subnet_ids**: string[]
-**domain_url**: string
-**domain_vpc_id**: string
-**domain_kms_key_id**: string
-**domain_settings**: aws_sagemaker_domain_settings
-**domain_app_security_group_management**: string
-**domain_security_group_id_for_domain_boundary**: string
-**domain_default_space_settings**: aws_sagemaker_default_space_settings
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_sagemaker_user_settings [[#aws_sagemaker_user_settings]] {
 **execution_role**: string
@@ -15729,20 +15700,49 @@ class aws_sagemaker_custom_image [[#aws_sagemaker_custom_image]] {
 class aws_sagemaker_tensor_board_app_settings [[#aws_sagemaker_tensor_board_app_settings]] {
 **default_resource_spec**: aws_sagemaker_resource_spec
 }
+class aws_sagemaker_r_studio_server_pro_app_settings [[#aws_sagemaker_r_studio_server_pro_app_settings]] {
+**access_status**: string
+**user_group**: string
+}
 class aws_sagemaker_r_session_app_settings [[#aws_sagemaker_r_session_app_settings]] {
 **default_resource_spec**: aws_sagemaker_resource_spec
 **custom_images**: aws_sagemaker_custom_image[]
 }
-class aws_sagemaker_domain_settings [[#aws_sagemaker_domain_settings]] {
-**security_group_ids**: string[]
-**r_studio_server_pro_domain_settings**: aws_sagemaker_r_studio_server_pro_domain_settings
-**execution_role_identity_config**: string
+class aws_sagemaker_canvas_app_settings [[#aws_sagemaker_canvas_app_settings]] {
+**time_series_forecasting_settings**: aws_sagemaker_time_series_forecasting_settings
+}
+class aws_sagemaker_time_series_forecasting_settings [[#aws_sagemaker_time_series_forecasting_settings]] {
+**status**: string
+**amazon_forecast_role_arn**: string
+}
+class aws_sagemaker_domain [[#aws_sagemaker_domain]] {
+**domain_home_efs_file_system_id**: string
+**domain_single_sign_on_managed_application_instance_id**: string
+**domain_status**: string
+**domain_failure_reason**: string
+**domain_auth_mode**: string
+**domain_default_user_settings**: aws_sagemaker_user_settings
+**domain_app_network_access_type**: string
+**domain_home_efs_file_system_kms_key_id**: string
+**domain_subnet_ids**: string[]
+**domain_url**: string
+**domain_vpc_id**: string
+**domain_kms_key_id**: string
+**domain_settings**: aws_sagemaker_domain_settings
+**domain_app_security_group_management**: string
+**domain_security_group_id_for_domain_boundary**: string
+**domain_default_space_settings**: aws_sagemaker_default_space_settings
 }
 class aws_sagemaker_r_studio_server_pro_domain_settings [[#aws_sagemaker_r_studio_server_pro_domain_settings]] {
 **domain_execution_role_arn**: string
 **r_studio_connect_url**: string
 **r_studio_package_manager_url**: string
 **default_resource_spec**: aws_sagemaker_resource_spec
+}
+class aws_sagemaker_domain_settings [[#aws_sagemaker_domain_settings]] {
+**security_group_ids**: string[]
+**r_studio_server_pro_domain_settings**: aws_sagemaker_r_studio_server_pro_domain_settings
+**execution_role_identity_config**: string
 }
 class aws_sagemaker_default_space_settings [[#aws_sagemaker_default_space_settings]] {
 **execution_role**: string
@@ -15751,11 +15751,6 @@ class aws_sagemaker_default_space_settings [[#aws_sagemaker_default_space_settin
 **kernel_gateway_app_settings**: aws_sagemaker_kernel_gateway_app_settings
 }
 resource <|--- aws_resource
-aws_sagemaker_canvas_app_settings --> aws_sagemaker_time_series_forecasting_settings
-aws_resource <|--- aws_sagemaker_domain
-aws_sagemaker_domain --> aws_sagemaker_user_settings
-aws_sagemaker_domain --> aws_sagemaker_domain_settings
-aws_sagemaker_domain --> aws_sagemaker_default_space_settings
 aws_sagemaker_user_settings --> aws_sagemaker_sharing_settings
 aws_sagemaker_user_settings --> aws_sagemaker_jupyter_server_app_settings
 aws_sagemaker_user_settings --> aws_sagemaker_kernel_gateway_app_settings
@@ -15769,8 +15764,13 @@ aws_sagemaker_kernel_gateway_app_settings --> aws_sagemaker_custom_image
 aws_sagemaker_tensor_board_app_settings --> aws_sagemaker_resource_spec
 aws_sagemaker_r_session_app_settings --> aws_sagemaker_resource_spec
 aws_sagemaker_r_session_app_settings --> aws_sagemaker_custom_image
-aws_sagemaker_domain_settings --> aws_sagemaker_r_studio_server_pro_domain_settings
+aws_sagemaker_canvas_app_settings --> aws_sagemaker_time_series_forecasting_settings
+aws_resource <|--- aws_sagemaker_domain
+aws_sagemaker_domain --> aws_sagemaker_user_settings
+aws_sagemaker_domain --> aws_sagemaker_domain_settings
+aws_sagemaker_domain --> aws_sagemaker_default_space_settings
 aws_sagemaker_r_studio_server_pro_domain_settings --> aws_sagemaker_resource_spec
+aws_sagemaker_domain_settings --> aws_sagemaker_r_studio_server_pro_domain_settings
 aws_sagemaker_default_space_settings --> aws_sagemaker_jupyter_server_app_settings
 aws_sagemaker_default_space_settings --> aws_sagemaker_kernel_gateway_app_settings
 
@@ -15784,7 +15784,7 @@ aws_sagemaker_default_space_settings --> aws_sagemaker_kernel_gateway_app_settin
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_domain resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_domain resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -15808,66 +15808,66 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class aws_ec2_subnet [[#aws_ec2_subnet]] {
+
+}
 class aws_s3_bucket [[#aws_s3_bucket]] {
 
 }
 class aws_kms_key [[#aws_kms_key]] {
 
 }
-class aws_ec2_subnet [[#aws_ec2_subnet]] {
-
-}
-class aws_sagemaker_domain [[#aws_sagemaker_domain]] {
-
-}
-class aws_sagemaker_image [[#aws_sagemaker_image]] {
-
-}
-class aws_sagemaker_app [[#aws_sagemaker_app]] {
-
-}
 class aws_sagemaker_artifact [[#aws_sagemaker_artifact]] {
-
-}
-class aws_sagemaker_user_profile [[#aws_sagemaker_user_profile]] {
-
-}
-class aws_sagemaker_trial [[#aws_sagemaker_trial]] {
-
-}
-class aws_sagemaker_pipeline [[#aws_sagemaker_pipeline]] {
 
 }
 class aws_ec2_security_group [[#aws_ec2_security_group]] {
 
 }
-class aws_iam_role [[#aws_iam_role]] {
+class aws_sagemaker_domain [[#aws_sagemaker_domain]] {
+
+}
+class aws_sagemaker_trial [[#aws_sagemaker_trial]] {
+
+}
+class aws_sagemaker_image [[#aws_sagemaker_image]] {
+
+}
+class aws_sagemaker_pipeline [[#aws_sagemaker_pipeline]] {
 
 }
 class aws_sagemaker_code_repository [[#aws_sagemaker_code_repository]] {
 
 }
+class aws_sagemaker_user_profile [[#aws_sagemaker_user_profile]] {
+
+}
+class aws_sagemaker_app [[#aws_sagemaker_app]] {
+
+}
+class aws_iam_role [[#aws_iam_role]] {
+
+}
 aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_domain
-aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_image
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_domain
 aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_app
-aws_sagemaker_domain -[#1A83AF]-> aws_kms_key
-aws_sagemaker_domain -[#1A83AF]-> aws_s3_bucket
-aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_artifact
 aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_user_profile
 aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_trial
 aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_pipeline
-aws_sagemaker_app -[#1A83AF]-> aws_sagemaker_image
-aws_sagemaker_user_profile -[#1A83AF]-> aws_sagemaker_app
+aws_sagemaker_domain -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_domain -[#1A83AF]-> aws_kms_key
+aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_artifact
+aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_image
+aws_sagemaker_code_repository -[#1A83AF]-> aws_sagemaker_artifact
+aws_sagemaker_code_repository -[#1A83AF]-> aws_sagemaker_trial
+aws_sagemaker_code_repository -[#1A83AF]-> aws_sagemaker_domain
 aws_sagemaker_user_profile -[#1A83AF]-> aws_sagemaker_trial
 aws_sagemaker_user_profile -[#1A83AF]-> aws_sagemaker_artifact
+aws_sagemaker_user_profile -[#1A83AF]-> aws_sagemaker_app
 aws_sagemaker_user_profile -[#1A83AF]-> aws_sagemaker_pipeline
-aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_domain
-aws_iam_role -[#1A83AF]-> aws_sagemaker_pipeline
-aws_iam_role -[#1A83AF]-> aws_sagemaker_image
+aws_sagemaker_app -[#1A83AF]-> aws_sagemaker_image
 aws_iam_role -[#1A83AF]-> aws_sagemaker_domain
-aws_sagemaker_code_repository -[#1A83AF]-> aws_sagemaker_domain
-aws_sagemaker_code_repository -[#1A83AF]-> aws_sagemaker_trial
-aws_sagemaker_code_repository -[#1A83AF]-> aws_sagemaker_artifact
+aws_iam_role -[#1A83AF]-> aws_sagemaker_image
+aws_iam_role -[#1A83AF]-> aws_sagemaker_pipeline
 
 @enduml
 ```
@@ -15880,7 +15880,7 @@ aws_sagemaker_code_repository -[#1A83AF]-> aws_sagemaker_artifact
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_edge_packaging_job data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_edge_packaging_job data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -15904,9 +15904,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -15919,20 +15916,11 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class aws_sagemaker_edge_output_config [[#aws_sagemaker_edge_output_config]] {
-**s3_output_location**: string
-**kms_key_id**: string
-**preset_deployment_type**: string
-**preset_deployment_config**: string
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_sagemaker_job [[#aws_sagemaker_job]] {
 
-}
-class aws_sagemaker_edge_preset_deployment_output [[#aws_sagemaker_edge_preset_deployment_output]] {
-**type**: string
-**artifact**: string
-**status**: string
-**status_message**: string
 }
 class aws_sagemaker_edge_packaging_job [[#aws_sagemaker_edge_packaging_job]] {
 **edge_packaging_job_compilation_job_name**: string
@@ -15944,6 +15932,18 @@ class aws_sagemaker_edge_packaging_job [[#aws_sagemaker_edge_packaging_job]] {
 **edge_packaging_job_model_artifact**: string
 **edge_packaging_job_model_signature**: string
 **edge_packaging_job_preset_deployment_output**: aws_sagemaker_edge_preset_deployment_output
+}
+class aws_sagemaker_edge_output_config [[#aws_sagemaker_edge_output_config]] {
+**s3_output_location**: string
+**kms_key_id**: string
+**preset_deployment_type**: string
+**preset_deployment_config**: string
+}
+class aws_sagemaker_edge_preset_deployment_output [[#aws_sagemaker_edge_preset_deployment_output]] {
+**type**: string
+**artifact**: string
+**status**: string
+**status_message**: string
 }
 resource <|--- aws_resource
 aws_resource <|--- aws_sagemaker_job
@@ -15961,7 +15961,7 @@ aws_sagemaker_edge_packaging_job --> aws_sagemaker_edge_preset_deployment_output
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_edge_packaging_job resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_edge_packaging_job resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -15994,18 +15994,18 @@ class aws_kms_key [[#aws_kms_key]] {
 class aws_sagemaker_model [[#aws_sagemaker_model]] {
 
 }
-class aws_sagemaker_edge_packaging_job [[#aws_sagemaker_edge_packaging_job]] {
+class aws_iam_role [[#aws_iam_role]] {
 
 }
-class aws_iam_role [[#aws_iam_role]] {
+class aws_sagemaker_edge_packaging_job [[#aws_sagemaker_edge_packaging_job]] {
 
 }
 aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_edge_packaging_job
 aws_sagemaker_model -[#1A83AF]-> aws_s3_bucket
+aws_iam_role -[#1A83AF]-> aws_sagemaker_edge_packaging_job
+aws_iam_role -[#1A83AF]-> aws_sagemaker_model
 aws_sagemaker_edge_packaging_job -[#1A83AF]-> aws_kms_key
 aws_sagemaker_edge_packaging_job -[#1A83AF]-> aws_s3_bucket
-aws_iam_role -[#1A83AF]-> aws_sagemaker_model
-aws_iam_role -[#1A83AF]-> aws_sagemaker_edge_packaging_job
 
 @enduml
 ```
@@ -16018,7 +16018,7 @@ aws_iam_role -[#1A83AF]-> aws_sagemaker_edge_packaging_job
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_endpoint data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_endpoint data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -16042,23 +16042,28 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
+}
 class aws_resource [[#aws_resource]] {
 **arn**: string
 }
-class aws_sagemaker_pending_deployment_summary [[#aws_sagemaker_pending_deployment_summary]] {
-**endpoint_config_name**: string
-**production_variants**: aws_sagemaker_pending_production_variant_summary[]
-**start_time**: datetime
-}
-class aws_sagemaker_pending_production_variant_summary [[#aws_sagemaker_pending_production_variant_summary]] {
+class aws_sagemaker_production_variant_summary [[#aws_sagemaker_production_variant_summary]] {
 **variant_name**: string
 **deployed_images**: aws_sagemaker_deployed_image[]
 **current_weight**: double
 **desired_weight**: double
 **current_instance_count**: int64
 **desired_instance_count**: int64
-**instance_type**: string
-**accelerator_type**: string
 **variant_status**: aws_sagemaker_production_variant_status[]
 **current_serverless_config**: aws_sagemaker_production_variant_serverless_config
 **desired_serverless_config**: aws_sagemaker_production_variant_serverless_config
@@ -16077,24 +16082,8 @@ class aws_sagemaker_production_variant_serverless_config [[#aws_sagemaker_produc
 **memory_size_in_mb**: int64
 **max_concurrency**: int64
 }
-class aws_sagemaker_data_capture_config_summary [[#aws_sagemaker_data_capture_config_summary]] {
-**enable_capture**: boolean
-**capture_status**: string
-**current_sampling_percentage**: int64
-**destination_s3_uri**: string
-**kms_key_id**: string
-}
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class aws_sagemaker_explainer_config [[#aws_sagemaker_explainer_config]] {
+**clarify_explainer_config**: aws_sagemaker_clarify_explainer_config
 }
 class aws_sagemaker_clarify_explainer_config [[#aws_sagemaker_clarify_explainer_config]] {
 **enable_explanations**: string
@@ -16130,20 +16119,25 @@ class aws_sagemaker_clarify_text_config [[#aws_sagemaker_clarify_text_config]] {
 **language**: string
 **granularity**: string
 }
-class aws_sagemaker_blue_green_update_policy [[#aws_sagemaker_blue_green_update_policy]] {
-**traffic_routing_configuration**: aws_sagemaker_traffic_routing_config
-**termination_wait_in_seconds**: int64
-**maximum_execution_timeout_in_seconds**: int64
+class aws_sagemaker_pending_production_variant_summary [[#aws_sagemaker_pending_production_variant_summary]] {
+**variant_name**: string
+**deployed_images**: aws_sagemaker_deployed_image[]
+**current_weight**: double
+**desired_weight**: double
+**current_instance_count**: int64
+**desired_instance_count**: int64
+**instance_type**: string
+**accelerator_type**: string
+**variant_status**: aws_sagemaker_production_variant_status[]
+**current_serverless_config**: aws_sagemaker_production_variant_serverless_config
+**desired_serverless_config**: aws_sagemaker_production_variant_serverless_config
 }
-class aws_sagemaker_traffic_routing_config [[#aws_sagemaker_traffic_routing_config]] {
-**type**: string
-**wait_interval_in_seconds**: int64
-**canary_size**: aws_sagemaker_capacity_size
-**linear_step_size**: aws_sagemaker_capacity_size
+class aws_sagemaker_auto_rollback_config [[#aws_sagemaker_auto_rollback_config]] {
+**alarms**: string[]
 }
-class aws_sagemaker_capacity_size [[#aws_sagemaker_capacity_size]] {
-**type**: string
-**value**: int64
+class aws_sagemaker_async_inference_notification_config [[#aws_sagemaker_async_inference_notification_config]] {
+**success_topic**: string
+**error_topic**: string
 }
 class aws_sagemaker_endpoint [[#aws_sagemaker_endpoint]] {
 **endpoint_config_name**: string
@@ -16156,51 +16150,58 @@ class aws_sagemaker_endpoint [[#aws_sagemaker_endpoint]] {
 **endpoint_pending_deployment_summary**: aws_sagemaker_pending_deployment_summary
 **endpoint_explainer_config**: aws_sagemaker_explainer_config
 }
-class aws_sagemaker_production_variant_summary [[#aws_sagemaker_production_variant_summary]] {
-**variant_name**: string
-**deployed_images**: aws_sagemaker_deployed_image[]
-**current_weight**: double
-**desired_weight**: double
-**current_instance_count**: int64
-**desired_instance_count**: int64
-**variant_status**: aws_sagemaker_production_variant_status[]
-**current_serverless_config**: aws_sagemaker_production_variant_serverless_config
-**desired_serverless_config**: aws_sagemaker_production_variant_serverless_config
+class aws_sagemaker_traffic_routing_config [[#aws_sagemaker_traffic_routing_config]] {
+**type**: string
+**wait_interval_in_seconds**: int64
+**canary_size**: aws_sagemaker_capacity_size
+**linear_step_size**: aws_sagemaker_capacity_size
 }
-class aws_sagemaker_deployment_config [[#aws_sagemaker_deployment_config]] {
-**blue_green_update_policy**: aws_sagemaker_blue_green_update_policy
-**auto_rollback_configuration**: aws_sagemaker_auto_rollback_config
-}
-class aws_sagemaker_auto_rollback_config [[#aws_sagemaker_auto_rollback_config]] {
-**alarms**: string[]
-}
-class aws_sagemaker_async_inference_config [[#aws_sagemaker_async_inference_config]] {
-**client_config**: int64
-**output_config**: aws_sagemaker_async_inference_output_config
+class aws_sagemaker_capacity_size [[#aws_sagemaker_capacity_size]] {
+**type**: string
+**value**: int64
 }
 class aws_sagemaker_async_inference_output_config [[#aws_sagemaker_async_inference_output_config]] {
 **kms_key_id**: string
 **s3_output_path**: string
 **notification_config**: aws_sagemaker_async_inference_notification_config
 }
-class aws_sagemaker_async_inference_notification_config [[#aws_sagemaker_async_inference_notification_config]] {
-**success_topic**: string
-**error_topic**: string
+class aws_sagemaker_pending_deployment_summary [[#aws_sagemaker_pending_deployment_summary]] {
+**endpoint_config_name**: string
+**production_variants**: aws_sagemaker_pending_production_variant_summary[]
+**start_time**: datetime
 }
-class aws_sagemaker_explainer_config [[#aws_sagemaker_explainer_config]] {
-**clarify_explainer_config**: aws_sagemaker_clarify_explainer_config
+class aws_sagemaker_data_capture_config_summary [[#aws_sagemaker_data_capture_config_summary]] {
+**enable_capture**: boolean
+**capture_status**: string
+**current_sampling_percentage**: int64
+**destination_s3_uri**: string
+**kms_key_id**: string
+}
+class aws_sagemaker_blue_green_update_policy [[#aws_sagemaker_blue_green_update_policy]] {
+**traffic_routing_configuration**: aws_sagemaker_traffic_routing_config
+**termination_wait_in_seconds**: int64
+**maximum_execution_timeout_in_seconds**: int64
+}
+class aws_sagemaker_deployment_config [[#aws_sagemaker_deployment_config]] {
+**blue_green_update_policy**: aws_sagemaker_blue_green_update_policy
+**auto_rollback_configuration**: aws_sagemaker_auto_rollback_config
+}
+class aws_sagemaker_async_inference_config [[#aws_sagemaker_async_inference_config]] {
+**client_config**: int64
+**output_config**: aws_sagemaker_async_inference_output_config
 }
 resource <|--- aws_resource
-aws_sagemaker_pending_deployment_summary --> aws_sagemaker_pending_production_variant_summary
-aws_sagemaker_pending_production_variant_summary --> aws_sagemaker_deployed_image
-aws_sagemaker_pending_production_variant_summary --> aws_sagemaker_production_variant_status
-aws_sagemaker_pending_production_variant_summary --> aws_sagemaker_production_variant_serverless_config
+aws_sagemaker_production_variant_summary --> aws_sagemaker_deployed_image
+aws_sagemaker_production_variant_summary --> aws_sagemaker_production_variant_status
+aws_sagemaker_production_variant_summary --> aws_sagemaker_production_variant_serverless_config
+aws_sagemaker_explainer_config --> aws_sagemaker_clarify_explainer_config
 aws_sagemaker_clarify_explainer_config --> aws_sagemaker_clarify_inference_config
 aws_sagemaker_clarify_explainer_config --> aws_sagemaker_clarify_shap_config
 aws_sagemaker_clarify_shap_config --> aws_sagemaker_clarify_shap_baseline_config
 aws_sagemaker_clarify_shap_config --> aws_sagemaker_clarify_text_config
-aws_sagemaker_blue_green_update_policy --> aws_sagemaker_traffic_routing_config
-aws_sagemaker_traffic_routing_config --> aws_sagemaker_capacity_size
+aws_sagemaker_pending_production_variant_summary --> aws_sagemaker_deployed_image
+aws_sagemaker_pending_production_variant_summary --> aws_sagemaker_production_variant_status
+aws_sagemaker_pending_production_variant_summary --> aws_sagemaker_production_variant_serverless_config
 aws_resource <|--- aws_sagemaker_endpoint
 aws_sagemaker_endpoint --> aws_sagemaker_production_variant_summary
 aws_sagemaker_endpoint --> aws_sagemaker_data_capture_config_summary
@@ -16208,14 +16209,13 @@ aws_sagemaker_endpoint --> aws_sagemaker_deployment_config
 aws_sagemaker_endpoint --> aws_sagemaker_async_inference_config
 aws_sagemaker_endpoint --> aws_sagemaker_pending_deployment_summary
 aws_sagemaker_endpoint --> aws_sagemaker_explainer_config
-aws_sagemaker_production_variant_summary --> aws_sagemaker_deployed_image
-aws_sagemaker_production_variant_summary --> aws_sagemaker_production_variant_status
-aws_sagemaker_production_variant_summary --> aws_sagemaker_production_variant_serverless_config
+aws_sagemaker_traffic_routing_config --> aws_sagemaker_capacity_size
+aws_sagemaker_async_inference_output_config --> aws_sagemaker_async_inference_notification_config
+aws_sagemaker_pending_deployment_summary --> aws_sagemaker_pending_production_variant_summary
+aws_sagemaker_blue_green_update_policy --> aws_sagemaker_traffic_routing_config
 aws_sagemaker_deployment_config --> aws_sagemaker_blue_green_update_policy
 aws_sagemaker_deployment_config --> aws_sagemaker_auto_rollback_config
 aws_sagemaker_async_inference_config --> aws_sagemaker_async_inference_output_config
-aws_sagemaker_async_inference_output_config --> aws_sagemaker_async_inference_notification_config
-aws_sagemaker_explainer_config --> aws_sagemaker_clarify_explainer_config
 
 @enduml
 ```
@@ -16227,7 +16227,7 @@ aws_sagemaker_explainer_config --> aws_sagemaker_clarify_explainer_config
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_endpoint resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_endpoint resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -16251,31 +16251,31 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class aws_sns_topic [[#aws_sns_topic]] {
+
+}
 class aws_s3_bucket [[#aws_s3_bucket]] {
 
 }
 class aws_kms_key [[#aws_kms_key]] {
 
 }
-class aws_sagemaker_inference_recommendations_job [[#aws_sagemaker_inference_recommendations_job]] {
+class aws_cloudwatch_alarm [[#aws_cloudwatch_alarm]] {
 
 }
-class aws_sns_topic [[#aws_sns_topic]] {
+class aws_sagemaker_inference_recommendations_job [[#aws_sagemaker_inference_recommendations_job]] {
 
 }
 class aws_sagemaker_endpoint [[#aws_sagemaker_endpoint]] {
 
 }
-class aws_cloudwatch_alarm [[#aws_cloudwatch_alarm]] {
-
-}
-aws_sagemaker_inference_recommendations_job -[#1A83AF]-> aws_sagemaker_endpoint
+aws_sns_topic -[#1A83AF]-> aws_kms_key
 aws_sagemaker_inference_recommendations_job -[#1A83AF]-> aws_kms_key
 aws_sagemaker_inference_recommendations_job -[#1A83AF]-> aws_s3_bucket
-aws_sns_topic -[#1A83AF]-> aws_kms_key
-aws_sagemaker_endpoint -[#1A83AF]-> aws_sns_topic
-aws_sagemaker_endpoint -[#1A83AF]-> aws_cloudwatch_alarm
+aws_sagemaker_inference_recommendations_job -[#1A83AF]-> aws_sagemaker_endpoint
 aws_sagemaker_endpoint -[#1A83AF]-> aws_kms_key
+aws_sagemaker_endpoint -[#1A83AF]-> aws_cloudwatch_alarm
+aws_sagemaker_endpoint -[#1A83AF]-> aws_sns_topic
 aws_sagemaker_endpoint -[#1A83AF]-> aws_s3_bucket
 
 @enduml
@@ -16289,7 +16289,7 @@ aws_sagemaker_endpoint -[#1A83AF]-> aws_s3_bucket
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_experiment data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_experiment data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -16313,9 +16313,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -16327,6 +16324,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_sagemaker_experiment_source [[#aws_sagemaker_experiment_source]] {
 **source_arn**: string
@@ -16350,7 +16350,7 @@ aws_sagemaker_experiment --> aws_sagemaker_experiment_source
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_experiment resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_experiment resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -16374,16 +16374,16 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_sagemaker_processing_job [[#aws_sagemaker_processing_job]] {
-
-}
 class aws_sagemaker_training_job [[#aws_sagemaker_training_job]] {
 
 }
-class aws_sagemaker_trial [[#aws_sagemaker_trial]] {
+class aws_sagemaker_transform_job [[#aws_sagemaker_transform_job]] {
 
 }
-class aws_sagemaker_transform_job [[#aws_sagemaker_transform_job]] {
+class aws_sagemaker_processing_job [[#aws_sagemaker_processing_job]] {
+
+}
+class aws_sagemaker_trial [[#aws_sagemaker_trial]] {
 
 }
 class aws_sagemaker_experiment [[#aws_sagemaker_experiment]] {
@@ -16393,9 +16393,9 @@ aws_sagemaker_processing_job -[#1A83AF]-> aws_sagemaker_training_job
 aws_sagemaker_trial -[#1A83AF]-> aws_sagemaker_transform_job
 aws_sagemaker_trial -[#1A83AF]-> aws_sagemaker_training_job
 aws_sagemaker_trial -[#1A83AF]-> aws_sagemaker_processing_job
+aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_trial
 aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_transform_job
 aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_training_job
-aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_trial
 aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_processing_job
 
 @enduml
@@ -16409,7 +16409,7 @@ aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_processing_job
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_hyper_parameter_tuning_job data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_hyper_parameter_tuning_job data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -16433,8 +16433,9 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
+class aws_sagemaker_vpc_config [[#aws_sagemaker_vpc_config]] {
+**security_group_ids**: string[]
+**subnets**: string[]
 }
 class resource [[#resource]] {
 **id**: string
@@ -16447,6 +16448,16 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
+class aws_sagemaker_job [[#aws_sagemaker_job]] {
+
+}
+class aws_sagemaker_stopping_condition [[#aws_sagemaker_stopping_condition]] {
+**max_runtime_in_seconds**: int64
+**max_wait_time_in_seconds**: int64
 }
 class aws_sagemaker_hyper_parameter_tuning_job [[#aws_sagemaker_hyper_parameter_tuning_job]] {
 **hyper_parameter_tuning_job_config**: aws_sagemaker_hyper_parameter_tuning_job_config
@@ -16461,16 +16472,79 @@ class aws_sagemaker_hyper_parameter_tuning_job [[#aws_sagemaker_hyper_parameter_
 **hyper_parameter_tuning_job_warm_start_config**: aws_sagemaker_hyper_parameter_tuning_job_warm_start_config
 **hyper_parameter_tuning_job_failure_reason**: string
 }
+class aws_sagemaker_categorical_parameter_range [[#aws_sagemaker_categorical_parameter_range]] {
+**name**: string
+**values**: string[]
+}
+class aws_sagemaker_resource_config [[#aws_sagemaker_resource_config]] {
+**instance_type**: string
+**instance_count**: int64
+**volume_size_in_gb**: int64
+**volume_kms_key_id**: string
+**instance_groups**: aws_sagemaker_instance_group[]
+**keep_alive_period_in_seconds**: int64
+}
+class aws_sagemaker_instance_group [[#aws_sagemaker_instance_group]] {
+**instance_type**: string
+**instance_count**: int64
+**instance_group_name**: string
+}
+class aws_sagemaker_scaling_parameter_range [[#aws_sagemaker_scaling_parameter_range]] {
+**name**: string
+**min_value**: string
+**max_value**: string
+**scaling_type**: string
+}
+class aws_sagemaker_output_data_config [[#aws_sagemaker_output_data_config]] {
+**kms_key_id**: string
+**s3_output_path**: string
+}
+class aws_sagemaker_hyper_parameter_tuning_job_strategy_config [[#aws_sagemaker_hyper_parameter_tuning_job_strategy_config]] {
+**hyperband_strategy_config**: aws_sagemaker_hyperband_strategy_config
+}
+class aws_sagemaker_hyperband_strategy_config [[#aws_sagemaker_hyperband_strategy_config]] {
+**min_resource**: int64
+**max_resource**: int64
+}
+class aws_sagemaker_hyper_parameter_tuning_resource_config [[#aws_sagemaker_hyper_parameter_tuning_resource_config]] {
+**instance_type**: string
+**instance_count**: int64
+**volume_size_in_gb**: int64
+**volume_kms_key_id**: string
+**allocation_strategy**: string
+**instance_configs**: aws_sagemaker_hyper_parameter_tuning_instance_config[]
+}
+class aws_sagemaker_hyper_parameter_tuning_instance_config [[#aws_sagemaker_hyper_parameter_tuning_instance_config]] {
+**instance_type**: string
+**instance_count**: int64
+**volume_size_in_gb**: int64
+}
+class aws_sagemaker_resource_limits [[#aws_sagemaker_resource_limits]] {
+**max_number_of_training_jobs**: int64
+**max_parallel_training_jobs**: int64
+}
+class aws_sagemaker_hyper_parameter_training_job_summary [[#aws_sagemaker_hyper_parameter_training_job_summary]] {
+**training_job_definition_name**: string
+**training_job_name**: string
+**training_job_arn**: string
+**tuning_job_name**: string
+**creation_time**: datetime
+**training_start_time**: datetime
+**training_end_time**: datetime
+**training_job_status**: string
+**tuned_hyper_parameters**: dictionary[string, string]
+**failure_reason**: string
+**final_hyper_parameter_tuning_job_objective_metric**: aws_sagemaker_final_hyper_parameter_tuning_job_objective_metric
+**objective_status**: string
+}
+class aws_sagemaker_final_hyper_parameter_tuning_job_objective_metric [[#aws_sagemaker_final_hyper_parameter_tuning_job_objective_metric]] {
+**type**: string
+**metric_name**: string
+**value**: double
+}
 class aws_sagemaker_metric_definition [[#aws_sagemaker_metric_definition]] {
 **name**: string
 **regex**: string
-}
-class aws_sagemaker_job [[#aws_sagemaker_job]] {
-
-}
-class aws_sagemaker_vpc_config [[#aws_sagemaker_vpc_config]] {
-**security_group_ids**: string[]
-**subnets**: string[]
 }
 class aws_sagemaker_s3_data_source [[#aws_sagemaker_s3_data_source]] {
 **s3_data_type**: string
@@ -16484,16 +16558,6 @@ class aws_sagemaker_parameter_ranges [[#aws_sagemaker_parameter_ranges]] {
 **continuous_parameter_ranges**: aws_sagemaker_scaling_parameter_range[]
 **categorical_parameter_ranges**: aws_sagemaker_categorical_parameter_range[]
 }
-class aws_sagemaker_scaling_parameter_range [[#aws_sagemaker_scaling_parameter_range]] {
-**name**: string
-**min_value**: string
-**max_value**: string
-**scaling_type**: string
-}
-class aws_sagemaker_categorical_parameter_range [[#aws_sagemaker_categorical_parameter_range]] {
-**name**: string
-**values**: string[]
-}
 class aws_sagemaker_hyper_parameter_tuning_job_objective [[#aws_sagemaker_hyper_parameter_tuning_job_objective]] {
 **type**: string
 **metric_name**: string
@@ -16503,11 +16567,6 @@ class aws_sagemaker_file_system_data_source [[#aws_sagemaker_file_system_data_so
 **file_system_access_mode**: string
 **file_system_type**: string
 **directory_path**: string
-}
-class aws_sagemaker_final_hyper_parameter_tuning_job_objective_metric [[#aws_sagemaker_final_hyper_parameter_tuning_job_objective_metric]] {
-**type**: string
-**metric_name**: string
-**value**: double
 }
 class aws_sagemaker_hyper_parameter_training_job_definition [[#aws_sagemaker_hyper_parameter_training_job_definition]] {
 **definition_name**: string
@@ -16547,43 +16606,9 @@ class aws_sagemaker_data_source [[#aws_sagemaker_data_source]] {
 **s3_data_source**: aws_sagemaker_s3_data_source
 **file_system_data_source**: aws_sagemaker_file_system_data_source
 }
-class aws_sagemaker_output_data_config [[#aws_sagemaker_output_data_config]] {
-**kms_key_id**: string
-**s3_output_path**: string
-}
-class aws_sagemaker_resource_config [[#aws_sagemaker_resource_config]] {
-**instance_type**: string
-**instance_count**: int64
-**volume_size_in_gb**: int64
-**volume_kms_key_id**: string
-**instance_groups**: aws_sagemaker_instance_group[]
-**keep_alive_period_in_seconds**: int64
-}
-class aws_sagemaker_instance_group [[#aws_sagemaker_instance_group]] {
-**instance_type**: string
-**instance_count**: int64
-**instance_group_name**: string
-}
-class aws_sagemaker_stopping_condition [[#aws_sagemaker_stopping_condition]] {
-**max_runtime_in_seconds**: int64
-**max_wait_time_in_seconds**: int64
-}
 class aws_sagemaker_checkpoint_config [[#aws_sagemaker_checkpoint_config]] {
 **s3_uri**: string
 **local_path**: string
-}
-class aws_sagemaker_hyper_parameter_tuning_resource_config [[#aws_sagemaker_hyper_parameter_tuning_resource_config]] {
-**instance_type**: string
-**instance_count**: int64
-**volume_size_in_gb**: int64
-**volume_kms_key_id**: string
-**allocation_strategy**: string
-**instance_configs**: aws_sagemaker_hyper_parameter_tuning_instance_config[]
-}
-class aws_sagemaker_hyper_parameter_tuning_instance_config [[#aws_sagemaker_hyper_parameter_tuning_instance_config]] {
-**instance_type**: string
-**instance_count**: int64
-**volume_size_in_gb**: int64
 }
 class aws_sagemaker_training_job_status_counters [[#aws_sagemaker_training_job_status_counters]] {
 **completed**: int64
@@ -16601,17 +16626,6 @@ class aws_sagemaker_hyper_parameter_tuning_job_config [[#aws_sagemaker_hyper_par
 **training_job_early_stopping_type**: string
 **tuning_job_completion_criteria**: double
 }
-class aws_sagemaker_hyper_parameter_tuning_job_strategy_config [[#aws_sagemaker_hyper_parameter_tuning_job_strategy_config]] {
-**hyperband_strategy_config**: aws_sagemaker_hyperband_strategy_config
-}
-class aws_sagemaker_hyperband_strategy_config [[#aws_sagemaker_hyperband_strategy_config]] {
-**min_resource**: int64
-**max_resource**: int64
-}
-class aws_sagemaker_resource_limits [[#aws_sagemaker_resource_limits]] {
-**max_number_of_training_jobs**: int64
-**max_parallel_training_jobs**: int64
-}
 class aws_sagemaker_hyper_parameter_tuning_job_warm_start_config [[#aws_sagemaker_hyper_parameter_tuning_job_warm_start_config]] {
 **parent_hyper_parameter_tuning_jobs**: string[]
 **warm_start_type**: string
@@ -16621,21 +16635,8 @@ class aws_sagemaker_objective_status_counters [[#aws_sagemaker_objective_status_
 **pending**: int64
 **failed**: int64
 }
-class aws_sagemaker_hyper_parameter_training_job_summary [[#aws_sagemaker_hyper_parameter_training_job_summary]] {
-**training_job_definition_name**: string
-**training_job_name**: string
-**training_job_arn**: string
-**tuning_job_name**: string
-**creation_time**: datetime
-**training_start_time**: datetime
-**training_end_time**: datetime
-**training_job_status**: string
-**tuned_hyper_parameters**: dictionary[string, string]
-**failure_reason**: string
-**final_hyper_parameter_tuning_job_objective_metric**: aws_sagemaker_final_hyper_parameter_tuning_job_objective_metric
-**objective_status**: string
-}
 resource <|--- aws_resource
+aws_resource <|--- aws_sagemaker_job
 aws_sagemaker_job <|--- aws_sagemaker_hyper_parameter_tuning_job
 aws_sagemaker_hyper_parameter_tuning_job --> aws_sagemaker_hyper_parameter_tuning_job_config
 aws_sagemaker_hyper_parameter_tuning_job --> aws_sagemaker_hyper_parameter_training_job_definition
@@ -16643,7 +16644,10 @@ aws_sagemaker_hyper_parameter_tuning_job --> aws_sagemaker_training_job_status_c
 aws_sagemaker_hyper_parameter_tuning_job --> aws_sagemaker_objective_status_counters
 aws_sagemaker_hyper_parameter_tuning_job --> aws_sagemaker_hyper_parameter_training_job_summary
 aws_sagemaker_hyper_parameter_tuning_job --> aws_sagemaker_hyper_parameter_tuning_job_warm_start_config
-aws_resource <|--- aws_sagemaker_job
+aws_sagemaker_resource_config --> aws_sagemaker_instance_group
+aws_sagemaker_hyper_parameter_tuning_job_strategy_config --> aws_sagemaker_hyperband_strategy_config
+aws_sagemaker_hyper_parameter_tuning_resource_config --> aws_sagemaker_hyper_parameter_tuning_instance_config
+aws_sagemaker_hyper_parameter_training_job_summary --> aws_sagemaker_final_hyper_parameter_tuning_job_objective_metric
 aws_sagemaker_parameter_ranges --> aws_sagemaker_scaling_parameter_range
 aws_sagemaker_parameter_ranges --> aws_sagemaker_categorical_parameter_range
 aws_sagemaker_hyper_parameter_training_job_definition --> aws_sagemaker_hyper_parameter_tuning_job_objective
@@ -16660,14 +16664,10 @@ aws_sagemaker_hyper_parameter_algorithm_specification --> aws_sagemaker_metric_d
 aws_sagemaker_channel --> aws_sagemaker_data_source
 aws_sagemaker_data_source --> aws_sagemaker_s3_data_source
 aws_sagemaker_data_source --> aws_sagemaker_file_system_data_source
-aws_sagemaker_resource_config --> aws_sagemaker_instance_group
-aws_sagemaker_hyper_parameter_tuning_resource_config --> aws_sagemaker_hyper_parameter_tuning_instance_config
 aws_sagemaker_hyper_parameter_tuning_job_config --> aws_sagemaker_hyper_parameter_tuning_job_strategy_config
 aws_sagemaker_hyper_parameter_tuning_job_config --> aws_sagemaker_hyper_parameter_tuning_job_objective
 aws_sagemaker_hyper_parameter_tuning_job_config --> aws_sagemaker_resource_limits
 aws_sagemaker_hyper_parameter_tuning_job_config --> aws_sagemaker_parameter_ranges
-aws_sagemaker_hyper_parameter_tuning_job_strategy_config --> aws_sagemaker_hyperband_strategy_config
-aws_sagemaker_hyper_parameter_training_job_summary --> aws_sagemaker_final_hyper_parameter_tuning_job_objective_metric
 
 @enduml
 ```
@@ -16679,7 +16679,7 @@ aws_sagemaker_hyper_parameter_training_job_summary --> aws_sagemaker_final_hyper
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_hyper_parameter_tuning_job resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_hyper_parameter_tuning_job resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -16703,22 +16703,22 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class aws_ec2_subnet [[#aws_ec2_subnet]] {
+
+}
+class aws_sagemaker_training_job [[#aws_sagemaker_training_job]] {
+
+}
 class aws_s3_bucket [[#aws_s3_bucket]] {
 
 }
 class aws_kms_key [[#aws_kms_key]] {
 
 }
-class aws_ec2_subnet [[#aws_ec2_subnet]] {
+class aws_ec2_security_group [[#aws_ec2_security_group]] {
 
 }
 class aws_sagemaker_hyper_parameter_tuning_job [[#aws_sagemaker_hyper_parameter_tuning_job]] {
-
-}
-class aws_sagemaker_training_job [[#aws_sagemaker_training_job]] {
-
-}
-class aws_ec2_security_group [[#aws_ec2_security_group]] {
 
 }
 class aws_iam_role [[#aws_iam_role]] {
@@ -16726,15 +16726,15 @@ class aws_iam_role [[#aws_iam_role]] {
 }
 aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_hyper_parameter_tuning_job
 aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_training_job
-aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_sagemaker_training_job
-aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_kms_key
-aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_s3_bucket
 aws_sagemaker_training_job -[#1A83AF]-> aws_kms_key
 aws_sagemaker_training_job -[#1A83AF]-> aws_s3_bucket
-aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_hyper_parameter_tuning_job
 aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_training_job
-aws_iam_role -[#1A83AF]-> aws_sagemaker_hyper_parameter_tuning_job
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_hyper_parameter_tuning_job
+aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_sagemaker_training_job
 aws_iam_role -[#1A83AF]-> aws_sagemaker_training_job
+aws_iam_role -[#1A83AF]-> aws_sagemaker_hyper_parameter_tuning_job
 
 @enduml
 ```
@@ -16747,7 +16747,7 @@ aws_iam_role -[#1A83AF]-> aws_sagemaker_training_job
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_image data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_image data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -16771,9 +16771,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -16785,6 +16782,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_sagemaker_image [[#aws_sagemaker_image]] {
 **image_description**: string
@@ -16805,7 +16805,7 @@ aws_resource <|--- aws_sagemaker_image
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_image resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_image resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -16841,11 +16841,11 @@ class aws_sagemaker_app [[#aws_sagemaker_app]] {
 class aws_iam_role [[#aws_iam_role]] {
 
 }
-aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_image
 aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_app
+aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_image
 aws_sagemaker_app -[#1A83AF]-> aws_sagemaker_image
-aws_iam_role -[#1A83AF]-> aws_sagemaker_image
 aws_iam_role -[#1A83AF]-> aws_sagemaker_domain
+aws_iam_role -[#1A83AF]-> aws_sagemaker_image
 
 @enduml
 ```
@@ -16858,7 +16858,7 @@ aws_iam_role -[#1A83AF]-> aws_sagemaker_domain
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_inference_recommendations_job data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_inference_recommendations_job data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -16882,8 +16882,9 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
+class aws_sagemaker_vpc_config [[#aws_sagemaker_vpc_config]] {
+**security_group_ids**: string[]
+**subnets**: string[]
 }
 class resource [[#resource]] {
 **id**: string
@@ -16897,6 +16898,38 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
+class aws_sagemaker_job [[#aws_sagemaker_job]] {
+
+}
+class aws_sagemaker_traffic_pattern [[#aws_sagemaker_traffic_pattern]] {
+**traffic_type**: string
+**phases**: aws_sagemaker_phase[]
+}
+class aws_sagemaker_phase [[#aws_sagemaker_phase]] {
+**initial_number_of_users**: int64
+**spawn_rate**: int64
+**duration_in_seconds**: int64
+}
+class aws_sagemaker_recommendation_job_resource_limit [[#aws_sagemaker_recommendation_job_resource_limit]] {
+**max_number_of_tests**: int64
+**max_parallel_of_tests**: int64
+}
+class aws_sagemaker_recommendation_job_container_config [[#aws_sagemaker_recommendation_job_container_config]] {
+**domain**: string
+**task**: string
+**framework**: string
+**framework_version**: string
+**payload_config**: aws_sagemaker_recommendation_job_payload_config
+**nearest_model_name**: string
+**supported_instance_types**: string[]
+}
+class aws_sagemaker_recommendation_job_payload_config [[#aws_sagemaker_recommendation_job_payload_config]] {
+**sample_payload_url**: string
+**supported_content_types**: string[]
+}
 class aws_sagemaker_inference_recommendations_job [[#aws_sagemaker_inference_recommendations_job]] {
 **inference_recommendations_job_description**: string
 **inference_recommendations_job_type**: string
@@ -16908,12 +16941,16 @@ class aws_sagemaker_inference_recommendations_job [[#aws_sagemaker_inference_rec
 **inference_recommendations_job_inference_recommendations**: aws_sagemaker_inference_recommendation[]
 **inference_recommendations_job_endpoint_performances**: aws_sagemaker_endpoint_performance[]
 }
-class aws_sagemaker_job [[#aws_sagemaker_job]] {
-
+class aws_sagemaker_endpoint_output_configuration [[#aws_sagemaker_endpoint_output_configuration]] {
+**endpoint_name**: string
+**variant_name**: string
+**instance_type**: string
+**initial_instance_count**: int64
 }
-class aws_sagemaker_vpc_config [[#aws_sagemaker_vpc_config]] {
-**security_group_ids**: string[]
-**subnets**: string[]
+class aws_sagemaker_environment_parameter [[#aws_sagemaker_environment_parameter]] {
+**key**: string
+**value_type**: string
+**value**: string
 }
 class aws_sagemaker_endpoint_input_configuration [[#aws_sagemaker_endpoint_input_configuration]] {
 **instance_type**: string
@@ -16949,32 +16986,6 @@ class aws_sagemaker_recommendation_job_input_config [[#aws_sagemaker_recommendat
 **endpoints**: string[]
 **vpc_config**: aws_sagemaker_vpc_config
 }
-class aws_sagemaker_traffic_pattern [[#aws_sagemaker_traffic_pattern]] {
-**traffic_type**: string
-**phases**: aws_sagemaker_phase[]
-}
-class aws_sagemaker_phase [[#aws_sagemaker_phase]] {
-**initial_number_of_users**: int64
-**spawn_rate**: int64
-**duration_in_seconds**: int64
-}
-class aws_sagemaker_recommendation_job_resource_limit [[#aws_sagemaker_recommendation_job_resource_limit]] {
-**max_number_of_tests**: int64
-**max_parallel_of_tests**: int64
-}
-class aws_sagemaker_recommendation_job_container_config [[#aws_sagemaker_recommendation_job_container_config]] {
-**domain**: string
-**task**: string
-**framework**: string
-**framework_version**: string
-**payload_config**: aws_sagemaker_recommendation_job_payload_config
-**nearest_model_name**: string
-**supported_instance_types**: string[]
-}
-class aws_sagemaker_recommendation_job_payload_config [[#aws_sagemaker_recommendation_job_payload_config]] {
-**sample_payload_url**: string
-**supported_content_types**: string[]
-}
 class aws_sagemaker_inference_recommendation [[#aws_sagemaker_inference_recommendation]] {
 **metrics**: aws_sagemaker_recommendation_metrics
 **endpoint_configuration**: aws_sagemaker_endpoint_output_configuration
@@ -16986,28 +16997,19 @@ class aws_sagemaker_recommendation_metrics [[#aws_sagemaker_recommendation_metri
 **max_invocations**: int64
 **model_latency**: int64
 }
-class aws_sagemaker_endpoint_output_configuration [[#aws_sagemaker_endpoint_output_configuration]] {
-**endpoint_name**: string
-**variant_name**: string
-**instance_type**: string
-**initial_instance_count**: int64
-}
 class aws_sagemaker_model_configuration [[#aws_sagemaker_model_configuration]] {
 **inference_specification_name**: string
 **environment_parameters**: aws_sagemaker_environment_parameter[]
 }
-class aws_sagemaker_environment_parameter [[#aws_sagemaker_environment_parameter]] {
-**key**: string
-**value_type**: string
-**value**: string
-}
 resource <|--- aws_resource
+aws_resource <|--- aws_sagemaker_job
+aws_sagemaker_traffic_pattern --> aws_sagemaker_phase
+aws_sagemaker_recommendation_job_container_config --> aws_sagemaker_recommendation_job_payload_config
 aws_sagemaker_job <|--- aws_sagemaker_inference_recommendations_job
 aws_sagemaker_inference_recommendations_job --> aws_sagemaker_recommendation_job_input_config
 aws_sagemaker_inference_recommendations_job --> aws_sagemaker_recommendation_job_stopping_conditions
 aws_sagemaker_inference_recommendations_job --> aws_sagemaker_inference_recommendation
 aws_sagemaker_inference_recommendations_job --> aws_sagemaker_endpoint_performance
-aws_resource <|--- aws_sagemaker_job
 aws_sagemaker_endpoint_input_configuration --> aws_sagemaker_environment_parameter_ranges
 aws_sagemaker_endpoint_performance --> aws_sagemaker_inference_metrics
 aws_sagemaker_recommendation_job_stopping_conditions --> aws_sagemaker_model_latency_threshold
@@ -17016,8 +17018,6 @@ aws_sagemaker_recommendation_job_input_config --> aws_sagemaker_recommendation_j
 aws_sagemaker_recommendation_job_input_config --> aws_sagemaker_endpoint_input_configuration
 aws_sagemaker_recommendation_job_input_config --> aws_sagemaker_recommendation_job_container_config
 aws_sagemaker_recommendation_job_input_config --> aws_sagemaker_vpc_config
-aws_sagemaker_traffic_pattern --> aws_sagemaker_phase
-aws_sagemaker_recommendation_job_container_config --> aws_sagemaker_recommendation_job_payload_config
 aws_sagemaker_inference_recommendation --> aws_sagemaker_recommendation_metrics
 aws_sagemaker_inference_recommendation --> aws_sagemaker_endpoint_output_configuration
 aws_sagemaker_inference_recommendation --> aws_sagemaker_model_configuration
@@ -17033,7 +17033,7 @@ aws_sagemaker_model_configuration --> aws_sagemaker_environment_parameter
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_inference_recommendations_job resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_inference_recommendations_job resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -17057,35 +17057,35 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class aws_ec2_subnet [[#aws_ec2_subnet]] {
+
+}
 class aws_s3_bucket [[#aws_s3_bucket]] {
 
 }
 class aws_kms_key [[#aws_kms_key]] {
 
 }
-class aws_ec2_subnet [[#aws_ec2_subnet]] {
+class aws_ec2_security_group [[#aws_ec2_security_group]] {
 
 }
 class aws_sagemaker_inference_recommendations_job [[#aws_sagemaker_inference_recommendations_job]] {
 
 }
-class aws_sagemaker_endpoint [[#aws_sagemaker_endpoint]] {
-
-}
-class aws_ec2_security_group [[#aws_ec2_security_group]] {
-
-}
 class aws_iam_role [[#aws_iam_role]] {
 
 }
+class aws_sagemaker_endpoint [[#aws_sagemaker_endpoint]] {
+
+}
 aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_inference_recommendations_job
-aws_sagemaker_inference_recommendations_job -[#1A83AF]-> aws_sagemaker_endpoint
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_inference_recommendations_job
 aws_sagemaker_inference_recommendations_job -[#1A83AF]-> aws_kms_key
 aws_sagemaker_inference_recommendations_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_inference_recommendations_job -[#1A83AF]-> aws_sagemaker_endpoint
+aws_iam_role -[#1A83AF]-> aws_sagemaker_inference_recommendations_job
 aws_sagemaker_endpoint -[#1A83AF]-> aws_kms_key
 aws_sagemaker_endpoint -[#1A83AF]-> aws_s3_bucket
-aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_inference_recommendations_job
-aws_iam_role -[#1A83AF]-> aws_sagemaker_inference_recommendations_job
 
 @enduml
 ```
@@ -17098,7 +17098,7 @@ aws_iam_role -[#1A83AF]-> aws_sagemaker_inference_recommendations_job
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_job data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_job data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -17122,9 +17122,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -17136,6 +17133,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_sagemaker_job [[#aws_sagemaker_job]] {
 
@@ -17153,7 +17153,7 @@ aws_resource <|--- aws_sagemaker_job
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_job resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_job resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -17192,7 +17192,7 @@ class aws_sagemaker_job [[#aws_sagemaker_job]] {
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_labeling_job data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_labeling_job data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -17216,8 +17216,9 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
+class aws_sagemaker_vpc_config [[#aws_sagemaker_vpc_config]] {
+**security_group_ids**: string[]
+**subnets**: string[]
 }
 class resource [[#resource]] {
 **id**: string
@@ -17230,6 +17231,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_sagemaker_labeling_job [[#aws_sagemaker_labeling_job]] {
 **labeling_job_status**: string
@@ -17249,35 +17253,6 @@ class aws_sagemaker_labeling_job [[#aws_sagemaker_labeling_job]] {
 class aws_sagemaker_job [[#aws_sagemaker_job]] {
 
 }
-class aws_sagemaker_vpc_config [[#aws_sagemaker_vpc_config]] {
-**security_group_ids**: string[]
-**subnets**: string[]
-}
-class aws_sagemaker_labeling_job_algorithms_config [[#aws_sagemaker_labeling_job_algorithms_config]] {
-**labeling_job_algorithm_specification_arn**: string
-**initial_active_learning_model_arn**: string
-**labeling_job_resource_config**: aws_sagemaker_labeling_job_resource_config
-}
-class aws_sagemaker_labeling_job_resource_config [[#aws_sagemaker_labeling_job_resource_config]] {
-**volume_kms_key_id**: string
-**vpc_config**: aws_sagemaker_vpc_config
-}
-class aws_sagemaker_ui_config [[#aws_sagemaker_ui_config]] {
-**ui_template_s3_uri**: string
-**human_task_ui_arn**: string
-}
-class aws_sagemaker_public_workforce_task_price [[#aws_sagemaker_public_workforce_task_price]] {
-**amount_in_usd**: aws_sagemaker_usd
-}
-class aws_sagemaker_usd [[#aws_sagemaker_usd]] {
-**dollars**: int64
-**cents**: int64
-**tenth_fractions_of_a_cent**: int64
-}
-class aws_sagemaker_labeling_job_data_source [[#aws_sagemaker_labeling_job_data_source]] {
-**s3_data_source**: string
-**sns_data_source**: string
-}
 class aws_sagemaker_label_counters [[#aws_sagemaker_label_counters]] {
 **total_labeled**: int64
 **human_labeled**: int64
@@ -17289,6 +17264,10 @@ class aws_sagemaker_labeling_job_input_config [[#aws_sagemaker_labeling_job_inpu
 **data_source**: aws_sagemaker_labeling_job_data_source
 **data_attributes**: string[]
 }
+class aws_sagemaker_labeling_job_data_source [[#aws_sagemaker_labeling_job_data_source]] {
+**s3_data_source**: string
+**sns_data_source**: string
+}
 class aws_sagemaker_labeling_job_output_config [[#aws_sagemaker_labeling_job_output_config]] {
 **s3_output_path**: string
 **kms_key_id**: string
@@ -17297,6 +17276,15 @@ class aws_sagemaker_labeling_job_output_config [[#aws_sagemaker_labeling_job_out
 class aws_sagemaker_labeling_job_stopping_conditions [[#aws_sagemaker_labeling_job_stopping_conditions]] {
 **max_human_labeled_object_count**: int64
 **max_percentage_of_input_dataset_labeled**: int64
+}
+class aws_sagemaker_labeling_job_algorithms_config [[#aws_sagemaker_labeling_job_algorithms_config]] {
+**labeling_job_algorithm_specification_arn**: string
+**initial_active_learning_model_arn**: string
+**labeling_job_resource_config**: aws_sagemaker_labeling_job_resource_config
+}
+class aws_sagemaker_labeling_job_resource_config [[#aws_sagemaker_labeling_job_resource_config]] {
+**volume_kms_key_id**: string
+**vpc_config**: aws_sagemaker_vpc_config
 }
 class aws_sagemaker_human_task_config [[#aws_sagemaker_human_task_config]] {
 **workteam_arn**: string
@@ -17312,6 +17300,18 @@ class aws_sagemaker_human_task_config [[#aws_sagemaker_human_task_config]] {
 **annotation_consolidation_config**: string
 **public_workforce_task_price**: aws_sagemaker_public_workforce_task_price
 }
+class aws_sagemaker_ui_config [[#aws_sagemaker_ui_config]] {
+**ui_template_s3_uri**: string
+**human_task_ui_arn**: string
+}
+class aws_sagemaker_public_workforce_task_price [[#aws_sagemaker_public_workforce_task_price]] {
+**amount_in_usd**: aws_sagemaker_usd
+}
+class aws_sagemaker_usd [[#aws_sagemaker_usd]] {
+**dollars**: int64
+**cents**: int64
+**tenth_fractions_of_a_cent**: int64
+}
 class aws_sagemaker_labeling_job_output [[#aws_sagemaker_labeling_job_output]] {
 **output_dataset_s3_uri**: string
 **final_active_learning_model_arn**: string
@@ -17326,12 +17326,12 @@ aws_sagemaker_labeling_job --> aws_sagemaker_labeling_job_algorithms_config
 aws_sagemaker_labeling_job --> aws_sagemaker_human_task_config
 aws_sagemaker_labeling_job --> aws_sagemaker_labeling_job_output
 aws_resource <|--- aws_sagemaker_job
+aws_sagemaker_labeling_job_input_config --> aws_sagemaker_labeling_job_data_source
 aws_sagemaker_labeling_job_algorithms_config --> aws_sagemaker_labeling_job_resource_config
 aws_sagemaker_labeling_job_resource_config --> aws_sagemaker_vpc_config
-aws_sagemaker_public_workforce_task_price --> aws_sagemaker_usd
-aws_sagemaker_labeling_job_input_config --> aws_sagemaker_labeling_job_data_source
 aws_sagemaker_human_task_config --> aws_sagemaker_ui_config
 aws_sagemaker_human_task_config --> aws_sagemaker_public_workforce_task_price
+aws_sagemaker_public_workforce_task_price --> aws_sagemaker_usd
 
 @enduml
 ```
@@ -17343,7 +17343,7 @@ aws_sagemaker_human_task_config --> aws_sagemaker_public_workforce_task_price
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_labeling_job resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_labeling_job resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -17367,22 +17367,16 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_s3_bucket [[#aws_s3_bucket]] {
-
-}
-class aws_kms_key [[#aws_kms_key]] {
-
-}
 class aws_ec2_subnet [[#aws_ec2_subnet]] {
-
-}
-class aws_lambda_function [[#aws_lambda_function]] {
 
 }
 class aws_sagemaker_labeling_job [[#aws_sagemaker_labeling_job]] {
 
 }
-class aws_sagemaker_model [[#aws_sagemaker_model]] {
+class aws_sns_topic [[#aws_sns_topic]] {
+
+}
+class aws_lambda_function [[#aws_lambda_function]] {
 
 }
 class aws_sagemaker_training_job [[#aws_sagemaker_training_job]] {
@@ -17391,46 +17385,52 @@ class aws_sagemaker_training_job [[#aws_sagemaker_training_job]] {
 class aws_sagemaker_transform_job [[#aws_sagemaker_transform_job]] {
 
 }
-class aws_sns_topic [[#aws_sns_topic]] {
+class aws_s3_bucket [[#aws_s3_bucket]] {
 
 }
-class aws_sagemaker_workteam [[#aws_sagemaker_workteam]] {
+class aws_kms_key [[#aws_kms_key]] {
 
 }
 class aws_ec2_security_group [[#aws_ec2_security_group]] {
 
 }
+class aws_sagemaker_model [[#aws_sagemaker_model]] {
+
+}
 class aws_iam_role [[#aws_iam_role]] {
 
 }
-aws_ec2_subnet -[#1A83AF]-> aws_lambda_function
-aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_labeling_job
+class aws_sagemaker_workteam [[#aws_sagemaker_workteam]] {
+
+}
 aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_model
 aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_training_job
-aws_lambda_function -[#1A83AF]-> aws_kms_key
-aws_sagemaker_labeling_job -[#1A83AF]-> aws_lambda_function
-aws_sagemaker_labeling_job -[#1A83AF]-> aws_s3_bucket
-aws_sagemaker_labeling_job -[#1A83AF]-> aws_sagemaker_transform_job
+aws_ec2_subnet -[#1A83AF]-> aws_lambda_function
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_labeling_job
 aws_sagemaker_labeling_job -[#1A83AF]-> aws_sns_topic
+aws_sagemaker_labeling_job -[#1A83AF]-> aws_lambda_function
 aws_sagemaker_labeling_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_labeling_job -[#1A83AF]-> aws_sagemaker_transform_job
+aws_sagemaker_labeling_job -[#1A83AF]-> aws_s3_bucket
 aws_sagemaker_labeling_job -[#1A83AF]-> aws_kms_key
-aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_transform_job
-aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_labeling_job
-aws_sagemaker_model -[#1A83AF]-> aws_s3_bucket
+aws_sns_topic -[#1A83AF]-> aws_kms_key
+aws_lambda_function -[#1A83AF]-> aws_kms_key
 aws_sagemaker_training_job -[#1A83AF]-> aws_kms_key
 aws_sagemaker_training_job -[#1A83AF]-> aws_s3_bucket
 aws_sagemaker_transform_job -[#1A83AF]-> aws_kms_key
 aws_sagemaker_transform_job -[#1A83AF]-> aws_s3_bucket
-aws_sns_topic -[#1A83AF]-> aws_kms_key
-aws_sagemaker_workteam -[#1A83AF]-> aws_sagemaker_labeling_job
-aws_sagemaker_workteam -[#1A83AF]-> aws_sns_topic
-aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_labeling_job
-aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_model
 aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_training_job
 aws_ec2_security_group -[#1A83AF]-> aws_lambda_function
-aws_iam_role -[#1A83AF]-> aws_sagemaker_labeling_job
-aws_iam_role -[#1A83AF]-> aws_sagemaker_model
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_model
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_labeling_job
+aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_transform_job
+aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_labeling_job
+aws_sagemaker_model -[#1A83AF]-> aws_s3_bucket
 aws_iam_role -[#1A83AF]-> aws_sagemaker_training_job
+aws_iam_role -[#1A83AF]-> aws_sagemaker_model
+aws_iam_role -[#1A83AF]-> aws_sagemaker_labeling_job
+aws_sagemaker_workteam -[#1A83AF]-> aws_sns_topic
+aws_sagemaker_workteam -[#1A83AF]-> aws_sagemaker_labeling_job
 
 @enduml
 ```
@@ -17443,7 +17443,7 @@ aws_iam_role -[#1A83AF]-> aws_sagemaker_training_job
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_model data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_model data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -17467,8 +17467,9 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
+class aws_sagemaker_vpc_config [[#aws_sagemaker_vpc_config]] {
+**security_group_ids**: string[]
+**subnets**: string[]
 }
 class resource [[#resource]] {
 **id**: string
@@ -17482,16 +17483,15 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
 class aws_sagemaker_model [[#aws_sagemaker_model]] {
 **model_primary_container**: aws_sagemaker_container_definition
 **model_containers**: aws_sagemaker_container_definition[]
 **model_inference_execution_config**: string
 **model_vpc_config**: aws_sagemaker_vpc_config
 **model_enable_network_isolation**: boolean
-}
-class aws_sagemaker_vpc_config [[#aws_sagemaker_vpc_config]] {
-**security_group_ids**: string[]
-**subnets**: string[]
 }
 class aws_sagemaker_container_definition [[#aws_sagemaker_container_definition]] {
 **container_hostname**: string
@@ -17524,7 +17524,7 @@ aws_sagemaker_container_definition --> aws_sagemaker_image_config
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_model resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_model resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -17548,45 +17548,45 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_s3_bucket [[#aws_s3_bucket]] {
-
-}
 class aws_ec2_subnet [[#aws_ec2_subnet]] {
 
 }
 class aws_sagemaker_labeling_job [[#aws_sagemaker_labeling_job]] {
 
 }
-class aws_sagemaker_model [[#aws_sagemaker_model]] {
-
-}
 class aws_sagemaker_transform_job [[#aws_sagemaker_transform_job]] {
 
 }
-class aws_sagemaker_edge_packaging_job [[#aws_sagemaker_edge_packaging_job]] {
+class aws_s3_bucket [[#aws_s3_bucket]] {
 
 }
 class aws_ec2_security_group [[#aws_ec2_security_group]] {
 
 }
+class aws_sagemaker_model [[#aws_sagemaker_model]] {
+
+}
 class aws_iam_role [[#aws_iam_role]] {
 
 }
-aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_labeling_job
+class aws_sagemaker_edge_packaging_job [[#aws_sagemaker_edge_packaging_job]] {
+
+}
 aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_model
-aws_sagemaker_labeling_job -[#1A83AF]-> aws_s3_bucket
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_labeling_job
 aws_sagemaker_labeling_job -[#1A83AF]-> aws_sagemaker_transform_job
-aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_transform_job
+aws_sagemaker_labeling_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_transform_job -[#1A83AF]-> aws_s3_bucket
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_model
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_labeling_job
 aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_edge_packaging_job
+aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_transform_job
 aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_labeling_job
 aws_sagemaker_model -[#1A83AF]-> aws_s3_bucket
-aws_sagemaker_transform_job -[#1A83AF]-> aws_s3_bucket
-aws_sagemaker_edge_packaging_job -[#1A83AF]-> aws_s3_bucket
-aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_labeling_job
-aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_model
-aws_iam_role -[#1A83AF]-> aws_sagemaker_labeling_job
-aws_iam_role -[#1A83AF]-> aws_sagemaker_model
 aws_iam_role -[#1A83AF]-> aws_sagemaker_edge_packaging_job
+aws_iam_role -[#1A83AF]-> aws_sagemaker_model
+aws_iam_role -[#1A83AF]-> aws_sagemaker_labeling_job
+aws_sagemaker_edge_packaging_job -[#1A83AF]-> aws_s3_bucket
 
 @enduml
 ```
@@ -17599,7 +17599,7 @@ aws_iam_role -[#1A83AF]-> aws_sagemaker_edge_packaging_job
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_notebook data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_notebook data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -17623,9 +17623,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -17637,6 +17634,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_sagemaker_notebook [[#aws_sagemaker_notebook]] {
 **notebook_instance_status**: string
@@ -17666,7 +17666,7 @@ aws_resource <|--- aws_sagemaker_notebook
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_notebook resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_notebook resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -17690,13 +17690,13 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_kms_key [[#aws_kms_key]] {
+class aws_ec2_network_interface [[#aws_ec2_network_interface]] {
 
 }
 class aws_ec2_subnet [[#aws_ec2_subnet]] {
 
 }
-class aws_ec2_network_interface [[#aws_ec2_network_interface]] {
+class aws_kms_key [[#aws_kms_key]] {
 
 }
 class aws_sagemaker_notebook [[#aws_sagemaker_notebook]] {
@@ -17705,20 +17705,20 @@ class aws_sagemaker_notebook [[#aws_sagemaker_notebook]] {
 class aws_ec2_security_group [[#aws_ec2_security_group]] {
 
 }
-class aws_iam_role [[#aws_iam_role]] {
+class aws_sagemaker_code_repository [[#aws_sagemaker_code_repository]] {
 
 }
-class aws_sagemaker_code_repository [[#aws_sagemaker_code_repository]] {
+class aws_iam_role [[#aws_iam_role]] {
 
 }
 aws_ec2_subnet -[#1A83AF]-> aws_ec2_network_interface
 aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_notebook
-aws_sagemaker_notebook -[#1A83AF]-> aws_ec2_network_interface
 aws_sagemaker_notebook -[#1A83AF]-> aws_kms_key
-aws_ec2_security_group -[#1A83AF]-> aws_ec2_network_interface
+aws_sagemaker_notebook -[#1A83AF]-> aws_ec2_network_interface
 aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_notebook
-aws_iam_role -[#1A83AF]-> aws_sagemaker_notebook
+aws_ec2_security_group -[#1A83AF]-> aws_ec2_network_interface
 aws_sagemaker_code_repository -[#1A83AF]-> aws_sagemaker_notebook
+aws_iam_role -[#1A83AF]-> aws_sagemaker_notebook
 
 @enduml
 ```
@@ -17731,7 +17731,7 @@ aws_sagemaker_code_repository -[#1A83AF]-> aws_sagemaker_notebook
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_pipeline data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_pipeline data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -17755,9 +17755,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -17770,6 +17767,14 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
+class aws_sagemaker_user_context [[#aws_sagemaker_user_context]] {
+**user_profile_arn**: string
+**user_profile_name**: string
+**domain_id**: string
+}
 class aws_sagemaker_pipeline [[#aws_sagemaker_pipeline]] {
 **pipeline_display_name**: string
 **pipeline_definition**: string
@@ -17778,11 +17783,6 @@ class aws_sagemaker_pipeline [[#aws_sagemaker_pipeline]] {
 **pipeline_created_by**: aws_sagemaker_user_context
 **pipeline_last_modified_by**: aws_sagemaker_user_context
 **pipeline_parallelism_configuration**: int64
-}
-class aws_sagemaker_user_context [[#aws_sagemaker_user_context]] {
-**user_profile_arn**: string
-**user_profile_name**: string
-**domain_id**: string
 }
 resource <|--- aws_resource
 aws_resource <|--- aws_sagemaker_pipeline
@@ -17798,7 +17798,7 @@ aws_sagemaker_pipeline --> aws_sagemaker_user_context
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_pipeline resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_pipeline resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -17825,10 +17825,10 @@ skinparam stereotypeIBackgroundColor #e98df7
 class aws_sagemaker_domain [[#aws_sagemaker_domain]] {
 
 }
-class aws_sagemaker_user_profile [[#aws_sagemaker_user_profile]] {
+class aws_sagemaker_pipeline [[#aws_sagemaker_pipeline]] {
 
 }
-class aws_sagemaker_pipeline [[#aws_sagemaker_pipeline]] {
+class aws_sagemaker_user_profile [[#aws_sagemaker_user_profile]] {
 
 }
 class aws_iam_role [[#aws_iam_role]] {
@@ -17837,8 +17837,8 @@ class aws_iam_role [[#aws_iam_role]] {
 aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_user_profile
 aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_pipeline
 aws_sagemaker_user_profile -[#1A83AF]-> aws_sagemaker_pipeline
-aws_iam_role -[#1A83AF]-> aws_sagemaker_pipeline
 aws_iam_role -[#1A83AF]-> aws_sagemaker_domain
+aws_iam_role -[#1A83AF]-> aws_sagemaker_pipeline
 
 @enduml
 ```
@@ -17851,7 +17851,7 @@ aws_iam_role -[#1A83AF]-> aws_sagemaker_domain
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_processing_job data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_processing_job data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -17875,8 +17875,9 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
+class aws_sagemaker_vpc_config [[#aws_sagemaker_vpc_config]] {
+**security_group_ids**: string[]
+**subnets**: string[]
 }
 class resource [[#resource]] {
 **id**: string
@@ -17889,6 +17890,22 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
+class aws_sagemaker_job [[#aws_sagemaker_job]] {
+
+}
+class aws_sagemaker_athena_dataset_definition [[#aws_sagemaker_athena_dataset_definition]] {
+**catalog**: string
+**database**: string
+**query_string**: string
+**work_group**: string
+**output_s3_uri**: string
+**kms_key_id**: string
+**output_format**: string
+**output_compression**: string
 }
 class aws_sagemaker_processing_job [[#aws_sagemaker_processing_job]] {
 **processing_job_processing_inputs**: aws_sagemaker_processing_input[]
@@ -17908,12 +17925,42 @@ class aws_sagemaker_processing_job [[#aws_sagemaker_processing_job]] {
 **processing_job_monitoring_schedule_arn**: string
 **processing_job_auto_ml_job_arn**: string
 }
-class aws_sagemaker_job [[#aws_sagemaker_job]] {
-
+class aws_sagemaker_network_config [[#aws_sagemaker_network_config]] {
+**enable_inter_container_traffic_encryption**: boolean
+**enable_network_isolation**: boolean
+**vpc_config**: aws_sagemaker_vpc_config
 }
-class aws_sagemaker_vpc_config [[#aws_sagemaker_vpc_config]] {
-**security_group_ids**: string[]
-**subnets**: string[]
+class aws_sagemaker_redshift_dataset_definition [[#aws_sagemaker_redshift_dataset_definition]] {
+**cluster_id**: string
+**database**: string
+**db_user**: string
+**query_string**: string
+**cluster_role_arn**: string
+**output_s3_uri**: string
+**kms_key_id**: string
+**output_format**: string
+**output_compression**: string
+}
+class aws_sagemaker_processing_input [[#aws_sagemaker_processing_input]] {
+**input_name**: string
+**app_managed**: boolean
+**s3_input**: aws_sagemaker_processing_s3_input
+**dataset_definition**: aws_sagemaker_dataset_definition
+}
+class aws_sagemaker_processing_s3_input [[#aws_sagemaker_processing_s3_input]] {
+**s3_uri**: string
+**local_path**: string
+**s3_data_type**: string
+**s3_input_mode**: string
+**s3_data_distribution_type**: string
+**s3_compression_type**: string
+}
+class aws_sagemaker_dataset_definition [[#aws_sagemaker_dataset_definition]] {
+**athena_dataset_definition**: aws_sagemaker_athena_dataset_definition
+**redshift_dataset_definition**: aws_sagemaker_redshift_dataset_definition
+**local_path**: string
+**data_distribution_type**: string
+**input_mode**: string
 }
 class aws_sagemaker_processing_output_config [[#aws_sagemaker_processing_output_config]] {
 **outputs**: aws_sagemaker_processing_output[]
@@ -17930,58 +17977,6 @@ class aws_sagemaker_processing_s3_output [[#aws_sagemaker_processing_s3_output]]
 **local_path**: string
 **s3_upload_mode**: string
 }
-class aws_sagemaker_dataset_definition [[#aws_sagemaker_dataset_definition]] {
-**athena_dataset_definition**: aws_sagemaker_athena_dataset_definition
-**redshift_dataset_definition**: aws_sagemaker_redshift_dataset_definition
-**local_path**: string
-**data_distribution_type**: string
-**input_mode**: string
-}
-class aws_sagemaker_athena_dataset_definition [[#aws_sagemaker_athena_dataset_definition]] {
-**catalog**: string
-**database**: string
-**query_string**: string
-**work_group**: string
-**output_s3_uri**: string
-**kms_key_id**: string
-**output_format**: string
-**output_compression**: string
-}
-class aws_sagemaker_redshift_dataset_definition [[#aws_sagemaker_redshift_dataset_definition]] {
-**cluster_id**: string
-**database**: string
-**db_user**: string
-**query_string**: string
-**cluster_role_arn**: string
-**output_s3_uri**: string
-**kms_key_id**: string
-**output_format**: string
-**output_compression**: string
-}
-class aws_sagemaker_app_specification [[#aws_sagemaker_app_specification]] {
-**image_uri**: string
-**container_entrypoint**: string[]
-**container_arguments**: string[]
-}
-class aws_sagemaker_processing_s3_input [[#aws_sagemaker_processing_s3_input]] {
-**s3_uri**: string
-**local_path**: string
-**s3_data_type**: string
-**s3_input_mode**: string
-**s3_data_distribution_type**: string
-**s3_compression_type**: string
-}
-class aws_sagemaker_processing_input [[#aws_sagemaker_processing_input]] {
-**input_name**: string
-**app_managed**: boolean
-**s3_input**: aws_sagemaker_processing_s3_input
-**dataset_definition**: aws_sagemaker_dataset_definition
-}
-class aws_sagemaker_network_config [[#aws_sagemaker_network_config]] {
-**enable_inter_container_traffic_encryption**: boolean
-**enable_network_isolation**: boolean
-**vpc_config**: aws_sagemaker_vpc_config
-}
 class aws_sagemaker_processing_resources [[#aws_sagemaker_processing_resources]] {
 **cluster_config**: aws_sagemaker_processing_cluster_config
 }
@@ -17991,21 +17986,26 @@ class aws_sagemaker_processing_cluster_config [[#aws_sagemaker_processing_cluste
 **volume_size_in_gb**: int64
 **volume_kms_key_id**: string
 }
+class aws_sagemaker_app_specification [[#aws_sagemaker_app_specification]] {
+**image_uri**: string
+**container_entrypoint**: string[]
+**container_arguments**: string[]
+}
 resource <|--- aws_resource
+aws_resource <|--- aws_sagemaker_job
 aws_sagemaker_job <|--- aws_sagemaker_processing_job
 aws_sagemaker_processing_job --> aws_sagemaker_processing_input
 aws_sagemaker_processing_job --> aws_sagemaker_processing_output_config
 aws_sagemaker_processing_job --> aws_sagemaker_processing_resources
 aws_sagemaker_processing_job --> aws_sagemaker_app_specification
 aws_sagemaker_processing_job --> aws_sagemaker_network_config
-aws_resource <|--- aws_sagemaker_job
-aws_sagemaker_processing_output_config --> aws_sagemaker_processing_output
-aws_sagemaker_processing_output --> aws_sagemaker_processing_s3_output
-aws_sagemaker_dataset_definition --> aws_sagemaker_athena_dataset_definition
-aws_sagemaker_dataset_definition --> aws_sagemaker_redshift_dataset_definition
+aws_sagemaker_network_config --> aws_sagemaker_vpc_config
 aws_sagemaker_processing_input --> aws_sagemaker_processing_s3_input
 aws_sagemaker_processing_input --> aws_sagemaker_dataset_definition
-aws_sagemaker_network_config --> aws_sagemaker_vpc_config
+aws_sagemaker_dataset_definition --> aws_sagemaker_athena_dataset_definition
+aws_sagemaker_dataset_definition --> aws_sagemaker_redshift_dataset_definition
+aws_sagemaker_processing_output_config --> aws_sagemaker_processing_output
+aws_sagemaker_processing_output --> aws_sagemaker_processing_s3_output
 aws_sagemaker_processing_resources --> aws_sagemaker_processing_cluster_config
 
 @enduml
@@ -18018,7 +18018,7 @@ aws_sagemaker_processing_resources --> aws_sagemaker_processing_cluster_config
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_processing_job resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_processing_job resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -18042,28 +18042,34 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class aws_ec2_subnet [[#aws_ec2_subnet]] {
+
+}
+class aws_sagemaker_training_job [[#aws_sagemaker_training_job]] {
+
+}
 class aws_s3_bucket [[#aws_s3_bucket]] {
 
 }
 class aws_kms_key [[#aws_kms_key]] {
 
 }
-class aws_ec2_subnet [[#aws_ec2_subnet]] {
-
-}
-class aws_sagemaker_processing_job [[#aws_sagemaker_processing_job]] {
+class aws_ec2_security_group [[#aws_ec2_security_group]] {
 
 }
 class aws_sagemaker_auto_ml_job [[#aws_sagemaker_auto_ml_job]] {
 
 }
-class aws_sagemaker_training_job [[#aws_sagemaker_training_job]] {
-
-}
 class aws_redshift_cluster [[#aws_redshift_cluster]] {
 
 }
+class aws_sagemaker_processing_job [[#aws_sagemaker_processing_job]] {
+
+}
 class aws_sagemaker_trial [[#aws_sagemaker_trial]] {
+
+}
+class aws_iam_role [[#aws_iam_role]] {
 
 }
 class aws_athena_work_group [[#aws_athena_work_group]] {
@@ -18075,44 +18081,38 @@ class aws_sagemaker_experiment [[#aws_sagemaker_experiment]] {
 class aws_athena_data_catalog [[#aws_athena_data_catalog]] {
 
 }
-class aws_ec2_security_group [[#aws_ec2_security_group]] {
-
-}
-class aws_iam_role [[#aws_iam_role]] {
-
-}
+aws_ec2_subnet -[#1A83AF]-> aws_redshift_cluster
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_training_job
 aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_processing_job
 aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_auto_ml_job
-aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_training_job
-aws_ec2_subnet -[#1A83AF]-> aws_redshift_cluster
-aws_sagemaker_processing_job -[#1A83AF]-> aws_sagemaker_training_job
-aws_sagemaker_processing_job -[#1A83AF]-> aws_kms_key
-aws_sagemaker_processing_job -[#1A83AF]-> aws_s3_bucket
-aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_kms_key
-aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_s3_bucket
-aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_training_job
-aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_processing_job
 aws_sagemaker_training_job -[#1A83AF]-> aws_kms_key
 aws_sagemaker_training_job -[#1A83AF]-> aws_s3_bucket
-aws_redshift_cluster -[#1A83AF]-> aws_sagemaker_processing_job
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_training_job
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_auto_ml_job
+aws_ec2_security_group -[#1A83AF]-> aws_redshift_cluster
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_processing_job
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_processing_job
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_kms_key
 aws_redshift_cluster -[#1A83AF]-> aws_kms_key
+aws_redshift_cluster -[#1A83AF]-> aws_sagemaker_processing_job
+aws_sagemaker_processing_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_processing_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_processing_job -[#1A83AF]-> aws_sagemaker_training_job
 aws_sagemaker_trial -[#1A83AF]-> aws_sagemaker_training_job
 aws_sagemaker_trial -[#1A83AF]-> aws_sagemaker_processing_job
+aws_iam_role -[#1A83AF]-> aws_sagemaker_training_job
+aws_iam_role -[#1A83AF]-> aws_sagemaker_auto_ml_job
+aws_iam_role -[#1A83AF]-> aws_redshift_cluster
+aws_iam_role -[#1A83AF]-> aws_sagemaker_processing_job
 aws_athena_work_group -[#1A83AF]-> aws_kms_key
-aws_athena_work_group -[#1A83AF]-> aws_sagemaker_processing_job
 aws_athena_work_group -[#1A83AF]-> aws_s3_bucket
-aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_training_job
+aws_athena_work_group -[#1A83AF]-> aws_sagemaker_processing_job
 aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_trial
+aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_training_job
 aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_processing_job
 aws_athena_data_catalog -[#1A83AF]-> aws_sagemaker_processing_job
-aws_ec2_security_group -[#1A83AF]-> aws_redshift_cluster
-aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_auto_ml_job
-aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_training_job
-aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_processing_job
-aws_iam_role -[#1A83AF]-> aws_redshift_cluster
-aws_iam_role -[#1A83AF]-> aws_sagemaker_auto_ml_job
-aws_iam_role -[#1A83AF]-> aws_sagemaker_training_job
-aws_iam_role -[#1A83AF]-> aws_sagemaker_processing_job
 
 @enduml
 ```
@@ -18125,7 +18125,7 @@ aws_iam_role -[#1A83AF]-> aws_sagemaker_processing_job
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_project data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_project data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -18149,9 +18149,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -18163,6 +18160,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_sagemaker_project [[#aws_sagemaker_project]] {
 **project_description**: string
@@ -18181,7 +18181,7 @@ aws_resource <|--- aws_sagemaker_project
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_project resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_project resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -18228,7 +18228,7 @@ aws_sagemaker_project -[#1A83AF]-> aws_sagemaker_artifact
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_training_job data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_training_job data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -18252,8 +18252,9 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
+class aws_sagemaker_vpc_config [[#aws_sagemaker_vpc_config]] {
+**security_group_ids**: string[]
+**subnets**: string[]
 }
 class resource [[#resource]] {
 **id**: string
@@ -18266,6 +18267,12 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
+class aws_sagemaker_job [[#aws_sagemaker_job]] {
+
 }
 class aws_sagemaker_training_job [[#aws_sagemaker_training_job]] {
 **training_job_tuning_job_arn**: string
@@ -18305,6 +18312,41 @@ class aws_sagemaker_training_job [[#aws_sagemaker_training_job]] {
 **training_job_environment**: dictionary[string, string]
 **training_job_warm_pool_status**: aws_sagemaker_warm_pool_status
 }
+class aws_sagemaker_secondary_status_transition [[#aws_sagemaker_secondary_status_transition]] {
+**status**: string
+**start_time**: datetime
+**end_time**: datetime
+**status_message**: string
+}
+class aws_sagemaker_stopping_condition [[#aws_sagemaker_stopping_condition]] {
+**max_runtime_in_seconds**: int64
+**max_wait_time_in_seconds**: int64
+}
+class aws_sagemaker_resource_config [[#aws_sagemaker_resource_config]] {
+**instance_type**: string
+**instance_count**: int64
+**volume_size_in_gb**: int64
+**volume_kms_key_id**: string
+**instance_groups**: aws_sagemaker_instance_group[]
+**keep_alive_period_in_seconds**: int64
+}
+class aws_sagemaker_instance_group [[#aws_sagemaker_instance_group]] {
+**instance_type**: string
+**instance_count**: int64
+**instance_group_name**: string
+}
+class aws_sagemaker_collection_configuration [[#aws_sagemaker_collection_configuration]] {
+**collection_name**: string
+**collection_parameters**: dictionary[string, string]
+}
+class aws_sagemaker_tensor_board_output_config [[#aws_sagemaker_tensor_board_output_config]] {
+**local_path**: string
+**s3_output_path**: string
+}
+class aws_sagemaker_output_data_config [[#aws_sagemaker_output_data_config]] {
+**kms_key_id**: string
+**s3_output_path**: string
+}
 class aws_sagemaker_metric_definition [[#aws_sagemaker_metric_definition]] {
 **name**: string
 **regex**: string
@@ -18314,17 +18356,6 @@ class aws_sagemaker_debug_hook_config [[#aws_sagemaker_debug_hook_config]] {
 **s3_output_path**: string
 **hook_parameters**: dictionary[string, string]
 **collection_configurations**: aws_sagemaker_collection_configuration[]
-}
-class aws_sagemaker_collection_configuration [[#aws_sagemaker_collection_configuration]] {
-**collection_name**: string
-**collection_parameters**: dictionary[string, string]
-}
-class aws_sagemaker_job [[#aws_sagemaker_job]] {
-
-}
-class aws_sagemaker_vpc_config [[#aws_sagemaker_vpc_config]] {
-**security_group_ids**: string[]
-**subnets**: string[]
 }
 class aws_sagemaker_s3_data_source [[#aws_sagemaker_s3_data_source]] {
 **s3_data_type**: string
@@ -18366,27 +18397,6 @@ class aws_sagemaker_data_source [[#aws_sagemaker_data_source]] {
 **s3_data_source**: aws_sagemaker_s3_data_source
 **file_system_data_source**: aws_sagemaker_file_system_data_source
 }
-class aws_sagemaker_output_data_config [[#aws_sagemaker_output_data_config]] {
-**kms_key_id**: string
-**s3_output_path**: string
-}
-class aws_sagemaker_resource_config [[#aws_sagemaker_resource_config]] {
-**instance_type**: string
-**instance_count**: int64
-**volume_size_in_gb**: int64
-**volume_kms_key_id**: string
-**instance_groups**: aws_sagemaker_instance_group[]
-**keep_alive_period_in_seconds**: int64
-}
-class aws_sagemaker_instance_group [[#aws_sagemaker_instance_group]] {
-**instance_type**: string
-**instance_count**: int64
-**instance_group_name**: string
-}
-class aws_sagemaker_stopping_condition [[#aws_sagemaker_stopping_condition]] {
-**max_runtime_in_seconds**: int64
-**max_wait_time_in_seconds**: int64
-}
 class aws_sagemaker_checkpoint_config [[#aws_sagemaker_checkpoint_config]] {
 **s3_uri**: string
 **local_path**: string
@@ -18426,16 +18436,6 @@ class aws_sagemaker_metric_data [[#aws_sagemaker_metric_data]] {
 **value**: double
 **timestamp**: datetime
 }
-class aws_sagemaker_secondary_status_transition [[#aws_sagemaker_secondary_status_transition]] {
-**status**: string
-**start_time**: datetime
-**end_time**: datetime
-**status_message**: string
-}
-class aws_sagemaker_tensor_board_output_config [[#aws_sagemaker_tensor_board_output_config]] {
-**local_path**: string
-**s3_output_path**: string
-}
 class aws_sagemaker_debug_rule_evaluation_status [[#aws_sagemaker_debug_rule_evaluation_status]] {
 **rule_configuration_name**: string
 **rule_evaluation_job_arn**: string
@@ -18444,6 +18444,7 @@ class aws_sagemaker_debug_rule_evaluation_status [[#aws_sagemaker_debug_rule_eva
 **last_modified_time**: datetime
 }
 resource <|--- aws_resource
+aws_resource <|--- aws_sagemaker_job
 aws_sagemaker_job <|--- aws_sagemaker_training_job
 aws_sagemaker_training_job --> aws_sagemaker_algorithm_specification
 aws_sagemaker_training_job --> aws_sagemaker_channel
@@ -18462,12 +18463,11 @@ aws_sagemaker_training_job --> aws_sagemaker_profiler_config
 aws_sagemaker_training_job --> aws_sagemaker_profiler_rule_configuration
 aws_sagemaker_training_job --> aws_sagemaker_profiler_rule_evaluation_status
 aws_sagemaker_training_job --> aws_sagemaker_warm_pool_status
+aws_sagemaker_resource_config --> aws_sagemaker_instance_group
 aws_sagemaker_debug_hook_config --> aws_sagemaker_collection_configuration
-aws_resource <|--- aws_sagemaker_job
 aws_sagemaker_channel --> aws_sagemaker_data_source
 aws_sagemaker_data_source --> aws_sagemaker_s3_data_source
 aws_sagemaker_data_source --> aws_sagemaker_file_system_data_source
-aws_sagemaker_resource_config --> aws_sagemaker_instance_group
 aws_sagemaker_algorithm_specification --> aws_sagemaker_metric_definition
 
 @enduml
@@ -18480,7 +18480,7 @@ aws_sagemaker_algorithm_specification --> aws_sagemaker_metric_definition
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_training_job resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_training_job resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -18504,16 +18504,25 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class aws_ec2_subnet [[#aws_ec2_subnet]] {
+
+}
+class aws_sagemaker_labeling_job [[#aws_sagemaker_labeling_job]] {
+
+}
+class aws_sagemaker_training_job [[#aws_sagemaker_training_job]] {
+
+}
 class aws_s3_bucket [[#aws_s3_bucket]] {
 
 }
 class aws_kms_key [[#aws_kms_key]] {
 
 }
-class aws_ec2_subnet [[#aws_ec2_subnet]] {
+class aws_ec2_security_group [[#aws_ec2_security_group]] {
 
 }
-class aws_sagemaker_labeling_job [[#aws_sagemaker_labeling_job]] {
+class aws_sagemaker_auto_ml_job [[#aws_sagemaker_auto_ml_job]] {
 
 }
 class aws_sagemaker_hyper_parameter_tuning_job [[#aws_sagemaker_hyper_parameter_tuning_job]] {
@@ -18522,64 +18531,55 @@ class aws_sagemaker_hyper_parameter_tuning_job [[#aws_sagemaker_hyper_parameter_
 class aws_sagemaker_processing_job [[#aws_sagemaker_processing_job]] {
 
 }
-class aws_sagemaker_auto_ml_job [[#aws_sagemaker_auto_ml_job]] {
-
-}
-class aws_sagemaker_training_job [[#aws_sagemaker_training_job]] {
-
-}
 class aws_sagemaker_trial [[#aws_sagemaker_trial]] {
-
-}
-class aws_sagemaker_experiment [[#aws_sagemaker_experiment]] {
-
-}
-class aws_ec2_security_group [[#aws_ec2_security_group]] {
 
 }
 class aws_iam_role [[#aws_iam_role]] {
 
 }
+class aws_sagemaker_experiment [[#aws_sagemaker_experiment]] {
+
+}
 class aws_sagemaker_algorithm [[#aws_sagemaker_algorithm]] {
 
 }
-aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_labeling_job
 aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_hyper_parameter_tuning_job
-aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_processing_job
-aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_auto_ml_job
 aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_training_job
-aws_sagemaker_labeling_job -[#1A83AF]-> aws_s3_bucket
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_processing_job
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_labeling_job
+aws_ec2_subnet -[#1A83AF]-> aws_sagemaker_auto_ml_job
 aws_sagemaker_labeling_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_labeling_job -[#1A83AF]-> aws_s3_bucket
 aws_sagemaker_labeling_job -[#1A83AF]-> aws_kms_key
-aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_sagemaker_training_job
-aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_kms_key
-aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_s3_bucket
-aws_sagemaker_processing_job -[#1A83AF]-> aws_sagemaker_training_job
-aws_sagemaker_processing_job -[#1A83AF]-> aws_kms_key
-aws_sagemaker_processing_job -[#1A83AF]-> aws_s3_bucket
-aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_kms_key
-aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_s3_bucket
-aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_training_job
-aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_processing_job
-aws_sagemaker_training_job -[#1A83AF]-> aws_sagemaker_algorithm
 aws_sagemaker_training_job -[#1A83AF]-> aws_kms_key
 aws_sagemaker_training_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_training_job -[#1A83AF]-> aws_sagemaker_algorithm
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_training_job
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_auto_ml_job
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_hyper_parameter_tuning_job
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_processing_job
+aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_labeling_job
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_processing_job
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_hyper_parameter_tuning_job -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_processing_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_processing_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_processing_job -[#1A83AF]-> aws_sagemaker_training_job
 aws_sagemaker_trial -[#1A83AF]-> aws_sagemaker_training_job
 aws_sagemaker_trial -[#1A83AF]-> aws_sagemaker_processing_job
-aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_training_job
-aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_trial
-aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_processing_job
-aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_hyper_parameter_tuning_job
-aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_labeling_job
-aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_auto_ml_job
-aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_training_job
-aws_ec2_security_group -[#1A83AF]-> aws_sagemaker_processing_job
+aws_iam_role -[#1A83AF]-> aws_sagemaker_training_job
+aws_iam_role -[#1A83AF]-> aws_sagemaker_auto_ml_job
 aws_iam_role -[#1A83AF]-> aws_sagemaker_hyper_parameter_tuning_job
+aws_iam_role -[#1A83AF]-> aws_sagemaker_processing_job
 aws_iam_role -[#1A83AF]-> aws_sagemaker_algorithm
 aws_iam_role -[#1A83AF]-> aws_sagemaker_labeling_job
-aws_iam_role -[#1A83AF]-> aws_sagemaker_auto_ml_job
-aws_iam_role -[#1A83AF]-> aws_sagemaker_training_job
-aws_iam_role -[#1A83AF]-> aws_sagemaker_processing_job
+aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_trial
+aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_training_job
+aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_processing_job
 
 @enduml
 ```
@@ -18592,7 +18592,7 @@ aws_iam_role -[#1A83AF]-> aws_sagemaker_processing_job
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_transform_job data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_transform_job data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -18616,9 +18616,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -18631,10 +18628,8 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class aws_sagemaker_batch_data_capture_config [[#aws_sagemaker_batch_data_capture_config]] {
-**destination_s3_uri**: string
-**kms_key_id**: string
-**generate_inference_id**: boolean
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_sagemaker_job [[#aws_sagemaker_job]] {
 
@@ -18659,27 +18654,22 @@ class aws_sagemaker_transform_job [[#aws_sagemaker_transform_job]] {
 **transform_job_data_processing**: aws_sagemaker_data_processing
 **transform_job_trial_component_display_name**: string
 }
-class aws_sagemaker_data_processing [[#aws_sagemaker_data_processing]] {
-**input_filter**: string
-**output_filter**: string
-**join_source**: string
+class aws_sagemaker_model_client_config [[#aws_sagemaker_model_client_config]] {
+**invocations_timeout_in_seconds**: int64
+**invocations_max_retries**: int64
+}
+class aws_sagemaker_transform_data_source [[#aws_sagemaker_transform_data_source]] {
+**s3_data_source**: aws_sagemaker_transform_s3_data_source
 }
 class aws_sagemaker_transform_s3_data_source [[#aws_sagemaker_transform_s3_data_source]] {
 **s3_data_type**: string
 **s3_uri**: string
-}
-class aws_sagemaker_model_client_config [[#aws_sagemaker_model_client_config]] {
-**invocations_timeout_in_seconds**: int64
-**invocations_max_retries**: int64
 }
 class aws_sagemaker_transform_input [[#aws_sagemaker_transform_input]] {
 **data_source**: aws_sagemaker_transform_data_source
 **content_type**: string
 **compression_type**: string
 **split_type**: string
-}
-class aws_sagemaker_transform_data_source [[#aws_sagemaker_transform_data_source]] {
-**s3_data_source**: aws_sagemaker_transform_s3_data_source
 }
 class aws_sagemaker_transform_output [[#aws_sagemaker_transform_output]] {
 **s3_output_path**: string
@@ -18692,6 +18682,16 @@ class aws_sagemaker_transform_resources [[#aws_sagemaker_transform_resources]] {
 **instance_count**: int64
 **volume_kms_key_id**: string
 }
+class aws_sagemaker_batch_data_capture_config [[#aws_sagemaker_batch_data_capture_config]] {
+**destination_s3_uri**: string
+**kms_key_id**: string
+**generate_inference_id**: boolean
+}
+class aws_sagemaker_data_processing [[#aws_sagemaker_data_processing]] {
+**input_filter**: string
+**output_filter**: string
+**join_source**: string
+}
 resource <|--- aws_resource
 aws_resource <|--- aws_sagemaker_job
 aws_sagemaker_job <|--- aws_sagemaker_transform_job
@@ -18701,8 +18701,8 @@ aws_sagemaker_transform_job --> aws_sagemaker_transform_output
 aws_sagemaker_transform_job --> aws_sagemaker_batch_data_capture_config
 aws_sagemaker_transform_job --> aws_sagemaker_transform_resources
 aws_sagemaker_transform_job --> aws_sagemaker_data_processing
-aws_sagemaker_transform_input --> aws_sagemaker_transform_data_source
 aws_sagemaker_transform_data_source --> aws_sagemaker_transform_s3_data_source
+aws_sagemaker_transform_input --> aws_sagemaker_transform_data_source
 
 @enduml
 ```
@@ -18714,7 +18714,7 @@ aws_sagemaker_transform_data_source --> aws_sagemaker_transform_s3_data_source
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_transform_job resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_transform_job resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -18738,44 +18738,44 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class aws_sagemaker_labeling_job [[#aws_sagemaker_labeling_job]] {
+
+}
+class aws_sagemaker_transform_job [[#aws_sagemaker_transform_job]] {
+
+}
 class aws_s3_bucket [[#aws_s3_bucket]] {
 
 }
 class aws_kms_key [[#aws_kms_key]] {
 
 }
-class aws_sagemaker_labeling_job [[#aws_sagemaker_labeling_job]] {
+class aws_sagemaker_auto_ml_job [[#aws_sagemaker_auto_ml_job]] {
 
 }
 class aws_sagemaker_model [[#aws_sagemaker_model]] {
 
 }
-class aws_sagemaker_auto_ml_job [[#aws_sagemaker_auto_ml_job]] {
-
-}
 class aws_sagemaker_trial [[#aws_sagemaker_trial]] {
-
-}
-class aws_sagemaker_transform_job [[#aws_sagemaker_transform_job]] {
 
 }
 class aws_sagemaker_experiment [[#aws_sagemaker_experiment]] {
 
 }
-aws_sagemaker_labeling_job -[#1A83AF]-> aws_s3_bucket
 aws_sagemaker_labeling_job -[#1A83AF]-> aws_sagemaker_transform_job
+aws_sagemaker_labeling_job -[#1A83AF]-> aws_s3_bucket
 aws_sagemaker_labeling_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_transform_job -[#1A83AF]-> aws_kms_key
+aws_sagemaker_transform_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_transform_job
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_s3_bucket
+aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_kms_key
 aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_transform_job
 aws_sagemaker_model -[#1A83AF]-> aws_sagemaker_labeling_job
 aws_sagemaker_model -[#1A83AF]-> aws_s3_bucket
-aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_kms_key
-aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_s3_bucket
-aws_sagemaker_auto_ml_job -[#1A83AF]-> aws_sagemaker_transform_job
 aws_sagemaker_trial -[#1A83AF]-> aws_sagemaker_transform_job
-aws_sagemaker_transform_job -[#1A83AF]-> aws_kms_key
-aws_sagemaker_transform_job -[#1A83AF]-> aws_s3_bucket
-aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_transform_job
 aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_trial
+aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_transform_job
 
 @enduml
 ```
@@ -18788,7 +18788,7 @@ aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_trial
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_trial data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_trial data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -18812,9 +18812,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -18827,6 +18824,18 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
+class aws_sagemaker_user_context [[#aws_sagemaker_user_context]] {
+**user_profile_arn**: string
+**user_profile_name**: string
+**domain_id**: string
+}
+class aws_sagemaker_metadata_properties [[#aws_sagemaker_metadata_properties]] {
+**commit_id**: string
+**generated_by**: string
+}
 class aws_sagemaker_trial [[#aws_sagemaker_trial]] {
 **trial_display_name**: string
 **trial_experiment_name**: string
@@ -18838,15 +18847,6 @@ class aws_sagemaker_trial [[#aws_sagemaker_trial]] {
 class aws_sagemaker_trial_source [[#aws_sagemaker_trial_source]] {
 **source_arn**: string
 **source_type**: string
-}
-class aws_sagemaker_user_context [[#aws_sagemaker_user_context]] {
-**user_profile_arn**: string
-**user_profile_name**: string
-**domain_id**: string
-}
-class aws_sagemaker_metadata_properties [[#aws_sagemaker_metadata_properties]] {
-**commit_id**: string
-**generated_by**: string
 }
 resource <|--- aws_resource
 aws_resource <|--- aws_sagemaker_trial
@@ -18864,7 +18864,7 @@ aws_sagemaker_trial --> aws_sagemaker_metadata_properties
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_trial resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_trial resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -18888,25 +18888,19 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_sagemaker_processing_job [[#aws_sagemaker_processing_job]] {
-
-}
-class aws_sagemaker_domain [[#aws_sagemaker_domain]] {
-
-}
 class aws_sagemaker_training_job [[#aws_sagemaker_training_job]] {
-
-}
-class aws_sagemaker_user_profile [[#aws_sagemaker_user_profile]] {
-
-}
-class aws_sagemaker_trial [[#aws_sagemaker_trial]] {
 
 }
 class aws_sagemaker_transform_job [[#aws_sagemaker_transform_job]] {
 
 }
-class aws_sagemaker_experiment [[#aws_sagemaker_experiment]] {
+class aws_sagemaker_domain [[#aws_sagemaker_domain]] {
+
+}
+class aws_sagemaker_processing_job [[#aws_sagemaker_processing_job]] {
+
+}
+class aws_sagemaker_trial [[#aws_sagemaker_trial]] {
 
 }
 class aws_sagemaker_project [[#aws_sagemaker_project]] {
@@ -18915,20 +18909,26 @@ class aws_sagemaker_project [[#aws_sagemaker_project]] {
 class aws_sagemaker_code_repository [[#aws_sagemaker_code_repository]] {
 
 }
-aws_sagemaker_processing_job -[#1A83AF]-> aws_sagemaker_training_job
+class aws_sagemaker_user_profile [[#aws_sagemaker_user_profile]] {
+
+}
+class aws_sagemaker_experiment [[#aws_sagemaker_experiment]] {
+
+}
 aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_user_profile
 aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_trial
-aws_sagemaker_user_profile -[#1A83AF]-> aws_sagemaker_trial
+aws_sagemaker_processing_job -[#1A83AF]-> aws_sagemaker_training_job
 aws_sagemaker_trial -[#1A83AF]-> aws_sagemaker_transform_job
 aws_sagemaker_trial -[#1A83AF]-> aws_sagemaker_training_job
 aws_sagemaker_trial -[#1A83AF]-> aws_sagemaker_processing_job
+aws_sagemaker_project -[#1A83AF]-> aws_sagemaker_trial
+aws_sagemaker_code_repository -[#1A83AF]-> aws_sagemaker_trial
+aws_sagemaker_code_repository -[#1A83AF]-> aws_sagemaker_domain
+aws_sagemaker_user_profile -[#1A83AF]-> aws_sagemaker_trial
+aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_trial
 aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_transform_job
 aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_training_job
-aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_trial
 aws_sagemaker_experiment -[#1A83AF]-> aws_sagemaker_processing_job
-aws_sagemaker_project -[#1A83AF]-> aws_sagemaker_trial
-aws_sagemaker_code_repository -[#1A83AF]-> aws_sagemaker_domain
-aws_sagemaker_code_repository -[#1A83AF]-> aws_sagemaker_trial
 
 @enduml
 ```
@@ -18941,7 +18941,7 @@ aws_sagemaker_code_repository -[#1A83AF]-> aws_sagemaker_trial
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_user_profile data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_user_profile data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -18965,9 +18965,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -18979,6 +18976,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_sagemaker_user_profile [[#aws_sagemaker_user_profile]] {
 **user_profile_domain_id**: string
@@ -18997,7 +18997,7 @@ aws_resource <|--- aws_sagemaker_user_profile
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_user_profile resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_user_profile resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -19021,16 +19021,10 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_sagemaker_domain [[#aws_sagemaker_domain]] {
-
-}
-class aws_sagemaker_app [[#aws_sagemaker_app]] {
-
-}
 class aws_sagemaker_artifact [[#aws_sagemaker_artifact]] {
 
 }
-class aws_sagemaker_user_profile [[#aws_sagemaker_user_profile]] {
+class aws_sagemaker_domain [[#aws_sagemaker_domain]] {
 
 }
 class aws_sagemaker_trial [[#aws_sagemaker_trial]] {
@@ -19039,14 +19033,20 @@ class aws_sagemaker_trial [[#aws_sagemaker_trial]] {
 class aws_sagemaker_pipeline [[#aws_sagemaker_pipeline]] {
 
 }
+class aws_sagemaker_user_profile [[#aws_sagemaker_user_profile]] {
+
+}
+class aws_sagemaker_app [[#aws_sagemaker_app]] {
+
+}
 aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_app
-aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_artifact
 aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_user_profile
 aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_trial
 aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_pipeline
-aws_sagemaker_user_profile -[#1A83AF]-> aws_sagemaker_app
+aws_sagemaker_domain -[#1A83AF]-> aws_sagemaker_artifact
 aws_sagemaker_user_profile -[#1A83AF]-> aws_sagemaker_trial
 aws_sagemaker_user_profile -[#1A83AF]-> aws_sagemaker_artifact
+aws_sagemaker_user_profile -[#1A83AF]-> aws_sagemaker_app
 aws_sagemaker_user_profile -[#1A83AF]-> aws_sagemaker_pipeline
 
 @enduml
@@ -19060,7 +19060,7 @@ aws_sagemaker_user_profile -[#1A83AF]-> aws_sagemaker_pipeline
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_workteam data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_workteam data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -19084,9 +19084,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -19099,6 +19096,17 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
+class aws_sagemaker_oidc_member_definition [[#aws_sagemaker_oidc_member_definition]] {
+**groups**: string[]
+}
+class aws_sagemaker_cognito_member_definition [[#aws_sagemaker_cognito_member_definition]] {
+**user_pool**: string
+**user_group**: string
+**client_id**: string
+}
 class aws_sagemaker_workteam [[#aws_sagemaker_workteam]] {
 **workteam_member_definitions**: aws_sagemaker_member_definition[]
 **workteam_workforce_arn**: string
@@ -19110,14 +19118,6 @@ class aws_sagemaker_workteam [[#aws_sagemaker_workteam]] {
 class aws_sagemaker_member_definition [[#aws_sagemaker_member_definition]] {
 **cognito_member_definition**: aws_sagemaker_cognito_member_definition
 **oidc_member_definition**: aws_sagemaker_oidc_member_definition
-}
-class aws_sagemaker_cognito_member_definition [[#aws_sagemaker_cognito_member_definition]] {
-**user_pool**: string
-**user_group**: string
-**client_id**: string
-}
-class aws_sagemaker_oidc_member_definition [[#aws_sagemaker_oidc_member_definition]] {
-**groups**: string[]
 }
 resource <|--- aws_resource
 aws_resource <|--- aws_sagemaker_workteam
@@ -19135,7 +19135,7 @@ aws_sagemaker_member_definition --> aws_sagemaker_oidc_member_definition
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sagemaker_workteam resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sagemaker_workteam resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -19165,21 +19165,21 @@ class aws_sagemaker_labeling_job [[#aws_sagemaker_labeling_job]] {
 class aws_sns_topic [[#aws_sns_topic]] {
 
 }
-class aws_sagemaker_workteam [[#aws_sagemaker_workteam]] {
+class aws_cognito_user_pool [[#aws_cognito_user_pool]] {
 
 }
 class aws_cognito_group [[#aws_cognito_group]] {
 
 }
-class aws_cognito_user_pool [[#aws_cognito_user_pool]] {
+class aws_sagemaker_workteam [[#aws_sagemaker_workteam]] {
 
 }
 aws_sagemaker_labeling_job -[#1A83AF]-> aws_sns_topic
-aws_sagemaker_workteam -[#1A83AF]-> aws_cognito_group
-aws_sagemaker_workteam -[#1A83AF]-> aws_sagemaker_labeling_job
+aws_cognito_user_pool -[#1A83AF]-> aws_cognito_group
 aws_sagemaker_workteam -[#1A83AF]-> aws_cognito_user_pool
 aws_sagemaker_workteam -[#1A83AF]-> aws_sns_topic
-aws_cognito_user_pool -[#1A83AF]-> aws_cognito_group
+aws_sagemaker_workteam -[#1A83AF]-> aws_cognito_group
+aws_sagemaker_workteam -[#1A83AF]-> aws_sagemaker_labeling_job
 
 @enduml
 ```
@@ -19192,7 +19192,7 @@ aws_cognito_user_pool -[#1A83AF]-> aws_cognito_group
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_service_quota data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_service_quota data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -19216,9 +19216,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -19231,18 +19228,16 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
 class quota [[#quota]] {
 **quota**: double
 **usage**: double
 **quota_type**: string
 }
-class aws_service_quota [[#aws_service_quota]] {
-**quota_unit**: string
-**quota_adjustable**: boolean
-**quota_global**: boolean
-**quota_usage_metric**: aws_quota_metric_info
-**quota_period**: aws_quota_period
-**quota_error_reason**: aws_quota_error_reason
+class phantom_resource [[#phantom_resource]] {
+
 }
 class aws_quota_metric_info [[#aws_quota_metric_info]] {
 **metric_namespace**: string
@@ -19254,21 +19249,26 @@ class aws_quota_period [[#aws_quota_period]] {
 **period_value**: int64
 **period_unit**: string
 }
+class aws_service_quota [[#aws_service_quota]] {
+**quota_unit**: string
+**quota_adjustable**: boolean
+**quota_global**: boolean
+**quota_usage_metric**: aws_quota_metric_info
+**quota_period**: aws_quota_period
+**quota_error_reason**: aws_quota_error_reason
+}
 class aws_quota_error_reason [[#aws_quota_error_reason]] {
 **error_code**: string
 **error_message**: string
 }
-class phantom_resource [[#phantom_resource]] {
-
-}
 resource <|--- aws_resource
 phantom_resource <|--- quota
+resource <|--- phantom_resource
 aws_resource <|--- aws_service_quota
 quota <|--- aws_service_quota
 aws_service_quota --> aws_quota_metric_info
 aws_service_quota --> aws_quota_period
 aws_service_quota --> aws_quota_error_reason
-resource <|--- phantom_resource
 
 @enduml
 ```
@@ -19280,7 +19280,7 @@ resource <|--- phantom_resource
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_service_quota resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_service_quota resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -19304,45 +19304,45 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_alb [[#aws_alb]] {
-
-}
-class aws_elb [[#aws_elb]] {
+class aws_vpc [[#aws_vpc]] {
 
 }
 class aws_iam_server_certificate [[#aws_iam_server_certificate]] {
 
 }
-class aws_service_quota [[#aws_service_quota]] {
+class aws_elb [[#aws_elb]] {
 
 }
-class aws_vpc [[#aws_vpc]] {
-
-}
-class aws_ec2_volume_type [[#aws_ec2_volume_type]] {
-
-}
-class aws_ec2_instance_type [[#aws_ec2_instance_type]] {
+class aws_alb [[#aws_alb]] {
 
 }
 class aws_region [[#aws_region]] {
 
 }
-aws_service_quota -[#1A83AF]-> aws_vpc
+class aws_service_quota [[#aws_service_quota]] {
+
+}
+class aws_ec2_instance_type [[#aws_ec2_instance_type]] {
+
+}
+class aws_ec2_volume_type [[#aws_ec2_volume_type]] {
+
+}
+aws_vpc -[#1A83AF]-> aws_elb
+aws_vpc -[#1A83AF]-> aws_alb
+aws_region -[#1A83AF]-> aws_service_quota
+aws_region -[#1A83AF]-> aws_elb
+aws_region -[#1A83AF]-> aws_vpc
+aws_region -[#1A83AF]-> aws_ec2_instance_type
+aws_region -[#1A83AF]-> aws_ec2_volume_type
+aws_region -[#1A83AF]-> aws_alb
+aws_region -[#1A83AF]-> aws_iam_server_certificate
 aws_service_quota -[#1A83AF]-> aws_elb
+aws_service_quota -[#1A83AF]-> aws_vpc
+aws_service_quota -[#1A83AF]-> aws_ec2_instance_type
+aws_service_quota -[#1A83AF]-> aws_alb
 aws_service_quota -[#1A83AF]-> aws_ec2_volume_type
 aws_service_quota -[#1A83AF]-> aws_iam_server_certificate
-aws_service_quota -[#1A83AF]-> aws_alb
-aws_service_quota -[#1A83AF]-> aws_ec2_instance_type
-aws_vpc -[#1A83AF]-> aws_alb
-aws_vpc -[#1A83AF]-> aws_elb
-aws_region -[#1A83AF]-> aws_vpc
-aws_region -[#1A83AF]-> aws_ec2_volume_type
-aws_region -[#1A83AF]-> aws_iam_server_certificate
-aws_region -[#1A83AF]-> aws_elb
-aws_region -[#1A83AF]-> aws_ec2_instance_type
-aws_region -[#1A83AF]-> aws_alb
-aws_region -[#1A83AF]-> aws_service_quota
 
 @enduml
 ```
@@ -19355,7 +19355,7 @@ aws_region -[#1A83AF]-> aws_service_quota
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sns_endpoint data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sns_endpoint data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -19379,9 +19379,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -19393,6 +19390,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_sns_endpoint [[#aws_sns_endpoint]] {
 **endpoint_enabled**: boolean
@@ -19411,7 +19411,7 @@ aws_resource <|--- aws_sns_endpoint
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sns_endpoint resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sns_endpoint resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -19454,7 +19454,7 @@ aws_sns_platform_application -[#1A83AF]-> aws_sns_endpoint
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sns_platform_application data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sns_platform_application data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -19478,9 +19478,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -19492,6 +19489,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_sns_platform_application [[#aws_sns_platform_application]] {
 **application_apple_certificate_expiry_date**: string
@@ -19515,7 +19515,7 @@ aws_resource <|--- aws_sns_platform_application
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sns_platform_application resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sns_platform_application resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -19562,7 +19562,7 @@ aws_sns_platform_application -[#1A83AF]-> aws_sns_topic
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sns_subscription data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sns_subscription data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -19586,9 +19586,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -19600,6 +19597,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_sns_subscription [[#aws_sns_subscription]] {
 **subscription_confirmation_was_authenticated**: boolean
@@ -19626,7 +19626,7 @@ aws_resource <|--- aws_sns_subscription
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sns_subscription resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sns_subscription resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -19653,10 +19653,10 @@ skinparam stereotypeIBackgroundColor #e98df7
 class aws_sns_topic [[#aws_sns_topic]] {
 
 }
-class aws_iam_role [[#aws_iam_role]] {
+class aws_sns_subscription [[#aws_sns_subscription]] {
 
 }
-class aws_sns_subscription [[#aws_sns_subscription]] {
+class aws_iam_role [[#aws_iam_role]] {
 
 }
 aws_sns_topic -[#1A83AF]-> aws_sns_subscription
@@ -19673,7 +19673,7 @@ aws_iam_role -[#1A83AF]-> aws_sns_subscription
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sns_topic data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sns_topic data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -19697,9 +19697,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -19711,6 +19708,9 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
 }
 class aws_sns_topic [[#aws_sns_topic]] {
 **topic_subscriptions_confirmed**: int64
@@ -19737,7 +19737,7 @@ aws_resource <|--- aws_sns_topic
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sns_topic resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sns_topic resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -19761,45 +19761,45 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_kms_key [[#aws_kms_key]] {
-
-}
 class aws_sagemaker_labeling_job [[#aws_sagemaker_labeling_job]] {
-
-}
-class aws_cloud_trail [[#aws_cloud_trail]] {
 
 }
 class aws_sns_topic [[#aws_sns_topic]] {
 
 }
-class aws_sagemaker_workteam [[#aws_sagemaker_workteam]] {
-
-}
-class aws_sagemaker_endpoint [[#aws_sagemaker_endpoint]] {
-
-}
-class aws_sns_subscription [[#aws_sns_subscription]] {
+class aws_kms_key [[#aws_kms_key]] {
 
 }
 class aws_elasticache_cache_cluster [[#aws_elasticache_cache_cluster]] {
 
 }
+class aws_sns_subscription [[#aws_sns_subscription]] {
+
+}
 class aws_sns_platform_application [[#aws_sns_platform_application]] {
+
+}
+class aws_sagemaker_endpoint [[#aws_sagemaker_endpoint]] {
+
+}
+class aws_cloud_trail [[#aws_cloud_trail]] {
+
+}
+class aws_sagemaker_workteam [[#aws_sagemaker_workteam]] {
 
 }
 aws_sagemaker_labeling_job -[#1A83AF]-> aws_sns_topic
 aws_sagemaker_labeling_job -[#1A83AF]-> aws_kms_key
-aws_cloud_trail -[#1A83AF]-> aws_kms_key
-aws_cloud_trail -[#1A83AF]-> aws_sns_topic
-aws_sns_topic -[#1A83AF]-> aws_sns_subscription
 aws_sns_topic -[#1A83AF]-> aws_kms_key
-aws_sagemaker_workteam -[#1A83AF]-> aws_sagemaker_labeling_job
-aws_sagemaker_workteam -[#1A83AF]-> aws_sns_topic
-aws_sagemaker_endpoint -[#1A83AF]-> aws_sns_topic
-aws_sagemaker_endpoint -[#1A83AF]-> aws_kms_key
+aws_sns_topic -[#1A83AF]-> aws_sns_subscription
 aws_elasticache_cache_cluster -[#1A83AF]-> aws_sns_topic
 aws_sns_platform_application -[#1A83AF]-> aws_sns_topic
+aws_sagemaker_endpoint -[#1A83AF]-> aws_kms_key
+aws_sagemaker_endpoint -[#1A83AF]-> aws_sns_topic
+aws_cloud_trail -[#1A83AF]-> aws_kms_key
+aws_cloud_trail -[#1A83AF]-> aws_sns_topic
+aws_sagemaker_workteam -[#1A83AF]-> aws_sns_topic
+aws_sagemaker_workteam -[#1A83AF]-> aws_sagemaker_labeling_job
 
 @enduml
 ```
@@ -19812,7 +19812,7 @@ aws_sns_platform_application -[#1A83AF]-> aws_sns_topic
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sqs_queue data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sqs_queue data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -19836,9 +19836,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -19850,6 +19847,13 @@ class resource [[#resource]] {
 **atime**: datetime
 **last_access**: duration
 **kind**: string
+}
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
+class aws_sqs_redrive_policy [[#aws_sqs_redrive_policy]] {
+**dead_letter_target_arn**: string
+**max_receive_count**: int64
 }
 class aws_sqs_queue [[#aws_sqs_queue]] {
 **sqs_queue_url**: string
@@ -19872,10 +19876,6 @@ class aws_sqs_queue [[#aws_sqs_queue]] {
 **sqs_receive_message_wait_time_seconds**: int64
 **sqs_managed_sse_enabled**: boolean
 }
-class aws_sqs_redrive_policy [[#aws_sqs_redrive_policy]] {
-**dead_letter_target_arn**: string
-**max_receive_count**: int64
-}
 resource <|--- aws_resource
 aws_resource <|--- aws_sqs_queue
 aws_sqs_queue --> aws_sqs_redrive_policy
@@ -19890,7 +19890,7 @@ aws_sqs_queue --> aws_sqs_redrive_policy
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_sqs_queue resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_sqs_queue resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -19937,7 +19937,7 @@ aws_beanstalk_environment -[#1A83AF]-> aws_sqs_queue
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_vpc data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_vpc data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -19961,9 +19961,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -19976,6 +19973,9 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
 class aws_vpc [[#aws_vpc]] {
 **vpc_cidr_block**: string
 **vpc_dhcp_options_id**: string
@@ -19985,17 +19985,17 @@ class aws_vpc [[#aws_vpc]] {
 **vpc_cidr_block_association_set**: aws_vpc_cidr_block_association[]
 **vpc_is_default**: boolean
 }
-class aws_vpc_cidr_block_association [[#aws_vpc_cidr_block_association]] {
-**association_id**: string
-**cidr_block**: string
-**cidr_block_state**: aws_vpc_cidr_block_state
+class network [[#network]] {
+
 }
 class aws_vpc_cidr_block_state [[#aws_vpc_cidr_block_state]] {
 **state**: string
 **status_message**: string
 }
-class network [[#network]] {
-
+class aws_vpc_cidr_block_association [[#aws_vpc_cidr_block_association]] {
+**association_id**: string
+**cidr_block**: string
+**cidr_block_state**: aws_vpc_cidr_block_state
 }
 class aws_vpc_ipv6_cidr_block_association [[#aws_vpc_ipv6_cidr_block_association]] {
 **association_id**: string
@@ -20009,8 +20009,8 @@ aws_resource <|--- aws_vpc
 network <|--- aws_vpc
 aws_vpc --> aws_vpc_ipv6_cidr_block_association
 aws_vpc --> aws_vpc_cidr_block_association
-aws_vpc_cidr_block_association --> aws_vpc_cidr_block_state
 resource <|--- network
+aws_vpc_cidr_block_association --> aws_vpc_cidr_block_state
 aws_vpc_ipv6_cidr_block_association --> aws_vpc_cidr_block_state
 
 @enduml
@@ -20023,7 +20023,7 @@ aws_vpc_ipv6_cidr_block_association --> aws_vpc_cidr_block_state
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_vpc resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_vpc resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -20047,16 +20047,13 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_alb_target_group [[#aws_alb_target_group]] {
+class aws_ec2_nat_gateway [[#aws_ec2_nat_gateway]] {
 
 }
-class aws_alb [[#aws_alb]] {
+class aws_vpc [[#aws_vpc]] {
 
 }
-class aws_ec2_instance [[#aws_ec2_instance]] {
-
-}
-class aws_vpc_endpoint [[#aws_vpc_endpoint]] {
+class aws_ec2_network_interface [[#aws_ec2_network_interface]] {
 
 }
 class aws_ec2_subnet [[#aws_ec2_subnet]] {
@@ -20065,107 +20062,110 @@ class aws_ec2_subnet [[#aws_ec2_subnet]] {
 class aws_lambda_function [[#aws_lambda_function]] {
 
 }
-class aws_elb [[#aws_elb]] {
+class aws_ec2_instance [[#aws_ec2_instance]] {
 
 }
-class aws_rds_instance [[#aws_rds_instance]] {
-
-}
-class aws_ec2_network_interface [[#aws_ec2_network_interface]] {
-
-}
-class aws_redshift_cluster [[#aws_redshift_cluster]] {
-
-}
-class aws_ec2_network_acl [[#aws_ec2_network_acl]] {
-
-}
-class aws_ec2_nat_gateway [[#aws_ec2_nat_gateway]] {
-
-}
-class aws_ec2_flow_log [[#aws_ec2_flow_log]] {
-
-}
-class aws_service_quota [[#aws_service_quota]] {
-
-}
-class aws_vpc [[#aws_vpc]] {
-
-}
-class aws_ec2_internet_gateway [[#aws_ec2_internet_gateway]] {
-
-}
-class aws_ec2_route_table [[#aws_ec2_route_table]] {
-
-}
-class aws_vpc_peering_connection [[#aws_vpc_peering_connection]] {
+class aws_vpc_endpoint [[#aws_vpc_endpoint]] {
 
 }
 class aws_ec2_security_group [[#aws_ec2_security_group]] {
 
 }
+class aws_rds_instance [[#aws_rds_instance]] {
+
+}
+class aws_elb [[#aws_elb]] {
+
+}
+class aws_redshift_cluster [[#aws_redshift_cluster]] {
+
+}
+class aws_alb [[#aws_alb]] {
+
+}
+class aws_vpc_peering_connection [[#aws_vpc_peering_connection]] {
+
+}
 class aws_region [[#aws_region]] {
 
 }
-aws_alb_target_group -[#1A83AF]-> aws_ec2_instance
-aws_alb -[#1A83AF]-> aws_alb_target_group
-aws_ec2_instance -[#1A83AF]-> aws_ec2_network_interface
-aws_vpc_endpoint -[#1A83AF]-> aws_ec2_network_interface
-aws_ec2_subnet -[#1A83AF]-> aws_lambda_function
-aws_ec2_subnet -[#1A83AF]-> aws_elb
-aws_ec2_subnet -[#1A83AF]-> aws_vpc_endpoint
-aws_ec2_subnet -[#1A83AF]-> aws_rds_instance
-aws_ec2_subnet -[#1A83AF]-> aws_alb
-aws_ec2_subnet -[#1A83AF]-> aws_ec2_network_interface
-aws_ec2_subnet -[#1A83AF]-> aws_redshift_cluster
-aws_elb -[#1A83AF]-> aws_ec2_instance
-aws_ec2_network_acl -[#1A83AF]-> aws_ec2_subnet
-aws_ec2_nat_gateway -[#1A83AF]-> aws_ec2_subnet
+class aws_ec2_internet_gateway [[#aws_ec2_internet_gateway]] {
+
+}
+class aws_service_quota [[#aws_service_quota]] {
+
+}
+class aws_ec2_route_table [[#aws_ec2_route_table]] {
+
+}
+class aws_ec2_network_acl [[#aws_ec2_network_acl]] {
+
+}
+class aws_alb_target_group [[#aws_alb_target_group]] {
+
+}
+class aws_ec2_flow_log [[#aws_ec2_flow_log]] {
+
+}
 aws_ec2_nat_gateway -[#1A83AF]-> aws_vpc
 aws_ec2_nat_gateway -[#1A83AF]-> aws_ec2_network_interface
-aws_service_quota -[#1A83AF]-> aws_vpc
-aws_service_quota -[#1A83AF]-> aws_elb
-aws_service_quota -[#1A83AF]-> aws_alb
-aws_vpc -[#1A83AF]-> aws_lambda_function
+aws_ec2_nat_gateway -[#1A83AF]-> aws_ec2_subnet
+aws_vpc -[#1A83AF]-> aws_rds_instance
+aws_vpc -[#1A83AF]-> aws_elb
+aws_vpc -[#1A83AF]-> aws_alb_target_group
+aws_vpc -[#1A83AF]-> aws_ec2_network_interface
+aws_vpc -[#1A83AF]-> aws_ec2_instance
+aws_vpc -[#1A83AF]-> aws_ec2_security_group
+aws_vpc -[#1A83AF]-> aws_ec2_flow_log
+aws_vpc -[#1A83AF]-> aws_redshift_cluster
 aws_vpc -[#1A83AF]-> aws_ec2_route_table
 aws_vpc -[#1A83AF]-> aws_ec2_internet_gateway
-aws_vpc -[#1A83AF]-> aws_ec2_instance
-aws_vpc -[#1A83AF]-> aws_vpc_endpoint
-aws_vpc -[#1A83AF]-> aws_ec2_network_acl
-aws_vpc -[#1A83AF]-> aws_ec2_flow_log
 aws_vpc -[#1A83AF]-> aws_vpc_peering_connection
+aws_vpc -[#1A83AF]-> aws_lambda_function
 aws_vpc -[#1A83AF]-> aws_ec2_subnet
-aws_vpc -[#1A83AF]-> aws_rds_instance
+aws_vpc -[#1A83AF]-> aws_ec2_network_acl
 aws_vpc -[#1A83AF]-> aws_alb
-aws_vpc -[#1A83AF]-> aws_ec2_network_interface
-aws_vpc -[#1A83AF]-> aws_alb_target_group
-aws_vpc -[#1A83AF]-> aws_elb
-aws_vpc -[#1A83AF]-> aws_redshift_cluster
-aws_vpc -[#1A83AF]-> aws_ec2_security_group
-aws_ec2_route_table -[#1A83AF]-> aws_vpc_endpoint
+aws_vpc -[#1A83AF]-> aws_vpc_endpoint
+aws_ec2_subnet -[#1A83AF]-> aws_rds_instance
+aws_ec2_subnet -[#1A83AF]-> aws_elb
+aws_ec2_subnet -[#1A83AF]-> aws_ec2_network_interface
+aws_ec2_subnet -[#1A83AF]-> aws_redshift_cluster
+aws_ec2_subnet -[#1A83AF]-> aws_lambda_function
+aws_ec2_subnet -[#1A83AF]-> aws_alb
+aws_ec2_subnet -[#1A83AF]-> aws_vpc_endpoint
+aws_ec2_instance -[#1A83AF]-> aws_ec2_network_interface
+aws_vpc_endpoint -[#1A83AF]-> aws_ec2_network_interface
 aws_ec2_security_group -[#1A83AF]-> aws_rds_instance
-aws_ec2_security_group -[#1A83AF]-> aws_vpc_endpoint
-aws_ec2_security_group -[#1A83AF]-> aws_redshift_cluster
 aws_ec2_security_group -[#1A83AF]-> aws_elb
+aws_ec2_security_group -[#1A83AF]-> aws_vpc_endpoint
 aws_ec2_security_group -[#1A83AF]-> aws_lambda_function
-aws_ec2_security_group -[#1A83AF]-> aws_alb
 aws_ec2_security_group -[#1A83AF]-> aws_ec2_network_interface
-aws_region -[#1A83AF]-> aws_vpc
-aws_region -[#1A83AF]-> aws_ec2_internet_gateway
-aws_region -[#1A83AF]-> aws_vpc_peering_connection
+aws_ec2_security_group -[#1A83AF]-> aws_redshift_cluster
+aws_ec2_security_group -[#1A83AF]-> aws_alb
+aws_elb -[#1A83AF]-> aws_ec2_instance
+aws_alb -[#1A83AF]-> aws_alb_target_group
 aws_region -[#1A83AF]-> aws_rds_instance
-aws_region -[#1A83AF]-> aws_vpc_endpoint
-aws_region -[#1A83AF]-> aws_ec2_network_acl
-aws_region -[#1A83AF]-> aws_ec2_subnet
-aws_region -[#1A83AF]-> aws_elb
-aws_region -[#1A83AF]-> aws_alb_target_group
 aws_region -[#1A83AF]-> aws_ec2_nat_gateway
-aws_region -[#1A83AF]-> aws_ec2_security_group
-aws_region -[#1A83AF]-> aws_ec2_route_table
+aws_region -[#1A83AF]-> aws_ec2_internet_gateway
 aws_region -[#1A83AF]-> aws_ec2_instance
-aws_region -[#1A83AF]-> aws_alb
-aws_region -[#1A83AF]-> aws_ec2_network_interface
 aws_region -[#1A83AF]-> aws_service_quota
+aws_region -[#1A83AF]-> aws_elb
+aws_region -[#1A83AF]-> aws_vpc
+aws_region -[#1A83AF]-> aws_ec2_route_table
+aws_region -[#1A83AF]-> aws_ec2_network_acl
+aws_region -[#1A83AF]-> aws_vpc_endpoint
+aws_region -[#1A83AF]-> aws_ec2_security_group
+aws_region -[#1A83AF]-> aws_alb_target_group
+aws_region -[#1A83AF]-> aws_ec2_network_interface
+aws_region -[#1A83AF]-> aws_vpc_peering_connection
+aws_region -[#1A83AF]-> aws_ec2_subnet
+aws_region -[#1A83AF]-> aws_alb
+aws_service_quota -[#1A83AF]-> aws_elb
+aws_service_quota -[#1A83AF]-> aws_vpc
+aws_service_quota -[#1A83AF]-> aws_alb
+aws_ec2_route_table -[#1A83AF]-> aws_vpc_endpoint
+aws_ec2_network_acl -[#1A83AF]-> aws_ec2_subnet
+aws_alb_target_group -[#1A83AF]-> aws_ec2_instance
 
 @enduml
 ```
@@ -20178,7 +20178,7 @@ aws_region -[#1A83AF]-> aws_service_quota
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_vpc_endpoint data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_vpc_endpoint data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -20202,6 +20202,18 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
+class resource [[#resource]] {
+**id**: string
+**tags**: dictionary[string, string]
+**name**: string
+**ctime**: datetime
+**age**: duration
+**mtime**: datetime
+**last_update**: duration
+**atime**: datetime
+**last_access**: duration
+**kind**: string
+}
 class aws_resource [[#aws_resource]] {
 **arn**: string
 }
@@ -20219,24 +20231,12 @@ class aws_vpc_endpoint [[#aws_vpc_endpoint]] {
 **endpoint_owner_id**: string
 **endpoint_last_error**: aws_ec2_last_error
 }
-class resource [[#resource]] {
-**id**: string
-**tags**: dictionary[string, string]
-**name**: string
-**ctime**: datetime
-**age**: duration
-**mtime**: datetime
-**last_update**: duration
-**atime**: datetime
-**last_access**: duration
-**kind**: string
+class endpoint [[#endpoint]] {
+
 }
 class aws_ec2_dns_entry [[#aws_ec2_dns_entry]] {
 **dns_name**: string
 **hosted_zone_id**: string
-}
-class endpoint [[#endpoint]] {
-
 }
 class aws_ec2_last_error [[#aws_ec2_last_error]] {
 **message**: string
@@ -20259,7 +20259,7 @@ resource <|--- endpoint
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_vpc_endpoint resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_vpc_endpoint resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -20283,52 +20283,52 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_api_gateway_domain_name [[#aws_api_gateway_domain_name]] {
-
-}
-class aws_vpc_endpoint [[#aws_vpc_endpoint]] {
-
-}
-class aws_ec2_subnet [[#aws_ec2_subnet]] {
+class aws_vpc [[#aws_vpc]] {
 
 }
 class aws_ec2_network_interface [[#aws_ec2_network_interface]] {
 
 }
-class aws_vpc [[#aws_vpc]] {
+class aws_ec2_subnet [[#aws_ec2_subnet]] {
 
 }
-class aws_api_gateway_rest_api [[#aws_api_gateway_rest_api]] {
-
-}
-class aws_ec2_route_table [[#aws_ec2_route_table]] {
+class aws_vpc_endpoint [[#aws_vpc_endpoint]] {
 
 }
 class aws_ec2_security_group [[#aws_ec2_security_group]] {
 
 }
+class aws_api_gateway_rest_api [[#aws_api_gateway_rest_api]] {
+
+}
+class aws_api_gateway_domain_name [[#aws_api_gateway_domain_name]] {
+
+}
 class aws_region [[#aws_region]] {
 
 }
-aws_api_gateway_domain_name -[#1A83AF]-> aws_vpc_endpoint
-aws_vpc_endpoint -[#1A83AF]-> aws_ec2_network_interface
-aws_ec2_subnet -[#1A83AF]-> aws_vpc_endpoint
-aws_ec2_subnet -[#1A83AF]-> aws_ec2_network_interface
-aws_vpc -[#1A83AF]-> aws_ec2_route_table
-aws_vpc -[#1A83AF]-> aws_vpc_endpoint
-aws_vpc -[#1A83AF]-> aws_ec2_subnet
+class aws_ec2_route_table [[#aws_ec2_route_table]] {
+
+}
 aws_vpc -[#1A83AF]-> aws_ec2_network_interface
 aws_vpc -[#1A83AF]-> aws_ec2_security_group
-aws_api_gateway_rest_api -[#1A83AF]-> aws_vpc_endpoint
-aws_ec2_route_table -[#1A83AF]-> aws_vpc_endpoint
+aws_vpc -[#1A83AF]-> aws_ec2_route_table
+aws_vpc -[#1A83AF]-> aws_ec2_subnet
+aws_vpc -[#1A83AF]-> aws_vpc_endpoint
+aws_ec2_subnet -[#1A83AF]-> aws_ec2_network_interface
+aws_ec2_subnet -[#1A83AF]-> aws_vpc_endpoint
+aws_vpc_endpoint -[#1A83AF]-> aws_ec2_network_interface
 aws_ec2_security_group -[#1A83AF]-> aws_vpc_endpoint
 aws_ec2_security_group -[#1A83AF]-> aws_ec2_network_interface
+aws_api_gateway_rest_api -[#1A83AF]-> aws_vpc_endpoint
+aws_api_gateway_domain_name -[#1A83AF]-> aws_vpc_endpoint
 aws_region -[#1A83AF]-> aws_vpc
-aws_region -[#1A83AF]-> aws_vpc_endpoint
-aws_region -[#1A83AF]-> aws_ec2_subnet
-aws_region -[#1A83AF]-> aws_ec2_security_group
 aws_region -[#1A83AF]-> aws_ec2_route_table
+aws_region -[#1A83AF]-> aws_vpc_endpoint
+aws_region -[#1A83AF]-> aws_ec2_security_group
 aws_region -[#1A83AF]-> aws_ec2_network_interface
+aws_region -[#1A83AF]-> aws_ec2_subnet
+aws_ec2_route_table -[#1A83AF]-> aws_vpc_endpoint
 
 @enduml
 ```
@@ -20341,7 +20341,7 @@ aws_region -[#1A83AF]-> aws_ec2_network_interface
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_vpc_peering_connection data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_vpc_peering_connection data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -20365,9 +20365,6 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 
-class aws_resource [[#aws_resource]] {
-**arn**: string
-}
 class resource [[#resource]] {
 **id**: string
 **tags**: dictionary[string, string]
@@ -20380,9 +20377,11 @@ class resource [[#resource]] {
 **last_access**: duration
 **kind**: string
 }
-class aws_vpc_peering_connection_state_reason [[#aws_vpc_peering_connection_state_reason]] {
-**code**: string
-**message**: string
+class aws_resource [[#aws_resource]] {
+**arn**: string
+}
+class peering_connection [[#peering_connection]] {
+
 }
 class aws_vpc_peering_connection [[#aws_vpc_peering_connection]] {
 **connection_accepter_vpc_info**: aws_vpc_peering_connection_vpc_info
@@ -20404,16 +20403,17 @@ class aws_vpc_peering_connection_options_description [[#aws_vpc_peering_connecti
 **allow_egress_from_local_classic_link_to_remote_vpc**: boolean
 **allow_egress_from_local_vpc_to_remote_classic_link**: boolean
 }
-class peering_connection [[#peering_connection]] {
-
+class aws_vpc_peering_connection_state_reason [[#aws_vpc_peering_connection_state_reason]] {
+**code**: string
+**message**: string
 }
 resource <|--- aws_resource
+resource <|--- peering_connection
 aws_resource <|--- aws_vpc_peering_connection
 peering_connection <|--- aws_vpc_peering_connection
 aws_vpc_peering_connection --> aws_vpc_peering_connection_vpc_info
 aws_vpc_peering_connection --> aws_vpc_peering_connection_state_reason
 aws_vpc_peering_connection_vpc_info --> aws_vpc_peering_connection_options_description
-resource <|--- peering_connection
 
 @enduml
 ```
@@ -20425,7 +20425,7 @@ resource <|--- peering_connection
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of aws_vpc_peering_connection resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_vpc_peering_connection resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37

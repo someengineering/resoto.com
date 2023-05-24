@@ -12,7 +12,7 @@ import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of github_account data model"
+```kroki imgType="plantuml" imgAlt="Diagram of github_account data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -67,7 +67,7 @@ account <|--- github_account
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of github_account resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of github_account resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -106,7 +106,7 @@ class github_account [[#github_account]] {
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of github_org data model"
+```kroki imgType="plantuml" imgAlt="Diagram of github_org data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -195,7 +195,7 @@ resource <|--- github_org
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of github_org resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of github_org resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -234,7 +234,7 @@ class github_org [[#github_org]] {
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of github_pull_request data model"
+```kroki imgType="plantuml" imgAlt="Diagram of github_pull_request data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -318,7 +318,7 @@ resource <|--- github_pull_request
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of github_pull_request resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of github_pull_request resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -357,7 +357,7 @@ class github_pull_request [[#github_pull_request]] {
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of github_region data model"
+```kroki imgType="plantuml" imgAlt="Diagram of github_region data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -412,7 +412,7 @@ region <|--- github_region
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of github_region resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of github_region resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -451,7 +451,7 @@ class github_region [[#github_region]] {
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of github_repo data model"
+```kroki imgType="plantuml" imgAlt="Diagram of github_repo data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -623,7 +623,7 @@ github_repo_views_traffic --> github_repo_view
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of github_repo resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of github_repo resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -662,7 +662,7 @@ class github_repo [[#github_repo]] {
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of github_user data model"
+```kroki imgType="plantuml" imgAlt="Diagram of github_user data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -762,7 +762,7 @@ user <|--- github_user
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of github_user resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of github_user resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37

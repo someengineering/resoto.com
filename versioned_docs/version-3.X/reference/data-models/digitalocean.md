@@ -18,7 +18,7 @@ See [How to Collect DigitalOcean Resource Data](../../how-to-guides/data-sources
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_alert_policy data model"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_alert_policy data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -76,7 +76,7 @@ resource <|--- digitalocean_alert_policy
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_alert_policy resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_alert_policy resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -119,7 +119,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_alert_policy
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_app data model"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_app data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -179,7 +179,7 @@ resource <|--- digitalocean_app
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_app resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_app resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -233,7 +233,7 @@ digitalocean_region -[#1A83AF]-> digitalocean_database
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_cdn_endpoint data model"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_cdn_endpoint data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -297,7 +297,7 @@ endpoint <|--- digitalocean_cdn_endpoint
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_cdn_endpoint resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_cdn_endpoint resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -340,7 +340,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_cdn_endpoint
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_certificate data model"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_certificate data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -403,7 +403,7 @@ certificate <|--- digitalocean_certificate
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_certificate resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_certificate resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -446,7 +446,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_certificate
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_container_registry data model"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_container_registry data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -503,7 +503,7 @@ resource <|--- digitalocean_container_registry
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_container_registry resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_container_registry resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -556,7 +556,7 @@ digitalocean_container_registry -[#1A83AF]-> digitalocean_container_registry_rep
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_container_registry_repository data model"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_container_registry_repository data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -613,7 +613,7 @@ resource <|--- digitalocean_container_registry_repository
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_container_registry_repository resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_container_registry_repository resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -666,7 +666,7 @@ digitalocean_container_registry -[#1A83AF]-> digitalocean_container_registry_rep
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_container_registry_repository_tag data model"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_container_registry_repository_tag data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -726,7 +726,7 @@ resource <|--- digitalocean_container_registry_repository_tag
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_container_registry_repository_tag resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_container_registry_repository_tag resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -774,7 +774,7 @@ digitalocean_container_registry_repository -[#1A83AF]-> digitalocean_container_r
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_database data model"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_database data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -842,7 +842,7 @@ database <|--- digitalocean_database
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_database resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_database resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -907,7 +907,7 @@ digitalocean_project -[#1A83AF]-> digitalocean_database
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_domain data model"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_domain data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -968,7 +968,7 @@ dns_zone <|--- digitalocean_domain
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_domain resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_domain resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1021,7 +1021,7 @@ digitalocean_project -[#1A83AF]-> digitalocean_domain
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_domain_record data model"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_domain_record data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1096,7 +1096,7 @@ dns_record <|--- digitalocean_domain_record
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_domain_record resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_domain_record resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1144,7 +1144,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_domain_record
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_droplet data model"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_droplet data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1210,7 +1210,7 @@ resource <|--- instance
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_droplet resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_droplet resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1320,7 +1320,7 @@ digitalocean_droplet_size -[#1A83AF]-> digitalocean_droplet
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_droplet_size data model"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_droplet_size data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1398,7 +1398,7 @@ instance_type <|--- digitalocean_droplet_size
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_droplet_size resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_droplet_size resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1441,7 +1441,7 @@ digitalocean_droplet_size -[#1A83AF]-> digitalocean_droplet
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_firewall data model"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_firewall data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1497,7 +1497,7 @@ resource <|--- digitalocean_firewall
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_firewall resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_firewall resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1545,7 +1545,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_firewall
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_floating_ip data model"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_floating_ip data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1606,7 +1606,7 @@ resource <|--- ip_address
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_floating_ip resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_floating_ip resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1666,7 +1666,7 @@ digitalocean_project -[#1A83AF]-> digitalocean_droplet
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_image data model"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_image data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1729,7 +1729,7 @@ resource <|--- digitalocean_image
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_image resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_image resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1783,7 +1783,7 @@ digitalocean_image -[#1A83AF]-> digitalocean_droplet
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_kubernetes_cluster data model"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_kubernetes_cluster data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1848,7 +1848,7 @@ resource <|--- digitalocean_kubernetes_cluster
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_kubernetes_cluster resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_kubernetes_cluster resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1915,7 +1915,7 @@ digitalocean_project -[#1A83AF]-> digitalocean_droplet
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_load_balancer data model"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_load_balancer data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1982,7 +1982,7 @@ load_balancer <|--- digitalocean_load_balancer
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_load_balancer resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_load_balancer resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2049,7 +2049,7 @@ digitalocean_project -[#1A83AF]-> digitalocean_droplet
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_project data model"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_project data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2110,7 +2110,7 @@ resource <|--- digitalocean_project
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_project resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_project resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2197,7 +2197,7 @@ digitalocean_project -[#1A83AF]-> digitalocean_domain
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_region data model"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_region data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2260,7 +2260,7 @@ region <|--- digitalocean_region
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_region resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_region resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2368,7 +2368,7 @@ digitalocean_image -[#1A83AF]-> digitalocean_droplet
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_resource data model"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_resource data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2419,7 +2419,7 @@ resource <|--- digitalocean_resource
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_resource resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_resource resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2462,7 +2462,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_resource
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_snapshot data model"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_snapshot data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2530,7 +2530,7 @@ resource <|--- snapshot
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_snapshot resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_snapshot resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2590,7 +2590,7 @@ digitalocean_volume -[#1A83AF]-> digitalocean_snapshot
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_space data model"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_space data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2650,7 +2650,7 @@ resource <|--- bucket
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_space resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_space resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2703,7 +2703,7 @@ digitalocean_project -[#1A83AF]-> digitalocean_space
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_ssh_key data model"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_ssh_key data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2763,7 +2763,7 @@ resource <|--- keypair
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_ssh_key resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_ssh_key resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2806,7 +2806,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_ssh_key
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_tag data model"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_tag data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2862,7 +2862,7 @@ resource <|--- digitalocean_tag
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_tag resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_tag resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2905,7 +2905,7 @@ digitalocean_team -[#1A83AF]-> digitalocean_tag
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_team data model"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_team data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -2965,7 +2965,7 @@ account <|--- digitalocean_team
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_team resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_team resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3139,7 +3139,7 @@ digitalocean_project -[#1A83AF]-> digitalocean_domain
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_volume data model"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_volume data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3208,7 +3208,7 @@ volume <|--- digitalocean_volume
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_volume resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_volume resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3268,7 +3268,7 @@ digitalocean_project -[#1A83AF]-> digitalocean_droplet
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_vpc data model"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_vpc data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -3330,7 +3330,7 @@ network <|--- digitalocean_vpc
 <div>
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgTitle="Diagram of digitalocean_vpc resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_vpc resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37

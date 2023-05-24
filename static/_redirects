@@ -320,11 +320,15 @@ https://releases.resoto.com/*                                                   
 /docs/reference/core-api                                                              /docs/reference/api
 /docs/reference/resotocore-api                                                        /docs/reference/api
 
-/docs/reference/data-models/dockerhub                                                 /docs/reference/data-models/docker-hub
-/docs/reference/data-models/gcp                                                       /docs/reference/data-models/google-cloud
-/docs/reference/data-models/onprem                                                    /docs/reference/data-models/on-premises
-/docs/reference/resources/data-models                                                 /docs/reference/data-models
-/docs/reference/resources/*                                                           /docs/reference/data-models/:splat
+/docs/reference/data-models/docker-hub                                                /docs/reference/unified-data-model/docker-hub
+/docs/reference/data-models/dockerhub                                                 /docs/reference/unified-data-model/docker-hub
+/docs/reference/data-models/gcp                                                       /docs/reference/unified-data-model/google-cloud
+/docs/reference/data-models/google-cloud                                              /docs/reference/unified-data-model/google-cloud
+/docs/reference/data-models/on-premises                                               /docs/reference/unified-data-model/on-premises
+/docs/reference/data-models/onprem                                                    /docs/reference/unified-data-model/on-premises
+/docs/reference/data-models/*                                                         /docs/reference/unified-data-model/:splat
+/docs/reference/resources/data-models/*                                               /docs/reference/unified-data-model/:splat
+/docs/reference/resources/*                                                           /docs/reference/unified-data-model/:splat
 
 /reference/*                                                                          /docs/reference/:splat
 

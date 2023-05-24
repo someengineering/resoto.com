@@ -76,9 +76,9 @@ To add specific properties of interest, we can specify them as a parameter to th
 
 ### Available Resource Properties in Resoto
 
-The available properties of a resource kind are defined in the [resource data model](/docs/reference/data-models). In our case, the relevant resource kind is [`aws_ec2_instance`](/docs/reference/data-models/aws#aws_ec2_instance).
+The available properties of a resource kind are defined in Resoto's [unified data model](/docs/reference/unified-data-model). In our case, the relevant resource kind is [`aws_ec2_instance`](/docs/reference/unified-data-model/aws#aws_ec2_instance).
 
-You can list the available properties of [`aws_ec2_instance`](/docs/reference/data-models/aws#aws_ec2_instance) in your terminal with:
+You can list the available properties of [`aws_ec2_instance`](/docs/reference/unified-data-model/aws#aws_ec2_instance) in your terminal with:
 
 ```bash
 > kind aws_ec2_instance
@@ -111,8 +111,8 @@ The full search syntax to build my inventory (for now, without formatting and wr
 
 You can see how there are two different ways to fetch the properties.
 
-- **Directly from the resource:** ID, name, instance type, create time, age, and instance status are direct properties of the [`aws_ec2_instance`](/docs/reference/data-models/aws#aws_ec2_instance) kind.
-- **Indirectly from a related resource:** Region name and account name belong to the kinds [`aws_region`](/docs/reference/data-models/aws#aws_region) and [`aws_account`](/docs/reference/data-models/aws#aws_account).
+- **Directly from the resource:** ID, name, instance type, create time, age, and instance status are direct properties of the [`aws_ec2_instance`](/docs/reference/unified-data-model/aws#aws_ec2_instance) kind.
+- **Indirectly from a related resource:** Region name and account name belong to the kinds [`aws_region`](/docs/reference/unified-data-model/aws#aws_region) and [`aws_account`](/docs/reference/unified-data-model/aws#aws_account).
 
 ### Capturing Indirect Properties with Graph Traversal
 

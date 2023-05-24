@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
 
-The [Amazon Web Services (AWS)](../../reference/data-models/aws.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell).
+The [Amazon Web Services (AWS)](../../reference/unified-data-model/aws.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs) in [Resoto Shell](../../reference/components/shell).
 
 ## Prerequisites
 
@@ -40,7 +40,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
 ### 2. Authenticate with AWS
 
-**Resoto supports the authentication mechanisms described in the [Boto3 SDK documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html).** You can authenticate with [<abbr title="Amazon Web Services">AWS</abbr>](../../reference/data-models/aws.md) via an instance profile, an access key, or profiles. These credentials can be defined in the Resoto Worker configuration or as environment variables.
+**Resoto supports the authentication mechanisms described in the [Boto3 SDK documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html).** You can authenticate with [<abbr title="Amazon Web Services">AWS</abbr>](../../reference/unified-data-model/aws.md) via an instance profile, an access key, or profiles. These credentials can be defined in the Resoto Worker configuration or as environment variables.
 
 <Tabs groupId="auth-method">
 <TabItem value="configuration" label="Resoto Worker Configuration">
@@ -358,7 +358,7 @@ If you prefer to deploy the role yourself, the S3 URL of the template to create 
    > workflow run collect
    ```
 
-2. Once the collect run completes, you can view a summary of collected [<abbr title="Amazon Web Services">AWS</abbr> resources](../../reference/data-models/index.md) using the following search:
+2. Once the collect run completes, you can view a summary of collected [<abbr title="Amazon Web Services">AWS</abbr> resources](../../reference/unified-data-model/index.md) using the following search:
 
    ```bash
    > search is(aws_resource) | count kind

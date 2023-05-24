@@ -41,7 +41,7 @@ As an example I picked the AWS application load balancer to show the complete st
 
 </ZoomPanPinch>
 
-See the full list of supported AWS resources in the [AWS reference](/docs/reference/data-models/aws).
+See the full list of supported AWS resources in the [AWS reference](/docs/reference/unified-data-model/aws).
 
 ### Cloud2SQL: Export Your Data into a SQL Database
 

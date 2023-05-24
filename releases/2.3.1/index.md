@@ -17,7 +17,7 @@ date: 2022-06-22
 - [Kubernetes Support](/blog/kubernetes-support)
 - [Install Resoto with Kubernetes](/docs/getting-started/install-resoto/kubernetes)
 - [How to Collect Kubernetes Resource Data](/docs/how-to-guides/data-sources/collect-kubernetes-resource-data)
-- [Kubernetes Resource Data Models](/docs/reference/data-models/kubernetes)
+- [Kubernetes Resource Data Models](/docs/reference/unified-data-model/kubernetes)
 
 ### UI to Configure Resoto
 
@@ -51,9 +51,9 @@ Resoto uses collectors to retrieve data from a specific cloud provider. Those co
 
 :::tip Examples
 
-- A [Kubernetes node](/docs/reference/data-models/kubernetes#kubernetes_node) is running on an [AWS EC2 instance](/docs/reference/data-models/aws#aws_ec2_instance). The [Kubernetes collector](/docs/how-to-guides/data-sources/collect-kubernetes-resource-data) is unable to resolve the reference, since it points to a resource provided by [AWS](/docs/how-to-guides/data-sources/collect-aws-resource-data).
+- A [Kubernetes node](/docs/reference/unified-data-model/kubernetes#kubernetes_node) is running on an [AWS EC2 instance](/docs/reference/unified-data-model/aws#aws_ec2_instance). The [Kubernetes collector](/docs/how-to-guides/data-sources/collect-kubernetes-resource-data) is unable to resolve the reference, since it points to a resource provided by [AWS](/docs/how-to-guides/data-sources/collect-aws-resource-data).
 
-- A [load balancer in AWS](/docs/reference/data-models/aws#aws_alb) that points to [compute resources in Google Cloud](/docs/reference/data-models/google-cloud#gcp_instance). The [AWS collector](/docs/how-to-guides/data-sources/collect-aws-resource-data) does not know anything about [Google Cloud](/docs/how-to-guides/data-sources/collect-google-cloud-resource-data).
+- A [load balancer in AWS](/docs/reference/unified-data-model/aws#aws_alb) that points to [compute resources in Google Cloud](/docs/reference/unified-data-model/google-cloud#gcp_instance). The [AWS collector](/docs/how-to-guides/data-sources/collect-aws-resource-data) does not know anything about [Google Cloud](/docs/how-to-guides/data-sources/collect-google-cloud-resource-data).
 
 :::
 

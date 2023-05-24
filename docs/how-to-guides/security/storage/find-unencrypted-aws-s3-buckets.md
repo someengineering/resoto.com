@@ -46,7 +46,7 @@ This guide assumes that you have already [installed](../../../getting-started/in
    # highlight-end
    ```
 
-   The command output will list the details of all non-compliant [`aws_s3_bucket` resources](../../../reference/data-models/aws.md#aws_s3_bucket).
+   The command output will list the details of all non-compliant [`aws_s3_bucket` resources](../../../reference/unified-data-model/aws.md#aws_s3_bucket).
 
 ## Remediation
 
@@ -62,7 +62,7 @@ Please refer to the [AWS S3 documentation](https://aws.amazon.com/blogs/security
 
 - [Search](../../../reference/search/index.md)
 - [Command-Line Interface](../../../reference/cli/index.md)
-- [`aws_s3_bucket` Resource Data Model](../../../reference/data-models/aws.md#aws_s3_bucket)
+- [`aws_s3_bucket` Resource Data Model](../../../reference/unified-data-model/aws.md#aws_s3_bucket)
 
 ## External Links
 

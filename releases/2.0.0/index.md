@@ -10,9 +10,9 @@ Resoto provides a single data source and search engine to explore infrastructure
 
 Resoto currently supports the following cloud providers:
 
-- [Amazon Web Services (AWS)](/docs/reference/data-models/aws)
-- [Google Cloud Platform (GCP)](/docs/reference/data-models/google-cloud)
-- [DigitalOcean](/docs/reference/data-models/digitalocean)
+- [Amazon Web Services (AWS)](/docs/reference/unified-data-model/aws)
+- [Google Cloud Platform (GCP)](/docs/reference/unified-data-model/google-cloud)
+- [DigitalOcean](/docs/reference/unified-data-model/digitalocean)
 
 ## Highlights
 

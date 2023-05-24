@@ -10,6 +10,7 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "build": "docusaurus build",
+    "build:fast": "BUILD_FAST=true docusaurus build",
     "clear": "docusaurus clear",
     "deploy": "docusaurus deploy",
     "format": "prettier --write --cache .",

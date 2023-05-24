@@ -57,4 +57,4 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
 - [Search](../../reference/search/index.md)
 - [Command-Line Interface](../../reference/cli/index.md)
-- [Resource Data Models](../../reference/data-models/index.md)
+- [Unified Data Model](../../reference/unified-data-model/index.md)

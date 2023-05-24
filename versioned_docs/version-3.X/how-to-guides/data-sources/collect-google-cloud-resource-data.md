@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
 
-The [Google Cloud](../../reference/data-models/gcp/index.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs/index.md) in [Resoto Shell](../../reference/components/shell.md).
+The [Google Cloud](../../reference/data-models/gcp.md) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.md) via the [`config` command](../../reference/cli/setup-commands/configs/index.md) in [Resoto Shell](../../reference/components/shell.md).
 
 ## Prerequisites
 
@@ -40,7 +40,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
 ### 2. Authenticate with Google Cloud
 
-**You can authenticate with [Google Cloud](../../reference/data-models/gcp/index.md) via service account JSON files or automatic discovery.**
+**You can authenticate with [Google Cloud](../../reference/data-models/gcp.md) via service account JSON files or automatic discovery.**
 
 <Tabs>
 <TabItem value="service-account-json" label="Service Account JSON">
@@ -154,7 +154,7 @@ You can specify an empty string for the service account file, and Resoto will au
    > workflow run collect
    ```
 
-2. Once the collect run completes, you can view a summary of collected [Google Cloud resources](../../reference/data-models/gcp/index.md) using the following search:
+2. Once the collect run completes, you can view a summary of collected [Google Cloud resources](../../reference/data-models/gcp.md) using the following search:
 
    ```bash
    > search is(gcp_resource) | count kind

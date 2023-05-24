@@ -50,7 +50,7 @@ This guide assumes that you have already [installed](../../../getting-started/in
    # highlight-end
    ```
 
-   The command output will list the details of all non-compliant [`aws_lambda_function` resources](../../../reference/data-models/aws/index.md#aws_lambda_function).
+   The command output will list the details of all non-compliant [`aws_lambda_function` resources](../../../reference/data-models/aws.md#aws_lambda_function).
 
 ## Remediation
 
@@ -68,7 +68,7 @@ Please refer to the [AWS Lambda documentation](https://docs.aws.amazon.com/lambd
 
 - [Search](../../../reference/search/index.md)
 - [Command-Line Interface](../../../reference/cli/index.md)
-- [`aws_lambda_function` Resource Data Model](../../../reference/data-models/aws/index.md#aws_lambda_function)
+- [`aws_lambda_function` Resource Data Model](../../../reference/data-models/aws.md#aws_lambda_function)
 
 ## External Links
 

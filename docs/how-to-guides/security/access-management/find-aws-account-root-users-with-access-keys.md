@@ -50,7 +50,7 @@ This guide assumes that you have already [installed](../../../getting-started/in
    # highlight-end
    ```
 
-   The command output will list the details of all non-compliant [`aws_root_user` resources](../../../reference/data-models/aws/index.md#aws_root_user).
+   The command output will list the details of all non-compliant [`aws_root_user` resources](../../../reference/data-models/aws.md#aws_root_user).
 
 ## Remediation
 
@@ -68,7 +68,7 @@ Please refer to the [AWS IAM documentation](https://docs.aws.amazon.com/IAM/late
 
 - [Search](../../../reference/search/index.md)
 - [Command-Line Interface](../../../reference/cli/index.md)
-- [`aws_root_user` Resource Data Model](../../../reference/data-models/aws/index.md#aws_root_user)
+- [`aws_root_user` Resource Data Model](../../../reference/data-models/aws.md#aws_root_user)
 
 ## External Links
 

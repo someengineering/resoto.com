@@ -46,7 +46,7 @@ This guide assumes that you have already [installed](../../../getting-started/in
    # highlight-end
    ```
 
-   The command output will list the details of all non-compliant [`aws_rds_instance` resources](../../../reference/data-models/aws/index.md#aws_rds_instance).
+   The command output will list the details of all non-compliant [`aws_rds_instance` resources](../../../reference/data-models/aws.md#aws_rds_instance).
 
 ## Remediation
 
@@ -62,7 +62,7 @@ Please refer to the [AWS RDS documentation](https://aws.amazon.com/blogs/databas
 
 - [Search](../../../reference/search/index.md)
 - [Command-Line Interface](../../../reference/cli/index.md)
-- [`aws_rds_instance` Resource Data Model](../../../reference/data-models/aws/index.md#aws_rds_instance)
+- [`aws_rds_instance` Resource Data Model](../../../reference/data-models/aws.md#aws_rds_instance)
 
 ## External Links
 

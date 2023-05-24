@@ -1,14 +1,26 @@
-# Resource Data Models
+---
+sidebar_label: Unified Data Model
+---
+
+# Unified Data Model (UDM)
 
 ```mdx-code-block
 import DocCardList from '@theme/DocCardList';
 ```
 
-Resoto is able to collect data from different data sources that is maintained in a graph. It has a pluggable API to interface with different cloud providers.
+## What is Resoto's Unified Data Model?
 
-The data model of the cloud providers is naturally defined by the cloud provider, so Resoto needs to deal with different data sources and different data models.
+When you are working with multiple clouds it can be tedious to figure out which resource kinds and attributes are named which way. When you implement org policies like "no unencrypted storage volumes" or "every compute instance must have a cost center tag" you don't want to write those checks over and over for each cloud you're working with.
 
-To make your life easier, Resoto introduces a model abstraction. Every resource collected by Resoto is described by a data model and checked for consistency during import time.
+Resoto is using a unified data model with support for static typing and inheritance. What that means is while Resoto knows about cloud specific resource kinds like `aws_ec2_volume` and `gcp_disk` both of those kinds inherit from the `volume` kind which in turn inherits from the `resource` kind.
+
+The `resource` kind provides the very basic resource attributes that are common to almost all cloud resources like name, creation time and so on. The `volume` kind provides those attributes that are common to most storage volumes. And the more specific AWS and GCP kinds provide the attributes that are unique to each cloud. The information whether a volume is encrypted or not comes from a boolean of the volume kind.
+
+This means instead of having to repeat yourself when writing a search to find unencrypted volumes all you have to do is `search is(volume) and encrypted = false` to find any unencrypted volume no matter which cloud they've been created in.
+
+At the same time because we also have the cloud provider specific kinds you are not losing any information and can still search for e.g. an AWS KMS Key ID or the Google Cloud last attach timestamp.
+
+And because everything is inheriting from the resource kind you can do some convenient searches using virtual attributes like `age` that are common among all resources, without having to worry what name the cloud provider API uses for the creation timestamp.
 
 ## Resources
 

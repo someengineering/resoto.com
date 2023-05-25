@@ -4,8 +4,8 @@ import AwsLogo from '@site/src/assets/aws.svg';
 import DigitalOceanLogo from '@site/src/assets/digitalocean.svg';
 import GoogleCloudLogo from '@site/src/assets/google-cloud.svg';
 import KubernetesLogo from '@site/src/assets/kubernetes.svg';
+import ContactForm from '@site/src/components/ContactForm';
 import InstallButton from '@site/src/components/InstallButton';
-import NewsletterSignupForm from '@site/src/components/NewsletterSignupForm';
 import Layout from '@theme/Layout';
 import { clsx } from 'clsx';
 import React from 'react';
@@ -50,7 +50,6 @@ export default function Home(): JSX.Element {
               </h2>
               <div className={styles.buttons}>
                 <InstallButton
-                  product="resoto"
                   includeVersion
                   className={clsx(styles.button, styles.primaryButton)}
                 />
@@ -94,7 +93,7 @@ export default function Home(): JSX.Element {
               </div>
             </div>
           </section>
-          <NewsletterSignupForm />
+          <ContactForm />
         </main>
       </Layout>
     </>

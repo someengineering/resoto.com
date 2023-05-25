@@ -211,7 +211,7 @@ html[data-theme='dark'] .docsButton::before {
   background-image: url(./img/main-lightbg.png);
   background-position: top;
   background-size: cover;
-  padding: 30px 0;
+  padding: 30px 0 5rem;
   background-repeat: no-repeat;
 }
 

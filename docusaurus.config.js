@@ -138,7 +138,6 @@ const config = {
           blogSidebarCount: 'ALL',
           path: 'releases',
           routeBasePath: 'releases',
-          archiveBasePath: null,
           showReadingTime: false,
           feedOptions: {
             type: 'all',
@@ -189,14 +188,14 @@ const config = {
     ],
     [
       '@docusaurus/plugin-content-blog',
-      {
+      /** @type {import('@docusaurus/plugin-content-blog').Options} */
+      ({
         id: 'blog',
         blogTitle: 'Blog',
         blogDescription: 'Resoto blog',
         blogSidebarTitle: 'Posts',
         blogSidebarCount: 'ALL',
         path: 'blog',
-        archiveBasePath: null,
         routeBasePath: 'blog',
         showReadingTime: true,
         feedOptions: {
@@ -204,11 +203,12 @@ const config = {
           copyright: `Copyright © ${new Date().getFullYear()} Some Engineering Inc.`,
         },
         remarkPlugins: [a11yEmoji, [oembed, { providers: ['youtube'] }]],
-      },
+      }),
     ],
     [
       '@docusaurus/plugin-content-blog',
-      {
+      /** @type {import('@docusaurus/plugin-content-blog').Options} */
+      ({
         id: 'podcast',
         blogTitle: 'Podcast',
         blogDescription: 'Some Engineering Inc. podcast episodes',
@@ -224,11 +224,12 @@ const config = {
         },
         remarkPlugins: [a11yEmoji, [oembed, { providers: ['youtube'] }], math],
         rehypePlugins: [katex],
-      },
+      }),
     ],
     [
       'docusaurus-plugin-openapi-docs',
-      {
+      /** @type {import('docusaurus-plugin-openapi-docs').Options} */
+      ({
         id: 'openapi',
         docsPluginId: 'classic',
         config: {
@@ -253,12 +254,12 @@ const config = {
             }))
             .reduce((acc, cur) => ({ ...acc, ...cur }), {}),
         },
-      },
+      }),
     ],
     [
       '@1password/docusaurus-plugin-stored-data',
       /** @type {import('@1password/docusaurus-plugin-stored-data').Options} */
-      {
+      ({
         data: {
           ...['edge', ...versions]
             .map((version) => ({
@@ -283,36 +284,20 @@ const config = {
             }))
             .reduce((acc, cur) => ({ ...acc, ...cur }), {}),
         },
-      },
+      }),
     ],
     [
       'pwa',
       /** @type {import('@docusaurus/plugin-pwa').PluginOptions} */
-      {
+      ({
         debug: !isProd,
         swRegister: false,
         swCustom: require.resolve('./src/sw.js'),
         pwaHead: [
-          {
-            tagName: 'link',
-            rel: 'manifest',
-            href: 'site.webmanifest',
-          },
-          {
-            tagName: 'link',
-            rel: 'icon',
-            href: 'img/icon-192.maskable.png',
-          },
-          {
-            tagName: 'link',
-            rel: 'icon',
-            href: 'img/icon-512.maskable.png',
-          },
-          {
-            tagName: 'meta',
-            name: 'theme-color',
-            content: '#af62f5',
-          },
+          { tagName: 'link', rel: 'manifest', href: 'site.webmanifest' },
+          { tagName: 'link', rel: 'icon', href: 'img/icon-192.maskable.png' },
+          { tagName: 'link', rel: 'icon', href: 'img/icon-512.maskable.png' },
+          { tagName: 'meta', name: 'theme-color', content: '#af62f5' },
           {
             tagName: 'meta',
             name: 'apple-mobile-web-app-capable',
@@ -329,7 +314,7 @@ const config = {
             href: 'img/apple-icon-180.png',
           },
         ],
-      },
+      }),
     ],
   ],
   themeConfig:
@@ -350,10 +335,7 @@ const config = {
           content:
             'Resoto consolidates resource data across your clouds, regions, and accounts. Open source and free to use.',
         },
-        {
-          property: 'og:type',
-          content: 'website',
-        },
+        { property: 'og:type', content: 'website' },
       ],
       tableOfContents: {
         minHeadingLevel: 2,
@@ -370,59 +352,25 @@ const config = {
       navbar: {
         hideOnScroll: true,
         title: 'Resoto',
-        logo: {
-          alt: '',
-          src: 'img/navbar-logo.svg',
-        },
+        logo: { alt: '', src: 'img/navbar-logo.svg' },
         items: [
-          {
-            label: 'Releases',
-            to: '/releases',
-            position: 'right',
-          },
+          { label: 'Releases', to: '/releases', position: 'right' },
           {
             label: 'Docs',
             to: '/docs',
             position: 'right',
             type: 'dropdown',
             items: [
-              {
-                label: 'Getting Started',
-                to: '/docs/getting-started',
-              },
-              {
-                label: 'How-To Guides',
-                to: '/docs/how-to-guides',
-              },
-              {
-                label: 'Concepts',
-                to: '/docs/concepts',
-              },
-              {
-                label: 'Reference',
-                to: '/docs/reference',
-              },
-              {
-                label: 'Contributing',
-                to: '/docs/contributing',
-              },
+              { label: 'Getting Started', to: '/docs/getting-started' },
+              { label: 'How-To Guides', to: '/docs/how-to-guides' },
+              { label: 'Concepts', to: '/docs/concepts' },
+              { label: 'Reference', to: '/docs/reference' },
+              { label: 'Contributing', to: '/docs/contributing' },
             ],
           },
-          {
-            label: 'Compare',
-            to: '/compare',
-            position: 'right',
-          },
-          {
-            label: 'Blog',
-            to: '/blog',
-            position: 'right',
-          },
-          {
-            label: 'Podcast',
-            to: '/podcast',
-            position: 'right',
-          },
+          { label: 'Compare', to: '/compare', position: 'right' },
+          { label: 'Blog', to: '/blog', position: 'right' },
+          { label: 'Podcast', to: '/podcast', position: 'right' },
           {
             label: 'GitHub',
             href: 'https://github.com/someengineering/resoto',
@@ -452,43 +400,19 @@ const config = {
           {
             title: 'Documentation',
             items: [
-              {
-                label: 'Getting Started',
-                to: '/docs/getting-started',
-              },
-              {
-                label: 'How-To Guides',
-                to: '/docs/how-to-guides',
-              },
-              {
-                label: 'Concepts',
-                to: '/docs/concepts',
-              },
-              {
-                label: 'Reference',
-                to: '/docs/reference',
-              },
-              {
-                label: 'Contributing',
-                to: '/docs/contributing',
-              },
+              { label: 'Getting Started', to: '/docs/getting-started' },
+              { label: 'How-To Guides', to: '/docs/how-to-guides' },
+              { label: 'Concepts', to: '/docs/concepts' },
+              { label: 'Reference', to: '/docs/reference' },
+              { label: 'Contributing', to: '/docs/contributing' },
             ],
           },
           {
             title: 'Community',
             items: [
-              {
-                label: 'Code of Conduct',
-                to: '/code-of-conduct',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/someengineering',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discord.gg/someengineering',
-              },
+              { label: 'Code of Conduct', to: '/code-of-conduct' },
+              { label: 'GitHub', href: 'https://github.com/someengineering' },
+              { label: 'Discord', href: 'https://discord.gg/someengineering' },
               {
                 label: 'LinkedIn',
                 href: 'https://linkedin.com/company/someengineering',
@@ -498,39 +422,18 @@ const config = {
           {
             title: 'More',
             items: [
-              {
-                label: 'Releases',
-                to: '/releases',
-              },
-              {
-                label: 'Compare',
-                to: '/compare',
-              },
-              {
-                label: 'About',
-                to: '/about',
-              },
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
-                label: 'Logos',
-                to: '/logos',
-              },
+              { label: 'Releases', to: '/releases' },
+              { label: 'Compare', to: '/compare' },
+              { label: 'About', to: '/about' },
+              { label: 'Blog', to: '/blog' },
+              { label: 'Logos', to: '/logos' },
             ],
           },
           {
             title: 'Legal',
             items: [
-              {
-                label: 'Privacy Policy',
-                to: '/privacy',
-              },
-              {
-                label: 'Terms and Conditions',
-                to: '/terms',
-              },
+              { label: 'Privacy Policy', to: '/privacy' },
+              { label: 'Terms and Conditions', to: '/terms' },
             ],
           },
         ],

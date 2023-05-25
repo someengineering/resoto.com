@@ -1,10 +1,14 @@
 import Link from '@docusaurus/Link';
-import { PageMetadata } from '@docusaurus/theme-common';
 import { translate } from '@docusaurus/Translate';
+import { PageMetadata } from '@docusaurus/theme-common';
+import ContactForm from '@site/src/components/ContactForm';
 import { getImage } from '@site/src/utils/socialImageHelper';
 import type { ArchiveBlogPost, Props } from '@theme/BlogArchivePage';
 import Layout from '@theme/Layout';
+import { orderBy } from 'lodash';
 import React from 'react';
+
+import homepageStyles from '@site/src/pages/index.module.css';
 
 type YearProp = {
   year: string;
@@ -30,11 +34,11 @@ function Year({ year, posts }: YearProp) {
 
 function YearsSection({ years }: { years: YearProp[] }) {
   return (
-    <section className="margin-vert--lg">
-      <div className="container">
+    <section className={homepageStyles.section}>
+      <div className={homepageStyles.inner}>
         <div className="row">
-          {years.map((_props, idx) => (
-            <div key={idx} className="col col--4 margin-vert--lg">
+          {orderBy(years, 'year', 'desc').map((_props, idx) => (
+            <div key={idx} className="col col--6 margin-vert--lg">
               <Year {..._props} />
             </div>
           ))}
@@ -64,27 +68,22 @@ export default function BlogArchive({ archive }: Props): JSX.Element {
     message: 'Archive',
     description: 'The page & hero title of the blog archive page',
   });
-  const description = translate({
-    id: 'theme.blog.archive.description',
-    message: 'Archive',
-    description: 'The page & hero description of the blog archive page',
-  });
   const years = listPostsByYears(archive.blogPosts);
   return (
     <>
-      <PageMetadata
-        title={title}
-        description={description}
-        image={getImage({ title })}
-      />
+      <PageMetadata title={title} image={getImage({ title })} />
       <Layout>
-        <header className="hero hero--primary">
-          <div className="container">
-            <h1 className="hero__title">{title}</h1>
-            <p className="hero__subtitle">{description}</p>
+        <header className={homepageStyles.hero}>
+          <div className={homepageStyles.inner}>
+            <h1 className={homepageStyles.heroTitle}>{title}</h1>
           </div>
         </header>
-        <main>{years.length > 0 && <YearsSection years={years} />}</main>
+        <main style={{ padding: '30px 0' }}>
+          {years.length > 0 && <YearsSection years={years} />}
+        </main>
+        <div className={homepageStyles.content}>
+          <ContactForm />
+        </div>
       </Layout>
     </>
   );

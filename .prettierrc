@@ -3,7 +3,7 @@
   "singleQuote": true,
   "overrides": [
     {
-      "files": ".prettierrc",
+      "files": [".imgbotconfig", ".eslintrc", ".prettierrc"],
       "options": { "parser": "json" }
     },
     {

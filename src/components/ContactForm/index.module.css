@@ -1,5 +1,6 @@
 .flex {
   display: flex;
+  align-items: stretch;
 }
 
 .flex div:first-child {
@@ -24,17 +25,27 @@
   display: none;
 }
 
-.form input {
-  height: 72px;
+.form input,
+.form textarea {
   border-radius: 36px;
   font-size: 20px;
-  line-height: 25px;
+  line-height: 32px;
+  font-family: var(--ifm-font-family-base);
   font-weight: 600;
   padding: 0 42px;
-  margin-bottom: 18px;
+  margin-bottom: 8px;
   border: 2px solid #ffffff;
   background-color: #ffffff;
   color: #000c1d;
+}
+
+.form input {
+  height: 72px;
+}
+
+.form textarea {
+  padding: 20px 42px;
+  margin-bottom: 24px;
 }
 
 .inputError {
@@ -45,6 +56,8 @@ p.error {
   margin-bottom: 0;
   color: var(--ifm-color-danger-dark);
   padding: 0 42px;
+  font-size: 16px;
+  line-height: 1;
 }
 
 p.alert {
@@ -52,21 +65,12 @@ p.alert {
 }
 
 .image {
-  width: 25vw;
-  height: 25vw;
+  width: 35vw;
   max-width: 500px;
-  max-height: 500px;
   background-image: url('./img/sheep-support.png');
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: top right;
-}
-
-@media (max-width: 1535px) {
-  .image {
-    width: 30vw;
-    height: 30vw;
-  }
+  background-position: right;
 }
 
 @media screen and (max-width: 1100px) {
@@ -85,6 +89,7 @@ p.alert {
   .image {
     width: 45vw;
     height: 45vw;
+    max-height: 500px;
     margin: 72px auto 0;
   }
 }

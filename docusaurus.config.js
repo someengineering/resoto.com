@@ -392,6 +392,13 @@ const config = {
             className: 'navbar-icon-link navbar-linkedin-link',
             'aria-label': 'LinkedIn',
           },
+          {
+            label: 'YouTube',
+            href: 'https://youtube.com/@someengineering',
+            position: 'left',
+            className: 'navbar-icon-link navbar-youtube-link',
+            'aria-label': 'YouTube',
+          },
         ],
       },
       footer: {
@@ -416,6 +423,10 @@ const config = {
               {
                 label: 'LinkedIn',
                 href: 'https://linkedin.com/company/someengineering',
+              },
+              {
+                label: 'YouTube',
+                href: 'https://youtube.com/@someengineering',
               },
             ],
           },

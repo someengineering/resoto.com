@@ -152,7 +152,7 @@ export default function ContactForm(): JSX.Element {
                       errors.message
                     }
                   >
-                    Submit
+                    Send
                   </button>
                 </>
               )}

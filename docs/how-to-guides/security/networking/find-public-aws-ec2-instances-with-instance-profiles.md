@@ -4,10 +4,6 @@ sidebar_label: Find Public AWS EC2 Instances with Instance Profiles
 
 # How to Find Public AWS EC2 Instances with Instance Profiles
 
-```mdx-code-block
-import IconExternalLink from '@theme/Icon/ExternalLink';
-```
-
 Exposing an EC2 directly to internet increases the attack surface and therefore the risk of compromise.
 
 :::info
@@ -67,5 +63,5 @@ Please refer to the [AWS EC2 documentation](https://docs.aws.amazon.com/AWSEC2/l
 
 ## External Links
 
-- [CIS Amazon Web Services Benchmarks <span class="badge badge--secondary" aria-hidden="true">cisecurity.org <IconExternalLink width="10" height="10" /></span>](https://cisecurity.org/benchmark/amazon_web_services)
-- [AWS Documentation <span class="badge badge--secondary" aria-hidden="true">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
+- [CIS Amazon Web Services Benchmarks](https://cisecurity.org/benchmark/amazon_web_services)
+- [AWS Documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)

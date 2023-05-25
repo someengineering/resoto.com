@@ -6,10 +6,6 @@ tags: [ui]
 
 # Why We Built Resoto UI Using a Game Engine
 
-```mdx-code-block
-import IconExternalLink from '@theme/Icon/ExternalLink';
-```
-
 In this blog post, I'll share the reasoning behind some of the tech stack decisions for the [Resoto UI](/docs/getting-started/explore-resoto/ui). Our goal from the outset was to build an interesting and fun UI that encourages users to explore their cloud in new and exciting ways.
 
 ![Resoto UI built in Godot](./img/banner.jpg)
@@ -107,4 +103,4 @@ We're excited to continue exploring the possibilities of Godot as we develop Res
 ## Further Reading
 
 - [Resoto UI](/docs/getting-started/explore-resoto/ui)
-- [Resoto UI repository <span class="badge badge--secondary" aria-hidden="true">github.com <IconExternalLink width="10" height="10" /></span>](https://github.com/someengineering/resoto-ui)
+- [Resoto UI repository](https://github.com/someengineering/resoto-ui)

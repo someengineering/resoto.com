@@ -4,10 +4,6 @@ sidebar_label: Find AWS CloudTrail Trails with Logging Disabled
 
 # How to Find AWS CloudTrail Trails with Logging Disabled
 
-```mdx-code-block
-import IconExternalLink from '@theme/Icon/ExternalLink';
-```
-
 Sending AWS CloudTrail events to CloudWatch Logs facilitates real-time and historic activity logging based on user, API, resource, and IP address, and makes it possible to establish alarms and notifications for anomalous or sensitive account activity.
 
 :::info
@@ -66,5 +62,5 @@ Please refer to the [AWS CloudTrail documentation](https://docs.aws.amazon.com/a
 
 ## External Links
 
-- [CIS Amazon Web Services Benchmarks <span class="badge badge--secondary" aria-hidden="true">cisecurity.org <IconExternalLink width="10" height="10" /></span>](https://cisecurity.org/benchmark/amazon_web_services)
-- [AWS Documentation <span class="badge badge--secondary" aria-hidden="true">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/send-cloudtrail-events-to-cloudwatch-logs.html)
+- [CIS Amazon Web Services Benchmarks](https://cisecurity.org/benchmark/amazon_web_services)
+- [AWS Documentation](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/send-cloudtrail-events-to-cloudwatch-logs.html)

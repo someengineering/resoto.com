@@ -4,10 +4,6 @@ sidebar_label: Find AWS Lambda Functions with Obsolete Runtimes
 
 # How to Find AWS Lambda Functions with Obsolete Runtimes
 
-```mdx-code-block
-import IconExternalLink from '@theme/Icon/ExternalLink';
-```
-
 If you have functions running on a runtime that will be deprecated in the next 60 days, Lambda notifies you by email that you should prepare by migrating your function to a supported runtime.
 
 In some cases, such as security issues that require a backwards-incompatible update, or software that does not support a long-term support (LTS) schedule, advance notice might not be possible.
@@ -72,5 +68,5 @@ Please refer to the [AWS Lambda documentation](https://docs.aws.amazon.com/lambd
 
 ## External Links
 
-- [CIS Amazon Web Services Benchmarks <span class="badge badge--secondary" aria-hidden="true">cisecurity.org <IconExternalLink width="10" height="10" /></span>](https://cisecurity.org/benchmark/amazon_web_services)
-- [AWS Lambda Documentation <span class="badge badge--secondary" aria-hidden="true">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://docs.aws.amazon.com/lambda/latest/dg/runtime-support-policy.html)
+- [CIS Amazon Web Services Benchmarks](https://cisecurity.org/benchmark/amazon_web_services)
+- [AWS Lambda Documentation](https://docs.aws.amazon.com/lambda/latest/dg/runtime-support-policy.html)

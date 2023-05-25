@@ -4,10 +4,6 @@ sidebar_label: Find Unencrypted AWS S3 Buckets
 
 # How to Find Unencrypted AWS S3 Buckets
 
-```mdx-code-block
-import IconExternalLink from '@theme/Icon/ExternalLink';
-```
-
 Amazon S3 provides a way to set the default encryption behavior for an S3 bucket to ensure data is encrypted at rest.
 
 :::info
@@ -66,5 +62,5 @@ Please refer to the [AWS S3 documentation](https://aws.amazon.com/blogs/security
 
 ## External Links
 
-- [CIS Amazon Web Services Benchmarks <span class="badge badge--secondary" aria-hidden="true">cisecurity.org <IconExternalLink width="10" height="10" /></span>](https://cisecurity.org/benchmark/amazon_web_services)
-- [AWS Documentation <span class="badge badge--secondary" aria-hidden="true">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://aws.amazon.com/blogs/security/how-to-prevent-uploads-of-unencrypted-objects-to-amazon-s3)
+- [CIS Amazon Web Services Benchmarks](https://cisecurity.org/benchmark/amazon_web_services)
+- [AWS Documentation](https://aws.amazon.com/blogs/security/how-to-prevent-uploads-of-unencrypted-objects-to-amazon-s3)

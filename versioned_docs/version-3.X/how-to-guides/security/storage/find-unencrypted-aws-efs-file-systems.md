@@ -4,10 +4,6 @@ sidebar_label: Find Unencrypted AWS EFS File Systems
 
 # How to Find Unencrypted AWS EFS File Systems
 
-```mdx-code-block
-import IconExternalLink from '@theme/Icon/ExternalLink';
-```
-
 EFS file systems should be encrypted at rest to prevent exposure of sensitive data to bad actors.
 
 :::info
@@ -67,5 +63,5 @@ Please refer to the [AWS EFS documentation](https://docs.aws.amazon.com/efs/late
 
 ## External Links
 
-- [CIS Amazon Web Services Benchmarks <span class="badge badge--secondary" aria-hidden="true">cisecurity.org <IconExternalLink width="10" height="10" /></span>](https://cisecurity.org/benchmark/amazon_web_services)
-- [AWS Documentation <span class="badge badge--secondary" aria-hidden="true">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://docs.aws.amazon.com/efs/latest/ug/encryption-at-rest.html)
+- [CIS Amazon Web Services Benchmarks](https://cisecurity.org/benchmark/amazon_web_services)
+- [AWS Documentation](https://docs.aws.amazon.com/efs/latest/ug/encryption-at-rest.html)

@@ -4,10 +4,6 @@ sidebar_label: Find AWS IAM Access Keys Not Rotated Within 90 Days
 
 # How to Find AWS IAM Access Keys Not Rotated Within 90 Days
 
-```mdx-code-block
-import IconExternalLink from '@theme/Icon/ExternalLink';
-```
-
 Access keys consist of an access key ID and secret access key which are used to sign programmatic requests that you make to AWS.
 
 AWS users need their own access keys to make programmatic calls to AWS from:
@@ -75,5 +71,5 @@ Please refer to the [AWS IAM documentation](https://docs.aws.amazon.com/IAM/late
 
 ## External Links
 
-- [CIS Amazon Web Services Benchmarks <span class="badge badge--secondary" aria-hidden="true">cisecurity.org <IconExternalLink width="10" height="10" /></span>](https://cisecurity.org/benchmark/amazon_web_services)
-- [AWS Documentation <span class="badge badge--secondary" aria-hidden="true">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_getting-report.html)
+- [CIS Amazon Web Services Benchmarks](https://cisecurity.org/benchmark/amazon_web_services)
+- [AWS Documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_getting-report.html)

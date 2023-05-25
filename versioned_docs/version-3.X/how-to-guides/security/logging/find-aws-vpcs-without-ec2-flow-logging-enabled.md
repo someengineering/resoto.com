@@ -4,10 +4,6 @@ sidebar_label: Find AWS VPCs Without EC2 Flow Logging Enabled
 
 # How to Find AWS VPCs Without EC2 Flow Logging Enabled
 
-```mdx-code-block
-import IconExternalLink from '@theme/Icon/ExternalLink';
-```
-
 VPC Flow Logs provide visibility into network traffic that traverses the VPC and can be used to detect anomalous traffic or insight during security workflows.
 
 :::info
@@ -66,5 +62,5 @@ Please refer to the [AWS EC2 documentation](http://docs.aws.amazon.com/AmazonVPC
 
 ## External Links
 
-- [CIS Amazon Web Services Benchmarks <span class="badge badge--secondary" aria-hidden="true">cisecurity.org <IconExternalLink width="10" height="10" /></span>](https://cisecurity.org/benchmark/amazon_web_services)
-- [AWS Documentation <span class="badge badge--secondary" aria-hidden="true">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html)
+- [CIS Amazon Web Services Benchmarks](https://cisecurity.org/benchmark/amazon_web_services)
+- [AWS Documentation](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html)

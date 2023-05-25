@@ -4,10 +4,6 @@ sidebar_label: Find Unencrypted AWS EC2 Snapshots
 
 # How to Find Unencrypted or Public AWS EC2 Snapshots
 
-```mdx-code-block
-import IconExternalLink from '@theme/Icon/ExternalLink';
-```
-
 When you share a snapshot, you are giving others access to all the data on the snapshot. Share snapshots only with people with whom you want to share all of your snapshot data.
 
 :::info
@@ -66,5 +62,5 @@ Please refer to the [AWS EC2 documentation](https://docs.aws.amazon.com/AWSEC2/l
 
 ## External Links
 
-- [CIS Amazon Web Services Benchmarks <span class="badge badge--secondary" aria-hidden="true">cisecurity.org <IconExternalLink width="10" height="10" /></span>](https://cisecurity.org/benchmark/amazon_web_services)
-- [AWS Documentation <span class="badge badge--secondary" aria-hidden="true">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html)
+- [CIS Amazon Web Services Benchmarks](https://cisecurity.org/benchmark/amazon_web_services)
+- [AWS Documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html)

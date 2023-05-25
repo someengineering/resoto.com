@@ -4,10 +4,6 @@ sidebar_label: Find Public AWS Lambda Functions
 
 # How to Find Public AWS Lambda Functions
 
-```mdx-code-block
-import IconExternalLink from '@theme/Icon/ExternalLink';
-```
-
 Publicly accessible services could expose sensitive data to bad actors.
 
 :::info
@@ -66,5 +62,5 @@ Please refer to the [AWS Lambda documentation](https://docs.aws.amazon.com/secre
 
 ## External Links
 
-- [CIS Amazon Web Services Benchmarks <span class="badge badge--secondary" aria-hidden="true">cisecurity.org <IconExternalLink width="10" height="10" /></span>](https://cisecurity.org/benchmark/amazon_web_services)
-- [AWS Documentation <span class="badge badge--secondary" aria-hidden="true">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://docs.aws.amazon.com/secretsmanager/latest/userguide/lambda-functions.html)
+- [CIS Amazon Web Services Benchmarks](https://cisecurity.org/benchmark/amazon_web_services)
+- [AWS Documentation](https://docs.aws.amazon.com/secretsmanager/latest/userguide/lambda-functions.html)

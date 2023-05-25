@@ -4,10 +4,6 @@ sidebar_label: Find AWS Regions Without AWS Config Enabled
 
 # How to Find AWS Regions Without AWS Config Enabled
 
-```mdx-code-block
-import IconExternalLink from '@theme/Icon/ExternalLink';
-```
-
 The AWS configuration item history captured by AWS Config enables security analysis, resource change tracking and compliance auditing.
 
 :::info
@@ -66,5 +62,5 @@ Please refer to the [AWS Config documentation](https://aws.amazon.com/blogs/mt/a
 
 ## External Links
 
-- [CIS Amazon Web Services Benchmarks <span class="badge badge--secondary" aria-hidden="true">cisecurity.org <IconExternalLink width="10" height="10" /></span>](https://cisecurity.org/benchmark/amazon_web_services)
-- [AWS Documentation <span class="badge badge--secondary" aria-hidden="true">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://aws.amazon.com/blogs/mt/aws-config-best-practices)
+- [CIS Amazon Web Services Benchmarks](https://cisecurity.org/benchmark/amazon_web_services)
+- [AWS Documentation](https://aws.amazon.com/blogs/mt/aws-config-best-practices)

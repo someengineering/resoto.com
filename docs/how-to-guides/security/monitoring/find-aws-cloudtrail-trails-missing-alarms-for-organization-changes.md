@@ -4,10 +4,6 @@ sidebar_label: Find AWS CloudTrail Trails Missing Alarms for Organization Change
 
 # How to Find AWS CloudTrail Trails Missing Alarms for Organization Changes
 
-```mdx-code-block
-import IconExternalLink from '@theme/Icon/ExternalLink';
-```
-
 Monitoring unauthorized API calls will help reveal application errors and may reduce time to detect malicious activity.
 
 :::info
@@ -66,5 +62,5 @@ Please refer to the [AWS CloudTrail documentation](https://docs.aws.amazon.com/a
 
 ## External Links
 
-- [CIS Amazon Web Services Benchmarks <span class="badge badge--secondary" aria-hidden="true">cisecurity.org <IconExternalLink width="10" height="10" /></span>](https://cisecurity.org/benchmark/amazon_web_services)
-- [AWS Documentation <span class="badge badge--secondary" aria-hidden="true">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudwatch-alarms-for-cloudtrail.html)
+- [CIS Amazon Web Services Benchmarks](https://cisecurity.org/benchmark/amazon_web_services)
+- [AWS Documentation](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudwatch-alarms-for-cloudtrail.html)

@@ -15,7 +15,7 @@ Just like Resoto, Steampipe queries cloud APIs to deliver resource metadata.
 With both Resoto and Steampipe, you can:
 
 - Write queries to ask questions about your cloud infrastructure
-- Correlate data from different sources (e.g., a GitHub repo and a cloud resource)
+- Correlate data from different sources (e.g., a GitHub repository and a cloud resource)
 - Run security and compliance checks write the output of a query to a CSV file
 
 ## Differences Between Resoto and Steampipe

@@ -6,7 +6,6 @@ date: 2022-12-02
 
 ```mdx-code-block
 import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
-import IconExternalLink from '@theme/Icon/ExternalLink';
 ```
 
 ## Highlights
@@ -54,13 +53,17 @@ We currently support the following list of database servers:
 - [MariaDB](https://mariadb.org)
 - [SQLite](https://sqlite.org)
 
-See the the [someengineering/cloud2sql <span class="badge badge--secondary">github.com <IconExternalLink width="10" height="10" /></span>](https://github.com/someengineering/cloud2sql) repository for more details.
+See the the [`someengineering/cloud2sql` GitHub repository](https://github.com/someengineering/cloud2sql) for more details.
 
 ### Simplified Installation
 
 #### Kubernetes Helm Chart
 
-Resoto's default installation method is Kubernetes. We now provide a Helm chart to simplify this installation process. You can find the chart in the [someengineering/helm-charts](https://github.com/someengineering/helm-charts/tree/main/someengineering/resoto) repository. Installing Resoto on Kubernetes is now a `helm install` command away. Please see [Install Resoto with Kubernetes](/docs/getting-started/install-resoto/kubernetes) for more details.
+Resoto's default installation method is Kubernetes, and we now provide a Helm chart to simplify this installation process.
+
+You can find the chart in the [`someengineering/helm-charts` GitHub repository](https://github.com/someengineering/helm-charts/tree/main/someengineering/resoto).
+
+Installing Resoto on Kubernetes is now a `helm install` command away. See [Install Resoto with Kubernetes](/docs/getting-started/install-resoto/kubernetes) for details.
 
 #### AWS CDK
 

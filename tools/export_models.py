@@ -56,9 +56,9 @@ def get_kinds() -> Dict[str, List[Any]]:
 
 
 def write_md(provider: str, kinds: list):
-    if os.path.exists(f"./{provider}.md"):
+    if os.path.exists(f"./{provider}.mdx"):
         # in case the file exists, read the header section until the first h2 (##)
-        with (open(f"./{provider}.md", "r+")) as file:
+        with (open(f"./{provider}.mdx", "r+")) as file:
             lines = takewhile(lambda l: not l.startswith("## "), file.readlines())
     else:
         # provider file does not exist, create default header
@@ -68,7 +68,7 @@ def write_md(provider: str, kinds: list):
             "```mdx-code-block\nimport ZoomPanPinch from '@site/src/components/ZoomPanPinch';\n```\n\n",
         ]
 
-    with open(f"./{provider}.md", "w+") as file:
+    with open(f"./{provider}.mdx", "w+") as file:
         for line in lines:
             file.write(line)
 
@@ -85,7 +85,7 @@ def write_md(provider: str, kinds: list):
             )
             file.write("\n```\n\n")
             file.write("</ZoomPanPinch>\n\n")
-            file.write(f"<details>\n<summary>Relationships to Other Resources</summary>\n<div>\n")
+            file.write(f"<details>\n\n<summary>Relationships to Other Resources</summary>\n\n<div>\n\n")
             file.write(
                 f'<ZoomPanPinch>\n\n```kroki imgType="plantuml" imgAlt="Diagram of {name} resource relationships"\n'
             )
@@ -109,7 +109,7 @@ def write_md(provider: str, kinds: list):
                     ).text,
                 ).strip()
             )
-            file.write(f"\n```\n\n</ZoomPanPinch>\n</div>\n</details>\n\n")
+            file.write(f"\n```\n\n</ZoomPanPinch>\n\n</div>\n\n</details>\n\n")
 
 
 def load_valid_kinds() -> Dict[str, Any]:

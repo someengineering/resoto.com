@@ -1,0 +1,329 @@
+---
+sidebar_label: OneLogin
+---
+
+# OneLogin Resource Data Models
+
+```mdx-code-block
+import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
+```
+
+## `onelogin_account`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of onelogin_account data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class account {
+}
+class onelogin_account {
+}
+class onelogin_resource {
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- account
+account <|--- onelogin_account
+onelogin_resource <|--- onelogin_account
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of onelogin_account resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class onelogin_account {
+}
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
+## `onelogin_region`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of onelogin_region data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class onelogin_region {
+}
+class onelogin_resource {
+}
+class region {
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+onelogin_resource <|--- onelogin_region
+region <|--- onelogin_region
+resource <|--- region
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of onelogin_region resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class onelogin_region {
+}
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
+## `onelogin_user`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of onelogin_user data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class onelogin_resource {
+}
+class onelogin_user {
+**activated_at**: datetime
+**comment**: string
+**company**: string
+**created_at**: datetime
+**custom_attributes**: dictionary[string, string]
+**department**: string
+**directory_id**: int64
+**distinguished_name**: string
+**email**: string
+**external_id**: string
+**firstname**: string
+**group_id**: int64
+**invalid_login_attempts**: int64
+**invitation_sent_at**: datetime
+**last_login**: datetime
+**lastname**: string
+**locale_code**: string
+**locked_until**: datetime
+**manager_ad_id**: int64
+**manager_user_id**: string
+**member_of**: string
+**openid_name**: string
+**password_age**: duration
+**password_changed_at**: datetime
+**phone**: string
+**role_ids**: int64[]
+**samaccountname**: string
+**state**: string
+**status_code**: int64
+**title**: string
+**trusted_idp_id**: int64
+**updated_at**: datetime
+**user_id**: int64
+**username**: string
+**userprincipalname**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class user {
+}
+onelogin_resource <|--- onelogin_user
+user <|--- onelogin_user
+resource <|--- user
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of onelogin_user resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class onelogin_user {
+}
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>

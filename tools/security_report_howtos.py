@@ -71,11 +71,11 @@ This security check is part of the [CIS Amazon Web Services Benchmarks](https://
 
 ## Prerequisites
 
-This guide assumes that you have already [installed](../../getting-started/install-resoto/index.md) and configured Resoto to [collect your AWS cloud resources](../../getting-started/configure-resoto/aws.md).
+This guide assumes that you have already [installed](../../getting-started/install-resoto/index.mdx) and configured Resoto to [collect your AWS cloud resources](../../getting-started/configure-resoto/aws.mdx).
 
 ## Directions
 
-1. Execute the following [`search` command](../../reference/cli/search-commands/search.md) in [Resoto Shell](../../reference/components/shell.md) or Resoto UI:
+1. Execute the following [`search` command](../../reference/cli/search-commands/search.mdx) in [Resoto Shell](../../reference/components/shell.mdx) or Resoto UI:
 
    ```bash
    > {command}
@@ -85,7 +85,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
    # highlight-end
    ```
 
-2. Pipe the `search` command into the [`dump` command](../../reference/cli/format-commands/dump.md):
+2. Pipe the `search` command into the [`dump` command](../../reference/cli/format-commands/dump.mdx):
 
    ```bash
    > {command} | dump
@@ -99,11 +99,11 @@ This guide assumes that you have already [installed](../../getting-started/insta
    # highlight-end
    ```
 
-   The command output will list the details of all non-compliant [`{result_kind}` resources](../../reference/unified-data-model/aws.md#{result_kind}).
+   The command output will list the details of all non-compliant [`{result_kind}` resources](../../reference/unified-data-model/aws.mdx#{result_kind}).
 
 3. Fix detected issues by following the [remediation steps](#remediation):
 
-     - {remediation}.
+   - {remediation}.
 
    :::note
 
@@ -113,16 +113,16 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
 ## Further Reading
 
-- [Search](../../reference/search/index.md)
-- [Command-Line Interface](../../reference/cli/index.md)
-- [`{result_kind}` Resource Data Model](../../reference/unified-data-model/aws.md#{result_kind})
+- [Search](../../reference/search/index.mdx)
+- [Command-Line Interface](../../reference/cli/index.mdx)
+- [`{result_kind}` Resource Data Model](../../reference/unified-data-model/aws.mdx#{result_kind})
 
 ## External Links
 
 - [CIS Amazon Web Services Benchmarks](https://cisecurity.org/benchmark/amazon_web_services)
 - [AWS Documentation]({remediation_url})
 """
-    with open(f"../docs/how-to-guides/security/{name}.md", "w") as f:
+    with open(f"../docs/how-to-guides/security/{name}.mdx", "w") as f:
         f.write(text)
 
 

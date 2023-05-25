@@ -1,0 +1,171 @@
+---
+sidebar_label: "2. Launch Resoto"
+sidebar_position: 2
+pagination_prev: getting-started/install-resoto/index
+pagination_next: getting-started/configure-resoto/index
+---
+
+# Launch Resoto
+
+```mdx-code-block
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+```
+
+Resoto allows you to manage and explore your cloud infrastructure via a web or shell interface.
+
+## Resoto UI
+
+Resoto UI is a user-friendly web interface that simplifies managing and exploring your cloud infrastructure.
+
+The steps to launch Resoto UI depend on how you installed Resoto.
+
+<Tabs groupId="install-method">
+
+<TabItem value="aws" label="Amazon Web Services">
+
+1. You already got the URL to access Resoto UI and the PSK token required to authenticate in the previous step. Once Resoto UI is loaded it will ask for the PSK token. Enter the token and click on the "Connect" button.
+
+   :::note
+
+   The SSL certificate is self-signed, but you can safely ignore any browser warnings.
+
+   :::
+
+2. Resoto UI will start and guide you through the configuration. If it is your first time starting Resoto UI, the setup wizard will appear and help you configure Resoto:
+
+   ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
+
+</TabItem>
+
+<TabItem value="docker" label="Docker">
+
+1. Resoto UI listens on port `8900` by default. You can access it by opening <https://localhost:8900> in your browser.
+
+   :::note
+
+   The SSL certificate is self-signed, but you can safely ignore any browser warnings.
+
+   :::
+
+2. If it is your first time starting Resoto UI, the setup wizard will appear and help you configure Resoto:
+
+   ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
+
+</TabItem>
+
+<TabItem value="k8s" label="Kubernetes">
+
+1. Resoto provides a service that exposes Resoto UI on port `8900`. We recommend configuring an [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress) with a valid certificate for UI access, but you can port-forward the service as a temporary solution:
+
+   ```bash
+   $ kubectl port-forward services/resoto-resotocore 8900
+   ```
+
+2. Open <https://localhost:8900> in your browser to access Resoto UI.
+
+   :::note
+
+   The SSL certificate is self-signed, but you can safely ignore any browser warnings.
+
+   :::
+
+3. If it is your first time starting Resoto UI, the setup wizard will appear and help you configure Resoto:
+
+   ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
+
+</TabItem>
+
+<TabItem value="pip" label="pip">
+
+1. Resoto UI listens on port `8900` by default. You can access it by opening <https://localhost:8900> in your browser.
+
+   :::note
+
+   The SSL certificate is self-signed, but you can safely ignore any browser warnings.
+
+   :::
+
+2. If it is your first time starting Resoto UI, the setup wizard will appear and help you configure Resoto:
+
+   ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
+
+</TabItem>
+
+</Tabs>
+
+## Resoto Shell
+
+Resoto Shell is Resoto's command-line interface.
+
+The steps to launch Resoto Shell depend on how you installed Resoto.
+
+<Tabs groupId="install-method">
+
+<TabItem value="aws" label="Amazon Web Services">
+
+1. Log in to the [AWS CloudFormation console](https://console.aws.amazon.com/cloudformation).
+
+2. Click **Stacks**.
+
+3. Enter `ResotoEKS` into the search box, and click on the stack you would like to upgrade.
+
+   ![ResotoEKS stack in AWS CloudFormation](./img/cf-stack.png)
+
+4. Click the **Outputs** tab.
+
+5. Enter `ResotoEKSConfigCommand` into the search box. There should be exactly one entry. Copy the value (`aws eks ...`).
+
+   ![ResotoEKS stack outputs in AWS CloudFormation](./img/cf-output.png)
+
+6. Open a terminal and execute the copied command.
+
+   ![Screenshot of ResotoEKS config command in terminal](./img/k8s-access.png)
+
+7. Execute the following in the terminal to access the [Resoto Shell](../../reference/components/shell.mdx) interface:
+
+   ```bash
+   $ kubectl exec -it service/resoto-resotocore -- resh
+   ```
+
+</TabItem>
+
+<TabItem value="docker" label="Docker">
+
+Execute the following to access the [Resoto Shell](../../reference/components/shell.mdx) interface:
+
+```bash
+$ docker exec -it resotoshell resh
+```
+
+</TabItem>
+
+<TabItem value="k8s" label="Kubernetes">
+
+1. Make sure that the deployment is available:
+
+   ```bash
+   $ kubectl wait --for=condition=available deployment/resoto-resotocore
+   ```
+
+2. Execute the following to access the [Resoto Shell](../../reference/components/shell.mdx) interface:
+
+   ```bash
+   $ kubectl exec -it service/resoto-resotocore -- resh
+   ```
+
+</TabItem>
+
+<TabItem value="pip" label="pip">
+
+Execute the following to access the [Resoto Shell](../../reference/components/shell.mdx) interface:
+
+```bash
+$ resh
+```
+
+</TabItem>
+
+</Tabs>
+
+![Screenshot of Resoto Shell](../explore-resoto/shell/img/shell.png)

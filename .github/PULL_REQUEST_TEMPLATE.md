@@ -21,13 +21,6 @@
 - [ ] Lint with `yarn lint`
 - [ ] Build successfully with `yarn build`
 
-# Issues Fixed
-
-<!-- If this PR will fix/resolve an open issue on the repository, please reference it below. -->
-<!-- (Otherwise, feel free to delete this section.) -->
-
-- Fixes #XXXX
-
 # Code of Conduct
 
 By submitting this pull request, I agree to follow the [code of conduct](https://resoto.com/code-of-conduct).

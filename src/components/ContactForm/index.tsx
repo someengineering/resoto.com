@@ -28,7 +28,7 @@ export default function ContactForm(): JSX.Element {
         email: '',
         subject: '',
         message: '',
-        referrerUrl: '',
+        referrer: '',
       },
       onSubmit: (values) => netlify.handleSubmit(null, values),
       validationSchema: Yup.object().shape({
@@ -42,11 +42,11 @@ export default function ContactForm(): JSX.Element {
     });
 
   useEffect(() => {
-    values.referrerUrl = window.location.href;
+    values.referrer = window.location.href;
   }, []);
 
   useEffect(() => {
-    values.subject = `[Resoto] Inquiry from ${values.name} (%{submissionId})`;
+    values.subject = `[Resoto] Inquiry from ${values.name}`;
   }, [values.name]);
 
   return (
@@ -109,7 +109,6 @@ export default function ContactForm(): JSX.Element {
                   />
 
                   <input
-                    aria-label="Subject"
                     type="hidden"
                     name="subject"
                     id="subject"
@@ -136,11 +135,10 @@ export default function ContactForm(): JSX.Element {
                   />
 
                   <input
-                    aria-label="Referrer"
                     type="hidden"
-                    name="referrer-url"
-                    id="referrer-url"
-                    value={values.referrerUrl}
+                    name="referrer"
+                    id="referrer"
+                    value={values.referrer}
                   />
 
                   <button

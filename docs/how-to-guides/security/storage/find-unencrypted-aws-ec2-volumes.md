@@ -4,10 +4,6 @@ sidebar_label: Find Unencrypted AWS EC2 Volumes
 
 # How to Find Unencrypted AWS EC2 Volumes
 
-```mdx-code-block
-import IconExternalLink from '@theme/Icon/ExternalLink';
-```
-
 Data encryption at rest prevents data visibility in the event of its unauthorized access or theft.
 
 :::info
@@ -68,5 +64,5 @@ Please refer to the [AWS EC2 documentation](https://docs.aws.amazon.com/AWSEC2/l
 
 ## External Links
 
-- [CIS Amazon Web Services Benchmarks <span class="badge badge--secondary" aria-hidden="true">cisecurity.org <IconExternalLink width="10" height="10" /></span>](https://cisecurity.org/benchmark/amazon_web_services)
-- [AWS Documentation <span class="badge badge--secondary" aria-hidden="true">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
+- [CIS Amazon Web Services Benchmarks](https://cisecurity.org/benchmark/amazon_web_services)
+- [AWS Documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)

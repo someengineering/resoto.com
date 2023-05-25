@@ -4,10 +4,6 @@ sidebar_label: Find AWS API Gateways Without WAF ACLs
 
 # How to Find AWS API Gateways Without WAF ACLs
 
-```mdx-code-block
-import IconExternalLink from '@theme/Icon/ExternalLink';
-```
-
 Access control lists (ACLs) reduce the attack surface and minimize the risk of service abuse for internet-reachable services.
 
 :::info
@@ -66,5 +62,5 @@ Please refer to the [AWS API Gateway documentation](https://docs.aws.amazon.com/
 
 ## External Links
 
-- [CIS Amazon Web Services Benchmarks <span class="badge badge--secondary" aria-hidden="true">cisecurity.org <IconExternalLink width="10" height="10" /></span>](https://cisecurity.org/benchmark/amazon_web_services)
-- [AWS Documentation <span class="badge badge--secondary" aria-hidden="true">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://docs.aws.amazon.com/apigateway/latest/developerguide/security-monitoring.html)
+- [CIS Amazon Web Services Benchmarks](https://cisecurity.org/benchmark/amazon_web_services)
+- [AWS Documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/security-monitoring.html)

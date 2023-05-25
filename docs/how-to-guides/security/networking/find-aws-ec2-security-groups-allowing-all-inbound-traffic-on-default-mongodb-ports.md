@@ -4,10 +4,6 @@ sidebar_label: Find AWS EC2 Security Groups Allowing All Inbound Traffic on Defa
 
 # How to Find AWS EC2 Security Groups Allowing All Inbound Traffic on Default MongoDB Ports
 
-```mdx-code-block
-import IconExternalLink from '@theme/Icon/ExternalLink';
-```
-
 If security groups are not properly configured, the attack surface is increased.
 
 :::info
@@ -68,5 +64,5 @@ Please refer to the [AWS EC2 documentation](https://docs.aws.amazon.com/vpc/late
 
 ## External Links
 
-- [CIS Amazon Web Services Benchmarks <span class="badge badge--secondary" aria-hidden="true">cisecurity.org <IconExternalLink width="10" height="10" /></span>](https://cisecurity.org/benchmark/amazon_web_services)
-- [AWS Documentation <span class="badge badge--secondary" aria-hidden="true">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html)
+- [CIS Amazon Web Services Benchmarks](https://cisecurity.org/benchmark/amazon_web_services)
+- [AWS Documentation](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html)

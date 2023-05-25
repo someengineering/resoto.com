@@ -4,10 +4,6 @@ sidebar_label: Find AWS Accounts Without Minimum Password Length of 14 Character
 
 # How to Find AWS Accounts Without Minimum Password Length of 14 Characters
 
-```mdx-code-block
-import IconExternalLink from '@theme/Icon/ExternalLink';
-```
-
 Password policies are used to enforce password complexity requirements. IAM password policies can be used to ensure password are comprised of different character sets. It is recommended that the password policy require minimum length of 14 or greater.
 
 :::info
@@ -67,5 +63,5 @@ Please refer to the [AWS IAM documentation](https://docs.aws.amazon.com/IAM/late
 
 ## External Links
 
-- [CIS Amazon Web Services Benchmarks <span class="badge badge--secondary" aria-hidden="true">cisecurity.org <IconExternalLink width="10" height="10" /></span>](https://cisecurity.org/benchmark/amazon_web_services)
-- [AWS Documentation <span class="badge badge--secondary" aria-hidden="true">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html)
+- [CIS Amazon Web Services Benchmarks](https://cisecurity.org/benchmark/amazon_web_services)
+- [AWS Documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html)

@@ -1,31 +1,20 @@
 ---
+sidebar_position: 1
 sidebar_label: Components
 ---
 
 # Contributing to Components
 
 ```mdx-code-block
-import IconExternalLink from '@theme/Icon/ExternalLink';
 import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
 
-Resoto is comprised of multiple [components](../reference/components/index.md), each of which is maintained as separate project:
+Resoto is comprised of multiple [components](../reference/components/index.md), each of which is maintained as separate project in the [`someengineering/resoto` GitHub repository](https://github.com/someengineering/resoto).
 
-- [Resoto Core](../reference/components/core.md) [<span class="badge badge--secondary">View on GitHub</span>](https://github.com/someengineering/resoto/tree/main/resotocore)
-- [Resoto Shell](../reference/components/shell.md) [<span class="badge badge--secondary">View on GitHub</span>](https://github.com/someengineering/resoto/tree/main/resotoshell)
-- [Resoto Worker](../reference/components/worker.md) [<span class="badge badge--secondary">View on GitHub</span>](https://github.com/someengineering/resoto/tree/main/resotoworker)
-- [Resoto Metrics](../reference/components/metrics.md) [<span class="badge badge--secondary">View on GitHub</span>](https://github.com/someengineering/resoto/tree/main/resotometrics)
+**Contributions are made via [pull requests to the GitHub repository](https://github.com/someengineering/resoto/pulls).** Pull requests should target a single [component](../reference/components/index.md).
 
-The source code for Resoto lives in the [`someengineering/resoto` repository on GitHub <span class="badge badge--secondary" aria-hidden="true">github.com <IconExternalLink width="10" height="10" /></span>](https://github.com/someengineering/resoto).
-
-## Authoring Changes
-
-Contributions are made via [pull requests to the GitHub repository](https://github.com/someengineering/resoto/pulls). You will first need to [fork](https://docs.github.com/get-started/quickstart/fork-a-repo) the repository.
-
-Pull requests should target a single [component](../reference/components/index.md).
-
-### Prerequisites
+## Prerequisites
 
 - [Git](https://git-scm.com)
 - [Python](https://python.org) 3.9+ (3.10 is recommended)
@@ -41,66 +30,70 @@ There are unofficial ARM builds of ArangoDB, like e.g. [`programmador/arangodb`]
 
 :::
 
-### Cloning the Repository
+## 1. Clone the Repository
 
-You will first need to [fork](https://docs.github.com/get-started/quickstart/fork-a-repo) the repository.
+1. [Fork](https://docs.github.com/get-started/quickstart/fork-a-repo) the repository.
 
-Then, creating a local [clone](https://docs.github.com/repositories/creating-and-managing-repositories/cloning-a-repository) of the repository is as simple as:
+2. Create a local [clone](https://docs.github.com/repositories/creating-and-managing-repositories/cloning-a-repository) of the repository:
 
-```bash
-git clone https://github.com/<your_github_username>/resoto.git
-```
+   ```bash
+   git clone https://github.com/<your_github_username>/resoto.git
+   ```
 
-This will create a directory named `resoto` in your current working directory.
+   This will create a directory named `resoto` in your current working directory.
 
-Next, add a remote pointing to the upstream repository (as opposed to your fork) named `upstream`:
+3. Add a remote pointing to the upstream repository (as opposed to your fork) named `upstream`:
 
-```bash
-git remote add upstream https://github.com/someengineering/resoto.git
-```
+   ```bash
+   git remote add upstream https://github.com/someengineering/resoto.git
+   ```
 
-We will now create a new [branch](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell) from `main` (it is recommended to give your branch a meaningful, descriptive name):
+4. Create a new [branch](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell) from `main` (it is recommended to give your branch a meaningful, descriptive name):
 
-```bash
-git checkout -b <branch_name> main
-```
+   ```bash
+   git checkout -b <branch_name> main
+   ```
 
-### Setting Up a Virtual Environment
+## 2. Set Up a Virtual Environment
 
 We recommend using a [Python virtual environment](https://docs.python.org/3/tutorial/venv.html).
 
-A script is provided to simplify the process of configuring the virtual environment:
+1. Run the provided script to configure the virtual environment:
 
-```bash
-./setup_venv.sh --dev --path .
-```
+   ```bash
+   ./setup_venv.sh --dev --path .
+   ```
 
-Activate the virtual environment:
+2. Activate the virtual environment:
 
-<Tabs groupId="operating-system">
-<TabItem value="linux" label="Linux/macOS">
+   <Tabs groupId="operating-system">
+   <TabItem value="linux" label="Linux/macOS">
 
-```bash
-source venv/bin/activate
-```
+   ```bash
+   source venv/bin/activate
+   ```
 
-</TabItem>
-<TabItem value="windows" label="Windows">
+   </TabItem>
+   <TabItem value="windows" label="Windows">
 
-```powershell
-venv\Scripts\activate.bat
-```
+   ```powershell
+   venv\Scripts\activate.bat
+   ```
 
-</TabItem>
-</Tabs>
+   </TabItem>
+   </Tabs>
 
-### Starting the Database
+## 3. Start the Database
 
 Start [ArangoDB](https://arangodb.com) (using `systemctl` on Linux, by clicking the application icon in macOS, etc.). If you used [Homebrew to install ArangoDB](https://arangodb.com/docs/stable/installation-mac-osx.html#homebrew), run `/usr/Cellar/arangodb/<VERSION>/sbin/arangod &`.
 
-Depending on the installation method used for [ArangoDB](https://arangodb.com), [authentication may or may not be enabled on the built-in `root` user account](https://www.arangodb.com/docs/stable/getting-started-installation.html#securing-the-installation). The installation process either prompted for the `root` password (Debian, Windows), configured a random password (Red Hat), or set the password to an empty string.
+:::note
+
+Depending on the installation method, [authentication may or may not be enabled on the built-in `root` user account](https://www.arangodb.com/docs/stable/getting-started-installation.html#securing-the-installation). The installation process either prompted for the `root` password (Debian, Windows), configured a random password (Red Hat), or set the password to an empty string.
 
 In order for `resotocore` to perform the required database setup and for tests to pass, authentication must be disabled or the password for `root` must be set to an empty string.
+
+:::
 
 :::caution
 
@@ -108,7 +101,7 @@ This setup is for development only and should not be deployed in production envi
 
 :::
 
-### Starting the Components
+## 4. Start the Components
 
 You can now start each of the Resoto components:
 
@@ -147,7 +140,7 @@ python -m resotometrics
 </TabItem>
 </Tabs>
 
-### Testing Your Changes
+## 5. Test Your Changes
 
 We use the [`pytest`](https://pytest.org) framework. Prior to submitting your changes for review, please verify that all existing tests pass and add test coverage for new code.
 
@@ -157,36 +150,46 @@ Lint and test your code:
 tox
 ```
 
-### Pushing Your Changes
+## 6. Push Your Changes
 
-When you are ready to submit your changes for review, commit them to your local repository:
+Ready to submit your changes for review?
 
-```bash
-git commit
-```
+1. Commit them to your local repository:
 
-Then, push them to your fork:
+   ```bash
+   git commit
+   ```
 
-```bash
-git push --set-upstream origin <branch_name>
-```
+2. Push them to your fork:
 
-You can now [submit your pull request on GitHub](https://github.com/someengineering/resoto/pulls)! You are welcome to [open your pull request as a draft](https://docs.github.com/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests#draft-pull-requests) for early feedback and review. Be sure to follow the pull request template!
+   ```bash
+   git push --set-upstream origin <branch_name>
+   ```
 
-:::info
+3. [Submit your pull request on GitHub](https://github.com/someengineering/resoto/pulls).
 
-Pull request titles should follow the following format for correct parsing by the [changelog generator script](https://github.com/someengineering/resoto/blob/main/tools/release_notes.py):
+   You are welcome to [open your pull request as a draft](https://docs.github.com/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests#draft-pull-requests) for early feedback and review.
 
-```
-[<scope>][<type>] <description>
-```
+   :::note
 
-| Placeholder     | Description               |
-| --------------- | ------------------------- |
-| `<scope>`       | Affected/target component |
-| `<type>`        | `fix`, `feat`, or `chore` |
-| `<description>` | Description of changes    |
+   Be sure to follow the pull request template!
 
-However, do not worry too much about getting this right, as we will make any necessary adjustments prior to merging your changes.
+   :::
 
-:::
+   :::info
+
+   Pull request titles should follow the following format for correct parsing by the [changelog generator script](https://github.com/someengineering/resoto/blob/main/tools/release_notes.py):
+
+   ```
+   [<scope>][<type>] <description>
+   ```
+
+   | Placeholder     | Description               |
+   | --------------- | ------------------------- |
+   | `<scope>`       | Affected/target component |
+   | `<type>`        | `fix`, `feat`, or `chore` |
+   | `<description>` | Description of changes    |
+
+   However, do not worry too much about getting this right, as we will make any necessary adjustments prior to merging your changes.
+
+   :::

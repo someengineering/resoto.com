@@ -9,7 +9,6 @@ pagination_next: getting-started/launch-resoto/index
 ```mdx-code-block
 import LatestRelease from '@site/src/components/LatestRelease';
 import VersionOnly from '@site/src/components/VersionOnly';
-import IconExternalLink from '@theme/Icon/ExternalLink';
 import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
@@ -32,7 +31,7 @@ import Tabs from '@theme/Tabs';
 
 ## Directions
 
-1. Fetch the required files from the [`someengineering/resoto` GitHub repository <span class="badge badge--secondary" aria-hidden="true">github.com <IconExternalLink width="10" height="10" /></span>](https://github.com/someengineering/resoto):
+1. Fetch the required files from the [`someengineering/resoto` GitHub repository](https://github.com/someengineering/resoto):
 
    ```bash
    $ mkdir -p resoto/dockerV2

@@ -1,4 +1,5 @@
 ---
+sidebar_position: 3
 sidebar_label: Documentation
 ---
 
@@ -6,99 +7,62 @@ sidebar_label: Documentation
 
 The Resoto website and documentation are built with [Docusaurus](https://docusaurus.io), a static-site generator. The source code lives in the [`someengineering/resoto.com` repository on GitHub](https://github.com/someengineering/resoto.com).
 
-## Authoring Changes
+**Contributions are made via [pull requests to the GitHub repository](https://github.com/someengineering/resoto.com/pulls).** Changes can be authored [via the GitHub web interface](#github-web-interface) (easy) or [in a local repository using your favorite `git` client](#local-git-repository) (recommended).
 
-Contributions are made via [pull requests to the GitHub repository](https://github.com/someengineering/resoto.com/pulls). Changes can be authored [via the GitHub web interface](#github-web-interface) (easy) or [in a local repository using your favorite `git` client](#local-git-repository) (recommended).
+:::note
 
 If your changes modify non-Markdown files, it is strongly recommended to work on a local clone of the repository rather than within the GitHub web interface.
 
-### GitHub Web Interface
+:::
 
-On the bottom of all documentation pages, there is an "**Edit this page**" link.
+## GitHub Web Interface
 
-Simply click the link, make your changes, and select the "**Create a new branch for this commit and start a pull request.**" option at the bottom of the page.
+1. Click the "**Edit this page**" link at the bottom of a documentation page.
 
-For supported Markdown features, please refer to the [Docusaurus documentation](https://docusaurus.io/docs/markdown-features).
+2. Make your changes in the GitHub web editor.
 
-### Local Git Repository
+   :::tip
 
-#### Prerequisites
+   For supported Markdown features, please refer to the [Docusaurus documentation](https://docusaurus.io/docs/markdown-features).
+
+   :::
+
+3. Select the "**Create a new branch for this commit and start a pull request.**" option at the bottom of the page.
+
+## Local Git Repository
+
+### Prerequisites
 
 - [Git](https://git-scm.com) (the below instructions assume you are using the CLI, though [GUI clients](https://git-scm.com/downloads/guis) will also work!)
 - Code editor ([Visual Studio Code](https://code.visualstudio.com) is recommended)
 - [Node.js](https://nodejs.org)
 - [Yarn](https://yarnpkg.com)
 
-#### Cloning the Repository
+### 1. Clone the Repository
 
-You will first need to [fork](https://docs.github.com/get-started/quickstart/fork-a-repo) the repository.
+1. [Fork](https://docs.github.com/get-started/quickstart/fork-a-repo) the repository.
 
-Then, creating a local [clone](https://docs.github.com/repositories/creating-and-managing-repositories/cloning-a-repository) of the repository is as simple as:
+2. Create a local [clone](https://docs.github.com/repositories/creating-and-managing-repositories/cloning-a-repository) of the repository:
 
-```bash
-git clone https://github.com/<your_github_username>/resoto.com.git
-```
+   ```bash
+   git clone https://github.com/<your_github_username>/resoto.com.git
+   ```
 
-This will create a directory named `resoto.com` in your current working directory.
+   This will create a directory named `resoto.com` in your current working directory.
 
-Next, add a remote pointing to the upstream repository (as opposed to your fork) named `upstream`:
+3. Add a remote pointing to the upstream repository (as opposed to your fork) named `upstream`:
 
-```bash
-git remote add upstream https://github.com/someengineering/resoto.com.git
-```
+   ```bash
+   git remote add upstream https://github.com/someengineering/resoto.com.git
+   ```
 
-We will now create a new [branch](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell) from `main` (it is recommended to give your branch a meaningful, descriptive name):
+4. Create a new [branch](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell) from `main` (it is recommended to give your branch a meaningful, descriptive name):
 
-```bash
-git checkout -b <branch_name> main
-```
+   ```bash
+   git checkout -b <branch_name> main
+   ```
 
-#### Starting the Development Server
-
-We are finally able to get to the fun stuff! 🥳 Install dependencies and start a local development server:
-
-```bash
-yarn
-yarn start
-```
-
-You will notice that `http://localhost:3000` has been opened in your browser, where you can see your changes reflected live.
-
-#### Testing Your Changes
-
-After you are done authoring your changes, be sure to format them with Prettier and verify they will pass our [lint](<https://en.wikipedia.org/wiki/Lint_(software)>) and build [continuous integration](https://docs.github.com/actions/automating-builds-and-tests/about-continuous-integration) checks:
-
-```bash
-yarn format
-yarn lint
-yarn build
-```
-
-#### Pushing Your Changes
-
-When you are ready to submit your changes for review, commit them to your local repository:
-
-```bash
-git commit
-```
-
-Then, push them to your fork:
-
-```bash
-git push --set-upstream origin <branch_name>
-```
-
-You can now [submit your pull request on GitHub](https://github.com/someengineering/resoto.com/pulls)! You are welcome to [open your pull request as a draft](https://docs.github.com/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests#draft-pull-requests) for early feedback and review. Be sure to follow the pull request template!
-
-:::info
-
-Pull request titles should follow the [Conventional Commits](https://www.conventionalcommits.org) specification.
-
-However, do not worry too much about getting this right, as we will make any necessary adjustments prior to merging your changes.
-
-:::
-
-#### Keeping Your Branch Up-to-Date
+:::tip
 
 If there are new commits to the `main` branch of the repository, you can update your branch by rebasing from your `upstream` remote:
 
@@ -107,8 +71,114 @@ git fetch upstream
 git rebase upstream/main
 ```
 
-To update the branch in your fork, you will then need to force push:
+:::
 
-```bash
-git push -f origin <branch_name>
-```
+### 2. Start the Development Server
+
+Now, we are finally able to get to the fun stuff! 🥳
+
+1. Install dependencies.
+
+   ```bash
+   yarn
+   ```
+
+2. Start a local development server:
+
+   ```bash
+   yarn start
+   ```
+
+   You will notice that `http://localhost:3000` has been opened in your browser, where you can see your changes reflected live.
+
+   :::note
+
+   **Older docs versions and some [MDX plugins](https://docusaurus.io/docs/markdown-features/plugins) are disabled in development mode to improve performance.**
+
+   If you would like to test your changes with these enabled, you can run `yarn build` and then `yarn serve` to start a local server with the production build.
+
+   :::
+
+### 3. Test Your Changes
+
+After you are done authoring your changes, you'll want to verify your changes will pass the required checks:
+
+- Optimize SVG images with [SVGO](https://github.com/svg/svgo):
+
+  ```bash
+  yarn optimize
+  ```
+
+- Format your code with [Prettier](https://prettier.io):
+
+  ```bash
+  yarn format
+  ```
+
+- Lint your code with [ESLint](https://eslint.org):
+
+  ```bash
+  yarn lint
+  ```
+
+- Trigger a production build:
+
+  ```bash
+  yarn build
+  ```
+
+  This will create a `build` directory containing the static website. You can preview the build locally by running `yarn serve`.
+
+  :::tip
+
+  The build may take several minutes to complete. It is possible to perform a faster build with older docs versions and some [MDX plugins](https://docusaurus.io/docs/markdown-features/plugins) disabled:
+
+  ```bash
+  yarn build:fast
+  ```
+
+  :::
+
+### 4. Push Your Changes
+
+Ready to submit your changes for review?
+
+1. Commit them to your local repository:
+
+   ```bash
+   git commit
+   ```
+
+2. Push them to your fork:
+
+   ```bash
+   git push --set-upstream origin <branch_name>
+   ```
+
+   :::note
+
+   To update your fork after a rebase, you may need to [force push](https://git-scm.com/docs/git-push#Documentation/git-push.txt--f):
+
+   ```bash
+   git push -f origin <branch_name>
+   ```
+
+   :::
+
+3. [Submit your pull request on GitHub](https://github.com/someengineering/resoto.com/pulls).
+
+   You are welcome to [open your pull request as a draft](https://docs.github.com/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests#draft-pull-requests) for early feedback and review.
+
+   :::note
+
+   Be sure to follow the pull request template!
+
+   :::
+
+   :::info
+
+   Pull request titles should follow the [Conventional Commits](https://www.conventionalcommits.org) specification.
+
+   However, do not worry too much about getting this right, as we will make any necessary adjustments prior to merging your changes.
+
+   :::

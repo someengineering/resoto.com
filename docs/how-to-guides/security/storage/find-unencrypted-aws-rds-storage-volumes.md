@@ -4,10 +4,6 @@ sidebar_label: Find Unencrypted AWS RDS Storage Volumes
 
 # How to Find Unencrypted AWS RDS Storage Volumes
 
-```mdx-code-block
-import IconExternalLink from '@theme/Icon/ExternalLink';
-```
-
 If not enabled sensitive information at rest is not protected.
 
 :::info
@@ -66,5 +62,5 @@ Please refer to the [AWS RDS documentation](https://docs.aws.amazon.com/AmazonRD
 
 ## External Links
 
-- [CIS Amazon Web Services Benchmarks <span class="badge badge--secondary" aria-hidden="true">cisecurity.org <IconExternalLink width="10" height="10" /></span>](https://cisecurity.org/benchmark/amazon_web_services)
-- [AWS Documentation <span class="badge badge--secondary" aria-hidden="true">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.html)
+- [CIS Amazon Web Services Benchmarks](https://cisecurity.org/benchmark/amazon_web_services)
+- [AWS Documentation](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.html)

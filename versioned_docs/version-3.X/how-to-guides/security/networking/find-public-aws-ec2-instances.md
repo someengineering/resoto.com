@@ -4,10 +4,6 @@ sidebar_label: Find Public AWS EC2 Instances
 
 # How to Find Public AWS EC2 Instances
 
-```mdx-code-block
-import IconExternalLink from '@theme/Icon/ExternalLink';
-```
-
 Exposing an EC2 directly to internet increases the attack surface and therefore the risk of compromise.
 
 :::info
@@ -66,5 +62,5 @@ Please refer to the [AWS EC2 documentation](https://aws.amazon.com/blogs/aws/aws
 
 ## External Links
 
-- [CIS Amazon Web Services Benchmarks <span class="badge badge--secondary" aria-hidden="true">cisecurity.org <IconExternalLink width="10" height="10" /></span>](https://cisecurity.org/benchmark/amazon_web_services)
-- [AWS Documentation <span class="badge badge--secondary" aria-hidden="true">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://aws.amazon.com/blogs/aws/aws-web-application-firewall-waf-for-application-load-balancers)
+- [CIS Amazon Web Services Benchmarks](https://cisecurity.org/benchmark/amazon_web_services)
+- [AWS Documentation](https://aws.amazon.com/blogs/aws/aws-web-application-firewall-waf-for-application-load-balancers)

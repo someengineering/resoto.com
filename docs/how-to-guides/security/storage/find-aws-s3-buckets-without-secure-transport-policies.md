@@ -4,10 +4,6 @@ sidebar_label: Find AWS S3 Buckets Without Secure Transport Policies
 
 # How to Find AWS S3 Buckets Without Secure Transport Policies
 
-```mdx-code-block
-import IconExternalLink from '@theme/Icon/ExternalLink';
-```
-
 If HTTPS is not enforced on the bucket policy, communication between clients and S3 buckets can use unencrypted HTTP. As a result, sensitive information could be transmitted in clear text over the network or internet.
 
 :::info
@@ -66,5 +62,5 @@ Please refer to the [AWS S3 documentation](https://aws.amazon.com/premiumsupport
 
 ## External Links
 
-- [CIS Amazon Web Services Benchmarks <span class="badge badge--secondary" aria-hidden="true">cisecurity.org <IconExternalLink width="10" height="10" /></span>](https://cisecurity.org/benchmark/amazon_web_services)
-- [AWS Documentation <span class="badge badge--secondary" aria-hidden="true">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://aws.amazon.com/premiumsupport/knowledge-center/s3-bucket-policy-for-config-rule)
+- [CIS Amazon Web Services Benchmarks](https://cisecurity.org/benchmark/amazon_web_services)
+- [AWS Documentation](https://aws.amazon.com/premiumsupport/knowledge-center/s3-bucket-policy-for-config-rule)

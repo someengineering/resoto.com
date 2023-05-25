@@ -4,10 +4,6 @@ sidebar_label: Find AWS S3 Buckets Missing Public Access Blocks
 
 # How to Find AWS S3 Buckets Missing Public Access Blocks
 
-```mdx-code-block
-import IconExternalLink from '@theme/Icon/ExternalLink';
-```
-
 Public access policies may be applied to sensitive data buckets.
 
 :::info
@@ -66,5 +62,5 @@ Please refer to the [AWS S3 documentation](https://docs.aws.amazon.com/AmazonS3/
 
 ## External Links
 
-- [CIS Amazon Web Services Benchmarks <span class="badge badge--secondary" aria-hidden="true">cisecurity.org <IconExternalLink width="10" height="10" /></span>](https://cisecurity.org/benchmark/amazon_web_services)
-- [AWS Documentation <span class="badge badge--secondary" aria-hidden="true">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html)
+- [CIS Amazon Web Services Benchmarks](https://cisecurity.org/benchmark/amazon_web_services)
+- [AWS Documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html)

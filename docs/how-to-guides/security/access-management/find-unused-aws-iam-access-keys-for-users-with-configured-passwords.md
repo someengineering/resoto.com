@@ -4,10 +4,6 @@ sidebar_label: Find Unused AWS IAM Access Keys for Users with Configured Passwor
 
 # How to Find Unused AWS IAM Access Keys for Users with Configured Passwords
 
-```mdx-code-block
-import IconExternalLink from '@theme/Icon/ExternalLink';
-```
-
 The AWS Console defaults to creating access keys during user setup, resulting in the unnecessary generation of access keys.
 
 In addition to unnecessary credentials, it also generates unnecessary management work in auditing and rotating these keys.
@@ -71,5 +67,5 @@ Please refer to the [AWS IAM documentation](https://docs.aws.amazon.com/IAM/late
 
 ## External Links
 
-- [CIS Amazon Web Services Benchmarks <span class="badge badge--secondary" aria-hidden="true">cisecurity.org <IconExternalLink width="10" height="10" /></span>](https://cisecurity.org/benchmark/amazon_web_services)
-- [AWS Documentation <span class="badge badge--secondary" aria-hidden="true">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_getting-report.html)
+- [CIS Amazon Web Services Benchmarks](https://cisecurity.org/benchmark/amazon_web_services)
+- [AWS Documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_getting-report.html)

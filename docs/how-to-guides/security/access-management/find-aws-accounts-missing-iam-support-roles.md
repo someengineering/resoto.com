@@ -4,10 +4,6 @@ sidebar_label: Find AWS Accounts Missing IAM Support Roles
 
 # How to Find AWS Accounts Missing IAM Support Roles
 
-```mdx-code-block
-import IconExternalLink from '@theme/Icon/ExternalLink';
-```
-
 AWS provides a support center that can be used for incident notification and response, as well as technical support and customer services. Create an IAM Role to allow authorized users to manage incidents with AWS Support.
 
 :::info
@@ -66,5 +62,5 @@ Please refer to the [AWS IAM documentation](https://docs.aws.amazon.com/awssuppo
 
 ## External Links
 
-- [CIS Amazon Web Services Benchmarks <span class="badge badge--secondary" aria-hidden="true">cisecurity.org <IconExternalLink width="10" height="10" /></span>](https://cisecurity.org/benchmark/amazon_web_services)
-- [AWS Documentation <span class="badge badge--secondary" aria-hidden="true">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://docs.aws.amazon.com/awssupport/latest/user/using-service-linked-roles-sup.html)
+- [CIS Amazon Web Services Benchmarks](https://cisecurity.org/benchmark/amazon_web_services)
+- [AWS Documentation](https://docs.aws.amazon.com/awssupport/latest/user/using-service-linked-roles-sup.html)

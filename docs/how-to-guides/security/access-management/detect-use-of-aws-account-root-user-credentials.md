@@ -4,10 +4,6 @@ sidebar_label: Detect Use of AWS Account Root User Credentials
 
 # How to Detect Use of AWS Account Root User Credentials
 
-```mdx-code-block
-import IconExternalLink from '@theme/Icon/ExternalLink';
-```
-
 The root account has unrestricted access to all resources in the AWS account. It is highly recommended that the use of this account be avoided.
 
 :::info
@@ -66,5 +62,5 @@ Please refer to the [AWS IAM documentation](http://docs.aws.amazon.com/IAM/lates
 
 ## External Links
 
-- [CIS Amazon Web Services Benchmarks <span class="badge badge--secondary" aria-hidden="true">cisecurity.org <IconExternalLink width="10" height="10" /></span>](https://cisecurity.org/benchmark/amazon_web_services)
-- [AWS Documentation <span class="badge badge--secondary" aria-hidden="true">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](http://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html)
+- [CIS Amazon Web Services Benchmarks](https://cisecurity.org/benchmark/amazon_web_services)
+- [AWS Documentation](http://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html)

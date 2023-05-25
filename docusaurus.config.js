@@ -2,7 +2,6 @@
 // @ts-check
 
 const { resolve } = require('path');
-const { sortBy } = require('lodash');
 
 const a11yEmoji = require('@fec/remark-a11y-emoji');
 const oembed = require('remark-plugin-oembed');
@@ -72,15 +71,12 @@ const config = {
             ...args
           }) {
             const sidebarItems = await defaultSidebarItemsGenerator(args);
-            return sortBy(
-              sidebarItems.filter(
-                (item) =>
-                  (item.type !== 'doc' || !item.id.endsWith('index')) &&
-                  (item.type !== 'category' ||
-                    item.link?.type !== 'doc' ||
-                    !item.link?.id.endsWith('reference/api/index'))
-              ),
-              ['label']
+            return sidebarItems.filter(
+              (item) =>
+                (item.type !== 'doc' || !item.id.endsWith('index')) &&
+                (item.type !== 'category' ||
+                  item.link?.type !== 'doc' ||
+                  !item.link?.id.endsWith('reference/api/index'))
             );
           },
           exclude: ['**/*-rest-api.info.mdx', '**/deprecated-*.mdx'],

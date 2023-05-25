@@ -4,10 +4,6 @@ sidebar_label: Find AWS KMS Keys Without Rotation Enabled
 
 # How to Find AWS KMS Keys Without Rotation Enabled
 
-```mdx-code-block
-import IconExternalLink from '@theme/Icon/ExternalLink';
-```
-
 Cryptographic best practices discourage extensive reuse of encryption keys. Consequently, AWS KMS keys should be rotated to prevent usage of compromised keys.
 
 :::info
@@ -66,5 +62,5 @@ Please refer to the [AWS KMS documentation](https://docs.aws.amazon.com/kms/late
 
 ## External Links
 
-- [CIS Amazon Web Services Benchmarks <span class="badge badge--secondary" aria-hidden="true">cisecurity.org <IconExternalLink width="10" height="10" /></span>](https://cisecurity.org/benchmark/amazon_web_services)
-- [AWS Documentation <span class="badge badge--secondary" aria-hidden="true">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html)
+- [CIS Amazon Web Services Benchmarks](https://cisecurity.org/benchmark/amazon_web_services)
+- [AWS Documentation](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html)

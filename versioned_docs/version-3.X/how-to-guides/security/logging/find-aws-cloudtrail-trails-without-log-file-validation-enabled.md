@@ -4,10 +4,6 @@ sidebar_label: Find AWS CloudTrail Trails Without Log File Validation Enabled
 
 # How to Find AWS CloudTrail Trails Without Log File Validation Enabled
 
-```mdx-code-block
-import IconExternalLink from '@theme/Icon/ExternalLink';
-```
-
 Enabling log file validation will provide additional integrity checking of CloudTrail logs.
 
 :::info
@@ -66,5 +62,5 @@ Please refer to the [AWS CloudTrail documentation](http://docs.aws.amazon.com/aw
 
 ## External Links
 
-- [CIS Amazon Web Services Benchmarks <span class="badge badge--secondary" aria-hidden="true">cisecurity.org <IconExternalLink width="10" height="10" /></span>](https://cisecurity.org/benchmark/amazon_web_services)
-- [AWS Documentation <span class="badge badge--secondary" aria-hidden="true">docs.aws.amazon.com <IconExternalLink width="10" height="10" /></span>](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-log-filevalidation-enabling.html)
+- [CIS Amazon Web Services Benchmarks](https://cisecurity.org/benchmark/amazon_web_services)
+- [AWS Documentation](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-log-filevalidation-enabling.html)

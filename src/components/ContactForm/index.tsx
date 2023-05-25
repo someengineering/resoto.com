@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { useFormik } from 'formik';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import {
   Honeypot,
   NetlifyFormComponent,
@@ -12,8 +12,6 @@ import homepageStyles from '../../pages/index.module.css';
 import styles from './index.module.css';
 
 export default function ContactForm(): JSX.Element {
-  const [referrer, setReferrer] = useState<string>();
-
   const netlify = useNetlifyForm({
     name: 'contact',
     honeypotName: 'bot-field',
@@ -28,7 +26,9 @@ export default function ContactForm(): JSX.Element {
       initialValues: {
         name: '',
         email: '',
+        subject: '',
         message: '',
+        referrerUrl: '',
       },
       onSubmit: (values) => netlify.handleSubmit(null, values),
       validationSchema: Yup.object().shape({
@@ -42,9 +42,12 @@ export default function ContactForm(): JSX.Element {
     });
 
   useEffect(() => {
-    const { pathname } = new URL(window.location.href);
-    setReferrer(pathname !== '/' ? pathname : '');
+    values.referrerUrl = window.location.href;
   }, []);
+
+  useEffect(() => {
+    values.subject = `[Resoto] Inquiry from ${values.name} (%{submissionId})`;
+  }, [values.name]);
 
   return (
     <section className={homepageStyles.section}>
@@ -57,13 +60,6 @@ export default function ContactForm(): JSX.Element {
               className={styles.form}
             >
               <Honeypot />
-              <input
-                type="hidden"
-                name="subject"
-                value={`[Resoto] New message from ${values.name}${
-                  referrer ? ` (${referrer})` : ''
-                }`}
-              />
               {netlify.success ? (
                 <p className={styles.alert} role="alert">
                   Thank you for your message. We&rsquo;ll be in touch soon!
@@ -77,8 +73,8 @@ export default function ContactForm(): JSX.Element {
                   <p className={clsx(styles.error)} aria-live="polite">
                     {(touched.name ? errors.name : null) ?? <>&nbsp;</>}
                   </p>
-                  <label htmlFor="name">Your name</label>
                   <input
+                    aria-label="Name"
                     placeholder="Your name"
                     type="text"
                     name="name"
@@ -93,11 +89,12 @@ export default function ContactForm(): JSX.Element {
                         : ''
                     }
                   />
+
                   <p className={clsx(styles.error)} aria-live="polite">
                     {(touched.email ? errors.email : null) ?? <>&nbsp;</>}
                   </p>
-                  <label htmlFor="email">Your email address</label>
                   <input
+                    aria-label="Email address"
                     placeholder="Your email address"
                     type="email"
                     name="email"
@@ -110,10 +107,20 @@ export default function ContactForm(): JSX.Element {
                       touched.email && errors.email ? styles.inputError : ''
                     }
                   />
+
+                  <input
+                    aria-label="Subject"
+                    type="hidden"
+                    name="subject"
+                    id="subject"
+                    value={values.subject}
+                  />
+
                   <p className={clsx(styles.error)} aria-live="polite">
                     {(touched.message ? errors.message : null) ?? <>&nbsp;</>}
                   </p>
                   <textarea
+                    aria-label="Message"
                     placeholder="Your message"
                     id="message"
                     name="message"
@@ -127,6 +134,15 @@ export default function ContactForm(): JSX.Element {
                       touched.message && errors.message ? styles.inputError : ''
                     }
                   />
+
+                  <input
+                    aria-label="Referrer"
+                    type="hidden"
+                    name="referrer-url"
+                    id="referrer-url"
+                    value={values.referrerUrl}
+                  />
+
                   <button
                     type="submit"
                     className={clsx(

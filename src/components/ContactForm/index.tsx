@@ -84,9 +84,7 @@ export default function ContactForm(): JSX.Element {
                     onBlur={handleBlur}
                     value={values.name}
                     className={
-                      (touched.name && errors.name) ?? <>&nbsp;</>
-                        ? styles.inputError
-                        : ''
+                      touched.name && errors.name ? styles.inputError : ''
                     }
                   />
 

@@ -324,10 +324,6 @@ html[data-theme='dark'] strong {
   --ifm-heading-color: var(--ifm-alert-foreground-color);
 }
 
-main {
-  padding-bottom: 5rem !important;
-}
-
 .footer {
   font-size: 0.875rem;
   --ifm-footer-background-color: #000d19;

@@ -50,7 +50,6 @@ export default function Home(): JSX.Element {
               </h2>
               <div className={styles.buttons}>
                 <InstallButton
-                  product="resoto"
                   includeVersion
                   className={clsx(styles.button, styles.primaryButton)}
                 />

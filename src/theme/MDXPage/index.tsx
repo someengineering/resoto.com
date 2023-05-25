@@ -3,6 +3,7 @@ import {
   PageMetadata,
   ThemeClassNames,
 } from '@docusaurus/theme-common';
+import ContactForm from '@site/src/components/ContactForm';
 import { getImage } from '@site/src/utils/socialImageHelper';
 import Layout from '@theme/Layout';
 import MDXContent from '@theme/MDXContent';
@@ -11,6 +12,7 @@ import TOC from '@theme/TOC';
 import clsx from 'clsx';
 import React from 'react';
 
+import homepageStyles from '@site/src/pages/index.module.css';
 import styles from './styles.module.css';
 
 export default function MDXPage(props: Props): JSX.Element {
@@ -54,6 +56,9 @@ export default function MDXPage(props: Props): JSX.Element {
             )}
           </div>
         </main>
+        <div className={homepageStyles.content}>
+          <ContactForm />
+        </div>
       </Layout>
     </HtmlClassNameProvider>
   );

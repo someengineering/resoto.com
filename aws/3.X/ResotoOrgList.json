@@ -1,14 +1,14 @@
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Resource": "*",
-            "Action": [
-                "organizations:ListAccounts",
-                "ec2:DescribeRegions",
-                "iam:ListAccountAliases"
-            ]
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Resource": "*",
+      "Action": [
+        "organizations:ListAccounts",
+        "ec2:DescribeRegions",
+        "iam:ListAccountAliases"
+      ]
+    }
+  ]
 }

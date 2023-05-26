@@ -1,4 +1,5 @@
 import Link from '@docusaurus/Link';
+import { DEFAULT_PLUGIN_ID } from '@docusaurus/constants';
 import { useActivePlugin } from '@docusaurus/plugin-content-docs/client';
 import { ThemeClassNames } from '@docusaurus/theme-common';
 import { useDocsVersion } from '@docusaurus/theme-common/internal';
@@ -18,7 +19,7 @@ export default function DocSidebarItemsWrapper(props: Props): JSX.Element {
 
   return (
     <>
-      {pluginId == 'default' && props.level === 1 ? (
+      {pluginId == DEFAULT_PLUGIN_ID && props.level === 1 ? (
         <li
           className={clsx(
             ThemeClassNames.docs.docSidebarItemLink,

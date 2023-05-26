@@ -123,12 +123,18 @@ function listPostsByYears(blogPosts: readonly ArchiveBlogPost[]): YearProp[] {
 }
 
 export default function BlogArchive({ archive }: Props): JSX.Element {
+  const path = (archive.blogPosts[0].metadata.permalink
+    .replace(/^\//, '')
+    .split('/') ?? ['blog'])[0];
+
   const title = translate({
     id: 'theme.blog.archive.title',
-    message: 'Archive',
+    message: `${path.replace(/^\w/, (c) => c.toUpperCase())}`,
     description: 'The page & hero title of the blog archive page',
   });
+
   const years = listPostsByYears(archive.blogPosts);
+
   return (
     <>
       <PageMetadata title={title} image={getImage({ title })} />

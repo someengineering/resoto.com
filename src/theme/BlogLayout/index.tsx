@@ -14,18 +14,14 @@ export default function BlogLayout(props: Props): JSX.Element {
 
   return (
     <Layout {...layoutProps}>
-      <div className="container margin-top--lg">
+      <div className="container margin-vert--lg">
         <div className="row">
           <BlogSidebar sidebar={sidebar} />
           <main
-            className={clsx(
-              'col',
-              {
-                'col--7': hasSidebar,
-                'col--9 col--offset-1': !hasSidebar,
-              },
-              'padding-bottom--lg'
-            )}
+            className={clsx('col', {
+              'col--7': hasSidebar,
+              'col--9 col--offset-1': !hasSidebar,
+            })}
             itemScope
             itemType="http://schema.org/Blog"
           >

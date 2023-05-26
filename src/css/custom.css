@@ -418,10 +418,6 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   margin: 0 auto;
 }
 
-.noControls .control-bar {
-  display: none;
-}
-
 .button--outline:hover {
   --ifm-button-background-color: transparent;
 }

@@ -1,4 +1,5 @@
 import Link from '@docusaurus/Link';
+import { DEFAULT_PLUGIN_ID } from '@docusaurus/constants';
 import { useActivePlugin } from '@docusaurus/plugin-content-docs/client';
 import { useSidebarBreadcrumbs } from '@docusaurus/theme-common/internal';
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -54,7 +55,7 @@ export default function DocBreadcrumbs(): JSX.Element | null {
   const breadcrumbs = useSidebarBreadcrumbs();
   const { pluginId } = useActivePlugin();
 
-  if (!breadcrumbs || !breadcrumbs.length || pluginId !== 'default') {
+  if (!breadcrumbs || !breadcrumbs.length) {
     return null;
   }
 
@@ -63,7 +64,10 @@ export default function DocBreadcrumbs(): JSX.Element | null {
   breadcrumbs.unshift({
     type: 'link',
     href: useBaseUrl('/docs'),
-    label: 'Documentation',
+    label:
+      pluginId === DEFAULT_PLUGIN_ID
+        ? 'Documentation'
+        : pluginId.replace(/^\w/, (c) => c.toUpperCase()),
   });
 
   return (

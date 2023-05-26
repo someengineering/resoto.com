@@ -86,7 +86,7 @@ A cloud asset inventory should include two types of data:
    - Resource-specific information (e.g., CPU, memory, price, utilization, policy).
 2. **Dependency data** that represents the relationship between different resources.
 
-Modern cloud asset inventories use a graph-based data model, as it's better suited to capture dependencies than a traditional relational model. Resources are always connected to each other in some way. For example:
+Modern cloud asset inventories use a [graph](/docs/concepts/asset-inventory-graph)-based data model, as it's better suited to capture dependencies than a traditional relational model. Resources are always connected to each other in some way. For example:
 
 - A cloud account belongs to a region.
 - A compute instance runs within a cloud account.
@@ -95,11 +95,11 @@ Modern cloud asset inventories use a graph-based data model, as it's better suit
 - A target group is associated with an IP address.
 - A target group runs a fleet of compute instances.
 
-Dependencies are often nested and can run many levels deep. A graph-based asset inventory is particularly strong at exposing the hidden relationships between resources.
+Dependencies are often nested and can run many levels deep. A [graph-based asset inventory](/docs/concepts/asset-inventory-graph) is particularly strong at exposing the hidden relationships between resources.
 
 ## Cloud Asset Inventory Accelerates Growth
 
-With an inventory in place, all teams now benefit from exploring the graph, either ad-hoc or by continuously running queries, to support a variety of use cases:
+With an inventory in place, all teams now benefit from exploring the [graph](/docs/concepts/asset-inventory-graph), either ad-hoc or by continuously running queries, to support a variety of use cases:
 
 - Platform teams can create asset reports.
 - Finance can track cost metrics.
@@ -144,7 +144,7 @@ Finding the instances that violate the policy is easy with Resoto's [search](/do
 > search is(aws_ec2_instance) and instance_cores > 32 and age > 24h
 ```
 
-Then, adding a [job](/docs/concepts/automation#jobs) to automate cleanup after each new inventory snapshot is as simple as:
+Then, adding a [job](/docs/concepts/automation#jobs) to automate [cleanup](/docs/concepts/resource-management/cleanup) after each new inventory snapshot is as simple as:
 
 ```bash
 > jobs add 32_core_instance_cleanup --wait-for-event post_collect 'search is(aws_ec2_instance) and instance_cores > 32 and age > 24h | clean'

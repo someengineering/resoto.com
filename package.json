@@ -27,7 +27,6 @@
   },
   "dependencies": {
     "@1password/docusaurus-plugin-stored-data": "0.1.0",
-    "@akebifiky/remark-simple-plantuml": "1.0.2",
     "@docusaurus/core": "2.4.1",
     "@docusaurus/plugin-pwa": "2.4.1",
     "@docusaurus/plugin-sitemap": "2.4.1",
@@ -35,7 +34,6 @@
     "@docusaurus/theme-mermaid": "2.4.1",
     "@fec/remark-a11y-emoji": "3.1.0",
     "@mdx-js/react": "1.6.22",
-    "@netlify/functions": "1.6.0",
     "@octokit/core": "4.2.1",
     "a11y-react-emoji": "1.2.0",
     "clsx": "1.2.1",

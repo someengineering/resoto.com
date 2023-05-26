@@ -22,7 +22,7 @@ Recent years have seen a shift away from stateful, persistent virtual machines t
 
 ### Cloud Asset Inventory and Why Infrastructure Data Matters
 
-As services have decreased in size, they have increased in volume. The number of individual services in your cloud inventory can number in the millions.
+As services have decreased in size, they have increased in volume. The number of individual services in your [cloud inventory](../cloud-asset-inventory/index.mdx) can number in the millions.
 
 In order to deal with the overhead of managing an increased number of resources, developers have turned to automation and turnkey workflows. Developers use infrastructure-as-code tools and CI/CD pipelines to create, update, and tear down resources via cloud provider APIs.
 
@@ -89,7 +89,7 @@ That approach is different from existing operational tools (DevOps, SecOps, DevS
 
 ## How Resoto Works
 
-Just like an ELT tool, Resoto collects data from cloud APIs to build a cloud inventory that's a complete representation of all resources in your infrastructure.
+Just like an ELT tool, Resoto [collects data from cloud APIs](/docs/concepts/cloud-data-sync) to build a cloud inventory that's a complete representation of all resources in your infrastructure.
 
 At the most basic level, Resoto has two components that integrate with each other:
 
@@ -127,11 +127,11 @@ The data models for cloud APIs differ, meaning to join data, you'd need to have 
 
 Resoto solves that problem with abstraction. [Resoto's unified data model](/docs/reference/unified-data-model) is cloud-agnostic and supports static-typing and inheritance. Inheritance represents the idea that a resource kind (a "child" resource) inherits properties from another resource kind (a "parent" resource). The child resource has the properties of the parent resource in addition to its own child-specific properties.
 
-The highest-level abstraction and base kind in Resoto is a [resource](/docs/reference/unified-data-model#resource-base-kind). Seven properties are common to all resources:
+The highest-level abstraction and base kind in Resoto is [`resource`](/docs/reference/unified-data-model#resource-base-kind). Seven properties are common to all `resource`s:
 
 ![Data model of Resoto's `resource` entity](./img/resource-data-model.svg)
 
-Properties specific to a particular type of resource are properties of the corresponding kind. For example, every volume is a resource, but some attributes are specific to volumes only (e.g., `volume_type`).
+Properties specific to a particular type of resource are properties of the corresponding kind. For example, every `volume` is a `resource`, but some attributes are specific to `volume`s only (e.g., `volume_type`).
 
 The benefit of this approach is that it delivers a consistent model to retrieve data from different clouds. I can navigate my cloud without prior knowledge about a specific resource.
 
@@ -157,7 +157,7 @@ When Resoto collects data:
 2. stores the properties for each resource, and
 3. captures relationships between resources.
 
-Resoto's asset inventory graph shows the connections between resources running in your cloud and visualizes the pathway to any resource. The below image depicts the dependencies of an EC2 instance in the Resoto UI:
+Resoto's [asset inventory graph](/docs/concepts/asset-inventory-graph) shows the connections between resources running in your cloud and visualizes the pathway to any resource. The below image depicts the dependencies of an EC2 instance in the Resoto UI:
 
 ![Screenshot of the dependencies of an EC2 instance in Resoto UI](./img/resoto-ui-graph.gif)
 

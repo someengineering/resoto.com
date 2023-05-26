@@ -1,0 +1,105 @@
+.hero {
+  color: var(--ifm-color-content);
+  background-color: #f6edfe;
+  background-image: radial-gradient(
+      farthest-corner at 60% 15%,
+      #ffffff,
+      transparent 60%
+    ),
+    radial-gradient(farthest-side at 75% 175%, #ffffff, transparent 75%);
+  background-blend-mode: screen;
+}
+
+html[data-theme='dark'] .hero {
+  background-color: #24024f;
+  background-image: radial-gradient(
+      farthest-corner at 60% 15%,
+      #762dd7,
+      transparent 60%
+    ),
+    radial-gradient(farthest-side at 75% 175%, #762dd7, transparent 75%);
+}
+
+.year {
+  background-image: linear-gradient(
+    135deg,
+    #e373f5,
+    #db46f2 25%,
+    #9a43ff 50%,
+    #b06cff 75%,
+    #c596ff
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+}
+
+html[data-theme='dark'] .year {
+  background-image: linear-gradient(
+    135deg,
+    #f1bafa,
+    #e98df7 25%,
+    #c38fff 50%,
+    #d9b8ff 75%,
+    #efe2ff
+  );
+}
+
+.cardContainer {
+  --ifm-link-color: var(--ifm-color-emphasis-800);
+  --ifm-link-hover-color: var(--ifm-color-emphasis-700);
+  --ifm-link-hover-decoration: none;
+  box-shadow: 0 1.5px 3px 0 rgb(0 0 0 / 15%);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  transition: all var(--ifm-transition-fast) ease;
+  transition-property: border, box-shadow;
+}
+
+.cardContainer:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 3px 6px 0 rgb(0 0 0 / 20%);
+}
+
+.metadata {
+  font-size: 0.9rem;
+}
+
+.info {
+  margin-bottom: -0.5rem !important;
+}
+
+.authorCol {
+  max-width: inherit !important;
+  flex-grow: 1 !important;
+  align-items: center;
+  column-gap: calc(var(--ifm-avatar-intro-margin) * 2 / 3);
+}
+
+.authorName {
+  font: bold var(--ifm-h5-font-size) / var(--ifm-heading-line-height)
+    var(--ifm-font-family-base);
+}
+
+.tags {
+  display: inline;
+}
+
+.tag {
+  margin: 0 0.4rem 0.5rem 0;
+  display: inline-block;
+}
+
+.tagLink {
+  border-radius: var(--ifm-global-radius);
+  padding: 0.2rem 0.5rem 0.3rem;
+  font-size: 90%;
+  border: 1px solid var(--docusaurus-tag-list-border);
+  transition: border var(--ifm-transition-fast);
+  color: var(--ifm-link-color);
+}
+
+.tagLink:hover {
+  --docusaurus-tag-list-border: var(--ifm-link-color);
+  text-decoration: none;
+}

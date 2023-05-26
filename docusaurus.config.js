@@ -216,7 +216,6 @@ const config = {
         blogSidebarCount: 'ALL',
         path: 'podcast',
         routeBasePath: 'podcast',
-        archiveBasePath: null,
         showReadingTime: false,
         feedOptions: {
           type: 'all',

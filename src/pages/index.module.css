@@ -1,12 +1,6 @@
 .hero {
   color: var(--ifm-color-content);
   background-color: #ffffff;
-  background-image: radial-gradient(
-      farthest-corner at 60% 15%,
-      #af62f1,
-      transparent 60%
-    ),
-    radial-gradient(farthest-side at 75% 175%, #af62f1, transparent 75%);
   background-blend-mode: screen;
 }
 

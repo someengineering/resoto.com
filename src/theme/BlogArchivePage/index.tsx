@@ -1,14 +1,15 @@
-import Link from '@docusaurus/Link';
 import { translate } from '@docusaurus/Translate';
 import { PageMetadata } from '@docusaurus/theme-common';
 import ContactForm from '@site/src/components/ContactForm';
 import { getImage } from '@site/src/utils/socialImageHelper';
 import type { ArchiveBlogPost, Props } from '@theme/BlogArchivePage';
 import Layout from '@theme/Layout';
+import clsx from 'clsx';
 import { orderBy } from 'lodash';
 import React from 'react';
 
 import homepageStyles from '@site/src/pages/index.module.css';
+import styles from './styles.module.css';
 
 type YearProp = {
   year: string;
@@ -18,16 +19,75 @@ type YearProp = {
 function Year({ year, posts }: YearProp) {
   return (
     <>
-      <h3>{year}</h3>
-      <ul>
-        {posts.map((post) => (
-          <li key={post.metadata.date}>
-            <Link to={post.metadata.permalink}>
-              {post.metadata.formattedDate} - {post.metadata.title}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <h2 className={styles.year}>{year}</h2>
+      {posts.map((post) => (
+        <article className="margin-bottom--lg" key={post.metadata.date}>
+          <a
+            href={post.metadata.permalink}
+            className={clsx('card padding--sm', styles.cardContainer)}
+            style={{ marginBottom: '2em' }}
+          >
+            <div className="card__body">
+              <h3 className={styles.title} itemProp="headline">
+                {post.metadata.title}
+              </h3>
+              <div className={clsx(styles.date, 'margin-vert--md')}>
+                <time dateTime={post.metadata.date} itemProp="datePublished">
+                  {post.metadata.formattedDate}
+                </time>
+                {post.metadata.readingTime
+                  ? ` · ${Math.ceil(post.metadata.readingTime)} min read`
+                  : null}
+              </div>
+              <div className={clsx(styles.info, 'row')}>
+                {post.metadata.authors.map((author) => (
+                  <div
+                    className={clsx(
+                      'avatar margin-top--md col col--6',
+                      styles.authorCol
+                    )}
+                    key={author.email}
+                  >
+                    {author.imageURL ? (
+                      <img
+                        className="avatar__photo avatar__photo--sm"
+                        src={author.imageURL}
+                        alt=""
+                      />
+                    ) : null}
+                    <div className="avatar__intro">
+                      <div className={styles.authorName}>{author.name}</div>
+                      <small>{author.title}</small>
+                    </div>
+                  </div>
+                ))}
+                {post.metadata.tags.length ? (
+                  <div className="col col--9 margin-top--md">
+                    <b>Tags:</b>
+                    <ul
+                      className={clsx(
+                        styles.tags,
+                        'padding--none margin-left--sm'
+                      )}
+                    >
+                      {post.metadata.tags.map((tag) => (
+                        <li
+                          className={styles.tag}
+                          key={`${post.metadata.date}-${tag.label}`}
+                        >
+                          <a className={styles.tagLink} href={tag.permalink}>
+                            {tag.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
+              </div>
+            </div>
+          </a>
+        </article>
+      ))}
     </>
   );
 }
@@ -73,14 +133,12 @@ export default function BlogArchive({ archive }: Props): JSX.Element {
     <>
       <PageMetadata title={title} image={getImage({ title })} />
       <Layout>
-        <header className={homepageStyles.hero}>
+        <header className={styles.hero}>
           <div className={homepageStyles.inner}>
             <h1 className={homepageStyles.heroTitle}>{title}</h1>
           </div>
         </header>
-        <main style={{ padding: '30px 0' }}>
-          {years.length > 0 && <YearsSection years={years} />}
-        </main>
+        <main>{years.length > 0 && <YearsSection years={years} />}</main>
         <div className={homepageStyles.content}>
           <ContactForm />
         </div>

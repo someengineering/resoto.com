@@ -21,7 +21,7 @@ export const getImage = ({
       author
         ? `&authorName=${encodeURIComponent(
             author.name
-          )}&authorImage=${encodeURIComponent(author.imageURL)}}${
+          )}&authorImage=${encodeURIComponent(author.imageURL)}${
             author.title
               ? `&authorTitle=${encodeURIComponent(author.title)}`
               : ''

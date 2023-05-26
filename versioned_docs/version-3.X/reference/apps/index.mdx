@@ -1,0 +1,47 @@
+# Infrastructure Apps
+
+Infrastructure apps are low-code apps that can be installed on Resoto to extend its functionality. They can be used to perform simple tasks such as cleaning up untagged resources, finding abandoned load balancers or sending notifications to Slack, Discord or PagerDuty.
+
+## How do I find and install an Infrastructure App?
+
+Using the [`apps`](../cli/miscellaneous-commands/apps/index.mdx) command you can search for apps and install them:
+
+```bash title="Searching for apps"
+> apps search cleanup
+```
+
+```bash title="Installing an app"
+> apps install cleanup-untagged
+```
+
+```bash title="Running an app"
+> apps run cleanup-untagged --dry-run
+# or
+> cleanup-untagged --dry-run
+```
+
+The `--dry-run` flag is optional and can be used to see what commands would be executed without actually executing them.
+
+See the [`apps CLI reference`](../cli/miscellaneous-commands/apps/index.mdx) for more detailed usage information.
+
+# Custom config
+
+By default Resoto passes the app a configuration that corresponds to the app name.
+
+For example when installing an app named `foobar` Resoto will create a default config named `resoto.apps.foobar`. If you would like to run the app with an alternative config you can specify the config name using the `--config` argument.
+
+Example:
+
+```
+> apps install foobar
+> config copy resoto.apps.foobar my.configs.foobar-dev
+> apps run foobar --config my.configs.foobar-dev
+# or
+> foobar --config my.configs.foobar-dev
+```
+
+## How safe are Resoto infrastructure apps?
+
+An infrastructure app can not execute any Resoto commands directly. Instead, it generates Resoto commands which are then executed by Resoto. This means when you `--dry-run` an infrastructure app, you can see exactly what commands would be executed.
+
+An app has reading access to the Resoto Infrastructure Graph using the `search()` function. This means it can only read information about resources that are already known to Resoto but not change them. To change resources, an app has to generate a Resoto command that does so.

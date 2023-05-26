@@ -1,48 +1,18 @@
-# Infrastructure Apps
+---
+sidebar_label: Development
+---
 
-Infrastructure apps are low-code apps that can be installed on Resoto to extend its functionality. They can be used to perform simple tasks such as cleaning up untagged resources, finding abandoned load balancers or sending notifications to Slack, Discord or PagerDuty.
-
-## What is an Infrastructure App and how does it work?
+# Developing Resoto Infrastructure Apps
 
 An infrastructure app is a [Jinja template](https://jinja.palletsprojects.com/) that generates one or more Resoto commands which are then executed by Resoto one after the other.
 
-## How do I find and install an Infrastructure App?
+Check out the [Resoto Apps git repository](https://github.com/someengineering/resoto-apps) for a list of apps.
 
-Using the [`apps`](cli/miscellaneous-commands/apps/index.mdx) command you can search for apps and install them:
-
-```bash title="Searching for apps"
-> apps search cleanup
-```
-
-```bash title="Installing an app"
-> apps install cleanup-untagged
-```
-
-```bash title="Running an app"
-> apps run cleanup-untagged --dry-run
-# or
-> cleanup-untagged --dry-run
-```
-
-The `--dry-run` flag is optional and can be used to see what commands would be executed without actually executing them.
-
-See the [`apps CLI reference`](cli/miscellaneous-commands/apps/index.mdx) for more detailed usage information.
-
-## How safe are Resoto infrastructure apps?
-
-An infrastructure app can not execute any Resoto commands directly. Instead, it generates Resoto commands which are then executed by Resoto. This means when you `--dry-run` an infrastructure app, you can see exactly what commands would be executed.
-
-An app has reading access to the Resoto Infrastructure Graph using the `search()` function. This means it can only read information about resources that are already known to Resoto but not change them. To change resources, an app has to generate a Resoto command that does so.
-
-## How can I develop my own infrastructure apps?
-
-Check out the [Resoto Apps git repository](https://github.com/someengineering/resoto-apps) for a list of existing apps.
-
-Using [`resotoappbundler`](https://github.com/someengineering/resotoappbundler) (`pip install resotoappbundler`) you can bundle and dry-run (`resotoapprunner`) your app locally.
+Using [`resotoappbundler`](https://github.com/someengineering/resotoappbundler) (`pip install resotoappbundler`) you can bundle and dry-run (using `resotoapprunner`) your app locally.
 
 `resotoappbundler` takes one or more Resoto app directories and bundles them into a single JSON file. This file can be hosted on any http server and used as an app index URL.
 
-### Example Development Workflow
+## Example Development Workflow
 
 An example that would set up a new Python virtual env, install Resoto App Bundler, clone the Resoto Apps repository and bundle all apps into an `index.json` file:
 
@@ -71,17 +41,19 @@ Within Resoto Shell you can then install the app using the `app install` command
 
 During local development the index-url can also be `file://...` to point to a local json file.
 
-### Extra functions and variables not part of standard Jinja
+## Extra functions and variables not part of standard Jinja
 
 A Resoto Infrastructure App has access to a couple of extras that are not part of the standard Jinja library:
 
 - `search()` - Search the Resoto Graph for resources. Returns a generator that yields resources (and edges if requested).
 - `parse_duration()` - Parse a duration string (e.g. `2d4h` or `7 weeks`) into a timedelta object that can be compared.
-- `config` - The app configuration.
-- `args` - The command line arguments passed to the app if any.
-- `stdin` - A generator representing the standard input passed to the app if any.
+- `config` - The app configuration (if any).
+- `args` - The command line arguments passed to the app (if any).
+- `stdin` - A generator representing the standard input passed to the app (if any).
 
-### Directory Layout
+Resoto Infrastructure Apps also have access to the [Expression Statement](https://jinja.palletsprojects.com/en/3.0.x/extensions/#expression-statement) and [Loop Controls](https://jinja.palletsprojects.com/en/3.0.x/extensions/#loop-controls) Jinja extensions.
+
+## Directory Layout
 
 An infrastructure app is a directory that contains the following files:
 
@@ -90,7 +62,7 @@ An infrastructure app is a directory that contains the following files:
 - `app.jinja2` - A Jinja template that generates Resoto commands.
 - `app.svg` - A vector graphics icon for the app.
 
-### App Manifest
+## App Manifest
 
 The app manifest is a YAML file that contains the following fields:
 
@@ -106,9 +78,9 @@ The app manifest is a YAML file that contains the following fields:
 - `config_schema` - The configuration schema of the app.
 - `args_schema` - The command line arguments schema of the app.
 
-### A couple of example apps
+## A couple of example apps
 
-#### A simple app that executes a static search with no dynamic code
+### A simple app that executes a static search with no dynamic code
 
 ```jinja title="app.jinja2"
 search /metadata.expires < "@NOW@" | clean "Resource is expired"
@@ -128,7 +100,7 @@ config_schema:
 args_schema:
 ```
 
-#### An app that cleans up abandoned AWS CloudWatch Instance Alarms
+### An app that cleans up abandoned AWS CloudWatch Instance Alarms
 
 ```jinja title="app.jinja2"
 {%- set config = config["cleanup_aws_alarms"] %}
@@ -165,7 +137,7 @@ config_schema:
 args_schema:
 ```
 
-#### A Discord app that sends a message to a Discord channel
+### A Discord app that sends a message to a Discord channel
 
 ```jinja title="app.jinja2"
 {%- set config = config["discord"] %}

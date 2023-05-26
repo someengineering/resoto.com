@@ -456,8 +456,8 @@ const config = {
         contextualSearch: true,
       },
       prism: {
-        theme: require('prism-react-renderer/themes/github'),
-        darkTheme: require('./src/utils/prismDark.js'),
+        theme: require('prism-react-renderer').themes.github,
+        darkTheme: require('prism-react-renderer').themes.dracula,
         additionalLanguages: [
           'csv',
           'ini',

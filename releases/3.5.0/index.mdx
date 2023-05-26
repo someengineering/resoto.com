@@ -1,0 +1,57 @@
+---
+date: 2023-05-26
+---
+
+# 3.5.0
+
+## What's Changed
+
+### Features
+
+- [`19dd08c3`](https://github.com/someengineering/resoto/commit/19dd08c3) <span class="badge badge--secondary">resotocore</span> Support aliases for app run <app_name> (#1604)
+- [`2cdf11fc`](https://github.com/someengineering/resoto/commit/2cdf11fc) <span class="badge badge--secondary">resoto</span> Bump ui version to 3.5.0 (#1605)
+- [`bcd558c4`](https://github.com/someengineering/resoto/commit/bcd558c4) <span class="badge badge--secondary">resoto</span> Remove redundant core feedback calls and make some cleanup info log level (#1600)
+- [`8a419dc6`](https://github.com/someengineering/resoto/commit/8a419dc6) <span class="badge badge--secondary">resotocore</span> Automated Graph Snapshots (#1589)
+- [`f392d017`](https://github.com/someengineering/resoto/commit/f392d017) <span class="badge badge--secondary">resotocore</span> UML Model sort properties by name (#1595)
+- [`93d19cd5`](https://github.com/someengineering/resoto/commit/93d19cd5) <span class="badge badge--secondary">resotolib</span> Add `stdin_generator` functions (#1584)
+- [`d277a779`](https://github.com/someengineering/resoto/commit/d277a779) <span class="badge badge--secondary">resotocore</span> Config copy command (#1583)
+- [`49731535`](https://github.com/someengineering/resoto/commit/49731535) <span class="badge badge--secondary">resotocore</span> Graphs/Snapshots cli commands (#1573)
+- [`f84ea851`](https://github.com/someengineering/resoto/commit/f84ea851) <span class="badge badge--secondary">resotocore</span> Implement user login (#1551)
+- [`fe4ee31b`](https://github.com/someengineering/resoto/commit/fe4ee31b) <span class="badge badge--secondary">gcp</span> Use next gen collector (#1528)
+
+### Fixes
+
+- [`760b1d90`](https://github.com/someengineering/resoto/commit/760b1d90) <span class="badge badge--secondary">resotocore</span> Fix infra apps aliases and error reporting (#1610)
+- [`59a0c227`](https://github.com/someengineering/resoto/commit/59a0c227) <span class="badge badge--secondary">resotocore</span> Create parent directory if not existent (#1609)
+- [`f751e85b`](https://github.com/someengineering/resoto/commit/f751e85b) <span class="badge badge--secondary">resotocore</span> Fix kwargs (#1608)
+- [`93c6f8c7`](https://github.com/someengineering/resoto/commit/93c6f8c7) <span class="badge badge--secondary">resotocore</span> Fix the argument handling for the infrastructure apps (#1607)
+- [`6371ca74`](https://github.com/someengineering/resoto/commit/6371ca74) <span class="badge badge--secondary">aws</span> Always set atime/mtime for ec2 volumes (#1603)
+- [`fe44085b`](https://github.com/someengineering/resoto/commit/fe44085b) <span class="badge badge--secondary">resotocore</span> Allow benchmark configuration change (#1602)
+- [`f98c5d1e`](https://github.com/someengineering/resoto/commit/f98c5d1e) <span class="badge badge--secondary">plugins/digitalocean</span> Fix region extraction (#1601)
+- [`0c02cb25`](https://github.com/someengineering/resoto/commit/0c02cb25) <span class="badge badge--secondary">docker</span> Build all Python packages in one go (#1599)
+- [`39502972`](https://github.com/someengineering/resoto/commit/39502972) <span class="badge badge--secondary">resotocore</span> Serve debug endpoints only when debug is enabled (#1591)
+- [`02786ef3`](https://github.com/someengineering/resoto/commit/02786ef3) <span class="badge badge--secondary">resotoworker</span> Fix the pagination (#1592)
+- [`9ec12672`](https://github.com/someengineering/resoto/commit/9ec12672) <span class="badge badge--secondary">resotoshell</span> Use http uri and trust certificate (#1588)
+- [`052e934d`](https://github.com/someengineering/resoto/commit/052e934d) <span class="badge badge--secondary">plugins/gcp</span> Fix wrong edge direction instance->disk (#1586)
+- [`e7223821`](https://github.com/someengineering/resoto/commit/e7223821) <span class="badge badge--secondary">resotoworker</span> Write home directory files securely (#1585)
+- [`b8559482`](https://github.com/someengineering/resoto/commit/b8559482) <span class="badge badge--secondary">resotoworker</span> Create path of `write_files_to_home_dir` config files (#1582)
+- [`3dde4f1e`](https://github.com/someengineering/resoto/commit/3dde4f1e) <span class="badge badge--secondary">resotocore</span> Model API (#1581)
+- [`44ba6602`](https://github.com/someengineering/resoto/commit/44ba6602) <span class="badge badge--secondary">resotocore</span> Model API (#1580)
+
+### Chores
+
+- [`7c55677e`](https://github.com/someengineering/resoto/commit/7c55677e) <span class="badge badge--secondary">resoto</span> Bump 3.5.0 (#1606)
+- [`119f4483`](https://github.com/someengineering/resoto/commit/119f4483) <span class="badge badge--secondary">ci</span> Update publish CI workflow (#1594)
+- [`1b9c315a`](https://github.com/someengineering/resoto/commit/1b9c315a) <span class="badge badge--secondary">resoto</span> Bump libraries (#1598)
+- [`106f028a`](https://github.com/someengineering/resoto/commit/106f028a) <span class="badge badge--secondary">resotoeventlog</span> Remove EventLog (#1596)
+- [`c3a146e8`](https://github.com/someengineering/resoto/commit/c3a146e8) <span class="badge badge--secondary">ci</span> Update publish CI workflow to reflect website changes (#1587)
+- [`234551b5`](https://github.com/someengineering/resoto/commit/234551b5) <span class="badge badge--secondary">resoto</span> Bump 3.4.3 (#1579)
+
+<!--truncate-->
+
+## Docker Images
+
+- `somecr.io/someengineering/resotocore:3.5.0`
+- `somecr.io/someengineering/resotoworker:3.5.0`
+- `somecr.io/someengineering/resotoshell:3.5.0`
+- `somecr.io/someengineering/resotometrics:3.5.0`

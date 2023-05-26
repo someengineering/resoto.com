@@ -165,6 +165,24 @@ module.exports = [
     items: [
       {
         type: 'doc',
+        id: 'version-3.X/reference/api/deprecated-get-the-currently-defined-model',
+        label: '[Deprecated] Get the currently defined model.',
+        className: 'menu__list-item--deprecated api-method get',
+      },
+      {
+        type: 'doc',
+        id: 'version-3.X/reference/api/deprecated-add-or-update-the-current-defined-model',
+        label: '[Deprecated] Add or update the current defined model.',
+        className: 'menu__list-item--deprecated api-method patch',
+      },
+      {
+        type: 'doc',
+        id: 'version-3.X/reference/api/deprecated-get-the-currently-defined-model-as-svg-uml-image',
+        label: '[Deprecated] Get the currently defined model as svg uml image.',
+        className: 'menu__list-item--deprecated api-method get',
+      },
+      {
+        type: 'doc',
         id: 'version-3.X/reference/api/get-the-currently-defined-model',
         label: 'Get the currently defined model.',
         className: 'api-method get',
@@ -484,6 +502,49 @@ module.exports = [
         id: 'version-3.X/reference/api/proxy-request-to-a-configured-tsdb-server',
         label: 'Proxy request to a configured tsdb server.',
         className: 'api-method patch',
+      },
+    ],
+  },
+  {
+    type: 'category',
+    label: 'authorization',
+    link: { type: 'doc', id: 'version-3.X/reference/api/authorization' },
+    items: [
+      {
+        type: 'doc',
+        id: 'version-3.X/reference/api/get-the-public-keys-of-the-configured-jwt-issuer',
+        label: 'Get the public keys of the configured JWT issuer.',
+        className: 'api-method get',
+      },
+      {
+        type: 'doc',
+        id: 'version-3.X/reference/api/this-endpoint-is-used-to-login-the-user',
+        label: 'This endpoint is used to login the user.',
+        className: 'api-method get',
+      },
+      {
+        type: 'doc',
+        id: 'version-3.X/reference/api/this-endpoint-is-used-to-create-the-first-user',
+        label: 'This endpoint is used to create the first user.',
+        className: 'api-method post',
+      },
+      {
+        type: 'doc',
+        id: 'version-3.X/reference/api/this-endpoint-is-used-to-authenticate-the-user',
+        label: 'This endpoint is used to authenticate the user.',
+        className: 'api-method post',
+      },
+      {
+        type: 'doc',
+        id: 'version-3.X/reference/api/this-endpoint-is-used-to-get-the-user-information',
+        label: 'This endpoint is used to get the user information.',
+        className: 'api-method get',
+      },
+      {
+        type: 'doc',
+        id: 'version-3.X/reference/api/this-endpoint-is-used-to-renew-a-jwt-that-is-about-to-expire',
+        label: 'This endpoint is used to renew a JWT that is about to expire.',
+        className: 'api-method get',
       },
     ],
   },

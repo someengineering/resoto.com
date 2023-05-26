@@ -7135,10 +7135,10 @@ fork-ts-checker-webpack-plugin@^6.5.0:
     semver "^7.3.2"
     tapable "^1.0.0"
 
-formik@2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/formik/-/formik-2.3.0.tgz#abcb316480934da92f5df9da606f3cf6a653c762"
-  integrity sha512-Z6v+8QV2jphQY8DPax3mmuH5swBq5Mlog7FPdeW3DpkHINO8a51sY+Y/Xo6aenUMjN54vLukV5AOSgBvRdwkxA==
+formik@2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/formik/-/formik-2.3.2.tgz#9a911a05e9a6a6790d81fcd44f9e3df4d496956b"
+  integrity sha512-pdPurzQ+JGGj9jDDPUz4O3nrNyduWu1P4m1w5kVLrUeyqktoDVHf9KId9eNeIjLnCUSGlkUnAnJ/F7e5Xg3XYg==
   dependencies:
     deepmerge "^2.1.1"
     hoist-non-react-statics "^3.3.0"

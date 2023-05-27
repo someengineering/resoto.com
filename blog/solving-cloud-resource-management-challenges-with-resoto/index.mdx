@@ -1,7 +1,7 @@
 ---
 date: 2022-10-14
 authors: [anja]
-tags: [cloud asset inventory, aws]
+tags: [cloud asset inventory, data model, resource tagging, resoto cli, aws]
 ---
 
 # Solving Cloud Resource Management Challenges with Resoto
@@ -66,11 +66,11 @@ Would you like to know how many [subscriptions of an SNS topic](https://awscli.a
 
 There are even more inconsistencies to be found in representations of date and time data. Are you interested in the age of an <abbr title="Elastic Compute Cloud">EC2</abbr> instance or a Lambda function? You get an ISO-format datetime string. But if you want to know when an <abbr title="Simple Queue Service">SQS</abbr> queue was created? You instead have to make do with a timestamp in epoch time.
 
-While it is certainly possible to work with this data, you need specific, contextual knowledge to do so… _unless you're using Resoto_. **Resoto provides consistent data types across all resources.**
+While it is certainly possible to work with this data, you need specific, contextual knowledge to do so… _unless you're using Resoto_. [**Resoto provides consistent data types across all resources.**](/docs/reference/unified-data-model)
 
 ## Cloud Resource Tagging
 
-We briefly touched on resource tagging before. If done diligently, tagging strategies can make a real difference to infrastructure sprawl. Tagging <abbr title="Amazon Web Services">AWS</abbr> Resources can follow a plethora of patterns though.
+If done diligently, [resource tagging](/docs/concepts/resource-management/tagging) strategies can make a real difference to infrastructure sprawl. Tagging [<abbr title="Amazon Web Services">AWS</abbr> resources](/docs/reference/unified-data-model/aws) can follow a plethora of patterns though.
 
 `tag-resource`, `tag-queue`, `add-tags-to-resource`, `create-or-update-tags`, `update-tags-for-resource`, etc.… the options are almost as numerous as the services. Do you have to provide the tags as an array or as a hashmap? Can you do multiple tags at once or is it one-by-one only?
 
@@ -80,7 +80,7 @@ The workload of tagging existing resources can blow out of proportion really qui
 
 At this point I'm sure you're guessing it already: **you don't have to worry about any of this when you use Resoto to apply tags.**
 
-Below is a comparison of how to add an `owner: jenkins` tag to an <abbr title="Elastic Compute Cloud">EC2</abbr> instance or <abbr title="Simple Queue Service">SQS</abbr> queue in the <abbr title="Amazon Web Services">AWS</abbr> CLI versus in Resoto:
+Below is a comparison of how to add an `owner: jenkins` tag to an [<abbr title="Elastic Compute Cloud">EC2</abbr> instance](/docs/reference/unified-data-model/aws#aws_ec2_instance) or [<abbr title="Simple Queue Service">SQS</abbr> queue](/docs/reference/unified-data-model/aws#aws_sqs_queue) in the <abbr title="Amazon Web Services">AWS</abbr> CLI versus in [Resoto's CLI](/docs/reference/cli):
 
 :::tip EC2 Instance
 
@@ -108,7 +108,7 @@ Below is a comparison of how to add an `owner: jenkins` tag to an <abbr title="E
 
 ## <abbr title="too long; didn't read">TL;DR</abbr>
 
-All of these examples are taken from our experiences implementing Resoto's <abbr title="Amazon Web Services">AWS</abbr> collector. Wading through the <abbr title="Amazon Web Services">AWS</abbr> CLI documentation and attempting to obtain the desired data has resulted in reactions ranging from 🤨 all the way to 🤬.
+All of these examples are taken from our experiences implementing Resoto's [<abbr title="Amazon Web Services">AWS</abbr> collector](/docs/how-to-guides/data-sources/collect-aws-resource-data). Wading through the <abbr title="Amazon Web Services">AWS</abbr> CLI documentation and attempting to obtain the desired data has resulted in reactions ranging from 🤨 all the way to 🤬.
 
 We dove deep into the details of the responses of each API call and CLI command. But should this be necessary to get meaningful data? Should all of this niche knowledge be required?
 

@@ -1,7 +1,7 @@
 ---
 date: 2023-04-12
 authors: [lars]
-tags: [cloud spend]
+tags: [cloud asset inventory, cloud spend, automation, resource cleanup]
 ---
 
 # How D2iQ Reduced Annual Cloud Spend by $5.4M Using Resoto
@@ -38,27 +38,27 @@ At peak, D2iQ was spending $561,000 on [<abbr title="Amazon Web Services">AWS</a
 
 ## The Solution
 
-A key requirement was to not impact developer velocity and continually consume engineering resources for cleanup. Tobi also wanted to maintain developers' ability to freely spin up new resources and run tests, and not introduce rigid processes that would kill productivity. D2iQ's SRE team also wanted visibility into their entire cloud inventory and how resources are related, and to regain control over the lifecycle of each resource.
+A key requirement was to not impact developer velocity and continually consume engineering resources for [cleanup](/docs/concepts/resource-management/cleanup). Tobi also wanted to maintain developers' ability to freely spin up new resources and run tests, and not introduce rigid processes that would kill productivity. D2iQ's SRE team also wanted visibility into their entire cloud inventory and how resources are related, and to regain control over the lifecycle of each resource.
 
-To accomplish these goals, D2iQ deployed Resoto. Resoto collects data from D2iQ's cloud accounts and takes a full inventory snapshot every hour. Snapshot data is available for users to search, aggregate, and ask questions across clouds, accounts, and regions.
+**To accomplish these goals, D2iQ deployed Resoto.** Resoto collects data from D2iQ's cloud accounts and [takes a full inventory snapshot every hour](/docs/concepts/cloud-data-sync). Snapshot data is available for users to [search](/docs/how-to-guides/search), aggregate, and ask questions across clouds, accounts, and regions.
 
 The SRE team split the work to clean up their cloud infrastructure into three phases, with a 30/60/90-day plan:
 
 - **30 Days: Get in Control**
 
-  The SRE team created a baseline cloud inventory, to get a complete view of all resources. They used Resoto Metrics to define inventory metrics to track their infrastructure's rate of change and efficiency. The metrics also served to measure the benefits of their work.
+  The SRE team created a baseline [cloud inventory](../cloud-asset-inventory/index.mdx) to get a complete view of all resources. They used [Resoto Metrics](/docs/reference/components/metrics) to define inventory metrics to track their infrastructure's rate of change and efficiency. The metrics also served to measure the benefits of their work.
 
 - **60 Days: Remove Cost**
 
-  Next, the team identified unused resources they could batch delete. Cleanup of expensive unused resources had already started during the first 30 days. Now the team attacked the long tail of "smaller" zombie resources.
+  Next, the team identified unused resources they could batch delete. [Cleanup](/docs/concepts/resource-management/cleanup) of expensive unused resources had already started during the first 30 days. Now the team attacked the long tail of "smaller" zombie resources.
 
 - **90 Days: Prevent Future Waste**
 
-  The SRE team re-organized the D2iQ cloud accounts and resized test infrastructure to balance it with actual capacity needs. They also introduced a logical separation of workloads. New resources in these accounts were all tagged and associated with a team or project.
+  The SRE team re-organized the D2iQ cloud accounts and resized test infrastructure to balance it with actual capacity needs. They also introduced a logical separation of workloads. New resources in these accounts were all [tagged](/docs/concepts/resource-management/tagging) and associated with a team or project.
 
-The new tag policy meant developers were now required to use two mandatory tags for every resource—an owner and an expiration tag. The expiration date was specific to a workload and account, and limited to development accounts. The goal of the new tag policy was to introduce accountability, without adding any complexity.
+The new [tag policy](../effective-cloud-management-tagging-policies/index.mdx) meant developers were now required to use two mandatory tags for every resource—an owner and an expiration tag. The expiration date was specific to a workload and account, and limited to development accounts. The goal of the new tag policy was to introduce accountability, without adding any complexity.
 
-To enforce the new policy, D2iQ started using Resoto's action commands that could perform updates on resources.
+To enforce the new policy, D2iQ started using [Resoto's action commands](/docs/reference/cli/action-commands) to perform updates on resources.
 
 - Whenever a resource was missing one of the two required tags, within an hour after its creation Resoto would catch and delete it automatically.
 
@@ -84,7 +84,7 @@ The savings were the primary target, but they had unexpected secondary effects. 
 
 **The successes that D2iQ experienced with Resoto didn't happen overnight and required a lot of work by our engineers to fix bugs and introduce new features.**
 
-The D2iQ team was the first to not just use Resoto passively to explore and understand their cloud inventory, but also to take infrastructure data and use it as an input to write commands and automations.
+The D2iQ team was the first to not just use Resoto passively to explore and understand their [cloud inventory](../cloud-asset-inventory/index.mdx), but also to take infrastructure data and use it as an input to write commands and [automations](/docs/concepts/automation).
 
 Here are some of our lessons learned:
 
@@ -94,13 +94,13 @@ Here are some of our lessons learned:
 
 - **Developer Education**
 
-  At first, developers met the new tagging policy and automatic deletion of resources (in test) by a certain date with skepticism and resistance. That required education upfront on the "why," and constant reminders—yet also no exceptions. But developers turned from "skeptics" into "believers," because Resoto removed non-productive time from their work that they could reinvest into building and testing.
+  At first, developers met the new [tagging policy](../effective-cloud-management-tagging-policies/index.mdx) and automatic deletion of resources (in test) by a certain date with skepticism and resistance. That required education upfront on the "why," and constant reminders—yet also no exceptions. But developers turned from "skeptics" into "believers," because Resoto removed non-productive time from their work that they could reinvest into building and testing.
 
 - **Incremental Improvements**
 
-  Don't start with a "big bang." Despite all caution, you will end up with "false positives" and delete resources that may look like they serve no purpose, but are still in use. That's where CEO support matters as well. It's best to start with exploration, and then add one clean-up job for one resource type at a time. Incremental improvements compound and create trust in the approach.
+  Don't start with a "big bang." Despite all caution, you will end up with "false positives" and delete resources that may look like they serve no purpose, but are still in use. That's where CEO support matters as well. It's best to start with exploration, and then add one cleanup [job](/docs/concepts/automation#jobs) for one resource type at a time. Incremental improvements compound and create trust in the approach.
 
-Our conclusion is that tactical clean up efforts don't work—your cloud bill will always creep up again. You have to change the way your developers work with the cloud, and make cost awareness and spend targets a KPI.
+Our conclusion is that tactical clean up efforts don't work—your cloud bill will always creep up again. You have to change the way your developers work with the cloud, and make cost awareness and spend targets a <abbr title="key performance indicator">KPI</abbr>.
 
 ## Summary
 

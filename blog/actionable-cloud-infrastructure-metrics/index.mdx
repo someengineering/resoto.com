@@ -1,10 +1,10 @@
 ---
 date: 2022-06-09
 authors: [lukas]
-tags: [cloud asset inventory, metrics]
+tags: [cloud asset inventory, metrics, data visualization, resoto cli, search]
 ---
 
-# Building Actionable Cloud Infrastructure Metrics
+# Actionable Cloud Infrastructure Metrics
 
 Understanding what's running in your cloud infrastructure is important for a number of reasons—for example, security, compliance, and cost.
 
@@ -18,7 +18,7 @@ Even those spinning up cloud resources might only be aware of their small slice 
 
 <!--truncate-->
 
-Resoto provides a [searchable](/docs/reference/search) snapshot of the current state of your cloud infrastructure, and can [automatically react to state changes](/docs/concepts/automation). Resoto also allows you to [aggregate](/docs/reference/search/aggregation) and [visualize](/docs/reference/notebook) this data, as my colleagues [Matthias](https://github.com/aquamatthias) and [Nikita](https://github.com/meln1k) described in previous [blog](/blog/aggregating-search-data) [posts](/blog/resoto-meets-jupyter-notebook).
+Resoto provides a [searchable](/docs/reference/search) snapshot of the current state of your cloud infrastructure, and can [automatically react to state changes](/docs/concepts/automation). Resoto also allows you to [aggregate](../aggregating-search-data/index.mdx) and [visualize](../resoto-meets-jupyter-notebook/index.mdx) this data.
 
 Here's an example of a heatmap that allows you to immediately see outliers (like when an account suddenly starts using a large number of expensive, high-core-count instances):
 
@@ -72,7 +72,7 @@ A [node](/docs/concepts/asset-inventory-graph#nodes) is essentially an indexed J
 
 ### Search
 
-Among other things, Resoto allows you to [search this metadata](/blog/resoto-search-101). Here's an example:
+Among other things, Resoto allows you to [search](/docs/reference/search) this metadata. Here's an example:
 
 ```bash
 > search is(aws_ec2_instance) and instance_cores > 4
@@ -92,7 +92,7 @@ The search returned a list of all EC2 instances with more than 4 cores. There ar
 
 ### Aggregation
 
-[Aggregating and grouping the results of a search](/blog/aggregating-search-data) creates the samples of a metric.
+[Aggregating and grouping search results](/docs/reference/search/aggregation) creates the samples of a metric.
 
 ```bash
 > search aggregate(/ancestors.cloud.reported.name as cloud, /ancestors.account.reported.name as account, /ancestors.region.reported.name as region, instance_type as type, instance_status as status: sum(1) as instances_total): is(instance)
@@ -367,7 +367,7 @@ If we repeat the above steps for [all of the metrics present in the configuratio
 
 This is the actual production dashboard from a real Resoto user. 🥰
 
-The dashboard shows the amount of compute and storage currently in use, as well as the associated cost. It also graphs volumes that are _not_ in use and pending cleanup by Resoto. They also have dashboards for quota limits and network-related stats, which individual teams use to monitor their cloud usage by exposing custom tags as [Prometheus](https://prometheus.io) labels and filtering by team or project.
+The dashboard shows the amount of compute and storage currently in use, as well as the associated cost. It also graphs volumes that are _not_ in use and pending [cleanup](/docs/concepts/resource-management/cleanup) by Resoto. They also have dashboards for quota limits and network-related stats, which individual teams use to monitor their cloud usage by exposing custom tags as [Prometheus](https://prometheus.io) labels and filtering by team or project.
 
 This user even [contributed their Grafana dashboard templates to our GitHub repository](https://github.com/someengineering/resoto/tree/main/contrib/grafana-dashboards), so you don't have to create them yourself. But if you want to customize it, you now know how!
 

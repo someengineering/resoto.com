@@ -50,7 +50,7 @@ export default function ContactForm(): JSX.Element {
   }, [values.name]);
 
   return (
-    <section className={homepageStyles.section}>
+    <section className={(homepageStyles.section, styles.section)}>
       <div className={clsx(homepageStyles.inner, styles.flex)}>
         <div>
           <h2 className={styles.heading}>Contact Us</h2>

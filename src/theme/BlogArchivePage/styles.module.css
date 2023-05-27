@@ -21,6 +21,7 @@ html[data-theme='dark'] .hero {
 }
 
 .year {
+  font-size: var(--ifm-h1-font-size);
   background-image: linear-gradient(
     135deg,
     #e373f5,
@@ -47,9 +48,7 @@ html[data-theme='dark'] .year {
 }
 
 .cardContainer {
-  --ifm-link-color: var(--ifm-color-emphasis-800);
-  --ifm-link-hover-color: var(--ifm-color-emphasis-700);
-  --ifm-link-hover-decoration: none;
+  color: var(--ifm-color-emphasis-800);
   box-shadow: 0 1.5px 3px 0 rgb(0 0 0 / 15%);
   border: 1px solid var(--ifm-color-emphasis-200);
   transition: all var(--ifm-transition-fast) ease;
@@ -57,8 +56,16 @@ html[data-theme='dark'] .year {
 }
 
 .cardContainer:hover {
+  color: var(--ifm-color-emphasis-700);
+  text-decoration: none;
   border-color: var(--ifm-color-primary);
   box-shadow: 0 3px 6px 0 rgb(0 0 0 / 20%);
+}
+
+.cardContainer a {
+  /* --ifm-link-color: var(--ifm-color-emphasis-800);
+  --ifm-link-hover-color: var(--ifm-color-emphasis-700);
+  --ifm-link-hover-decoration: none; */
 }
 
 .metadata {

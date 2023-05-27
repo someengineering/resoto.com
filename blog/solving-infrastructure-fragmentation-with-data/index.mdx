@@ -1,7 +1,7 @@
 ---
 date: 2023-03-31
 authors: [lars]
-tags: [infrastructure, fragmentation]
+tags: [infrastructure fragmentation, cloud asset inventory, resoto cli, search, resource cleanup, data model, graph database]
 ---
 
 # Solving Infrastructure Fragmentation with Data
@@ -110,8 +110,8 @@ Here's an example of what a search looks like in Resoto:
 
 There are two major components in the above command:
 
-- a filtered search for volumes, and
-- the `clean` command to mark those volumes for cleanup.
+- a [filtered search](/docs/reference/search/filters) for `volume`s, and
+- the [`clean` command](/docs/reference/cli/action-commands/clean) to mark those `volume`s for [cleanup](/docs/concepts/resource-management/cleanup).
 
 The `search is(volume)` statement searches for all unused (`available`) EBS volumes created at least 30 days ago (`age`) and without any I/O during the past 7 days. The search determines I/O by looking at the last time the resource has either been accessed (`last_access`). We use the 30 days / 7 days combination as a proxy to determine that this volume is unused and can safely be cleaned.
 

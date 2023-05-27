@@ -1,6 +1,7 @@
 ---
 date: 2022-12-23
 authors: [matthias]
+tags: [cloud asset inventory, resoto cli, graph database]
 ---
 
 # What We Can Learn from History
@@ -38,7 +39,7 @@ These tools give insights into resource changes; but if your application is spre
 
 ## Resoto's `history` Command
 
-**Resoto maintains a record of your resources in an asset inventory.** Resoto scrapes your infrastructure at regular intervals and tracks the configuration of collected resources. Whenever a change to a resource is detected, Resoto updates its internal representation of the resource and captures the change as an event in its database:
+**Resoto maintains a record of your resources in an [asset inventory graph](/docs/concepts/asset-inventory-graph).** Resoto [scrapes your infrastructure at regular intervals](/docs/concepts/cloud-data-sync) and tracks the configuration of collected resources. Whenever a change to a resource is detected, Resoto updates its internal representation of the resource and captures the change as an event in its graph database:
 
 ![Diagram illustrating how Resoto records resource changes](./img/history-events.png)
 
@@ -137,7 +138,7 @@ We can also count changes by type to see how many resources have been created, u
 # highlight-end
 ```
 
-We can even aggregate by resource owner and event type if you have a tagging policy in place where resources have `owner` tags:
+We can even aggregate by resource owner and event type if you have a [tagging policy](../effective-cloud-management-tagging-policies/index.mdx) in place where resources have `owner` tags:
 
 ```bash title="Count changes in the last week by owner and type"
 > history --after 7d | aggregate tags.owner, /change: sum(1) as count
@@ -167,7 +168,7 @@ We can even aggregate by resource owner and event type if you have a tagging pol
 
 ## Looking Ahead
 
-We plan to continue improving upon and extending the capabilities of the `history` command.
+We plan to continue improving upon and extending the capabilities of the [`history` command](/docs/reference/cli/search-commands/history).
 
 For example, we would like to provide a "diff" view that shows the difference between two resource configurations, so that it is possible to not only see changes and their resulting configurations but also the delta of the before and after.
 
@@ -177,4 +178,4 @@ The other feature we would like to introduce is the ability to generate a comple
 
 If you want insights into the who, what, when, and where of infrastructure changes across your clouds, accounts, and regions, why don't you give Resoto a try?
 
-Resoto is free and open-source. Check out the [Resoto documentation](/docs) for [install instructions](/docs/getting-started/install-resoto), [how-to guides](/docs/how-to-guides), and more.
+Resoto is free and open-source. Check out the [docs](/docs) for [installation instructions](/docs/getting-started/install-resoto), [how-to guides](/docs/how-to-guides), and more.

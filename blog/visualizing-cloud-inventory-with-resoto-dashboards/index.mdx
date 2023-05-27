@@ -1,7 +1,7 @@
 ---
 date: 2023-02-06
 authors: [pablo]
-tags: [cloud asset inventory, ui, dashboard, visualization]
+tags: [resoto ui, cloud asset inventory, data visualization]
 ---
 
 # Visualizing Cloud Inventory with Resoto Dashboards
@@ -10,7 +10,7 @@ Resoto makes it easy to create an [inventory of your cloud infrastructure](../cl
 
 Resoto also offers simple and human-friendly ways to view this data—you can [export the data to Google Sheets](/docs/how-to-guides/data-export/export-data-to-google-sheets) to create charts or use [Resoto Notebook](/docs/reference/notebook) for interactive search visualization and analysis.
 
-**Today, we are introducing a new way to visualize this data: Resoto Dashboards.**
+**Today, we are introducing a new way to visualize this data: [Resoto Dashboards](/docs/reference/user-interface/dashboards).**
 
 With Resoto Dashboards, your searches and queries are executed periodically and the results displayed in widgets automatically. You can also customize and organize widgets in the dashboard to keep the most important metrics always within reach. You can even share dashboards across your organization so others can access the data. And of course, you can access your dashboards anywhere you have access to your Resoto installation.
 
@@ -57,7 +57,7 @@ Double-click **Resoto Example Dashboard** to open a default dashboard with pre-c
 
 ![Example dashboard](./img/ui-example-dashboard.png)
 
-Look for the **Unused Volumes older than 1 week** table widget. As its name suggests, this widget displays a complete list of volumes with age greater than one week—useful if you want to know what resources should be marked for cleanup.
+Look for the **Unused Volumes older than 1 week** table widget. As its name suggests, this widget displays a complete list of volumes with age greater than one week—useful if you want to know what resources should be marked for [cleanup](/docs/concepts/resource-management/cleanup).
 
 Click the pencil icon in the upper-right corner of the dashboard to enter "edit mode." In edit mode, you can move, resize, and modify widgets. Notice that a pencil icon has now also appeared on each widget. Let's try editing the **Unused Volumes older than 1 week** table widget:
 
@@ -75,7 +75,7 @@ The **Volumes Sizes** chart widget shows how the size of the volumes has changed
 
 :::info
 
-This widget gets data from a Prometheus time-series database. Check out [Building Actionable Cloud Infrastructure Metrics](../building-actionable-cloud-infrastructure-metrics/index.mdx#how-metrics-are-made) for details on how to add and configure metrics.
+This widget gets data from a Prometheus time-series database. Check out [Actionable Cloud Infrastructure Metrics](../actionable-cloud-infrastructure-metrics/index.mdx) for details on how to add and configure metrics.
 
 :::
 
@@ -87,4 +87,4 @@ On the left, you again see the widget's data sources. This widget automatically 
 
 ## Conclusion
 
-This quick overview only scratches the surface of what is possible with Resoto Dashboards. We are working on adding more comprehensive information to the [Resoto Documentation](/docs). Stay tuned for more!
+This quick overview only scratches the surface of what is possible with Resoto Dashboards. We are working on adding more comprehensive information to our [docs](/docs). Stay tuned for more!

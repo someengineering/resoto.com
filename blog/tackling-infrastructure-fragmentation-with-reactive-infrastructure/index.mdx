@@ -1,7 +1,7 @@
 ---
 date: 2023-03-16
 authors: [lukas]
-tags: [reactive, infrastructure, fragmentation]
+tags: [reactive infrastructure, infrastructure fragmentation, data model]
 ---
 
 # Tackling Infrastructure Fragmentation with Reactive Infrastructure
@@ -10,11 +10,11 @@ Hi there fellow cloud enthusiast 🖖
 
 In this blog post, we'll delve into infrastructure fragmentation, exploring what it entails, why it impacts every organization utilizing the cloud, and how building a reactive infrastructure brings order to chaos.
 
-## Explaining Infrastructure Fragmentation: The Laptop Analogy
+## Infrastructure Fragmentation: A Laptop Analogy
 
-For an analogy let's take your Laptop. Over time, performance declines due to a variety of factors, including the accumulation of unnecessary files, software conflicts, and the buildup of outdated or redundant software. And despite your best cleaning efforts, after a year or two its performance is just not what it used to be and everything is a bit more cluttered and disorganized than what it was like when brand new.
+For an analogy let's take your laptop. Over time, performance declines due to a variety of factors, including the accumulation of unnecessary files, software conflicts, and the buildup of outdated or redundant software. And despite your best cleaning efforts, after a year or two its performance is just not what it used to be and everything is a bit more cluttered and disorganized than what it was like when brand new.
 
-Now instead of just you working with that Laptop, imagine there were tens, hundreds or even thousands of users. Imagine every cloud user in your organization was working on it as well. That is what your cloud infrastructure looks like.
+Now instead of just you working with that laptop, imagine there were tens, hundreds or even thousands of users. Imagine every cloud user in your organization was working on it as well. That is what your cloud infrastructure looks like.
 
 Infrastructure fragmentation, also known as cloud fragmentation or cloud sprawl, refers to the phenomenon where an organization's cloud infrastructure becomes decentralized and uncoordinated due to the widespread adoption of cloud services by independently operating teams or individuals and a lack of centralized governance.
 
@@ -24,7 +24,7 @@ Infrastructure fragmentation can create various problems, such as security issue
 
 <!--truncate-->
 
-## Tracing the Roots of Infrastructure Fragmentation
+## Roots of Infrastructure Fragmentation
 
 Infrastructure fragmentation can be caused by a variety of factors, some wanted some unwanted, but they all result in a **distribution of control**.
 
@@ -38,7 +38,7 @@ Today control over your infrastructure is fragmented across your entire organiza
 
 We gained developer velocity and are shipping more products, but in exchange gave up some control over our infrastructure to each individual part.
 
-## The Pitfalls of Distributed Control
+## Pitfalls of Distributed Control
 
 In one word, entropy.
 
@@ -51,7 +51,7 @@ Four examples:
 - Another issue is inefficiencies in resource allocation and utilization. Overprovisioning is a common occurrence, leading to wasted resources and increased costs.
 - It can also be challenging to keep track of all the different infrastructure resources in use. This can lead to a lack of visibility into the overall infrastructure.
 
-## The Silent Enemy: Infrastructure Drift
+## Infrastructure Drift
 
 Another common outcome of infrastructure fragmentation is drift. Meaning **over time more cloud resources are created than deleted** and the actual state of your cloud diverges from the desired state of your cloud, resulting in an ever increasing cloud bill.
 
@@ -118,53 +118,70 @@ Reactive Infrastructure is not a replacement for declarative infrastructure or I
 
 When properly integrated, reactive infrastructure can actually help maintaining the desired state defined in your IaC templates. By continuously monitoring and reacting to changes in real-time, reactive infrastructure can identify and remediate drift or discrepancies between your desired state and the actual state of your infrastructure. This ensures that your cloud environment remains aligned with your IaC definitions while keeping it highly adaptive to changing conditions.
 
-## Mastering Reactive Infrastructure with Resoto
+## Reactive Infrastructure with Resoto
 
-Resoto is a cloud infrastructure control plane that offers several clever features to simplify and enhance managing cloud resources at scale.
+Resoto is a cloud infrastructure control plane that offers several clever features to simplify and enhance [managing cloud resources](/docs/concepts/resource-management) at scale.
 
 The disarray depicted in the above graph image was the driving force behind Resoto's creation. Our aim was to tackle the infrastructure challenges we faced ourselves.
 
-We were no strangers to tools that identified problems in our cloud environment but offered no solutions. We envisioned a system that not only provided a comprehensive understanding of our entire cloud infrastructure but also had the ability to resolve issues and establish automations. This way, if the same problem reoccurred, automatic remediation would be in place.
+We were no strangers to tools that identified problems in our cloud environment but offered no solutions. We envisioned a system that not only provided a comprehensive understanding of our entire cloud infrastructure but also had the ability to resolve issues and establish [automations](/docs/concepts/automation). This way, if the same problem reoccurred, automatic remediation would be in place.
 
 Importantly, Resoto was designed not to be a gatekeeper that slows down developer velocity. Instead, everybody can work with the tools they know and love, while Resoto would operate in the background, monitoring everything and intervening with corrective actions when necessary.
 
-The result was a system that enabled us to search and visualize our entire infrastructure, carry out actions such as verifying, updating or deleting tags, and locating and removing abandoned or unused resources. Additionally, this system could automate all these actions, shut down sandbox environments over the weekend, and constantly monitor any changes in the infrastructure environment. If needed, it would either notify us or independently initiate corrective actions.
+The result was a system that enabled us to [search](/docs/reference/search) and visualize our entire infrastructure, carry out actions such as verifying, updating or deleting [tags](/docs/concepts/resource-management/tagging), and [locating and removing abandoned or unused resources](/docs/how-to-guides/cleanup). Additionally, this system could automate all these actions, shut down sandbox environments over the weekend, and constantly monitor any changes in the infrastructure environment. If needed, it would either notify us or independently initiate corrective actions.
 
 ![Resoto UI](./img/resoto_graph.gif)
 
 Working with Resoto involves four key stages:
 
-1. **Discovery** - Resoto enables you to explore your entire cloud infrastructure much like you would with a file explorer. Its search command helps you identify problematic resources, such as _instances that are over two years old with more than 16 cores, across all your clouds, accounts, and regions_. You can also perform full-text searches to find specific strings in resource names, descriptions, tags, labels, or other attributes, which is helpful when trying to identify _the account associated with an IP address or storage bucket_. In this initial phase, you'll acquire a more comprehensive understanding and form a clear mental model of your cloud infrastructure.
-2. **Manual Remediation** - Upon discovering problematic resources, Resoto allows you to take manual actions, like flagging them for cleanup. You can use the same search command and pipe it into the desired action, such as searching for _available volumes with last access over 30 days and cleaning them_.
-3. **Automation** - After resolving an issue, you can prevent it from recurring by creating a job using the `job add` command with the same search parameters. This job will run automatically whenever there are changes in your infrastructure.
-4. **Monitoring** - Finally, you can create a dashboard in the Resoto UI or a tool like Grafana to track metrics relevant for you. Ideally, most of your time will be spent in this stage after setting up Resoto. You can also configure alerting and notifications through Alertmanager, Discord, Slack, or even create Jira tickets automatically.
+1. **Discovery**
 
-You progress through each stage one by one, starting with discovery. Initially, there's a considerable amount to discover and explore. Once you've completed all the manual remediations and implemented automation, the majority of your time will be spent in the monitoring stage. This typically involves observing a dashboard to ensure no anomalies occur or waiting for the system to alert you. If any unexpected behavior arises, you return to the initial discovery stage to investigate the cause, address the issue, automate the solution, and resume monitoring.
+   Resoto enables you to explore your entire cloud infrastructure much like you would with a file explorer. Its search command helps you identify problematic resources, such as _instances that are over two years old with more than 16 cores, across all your clouds, accounts, and regions_. You can also perform full-text searches to find specific strings in resource names, descriptions, tags, labels, or other attributes, which is helpful when trying to identify _the account associated with an IP address or storage bucket_. In this initial phase, you'll acquire a more comprehensive understanding and form a clear mental model of your cloud infrastructure.
+
+2. **Manual Remediation**
+
+   Upon discovering problematic resources, Resoto allows you to take manual actions, like flagging them for [cleanup](/docs/concepts/resource-management/cleanup). You can use the same search command and pipe it into the desired action, such as searching for _available volumes with last access over 30 days and cleaning them_.
+
+3. **Automation**
+
+   After resolving an issue, you can prevent it from recurring by creating a [job](/docs/concepts/automation#jobs) using the [`job add` command](/docs/reference/cli/action-commands/jobs/add) with the same search parameters. This job will run automatically whenever there are changes in your infrastructure.
+
+4. **Monitoring**
+
+   Finally, you can create a [dashboard in Resoto UI](/docs/reference/user-interface/dashboards) or a tool like Grafana to track metrics relevant for you. Ideally, most of your time will be spent in this stage after setting up Resoto. You can also configure alerting and notifications through Alertmanager, Discord, Slack, or even create Jira tickets automatically.
+
+You progress through each stage one by one, starting with discovery. Initially, there's a considerable amount to discover and explore.
+
+Once you've completed all the manual remediations and implemented automation, the majority of your time will be spent in the monitoring stage. This typically involves observing a dashboard to ensure no anomalies occur or waiting for the system to alert you. If any unexpected behavior arises, you return to the initial discovery stage to investigate the cause, address the issue, automate the solution, and resume monitoring.
 
 **The goal is to put your reactive infrastructure on autopilot, with minimum interventions.**
 
 ### Unified Data Model
 
-Under the hood Resoto also does some clever things. It comes with a unified data model designed to tackle the challenges of working with multiple cloud providers and their diverse resource types, attributes, and naming conventions. By employing a unified data model with support for static typing and inheritance, Resoto ensures a consistent and straightforward way to interact with resources across multiple cloud platforms.
+Under the hood Resoto also does some clever things. It comes with a [unified data model](/docs/reference/unified-data-model) designed to tackle the challenges of working with multiple cloud providers and their diverse resource types, attributes, and naming conventions.
 
-For instance, Resoto recognizes both `aws_ec2_volume` and `gcp_disk` resource types, which inherit properties from the generic `volume` type, which in turn inherits from the basic `resource` type. This hierarchy allows users to search and interact with resources using common attributes without having to worry about provider-specific naming conventions. However, the unified data model retains the ability to access all provider-specific attributes, giving you the flexibility to work with the unique features of each cloud platform.
+**By employing a unified data model with support for static typing and inheritance, Resoto ensures a consistent and straightforward way to interact with resources across multiple cloud platforms.**
+
+For instance, Resoto recognizes both [`aws_ec2_volume`](/docs/reference/unified-data-model/aws#aws_ec2_volume) and [`gcp_disk`](/docs/reference/unified-data-model/google-cloud#gcp_disk) resource types, which inherit properties from the generic `volume` type, which in turn inherits from the basic [`resource` type](/docs/reference/unified-data-model#resource-base-kind).
+
+This hierarchy allows users to [search](/docs/reference/search) and interact with resources using common attributes without having to worry about provider-specific naming conventions. However, the [unified data model](/docs/reference/unified-data-model) retains the ability to access all provider-specific attributes, giving you the flexibility to work with the unique features of each cloud platform.
 
 ### Data Enrichment
 
-Resoto also enriches the data it provides. Most cloud data collection tools just fetch whatever data the cloud provider API returns and present it to the user. Resoto on the other hand merges and enriches data from multiple sources. It combines configuration data with utilization data which enables the user not only to understand if a resource is properly configured but also how it is utilized.
+**Resoto also enriches the data it provides.** Most cloud data collection tools just fetch whatever data the cloud provider API returns and present it to the user. Resoto on the other hand merges and enriches data from multiple sources. It combines configuration data with utilization data which enables the user not only to understand if a resource is properly configured but also how it is utilized.
 
-Take RDS databases for example. Resoto not only fetches all the metadata from the API but also searches CloudWatch time series for information like when did somebody last connect to this database. This information is then added to the resource in the form of a last_access timestamp. So you can perform searches like search is(database) and last_access > 1w to find databases that haven't been accessed in over a week.
+Take RDS databases for example. Resoto not only fetches all the metadata from the API but also searches CloudWatch time series for information like when did somebody last connect to this database. This information is then added to the resource in the form of a last_access timestamp. So you can perform searches like `search is(database) and last_access > 1w` to find databases that haven't been accessed in over a week.
 
 Likewise for storage volumes Resoto enriches the data with information about the last read and write I/O. Because you don't just want to know that a volume is not in use right now. You want to know when it was last in use.
 
-For systems like Kubernetes, Resoto creates connections between e.g. a Kubernetes Node and the compute instance that node is running on. Allowing Resoto to answer questions like "what hardware is this pod running on?"
+For systems like Kubernetes, Resoto creates connections between, for example, a Kubernetes Node and the compute instance that node is running on. This allows Resoto to answer questions like, "What hardware is this pod running on?"
 
-## Conclusion: Overcoming Infrastructure Fragmentation with Reactive Infrastructure
+## Overcoming Infrastructure Fragmentation with Reactive Infrastructure
 
 Infrastructure fragmentation and with it distribution of control poses significant challenges for organizations managing cloud resources at scale.
 
 Reactive infrastructure offers a solution that simplifies the management process and empowers businesses to keep their environments organized, efficient, and secure. This approach seamlessly integrates discovery, manual remediation, automation, and monitoring to provide a comprehensive solution for tackling infrastructure fragmentation issues.
 
-Tools like Resoto can play a pivotal role in implementing a reactive infrastructure, allowing organizations to focus on what truly matters - growing their business and delivering value to their customers.
+Tools like Resoto can play a pivotal role in implementing a reactive infrastructure, allowing organizations to focus on what truly matters—growing their business and delivering value to their customers.
 
 By providing comprehensive visibility, discovery, remediation, automation, and monitoring, Resoto empowers you to mentally defragment your cloud infrastructure and regain control to achieve a more organized, secure, and efficient cloud environment.

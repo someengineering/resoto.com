@@ -1,7 +1,7 @@
 ---
 date: 2022-08-31
 authors: [matthias]
-tags: [search, kubernetes]
+tags: [kubernetes, search, automation, graph database, resoto cli]
 ---
 
 # Discover Kubernetes Resources
@@ -30,7 +30,9 @@ The examples presented in this blog post are available in the [`someengineering/
 
 ## Full-Text Search
 
-One of the simplest ways to find resources in your cluster is using Resoto's full-text search. Resoto indexes the properties of all services in every namespace in each cluster. To perform a full-text search, simply provide your search term to the [`search` command](/docs/reference/cli/search-commands/search) enclosed in double quotes:
+**One of the simplest ways to find resources in your cluster is using Resoto's [full-text search](/docs/reference/search/full-text).**
+
+Resoto indexes the properties of all services in every namespace in each cluster. To perform a full-text search, simply provide your search term to the [`search` command](/docs/reference/cli/search-commands/search) enclosed in double quotes:
 
 ```bash
 > search "10.245.11.204"
@@ -95,7 +97,7 @@ Since Resoto itself can be installed on a Kubernets cluster using the [Helm char
 
 Kubernetes uses labels and selectors to define the relationship between a service and a pod. It is valid to expose the same pod via different services. To reveal which service exposes a pod, we need to understand the selector syntax and check all pods for matching labels. Thankfully, Resoto analyzes the relationships between resources, providing this information as edges between nodes and revealing a directed acyclic graph.
 
-To understand the concept of a graph a bit better, let me show you two examples that we present in our Jupyter notebook via `display_svg(rnb.graph(...))`:
+To understand the concept of a graph a bit better, let me show you two examples that we present in our [Jupyter notebook](/docs/reference/notebook) via `display_svg(rnb.graph(...))`:
 
 ```python
 is(kubernetes_service) and name=test-service -[0:2]->
@@ -111,7 +113,17 @@ is(kubernetes_service) and name=test-service <-[0:2]-
 
 ![Inbound Dependencies](./img/test_service_inbound.svg)
 
-We can do the same query, but this time reverse the direction of the arrow, showing us all incoming dependencies up to two levels. This time we see all resources that have a dependency on this service. Please also note that Resoto understands the underlying provider of this Kubernetes cluster, in this case, DigitalOcean. This service type is `LoadBalancer`, so a publicly available load balancer needs to be provided. A DigitalOcean load balancer is used here, backing the Kubernetes service. You can also see that the DigitalOcean load balancer is provided in the Frankfurt region in the default VPC. All of this knowledge is gathered automatically by Resoto without any additional action.
+We can do the same query, but this time reverse the direction of the arrow, showing us all incoming dependencies up to two levels. This time we see all resources that have a dependency on this service.
+
+:::note
+
+Resoto understands the underlying provider of this Kubernetes cluster, in this case, DigitalOcean.
+
+This service type is `LoadBalancer`, so a publicly available load balancer needs to be provided. A DigitalOcean load balancer is used here, backing the Kubernetes service. You can also see that the DigitalOcean load balancer is provided in the Frankfurt region in the default VPC.
+
+All of this knowledge is gathered automatically by Resoto without any additional action.
+
+:::
 
 With this knowledge at hand, it is easy to get the services that expose a specific pod: we filter for the pod in question, walk the dependencies inbound by one step and then filter the resulting list of incoming dependencies for services.
 
@@ -153,7 +165,7 @@ The result of this search is the same as the previous one since we were starting
 
 ## Use the ~~Force~~ Graph, Luke!
 
-[Walking the relationships of a resource graph](/blog/a-walk-in-the-graph) can reveal a lot of useful information.
+[Walking the relationships of a resource graph](../a-walk-in-the-graph/index.mdx) can reveal a lot of useful information.
 
 For example, let's say we want to know the amount of memory and the number of CPU cores available on the node running a specific pod:
 
@@ -264,7 +276,7 @@ The following table shows the results of the aggregation:
 | `dev-7u129`       | 10          | 2        | 1       |
 | `dev-7u121`       | 9           | 2        | 1       |
 
-While aggregation can be helpful for adhoc queries, we can also turn this data into a time series and watch the values over time. Please find the blog post about [Actionable Cloud Infrastructure Metrics](/blog/building-actionable-cloud-infrastructure-metrics) for more details.
+While aggregation can be helpful for adhoc queries, we can also turn this data into a time series and watch the values over time. See [Actionable Cloud Infrastructure Metrics](../actionable-cloud-infrastructure-metrics/index.mdx) for more details.
 
 ## Heatmaps
 
@@ -282,7 +294,7 @@ The heatmap shows accounts on the x-axis (each Kubernetes cluster is represented
 
 ## Alerting
 
-It is easy to integrate Resoto with other systems and services for custom alerting. Resoto ships with a `discord` custom command to [send notifications to a Discord channel](/docs/how-to-guides/alerting/send-discord-notifications). It is also possible to configure alerts to be sent to other services, such as [Prometheus Alertmanager](/docs/how-to-guides/alerting/send-prometheus-alertmanager-alerts).
+It is easy to integrate Resoto with other systems and services for custom [alerting](/docs/how-to-guides/alerting). Resoto ships with a `discord` custom command to [send notifications to a Discord channel](/docs/how-to-guides/alerting/send-discord-notifications). It is also possible to configure alerts to be sent to other services, such as [Prometheus Alertmanager](/docs/how-to-guides/alerting/send-prometheus-alertmanager-alerts).
 
 One scenario where it is desirable to send alert notifications is when a pod is restarting too often.
 
@@ -306,7 +318,7 @@ Now that we've defined the search criteria, all we need to do is pipe the result
 
 ![Discord](./img/discord_notification.png)
 
-However, the above command only executes a single time. We would like for Resoto to constantly monitor for pods that are restarting too often and send a notification whenever such pods are found. To do so, we can create a job using the [`job` command](/docs/reference/cli/action-commands/jobs):
+However, the above command only executes a single time. We would like for Resoto to constantly monitor for pods that are restarting too often and send a notification whenever such pods are found. To do so, we can create a [job](/docs/concepts/automation#jobs) using the [`job` command](/docs/reference/cli/action-commands/jobs):
 
 ```bash
 > jobs add --id pod_restarted_too_often --wait-for-event post_collect 'search is(kubernetes_pod) and pod_status.container_statuses[*].restart_count>0 | discord title="This pod is restarted too often, PTAL!"'
@@ -314,8 +326,12 @@ However, the above command only executes a single time. We would like for Resoto
 ​Job pod_restarted_too_often added.
 ```
 
-We registered this job with the `post_collect` event, so it will be executed automatically whenever new data has been collected.
+We registered this job with the [`post_collect` event](/docs/reference/events#collect-events), so it will be executed automatically whenever new data has been [collected](/docs/concepts/cloud-data-sync).
 
 ## Kubernetes… and More!
 
-Resoto is not only able to collect resource metadata from Kubernetes, but also other cloud providers as well. Resoto is [open source](https://github.com/someengineering/resoto/blob/main/LICENSE) and free to use, and currently supports [<abbr title="Amazon Web Services">AWS</abbr>](/docs/how-to-guides/data-sources/collect-aws-resource-data), [Google Cloud](/docs/how-to-guides/data-sources/collect-google-cloud-resource-data), and [DigitalOcean](/docs/how-to-guides/data-sources/collect-digitalocean-resource-data). [Install Resoto](/docs/getting-started/install-resoto) today!
+Resoto is not only able to collect resource metadata from Kubernetes, but also other cloud providers as well.
+
+Resoto is [open source](https://github.com/someengineering/resoto/blob/main/LICENSE) and free to use, and currently supports [<abbr title="Amazon Web Services">AWS</abbr>](/docs/how-to-guides/data-sources/collect-aws-resource-data), [Google Cloud](/docs/how-to-guides/data-sources/collect-google-cloud-resource-data), and [DigitalOcean](/docs/how-to-guides/data-sources/collect-digitalocean-resource-data).
+
+[Install Resoto](/docs/getting-started/install-resoto) today!

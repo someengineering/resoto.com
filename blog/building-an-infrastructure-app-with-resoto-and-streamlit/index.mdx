@@ -1,7 +1,7 @@
 ---
 date: 2022-10-25
 authors: [lukas]
-tags: [apps]
+tags: [infrastructure app, metrics, data visualization, search]
 ---
 
 # Building an Infrastructure App with Resoto and Streamlit
@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 ```
 
-In my last post, we discussed [building actionable cloud infrastructure metrics](../building-actionable-cloud-infrastructure-metrics/index.mdx) and how to create metrics, export them into a time series database, and visualize them with Grafana. **Today, we'll take a look at how to build an infrastructure app using [Streamlit](https://streamlit.io), a framework that turns data into web apps.**
+In [Actionable Cloud Infrastructure Metrics](../actionable-cloud-infrastructure-metrics/index.mdx), we explored how to create metrics, export them into a time series database, and visualize them with Grafana. **Today, we'll take a look at how to build an infrastructure app using [Streamlit](https://streamlit.io), a framework that turns data into web apps.**
 
 ![Sheep looking inside a black box](./img/banner.png)
 
@@ -565,7 +565,7 @@ Now that we've set up the project environment, we can start creating the infrast
     st.dataframe(df)
     ```
 
-    For now, these two lines are only here for demo purposes. We ask Resoto to search for everything that is a compute instance and return it as a [Pandas DataFrame](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html). We then pass the DataFrame to [Streamlit](https://streamlit.io)'s `st.dataframe` function to display it as a table in the app.
+    For now, these two lines are only here for demo purposes. We ask Resoto to [search](/docs/reference/search) for everything that is a compute instance and return it as a [Pandas DataFrame](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html). We then pass the DataFrame to [Streamlit](https://streamlit.io)'s `st.dataframe` function to display it as a table in the app.
 
     Think of dataframes as an Excel spreadsheet. Resoto stores all of its data in a [graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph), and `resoto.dataframe()` allows us to search that graph and flatten the result into a DataFrame that can be consumed by [Streamlit](https://streamlit.io).
 
@@ -680,7 +680,7 @@ We'll begin with instance metrics.
 
     <div>
 
-    - In the first line, we define a variable `resoto_search` which contains [an aggregate search](/docs/reference/search/aggregation). You can copy and paste the search into the Resoto Shell to see what it does.
+    - In the first line, we define a variable `resoto_search` which contains [an aggregate search](/docs/reference/search/aggregation). You can copy and paste the search into [Resoto Shell](/docs/reference/components/shell) to see what it does.
 
       In short, it searches for all instances (`is(instance)`) and returns the total number of instances (`sum(1) as instances_total`), the total number of CPU cores (`sum(instance_cores) as cores_total`) and the total amount of memory (`sum(instance_memory*1024*1024*1024) as memory_total`). (Instance memory is stored in GB in Resoto, but we need it in bytes so we multiply it by 1024\*1024\*1024 for the number of bytes.)
 

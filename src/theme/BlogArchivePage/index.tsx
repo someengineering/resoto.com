@@ -8,6 +8,7 @@ import clsx from 'clsx';
 import { orderBy } from 'lodash';
 import React from 'react';
 
+import Link from '@docusaurus/Link';
 import homepageStyles from '@site/src/pages/index.module.css';
 import styles from './styles.module.css';
 
@@ -21,17 +22,14 @@ function Year({ year, posts }: YearProp) {
     <>
       <h2 className={styles.year}>{year}</h2>
       {posts.map((post) => (
-        <article className="margin-bottom--lg" key={post.metadata.date}>
+        <article className="margin-top--md" key={post.metadata.date}>
           <a
             href={post.metadata.permalink}
             className={clsx('card padding--sm', styles.cardContainer)}
-            style={{ marginBottom: '2em' }}
           >
             <div className="card__body">
-              <h3 className={styles.title} itemProp="headline">
-                {post.metadata.title}
-              </h3>
-              <div className={clsx(styles.date, 'margin-vert--md')}>
+              <h3 itemProp="headline">{post.metadata.title}</h3>
+              <div className={styles.date}>
                 <time dateTime={post.metadata.date} itemProp="datePublished">
                   {post.metadata.formattedDate}
                 </time>
@@ -43,26 +41,32 @@ function Year({ year, posts }: YearProp) {
                 {post.metadata.authors.map((author) => (
                   <div
                     className={clsx(
-                      'avatar margin-top--md col col--6',
+                      'avatar margin-top--sm col col--6',
                       styles.authorCol
                     )}
                     key={author.email}
                   >
                     {author.imageURL ? (
-                      <img
-                        className="avatar__photo avatar__photo--sm"
-                        src={author.imageURL}
-                        alt=""
-                      />
+                      <Link href={author.url} className="avatar__photo-link">
+                        <img
+                          className="avatar__photo avatar__photo--sm"
+                          src={author.imageURL}
+                          alt=""
+                        />
+                      </Link>
                     ) : null}
                     <div className="avatar__intro">
-                      <div className={styles.authorName}>{author.name}</div>
+                      <div className={styles.authorName}>
+                        <Link href={author.url} itemProp="url">
+                          <span itemProp="name">{author.name}</span>
+                        </Link>
+                      </div>
                       <small>{author.title}</small>
                     </div>
                   </div>
                 ))}
                 {post.metadata.tags.length ? (
-                  <div className="col col--9 margin-top--md">
+                  <div className="col col--9 margin-top--sm">
                     <b>Tags:</b>
                     <ul
                       className={clsx(
@@ -98,7 +102,7 @@ function YearsSection({ years }: { years: YearProp[] }) {
       <div className={homepageStyles.inner}>
         <div className="row">
           {orderBy(years, 'year', 'desc').map((_props, idx) => (
-            <div key={idx} className="col col--6 margin-vert--lg">
+            <div key={idx} className="col col--6">
               <Year {..._props} />
             </div>
           ))}
@@ -129,7 +133,7 @@ export default function BlogArchive({ archive }: Props): JSX.Element {
 
   const title = translate({
     id: 'theme.blog.archive.title',
-    message: `${path.replace(/^\w/, (c) => c.toUpperCase())}`,
+    message: `${path.replace(/^\w/, (c) => c.toUpperCase())} Archive`,
     description: 'The page & hero title of the blog archive page',
   });
 

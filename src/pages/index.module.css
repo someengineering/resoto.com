@@ -218,11 +218,6 @@ html[data-theme='dark'] .content {
   margin: 0 auto;
 }
 
-.section:last-child {
-  margin-bottom: -5rem;
-  padding-bottom: calc(48px + 5rem);
-}
-
 .providersHeading {
   font-size: 36px;
   font-weight: 400;

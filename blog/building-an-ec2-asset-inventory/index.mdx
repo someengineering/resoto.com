@@ -1,7 +1,7 @@
 ---
 date: 2023-03-08
 authors: [lars]
-tags: [cloud asset inventory, aws]
+tags: [cloud asset inventory, data export, data model, graph database, resoto cli, search, aws]
 ---
 
 # Building an EC2 Asset Inventory
@@ -27,11 +27,11 @@ In this post, I'll describe how to use Resoto to build an EC2 [cloud asset inven
 
 3. [Configure Resoto to collect <abbr title="Amazon Web Services">AWS</abbr> resources and trigger resource collection.](/docs/how-to-guides/data-sources/collect-aws-resource-data)
 
-   During each "collect run," Resoto extracts and transforms data from cloud APIs to generate and store snapshots of your infrastructure in its [graph database](/docs/concepts/asset-inventory-graph).
+   During each "[collect run](/docs/concepts/cloud-data-sync#resource-collection)," Resoto extracts and transforms data from cloud APIs to generate and store snapshots of your infrastructure in its [graph database](/docs/concepts/asset-inventory-graph).
 
 ## Creating Your First EC2 Inventory
 
-Once Resoto has completed collecting your <abbr title="Amazon Web Services">AWS</abbr> resources, run the following search, which I'll call our "baseline inventory":
+Once Resoto has completed collecting your [<abbr title="Amazon Web Services">AWS</abbr> resources](/docs/reference/unified-data-model/aws), run the following search, which I'll call our "baseline inventory":
 
 ```bash
 > search is(aws_ec2_instance) | list --markdown id,name,instance_type,ctime as create_time, age,/ancestors.region.reported.name as region,/ancestors.account.reported.name as account,instance_status,tags.owner,tags.expiration

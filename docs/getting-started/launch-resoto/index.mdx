@@ -122,6 +122,29 @@ The steps to launch Resoto UI are dependent on how you installed Resoto.
 
 </TabItem>
 
+<TabItem value="digitalocean" label="DigitalOcean">
+
+1. A public available service endpoint is provided by default. With configured access to the Kubernetes cluster, you can get the address using this command: 
+
+   ```bash
+   export SERVICE_ADDRESS=$(kubectl get --namespace resoto service resoto-resotocore -o jsonpath="{.status.loadBalancer.ingress[0].ip}")
+   echo "Visit https://$SERVICE_ADDRESS:8900 to use Resoto."
+   ```
+
+2. Copy and paste the printed address to your browser to access Resoto UI.
+
+   :::note
+
+   The SSL certificate is self-signed, but you can safely ignore any browser warnings.
+
+   :::
+
+3. If it is your first time starting Resoto UI, the setup wizard will appear and help you configure Resoto:
+
+   ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
+
+</TabItem>
+
 <TabItem value="pip" label="pip">
 
 1. Resoto UI listens on port `8900` by default. You can access it by opening <https://localhost:8900> in your browser.
@@ -205,6 +228,16 @@ $ docker exec -it resotoshell resh
    ```bash
    $ kubectl exec -it service/resoto-resotocore -- resh
    ```
+
+</TabItem>
+
+<TabItem value="digitalocean" label="DigitalOcean">
+
+Execute the following to access the [Resoto Shell](../../reference/components/shell.mdx) interface:
+
+```bash
+kubectl --namespace resoto exec -it service/resoto-resotocore -- resh
+```
 
 </TabItem>
 

@@ -62,7 +62,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "17.6.3",
-    "@commitlint/config-conventional": "17.6.3",
+    "@commitlint/config-conventional": "17.6.5",
     "@docusaurus/module-type-aliases": "2.4.1",
     "@docusaurus/types": "2.4.1",
     "@tsconfig/docusaurus": "1.0.7",

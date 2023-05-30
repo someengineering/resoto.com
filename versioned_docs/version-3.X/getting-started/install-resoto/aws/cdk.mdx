@@ -87,17 +87,23 @@ The [Resoto web installer](./web-installer/index.mdx) is the easiest way to get 
 
    :::
 
-4. The value of `ResotoEKS.ResotoEKSConfigCommandXXXX` in **Outputs** is a command to configure `kubectl` to connect to the EKS cluster. Copy the command and paste it into your terminal. This will setup `kubectl` to connect to the EKS cluster. You can check that the connection is working by running the following command, which should return one pod.
+   :::info
 
-   ```bash
-   $ kubectl get pods -A | grep resotocore
-   ​resoto  resoto-resotocore-xxx  1/1  Running   0  32m
-   ```
+   - The value of `ResotoEKS.ResotoEKSConfigCommandXXXX` in **Outputs** is a command to configure `kubectl` to connect to the EKS cluster.
 
-5. The value of `ResotoEKS.ResotoPskSecret` in **Outputs** is a command to retrieve the Resoto PSK. Copy the command and paste it into your terminal. This will print the Resoto PSK to the terminal. This PSK is required for accessing Resoto using the Resoto UI and CLI.
+     You can check that the connection is working by running the following command:
 
-   ```bash
-   $ kubectl get secrets resoto-psk -o jsonpath='{.data.psk}' | base64 -d
-   ```
+     ```bash
+     $ kubectl get pods -A | grep resotocore
+     ​resoto  resoto-resotocore-xxx  1/1  Running   0  32m
+     ```
 
-6. The value of `ResotoEKS.ResotoUI` in **Outputs** is the URL of the Resoto UI. Copy the URL and paste it into your browser. This will open the Resoto UI in your browser. The UI will ask for the PSK. Enter the PSK you retrieved in the previous step.
+   - The value of `ResotoEKS.ResotoPskSecret` in **Outputs** is a command to retrieve the Resoto PSK.
+
+     ```bash
+     $ kubectl get secrets resoto-psk -o jsonpath='{.data.psk}' | base64 -d
+     ```
+
+   - The value of `ResotoEKS.ResotoUI` in **Outputs** is the URL of the Resoto UI.
+
+   :::

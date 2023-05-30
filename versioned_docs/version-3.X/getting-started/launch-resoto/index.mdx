@@ -18,13 +18,47 @@ Resoto allows you to manage and explore your cloud infrastructure via a web or s
 
 Resoto UI is a user-friendly web interface that simplifies managing and exploring your cloud infrastructure.
 
-The steps to launch Resoto UI depend on how you installed Resoto.
+The steps to launch Resoto UI are dependent on how you installed Resoto.
 
-<Tabs groupId="install-method">
+<Tabs groupId="install-method" querystring>
 
 <TabItem value="aws" label="Amazon Web Services">
 
-1. You already got the URL to access Resoto UI and the PSK token required to authenticate in the previous step. Once Resoto UI is loaded it will ask for the PSK token. Enter the token and click on the "Connect" button.
+1. Log in to the [AWS CloudFormation console](https://console.aws.amazon.com/cloudformation).
+
+2. Click **Stacks**.
+
+3. Enter `ResotoEKS` into the search box, and click on the **ResotoEKS** stack.
+
+   ![ResotoEKS stack in AWS CloudFormation](./img/cf-stack.png)
+
+4. Click the **Outputs** tab.
+
+5. Enter `ResotoUI` into the search box. There should be exactly one entry. Copy the value (e.g., `https://a3xxxxxx.us-east-1.elb.amazonaws.com:8900`).
+
+   :::info
+
+   The value of `ResotoEKS.ResotoUI` in **Outputs** is the URL of the Resoto UI.
+
+   :::
+
+6. Open the copied URL in your browser to launch Resoto UI.
+
+7. In the AWS Cloudformation console, enter `ResotoPSK` into the search box. There should be exactly one entry. Copy the value (e.g., `kubectl get secrets ...`).
+
+   :::info
+
+   The value of `ResotoEKS.ResotoPskSecret` in **Outputs** is a command to retrieve the Resoto PSK.
+
+   :::
+
+8. Copy the command and paste it into your terminal to print the Resoto PSK to the terminal.
+
+   ```bash
+   $ kubectl get secrets resoto-psk -o jsonpath='{.data.psk}' | base64 -d
+   ```
+
+9. Enter the Resoto PSK in the Resoto UI prompt and click **Connect**.
 
    :::note
 
@@ -32,9 +66,9 @@ The steps to launch Resoto UI depend on how you installed Resoto.
 
    :::
 
-2. Resoto UI will start and guide you through the configuration. If it is your first time starting Resoto UI, the setup wizard will appear and help you configure Resoto:
+10. If it is your first time starting Resoto UI, the setup wizard will appear to help you configure Resoto:
 
-   ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
+    ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
 
 </TabItem>
 
@@ -48,13 +82,13 @@ The steps to launch Resoto UI depend on how you installed Resoto.
 
    :::
 
-2. If it is your first time starting Resoto UI, the setup wizard will appear and help you configure Resoto:
+2. If it is your first time starting Resoto UI, the setup wizard will appear to help you configure Resoto:
 
    ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
 
 </TabItem>
 
-<TabItem value="k8s" label="Kubernetes">
+<TabItem value="kubernetes" label="Kubernetes">
 
 1. Resoto provides a service that exposes Resoto UI on port `8900`. We recommend configuring an [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress) with a valid certificate for UI access, but you can port-forward the service as a temporary solution:
 
@@ -62,7 +96,19 @@ The steps to launch Resoto UI depend on how you installed Resoto.
    $ kubectl port-forward services/resoto-resotocore 8900
    ```
 
-2. Open <https://localhost:8900> in your browser to access Resoto UI.
+2. Retrieve the PSK:
+
+   ```bash
+   kubectl get secret arango-user -o jsonpath="{.data.password}" | base64 --decode
+   ```
+
+   :::info
+
+   The PSK is required to access Resoto UI, and is stored as a [Kubernetes Secret](https://kubernetes.io/docs/concepts/configuration/secret), `resoto-psk`.
+
+   :::
+
+3. Enter the Resoto PSK in the Resoto UI prompt and click **Connect**.
 
    :::note
 
@@ -70,7 +116,7 @@ The steps to launch Resoto UI depend on how you installed Resoto.
 
    :::
 
-3. If it is your first time starting Resoto UI, the setup wizard will appear and help you configure Resoto:
+4. If it is your first time starting Resoto UI, the setup wizard will appear to help you configure Resoto:
 
    ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
 
@@ -86,7 +132,7 @@ The steps to launch Resoto UI depend on how you installed Resoto.
 
    :::
 
-2. If it is your first time starting Resoto UI, the setup wizard will appear and help you configure Resoto:
+2. If it is your first time starting Resoto UI, the setup wizard will appear to help you configure Resoto:
 
    ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
 
@@ -100,7 +146,7 @@ Resoto Shell is Resoto's command-line interface.
 
 The steps to launch Resoto Shell depend on how you installed Resoto.
 
-<Tabs groupId="install-method">
+<Tabs groupId="install-method" querystring>
 
 <TabItem value="aws" label="Amazon Web Services">
 
@@ -108,7 +154,7 @@ The steps to launch Resoto Shell depend on how you installed Resoto.
 
 2. Click **Stacks**.
 
-3. Enter `ResotoEKS` into the search box, and click on the stack you would like to upgrade.
+3. Enter `ResotoEKS` into the search box, and click on the **ResotoEKS** stack.
 
    ![ResotoEKS stack in AWS CloudFormation](./img/cf-stack.png)
 
@@ -117,6 +163,12 @@ The steps to launch Resoto Shell depend on how you installed Resoto.
 5. Enter `ResotoEKSConfigCommand` into the search box. There should be exactly one entry. Copy the value (`aws eks ...`).
 
    ![ResotoEKS stack outputs in AWS CloudFormation](./img/cf-output.png)
+
+   :::info
+
+   The value of `ResotoEKS.ResotoEKSConfigCommandXXXX` in **Outputs** is a command to configure `kubectl` to connect to the EKS cluster.
+
+   :::
 
 6. Open a terminal and execute the copied command.
 
@@ -140,7 +192,7 @@ $ docker exec -it resotoshell resh
 
 </TabItem>
 
-<TabItem value="k8s" label="Kubernetes">
+<TabItem value="kubernetes" label="Kubernetes">
 
 1. Make sure that the deployment is available:
 

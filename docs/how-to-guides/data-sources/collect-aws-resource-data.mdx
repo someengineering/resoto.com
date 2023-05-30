@@ -42,7 +42,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
 **Resoto supports the authentication mechanisms described in the [Boto3 SDK documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html).** You can authenticate with [<abbr title="Amazon Web Services">AWS</abbr>](../../reference/unified-data-model/aws.mdx) via an instance profile, an access key, or profiles. These credentials can be defined in the Resoto Worker configuration or as environment variables.
 
-<Tabs groupId="auth-method">
+<Tabs>
 
 <TabItem value="configuration" label="Resoto Worker Configuration">
 
@@ -272,7 +272,7 @@ You can specify a profile using `AWS_PROFILE` and, for local testing, SSO authen
 
     </TabItem>
 
-    <TabItem value="k8s" label="Kubernetes">
+    <TabItem value="kubernetes" label="Kubernetes">
 
     - Create a secret:
 

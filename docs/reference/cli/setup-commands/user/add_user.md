@@ -10,7 +10,6 @@ Resoto has user management built-in but is lacking access control. Different rol
 
 :::
 
-
 The `user add <email> --fullname <name> --password <secret> --role <role> --role <role>` command allows to add a user to Resoto.
 
 ## Usage

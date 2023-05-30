@@ -124,7 +124,7 @@ The steps to launch Resoto UI are dependent on how you installed Resoto.
 
 <TabItem value="digitalocean" label="DigitalOcean">
 
-1. A public available service endpoint is provided by default. With configured access to the Kubernetes cluster, you can get the address using this command: 
+1. A public available service endpoint is provided by default. With configured access to the Kubernetes cluster, you can get the address using this command:
 
    ```bash
    export SERVICE_ADDRESS=$(kubectl get --namespace resoto service resoto-resotocore -o jsonpath="{.status.loadBalancer.ingress[0].ip}")

@@ -38,34 +38,22 @@ The steps to launch Resoto UI are dependent on how you installed Resoto.
 
    :::
 
-6. Open the copied URL in your browser to launch Resoto UI.
-
-7. In the AWS Cloudformation console, enter `ResotoPSK` into the search box. There should be exactly one entry. Copy the value (e.g., `kubectl get secrets ...`).
-
-   :::info
-
-   The value of `ResotoEKS.ResotoPskSecret` in **Outputs** is a command to retrieve the Resoto PSK.
-
-   :::
-
-8. Copy the command and paste it into your terminal to print the Resoto PSK to the terminal.
-
-   ```bash
-   $ kubectl get secrets resoto-psk -o jsonpath='{.data.psk}' | base64 -d
-   ```
-
-9. Enter the Resoto PSK in the Resoto UI prompt and click **Connect**.
+6. Open the copied URL in your browser.
 
    :::note
 
    The SSL certificate is self-signed, but you can safely ignore any browser warnings.
 
    :::
+   
+7. If it is your first time accessing Resoto, you will see a form to create an account. This form is visible only to the first user accessing the installation. This user becomes an administrator automatically. Subsequent users can be added by any Resoto administrator. See [Login and Authentication](../../reference/security) for more information.  
 
-10. If it is your first time starting Resoto UI, a setup wizard will appear to help you configure Resoto:
+   ![Screenshot of Resoto UI signup form](img/create-account.png)
 
-    ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
+8. After the signup, Resoto UI starts up and a setup wizard will appear to help you configure Resoto:
 
+   ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
+ 
 </TabItem>
 
 <TabItem value="digitalocean" label="DigitalOcean">
@@ -85,10 +73,14 @@ The steps to launch Resoto UI are dependent on how you installed Resoto.
 
    :::
 
-3. If it is your first time starting Resoto UI, a setup wizard will appear to help you configure Resoto:
+3. If it is your first time accessing Resoto, you will see a form to create an account. This form is visible only to the first user accessing the installation. This user becomes an administrator automatically. Subsequent users can be added by any Resoto administrator. See [Login and Authentication](../../reference/security) for more information.  
+
+   ![Screenshot of Resoto UI signup form](img/create-account.png)
+
+4. After the signup, Resoto UI starts up and a setup wizard will appear to help you configure Resoto:
 
    ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
-
+ 
 </TabItem>
 
 <TabItem value="docker" label="Docker">
@@ -101,10 +93,14 @@ The steps to launch Resoto UI are dependent on how you installed Resoto.
 
    :::
 
-2. If it is your first time starting Resoto UI, a setup wizard will appear to help you configure Resoto:
+2. If it is your first time accessing Resoto, you will see a form to create an account. This form is visible only to the first user accessing the installation. This user becomes an administrator automatically. Subsequent users can be added by any Resoto administrator. See [Login and Authentication](../../reference/security) for more information.  
+
+   ![Screenshot of Resoto UI signup form](img/create-account.png)
+
+3. After the signup, Resoto UI starts up and a setup wizard will appear to help you configure Resoto:
 
    ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
-
+ 
 </TabItem>
 
 <TabItem value="kubernetes" label="Kubernetes">
@@ -115,29 +111,14 @@ The steps to launch Resoto UI are dependent on how you installed Resoto.
    $ kubectl port-forward services/resoto-resotocore 8900
    ```
 
-2. Retrieve the PSK:
+2. If it is your first time accessing Resoto, you will see a form to create an account. This form is visible only to the first user accessing the installation. This user becomes an administrator automatically. Subsequent users can be added by any Resoto administrator. See [Login and Authentication](../../reference/security) for more information.  
 
-   ```bash
-   kubectl get secret arango-user -o jsonpath="{.data.password}" | base64 --decode
-   ```
+   ![Screenshot of Resoto UI signup form](img/create-account.png)
 
-   :::info
-
-   The PSK is required to access Resoto UI, and is stored as a [Kubernetes Secret](https://kubernetes.io/docs/concepts/configuration/secret), `resoto-psk`.
-
-   :::
-
-3. Enter the Resoto PSK in the Resoto UI prompt and click **Connect**.
-
-   :::note
-
-   The SSL certificate is self-signed, but you can safely ignore any browser warnings.
-
-   :::
-
-4. If it is your first time starting Resoto UI, a setup wizard will appear to help you configure Resoto:
+3. After the signup, Resoto UI starts up and a setup wizard will appear to help you configure Resoto:
 
    ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
+ 
 
 </TabItem>
 
@@ -151,10 +132,14 @@ The steps to launch Resoto UI are dependent on how you installed Resoto.
 
    :::
 
-2. If it is your first time starting Resoto UI, a setup wizard will appear to help you configure Resoto:
+2. If it is your first time accessing Resoto, you will see a form to create an account. This form is visible only to the first user accessing the installation. This user becomes an administrator automatically. Subsequent users can be added by any Resoto administrator. See [Login and Authentication](../../reference/security) for more information.  
+
+   ![Screenshot of Resoto UI signup form](img/create-account.png)
+
+3. After the signup, Resoto UI starts up and a setup wizard will appear to help you configure Resoto:
 
    ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
-
+ 
 </TabItem>
 
 </Tabs>

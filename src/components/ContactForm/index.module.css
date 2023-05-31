@@ -33,7 +33,7 @@
 .form input,
 .form textarea {
   margin-bottom: 8px;
-  border: 2px solid #ffffff;
+  border: 1.5px solid #ffffff;
   border-radius: 36px;
   background-color: #ffffff;
   padding: 0 42px;
@@ -54,7 +54,7 @@
 }
 
 .inputError {
-  border: 2px solid var(--ifm-color-danger-dark) !important;
+  border: 1.5px solid var(--ifm-color-danger-dark) !important;
 }
 
 p.error {
@@ -70,7 +70,7 @@ p.alert {
 }
 
 .image {
-  background-image: url('./img/sheep-support.png');
+  background-image: url('./img/sheep-support.webp');
   background-position: right;
   background-size: contain;
   background-repeat: no-repeat;
@@ -95,7 +95,6 @@ p.alert {
     margin: 72px auto 0;
     width: 45vw;
     height: 45vw;
-    max-height: 500px;
   }
 }
 

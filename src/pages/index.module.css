@@ -100,7 +100,7 @@ html[data-theme='dark'] .heroTitle strong {
   align-self: stretch;
   -webkit-mask: var(--mask);
   mask: var(--mask);
-  background-image: url('./img/sheep-graph.png');
+  background-image: url('./img/sheep-graph.webp');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -120,7 +120,7 @@ html[data-theme='dark'] .heroTitle strong {
   align-items: center;
   transition: filter 0.5s ease, opacity 0.25s ease, background 0.25s ease,
     border 0.25s ease;
-  border-width: 2px;
+  border-width: 1.5px;
   border-style: solid;
   border-radius: 36px;
   padding: 0 42px;
@@ -154,13 +154,17 @@ html[data-theme='dark'] .heroTitle strong {
   color: #ffffff;
 }
 
-html[theme-data='dark'] .primaryButton {
+html[data-theme='dark'] .primaryButton {
   filter: drop-shadow(6px 6px 0 #ffffff);
 }
 
 .primaryButton:hover {
   filter: drop-shadow(6px 6px 0 #e98df7);
   color: #ffffff;
+}
+
+html[data-theme='dark'] .primaryButton:hover {
+  filter: drop-shadow(6px 6px 0 #f3c3fb);
 }
 
 .primaryButton::before {
@@ -174,7 +178,7 @@ html[theme-data='dark'] .primaryButton {
 
 .outlinedButton {
   opacity: 0.8;
-  border: 2px solid var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
   color: var(--ifm-color-primary);
 }
 
@@ -182,14 +186,13 @@ html[theme-data='dark'] .primaryButton {
   opacity: 1;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  border: 2px solid var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
   background-color: rgb(255, 255, 255, 0.05);
   color: var(--ifm-color-primary);
 }
 
-html[data-theme='dark'] .outlinedButton,
 html[data-theme='dark'] .outlinedButton {
-  border: 2px solid var(--ifm-color-content);
+  border-color: var(--ifm-color-content);
   color: var(--ifm-color-content);
 }
 
@@ -202,7 +205,7 @@ html[data-theme='dark'] .docsButton::before {
 }
 
 .content {
-  background-image: url(./img/main-lightbg.png);
+  background-image: url(./img/main-lightbg.webp);
   background-position: top;
   background-size: cover;
   background-repeat: no-repeat;
@@ -210,7 +213,7 @@ html[data-theme='dark'] .docsButton::before {
 }
 
 html[data-theme='dark'] .content {
-  background-image: url(./img/main-darkbg.jpg);
+  background-image: url(./img/main-darkbg.webp);
 }
 
 .section {

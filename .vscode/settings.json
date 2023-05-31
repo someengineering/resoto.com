@@ -13,5 +13,8 @@
     "editor.defaultFormatter": null
   },
   "python.formatting.blackArgs": ["--line-length", "120"],
-  "python.formatting.provider": "black"
+  "python.formatting.provider": "black",
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

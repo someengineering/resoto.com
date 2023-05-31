@@ -10,7 +10,7 @@ export default function MDXA(props: Props): JSX.Element {
     return (
       <Link {...props}>
         {props.children}
-        <IconExternalLink />
+        {React.isValidElement(props.children) ? null : <IconExternalLink />}
       </Link>
     );
   } catch (e) {

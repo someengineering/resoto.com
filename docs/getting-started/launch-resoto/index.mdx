@@ -66,9 +66,32 @@ The steps to launch Resoto UI are dependent on how you installed Resoto.
 
    :::
 
-10. If it is your first time starting Resoto UI, the setup wizard will appear to help you configure Resoto:
+10. If it is your first time starting Resoto UI, a setup wizard will appear to help you configure Resoto:
 
     ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
+
+</TabItem>
+
+<TabItem value="digitalocean" label="DigitalOcean">
+
+1. Resoto is available via an externally accessible service address. Get the address by executing the following in your terminal:
+
+   ```bash
+   export SERVICE_ADDRESS=$(kubectl get --namespace resoto service resoto-resotocore -o jsonpath="{.status.loadBalancer.ingress[0].ip}")
+   echo "Visit https://$SERVICE_ADDRESS:8900 to use Resoto."
+   ```
+
+2. Copy the URL into your browser to launch Resoto UI.
+
+   :::note
+
+   The SSL certificate is self-signed, but you can safely ignore any browser warnings.
+
+   :::
+
+3. If it is your first time starting Resoto UI, a setup wizard will appear to help you configure Resoto:
+
+   ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
 
 </TabItem>
 
@@ -82,7 +105,7 @@ The steps to launch Resoto UI are dependent on how you installed Resoto.
 
    :::
 
-2. If it is your first time starting Resoto UI, the setup wizard will appear to help you configure Resoto:
+2. If it is your first time starting Resoto UI, a setup wizard will appear to help you configure Resoto:
 
    ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
 
@@ -116,30 +139,7 @@ The steps to launch Resoto UI are dependent on how you installed Resoto.
 
    :::
 
-4. If it is your first time starting Resoto UI, the setup wizard will appear to help you configure Resoto:
-
-   ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
-
-</TabItem>
-
-<TabItem value="digitalocean" label="DigitalOcean">
-
-1. A public available service endpoint is provided by default. With configured access to the Kubernetes cluster, you can get the address using this command:
-
-   ```bash
-   export SERVICE_ADDRESS=$(kubectl get --namespace resoto service resoto-resotocore -o jsonpath="{.status.loadBalancer.ingress[0].ip}")
-   echo "Visit https://$SERVICE_ADDRESS:8900 to use Resoto."
-   ```
-
-2. Copy and paste the printed address to your browser to access Resoto UI.
-
-   :::note
-
-   The SSL certificate is self-signed, but you can safely ignore any browser warnings.
-
-   :::
-
-3. If it is your first time starting Resoto UI, the setup wizard will appear and help you configure Resoto:
+4. If it is your first time starting Resoto UI, a setup wizard will appear to help you configure Resoto:
 
    ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
 
@@ -155,7 +155,7 @@ The steps to launch Resoto UI are dependent on how you installed Resoto.
 
    :::
 
-2. If it is your first time starting Resoto UI, the setup wizard will appear to help you configure Resoto:
+2. If it is your first time starting Resoto UI, a setup wizard will appear to help you configure Resoto:
 
    ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
 
@@ -205,6 +205,16 @@ The steps to launch Resoto Shell depend on how you installed Resoto.
 
 </TabItem>
 
+<TabItem value="digitalocean" label="DigitalOcean">
+
+Execute the following to access the [Resoto Shell](../../reference/components/shell.mdx) interface:
+
+```bash
+kubectl --namespace resoto exec -it service/resoto-resotocore -- resh
+```
+
+</TabItem>
+
 <TabItem value="docker" label="Docker">
 
 Execute the following to access the [Resoto Shell](../../reference/components/shell.mdx) interface:
@@ -228,16 +238,6 @@ $ docker exec -it resotoshell resh
    ```bash
    $ kubectl exec -it service/resoto-resotocore -- resh
    ```
-
-</TabItem>
-
-<TabItem value="digitalocean" label="DigitalOcean">
-
-Execute the following to access the [Resoto Shell](../../reference/components/shell.mdx) interface:
-
-```bash
-kubectl --namespace resoto exec -it service/resoto-resotocore -- resh
-```
 
 </TabItem>
 

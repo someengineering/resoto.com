@@ -10,6 +10,7 @@ import Layout from '@theme/Layout';
 import { clsx } from 'clsx';
 import React from 'react';
 import Balancer from 'react-wrap-balancer';
+
 import styles from './index.module.css';
 
 export default function Home(): JSX.Element {

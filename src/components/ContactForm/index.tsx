@@ -53,7 +53,9 @@ export default function ContactForm(): JSX.Element {
     <section className={(homepageStyles.section, styles.section)}>
       <div className={clsx(homepageStyles.inner, styles.flex)}>
         <div>
-          <h2 className={styles.heading}>Contact Us</h2>
+          <h2 className={styles.heading} id="contact-us">
+            Contact Us
+          </h2>
           <NetlifyFormProvider {...netlify}>
             <NetlifyFormComponent
               onSubmit={handleSubmit}

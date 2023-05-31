@@ -353,7 +353,6 @@ const config = {
         title: 'Resoto',
         logo: { alt: '', src: 'img/navbar-logo.svg' },
         items: [
-          { label: 'Releases', to: '/releases', position: 'right' },
           {
             label: 'Docs',
             to: '/docs',
@@ -367,6 +366,7 @@ const config = {
               { label: 'Contributing', to: '/docs/contributing' },
             ],
           },
+          { label: 'Pricing', to: '/pricing', position: 'right' },
           { label: 'Compare', to: '/compare', position: 'right' },
           { label: 'Blog', to: '/blog', position: 'right' },
           { label: 'Podcast', to: '/podcast', position: 'right' },
@@ -414,9 +414,25 @@ const config = {
             ],
           },
           {
+            title: 'About',
+            items: [
+              { label: 'Pricing', to: '/pricing' },
+              { label: 'Compare', to: '/compare' },
+              { label: 'About', to: '/about' },
+              { label: 'Releases', to: '/releases' },
+            ],
+          },
+          {
+            title: 'More',
+            items: [
+              { label: 'Blog', to: '/blog' },
+              { label: 'Podcast', to: '/podcast' },
+              { label: 'Logos', to: '/logos' },
+            ],
+          },
+          {
             title: 'Community',
             items: [
-              { label: 'Code of Conduct', to: '/code-of-conduct' },
               { label: 'GitHub', href: 'https://github.com/someengineering' },
               { label: 'Discord', href: 'https://discord.gg/someengineering' },
               {
@@ -427,16 +443,6 @@ const config = {
                 label: 'YouTube',
                 href: 'https://youtube.com/@someengineering',
               },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              { label: 'Releases', to: '/releases' },
-              { label: 'Compare', to: '/compare' },
-              { label: 'About', to: '/about' },
-              { label: 'Blog', to: '/blog' },
-              { label: 'Logos', to: '/logos' },
             ],
           },
           {

@@ -1,12 +1,12 @@
 .popup {
-  position: fixed;
-  bottom: 16px;
-  right: 16px;
-  width: 344px;
   display: flex;
-  align-items: center;
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
   justify-content: space-between;
+  align-items: center;
   z-index: 999;
+  width: 344px;
 }
 
 .popup p {
@@ -15,9 +15,9 @@
 
 @media screen and (max-width: 500px) {
   .popup {
-    width: 100%;
-    bottom: 0;
     right: 0;
+    bottom: 0;
+    width: 100%;
   }
 }
 

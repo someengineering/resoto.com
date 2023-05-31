@@ -1,73 +1,73 @@
 @font-face {
-  font-family: 'Barlow';
   font-style: normal;
   font-weight: 100;
-  font-display: swap;
   src: url('https://cdn.some.engineering/fonts/Barlow100.woff2') format('woff2');
+  font-family: 'Barlow';
+  font-display: swap;
 }
 
 @font-face {
-  font-family: 'Barlow';
   font-style: normal;
   font-weight: 200;
-  font-display: swap;
   src: url('https://cdn.some.engineering/fonts/Barlow200.woff2') format('woff2');
+  font-family: 'Barlow';
+  font-display: swap;
 }
 
 @font-face {
-  font-family: 'Barlow';
   font-style: normal;
   font-weight: 300;
-  font-display: swap;
   src: url('https://cdn.some.engineering/fonts/Barlow300.woff2') format('woff2');
+  font-family: 'Barlow';
+  font-display: swap;
 }
 
 @font-face {
-  font-family: 'Barlow';
   font-style: normal;
   font-weight: 400;
-  font-display: swap;
   src: url('https://cdn.some.engineering/fonts/Barlow400.woff2') format('woff2');
+  font-family: 'Barlow';
+  font-display: swap;
 }
 
 @font-face {
-  font-family: 'Barlow';
   font-style: normal;
   font-weight: 500;
-  font-display: swap;
   src: url('https://cdn.some.engineering/fonts/Barlow500.woff2') format('woff2');
+  font-family: 'Barlow';
+  font-display: swap;
 }
 
 @font-face {
-  font-family: 'Barlow';
   font-style: normal;
   font-weight: 600;
-  font-display: swap;
   src: url('https://cdn.some.engineering/fonts/Barlow600.woff2') format('woff2');
+  font-family: 'Barlow';
+  font-display: swap;
 }
 
 @font-face {
-  font-family: 'Barlow';
   font-style: normal;
   font-weight: 700;
-  font-display: swap;
   src: url('https://cdn.some.engineering/fonts/Barlow700.woff2') format('woff2');
+  font-family: 'Barlow';
+  font-display: swap;
 }
 
 @font-face {
-  font-family: 'Barlow';
   font-style: normal;
   font-weight: 800;
-  font-display: swap;
   src: url('https://cdn.some.engineering/fonts/Barlow800.woff2') format('woff2');
+  font-family: 'Barlow';
+  font-display: swap;
 }
 
 @font-face {
-  font-family: 'Barlow';
   font-style: normal;
   font-weight: 900;
-  font-display: swap;
   src: url('https://cdn.some.engineering/fonts/Barlow900.woff2') format('woff2');
+  font-family: 'Barlow';
+  font-display: swap;
 }
 
 :root {
@@ -120,10 +120,9 @@ html[data-theme='dark'] {
 }
 
 div[class^='announcementBar_'] {
-  font-weight: 700;
-  color: var(--ifm-color-content);
   --stripe-color1: #d9b8ff77;
   --stripe-color2: #d9b8ff33;
+  z-index: auto;
   background: repeating-linear-gradient(
     35deg,
     var(--stripe-color1),
@@ -131,7 +130,8 @@ div[class^='announcementBar_'] {
     var(--stripe-color2) 10px,
     var(--stripe-color2) 40px
   );
-  z-index: auto;
+  color: var(--ifm-color-content);
+  font-weight: 700;
 }
 
 html[data-theme='dark'] div[class^='announcementBar_'] {
@@ -153,14 +153,14 @@ div[class^='announcementBar_'] .close {
 }
 
 .navbar__title {
-  height: 2.25rem;
-  width: 5.625rem;
-  font-size: 0;
-  background-color: var(--ifm-navbar-link-hover-color);
   --logo-text: url('/img/navbar-logotext.svg');
   -webkit-mask-image: var(--logo-text);
   mask-image: var(--logo-text);
   mask-repeat: no-repeat;
+  background-color: var(--ifm-navbar-link-hover-color);
+  width: 5.625rem;
+  height: 2.25rem;
+  font-size: 0;
 }
 
 .navbar__item {
@@ -172,8 +172,8 @@ div[class^='announcementBar_'] .close {
 }
 
 .navbar__link--active {
-  background: var(--ifm-menu-color-background-active);
   border-radius: var(--ifm-global-radius);
+  background: var(--ifm-menu-color-background-active);
 }
 
 .navbar__items .navbar-icon-link {
@@ -186,14 +186,14 @@ div[class^='announcementBar_'] .close {
 }
 
 .navbar__items .navbar-icon-link::before {
-  width: 2em;
-  height: 2em;
-  margin-left: -0.75em;
-  background-color: var(--ifm-navbar-link-color);
+  display: flex;
   -webkit-mask-image: var(--icon);
   mask-image: var(--icon);
+  margin-left: -0.75em;
+  background-color: var(--ifm-navbar-link-color);
+  width: 2em;
+  height: 2em;
   content: '';
-  display: flex;
 }
 
 .navbar__items .navbar-icon-link:hover::before {
@@ -221,13 +221,13 @@ div[class^='announcementBar_'] .close {
 }
 
 .navGithubStars {
+  --ifm-button-background-color: var(--ifm-navbar-link-color);
   display: inline-block;
   position: relative;
-  text-align: center;
   margin-left: 0.625em;
   padding: 0.375em 0.5em;
-  --ifm-button-background-color: var(--ifm-navbar-link-color);
   color: var(--ifm-color-primary-contrast-background);
+  text-align: center;
 }
 
 .navbar-icon-link:hover > .navGithubStars {
@@ -235,16 +235,16 @@ div[class^='announcementBar_'] .close {
 }
 
 .navbar__items .navGithubStars:after {
-  content: '';
   position: absolute;
-  border-left: 0.75em solid transparent;
-  border-right: 0.75em solid var(--ifm-navbar-link-color);
-  border-top: 0.75em solid transparent;
-  border-bottom: 0.75em solid transparent;
   left: -1.25em;
-  transition-property: color, background, border-color;
   transition-duration: var(--ifm-button-transition-duration);
+  transition-property: color, background, border-color;
   transition-timing-function: var(--ifm-transition-timing-default);
+  border-top: 0.75em solid transparent;
+  border-right: 0.75em solid var(--ifm-navbar-link-color);
+  border-bottom: 0.75em solid transparent;
+  border-left: 0.75em solid transparent;
+  content: '';
 }
 
 .navbar__items .navbar-icon-link:hover > .navGithubStars:after {
@@ -252,8 +252,8 @@ div[class^='announcementBar_'] .close {
 }
 
 .theme-doc-sidebar-container {
-  background-color: #d9b8ff22;
   border: none !important;
+  background-color: #d9b8ff22;
 }
 
 html[data-theme='dark'] .theme-doc-sidebar-container {
@@ -261,13 +261,13 @@ html[data-theme='dark'] .theme-doc-sidebar-container {
 }
 
 .version-selector {
-  background-color: var(--ifm-navbar-background-color);
-  padding: var(--ifm-menu-link-padding-vertical)
-    var(--ifm-menu-link-padding-horizontal);
   display: flex;
   flex-direction: row;
   align-items: center;
   border-radius: 0.5rem;
+  background-color: var(--ifm-navbar-background-color);
+  padding: var(--ifm-menu-link-padding-vertical)
+    var(--ifm-menu-link-padding-horizontal);
 }
 
 .version-selector .navbar__item {
@@ -301,8 +301,8 @@ h2 code,
 h3 code,
 h4 code,
 h5 code {
-  background: none;
   border: none;
+  background: none;
 }
 
 p:last-child {
@@ -329,17 +329,17 @@ html[data-theme='dark'] strong {
 }
 
 .footer {
-  font-size: 0.875rem;
   --ifm-footer-background-color: #000d19;
   --ifm-footer-link-hover-color: var(--ifm-footer-link-color);
   padding-top: calc(var(--ifm-footer-padding-vertical) + 4rem);
+  font-size: 0.875rem;
 }
 
 .companyLogoLink {
   display: block;
+  z-index: 15;
   margin: -5rem auto;
   height: 10rem;
-  z-index: 15;
 }
 
 .companyLogoLink:hover {
@@ -348,10 +348,10 @@ html[data-theme='dark'] strong {
 }
 
 .companyLogo {
-  height: 100%;
+  margin: 0;
   width: auto;
   max-width: 10rem;
-  margin: 0;
+  height: 100%;
 }
 
 .footer__copyright a {
@@ -359,9 +359,9 @@ html[data-theme='dark'] strong {
 }
 
 .docusaurus-highlight-code-line {
-  background-color: rgba(0, 0, 0, 0.1);
   display: block;
   margin: 0 calc(-1 * var(--ifm-pre-padding));
+  background-color: rgba(0, 0, 0, 0.1);
   padding: 0 var(--ifm-pre-padding);
 }
 
@@ -371,10 +371,10 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 
 .breadcrumbs__link {
   display: inline-block;
-  padding: 0;
   transition-property: none;
-  text-decoration: none;
   background: none !important;
+  padding: 0;
+  text-decoration: none;
 }
 
 .breadcrumbs__link:hover {
@@ -386,22 +386,22 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   .tabs-container
   > .margin-top--md {
   margin-top: -3px !important;
-  padding: var(--ifm-alert-padding-vertical) var(--ifm-alert-padding-horizontal);
+  box-shadow: var(--ifm-alert-shadow);
   border: 1px solid var(--ifm-toc-border-color);
   border-radius: var(--ifm-alert-border-radius);
-  box-shadow: var(--ifm-alert-shadow);
+  padding: var(--ifm-alert-padding-vertical) var(--ifm-alert-padding-horizontal);
 }
 
 .theme-doc-markdown > :not(.theme-api-markdown) .tabs {
-  overflow-x: visible;
   margin-left: var(--ifm-tabs-padding-horizontal);
+  overflow-x: visible;
 }
 
 .theme-doc-markdown > :not(.theme-api-markdown) .tabs__item {
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
   padding: calc(var(--ifm-tabs-padding-vertical) / 2)
     var(--ifm-tabs-padding-horizontal) !important;
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
 }
 
 .theme-doc-markdown
@@ -412,10 +412,10 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 
 .video-container {
   position: relative;
-  overflow: hidden;
+  margin: 0 auto;
   width: 100%;
   max-width: calc(var(--ifm-container-width) * 3 / 5);
-  margin: 0 auto;
+  overflow: hidden;
 }
 
 .button--outline:hover {
@@ -501,9 +501,9 @@ td ol:last-child {
 
   .footer__items {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
   }
 
   .footer__item {

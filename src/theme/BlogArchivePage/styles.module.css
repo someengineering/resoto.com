@@ -1,27 +1,27 @@
 .hero {
-  color: var(--ifm-color-content);
-  background-color: #f6edfe;
   background-image: radial-gradient(
       farthest-corner at 60% 15%,
       #ffffff,
       transparent 60%
     ),
     radial-gradient(farthest-side at 75% 175%, #ffffff, transparent 75%);
+  background-color: #f6edfe;
   background-blend-mode: screen;
+  color: var(--ifm-color-content);
 }
 
 html[data-theme='dark'] .hero {
-  background-color: #24024f;
   background-image: radial-gradient(
       farthest-corner at 60% 15%,
       #762dd7,
       transparent 60%
     ),
     radial-gradient(farthest-side at 75% 175%, #762dd7, transparent 75%);
+  background-color: #24024f;
 }
 
 .year {
-  font-size: var(--ifm-h1-font-size);
+  -webkit-text-fill-color: transparent;
   background-image: linear-gradient(
     135deg,
     #e373f5,
@@ -32,8 +32,8 @@ html[data-theme='dark'] .hero {
   );
   background-clip: text;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   font-weight: 800;
+  font-size: var(--ifm-h1-font-size);
 }
 
 html[data-theme='dark'] .year {
@@ -48,18 +48,18 @@ html[data-theme='dark'] .year {
 }
 
 .cardContainer {
-  color: var(--ifm-color-emphasis-800);
-  box-shadow: 0 1.5px 3px 0 rgb(0 0 0 / 15%);
-  border: 1px solid var(--ifm-color-emphasis-200);
   transition: all var(--ifm-transition-fast) ease;
   transition-property: border, box-shadow;
+  box-shadow: 0 1.5px 3px 0 rgb(0 0 0 / 15%);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-800);
 }
 
 .cardContainer:hover {
+  box-shadow: 0 3px 6px 0 rgb(0 0 0 / 20%);
+  border-color: var(--ifm-color-primary);
   color: var(--ifm-color-emphasis-700);
   text-decoration: none;
-  border-color: var(--ifm-color-primary);
-  box-shadow: 0 3px 6px 0 rgb(0 0 0 / 20%);
 }
 
 .cardContainer a {
@@ -77,10 +77,10 @@ html[data-theme='dark'] .year {
 }
 
 .authorCol {
-  max-width: inherit !important;
+  column-gap: calc(var(--ifm-avatar-intro-margin) * 2 / 3);
   flex-grow: 1 !important;
   align-items: center;
-  column-gap: calc(var(--ifm-avatar-intro-margin) * 2 / 3);
+  max-width: inherit !important;
 }
 
 .authorName {
@@ -93,17 +93,17 @@ html[data-theme='dark'] .year {
 }
 
 .tag {
-  margin: 0 0.4rem 0.5rem 0;
   display: inline-block;
+  margin: 0 0.4rem 0.5rem 0;
 }
 
 .tagLink {
+  transition: border var(--ifm-transition-fast);
+  border: 1px solid var(--docusaurus-tag-list-border);
   border-radius: var(--ifm-global-radius);
   padding: 0.2rem 0.5rem 0.3rem;
-  font-size: 90%;
-  border: 1px solid var(--docusaurus-tag-list-border);
-  transition: border var(--ifm-transition-fast);
   color: var(--ifm-link-color);
+  font-size: 90%;
 }
 
 .tagLink:hover {

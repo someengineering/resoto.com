@@ -10,14 +10,14 @@
 
 .copyButtonIcon,
 .copyButtonSuccessIcon {
+  fill: currentColor;
   position: absolute;
   top: 0;
   left: 0;
-  fill: currentColor;
   opacity: inherit;
+  transition: all var(--ifm-transition-fast) ease;
   width: inherit;
   height: inherit;
-  transition: all var(--ifm-transition-fast) ease;
 }
 
 .copyButtonSuccessIcon {

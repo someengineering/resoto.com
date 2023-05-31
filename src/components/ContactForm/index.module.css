@@ -14,11 +14,11 @@
 }
 
 .heading {
-  text-transform: uppercase;
+  margin-bottom: 36px;
+  font-weight: 800;
   font-size: 72px;
   line-height: 112%;
-  font-weight: 800;
-  margin-bottom: 36px;
+  text-transform: uppercase;
 }
 
 .form {
@@ -32,16 +32,16 @@
 
 .form input,
 .form textarea {
+  margin-bottom: 8px;
+  border: 2px solid #ffffff;
   border-radius: 36px;
+  background-color: #ffffff;
+  padding: 0 42px;
+  color: #000c1d;
+  font-weight: 600;
   font-size: 20px;
   line-height: 32px;
   font-family: var(--ifm-font-family-base);
-  font-weight: 600;
-  padding: 0 42px;
-  margin-bottom: 8px;
-  border: 2px solid #ffffff;
-  background-color: #ffffff;
-  color: #000c1d;
 }
 
 .form input {
@@ -49,8 +49,8 @@
 }
 
 .form textarea {
-  padding: 20px 42px;
   margin-bottom: 24px;
+  padding: 20px 42px;
 }
 
 .inputError {
@@ -59,8 +59,8 @@
 
 p.error {
   margin-bottom: 0;
-  color: var(--ifm-color-danger-dark);
   padding: 0 42px;
+  color: var(--ifm-color-danger-dark);
   font-size: 16px;
   line-height: 1;
 }
@@ -70,12 +70,12 @@ p.alert {
 }
 
 .image {
-  width: 35vw;
-  max-width: 500px;
   background-image: url('./img/sheep-support.png');
+  background-position: right;
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: right;
+  width: 35vw;
+  max-width: 500px;
 }
 
 @media screen and (max-width: 1100px) {
@@ -92,10 +92,10 @@ p.alert {
   }
 
   .image {
+    margin: 72px auto 0;
     width: 45vw;
     height: 45vw;
     max-height: 500px;
-    margin: 72px auto 0;
   }
 }
 

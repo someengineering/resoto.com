@@ -1,7 +1,6 @@
 # Security
 
-Resoto is an asset management system that has access to your cloud infrastructure. Therefore, it is important to protect access to allowed users and secure the communication between components.
-Security is taken seriously and Resoto provides a number of features to secure your installation. All security measures are turned on by default for all installers that we provide.
+Resoto is an asset management system that has access to your cloud infrastructure. Therefore, it is important to protect access to allowed users and secure the communication between components. Security is taken seriously and Resoto provides a number of features to secure your installation. All security measures are turned on by default for all installers that we provide.
 
 ## Login based access {#login-based-access}
 
@@ -9,24 +8,21 @@ Resoto provides web-based and terminal-based user interfaces that allow you to m
 
 <div style={{'max-width' : '500px', 'overflow' : 'auto', 'margin': 'auto'}} >
 
-![Login Form](img/login-form.png) 
+![Login Form](img/login-form.png)
 
 </div>
 
 The authorization uses [JSON Web Token](#json-web-token) and is session based. An administrator can configure the session duration in [Resoto Core](../components/core.mdx), which defaults to one hour. Active Resoto user interfaces will renew sessions in the background before the session expires.
 
-An active user session lasts for the configured session duration and can not be revoked. When the session duration expires, a new login of the user can be forced by changing the password of the related user. An administrator can block another user from the system by deleting the corresponding user data.
-See [`user` command](../cli/setup-commands/user/index.md) for managing Resoto users.
+An active user session lasts for the configured session duration and can not be revoked. When the session duration expires, a new login of the user can be forced by changing the password of the related user. An administrator can block another user from the system by deleting the corresponding user data. See [`user` command](../cli/setup-commands/user/index.md) for managing Resoto users.
 
- 
 ### Setting up user management
 
 A fresh installation of Resoto does not have a registered user. In this special situation, no login is required but a signup form is shown. The first user that signs up is automatically granted administrator privileges.
 
-![Create Account](img/create-account.png) 
+![Create Account](img/create-account.png)
 
 Any subsequent user will see the login form. The first user can add new users and grant privileges using the [`user` command](../cli/setup-commands/user/index.md).
-
 
 ## Communication between components
 
@@ -159,17 +155,12 @@ $ curl --cacert resoto_ca.crt -H "$auth_header" -H "Content-Type: text/plain" -H
 
 ## Turning off security measures
 
-Security is taken seriously in Resoto and all security measures are turned on by default.
-If you have a good reason to turn them off, Resoto provides a way to do so.
+Security is taken seriously in Resoto and all security measures are turned on by default. If you have a good reason to turn them off, Resoto provides a way to do so.
 
 ### Turning off Authentication/Authorization
 
-The authentication/authorization infrastructure is based on the PSK provided to [Resoto Core](../components/core.mdx) on startup.
-If no PSK is provided, the authentication/authorization infrastructure is turned off.
-No login is required to access the [Resoto APIs](../api/index.mdx) and all requests are authorized.
+The authentication/authorization infrastructure is based on the PSK provided to [Resoto Core](../components/core.mdx) on startup. If no PSK is provided, the authentication/authorization infrastructure is turned off. No login is required to access the [Resoto APIs](../api/index.mdx) and all requests are authorized.
 
 ### Turning off TLS
 
-[Resoto Core](../components/core.mdx) can be started without TLS by providing the `--no-tls` flag.
-Please note that this change also needs to be reflected in the startup parameters of all other components, since the url of the core has changed.
-
+[Resoto Core](../components/core.mdx) can be started without TLS by providing the `--no-tls` flag. Please note that this change also needs to be reflected in the startup parameters of all other components, since the url of the core has changed.

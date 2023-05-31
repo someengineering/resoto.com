@@ -39,7 +39,7 @@ function useDocumentsFoundPlural() {
           id: 'theme.SearchPage.documentsFound.plurals',
           description:
             'Pluralized label for "{count} documents found". Use as much plural forms (separated by "|") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)',
-          message: 'One document found|{count} documents found',
+          message: 'One result found|{count} results found',
         },
         { count }
       )
@@ -295,7 +295,7 @@ function SearchPageContent(): JSX.Element {
       ? translate(
           {
             id: 'theme.SearchPage.existingResultsTitle',
-            message: 'Search results for "{query}"',
+            message: 'Search Results for "{query}"',
             description: 'The search page title for non-empty query',
           },
           {
@@ -304,7 +304,7 @@ function SearchPageContent(): JSX.Element {
         )
       : translate({
           id: 'theme.SearchPage.emptyResultsTitle',
-          message: 'Search the documentation',
+          message: 'Search',
           description: 'The search page title for empty query',
         });
 
@@ -502,7 +502,7 @@ function SearchPageContent(): JSX.Element {
                   id="theme.SearchPage.noResultsText"
                   description="The paragraph for empty search result"
                 >
-                  No results were found
+                  No results found
                 </Translate>
               </p>
             ),
@@ -518,7 +518,7 @@ function SearchPageContent(): JSX.Element {
               id="theme.SearchPage.fetchingNewResults"
               description="The paragraph for fetching new search results"
             >
-              Fetching new results...
+              Fetching results&hellip;
             </Translate>
           </div>
         )}

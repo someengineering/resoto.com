@@ -1,5 +1,7 @@
 import Link from '@docusaurus/Link';
+import { PageMetadata } from '@docusaurus/theme-common';
 import ContactForm from '@site/src/components/ContactForm';
+import { getImage } from '@site/src/utils/socialImageHelper';
 import Layout from '@theme/Layout';
 import clsx from 'clsx';
 import React from 'react';
@@ -9,9 +11,18 @@ import homepageStyles from '../index.module.css';
 import styles from './index.module.css';
 
 export default function Pricing(): JSX.Element {
+  const title = 'Pricing';
+  const description =
+    'Run Resoto on your terms—in your infrastructure or ours.';
+
   return (
     <>
-      <Layout>
+      <PageMetadata
+        title={title}
+        description={description}
+        image={getImage({ title })}
+      />
+      <Layout title="Pricing" description={description}>
         <main className={styles.content}>
           <section className={homepageStyles.section}>
             <div className={homepageStyles.inner}>
@@ -19,9 +30,7 @@ export default function Pricing(): JSX.Element {
                 <span>Pricing</span>
               </h1>
               <p className={styles.pageDescription}>
-                <Balancer>
-                  Run Resoto on your terms&mdash;in your infrastructure or ours.
-                </Balancer>
+                <Balancer>{description}</Balancer>
               </p>
               <div className={clsx('row', styles.priceCards)}>
                 <div className="col col--4">

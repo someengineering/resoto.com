@@ -104,10 +104,6 @@ html[data-theme='dark'] .heroTitle strong {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-
-  @supports (background-image: url('./img/sheep-graph.webp')) {
-    background-image: url('./img/sheep-graph.webp');
-  }
 }
 
 .buttons {
@@ -211,10 +207,6 @@ html[data-theme='dark'] .docsButton::before {
   background-size: cover;
   background-repeat: no-repeat;
   padding: 30px 0 5rem;
-
-  @supports (background-image: url('./img/main-lightbg.webp')) {
-    background-image: url('./img/main-lightbg.webp');
-  }
 }
 
 html[data-theme='dark'] .content {

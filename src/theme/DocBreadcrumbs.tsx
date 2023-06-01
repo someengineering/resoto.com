@@ -80,7 +80,7 @@ export default function DocBreadcrumbs(): JSX.Element | null {
         {breadcrumbs.map((item, idx) => (
           <BreadcrumbsItem key={idx} index={idx} addMicrodata={!!item.href}>
             <BreadcrumbsItemLink href={item.href}>
-              {item.label}
+              {item.label.replace(/^\d+\.\s*/, '')}
             </BreadcrumbsItemLink>
           </BreadcrumbsItem>
         ))}

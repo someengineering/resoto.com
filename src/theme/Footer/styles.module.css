@@ -1,0 +1,24 @@
+.logoLink {
+  display: block;
+  z-index: 15;
+  margin: -5rem auto;
+  height: 10rem;
+}
+
+.logoLink:hover {
+  transform: scale(1.025);
+  transition-duration: 75ms;
+}
+
+.logo {
+  margin: 0;
+  width: auto;
+  max-width: 10rem;
+  height: 100%;
+}
+
+.scarf {
+  margin-bottom: -1px;
+  border: 0;
+  height: 1px;
+}

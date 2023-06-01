@@ -8,8 +8,9 @@ import {
   useNetlifyForm,
 } from 'react-netlify-forms';
 import * as Yup from 'yup';
-import homepageStyles from '../../pages/index.module.css';
-import styles from './index.module.css';
+
+import homepageStyles from '@site/src/pages/index.module.css';
+import styles from './styles.module.css';
 
 export default function ContactForm(): JSX.Element {
   const netlify = useNetlifyForm({

@@ -26,7 +26,6 @@ export default function DocVersionBadgeWrapper(props: Props): JSX.Element {
     <Link
       to={`/releases/${latestRelease[versionMetadata.version]}`}
       title="View release notes"
-      className="sm-screens-only"
     >
       <DocVersionBadge {...props} />
     </Link>

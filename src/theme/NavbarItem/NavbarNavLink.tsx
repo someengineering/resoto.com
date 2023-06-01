@@ -42,7 +42,7 @@ export default function NavbarNavLink({
     : {
         children: (
           <>
-            <span className="navLinklabel">
+            <span className="link-text">
               {label}
               {isExternalLink && (
                 <IconExternalLink
@@ -51,7 +51,7 @@ export default function NavbarNavLink({
               )}
             </span>
             {label === 'GitHub' && !!githubStars && (
-              <span className="button navGithubStars">
+              <span className="button github-stars">
                 {githubStars} <Emoji symbol="⭐" label="stars" />
               </span>
             )}

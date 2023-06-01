@@ -1,6 +1,9 @@
+import clsx from 'clsx';
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { TransformComponent, TransformWrapper } from 'react-zoom-pan-pinch';
+
+import styles from './styles.module.css';
 
 export default function ZoomPanPinch({
   children,
@@ -17,15 +20,11 @@ export default function ZoomPanPinch({
 
   return (
     <>
-      <p style={{ textAlign: 'center' }}>
+      <p className={styles.paragraph}>
         {React.cloneElement(img, {
           onClick: () => setShow(true),
           onKeyDown: () => setShow(true),
-          style: {
-            maxHeight: 'min(50vh, 100vw)',
-            width: 'auto',
-            cursor: 'zoom-in',
-          },
+          className: styles.image,
         })}
       </p>
       <Modal
@@ -48,26 +47,12 @@ export default function ZoomPanPinch({
           },
         }}
       >
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            marginBottom: '1em',
-            fontSize: '1.2em',
-          }}
-        >
+        <div className={styles.modalHeader}>
           <span>{img.props.alt}</span>
           <button
             type="button"
             aria-label="Close"
-            className="clean-btn close"
-            style={{
-              color: 'var(--ifm-color-primary-contrast-foreground)',
-              width: '1em',
-              height: '1em',
-              padding: 0,
-            }}
+            className={clsx('clean-btn close', styles.closeButton)}
             onClick={() => setShow(false)}
           >
             <svg viewBox="0 0 15 15" width="14" height="14">

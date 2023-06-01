@@ -30,7 +30,7 @@ html[data-theme='dark'] .hero {
 }
 
 .heroTitle {
-  margin-bottom: 36px;
+  margin: 0;
   color: var(--ifm-color-content);
   font-weight: 800;
   font-size: 72px;
@@ -77,6 +77,7 @@ html[data-theme='dark'] .heroTitle strong {
 
 .heroText h2 {
   display: flex;
+  margin: 1.5rem 0;
   font-weight: 500;
   font-size: 30px;
   line-height: 125%;
@@ -299,7 +300,7 @@ html[data-theme='dark'] .providersHeading strong {
   }
 
   .buttons {
-    margin: 4rem -1.25rem 2.25rem;
+    margin: 3rem -1.25rem 1.25rem;
   }
 
   .heroTitle {
@@ -324,6 +325,10 @@ html[data-theme='dark'] .providersHeading strong {
 }
 
 @media screen and (max-width: 750px) {
+  .inner {
+    padding: 24px;
+  }
+
   .heroTitle {
     font-size: 48px;
   }
@@ -348,6 +353,20 @@ html[data-theme='dark'] .providersHeading strong {
     margin: 0 1.6rem 1.2rem;
     max-width: 12rem;
     height: 2.4rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .inner {
+    padding: 18px;
+  }
+
+  .heroTitle {
+    font-size: 45px;
+  }
+
+  .heroImage {
+    height: 240px;
   }
 }
 

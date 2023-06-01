@@ -2,9 +2,10 @@ import {
   filterDocCardListItems,
   useCurrentSidebarCategory,
 } from '@docusaurus/theme-common';
+import GithubSlugger from 'github-slugger';
 import type { Props } from '@theme/DocCardList';
 import DocCardList from '@theme/DocCardList';
-import GithubSlugger from 'github-slugger';
+import Heading from '@theme/Heading';
 import React from 'react';
 
 function SectionedDocCardListForCurrentSidebarCategory({ className }: Props) {
@@ -19,7 +20,7 @@ export default function SectionedDocCardList(props: Props): JSX.Element {
   }
 
   const filteredItems = filterDocCardListItems(items);
-  const githubSlugger = new GithubSlugger();
+  const slugger = new GithubSlugger();
 
   return (
     <>
@@ -30,16 +31,9 @@ export default function SectionedDocCardList(props: Props): JSX.Element {
       {filteredItems.map((item, index) =>
         item.type === 'category' ? (
           <div key={index}>
-            <h2 className="anchor anchorWithHideOnScrollNavbar_node_modules-@docusaurus-theme-classic-lib-theme-Heading-styles-module">
+            <Heading as="h2" id={slugger.slug(item.label)}>
               {item.label}
-              <a
-                className="hash-link"
-                href={`#${githubSlugger.slug(item.label)}`}
-                title="Direct link to heading"
-              >
-                {'​'}
-              </a>
-            </h2>
+            </Heading>
             <DocCardList items={item.items} className={className} />
           </div>
         ) : null

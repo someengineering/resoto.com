@@ -17,7 +17,7 @@ export default function ContactForm(): JSX.Element {
     honeypotName: 'bot-field',
     onSuccess: () => {
       // eslint-disable-next-line no-console
-      console.log('Successfully sent form data to Netlify Server');
+      console.log('Successfully sent form data to Netlify');
     },
   });
 

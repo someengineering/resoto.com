@@ -39,7 +39,7 @@
     "clsx": "1.2.1",
     "docusaurus-plugin-openapi-docs": "0.0.0-beta.660",
     "docusaurus-theme-openapi-docs": "0.0.0-beta.660",
-    "formik": "2.4.0",
+    "formik": "2.4.1",
     "github-slugger": "2.0.0",
     "hast-util-is-element": "1.1.0",
     "lodash": "4.17.21",

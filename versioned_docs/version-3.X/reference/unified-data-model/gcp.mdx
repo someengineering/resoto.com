@@ -112,6 +112,9 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class gcp_accelerator_type {
 }
+class gcp_machine_type {
+}
+gcp_machine_type -[#1A83AF]-> gcp_accelerator_type
 @enduml
 ```
 
@@ -2348,8 +2351,11 @@ class gcp_disk_type {
 }
 class gcp_node_template {
 }
+class gcp_sku {
+}
 gcp_disk_type -[#1A83AF]-> gcp_disk
 gcp_disk_type -[#1A83AF]-> gcp_node_template
+gcp_sku -[#1A83AF]-> gcp_disk_type
 @enduml
 ```
 
@@ -5572,14 +5578,20 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class gcp_accelerator_type {
+}
 class gcp_instance {
 }
 class gcp_instance_template {
 }
 class gcp_machine_type {
 }
+class gcp_sku {
+}
+gcp_machine_type -[#1A83AF]-> gcp_accelerator_type
 gcp_machine_type -[#1A83AF]-> gcp_instance
 gcp_machine_type -[#1A83AF]-> gcp_instance_template
+gcp_sku -[#1A83AF]-> gcp_machine_type
 @enduml
 ```
 
@@ -5627,7 +5639,7 @@ class gcp_network {
 **auto_create_subnetworks**: boolean
 **enable_ula_internal_ipv6**: boolean
 **firewall_policy**: string
-**gateway_i_pv4**: string
+**gateway_ipv4**: string
 **internal_ipv6_range**: string
 **ipv4_range**: string
 **mtu**: int64
@@ -7645,6 +7657,9 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class gcp_region {
 }
+class gcp_zone {
+}
+gcp_region -[#1A83AF]-> gcp_zone
 @enduml
 ```
 
@@ -8877,11 +8892,17 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class gcp_disk_type {
+}
+class gcp_machine_type {
+}
 class gcp_service {
 }
 class gcp_sku {
 }
 gcp_service -[#1A83AF]-> gcp_sku
+gcp_sku -[#1A83AF]-> gcp_disk_type
+gcp_sku -[#1A83AF]-> gcp_machine_type
 @enduml
 ```
 
@@ -9258,6 +9279,9 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class gcp_sql_database {
 }
+class gcp_sql_database_instance {
+}
+gcp_sql_database_instance -[#1A83AF]-> gcp_sql_database
 @enduml
 ```
 
@@ -9569,13 +9593,19 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class gcp_sql_database {
+}
 class gcp_sql_database_instance {
 }
 class gcp_sql_operation {
 }
+class gcp_sql_user {
+}
 class gcp_ssl_certificate {
 }
+gcp_sql_database_instance -[#1A83AF]-> gcp_sql_database
 gcp_sql_database_instance -[#1A83AF]-> gcp_sql_operation
+gcp_sql_database_instance -[#1A83AF]-> gcp_sql_user
 gcp_ssl_certificate -[#1A83AF]-> gcp_sql_database_instance
 @enduml
 ```
@@ -9888,8 +9918,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class gcp_sql_database_instance {
+}
 class gcp_sql_user {
 }
+gcp_sql_database_instance -[#1A83AF]-> gcp_sql_user
 @enduml
 ```
 
@@ -11915,8 +11948,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class gcp_region {
+}
 class gcp_zone {
 }
+gcp_region -[#1A83AF]-> gcp_zone
 @enduml
 ```
 

@@ -1,0 +1,45 @@
+---
+date: 2023-06-02
+---
+
+# 3.5.1
+
+## What's Changed
+
+### Features
+
+- [`062dd3f7`](https://github.com/someengineering/resoto/commit/062dd3f7) <span class="badge badge--secondary">plugins/k8s</span> Store LB backends when collecting ingress (#1617)
+- [`b04f19a2`](https://github.com/someengineering/resoto/commit/b04f19a2) <span class="badge badge--secondary">aws</span> Allow glob style service filters (#1631)
+- [`66b77904`](https://github.com/someengineering/resoto/commit/66b77904) <span class="badge badge--secondary">resotoshell</span> Do not store passwords in shell history (#1625)
+- [`107eb0ff`](https://github.com/someengineering/resoto/commit/107eb0ff) <span class="badge badge--secondary">gcp</span> Add missing edges (#1621)
+- [`a9cb6df2`](https://github.com/someengineering/resoto/commit/a9cb6df2) <span class="badge badge--secondary">resotocore</span> Send analytics event on action error (#1619)
+- [`78f90a86`](https://github.com/someengineering/resoto/commit/78f90a86) <span class="badge badge--secondary">resotoworker</span> Define home-directory files as dict (#1615)
+- [`b709ed10`](https://github.com/someengineering/resoto/commit/b709ed10) <span class="badge badge--secondary">plugins/digitalocean</span> Fill in backends when collecting load balancers. (#1614)
+
+### Fixes
+
+- [`5df63e9d`](https://github.com/someengineering/resoto/commit/5df63e9d) <span class="badge badge--secondary">aws</span> Make sure all services have service names (#1632)
+- [`a59420f0`](https://github.com/someengineering/resoto/commit/a59420f0) <span class="badge badge--secondary">aws</span> AWS Artifacts are referenced by arn not name (#1630)
+- [`7fa803f0`](https://github.com/someengineering/resoto/commit/7fa803f0) <span class="badge badge--secondary">aws</span> Detach Network interface before cleanup and correct LogGroup service (#1628)
+- [`92ddae9e`](https://github.com/someengineering/resoto/commit/92ddae9e) <span class="badge badge--secondary">aws</span> Log json if the resource can not be mapped (#1627)
+- [`5c991d9d`](https://github.com/someengineering/resoto/commit/5c991d9d) <span class="badge badge--secondary">plugins/aws</span> Find pricing partition index dynamically (#1626)
+- [`e2c3a399`](https://github.com/someengineering/resoto/commit/e2c3a399) <span class="badge badge--secondary">plugins/aws</span> Propagate partition to all client calls (#1624)
+- [`0f210944`](https://github.com/someengineering/resoto/commit/0f210944) <span class="badge badge--secondary">plugins/aws</span> Set default region on all sessions (#1623)
+- [`79cec0f4`](https://github.com/someengineering/resoto/commit/79cec0f4) <span class="badge badge--secondary">plugins/aws</span> Add support for non-default partitions (#1620)
+- [`9584c1db`](https://github.com/someengineering/resoto/commit/9584c1db) <span class="badge badge--secondary">resotocore</span> Fix utc_str call during snapshot creation (#1622)
+
+### Chores
+
+- [`22f2e1e8`](https://github.com/someengineering/resoto/commit/22f2e1e8) <span class="badge badge--secondary">resoto</span> Bump 3.5.1 (#1618)
+- [`710d60f3`](https://github.com/someengineering/resoto/commit/710d60f3) <span class="badge badge--secondary">resoto</span> Remove anjafr from code owners (#1616)
+- [`368c1cc2`](https://github.com/someengineering/resoto/commit/368c1cc2) <span class="badge badge--secondary">resoto</span> Use pyproject.toml instead of setup.py (#1613)
+- [`592a8f7b`](https://github.com/someengineering/resoto/commit/592a8f7b) <span class="badge badge--secondary">ci</span> Split optimize/format from build step (#1611)
+
+<!--truncate-->
+
+## Docker Images
+
+- `somecr.io/someengineering/resotocore:3.5.1`
+- `somecr.io/someengineering/resotoworker:3.5.1`
+- `somecr.io/someengineering/resotoshell:3.5.1`
+- `somecr.io/someengineering/resotometrics:3.5.1`

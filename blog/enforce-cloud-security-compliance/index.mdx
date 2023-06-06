@@ -56,7 +56,11 @@ Let's see what this looks like. Assume we want to check all our AWS accounts for
 > report benchmark run aws_cis_1_5
 ```
 
-This will look for all AWS accounts that have been collected and render a nice report for every account in the terminal that looks like this. ![Report Run Result](img/report-run-result.png) The `report` command can be customized by command line options - see `help report` for more details.
+This will look for all AWS accounts that have been collected and render a nice report for every account in the terminal that looks like this.
+
+![Report Run Result](img/report-run-result.png)
+
+The `report` command can be customized by command line options - see `help report` for more details.
 
 If you want to get the report in raw Markdown format, you can simply pipe the output of the `report` command to the `write` command:
 
@@ -81,7 +85,9 @@ We can not only write the result of a report to a file, but we could also take t
  --webhook https://discord.com/api/webhooks/123/234
 ```
 
-In case the report command does not find any issues in the defined account, no message will be sent. If there are issues, the message will look similar to this one: ![Discord Message](img/discord-message.jpg)
+In case the report command does not find any issues in the defined account, no message will be sent. If there are issues, the message will look similar to this one:
+
+![Discord Message](img/discord-message.jpg)
 
 ### Create an alert in PagerDuty or AlertManager
 
@@ -103,7 +109,9 @@ Resoto does not only interface with well-known chat applications like Slack or D
 
 Note: the `routing-key` is the integration key of your PagerDuty integration. The `dedup-key` is used to group alerts together.
 
-Once the report command finds issues in the defined account, a PagerDuty alert will be created that looks like this: ![PagerDuty Alert](img/pagerduty-alert.png)
+Once the report command finds issues in the defined account, a PagerDuty alert will be created that looks like this:
+
+![PagerDuty Alert](img/pagerduty-alert.png)
 
 ## Enforce Security Compliance
 

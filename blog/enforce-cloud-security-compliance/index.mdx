@@ -96,9 +96,9 @@ Resoto does not only interface with well-known chat applications like Slack or D
  --summary "Security Benchmark Issues! Account 7524xxxx does not adhere to AWS CIS 1.5"
  --routing-key <your-pagerduty-routing-key>
  --dedup-key AWS_CIS_75246xxxx
- --resource_id .reported.name
- --group_resources false
- --resource_properties {failing_resources: .reported.number_of_resources_failing}
+ --resource-id .reported.name
+ --group-resources false
+ --resource-properties {failing_resources: .reported.number_of_resources_failing}
 ```
 
 Note: the `routing-key` is the integration key of your PagerDuty integration. The `dedup-key` is used to group alerts together.

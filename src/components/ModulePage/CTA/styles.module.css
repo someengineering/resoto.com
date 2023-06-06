@@ -1,0 +1,77 @@
+.inner {
+  box-shadow: var(--ifm-global-shadow-md);
+  border-width: 1.5px;
+  border-style: solid;
+  border-color: var(--ifm-color-primary);
+  border-radius: 34px;
+  background-color: var(--ifm-background-color);
+  padding: 72px;
+  overflow: hidden;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 125%;
+  text-align: center;
+}
+
+.inner h2 {
+  margin-bottom: 2rem;
+  font-weight: 800;
+  font-size: 60px;
+  line-height: 112%;
+  text-transform: uppercase;
+}
+
+.buttons {
+  margin-bottom: 4rem;
+}
+
+.sheep {
+  margin-top: 2rem;
+  margin-bottom: -72px;
+  background-image: url('./img/vetruvian-sheep.svg');
+  background-position: top;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height: 240px;
+}
+
+@media screen and (max-width: 1100px) {
+  .buttons {
+    margin-bottom: 3rem;
+  }
+
+  .sheep {
+    height: 160px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .inner {
+    padding: 36px;
+    font-size: 24px;
+  }
+
+  .inner h2 {
+    font-size: 48px;
+  }
+
+  .sheep {
+    height: 180px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .inner {
+    padding: 36px 18px;
+    font-size: 20px;
+  }
+
+  .inner h2 {
+    font-size: 42px;
+  }
+
+  .sheep {
+    background-position: top left;
+    background-size: 200%;
+  }
+}

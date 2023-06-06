@@ -25,7 +25,7 @@ import algoliaSearch from 'algoliasearch/lite';
 import clsx from 'clsx';
 import React, { useEffect, useReducer, useRef, useState } from 'react';
 
-import homepageStyles from '@site/src/pages/index.module.css';
+import baseStyles from '@site/src/pages/styles.module.css';
 import styles from './styles.module.css';
 
 // Very simple pluralization: probably good enough for now
@@ -523,7 +523,7 @@ function SearchPageContent(): JSX.Element {
           </div>
         )}
       </div>
-      <div className={homepageStyles.content}>
+      <div className={baseStyles.homeContent}>
         <ContactForm />
       </div>
     </Layout>

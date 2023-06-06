@@ -56,8 +56,6 @@
     "remark-math": "3.0.1",
     "remark-plugin-oembed": "0.1.0",
     "url-loader": "4.1.1",
-    "workbox-routing": "7.0.0",
-    "workbox-strategies": "7.0.0",
     "yup": "1.2.0"
   },
   "devDependencies": {

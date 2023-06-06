@@ -11,7 +11,7 @@ import { clsx } from 'clsx';
 import React from 'react';
 import Balancer from 'react-wrap-balancer';
 
-import styles from './index.module.css';
+import styles from './styles.module.css';
 
 export default function Home(): JSX.Element {
   return (
@@ -69,7 +69,7 @@ export default function Home(): JSX.Element {
             <div className={styles.heroImage} aria-hidden="true" />
           </div>
         </header>
-        <main className={styles.content}>
+        <main className={styles.homeContent}>
           <section className={styles.section}>
             <div className={styles.inner}>
               <h2 className={styles.providersHeading}>

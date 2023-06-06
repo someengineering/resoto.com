@@ -165,10 +165,6 @@ div[class^='announcementBar_'] .close {
   font-size: 0;
 }
 
-.navbar__item {
-  margin: 0 0.125rem;
-}
-
 .navbar__link {
   white-space: nowrap;
 }
@@ -483,7 +479,7 @@ td ol:last-child {
   }
 }
 
-@media screen and (max-width: 996px) {
+@media screen and (max-width: 1100px) {
   .version-selector .navbar__item {
     display: inline-block;
   }
@@ -516,7 +512,7 @@ td ol:last-child {
   }
 }
 
-@media screen and (max-width: 498px) {
+@media screen and (max-width: 450px) {
   .menu__list-item .github-stars {
     display: none;
   }

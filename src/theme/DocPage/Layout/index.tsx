@@ -7,7 +7,7 @@ import DocPageLayoutSidebar from '@theme/DocPage/Layout/Sidebar';
 import Layout from '@theme/Layout';
 import React, { useState } from 'react';
 
-import homepageStyles from '@site/src/pages/index.module.css';
+import baseStyles from '@site/src/pages/styles.module.css';
 import styles from './styles.module.css';
 
 export default function DocPageLayout({ children }: Props): JSX.Element {
@@ -28,7 +28,7 @@ export default function DocPageLayout({ children }: Props): JSX.Element {
           {children}
         </DocPageLayoutMain>
       </div>
-      <div className={homepageStyles.content}>
+      <div className={baseStyles.homeContent}>
         <ContactForm />
       </div>
     </Layout>

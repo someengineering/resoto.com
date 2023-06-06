@@ -9,7 +9,7 @@ import {
 } from 'react-netlify-forms';
 import * as Yup from 'yup';
 
-import homepageStyles from '@site/src/pages/index.module.css';
+import baseStyles from '@site/src/pages/styles.module.css';
 import styles from './styles.module.css';
 
 export default function ContactForm(): JSX.Element {
@@ -51,8 +51,8 @@ export default function ContactForm(): JSX.Element {
   }, [values.name]);
 
   return (
-    <section className={(homepageStyles.section, styles.section)}>
-      <div className={clsx(homepageStyles.inner, styles.flex)}>
+    <section className={clsx(baseStyles.section, styles.section)}>
+      <div className={clsx(baseStyles.inner, styles.flex)}>
         <div>
           <h2 className={styles.heading} id="contact-us">
             Contact Us
@@ -145,8 +145,8 @@ export default function ContactForm(): JSX.Element {
                   <button
                     type="submit"
                     className={clsx(
-                      homepageStyles.button,
-                      homepageStyles.primaryButton
+                      baseStyles.button,
+                      baseStyles.primaryButton
                     )}
                     disabled={
                       netlify.submitting ||

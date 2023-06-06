@@ -1,0 +1,176 @@
+.inner {
+  display: flex;
+  align-items: stretch;
+}
+
+html[data-theme='dark'] .inner {
+  background-image: url('./img/spots.webp');
+  background-position: right 72px center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.inner > div:first-child {
+  flex: 1 1 0%;
+}
+
+.pageTitle {
+  margin: 0;
+  color: var(--ifm-color-content);
+  font-weight: 800;
+  font-size: 72px;
+  line-height: 112%;
+  text-transform: uppercase;
+}
+
+.pageTitle strong {
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(
+    45deg,
+    #e373f5,
+    #db46f2 25%,
+    #9a43ff 50%,
+    #b06cff 75%,
+    #c596ff
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-color: #d9b8ff;
+  font-weight: 800;
+}
+
+html[data-theme='dark'] .pageTitle strong {
+  background-image: linear-gradient(
+    45deg,
+    #f1bafa,
+    #e98df7 25%,
+    #c38fff 50%,
+    #d9b8ff 75%,
+    #efe2ff
+  );
+  background-color: #d9b8ff;
+}
+
+.pageTitle strong:hover {
+  animation: gradient 0.5s ease-in forwards;
+}
+
+.pageTitle span {
+  color: var(--ifm-color-primary-darkest);
+}
+
+html[data-theme='dark'] .pageTitle span {
+  color: var(--ifm-color-primary-lightest);
+}
+
+.pageDescription {
+  margin: 1.5rem 0;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 125%;
+}
+
+.image {
+  align-self: center;
+  margin: -54px 0 -54px 12px;
+  background-position: right;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 540px;
+  height: 540px;
+}
+
+@media (max-width: 1535px) {
+  html[data-theme='dark'] .inner {
+    background-position: right 36px center;
+  }
+
+  .image {
+    margin: -18px 0 -18px 12px;
+    max-width: 45vw;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  html[data-theme='dark'] .inner {
+    background-position: bottom;
+  }
+
+  .inner > div:first-child {
+    padding: 0;
+  }
+
+  .pageTitle {
+    font-size: 60px;
+  }
+
+  .pageDescription {
+    font-size: 26px;
+  }
+
+  .image {
+    margin: 2rem auto 0;
+    background-position: center;
+    width: 100%;
+    max-width: none;
+    height: 360px;
+    min-height: auto;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .pageTitle {
+    font-size: 48px;
+  }
+
+  .pageDescription {
+    font-size: 21px;
+  }
+
+  .image {
+    height: 280px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .pageTitle {
+    font-size: 45px;
+  }
+
+  .pageDescription {
+    font-size: 20px;
+  }
+
+  .image {
+    height: 240px;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-size: 100%;
+  }
+  80% {
+    background-size: 650%;
+  }
+  100% {
+    background-size: 650%;
+  }
+}
+
+@keyframes gradient-reverse {
+  0% {
+    background-size: 650%;
+  }
+  40% {
+    background-size: 650%;
+  }
+  100% {
+    background-size: 100%;
+  }
+}

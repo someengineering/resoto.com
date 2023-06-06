@@ -10,7 +10,7 @@
       "files": ["*.md", "*.mdx"],
       "options": {
         "embeddedLanguageFormatting": "off",
-        "printWidth": 200,
+        "printWidth": 240,
         "proseWrap": "never"
       }
     }

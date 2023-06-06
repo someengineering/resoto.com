@@ -1,0 +1,27 @@
+---
+sidebar_label: update
+pagination_label: config update
+---
+
+# `config update` Command
+
+The `config update` command updates the specified configuration, creating it if it does not already exist.
+
+## Usage
+
+```bash
+config update <id> <file_path>
+```
+
+### Parameters
+
+| Parameter   | Description                                              | Required? | Default Value |
+| ----------- | -------------------------------------------------------- | --------- | ------------- |
+| `id`        | Cpnfiguration identifier                                 | ✔️        |               |
+| `file_path` | Path to file containing desired configuration definition | ✔️        |               |
+
+## Examples
+
+```bash
+> configs update test /path/to/my/config.yaml
+```

@@ -18,19 +18,19 @@ Whenever changes are detected by Resoto, a dedicated change event is written as 
 history [--before <timestamp>] [--after <timestamp>] [--change <change>] [search-statement]
 ```
 
-### Options
-
-| Option                    | Description                                                                                   |
-| ------------------------- | --------------------------------------------------------------------------------------------- |
-| `--before` &lt;timestamp> | Only show changes before the given timestamp. Timestamp should be defined in ISO 8601 format. |
-| `--after` &lt;timestamp>  | Only show changes after the given timestamp. Timestamp should be defined in ISO 8601 format.  |
-| `--change` &lt;change>    | Filter changes by type of change.                                                             |
-
 ### Parameters
 
 | Parameter         | Description                                            | Required? | Default Value |
 | ----------------- | ------------------------------------------------------ | --------- | ------------- |
 | `search-statment` | Search filter statement to filter the list of changes. | ❌        |               |
+
+### Options
+
+| Option                 | Description                                              | Required? | Default Value |
+| ---------------------- | -------------------------------------------------------- | --------- | ------------- |
+| `--before <timestamp>` | Only include changes before the given ISO 8601 timestamp | ❌        |               |
+| `--after <timestamp>`  | Only include changes after the given ISO 8601 timestamp  | ❌        |               |
+| `--change <type>`      | Filter changes by type                                   | ❌        |               |
 
 ### Examples
 

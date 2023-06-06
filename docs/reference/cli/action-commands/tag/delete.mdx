@@ -1,5 +1,6 @@
 ---
 sidebar_label: delete
+pagination_label: tag delete
 ---
 
 # `tag delete` Command
@@ -12,17 +13,17 @@ The `tag delete` command deletes a tag.
 tag delete [--nowait] <tag_name>
 ```
 
-### Options
-
-| Option     | Description                              |
-| ---------- | ---------------------------------------- |
-| `--nowait` | Execute asynchronously in the background |
-
 ### Parameters
 
 | Parameter  | Description           | Required? | Default Value |
 | ---------- | --------------------- | --------- | ------------- |
-| `tag_name` | Name of tag to delete | ✔️        | N/A           |
+| `tag_name` | Name of tag to delete | ✔️        |               |
+
+### Options
+
+| Option     | Description                              | Required? | Default Value |
+| ---------- | ---------------------------------------- | --------- | ------------- |
+| `--nowait` | Execute asynchronously in the background | ❌        |               |
 
 ## Examples
 

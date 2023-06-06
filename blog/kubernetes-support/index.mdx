@@ -22,7 +22,7 @@ To get started, configure Resoto to use your [kubeconfig file](https://kubernete
 > config edit resoto.worker
 ```
 
-In the text editor opened by [`config edit`](/docs/reference/cli/setup-commands/configs/edit), modify the configuration and define the location of your kubeconfig file. By default, Resoto will collect all contexts that are found in the kubeconfig file. It is possible to restrict the contexts to be used by setting the `contexts` property and turning `all_contexts` off.
+In the text editor opened by [`config edit`](/docs/reference/cli/setup-commands/config/edit), modify the configuration and define the location of your kubeconfig file. By default, Resoto will collect all contexts that are found in the kubeconfig file. It is possible to restrict the contexts to be used by setting the `contexts` property and turning `all_contexts` off.
 
 ```yaml
 resotoworker:

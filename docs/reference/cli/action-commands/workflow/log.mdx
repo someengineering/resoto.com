@@ -1,0 +1,38 @@
+---
+sidebar_label: log
+pagination_label: workflow log
+---
+
+# `workflow log` Command
+
+The `workflow log` command shows the logs of a workflow run.
+
+## Usage
+
+```bash
+workflow log <run_id>
+```
+
+### Parameters
+
+| Parameter | Description             | Required? | Default Value |
+| --------- | ----------------------- | --------- | ------------- |
+| `run_id`  | Workflow run identifier | ✔️        |               |
+
+## Examples
+
+```bash
+> workflows log 037f23c6-5c1b-11ed-bb8b-dad780437c53
+# highlight-start
+2022-11-04T08:31:01Z: collect: collect: aws: 882347060974: collect-global: in progress
+[aws:123456789] Access Denied to aws_account 123456789
+[aws:234567890] An AWS UnauthorizedOperation error occurred while collecting account test
+# highlight-end
+```
+
+## Further Reading
+
+- [Cloud Data Sync](../../../../concepts/cloud-data-sync/index.mdx)
+- [Automation](../../../../concepts/automation/index.mdx)
+- [Events](../../../events/index.mdx)
+- [Workflows](../../../workflows/index.mdx)

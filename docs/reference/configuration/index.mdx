@@ -6,7 +6,7 @@ import DocCardList from '@theme/DocCardList';
 
 ## Internal Configuration
 
-Resoto uses an internal configuration system for its [components](../components/index.mdx). Configuration is maintained within [Resoto Core](../components/core.mdx) and can be edited using [Resoto Shell](../components/shell.mdx) using the [`config edit` command](../cli/setup-commands/configs/edit.mdx).
+Resoto uses an internal configuration system for its [components](../components/index.mdx). Configuration is maintained within [Resoto Core](../components/core.mdx) and can be edited using [Resoto Shell](../components/shell.mdx) using the [`config edit` command](../cli/setup-commands/config/edit.mdx).
 
 ### Listing Configurations
 
@@ -88,7 +88,7 @@ This means that you will get an error if, for instance, you attempt to set the v
 
 ### Setting Individual Properties
 
-Instead of editing a component's configuration in a text editor, it is also possible to set the values of specific properties using the [`config set` command](../cli/setup-commands/configs/set.mdx).
+Instead of editing a component's configuration in a text editor, it is also possible to set the values of specific properties using the [`config set` command](../cli/setup-commands/config/set.mdx).
 
 ```title="Modify a specific property of the Resoto Worker configuration"
 > config set resoto.worker resotoworker.pool_size=5

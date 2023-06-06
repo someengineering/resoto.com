@@ -24,7 +24,6 @@ https://releases.resoto.com/*                                                   
 /blog/february-2023-product-updates                                                   /blog/product-updates/2023/february
 /blog/march-2023-product-updates                                                      /blog/product-updates/2023/march
 /blog/april-2023-product-updates                                                      /blog/product-updates/2023/april
-/blog/product-updates                                                                 /blog/tags/product-updates
 /blog/product-updates/*                                                               /blog/tags/product-updates
 
 /blog/tags/graph                                                                      /blog/tags/graph-database
@@ -258,17 +257,17 @@ https://releases.resoto.com/*                                                   
 
 /docs/reference/cli/clean                                                             /docs/reference/cli/action-commands/clean
 /docs/reference/cli/http                                                              /docs/reference/cli/action-commands/http
-/docs/reference/cli/job/*                                                             /docs/reference/cli/action-commands/jobs/:splat
-/docs/reference/cli/action-commands/job/*                                             /docs/reference/cli/action-commands/jobs/:splat
-/docs/reference/cli/jobs/*                                                            /docs/reference/cli/action-commands/jobs/:splat
+/docs/reference/cli/job/*                                                             /docs/reference/cli/action-commands/job/:splat
+/docs/reference/cli/action-commands/jobs/*                                            /docs/reference/cli/action-commands/job/:splat
+/docs/reference/cli/jobs/*                                                            /docs/reference/cli/action-commands/job/:splat
 /docs/reference/cli/protect                                                           /docs/reference/cli/action-commands/protect
 /docs/reference/cli/set_desired                                                       /docs/reference/cli/action-commands/set_desired
 /docs/reference/cli/set_metadata                                                      /docs/reference/cli/action-commands/set_metadata
 /docs/reference/cli/tag/*                                                             /docs/reference/cli/action-commands/tag/:splat
-/docs/reference/cli/start_task                                                        /docs/reference/cli/action-commands/workflows/run
-/docs/reference/cli/workflow/*                                                        /docs/reference/cli/action-commands/workflows/:splat
-/docs/reference/cli/action-commands/workflow/*                                        /docs/reference/cli/action-commands/workflows/:splat
-/docs/reference/cli/workflows/*                                                       /docs/reference/cli/action-commands/workflows/:splat
+/docs/reference/cli/start_task                                                        /docs/reference/cli/action-commands/workflow/run
+/docs/reference/cli/workflow/*                                                        /docs/reference/cli/action-commands/workflow/:splat
+/docs/reference/cli/action-commands/workflows/*                                       /docs/reference/cli/action-commands/workflow/:splat
+/docs/reference/cli/workflows/*                                                       /docs/reference/cli/action-commands/workflow/:splat
 
 /docs/reference/cli/dump                                                              /docs/reference/cli/format-commands/dump
 /docs/reference/cli/format                                                            /docs/reference/cli/format-commands/format
@@ -310,9 +309,9 @@ https://releases.resoto.com/*                                                   
 /docs/reference/cli/templates/*                                                       /docs/reference/cli/search-commands/templates/:splat
 
 /docs/reference/cli/certificate                                                       /docs/reference/cli/setup-commands/certificate
-/docs/reference/cli/config/*                                                          /docs/reference/cli/setup-commands/configs/:splat
-/docs/reference/cli/setup-commands/config/*                                           /docs/reference/cli/setup-commands/configs/:splat
-/docs/reference/cli/configs/*                                                         /docs/reference/cli/setup-commands/configs/:splat
+/docs/reference/cli/config/*                                                          /docs/reference/cli/setup-commands/config/:splat
+/docs/reference/cli/setup-commands/configs/*                                          /docs/reference/cli/setup-commands/config/:splat
+/docs/reference/cli/configs/*                                                         /docs/reference/cli/setup-commands/config/:splat
 /docs/reference/cli/system/*                                                          /docs/reference/cli/setup-commands/system/:splat
 
 /docs/reference/cli/query                                                             /docs/reference/cli/search-commands/search
@@ -341,6 +340,7 @@ https://releases.resoto.com/*                                                   
 /docs/edge/*                                                                          /docs/:splat
 /docs/2.x/*                                                                           /docs/:splat
 /docs/2.X/*                                                                           /docs/:splat
+/docs/*                                                                               /docs
 
 /podcasts/:year/:month/:date/*                                                        /podcast/:splat
 /podcasts/*                                                                           /podcast/:splat
@@ -366,7 +366,7 @@ https://releases.resoto.com/*                                                   
 /podcast/19                                                                           /podcast/security-at-lyft-with-cartography
 /podcast/*                                                                            /podcast
 
-/news/2022/07/07/july-update                                                          /blog/2022/07/07/july-2022-product-updates 301!
+/news/2022/07/07/july-update                                                          /blog/product-updates/2022/july
 /news/:year/:month/:date/v2.0.0*                                                      /releases/2.0.0
 /news/:year/:month/:date/v*                                                           /releases/:splat
 /news/:year/:month/:date/*                                                            /releases/:splat
@@ -374,7 +374,7 @@ https://releases.resoto.com/*                                                   
 /news/tags/release-notes/*                                                            /releases
 /news/tags/*                                                                          /releases
 /news/*                                                                               /releases
-/release/*                                                                            /release/:splat
+/release/*                                                                            /releases/:splat
 /releases/tags/*                                                                      /releases
 /releases/*                                                                           /releases
 

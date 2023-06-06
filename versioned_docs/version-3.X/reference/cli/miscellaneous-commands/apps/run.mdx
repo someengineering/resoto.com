@@ -1,5 +1,6 @@
 ---
 sidebar_label: run
+pagination_label: apps run
 ---
 
 # `apps run` Command
@@ -12,20 +13,20 @@ The `apps run` command runs an app.
 app run <app_name> [--dry-run] [--config <config_name>]
 ```
 
-### Options
-
-| Option                   | Description                     |
-| ------------------------ | ------------------------------- |
-| `--dry-run`              | Perform a dry run of the app \* |
-| `--config <config_name>` | Config identifier               |
-
-\* When using the `--dry-run` argument the app will not be executed, but the commands that would be executed will be shown instead.
-
 ### Parameters
 
 | Parameter  | Description             | Required? | Default Value |
 | ---------- | ----------------------- | --------- | ------------- |
-| `app_name` | Infrastructure app name | ✔️        | N/A           |
+| `app_name` | Infrastructure app name | ✔️        |               |
+
+### Options
+
+| Option                   | Description                     | Required? | Default Value |
+| ------------------------ | ------------------------------- | --------- | ------------- |
+| `--dry-run`              | Perform a dry run of the app \* | ❌        |               |
+| `--config <config_name>` | Config identifier               | ❌        |               |
+
+\* When using the `--dry-run` argument, the app will not be executed but the commands will be printed to the terminal.
 
 ## Example
 

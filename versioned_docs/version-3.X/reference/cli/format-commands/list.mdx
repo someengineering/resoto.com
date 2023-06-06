@@ -12,18 +12,11 @@ The `list` command transforms inputted [<abbr title="JavaScript Object Notation"
 list <properties>
 ```
 
-### Options
-
-| Parameter    | Description               |
-| ------------ | ------------------------- |
-| `--markdown` | Format output as Markdown |
-| `--csv`      | Format output as CSV      |
-
 ### Parameters
 
 | Parameter    | Description                 | Required? | Default Value |
 | ------------ | --------------------------- | --------- | ------------- |
-| `properties` | Names of properties to show | ❌        | See note      |
+| `properties` | Names of properties to show | ❌        |               |
 
 :::note
 
@@ -50,6 +43,13 @@ If no `as` clause is defined, the name of the last element of the property path 
 The `as` clause is important if the last part of the property path is not a unique property name.
 
 :::
+
+### Options
+
+| Parameter    | Description               | Required? | Default Value |
+| ------------ | ------------------------- | --------- | ------------- |
+| `--markdown` | Format output as Markdown | ❌        |               |
+| `--csv`      | Format output as CSV      | ❌        |               |
 
 ## Examples
 

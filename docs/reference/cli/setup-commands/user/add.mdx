@@ -1,0 +1,50 @@
+---
+sidebar_label: add
+pagination_label: user add
+---
+
+# `user add` Command
+
+The `user add` command allows to add a user to Resoto.
+
+## Usage
+
+```bash
+user add <email> --fullname <name> --password <password> [--role <role>]
+```
+
+### Parameters
+
+| Parameter | Description        | Required? | Default Value |
+| --------- | ------------------ | --------- | ------------- |
+| `email`   | User email address | ✔️        |               |
+
+### Options
+
+| Option                  | Description    | Required? | Default Value |
+| ----------------------- | -------------- | --------- | ------------- |
+| `--fullname <name>`     | User full name | ✔️        |               |
+| `--password <password>` | User password  | ✔️        |               |
+| `--role <role>`         | User role      | ❌        |               |
+
+:::note
+
+Assigned roles currently do not have any effect on user permissions.
+
+:::
+
+:::info
+
+Multiple roles can be specified by repeating the `--role` option.
+
+:::
+
+## Examples
+
+```bash
+> users add matthias@some.engineering --fullname "Matthias Veit" --role read-only --password awTJxB4vHLQ-VVisN!tc4h9_!
+email: matthias@some.engineering
+ fullname: Matthias Veit
+ roles:
+ - read-only
+```

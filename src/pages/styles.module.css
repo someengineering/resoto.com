@@ -78,8 +78,8 @@ html[data-theme='dark'] .heroTitle strong {
 .heroText h2 {
   display: flex;
   margin: 1.5rem 0;
-  font-weight: 500;
-  font-size: 30px;
+  font-weight: 400;
+  font-size: 32px;
   line-height: 125%;
 }
 
@@ -205,21 +205,44 @@ html[data-theme='dark'] .docsButton::before {
   background-image: url('./img/icon-light-docs.svg');
 }
 
-.content {
+.homeContent {
   background-image: url(./img/main-lightbg.webp);
   background-position: top;
   background-size: cover;
   background-repeat: no-repeat;
-  padding: 30px 0 5rem;
+  padding: 24px 0 5rem;
+}
+
+html[data-theme='dark'] .homeContent {
+  background-image: url(./img/main-darkbg.webp);
+}
+
+.content {
+  background-image: radial-gradient(
+      farthest-corner at -20% 65%,
+      #d9b8ff,
+      transparent 45%
+    ),
+    radial-gradient(farthest-corner at 100% 15%, #e0c3fb, transparent 20%);
+  padding-bottom: 5rem;
 }
 
 html[data-theme='dark'] .content {
-  background-image: url(./img/main-darkbg.webp);
+  background-image: radial-gradient(
+      farthest-corner at -20% 65%,
+      #6423ba,
+      transparent 45%
+    ),
+    radial-gradient(farthest-corner at 100% 15%, #521d99, transparent 20%);
 }
 
 .section {
   margin: 0 auto;
   color: var(--ifm-color-content);
+}
+
+.section + .section {
+  margin-top: 24px;
 }
 
 .providersHeading {
@@ -289,14 +312,16 @@ html[data-theme='dark'] .providersHeading strong {
     padding: 36px;
   }
 
-  .content > .section + .section {
-    margin-top: 36px;
+  .section + .section {
+    margin-top: 48px;
   }
 }
 
 @media screen and (max-width: 1100px) {
   .hero > .inner {
     flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 
   .buttons {
@@ -308,7 +333,8 @@ html[data-theme='dark'] .providersHeading strong {
   }
 
   .heroText h2 {
-    font-size: 25px;
+    justify-content: center;
+    font-size: 26px;
   }
 
   .heroText h2 span {
@@ -329,12 +355,16 @@ html[data-theme='dark'] .providersHeading strong {
     padding: 24px;
   }
 
+  .section + .section {
+    margin-top: 32px;
+  }
+
   .heroTitle {
     font-size: 48px;
   }
 
   .heroText h2 {
-    font-size: 20px;
+    font-size: 21px;
   }
 
   .heroImage {
@@ -361,8 +391,16 @@ html[data-theme='dark'] .providersHeading strong {
     padding: 18px;
   }
 
+  .section + .section {
+    margin-top: 24px;
+  }
+
   .heroTitle {
     font-size: 45px;
+  }
+
+  .heroText h2 {
+    font-size: 20px;
   }
 
   .heroImage {

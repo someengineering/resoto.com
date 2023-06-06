@@ -4,5 +4,13 @@
     "baseUrl": "./",
     "jsx": "react",
     "resolveJsonModule": true
-  }
+  },
+  "exclude": [
+    "build",
+    "node_modules",
+    "tools",
+    ".devcontainer",
+    ".docusaurus",
+    ".vscode"
+  ]
 }

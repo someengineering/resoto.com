@@ -1,3 +1,4 @@
+import Link from '@docusaurus/Link';
 import { translate } from '@docusaurus/Translate';
 import { PageMetadata } from '@docusaurus/theme-common';
 import ContactForm from '@site/src/components/ContactForm';
@@ -8,8 +9,7 @@ import clsx from 'clsx';
 import { orderBy } from 'lodash';
 import React from 'react';
 
-import Link from '@docusaurus/Link';
-import homepageStyles from '@site/src/pages/index.module.css';
+import baseStyles from '@site/src/pages/styles.module.css';
 import styles from './styles.module.css';
 
 type YearProp = {
@@ -98,8 +98,8 @@ function Year({ year, posts }: YearProp) {
 
 function YearsSection({ years }: { years: YearProp[] }) {
   return (
-    <section className={homepageStyles.section}>
-      <div className={homepageStyles.inner}>
+    <section className={baseStyles.section}>
+      <div className={baseStyles.inner}>
         <div className="row">
           {orderBy(years, 'year', 'desc').map((_props, idx) => (
             <div key={idx} className="col col--6">
@@ -144,12 +144,12 @@ export default function BlogArchive({ archive }: Props): JSX.Element {
       <PageMetadata title={title} image={getImage({ title })} />
       <Layout>
         <header className={styles.hero}>
-          <div className={homepageStyles.inner}>
-            <h1 className={homepageStyles.heroTitle}>{title}</h1>
+          <div className={baseStyles.inner}>
+            <h1 className={baseStyles.heroTitle}>{title}</h1>
           </div>
         </header>
         <main>{years.length > 0 && <YearsSection years={years} />}</main>
-        <div className={homepageStyles.content}>
+        <div className={baseStyles.homeContent}>
           <ContactForm />
         </div>
       </Layout>

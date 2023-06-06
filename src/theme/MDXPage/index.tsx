@@ -12,7 +12,7 @@ import TOC from '@theme/TOC';
 import clsx from 'clsx';
 import React from 'react';
 
-import homepageStyles from '@site/src/pages/index.module.css';
+import baseStyles from '@site/src/pages/styles.module.css';
 import styles from './styles.module.css';
 
 export default function MDXPage(props: Props): JSX.Element {
@@ -56,7 +56,7 @@ export default function MDXPage(props: Props): JSX.Element {
             )}
           </div>
         </main>
-        <div className={homepageStyles.content}>
+        <div className={baseStyles.homeContent}>
           <ContactForm />
         </div>
       </Layout>

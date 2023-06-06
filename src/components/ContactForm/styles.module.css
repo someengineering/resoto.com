@@ -33,6 +33,7 @@
 .form input,
 .form textarea {
   margin-bottom: 8px;
+  box-shadow: var(--ifm-global-shadow-lw);
   border: 1.5px solid #ffffff;
   border-radius: 36px;
   background-color: #ffffff;

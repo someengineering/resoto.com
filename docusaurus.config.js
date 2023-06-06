@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-var-requires */
 // @ts-check
 
@@ -20,7 +21,6 @@ const isProd =
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Resoto by Some Engineering Inc.',
-  tagline: 'Data integration for infrastructure engineers',
   url: 'https://resoto.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -167,7 +167,7 @@ const config = {
         name: 'custom-webpack-config',
         configureWebpack: () => ({
           module: {
-            rules: [{ test: /\.cast$/, use: 'url-loader' }],
+            rules: [{ test: /\.cast$/i, use: 'url-loader' }],
           },
         }),
       };
@@ -290,11 +290,11 @@ const config = {
     ],
     [
       'pwa',
+      // @ts-ignore
       /** @type {import('@docusaurus/plugin-pwa').PluginOptions} */
       ({
         debug: !isProd,
         swRegister: false,
-        swCustom: require.resolve('./src/sw.js'),
         pwaHead: [
           { tagName: 'link', rel: 'manifest', href: 'site.webmanifest' },
           { tagName: 'link', rel: 'icon', href: 'img/icon-192.maskable.png' },
@@ -335,7 +335,7 @@ const config = {
           name: 'description',
           property: 'og:description',
           content:
-            'Resoto consolidates resource data across your clouds, regions, and accounts. Open source and free to use.',
+            'Resoto is a free, open-source infrastructure control plane that continuously monitors and maintains your cloud resources.',
         },
         { property: 'og:type', content: 'website' },
       ],
@@ -357,11 +357,32 @@ const config = {
         logo: { alt: '', src: 'img/navbar-logo.svg' },
         items: [
           {
+            label: 'Modules',
+            position: 'right',
+            type: 'dropdown',
+            items: [
+              { label: 'ChronoLog', to: '/chronolog' },
+              { label: 'CloudScope', to: '/cloudscope' },
+              { label: 'DataLink', to: '/datalink' },
+              { label: 'Defrag', to: '/defrag' },
+              { label: 'InfraSDK', to: '/infrasdk' },
+              { label: 'Inventory', to: '/inventory' },
+              { label: 'MetricMate', to: '/metricmate' },
+              { label: 'Notify', to: '/notify' },
+              { label: 'Resolve', to: '/resolve' },
+              { label: 'Rewind', to: '/rewind' },
+              { label: 'Sentinel', to: '/sentinel' },
+              { label: 'SpentWise', to: '/spentwise' },
+              { label: 'TagGuard', to: '/tagguard' },
+            ],
+          },
+          {
             label: 'Docs',
             to: '/docs',
             position: 'right',
             type: 'dropdown',
             items: [
+              { label: 'Overview', to: '/docs' },
               { label: 'Getting Started', to: '/docs/getting-started' },
               { label: 'How-To Guides', to: '/docs/how-to-guides' },
               { label: 'Concepts', to: '/docs/concepts' },
@@ -407,8 +428,27 @@ const config = {
         style: 'dark',
         links: [
           {
+            title: 'Modules',
+            items: [
+              { label: 'ChronoLog', to: '/chronolog' },
+              { label: 'CloudScope', to: '/cloudscope' },
+              { label: 'DataLink', to: '/datalink' },
+              { label: 'Defrag', to: '/defrag' },
+              { label: 'InfraSDK', to: '/infrasdk' },
+              { label: 'Inventory', to: '/inventory' },
+              { label: 'MetricMate', to: '/metricmate' },
+              { label: 'Notify', to: '/notify' },
+              { label: 'Resolve', to: '/resolve' },
+              { label: 'Rewind', to: '/rewind' },
+              { label: 'Sentinel', to: '/sentinel' },
+              { label: 'SpentWise', to: '/spentwise' },
+              { label: 'TagGuard', to: '/tagguard' },
+            ],
+          },
+          {
             title: 'Documentation',
             items: [
+              { label: 'Overview', to: '/docs' },
               { label: 'Getting Started', to: '/docs/getting-started' },
               { label: 'How-To Guides', to: '/docs/how-to-guides' },
               { label: 'Concepts', to: '/docs/concepts' },
@@ -465,7 +505,9 @@ const config = {
         contextualSearch: true,
       },
       prism: {
+        // @ts-ignore
         theme: require('prism-react-renderer').themes.github,
+        // @ts-ignore
         darkTheme: require('prism-react-renderer').themes.dracula,
         additionalLanguages: [
           'csv',

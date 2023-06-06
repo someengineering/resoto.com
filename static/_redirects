@@ -19,10 +19,6 @@ https://releases.resoto.com/*                                                   
 /resoto/*                                                                             /
 /cloud2sql/*                                                                          https://cloud2sql.com 301!
 
-
-/blog/tags/graph                                                                      /blog/tags/graph-database
-/blog/tags/tagging                                                                    /blog/tags/resource-tagging
-
 /blog/july-2022-product-updates                                                       /blog/product-updates/2022/july
 /blog/january-2023-product-updates                                                    /blog/product-updates/2023/january
 /blog/february-2023-product-updates                                                   /blog/product-updates/2023/february
@@ -30,6 +26,10 @@ https://releases.resoto.com/*                                                   
 /blog/april-2023-product-updates                                                      /blog/product-updates/2023/april
 /blog/product-updates                                                                 /blog/tags/product-updates
 /blog/product-updates/*                                                               /blog/tags/product-updates
+
+/blog/tags/graph                                                                      /blog/tags/graph-database
+/blog/tags/tagging                                                                    /blog/tags/resource-tagging
+/blog/tags/*                                                                          /blog/tags
 
 /blog/building-actionable-cloud-infrastructure-metrics                                /blog/actionable-cloud-infrastructure-metrics
 /blog/cloud-infrastructure-metrics                                                    /blog/actionable-cloud-infrastructure-metrics
@@ -372,8 +372,10 @@ https://releases.resoto.com/*                                                   
 /news/:year/:month/:date/*                                                            /releases/:splat
 /news/atom.xml                                                                        /releases/atom.xml
 /news/tags/release-notes/*                                                            /releases
+/news/tags/*                                                                          /releases
 /news/*                                                                               /releases
 /release/*                                                                            /release/:splat
+/releases/tags/*                                                                      /releases
 /releases/*                                                                           /releases
 
 /support/*                                                                            /docs

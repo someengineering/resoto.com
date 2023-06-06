@@ -7,8 +7,8 @@ import clsx from 'clsx';
 import React from 'react';
 import Balancer from 'react-wrap-balancer';
 
-import homepageStyles from '../index.module.css';
-import styles from './index.module.css';
+import baseStyles from '@site/src/pages/styles.module.css';
+import styles from './styles.module.css';
 
 export default function Pricing(): JSX.Element {
   const title = 'Pricing';
@@ -23,9 +23,9 @@ export default function Pricing(): JSX.Element {
         image={getImage({ title })}
       />
       <Layout title="Pricing" description={description}>
-        <main className={styles.content}>
-          <section className={homepageStyles.section}>
-            <div className={homepageStyles.inner}>
+        <main className={baseStyles.content}>
+          <section className={baseStyles.section}>
+            <div className={baseStyles.inner}>
               <h1 className={styles.pageTitle}>
                 <span>Pricing</span>
               </h1>
@@ -50,9 +50,6 @@ export default function Pricing(): JSX.Element {
                         </span>
                       </li>
                       <li>
-                        <span>Regular software updates and bug fixes</span>
-                      </li>
-                      <li>
                         <span>
                           Community support via{' '}
                           <Link href="https://github.com/someengineering/resoto">
@@ -68,8 +65,8 @@ export default function Pricing(): JSX.Element {
                     <Link
                       to="/docs/getting-started/install-resoto"
                       className={clsx(
-                        homepageStyles.button,
-                        homepageStyles.outlinedButton,
+                        baseStyles.button,
+                        baseStyles.outlinedButton,
                         styles.button
                       )}
                     >
@@ -99,7 +96,7 @@ export default function Pricing(): JSX.Element {
                         <span>Priority support</span>
                       </li>
                     </ul>
-                    <div>Coming Soon</div>
+                    <div>Coming 2024</div>
                   </div>
                 </div>
                 <div className="col col--4">
@@ -107,11 +104,9 @@ export default function Pricing(): JSX.Element {
                     <h2>Enterprise</h2>
                     <ul>
                       <li>
-                        <span>Flexible pricing</span>
-                      </li>
-                      <li>
                         <span>
-                          Custom solution designed for your infrastructure
+                          Solution customized for your infrastructure
+                          configuration
                         </span>
                       </li>
                       <li>
@@ -132,8 +127,8 @@ export default function Pricing(): JSX.Element {
                     <Link
                       to="#contact-us"
                       className={clsx(
-                        homepageStyles.button,
-                        homepageStyles.outlinedButton,
+                        baseStyles.button,
+                        baseStyles.outlinedButton,
                         styles.button
                       )}
                     >
@@ -144,8 +139,10 @@ export default function Pricing(): JSX.Element {
               </div>
             </div>
           </section>
-          <ContactForm />
         </main>
+        <div className={baseStyles.homeContent}>
+          <ContactForm />
+        </div>
       </Layout>
     </>
   );

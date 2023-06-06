@@ -5657,6 +5657,11 @@ class kubernetes_service_status_conditions {
 **status**: string
 **type**: string
 }
+class load_balancer {
+**backends**: string[]
+**lb_type**: string
+**public_ip_address**: string
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -5675,9 +5680,11 @@ resource <|--- kubernetes_resource
 kubernetes_resource <|--- kubernetes_service
 kubernetes_service --> kubernetes_service_spec
 kubernetes_service --> kubernetes_service_status
+load_balancer <|--- kubernetes_service
 kubernetes_service_spec --> kubernetes_service_port
 kubernetes_service_status --> kubernetes_loadbalancer_status
 kubernetes_service_status --> kubernetes_service_status_conditions
+resource <|--- load_balancer
 @enduml
 ```
 

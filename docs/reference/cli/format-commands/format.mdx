@@ -12,28 +12,26 @@ The `format` command creates a string from the [<abbr title="JavaScript Object N
 format [--<format-option>] <format_string>
 ```
 
-### Options
-
-The `format` command supports some predefined formats, which can be utilized using the following options:
-
-| Option        | Description                                                                                               |
-| ------------- | --------------------------------------------------------------------------------------------------------- |
-| `--json`      | Creates a JSON string and returns it within a JSON array.                                                 |
-| `--ndjson`    | Creates a JSON object for each element, with line element per line in the output.                         |
-| `--text`      | Creates a text representation of each element.                                                            |
-| `--cytoscape` | Creates a string representation in [Cytoscape.js format](https://js.cytoscape.org#notation/elements-json) |
-| `--graphml`   | Creates a string representation in [GraphML format](http://graphml.graphdrawing.org)                      |
-| `--dot`       | Creates a string representation in [Graphviz DOT format](https://graphviz.org/doc/info/lang.html)         |
-
 ### Parameters
 
 Alternatively, a custom format string may be provided to the command:
 
 | Parameter       | Description      | Required? | Default Value |
 | --------------- | ---------------- | --------- | ------------- |
-| `format_string` | Format string \* | ❌        | N/A           |
+| `format_string` | Format string \* | ❌        |               |
 
 \* The format string may contain placeholders in curly braces that access properties of the JSON object. If a property is not available, it will result in the string `null`.
+
+### Options
+
+| Option        | Description                                                                                               | Required? | Default Value |
+| ------------- | --------------------------------------------------------------------------------------------------------- | --------- | ------------- |
+| `--json`      | Creates a JSON string and returns it within a JSON array                                                  | ❌        |               |
+| `--ndjson`    | Creates a JSON object for each element, with line element per line in the output                          | ❌        |               |
+| `--text`      | Creates a text representation of each element                                                             | ❌        |               |
+| `--cytoscape` | Creates a string representation in [Cytoscape.js format](https://js.cytoscape.org#notation/elements-json) | ❌        |               |
+| `--graphml`   | Creates a string representation in [GraphML format](http://graphml.graphdrawing.org)                      | ❌        |               |
+| `--dot`       | Creates a string representation in [Graphviz DOT format](https://graphviz.org/doc/info/lang.html)         | ❌        |               |
 
 ## Examples
 

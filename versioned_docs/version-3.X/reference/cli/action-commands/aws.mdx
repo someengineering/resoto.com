@@ -20,24 +20,25 @@ There are two modes of operation:
 ## Usage
 
 ```bash
-aws  [--account <override_account>] [--role <override_role>] [--profile <override_profile>] [--region] [service] [operation] [operation_args]
+aws [--account <override_account>] [--role <override_role>] [--profile <override_profile>] [--region <override_region>] [service] [operation] [operation_args]
 ```
-
-### Options
-
-| Option                         | Description      |
-| ------------------------------ | ---------------- |
-| `--account <override_account>` | Override account |
-| `--role <override_role>`       | Override role    |
-| `--profile <override_profile>` | Override profile |
 
 ### Parameters
 
 | Parameter        | Description          | Required? | Default Value |
 | ---------------- | -------------------- | --------- | ------------- |
-| `service`        | AWS service name     | ✅️       | N/A           |
-| `operation`      | Operation to perform | ✅        | N/A           |
-| `operation_args` | Additional arguments | ❌        | N/A           |
+| `service`        | AWS service name     | ✔️        |               |
+| `operation`      | Operation to perform | ✔️        |               |
+| `operation_args` | Additional arguments | ❌        |               |
+
+### Options
+
+| Option                         | Description      | Required? | Default Value |
+| ------------------------------ | ---------------- | --------- | ------------- |
+| `--account <override_account>` | Override account | ❌        |               |
+| `--role <override_role>`       | Override role    | ❌        |               |
+| `--profile <override_profile>` | Override profile | ❌        |               |
+| `--region <override_region>`   | Override region  | ❌        |               |
 
 ## Examples
 

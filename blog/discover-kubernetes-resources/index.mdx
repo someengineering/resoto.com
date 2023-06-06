@@ -318,7 +318,7 @@ Now that we've defined the search criteria, all we need to do is pipe the result
 
 ![Discord](./img/discord_notification.png)
 
-However, the above command only executes a single time. We would like for Resoto to constantly monitor for pods that are restarting too often and send a notification whenever such pods are found. To do so, we can create a [job](/docs/concepts/automation#jobs) using the [`job` command](/docs/reference/cli/action-commands/jobs):
+However, the above command only executes a single time. We would like for Resoto to constantly monitor for pods that are restarting too often and send a notification whenever such pods are found. To do so, we can create a [job](/docs/concepts/automation#jobs) using the [`job` command](/docs/reference/cli/action-commands/job):
 
 ```bash
 > jobs add --id pod_restarted_too_often --wait-for-event post_collect 'search is(kubernetes_pod) and pod_status.container_statuses[*].restart_count>0 | discord title="This pod is restarted too often, PTAL!"'

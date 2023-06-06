@@ -12,18 +12,18 @@ The `search` command allows you to search the graph using [filters](../../search
 search [--with-edges] [--explain] <query>
 ```
 
-### Options
-
-| Option         | Description                                                                                                                                             |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--with-edges` | Return [edges](../../../concepts/asset-inventory-graph/index.mdx#edges) in addition to [nodes](../../../concepts/asset-inventory-graph/index.mdx#nodes) |
-| `--explain`    | Instead of executing the query, analyze its cost                                                                                                        |
-
 ### Parameters
 
 | Parameter | Description             | Required? | Default Value |
 | --------- | ----------------------- | --------- | ------------- |
-| `query`   | Search query to execute | ✔️        | N/A           |
+| `query`   | Search query to execute | ✔️        |               |
+
+### Options
+
+| Option         | Description                                                                                                                                             | Required? | Default Value |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ------------- |
+| `--with-edges` | Return [edges](../../../concepts/asset-inventory-graph/index.mdx#edges) in addition to [nodes](../../../concepts/asset-inventory-graph/index.mdx#nodes) | ❌        |               |
+| `--explain`    | Instead of executing the query, analyze its cost                                                                                                        | ❌        |               |
 
 ### Aliases
 

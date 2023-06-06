@@ -1,0 +1,29 @@
+---
+sidebar_label: delete
+pagination_label: user delete
+---
+
+# `user delete` Command
+
+The `user delete` command removes an existing user from the system.
+
+## Usage
+
+```bash
+> user delete <email>
+```
+
+### Parameters
+
+| Parameter | Description        | Required? | Default Value |
+| --------- | ------------------ | --------- | ------------- |
+| `email`   | User email address | ✔️        |               |
+
+## Examples
+
+```bash
+> user delete matthias@some.engineering
+# highlight-start
+​User matthias@some.engineering deleted
+# highlight-end
+```

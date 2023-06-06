@@ -162,6 +162,7 @@ div[class^='announcementBar_'] .close {
   background-color: var(--ifm-navbar-link-hover-color);
   width: 5.625rem;
   height: 2.25rem;
+  color: #ffffff;
   font-size: 0;
 }
 

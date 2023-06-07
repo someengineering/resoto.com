@@ -1,0 +1,5 @@
+.code > a,
+.code > div {
+  font-size: var(--ifm-code-font-size);
+  font-family: var(--ifm-font-family-monospace);
+}

@@ -160,9 +160,11 @@ gcp:
 ...
 ```
 
-- The `resotoworker.pool_size` setting determines how many collectors (Amazon Web Services, Google Cloud Platform, DigitalOcean, Kubernetes, etc.) are run concurrently.
+- The `resotoworker.pool_size` setting determines how many collectors (AWS, Google Cloud, DigitalOcean, Kubernetes, etc.) are run concurrently.
+
 - `aws.account_pool_size` and `gcp.project_pool_size` are used to determine how many accounts or projects respectively are collected concurrently.
-- Within Amazon Web Services, `aws.region_pool_size` is used to determine how many regions per account are collected concurrently.
+
+- Within AWS, `aws.region_pool_size` is used to determine how many regions per account are collected concurrently.
 
 :::caution
 

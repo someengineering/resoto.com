@@ -24,14 +24,14 @@ Alternatively, a custom format string may be provided to the command:
 
 ### Options
 
-| Option        | Description                                                                                               | Required? | Default Value |
-| ------------- | --------------------------------------------------------------------------------------------------------- | --------- | ------------- |
-| `--json`      | Creates a JSON string and returns it within a JSON array                                                  | ❌        |               |
-| `--ndjson`    | Creates a JSON object for each element, with line element per line in the output                          | ❌        |               |
-| `--text`      | Creates a text representation of each element                                                             | ❌        |               |
-| `--cytoscape` | Creates a string representation in [Cytoscape.js format](https://js.cytoscape.org#notation/elements-json) | ❌        |               |
-| `--graphml`   | Creates a string representation in [GraphML format](http://graphml.graphdrawing.org)                      | ❌        |               |
-| `--dot`       | Creates a string representation in [Graphviz DOT format](https://graphviz.org/doc/info/lang.html)         | ❌        |               |
+| Option        | Description                                                                                  | Required? |
+| ------------- | -------------------------------------------------------------------------------------------- | --------- |
+| `--json`      | Return JSON string within a JSON array                                                       | ❌        |
+| `--ndjson`    | Return newline-delimited list of JSON objects                                                | ❌        |
+| `--text`      | Return text representation of each element                                                   | ❌        |
+| `--cytoscape` | Return [Cytoscape.js](https://js.cytoscape.org#notation/elements-json) string representation | ❌        |
+| `--graphml`   | Return [GraphML](http://graphml.graphdrawing.org) string representation                      | ❌        |
+| `--dot`       | Return [Graphviz DOT](https://graphviz.org/doc/info/lang.html) string representation         | ❌        |
 
 ## Examples
 

@@ -26,6 +26,7 @@ https://releases.resoto.com/*                                                   
 /blog/april-2023-product-updates                                                      /blog/product-updates/2023/april
 /blog/product-updates/*                                                               /blog/tags/product-updates
 
+/blog/tags/data-model                                                                 /blog/tags/unified-data-model
 /blog/tags/graph                                                                      /blog/tags/graph-database
 /blog/tags/tagging                                                                    /blog/tags/resource-tagging
 /blog/tags/*                                                                          /blog/tags
@@ -341,6 +342,16 @@ https://releases.resoto.com/*                                                   
 /docs/2.x/*                                                                           /docs/:splat
 /docs/2.X/*                                                                           /docs/:splat
 /docs/*                                                                               /docs
+
+
+/podcast/tags/cloud                                                                   /podcast/tags/cloud-infrastructure
+/podcast/tags/distribution                                                            /podcast/tags/software-distribution
+/podcast/tags/finance                                                                 /podcast/tags/cloud-spend
+/podcast/tags/gcp                                                                     /podcast/tags/google-cloud
+/podcast/tags/graph                                                                   /podcast/tags/graph-database
+/podcast/tags/open-source                                                             /podcast/tags/open-source-software
+/podcast/tags/site-reliability                                                        /podcast/tags/site-reliability-engineering
+/podcast/tags/*                                                                       /podcast/tags
 
 /podcasts/:year/:month/:date/*                                                        /podcast/:splat
 /podcasts/*                                                                           /podcast/:splat

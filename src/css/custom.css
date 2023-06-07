@@ -509,7 +509,7 @@ td ol:last-child {
   }
 
   .footer__item {
-    margin: 0 1em;
+    margin: 0.375em 1.125em;
   }
 }
 

@@ -29,7 +29,7 @@ const config = {
   trailingSlash: false,
   noIndex: !isProd,
   stylesheets: [
-    ...[400, 500, 600, 700, 800].map((_, weight) => ({
+    ...[400, 500, 600, 700, 800].map((weight) => ({
       rel: 'preload',
       href: `https://cdn.some.engineering/fonts/Barlow${weight}.woff2`,
       as: 'font',

@@ -5,13 +5,19 @@ pagination_label: apps install
 
 # `apps install` Command
 
-The `apps install` command installs an app.
+The `apps install` command installs an infrastructure app.
 
 ## Usage
 
 ```bash
-apps install <app_name>
+apps install <app_name> [--index-url <index_url>]
 ```
+
+### Options
+
+| Option                    | Description                                                             |
+| ------------------------- | ----------------------------------------------------------------------- |
+| `--index-url <index_url>` | Index URL (e.g., `https://cdn.some.engineering/resoto/apps/index.json`) |
 
 ### Parameters
 
@@ -27,3 +33,7 @@ apps install <app_name>
 App tagvalidator version 1.0.0 installed successfully
 # highlight-end
 ```
+
+## Further Reading
+
+- [How to Install & Run Infrastructure Apps](../../../../how-to-guides/apps/install-and-run-infrastructure-apps.mdx)

@@ -1,8 +1,9 @@
 ---
-sidebar_label: Development
+sidebar_position: 3
+sidebar_label: Infrastructure Apps
 ---
 
-# Developing Resoto Infrastructure Apps
+# Infrastructure App Development
 
 An infrastructure app is a [Jinja template](https://jinja.palletsprojects.com/) that generates one or more Resoto commands which are then executed by Resoto one after the other.
 
@@ -12,36 +13,69 @@ Using [`resotoappbundler`](https://github.com/someengineering/resotoappbundler) 
 
 `resotoappbundler` takes one or more Resoto app directories and bundles them into a single JSON file. This file can be hosted on any http server and used as an app index URL.
 
-## Example Development Workflow
+## Development Workflow
 
-An example that would set up a new Python virtual env, install Resoto App Bundler, clone the Resoto Apps repository and bundle all apps into an `index.json` file:
+1.  Create a new directory for app development:
 
-```bash
-# create a new directory for the resoto apps and change into it
-$ mkdir resoto-app-development
-$ cd resoto-app-development
-# create a new python virtual env and activate it
-$ python3 -m venv resoto-apps-venv
-$ source resoto-apps-venv/bin/activate
-# install resotoappbundler
-$ pip install resotoappbundler
-# checkout the resoto-apps repository
-$ git clone https://github.com/someengineering/resoto-apps.git
-# bundle all apps into a single index.json file that can be hosted on any http server
-$ resotoappbundler --path resoto-apps/ --discover > index.json
-# dry-run the cleanup-untagged app for an example of how the output of an infrastructure app looks like
-$ resotoapprunner --path resoto-apps/cleanup-untagged/
-```
+    ```bash
+    $ mkdir resoto-app-development
+    $ cd resoto-app-development
+    ```
 
-Within Resoto Shell you can then install the app using the `app install` command:
+2.  Create and activate a new Python virtual environment:
 
-```bash title="Installing an app from a custom index URL"
-> app install <app_name> [--index-url https://cdn.some.engineering/resoto/apps/index.json]
-```
+    ```bash
+    $ python3 -m venv resoto-apps-venv
+    $ source resoto-apps-venv/bin/activate
+    ```
+
+3.  Install `resotoappbundler`:
+
+    ```bash
+    $ pip install resotoappbundler
+    ```
+
+4.  Check out the [`resoto-apps` GitHub repository](https://github.com/someengineering/resoto-apps):
+
+    ```bash
+    $ git clone https://github.com/someengineering/resoto-apps.git
+    ```
+
+5.  Add or modify an app in the `resoto-apps` directory.
+
+    :::tip
+
+    You can perform a dry run of the `cleanup-untagged` app for sample infrastructure app output:
+
+    ```bash
+    $ resotoapprunner --path resoto-apps/cleanup-untagged/
+    ```
+
+    :::
+
+6.  Bundle all apps into a single `index.json` file:
+
+    ```bash
+    $ resotoappbundler --path resoto-apps/ --discover > index.json
+    ```
+
+7.  From within [Resoto Shell](../reference/components/shell.mdx), install an app using the [`app install` command](../reference/cli/miscellaneous-commands/apps/install.mdx):
+
+    ```bash title="Installing an app from a custom index URL"
+    > app install <app_name> --index-url <file://...>
+    ```
+
+    :::note
+
+    The `--index-url` argument can be used to specify a custom app index URL.
+
+    By default, Resoto uses the [official app index URL](https://resoto.com/apps/index.json).
+
+    :::
 
 During local development the index-url can also be `file://...` to point to a local json file.
 
-## Extra functions and variables not part of standard Jinja
+## Extra Functions and Variables
 
 A Resoto Infrastructure App has access to a couple of extras that are not part of the standard Jinja library:
 
@@ -53,7 +87,7 @@ A Resoto Infrastructure App has access to a couple of extras that are not part o
 
 Resoto Infrastructure Apps also have access to the [Expression Statement](https://jinja.palletsprojects.com/en/3.0.x/extensions/#expression-statement) and [Loop Controls](https://jinja.palletsprojects.com/en/3.0.x/extensions/#loop-controls) Jinja extensions.
 
-## Directory Layout
+## Directory Structure
 
 An infrastructure app is a directory that contains the following files:
 
@@ -78,9 +112,9 @@ The app manifest is a YAML file that contains the following fields:
 - `config_schema` - The configuration schema of the app.
 - `args_schema` - The command line arguments schema of the app.
 
-## A couple of example apps
+## Example Apps
 
-### A simple app that executes a static search with no dynamic code
+### Execute a Static Search
 
 ```jinja title="app.jinja2"
 search /metadata.expires < "@NOW@" | clean "Resource is expired"
@@ -100,7 +134,7 @@ config_schema:
 args_schema:
 ```
 
-### An app that cleans up abandoned AWS CloudWatch Instance Alarms
+### Clean Up Abandoned AWS CloudWatch Instance Alarms
 
 ```jinja title="app.jinja2"
 {%- set config = config["cleanup_aws_alarms"] %}
@@ -137,7 +171,7 @@ config_schema:
 args_schema:
 ```
 
-### A Discord app that sends a message to a Discord channel
+### Send a Message to a Discord Channel
 
 ```jinja title="app.jinja2"
 {%- set config = config["discord"] %}

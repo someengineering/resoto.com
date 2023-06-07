@@ -1,3 +1,4 @@
+import Link from '@docusaurus/Link';
 import ContactForm from '@site/src/components/ContactForm';
 import ModulePageCTA from '@site/src/components/ModulePage/CTA';
 import ModulePageHeader from '@site/src/components/ModulePage/Header';
@@ -24,15 +25,16 @@ export default function InfrasdkPage(): JSX.Element {
           <ModulePageSection>
             <h2>
               <Balancer>
-                InfraSDK allows you to <strong>extend or customize</strong>{' '}
+                InfraSDK empowers you to <strong>extend or customize</strong>{' '}
                 Resoto&rsquo;s functionality.
               </Balancer>
             </h2>
             <p>
               <Balancer>
-                InfraSDK is built on Python, which offers a rich set of
-                libraries and frameworks for building cloud management
-                solutions.
+                InfraSDK is built with{' '}
+                <Link href="https://python.org">Python</Link>, which offers a
+                rich set of libraries and frameworks for building cloud
+                management solutions.
               </Balancer>
             </p>
             <p>
@@ -52,10 +54,13 @@ export default function InfrasdkPage(): JSX.Element {
             </h2>
             <p>
               <Balancer>
-                InfraSDK supports Pandas DataFrames, empowering you to build
-                custom dashboards, reports, and visualizations that leverage
-                Resoto&rsquo; asset inventory data using frameworks like Plotly
-                Dash and Streamlit.
+                InfraSDK supports{' '}
+                <Link href="https://pandas.pydata.org">Pandas DataFrames</Link>,
+                empowering you to build custom dashboards, reports, and
+                visualizations that leverage Resoto&rsquo;s asset inventory data
+                using frameworks like{' '}
+                <Link href="https://plotly.com/dash">Plotly Dash</Link> and{' '}
+                <Link href="https://streamlit.io">Streamlit</Link>.
               </Balancer>
             </p>
           </ModulePageSection>
@@ -65,8 +70,8 @@ export default function InfrasdkPage(): JSX.Element {
             </h2>
             <p>
               <Balancer>
-                Build powerful and innovative solutions that meet the unique
-                needs of your organization.
+                Build powerful, innovative solutions that meet the unique needs
+                of your organization.
               </Balancer>
             </p>
           </ModulePageCTA>

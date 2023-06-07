@@ -48,17 +48,19 @@ export default function MetricmatePage(): JSX.Element {
             </h2>
             <p>
               <Balancer>
-                MetricMate exports metrics to{' '}
-                <Link href="https://prometheus.io">Prometheus</Link>,{' '}
+                MetricMate exports{' '}
+                <Link to="/blog/actionable-cloud-infrastructure-metrics">
+                  metrics
+                </Link>{' '}
+                to <Link href="https://prometheus.io">Prometheus</Link>,{' '}
                 <Link href="https://datadoghq.com">Datadog</Link>, or{' '}
-                <abbr title="Structured Query Language">SQL</abbr>
-                databases.
+                <abbr title="Structured Query Language">SQL</abbr> databases.
               </Balancer>
             </p>
             <p>
               <Balancer>
                 MetricMate also seamlessly integrates your data into frameworks
-                like <Link href="https://streamlit.io">Streamlit</Link> and
+                like <Link href="https://streamlit.io">Streamlit</Link> and{' '}
                 <Link href="https://plotly.com/dash">Plotly Dash</Link>,
                 empowering you to build custom, low-code infrastructure
                 dashboards.
@@ -74,9 +76,13 @@ export default function MetricmatePage(): JSX.Element {
             </h2>
             <p>
               <Balancer>
-                MetricMate goes beyond metrics&mdash;it also provides cloud
-                resource cost data. Keep a close eye on your cloud spending to
-                ensure that you stay within your budget.
+                MetricMate goes beyond{' '}
+                <Link to="/blog/actionable-cloud-infrastructure-metrics">
+                  metrics
+                </Link>
+                &mdash;it also provides cloud resource cost data. Keep a close
+                eye on your cloud spending to ensure that you stay within your
+                budget.
               </Balancer>
             </p>
           </ModulePageSection>

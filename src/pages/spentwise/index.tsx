@@ -45,16 +45,19 @@ export default function SpentwisePage(): JSX.Element {
             </h2>
             <p>
               <Balancer>
-                See detailed metrics about how your cloud spending is trending
-                over time.
+                See detailed{' '}
+                <Link to="/blog/actionable-cloud-infrastructure-metrics">
+                  metrics
+                </Link>{' '}
+                about how your cloud spending is trending over time.
               </Balancer>
             </p>
             <p>
               <Balancer>
                 You can also set up{' '}
-                <Link to="/docs/how-to-guides/alerting">alerts</Link> to notify
-                you when costs exceed a defined threshold, or when spending
-                spikes or drops unexpectedly.
+                <Link to="/docs/how-to-guides/alerting">alerts</Link> for when
+                costs exceed a defined threshold, or when spending spikes or
+                drops unexpectedly.
               </Balancer>
             </p>
           </ModulePageSection>
@@ -66,8 +69,8 @@ export default function SpentwisePage(): JSX.Element {
             </h2>
             <p>
               <Balancer>
-                When someone accidentally spins up an expensive high-core-count
-                instance, you&rsquo;ll be able to take action immediately.
+                Take immediate action when someone accidentally spins up an
+                expensive high-core-count instance.
               </Balancer>
             </p>
           </ModulePageSection>

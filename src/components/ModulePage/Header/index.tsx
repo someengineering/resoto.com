@@ -33,7 +33,8 @@ export default function ModulePageHeader({
             <h1 className={styles.pageTitle}>
               <span>
                 Resoto <strong>{moduleName}</strong>:
-              </span>{' '}
+              </span>
+              <br />
               {tagline}
             </h1>
             <p className={styles.pageDescription}>

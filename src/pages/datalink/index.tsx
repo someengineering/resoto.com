@@ -33,7 +33,8 @@ export default function DatalinkPage(): JSX.Element {
               <Balancer>
                 View your infrastructure data in tools like{' '}
                 <Link href="https://tableau.com">Tableau</Link>,{' '}
-                <Link href="https://grafana.com">Grafana</Link>, or Metabase.
+                <Link href="https://grafana.com">Grafana</Link>, or{' '}
+                <Link href="https://metabase.com">Metabase</Link>.
               </Balancer>
             </p>
             <p>
@@ -41,10 +42,14 @@ export default function DatalinkPage(): JSX.Element {
                 DataLink supports a wide range of export destinations,
                 including:
                 <br />
-                SQLite files, MySQL and PostgreSQL databases, Snowflake
-                cloud-based data warehousing platform, and CSV or Parquet
-                columnar structure files (which can be uploaded to S3-compatible
-                storage or Google Cloud Storage).
+                <Link href="https://sqlite.org">SQLite</Link> files,{' '}
+                <Link href="https://mysql.com">MySQL</Link> and{' '}
+                <Link href="https://postgresql.org">PostgreSQL</Link> databases,{' '}
+                <Link href="https://snowflake.com">Snowflake</Link> cloud data
+                warehousing platform, and{' '}
+                <abbr title="comma-separated values">CSV</abbr> or{' '}
+                <Link href="https://parquet.apache.org">Parquet</Link> columnar
+                structure files.
               </Balancer>
             </p>
             {/* TO-DO: List supported export options in a bulleted list */}
@@ -74,9 +79,10 @@ export default function DatalinkPage(): JSX.Element {
             </p>
             <p>
               <Balancer>
-                Whether you want to export your asset inventory data to a SQL
-                database or a cloud data warehouse, DataLink makes it easy to
-                connect your Resoto data with your existing data infrastructure.
+                Whether you want to export your asset inventory data to a{' '}
+                <abbr title="Structured Query Language">SQL</abbr> database or a
+                cloud data warehouse, DataLink makes it easy to connect your
+                Resoto data with existing data infrastructure.
               </Balancer>
             </p>
           </ModulePageSection>

@@ -68,12 +68,17 @@ export default function DefragPage(): JSX.Element {
             </p>
             <p>
               <Balancer>
-                For example, tag temporary development instances with an
+                For example,{' '}
+                <Link to="/docs/concepts/resource-management/tagging">tag</Link>{' '}
+                temporary development instances with an{' '}
                 <Link to="/docs/concepts/resource-management/expiration">
                   expiration
                 </Link>{' '}
-                of 24 hours&mdash;and never worry again about forgetting to
-                clean them up.
+                of 24 hours&mdash;and never worry again about forgetting to{' '}
+                <Link to="/docs/how-to-guides/cleanup/clean-up-expired-resources">
+                  clean them up
+                </Link>
+                .
               </Balancer>
             </p>
           </ModulePageSection>
@@ -86,8 +91,11 @@ export default function DefragPage(): JSX.Element {
             </h2>
             <p>
               <Balancer>
-                Find and clean up resources created during failed CI runs or IaC
-                deployments.
+                <Link to="/docs/how-to-guides/search/find-a-resource">
+                  Find
+                </Link>{' '}
+                and <Link to="/docs/how-to-guides/cleanup">clean up</Link>{' '}
+                resources created during failed CI runs or IaC deployments.
               </Balancer>
             </p>
             <p>

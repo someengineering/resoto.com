@@ -1,3 +1,4 @@
+import Link from '@docusaurus/Link';
 import ContactForm from '@site/src/components/ContactForm';
 import ModulePageCTA from '@site/src/components/ModulePage/CTA';
 import ModulePageHeader from '@site/src/components/ModulePage/Header';
@@ -31,7 +32,11 @@ export default function ChronologPage(): JSX.Element {
             <p>
               <Balancer>
                 Review the entire lifecycle of any cloud resource, from its
-                creation to when it is cleaned up.
+                creation time to when it is{' '}
+                <Link to="/docs/concepts/resource-management/cleanup">
+                  cleaned up
+                </Link>
+                .
               </Balancer>
             </p>
           </ModulePageSection>

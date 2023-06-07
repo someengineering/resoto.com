@@ -1,3 +1,4 @@
+import Link from '@docusaurus/Link';
 import ContactForm from '@site/src/components/ContactForm';
 import ModulePageCTA from '@site/src/components/ModulePage/CTA';
 import ModulePageHeader from '@site/src/components/ModulePage/Header';
@@ -46,8 +47,11 @@ export default function RewindPage(): JSX.Element {
             </h2>
             <p>
               <Balancer>
-                Rewind lets you compare today&rsquo;s tagging policy to that
-                from any point in time.
+                Rewind lets you compare today&rsquo;s{' '}
+                <Link to="/blog/effective-cloud-management-tagging-policies">
+                  tagging policy
+                </Link>{' '}
+                to that from any previous point in time.
               </Balancer>
             </p>
           </ModulePageSection>

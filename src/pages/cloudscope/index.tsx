@@ -33,8 +33,10 @@ export default function CloudscopePage(): JSX.Element {
             </h2>
             <p>
               <Balancer>
-                Find resources by name, ID, tag, metadata properties, or any
-                combination of{' '}
+                <Link to="/docs/how-to-guides/search/find-a-resource">
+                  Find resources
+                </Link>{' '}
+                by name, ID, tag, metadata properties, or any combination of{' '}
                 <Link to="/docs/reference/search/filters">filters</Link>.
               </Balancer>
             </p>

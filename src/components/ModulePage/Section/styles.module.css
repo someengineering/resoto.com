@@ -58,7 +58,8 @@ html[data-theme='dark'] .inner h2 strong {
 }
 
 .inner p {
-  margin: calc(var(--ifm-paragraph-margin-bottom) * 1.5) 0 0;
+  margin: calc(var(--ifm-paragraph-margin-bottom) * 1.5) auto 0;
+  max-width: 85ch;
 }
 
 .image {

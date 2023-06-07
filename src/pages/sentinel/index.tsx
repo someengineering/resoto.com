@@ -47,9 +47,9 @@ export default function SentinelPage(): JSX.Element {
             </h2>
             <p>
               <Balancer>
-                Round-the-clock{' '}
-                <Link to="/docs/how-to-guides/security">
-                  comparison of the state of your infrastructure to
+                Round-the-clock comparison of the state of your infrastructure
+                to{' '}
+                <Link to="/blog/cloud-resource-security-benchmarks">
                   industry-standard benchmarks
                 </Link>{' '}
                 ensures your cloud is safe and secure.

@@ -22,9 +22,9 @@ jq [--no-rewrite] <filter>
 
 ### Options
 
-| Option         | Description                                         | Required? | Default Value |
-| -------------- | --------------------------------------------------- | --------- | ------------- |
-| `--no-rewrite` | Do not preprocess the `jq` filter and send it as-is | ❌        |               |
+| Option         | Description                                          | Required? |
+| -------------- | ---------------------------------------------------- | --------- |
+| `--no-rewrite` | Do not preprocess the `jq` filter, but send it as-is | ❌        |
 
 By default, a `jq` filter expression is rewritten to match the currently defined section (see [Property Path](../../search/filters.mdx#property-path)). A filter expression like `.foo.bar` will be rewritten to `.reported.foo.bar`. In order to access a property via an absolute path like `/metadata.protected`, you would need to write `./metadata.protected`.
 

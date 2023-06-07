@@ -7,7 +7,7 @@ pagination_label: workflow history
 
 The `workflow history` command shows the history of a workflow based on the filter criteria.
 
-If no workflow ID is provided, it shows the aggregated history of all workflows.
+If no workflow ID is provided, the aggregated history of all workflows is returned.
 
 ## Usage
 
@@ -17,19 +17,18 @@ workflow history [<id>] [--started-before <date>] [--started-after <date>] [--ha
 
 ### Parameters
 
-| Parameter | Description          | Required? | Default Value |
-| --------- | -------------------- | --------- | ------------- |
-| `id`      | Workflows identifier | ❌        |               |
+| Parameter | Description         | Required? | Default Value |
+| --------- | ------------------- | --------- | ------------- |
+| `id`      | Workflow identifier | ❌        |               |
 
 ### Options
 
-| Option                    | Description                                             |
-| ------------------------- | ------------------------------------------------------- |
-| `--id <id>`               | The identifier of this workflow.                        |
-| `--started-before <date>` | Filter for workflow runs that started before this date. |
-| `--started-after <date>`  | Filter for workflow runs that started after this date.  |
-| `--has-errors`            | Filter for workflow runs that have errors.              |
-| `--limit <num>`           | Limit the number of workflow runs to show.              |
+| Option                    | Description                                             | Required? |
+| ------------------------- | ------------------------------------------------------- | --------- |
+| `--started-before <date>` | Filter for workflow runs that started before this date. | ❌        |
+| `--started-after <date>`  | Filter for workflow runs that started after this date.  | ❌        |
+| `--has-errors`            | Filter for workflow runs that have errors.              | ❌        |
+| `--limit <num>`           | Limit the number of workflow runs to show.              | ❌        |
 
 ## Examples
 

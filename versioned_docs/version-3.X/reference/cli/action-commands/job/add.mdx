@@ -10,7 +10,7 @@ The `job add` command adds a job to the task handler.
 ## Usage
 
 ```bash
-job add [--id <id>] [--schedule <cron_expression>] [--wait-for-event <event_name>] <command>
+job add [--id <id>] [--schedule <cron_expression>] [--wait-for-event <event_name>] [--timeout <seconds>] <command>
 ```
 
 ### Parameters
@@ -23,12 +23,12 @@ job add [--id <id>] [--schedule <cron_expression>] [--wait-for-event <event_name
 
 ### Options
 
-| Option                          | Description                                                                                                                                                   | Required? | Default Value |
-| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ------------- |
-| `--id <id>`                     | Job identifier (if no ID is provided, a random identifier will be automatically generated)                                                                    | ❌        |               |
-| `--schedule <cron_expression>`  | The schedule as a `cron` expression                                                                                                                           | ➖        |               |
-| `--wait-for-event <event_name>` | Waits for the specified [event](../../../events/index.mdx) to occur (if defined in conjunction with the `--schedule` option, the schedule must trigger first) | ➖        |               |
-| `--timeout`                     | Number of seconds for which the job is allowed to run before being automatically terminated                                                                   | ❌        | `3600`        |
+| Option                          | Description                                                                                                                                                   | Required? |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| `--id <id>`                     | Job identifier (if not provided, a random identifier is generated)                                                                                            | ❌        |
+| `--schedule <cron_expression>`  | The schedule as a `cron` expression                                                                                                                           | ➖        |
+| `--wait-for-event <event_name>` | Waits for the specified [event](../../../events/index.mdx) to occur (if defined in conjunction with the `--schedule` option, the schedule must trigger first) | ➖        |
+| `--timeout <seconds>`           | Number of seconds for which the job is allowed to run before being terminated (3600 seconds by default)                                                       | ❌        |
 
 ## Examples
 

@@ -19,7 +19,7 @@
 
 - [ ] Format with `yarn format`
 - [ ] Lint with `yarn lint`
-- [ ] Build successfully with `yarn build`
+- [ ] Build successfully with `yarn build:fast`
 
 # Code of Conduct
 

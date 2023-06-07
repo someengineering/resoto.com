@@ -71,17 +71,17 @@ https://releases.resoto.com/*                                                   
 
 /concepts/*                                                                           /docs/concepts/:splat
 
-/contribute/code                                                                      /docs/contributing/components
-/contribute/component                                                                 /docs/contributing/components
-/contribute/doc                                                                       /docs/contributing/documentation
-/contribute/docs                                                                      /docs/contributing/documentation
-/contribute/*                                                                         /docs/contributing/:splat
-
-/contributing/code                                                                    /docs/contributing/components
-/contributing/component                                                               /docs/contributing/components
-/contributing/doc                                                                     /docs/contributing/documentation
-/contributing/docs                                                                    /docs/contributing/documentation
-/contributing/*                                                                       /docs/contributing/:splat
+/contribute/code                                                                      /docs/development/components
+/contribute/component                                                                 /docs/development/components
+/contributing/code                                                                    /docs/development/components
+/contributing/component                                                               /docs/development/components
+/contribute/doc                                                                       /docs/development/documentation
+/contribute/docs                                                                      /docs/development/documentation
+/contributing/doc                                                                     /docs/development/documentation
+/contributing/docs                                                                    /docs/development/documentation
+/contribute/*                                                                         /docs/development/:splat
+/contributing/*                                                                       /docs/development/:splat
+/docs/contributing/*                                                                  /docs/development/:splat
 
 /docs/getting-started/install-resoto/aws/cdk                                          /docs/getting-started/install-resoto/aws
 /docs/getting-started/install-resoto/aws/cloudformation                               /docs/getting-started/install-resoto/aws

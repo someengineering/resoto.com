@@ -5,7 +5,7 @@ pagination_label: apps run
 
 # `apps run` Command
 
-The `apps run` command runs an app.
+The `apps run` command runs an infrastructure app.
 
 ## Usage
 
@@ -24,9 +24,11 @@ app run <app_name> [--dry-run] [--config <config_name>]
 | Option                   | Description                     | Required? | Default Value |
 | ------------------------ | ------------------------------- | --------- | ------------- |
 | `--dry-run`              | Perform a dry run of the app \* | ❌        |               |
-| `--config <config_name>` | Config identifier               | ❌        |               |
+| `--config <config_name>` | Config identifier \*\*          | ❌        |               |
 
 \* When using the `--dry-run` argument, the app will not be executed but the commands will be printed to the terminal.
+
+\*\* By default, Resoto passes the app a configuration that corresponds to the app name. (For example, when installing an app named `foobar`, Resoto creates a default config named `resoto.apps.foobar`.) If you would like to run the app with an alternative config, you can specify the config name using the `--config` argument.
 
 ## Example
 

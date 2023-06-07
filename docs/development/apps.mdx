@@ -1,0 +1,232 @@
+---
+sidebar_position: 3
+sidebar_label: Infrastructure Apps
+---
+
+# Infrastructure App Development
+
+An infrastructure app is a [Jinja template](https://jinja.palletsprojects.com/) that generates one or more Resoto commands which are then executed by Resoto one after the other.
+
+Check out the [Resoto Apps git repository](https://github.com/someengineering/resoto-apps) for a list of apps.
+
+Using [`resotoappbundler`](https://github.com/someengineering/resotoappbundler) (`pip install resotoappbundler`) you can bundle and dry-run (using `resotoapprunner`) your app locally.
+
+`resotoappbundler` takes one or more Resoto app directories and bundles them into a single JSON file. This file can be hosted on any http server and used as an app index URL.
+
+## Development Workflow
+
+1.  Create a new directory for app development:
+
+    ```bash
+    $ mkdir resoto-app-development
+    $ cd resoto-app-development
+    ```
+
+2.  Create and activate a new Python virtual environment:
+
+    ```bash
+    $ python3 -m venv resoto-apps-venv
+    $ source resoto-apps-venv/bin/activate
+    ```
+
+3.  Install `resotoappbundler`:
+
+    ```bash
+    $ pip install resotoappbundler
+    ```
+
+4.  Check out the [`resoto-apps` GitHub repository](https://github.com/someengineering/resoto-apps):
+
+    ```bash
+    $ git clone https://github.com/someengineering/resoto-apps.git
+    ```
+
+5.  Add or modify an app in the `resoto-apps` directory.
+
+    :::tip
+
+    You can perform a dry run of the `cleanup-untagged` app for sample infrastructure app output:
+
+    ```bash
+    $ resotoapprunner --path resoto-apps/cleanup-untagged/
+    ```
+
+    :::
+
+6.  Bundle all apps into a single `index.json` file:
+
+    ```bash
+    $ resotoappbundler --path resoto-apps/ --discover > index.json
+    ```
+
+7.  From within [Resoto Shell](../reference/components/shell.mdx), install an app using the [`app install` command](../reference/cli/miscellaneous-commands/apps/install.mdx):
+
+    ```bash title="Installing an app from a custom index URL"
+    > app install <app_name> --index-url <file://...>
+    ```
+
+    :::note
+
+    The `--index-url` argument can be used to specify a custom app index URL.
+
+    By default, Resoto uses the [official app index URL](https://resoto.com/apps/index.json).
+
+    :::
+
+During local development the index-url can also be `file://...` to point to a local json file.
+
+## Extra Functions and Variables
+
+A Resoto Infrastructure App has access to a couple of extras that are not part of the standard Jinja library:
+
+- `search()` - Search the Resoto Graph for resources. Returns a generator that yields resources (and edges if requested).
+- `parse_duration()` - Parse a duration string (e.g. `2d4h` or `7 weeks`) into a timedelta object that can be compared.
+- `config` - The app configuration (if any).
+- `args` - The command line arguments passed to the app (if any).
+- `stdin` - A generator representing the standard input passed to the app (if any).
+
+Resoto Infrastructure Apps also have access to the [Expression Statement](https://jinja.palletsprojects.com/en/3.0.x/extensions/#expression-statement) and [Loop Controls](https://jinja.palletsprojects.com/en/3.0.x/extensions/#loop-controls) Jinja extensions.
+
+## Directory Structure
+
+An infrastructure app is a directory that contains the following files:
+
+- `README.md` - A markdown file that describes the app.
+- `app.yaml` - A YAML file that contains the app manifest.
+- `app.jinja2` - A Jinja template that generates Resoto commands.
+- `app.svg` - A vector graphics icon for the app.
+
+## App Manifest
+
+The app manifest is a YAML file that contains the following fields:
+
+- `name` - The name of the app.
+- `description` - A short description of the app.
+- `version` - The version of the app.
+- `language` - The language of the app. Currently only `jinja2` is supported.
+- `license` - The license of the app.
+- `authors` - A list of authors.
+- `url` - The URL of the app.
+- `categories` - A list of categories the app belongs to.
+- `default_config` - The default configuration of the app.
+- `config_schema` - The configuration schema of the app.
+- `args_schema` - The command line arguments schema of the app.
+
+## Example Apps
+
+### Execute a Static Search
+
+```jinja title="app.jinja2"
+search /metadata.expires < "@NOW@" | clean "Resource is expired"
+```
+
+```yaml title="app.yaml"
+name: cleanup-expired
+description: "This app cleans up resources that have expired."
+version: "1.0.0"
+language: jinja2
+license: "Apache 2.0"
+authors: ["someengineering"]
+url: "https://resoto.com/"
+categories: ["cleanup"]
+default_config:
+config_schema:
+args_schema:
+```
+
+### Clean Up Abandoned AWS CloudWatch Instance Alarms
+
+```jinja title="app.jinja2"
+{%- set config = config["cleanup_aws_alarms"] %}
+{%- for cloud, accounts in config["clouds_and_accounts"].items() %}
+    {%- for account in accounts %}
+search is(aws_cloudwatch_alarm) and /ancestors.account.reported.id == "{{account}}" and /ancestors.cloud.reported.id == "{{cloud}}" and cloudwatch_dimensions[*].name = InstanceId with (empty, <-- is(aws_ec2_instance)) | clean "Abandoned CloudWatch Instance Alarm"
+    {%- endfor %}
+{%- endfor %}
+```
+
+```yaml title="app.yaml"
+name: cleanup-aws-alarms
+description: "This plugin marks all abandoned AWS CloudWatch Instance Alarms for cleanup."
+version: "1.0.0"
+language: jinja2
+license: "Apache 2.0"
+authors: ["someengineering"]
+url: "https://resoto.com/"
+categories: ["cleanup"]
+default_config:
+  cleanup_aws_alarms:
+    clouds_and_accounts:
+      aws:
+        - '1234567'
+        - '567890'
+config_schema:
+  - fqn: cleanup_aws_alarms
+    bases: []
+    properties:
+    - name: clouds_and_accounts
+      kind: dictionary[string, string[]]
+      required: false
+      description: Clouds and accounts to cleanup AWS alarms in.
+args_schema:
+```
+
+### Send a Message to a Discord Channel
+
+```jinja title="app.jinja2"
+{%- set config = config["discord"] %}
+{%- set message = [] %}
+{%- for resource in stdin %}
+    {%- set reported = resource.get("reported", {}) %}
+    {%- set ancestors = resource.get("ancestors", {}) %}
+    {%- set account = ancestors.get("account", {}).get("reported", {}).get("name") %}
+    {%- set kind = reported.get("kind") %}
+    {%- set id = reported.get("id") %}
+    {%- set name = reported.get("id") %}
+    {%- if id == name %}
+        {%- set dname = id %}
+    {%- else %}
+        {%- set dname = name ~ ' (' ~ id ~ ')' %}
+    {%- endif %}
+    {%- set kdname = account ~ ' - ' ~ kind ~ ' ' ~ dname %}
+    {%- do message.append(kdname) %}
+{%- endfor %}
+{%- set message = message | join(" | ") %}
+{%- set discord_data = {"embeds": [{"type": "rich", "title": args.title, "description": message, "footer": {"text": "Message created by Resoto"}}]} %}
+json {{ discord_data | tojson }} | http POST {{ config["webhook"] }}
+```
+
+```yaml title="app.yaml"
+name: discord
+description: "Discord client for Resoto"
+version: "1.0.0"
+language: jinja2
+license: "Apache 2.0"
+authors: ["someengineering"]
+url: "https://resoto.com/"
+categories: ["tools"]
+default_config:
+  discord:
+    webhook: 'https://discordapp.com/api/webhooks/1234567890/abcdefghijklmnopqrstuvwxyz'
+config_schema:
+  - fqn: discord
+    bases: []
+    properties:
+    - name: webhook
+      kind: string
+      required: true
+      description: Discord Webhook URL.
+args_schema:
+  title:
+    help: "Title of the message to send to Discord."
+    type: str
+    required: true
+  message:
+    help: "Message to send to Discord."
+    type: str
+    required: true
+  num:
+    help: "Message to send to Discord."
+    type: int
+    default: 10
+```

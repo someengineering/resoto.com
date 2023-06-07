@@ -387,7 +387,7 @@ const config = {
               { label: 'How-To Guides', to: '/docs/how-to-guides' },
               { label: 'Concepts', to: '/docs/concepts' },
               { label: 'Reference', to: '/docs/reference' },
-              { label: 'Contributing', to: '/docs/contributing' },
+              { label: 'Development', to: '/docs/development' },
             ],
           },
           { label: 'Pricing', to: '/pricing', position: 'right' },
@@ -453,7 +453,7 @@ const config = {
               { label: 'How-To Guides', to: '/docs/how-to-guides' },
               { label: 'Concepts', to: '/docs/concepts' },
               { label: 'Reference', to: '/docs/reference' },
-              { label: 'Contributing', to: '/docs/contributing' },
+              { label: 'Development', to: '/docs/development' },
             ],
           },
           {

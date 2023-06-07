@@ -4,10 +4,6 @@ sidebar_position: 2
 
 # Asset Inventory Graph
 
-```mdx-code-block
-import ZoomPanPinch from '@site/src/components/ZoomPanPinch';
-```
-
 Resoto scrapes resources from your cloud providers. This data is the source of truth for all of Resoto's features. All resources from all cloud providers, accounts, regions and all resource types become nodes in the graph.
 
 Resoto also knows how resources relate to each other. For example, a compute instance might have a volume and is attached to a network interface. The same compute instance might be the target of a load balancer, which is inside a security group, which itself is inside a VPC. All of these relationships are encoded as edges in the graph.

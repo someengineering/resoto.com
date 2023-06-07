@@ -206,7 +206,7 @@ html[data-theme='dark'] .docsButton::before {
 }
 
 .homeContent {
-  background-image: url(./img/main-lightbg.webp);
+  background-image: url('./img/bg-light.webp');
   background-position: top;
   background-size: cover;
   background-repeat: no-repeat;
@@ -214,7 +214,7 @@ html[data-theme='dark'] .docsButton::before {
 }
 
 html[data-theme='dark'] .homeContent {
-  background-image: url(./img/main-darkbg.webp);
+  background-image: url('./img/bg-dark.webp');
 }
 
 .content {

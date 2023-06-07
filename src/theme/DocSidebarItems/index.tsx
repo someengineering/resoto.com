@@ -11,6 +11,8 @@ import type DocSidebarItemsType from '@theme/DocSidebarItems';
 import clsx from 'clsx';
 import React from 'react';
 
+import styles from './styles.module.css';
+
 type Props = WrapperProps<typeof DocSidebarItemsType>;
 
 export default function DocSidebarItemsWrapper(props: Props): JSX.Element {
@@ -24,7 +26,7 @@ export default function DocSidebarItemsWrapper(props: Props): JSX.Element {
           className={clsx(
             ThemeClassNames.docs.docSidebarItemLink,
             'theme-doc-sidebar-item-link-level-1',
-            'version-selector',
+            styles.versionSelector,
             'shadow--lw',
             'margin-bottom--md'
           )}

@@ -29,20 +29,19 @@ const config = {
   trailingSlash: false,
   noIndex: !isProd,
   stylesheets: [
-    ...Array(9)
-      .fill()
-      .map((_, i) => ({
-        rel: 'preload',
-        href: `https://cdn.some.engineering/fonts/Barlow${i + 1}00.woff2`,
-        as: 'font',
-        type: 'font/woff2',
-        crossorigin: true,
-      })),
+    ...[400, 500, 600, 700, 800].map((_, weight) => ({
+      rel: 'preload',
+      href: `https://cdn.some.engineering/fonts/Barlow${weight}.woff2`,
+      as: 'font',
+      type: 'font/woff2',
+      crossorigin: true,
+    })),
     {
       rel: 'preload',
       href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
       as: 'style',
       type: 'text/css',
+      fetchpriority: 'low',
       onload: "this.onload=null;this.rel='stylesheet'",
       crossorigin: true,
       integrity:
@@ -58,9 +57,7 @@ const config = {
         },
       ]
     : [],
-  markdown: {
-    mermaid: true,
-  },
+  markdown: { mermaid: true },
   themes: ['@docusaurus/theme-mermaid', 'docusaurus-theme-openapi-docs'],
   presets: [
     [
@@ -166,9 +163,7 @@ const config = {
       return {
         name: 'custom-webpack-config',
         configureWebpack: () => ({
-          module: {
-            rules: [{ test: /\.cast$/i, use: 'url-loader' }],
-          },
+          module: { rules: [{ test: /\.cast$/i, use: 'url-loader' }] },
         }),
       };
     },
@@ -325,9 +320,7 @@ const config = {
       image:
         'https://og.some.engineering/api/image?theme=resoto&darkMode=0&title=%20&metadata=by%20Some%20Engineering%20Inc.',
       docs: {
-        sidebar: {
-          autoCollapseCategories: true,
-        },
+        sidebar: { autoCollapseCategories: true },
         versionPersistence: 'none',
       },
       metadata: [
@@ -339,12 +332,9 @@ const config = {
         },
         { property: 'og:type', content: 'website' },
       ],
-      tableOfContents: {
-        minHeadingLevel: 2,
-        maxHeadingLevel: 5,
-      },
+      tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 5 },
       announcementBar: {
-        id: `announcementBar-${latestRelease[versions[0]]}`, // Increment on change
+        id: `announcementBar-${latestRelease[versions[0]]}`,
         content: `<span aria-label="star-struck" role="img">🤩</span> <a href="/releases/${
           latestRelease[versions[0]]
         }">Check out what's new in Resoto ${

@@ -65,7 +65,6 @@ def write_md(provider: str, kinds: list):
         lines = [
             f"---\nsidebar_label: {provider.capitalize()}\n---\n\n",
             f"# {provider.capitalize()} Resource Data Models\n\n",
-            "```mdx-code-block\nimport ZoomPanPinch from '@site/src/components/ZoomPanPinch';\n```\n\n",
         ]
 
     with open(f"./{provider}.mdx", "w+") as file:

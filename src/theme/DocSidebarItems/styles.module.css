@@ -1,0 +1,29 @@
+.versionSelector {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 0.5rem;
+  background-color: var(--ifm-navbar-background-color);
+  padding: var(--ifm-menu-link-padding-vertical)
+    var(--ifm-menu-link-padding-horizontal);
+}
+
+.versionSelector > div {
+  margin: 0;
+}
+
+.versionSelector > a {
+  padding: calc(
+      var(--ifm-button-padding-vertical) * var(--ifm-button-size-multiplier)
+    )
+    calc(
+      var(--ifm-button-padding-horizontal) * var(--ifm-button-size-multiplier) /
+        2
+    );
+}
+
+@media screen and (max-width: 1100px) {
+  .versionSelector > div {
+    display: inline-block;
+  }
+}

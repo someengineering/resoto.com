@@ -1,0 +1,46 @@
+---
+sidebar_label: benchmark show
+pagination_label: benchmark show
+---
+
+# `report benchmark show` Command
+
+The `report benchmark show` command shows the content of a named benchmark.
+
+## Usage
+
+```bash
+report benchmark show [benchmark]
+```
+
+## Example
+
+```bash
+> report benchmark show aws_cis_1_5
+# highlight-start
+report_benchmark:
+  # Title of the benchmark or report check collection.
+  title: 'AWS CIS 1.5.0'
+  # Framework the benchmark is based on.
+  framework: 'CIS'
+  # List of applicable cloud providers. If the benchmark is not cloud specific, the value would be null.
+  clouds:
+    - 'aws'
+  # Version of the benchmark.
+  version: '1.5'
+  # Description of the benchmark.
+  description: 'The CIS Amazon Web Services Foundations Benchmark provides prescriptive guidance for configuring security options for a subset of Amazon Web Services with an emphasis on foundational, testable, and architecture agnostic settings.'
+  # Nested collections.
+  children:
+    - # Title of the benchmark or report check collection.
+      title: 'Section 1: Access Management'
+      # Description of the benchmark.
+      description: 'This section contains recommendations for configuring identity and access management related options.'
+      # Nested collections.
+      children:
+        # cut for brevity
+        .
+        .
+        .
+# highlight-end
+```

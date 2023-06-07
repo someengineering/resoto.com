@@ -1,0 +1,34 @@
+---
+sidebar_label: check run
+pagination_label: check run
+---
+
+# `report check run` Command
+
+The `report check run` command performs the named check on the defined cloud accounts.
+
+## Usage
+
+```bash
+report check run <check-id> [--accounts <account-id>] [--severity <level>] [--only-failing] [--only-check-results]
+```
+
+### Parameters
+
+| Parameter    | Description                                                                                                                  | Required? | Default Value |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------- | --------- | ------------- |
+| `--accounts` | List of account ids (space separated) to run the check against.<br/>If not specified, the check is run against all accounts. | ️         |               |
+| `--severity` | Severity level to filter checks. One of info, low, medium, high, critical                                                    | ️         |               |
+
+### Options
+
+| Option                 | Description                                                                  | Required? | Default Value |
+| ---------------------- | ---------------------------------------------------------------------------- | --------- | ------------- |
+| `--only-failing`       | Only show failing checks                                                     | ️         |               |
+| `--only-check-results` | Only include the result of the checks in the report, not the check sections. | ️         |               |
+
+## Example
+
+```bash
+> report check run aws_apigateway_authorizers_enabled
+```

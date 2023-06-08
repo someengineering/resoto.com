@@ -34,6 +34,7 @@
 
 .dropdown__link {
   display: flex;
+  align-items: center;
   border-radius: 1rem;
 }
 

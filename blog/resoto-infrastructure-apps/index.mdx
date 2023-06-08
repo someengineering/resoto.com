@@ -6,13 +6,13 @@ tags: [Infrastructure Apps]
 
 # Resoto Infrastructure Apps
 
-Nowadays, most organizations use tools like [<abbr title="Cloud Development Kit">CDK</abbr>](https://aws.amazon.com/cdk), [Terraform](https://terraform.io), or [CloudFormation](https://aws.amazon.com/cloudformation) to create their infrastructure following <abbr title="Infrastructure as Code">IaC</abbr> principles.
+Today, most organizations use tools like [<abbr title="Cloud Development Kit">CDK</abbr>](https://aws.amazon.com/cdk), [Terraform](https://terraform.io), or [CloudFormation](https://aws.amazon.com/cloudformation) to create their infrastructure following <abbr title="Infrastructure as Code">IaC</abbr> principles.
 
-However, when it comes to maintaining these cloud resources over time, many resort to an assortment of scripts to fulfill specific maintenance needs. Such scripts introduce inconsistencies across the organization.
+When it comes to maintaining these cloud resources over time, however, many still resort to an assortment of scripts to fulfill specific maintenance needs. Such scripts introduce inconsistencies across the organization.
 
 Resoto provides quick access to your entire [infrastructure inventory](/docs/concepts/asset-inventory-graph) and lets you modify or [clean up cloud resources](/docs/how-to-guides/cleanup). But up until now, you needed to write custom Python plugins to perform actions Resoto doesn't support out of the box.
 
-**We've introducing a powerful new feature in [Resoto 3.5](/releases/3.5.0): Resoto Infrastructure Apps.**
+**We introduced a powerful new feature in [Resoto 3.5](/releases/3.5.0): Infrastructure Apps.**
 
 Infrastructure Apps extend Resoto's base functionality, empowering you to perform custom tasks like [fixing untagged resources](/docs/how-to-guides/cleanup/clean-up-untagged-resources), [identifying abandoned load balancers](/docs/how-to-guides/cleanup/clean-up-aws-load-balancers), [sending notifications](/docs/how-to-guides/alerting) to other systems, or calling webhooks.
 
@@ -26,7 +26,7 @@ Infrastructure Apps leverage Resoto's [asset inventory graph](/docs/concepts/ass
 
 ## Finding and Installing Infrastructure Apps
 
-Finding and installing an Infrastructure App is a breeze the [`apps` command](/docs/reference/cli/miscellaneous-commands/apps), which allows you to search for and install apps.
+Finding and installing an Infrastructure App is a breeze with the [`apps` command](/docs/reference/cli/miscellaneous-commands/apps), which allows you to search for and install apps.
 
 :::info
 
@@ -34,21 +34,23 @@ See [How to Install & Run Infrastructure Apps](/docs/how-to-guides/infrastructur
 
 :::
 
-In [Resoto 3.5](/releases/3.5.0), we've ported all existing Python plugins like the tag validator or abandoned load balancer cleaner to Infrastructure Apps.
+In [Resoto 3.5](/releases/3.5.0), we ported all existing Python plugins like the [tag validator](/docs/reference/components/plugins/tagvalidator) or [abandoned load balancer cleaner](/docs/reference/components/plugins/cleanup_aws_loadbalancers) to Infrastructure Apps.
 
 ## Developing Infrastructure Apps
 
 The development process is straightforward, as an Infrastructure App is just a [Jinja template](https://jinja.palletsprojects.com) that generates one or more Resoto commands.
 
-With [`resotoappbundler`](https://github.com/someengineering/resotoappbundler), you can bundle and dry-run your app locally. `resotoappbundler` also allows you to bundle multiple Resoto app directories into a single JSON file that can be hosted on any HTTP server and used as an app index URL.
+With [`resotoappbundler`](https://github.com/someengineering/resotoappbundler), you can bundle and dry-run your app locally.
 
-:::tip
+`resotoappbundler` also allows you to bundle multiple Resoto app directories into a single [<abbr title="JavaScript Object Notation">JSON</abbr>](https://json.org) file that can be hosted on any HTTP server and used as an app index URL.
 
-See the [`someengineering/resoto-apps` GitHub repository](https://github.com/someengineering/resoto-apps) to review Resoto's built-in Infrastructure Apps.
+:::info
+
+See the [`someengineering/resoto-apps` GitHub repository](https://github.com/someengineering/resoto-apps) to review the pre-built Infrastructure Apps shipped with Resoto.
 
 :::
 
-In addition to standard Jinja functions, Resoto Infrastructure Apps have access to several supplementary functions and variables, enabling complex app operations.
+In addition to standard Jinja functions, Infrastructure Apps have access to several supplementary functions and variables, enabling complex app operations.
 
 For example, the [`search()`](/docs/reference/search) function can sift through Resoto's [asset inventory graph](/docs/concepts/asset-inventory-graph), invaluable in scenarios like adding missing cost-center [tags](/docs/concepts/resource-management/tagging) to [AWS resources](/docs/how-to-guides/data-sources/collect-aws-resource-data) by retrieving data from your user directory or duplicating tags from a parent resource.
 
@@ -68,7 +70,9 @@ Running an app with the `--dry-run` flag transparency and security by allowing y
 
 **The introduction of Infrastructure Apps in [Resoto 3.5](/releases/3.5.0) unlocks new potential in managing your cloud resources.**
 
-Whether it's pre-built or custom Infrastructure Apps, these low-code apps both simplify and amplify your infrastructure management capabilities. With such powerful tools at your disposal, managing cloud resources has never been easier!
+Whether it's pre-built or custom Infrastructure Apps, these low-code apps both simplify and amplify your infrastructure management capabilities.
+
+With such powerful tools at your disposal, managing cloud resources has never been easier. [Install Resoto](/docs/getting-started/install-resoto)!
 
 ## Further Reading
 

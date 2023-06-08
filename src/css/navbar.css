@@ -133,6 +133,10 @@
   border-right: 0.75em solid var(--ifm-button-background-color);
 }
 
+.menu__list .github-stars {
+  display: none;
+}
+
 .chronolog::before {
   --icon: url('../assets/icons/chronolog.svg');
 }

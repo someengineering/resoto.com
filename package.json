@@ -44,7 +44,7 @@
     "hast-util-is-element": "1.1.0",
     "lodash": "4.17.21",
     "netlify-plugin-cache": "1.0.3",
-    "prism-react-renderer": "2.0.4",
+    "prism-react-renderer": "2.0.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-modal": "3.16.1",

@@ -9,7 +9,7 @@ import Balancer from 'react-wrap-balancer';
 
 import baseStyles from '@site/src/pages/styles.module.css';
 
-import headerImage from '@site/src/pages/img/modules/notify.webp';
+import headerImage from '@site/src/assets/modules/notify.webp';
 
 export default function NotifyPage(): JSX.Element {
   return (

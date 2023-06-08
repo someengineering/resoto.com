@@ -1,0 +1,196 @@
+@font-face {
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://cdn.some.engineering/fonts/Barlow400.woff2') format('woff2');
+  font-family: 'Barlow';
+  font-display: swap;
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: 500;
+  src: url('https://cdn.some.engineering/fonts/Barlow500.woff2') format('woff2');
+  font-family: 'Barlow';
+  font-display: swap;
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: 600;
+  src: url('https://cdn.some.engineering/fonts/Barlow600.woff2') format('woff2');
+  font-family: 'Barlow';
+  font-display: swap;
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: 700;
+  src: url('https://cdn.some.engineering/fonts/Barlow700.woff2') format('woff2');
+  font-family: 'Barlow';
+  font-display: swap;
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: 800;
+  src: url('https://cdn.some.engineering/fonts/Barlow800.woff2') format('woff2');
+  font-family: 'Barlow';
+  font-display: swap;
+}
+
+:root {
+  --ifm-color-primary: #762dd7;
+  --ifm-color-primary-dark: #6a25c5;
+  --ifm-color-primary-darker: #6423ba;
+  --ifm-color-primary-darkest: #521d99;
+  --ifm-color-primary-light: #8443db;
+  --ifm-color-primary-lighter: #8b4edd;
+  --ifm-color-primary-lightest: #a16fe3;
+  --ifm-color-content: #000c1d;
+  --ifm-color-content-secondary: #af62f1;
+  --ifm-link-color: #af62f1;
+  --ifm-color-primary-contrast-background: #f5edff;
+  --ifm-color-primary-contrast-foreground: var(--ifm-color-primary-darkest);
+  --ifm-highlight-color: #e59010;
+  --ifm-highlight-color-secondary: #e59010;
+  --ifm-heading-color: var(--ifm-color-primary);
+  --ifm-font-size-base: 105%;
+  --ifm-font-family-base: 'Barlow', sans-serif;
+  --ifm-h1-font-size: 2.5rem;
+  --ifm-h2-font-size: 2rem;
+  --ifm-h3-font-size: 1.5rem;
+  --ifm-h4-font-size: 1.25rem;
+  --ifm-h5-font-size: 1rem;
+  --ifm-h6-font-size: 0.875rem;
+  --ifm-heading-margin-top: calc(var(--ifm-spacing-vertical) * 2);
+  --ifm-navbar-height: 4rem;
+  --docusaurus-highlighted-code-line-bg: rgb(0 0 0 / 10%);
+  --ifm-background-color: #ffffff;
+  --ifm-container-width-xxl: 1500px;
+  --ifm-global-radius: 1.2rem;
+}
+
+html[data-theme='dark'] {
+  --ifm-color-primary: #af62f5;
+  --ifm-color-primary-dark: #9f42f3;
+  --ifm-color-primary-darker: #9632f2;
+  --ifm-color-primary-darkest: #7d0ee2;
+  --ifm-color-primary-light: #bf82f7;
+  --ifm-color-primary-lighter: #c892f8;
+  --ifm-color-primary-lightest: #e0c3fb;
+  --ifm-color-content: #ffffff;
+  --ifm-color-content-secondary: #d9b8ff;
+  --ifm-link-color: #c38fff;
+  --ifm-color-primary-contrast-background: #0f061c;
+  --ifm-color-primary-contrast-foreground: var(--ifm-color-primary-lightest);
+  --ifm-highlight-color: #ffe797;
+  --ifm-highlight-color-secondary: #ffaf37;
+  --docusaurus-highlighted-code-line-bg: rgb(66 66 66 / 35%);
+  --ifm-background-color: #000d19;
+}
+
+article header {
+  margin-bottom: calc(var(--ifm-paragraph-margin-bottom) * 1.5);
+}
+
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child {
+  margin-top: 0;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code {
+  border: none;
+  background: none;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+em,
+strong {
+  color: var(--ifm-color-primary-darkest);
+}
+
+html[data-theme='dark'] em,
+html[data-theme='dark'] strong {
+  color: var(--ifm-color-primary-lightest);
+}
+
+td ul:last-child,
+td ol:last-child {
+  margin: 0;
+}
+
+input,
+button,
+textarea {
+  font-family: var(--ifm-font-family-base);
+}
+
+.button--outline:hover {
+  --ifm-button-background-color: transparent;
+}
+
+.button--primary.button--outline:hover {
+  --ifm-button-color: var(--ifm-color-primary-darker);
+  --ifm-button-border-color: var(--ifm-color-primary-darker);
+}
+
+.button--secondary.button--outline:hover {
+  --ifm-button-color: var(--ifm-color-secondary-darker);
+  --ifm-button-border-color: var(--ifm-color-secondary-darker);
+}
+
+.button--success.button--outline:hover {
+  --ifm-button-color: var(--ifm-color-success-darker);
+  --ifm-button-border-color: var(--ifm-color-success-darker);
+}
+
+.button--info.button--outline:hover {
+  --ifm-button-color: var(--ifm-color-info-darker);
+  --ifm-button-border-color: var(--ifm-color-info-darker);
+}
+
+.button--warning.button--outline:hover {
+  --ifm-button-color: var(--ifm-color-warning-darker);
+  --ifm-button-border-color: var(--ifm-color-warning-darker);
+}
+
+.button--danger.button--outline:hover {
+  --ifm-button-color: var(--ifm-color-danger-darker);
+  --ifm-button-border-color: var(--ifm-color-danger-darker);
+}
+
+.alert em,
+.alert strong {
+  color: var(--ifm-alert-foreground-color);
+}
+
+.admonition-heading {
+  --ifm-heading-color: var(--ifm-alert-foreground-color);
+}
+
+.docusaurus-highlight-code-line {
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 0 var(--ifm-pre-padding);
+}
+
+html[data-theme='dark'] .docusaurus-highlight-code-line {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: var(--ifm-container-width-xxl);
+  }
+}

@@ -9,7 +9,7 @@ import Balancer from 'react-wrap-balancer';
 
 import baseStyles from '@site/src/pages/styles.module.css';
 
-import headerImage from '@site/src/pages/img/modules/metricmate.webp';
+import headerImage from '@site/src/assets/modules/metricmate.webp';
 import configScreenshot from './img/config.webp';
 import dashboardsScreenshot from './img/dashboards.webp';
 

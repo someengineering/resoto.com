@@ -9,7 +9,7 @@ import Balancer from 'react-wrap-balancer';
 
 import baseStyles from '@site/src/pages/styles.module.css';
 
-import headerImage from '@site/src/pages/img/modules/rewind.webp';
+import headerImage from '@site/src/assets/modules/rewind.webp';
 
 export default function RewindPage(): JSX.Element {
   return (

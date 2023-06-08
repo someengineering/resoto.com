@@ -1,0 +1,25 @@
+.markdown > :not(.theme-api-markdown) .tabs-container > .margin-top--md {
+  margin-top: -3px !important;
+  box-shadow: var(--ifm-alert-shadow);
+  border: 1px solid var(--ifm-toc-border-color);
+  border-radius: var(--ifm-alert-border-radius);
+  padding: var(--ifm-alert-padding-vertical) var(--ifm-alert-padding-horizontal);
+}
+
+.markdown > :not(.theme-api-markdown) .tabs {
+  margin-left: var(--ifm-tabs-padding-horizontal);
+  overflow-x: visible;
+}
+
+.markdown > :not(.theme-api-markdown) .tabs__item {
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  padding: calc(var(--ifm-tabs-padding-vertical) / 2)
+    var(--ifm-tabs-padding-horizontal) !important;
+}
+
+.markdown
+  > :not(.theme-api-markdown)
+  .tabs__item:not(.tabs__item--active):hover {
+  border-bottom-color: var(--ifm-toc-border-color);
+}

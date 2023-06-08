@@ -1,0 +1,24 @@
+.theme-doc-sidebar-container {
+  border: none !important;
+  background-color: #d9b8ff22;
+}
+
+html[data-theme='dark'] .theme-doc-sidebar-container {
+  background-color: #3d176e33;
+}
+
+.breadcrumbs__link {
+  display: inline-block;
+  transition-property: none;
+  background: none !important;
+  padding: 0;
+  text-decoration: none;
+}
+
+.breadcrumbs__link:hover {
+  text-decoration: var(--ifm-link-hover-decoration);
+}
+
+.theme-doc-version-badge {
+  display: none;
+}

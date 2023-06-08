@@ -9,7 +9,7 @@ import Balancer from 'react-wrap-balancer';
 
 import baseStyles from '@site/src/pages/styles.module.css';
 
-import headerImage from '@site/src/pages/img/modules/tagguard.webp';
+import headerImage from '@site/src/assets/modules/tagguard.webp';
 
 export default function TagguardPage(): JSX.Element {
   return (

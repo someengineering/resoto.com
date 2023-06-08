@@ -1,0 +1,23 @@
+div[class^='announcementBar_'] {
+  --stripe-color1: #d9b8ff77;
+  --stripe-color2: #d9b8ff33;
+  z-index: auto;
+  background: repeating-linear-gradient(
+    35deg,
+    var(--stripe-color1),
+    var(--stripe-color1) 20px,
+    var(--stripe-color2) 10px,
+    var(--stripe-color2) 40px
+  );
+  color: var(--ifm-color-content);
+  font-weight: 700;
+}
+
+html[data-theme='dark'] div[class^='announcementBar_'] {
+  --stripe-color1: #3d176e99;
+  --stripe-color2: #3d176e33;
+}
+
+div[class^='announcementBar_'] .close {
+  color: var(--ifm-color-content);
+}

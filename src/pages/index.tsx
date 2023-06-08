@@ -1,9 +1,5 @@
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
-import AwsLogo from '@site/src/assets/aws.svg';
-import DigitalOceanLogo from '@site/src/assets/digitalocean.svg';
-import GoogleCloudLogo from '@site/src/assets/google-cloud.svg';
-import KubernetesLogo from '@site/src/assets/kubernetes.svg';
 import ContactForm from '@site/src/components/ContactForm';
 import InstallButton from '@site/src/components/InstallButton';
 import Layout from '@theme/Layout';
@@ -12,6 +8,11 @@ import React from 'react';
 import Balancer from 'react-wrap-balancer';
 
 import styles from './styles.module.css';
+
+import AwsLogo from '@site/src/assets/providers/aws.svg';
+import DigitalOceanLogo from '@site/src/assets/providers/digitalocean.svg';
+import GoogleCloudLogo from '@site/src/assets/providers/google-cloud.svg';
+import KubernetesLogo from '@site/src/assets/providers/kubernetes.svg';
 
 export default function Home(): JSX.Element {
   return (

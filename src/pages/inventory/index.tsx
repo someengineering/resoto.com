@@ -9,7 +9,7 @@ import Balancer from 'react-wrap-balancer';
 
 import baseStyles from '@site/src/pages/styles.module.css';
 
-import headerImage from '@site/src/pages/img/modules/inventory.webp';
+import headerImage from '@site/src/assets/modules/inventory.webp';
 import collectScreenshot from './img/collect.webp';
 import searchScreenshot from './img/search.webp';
 

@@ -9,7 +9,7 @@ import Balancer from 'react-wrap-balancer';
 
 import baseStyles from '@site/src/pages/styles.module.css';
 
-import headerImage from '@site/src/pages/img/modules/cloudscope.webp';
+import headerImage from '@site/src/assets/modules/cloudscope.webp';
 import discoveryScreenshot from './img/discovery.webp';
 import searchScreenshot from './img/search.webp';
 

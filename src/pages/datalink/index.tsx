@@ -9,7 +9,7 @@ import Balancer from 'react-wrap-balancer';
 
 import baseStyles from '@site/src/pages/styles.module.css';
 
-import headerImage from '@site/src/pages/img/modules/datalink.webp';
+import headerImage from '@site/src/assets/modules/datalink.webp';
 
 export default function DatalinkPage(): JSX.Element {
   return (

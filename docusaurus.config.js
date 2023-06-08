@@ -66,10 +66,7 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          async sidebarItemsGenerator({
-            defaultSidebarItemsGenerator,
-            ...args
-          }) {
+          async sidebarItemsGenerator({ defaultSidebarItemsGenerator, ...args }) {
             const sidebarItems = await defaultSidebarItemsGenerator(args);
             return sidebarItems.filter(
               (item) =>
@@ -136,6 +133,7 @@ const config = {
           blogDescription: 'Resoto release notes',
           blogSidebarTitle: 'Recent Releases',
           blogSidebarCount: 15,
+          postsPerPage: 5,
           path: 'releases',
           routeBasePath: 'releases',
           showReadingTime: false,
@@ -147,14 +145,16 @@ const config = {
         },
         theme: {
           customCss: [
-            require.resolve('./src/css/custom.css'),
-            require.resolve('./src/css/docusaurus-plugin-openapi-docs.css'),
+            require.resolve('./src/css/styles.css'),
+            require.resolve('./src/css/announcement-bar.css'),
+            require.resolve('./src/css/navbar.css'),
+            require.resolve('./src/css/footer.css'),
+            require.resolve('./src/css/docs.css'),
+            require.resolve('./src/css/tabs.css'),
+            require.resolve('./src/css/openapi-docs.css'),
           ],
         },
-        sitemap: {
-          changefreq: 'daily',
-          priority: 0.5,
-        },
+        sitemap: { changefreq: 'daily', priority: 0.5 },
       }),
     ],
   ],
@@ -193,6 +193,7 @@ const config = {
         blogDescription: 'Resoto blog',
         blogSidebarTitle: 'Recent Posts',
         blogSidebarCount: 15,
+        postsPerPage: 5,
         path: 'blog',
         routeBasePath: 'blog',
         showReadingTime: true,
@@ -211,7 +212,8 @@ const config = {
         blogTitle: 'Podcast',
         blogDescription: 'Some Engineering Podcast episodes',
         blogSidebarTitle: 'Recent Episodes',
-        blogSidebarCount: 15,
+        blogSidebarCount: 10,
+        postsPerPage: 5,
         path: 'podcast',
         routeBasePath: 'podcast',
         showReadingTime: false,
@@ -351,19 +353,19 @@ const config = {
             position: 'right',
             type: 'dropdown',
             items: [
-              { label: 'ChronoLog', to: '/chronolog' },
-              { label: 'CloudScope', to: '/cloudscope' },
-              { label: 'DataLink', to: '/datalink' },
-              { label: 'Defrag', to: '/defrag' },
-              { label: 'InfraSDK', to: '/infrasdk' },
-              { label: 'Inventory', to: '/inventory' },
-              { label: 'MetricMate', to: '/metricmate' },
-              { label: 'Notify', to: '/notify' },
-              { label: 'Resolve', to: '/resolve' },
-              { label: 'Rewind', to: '/rewind' },
-              { label: 'Sentinel', to: '/sentinel' },
-              { label: 'SpentWise', to: '/spentwise' },
-              { label: 'TagGuard', to: '/tagguard' },
+              { label: 'ChronoLog', to: '/chronolog', className: 'module chronolog' },
+              { label: 'CloudScope', to: '/cloudscope', className: 'module cloudscope' },
+              { label: 'DataLink', to: '/datalink', className: 'module datalink' },
+              { label: 'Defrag', to: '/defrag', className: 'module defrag' },
+              { label: 'InfraSDK', to: '/infrasdk', className: 'module infrasdk' },
+              { label: 'Inventory', to: '/inventory', className: 'module inventory' },
+              { label: 'MetricMate', to: '/metricmate', className: 'module metricmate' },
+              { label: 'Notify', to: '/notify', className: 'module notify' },
+              { label: 'Resolve', to: '/resolve', className: 'module resolve' },
+              { label: 'Rewind', to: '/rewind', className: 'module rewind' },
+              { label: 'Sentinel', to: '/sentinel', className: 'module sentinel' },
+              { label: 'SpentWise', to: '/spentwise', className: 'module spentwise' },
+              { label: 'TagGuard', to: '/tagguard', className: 'module tagguard' },
             ],
           },
           {
@@ -372,7 +374,7 @@ const config = {
             position: 'right',
             type: 'dropdown',
             items: [
-              { label: 'Overview', to: '/docs' },
+              { label: 'Overview', to: '/docs', activeBaseRegex: '/docs(/edge)?$' },
               { label: 'Getting Started', to: '/docs/getting-started' },
               { label: 'How-To Guides', to: '/docs/how-to-guides' },
               { label: 'Concepts', to: '/docs/concepts' },
@@ -388,28 +390,28 @@ const config = {
             label: 'GitHub',
             href: 'https://github.com/someengineering/resoto',
             position: 'left',
-            className: 'icon-link github',
+            className: 'social github',
             'aria-label': 'GitHub',
           },
           {
             label: 'Discord',
             href: 'https://discord.gg/someengineering',
             position: 'left',
-            className: 'icon-link discord',
+            className: 'social discord',
             'aria-label': 'Discord',
           },
           {
             label: 'LinkedIn',
             href: 'https://linkedin.com/company/someengineering',
             position: 'left',
-            className: 'icon-link linkedin',
+            className: 'social linkedin',
             'aria-label': 'LinkedIn',
           },
           {
             label: 'YouTube',
             href: 'https://youtube.com/@someengineering',
             position: 'left',
-            className: 'icon-link youtube',
+            className: 'social youtube',
             'aria-label': 'YouTube',
           },
         ],
@@ -468,14 +470,8 @@ const config = {
             items: [
               { label: 'GitHub', href: 'https://github.com/someengineering' },
               { label: 'Discord', href: 'https://discord.gg/someengineering' },
-              {
-                label: 'LinkedIn',
-                href: 'https://linkedin.com/company/someengineering',
-              },
-              {
-                label: 'YouTube',
-                href: 'https://youtube.com/@someengineering',
-              },
+              { label: 'LinkedIn', href: 'https://linkedin.com/company/someengineering' },
+              { label: 'YouTube', href: 'https://youtube.com/@someengineering' },
             ],
           },
           {
@@ -499,14 +495,7 @@ const config = {
         theme: require('prism-react-renderer').themes.github,
         // @ts-ignore
         darkTheme: require('prism-react-renderer').themes.dracula,
-        additionalLanguages: [
-          'csv',
-          'ini',
-          'powershell',
-          'ruby',
-          'csharp',
-          'php',
-        ],
+        additionalLanguages: ['csv', 'ini', 'powershell', 'ruby', 'csharp', 'php'],
       },
       magicComments: [
         {

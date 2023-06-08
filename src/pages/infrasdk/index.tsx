@@ -9,7 +9,7 @@ import Balancer from 'react-wrap-balancer';
 
 import baseStyles from '@site/src/pages/styles.module.css';
 
-import headerImage from '@site/src/pages/img/modules/infrasdk.webp';
+import headerImage from '@site/src/assets/modules/infrasdk.webp';
 
 export default function InfrasdkPage(): JSX.Element {
   return (

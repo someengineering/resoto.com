@@ -9,7 +9,7 @@ import Balancer from 'react-wrap-balancer';
 
 import baseStyles from '@site/src/pages/styles.module.css';
 
-import headerImage from '@site/src/pages/img/modules/sentinel.webp';
+import headerImage from '@site/src/assets/modules/sentinel.webp';
 import cliScreenshot from './img/cli.webp';
 import uiScreenshot from './img/ui.webp';
 

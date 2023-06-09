@@ -1,17 +1,17 @@
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
 import '@dotlottie/player-component';
-import AwsLogo from '@site/src/assets/providers/aws.svg';
-import DigitalOceanLogo from '@site/src/assets/providers/digitalocean.svg';
-import GoogleCloudLogo from '@site/src/assets/providers/google-cloud.svg';
-import KubernetesLogo from '@site/src/assets/providers/kubernetes.svg';
 import ContactForm from '@site/src/components/ContactForm';
 import InstallButton from '@site/src/components/InstallButton';
+import AwsLogo from '@site/src/img/providers/aws.svg';
+import DigitalOceanLogo from '@site/src/img/providers/digitalocean.svg';
+import GoogleCloudLogo from '@site/src/img/providers/google-cloud.svg';
+import KubernetesLogo from '@site/src/img/providers/kubernetes.svg';
+import heroAnimation from '@site/src/lottie/hero.lottie';
 import Layout from '@theme/Layout';
 import { clsx } from 'clsx';
 import React from 'react';
 import Balancer from 'react-wrap-balancer';
-import heroAnimation from '../lottie/hero.lottie';
 import styles from './styles.module.css';
 
 export default function Home(): JSX.Element {

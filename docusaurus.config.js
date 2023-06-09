@@ -165,7 +165,7 @@ const config = {
         configureWebpack: () => ({
           module: {
             rules: [
-              { test: /\.cast$/i, use: 'asset/resource' },
+              { test: /\.cast$/i, type: 'asset/resource' },
               { test: /\.lottie$/, type: 'asset/resource' },
             ],
           },

@@ -163,7 +163,12 @@ const config = {
       return {
         name: 'custom-webpack-config',
         configureWebpack: () => ({
-          module: { rules: [{ test: /\.cast$/i, use: 'url-loader' }] },
+          module: {
+            rules: [
+              { test: /\.cast$/i, use: 'asset/resource' },
+              { test: /\.lottie$/, type: 'asset/resource' },
+            ],
+          },
         }),
       };
     },

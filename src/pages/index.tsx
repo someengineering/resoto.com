@@ -1,5 +1,6 @@
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
+import '@dotlottie/player-component';
 import AwsLogo from '@site/src/assets/providers/aws.svg';
 import DigitalOceanLogo from '@site/src/assets/providers/digitalocean.svg';
 import GoogleCloudLogo from '@site/src/assets/providers/google-cloud.svg';
@@ -8,26 +9,12 @@ import ContactForm from '@site/src/components/ContactForm';
 import InstallButton from '@site/src/components/InstallButton';
 import Layout from '@theme/Layout';
 import { clsx } from 'clsx';
-import lottie from 'lottie-web';
-import React, { useEffect } from 'react';
+import React from 'react';
 import Balancer from 'react-wrap-balancer';
+import heroAnimation from '../lottie/hero.lottie';
 import styles from './styles.module.css';
 
 export default function Home(): JSX.Element {
-  useEffect(() => {
-    const heroAnimation = lottie.loadAnimation({
-      container: document.getElementById('heroAnimation'),
-      path: '/lottie/resoto.json',
-      renderer: 'svg',
-      loop: true,
-      autoplay: true,
-      rendererSettings: {
-        progressiveLoad: true,
-      },
-    });
-    heroAnimation.setSubframe(false);
-  });
-
   return (
     <>
       <Head>
@@ -82,7 +69,9 @@ export default function Home(): JSX.Element {
             </div>
             <div className={styles.heroRight} aria-hidden="true">
               <div>
-                <div id="heroAnimation" />
+                <div>
+                  <dotlottie-player src={heroAnimation} autoplay loop />
+                </div>
               </div>
             </div>
           </div>

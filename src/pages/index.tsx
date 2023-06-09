@@ -1,3 +1,4 @@
+import BrowserOnly from '@docusaurus/BrowserOnly';
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
 import ContactForm from '@site/src/components/ContactForm';
@@ -66,13 +67,20 @@ export default function Home(): JSX.Element {
                 </Link>
               </div>
             </div>
-            <div className={styles.heroRight} aria-hidden="true">
-              <div>
-                <div>
-                  <dotlottie-player src={heroAnimation} autoplay loop />
-                </div>
-              </div>
-            </div>
+            <BrowserOnly>
+              {() => {
+                require('@dotlottie/player-component');
+                return (
+                  <div className={styles.heroRight} aria-hidden="true">
+                    <div>
+                      <div>
+                        <dotlottie-player src={heroAnimation} autoplay loop />
+                      </div>
+                    </div>
+                  </div>
+                );
+              }}
+            </BrowserOnly>
           </div>
         </header>
         <main className={styles.homeContent}>

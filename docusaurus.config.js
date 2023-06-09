@@ -38,13 +38,6 @@ const config = {
     })),
     {
       rel: 'preload',
-      href: 'https://cdn.some.engineering/lottie/resoto.json',
-      as: 'fetch',
-      type: 'application/json',
-      crossorigin: true,
-    },
-    {
-      rel: 'preload',
       href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
       as: 'style',
       type: 'text/css',

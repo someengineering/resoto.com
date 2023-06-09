@@ -17,7 +17,7 @@ export default function Home(): JSX.Element {
   useEffect(() => {
     const heroAnimation = lottie.loadAnimation({
       container: document.getElementById('heroAnimation'),
-      path: 'https://cdn.some.engineering/lottie/resoto.json',
+      path: '/lottie/resoto.json',
       renderer: 'svg',
       loop: true,
       autoplay: true,

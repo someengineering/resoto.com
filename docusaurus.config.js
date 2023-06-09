@@ -38,6 +38,15 @@ const config = {
     })),
     {
       rel: 'preload',
+      href: 'https://unpkg.com/@dotlottie/player-component@1.1.1/dist/dotlottie-player.js',
+      as: 'script',
+      type: 'text/javascript',
+      crossorigin: true,
+      integrity:
+        'sha384-MCf4N/b9lGYQFSR/8wWWM7jSGPFo36YGoh2+DKbjYCrG7rQYMrP7RAE3UfdQxJ/f',
+    },
+    {
+      rel: 'preload',
       href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
       as: 'style',
       type: 'text/css',
@@ -48,15 +57,20 @@ const config = {
         'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
     },
   ],
-  scripts: isProd
-    ? [
-        {
-          src: 'https://resoto.com/js/script.js',
-          defer: true,
-          'data-domain': 'resoto.com',
-        },
-      ]
-    : [],
+  scripts: [
+    {
+      src: 'https://unpkg.com/@dotlottie/player-component@1.1.1/dist/dotlottie-player.js',
+    },
+    ...(isProd
+      ? [
+          {
+            src: 'https://resoto.com/js/script.js',
+            defer: true,
+            'data-domain': 'resoto.com',
+          },
+        ]
+      : []),
+  ],
   markdown: { mermaid: true },
   themes: ['@docusaurus/theme-mermaid', 'docusaurus-theme-openapi-docs'],
   presets: [

@@ -30,7 +30,7 @@ html[data-theme='dark'] .hero {
   align-items: center;
 }
 
-.heroText {
+.heroLeft {
   display: inline-block;
 }
 
@@ -76,7 +76,7 @@ html[data-theme='dark'] .heroTitle strong {
   animation: gradient 0.5s ease-in forwards;
 }
 
-.heroText h2 {
+.heroLeft h2 {
   display: flex;
   margin: 1.5rem 0;
   font-weight: 400;
@@ -84,12 +84,12 @@ html[data-theme='dark'] .heroTitle strong {
   line-height: 125%;
 }
 
-.heroText h2 span {
+.heroLeft h2 span {
   flex-grow: 1;
   width: 0;
 }
 
-.heroAnimation {
+.heroRight {
   position: relative;
   flex-grow: 1;
   flex-shrink: 0;
@@ -97,14 +97,15 @@ html[data-theme='dark'] .heroTitle strong {
   min-width: 570px;
 }
 
-.heroAnimation::after {
+.heroRight::after {
   display: block;
   padding-bottom: 100%;
   content: '';
 }
 
-.heroAnimation > div {
+.heroRight > div {
   position: absolute;
+  left: -0.3%;
   box-shadow: var(--ifm-global-shadow-md);
   border-radius: 50%;
   background-color: #ffffff;
@@ -112,11 +113,10 @@ html[data-theme='dark'] .heroTitle strong {
   height: 100%;
 }
 
-.heroAnimation > div > div {
+.heroRight > div > div {
   position: absolute;
-  top: 0.785%;
-  left: 0.0375%;
-  margin: -3% !important;
+  top: 0.15%;
+  margin: -0.3% !important;
 }
 
 .buttons {
@@ -344,16 +344,16 @@ html[data-theme='dark'] .providersHeading strong {
     font-size: 60px;
   }
 
-  .heroText h2 {
+  .heroLeft h2 {
     justify-content: center;
     font-size: 26px;
   }
 
-  .heroText h2 span {
+  .heroLeft h2 span {
     width: 100%;
   }
 
-  .heroAnimation {
+  .heroRight {
     margin: 0;
     width: 450px;
     min-width: unset;
@@ -377,11 +377,11 @@ html[data-theme='dark'] .providersHeading strong {
     font-size: 48px;
   }
 
-  .heroText h2 {
+  .heroLeft h2 {
     font-size: 21px;
   }
 
-  .heroAnimation {
+  .heroRight {
     width: 60%;
   }
 
@@ -413,11 +413,11 @@ html[data-theme='dark'] .providersHeading strong {
     font-size: 45px;
   }
 
-  .heroText h2 {
+  .heroLeft h2 {
     font-size: 20px;
   }
 
-  .heroAnimation {
+  .heroRight {
     width: 80%;
   }
 }

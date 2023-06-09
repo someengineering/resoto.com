@@ -1,6 +1,5 @@
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
-import { Player } from '@lottiefiles/react-lottie-player';
 import AwsLogo from '@site/src/assets/providers/aws.svg';
 import DigitalOceanLogo from '@site/src/assets/providers/digitalocean.svg';
 import GoogleCloudLogo from '@site/src/assets/providers/google-cloud.svg';
@@ -9,12 +8,26 @@ import ContactForm from '@site/src/components/ContactForm';
 import InstallButton from '@site/src/components/InstallButton';
 import Layout from '@theme/Layout';
 import { clsx } from 'clsx';
-import React from 'react';
+import lottie from 'lottie-web';
+import React, { useEffect } from 'react';
 import Balancer from 'react-wrap-balancer';
-import heroAnimation from '../lottie/hero.json';
 import styles from './styles.module.css';
 
 export default function Home(): JSX.Element {
+  useEffect(() => {
+    const heroAnimation = lottie.loadAnimation({
+      container: document.getElementById('heroAnimation'),
+      path: 'https://cdn.some.engineering/lottie/resoto.json',
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      rendererSettings: {
+        progressiveLoad: true,
+      },
+    });
+    heroAnimation.setSubframe(false);
+  });
+
   return (
     <>
       <Head>
@@ -38,7 +51,7 @@ export default function Home(): JSX.Element {
       <Layout>
         <header className={styles.hero}>
           <div className={styles.inner}>
-            <div className={styles.heroText}>
+            <div className={styles.heroLeft}>
               <h1 className={styles.heroTitle}>
                 Harness the <br />
                 power of <strong>reactive</strong> <br />
@@ -67,8 +80,10 @@ export default function Home(): JSX.Element {
                 </Link>
               </div>
             </div>
-            <div className={styles.heroAnimation} aria-hidden="true">
-              <Player src={heroAnimation} autoplay loop />
+            <div className={styles.heroRight} aria-hidden="true">
+              <div>
+                <div id="heroAnimation" />
+              </div>
             </div>
           </div>
         </header>

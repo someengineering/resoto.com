@@ -1,11 +1,10 @@
 import ContactForm from '@site/src/components/ContactForm';
+import baseStyles from '@site/src/pages/styles.module.css';
 import type { Props } from '@theme/BlogLayout';
 import BlogSidebar from '@theme/BlogSidebar';
 import Layout from '@theme/Layout';
 import clsx from 'clsx';
 import React from 'react';
-
-import baseStyles from '@site/src/pages/styles.module.css';
 
 export default function BlogLayout(props: Props): JSX.Element {
   const { sidebar, toc, children, ...layoutProps } = props;

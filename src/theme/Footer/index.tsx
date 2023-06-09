@@ -6,7 +6,6 @@ import FooterLogo from '@site/static/img/someengineering.svg';
 import Footer from '@theme-original/Footer';
 import type FooterType from '@theme/Footer';
 import React, { useEffect, useState } from 'react';
-
 import styles from './styles.module.css';
 
 type Props = WrapperProps<typeof FooterType>;

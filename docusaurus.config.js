@@ -489,6 +489,7 @@ const config = {
         apiKey: '0e3e7cbce9da253ee147af5fe2f7d91b',
         indexName: 'resoto',
         contextualSearch: true,
+        insights: true,
       },
       prism: {
         // @ts-ignore

@@ -2,7 +2,6 @@ import type { WrapperProps } from '@docusaurus/types';
 import DocSidebarItem from '@theme-original/DocSidebarItem';
 import type DocSidebarItemType from '@theme/DocSidebarItem';
 import React from 'react';
-
 import styles from './styles.module.css';
 
 type Props = WrapperProps<typeof DocSidebarItemType>;

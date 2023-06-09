@@ -3,7 +3,6 @@ import { translate } from '@docusaurus/Translate';
 import type { Props } from '@theme/BlogSidebar/Desktop';
 import clsx from 'clsx';
 import React from 'react';
-
 import styles from './styles.module.css';
 
 export default function BlogSidebarDesktop({ sidebar }: Props): JSX.Element {

@@ -2,14 +2,13 @@ import Link from '@docusaurus/Link';
 import { translate } from '@docusaurus/Translate';
 import { PageMetadata } from '@docusaurus/theme-common';
 import ContactForm from '@site/src/components/ContactForm';
+import baseStyles from '@site/src/pages/styles.module.css';
 import { getImage } from '@site/src/utils/socialImageHelper';
 import type { ArchiveBlogPost, Props } from '@theme/BlogArchivePage';
 import Layout from '@theme/Layout';
 import clsx from 'clsx';
 import { orderBy } from 'lodash';
 import React from 'react';
-
-import baseStyles from '@site/src/pages/styles.module.css';
 import styles from './styles.module.css';
 
 type YearProp = {

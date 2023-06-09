@@ -1,13 +1,12 @@
 import Link from '@docusaurus/Link';
 import { PageMetadata } from '@docusaurus/theme-common';
 import ContactForm from '@site/src/components/ContactForm';
+import baseStyles from '@site/src/pages/styles.module.css';
 import { getImage } from '@site/src/utils/socialImageHelper';
 import Layout from '@theme/Layout';
 import clsx from 'clsx';
 import React from 'react';
 import Balancer from 'react-wrap-balancer';
-
-import baseStyles from '@site/src/pages/styles.module.css';
 import styles from './styles.module.css';
 
 export default function Pricing(): JSX.Element {

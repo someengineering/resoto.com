@@ -1,7 +1,6 @@
 import type { Props } from '@theme/PwaReloadPopup';
 import clsx from 'clsx';
 import React, { useState } from 'react';
-
 import styles from './styles.module.css';
 
 export default function PwaReloadPopup({

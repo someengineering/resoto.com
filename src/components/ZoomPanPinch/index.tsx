@@ -2,7 +2,6 @@ import clsx from 'clsx';
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { TransformComponent, TransformWrapper } from 'react-zoom-pan-pinch';
-
 import styles from './styles.module.css';
 
 export default function ZoomPanPinch({

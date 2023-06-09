@@ -1,18 +1,18 @@
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
+import { Player } from '@lottiefiles/react-lottie-player';
+import AwsLogo from '@site/src/assets/providers/aws.svg';
+import DigitalOceanLogo from '@site/src/assets/providers/digitalocean.svg';
+import GoogleCloudLogo from '@site/src/assets/providers/google-cloud.svg';
+import KubernetesLogo from '@site/src/assets/providers/kubernetes.svg';
 import ContactForm from '@site/src/components/ContactForm';
 import InstallButton from '@site/src/components/InstallButton';
 import Layout from '@theme/Layout';
 import { clsx } from 'clsx';
 import React from 'react';
 import Balancer from 'react-wrap-balancer';
-
+import heroAnimation from '../lottie/hero.json';
 import styles from './styles.module.css';
-
-import AwsLogo from '@site/src/assets/providers/aws.svg';
-import DigitalOceanLogo from '@site/src/assets/providers/digitalocean.svg';
-import GoogleCloudLogo from '@site/src/assets/providers/google-cloud.svg';
-import KubernetesLogo from '@site/src/assets/providers/kubernetes.svg';
 
 export default function Home(): JSX.Element {
   return (
@@ -67,7 +67,9 @@ export default function Home(): JSX.Element {
                 </Link>
               </div>
             </div>
-            <div className={styles.heroImage} aria-hidden="true" />
+            <div className={styles.heroAnimation} aria-hidden="true">
+              <Player src={heroAnimation} autoplay loop />
+            </div>
           </div>
         </header>
         <main className={styles.homeContent}>

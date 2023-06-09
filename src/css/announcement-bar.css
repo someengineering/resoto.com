@@ -10,7 +10,7 @@ div[class^='announcementBar_'] {
     var(--stripe-color2) 40px
   );
   color: var(--ifm-color-content);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 html[data-theme='dark'] div[class^='announcementBar_'] {

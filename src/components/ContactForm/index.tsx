@@ -1,3 +1,4 @@
+import baseStyles from '@site/src/pages/styles.module.css';
 import clsx from 'clsx';
 import { useFormik } from 'formik';
 import React, { useEffect } from 'react';
@@ -8,8 +9,6 @@ import {
   useNetlifyForm,
 } from 'react-netlify-forms';
 import * as Yup from 'yup';
-
-import baseStyles from '@site/src/pages/styles.module.css';
 import styles from './styles.module.css';
 
 export default function ContactForm(): JSX.Element {

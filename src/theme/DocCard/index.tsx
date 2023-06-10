@@ -1,18 +1,17 @@
-import isInternalUrl from '@docusaurus/isInternalUrl';
 import Link from '@docusaurus/Link';
-import {
-  findFirstCategoryLink,
-  useDocById,
-} from '@docusaurus/theme-common/internal';
 import { translate } from '@docusaurus/Translate';
-import type { Props } from '@theme/DocCard';
-import clsx from 'clsx';
-import React, { type ReactNode } from 'react';
-
+import isInternalUrl from '@docusaurus/isInternalUrl';
 import type {
   PropSidebarItemCategory,
   PropSidebarItemLink,
 } from '@docusaurus/plugin-content-docs';
+import {
+  findFirstCategoryLink,
+  useDocById,
+} from '@docusaurus/theme-common/internal';
+import type { Props } from '@theme/DocCard';
+import clsx from 'clsx';
+import React, { type ReactNode } from 'react';
 import styles from './styles.module.css';
 
 function CardContainer({

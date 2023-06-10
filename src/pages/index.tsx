@@ -1,20 +1,58 @@
+import BrowserOnly from '@docusaurus/BrowserOnly';
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
+import useIsBrowser from '@docusaurus/useIsBrowser';
 import ContactForm from '@site/src/components/ContactForm';
 import InstallButton from '@site/src/components/InstallButton';
+import AwsLogo from '@site/src/img/providers/aws.svg';
+import DigitalOceanLogo from '@site/src/img/providers/digitalocean.svg';
+import GoogleCloudLogo from '@site/src/img/providers/google-cloud.svg';
+import KubernetesLogo from '@site/src/img/providers/kubernetes.svg';
+import heroLottie from '@site/src/lottie/hero.lottie';
 import Layout from '@theme/Layout';
 import { clsx } from 'clsx';
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { useInView } from 'react-intersection-observer';
 import Balancer from 'react-wrap-balancer';
-
 import styles from './styles.module.css';
 
-import AwsLogo from '@site/src/assets/providers/aws.svg';
-import DigitalOceanLogo from '@site/src/assets/providers/digitalocean.svg';
-import GoogleCloudLogo from '@site/src/assets/providers/google-cloud.svg';
-import KubernetesLogo from '@site/src/assets/providers/kubernetes.svg';
-
 export default function Home(): JSX.Element {
+  const [isMobile, setIsMobile] = useState(
+    useIsBrowser() && window.innerWidth < 577
+  );
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  const { ref: heroAnimInViewRef, inView } = useInView({ initialInView: true });
+  const heroAnimRef = useRef(null);
+
+  useEffect(() => {
+    const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
+    mql.addEventListener('change', () => setPrefersReducedMotion(true));
+
+    window.addEventListener('resize', () =>
+      setIsMobile(window.innerWidth < 577)
+    );
+  }, []);
+
+  useEffect(() => {
+    if (!isMobile && heroAnimRef.current) {
+      heroAnimRef.current.load(heroLottie, {
+        progressiveLoad: true,
+        runExpressions: false,
+      });
+    }
+  }, [isMobile, heroAnimRef.current]);
+
+  useEffect(() => {
+    if (!isMobile && heroAnimRef.current) {
+      if (inView && !prefersReducedMotion) {
+        heroAnimRef.current.play();
+      } else {
+        heroAnimRef.current.pause();
+      }
+    }
+  }, [isMobile, inView, heroAnimRef.current, prefersReducedMotion]);
+
   return (
     <>
       <Head>
@@ -38,18 +76,18 @@ export default function Home(): JSX.Element {
       <Layout>
         <header className={styles.hero}>
           <div className={styles.inner}>
-            <div className={styles.heroText}>
-              <h1 className={styles.heroTitle}>
+            <div className={styles.heroLeft}>
+              <h1 className={styles.title}>
                 Harness the <br />
                 power of <strong>reactive</strong> <br />
                 infrastructure
               </h1>
-              <h2>
+              <p className={styles.description}>
                 <Balancer>
                   Improve visibility, control, cost, and compliance in your
                   cloud with Resoto
                 </Balancer>
-              </h2>
+              </p>
               <div className={styles.buttons}>
                 <InstallButton
                   includeVersion
@@ -67,13 +105,37 @@ export default function Home(): JSX.Element {
                 </Link>
               </div>
             </div>
-            <div className={styles.heroImage} aria-hidden="true" />
+            {!isMobile ? (
+              <div
+                className={styles.heroRight}
+                aria-hidden="true"
+                ref={heroAnimInViewRef}
+              >
+                <BrowserOnly>
+                  {() => {
+                    require('@dotlottie/player-component');
+                    return (
+                      <div className={styles.heroAnim}>
+                        <div>
+                          <dotlottie-player
+                            ref={heroAnimRef}
+                            autoplay={!prefersReducedMotion}
+                            loop
+                            background="#fff"
+                          />
+                        </div>
+                      </div>
+                    );
+                  }}
+                </BrowserOnly>
+              </div>
+            ) : null}
           </div>
         </header>
         <main className={styles.homeContent}>
           <section className={styles.section}>
             <div className={styles.inner}>
-              <h2 className={styles.providersHeading}>
+              <h2>
                 <Balancer>
                   Resoto is an <strong>infrastructure control plane</strong>{' '}
                   that continuously monitors and maintains your cloud resources.

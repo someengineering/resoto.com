@@ -4,6 +4,7 @@
 
 .navbar__logo {
   margin: 0;
+  width: 2.25rem;
   height: 2.25rem;
 }
 
@@ -23,11 +24,6 @@
   white-space: nowrap;
 }
 
-.navbar__link--active {
-  border-radius: var(--ifm-global-radius);
-  background: var(--ifm-menu-color-background-active);
-}
-
 .dropdown--right .dropdown__menu {
   left: 0px;
 }
@@ -36,6 +32,18 @@
   display: flex;
   align-items: center;
   border-radius: 1rem;
+}
+
+.dropdown__link:not(.dropdown__link--active):hover {
+  background-color: unset;
+  color: var(--ifm-navbar-link-hover-color);
+  text-decoration: none;
+}
+
+.navbar__link--active,
+.dropdown__link--active {
+  border-radius: var(--ifm-global-radius);
+  background: var(--ifm-menu-color-background-active);
 }
 
 .menu__link,
@@ -63,12 +71,14 @@
   content: '';
 }
 
-.social::before {
-  margin-left: -0.75em;
+.social:hover::before,
+.dropdown__link:hover::before,
+.dropdown__link--active::before {
+  background-color: var(--ifm-navbar-link-hover-color);
 }
 
-.social:hover::before {
-  background-color: var(--ifm-navbar-link-hover-color);
+.social::before {
+  margin-left: -0.75em;
 }
 
 .module::before {
@@ -86,19 +96,19 @@
 }
 
 .github::before {
-  --icon: url('../assets/social/github.svg');
+  --icon: url('../img/social/github.svg');
 }
 
 .discord::before {
-  --icon: url('../assets/social/discord.svg');
+  --icon: url('../img/social/discord.svg');
 }
 
 .linkedin::before {
-  --icon: url('../assets/social/linkedin.svg');
+  --icon: url('../img/social/linkedin.svg');
 }
 
 .youtube::before {
-  --icon: url('../assets/social/youtube.svg');
+  --icon: url('../img/social/youtube.svg');
 }
 
 .github-stars {
@@ -138,58 +148,58 @@
 }
 
 .chronolog::before {
-  --icon: url('../assets/icons/chronolog.svg');
+  --icon: url('../img/icons/chronolog.svg');
 }
 
 .cloudscope::before {
-  --icon: url('../assets/icons/cloudscope.svg');
+  --icon: url('../img/icons/cloudscope.svg');
 }
 
 .datalink::before {
-  --icon: url('../assets/icons/datalink.svg');
+  --icon: url('../img/icons/datalink.svg');
 }
 
 .defrag::before {
-  --icon: url('../assets/icons/defrag.svg');
+  --icon: url('../img/icons/defrag.svg');
 }
 
 .infrasdk::before {
-  --icon: url('../assets/icons/infrasdk.svg');
+  --icon: url('../img/icons/infrasdk.svg');
 }
 
 .inventory::before {
-  --icon: url('../assets/icons/inventory.svg');
+  --icon: url('../img/icons/inventory.svg');
 }
 
 .metricmate::before {
-  --icon: url('../assets/icons/metricmate.svg');
+  --icon: url('../img/icons/metricmate.svg');
 }
 
 .notify::before {
-  --icon: url('../assets/icons/notify.svg');
+  --icon: url('../img/icons/notify.svg');
 }
 
 .resolve::before {
-  --icon: url('../assets/icons/resolve.svg');
+  --icon: url('../img/icons/resolve.svg');
 }
 
 .rewind::before {
-  --icon: url('../assets/icons/rewind.svg');
+  --icon: url('../img/icons/rewind.svg');
 }
 
 .sentinel::before {
-  --icon: url('../assets/icons/sentinel.svg');
+  --icon: url('../img/icons/sentinel.svg');
 }
 
 .spentwise::before {
-  --icon: url('../assets/icons/spentwise.svg');
+  --icon: url('../img/icons/spentwise.svg');
 }
 
 .tagguard::before {
-  --icon: url('../assets/icons/tagguard.svg');
+  --icon: url('../img/icons/tagguard.svg');
 }
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1279px) {
   .navbar__items .social:not(.github) {
     display: none;
   }
@@ -199,7 +209,7 @@
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 576px) {
   .menu__list-item .github-stars {
     display: none;
   }

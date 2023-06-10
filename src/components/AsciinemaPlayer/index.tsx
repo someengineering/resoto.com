@@ -2,7 +2,6 @@ import BrowserOnly from '@docusaurus/BrowserOnly';
 import 'asciinema-player/dist/bundle/asciinema-player.css';
 import clsx from 'clsx';
 import React, { useEffect, useRef } from 'react';
-
 import styles from './styles.module.css';
 
 type AsciinemaPlayerProps = {

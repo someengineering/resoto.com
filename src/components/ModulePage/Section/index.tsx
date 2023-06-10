@@ -1,7 +1,6 @@
+import baseStyles from '@site/src/pages/styles.module.css';
 import clsx from 'clsx';
 import React from 'react';
-
-import baseStyles from '@site/src/pages/styles.module.css';
 import styles from './styles.module.css';
 
 export default function ModulePageSection({

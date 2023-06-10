@@ -6,9 +6,9 @@ import GithubSlugger from 'github-slugger';
 import { sortBy, union } from 'lodash';
 import React from 'react';
 import {
-  actionsByNamespace,
   AwsPolicyName,
   AwsPolicyResponse,
+  actionsByNamespace,
 } from '../utils/awsPolicyHelper';
 
 export default function AwsPolicyComparison({

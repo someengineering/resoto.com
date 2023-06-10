@@ -3,13 +3,11 @@ import ContactForm from '@site/src/components/ContactForm';
 import ModulePageCTA from '@site/src/components/ModulePage/CTA';
 import ModulePageHeader from '@site/src/components/ModulePage/Header';
 import ModulePageSection from '@site/src/components/ModulePage/Section';
+import headerImage from '@site/src/img/modules/rewind.webp';
+import baseStyles from '@site/src/pages/styles.module.css';
 import Layout from '@theme/Layout';
 import React from 'react';
 import Balancer from 'react-wrap-balancer';
-
-import baseStyles from '@site/src/pages/styles.module.css';
-
-import headerImage from '@site/src/assets/modules/rewind.webp';
 
 export default function RewindPage(): JSX.Element {
   return (

@@ -163,7 +163,12 @@ const config = {
       return {
         name: 'custom-webpack-config',
         configureWebpack: () => ({
-          module: { rules: [{ test: /\.cast$/i, use: 'url-loader' }] },
+          module: {
+            rules: [
+              { test: /\.cast$/i, type: 'asset/resource' },
+              { test: /\.lottie$/, type: 'asset/resource' },
+            ],
+          },
         }),
       };
     },
@@ -346,7 +351,7 @@ const config = {
       navbar: {
         hideOnScroll: true,
         title: 'Resoto',
-        logo: { alt: '', src: 'img/navbar-logo.svg' },
+        logo: { src: 'img/navbar-logo.svg', alt: '', width: 36, height: 36 },
         items: [
           {
             label: 'Modules',
@@ -489,6 +494,7 @@ const config = {
         apiKey: '0e3e7cbce9da253ee147af5fe2f7d91b',
         indexName: 'resoto',
         contextualSearch: true,
+        insights: true,
       },
       prism: {
         // @ts-ignore

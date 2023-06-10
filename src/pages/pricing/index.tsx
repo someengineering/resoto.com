@@ -1,13 +1,12 @@
 import Link from '@docusaurus/Link';
 import { PageMetadata } from '@docusaurus/theme-common';
 import ContactForm from '@site/src/components/ContactForm';
+import baseStyles from '@site/src/pages/styles.module.css';
 import { getImage } from '@site/src/utils/socialImageHelper';
 import Layout from '@theme/Layout';
 import clsx from 'clsx';
 import React from 'react';
 import Balancer from 'react-wrap-balancer';
-
-import baseStyles from '@site/src/pages/styles.module.css';
 import styles from './styles.module.css';
 
 export default function Pricing(): JSX.Element {
@@ -26,10 +25,10 @@ export default function Pricing(): JSX.Element {
         <main className={baseStyles.content}>
           <section className={baseStyles.section}>
             <div className={baseStyles.inner}>
-              <h1 className={styles.pageTitle}>
-                <span>Pricing</span>
+              <h1 className={clsx(baseStyles.title, styles.title)}>
+                <strong>Pricing</strong>
               </h1>
-              <p className={styles.pageDescription}>
+              <p className={clsx(baseStyles.description, styles.description)}>
                 <Balancer>{description}</Balancer>
               </p>
               <div className={clsx('row', styles.priceCards)}>

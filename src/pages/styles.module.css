@@ -320,6 +320,7 @@ html[data-theme='dark'] .content {
     margin: 0;
     width: 75%;
     min-width: unset;
+    max-width: 450px;
   }
 
   .inner > h2 {

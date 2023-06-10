@@ -1,4 +1,3 @@
-import BrowserOnly from '@docusaurus/BrowserOnly';
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
 import useIsBrowser from '@docusaurus/useIsBrowser';
@@ -12,46 +11,36 @@ import heroLottie from '@site/src/lottie/hero.lottie';
 import Layout from '@theme/Layout';
 import { clsx } from 'clsx';
 import React, { useEffect, useRef, useState } from 'react';
-import { useInView } from 'react-intersection-observer';
 import Balancer from 'react-wrap-balancer';
 import styles from './styles.module.css';
 
 export default function Home(): JSX.Element {
+  const ref = useRef(null);
   const [isMobile, setIsMobile] = useState(
     useIsBrowser() && window.innerWidth < 577
   );
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-
-  const { ref: heroAnimInViewRef, inView } = useInView({ initialInView: true });
-  const heroAnimRef = useRef(null);
+  // const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
-    const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
-    mql.addEventListener('change', () => setPrefersReducedMotion(true));
+    require('@dotlottie/player-component');
+
+    // const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
+    // mql.addEventListener('change', () => setPrefersReducedMotion(true));
 
     window.addEventListener('resize', () =>
       setIsMobile(window.innerWidth < 577)
     );
   }, []);
 
-  useEffect(() => {
-    if (!isMobile && heroAnimRef.current) {
-      heroAnimRef.current.load(heroLottie, {
-        progressiveLoad: true,
-        runExpressions: false,
-      });
-    }
-  }, [isMobile, heroAnimRef.current]);
-
-  useEffect(() => {
-    if (!isMobile && heroAnimRef.current) {
-      if (inView && !prefersReducedMotion) {
-        heroAnimRef.current.play();
-      } else {
-        heroAnimRef.current.pause();
-      }
-    }
-  }, [isMobile, inView, heroAnimRef.current, prefersReducedMotion]);
+  // useEffect(() => {
+  //   if (ref.current) {
+  //     if (prefersReducedMotion) {
+  //       ref.current.pause();
+  //     } else {
+  //       ref.current.play();
+  //     }
+  //   }
+  // }, [ref.current, prefersReducedMotion]);
 
   return (
     <>
@@ -106,28 +95,18 @@ export default function Home(): JSX.Element {
               </div>
             </div>
             {!isMobile ? (
-              <div
-                className={styles.heroRight}
-                aria-hidden="true"
-                ref={heroAnimInViewRef}
-              >
-                <BrowserOnly>
-                  {() => {
-                    require('@dotlottie/player-component');
-                    return (
-                      <div className={styles.heroAnim}>
-                        <div>
-                          <dotlottie-player
-                            ref={heroAnimRef}
-                            autoplay={!prefersReducedMotion}
-                            loop
-                            background="#fff"
-                          />
-                        </div>
-                      </div>
-                    );
-                  }}
-                </BrowserOnly>
+              <div className={styles.heroRight}>
+                <div className={styles.heroAnim} aria-hidden="true">
+                  <div>
+                    <dotlottie-player
+                      src={heroLottie}
+                      ref={ref}
+                      autoplay
+                      loop
+                      background="#fff"
+                    />
+                  </div>
+                </div>
               </div>
             ) : null}
           </div>

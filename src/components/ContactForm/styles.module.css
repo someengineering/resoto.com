@@ -78,7 +78,7 @@ p.alert {
   max-width: 500px;
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1279px) {
   .flex {
     flex-direction: column;
   }
@@ -98,7 +98,7 @@ p.alert {
   }
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 767px) {
   .heading {
     font-size: 48px;
   }

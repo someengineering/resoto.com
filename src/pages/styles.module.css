@@ -292,7 +292,7 @@ html[data-theme='dark'] .content {
   }
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1279px) {
   .hero > .inner {
     flex-direction: column;
     align-items: center;
@@ -318,7 +318,7 @@ html[data-theme='dark'] .content {
 
   .heroRight {
     margin: 0;
-    width: 450px;
+    width: 639px;
     min-width: unset;
   }
 
@@ -327,7 +327,7 @@ html[data-theme='dark'] .content {
   }
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 767px) {
   .inner {
     padding: 24px;
   }
@@ -363,7 +363,7 @@ html[data-theme='dark'] .content {
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 576px) {
   .inner {
     padding: 18px;
   }
@@ -381,7 +381,7 @@ html[data-theme='dark'] .content {
   }
 
   .heroRight {
-    width: 80%;
+    display: none;
   }
 }
 

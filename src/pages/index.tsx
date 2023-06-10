@@ -17,35 +17,41 @@ import Balancer from 'react-wrap-balancer';
 import styles from './styles.module.css';
 
 export default function Home(): JSX.Element {
+  const [isMobile, setIsMobile] = useState(
+    useIsBrowser() && window.innerWidth < 577
+  );
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-  const { ref: heroAnimInViewRef, inView } = useInView({
-    initialInView: true,
-  });
+
+  const { ref: heroAnimInViewRef, inView } = useInView({ initialInView: true });
   const heroAnimRef = useRef(null);
 
   useEffect(() => {
-    if (heroAnimRef.current) {
+    const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
+    mql.addEventListener('change', () => setPrefersReducedMotion(true));
+
+    window.addEventListener('resize', () =>
+      setIsMobile(window.innerWidth < 577)
+    );
+  }, []);
+
+  useEffect(() => {
+    if (!isMobile && heroAnimRef.current) {
       heroAnimRef.current.load(heroLottie, {
         progressiveLoad: true,
         runExpressions: false,
       });
     }
-  }, [heroAnimRef.current]);
+  }, [isMobile, heroAnimRef.current]);
 
   useEffect(() => {
-    if (heroAnimRef.current) {
+    if (!isMobile && heroAnimRef.current) {
       if (inView && !prefersReducedMotion) {
         heroAnimRef.current.play();
       } else {
         heroAnimRef.current.pause();
       }
     }
-  }, [inView, heroAnimRef.current, prefersReducedMotion]);
-
-  if (useIsBrowser()) {
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    mediaQuery.addEventListener('change', () => setPrefersReducedMotion(true));
-  }
+  }, [isMobile, inView, heroAnimRef.current, prefersReducedMotion]);
 
   return (
     <>
@@ -99,29 +105,31 @@ export default function Home(): JSX.Element {
                 </Link>
               </div>
             </div>
-            <div
-              className={styles.heroRight}
-              aria-hidden="true"
-              ref={heroAnimInViewRef}
-            >
-              <BrowserOnly>
-                {() => {
-                  require('@dotlottie/player-component');
-                  return (
-                    <div className={styles.heroAnim}>
-                      <div>
-                        <dotlottie-player
-                          ref={heroAnimRef}
-                          autoplay={!prefersReducedMotion}
-                          loop
-                          background="#fff"
-                        />
+            {!isMobile ? (
+              <div
+                className={styles.heroRight}
+                aria-hidden="true"
+                ref={heroAnimInViewRef}
+              >
+                <BrowserOnly>
+                  {() => {
+                    require('@dotlottie/player-component');
+                    return (
+                      <div className={styles.heroAnim}>
+                        <div>
+                          <dotlottie-player
+                            ref={heroAnimRef}
+                            autoplay={!prefersReducedMotion}
+                            loop
+                            background="#fff"
+                          />
+                        </div>
                       </div>
-                    </div>
-                  );
-                }}
-              </BrowserOnly>
-            </div>
+                    );
+                  }}
+                </BrowserOnly>
+              </div>
+            ) : null}
           </div>
         </header>
         <main className={styles.homeContent}>

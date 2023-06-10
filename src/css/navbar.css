@@ -199,7 +199,7 @@
   --icon: url('../img/icons/tagguard.svg');
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1279px) {
   .navbar__items .social:not(.github) {
     display: none;
   }
@@ -209,7 +209,7 @@
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 576px) {
   .menu__list-item .github-stars {
     display: none;
   }

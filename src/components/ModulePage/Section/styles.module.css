@@ -48,7 +48,7 @@
   max-width: 680px;
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1279px) {
   .inner {
     flex-direction: column !important;
     font-size: 24px;
@@ -70,7 +70,7 @@
   }
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 767px) {
   .inner {
     font-size: 20px;
   }

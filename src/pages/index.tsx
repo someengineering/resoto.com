@@ -97,6 +97,7 @@ export default function Home(): JSX.Element {
                         <dotlottie-player
                           src={heroLottie}
                           ref={heroAnimRef}
+                          autoplay
                           loop
                         />
                       </div>

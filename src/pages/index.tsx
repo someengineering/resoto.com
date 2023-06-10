@@ -1,6 +1,7 @@
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
+import useIsBrowser from '@docusaurus/useIsBrowser';
 import ContactForm from '@site/src/components/ContactForm';
 import InstallButton from '@site/src/components/InstallButton';
 import AwsLogo from '@site/src/img/providers/aws.svg';
@@ -10,12 +11,13 @@ import KubernetesLogo from '@site/src/img/providers/kubernetes.svg';
 import heroLottie from '@site/src/lottie/hero.lottie';
 import Layout from '@theme/Layout';
 import { clsx } from 'clsx';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import Balancer from 'react-wrap-balancer';
 import styles from './styles.module.css';
 
 export default function Home(): JSX.Element {
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const { ref: heroAnimInViewRef, inView } = useInView({
     initialInView: true,
   });
@@ -32,13 +34,18 @@ export default function Home(): JSX.Element {
 
   useEffect(() => {
     if (heroAnimRef.current) {
-      if (inView) {
+      if (inView && !prefersReducedMotion) {
         heroAnimRef.current.play();
       } else {
         heroAnimRef.current.pause();
       }
     }
-  }, [inView, heroAnimRef.current]);
+  }, [inView, heroAnimRef.current, prefersReducedMotion]);
+
+  if (useIsBrowser()) {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    mediaQuery.addEventListener('change', () => setPrefersReducedMotion(true));
+  }
 
   return (
     <>
@@ -103,7 +110,12 @@ export default function Home(): JSX.Element {
                   return (
                     <div className={styles.heroAnim}>
                       <div>
-                        <dotlottie-player ref={heroAnimRef} autoplay loop />
+                        <dotlottie-player
+                          ref={heroAnimRef}
+                          autoplay={!prefersReducedMotion}
+                          loop
+                          background="#fff"
+                        />
                       </div>
                     </div>
                   );

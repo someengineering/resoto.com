@@ -318,7 +318,7 @@ html[data-theme='dark'] .content {
 
   .heroRight {
     margin: 0;
-    width: 639px;
+    width: 75%;
     min-width: unset;
   }
 
@@ -342,10 +342,6 @@ html[data-theme='dark'] .content {
 
   .description {
     font-size: 21px;
-  }
-
-  .heroRight {
-    width: 60%;
   }
 
   .inner > h2 {

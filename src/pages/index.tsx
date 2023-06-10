@@ -39,17 +39,17 @@ export default function Home(): JSX.Element {
         <header className={styles.hero}>
           <div className={styles.inner}>
             <div className={styles.heroLeft}>
-              <h1 className={styles.heroTitle}>
+              <h1 className={styles.title}>
                 Harness the <br />
                 power of <strong>reactive</strong> <br />
                 infrastructure
               </h1>
-              <h2>
+              <p className={styles.description}>
                 <Balancer>
                   Improve visibility, control, cost, and compliance in your
                   cloud with Resoto
                 </Balancer>
-              </h2>
+              </p>
               <div className={styles.buttons}>
                 <InstallButton
                   includeVersion
@@ -86,7 +86,7 @@ export default function Home(): JSX.Element {
         <main className={styles.homeContent}>
           <section className={styles.section}>
             <div className={styles.inner}>
-              <h2 className={styles.providersHeading}>
+              <h2>
                 <Balancer>
                   Resoto is an <strong>infrastructure control plane</strong>{' '}
                   that continuously monitors and maintains your cloud resources.

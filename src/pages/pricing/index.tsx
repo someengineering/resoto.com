@@ -25,10 +25,10 @@ export default function Pricing(): JSX.Element {
         <main className={baseStyles.content}>
           <section className={baseStyles.section}>
             <div className={baseStyles.inner}>
-              <h1 className={styles.pageTitle}>
-                <span>Pricing</span>
+              <h1 className={clsx(baseStyles.title, styles.title)}>
+                <strong>Pricing</strong>
               </h1>
-              <p className={styles.pageDescription}>
+              <p className={clsx(baseStyles.description, styles.description)}>
                 <Balancer>{description}</Balancer>
               </p>
               <div className={clsx('row', styles.priceCards)}>

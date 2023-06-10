@@ -351,7 +351,7 @@ const config = {
       navbar: {
         hideOnScroll: true,
         title: 'Resoto',
-        logo: { alt: '', src: 'img/navbar-logo.svg' },
+        logo: { src: 'img/navbar-logo.svg', alt: '', width: 36, height: 36 },
         items: [
           {
             label: 'Modules',

@@ -29,14 +29,14 @@ export default function ModulePageHeader({
       <div className={baseStyles.section}>
         <div className={clsx(baseStyles.inner, styles.inner)}>
           <div>
-            <h1 className={styles.pageTitle}>
+            <h1 className={clsx(baseStyles.title, styles.title)}>
               <span>
                 Resoto <strong>{moduleName}</strong>:
               </span>
               <br />
               {tagline}
             </h1>
-            <p className={styles.pageDescription}>
+            <p className={baseStyles.description}>
               <Balancer>{description}</Balancer>
             </p>
           </div>

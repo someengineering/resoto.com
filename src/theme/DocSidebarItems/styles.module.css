@@ -9,6 +9,7 @@
 }
 
 .versionSelector > div {
+  display: inline-block;
   margin: 0;
 }
 
@@ -20,10 +21,4 @@
       var(--ifm-button-padding-horizontal) * var(--ifm-button-size-multiplier) /
         2
     );
-}
-
-@media screen and (max-width: 1100px) {
-  .versionSelector > div {
-    display: inline-block;
-  }
 }

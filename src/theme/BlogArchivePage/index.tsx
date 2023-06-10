@@ -144,7 +144,7 @@ export default function BlogArchive({ archive }: Props): JSX.Element {
       <Layout>
         <header className={styles.hero}>
           <div className={baseStyles.inner}>
-            <h1 className={baseStyles.heroTitle}>{title}</h1>
+            <h1 className={baseStyles.title}>{title}</h1>
           </div>
         </header>
         <main>{years.length > 0 && <YearsSection years={years} />}</main>

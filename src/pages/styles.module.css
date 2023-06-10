@@ -49,8 +49,7 @@ html[data-theme='dark'] .hero {
   display: inline-block;
 }
 
-.title,
-.title strong {
+.title {
   margin: 0;
   color: var(--ifm-color-content);
   font-weight: 800;
@@ -65,6 +64,7 @@ html[data-theme='dark'] .hero {
   background-clip: text;
   -webkit-background-clip: text;
   background-color: var(--ifm-color-content-secondary);
+  font-weight: 800;
 }
 
 .hero .title strong:hover {

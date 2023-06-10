@@ -98,7 +98,7 @@ html[data-theme='dark'] .hero {
   content: '';
 }
 
-.heroRight > div {
+.heroAnim {
   position: absolute;
   left: -0.3%;
   box-shadow: var(--ifm-global-shadow-md);
@@ -108,7 +108,7 @@ html[data-theme='dark'] .hero {
   height: 100%;
 }
 
-.heroRight > div > div {
+.heroAnim > div {
   position: absolute;
   top: 0.15%;
   margin: -0.3% !important;

@@ -23,13 +23,22 @@ export default function Home(): JSX.Element {
 
   useEffect(() => {
     if (heroAnimRef.current) {
+      heroAnimRef.current.load(heroLottie, {
+        progressiveLoad: true,
+        runExpressions: false,
+      });
+    }
+  }, [heroAnimRef.current]);
+
+  useEffect(() => {
+    if (heroAnimRef.current) {
       if (inView) {
         heroAnimRef.current.play();
       } else {
         heroAnimRef.current.pause();
       }
     }
-  }, [inView, heroAnimRef]);
+  }, [inView, heroAnimRef.current]);
 
   return (
     <>
@@ -83,29 +92,24 @@ export default function Home(): JSX.Element {
                 </Link>
               </div>
             </div>
-            <BrowserOnly>
-              {() => {
-                require('@dotlottie/player-component');
-                return (
-                  <div
-                    className={styles.heroRight}
-                    aria-hidden="true"
-                    ref={heroAnimInViewRef}
-                  >
-                    <div>
+            <div
+              className={styles.heroRight}
+              aria-hidden="true"
+              ref={heroAnimInViewRef}
+            >
+              <BrowserOnly>
+                {() => {
+                  require('@dotlottie/player-component');
+                  return (
+                    <div className={styles.heroAnim}>
                       <div>
-                        <dotlottie-player
-                          src={heroLottie}
-                          ref={heroAnimRef}
-                          autoplay
-                          loop
-                        />
+                        <dotlottie-player ref={heroAnimRef} autoplay loop />
                       </div>
                     </div>
-                  </div>
-                );
-              }}
-            </BrowserOnly>
+                  );
+                }}
+              </BrowserOnly>
+            </div>
           </div>
         </header>
         <main className={styles.homeContent}>

@@ -7,14 +7,30 @@ import AwsLogo from '@site/src/img/providers/aws.svg';
 import DigitalOceanLogo from '@site/src/img/providers/digitalocean.svg';
 import GoogleCloudLogo from '@site/src/img/providers/google-cloud.svg';
 import KubernetesLogo from '@site/src/img/providers/kubernetes.svg';
-import heroAnimation from '@site/src/lottie/hero.lottie';
+import heroLottie from '@site/src/lottie/hero.lottie';
 import Layout from '@theme/Layout';
 import { clsx } from 'clsx';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import { useInView } from 'react-intersection-observer';
 import Balancer from 'react-wrap-balancer';
 import styles from './styles.module.css';
 
 export default function Home(): JSX.Element {
+  const { ref: heroAnimInViewRef, inView } = useInView({
+    initialInView: true,
+  });
+  const heroAnimRef = useRef(null);
+
+  useEffect(() => {
+    if (heroAnimRef.current) {
+      if (inView) {
+        heroAnimRef.current.play();
+      } else {
+        heroAnimRef.current.pause();
+      }
+    }
+  }, [inView, heroAnimRef]);
+
   return (
     <>
       <Head>
@@ -71,10 +87,18 @@ export default function Home(): JSX.Element {
               {() => {
                 require('@dotlottie/player-component');
                 return (
-                  <div className={styles.heroRight} aria-hidden="true">
+                  <div
+                    className={styles.heroRight}
+                    aria-hidden="true"
+                    ref={heroAnimInViewRef}
+                  >
                     <div>
                       <div>
-                        <dotlottie-player src={heroAnimation} autoplay loop />
+                        <dotlottie-player
+                          src={heroLottie}
+                          ref={heroAnimRef}
+                          loop
+                        />
                       </div>
                     </div>
                   </div>

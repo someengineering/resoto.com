@@ -10,37 +10,39 @@ import KubernetesLogo from '@site/src/img/providers/kubernetes.svg';
 import heroLottie from '@site/src/lottie/hero.lottie';
 import Layout from '@theme/Layout';
 import { clsx } from 'clsx';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Balancer from 'react-wrap-balancer';
 import styles from './styles.module.css';
 
 export default function Home(): JSX.Element {
   const ref = useRef(null);
+  const mobileMaxWidth = 576;
   const [isMobile, setIsMobile] = useState(
-    useIsBrowser() && window.innerWidth < 577
+    !useIsBrowser() || window.innerWidth <= mobileMaxWidth
   );
   // const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  const onResize = useCallback(
+    () => setIsMobile(window.innerWidth <= mobileMaxWidth),
+    []
+  );
+  // const onReducedMotion = useCallback(() => setPrefersReducedMotion(true), []);
 
   useEffect(() => {
     require('@dotlottie/player-component');
 
-    // const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
-    // mql.addEventListener('change', () => setPrefersReducedMotion(true));
+    setIsMobile(window.innerWidth <= mobileMaxWidth);
+    window.addEventListener('resize', onResize);
 
-    window.addEventListener('resize', () =>
-      setIsMobile(window.innerWidth < 577)
-    );
+    // const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    // setPrefersReducedMotion(mediaQuery.matches);
+    // mediaQuery.addEventListener('change', onReducedMotion);
+
+    return () => {
+      window.removeEventListener('resize', onResize);
+      // mediaQuery.removeEventListener('change', onReducedMotion);
+    };
   }, []);
-
-  // useEffect(() => {
-  //   if (ref.current) {
-  //     if (prefersReducedMotion) {
-  //       ref.current.pause();
-  //     } else {
-  //       ref.current.play();
-  //     }
-  //   }
-  // }, [ref.current, prefersReducedMotion]);
 
   return (
     <>

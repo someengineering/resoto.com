@@ -165,8 +165,11 @@ const config = {
         configureWebpack: () => ({
           module: {
             rules: [
-              { test: /\.cast$/i, type: 'asset/resource' },
-              { test: /\.lottie$/, type: 'asset/resource' },
+              {
+                test: /\.(cast|lottie)$/,
+                loader: 'file-loader',
+                options: { name: 'assets/[name]-[hash].[ext]' },
+              },
             ],
           },
         }),

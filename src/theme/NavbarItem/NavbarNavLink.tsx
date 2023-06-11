@@ -27,14 +27,9 @@ export default function NavbarNavLink({
   const [githubStars, setGithubStars] = useState<number | null>(null);
 
   useEffect(() => {
-    const isDev =
-      process.env.NODE_ENV === 'development' ||
-      new URL(window.location.href).hostname !== 'resoto.com';
-
-    if (!isDev) {
-      const getGithubData = async () => {
+    if (label === 'GitHub' && !githubStars) {
+      const getGithubData = async () =>
         setGithubStars(await getGithubStars('someengineering', 'resoto'));
-      };
 
       getGithubData();
     }

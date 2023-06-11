@@ -5,7 +5,7 @@ import useIsBrowser from '@docusaurus/useIsBrowser';
 import Admonition from '@theme/Admonition';
 import React, { useEffect, useState } from 'react';
 
-export default function PlausibleExclude(): JSX.Element {
+export default function PlausibleToggle(): JSX.Element {
   const [isExcluded, setIsExcluded] = useState<boolean>(false);
   const isProd =
     useIsBrowser() && new URL(window.location.href).hostname === 'resoto.com';
@@ -23,10 +23,8 @@ export default function PlausibleExclude(): JSX.Element {
         isProd ? (
           <>
             <p>
-              <strong>
-                You <em>{isExcluded ? 'are curently' : 'are currently not'}</em>{' '}
-                excluding your visits.
-              </strong>
+              To toggle whether your visits to <code>resoto.com</code> are
+              counted, simply click the following button:
             </p>
             <p>
               <button
@@ -46,6 +44,14 @@ export default function PlausibleExclude(): JSX.Element {
                 {isExcluded ? 'Stop Excluding My Visits' : 'Exclude My Visits'}
               </button>
             </p>
+            <Admonition type="info">
+              <p>
+                <strong>
+                  You are {isExcluded ? '' : 'not '}curently excluding your
+                  visits.
+                </strong>
+              </p>
+            </Admonition>
           </>
         ) : (
           <Admonition type="note">

@@ -16,7 +16,7 @@ import styles from './styles.module.css';
 export default function Home(): JSX.Element {
   const ref = useRef(null);
   const mobileMaxWidth = 576;
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(true);
   // const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   const onResize = useCallback(

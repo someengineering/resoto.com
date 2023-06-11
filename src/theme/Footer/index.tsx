@@ -10,14 +10,11 @@ import styles from './styles.module.css';
 type Props = WrapperProps<typeof FooterType>;
 
 export default function FooterWrapper(props: Props): JSX.Element {
-  const isBrowser = useIsBrowser();
-  const isDev =
-    process.env.NODE_ENV === 'development' ||
-    !isBrowser ||
-    new URL(window.location.href).hostname !== 'resoto.com';
-
   const [timestamp, setTimestamp] = useState(new Date().getTime());
   const location = useLocation();
+  const isProd =
+    useIsBrowser() && new URL(window.location.href).hostname === 'resoto.com';
+
   useEffect(() => {
     setTimestamp(new Date().getTime());
   }, [location]);
@@ -33,7 +30,7 @@ export default function FooterWrapper(props: Props): JSX.Element {
           className={styles.logo}
         />
       </Link>
-      {isDev ? null : (
+      {isProd ? (
         <img
           src={`https://static.scarf.sh/a.png?x-pxid=3b6ccd5c-8a2a-4bf3-94a3-e366b88342d8&${timestamp}`}
           referrerPolicy="no-referrer-when-downgrade"
@@ -42,7 +39,7 @@ export default function FooterWrapper(props: Props): JSX.Element {
           height={1}
           className={styles.scarf}
         />
-      )}
+      ) : null}
       <Footer {...props} />
     </>
   );

@@ -1,6 +1,5 @@
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
-import useIsBrowser from '@docusaurus/useIsBrowser';
 import ContactForm from '@site/src/components/ContactForm';
 import InstallButton from '@site/src/components/InstallButton';
 import AwsLogo from '@site/src/img/providers/aws.svg';
@@ -17,9 +16,7 @@ import styles from './styles.module.css';
 export default function Home(): JSX.Element {
   const ref = useRef(null);
   const mobileMaxWidth = 576;
-  const [isMobile, setIsMobile] = useState(
-    !useIsBrowser() || window.innerWidth <= mobileMaxWidth
-  );
+  const [isMobile, setIsMobile] = useState(false);
   // const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   const onResize = useCallback(

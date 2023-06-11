@@ -1,4 +1,5 @@
 https://resoto.netlify.app/*                                                          https://resoto.com/:splat 301!
+https://main--resoto.netlify.app/*                                                    https://resoto.com/:splat 301!
 https://resoto.some.engineering/*                                                     https://resoto.com/:splat 301!
 
 https://blog.resoto.com/:year/:month/:date/*                                          https://resoto.com/blog/:splat 301!

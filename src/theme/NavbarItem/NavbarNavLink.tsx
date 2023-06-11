@@ -2,11 +2,11 @@ import Link from '@docusaurus/Link';
 import isInternalUrl from '@docusaurus/isInternalUrl';
 import { isRegexpStringMatch } from '@docusaurus/theme-common';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import { getGithubStars } from '@site/src/utils/githubHelper';
+import { useGithubStars } from '@site/src/hooks/useGithubStars';
 import IconExternalLink from '@theme/Icon/ExternalLink';
 import type { Props } from '@theme/NavbarItem/NavbarNavLink';
 import Emoji from 'a11y-react-emoji';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 export default function NavbarNavLink({
   activeBasePath,
@@ -24,16 +24,7 @@ export default function NavbarNavLink({
   const normalizedHref = useBaseUrl(href, { forcePrependBaseUrl: true });
   const isExternalLink = label && href && !isInternalUrl(href);
 
-  const [githubStars, setGithubStars] = useState<number | null>(null);
-
-  useEffect(() => {
-    if (label === 'GitHub' && !githubStars) {
-      const getGithubData = async () =>
-        setGithubStars(await getGithubStars('someengineering', 'resoto'));
-
-      getGithubData();
-    }
-  }, []);
+  const githubStars = useGithubStars();
 
   // Link content is set through html XOR label
   const linkContentProps = html

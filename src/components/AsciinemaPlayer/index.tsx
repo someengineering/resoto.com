@@ -1,4 +1,3 @@
-import BrowserOnly from '@docusaurus/BrowserOnly';
 import 'asciinema-player/dist/bundle/asciinema-player.css';
 import clsx from 'clsx';
 import React, { useEffect, useRef } from 'react';
@@ -27,29 +26,22 @@ export default function AsciinemaPlayer({
   className,
   ...asciinemaOptions
 }: AsciinemaPlayerProps): JSX.Element {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const AsciinemaPlayerLibrary = require('asciinema-player');
+
+    AsciinemaPlayerLibrary.create(src, ref.current, {
+      ...asciinemaOptions,
+      terminalFontFamily: 'var(--ifm-font-family-monospace)',
+    });
+  }, []);
+
   return (
-    <BrowserOnly>
-      {() => {
-        // eslint-disable-next-line @typescript-eslint/no-var-requires
-        const AsciinemaPlayerLibrary = require('asciinema-player');
-        const ref = useRef<HTMLDivElement>(null);
-
-        useEffect(() => {
-          const currentRef = ref.current;
-
-          AsciinemaPlayerLibrary.create(src, currentRef, {
-            ...asciinemaOptions,
-            terminalFontFamily: 'var(--ifm-font-family-monospace)',
-          });
-        }, []);
-
-        return (
-          <div
-            ref={ref}
-            className={clsx(styles.container, 'shadow--tl', className)}
-          />
-        );
-      }}
-    </BrowserOnly>
+    <div
+      ref={ref}
+      className={clsx(styles.container, 'shadow--tl', className)}
+    />
   );
 }

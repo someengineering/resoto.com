@@ -1,7 +1,6 @@
 import 'asciinema-player/dist/bundle/asciinema-player.css';
 import clsx from 'clsx';
 import React, { useEffect, useRef } from 'react';
-import styles from './styles.module.css';
 
 type AsciinemaPlayerProps = {
   src: string;
@@ -38,10 +37,5 @@ export default function AsciinemaPlayer({
     });
   }, []);
 
-  return (
-    <div
-      ref={ref}
-      className={clsx(styles.container, 'shadow--tl', className)}
-    />
-  );
+  return <div ref={ref} className={clsx('video-container', className)} />;
 }

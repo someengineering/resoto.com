@@ -5,7 +5,6 @@
 const { resolve } = require('path');
 
 const a11yEmoji = require('@fec/remark-a11y-emoji');
-const oembed = require('remark-plugin-oembed');
 const math = require('remark-math');
 const katex = require('rehype-katex');
 const kroki = require('remark-kroki-plugin');
@@ -83,7 +82,6 @@ const config = {
           showLastUpdateTime: true,
           remarkPlugins: [
             a11yEmoji,
-            [oembed, { providers: ['youtube'] }],
             ...(!isBuildFast
               ? [
                   [
@@ -209,7 +207,7 @@ const config = {
           type: 'all',
           copyright: `Copyright © ${new Date().getFullYear()} Some Engineering Inc.`,
         },
-        remarkPlugins: [a11yEmoji, [oembed, { providers: ['youtube'] }]],
+        remarkPlugins: [a11yEmoji],
       }),
     ],
     [
@@ -229,7 +227,7 @@ const config = {
           type: 'all',
           copyright: `Copyright © ${new Date().getFullYear()} Some Engineering Inc.`,
         },
-        remarkPlugins: [a11yEmoji, [oembed, { providers: ['youtube'] }], math],
+        remarkPlugins: [a11yEmoji, math],
         rehypePlugins: [katex],
       }),
     ],

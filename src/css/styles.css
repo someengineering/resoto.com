@@ -205,6 +205,23 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
+.video-container {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 640px;
+  overflow: hidden;
+}
+
+.markdown .video-container:not(:last-child) {
+  margin-bottom: var(--ifm-leading);
+}
+
+.yt-lite > .lty-playbtn {
+  cursor: pointer;
+  border: 0;
+}
+
 @media (min-width: 1536px) {
   .container {
     max-width: var(--ifm-container-width-xxl);

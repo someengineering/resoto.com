@@ -20,6 +20,10 @@
   font-size: 0;
 }
 
+.navbar__item:last-of-type {
+  margin-right: var(--ifm-navbar-item-padding-horizontal);
+}
+
 .navbar__link {
   white-space: nowrap;
 }

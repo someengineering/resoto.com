@@ -149,6 +149,7 @@ const config = {
             require.resolve('./src/css/footer.css'),
             require.resolve('./src/css/docs.css'),
             require.resolve('./src/css/tabs.css'),
+            require.resolve('./src/css/docsearch.css'),
             require.resolve('./src/css/openapi-docs.css'),
           ],
         },

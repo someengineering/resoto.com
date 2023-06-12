@@ -42,21 +42,24 @@ export default function Home(): JSX.Element {
       window.removeEventListener('resize', onResize);
       // mediaQuery.removeEventListener('change', onReducedMotion);
     };
-  }, []);
+  }, [onResize]);
 
   useEffect(() => {
+    let ref = null;
+
     if (!isMobile && heroAnimationRef.current) {
-      heroAnimationRef.current.addEventListener('ready', onAnimationReady);
-      heroAnimationRef.current.load(heroLottie, {
+      ref = heroAnimationRef.current;
+      ref.addEventListener('ready', onAnimationReady);
+      ref.load(heroLottie, {
         progressiveLoad: true,
         runExpressions: false,
       });
     }
 
     return () => {
-      heroAnimationRef.current?.removeEventListener('ready', onAnimationReady);
+      ref?.removeEventListener('ready', onAnimationReady);
     };
-  }, [isMobile, heroAnimationRef.current]);
+  }, [isMobile, onAnimationReady]);
 
   return (
     <>

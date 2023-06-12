@@ -9,6 +9,8 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:regexp/recommended",
     "prettier"
   ],
   "parser": "@typescript-eslint/parser",
@@ -18,7 +20,7 @@
     },
     "sourceType": "module"
   },
-  "plugins": ["formatjs", "jsx-a11y", "prettier"],
+  "plugins": ["formatjs", "jsx-a11y", "prettier", "react-hooks", "regexp"],
   "root": true,
   "rules": {
     "@typescript-eslint/camelcase": 0,

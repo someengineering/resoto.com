@@ -1,30 +1,25 @@
-import type { PropVersionMetadata } from '@docusaurus/plugin-content-docs';
 import { useDocsVersion } from '@docusaurus/theme-common/internal';
+import {
+  AwsPolicyName,
+  GcpPolicyName,
+  Provider,
+  actionsByNamespace,
+} from '@site/src/utils/iamPolicyHelper';
 import versions from '@site/versions.json';
 import useStoredJson from '@theme/useStoredJson';
 import GithubSlugger from 'github-slugger';
 import { sortBy, union } from 'lodash';
 import React from 'react';
-import {
-  AwsPolicyName,
-  AwsPolicyResponse,
-  actionsByNamespace,
-} from '../utils/awsPolicyHelper';
 
-export default function AwsPolicyComparison({
+export default function IamPolicyTable({
+  provider,
   policyNames,
 }: {
-  policyNames: AwsPolicyName[];
+  provider: Provider;
+  policyNames: (AwsPolicyName | GcpPolicyName)[];
 }): JSX.Element {
   const githubSlugger = new GithubSlugger();
-  let versionMetadata: PropVersionMetadata | null;
-
-  try {
-    versionMetadata = useDocsVersion();
-  } catch (e) {
-    versionMetadata = null;
-  }
-
+  const versionMetadata = useDocsVersion();
   const version =
     versionMetadata?.version === 'current'
       ? 'edge'
@@ -36,7 +31,10 @@ export default function AwsPolicyComparison({
     (acc, policyName) => ({
       ...acc,
       [policyName]: actionsByNamespace(
-        useStoredJson(`aws-${version}-${policyName}`) as AwsPolicyResponse
+        provider,
+        // TODO: fix this eslint-disable
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        useStoredJson(`${provider}-${version}-${policyName}`)
       ),
     }),
     {}

@@ -271,21 +271,33 @@ const config = {
             .map((version) => ({
               [`aws-${version}-ResotoOrgList`]: resolve(
                 __dirname,
-                'aws',
+                'iam/aws',
                 version,
                 'ResotoOrgList.json'
               ),
               [`aws-${version}-ResotoCollect`]: resolve(
                 __dirname,
-                'aws',
+                'iam/aws',
                 version,
                 'ResotoCollect.json'
               ),
               [`aws-${version}-ResotoMutate`]: resolve(
                 __dirname,
-                'aws',
+                'iam/aws',
                 version,
                 'ResotoMutate.json'
+              ),
+              [`gcp-${version}-resoto_access`]: resolve(
+                __dirname,
+                'iam/gcp',
+                version,
+                'resoto_access.json'
+              ),
+              [`gcp-${version}-resoto_mutate`]: resolve(
+                __dirname,
+                'iam/gcp',
+                version,
+                'resoto_mutate.json'
               ),
             }))
             .reduce((acc, cur) => ({ ...acc, ...cur }), {}),

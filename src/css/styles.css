@@ -140,6 +140,10 @@ html[data-theme='dark'] strong {
   color: var(--ifm-color-primary-lightest);
 }
 
+td {
+  vertical-align: top;
+}
+
 td ul:last-child,
 td ol:last-child {
   margin: 0;

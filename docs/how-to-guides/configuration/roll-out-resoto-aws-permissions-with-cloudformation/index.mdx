@@ -4,7 +4,7 @@ sidebar_label: Roll Out Resoto AWS Permissions with CloudFormation
 
 # How to Roll Out Resoto AWS Permissions with CloudFormation
 
-Each version of Resoto programmatically generates the specific <abbr title="Identity and Access Management">IAM</abbr> [permissions](../../../reference/permissions/aws.mdx) it requires to collect (and optionally, manipulate) AWS resources. Manually maintaining these permissions is a tedious task, especially if you have multiple AWS accounts.
+Each version of Resoto programmatically generates the specific <abbr title="Identity and Access Management">IAM</abbr> [permissions](../../../reference/iam-permissions/aws.mdx) it requires to collect (and optionally, manipulate) AWS resources. Manually maintaining these permissions is a tedious task, especially if you have multiple AWS accounts.
 
 **To eliminate this pain point, we provide a CloudFormation template that automatically creates a `ResotoAccess` role with the required permissions and a trust that allows a specified AWS account to assume this role.**
 
@@ -153,4 +153,4 @@ You also need an [AWS Organization](https://aws.amazon.com/organizations) that m
 
 ## Further Reading
 
-- [AWS Permissions](../../../reference/permissions/aws.mdx)
+- [AWS Permissions](../../../reference/iam-permissions/aws.mdx)

@@ -1,0 +1,22 @@
+---
+sidebar_label: Google Cloud
+---
+
+# Google Cloud IAM Permissions
+
+```mdx-code-block
+import IamPolicyDocument from '@site/src/components/IamPolicy/Document';
+import IamPolicyTable from '@site/src/components/IamPolicy/Table';
+```
+
+Each version of Resoto programmatically generates the specific <abbr title="Identity and Access Management">IAM</abbr> permissions it requires to collect (and optionally, manipulate) Google Cloud resources.
+
+<IamPolicyTable provider="gcp" policyNames={["resoto_access", "resoto_mutate"]} />
+
+## `resoto_access`
+
+<IamPolicyDocument provider="gcp" policyName="resoto_access" />
+
+## `resoto_mutate`
+
+<IamPolicyDocument provider="gcp" policyName="resoto_mutate" />

@@ -35,7 +35,7 @@ export default function DefragPage(): JSX.Element {
             </p>
             <p>
               <Balancer>
-                For example, automatically delete rsources that have been
+                For example, automatically delete resources that have been
                 abandoned for more than a week&mdash;like{' '}
                 <Link to="/docs/how-to-guides/cleanup/clean-up-aws-load-balancers">
                   load balancers

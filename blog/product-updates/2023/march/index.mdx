@@ -9,9 +9,7 @@ Last month, we merged a total of 64 pull requests and released [Resoto 3.3](/rel
 
 <!--truncate-->
 
-## Resoto
-
-### Security Benchmarks
+## Security Benchmarks
 
 Resoto has always supported searching for security-relevant information within your cloud infrastructure. With the new Security Benchmarks feature, we have added a layer that enables you to define Checks and reuse them within Benchmarks. The initial Benchmark included in Resoto 3.3 is AWS CIS 1.5.
 
@@ -19,7 +17,7 @@ Resoto has always supported searching for security-relevant information within y
 
 Simply choose the Benchmark and a list of accounts, and within a few seconds, you will receive the results of thousands of tests conducted against your cloud infrastructure. Each test provides details about severity, a list of failing resources, and remediation information.
 
-### AWS
+## AWS
 
 Significant optimization efforts have been made to the AWS collector. By enhancing the session pool, we managed to decrease memory consumption by over 70% for simultaneous collections of multiple accounts, without compromising the high collection speed.
 
@@ -27,15 +25,15 @@ Significant optimization efforts have been made to the AWS collector. By enhanci
 
 All cloud accounts now record a timestamp `/metadata.exported_at` as well as the corresponding time delta `/metadata.exported_age` indicating when they were last collected. This will enable us to introduce a garbage-collection feature for automatically removing outdated accounts that no longer exist from the Resoto infrastructure graph.
 
-### Files as config:
+## Files as Config
 
 Resoto config now recognizes "files" as a configuration value type. This means you can configure your e.g. `~/.aws/credentials` files in Resoto rather than mounting them into the worker.
 
-### Github
+### GitHub Collector
 
 The Github collector now contains repository statistics, such as top paths, and top referrers.
 
-### Other Resoto Improvements
+## Other Improvements
 
 - Instead of the `example` collector being enabled by default, collector plugins can now automatically determine whether they should be enabled or not. So if for instance you are running on an AWS EC2 instance with a configured instance profile, Resoto will automatically configure itself to use that instance profile and enable the AWS collector.
 

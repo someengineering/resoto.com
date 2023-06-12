@@ -336,12 +336,16 @@ https://releases.resoto.com/*                                                   
 /docs/reference/resources/data-models/*                                               /docs/reference/unified-data-model/:splat
 /docs/reference/resources/*                                                           /docs/reference/unified-data-model/:splat
 
+/docs/reference/permissions/*                                                         /docs/reference/iam-permissions/:splat
+
 /reference/*                                                                          /docs/reference/:splat
 
 /documentation/*                                                                      /docs/:splat
 /docs/edge/*                                                                          /docs/:splat
 /docs/2.x/*                                                                           /docs/:splat
 /docs/2.X/*                                                                           /docs/:splat
+/docs/3.x/*                                                                           /docs/:splat
+/docs/3.X/*                                                                           /docs/:splat
 /docs/*                                                                               /docs
 
 

@@ -16,7 +16,7 @@ export default function DocItemMetadata(): JSX.Element {
         metadata.unversionedId.split('/')[2]
       );
     }
-  }, []);
+  }, [metadata.unversionedId]);
 
   return (
     <PageMetadata

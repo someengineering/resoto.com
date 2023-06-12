@@ -43,11 +43,8 @@ export default function ContactForm(): JSX.Element {
 
   useEffect(() => {
     values.referrer = window.location.href;
-  }, []);
-
-  useEffect(() => {
     values.subject = `[Resoto] Inquiry from ${values.name}`;
-  }, [values.name]);
+  }, [values]);
 
   return (
     <section className={clsx(baseStyles.section, styles.section)}>

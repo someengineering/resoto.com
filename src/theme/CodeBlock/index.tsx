@@ -12,6 +12,7 @@ export default function CodeBlock(props: Props): JSX.Element {
   let versionMetadata: PropVersionMetadata;
 
   try {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     versionMetadata = useDocsVersion();
   } catch (e) {
     versionMetadata = null;
@@ -26,14 +27,14 @@ export default function CodeBlock(props: Props): JSX.Element {
     <OriginalCodeBlock {...props}>
       {props.children
         .toString()
-        .replace(/{{imageTag}}/g, versionTag ?? 'edge')
+        .replace(/\{\{imageTag\}\}/g, versionTag ?? 'edge')
         .replace(
-          /{{nonEdgeImageTag}}/g,
+          /\{\{nonEdgeImageTag\}\}/g,
           versionTag ?? latestRelease[versions[0]]
         )
-        .replace(/{{repoBranch}}/g, versionTag ?? 'main')
+        .replace(/\{\{repoBranch\}\}/g, versionTag ?? 'main')
         .replace(
-          /{{dockerComposeUrl}}/g,
+          /\{\{dockerComposeUrl\}\}/g,
           versionTag
             ? `https://github.com/someengineering/resoto/releases/download/${versionTag}/docker-compose.yaml`
             : 'https://raw.githubusercontent.com/someengineering/resoto/main/docker-compose.yaml'

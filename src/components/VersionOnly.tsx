@@ -1,4 +1,3 @@
-import type { PropVersionMetadata } from '@docusaurus/plugin-content-docs';
 import { useDocsVersion } from '@docusaurus/theme-common/internal';
 import React from 'react';
 
@@ -9,13 +8,7 @@ export default function VersionOnly({
   allowed: string | string[];
   children: React.ReactNode;
 }): JSX.Element {
-  let versionMetadata: PropVersionMetadata | null;
-
-  try {
-    versionMetadata = useDocsVersion();
-  } catch (e) {
-    versionMetadata = null;
-  }
+  const versionMetadata = useDocsVersion();
 
   return (
     <>

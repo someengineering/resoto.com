@@ -35,7 +35,7 @@ export default function AsciinemaPlayer({
       ...asciinemaOptions,
       terminalFontFamily: 'var(--ifm-font-family-monospace)',
     });
-  }, []);
+  }, [src, asciinemaOptions]);
 
   return <div ref={ref} className={clsx('video-container', className)} />;
 }

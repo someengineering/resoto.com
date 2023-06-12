@@ -1,7 +1,7 @@
 .hero {
   background-color: #ffffff;
   background-blend-mode: screen;
-  overflow: clip;
+  overflow: hidden;
   color: var(--ifm-color-content);
 }
 
@@ -111,6 +111,11 @@ html[data-theme='dark'] .hero {
   position: absolute;
   top: 0.15%;
   margin: -0.5%;
+}
+
+.heroAnim dotlottie-player {
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 .buttons {

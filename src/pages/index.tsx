@@ -14,11 +14,14 @@ import Balancer from 'react-wrap-balancer';
 import styles from './styles.module.css';
 
 export default function Home(): JSX.Element {
-  const ref = useRef(null);
+  const heroAnimationRef = useRef(null);
   const mobileMaxWidth = 576;
   const [isMobile, setIsMobile] = useState(true);
   // const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
+  const onAnimationReady = useCallback(() => {
+    heroAnimationRef.current?.getLottie()?.setSubframe(false);
+  }, []);
   const onResize = useCallback(
     () => setIsMobile(window.innerWidth <= mobileMaxWidth),
     []
@@ -40,6 +43,20 @@ export default function Home(): JSX.Element {
       // mediaQuery.removeEventListener('change', onReducedMotion);
     };
   }, []);
+
+  useEffect(() => {
+    if (!isMobile && heroAnimationRef.current) {
+      heroAnimationRef.current.addEventListener('ready', onAnimationReady);
+      heroAnimationRef.current.load(heroLottie, {
+        progressiveLoad: true,
+        runExpressions: false,
+      });
+    }
+
+    return () => {
+      heroAnimationRef.current?.removeEventListener('ready', onAnimationReady);
+    };
+  }, [isMobile, heroAnimationRef.current]);
 
   return (
     <>
@@ -98,8 +115,7 @@ export default function Home(): JSX.Element {
                 <div className={styles.heroAnim} aria-hidden="true">
                   <div>
                     <dotlottie-player
-                      src={heroLottie}
-                      ref={ref}
+                      ref={heroAnimationRef}
                       autoplay
                       loop
                       background="#fff"

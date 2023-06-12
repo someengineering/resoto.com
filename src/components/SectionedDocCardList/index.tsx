@@ -7,6 +7,7 @@ import DocCardList from '@theme/DocCardList';
 import Heading from '@theme/Heading';
 import GithubSlugger from 'github-slugger';
 import React from 'react';
+import styles from './styles.module.css';
 
 function SectionedDocCardListForCurrentSidebarCategory({ className }: Props) {
   const category = useCurrentSidebarCategory();
@@ -31,7 +32,13 @@ export default function SectionedDocCardList(props: Props): JSX.Element {
       {filteredItems.map((item, index) =>
         item.type === 'category' ? (
           <div key={index}>
-            <Heading as="h2" id={slugger.slug(item.label)}>
+            <Heading
+              as="h2"
+              id={slugger.slug(item.label)}
+              className={
+                item.label === item.label.toLowerCase() ? styles.code : ''
+              }
+            >
               {item.label}
             </Heading>
             <DocCardList items={item.items} className={className} />

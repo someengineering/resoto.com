@@ -3,3 +3,8 @@
   font-size: var(--ifm-code-font-size);
   font-family: var(--ifm-font-family-monospace);
 }
+
+.code h2 {
+  font-size: calc(1.2rem * 0.9);
+  font-family: var(--ifm-font-family-monospace);
+}

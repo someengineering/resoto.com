@@ -43,6 +43,7 @@
   -webkit-box-orient: vertical;
   display: -webkit-box;
   font-size: 0.8rem;
+  font-family: var(--ifm-font-family-base);
   white-space: normal;
 }
 

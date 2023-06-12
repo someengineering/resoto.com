@@ -1,0 +1,4 @@
+.code {
+  font-size: calc(var(--ifm-h2-font-size) * 0.9);
+  font-family: var(--ifm-font-family-monospace);
+}

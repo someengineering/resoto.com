@@ -58,12 +58,12 @@ Each time the `cleanup_expired` plugin runs, expired resources will be flagged f
 
 :::info
 
-A resource's expiration time can be defined either with an [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) timestamp or time delta:
+A resource's expiration time can be defined either with an [ISO 8601](https://iso.org/iso-8601-date-and-time-format.html) timestamp or time delta:
 
-| Tag Name                            | Description                                                                  | Example                     |
-| ----------------------------------- | ---------------------------------------------------------------------------- | --------------------------- |
-| `resoto:expires`                    | [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) timestamp | `2022-09-21T10:40:11+00:00` |
-| `resoto:expiration` or `expiration` | Time delta from resource creation time                                       | `24h`                       |
+| Tag Name                            | Description                                                              | Example                     |
+| ----------------------------------- | ------------------------------------------------------------------------ | --------------------------- |
+| `resoto:expires`                    | [ISO 8601](https://iso.org/iso-8601-date-and-time-format.html) timestamp | `2022-09-21T10:40:11+00:00` |
+| `resoto:expiration` or `expiration` | Time delta from resource creation time                                   | `24h`                       |
 
 Please see the [Resource Expiration](../../concepts/resource-management/expiration.mdx) for more information about expiration tags.
 

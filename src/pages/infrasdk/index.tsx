@@ -73,8 +73,10 @@ export default function InfrasdkPage(): JSX.Element {
               </Balancer>
             </p>
           </ModulePageCTA>
-          <ContactForm />
         </main>
+        <div className={baseStyles.contentBottom}>
+          <ContactForm />
+        </div>
       </Layout>
     </>
   );

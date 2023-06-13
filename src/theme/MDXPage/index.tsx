@@ -5,7 +5,7 @@ import {
 } from '@docusaurus/theme-common';
 import ContactForm from '@site/src/components/ContactForm';
 import baseStyles from '@site/src/pages/styles.module.css';
-import { getImage } from '@site/src/utils/socialImageHelper';
+import { getImage } from '@site/src/utils/socialImageUtils';
 import Layout from '@theme/Layout';
 import MDXContent from '@theme/MDXContent';
 import type { Props } from '@theme/MDXPage';
@@ -55,7 +55,7 @@ export default function MDXPage(props: Props): JSX.Element {
             )}
           </div>
         </main>
-        <div className={baseStyles.homeContent}>
+        <div className={baseStyles.contentBottom}>
           <ContactForm />
         </div>
       </Layout>

@@ -1,6 +1,6 @@
 import { PageMetadata } from '@docusaurus/theme-common';
 import { useBlogPost } from '@docusaurus/theme-common/internal';
-import { getImage } from '@site/src/utils/socialImageHelper';
+import { getImage } from '@site/src/utils/socialImageUtils';
 import React from 'react';
 
 export default function BlogPostPageMetadata(): JSX.Element {

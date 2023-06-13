@@ -4,7 +4,7 @@ import {
   GcpPolicyName,
   Provider,
   actionsByNamespace,
-} from '@site/src/utils/iamPolicyHelper';
+} from '@site/src/utils/iamPolicyUtils';
 import versions from '@site/versions.json';
 import useStoredJson from '@theme/useStoredJson';
 import GithubSlugger from 'github-slugger';

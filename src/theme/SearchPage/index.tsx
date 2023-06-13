@@ -522,7 +522,7 @@ function SearchPageContent(): JSX.Element {
           </div>
         )}
       </div>
-      <div className={baseStyles.homeContent}>
+      <div className={baseStyles.contentBottom}>
         <ContactForm />
       </div>
     </Layout>

@@ -49,7 +49,7 @@ export default function ChronologPage(): JSX.Element {
             </p>
           </ModulePageCTA>
         </main>
-        <div className={baseStyles.homeContent}>
+        <div className={baseStyles.contentBottom}>
           <ContactForm />
         </div>
       </Layout>

@@ -165,7 +165,7 @@ const config = {
           module: {
             rules: [
               {
-                test: /\.(cast|lottie)$/,
+                test: /\.(cast)$/,
                 loader: 'file-loader',
                 options: { name: 'assets/[name]-[hash].[ext]' },
               },

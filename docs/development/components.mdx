@@ -15,7 +15,7 @@ Resoto is comprised of multiple [components](../reference/components/index.mdx),
 - [Python](https://python.org) 3.9+ (3.10 is recommended)
 - [ArangoDB](https://arangodb.com) 3.8.4+
 - [GNU Compiler Collection (GCC)](https://gcc.gnu.org) (depending on the host system, Python dependencies may need to be compiled from source)
-- [Rust Compiler](https://www.rust-lang.org/tools/install) (depending on the host system, Python dependencies may need to be compiled from source)
+- [Rust Compiler](https://rust-lang.org/tools/install) (depending on the host system, Python dependencies may need to be compiled from source)
 
 :::note
 
@@ -87,7 +87,7 @@ Start [ArangoDB](https://arangodb.com) (using `systemctl` on Linux, by clicking 
 
 :::note
 
-Depending on the installation method, [authentication may or may not be enabled on the built-in `root` user account](https://www.arangodb.com/docs/stable/getting-started-installation.html#securing-the-installation). The installation process either prompted for the `root` password (Debian, Windows), configured a random password (Red Hat), or set the password to an empty string.
+Depending on the installation method, [authentication may or may not be enabled on the built-in `root` user account](https://arangodb.com/docs/stable/getting-started-installation.html#securing-the-installation). The installation process either prompted for the `root` password (Debian, Windows), configured a random password (Red Hat), or set the password to an empty string.
 
 In order for `resotocore` to perform the required database setup and for tests to pass, authentication must be disabled or the password for `root` must be set to an empty string.
 

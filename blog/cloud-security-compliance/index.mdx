@@ -1,0 +1,173 @@
+---
+date: 2023-06-12
+authors: [matthias]
+tags: [Security, Resoto CLI, Resoto UI, AWS]
+---
+
+# Cloud Security Compliance with Resoto
+
+**A security baseline is a set of rules that all cloud resources must adhere to.**
+
+In today's rapidly evolving digital landscape, cybersecurity has become a non-negotiable aspect of doing business. More than ever, organizations are recognizing the importance of security compliance in cloud infrastructure.
+
+:::info
+
+The concept and rationale of security compliance and how to build a baseline were introduced in [Cloud Resource Security Benchmarks](../cloud-resource-security-benchmarks/index.mdx).
+
+:::
+
+<!--truncate-->
+
+## Challenges to Security Compliance
+
+Ensuring security compliance for cloud infrastructure no trivial task due to the different personas able to create, update, and delete cloud resources.
+
+Unfortunately, there is no single gatekeeper that can track and enforce security compliance for all cloud resources.
+
+Let's review the most urgent challenges…
+
+1. **Lack of Security Knowledge**
+
+   Developers and SREs may not have comprehensive knowledge of security best practices and the specific requirements for securing cloud infrastructure.
+
+   This can lead to the unintentional introduction of security vulnerabilities or misconfigurations.
+
+2. **Time Constraints**
+
+   Developers and SREs are often focused on meeting project deadlines and delivering functionality, which can result in security considerations being overlooked or deprioritized.
+
+   The pressure to deliver quickly may lead to shortcuts or the bypassing of security controls.
+
+3. **DevOps Culture**
+
+   The DevOps culture emphasizes rapid development and deployment, blurring the traditional boundaries between development and operations.
+
+   While this culture promotes agility, collaboration, and efficiency, it can sometimes overlook security measures or create conflicts between security and development priorities.
+
+4. **Lack of Communication and Collaboration**
+
+   In some cases, there may be a communication gap between security teams and developers/SREs.
+
+   Security requirements and guidelines are not always clearly communicated, resulting in misunderstandings and/or inconsistent implementation of security controls.
+
+## Solutions to Security Compliance Challenges
+
+While the above challenges pose significant hurdles, there are actionable steps that organizations can take to mitigate their impact:
+
+1. **Integration of Security into Development Workflows**
+
+   Introducing automated security testing, vulnerability scanning, and code analysis into the continuous integration/continuous deployment (CI/CD) pipelines can help identify and mitigate security issues early in the development process.
+
+2. **Security Training and Awareness Programs**
+
+   Developers and SREs should be provided with training to enhance their understanding of security best practices and the importance of security compliance in cloud infrastructure.
+
+   By empowering developers and SREs with knowledge, they are less likely to unintentionally introduce vulnerabilities or misconfigurations.
+
+3. **Automating Security Compliance Processes**
+
+   Configuration management, infrastructure as code (IaC), and security policy enforcement tools can automate repetitive or complex tasks, reducing the potential for human error and also freeing up developer hours to focus on what they do best – delivering functionality.
+
+In essence, enforcing security compliance is not a task for a single team or tool. **A concerted effort across the organization is required.**
+
+## Security Compliance Checks in Resoto
+
+As discussed in [Cloud Resource Security Benchmarks](../cloud-resource-security-benchmarks/index.mdx), Resoto allows you to define and check resources with a security baseline.
+
+[Resoto UI](/docs/reference/user-interface) allows you to view security benchmark results to find affected cloud resources and remediate issues. **Resoto's powerful [CLI](/docs/reference/cli) can also perform the same security checks.**
+
+### Generating a Security Benchmark Report
+
+Let's say we want to check all our AWS accounts for compliance with the [CIS AWS Foundations Benchmark](https://cisecurity.org/benchmark/amazon_web_services):
+
+```bash
+> report benchmark run aws_cis_1_5
+```
+
+The above command will examine all [collected AWS accounts](/docs/how-to-guides/data-sources/collect-aws-resource-data) and render a report in the terminal like this:
+
+![Screenshot of security benchmark report in Resoto CLI](./img/report-run-result.png)
+
+You can also write the report to a Markdown file by piping the output of the [`report` command](/docs/reference/cli/miscellaneous-commands/report) to the [`write` command](/docs/reference/cli/miscellaneous-commands/write):
+
+```bash
+> report benchmark run aws_cis_1_5 | write report.md
+```
+
+This outputs a file `report.md` in the [Resoto Shell download directory](/docs/reference/components/shell#options)⁠—useful in cases where you want to share or perform additional processing on the results.
+
+### Sending Security Benchmark Alerts to Discord or Slack
+
+Resoto can not only output security benchmark reports to a file, but can also send results to [Discord](/docs/how-to-guides/alerting/send-discord-notifications) or [Slack](/docs/how-to-guides/alerting/send-slack-notifications):
+
+<Tabs>
+
+<TabItem value="discord" label="Discord">
+
+```bash
+> report benchmark run aws_cis_1_5 --accounts 7524xxxx --only-failing --only-check-results | discord --title "Security Benchmark Issues!\nAccount 7524xxxx does not adhere to AWS CIS 1.5" --key .name --value .number_of_resources_failing --webhook https://discord.com/api/webhooks/123/234
+```
+
+</TabItem>
+
+<TabItem value="slack" label="Slack">
+
+```bash
+> report benchmark run aws_cis_1_5 --accounts 7524xxxx --only-failing --only-check-results | slack --title "Security Benchmark Issues!\nAccount 7524xxxx does not adhere to AWS CIS 1.5" --key .name --value .number_of_resources_failing --webhook https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX
+```
+
+</TabItem>
+
+</Tabs>
+
+If the [`report` command](/docs/reference/cli/miscellaneous-commands/report) finds any issues, a message like the following will be sent:
+
+![Screenshot of Discord alert](./img/discord-message.jpg)
+
+### Sending Security Benchmark Alerts to PagerDuty
+
+Resoto can also [create PagerDuty alerts](/docs/how-to-guides/alerting/create-pagerduty-alerts).
+
+You can create a PagerDuty alert in Resoto like so:
+
+```bash
+> report benchmark run aws_cis_1_5 --accounts 75246xxxx --only-failing --only-check-results | pagerduty --summary "Security Benchmark Issues! Account 7524xxxx does not adhere to AWS CIS 1.5" --routing-key <your-pagerduty-routing-key> --dedup-key AWS_CIS_75246xxxx --resource-id .reported.name --group-resources false --resource-properties {failing_resources: .reported.number_of_resources_failing}
+```
+
+:::note
+
+`routing-key` is your PagerDuty integration key. `dedup-key` is used to group alerts together.
+
+:::
+
+When the [`report` command](/docs/reference/cli/miscellaneous-commands/report) detects an issue, a PagerDuty alert will be created:
+
+![Screenshot of PagerDuty alert](./img/pagerduty-alert.png)
+
+## Security Compliance Enforcement with Resoto
+
+So far, we've examined existing resources to verify compliance with a security baseline. **But what about newly created or modified resources?**
+
+We can create a [job](/docs/concepts/automation#jobs) that triggers the [`report` command](/docs/reference/cli/miscellaneous-commands/report) each time Resoto [collects your ](/docs/concepts/cloud-data-sync#resource-collection) and creates alerts as described above:
+
+![Screenshot of security monitoring job creation in Resoto UI](./img/create-job.jpg)
+
+Automated security baseline assessments simplify cloud security, and instant alerts ensure timely detection of issues.
+
+## Security Issue Remediation with Resoto
+
+Resoto not only lists affected cloud resources for detected issues, but also offers guidance for remediation:
+
+![Screenshot of benchmark result in Resoto UI](./img/benchmark-check-details.png)
+
+## Conclusion
+
+In this blog post, we delved into the intricacies of enforcing security compliance in cloud resources, with an emphasis on the role of a security baseline and its automated enforcement through Resoto.
+
+We also examined the unique challenges that organizations face in this context and discussed potential solutions, highlighting the need for education, integration, automation, and collaboration.
+
+We then explored how Resoto can offer constant surveillance of your cloud infrastructure and an automated alerting system for security baseline violations.
+
+Finally, we showcased how Resoto facilitates swift remediation by surfacing affected resources and providing guidance for issue resolution.
+
+**Through the integration of these measures, the task of securing cloud resources becomes less daunting and more strategic, transforming security compliance from a challenge into an asset for your organization.**

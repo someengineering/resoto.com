@@ -28,7 +28,7 @@ export default function BlogLayout(props: Props): JSX.Element {
           {toc && <div className="col col--2">{toc}</div>}
         </div>
       </div>
-      <div className={baseStyles.homeContent}>
+      <div className={baseStyles.contentBottom}>
         <ContactForm />
       </div>
     </Layout>

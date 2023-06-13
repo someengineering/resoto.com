@@ -66,8 +66,10 @@ export default function SentinelPage(): JSX.Element {
               </Balancer>
             </p>
           </ModulePageCTA>
-          <ContactForm />
         </main>
+        <div className={baseStyles.contentBottom}>
+          <ContactForm />
+        </div>
       </Layout>
     </>
   );

@@ -27,7 +27,7 @@ export default function DocPageLayout({ children }: Props): JSX.Element {
           {children}
         </DocPageLayoutMain>
       </div>
-      <div className={baseStyles.homeContent}>
+      <div className={baseStyles.contentBottom}>
         <ContactForm />
       </div>
     </Layout>

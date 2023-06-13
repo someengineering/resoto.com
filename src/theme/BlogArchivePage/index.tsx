@@ -3,7 +3,7 @@ import { translate } from '@docusaurus/Translate';
 import { PageMetadata } from '@docusaurus/theme-common';
 import ContactForm from '@site/src/components/ContactForm';
 import baseStyles from '@site/src/pages/styles.module.css';
-import { getImage } from '@site/src/utils/socialImageHelper';
+import { getImage } from '@site/src/utils/socialImageUtils';
 import type { ArchiveBlogPost, Props } from '@theme/BlogArchivePage';
 import Layout from '@theme/Layout';
 import clsx from 'clsx';
@@ -148,7 +148,7 @@ export default function BlogArchive({ archive }: Props): JSX.Element {
           </div>
         </header>
         <main>{years.length > 0 && <YearsSection years={years} />}</main>
-        <div className={baseStyles.homeContent}>
+        <div className={baseStyles.contentBottom}>
           <ContactForm />
         </div>
       </Layout>

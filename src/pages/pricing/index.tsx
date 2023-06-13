@@ -2,7 +2,7 @@ import Link from '@docusaurus/Link';
 import { PageMetadata } from '@docusaurus/theme-common';
 import ContactForm from '@site/src/components/ContactForm';
 import baseStyles from '@site/src/pages/styles.module.css';
-import { getImage } from '@site/src/utils/socialImageHelper';
+import { getImage } from '@site/src/utils/socialImageUtils';
 import Layout from '@theme/Layout';
 import clsx from 'clsx';
 import React from 'react';
@@ -139,7 +139,7 @@ export default function Pricing(): JSX.Element {
             </div>
           </section>
         </main>
-        <div className={baseStyles.homeContent}>
+        <div className={baseStyles.contentBottom}>
           <ContactForm />
         </div>
       </Layout>

@@ -6,22 +6,19 @@ import AwsLogo from '@site/src/img/providers/aws.svg';
 import DigitalOceanLogo from '@site/src/img/providers/digitalocean.svg';
 import GoogleCloudLogo from '@site/src/img/providers/google-cloud.svg';
 import KubernetesLogo from '@site/src/img/providers/kubernetes.svg';
-import heroLottie from '@site/src/lottie/hero.lottie';
 import Layout from '@theme/Layout';
 import { clsx } from 'clsx';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import Lottie from 'react-lottie-player';
 import Balancer from 'react-wrap-balancer';
 import styles from './styles.module.css';
 
 export default function Home(): JSX.Element {
-  const heroAnimationRef = useRef(null);
-  const mobileMaxWidth = 576;
+  const [heroAnimationData, setHeroAnimationData] = useState<object>(null);
   const [isMobile, setIsMobile] = useState(true);
   // const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const mobileMaxWidth = 576;
 
-  const onAnimationReady = useCallback(() => {
-    heroAnimationRef.current?.getLottie()?.setSubframe(false);
-  }, []);
   const onResize = useCallback(
     () => setIsMobile(window.innerWidth <= mobileMaxWidth),
     []
@@ -29,8 +26,12 @@ export default function Home(): JSX.Element {
   // const onReducedMotion = useCallback(() => setPrefersReducedMotion(true), []);
 
   useEffect(() => {
-    require('@dotlottie/player-component');
+    if (!heroAnimationData && !isMobile) {
+      import('@site/src/lottie/hero.json').then(setHeroAnimationData);
+    }
+  }, [heroAnimationData, isMobile]);
 
+  useEffect(() => {
     setIsMobile(window.innerWidth <= mobileMaxWidth);
     window.addEventListener('resize', onResize);
 
@@ -43,23 +44,6 @@ export default function Home(): JSX.Element {
       // mediaQuery.removeEventListener('change', onReducedMotion);
     };
   }, [onResize]);
-
-  useEffect(() => {
-    let ref = null;
-
-    if (!isMobile && heroAnimationRef.current) {
-      ref = heroAnimationRef.current;
-      ref.addEventListener('ready', onAnimationReady);
-      ref.load(heroLottie, {
-        progressiveLoad: true,
-        runExpressions: false,
-      });
-    }
-
-    return () => {
-      ref?.removeEventListener('ready', onAnimationReady);
-    };
-  }, [isMobile, onAnimationReady]);
 
   return (
     <>
@@ -113,23 +97,30 @@ export default function Home(): JSX.Element {
                 </Link>
               </div>
             </div>
-            {!isMobile ? (
-              <div className={styles.heroRight}>
-                <div className={styles.heroAnim} aria-hidden="true">
-                  <div>
-                    <dotlottie-player
-                      ref={heroAnimationRef}
-                      autoplay
-                      loop
-                      background="#fff"
-                    />
-                  </div>
-                </div>
-              </div>
-            ) : null}
+            <div className={styles.heroRight}>
+              {heroAnimationData && !isMobile ? (
+                <Lottie
+                  animationData={heroAnimationData}
+                  useSubframes={false}
+                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                  /* @ts-ignore */
+                  renderer="canvas"
+                  rendererSettings={{
+                    preserveAspectRatio: 'xMidYMid slice',
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    /* @ts-ignore */
+                    runExpressions: false,
+                  }}
+                  play
+                  loop
+                  className={styles.heroAnim}
+                  aria-hidden="true"
+                />
+              ) : null}
+            </div>
           </div>
         </header>
-        <main className={styles.homeContent}>
+        <main className={styles.contentBottom}>
           <section className={styles.section}>
             <div className={styles.inner}>
               <h2>

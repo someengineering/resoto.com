@@ -106,7 +106,6 @@ export default function Home(): JSX.Element {
                   /* @ts-ignore */
                   renderer="canvas"
                   rendererSettings={{
-                    preserveAspectRatio: 'xMidYMid slice',
                     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                     /* @ts-ignore */
                     runExpressions: false,

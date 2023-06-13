@@ -209,11 +209,13 @@ html[data-theme='dark'] .docsButton::before {
   background-position: top;
   background-size: cover;
   background-repeat: no-repeat;
+  background-color: #e9ebfd;
   padding: 24px 0 5rem;
 }
 
 html[data-theme='dark'] .contentBottom {
   background-image: url('./img/bg-dark.webp');
+  background-color: #010c1d;
 }
 
 .content {

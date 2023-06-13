@@ -5,6 +5,10 @@
   font-size: 0.95rem;
 }
 
+html[data-theme='dark'] .footer {
+  --ifm-footer-background-color: #000000;
+}
+
 .footer__link-item {
   opacity: 0.8;
   transition-duration: var(--ifm-button-transition-duration);

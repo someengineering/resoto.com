@@ -1,0 +1,51 @@
+---
+date: 2023-06-13
+---
+
+# 3.5.2
+
+## What's Changed
+
+### Features
+
+- [`147a1510`](https://github.com/someengineering/resoto/commit/147a1510) <span class="badge badge--secondary">aws</span> Skip an account on resource collect failure is configurable (#1652)
+- [`b665a6b6`](https://github.com/someengineering/resoto/commit/b665a6b6) <span class="badge badge--secondary">gcp</span> Export all required GCP permissions (#1651)
+- [`8c98ba2c`](https://github.com/someengineering/resoto/commit/8c98ba2c) <span class="badge badge--secondary">resotocore</span> --at support for the search command (#1645)
+- [`5efdf421`](https://github.com/someengineering/resoto/commit/5efdf421) <span class="badge badge--secondary">resotocore</span> Allow better customization of the pagerduty command (#1640)
+- [`769f3db8`](https://github.com/someengineering/resoto/commit/769f3db8) <span class="badge badge--secondary">plugins/k8s</span> Make KubernetesService a load balancer (#1638)
+- [`47605cc6`](https://github.com/someengineering/resoto/commit/47605cc6) <span class="badge badge--secondary">resotocore</span> Allow filtering of report checks (#1637)
+
+### Fixes
+
+- [`fd17ee32`](https://github.com/someengineering/resoto/commit/fd17ee32) <span class="badge badge--secondary">plugins/gcp</span> Skip sys- project (#1658)
+- [`65a45642`](https://github.com/someengineering/resoto/commit/65a45642) <span class="badge badge--secondary">resotocore</span> Remove warning about the iterating outside of the streaming context (#1657)
+- [`44b1efa8`](https://github.com/someengineering/resoto/commit/44b1efa8) <span class="badge badge--secondary">plugins/gcp</span> Handle 403 errors more gracefully (#1653)
+- [`35040406`](https://github.com/someengineering/resoto/commit/35040406) <span class="badge badge--secondary">resotocore</span> Remove test flake (#1656)
+- [`5720f2b2`](https://github.com/someengineering/resoto/commit/5720f2b2) <span class="badge badge--secondary">resotocore</span> Allow piping output into an infra app (#1655)
+- [`ef427718`](https://github.com/someengineering/resoto/commit/ef427718) <span class="badge badge--secondary">resotocore</span> Invalid yaml generation (#1646)
+- [`d3ec5f2d`](https://github.com/someengineering/resoto/commit/d3ec5f2d) <span class="badge badge--secondary">resotolib</span> Update dependencies (#1648)
+- [`49a442bd`](https://github.com/someengineering/resoto/commit/49a442bd) <span class="badge badge--secondary">resotocore</span> Document all cmd line parameters of report (#1647)
+- [`5e240388`](https://github.com/someengineering/resoto/commit/5e240388) <span class="badge badge--secondary">resotocore</span> Empty collectors yield an error (#1643)
+- [`dcf737b0`](https://github.com/someengineering/resoto/commit/dcf737b0) <span class="badge badge--secondary">resotocore</span> Put commands into correct category (#1644)
+- [`3ee2c1ec`](https://github.com/someengineering/resoto/commit/3ee2c1ec) <span class="badge badge--secondary">resotoshell</span> Parse argument commands (#1642)
+- [`b06fedc4`](https://github.com/someengineering/resoto/commit/b06fedc4) <span class="badge badge--secondary">resotocore</span> arg names without `--` (#1641)
+- [`69338665`](https://github.com/someengineering/resoto/commit/69338665) <span class="badge badge--secondary">aws</span> Handle unavailable resources in China (#1639)
+- [`2cef4772`](https://github.com/someengineering/resoto/commit/2cef4772) <span class="badge badge--secondary">resoto</span> Cleanup cattrs/jsons complexity (#1635)
+
+### Chores
+
+- [`d4f11c4a`](https://github.com/someengineering/resoto/commit/d4f11c4a) <span class="badge badge--secondary">resotolib</span> debug -> trace (#1660)
+- [`7b9a487a`](https://github.com/someengineering/resoto/commit/7b9a487a) <span class="badge badge--secondary">ci</span> Update CI to process GCP policies (#1659)
+- [`2653fe66`](https://github.com/someengineering/resoto/commit/2653fe66) <span class="badge badge--secondary">resoto</span> Workflows should run on dependencies change (#1650)
+- [`7fe700bf`](https://github.com/someengineering/resoto/commit/7fe700bf) <span class="badge badge--secondary">resotocore</span> Refactor the infra apps in alias templates (#1612)
+- [`9644a872`](https://github.com/someengineering/resoto/commit/9644a872) <span class="badge badge--secondary">resoto</span> Bump Libs (#1633)
+- [`021e041f`](https://github.com/someengineering/resoto/commit/021e041f) <span class="badge badge--secondary">resoto</span> Bump 3.5.2 (#1634)
+
+<!--truncate-->
+
+## Docker Images
+
+- `somecr.io/someengineering/resotocore:3.5.2`
+- `somecr.io/someengineering/resotoworker:3.5.2`
+- `somecr.io/someengineering/resotoshell:3.5.2`
+- `somecr.io/someengineering/resotometrics:3.5.2`

@@ -38,23 +38,7 @@ The steps to launch Resoto UI are dependent on how you installed Resoto.
 
    :::
 
-6. Open the copied URL in your browser to launch Resoto UI.
-
-7. In the AWS Cloudformation console, enter `ResotoPSK` into the search box. There should be exactly one entry. Copy the value (e.g., `kubectl get secrets ...`).
-
-   :::info
-
-   The value of `ResotoEKS.ResotoPskSecret` in **Outputs** is a command to retrieve the Resoto PSK.
-
-   :::
-
-8. Copy the command and paste it into your terminal to print the Resoto PSK to the terminal.
-
-   ```bash
-   $ kubectl get secrets resoto-psk -o jsonpath='{.data.psk}' | base64 -d
-   ```
-
-9. Enter the Resoto PSK in the Resoto UI prompt and click **Connect**.
+6. Open the copied URL in your browser.
 
    :::note
 
@@ -62,9 +46,31 @@ The steps to launch Resoto UI are dependent on how you installed Resoto.
 
    :::
 
-10. If it is your first time starting Resoto UI, a setup wizard will appear to help you configure Resoto:
+7. Log in with your Resoto credentials:
 
-    ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
+   ![Screenshot of Resoto login form](./img/login-form.png)
+
+   :::note
+
+   If accessing a new Resoto install, you will be prompted to create an administrator account:
+
+   ![Screenshot of Resoto account creation form](./img/create-account.png)
+
+   Additional users can be added via the [CLI](../../reference/cli/index.mdx) using the [`user add` command](../../reference/cli/setup-commands/user/add.mdx).
+
+   See [User Management](../../reference/user-management/index.mdx) for details.
+
+   :::
+
+8. After logging in, Resoto UI will start.
+
+   :::note
+
+   The first time Resoto UI is launched, a setup wizard will appear to help you configure Resoto:
+
+   ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
+
+   :::
 
 </TabItem>
 
@@ -85,7 +91,31 @@ The steps to launch Resoto UI are dependent on how you installed Resoto.
 
    :::
 
-3. If it is your first time starting Resoto UI, a setup wizard will appear to help you configure Resoto:
+3. Log in with your Resoto credentials:
+
+   ![Screenshot of Resoto login form](./img/login-form.png)
+
+   :::note
+
+   If accessing a new Resoto install, you will be prompted to create an administrator account:
+
+   ![Screenshot of Resoto account creation form](./img/create-account.png)
+
+   Additional users can be added via the [CLI](../../reference/cli/index.mdx) using the [`user add` command](../../reference/cli/setup-commands/user/add.mdx).
+
+   See [User Management](../../reference/user-management/index.mdx) for details.
+
+   :::
+
+4. After logging in, Resoto UI will start.
+
+   :::note
+
+   The first time Resoto UI is launched, a setup wizard will appear to help you configure Resoto:
+
+   ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
+
+   :::
 
    ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
 
@@ -101,7 +131,31 @@ The steps to launch Resoto UI are dependent on how you installed Resoto.
 
    :::
 
-2. If it is your first time starting Resoto UI, a setup wizard will appear to help you configure Resoto:
+2. Log in with your Resoto credentials:
+
+   ![Screenshot of Resoto login form](./img/login-form.png)
+
+   :::note
+
+   If accessing a new Resoto install, you will be prompted to create an administrator account:
+
+   ![Screenshot of Resoto account creation form](./img/create-account.png)
+
+   Additional users can be added via the [CLI](../../reference/cli/index.mdx) using the [`user add` command](../../reference/cli/setup-commands/user/add.mdx).
+
+   See [User Management](../../reference/user-management/index.mdx) for details.
+
+   :::
+
+3. After logging in, Resoto UI will start.
+
+   :::note
+
+   The first time Resoto UI is launched, a setup wizard will appear to help you configure Resoto:
+
+   ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
+
+   :::
 
    ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
 
@@ -115,27 +169,31 @@ The steps to launch Resoto UI are dependent on how you installed Resoto.
    $ kubectl port-forward services/resoto-resotocore 8900
    ```
 
-2. Retrieve the PSK:
+2. Log in with your Resoto credentials:
 
-   ```bash
-   kubectl get secret arango-user -o jsonpath="{.data.password}" | base64 --decode
-   ```
-
-   :::info
-
-   The PSK is required to access Resoto UI, and is stored as a [Kubernetes Secret](https://kubernetes.io/docs/concepts/configuration/secret), `resoto-psk`.
-
-   :::
-
-3. Enter the Resoto PSK in the Resoto UI prompt and click **Connect**.
+   ![Screenshot of Resoto login form](./img/login-form.png)
 
    :::note
 
-   The SSL certificate is self-signed, but you can safely ignore any browser warnings.
+   If accessing a new Resoto install, you will be prompted to create an administrator account:
+
+   ![Screenshot of Resoto account creation form](./img/create-account.png)
+
+   Additional users can be added via the [CLI](../../reference/cli/index.mdx) using the [`user add` command](../../reference/cli/setup-commands/user/add.mdx).
+
+   See [User Management](../../reference/user-management/index.mdx) for details.
 
    :::
 
-4. If it is your first time starting Resoto UI, a setup wizard will appear to help you configure Resoto:
+3. After logging in, Resoto UI will start.
+
+   :::note
+
+   The first time Resoto UI is launched, a setup wizard will appear to help you configure Resoto:
+
+   ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
+
+   :::
 
    ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
 
@@ -151,7 +209,31 @@ The steps to launch Resoto UI are dependent on how you installed Resoto.
 
    :::
 
-2. If it is your first time starting Resoto UI, a setup wizard will appear to help you configure Resoto:
+2. Log in with your Resoto credentials:
+
+   ![Screenshot of Resoto login form](./img/login-form.png)
+
+   :::note
+
+   If accessing a new Resoto install, you will be prompted to create an administrator account:
+
+   ![Screenshot of Resoto account creation form](./img/create-account.png)
+
+   Additional users can be added via the [CLI](../../reference/cli/index.mdx) using the [`user add` command](../../reference/cli/setup-commands/user/add.mdx).
+
+   See [User Management](../../reference/user-management/index.mdx) for details.
+
+   :::
+
+3. After logging in, Resoto UI will start.
+
+   :::note
+
+   The first time Resoto UI is launched, a setup wizard will appear to help you configure Resoto:
+
+   ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
+
+   :::
 
    ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
 

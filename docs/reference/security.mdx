@@ -1,54 +1,60 @@
 # Security
 
-By default, all [Resoto components](./components/index.mdx) communicate with each other via HTTPS using Transport Layer Security (TLS).
+**By default, all Resoto [components](./components/index.mdx) communicate with each other via HTTPS using Transport Layer Security (TLS).**
 
-The trust between components is established using a Pre-Shared-Key (PSK) that is used to derive a key which in turn is used to sign JWT tokens.
+The trust between components is established using a [<abbr title="pre-shared key">PSK</abbr>](#pre-shared-key) that is used to derive a key used to sign [<abbr title="JSON web token">JWT</abbr>s](#json-web-token).
 
-[Resoto Core](./components/core.mdx) is running a Public Key Infrastructure (PKI) including a Certificate Authority (CA). Upon start, all components will request a certificate from the CA.
+[Resoto Core](./components/core.mdx) runs a Public Key Infrastructure (PKI) including a Certificate Authority (CA). Upon start, all components will request a certificate from the CA.
 
 ## Pre-Shared Key (PSK) {#pre-shared-key}
 
-Every component takes a `--psk` flag (which can alternatively be supplied using the environment variables `RESOTOCORE_PSK`, `RESOTOWORKER_PSK`, `RESOTOMETRICS_PSK` and `RESOTOSHELL_PSK`). The value of the flag is a pre-shared key—a common passphrase that all components know about.
+Each Resoto [component](./components/index.mdx) accepts a `--psk` flag (which can alternatively be supplied using the environment variables `RESOTOCORE_PSK`, `RESOTOWORKER_PSK`, `RESOTOMETRICS_PSK` and `RESOTOSHELL_PSK`).
 
-From this passphrase, a 256 bit key is derived using PKCS#5 password-based key derivation function 2 with HMAC as its pseudo-random function (PBKDF2-HMAC) and a random salt. This derived key is then used to sign JWT tokens.
+The value of the flag is a pre-shared key—a common passphrase that all components know about.
 
-### JSON Web Token (JWT) {#json-web-token}
+From this passphrase, a 256 bit key is derived using PKCS#5 password-based key derivation function 2 with HMAC as its pseudo-random function (PBKDF2-HMAC) and a random salt. This derived key is then used to sign <abbr title="JSON web token">JWT</abbr>s.
 
-If `--psk` was specified, every request that a component makes to [Resoto Core](./components/core.mdx) must provide a valid `Authentication` header with a JWT signed using the PSK.
+## JSON Web Token (JWT) {#json-web-token}
 
-This is true for encrypted HTTPS and unencrypted HTTP requests, meaning that if TLS is turned off (`--no-tls`) but a PSK was specified, the request will still be authenticated (just not encrypted!).
+If a [<abbr title="pre-shared key">PSK</abbr>](#pre-shared-key) is provided, every request that a component makes to [Resoto Core](./components/core.mdx) must provide a valid `Authentication` header with a <abbr title="JSON web token">JWT</abbr> signed using the <abbr title="pre-shared key">PSK</abbr>.
+
+This is true for encrypted HTTPS and unencrypted HTTP requests, meaning that if TLS is turned off (`--no-tls`) but a <abbr title="pre-shared key">PSK</abbr> was specified, the request will still be authenticated (just not encrypted!).
 
 ## Certificate Authority (CA) {#certificate-authority}
 
-By default, the Resoto built-in CA will be used.
+**By default, Resoto's built-in CA will be used.**
 
 Alternatively, a custom CA cert and key can be provided to [Resoto Core](./components/core.mdx) using the `--ca-cert` and `--ca-cert-key` flags.
 
 Or, if you are already running a CA or have externally signed certificates (e.g., [Let's Encrypt](https://letsencrypt.org)) they can be used using the `--ca-cert`, `--cert` and `--cert-key` flags for all components. If the key is protected by a passphrase, `--cert-key-pass` can also be specified.
 
-The following sections explain the steps Resoto automatically performs when using the built-in CA:
+The following sections explain the steps Resoto automatically performs when using the built-in CA.
 
 ### Establishing Trust
 
-[Resoto Core](./components/core.mdx) has two API endpoints, [`/ca/cert`](./api/retrieve-the-certificate-authorities-public-certificate) and [`/ca/sign`](./api/sign-a-certificate-request).
+[Resoto Core](./components/core.mdx) has two API endpoints, [`/ca/cert`](./api/retrieve-the-certificate-authorities-public-certificate.api.mdx) and [`/ca/sign`](./api/sign-a-certificate-request.api.mdx).
 
 The former serves the core's public CA root certificate. Upon startup, all other components will request this root certificate from [Resoto Core](./components/core.mdx) without validating the TLS connection.
 
-However, [Resoto Core](./components/core.mdx) encodes the certificate's SHA256 fingerprint into a JWT which is signed with the previously mentioned PSK. When the component downloads the thus far untrusted root certificate it compares its fingerprint with the one the core has encoded into the JWT. If the fingerprints match the CA's root certificate is stored as a valid root certificate and from then on trusted. The trust is established.
+However, [Resoto Core](./components/core.mdx) encodes the certificate's SHA256 fingerprint into a <abbr title="JSON web token">JWT</abbr> which is signed with the previously mentioned <abbr title="pre-shared key">PSK</abbr>.
+
+When a component downloads untrusted root certificate, it compares its fingerprint with the one the core has encoded into the <abbr title="JSON web token">JWT</abbr>. If the fingerprints match the CA's root certificate is stored as a valid root certificate and from then on trusted.
 
 Any HTTPS requests between components and [Resoto Core](./components/core.mdx) from this point forward are validated against the CA root certificate.
 
 ### Component Certificates
 
-Once the trust is established, each component will request a certificate from the CA.
+Once trust is established, each component requests a certificate from the CA by creating a private RSA key in memory and a Certificate Signing Request (CSR) using that key.
 
-To do so, each component creates a private RSA key in memory and a Certificate Signing Request (CSR) using that key. The CSR is then sent to [`/ca/sign`](./api/sign-a-certificate-request), which returns a signed certificate. Like any other request, this one includes a JWT signed with the PSK. This way, the CA knows it can trust the requesting component before returning a signed certificate.
+The CSR is then sent to [`/ca/sign`](./api/sign-a-certificate-request.api.mdx), which returns a signed certificate.
 
-Components will automatically renew their certificates a day before they expire.
+Like any other request, this one includes a <abbr title="JSON web token">JWT</abbr> signed with the <abbr title="pre-shared key">PSK</abbr>. This way, the CA knows it can trust the requesting component before returning a signed certificate.
 
-## Custom Certificates
+Components will automatically renew certificates one day before their expiration.
 
-[Resoto Shell (`resh`)](./components/shell.mdx) can be used to create custom certificates. This is useful for securing the connection to other components like [ArangoDB](https://arangodb.com) or [Prometheus](https://prometheus.io).
+### Custom Certificates
+
+[Resoto Shell](./components/shell.mdx) can be used to create custom certificates. This is useful for securing the connection to other components like [ArangoDB](https://arangodb.com) or [Prometheus](https://prometheus.io).
 
 To create a certificate, open [Resoto Shell](./components/shell.mdx) and execute:
 
@@ -60,32 +66,32 @@ To create a certificate, open [Resoto Shell](./components/shell.mdx) and execute
 # highlight-end
 ```
 
-See [`certificate` Command](./cli/setup-commands/certificate.mdx) for details.
+:::info
+
+See [`certificate` Command](./cli/setup-commands/certificate.mdx) for more information.
+
+:::
 
 ### Securing ArangoDB
 
-1. Create a certificate as described above and combine the two resulting files into a single PEM file:
+1. [Create a certificate](#custom-certificates) and combine the two outputted files into a single PEM file:
 
    ```bash
    $ cat arangodb.crt arangodb.key > arangodb.pem
    $ chmod 600 arangodb.pem
    ```
 
-2. Copy the certificate to a directory of choice and start ArangoDB using the following flags:
+2. Copy the PEM certificate file to your directory of choice and start ArangoDB using the following flags:
 
    ```bash
    --server.endpoint ssl://localhost:8530 --ssl.keyfile /path/to/arangodb.pem
    ```
 
-3. Adjust `resotocore` startup flags to use HTTPS and the new port:
-
-   ```bash
-   --graphdb-server https://localhost:8530
-   ```
+3. Set the value of `resotocore`'s `--graphdb-server` startup flag to `https://localhost:8530`.
 
 ## Advanced
 
-For advanced users who would like to communicate with [Resoto APIs](./api/index.mdx), here are some pointers of how to integrate with [Resoto Core](./components/core.mdx) using the same transport encryption and authentication [Resoto's components](./components/index.mdx) use when communicating with each other.
+When interfacing with Resoto's [API endpoints](./api/index.mdx), it is possible to integrate with [Resoto Core](./components/core.mdx) using the same transport encryption and authentication utilized by Resoto's [components](./components/index.mdx).
 
 ### Retrieving and Validating the CA Certificate
 
@@ -108,7 +114,7 @@ $ curl -k https://localhost:8900/ca/cert > resoto_ca.crt
 
 ### Generating a JSON Web Token
 
-The following will return http headers that contain a valid JWT for the provided PSK:
+The following will return http headers that contain a valid <abbr title="JSON web token">JWT</abbr> for the provided <abbr title="pre-shared key">PSK</abbr>:
 
 ```python
 >>> from resotolib.jwt import encode_jwt_to_headers
@@ -126,3 +132,29 @@ $ auth_header="Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsInNhbHQ
 $ resoto_command="search is(resource) | count"
 $ curl --cacert resoto_ca.crt -H "$auth_header" -H "Content-Type: text/plain" -H "Accept: application/json" -X POST -d "$resoto_command" https://localhost:8900/cli/execute
 ```
+
+## Disabling Security Features
+
+Resoto installations are secure by default, but it is possible to disable some of the security features.
+
+:::danger
+
+Disabling security features is not recommended and should only be done in a trusted environment.
+
+:::
+
+### Disabling Authentication
+
+Resoto's authentication infrastructure is based on the <abbr title="pre-shared key">PSK</abbr> provided to [Resoto Core](./components/core.mdx) on startup.
+
+If a <abbr title="pre-shared key">PSK</abbr> is not provided, authentication is not required to access Resoto's [API endpoints](./api/index.mdx).
+
+### Disabling TLS
+
+[Resoto Core](./components/core.mdx) can be started without TLS using the `--no-tls` flag.
+
+:::note
+
+This change also needs to be reflected in the startup parameters of all other components because it affects the Resoto Core URL.
+
+:::

@@ -8,6 +8,7 @@ import GoogleCloudLogo from '@site/src/img/providers/google-cloud.svg';
 import KubernetesLogo from '@site/src/img/providers/kubernetes.svg';
 import Layout from '@theme/Layout';
 import { clsx } from 'clsx';
+import lottie from 'lottie-web';
 import React, { useCallback, useEffect, useState } from 'react';
 import Lottie from 'react-lottie-player';
 import Balancer from 'react-wrap-balancer';
@@ -28,6 +29,7 @@ export default function Home(): JSX.Element {
   useEffect(() => {
     if (!heroAnimationData && !isMobile) {
       import('@site/src/lottie/hero.json').then(setHeroAnimationData);
+      lottie.setQuality('low');
     }
   }, [heroAnimationData, isMobile]);
 

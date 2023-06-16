@@ -99,9 +99,25 @@ html[data-theme='dark'] .hero {
 }
 
 .heroAnim {
+  --hero-animation-text-bg: radial-gradient(
+    circle,
+    #ffffff 25.025%,
+    transparent 25.025%
+  );
   position: absolute;
+  background-position: center;
+  background-size: contain;
   width: 100%;
   height: 100%;
+}
+
+.heroAnimPlaceholder {
+  background-image: url('./img/hero/discover.webp'),
+    var(--hero-animation-text-bg);
+}
+
+.heroAnimReducedMotion {
+  animation: hero 40s infinite steps(1, end);
 }
 
 .buttons {
@@ -400,5 +416,24 @@ html[data-theme='dark'] .content {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes hero {
+  0% {
+    background-image: url('./img/hero/discover.webp'),
+      var(--hero-animation-text-bg);
+  }
+  25% {
+    background-image: url('./img/hero/remediate.webp'),
+      var(--hero-animation-text-bg), url('./img/hero/discover.webp');
+  }
+  50% {
+    background-image: url('./img/hero/automate.webp'),
+      var(--hero-animation-text-bg), url('./img/hero/remediate.webp');
+  }
+  75% {
+    background-image: url('./img/hero/monitor.webp'),
+      var(--hero-animation-text-bg), url('./img/hero/automate.webp');
   }
 }

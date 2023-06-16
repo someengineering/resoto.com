@@ -6,6 +6,7 @@ import AwsLogo from '@site/src/img/providers/aws.svg';
 import DigitalOceanLogo from '@site/src/img/providers/digitalocean.svg';
 import GoogleCloudLogo from '@site/src/img/providers/google-cloud.svg';
 import KubernetesLogo from '@site/src/img/providers/kubernetes.svg';
+import heroAnimationPlaceholder from '@site/src/pages/img/hero/discover.webp';
 import Layout from '@theme/Layout';
 import { clsx } from 'clsx';
 import lottie from 'lottie-web';
@@ -15,37 +16,38 @@ import Balancer from 'react-wrap-balancer';
 import styles from './styles.module.css';
 
 export default function Home(): JSX.Element {
+  const [heroAnimationLoaded, setHeroAnimationLoaded] = useState(false);
   const [heroAnimationData, setHeroAnimationData] = useState<object>(null);
   const [isMobile, setIsMobile] = useState(true);
-  // const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const mobileMaxWidth = 576;
 
   const onResize = useCallback(
     () => setIsMobile(window.innerWidth <= mobileMaxWidth),
     []
   );
-  // const onReducedMotion = useCallback(() => setPrefersReducedMotion(true), []);
+  const onReducedMotion = useCallback(() => setPrefersReducedMotion(true), []);
 
   useEffect(() => {
-    if (!heroAnimationData && !isMobile) {
+    if (!heroAnimationData && !isMobile && !prefersReducedMotion) {
       import('@site/src/lottie/hero.json').then(setHeroAnimationData);
       lottie.setQuality('low');
     }
-  }, [heroAnimationData, isMobile]);
+  }, [heroAnimationData, isMobile, prefersReducedMotion]);
 
   useEffect(() => {
     setIsMobile(window.innerWidth <= mobileMaxWidth);
     window.addEventListener('resize', onResize);
 
-    // const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    // setPrefersReducedMotion(mediaQuery.matches);
-    // mediaQuery.addEventListener('change', onReducedMotion);
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setPrefersReducedMotion(mediaQuery.matches);
+    mediaQuery.addEventListener('change', onReducedMotion);
 
     return () => {
       window.removeEventListener('resize', onResize);
-      // mediaQuery.removeEventListener('change', onReducedMotion);
+      mediaQuery.removeEventListener('change', onReducedMotion);
     };
-  }, [onResize]);
+  }, [onResize, onReducedMotion]);
 
   return (
     <>
@@ -66,6 +68,12 @@ export default function Home(): JSX.Element {
             },
           })}
         </script>
+        <link
+          rel="preload"
+          href={heroAnimationPlaceholder}
+          as="image"
+          type="image/webp"
+        />
       </Head>
       <Layout>
         <header className={styles.hero}>
@@ -100,9 +108,11 @@ export default function Home(): JSX.Element {
               </div>
             </div>
             <div className={styles.heroRight}>
-              {heroAnimationData && !isMobile ? (
+              {!isMobile ? (
                 <Lottie
-                  animationData={heroAnimationData}
+                  animationData={
+                    prefersReducedMotion ? null : heroAnimationData
+                  }
                   useSubframes={false}
                   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                   /* @ts-ignore */
@@ -114,7 +124,15 @@ export default function Home(): JSX.Element {
                   }}
                   play
                   loop
-                  className={styles.heroAnim}
+                  className={clsx(
+                    styles.heroAnim,
+                    prefersReducedMotion
+                      ? styles.heroAnimReducedMotion
+                      : !heroAnimationLoaded
+                      ? styles.heroAnimPlaceholder
+                      : ''
+                  )}
+                  onLoad={() => setHeroAnimationLoaded(true)}
                   aria-hidden="true"
                 />
               ) : null}

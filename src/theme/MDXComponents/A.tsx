@@ -8,7 +8,14 @@ export default function MDXA(props: Props): JSX.Element {
     new URL(props.href); // throws for relative URLs
 
     return (
-      <Link {...props}>
+      <Link
+        {...props}
+        rel={
+          props.href.includes('localhost')
+            ? 'noopener noreferrer nofollow'
+            : 'noopener noreferrer'
+        }
+      >
         {props.children}
         {React.isValidElement(props.children) ? null : <IconExternalLink />}
       </Link>

@@ -1,0 +1,21 @@
+.title {
+  margin-bottom: var(--ifm-heading-margin-bottom);
+  text-align: center;
+}
+
+.description {
+  justify-content: center;
+  text-align: center;
+}
+
+.sheep {
+  margin: 72px auto 0;
+  background-image: url('./img/sheep-insights.webp');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 80vw;
+  max-width: 100%;
+  height: 40vw;
+  max-height: 442px;
+}

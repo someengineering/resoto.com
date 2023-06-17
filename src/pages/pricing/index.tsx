@@ -136,6 +136,7 @@ export default function Pricing(): JSX.Element {
                   </div>
                 </div>
               </div>
+              <div className={styles.sheep} aria-hidden="true" />
             </div>
           </section>
         </main>

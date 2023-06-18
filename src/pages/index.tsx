@@ -21,6 +21,7 @@ export default function Home(): JSX.Element {
   const [heroAnimationData, setHeroAnimationData] = useState<object>(null);
   const [isMobile, setIsMobile] = useState(true);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [animationDisabled, setAnimationDisabled] = useState(false);
   const mobileMaxWidth = 576;
 
   const onResize = useCallback(
@@ -29,12 +30,25 @@ export default function Home(): JSX.Element {
   );
   const onReducedMotion = useCallback(() => setPrefersReducedMotion(true), []);
 
+  useEffect(
+    () =>
+      setAnimationDisabled(
+        window.localStorage.getItem('heroAnimation') === 'false'
+      ),
+    []
+  );
+
   useEffect(() => {
-    if (!heroAnimationData && !isMobile && !prefersReducedMotion) {
+    if (
+      !heroAnimationData &&
+      !animationDisabled &&
+      !isMobile &&
+      !prefersReducedMotion
+    ) {
       import('@site/src/lottie/hero.json').then(setHeroAnimationData);
       lottie.setQuality('low');
     }
-  }, [heroAnimationData, isMobile, prefersReducedMotion]);
+  }, [heroAnimationData, animationDisabled, isMobile, prefersReducedMotion]);
 
   useEffect(() => {
     setIsMobile(window.innerWidth <= mobileMaxWidth);
@@ -112,7 +126,9 @@ export default function Home(): JSX.Element {
               {!isMobile ? (
                 <Lottie
                   animationData={
-                    prefersReducedMotion ? null : heroAnimationData
+                    animationDisabled || prefersReducedMotion
+                      ? null
+                      : heroAnimationData
                   }
                   useSubframes={false}
                   // eslint-disable-next-line @typescript-eslint/ban-ts-comment

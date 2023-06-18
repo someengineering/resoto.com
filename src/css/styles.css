@@ -90,7 +90,7 @@ html[data-theme='dark'] {
   --ifm-color-content: #ffffff;
   --ifm-color-content-secondary: #d9b8ff;
   --ifm-link-color: #c38fff;
-  --ifm-color-primary-contrast-background: #0f061c;
+  --ifm-color-primary-contrast-background: #0e0434;
   --ifm-color-primary-contrast-foreground: var(--ifm-color-primary-lightest);
   --ifm-highlight-color: #ffe797;
   --ifm-highlight-color-secondary: #ffaf37;

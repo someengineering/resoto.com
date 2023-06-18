@@ -144,6 +144,7 @@ const config = {
         theme: {
           customCss: [
             require.resolve('./src/css/styles.css'),
+            require.resolve('./src/css/module-icons.css'),
             require.resolve('./src/css/announcement-bar.css'),
             require.resolve('./src/css/navbar.css'),
             require.resolve('./src/css/footer.css'),

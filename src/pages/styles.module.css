@@ -221,6 +221,14 @@ html[data-theme='dark'] .docsButton::before {
   background-image: url('./img/icons/docs-light.svg');
 }
 
+.moreButton::before {
+  background-image: url('./img/icons/arrow-dark.svg');
+}
+
+html[data-theme='dark'] .moreButton::before {
+  background-image: url('./img/icons/arrow-light.svg');
+}
+
 .contentBottom {
   background-image: url('./img/bg-light.webp');
   background-position: top;

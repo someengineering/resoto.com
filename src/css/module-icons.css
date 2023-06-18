@@ -1,0 +1,51 @@
+.chronolog::before {
+  --icon: url('../img/icons/chronolog.svg');
+}
+
+.cloudscope::before {
+  --icon: url('../img/icons/cloudscope.svg');
+}
+
+.datalink::before {
+  --icon: url('../img/icons/datalink.svg');
+}
+
+.defrag::before {
+  --icon: url('../img/icons/defrag.svg');
+}
+
+.infrasdk::before {
+  --icon: url('../img/icons/infrasdk.svg');
+}
+
+.inventory::before {
+  --icon: url('../img/icons/inventory.svg');
+}
+
+.metricmate::before {
+  --icon: url('../img/icons/metricmate.svg');
+}
+
+.notify::before {
+  --icon: url('../img/icons/notify.svg');
+}
+
+.resolve::before {
+  --icon: url('../img/icons/resolve.svg');
+}
+
+.rewind::before {
+  --icon: url('../img/icons/rewind.svg');
+}
+
+.sentinel::before {
+  --icon: url('../img/icons/sentinel.svg');
+}
+
+.spentwise::before {
+  --icon: url('../img/icons/spentwise.svg');
+}
+
+.tagguard::before {
+  --icon: url('../img/icons/tagguard.svg');
+}

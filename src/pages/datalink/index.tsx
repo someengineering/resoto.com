@@ -17,7 +17,7 @@ export default function DatalinkPage(): JSX.Element {
           <ModulePageHeader
             moduleName="DataLink"
             tagline="Infrastructure Data Sync"
-            description="Export cloud asset inventory data to a data lakes and warehouses"
+            description="Export cloud asset inventory data to data lakes and warehouses"
             image={headerImage}
           />
           <ModulePageSection>

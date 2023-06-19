@@ -24,185 +24,282 @@ export default function HomepageModules(): JSX.Element {
 
   const modules: {
     name: string;
+    tagline: string;
     content: JSX.Element;
     image: string;
   }[] = [
     {
       name: 'CloudScope',
+      tagline: 'Effortless Resource Discovery',
       image: cloudscopeImage,
       content: (
         <>
-          CloudScope, Resoto&rsquo;s search module, simplifies cloud resource
-          management by providing advanced search capabilities to locate
-          resources by their metadata, or even fulltext search across your
-          entire infrastructure. With the ability to search across clouds,
-          accounts, and regions, CloudScope streamlines resource tracking and
-          management, removing the need to navigate multiple cloud provider web
-          consoles or log in and out of multiple accounts.
+          <p>
+            CloudScope simplifies cloud resource management by providing
+            advanced{' '}
+            <Link to="/docs/reference/search">search capabilities</Link> to{' '}
+            <Link to="/docs/how-to-guides/search/find-a-resource">
+              locate resources
+            </Link>
+            .
+          </p>
+          <p>
+            CloudScope streamlines resource tracking and management by removing
+            the need to navigate cloud provider web consoles where resources may
+            span multiple accounts.
+          </p>
         </>
       ),
     },
     {
       name: 'TagGuard',
+      tagline: 'Automated Tag Enforcement',
       image: tagguardImage,
       content: (
         <>
-          Resoto TagGuard automates tagging policy enforcement for cloud
-          resources, ensuring consistent and accurate tagging based on your
-          organization&rsquo;s specific requirements. By reducing human error
-          and maintaining compliance with internal and external regulations,
-          TagGuard simplifies tracking and organizing resources.
+          <p>
+            TagGuard automates{' '}
+            <Link to="/blog/effective-cloud-management-tagging-policies">
+              tagging policy
+            </Link>{' '}
+            enforcement to ensure consistent and accurate tagging based on your
+            organization&rsquo;s specific requirements.
+          </p>
         </>
       ),
     },
     {
       name: 'Sentinel',
+      tagline: 'Continuous Security Monitoring',
       image: sentinelImage,
       content: (
         <>
-          Resoto Sentinel provides detailed reports and alerts for any security
-          issues that are detected, enabling you to quickly address potential
-          threats to your cloud infrastructure. With continuous infrastructure
-          security monitoring, you can ensure that your cloud infrastructure
-          adheres to security standards and best practices, providing peace of
-          mind and reducing the risk of security breaches.
+          <p>
+            Sentinel continously monitors your cloud resources for security
+            issues, so you can quickly address potential threats to your cloud
+            infrastructure.
+          </p>
+          <p>
+            Sentinel ensures that your cloud infrastructure adheres to security
+            standards and best practices.
+          </p>
         </>
       ),
     },
     {
       name: 'MetricMate',
+      tagline: 'Comprehensive Infrastructure Monitoring',
       image: metricmateImage,
       content: (
         <>
-          Resoto MetricMate offers comprehensive infrastructure metrics and cost
-          data for cloud resources, enabling easy monitoring and optimization.
-          It exports data to standard systems and provides APIs for custom
-          low-code dashboards, assisting with capacity planning and cost
-          management.
+          <p>
+            MetricMate tracks infrastructure{' '}
+            <Link to="/blog/actionable-cloud-infrastructure-metrics">
+              metrics
+            </Link>{' '}
+            and cloud resource cost data.
+          </p>
+          <p>
+            MetricMate exports data to popular database systems and offers APIs
+            for custom low-code dashboards. management.
+          </p>
         </>
       ),
     },
     {
       name: 'Defrag',
+      tagline: 'Automated Resource Cleanup',
       image: defragImage,
       content: (
         <>
-          Resoto Defrag automates cloud resource cleanup and expiration tagging,
-          helping organizations save costs and maintain tidy cloud
-          infrastructures. Customizable policies and automated deletion of
-          resources, such as those resulting from broken CI runs or failed IaC
-          deployments, reduce the risk of overprovisioning and quota overages.
+          <p>
+            Defrag automates{' '}
+            <Link to="/docs/concepts/resource-management/cleanup">
+              cloud resource cleanup
+            </Link>{' '}
+            to help organizations reduce cloud costs and maintain tidy cloud
+            infrastructures.
+          </p>
+          <p>
+            Customizable cleanup policies delete resources based on your
+            organization&rsquo;s requirements and reduce the risk of
+            overprovisioning and quota overages.
+          </p>
         </>
       ),
     },
     {
       name: 'SpentWise',
+      tagline: 'Cloud Spending Insights',
       image: spentwiseImage,
       content: (
         <>
-          SpentWise, Resoto&rsquo;s cost tracking module, provides near
-          real-time visibility into your cloud compute and storage spending,
-          allowing you to identify spikes in usage and track trends over time.
-          With detailed metrics and custom alerts, you can make informed
-          decisions about your cloud resources and take action immediately when
-          unexpected costs arise. By monitoring your cloud costs with SpentWise,
-          you can stay on top of your spending and avoid unpleasant surprises at
-          the end of the month.
+          <p>
+            SpentWise offers near-real-time visibility visibility into cloud
+            costs and usage, so you can identify spikes in usage and track
+            trends over time.
+          </p>
+          <p>
+            With detailed{' '}
+            <Link to="/blog/actionable-cloud-infrastructure-metrics">
+              metrics
+            </Link>{' '}
+            and custom <Link to="/docs/how-to-guides/alerting">alerts</Link>,
+            make informed decisions about your cloud resources and take
+            immediate action when unexpected costs arise.
+          </p>
         </>
       ),
     },
     {
       name: 'ChronoLog',
+      tagline: 'Your Cloud Infrastructure Changelog',
       image: chronologImage,
       content: (
         <>
-          Resoto ChronoLog is a module that provides a comprehensive changelog
-          for your individual cloud resources. With ChronoLog, you can see the
-          entire lifecycle of a cloud resource, including all changes made to it
-          over time. This can be invaluable for troubleshooting issues,
-          understanding how your infrastructure has evolved, and identifying
-          potential security risks.
+          <p>
+            ChronoLog provides a comprehensive changelog of your cloud
+            resources.
+          </p>
+          <p>
+            Review the entire lifecycle of any cloud resource, from its creation
+            time to when it is cleaned up.
+          </p>
         </>
       ),
     },
     {
       name: 'DataLink',
+      tagline: 'Infrastructure Data Sync',
       image: datalinkImage,
       content: (
         <>
-          DataLink simplifies exporting infrastructure data to existing
-          databases and data warehouses, enabling seamless integration with
-          tools like Tableau, Grafana, or Metabase. By connecting Resoto data
-          with current data infrastructure, organizations can unlock insights
-          and make informed decisions about their cloud infrastructure.
+          <p>
+            DataLink exports cloud asset inventory data to your favorite
+            database or cloud data warehouse.
+          </p>
+          <p>
+            Integrate with tools like{' '}
+            <Link href="https://tableau.com">Tableau</Link>,{' '}
+            <Link href="https://grafana.com">Grafana</Link>, or{' '}
+            <Link href="https://metabase.com">Metabase</Link> to unlock insights
+            and make informed decisions about your cloud infrastructure.
+          </p>
         </>
       ),
     },
     {
       name: 'Inventory',
+      tagline: 'Cloud Asset Inventory Made Easy',
       image: inventoryImage,
       content: (
         <>
-          Resoto Inventory addresses the issue of outdated inventory
-          documentation by maintaining an up-to-date cloud asset inventory,
-          automatically adding resources, and offering search/filter
-          capabilities. Data export in JSON, CSV, and SQL formats enables easy
-          sharing.
+          <p>
+            Inventory maintains an{' '}
+            <Link to="/docs/concepts/asset-inventory-graph">
+              asset inventory
+            </Link>{' '}
+            of your cloud infrastructure.
+          </p>
+          <p>
+            Inventory makes it easy to{' '}
+            <Link to="/docs/how-to-guides/search/find-a-resource">
+              find specific resources or groups of resources
+            </Link>
+            , even in large and complex cloud environments.
+          </p>
+          <p>
+            You can also export inventory data to a variety of formats,
+            including <abbr title="JavaScript Object Notation">JSON</abbr>,{' '}
+            <abbr title="comma-separated values">CSV</abbr>, and{' '}
+            <abbr title="Structured Query Language">SQL</abbr>.
+          </p>
         </>
       ),
     },
     {
       name: 'Notify',
+      tagline: 'Cloud Infrastructure Alerts',
       image: notifyImage,
       content: (
         <>
-          Notify is Resoto&rsquo;s alerting module that enables automated alerts
-          and incident responses for any undesired change in an
-          organization&rsquo;s cloud infrastructure. It integrates with tools
-          like Alertmanager or Pagerduty, and can also create Jira tickets or
-          trigger custom HTTP endpoints, allowing teams to stay up-to-date and
-          respond quickly to incidents. The problem it solves is unexpected
-          issues in cloud infrastructure, while the solution is to have Resoto
-          react and alert on any change in infrastructure.
+          <p>
+            Notify automates alerts and incident responses for changes to your
+            cloud infrastructure.
+          </p>
+          <p>
+            Notify integrates with tools like{' '}
+            <Link to="/docs/how-to-guides/alerting/send-prometheus-alertmanager-alerts">
+              Alertmanager
+            </Link>{' '}
+            and{' '}
+            <Link to="/docs/how-to-guides/alerting/create-pagerduty-alerts">
+              PagerDuty
+            </Link>
+            , and can{' '}
+            <Link to="/docs/how-to-guides/alerting/create-jira-issues">
+              create Jira tickets
+            </Link>{' '}
+            or send data to custom HTTP endpoints, so your team can respond
+            quickly to any incident.
+          </p>
         </>
       ),
     },
     {
       name: 'Rewind',
+      tagline: 'Cloud Infrasturcture Snapshots',
       image: rewindImage,
       content: (
         <>
-          Resoto Rewind enables cloud infrastructure snapshots and comparison,
-          allowing users to track changes over time and evaluate past states.
-          This module aids in understanding infrastructure evolution,
-          identifying potential issues, and making informed decisions about
-          capacity planning and policy adherence.
+          <p>
+            Rewind takes snapshots of your cloud infrastructure, so you can
+            track changes over time.
+          </p>
+          <p>
+            Rewind aids in understanding infrastructure evolution, identifying
+            potential issues, and making informed decisions about capacity
+            planning and policy adherence.
+          </p>
         </>
       ),
     },
     {
       name: 'Resolve',
+      tagline: 'Automated Infrastructure Remediation',
       image: resolveImage,
       content: (
         <>
-          Resoto Resolve automates remediation of cloud infrastructure issues by
-          defining custom policies that trigger actions based on organizational
-          requirements. This module streamlines issue management, improves
-          resource efficiency, and reduces costs by incorporating tagging,
-          cleanup, and cloud API actions.
+          <p>
+            Resolve automatically addresses issues in your cloud infrastructure
+            based on custom policies that trigger actions based on
+            organizational requirements.
+          </p>
+          <p>
+            Improve resource efficiency and reduce costs by incorporating
+            tagging, cleanup, and cloud API actions.
+          </p>
         </>
       ),
     },
     {
       name: 'InfraSDK',
+      tagline: 'Custom Cloud Management Solutions',
       image: infrasdkImage,
       content: (
         <>
-          Resoto InfraSDK, built on Python, allows for customizing and extending
-          Resoto with custom plugins, APIs, and integrations. It supports
-          popular data manipulation libraries like Pandas and data frameworks
-          like Streamlit, enabling the creation of tailored dashboards, reports,
-          and visualizations for unique organizational needs.
+          <p>
+            InfraSDK empowers you to extend or customize Resoto&rsquo;s
+            functionality.
+          </p>
+          <p>
+            InfraSDK is built with <Link href="https://python.org">Python</Link>{' '}
+            and supports popular data manipulation libraries like{' '}
+            <Link href="https://pandas.pydata.org">Pandas DataFrames</Link> and
+            frameworks like <Link href="https://streamlit.io">Streamlit</Link>,
+            empowering you to create tailored dashboards, reports, and
+            visualizations.
+          </p>
         </>
       ),
     },
@@ -232,7 +329,11 @@ export default function HomepageModules(): JSX.Element {
             >
               <div>
                 <h2>
-                  Resoto <strong>{module.name}</strong>
+                  <span>
+                    Resoto <strong>{module.name}</strong>:
+                  </span>
+                  <br />
+                  {module.tagline}
                 </h2>
                 {module.content}
                 <div>

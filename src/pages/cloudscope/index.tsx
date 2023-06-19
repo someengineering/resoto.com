@@ -59,7 +59,7 @@ export default function CloudscopePage(): JSX.Element {
               <Balancer>
                 With CloudScope, track of all your resources in one
                 place&mdash;no need to tediously navigate cloud provider web
-                consoles or log in and out of multiple accounts.
+                consoles where resources may span multiple accounts.
               </Balancer>
             </p>
           </ModulePageSection>

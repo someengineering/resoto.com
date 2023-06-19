@@ -7,7 +7,7 @@
 
 .api-method .menu__link::before,
 .api-method h2::before {
-  flex-shrink: 0;
+  flex: none;
   margin-right: calc(var(--ifm-spacing-horizontal) / 2);
   border: 1px solid;
   border-color: transparent;

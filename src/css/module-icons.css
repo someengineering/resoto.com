@@ -1,51 +1,51 @@
 .chronolog::before {
-  --icon: url('../img/icons/chronolog.svg');
+  --icon: url('../img/icons/modules/chronolog.svg');
 }
 
 .cloudscope::before {
-  --icon: url('../img/icons/cloudscope.svg');
+  --icon: url('../img/icons/modules/cloudscope.svg');
 }
 
 .datalink::before {
-  --icon: url('../img/icons/datalink.svg');
+  --icon: url('../img/icons/modules/datalink.svg');
 }
 
 .defrag::before {
-  --icon: url('../img/icons/defrag.svg');
+  --icon: url('../img/icons/modules/defrag.svg');
 }
 
 .infrasdk::before {
-  --icon: url('../img/icons/infrasdk.svg');
+  --icon: url('../img/icons/modules/infrasdk.svg');
 }
 
 .inventory::before {
-  --icon: url('../img/icons/inventory.svg');
+  --icon: url('../img/icons/modules/inventory.svg');
 }
 
 .metricmate::before {
-  --icon: url('../img/icons/metricmate.svg');
+  --icon: url('../img/icons/modules/metricmate.svg');
 }
 
 .notify::before {
-  --icon: url('../img/icons/notify.svg');
+  --icon: url('../img/icons/modules/notify.svg');
 }
 
 .resolve::before {
-  --icon: url('../img/icons/resolve.svg');
+  --icon: url('../img/icons/modules/resolve.svg');
 }
 
 .rewind::before {
-  --icon: url('../img/icons/rewind.svg');
+  --icon: url('../img/icons/modules/rewind.svg');
 }
 
 .sentinel::before {
-  --icon: url('../img/icons/sentinel.svg');
+  --icon: url('../img/icons/modules/sentinel.svg');
 }
 
 .spentwise::before {
-  --icon: url('../img/icons/spentwise.svg');
+  --icon: url('../img/icons/modules/spentwise.svg');
 }
 
 .tagguard::before {
-  --icon: url('../img/icons/tagguard.svg');
+  --icon: url('../img/icons/modules/tagguard.svg');
 }

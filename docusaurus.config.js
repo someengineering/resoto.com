@@ -14,8 +14,7 @@ const versions = require('./versions.json');
 
 const isDev = process.env.NODE_ENV === 'development';
 const isBuildFast = isDev || !!process.env.BUILD_FAST;
-const isProd =
-  !isDev && !!process.env.NETLIFY && process.env.CONTEXT !== 'deploy-preview';
+const isProd = !isDev && !!process.env.NETLIFY && process.env.CONTEXT !== 'deploy-preview';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -43,19 +42,10 @@ const config = {
       fetchpriority: 'low',
       onload: "this.onload=null;this.rel='stylesheet'",
       crossorigin: true,
-      integrity:
-        'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
+      integrity: 'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
     },
   ],
-  scripts: isProd
-    ? [
-        {
-          src: 'https://resoto.com/js/script.js',
-          defer: true,
-          'data-domain': 'resoto.com',
-        },
-      ]
-    : [],
+  scripts: isProd ? [{ src: 'https://resoto.com/js/script.js', defer: true, 'data-domain': 'resoto.com' }] : [],
   markdown: { mermaid: true },
   themes: ['@docusaurus/theme-mermaid', 'docusaurus-theme-openapi-docs'],
   presets: [
@@ -99,25 +89,16 @@ const config = {
           docItemComponent: '@theme/ApiItem',
           lastVersion: versions[0],
           versions: {
-            current: {
-              label: 'edge 🚧',
-              path: '/edge',
-              banner: 'unreleased',
-              badge: false,
-            },
+            current: { label: 'edge 🚧', path: '/edge', banner: 'unreleased', badge: false },
             ...versions
               .map((version) =>
                 !isBuildFast || version === versions[0]
                   ? {
                       [version]: {
-                        label: latestRelease[version].startsWith(
-                          version.substring(0, version.indexOf('X'))
-                        )
+                        label: latestRelease[version].startsWith(version.substring(0, version.indexOf('X')))
                           ? latestRelease[version]
                           : version,
-                        ...(version === versions[0]
-                          ? null
-                          : { path: `/${version.toLowerCase()}` }),
+                        ...(version === versions[0] ? null : { path: `/${version.toLowerCase()}` }),
                       },
                     }
                   : {}
@@ -135,10 +116,7 @@ const config = {
           path: 'releases',
           routeBasePath: 'releases',
           showReadingTime: false,
-          feedOptions: {
-            type: 'all',
-            copyright: `Copyright © ${new Date().getFullYear()} Some Engineering Inc.`,
-          },
+          feedOptions: { type: 'all', copyright: `Copyright © ${new Date().getFullYear()} Some Engineering Inc.` },
           remarkPlugins: [a11yEmoji],
         },
         theme: {
@@ -164,13 +142,7 @@ const config = {
         name: 'custom-webpack-config',
         configureWebpack: () => ({
           module: {
-            rules: [
-              {
-                test: /\.(cast)$/,
-                loader: 'file-loader',
-                options: { name: 'assets/[name]-[hash].[ext]' },
-              },
-            ],
+            rules: [{ test: /\.(cast)$/, loader: 'file-loader', options: { name: 'assets/[name]-[hash].[ext]' } }],
           },
         }),
       };
@@ -205,10 +177,7 @@ const config = {
         path: 'blog',
         routeBasePath: 'blog',
         showReadingTime: true,
-        feedOptions: {
-          type: 'all',
-          copyright: `Copyright © ${new Date().getFullYear()} Some Engineering Inc.`,
-        },
+        feedOptions: { type: 'all', copyright: `Copyright © ${new Date().getFullYear()} Some Engineering Inc.` },
         remarkPlugins: [a11yEmoji],
       }),
     ],
@@ -225,10 +194,7 @@ const config = {
         path: 'podcast',
         routeBasePath: 'podcast',
         showReadingTime: false,
-        feedOptions: {
-          type: 'all',
-          copyright: `Copyright © ${new Date().getFullYear()} Some Engineering Inc.`,
-        },
+        feedOptions: { type: 'all', copyright: `Copyright © ${new Date().getFullYear()} Some Engineering Inc.` },
         remarkPlugins: [a11yEmoji, math],
         rehypePlugins: [katex],
       }),
@@ -243,20 +209,14 @@ const config = {
           resotocoreEdge: {
             specPath: 'openapi/resotocore-edge.yml',
             outputDir: `docs/reference/api`,
-            sidebarOptions: {
-              groupPathsBy: 'tag',
-              categoryLinkSource: 'tag',
-            },
+            sidebarOptions: { groupPathsBy: 'tag', categoryLinkSource: 'tag' },
           },
           ...versions
             .map((version) => ({
               [`resotocore${version.substring(0, version.indexOf('.'))}`]: {
                 specPath: `openapi/resotocore-${version}.yml`,
                 outputDir: `versioned_docs/version-${version}/reference/api`,
-                sidebarOptions: {
-                  groupPathsBy: 'tag',
-                  categoryLinkSource: 'tag',
-                },
+                sidebarOptions: { groupPathsBy: 'tag', categoryLinkSource: 'tag' },
               },
             }))
             .reduce((acc, cur) => ({ ...acc, ...cur }), {}),
@@ -270,36 +230,11 @@ const config = {
         data: {
           ...['edge', ...versions]
             .map((version) => ({
-              [`aws-${version}-ResotoOrgList`]: resolve(
-                __dirname,
-                'iam/aws',
-                version,
-                'ResotoOrgList.json'
-              ),
-              [`aws-${version}-ResotoCollect`]: resolve(
-                __dirname,
-                'iam/aws',
-                version,
-                'ResotoCollect.json'
-              ),
-              [`aws-${version}-ResotoMutate`]: resolve(
-                __dirname,
-                'iam/aws',
-                version,
-                'ResotoMutate.json'
-              ),
-              [`gcp-${version}-resoto_access`]: resolve(
-                __dirname,
-                'iam/gcp',
-                version,
-                'resoto_access.json'
-              ),
-              [`gcp-${version}-resoto_mutate`]: resolve(
-                __dirname,
-                'iam/gcp',
-                version,
-                'resoto_mutate.json'
-              ),
+              [`aws-${version}-ResotoOrgList`]: resolve(__dirname, 'iam/aws', version, 'ResotoOrgList.json'),
+              [`aws-${version}-ResotoCollect`]: resolve(__dirname, 'iam/aws', version, 'ResotoCollect.json'),
+              [`aws-${version}-ResotoMutate`]: resolve(__dirname, 'iam/aws', version, 'ResotoMutate.json'),
+              [`gcp-${version}-resoto_access`]: resolve(__dirname, 'iam/gcp', version, 'resoto_access.json'),
+              [`gcp-${version}-resoto_mutate`]: resolve(__dirname, 'iam/gcp', version, 'resoto_mutate.json'),
             }))
             .reduce((acc, cur) => ({ ...acc, ...cur }), {}),
         },
@@ -317,21 +252,9 @@ const config = {
           { tagName: 'link', rel: 'icon', href: 'img/icon-192.maskable.png' },
           { tagName: 'link', rel: 'icon', href: 'img/icon-512.maskable.png' },
           { tagName: 'meta', name: 'theme-color', content: '#af62f5' },
-          {
-            tagName: 'meta',
-            name: 'apple-mobile-web-app-capable',
-            content: 'yes',
-          },
-          {
-            tagName: 'meta',
-            name: 'apple-mobile-web-app-status-bar-style',
-            content: '#000d19',
-          },
-          {
-            tagName: 'link',
-            rel: 'apple-touch-icon',
-            href: 'img/apple-icon-180.png',
-          },
+          { tagName: 'meta', name: 'apple-mobile-web-app-capable', content: 'yes' },
+          { tagName: 'meta', name: 'apple-mobile-web-app-status-bar-style', content: '#000d19' },
+          { tagName: 'link', rel: 'apple-touch-icon', href: 'img/apple-icon-180.png' },
         ],
       }),
     ],
@@ -394,12 +317,12 @@ const config = {
             position: 'right',
             type: 'dropdown',
             items: [
-              { label: 'Overview', to: '/docs', activeBaseRegex: '/docs(/edge)?$' },
-              { label: 'Getting Started', to: '/docs/getting-started' },
-              { label: 'How-To Guides', to: '/docs/how-to-guides' },
-              { label: 'Concepts', to: '/docs/concepts' },
-              { label: 'Reference', to: '/docs/reference' },
-              { label: 'Development', to: '/docs/development' },
+              { label: 'Overview', to: '/docs', activeBaseRegex: '/docs(/edge)?$', className: 'docs overview' },
+              { label: 'Getting Started', to: '/docs/getting-started', className: 'docs getting-started' },
+              { label: 'How-To Guides', to: '/docs/how-to-guides', className: 'docs how-to-guides' },
+              { label: 'Concepts', to: '/docs/concepts', className: 'docs concepts' },
+              { label: 'Reference', to: '/docs/reference', className: 'docs reference' },
+              { label: 'Development', to: '/docs/development', className: 'docs development' },
             ],
           },
           { label: 'Pricing', to: '/pricing', position: 'right' },

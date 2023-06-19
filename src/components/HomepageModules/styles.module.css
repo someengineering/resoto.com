@@ -42,8 +42,14 @@
 }
 
 .tab::before {
-  -webkit-mask-image: var(--icon);
   mask-image: var(--icon);
+  -webkit-mask-image: var(--icon);
+  mask-position: center;
+  -webkit-mask-position: center;
+  mask-size: contain;
+  -webkit-mask-size: contain;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
   background-color: var(--ifm-color-content);
   width: 1.75em;
   height: 1.75em;

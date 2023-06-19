@@ -33,14 +33,13 @@
 
 .dropdown--right .dropdown__menu {
   left: 0px;
-  min-width: 12rem;
+  min-width: 10.5rem;
 }
 
 .dropdown__link {
   display: flex;
   align-items: center;
   border-radius: 1rem;
-  padding: 0.25rem 0.75rem;
 }
 
 .dropdown__link:not(.dropdown__link--active):hover {

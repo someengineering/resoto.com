@@ -8,6 +8,7 @@ import {
   NetlifyFormProvider,
   useNetlifyForm,
 } from 'react-netlify-forms';
+import Balancer from 'react-wrap-balancer';
 import * as Yup from 'yup';
 import styles from './styles.module.css';
 
@@ -53,6 +54,11 @@ export default function ContactForm(): JSX.Element {
           <h2 className={styles.heading} id="contact-us">
             Contact Us
           </h2>
+          <p className={styles.paragraph}>
+            <Balancer>
+              Have feedback or need help? We&rsquo;d love to hear from you!
+            </Balancer>
+          </p>
           <NetlifyFormProvider {...netlify}>
             <NetlifyFormComponent
               onSubmit={handleSubmit}

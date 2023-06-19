@@ -1,0 +1,25 @@
+---
+sidebar_label: snapshot
+pagination_label: graph snapshot
+---
+
+# `graph snapshot` Command
+
+The `graph snapshot` command creates an infrastructure graph snapshot.
+
+It is an alias for the `graph copy` command, adding the `snapshot-` prefix and a label and timestamp suffix.
+
+## Usage
+
+```bash
+graph snapshot [from_graph_name] <snapshot_label>
+```
+
+## Example
+
+```bash
+> graph snapshot resoto daily
+# highlight-start
+Graph resoto snapshoted to snapshot-resoto-daily-20230619T121940Z.
+# highlight-end
+```

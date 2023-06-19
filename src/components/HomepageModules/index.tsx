@@ -225,6 +225,7 @@ export default function HomepageModules(): JSX.Element {
           </TabList>
           {modules.map((module) => (
             <TabPanel
+              forceRender
               className={styles.panel}
               selectedClassName={styles.selectedPanel}
               key={`tab-panel-${module.name.toLowerCase()}`}

@@ -77,8 +77,6 @@
 .selectedPanel {
   display: flex;
   align-items: flex-start;
-  background-size: contain;
-  background-repeat: no-repeat;
   padding: 72px;
   font-size: 1.25em;
   line-height: 125%;

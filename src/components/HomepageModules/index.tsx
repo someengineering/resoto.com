@@ -346,7 +346,7 @@ export default function HomepageModules(): JSX.Element {
                       baseStyles.moreButton
                     )}
                   >
-                    Learn More
+                    Discover {module.name}
                   </Link>
                 </div>
               </div>

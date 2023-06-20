@@ -86,8 +86,7 @@ html[data-theme='dark'] .hero {
 
 .heroRight {
   position: relative;
-  flex-grow: 1;
-  flex-shrink: 0;
+  flex: 1 0 auto;
   margin: -216px 0 -216px 24px;
   min-width: 570px;
 }
@@ -221,6 +220,14 @@ html[data-theme='dark'] .docsButton::before {
   background-image: url('./img/icons/docs-light.svg');
 }
 
+.moreButton::before {
+  background-image: url('./img/icons/arrow-dark.svg');
+}
+
+html[data-theme='dark'] .moreButton::before {
+  background-image: url('./img/icons/arrow-light.svg');
+}
+
 .contentBottom {
   background-image: url('./img/bg-light.webp');
   background-position: top;
@@ -275,7 +282,7 @@ html[data-theme='dark'] .content {
 
 .logos > a {
   display: flex;
-  flex-shrink: 1;
+  flex: none;
   opacity: 0.5;
   transition: opacity var(--ifm-transition-fast) ease;
   margin: 0 2rem 1.5rem;

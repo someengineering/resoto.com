@@ -1,6 +1,7 @@
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
 import ContactForm from '@site/src/components/ContactForm';
+import HomepageModules from '@site/src/components/HomepageModules';
 import InstallButton from '@site/src/components/InstallButton';
 import AwsLogo from '@site/src/img/providers/aws.svg';
 import DigitalOceanLogo from '@site/src/img/providers/digitalocean.svg';
@@ -20,6 +21,7 @@ export default function Home(): JSX.Element {
   const [heroAnimationData, setHeroAnimationData] = useState<object>(null);
   const [isMobile, setIsMobile] = useState(true);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [animationDisabled, setAnimationDisabled] = useState(false);
   const mobileMaxWidth = 576;
 
   const onResize = useCallback(
@@ -28,12 +30,25 @@ export default function Home(): JSX.Element {
   );
   const onReducedMotion = useCallback(() => setPrefersReducedMotion(true), []);
 
+  useEffect(
+    () =>
+      setAnimationDisabled(
+        window.localStorage.getItem('heroAnimation') === 'false'
+      ),
+    []
+  );
+
   useEffect(() => {
-    if (!heroAnimationData && !isMobile && !prefersReducedMotion) {
+    if (
+      !heroAnimationData &&
+      !animationDisabled &&
+      !isMobile &&
+      !prefersReducedMotion
+    ) {
       import('@site/src/lottie/hero.json').then(setHeroAnimationData);
       lottie.setQuality('low');
     }
-  }, [heroAnimationData, isMobile, prefersReducedMotion]);
+  }, [heroAnimationData, animationDisabled, isMobile, prefersReducedMotion]);
 
   useEffect(() => {
     setIsMobile(window.innerWidth <= mobileMaxWidth);
@@ -111,7 +126,9 @@ export default function Home(): JSX.Element {
               {!isMobile ? (
                 <Lottie
                   animationData={
-                    prefersReducedMotion ? null : heroAnimationData
+                    animationDisabled || prefersReducedMotion
+                      ? null
+                      : heroAnimationData
                   }
                   useSubframes={false}
                   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -164,6 +181,7 @@ export default function Home(): JSX.Element {
               </div>
             </div>
           </section>
+          <HomepageModules />
           <ContactForm />
         </main>
       </Layout>

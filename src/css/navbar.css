@@ -10,9 +10,12 @@
 
 .navbar__title {
   --logo-text: url('/img/navbar-logotext.svg');
-  -webkit-mask-image: var(--logo-text);
   mask-image: var(--logo-text);
+  -webkit-mask-image: var(--logo-text);
+  mask-position: center;
+  -webkit-mask-position: center;
   mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
   background-color: var(--ifm-navbar-link-hover-color);
   width: 5.625rem;
   height: 2.25rem;
@@ -30,6 +33,7 @@
 
 .dropdown--right .dropdown__menu {
   left: 0px;
+  min-width: 10.5rem;
 }
 
 .dropdown__link {
@@ -66,9 +70,17 @@
 }
 
 .social::before,
-.module::before {
-  -webkit-mask-image: var(--icon);
+.module::before,
+.docs::before {
+  flex: none;
   mask-image: var(--icon);
+  -webkit-mask-image: var(--icon);
+  mask-position: center;
+  -webkit-mask-position: center;
+  mask-size: contain;
+  -webkit-mask-size: contain;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
   background-color: var(--ifm-navbar-link-color);
   width: 2em;
   height: 2em;
@@ -82,21 +94,28 @@
 }
 
 .social::before {
-  margin-left: -0.75em;
+  margin-left: calc(var(--ifm-navbar-item-padding-horizontal) * -1);
 }
 
-.module::before {
-  margin-right: 0.75em;
+.module::before,
+.docs::before {
+  margin-right: 0.5em;
 }
 
-.menu__list .social::before,
-.menu__list .social:hover::before,
-.menu__list .module::before,
-.menu__list .module:hover::before {
+.menu__link.social::before,
+.menu__link.social:hover::before,
+.menu__link.module::before,
+.menu__link.module:hover::before,
+.menu__link.docs::before,
+.menu__link.docs:hover::before {
   margin: 0 0.75em 0 0;
   background-color: var(--ifm-menu-color);
   width: 1.5em;
   height: 1.5em;
+}
+
+.menu__link--active::before {
+  background-color: var(--ifm-menu-color-active) !important;
 }
 
 .github::before {
@@ -113,6 +132,30 @@
 
 .youtube::before {
   --icon: url('../img/social/youtube.svg');
+}
+
+.overview::before {
+  --icon: url('../img/icons/docs/overview.svg');
+}
+
+.getting-started::before {
+  --icon: url('../img/icons/docs/getting-started.svg');
+}
+
+.how-to-guides::before {
+  --icon: url('../img/icons/docs/how-to-guides.svg');
+}
+
+.concepts::before {
+  --icon: url('../img/icons/docs/concepts.svg');
+}
+
+.reference::before {
+  --icon: url('../img/icons/docs/reference.svg');
+}
+
+.development::before {
+  --icon: url('../img/icons/docs/development.svg');
 }
 
 .github-stars {
@@ -149,58 +192,6 @@
 
 .menu__list .github-stars {
   display: none;
-}
-
-.chronolog::before {
-  --icon: url('../img/icons/chronolog.svg');
-}
-
-.cloudscope::before {
-  --icon: url('../img/icons/cloudscope.svg');
-}
-
-.datalink::before {
-  --icon: url('../img/icons/datalink.svg');
-}
-
-.defrag::before {
-  --icon: url('../img/icons/defrag.svg');
-}
-
-.infrasdk::before {
-  --icon: url('../img/icons/infrasdk.svg');
-}
-
-.inventory::before {
-  --icon: url('../img/icons/inventory.svg');
-}
-
-.metricmate::before {
-  --icon: url('../img/icons/metricmate.svg');
-}
-
-.notify::before {
-  --icon: url('../img/icons/notify.svg');
-}
-
-.resolve::before {
-  --icon: url('../img/icons/resolve.svg');
-}
-
-.rewind::before {
-  --icon: url('../img/icons/rewind.svg');
-}
-
-.sentinel::before {
-  --icon: url('../img/icons/sentinel.svg');
-}
-
-.spentwise::before {
-  --icon: url('../img/icons/spentwise.svg');
-}
-
-.tagguard::before {
-  --icon: url('../img/icons/tagguard.svg');
 }
 
 @media screen and (max-width: 1279px) {

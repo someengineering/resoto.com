@@ -37,6 +37,13 @@ export default function ChronologPage(): JSX.Element {
                 .
               </Balancer>
             </p>
+            <p>
+              <Balancer>
+                This information can be invaluable for troubleshooting issues,
+                understanding how your infrastructure has evolved, and
+                identifying potential security risks.
+              </Balancer>
+            </p>
           </ModulePageSection>
           <ModulePageCTA>
             <h2>

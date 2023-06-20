@@ -88,7 +88,7 @@ html[data-theme='dark'] .enterprise {
 
 .priceCard > ul li::before {
   display: inline-block;
-  flex-shrink: 0;
+  flex: none;
   margin: 4px 12px 0 -24px;
   background-image: url("data:image/svg+xml,%3Csvg fill='none' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m20 6-11 11-5-5' stroke='%23af62f1' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'/%3E%3C/svg%3E");
   background-position: center;
@@ -140,8 +140,8 @@ html[data-theme='dark'] .enterprise > ul li::before {
     rgba(0, 0, 0, 1) 80%,
     rgba(0, 0, 0, 0)
   );
-  -webkit-mask: var(--mask);
   mask: var(--mask);
+  -webkit-mask: var(--mask);
   margin: 72px auto 0;
   background-image: url('./img/sheep-graph.webp');
   background-position: center;

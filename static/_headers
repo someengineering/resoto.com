@@ -1,3 +1,7 @@
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+
 # Assets with a file hash are safe for immutable caching, as filenames change when the content changes
 
 /assets/*

@@ -1,3 +1,4 @@
+import Head from '@docusaurus/Head';
 import { PageMetadata } from '@docusaurus/theme-common';
 import baseStyles from '@site/src/pages/styles.module.css';
 import { getImage } from '@site/src/utils/socialImageUtils';
@@ -21,6 +22,9 @@ export default function ModulePageHeader({
 
   return (
     <>
+      <Head>
+        <link rel="preload" href={image} as="image" type="image/webp" />
+      </Head>
       <PageMetadata
         title={`Resoto ${moduleName}`}
         description={`${tagline}. ${description}.`}

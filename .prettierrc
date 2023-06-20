@@ -8,7 +8,7 @@
     },
     {
       "files": ["docusaurus.config.js"],
-      "options": { "printWidth": 90 }
+      "options": { "printWidth": 120 }
     },
     {
       "files": ["*.md", "*.mdx"],

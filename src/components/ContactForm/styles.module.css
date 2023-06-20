@@ -79,7 +79,7 @@ p.alert {
   background-position: right;
   background-size: contain;
   background-repeat: no-repeat;
-  width: 35vw;
+  width: 30vw;
   max-width: 500px;
 }
 
@@ -103,6 +103,12 @@ p.alert {
 
   .image {
     margin: 72px auto 0;
+    height: 30vw;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .image {
     width: 45vw;
     height: 45vw;
   }
@@ -115,5 +121,11 @@ p.alert {
 
   .paragraph {
     font-size: 18px;
+  }
+
+  .image {
+    margin: 72px auto 0;
+    width: 55vw;
+    height: 55vw;
   }
 }

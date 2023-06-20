@@ -56,7 +56,8 @@ export default function ContactForm(): JSX.Element {
           </h2>
           <p className={styles.paragraph}>
             <Balancer>
-              Have feedback or need help? We&rsquo;d love to hear from you!
+              Have feedback or need help? Don&rsquo;t be shy&mdash;we&rsquo;d
+              love to hear from you!
             </Balancer>
           </p>
           <NetlifyFormProvider {...netlify}>

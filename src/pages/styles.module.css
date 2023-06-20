@@ -121,6 +121,8 @@ html[data-theme='dark'] .hero {
 }
 
 .buttons {
+  display: flex;
+  flex-wrap: wrap;
   margin: 3.75rem -6rem -1.75rem -1.25rem;
 }
 
@@ -146,6 +148,7 @@ html[data-theme='dark'] .hero {
   line-height: 25px;
   text-decoration: none;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .button::before {
@@ -317,6 +320,7 @@ html[data-theme='dark'] .content {
   }
 
   .buttons {
+    justify-content: center;
     margin: 3rem -1.25rem 1.25rem;
   }
 

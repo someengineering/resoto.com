@@ -17,6 +17,7 @@ import clsx from 'clsx';
 import GithubSlugger from 'github-slugger';
 import React from 'react';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
+import Balancer from 'react-wrap-balancer';
 import styles from './styles.module.css';
 
 export default function HomepageModules(): JSX.Element {
@@ -35,18 +36,22 @@ export default function HomepageModules(): JSX.Element {
       content: (
         <>
           <p>
-            CloudScope simplifies cloud resource management by providing
-            advanced{' '}
-            <Link to="/docs/reference/search">search capabilities</Link> to{' '}
-            <Link to="/docs/how-to-guides/search/find-a-resource">
-              locate resources
-            </Link>
-            .
+            <Balancer>
+              CloudScope simplifies cloud resource management by providing
+              advanced{' '}
+              <Link to="/docs/reference/search">search capabilities</Link> to{' '}
+              <Link to="/docs/how-to-guides/search/find-a-resource">
+                locate resources
+              </Link>
+              .
+            </Balancer>
           </p>
           <p>
-            CloudScope streamlines resource tracking and management by removing
-            the need to navigate cloud provider web consoles where resources may
-            span multiple accounts.
+            <Balancer>
+              CloudScope streamlines resource tracking and management by
+              removing the need to navigate cloud provider web consoles where
+              resources may span multiple accounts.
+            </Balancer>
           </p>
         </>
       ),
@@ -58,12 +63,14 @@ export default function HomepageModules(): JSX.Element {
       content: (
         <>
           <p>
-            TagGuard automates{' '}
-            <Link to="/blog/effective-cloud-management-tagging-policies">
-              tagging policy
-            </Link>{' '}
-            enforcement to ensure consistent and accurate tagging based on your
-            organization&rsquo;s specific requirements.
+            <Balancer>
+              TagGuard automates{' '}
+              <Link to="/blog/effective-cloud-management-tagging-policies">
+                tagging policy
+              </Link>{' '}
+              enforcement to ensure consistent and accurate tagging based on
+              your organization&rsquo;s specific requirements.
+            </Balancer>
           </p>
         </>
       ),
@@ -75,13 +82,17 @@ export default function HomepageModules(): JSX.Element {
       content: (
         <>
           <p>
-            Sentinel continously monitors your cloud resources for security
-            issues, so you can quickly address potential threats to your cloud
-            infrastructure.
+            <Balancer>
+              Sentinel continously monitors your cloud resources for security
+              issues, so you can quickly address potential threats to your cloud
+              infrastructure.
+            </Balancer>
           </p>
           <p>
-            Sentinel ensures that your cloud infrastructure adheres to security
-            standards and best practices.
+            <Balancer>
+              Sentinel ensures that your cloud infrastructure adheres to
+              security standards and best practices.
+            </Balancer>
           </p>
         </>
       ),
@@ -93,15 +104,19 @@ export default function HomepageModules(): JSX.Element {
       content: (
         <>
           <p>
-            MetricMate tracks infrastructure{' '}
-            <Link to="/blog/actionable-cloud-infrastructure-metrics">
-              metrics
-            </Link>{' '}
-            and cloud resource cost data.
+            <Balancer>
+              MetricMate tracks infrastructure{' '}
+              <Link to="/blog/actionable-cloud-infrastructure-metrics">
+                metrics
+              </Link>{' '}
+              and cloud resource cost data.
+            </Balancer>
           </p>
           <p>
-            MetricMate exports data to popular database systems and offers APIs
-            for custom low-code dashboards. management.
+            <Balancer>
+              MetricMate exports data to popular database systems and offers
+              APIs for custom low-code dashboards. management.
+            </Balancer>
           </p>
         </>
       ),
@@ -113,17 +128,21 @@ export default function HomepageModules(): JSX.Element {
       content: (
         <>
           <p>
-            Defrag automates{' '}
-            <Link to="/docs/concepts/resource-management/cleanup">
-              cloud resource cleanup
-            </Link>{' '}
-            to help organizations reduce cloud costs and maintain tidy cloud
-            infrastructures.
+            <Balancer>
+              Defrag automates{' '}
+              <Link to="/docs/concepts/resource-management/cleanup">
+                cloud resource cleanup
+              </Link>{' '}
+              to help organizations reduce cloud costs and maintain tidy cloud
+              infrastructures.
+            </Balancer>
           </p>
           <p>
-            Customizable cleanup policies delete resources based on your
-            organization&rsquo;s requirements and reduce the risk of
-            overprovisioning and quota overages.
+            <Balancer>
+              Customizable cleanup policies delete resources based on your
+              organization&rsquo;s requirements and reduce the risk of
+              overprovisioning and quota overages.
+            </Balancer>
           </p>
         </>
       ),
@@ -135,18 +154,22 @@ export default function HomepageModules(): JSX.Element {
       content: (
         <>
           <p>
-            SpentWise offers near-real-time visibility visibility into cloud
-            costs and usage, so you can identify spikes in usage and track
-            trends over time.
+            <Balancer>
+              SpentWise offers near-real-time visibility visibility into cloud
+              costs and usage, so you can identify spikes in usage and track
+              trends over time.
+            </Balancer>
           </p>
           <p>
-            With detailed{' '}
-            <Link to="/blog/actionable-cloud-infrastructure-metrics">
-              metrics
-            </Link>{' '}
-            and custom <Link to="/docs/how-to-guides/alerting">alerts</Link>,
-            make informed decisions about your cloud resources and take
-            immediate action when unexpected costs arise.
+            <Balancer>
+              With detailed{' '}
+              <Link to="/blog/actionable-cloud-infrastructure-metrics">
+                metrics
+              </Link>{' '}
+              and custom <Link to="/docs/how-to-guides/alerting">alerts</Link>,
+              make informed decisions about your cloud resources and take
+              immediate action when unexpected costs arise.
+            </Balancer>
           </p>
         </>
       ),
@@ -158,12 +181,16 @@ export default function HomepageModules(): JSX.Element {
       content: (
         <>
           <p>
-            ChronoLog provides a comprehensive changelog of your cloud
-            resources.
+            <Balancer>
+              ChronoLog provides a comprehensive changelog of your cloud
+              resources.
+            </Balancer>
           </p>
           <p>
-            Review the entire lifecycle of any cloud resource, from its creation
-            time to when it is cleaned up.
+            <Balancer>
+              Review the entire lifecycle of any cloud resource, from its
+              creation time to when it is cleaned up.
+            </Balancer>
           </p>
         </>
       ),
@@ -175,15 +202,20 @@ export default function HomepageModules(): JSX.Element {
       content: (
         <>
           <p>
-            DataLink exports cloud asset inventory data to your favorite
-            database or cloud data warehouse.
+            <Balancer>
+              DataLink exports cloud asset inventory data to your favorite
+              database or cloud data warehouse.
+            </Balancer>
           </p>
           <p>
-            Integrate with tools like{' '}
-            <Link href="https://tableau.com">Tableau</Link>,{' '}
-            <Link href="https://grafana.com">Grafana</Link>, or{' '}
-            <Link href="https://metabase.com">Metabase</Link> to unlock insights
-            and make informed decisions about your cloud infrastructure.
+            <Balancer>
+              Integrate with tools like{' '}
+              <Link href="https://tableau.com">Tableau</Link>,{' '}
+              <Link href="https://grafana.com">Grafana</Link>, or{' '}
+              <Link href="https://metabase.com">Metabase</Link> to unlock
+              insights and make informed decisions about your cloud
+              infrastructure.
+            </Balancer>
           </p>
         </>
       ),
@@ -195,24 +227,30 @@ export default function HomepageModules(): JSX.Element {
       content: (
         <>
           <p>
-            Inventory maintains an{' '}
-            <Link to="/docs/concepts/asset-inventory-graph">
-              asset inventory
-            </Link>{' '}
-            of your cloud infrastructure.
+            <Balancer>
+              Inventory maintains an{' '}
+              <Link to="/docs/concepts/asset-inventory-graph">
+                asset inventory
+              </Link>{' '}
+              of your cloud infrastructure.
+            </Balancer>
           </p>
           <p>
-            Inventory makes it easy to{' '}
-            <Link to="/docs/how-to-guides/search/find-a-resource">
-              find specific resources or groups of resources
-            </Link>
-            , even in large and complex cloud environments.
+            <Balancer>
+              Inventory makes it easy to{' '}
+              <Link to="/docs/how-to-guides/search/find-a-resource">
+                find specific resources or groups of resources
+              </Link>
+              , even in large and complex cloud environments.
+            </Balancer>
           </p>
           <p>
-            You can also export inventory data to a variety of formats,
-            including <abbr title="JavaScript Object Notation">JSON</abbr>,{' '}
-            <abbr title="comma-separated values">CSV</abbr>, and{' '}
-            <abbr title="Structured Query Language">SQL</abbr>.
+            <Balancer>
+              You can also export inventory data to a variety of formats,
+              including <abbr title="JavaScript Object Notation">JSON</abbr>,{' '}
+              <abbr title="comma-separated values">CSV</abbr>, and{' '}
+              <abbr title="Structured Query Language">SQL</abbr>.
+            </Balancer>
           </p>
         </>
       ),
@@ -224,24 +262,28 @@ export default function HomepageModules(): JSX.Element {
       content: (
         <>
           <p>
-            Notify automates alerts and incident responses for changes to your
-            cloud infrastructure.
+            <Balancer>
+              Notify automates alerts and incident responses for changes to your
+              cloud infrastructure.
+            </Balancer>
           </p>
           <p>
-            Notify integrates with tools like{' '}
-            <Link to="/docs/how-to-guides/alerting/send-prometheus-alertmanager-alerts">
-              Alertmanager
-            </Link>{' '}
-            and{' '}
-            <Link to="/docs/how-to-guides/alerting/create-pagerduty-alerts">
-              PagerDuty
-            </Link>
-            , and can{' '}
-            <Link to="/docs/how-to-guides/alerting/create-jira-issues">
-              create Jira tickets
-            </Link>{' '}
-            or send data to custom HTTP endpoints, so your team can respond
-            quickly to any incident.
+            <Balancer>
+              Notify integrates with tools like{' '}
+              <Link to="/docs/how-to-guides/alerting/send-prometheus-alertmanager-alerts">
+                Alertmanager
+              </Link>{' '}
+              and{' '}
+              <Link to="/docs/how-to-guides/alerting/create-pagerduty-alerts">
+                PagerDuty
+              </Link>
+              , and can{' '}
+              <Link to="/docs/how-to-guides/alerting/create-jira-issues">
+                create Jira tickets
+              </Link>{' '}
+              or send data to custom HTTP endpoints, so your team can respond
+              quickly to any incident.
+            </Balancer>
           </p>
         </>
       ),
@@ -253,13 +295,17 @@ export default function HomepageModules(): JSX.Element {
       content: (
         <>
           <p>
-            Rewind takes snapshots of your cloud infrastructure, so you can
-            track changes over time.
+            <Balancer>
+              Rewind takes snapshots of your cloud infrastructure, so you can
+              track changes over time.
+            </Balancer>
           </p>
           <p>
-            Rewind aids in understanding infrastructure evolution, identifying
-            potential issues, and making informed decisions about capacity
-            planning and policy adherence.
+            <Balancer>
+              Rewind aids in understanding infrastructure evolution, identifying
+              potential issues, and making informed decisions about capacity
+              planning and policy adherence.
+            </Balancer>
           </p>
         </>
       ),
@@ -271,13 +317,17 @@ export default function HomepageModules(): JSX.Element {
       content: (
         <>
           <p>
-            Resolve automatically addresses issues in your cloud infrastructure
-            based on custom policies that trigger actions based on
-            organizational requirements.
+            <Balancer>
+              Resolve automatically addresses issues in your cloud
+              infrastructure based on custom policies that trigger actions based
+              on organizational requirements.
+            </Balancer>
           </p>
           <p>
-            Improve resource efficiency and reduce costs by incorporating
-            tagging, cleanup, and cloud API actions.
+            <Balancer>
+              Improve resource efficiency and reduce costs by incorporating
+              tagging, cleanup, and cloud API actions.
+            </Balancer>
           </p>
         </>
       ),
@@ -289,16 +339,21 @@ export default function HomepageModules(): JSX.Element {
       content: (
         <>
           <p>
-            InfraSDK empowers you to extend or customize Resoto&rsquo;s
-            functionality.
+            <Balancer>
+              InfraSDK empowers you to extend or customize Resoto&rsquo;s
+              functionality.
+            </Balancer>
           </p>
           <p>
-            InfraSDK is built with <Link href="https://python.org">Python</Link>{' '}
-            and supports popular data manipulation libraries like{' '}
-            <Link href="https://pandas.pydata.org">Pandas DataFrames</Link> and
-            frameworks like <Link href="https://streamlit.io">Streamlit</Link>,
-            empowering you to create tailored dashboards, reports, and
-            visualizations.
+            <Balancer>
+              InfraSDK is built with{' '}
+              <Link href="https://python.org">Python</Link> and supports popular
+              data manipulation libraries like{' '}
+              <Link href="https://pandas.pydata.org">Pandas DataFrames</Link>{' '}
+              and frameworks like{' '}
+              <Link href="https://streamlit.io">Streamlit</Link>, empowering you
+              to create tailored dashboards, reports, and visualizations.
+            </Balancer>
           </p>
         </>
       ),

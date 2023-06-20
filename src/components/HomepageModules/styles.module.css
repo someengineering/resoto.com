@@ -123,14 +123,27 @@ html[data-theme='dark'] .selectedPanel h2 span {
   }
 
   .selectedPanel {
-    flex-direction: column;
     padding: 36px;
-    font-size: 1em;
-    text-align: center;
   }
 
   .selectedPanel h2 {
-    font-size: 40px;
+    font-size: 42px;
+  }
+
+  .button {
+    margin: 2.5rem 0 0;
+  }
+
+  .image {
+    width: 360px;
+    height: 360px;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .selectedPanel {
+    flex-direction: column;
+    text-align: center;
   }
 
   .button {
@@ -139,13 +152,12 @@ html[data-theme='dark'] .selectedPanel h2 span {
 
   .image {
     width: 100%;
-    height: 360px;
   }
 }
 
 @media screen and (max-width: 767px) {
   .selectedPanel h2 {
-    font-size: 32px;
+    font-size: 36px;
   }
 
   .image {

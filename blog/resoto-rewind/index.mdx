@@ -22,15 +22,15 @@ If you've ever implemented new policies or made substantial changes to your clou
 
 For example, if you've just introduced a new tagging policy, you can use Rewind to compare the state of your tag policy compliance today versus a month ago.
 
-Or imagine facing a security breach or a hacking event. According to reports by cybersecurity firm FireEye, the median time from the start of a cyber intrusion to its detection can range from 56 days to as high as several months. This means an attacker may have had access to your systems for a considerable amount of time before the breach was even detected. Investigating such incidents requires a deep dive into the state of your cloud infrastructure around the time of the incident. Resoto Rewind can be an invaluable tool for forensic analysis, allowing you to understand exactly how your security groups, user accounts and access policies looked at the time of the breach, aiding in identifying potential vulnerabilities that were exploited.
+Or imagine facing a security breach or a hacking event. According to [the latest Mandiant® M-Trends® report](https://www.mandiant.com/m-trends), the median dwell time (time from the start of a cyber intrusion to its detection) can range from few days to as high as several months. This means an attacker may have had access to your systems for a considerable amount of time before the breach was even detected. Investigating such incidents requires a deep dive into the state of your cloud infrastructure around the time of the incident. Resoto Rewind can be an invaluable tool for forensic analysis, allowing you to understand exactly how your security groups, user accounts and access policies looked at the time of the breach, aiding in identifying potential vulnerabilities that were exploited.
 
 Resoto Rewind is also great for capacity forecasting. By looking at the evolution of your cloud infrastructure over time, you can better understand how your infrastructure is growing and plan for future capacity needs and reserved instance purchases.
 
 # How to use Resoto Rewind?
 
-Rewind is active by default and introduces two new functions to Resoto. The `graph` command and the `search --at` flag.
+Rewind is active by default and introduces two new functions to Resoto. The [`graph` command](/docs/reference/cli/miscellaneous-commands/graph) and the [`search --at`](/docs/reference/cli/search-commands/search) flag.
 
-You can manually create a snapshot of your cloud infrastructure graph using the `graph snapshot` command, get a list of snapshots using `graph list` and use a snapshot during your search using the `graph=<snapshot-name>` filter in the `search` command. You can also add the `--at` flag to the search followed by either a timestamp (e.g. `--at 2021-06-20T12:00:00Z`) or a time delta (e.g. `--at 1w`). Resoto automatically finds the snapshot that is closest to the specified time and uses it to perform the search.
+You can manually create a snapshot of your cloud infrastructure graph using the [`graph snapshot`](/docs/reference/cli/miscellaneous-commands/graph/snapshot) command, get a list of snapshots using [`graph list`](/docs/reference/cli/miscellaneous-commands/graph/list) and use a snapshot during your search using the `graph=<snapshot-name>` filter in the `search` command. You can also add the `--at` flag to the search followed by either a timestamp (e.g. `--at 2021-06-20T12:00:00Z`) or a time delta (e.g. `--at 1w`). Resoto automatically finds the snapshot that is closest to the specified time and uses it to perform the search.
 
 ## The Power of Rewind's Automated Snapshots
 

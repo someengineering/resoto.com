@@ -15,7 +15,13 @@ export default function ModulePageSection({
       <div className={clsx(baseStyles.inner, styles.inner)}>
         <div className={image ? null : 'text--center'}>{children}</div>
         {image ? (
-          <img src={image} alt="" className={styles.image} aria-hidden="true" />
+          <img
+            src={image}
+            alt=""
+            className={styles.image}
+            aria-hidden="true"
+            loading="lazy"
+          />
         ) : null}
       </div>
     </div>

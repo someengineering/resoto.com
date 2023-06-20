@@ -28,6 +28,7 @@ export default function FooterWrapper(props: Props): JSX.Element {
           width="206"
           height="150"
           className={styles.logo}
+          loading="lazy"
         />
       </Link>
       {isProd ? (

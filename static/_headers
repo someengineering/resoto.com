@@ -1,7 +1,6 @@
 /*
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
-  Content-Security-Policy: script-src 'self' resoto.com; object-src 'self'; base-uri 'self';
 
 # Assets with a file hash are safe for immutable caching, as filenames change when the content changes
 

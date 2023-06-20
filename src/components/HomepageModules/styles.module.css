@@ -101,7 +101,7 @@ html[data-theme='dark'] .selectedPanel h2 span {
 }
 
 .button {
-  margin: 3rem 0 0;
+  margin: var(--ifm-paragraph-margin-bottom) 0 0;
 }
 
 .image {
@@ -119,7 +119,7 @@ html[data-theme='dark'] .selectedPanel h2 span {
 
   .tab {
     padding: 12px 0;
-    min-width: 100px;
+    min-width: 108px;
   }
 
   .selectedPanel {
@@ -128,10 +128,6 @@ html[data-theme='dark'] .selectedPanel h2 span {
 
   .selectedPanel h2 {
     font-size: 42px;
-  }
-
-  .button {
-    margin: 2.5rem 0 0;
   }
 
   .image {
@@ -147,10 +143,11 @@ html[data-theme='dark'] .selectedPanel h2 span {
   }
 
   .button {
-    margin: 2.5rem 0;
+    margin: var(--ifm-paragraph-margin-bottom) 0;
   }
 
   .image {
+    margin-top: var(--ifm-paragraph-margin-bottom);
     width: 100%;
   }
 }

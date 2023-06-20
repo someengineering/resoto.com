@@ -1,5 +1,6 @@
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
+import Rive from '@rive-app/react-canvas';
 import ContactForm from '@site/src/components/ContactForm';
 import HomepageModules from '@site/src/components/HomepageModules';
 import InstallButton from '@site/src/components/InstallButton';
@@ -7,61 +8,27 @@ import AwsLogo from '@site/src/img/providers/aws.svg';
 import DigitalOceanLogo from '@site/src/img/providers/digitalocean.svg';
 import GoogleCloudLogo from '@site/src/img/providers/google-cloud.svg';
 import KubernetesLogo from '@site/src/img/providers/kubernetes.svg';
-import heroAnimationPlaceholder from '@site/src/pages/img/hero/discover.webp';
+import heroAnimationPlaceholder from '@site/src/pages/img/hero/placeholder.webp';
+import heroAnimation from '@site/src/rive/hero.riv';
 import Layout from '@theme/Layout';
 import { clsx } from 'clsx';
-import lottie from 'lottie-web';
 import React, { useCallback, useEffect, useState } from 'react';
-import Lottie from 'react-lottie-player';
 import Balancer from 'react-wrap-balancer';
 import styles from './styles.module.css';
 
 export default function Home(): JSX.Element {
   const [windowLoaded, setWindowLoaded] = useState(false);
-  const [heroAnimationLoaded, setHeroAnimationLoaded] = useState(false);
-  const [heroAnimationData, setHeroAnimationData] = useState<object>(null);
   const [isMobile, setIsMobile] = useState(true);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-  const [animationDisabled, setAnimationDisabled] = useState(false);
+
   const mobileMaxWidth = 576;
 
-  const loadHeroAnimationData = useCallback(async () => {
-    setHeroAnimationData(await import('@site/src/lottie/hero.json'));
-    lottie.setQuality('low');
-  }, []);
   const onLoad = useCallback(() => setWindowLoaded(true), []);
   const onResize = useCallback(
     () => setIsMobile(window.innerWidth <= mobileMaxWidth),
     []
   );
   const onReducedMotion = useCallback(() => setPrefersReducedMotion(true), []);
-
-  useEffect(
-    () =>
-      setAnimationDisabled(
-        window.localStorage.getItem('heroAnimation') === 'false'
-      ),
-    []
-  );
-
-  useEffect(() => {
-    if (
-      windowLoaded &&
-      !heroAnimationData &&
-      !animationDisabled &&
-      !isMobile &&
-      !prefersReducedMotion
-    ) {
-      loadHeroAnimationData();
-    }
-  }, [
-    windowLoaded,
-    heroAnimationData,
-    animationDisabled,
-    isMobile,
-    prefersReducedMotion,
-    loadHeroAnimationData,
-  ]);
 
   useEffect(() => {
     window.addEventListener('load', onLoad);
@@ -139,36 +106,21 @@ export default function Home(): JSX.Element {
               </div>
             </div>
             <div className={styles.heroRight}>
-              {!isMobile ? (
-                <Lottie
-                  animationData={
-                    animationDisabled || prefersReducedMotion
-                      ? null
-                      : heroAnimationData
-                  }
-                  useSubframes={false}
-                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                  /* @ts-ignore */
-                  renderer="canvas"
-                  rendererSettings={{
-                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                    /* @ts-ignore */
-                    runExpressions: false,
-                  }}
-                  play
-                  loop
+              {!windowLoaded || isMobile || prefersReducedMotion ? (
+                <div
                   className={clsx(
                     styles.heroAnim,
-                    animationDisabled || prefersReducedMotion
-                      ? styles.heroAnimReducedMotion
-                      : !heroAnimationLoaded
-                      ? styles.heroAnimPlaceholder
-                      : ''
+                    styles.heroAnimReducedMotion
                   )}
-                  onLoad={() => setHeroAnimationLoaded(true)}
                   aria-hidden="true"
                 />
-              ) : null}
+              ) : (
+                <Rive
+                  src={heroAnimation}
+                  className={styles.heroAnim}
+                  aria-hidden="true"
+                />
+              )}
             </div>
           </div>
         </header>

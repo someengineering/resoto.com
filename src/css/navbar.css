@@ -94,12 +94,12 @@
 }
 
 .social::before {
-  margin-left: -0.75em;
+  margin-left: calc(var(--ifm-navbar-item-padding-horizontal) * -1);
 }
 
 .module::before,
 .docs::before {
-  margin-right: 0.75em;
+  margin-right: 0.5em;
 }
 
 .menu__link.social::before,

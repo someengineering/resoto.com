@@ -17,10 +17,13 @@ import Balancer from 'react-wrap-balancer';
 import styles from './styles.module.css';
 
 export default function Home(): JSX.Element {
-  const mobileMaxWidth = 576;
+  const [windowLoaded, setWindowLoaded] = useState(false);
   const [isMobile, setIsMobile] = useState(true);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
+  const mobileMaxWidth = 576;
+
+  const onLoad = useCallback(() => setWindowLoaded(true), []);
   const onResize = useCallback(
     () => setIsMobile(window.innerWidth <= mobileMaxWidth),
     []
@@ -28,6 +31,8 @@ export default function Home(): JSX.Element {
   const onReducedMotion = useCallback(() => setPrefersReducedMotion(true), []);
 
   useEffect(() => {
+    window.addEventListener('load', onLoad);
+
     setIsMobile(window.innerWidth <= mobileMaxWidth);
     window.addEventListener('resize', onResize);
 
@@ -36,10 +41,11 @@ export default function Home(): JSX.Element {
     mediaQuery.addEventListener('change', onReducedMotion);
 
     return () => {
+      window.removeEventListener('load', onLoad);
       window.removeEventListener('resize', onResize);
       mediaQuery.removeEventListener('change', onReducedMotion);
     };
-  }, [onResize, onReducedMotion]);
+  }, [onLoad, onResize, onReducedMotion]);
 
   return (
     <>
@@ -100,7 +106,7 @@ export default function Home(): JSX.Element {
               </div>
             </div>
             <div className={styles.heroRight}>
-              {isMobile || prefersReducedMotion ? (
+              {!windowLoaded || isMobile || prefersReducedMotion ? (
                 <div
                   className={clsx(
                     styles.heroAnim,

@@ -19,43 +19,42 @@
   font-size: 12px;
   line-height: 20px;
   text-align: center;
-  text-transform: uppercase;
 }
 
 .get .menu__link::before,
 .get h2::before {
   background-color: var(--ifm-color-primary);
-  content: 'get';
+  content: 'GET';
 }
 
 .post .menu__link::before,
 .post h2::before {
   background-color: var(--openapi-code-green);
-  content: 'post';
+  content: 'POST';
 }
 
 .delete .menu__link::before,
 .delete h2::before {
   background-color: var(--openapi-code-red);
-  content: 'delete';
+  content: 'DELETE';
 }
 
 .put .menu__link::before,
 .put h2::before {
   background-color: var(--openapi-code-blue);
-  content: 'put';
+  content: 'PUT';
 }
 
 .patch .menu__link::before,
 .patch h2::before {
   background-color: var(--openapi-code-orange);
-  content: 'patch';
+  content: 'PATCH';
 }
 
 .head .menu__link::before,
 .head h2::before {
   background-color: var(--ifm-color-secondary-darkest);
-  content: 'head';
+  content: 'HEAD';
 }
 
 details.openapi-markdown__details .badge {

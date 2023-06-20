@@ -143,7 +143,7 @@ export default function Home(): JSX.Element {
                   loop
                   className={clsx(
                     styles.heroAnim,
-                    prefersReducedMotion
+                    animationDisabled || prefersReducedMotion
                       ? styles.heroAnimReducedMotion
                       : !heroAnimationLoaded
                       ? styles.heroAnimPlaceholder

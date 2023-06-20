@@ -1,0 +1,77 @@
+---
+sidebar_label: graph
+---
+
+# `graph` Command
+
+The `graph` command is part of the Resoto Rewind module and allows for the management of infrastructure graphs.
+
+Resoto Rewind allows you to take a snapshot of your cloud infrastructure and compare it to its previous states. It is designed to help you track changes over time and make informed decisions about your future cloud planning.
+
+| Command                            | Description                               |
+| ---------------------------------- | ----------------------------------------- |
+| [`graph list`](./list.mdx)         | List infrastructure graphs.               |
+| [`graph copy`](./copy.mdx)         | Copy an infrastructure graph.             |
+| [`graph snapshot`](./snapshot.mdx) | Create an infrastructure graph snapshot.  |
+| [`graph delete`](./delete.mdx)     | Delete an infrastructure graph.           |
+| [`graph export`](./export.mdx)     | Export an infrastructure graph to disk.   |
+| [`graph import`](./import.mdx)     | Import an infrastructure graph from disk. |
+
+## Automated Snapshots
+
+Resoto Rewind allows you to set up automated snapshots. You can specify the number of snapshots to retain per label and the associated schedule. Here's an example of how to configure snapshots:
+
+```bash
+> config edit resoto.core.snapshots
+```
+
+```yaml
+snapshots:
+  hourly:
+    retain: 24
+    schedule: 0 * * * *
+  daily:
+    retain: 7
+    schedule: 0 0 * * *
+  weekly:
+    retain: 4
+    schedule: 0 0 * * 0
+  monthly:
+    retain: 12
+    schedule: 0 0 1 * *
+  yearly:
+    retain: 10
+    schedule: 0 0 1 1 *
+```
+
+These labels (`hourly`, `daily`, etc.) are user-definable, allowing for a wide range of snapshot schedules. The schedule is a crontab syntax. The above values are the defaults, resulting in a total of 57 snapshots. Depending on your available storage you can increase or decrease the number of snapshots retained.
+
+## Accessing Snapshots
+
+You can search is a specific graph snapshot by prefixing a `search` with the `graph=<graph-name>` filter. For example:
+
+```bash
+> graph=snapshot-resoto-hourly-20230618T210000Z search is(instance) | count
+# highlight-start
+total matched: 12
+total unmatched: 0
+# highlight-end
+```
+
+Alternatively you can provide the `--at` flag to the `search` command to search at a specific point in time. Resoto will find the infrastructure graph snapshot that is closest to the specified time. The flag takes either a timestamp or a relative time. For example:
+
+```bash
+> search is(instance) --at 2023-06-18T21:00:00Z | count
+# highlight-start
+total matched: 12
+total unmatched: 0
+# highlight-end
+```
+
+```bash
+> search is(instance) --at 1w | count
+# highlight-start
+total matched: 12
+total unmatched: 0
+# highlight-end
+```

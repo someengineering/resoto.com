@@ -17,6 +17,7 @@ import Balancer from 'react-wrap-balancer';
 import styles from './styles.module.css';
 
 export default function Home(): JSX.Element {
+  const [windowLoaded, setWindowLoaded] = useState(false);
   const [heroAnimationLoaded, setHeroAnimationLoaded] = useState(false);
   const [heroAnimationData, setHeroAnimationData] = useState<object>(null);
   const [isMobile, setIsMobile] = useState(true);
@@ -24,6 +25,11 @@ export default function Home(): JSX.Element {
   const [animationDisabled, setAnimationDisabled] = useState(false);
   const mobileMaxWidth = 576;
 
+  const loadHeroAnimationData = useCallback(async () => {
+    setHeroAnimationData(await import('@site/src/lottie/hero.json'));
+    lottie.setQuality('low');
+  }, []);
+  const onLoad = useCallback(() => setWindowLoaded(true), []);
   const onResize = useCallback(
     () => setIsMobile(window.innerWidth <= mobileMaxWidth),
     []
@@ -40,17 +46,26 @@ export default function Home(): JSX.Element {
 
   useEffect(() => {
     if (
+      windowLoaded &&
       !heroAnimationData &&
       !animationDisabled &&
       !isMobile &&
       !prefersReducedMotion
     ) {
-      import('@site/src/lottie/hero.json').then(setHeroAnimationData);
-      lottie.setQuality('low');
+      loadHeroAnimationData();
     }
-  }, [heroAnimationData, animationDisabled, isMobile, prefersReducedMotion]);
+  }, [
+    windowLoaded,
+    heroAnimationData,
+    animationDisabled,
+    isMobile,
+    prefersReducedMotion,
+    loadHeroAnimationData,
+  ]);
 
   useEffect(() => {
+    window.addEventListener('load', onLoad);
+
     setIsMobile(window.innerWidth <= mobileMaxWidth);
     window.addEventListener('resize', onResize);
 
@@ -59,10 +74,11 @@ export default function Home(): JSX.Element {
     mediaQuery.addEventListener('change', onReducedMotion);
 
     return () => {
+      window.removeEventListener('load', onLoad);
       window.removeEventListener('resize', onResize);
       mediaQuery.removeEventListener('change', onReducedMotion);
     };
-  }, [onResize, onReducedMotion]);
+  }, [onLoad, onResize, onReducedMotion]);
 
   return (
     <>

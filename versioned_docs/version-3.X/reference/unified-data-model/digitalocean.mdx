@@ -1273,6 +1273,104 @@ digitalocean_vpc -[#1A83AF]-> digitalocean_load_balancer
 
 </details>
 
+## `digitalocean_droplet_neighborhood`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_droplet_neighborhood data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class digitalocean_droplet_neighborhood {
+**droplets**: string[]
+}
+class digitalocean_resource {
+**urn**: string
+}
+class phantom_resource {
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+digitalocean_resource <|--- digitalocean_droplet_neighborhood
+phantom_resource <|--- digitalocean_droplet_neighborhood
+resource <|--- digitalocean_resource
+resource <|--- phantom_resource
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_droplet_neighborhood resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class digitalocean_droplet_neighborhood {
+}
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
 ## `digitalocean_droplet_size`
 
 <ZoomPanPinch>
@@ -2703,103 +2801,6 @@ digitalocean_team -[#1A83AF]-> digitalocean_ssh_key
 
 </details>
 
-## `digitalocean_tag`
-
-<ZoomPanPinch>
-
-```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_tag data model"
-@startuml
-hide empty members
-skinparam ArrowColor #ffaf37
-skinparam ArrowFontColor #ffaf37
-skinparam ArrowFontName Helvetica
-skinparam ArrowThickness 2
-skinparam BackgroundColor transparent
-skinparam ClassAttributeFontColor #d9b8ff
-skinparam ClassBackgroundColor #3d176e
-skinparam ClassBorderColor #000d19
-skinparam ClassFontColor #d9b8ff
-skinparam ClassFontName Helvetica
-skinparam ClassFontSize 17
-skinparam NoteBackgroundColor #d9b8ff
-skinparam NoteBorderColor #000d19
-skinparam NoteFontColor #3d176e
-skinparam NoteFontName Helvetica
-skinparam Padding 5
-skinparam RoundCorner 5
-skinparam Shadowing false
-skinparam stereotypeCBackgroundColor #e98df7
-skinparam stereotypeIBackgroundColor #e98df7
-class digitalocean_resource {
-**urn**: string
-}
-class digitalocean_tag {
-}
-class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
-}
-resource <|--- digitalocean_resource
-digitalocean_resource <|--- digitalocean_tag
-resource <|--- digitalocean_tag
-@enduml
-```
-
-</ZoomPanPinch>
-
-<details>
-
-<summary>Relationships to Other Resources</summary>
-
-<div>
-
-<ZoomPanPinch>
-
-```kroki imgType="plantuml" imgAlt="Diagram of digitalocean_tag resource relationships"
-@startuml
-hide empty members
-skinparam ArrowColor #ffaf37
-skinparam ArrowFontColor #ffaf37
-skinparam ArrowFontName Helvetica
-skinparam ArrowThickness 2
-skinparam BackgroundColor transparent
-skinparam ClassAttributeFontColor #d9b8ff
-skinparam ClassBackgroundColor #3d176e
-skinparam ClassBorderColor #000d19
-skinparam ClassFontColor #d9b8ff
-skinparam ClassFontName Helvetica
-skinparam ClassFontSize 17
-skinparam NoteBackgroundColor #d9b8ff
-skinparam NoteBorderColor #000d19
-skinparam NoteFontColor #3d176e
-skinparam NoteFontName Helvetica
-skinparam Padding 5
-skinparam RoundCorner 5
-skinparam Shadowing false
-skinparam stereotypeCBackgroundColor #e98df7
-skinparam stereotypeIBackgroundColor #e98df7
-class digitalocean_tag {
-}
-class digitalocean_team {
-}
-digitalocean_team -[#1A83AF]-> digitalocean_tag
-@enduml
-```
-
-</ZoomPanPinch>
-
-</div>
-
-</details>
-
 ## `digitalocean_team`
 
 <ZoomPanPinch>
@@ -2930,8 +2931,6 @@ class digitalocean_space {
 }
 class digitalocean_ssh_key {
 }
-class digitalocean_tag {
-}
 class digitalocean_team {
 }
 class digitalocean_volume {
@@ -2990,7 +2989,6 @@ digitalocean_team -[#1A83AF]-> digitalocean_resource
 digitalocean_team -[#1A83AF]-> digitalocean_snapshot
 digitalocean_team -[#1A83AF]-> digitalocean_space
 digitalocean_team -[#1A83AF]-> digitalocean_ssh_key
-digitalocean_team -[#1A83AF]-> digitalocean_tag
 digitalocean_team -[#1A83AF]-> digitalocean_volume
 digitalocean_team -[#1A83AF]-> digitalocean_vpc
 digitalocean_volume -[#1A83AF]-> digitalocean_snapshot

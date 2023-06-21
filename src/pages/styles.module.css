@@ -110,7 +110,7 @@ html[data-theme='dark'] .hero {
 }
 
 .heroAnimReducedMotion {
-  animation: hero 40s infinite steps(1, end);
+  animation: hero 20s infinite steps(1, end);
 }
 
 .buttons {

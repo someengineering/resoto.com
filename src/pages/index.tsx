@@ -18,34 +18,28 @@ import styles from './styles.module.css';
 
 export default function Home(): JSX.Element {
   const [windowLoaded, setWindowLoaded] = useState(false);
-  const [isMobile, setIsMobile] = useState(true);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
-  const mobileMaxWidth = 576;
-
   const onLoad = useCallback(() => setWindowLoaded(true), []);
-  const onResize = useCallback(
-    () => setIsMobile(window.innerWidth <= mobileMaxWidth),
-    []
-  );
   const onReducedMotion = useCallback(() => setPrefersReducedMotion(true), []);
 
   useEffect(() => {
-    window.addEventListener('load', onLoad);
+    if (document.readyState === 'complete') {
+      onLoad();
+    } else {
+      window.addEventListener('load', onLoad);
 
-    setIsMobile(window.innerWidth <= mobileMaxWidth);
-    window.addEventListener('resize', onResize);
+      return () => window.removeEventListener('load', onLoad);
+    }
+  }, [onLoad]);
 
+  useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     setPrefersReducedMotion(mediaQuery.matches);
     mediaQuery.addEventListener('change', onReducedMotion);
 
-    return () => {
-      window.removeEventListener('load', onLoad);
-      window.removeEventListener('resize', onResize);
-      mediaQuery.removeEventListener('change', onReducedMotion);
-    };
-  }, [onLoad, onResize, onReducedMotion]);
+    return () => mediaQuery.removeEventListener('change', onReducedMotion);
+  }, [onReducedMotion]);
 
   return (
     <>
@@ -106,11 +100,11 @@ export default function Home(): JSX.Element {
               </div>
             </div>
             <div className={styles.heroRight}>
-              {!windowLoaded || isMobile || prefersReducedMotion ? (
+              {!windowLoaded || prefersReducedMotion ? (
                 <div
                   className={clsx(
                     styles.heroAnim,
-                    styles.heroAnimReducedMotion
+                    prefersReducedMotion ? styles.heroAnimReducedMotion : ''
                   )}
                   aria-hidden="true"
                 />

@@ -1,6 +1,7 @@
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
-import Rive from '@rive-app/react-canvas';
+import riveWasmUrl from '@rive-app/canvas/rive.wasm';
+import Rive, { RuntimeLoader } from '@rive-app/react-canvas';
 import ContactForm from '@site/src/components/ContactForm';
 import HomepageModules from '@site/src/components/HomepageModules';
 import InstallButton from '@site/src/components/InstallButton';
@@ -15,6 +16,8 @@ import { clsx } from 'clsx';
 import React, { useCallback, useEffect, useState } from 'react';
 import Balancer from 'react-wrap-balancer';
 import styles from './styles.module.css';
+
+RuntimeLoader.setWasmUrl(riveWasmUrl);
 
 export default function Home(): JSX.Element {
   const [windowLoaded, setWindowLoaded] = useState(false);

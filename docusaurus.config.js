@@ -142,7 +142,13 @@ const config = {
         name: 'custom-webpack-config',
         configureWebpack: () => ({
           module: {
-            rules: [{ test: /\.(cast|riv)$/, loader: 'file-loader', options: { name: 'assets/[name]-[hash].[ext]' } }],
+            rules: [
+              {
+                test: /\.(cast|riv|wasm)$/,
+                loader: 'file-loader',
+                options: { name: isDev ? '[name].[ext]' : 'assets/[name].[contenthash:8].[ext]' },
+              },
+            ],
           },
         }),
       };

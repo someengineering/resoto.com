@@ -156,36 +156,41 @@ textarea {
   font-family: var(--ifm-font-family-base);
 }
 
-.button--outline:hover {
+button:disabled {
+  opacity: 0.75;
+  cursor: not-allowed !important;
+}
+
+.button--outline:not(:disabled):hover {
   --ifm-button-background-color: transparent;
 }
 
-.button--primary.button--outline:hover {
+.button--primary.button--outline:not(:disabled):hover {
   --ifm-button-color: var(--ifm-color-primary-darker);
   --ifm-button-border-color: var(--ifm-color-primary-darker);
 }
 
-.button--secondary.button--outline:hover {
+.button--secondary.button--outline:not(:disabled):hover {
   --ifm-button-color: var(--ifm-color-secondary-darker);
   --ifm-button-border-color: var(--ifm-color-secondary-darker);
 }
 
-.button--success.button--outline:hover {
+.button--success.button--outline:not(:disabled):hover {
   --ifm-button-color: var(--ifm-color-success-darker);
   --ifm-button-border-color: var(--ifm-color-success-darker);
 }
 
-.button--info.button--outline:hover {
+.button--info.button--outline:not(:disabled):hover {
   --ifm-button-color: var(--ifm-color-info-darker);
   --ifm-button-border-color: var(--ifm-color-info-darker);
 }
 
-.button--warning.button--outline:hover {
+.button--warning.button--outline:not(:disabled):hover {
   --ifm-button-color: var(--ifm-color-warning-darker);
   --ifm-button-border-color: var(--ifm-color-warning-darker);
 }
 
-.button--danger.button--outline:hover {
+.button--danger.button--outline:not(:disabled):hover {
   --ifm-button-color: var(--ifm-color-danger-darker);
   --ifm-button-border-color: var(--ifm-color-danger-darker);
 }

@@ -19,8 +19,8 @@
   border-style: solid;
   border-color: var(--ifm-color-primary);
   background-color: #f5edff;
-  padding: 0 6px;
-  width: 24px;
+  padding: 0 9px;
+  width: 30px;
   color: var(--ifm-color-primary);
   font-weight: 900;
 }
@@ -29,9 +29,19 @@ html[data-theme='dark'] .scrollButton {
   background-color: #0e0434;
 }
 
-.scrollButton:hover {
+.scrollButton:not(:disabled):hover {
   cursor: pointer;
   background-color: var(--ifm-color-primary-contrast-background) !important;
+}
+
+.scrollButton:disabled {
+  opacity: 1;
+  background-color: var(--ifm-background-color);
+  color: var(--ifm-color-primary);
+}
+
+.scrollButton:disabled svg {
+  opacity: 0.25;
 }
 
 .tabListContainer div {
@@ -172,6 +182,11 @@ html[data-theme='dark'] .selectedPanel h2 span {
 }
 
 @media screen and (max-width: 1023px) {
+  .scrollButton {
+    padding: 0 6px;
+    width: 24px;
+  }
+
   .selectedPanel {
     flex-direction: column;
     text-align: center;

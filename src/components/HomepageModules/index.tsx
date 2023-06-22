@@ -15,13 +15,46 @@ import tagguardImage from '@site/src/img/modules/tagguard.webp';
 import baseStyles from '@site/src/pages/styles.module.css';
 import clsx from 'clsx';
 import GithubSlugger from 'github-slugger';
-import React from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import Balancer from 'react-wrap-balancer';
+import LeftCaret from './img/caret-left.svg';
+import RightCaret from './img/caret-right.svg';
 import styles from './styles.module.css';
 
 export default function HomepageModules(): JSX.Element {
   const githubSlugger = new GithubSlugger();
+  const tabListRef = useRef<HTMLDivElement>(null);
+  const [scrollStart, setScrollStart] = useState(true);
+  const [scrollEnd, setScrollEnd] = useState(false);
+
+  const onScroll = useCallback(() => {
+    setScrollStart(tabListRef.current.scrollLeft === 0);
+    setScrollEnd(
+      tabListRef.current.scrollLeft >=
+        tabListRef.current.scrollWidth - tabListRef.current.clientWidth - 1
+    );
+  }, []);
+
+  useEffect(() => {
+    tabListRef.current.addEventListener('scroll', onScroll);
+  }, [tabListRef, onScroll]);
+
+  const scroll = (direction: 'left' | 'right') => {
+    const distance = 100;
+    let scrollAmount = 0;
+    const slideTimer = setInterval(() => {
+      tabListRef.current.scrollLeft =
+        tabListRef.current.scrollLeft +
+        ((direction === 'left' ? -1 : 1) * distance) / 10;
+      onScroll();
+
+      scrollAmount += distance / 10;
+      if (scrollAmount >= distance) {
+        clearInterval(slideTimer);
+      }
+    }, 25);
+  };
 
   const modules: {
     name: string;
@@ -90,8 +123,11 @@ export default function HomepageModules(): JSX.Element {
           </p>
           <p>
             <Balancer>
-              Sentinel ensures that your cloud infrastructure adheres to
-              security standards and best practices.
+              Sentinel ensures that your cloud infrastructure adheres to{' '}
+              <Link to="/blog/cloud-resource-security-benchmarks">
+                security standards
+              </Link>{' '}
+              and best practices.
             </Balancer>
           </p>
         </>
@@ -188,8 +224,16 @@ export default function HomepageModules(): JSX.Element {
           </p>
           <p>
             <Balancer>
-              Review the entire lifecycle of any cloud resource, from its
-              creation time to when it is cleaned up.
+              Review the{' '}
+              <Link to="/docs/reference/cli/search-commands/history">
+                history
+              </Link>{' '}
+              and lifecycle of any cloud resource, from its creation time to
+              when it is{' '}
+              <Link to="/docs/concepts/resource-management/cleanup">
+                cleaned up
+              </Link>
+              .
             </Balancer>
           </p>
         </>
@@ -364,17 +408,37 @@ export default function HomepageModules(): JSX.Element {
     <div className={clsx(baseStyles.section, styles.section)}>
       <div className={clsx(baseStyles.inner, styles.inner)}>
         <Tabs className={styles.tabs}>
-          <TabList className={clsx(styles.tabList, 'thin-scrollbar')}>
-            {modules.map((module) => (
-              <Tab
-                className={clsx(styles.tab, module.name.toLowerCase())}
-                selectedClassName={styles.selectedTab}
-                key={`tab-${module.name.toLowerCase()}`}
-              >
-                {module.name}
-              </Tab>
-            ))}
-          </TabList>
+          <div className={styles.tabListContainer}>
+            <button
+              aria-label="Scroll left"
+              className={styles.scrollButton}
+              onClick={() => scroll('left')}
+              disabled={scrollStart}
+            >
+              <LeftCaret />
+            </button>
+            <div className="thin-scrollbar" ref={tabListRef}>
+              <TabList className={styles.tabList}>
+                {modules.map((module) => (
+                  <Tab
+                    className={clsx(styles.tab, module.name.toLowerCase())}
+                    selectedClassName={styles.selectedTab}
+                    key={`tab-${module.name.toLowerCase()}`}
+                  >
+                    {module.name}
+                  </Tab>
+                ))}
+              </TabList>
+            </div>
+            <button
+              aria-label="Scroll right"
+              className={styles.scrollButton}
+              onClick={() => scroll('right')}
+              disabled={scrollEnd}
+            >
+              <RightCaret />
+            </button>
+          </div>
           {modules.map((module) => (
             <TabPanel
               forceRender

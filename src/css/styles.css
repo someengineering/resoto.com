@@ -49,7 +49,7 @@
   --ifm-color-content: #000c1d;
   --ifm-color-content-secondary: #af62f1;
   --ifm-link-color: #a142f0;
-  --ifm-color-primary-contrast-background: #f5edff;
+  --ifm-color-primary-contrast-background: #e7d4ff;
   --ifm-color-primary-contrast-foreground: var(--ifm-color-primary-darkest);
   --ifm-highlight-color: #e59010;
   --ifm-highlight-color-secondary: #e59010;
@@ -90,7 +90,7 @@ html[data-theme='dark'] {
   --ifm-color-content: #ffffff;
   --ifm-color-content-secondary: #d9b8ff;
   --ifm-link-color: #c38fff;
-  --ifm-color-primary-contrast-background: #0e0434;
+  --ifm-color-primary-contrast-background: #14064b;
   --ifm-color-primary-contrast-foreground: var(--ifm-color-primary-lightest);
   --ifm-highlight-color: #ffe797;
   --ifm-highlight-color-secondary: #ffaf37;
@@ -156,36 +156,41 @@ textarea {
   font-family: var(--ifm-font-family-base);
 }
 
-.button--outline:hover {
+button:disabled {
+  opacity: 0.75;
+  cursor: not-allowed !important;
+}
+
+.button--outline:not(:disabled):hover {
   --ifm-button-background-color: transparent;
 }
 
-.button--primary.button--outline:hover {
+.button--primary.button--outline:not(:disabled):hover {
   --ifm-button-color: var(--ifm-color-primary-darker);
   --ifm-button-border-color: var(--ifm-color-primary-darker);
 }
 
-.button--secondary.button--outline:hover {
+.button--secondary.button--outline:not(:disabled):hover {
   --ifm-button-color: var(--ifm-color-secondary-darker);
   --ifm-button-border-color: var(--ifm-color-secondary-darker);
 }
 
-.button--success.button--outline:hover {
+.button--success.button--outline:not(:disabled):hover {
   --ifm-button-color: var(--ifm-color-success-darker);
   --ifm-button-border-color: var(--ifm-color-success-darker);
 }
 
-.button--info.button--outline:hover {
+.button--info.button--outline:not(:disabled):hover {
   --ifm-button-color: var(--ifm-color-info-darker);
   --ifm-button-border-color: var(--ifm-color-info-darker);
 }
 
-.button--warning.button--outline:hover {
+.button--warning.button--outline:not(:disabled):hover {
   --ifm-button-color: var(--ifm-color-warning-darker);
   --ifm-button-border-color: var(--ifm-color-warning-darker);
 }
 
-.button--danger.button--outline:hover {
+.button--danger.button--outline:not(:disabled):hover {
   --ifm-button-color: var(--ifm-color-danger-darker);
   --ifm-button-border-color: var(--ifm-color-danger-darker);
 }

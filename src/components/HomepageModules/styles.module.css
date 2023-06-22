@@ -6,18 +6,60 @@
   font-size: 1.25em;
 }
 
-.tabList {
-  --ifm-scrollbar-track-background-color: var(
-    --ifm-color-primary-contrast-background
-  );
-  --ifm-scrollbar-thumb-background-color: var(--ifm-color-content-secondary);
-  --ifm-scrollbar-thumb-hover-background-color: var(
-    --ifm-color-content-secondary
-  );
+.tabListContainer {
   display: flex;
-  margin: 0 -1.5px 0 0;
-  padding: 0;
+  margin: 0 -1.5px;
+  border-bottom: 1.375px solid var(--ifm-color-primary);
+  user-select: none;
+}
+
+.scrollButton {
+  flex-shrink: 0;
+  border-width: 0 1.5px;
+  border-style: solid;
+  border-color: var(--ifm-color-primary);
+  background-color: #f5edff;
+  padding: 0 9px;
+  width: 30px;
+  color: var(--ifm-color-primary);
+  font-weight: 900;
+}
+
+html[data-theme='dark'] .scrollButton {
+  background-color: #0e0434;
+}
+
+.scrollButton:not(:disabled):hover {
+  cursor: pointer;
+  background-color: var(--ifm-color-primary-contrast-background) !important;
+}
+
+.scrollButton:disabled {
+  opacity: 1;
+  background-color: var(--ifm-background-color);
+  color: var(--ifm-color-primary);
+}
+
+.scrollButton:disabled svg {
+  opacity: 0.25;
+}
+
+.tabListContainer div {
+  --ifm-scrollbar-track-background-color: #f5edff;
+  --ifm-scrollbar-thumb-background-color: var(--ifm-color-content-secondary);
+  --ifm-scrollbar-thumb-hover-background-color: #9f43ee;
   overflow-x: auto;
+}
+
+html[data-theme='dark'] .tabListContainer div {
+  --ifm-scrollbar-track-background-color: #0e0434;
+  --ifm-scrollbar-thumb-hover-background-color: #f0e4ff;
+}
+
+.tabList {
+  display: flex;
+  margin: 0;
+  padding: 0;
 }
 
 .tab {
@@ -26,7 +68,6 @@
   flex-direction: column;
   align-items: center;
   cursor: pointer;
-  border-right: 1.5px solid var(--ifm-color-primary);
   border-bottom: 1.375px solid var(--ifm-color-primary);
   padding: 18px 0;
   width: 0;
@@ -34,6 +75,10 @@
   color: var(--ifm-color-content);
   font-weight: 600;
   list-style: none;
+}
+
+.tab:not(:last-child) {
+  border-right: 1.5px solid var(--ifm-color-primary);
 }
 
 .tab:not(.selectedTab):hover {

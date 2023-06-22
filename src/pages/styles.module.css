@@ -116,7 +116,11 @@ html[data-theme='dark'] .hero {
 .buttons {
   display: flex;
   flex-wrap: wrap;
-  margin: 0.5rem -6rem -1rem -1rem;
+  margin: 0.5rem -1rem -1rem;
+}
+
+.hero .buttons {
+  margin-right: -5rem;
 }
 
 .buttons > * {
@@ -169,7 +173,7 @@ html[data-theme='dark'] .hero {
   color: #ffffff;
 }
 
-.primaryButton:hover {
+.primaryButton:not(:disabled):hover {
   --shadow-color: #e98df7;
   color: #ffffff;
 }
@@ -178,7 +182,7 @@ html[data-theme='dark'] .primaryButton {
   --shadow-color: #ffffff;
 }
 
-html[data-theme='dark'] .primaryButton:hover {
+html[data-theme='dark'] .primaryButton:not(:disabled):hover {
   --shadow-color: #f3c3fb;
 }
 
@@ -186,7 +190,7 @@ html[data-theme='dark'] .primaryButton:hover {
   background-image: url('./img/icons/arrow-outline.svg');
 }
 
-.primaryButton:hover::before {
+.primaryButton:not(:disabled):hover::before {
   animation: spin 1s ease;
   background-image: url('./img/icons/arrow-filled.svg');
 }
@@ -197,7 +201,7 @@ html[data-theme='dark'] .primaryButton:hover {
   color: var(--ifm-color-primary);
 }
 
-.outlinedButton:hover {
+.outlinedButton:not(:disabled):hover {
   opacity: 1;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
@@ -315,7 +319,8 @@ html[data-theme='dark'] .content {
     text-align: center;
   }
 
-  .buttons {
+  .buttons,
+  .hero .buttons {
     justify-content: center;
     margin: 0 -0.75rem 1rem;
   }

@@ -29,8 +29,12 @@ export default function ChronologPage(): JSX.Element {
             </h2>
             <p>
               <Balancer>
-                Review the entire lifecycle of any cloud resource, from its
-                creation time to when it is{' '}
+                Review the{' '}
+                <Link to="/docs/reference/cli/search-commands/history">
+                  history
+                </Link>{' '}
+                and lifecycle of any cloud resource, from its creation time to
+                when it is{' '}
                 <Link to="/docs/concepts/resource-management/cleanup">
                   cleaned up
                 </Link>

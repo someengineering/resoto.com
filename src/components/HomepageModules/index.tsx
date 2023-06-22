@@ -191,9 +191,9 @@ export default function HomepageModules(): JSX.Element {
         <>
           <p>
             <Balancer>
-              SpentWise offers near-real-time visibility visibility into cloud
-              costs and usage, so you can identify spikes in usage and track
-              trends over time.
+              SpentWise offers near-real-time visibility into cloud costs and
+              usage, so you can identify spikes in usage and track trends over
+              time.
             </Balancer>
           </p>
           <p>

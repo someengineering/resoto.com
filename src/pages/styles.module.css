@@ -319,7 +319,8 @@ html[data-theme='dark'] .content {
     text-align: center;
   }
 
-  .buttons {
+  .buttons,
+  .hero .buttons {
     justify-content: center;
     margin: 0 -0.75rem 1rem;
   }

@@ -36,7 +36,7 @@ As cloud infrastructures grow and evolve, it can be challenging to keep track of
 
   By examining the evolution of your cloud infrastructure over time, you can better understand how your infrastructure is growing and plan for future capacity needs and reserved instance purchases.
 
-# How to use Resoto Rewind?
+## Using Resoto Rewind
 
 Rewind introduces two new functions to Resoto: the [`graph` command](/docs/reference/cli/miscellaneous-commands/graph) and the `--at` flag on the [`search` command](/docs/reference/cli/search-commands/search).
 
@@ -46,7 +46,7 @@ You can manually create a snapshot of your cloud infrastructure graph using the 
 
 Resoto automatically finds the snapshot closest to the specified time and uses it to perform the search.
 
-## Automated Snapshots
+### Automated Snapshots
 
 Rewind can create automated snapshots of your infrastructure on a schedule that you define. Set up hourly, daily, weekly, monthly, or yearly snapshots, and retain them for as long as you need.
 
@@ -60,7 +60,7 @@ You can [edit the snapshot schedules](/docs/reference/configuration/core#snapsho
 
 The system automatically manages these snapshots, creating new snapshots according to the schedule and deleting the oldest snapshots when the number exceeds the defined limit.
 
-## Asset Inventory Graph Export and Import
+### Asset Inventory Graph Export and Import
 
 Rewind also gives you the power to export an [asset inventory graph](/docs/concepts/asset-inventory-graph) snapshot into a single file using the [`graph export` command](/docs/reference/cli/miscellaneous-commands/graph/export).
 

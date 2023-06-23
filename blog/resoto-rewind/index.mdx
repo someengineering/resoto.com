@@ -1,56 +1,82 @@
 ---
-date: 2023-06-20
+date: 2023-06-23
 authors: [lukas]
-tags: [Resoto Rewind]
+tags: [Resoto Rewind, Cloud Asset Inventory]
 ---
 
-# Introducing Resoto Rewind: Your Time Machine for Cloud Infrastructure
+# Resoto Rewind: A Cloud Infrastructure Time Machine
 
-As cloud infrastructures grow and evolve, it can be challenging to keep track of their changing state. Whether it's to meet compliance requirements, conduct audits, perform capacity forecasting, or forensic investigation. Understanding the history of your cloud environment is crucial. With Resoto 3.5 we've introduced a game-changing feature – Resoto Rewind.
+**[Resoto Rewind](/rewind) is a new module in [Resoto 3.5](/releases/3.5.0) that takes snapshots of the Resoto [asset inventory graph](/docs/concepts/asset-inventory-graph) creates a timeline of changes in your cloud infrastructure.**
 
-![Resoto Rewind](./img/rewind.svg)
+Rewind is like a time machine that allows you to see what your cloud environment looked like hours, weeks, months, or even years ago.
 
-## What is Resoto Rewind?
+Rewind doesn't just give you a log of events/changes or time series data, but offers detailed snapshots of your entire cloud environment.
 
-Resoto Rewind is a module that allows you to take point in time snapshots of the Resoto cloud infrastructure graph, providing a timeline of your cloud infrastructures state at any given point. It is like a time machine, allowing you to go back and see what your cloud environment looked like hours, weeks, months, or even years ago. This isn't just a log of events or time series data but a detailed snapshot of your entire cloud environment.
+![Resoto Rewind](./img/rewind.png)
+
+As cloud infrastructures grow and evolve, it can be challenging to keep track of their changing state. Whether it's to meet compliance requirements, conduct audits, perform capacity forecasting, or forensic investigation, understanding the history of your cloud environment is crucial.
 
 <!--truncate-->
 
-## Why use Resoto Rewind?
+## Why Resoto Rewind?
 
-If you've ever implemented new policies or made substantial changes to your cloud setup, you know how important it is to gauge the impact of these changes. Resoto Rewind lets you do this with ease.
+- If you've ever implemented new policies or made substantial changes to your cloud setup, you know how important it is to gauge the impact of these changes.
 
-For example, if you've just introduced a new tagging policy, you can use Rewind to compare the state of your tag policy compliance today versus a month ago.
+  For example, if you've just introduced a new [tagging policy](../effective-cloud-management-tagging-policies/index.mdx), you can use Rewind to compare the state of your tag policy compliance today versus a month ago.
 
-Or imagine facing a security breach or a hacking event. According to [the latest Mandiant® M-Trends® report](https://www.mandiant.com/m-trends), the median dwell time (time from the start of a cyber intrusion to its detection) can range from few days to as high as several months. This means an attacker may have had access to your systems for a considerable amount of time before the breach was even detected. Investigating such incidents requires a deep dive into the state of your cloud infrastructure around the time of the incident. Resoto Rewind can be an invaluable tool for forensic analysis, allowing you to understand exactly how your security groups, user accounts and access policies looked at the time of the breach, aiding in identifying potential vulnerabilities that were exploited.
+- Imagine facing a security breach or a hacking event.
 
-Resoto Rewind is also great for capacity forecasting. By looking at the evolution of your cloud infrastructure over time, you can better understand how your infrastructure is growing and plan for future capacity needs and reserved instance purchases.
+  According to [the latest Mandiant® M-Trends® report](https://mandiant.com/m-trends), the median dwell time (time from the start of a cyber intrusion to its detection) can range from few days to as high as several months. This means an attacker may have had access to your systems for a considerable amount of time before the breach was even detected.
+
+  Investigating such incidents requires a deep dive into the state of your cloud infrastructure around the time of the incident.
+
+  Rewind can be an invaluable tool for forensic analysis, allowing you to understand exactly how your security groups, user accounts and access policies looked at the time of the breach, aiding in identifying potential vulnerabilities that were exploited.
+
+- Rewind is also great for capacity forecasting.
+
+  By examining the evolution of your cloud infrastructure over time, you can better understand how your infrastructure is growing and plan for future capacity needs and reserved instance purchases.
 
 # How to use Resoto Rewind?
 
-Rewind is active by default and introduces two new functions to Resoto. The [`graph` command](/docs/reference/cli/miscellaneous-commands/graph) and the [`search --at`](/docs/reference/cli/search-commands/search) flag.
+Rewind introduces two new functions to Resoto: the [`graph` command](/docs/reference/cli/miscellaneous-commands/graph) and the `--at` flag on the [`search` command](/docs/reference/cli/search-commands/search).
 
-You can manually create a snapshot of your cloud infrastructure graph using the [`graph snapshot`](/docs/reference/cli/miscellaneous-commands/graph/snapshot) command, get a list of snapshots using [`graph list`](/docs/reference/cli/miscellaneous-commands/graph/list) and use a snapshot during your search using the `graph=<snapshot-name>` filter in the `search` command. You can also add the `--at` flag to the search followed by either a timestamp (e.g. `--at 2021-06-20T12:00:00Z`) or a time delta (e.g. `--at 1w`). Resoto automatically finds the snapshot that is closest to the specified time and uses it to perform the search.
+You can manually create a snapshot of your cloud infrastructure graph using the [`graph snapshot`](/docs/reference/cli/miscellaneous-commands/graph/snapshot) command and get a list of snapshots using [`graph list`](/docs/reference/cli/miscellaneous-commands/graph/list).
 
-## The Power of Rewind's Automated Snapshots
+[Use a snapshot in a search](/docs/reference/search#searching-snapshots) using the `graph=<snapshot-name>` filter on the [`search` command](/docs/reference/cli/search-commands/search) or by adding the `--at` flag with a timestamp (e.g., `--at 2021-06-20T12:00:00Z`) or time delta (e.g., `--at 1w`).
 
-With Rewind, we're also introducing the ability to create automated snapshots of your infrastructure based on a schedule that works for you. Set up hourly, daily, weekly, monthly, or even yearly snapshots and retain them for as long as you need.
+Resoto automatically finds the snapshot closest to the specified time and uses it to perform the search.
 
-The default schedule keeps 24 hourly, 7 daily, 4 weekly, 12 monthly and 10 yearly snapshots.
+## Automated Snapshots
 
-By editing the Resoto Rewind schedule (`config edit resoto.core.snapshots`) you can come up with custom labels like "biweekly" to tailor the snapshot schedule according to your specific needs. The system automatically manages these snapshots, creating new ones as per the schedule and deleting the oldest when the number exceeds your specified limit. This way, you always have the most relevant snapshots at your fingertips.
+Rewind can create automated snapshots of your infrastructure on a schedule that you define. Set up hourly, daily, weekly, monthly, or yearly snapshots, and retain them for as long as you need.
 
-## Infrastructure Graph Export and Import
+:::info
 
-Rewind also gives you the power to export an infrastructure graph snapshot into a single file using the `graph export` command. You can then import it back into the system, archive it or import into another Resoto instance, ensuring your data is always accessible and portable.
+The default schedule keeps 24 hourly, 7 daily, 4 weekly, 12 monthly, and 10 yearly snapshots.
 
-## A Look into the Future with Rewind
+:::
 
-Resoto Rewind is not just about looking into the past; it's also about preparing for the future. By examining the state of your cloud infrastructure at different points in time, you can make more informed decisions about capacity planning, identify potential issues before they become major problems, and better understand the impact of the changes you make.
+You can [edit the snapshot schedules](/docs/reference/configuration/core#snapshot-schedules) to add custom labels (e.g., "biweekly") and tailor the snapshot schedule to your needs.
 
-One use case on our road map is the ability to use Rewind to predict the future state of your cloud infrastructure. By analyzing the evolution of your infrastructure, Rewind will be able to predict how your cloud environment will look in the future. This will allow you to plan for capacity, budget, and other factors with greater accuracy. This first version of Rewind is laying the groundwork for this and future modules.
+The system automatically manages these snapshots, creating new snapshots according to the schedule and deleting the oldest snapshots when the number exceeds the defined limit.
 
-For now we're thrilled to introduce Resoto Rewind and can't wait for you to try it. As always we'd love to hear your feedback and suggestions. You can [join our Discord](https://discord.gg/someengineering) or simply fill in the contact form below!
+## Asset Inventory Graph Export and Import
+
+Rewind also gives you the power to export an [asset inventory graph](/docs/concepts/asset-inventory-graph) snapshot into a single file using the [`graph export` command](/docs/reference/cli/miscellaneous-commands/graph/export).
+
+You can then [import](/docs/reference/cli/miscellaneous-commands/graph/import) it back into the system, archive it, or import into another Resoto instance—your data is always accessible and portable.
+
+## A Look into the Future
+
+Resoto Rewind is not just about looking into the past; it's also about preparing for the future.
+
+By examining the state of your cloud infrastructure at different points in time, you can make more informed decisions about capacity planning, identify potential issues before they become major problems, and better understand the impact of the changes you make.
+
+**One use case on our roadmap is the ability to use Rewind to predict the future state of your cloud infrastructure.**
+
+By analyzing the evolution of your infrastructure, Rewind will be able to predict how your cloud environment will look in the future, empowering you to plan for capacity, budget, and other factors with greater accuracy.
+
+We're thrilled to introduce Resoto Rewind and can't wait for you to try it! As always, we'd love to hear your feedback and suggestions. [Chat with us on Discord](https://discord.gg/someengineering) or [send us a message](#contact-us)!
 
 ## Further Reading
 

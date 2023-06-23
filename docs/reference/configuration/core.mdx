@@ -100,3 +100,36 @@ Alternatively, you can use the [`config set` command](../cli/setup-commands/conf
 ```bash title="Configure the collect_and_cleanup workflow to run twice per hour"
 > config set resoto.core resotocore.workflows.collect_and_cleanup.schedule="0,30 * * * *"
 ```
+
+## Snapshot Schedules
+
+[Resoto Rewind](/rewind) allows you to set up automated snapshots. You can specify the number of snapshots to retain per label and the associated schedule.
+
+Execute the following command in [Resoto Shell](../components/shell.mdx) to open the relevant configuration for editing:
+
+```bash
+> config edit resoto.core.snapshots
+```
+
+Here's an example of a snapshot schedule configuration:
+
+```yaml
+snapshots:
+  hourly:
+    retain: 24
+    schedule: 0 * * * *
+  daily:
+    retain: 7
+    schedule: 0 0 * * *
+  weekly:
+    retain: 4
+    schedule: 0 0 * * 0
+  monthly:
+    retain: 12
+    schedule: 0 0 1 * *
+  yearly:
+    retain: 10
+    schedule: 0 0 1 1 *
+```
+
+These labels (`hourly`, `daily`, etc.) are user-definable, allowing for a wide range of snapshot schedules. The schedule is a crontab syntax. The above values are the defaults, resulting in a total of 57 snapshots. Depending on your available storage you can increase or decrease the number of snapshots retained.

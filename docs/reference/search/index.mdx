@@ -9,3 +9,35 @@ The result of a search can be [aggregated](./aggregation.mdx), so valuable insig
 Resoto allows for [merging nodes](./merging-nodes.mdx), which can be a useful in case the information is not part of the node itself but in a reachable node nearby. It also allows filtering results with a certain graph structure using the [with clause](./with-clause.mdx).
 
 <DocCardList />
+
+## Searching Snapshots
+
+You can search a specific [Resoto Rewind](/rewind) graph snapshot by prefixing a `search` with the `graph=<graph-name>` filter:
+
+```bash
+> graph=snapshot-resoto-hourly-20230618T210000Z search is(instance) | count
+# highlight-start
+total matched: 12
+total unmatched: 0
+# highlight-end
+```
+
+Alternatively, you can provide the `--at` flag to the [`search` command](../cli/search-commands/search.mdx) to search at a specific point in time. Resoto will find the infrastructure graph snapshot that is closest to the specified time.
+
+The `--at` flag takes either a timestamp or a relative time:
+
+```bash
+> search is(instance) --at 2023-06-18T21:00:00Z | count
+# highlight-start
+total matched: 12
+total unmatched: 0
+# highlight-end
+```
+
+```bash
+> search is(instance) --at 1w | count
+# highlight-start
+total matched: 12
+total unmatched: 0
+# highlight-end
+```

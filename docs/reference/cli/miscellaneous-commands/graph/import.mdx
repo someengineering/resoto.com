@@ -1,0 +1,23 @@
+---
+sidebar_label: import
+pagination_label: graph import
+---
+
+# `graph import` Command
+
+The `graph import` command imports a [Resoto Rewind](/rewind) [asset inventory graph](../../../../concepts/asset-inventory-graph/index.mdx) snapshot from disk.
+
+## Usage
+
+```bash
+graph import [--force] [graph_name] <file_name>
+```
+
+## Example
+
+```bash
+> graph import resoto_test resoto.graph
+# highlight-start
+Graph resoto_test imported from resoto.graph.
+# highlight-end
+```

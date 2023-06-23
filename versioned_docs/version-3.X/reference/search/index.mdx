@@ -12,7 +12,7 @@ Resoto allows for [merging nodes](./merging-nodes.mdx), which can be a useful in
 
 ## Searching Snapshots
 
-You can search a specific [Resoto Rewind](/rewind) graph snapshot by prefixing a `search` with the `graph=<graph-name>` filter:
+You can search a specific [Resoto Rewind](/rewind) [asset inventory graph](../../concepts/asset-inventory-graph/index.mdx) snapshot by prefixing a search with the `graph=<graph-name>` filter:
 
 ```bash
 > graph=snapshot-resoto-hourly-20230618T210000Z search is(instance) | count
@@ -22,7 +22,7 @@ total unmatched: 0
 # highlight-end
 ```
 
-Alternatively, you can provide the `--at` flag to the [`search` command](../cli/search-commands/search.mdx) to search at a specific point in time. Resoto will find the infrastructure graph snapshot that is closest to the specified time.
+Alternatively, you can provide the `--at` flag to the [`search` command](../cli/search-commands/search.mdx) to search at a specific point in time. Resoto will find the [asset inventory graph](../../concepts/asset-inventory-graph/index.mdx) snapshot that is closest to the specified time.
 
 The `--at` flag takes either a timestamp or a relative time:
 

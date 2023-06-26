@@ -52,7 +52,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
    > search is(aws_ec2_volume) and /ancestors.account.reported.name in [eng-jenkins,eng-development] and volume_status = available and age > 30d and last_access > 7d
    ```
 
-5. Now that we've defined the search for unused EBS volumes, simply pipe the result of the search query to the [`clean` command](../../reference/cli/action-commands/clean.mdx):
+5. Now that we've defined the search for unused EBS volumes, simply pipe the result of the search query to the [`clean` command](../../reference/cli/clean.mdx):
 
    ```bash
    > search is(aws_ec2_volume) and /ancestors.account.reported.name in [eng-jenkins,eng-development] and volume_status = available and age > 30d and last_access > 7d | clean
@@ -60,7 +60,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
    :::note
 
-   The [`clean` command](../../reference/cli/action-commands/clean.mdx) flags a resource for cleanup.
+   The [`clean` command](../../reference/cli/clean.mdx) flags a resource for cleanup.
 
    Cleanup is performed whenever the [`collect_and_cleanup` workflow](../../reference/workflows/index.mdx#collect_and_cleanup-workflow) runs.
 

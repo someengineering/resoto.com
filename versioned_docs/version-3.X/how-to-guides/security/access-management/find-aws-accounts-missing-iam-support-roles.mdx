@@ -18,7 +18,7 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
 ## Directions
 
-1. Execute the following [`search` command](../../../reference/cli/search-commands/search.mdx) in [Resoto Shell](../../../reference/components/shell.mdx) or Resoto UI:
+1. Execute the following [`search` command](../../../reference/cli/search.mdx) in [Resoto Shell](../../../reference/components/shell.mdx) or Resoto UI:
 
    ```bash
    > search is(aws_account) with(empty, -[0:2]-> is(aws_iam_role) and name=AWSServiceRoleForSupport and role_assume_role_policy_document.Statement[*].{Effect=Allow and Principal.Service=support.amazonaws.com and Action="sts:AssumeRole"})
@@ -28,7 +28,7 @@ This guide assumes that you have already [installed](../../../getting-started/in
    # highlight-end
    ```
 
-2. Pipe the `search` command into the [`dump` command](../../../reference/cli/format-commands/dump.mdx):
+2. Pipe the `search` command into the [`dump` command](../../../reference/cli/dump.mdx):
 
    ```bash
    > search is(aws_account) with(empty, -[0:2]-> is(aws_iam_role) and name=AWSServiceRoleForSupport and role_assume_role_policy_document.Statement[*].{Effect=Allow and Principal.Service=support.amazonaws.com and Action="sts:AssumeRole"}) | dump

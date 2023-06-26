@@ -59,7 +59,7 @@ Using [`resotoappbundler`](https://github.com/someengineering/resotoappbundler) 
     $ resotoappbundler --path resoto-apps/ --discover > index.json
     ```
 
-7.  From within [Resoto Shell](../reference/components/shell.mdx), install an app using the [`app install` command](../reference/cli/miscellaneous-commands/apps/install.mdx):
+7.  From within [Resoto Shell](../reference/components/shell.mdx), install an app using the [`app install` command](../reference/cli/app/install.mdx):
 
     ```bash title="Installing an app from a custom index URL"
     > app install <app_name> --index-url <file://...>
@@ -69,7 +69,7 @@ Using [`resotoappbundler`](https://github.com/someengineering/resotoappbundler) 
 
     The `--index-url` argument can be used to specify a custom app index URL.
 
-    By default, Resoto uses the [official app index URL](https://cdn.some.engineering/resoto/apps/index.json).
+    By default, Resoto uses the [official app index URL](https://cdn.some.engineering/resoto/app/index.json).
 
     For local development, the index URL can point to a local JSON file using `file://...`.
 

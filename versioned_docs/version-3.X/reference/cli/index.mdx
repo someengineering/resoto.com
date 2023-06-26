@@ -1,91 +1,98 @@
 # Command-Line Interface
 
-## Commands
-
-The [Resoto Shell](../components/shell.mdx) CLI supports various commands that allow you to access the graph database.
+The Resoto CLI offers a variety of commands that allow you to interact with Resoto via [Resoto Shell](../components/shell.mdx).
 
 :::tip
 
-You can pipe commands using `|` and chain multiple commands using `;`.
+You can pipe commands using `|` and chain commands using `;`.
 
 :::
 
-### Search Commands
+## Search Commands
 
-| Command                                              | Description                                                                                                      |
-| ---------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| [`aggregate`](./search-commands/aggregate.mdx)       | Aggregate this query by the provided specification                                                               |
-| [`ancestors`](./search-commands/ancestors.mdx)       | Select all [ancestors](../../concepts/asset-inventory-graph/index.mdx#ancestors) of this node in the graph       |
-| [`count`](./search-commands/count.mdx)               | Count incoming elements or sum defined property                                                                  |
-| [`descendants`](./search-commands/descendants.mdx)   | Select all [descendants](../../concepts/asset-inventory-graph/index.mdx#descendants) of this node in the graph   |
-| [`history`](./search-commands/history.mdx)           | Search the history of [nodes](../../concepts/asset-inventory-graph/index.mdx#nodes).                             |
-| [`kinds`](./search-commands/kinds.mdx)               | Retrieves information about the graph data kinds                                                                 |
-| [`predecessors`](./search-commands/predecessors.mdx) | Select all [predecessors](../../concepts/asset-inventory-graph/index.mdx#predecessors) of this node in the graph |
-| [`search`](./search-commands/search.mdx)             | Search the graph                                                                                                 |
-| [`successors`](./search-commands/successors.mdx)     | Select all [successors](../../concepts/asset-inventory-graph/index.mdx#successors) of this node in the graph     |
-| [`templates`](./search-commands/templates/index.mdx) | Access the query template library                                                                                |
+| Command                              | Description                                                                                                      |
+| ------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
+| [`aggregate`](./aggregate.mdx)       | Aggregate this query by the provided specification                                                               |
+| [`ancestors`](./ancestors.mdx)       | Select all [ancestors](../../concepts/asset-inventory-graph/index.mdx#ancestors) of this node in the graph       |
+| [`count`](./count.mdx)               | Count incoming elements or sum defined property                                                                  |
+| [`descendants`](./descendants.mdx)   | Select all [descendants](../../concepts/asset-inventory-graph/index.mdx#descendants) of this node in the graph   |
+| [`history`](./history.mdx)           | Search the history of [nodes](../../concepts/asset-inventory-graph/index.mdx#nodes).                             |
+| [`kinds`](./kinds.mdx)               | Retrieves information about the graph data kinds                                                                 |
+| [`predecessors`](./predecessors.mdx) | Select all [predecessors](../../concepts/asset-inventory-graph/index.mdx#predecessors) of this node in the graph |
+| [`search`](./search.mdx)             | Search the graph                                                                                                 |
+| [`successors`](./successors.mdx)     | Select all [successors](../../concepts/asset-inventory-graph/index.mdx#successors) of this node in the graph     |
+| [`template`](./template/index.mdx)   | Access the query template library                                                                                |
 
-### Format Commands
+## Format Commands
 
-| Command                                  | Description                                                  |
-| ---------------------------------------- | ------------------------------------------------------------ |
-| [`dump`](./format-commands/dump.mdx)     | Dump all properties of incoming objects                      |
-| [`format`](./format-commands/format.mdx) | Transform incoming objects as string with a defined format   |
-| [`list`](./format-commands/list.mdx)     | Transform incoming objects as string with defined properties |
+| Command                  | Description                                                  |
+| ------------------------ | ------------------------------------------------------------ |
+| [`dump`](./dump.mdx)     | Dump all properties of incoming objects                      |
+| [`format`](./format.mdx) | Transform incoming objects as string with a defined format   |
+| [`list`](./list.mdx)     | Transform incoming objects as string with defined properties |
 
-### Action Commands
+## Action Commands
 
-| Command                                              | Description                                                                      |
-| ---------------------------------------------------- | -------------------------------------------------------------------------------- |
-| [`aws`](./action-commands/aws.mdx)                   | Execute commands on AWS resources                                                |
-| [`clean`](./action-commands/clean.mdx)               | Mark all incoming database objects for cleaning                                  |
-| [`http`](./action-commands/http.mdx)                 | Perform HTTP request with incoming data                                          |
-| [`jobs`](./action-commands/job/index.mdx)            | Manage all jobs                                                                  |
-| [`protect`](./action-commands/protect.mdx)           | Mark all incoming database objects as protected                                  |
-| [`set_desired`](./action-commands/set_desired.mdx)   | Allows to set arbitrary properties as desired for all incoming database objects  |
-| [`set_metadata`](./action-commands/set_metadata.mdx) | Allows to set arbitrary properties as metadata for all incoming database objects |
-| [`tag`](./action-commands/tag/index.mdx)             | Update a tag with provided value or delete a tag                                 |
-| [`workflow`](./action-commands/workflow/index.mdx)   | Manage all workflows                                                             |
+| Command                              | Description                                                                      |
+| ------------------------------------ | -------------------------------------------------------------------------------- |
+| [`aws`](./aws.mdx)                   | Execute commands on AWS resources                                                |
+| [`clean`](./clean.mdx)               | Mark all incoming database objects for cleaning                                  |
+| [`http`](./http.mdx)                 | Perform HTTP request with incoming data                                          |
+| [`job`](./job/index.mdx)             | Manage all jobs                                                                  |
+| [`protect`](./protect.mdx)           | Mark all incoming database objects as protected                                  |
+| [`set_desired`](./set_desired.mdx)   | Allows to set arbitrary properties as desired for all incoming database objects  |
+| [`set_metadata`](./set_metadata.mdx) | Allows to set arbitrary properties as metadata for all incoming database objects |
+| [`tag`](./tag/index.mdx)             | Update a tag with provided value or delete a tag                                 |
+| [`workflow`](./workflow/index.mdx)   | Manage all workflows                                                             |
 
-### Setup Commands
+## Setup Commands
 
-| Command                                           | Description                              |
-| ------------------------------------------------- | ---------------------------------------- |
-| [`certificate`](./setup-commands/certificate.mdx) | Create TLS certificates                  |
-| [`config`](./setup-commands/config/index.mdx)     | Manage configuration settings            |
-| [`system`](./setup-commands/system/index.mdx)     | Access and manage system-wide properties |
-| [`user`](./setup-commands/user/index.mdx)         | Access and manage Resoto users           |
+| Command                            | Description                              |
+| ---------------------------------- | ---------------------------------------- |
+| [`certificate`](./certificate.mdx) | Create TLS certificates                  |
+| [`config`](./config/index.mdx)     | Manage configuration settings            |
+| [`system`](./system/index.mdx)     | Access and manage system-wide properties |
+| [`user`](./user/index.mdx)         | Access and manage Resoto users           |
 
-### Miscellaneous Commands
+## Other Commands
 
-| Command                                               | Description                                                                                             |
-| ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| [`apps`](./miscellaneous-commands/apps/index.mdx)     | Manage infrastructure apps                                                                              |
-| [`chunk`](./miscellaneous-commands/chunk.mdx)         | Chunk incoming elements in batches                                                                      |
-| [`echo`](./miscellaneous-commands/echo.mdx)           | Send the provided message to downstream                                                                 |
-| [`env`](./miscellaneous-commands/env.mdx)             | Retrieve the environment and pass it to the output stream                                               |
-| [`flatten`](./miscellaneous-commands/flatten.mdx)     | Take incoming batches of elements and flattens them to a stream of single elements                      |
-| [`graph`](./miscellaneous-commands/graph/index.mdx)   | Operate on the infrastructure graph                                                                     |
-| [`head`](./miscellaneous-commands/head.mdx)           | Return `n` first elements of the stream                                                                 |
-| [`help`](./miscellaneous-commands/help.mdx)           | Shows available commands, as well as help for any specific command                                      |
-| [`jq`](./miscellaneous-commands/jq.mdx)               | Filter and process <abbr title="JavaScript Object Notation">JSON</abbr>                                 |
-| [`json`](./miscellaneous-commands/json.mdx)           | Parse <abbr title="JavaScript Object Notation">JSON</abbr> and pass parsed objects to the output stream |
-| [`report`](./miscellaneous-commands/report/index.mdx) | Generate reports                                                                                        |
-| [`sleep`](./miscellaneous-commands/sleep.mdx)         | Suspend execution for an interval of time                                                               |
-| [`tail`](./miscellaneous-commands/tail.mdx)           | Return `n` last elements of the stream                                                                  |
-| [`uniq`](./miscellaneous-commands/uniq.mdx)           | Remove all duplicated objects from the stream                                                           |
-| [`write`](./miscellaneous-commands/write.mdx)         | Writes the incoming stream of data to a file in the defined format                                      |
+| Command                        | Description                                                                                             |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------- |
+| [`app`](./app/index.mdx)       | Manage infrastructure apps                                                                              |
+| [`chunk`](./chunk.mdx)         | Chunk incoming elements in batches                                                                      |
+| [`echo`](./echo.mdx)           | Send the provided message to downstream                                                                 |
+| [`env`](./env.mdx)             | Retrieve the environment and pass it to the output stream                                               |
+| [`flatten`](./flatten.mdx)     | Take incoming batches of elements and flattens them to a stream of single elements                      |
+| [`head`](./head.mdx)           | Return `n` first elements of the stream                                                                 |
+| [`help`](./help.mdx)           | Shows available commands, as well as help for any specific command                                      |
+| [`jq`](./jq.mdx)               | Filter and process <abbr title="JavaScript Object Notation">JSON</abbr>                                 |
+| [`json`](./json.mdx)           | Parse <abbr title="JavaScript Object Notation">JSON</abbr> and pass parsed objects to the output stream |
+| [`report`](./report/index.mdx) | Generate reports                                                                                        |
+| [`sleep`](./sleep.mdx)         | Suspend execution for an interval of time                                                               |
+| [`tail`](./tail.mdx)           | Return `n` last elements of the stream                                                                  |
+| [`uniq`](./uniq.mdx)           | Remove all duplicated objects from the stream                                                           |
+| [`write`](./write.mdx)         | Writes the incoming stream of data to a file in the defined format                                      |
 
-### Custom Commands
+## Custom Commands
 
-It is possible to create your own commands by combining existing commands with your own logic. In resoto shell type `config edit resoto.core.commands`. This will open a file and show all available custom commands. Resoto ships with an example command called `discord`, that allows to send the result of a search to [Discord](https://discord.com) as notification.
+It is possible to create your own commands by combining existing commands with your own logic.
 
-A custom command has the following properties:
+In [Resoto Shell](../components/shell.mdx), type `config edit resoto.core.commands`. This will open a file and show all available custom commands.
 
-- `name`: The name of the custom command
-- `template`: a command template that will be executed when the command is called. A template can have template parameters. See [templates](../templates.mdx) to learn how to define them.
-- `info`: a short description of the command. This will be displayed to users when they call `help my-custom-command`
-- `parameters`: a list of placeholder parameters. All parameters need to be defined in order to use the command. If the parameter defines a default value, it is considered optional. If there is no default value, the parameter is required and needs to be defined by the user during execution time.
+### Custom Command Properties
+
+Custom commands have the following properties:
+
+| Property     | Description                                                                   |
+| ------------ | ----------------------------------------------------------------------------- |
+| `name`       | Custom command name                                                           |
+| `template`   | Command [template](../templates.mdx)                                          |
+| `info`       | Command description to be display when users execute `help my-custom-command` |
+| `parameters` | List of placeholder parameters \*                                             |
+
+\* All parameters without default values need to be defined in order to use the custom command.
+
+### Custom Command Example
 
 ```yaml title="Example custom command"
 info: 'Say Hi to the user.'

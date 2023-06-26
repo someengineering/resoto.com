@@ -89,7 +89,7 @@ The above command will examine all [collected AWS accounts](/docs/how-to-guides/
 
 ![Screenshot of security benchmark report in Resoto CLI](./img/report-run-result.png)
 
-You can also write the report to a Markdown file by piping the output of the [`report` command](/docs/reference/cli/miscellaneous-commands/report) to the [`write` command](/docs/reference/cli/miscellaneous-commands/write):
+You can also write the report to a Markdown file by piping the output of the [`report` command](/docs/reference/cli/report) to the [`write` command](/docs/reference/cli/write):
 
 ```bash
 > report benchmark run aws_cis_1_5 | write report.md
@@ -121,7 +121,7 @@ Resoto can not only output security benchmark reports to a file, but can also se
 
 </Tabs>
 
-If the [`report` command](/docs/reference/cli/miscellaneous-commands/report) finds any issues, a message like the following will be sent:
+If the [`report` command](/docs/reference/cli/report) finds any issues, a message like the following will be sent:
 
 ![Screenshot of Discord alert](./img/discord-message.jpg)
 
@@ -141,7 +141,7 @@ You can create a PagerDuty alert in Resoto like so:
 
 :::
 
-When the [`report` command](/docs/reference/cli/miscellaneous-commands/report) detects an issue, a PagerDuty alert will be created:
+When the [`report` command](/docs/reference/cli/report) detects an issue, a PagerDuty alert will be created:
 
 ![Screenshot of PagerDuty alert](./img/pagerduty-alert.png)
 
@@ -149,7 +149,7 @@ When the [`report` command](/docs/reference/cli/miscellaneous-commands/report) d
 
 So far, we've examined existing resources to verify compliance with a security baseline. **But what about newly created or modified resources?**
 
-We can create a [job](/docs/concepts/automation#jobs) that triggers the [`report` command](/docs/reference/cli/miscellaneous-commands/report) each time Resoto [collects your ](/docs/concepts/cloud-data-sync#resource-collection) and creates alerts as described above:
+We can create a [job](/docs/concepts/automation#jobs) that triggers the [`report` command](/docs/reference/cli/report) each time Resoto [collects your ](/docs/concepts/cloud-data-sync#resource-collection) and creates alerts as described above:
 
 ![Screenshot of security monitoring job creation in Resoto UI](./img/create-job.jpg)
 

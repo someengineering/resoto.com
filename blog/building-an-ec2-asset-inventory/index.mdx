@@ -54,8 +54,8 @@ Let's export this list to a CSV file so that we can import the data into Excel o
 > search is(aws_ec2_instance) | list --csv id,name,instance_type,ctime as create_time, age,/ancestors.region.reported.name as region,/ancestors.account.reported.name as account,instance_status,tags.owner,tags.expiration | write ec2_inventory-@TODAY@.csv
 ```
 
-- The `--csv` flag for the [`list` command](/docs/reference/cli/format-commands/list) tells Resoto to output the results in CSV format.
-- The [`write` command](/docs/reference/cli/miscellaneous-commands/write) sends the CSV output to the designated file.
+- The `--csv` flag for the [`list` command](/docs/reference/cli/list) tells Resoto to output the results in CSV format.
+- The [`write` command](/docs/reference/cli/write) sends the CSV output to the designated file.
 - The pipes (`|`) passes the result of the preceeding command as input for the following command.
 - `@TODAY@` is a special [placeholder string](/docs/reference/cli#placeholder-strings) that we use to add the current date to the filename.
 
@@ -71,9 +71,9 @@ The search we used up until this point is:
 > search is(aws_ec2_instance) | list
 ```
 
-This returns a list of EC2 instances with [properties from a predefined list](/docs/reference/cli/format-commands/list#options).
+This returns a list of EC2 instances with [properties from a predefined list](/docs/reference/cli/list#options).
 
-To add specific properties of interest, we can specify them as a parameter to the [`list` command](/docs/reference/cli/format-commands/list).
+To add specific properties of interest, we can specify them as a parameter to the [`list` command](/docs/reference/cli/list).
 
 ### Available Resource Properties in Resoto
 

@@ -59,7 +59,7 @@ The SRE team split the work to clean up their cloud infrastructure into three ph
 
 The new [tag policy](../effective-cloud-management-tagging-policies/index.mdx) meant developers were now required to use two mandatory tags for every resource—an owner and an expiration tag. The expiration date was specific to a workload and account, and limited to development accounts. The goal of the new tag policy was to introduce accountability, without adding any complexity.
 
-To enforce the new policy, D2iQ started using [Resoto's action commands](/docs/reference/cli/action-commands) to perform updates on resources.
+To enforce the new policy, D2iQ started using [Resoto's action commands](/docs/reference/cli#action-commands) to perform updates on resources.
 
 - Whenever a resource was missing one of the two required tags, within an hour after its creation Resoto would catch and delete it automatically.
 

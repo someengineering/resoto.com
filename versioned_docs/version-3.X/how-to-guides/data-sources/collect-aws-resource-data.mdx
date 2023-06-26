@@ -4,7 +4,7 @@ sidebar_label: Collect AWS Resource Data
 
 # How to Collect AWS Resource Data
 
-The [Amazon Web Services (AWS)](../../reference/unified-data-model/aws.mdx) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/setup-commands/config) in [Resoto Shell](../../reference/components/shell).
+The [Amazon Web Services (AWS)](../../reference/unified-data-model/aws.mdx) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/config) in [Resoto Shell](../../reference/components/shell).
 
 ## Prerequisites
 
@@ -14,7 +14,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
 ### 1. Enable the AWS Collector
 
-1. Open the [Resoto Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/setup-commands/config) in [Resoto Shell](../../reference/components/shell):
+1. Open the [Resoto Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/config) in [Resoto Shell](../../reference/components/shell):
 
    ```bash
    > config edit resoto.worker
@@ -47,7 +47,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
 1. Configure an [instance profile](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html).
 
-2. Open the [Resoto Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/setup-commands/config) in [Resoto Shell](../../reference/components/shell):
+2. Open the [Resoto Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/config) in [Resoto Shell](../../reference/components/shell):
 
    ```bash
    > config edit resoto.worker
@@ -110,7 +110,7 @@ Access keys in the configuration are visible to anyone with access to your Resot
 
 :::
 
-1. Open the [Resoto Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/setup-commands/config) in [Resoto Shell](../../reference/components/shell):
+1. Open the [Resoto Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/config) in [Resoto Shell](../../reference/components/shell):
 
    ```bash
    > config edit resoto.worker
@@ -151,7 +151,7 @@ Access keys in the configuration are visible to anyone with access to your Resot
    ...
    ```
 
-2. Open the [Resoto Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/setup-commands/config) in [Resoto Shell](../../reference/components/shell):
+2. Open the [Resoto Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/config) in [Resoto Shell](../../reference/components/shell):
 
    ```bash
    > config edit resoto.worker
@@ -322,7 +322,7 @@ You can specify a profile using `AWS_PROFILE` and, for local testing, SSO authen
 
     </Tabs>
 
-2.  Open the [Resoto Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/setup-commands/config) in [Resoto Shell](../../reference/components/shell):
+2.  Open the [Resoto Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/config) in [Resoto Shell](../../reference/components/shell):
 
     ```bash
     > config edit resoto.worker
@@ -360,7 +360,7 @@ If you prefer to deploy the role yourself, the S3 URL of the template to create 
 
 ### 4. Trigger Resource Collection
 
-1. By default, Resoto performs resource collection each hour. To immediately trigger a collect run, use the [`workflow run` command](../../reference/cli/action-commands/workflow/run.mdx) in [Resoto Shell](../../reference/components/shell):
+1. By default, Resoto performs resource collection each hour. To immediately trigger a collect run, use the [`workflow run` command](../../reference/cli/workflow/run.mdx) in [Resoto Shell](../../reference/components/shell):
 
    ```bash
    > workflow run collect

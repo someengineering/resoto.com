@@ -54,7 +54,7 @@ Resource changes fall into one of three categories:
 | `updated` | An existing resource was changed | Configuration of the updated resource               |
 | `deleted` | A resource was deleted           | Configuration of the resource prior to its deletion |
 
-The [`history` command](/docs/reference/cli/search-commands/history) in Resoto supports filtering of events by type and time:
+The [`history` command](/docs/reference/cli/history) in Resoto supports filtering of events by type and time:
 
 ```bash title="List all reasource deleted between 2022-12-02 and 2022-12-09"
 > history --change node_deleted --after 2022-12-02 --before 2022-12-09
@@ -74,7 +74,7 @@ We defined the absolute times for the `before` and `after` filters, but could in
 # highlight-end
 ```
 
-To retrieve the configuration of the deleted resource, we can pipe the result into the [`dump` command](/docs/reference/cli/format-commands/dump). Since the complete configuration is part of any event, we can use this approach for any event, no matter which type of event or which time the resource changed.
+To retrieve the configuration of the deleted resource, we can pipe the result into the [`dump` command](/docs/reference/cli/dump). Since the complete configuration is part of any event, we can use this approach for any event, no matter which type of event or which time the resource changed.
 
 ```bash title="Display last known configuration of deleted resources"
 > history --change node_deleted --after 3d | dump
@@ -108,7 +108,7 @@ change=node_updated, changed_at=2022-12-04T00:02:21Z, kind=kubernetes_deployment
 # highlight-end
 ```
 
-You can not only apply filters, but you can also use any other Resoto command (e.g., [`count`](/docs/reference/cli/search-commands/count) and [`aggregate`](/docs/reference/cli/search-commands/aggregate)).
+You can not only apply filters, but you can also use any other Resoto command (e.g., [`count`](/docs/reference/cli/count) and [`aggregate`](/docs/reference/cli/aggregate)).
 
 If we want to know which resource kinds have changed the most in the last week, we could use the following command:
 
@@ -169,7 +169,7 @@ We can even aggregate by resource owner and event type if you have a [tagging po
 
 ## Looking Ahead
 
-We plan to continue improving upon and extending the capabilities of the [`history` command](/docs/reference/cli/search-commands/history).
+We plan to continue improving upon and extending the capabilities of the [`history` command](/docs/reference/cli/history).
 
 For example, we would like to provide a "diff" view that shows the difference between two resource configurations, so that it is possible to not only see changes and their resulting configurations but also the delta of the before and after.
 

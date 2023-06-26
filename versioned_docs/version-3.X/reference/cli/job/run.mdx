@@ -1,0 +1,35 @@
+---
+sidebar_label: run
+pagination_label: job run
+---
+
+# `job run` Command
+
+The `job run` command runs a job.
+
+## Usage
+
+```bash
+job run <id>
+```
+
+### Parameters
+
+| Parameter | Description    | Required? | Default Value |
+| --------- | -------------- | --------- | ------------- |
+| `id`      | Job identifier | ✔️        |               |
+
+## Examples
+
+```bash title="Run a job directly without waiting for its triggers"
+> jobs run say-hello
+# highlight-next-line
+​Job say-hello started with id a4bb64cc-7385-11ec-b2cb-dad780437c53.
+```
+
+## Further Reading
+
+- [Cloud Data Sync](../../../concepts/cloud-data-sync/index.mdx)
+- [Automation](../../../concepts/automation/index.mdx)
+- [Events](../../events/index.mdx)
+- [Workflows](../../workflows/index.mdx)

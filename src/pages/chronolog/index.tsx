@@ -29,10 +29,7 @@ export default function ChronologPage(): JSX.Element {
             </h2>
             <p>
               <Balancer>
-                Review the{' '}
-                <Link to="/docs/reference/cli/search-commands/history">
-                  history
-                </Link>{' '}
+                Review the <Link to="/docs/reference/cli/history">history</Link>{' '}
                 and lifecycle of any cloud resource, from its creation time to
                 when it is{' '}
                 <Link to="/docs/concepts/resource-management/cleanup">

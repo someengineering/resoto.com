@@ -39,11 +39,11 @@ Rewind doesn't just give you a log of events/changes or time series data, but of
 
 ## Using Resoto Rewind
 
-Rewind introduces two new functions to Resoto: the [`graph` command](/docs/reference/cli/miscellaneous-commands/graph) and the `--at` flag on the [`search` command](/docs/reference/cli/search-commands/search).
+Rewind introduces two new functions to Resoto: the [`graph` command](/docs/reference/cli/graph) and the `--at` flag on the [`search` command](/docs/reference/cli/search).
 
-You can manually create a snapshot of your cloud infrastructure graph using the [`graph snapshot`](/docs/reference/cli/miscellaneous-commands/graph/snapshot) command and get a list of snapshots using [`graph list`](/docs/reference/cli/miscellaneous-commands/graph/list).
+You can manually create a snapshot of your cloud infrastructure graph using the [`graph snapshot`](/docs/reference/cli/graph/snapshot) command and get a list of snapshots using [`graph list`](/docs/reference/cli/graph/list).
 
-[Use a snapshot in a search](/docs/reference/search#searching-snapshots) using the `graph=<snapshot-name>` filter on the [`search` command](/docs/reference/cli/search-commands/search) or by adding the `--at` flag with a timestamp (e.g., `--at 2021-06-20T12:00:00Z`) or time delta (e.g., `--at 1w`).
+[Use a snapshot in a search](/docs/reference/search#searching-snapshots) using the `graph=<snapshot-name>` filter on the [`search` command](/docs/reference/cli/search) or by adding the `--at` flag with a timestamp (e.g., `--at 2021-06-20T12:00:00Z`) or time delta (e.g., `--at 1w`).
 
 Resoto automatically finds the snapshot closest to the specified time and uses it to perform the search.
 
@@ -63,9 +63,9 @@ The system automatically manages these snapshots, creating new snapshots accordi
 
 ### Asset Inventory Graph Export and Import
 
-Rewind also gives you the power to export an [asset inventory graph](/docs/concepts/asset-inventory-graph) snapshot into a single file using the [`graph export` command](/docs/reference/cli/miscellaneous-commands/graph/export).
+Rewind also gives you the power to export an [asset inventory graph](/docs/concepts/asset-inventory-graph) snapshot into a single file using the [`graph export` command](/docs/reference/cli/graph/export).
 
-You can then [import](/docs/reference/cli/miscellaneous-commands/graph/import) it back into the system, archive it, or import into another Resoto instance—your data is always accessible and portable.
+You can then [import](/docs/reference/cli/graph/import) it back into the system, archive it, or import into another Resoto instance—your data is always accessible and portable.
 
 ## A Look into the Future
 
@@ -82,5 +82,5 @@ We're thrilled to introduce Resoto Rewind and can't wait for you to try it! As a
 ## Further Reading
 
 - [Resoto Rewind](/rewind)
-- [`search` Command](/docs/reference/cli/search-commands/search)
-- [`graph` Command](/docs/reference/cli/miscellaneous-commands/graph)
+- [`search` Command](/docs/reference/cli/search)
+- [`graph` Command](/docs/reference/cli/graph)

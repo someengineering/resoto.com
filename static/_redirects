@@ -32,19 +32,24 @@ https://releases.resoto.com/*                                                   
 /blog/tags/tagging                                                                    /blog/tags/resource-tagging
 /blog/tags/*                                                                          /blog/tags
 
+/blog/automating-pagerduty-infrastructure-alerts-with-resoto                          /blog/automating-pagerduty-infrastructure-alerts
 /blog/building-actionable-cloud-infrastructure-metrics                                /blog/actionable-cloud-infrastructure-metrics
 /blog/cloud-infrastructure-metrics                                                    /blog/actionable-cloud-infrastructure-metrics
 /blog/building-an-ec2-cloud-inventory                                                 /blog/building-an-ec2-asset-inventory
 /blog/building-an-ec2-cloud-inventory-across-all-regions-and-accounts                 /blog/building-an-ec2-asset-inventory
+/blog/building-an-infrastructure-app-with-resoto-and-streamlit                        /blog/building-a-web-app-with-streamlit
 /blog/what-is-cloud-asset-inventory                                                   /blog/cloud-asset-inventory
 /blog/security-benchmarks-against-cloud-resources                                     /blog/cloud-resource-security-benchmarks
-/blog/tagging-as-a-treat                                                              /blog/cloud-resource-tagging-with-resoto
+/blog/cloud-resource-tagging-with-resoto                                              /blog/cloud-resource-tagging
+/blog/tagging-as-a-treat                                                              /blog/cloud-resource-tagging
 /blog/cloud-management-with-an-effective-tagging-policy                               /blog/effective-cloud-management-tagging-policies
-/blog/cloud-resources-they-have-a-lot-in-common                                       /blog/multi-cloud-resource-management-with-resoto
+/blog/cloud-resources-they-have-a-lot-in-common                                       /blog/multi-cloud-resource-management
+/blog/multi-cloud-resource-management-with-resoto                                     /blog/multi-cloud-resource-management
 /blog/resotonotebook                                                                  /blog/resoto-meets-jupyter-notebook
 /blog/resoto-query-language-101                                                       /blog/resoto-search-101
 /blog/resoto-search-syntax-101                                                        /blog/resoto-search-101
-/blog/a-tale-of-two-tools                                                             /blog/solving-cloud-resource-management-challenges-with-resoto
+/blog/a-tale-of-two-tools                                                             /blog/solving-cloud-resource-management-challenges
+/blog/solving-cloud-resource-management-challenges-with-resoto                        /blog/solving-cloud-resource-management-challenges
 
 /blog/:year/:month/:date/*                                                            /blog/:splat
 /blog/*                                                                               /blog

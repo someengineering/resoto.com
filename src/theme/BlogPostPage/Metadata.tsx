@@ -4,9 +4,16 @@ import { getImage } from '@site/src/utils/socialImageUtils';
 import React from 'react';
 
 export default function BlogPostPageMetadata(): JSX.Element {
-  const { assets, metadata } = useBlogPost();
-  const { formattedDate, readingTime } = metadata;
-  const { title, description, date, tags, authors, frontMatter } = metadata;
+  const { frontMatter, assets, metadata } = useBlogPost();
+  const {
+    title,
+    description,
+    date,
+    tags,
+    authors,
+    formattedDate,
+    readingTime,
+  } = metadata;
 
   const { keywords } = frontMatter;
 

@@ -2,9 +2,10 @@
 date: 2022-10-14
 authors: [anja]
 tags: [Cloud Asset Inventory, Unified Data Model, Resource Tagging, Resoto CLI, AWS]
+description: Resoto makes exploring and maintaining cloud infrastructure straightforward, so you can focus on solving actual problems.
 ---
 
-# Solving Cloud Resource Management Challenges with Resoto
+# Solving Cloud Resource Management Challenges
 
 Software engineers working with <abbr title="Amazon Web Services">AWS</abbr> have every cloud service imaginable at their fingertips, and developer velocity could hardly be higher. But, even the most shiny of coins has two sides.
 
@@ -28,7 +29,7 @@ PRs are always welcome—Resoto is an open-source product, after all! While ther
 
 ## Retrieving Cloud Resource Information
 
-Generally speaking, the API for every service covers the typical resource lifecycle: creation, tagging, description, and deletion. However, this is where the similarities end. In Resoto, [everything is a resource](../multi-cloud-resource-management-with-resoto/index.mdx).
+Generally speaking, the API for every service covers the typical resource lifecycle: creation, tagging, description, and deletion. However, this is where the similarities end. In Resoto, [everything is a resource](../multi-cloud-resource-management/index.mdx).
 
 Therefore, we will be on the lookout for any calls in the realm of `list-...`, `get-...-attributes`, or `describe-...`. This is where the divergence begins.
 

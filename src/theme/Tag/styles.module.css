@@ -1,0 +1,63 @@
+:root {
+  --docusaurus-tag-list-border: var(--ifm-color-emphasis-300);
+}
+
+.tag {
+  transition: border var(--ifm-transition-fast);
+  border: 1px solid var(--docusaurus-tag-list-border);
+}
+
+.tag:hover {
+  --docusaurus-tag-list-border: var(--ifm-link-color);
+  text-decoration: none;
+}
+
+.tagRegular {
+  border-radius: var(--ifm-global-radius);
+  padding: 0.2rem 0.5rem 0.3rem;
+  font-size: 90%;
+}
+
+.tagWithCount {
+  display: flex;
+  position: relative;
+  align-items: center;
+  border-left: 0;
+  padding: 0 0.5rem 0 1rem;
+}
+
+.tagWithCount::before,
+.tagWithCount::after {
+  position: absolute;
+  top: 50%;
+  transition: inherit;
+  border: 1px solid var(--docusaurus-tag-list-border);
+  content: '';
+}
+
+.tagWithCount::before {
+  right: 100%;
+  transform: translate(50%, -50%) rotate(-45deg);
+  border-right: 0;
+  border-bottom: 0;
+  width: 1.18rem;
+  height: 1.18rem;
+}
+
+.tagWithCount::after {
+  left: 0;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.tagWithCount span {
+  margin-left: 0.3rem;
+  border-radius: var(--ifm-global-radius);
+  background: var(--ifm-color-secondary);
+  padding: 0.1rem 0.4rem;
+  color: var(--ifm-color-black);
+  font-size: 0.7rem;
+  line-height: 1.2;
+}

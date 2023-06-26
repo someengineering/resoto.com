@@ -2,13 +2,12 @@
 date: 2022-11-21
 authors: [anja]
 tags: [Resource Tagging, Automation, Search, Resoto CLI, AWS, Discord, Slack]
+description: Cloud tagging strategies and policies are hailed as one of the most efficient ways to keep your cloud infrastructure controllable. Resoto offers service-agnostic the resource tag handling.
 ---
 
-# Cloud Resource Tagging with Resoto
+# Cloud Resource Tagging
 
 Cloud tagging strategies and policies are hailed as one of the most efficient ways to keep your cloud infrastructure controllable. But are they really?
-
-## Cloud Resource Tagging
 
 Generally, the idea is that every piece of cloud service gets tagged (or _labeled_, in case of Google Cloud) by the developers or maintainers who work with it. This could be accomplished with infrastructure-as-code (IaC) tools (such as [Terraform](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/guides/resource-tagging)), with a command-line interface (CLI), or in the cloud UI.
 
@@ -32,7 +31,7 @@ We asked our community about their most challenging aspect of cloud tagging stra
 
 **Over 70% of poll respondents felt that human error is the biggest issue.** Be it on the console, in the UI, in templates, or in Terraform config files, tags are initially created by humans. But then, we want them to be properly understood by unforgiving machines.
 
-As highlighted in [my last blog post](../solving-cloud-resource-management-challenges-with-resoto/index.mdx), going through cloud infrastructure with a <abbr title="command-line interface">CLI</abbr> can be tiresome and requires contextual knowledge (because the API differs between services). This is hardly conducive to keeping tags under control.
+As highlighted in [Solving Cloud Resource Management Challenges with Resoto](../solving-cloud-resource-management-challenges/index.mdx), going through cloud infrastructure with a <abbr title="command-line interface">CLI</abbr> can be tiresome and requires contextual knowledge (because the API differs between services). This is hardly conducive to keeping tags under control.
 
 ## Enforcing Cloud Resource Tagging Strategies with Resoto
 
@@ -44,7 +43,7 @@ Most developers know of this requirement, but the information is often conveyed 
 
 :::note
 
-For the sake of clarity, today's blog post only covers <abbr title="Amazon Web Services">AWS</abbr>. However, [Resoto treats resources from all cloud providers the same](../multi-cloud-resource-management-with-resoto/index.mdx) and you can easily customize the below search queries as needed.
+For the sake of clarity, today's blog post only covers <abbr title="Amazon Web Services">AWS</abbr>. However, [Resoto treats resources from all cloud providers the same](../multi-cloud-resource-management/index.mdx) and you can easily customize the below search queries as needed.
 
 :::
 

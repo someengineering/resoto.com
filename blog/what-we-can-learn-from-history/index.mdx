@@ -2,6 +2,7 @@
 date: 2022-12-23
 authors: [matthias]
 tags: [Cloud Asset Inventory, Resoto CLI, Graph Database]
+description: Resoto maintains a record of your resources in its asset inventory graph.
 ---
 
 # What We Can Learn from History
@@ -39,7 +40,7 @@ These tools give insights into resource changes; but if your application is spre
 
 ## Resoto's `history` Command
 
-**Resoto maintains a record of your resources in an [asset inventory graph](/docs/concepts/asset-inventory-graph).** Resoto [scrapes your infrastructure at regular intervals](/docs/concepts/cloud-data-sync) and tracks the configuration of collected resources. Whenever a change to a resource is detected, Resoto updates its internal representation of the resource and captures the change as an event in its graph database:
+**Resoto maintains a record of your resources in its [asset inventory graph](/docs/concepts/asset-inventory-graph).** Resoto [scrapes your infrastructure at regular intervals](/docs/concepts/cloud-data-sync) and tracks the configuration of collected resources. Whenever a change to a resource is detected, Resoto updates its internal representation of the resource and captures the change as an event in its graph database:
 
 ![Diagram illustrating how Resoto records resource changes](./img/history-events.png)
 

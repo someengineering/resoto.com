@@ -2,13 +2,14 @@
 date: 2022-05-17
 authors: [matthias]
 tags: [Graph Database, Search, Unified Data Model, Resoto CLI, DigitalOcean]
+description: Resoto uses a directed graph to represent your infrastructure resources as nodes and relationships between them as edges. Nodes represent resources, while edges define the relationship between nodes.
 ---
 
 # A Walk in the Graph
 
 Resoto uses a [directed graph](https://en.wikipedia.org/wiki/Directed_graph) to represent your infrastructure resources as nodes and relationships between them as edges. A load balancer for example is represented as node with edges pointing to all target compute instances. The compute instance might have a volume attached, where we would see an edge between the instance node and the volume node.
 
-The nodes represent the actual resources. The edges define the relationship between the nodes. It is possible and highly likely, that one resource has multiple relationships to other resources.
+Nodes represent resources, while edges define the relationship between nodes. It is often the case that a resource has multiple relationships to other resources.
 
 ![Sheep Jumping on a Graph](./img/banner.png)
 

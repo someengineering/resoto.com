@@ -165,7 +165,7 @@
   margin-left: 0.625em;
   border-radius: 0.875rem;
   padding: 0.375em 0.375em 0.375em 0.625em;
-  color: var(--ifm-color-primary-contrast-background);
+  color: var(--ifm-navbar-background-color);
   text-align: center;
 }
 

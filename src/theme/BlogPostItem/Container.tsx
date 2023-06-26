@@ -11,7 +11,8 @@ export default function BlogPostItemContainer({
   const { frontMatter, assets, metadata } = useBlogPost();
   const { withBaseUrl } = useBaseUrlUtils();
 
-  const { title, description, authors, formattedDate, readingTime } = metadata;
+  const { title, description, authors, formattedDate, readingTime, tags } =
+    metadata;
   const image =
     assets.image ??
     frontMatter.image ??
@@ -37,6 +38,12 @@ export default function BlogPostItemContainer({
         <meta
           itemProp="image"
           content={withBaseUrl(image, { absolute: true })}
+        />
+      )}
+      {tags.length > 0 && (
+        <meta
+          itemProp="keywords"
+          content={tags.map((tag) => tag.label).join(',')}
         />
       )}
       {children}

@@ -53,8 +53,8 @@ function BreadcrumbsItem({
 
 export default function DocBreadcrumbs(): JSX.Element | null {
   const breadcrumbs = useSidebarBreadcrumbs();
-  const { pluginId } = useActivePlugin();
-  const href = useBaseUrl('/docs');
+  const { pluginId, pluginData } = useActivePlugin();
+  const href = useBaseUrl(pluginData.path);
 
   if (!breadcrumbs || !breadcrumbs.length) {
     return null;

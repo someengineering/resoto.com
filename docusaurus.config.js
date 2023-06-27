@@ -10,6 +10,7 @@ const kroki = require('remark-kroki-plugin');
 
 const latestRelease = require('./latestRelease.json');
 const versions = require('./versions.json');
+const { groupBy, sortBy } = require('lodash');
 
 const isDev = process.env.NODE_ENV === 'development';
 const isBuildFast = isDev || !!process.env.BUILD_FAST;
@@ -56,13 +57,38 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           async sidebarItemsGenerator({ defaultSidebarItemsGenerator, ...args }) {
             const sidebarItems = await defaultSidebarItemsGenerator(args);
-            return sidebarItems.filter(
-              (item) =>
-                (item.type !== 'doc' || !item.id.endsWith('index')) &&
-                (item.type !== 'category' ||
-                  item.link?.type !== 'doc' ||
-                  !item.link?.id.endsWith('reference/api/index')),
-            );
+
+            return sidebarItems
+              .filter(
+                (item) =>
+                  (item.type !== 'doc' || !item.id.endsWith('index')) &&
+                  (item.type !== 'category' ||
+                    item.link?.type !== 'doc' ||
+                    !item.link?.id.endsWith('reference/api/index')),
+              )
+              .map((item) => {
+                if (item.type === 'category' && item.label === 'Command-Line Interface') {
+                  const categoryPosition = ['Search Commands', 'Format Commands', 'Action Commands', 'Setup Commands'];
+                  const miscellaneousCategoryName = 'Other Commands';
+                  const groupedItems = groupBy(item.items, (i) => i.customProps?.category ?? miscellaneousCategoryName);
+
+                  item.items = sortBy(
+                    Object.keys(groupedItems).map((categoryName) => ({
+                      type: 'category',
+                      label: categoryName,
+                      items: groupedItems[categoryName],
+                    })),
+                    (generatedCategory) =>
+                      categoryPosition.includes(generatedCategory.label)
+                        ? categoryPosition.indexOf(generatedCategory.label)
+                        : generatedCategory.label === miscellaneousCategoryName
+                        ? categoryPosition.length + 1
+                        : categoryPosition.length,
+                  );
+                }
+
+                return item;
+              });
           },
           exclude: ['**/*-rest-api.info.mdx', '**/deprecated-*.mdx'],
           editUrl: ({ versionDocsDirPath, docPath }) =>

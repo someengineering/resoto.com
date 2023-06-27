@@ -1,266 +1,159 @@
-https://resoto.netlify.app/*                                                          https://resoto.com/:splat 301!
-https://main--resoto.netlify.app/*                                                    https://resoto.com/:splat 301!
-https://resoto.some.engineering/*                                                     https://resoto.com/:splat 301!
+https://resoto.netlify.app/*                                      https://resoto.com/:splat 301!
+https://main--resoto.netlify.app/*                                https://resoto.com/:splat 301!
+https://resoto.some.engineering/*                                 https://resoto.com/:splat 301!
 
-https://blog.resoto.com/:year/:month/:date/*                                          https://resoto.com/blog/:splat 301!
-https://blog.resoto.com/*                                                             https://resoto.com/blog/:splat 301!
-https://docs.resoto.com/*                                                             https://resoto.com/docs/:splat 301!
-https://documentation.resoto.com/*                                                    https://resoto.com/docs/:splat 301!
-https://news.resoto.com/*                                                             https://resoto.com/releases/:splat 301!
-https://podcast.resoto.com/:year/:month/:date/*                                       https://resoto.com/podcast/:splat 301!
-https://podcast.resoto.com/*                                                          https://resoto.com/podcast/:splat 301!
-https://podcasts.resoto.com/:year/:month/:date/*                                      https://resoto.com/podcast/:splat 301!
-https://podcasts.resoto.com/*                                                         https://resoto.com/podcast/:splat 301!
-https://release.resoto.com/*                                                          https://resoto.com/releases/:splat 301!
-https://releases.resoto.com/*                                                         https://resoto.com/releases/:splat 301!
+https://blog.resoto.com/:year/:month/:date/*                      https://resoto.com/blog/:splat 301!
+https://blog.resoto.com/*                                         https://resoto.com/blog/:splat 301!
+https://docs.resoto.com/*                                         https://resoto.com/docs/:splat 301!
+https://documentation.resoto.com/*                                https://resoto.com/docs/:splat 301!
+https://news.resoto.com/*                                         https://resoto.com/releases/:splat 301!
+https://podcast.resoto.com/:year/:month/:date/*                   https://resoto.com/podcast/:splat 301!
+https://podcast.resoto.com/*                                      https://resoto.com/podcast/:splat 301!
+https://podcasts.resoto.com/:year/:month/:date/*                  https://resoto.com/podcast/:splat 301!
+https://podcasts.resoto.com/*                                     https://resoto.com/podcast/:splat 301!
+https://release.resoto.com/*                                      https://resoto.com/releases/:splat 301!
+https://releases.resoto.com/*                                     https://resoto.com/releases/:splat 301!
 
-/js/script.js                                                                         https://plausible.io/js/script.js 200
-/api/event                                                                            https://plausible.io/api/event 200
+/js/script.js                                                     https://plausible.io/js/script.js 200
+/api/event                                                        https://plausible.io/api/event 200
 
-/resoto/*                                                                             /
-/cloud2sql/*                                                                          https://cloud2sql.com 301!
+/resoto/*                                                         /
+/cloud2sql/*                                                      https://cloud2sql.com 301!
 
-/blog/july-2022-product-updates                                                       /blog/product-updates/2022/july
-/blog/january-2023-product-updates                                                    /blog/product-updates/2023/january
-/blog/february-2023-product-updates                                                   /blog/product-updates/2023/february
-/blog/march-2023-product-updates                                                      /blog/product-updates/2023/march
-/blog/april-2023-product-updates                                                      /blog/product-updates/2023/april
-/blog/product-updates/*                                                               /blog/tags/product-updates
+/blog/july-2022-product-updates                                   /blog/product-updates/2022/july
+/blog/january-2023-product-updates                                /blog/product-updates/2023/january
+/blog/february-2023-product-updates                               /blog/product-updates/2023/february
+/blog/march-2023-product-updates                                  /blog/product-updates/2023/march
+/blog/april-2023-product-updates                                  /blog/product-updates/2023/april
+/blog/product-updates/*                                           /blog/tags/product-updates
 
-/blog/tags/data-model                                                                 /blog/tags/unified-data-model
-/blog/tags/graph                                                                      /blog/tags/graph-database
-/blog/tags/tagging                                                                    /blog/tags/resource-tagging
-/blog/tags/*                                                                          /blog/tags
+/blog/tags/command                                                /blog/tags/resoto-cli
+/blog/tags/cloud2sql                                              /blog/tags/cloud-2-sql
+/blog/tags/dashboard                                              /blog/tags/resoto-ui
+/blog/tags/data-model                                             /blog/tags/unified-data-model
+/blog/tags/gcp                                                    /blog/tags/google-cloud
+/blog/tags/graph/*                                                /blog/tags/graph-database
+/blog/tags/infrastructure-apps                                    /blog/tags/resoto-infrastructure-apps
+/blog/tags/plugins                                                /blog/tags/resoto-infrastructure-apps
+/blog/tags/shell                                                  /blog/tags/resoto-shell
+/blog/tags/tagging                                                /blog/tags/resource-tagging
+/blog/tags/visualization                                          /blog/tags/data-visualization
+/blog/tags/*                                                      /blog/tags
 
-/blog/automating-pagerduty-infrastructure-alerts-with-resoto                          /blog/automating-pagerduty-infrastructure-alerts
-/blog/building-actionable-cloud-infrastructure-metrics                                /blog/actionable-cloud-infrastructure-metrics
-/blog/cloud-infrastructure-metrics                                                    /blog/actionable-cloud-infrastructure-metrics
-/blog/building-an-ec2-cloud-inventory                                                 /blog/building-an-ec2-asset-inventory
-/blog/building-an-ec2-cloud-inventory-across-all-regions-and-accounts                 /blog/building-an-ec2-asset-inventory
-/blog/building-an-infrastructure-app-with-resoto-and-streamlit                        /blog/building-a-web-app-with-streamlit
-/blog/what-is-cloud-asset-inventory                                                   /blog/cloud-asset-inventory
-/blog/security-benchmarks-against-cloud-resources                                     /blog/cloud-resource-security-benchmarks
-/blog/cloud-resource-tagging-with-resoto                                              /blog/cloud-resource-tagging
-/blog/tagging-as-a-treat                                                              /blog/cloud-resource-tagging
-/blog/cloud-management-with-an-effective-tagging-policy                               /blog/effective-cloud-management-tagging-policies
-/blog/cloud-resources-they-have-a-lot-in-common                                       /blog/multi-cloud-resource-management
-/blog/multi-cloud-resource-management-with-resoto                                     /blog/multi-cloud-resource-management
-/blog/resotonotebook                                                                  /blog/resoto-meets-jupyter-notebook
-/blog/resoto-query-language-101                                                       /blog/resoto-search-101
-/blog/resoto-search-syntax-101                                                        /blog/resoto-search-101
-/blog/a-tale-of-two-tools                                                             /blog/solving-cloud-resource-management-challenges
-/blog/solving-cloud-resource-management-challenges-with-resoto                        /blog/solving-cloud-resource-management-challenges
+/blog/automating-pagerduty-infrastructure-alerts-with-resoto            /blog/automating-pagerduty-infrastructure-alerts
+/blog/building-actionable-cloud-infrastructure-metrics                  /blog/actionable-cloud-infrastructure-metrics
+/blog/cloud-infrastructure-metrics                                      /blog/actionable-cloud-infrastructure-metrics
+/blog/building-an-ec2-cloud-inventory                                   /blog/building-an-ec2-asset-inventory
+/blog/building-an-ec2-cloud-inventory-across-all-regions-and-accounts   /blog/building-an-ec2-asset-inventory
+/blog/building-an-infrastructure-app-with-resoto-and-streamlit          /blog/building-a-web-app-with-streamlit
+/blog/what-is-cloud-asset-inventory                                     /blog/cloud-asset-inventory
+/blog/security-benchmarks-against-cloud-resources                       /blog/cloud-resource-security-benchmarks
+/blog/cloud-resource-tagging-with-resoto                                /blog/cloud-resource-tagging
+/blog/tagging-as-a-treat                                                /blog/cloud-resource-tagging
+/blog/cloud-management-with-an-effective-tagging-policy                 /blog/effective-cloud-management-tagging-policies
+/blog/cloud-resources-they-have-a-lot-in-common                         /blog/multi-cloud-resource-management
+/blog/multi-cloud-resource-management-with-resoto                       /blog/multi-cloud-resource-management
+/blog/resotonotebook                                                    /blog/resoto-meets-jupyter-notebook
+/blog/resoto-query-language-101                                         /blog/resoto-search-101
+/blog/resoto-search-syntax-101                                          /blog/resoto-search-101
+/blog/a-tale-of-two-tools                                               /blog/solving-cloud-resource-management-challenges
+/blog/solving-cloud-resource-management-challenges-with-resoto          /blog/solving-cloud-resource-management-challenges
 
-/blog/:year/:month/:date/*                                                            /blog/:splat
-/blog/*                                                                               /blog
+/blog/:year/:month/:date/*                                        /blog/:splat
+/blog/*                                                           /blog
 
-/docs/concepts/components/library                                                     /docs/reference/components
-/docs/concepts/components/plugins/protect_snowflakes                                  /docs/reference/components/plugins/protector
-/docs/concepts/components/resh                                                        /docs/reference/components/shell
-/docs/concepts/components/resoto*                                                     /docs/reference/components/:splat
-/docs/concepts/components/*                                                           /docs/reference/components/:splat
+/docs/concepts/components/library                                 /docs/reference/components
+/docs/concepts/components/plugins/protect_snowflakes              /docs/reference/components/plugins/protector
+/docs/concepts/components/resh                                    /docs/reference/components/shell
+/docs/concepts/components/resoto*                                 /docs/reference/components/:splat
+/docs/concepts/components/*                                       /docs/reference/components/:splat
 
-/docs/concepts/automation/job                                                         /docs/concepts/automation#jobs
-/docs/concepts/automation/workflow                                                    /docs/concepts/cloud-data-sync
-/docs/concepts/automation/*                                                           /docs/concepts/automation
+/docs/concepts/automation/job*                                    /docs/concepts/automation#jobs
+/docs/concepts/automation/workflow*                               /docs/concepts/cloud-data-sync
+/docs/concepts/automation/*                                       /docs/concepts/automation
 
-/docs/concepts/graph/*                                                                /docs/concepts/asset-inventory-graph
+/docs/concepts/graph/*                                            /docs/concepts/asset-inventory-graph
 
-/docs/concepts/cleanup                                                                /docs/concepts/resource-management/cleanup
-/docs/concepts/protection                                                             /docs/concepts/resource-management/protection
-/docs/concepts/tagging                                                                /docs/concepts/resource-management/tagging
-/docs/concepts/tags                                                                   /docs/concepts/resource-management/tagging
+/docs/concepts/cleanup                                            /docs/concepts/resource-management/cleanup
+/docs/concepts/protection                                         /docs/concepts/resource-management/protection
+/docs/concepts/tag*                                               /docs/concepts/resource-management/tagging
 
-/docs/concepts/search/basic-syntax                                                    /docs/reference/search/filters
-/docs/concepts/search/fulltext-search                                                 /docs/reference/search/full-text
-/docs/concepts/search/*                                                               /docs/reference/search/:splat
-/docs/concepts/security                                                               /docs/reference/security
+/docs/concepts/search/basic-syntax                                /docs/reference/search/filters
+/docs/concepts/search/fulltext-search                             /docs/reference/search/full-text
+/docs/concepts/search/*                                           /docs/reference/search/:splat
+/docs/concepts/security                                           /docs/reference/security
 
-/concepts/*                                                                           /docs/concepts/:splat
+/concepts/*                                                       /docs/concepts/:splat
 
-/contribute/code                                                                      /docs/development/components
-/contribute/component                                                                 /docs/development/components
-/contributing/code                                                                    /docs/development/components
-/contributing/component                                                               /docs/development/components
-/contribute/doc                                                                       /docs/development/documentation
-/contribute/docs                                                                      /docs/development/documentation
-/contributing/doc                                                                     /docs/development/documentation
-/contributing/docs                                                                    /docs/development/documentation
-/contribute/*                                                                         /docs/development/:splat
-/contributing/*                                                                       /docs/development/:splat
-/docs/contributing/*                                                                  /docs/development/:splat
+/docs/development/code                                            /docs/development/components
+/docs/development/component*                                      /docs/development/components
+/docs/development/doc*                                            /docs/development/documentation
+/contribute/*                                                     /docs/development/:splat
+/contributing/*                                                   /docs/development/:splat
+/docs/contributing/*                                              /docs/development/:splat
 
-/docs/getting-started/install-resoto/aws/cdk                                          /docs/getting-started/install-resoto/aws
-/docs/getting-started/install-resoto/aws/cloudformation                               /docs/getting-started/install-resoto/aws
-/docs/getting-started/installation/docker                                             /docs/getting-started/install-resoto/docker
-/docs/getting-started/docker                                                          /docs/getting-started/install-resoto/docker
-/docs/getting-started/installing-with-docker                                          /docs/getting-started/install-resoto/docker
-/docs/getting-started/installation/kubernetes                                         /docs/getting-started/install-resoto/kubernetes
-/docs/getting-started/kubernetes                                                      /docs/getting-started/install-resoto/kubernetes
-/docs/getting-started/k8s                                                             /docs/getting-started/install-resoto/kubernetes
-/docs/getting-started/installing-with-kubernetes                                      /docs/getting-started/install-resoto/kubernetes
-/docs/getting-started/installing-with-k8s                                             /docs/getting-started/install-resoto/kubernetes
-/docs/getting-started/installation/pip                                                /docs/getting-started/install-resoto/pip
-/docs/getting-started/pip                                                             /docs/getting-started/install-resoto/pip
-/docs/getting-started/python                                                          /docs/getting-started/install-resoto/pip
-/docs/getting-started/installing-with-pip                                             /docs/getting-started/install-resoto/pip
-/docs/getting-started/installing-with-python                                          /docs/getting-started/install-resoto/pip
-/docs/getting-started/install-resoto/local/*                                          /docs/getting-started/install-resoto/:splat
+/docs/getting-started/install-resoto/aws/*                        /docs/getting-started/install-resoto/aws
+/docs/getting-started/docker                                      /docs/getting-started/install-resoto/docker
+/docs/getting-started/kubernetes                                  /docs/getting-started/install-resoto/kubernetes
+/docs/getting-started/pip                                         /docs/getting-started/install-resoto/pip
+/docs/getting-started/python                                      /docs/getting-started/install-resoto/pip
 
-/docs/getting-started/configuration/core                                              /docs/reference/configuration/core
-/docs/getting-started/configuration/worker                                            /docs/reference/configuration/worker
-/docs/getting-started/configuration                                                   /docs/getting-started/configure-resoto
-/docs/getting-started/configuring-resoto                                              /docs/getting-started/configure-resoto
-/docs/getting-started/configure-resoto/aws                                            /docs/how-to-guides/data-sources/collect-aws-resource-data
-/docs/getting-started/configure-resoto/digitalocean                                   /docs/how-to-guides/data-sources/collect-digitalocean-resource-data
-/docs/getting-started/configure-resoto/gcp                                            /docs/how-to-guides/data-sources/collect-google-cloud-resource-data
-/docs/getting-started/configure-resoto/kubernetes                                     /docs/how-to-guides/data-sources/collect-kubernetes-resource-data
-/docs/getting-started/configuration/cloud-providers/*                                 /docs/how-to-guides/data-sources
-/docs/getting-started/configuration/worker/cloud-providers/*                          /docs/how-to-guides/data-sources
-/docs/getting-started/configure-cloud-provider-access/*                               /docs/how-to-guides/data-sources
+/docs/getting-started/installation/*                              /docs/getting-started/install-resoto/:splat
+/docs/getting-started/installing-with-*                           /docs/getting-started/install-resoto/:splat
+/docs/getting-started/install-resoto/local/*                      /docs/getting-started/install-resoto/:splat
 
-/docs/getting-started/next-steps                                                      /docs/getting-started/explore-resoto
+/docs/getting-started/configure-resoto/aws                        /docs/how-to-guides/data-sources/collect-aws-resource-data
+/docs/getting-started/configure-resoto/digitalocean               /docs/how-to-guides/data-sources/collect-digitalocean-resource-data
+/docs/getting-started/configure-resoto/gcp                        /docs/how-to-guides/data-sources/collect-google-cloud-resource-data
+/docs/getting-started/configure-resoto/kubernetes                 /docs/how-to-guides/data-sources/collect-kubernetes-resource-data
+/docs/getting-started/configuration/cloud-providers/*             /docs/how-to-guides/data-sources
+/docs/getting-started/configuration/worker/cloud-providers/*      /docs/how-to-guides/data-sources
+/docs/getting-started/configure-cloud-provider-access/*           /docs/how-to-guides/data-sources
+/docs/getting-started/configuration/core                          /docs/reference/configuration/core
+/docs/getting-started/configuration/worker                        /docs/reference/configuration/worker
+/docs/getting-started/configur*                                   /docs/getting-started/configure-resoto
 
-/docs/getting-started/queries                                                         /docs/how-to-guides/search
-/docs/getting-started/query                                                           /docs/how-to-guides/search
-/docs/getting-started/perform-a-search                                                /docs/how-to-guides/search
-/docs/getting-started/performing-queries                                              /docs/how-to-guides/search
-/docs/getting-started/performing-searches                                             /docs/how-to-guides/search
-/docs/getting-started/search                                                          /docs/how-to-guides/search
-/docs/getting-started/searches                                                        /docs/how-to-guides/search
-/docs/getting-started/usage/search                                                    /docs/how-to-guides/search
+/docs/getting-started/quer*                                       /docs/how-to-guides/search
+/docs/getting-started/perform*                                    /docs/how-to-guides/search
+/docs/getting-started/search*                                     /docs/how-to-guides/search
+/docs/getting-started/usage/search                                /docs/how-to-guides/search
 
-/docs/getting-started/cleanup                                                         /docs/how-to-guides/cleanup
-/docs/getting-started/clean-resources                                                 /docs/how-to-guides/cleanup
-/docs/getting-started/cleaning-resources                                              /docs/how-to-guides/cleanup
-/docs/getting-started/pruning-resources                                               /docs/how-to-guides/cleanup
-/docs/getting-started/usage/cleanup                                                   /docs/how-to-guides/cleanup
+/docs/getting-started/clean*                                      /docs/how-to-guides/cleanup
+/docs/getting-started/pruning-resources                           /docs/how-to-guides/cleanup
+/docs/getting-started/usage/cleanup                               /docs/how-to-guides/cleanup
 
-/docs/getting-started/usage/*                                                         /docs/how-to-guides
+/docs/getting-started/next-steps                                  /docs/getting-started/explore-resoto
+/docs/getting-started/usage/*                                     /docs/getting-started/explore-resoto
 
-/docs/getting-started/resotonotebook                                                  /docs/reference/notebook
-/docs/getting-started/resoto-notebook                                                 /docs/reference/notebook
-/docs/reference/resotonotebook                                                        /docs/reference/notebook
+/docs/getting-started/resotonotebook                              /docs/reference/notebook
+/docs/getting-started/resoto-notebook                             /docs/reference/notebook
+/docs/reference/resotonotebook                                    /docs/reference/notebook
 
-/docs/tutorial/*                                                                      /docs/getting-started/:splat
-/docs/tutorials/*                                                                     /docs/getting-started/:splat
-/getting-started/*                                                                    /docs/getting-started/:splat
-/tutorial/*                                                                           /docs/getting-started/:splat
-/tutorials/*                                                                          /docs/getting-started/:splat
+/getting-started/*                                                /docs/getting-started/:splat
 
-/docs/how-to-guides/cleanup/clean-up-aws-vpcs                                         /docs/how-to-guides/cleanup/clean-up-aws-vpc-resources
-/docs/how-to-guides/cleanup/clean-up-orphaned-cloudwatch-alerts                       /docs/how-to-guides/cleanup/clean-up-aws-cloudwatch-alarms
-/docs/how-to-guides/cleanup/clean-up-orphaned-load-balancers                          /docs/how-to-guides/cleanup/clean-up-aws-load-balancers
-/docs/how-to-guides/cleanup/clean-up-unused-aws-ebs-volumes                           /docs/how-to-guides/cleanup/clean-up-aws-ebs-volumes
-/docs/how-to-guides/cleanup/clean-up-unused-aws-iam-access-keys                       /docs/how-to-guides/cleanup/clean-up-aws-iam-access-keys
+/docs/how-to/alerting/set-up-discord-notifications                /docs/how-to-guides/alerting/send-discord-notifications
+/docs/how-to/alerting/*                                           /docs/how-to-guides/alerting
 
-/docs/how-to/alerting/set-up-discord-notifications                                    /docs/how-to-guides/alerting/send-discord-notifications
-/docs/how-to/security/find-and-delete-unused-aws-iam-access-keys                      /docs/how-to-guides/cleanup/clean-up-aws-iam-access-keys
+/docs/how-to-guides/cleanup/clean-up-aws-vpcs                     /docs/how-to-guides/cleanup/clean-up-aws-vpc-resources
+/docs/how-to-guides/cleanup/clean-up-orphaned-cloudwatch-alerts   /docs/how-to-guides/cleanup/clean-up-aws-cloudwatch-alarms
+/docs/how-to-guides/cleanup/clean-up-orphaned-load-balancers      /docs/how-to-guides/cleanup/clean-up-aws-load-balancers
+/docs/how-to-guides/cleanup/clean-up-unused-aws-ebs-volumes       /docs/how-to-guides/cleanup/clean-up-aws-ebs-volumes
+/docs/how-to-guides/cleanup/clean-up-unused-aws-iam-access-keys   /docs/how-to-guides/cleanup/clean-up-aws-iam-access-keys
+/docs/how-to-guides/cleanup/*                                     /docs/how-to-guides/cleanup
 
-/docs/how-to-guides/security/access-management/find-aws-ec2-no-instance-profile-attached                          /docs/how-to-guides/security/access-management/find-aws-ec2-instances-not-using-iam-instance-roles
-/docs/how-to-guides/security/access-management/find-aws-iam-access-keys-not-rotated-after-90-days                 /docs/how-to-guides/security/access-management/find-aws-iam-access-keys-not-rotated-within-90-days
-/docs/how-to-guides/security/access-management/find-aws-iam-disable-old-credentials                               /docs/how-to-guides/security/access-management/find-unused-aws-iam-credentials
-/docs/how-to-guides/security/access-management/find-aws-iam-expired-server-certificates-not-deleted               /docs/how-to-guides/security/access-management/find-expired-aws-iam-server-certificates
-/docs/how-to-guides/security/access-management/find-aws-iam-hardware-mfa-not-enabled-for-root-account             /docs/how-to-guides/security/access-management/find-aws-account-root-users-without-hardware-mfa-enabled
-/docs/how-to-guides/security/access-management/find-aws-iam-password-policy-does-not-define-proper-minimum-length /docs/how-to-guides/security/access-management/find-aws-accounts-without-minimum-password-length-of-14-characters
-/docs/how-to-guides/security/access-management/find-aws-iam-password-policy-does-not-prevent-reuse                /docs/how-to-guides/security/access-management/find-aws-accounts-that-do-not-preent-reuse-of-the-last-24-passwords
-/docs/how-to-guides/security/access-management/find-aws-iam-policy-not-attached-to-groups-or-roles                /docs/how-to-guides/security/access-management/find-aws-iam-policies-not-attached-to-groups-or-roles
-/docs/how-to-guides/security/access-management/find-aws-iam-policy-with-full-administrative-privileges            /docs/how-to-guides/security/access-management/find-aws-iam-policies-with-full-administrative-privileges
-/docs/how-to-guides/security/access-management/find-aws-iam-root-access-keys-exist                                /docs/how-to-guides/security/access-management/find-aws-account-root-users-with-access-keys
-/docs/how-to-guides/security/access-management/find-aws-iam-support-role-not-created                              /docs/how-to-guides/security/access-management/find-aws-accounts-missing-iam-support-roles
-/docs/how-to-guides/security/access-management/find-aws-iam-use-root-account                                      /docs/how-to-guides/security/access-management/detect-use-of-aws-account-root-user-credentials
-/docs/how-to-guides/security/access-management/find-aws-iam-user-access-keys-creation-during-setup                /docs/how-to-guides/security/access-management/find-unused-aws-iam-access-keys-for-users-with-configured-passwords
-/docs/how-to-guides/security/access-management/find-aws-iam-user-has-two-active-access-keys                       /docs/how-to-guides/security/access-management/find-aws-iam-users-with-multiple-active-access-keys
-/docs/how-to-guides/security/access-management/find-aws-iam-user-mfa-not-enabled-console-access                   /docs/how-to-guides/security/access-management/find-aws-iam-users-without-mfa-enabled
-/docs/how-to-guides/security/access-management/find-aws-lambda-cors-policy                                        /docs/how-to-guides/security/access-management/find-aws-lambda-function-cors-vulnerabilities
-/docs/how-to-guides/security/access-management/find-aws-lambda-is-public                                          /docs/how-to-guides/security/access-management/find-public-aws-lambda-functions
-/docs/how-to-guides/security/access-management/find-aws-lambda-policy-public                                      /docs/how-to-guides/security/access-management/find-aws-lambda-functions-with-public-resource-based-policies
-/docs/how-to-guides/security/access-management/*                                                                  /docs/how-to-guides/security/access-management
+/docs/how-to-guides/security/access-management/*                  /docs/how-to-guides/security/access-management
+/docs/how-to-guides/security/compute/*                            /docs/how-to-guides/security/compute
+/docs/how-to-guides/security/logging/*                            /docs/how-to-guides/security/logging
+/docs/how-to-guides/security/monitoring/*                         /docs/how-to-guides/security/monitoring
+/docs/how-to-guides/security/networking/*                         /docs/how-to-guides/security/networking
+/docs/how-to-guides/security/storage/*                            /docs/how-to-guides/security/storage
+/docs/how-to-guides/security/*                                    /docs/how-to-guides/security
 
-/docs/how-to-guides/security/compute/find-aws-ec2-old-instances                       /docs/how-to-guides/security/compute/find-old-aws-ec2-instances
-/docs/how-to-guides/security/compute/find-aws-lambda-obsolete-runtime                 /docs/how-to-guides/security/compute/find-aws-lambda-functions-with-obsolete-runtimes
-/docs/how-to-guides/security/compute/*                                                /docs/how-to-guides/security/compute
-
-/docs/how-to-guides/security/logging/find-aws-cloudtrail-logging-disabled                   /docs/how-to-guides/security/logging/find-aws-cloudtrail-trails-with-logging-disabled
-/docs/how-to-guides/security/logging/find-aws-cloudtrail-logging-not-setu-up-in-all-regions /docs/how-to-guides/security/logging/find-aws-regions-not-monitored-by-cloudtrail
-/docs/how-to-guides/security/logging/find-aws-cloudtrail-no-encryption-at-rest              /docs/how-to-guides/security/logging/find-aws-cloudtrail-trails-not-encrypted-with-kms-keys
-/docs/how-to-guides/security/logging/find-aws-cloudtrail-no-recent-log-event                /docs/how-to-guides/security/logging/find-aws-cloudtrail-trails-with-no-log-events
-/docs/how-to-guides/security/logging/find-aws-cloudtrail-s3-bucket-access-logging-disabled  /docs/how-to-guides/security/logging/find-aws-cloudtrail-trails-with-s3-bucket-access-logging-disabled
-/docs/how-to-guides/security/logging/find-aws-cloudtrail-s3-bucket-is-publicly-accessible   /docs/how-to-guides/security/logging/find-aws-cloudtrail-trails-with-public-s3-buckets
-/docs/how-to-guides/security/logging/find-aws-cloudtrail-s3-data-read-events-disabled       /docs/how-to-guides/security/logging/find-aws-regions-with-cloudtrail-object-level-logging-for-s3-read-events-disabled
-/docs/how-to-guides/security/logging/find-aws-cloudtrail-s3-data-write-events-disabled      /docs/how-to-guides/security/logging/find-aws-regions-with-cloudtrail-object-level-logging-for-s3-write-events-disabled
-/docs/how-to-guides/security/logging/find-aws-cloudtrail-without-log-file-validation        /docs/how-to-guides/security/logging/find-aws-cloudtrail-trails-without-log-file-validation-enabled
-/docs/how-to-guides/security/logging/find-aws-config-not-enabled-in-all-regions             /docs/how-to-guides/security/logging/find-aws-regions-without-aws-config-enabled
-/docs/how-to-guides/security/logging/find-aws-ec2-vpc-flow-logs-not-enabled                 /docs/how-to-guides/security/logging/find-aws-vpcs-without-ec2-flow-logging-enabled
-/docs/how-to-guides/security/logging/find-aws-kms-master-key-rotation-not-enabled           /docs/how-to-guides/security/logging/find-aws-kms-keys-without-rotation-enabled
-/docs/how-to-guides/security/logging/*                                                      /docs/how-to-guides/security/logging
-
-/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-authentication-failures         /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-authentication-failures
-/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-config-configuration-changes    /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-aws-config-changes
-/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-configuration-changes           /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-trail-configuration-changes
-/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-console-sign-in-in-without-mfa  /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-console-logins-without-mfa
-/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-iam-policy-changes              /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-iam-policy-changes
-/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-kms-key-deletion                /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-kms-key-deletion
-/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-network-acl-changes             /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-network-acl-changes
-/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-network-gateway-changes         /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-network-gateway-changes
-/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-no-mfa                          /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-console-logins-without-mfa
-/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-org-changes                     /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-organization-changes
-/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-root-account-usage              /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-root-user-usage
-/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-route-table-changes             /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-route-table-changes
-/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-s3-bucket-policy-changes        /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-s3-policy-changes
-/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-security-group-changes          /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-security-group-changes
-/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-unauthorized-api-calls          /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-unauthorized-api-calls
-/docs/how-to-guides/security/monitoring/find-aws-cloudtrail-missing-alarm-for-vpc-changes                     /docs/how-to-guides/security/monitoring/find-aws-cloudtrail-trails-missing-alarms-for-vpc-changes
-/docs/how-to-guides/security/monitoring/*                                                                     /docs/how-to-guides/security/monitoring
-
-/docs/how-to-guides/security/networking/find-aws-apigateway-no-authorizers                            /docs/how-to-guides/security/networking/find-aws-api-gateways-without-authorizers
-/docs/how-to-guides/security/networking/find-aws-apigateway-no-waf                                    /docs/how-to-guides/security/networking/find-aws-api-gateways-without-waf-acls
-/docs/how-to-guides/security/networking/find-aws-apigateway-without-client-certificate                /docs/how-to-guides/security/networking/find-aws-api-gateways-without-ssl-client-authentication
-/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-any-port-ipv4                      /docs/how-to-guides/security/networking/find-aws-ec2-network-acls-allowing-all-ipv4-inbound-traffic
-/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-any-port-ipv6                      /docs/how-to-guides/security/networking/find-aws-ec2-network-acls-allowing-all-ipv6-inbound-traffic
-/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-any-port-ipv4     /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-ipv4-inbound-traffic
-/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-any-port-ipv6     /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-ipv6-inbound-traffic
-/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-any-port          /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic
-/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-cassandra-ports   /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-cassandra-ports
-/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-ftp-port          /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-ftp-ports
-/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-kafka-ports       /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-kafka-ports
-/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-kibana-ports      /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-kibana-ports
-/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-memcached-ports   /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-memcached-ports
-/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-mysql-ports       /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-mysql-ports
-/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-oracledb          /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-oracle-database-ports
-/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-port-mongodb      /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-mongodb-ports
-/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-postgresql-ports  /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-postgresql-ports
-/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-rdp-port          /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-rdp-ports
-/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-redis-ports       /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-redis-ports
-/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-sql-server-ports  /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-sql-server-ports
-/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-ssh-port          /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-ssh-ports
-/docs/how-to-guides/security/networking/find-aws-ec2-allow-ingress-from-internet-to-telnet-ports      /docs/how-to-guides/security/networking/find-aws-ec2-security-groups-allowing-all-inbound-traffic-on-default-telnet-ports
-/docs/how-to-guides/security/networking/find-aws-ec2-default-security-group-traffic-not-restricted    /docs/how-to-guides/security/networking/find-aws-vpcs-with-default-security-groups-allowing-all-inbound-traffic
-/docs/how-to-guides/security/networking/find-aws-ec2-internet-facing-with-instance-profile            /docs/how-to-guides/security/networking/find-public-aws-ec2-instances-with-instance-profiles
-/docs/how-to-guides/security/networking/find-aws-ec2-public-ip-address                                /docs/how-to-guides/security/networking/find-public-aws-ec2-instances
-/docs/how-to-guides/security/networking/find-aws-ec2-routing-tables-no-least-privilege                /docs/how-to-guides/security/networking/find-aws-vpcs-with-overly-permissive-peering-routing-tables
-/docs/how-to-guides/security/networking/find-aws-ec2-wide-open-ipv4-security-group                    /docs/how-to-guides/security/networking/find-overly-permissive-aws-ec2-security-groups
-/docs/how-to-guides/security/networking/*                                                             /docs/how-to-guides/security/networking
-
-/docs/how-to-guides/security/storage/find-aws-ec2-snapshot-not-encrypted-or-public      /docs/how-to-guides/security/storage/find-unencrypted-aws-ec2-snapshots
-/docs/how-to-guides/security/storage/find-aws-ec2-volume-not-encrypted                  /docs/how-to-guides/security/storage/find-unencrypted-aws-ec2-volumes
-/docs/how-to-guides/security/storage/find-aws-efs-without-encrytpion-at-rest            /docs/how-to-guides/security/storage/find-unencrypted-aws-efs-file-systems
-/docs/how-to-guides/security/storage/find-aws-rds-no-auto-minor-version-upgrade         /docs/how-to-guides/security/storage/find-aws-rds-instances-without-auto-minor-version-upgrade-enabled
-/docs/how-to-guides/security/storage/find-aws-rds-public-access                         /docs/how-to-guides/security/storage/find-publicly-accessible-aws-rds-instances
-/docs/how-to-guides/security/storage/find-aws-rds-storage-not-encrypted                 /docs/how-to-guides/security/storage/find-unencrypted-aws-rds-storage-volumes
-/docs/how-to-guides/security/storage/find-aws-s3-bucket-no-mfa-delete                   /docs/how-to-guides/security/storage/find-aws-s3-buckets-without-mfa-delete-enabled
-/docs/how-to-guides/security/storage/find-aws-s3-bucket-without-secure-transport-policy /docs/how-to-guides/security/storage/find-aws-s3-buckets-without-secure-transport-policies
-/docs/how-to-guides/security/storage/find-aws-s3-no-encryption                          /docs/how-to-guides/security/storage/find-unencrypted-aws-s3-buckets
-/docs/how-to-guides/security/storage/find-aws-s3-public-access-blocks                   /docs/how-to-guides/security/storage/find-aws-s3-buckets-missing-public-access-blocks
-/docs/how-to-guides/security/storage/*                                                  /docs/how-to-guides/security/storage
-
-/docs/how-to-guides/security/*                                                        /docs/how-to-guides/security
-
-/docs/how-to/*                                                                        /docs/how-to-guides/:splat
-/docs/guides/*                                                                        /docs/how-to-guides/:splat
-/how-to/*                                                                             /docs/how-to-guides/:splat
-/how-to-guides/*                                                                      /docs/how-to-guides/:splat
-/guides/*                                                                             /docs/how-to-guides/:splat
+/docs/how-to/*                                                    /docs/how-to-guides/:splat
+/docs/guides/*                                                    /docs/how-to-guides/:splat
+/how-to/*                                                         /docs/how-to-guides/:splat
+/how-to-guides/*                                                  /docs/how-to-guides/:splat
+/guides/*                                                         /docs/how-to-guides/:splat
 
 /docs/reference/cli/clean                                                             /docs/reference/cli/action-commands/clean
 /docs/reference/cli/http                                                              /docs/reference/cli/action-commands/http
@@ -327,76 +220,72 @@ https://releases.resoto.com/*                                                   
 /docs/reference/cli/query/subqueries                                                  /docs/reference/search/merging-nodes
 /docs/reference/cli/query/*                                                           /docs/reference/search/:splat
 
-/api                                                                                  /docs/reference/api
-/docs/reference/core-api                                                              /docs/reference/api
-/docs/reference/resotocore-api                                                        /docs/reference/api
+/api                                                              /docs/reference/api
+/docs/reference/core-api                                          /docs/reference/api
+/docs/reference/resotocore-api                                    /docs/reference/api
 
-/docs/reference/data-models/docker-hub                                                /docs/reference/unified-data-model/docker-hub
-/docs/reference/data-models/dockerhub                                                 /docs/reference/unified-data-model/docker-hub
-/docs/reference/data-models/gcp                                                       /docs/reference/unified-data-model/google-cloud
-/docs/reference/data-models/google-cloud                                              /docs/reference/unified-data-model/google-cloud
-/docs/reference/data-models/on-premises                                               /docs/reference/unified-data-model/on-premises
-/docs/reference/data-models/onprem                                                    /docs/reference/unified-data-model/on-premises
-/docs/reference/data-models/*                                                         /docs/reference/unified-data-model/:splat
-/docs/reference/resources/data-models/*                                               /docs/reference/unified-data-model/:splat
-/docs/reference/resources/*                                                           /docs/reference/unified-data-model/:splat
+/docs/reference/unified-data-model/dockerhub                      /docs/reference/unified-data-model/docker-hub
+/docs/reference/unified-data-model/gcp                            /docs/reference/unified-data-model/google-cloud
+/docs/reference/unified-data-model/onprem                         /docs/reference/unified-data-model/on-premises
+/docs/reference/data-models/*                                     /docs/reference/unified-data-model/:splat
+/docs/reference/resources/data-models/*                           /docs/reference/unified-data-model/:splat
+/docs/reference/resources/*                                       /docs/reference/unified-data-model/:splat
 
-/docs/reference/permissions/*                                                         /docs/reference/iam-permissions/:splat
+/docs/reference/permissions/*                                     /docs/reference/iam-permissions/:splat
 
-/reference/*                                                                          /docs/reference/:splat
+/reference/*                                                      /docs/reference/:splat
 
-/documentation/*                                                                      /docs/:splat
-/docs/edge/*                                                                          /docs/:splat
-/docs/2.x/*                                                                           /docs/:splat
-/docs/2.X/*                                                                           /docs/:splat
-/docs/3.x/*                                                                           /docs/:splat
-/docs/3.X/*                                                                           /docs/:splat
-/docs/*                                                                               /docs
+/documentation/*                                                  /docs/:splat
+/docs/edge/*                                                      /docs/:splat
+/docs/2.x/*                                                       /docs/:splat
+/docs/2.X/*                                                       /docs/:splat
+/docs/3.x/*                                                       /docs/:splat
+/docs/3.X/*                                                       /docs/:splat
+/docs/*                                                           /docs
 
+/podcast/tags/cloud                                               /podcast/tags/cloud-infrastructure
+/podcast/tags/distribution                                        /podcast/tags/software-distribution
+/podcast/tags/finance                                             /podcast/tags/cloud-spend
+/podcast/tags/gcp                                                 /podcast/tags/google-cloud
+/podcast/tags/graph                                               /podcast/tags/graph-database
+/podcast/tags/open-source                                         /podcast/tags/open-source-software
+/podcast/tags/site-reliability                                    /podcast/tags/site-reliability-engineering
+/podcast/tags/*                                                   /podcast/tags
 
-/podcast/tags/cloud                                                                   /podcast/tags/cloud-infrastructure
-/podcast/tags/distribution                                                            /podcast/tags/software-distribution
-/podcast/tags/finance                                                                 /podcast/tags/cloud-spend
-/podcast/tags/gcp                                                                     /podcast/tags/google-cloud
-/podcast/tags/graph                                                                   /podcast/tags/graph-database
-/podcast/tags/open-source                                                             /podcast/tags/open-source-software
-/podcast/tags/site-reliability                                                        /podcast/tags/site-reliability-engineering
-/podcast/tags/*                                                                       /podcast/tags
+/podcasts/:year/:month/:date/*                                    /podcast/:splat
+/podcasts/*                                                       /podcast/:splat
+/podcast/:year/:month/:date/*                                     /podcast/:splat
+/podcast/1                                                        /podcast/how-to-purchase-from-cloud-vendors
+/podcast/2                                                        /podcast/measuring-open-source-adoption
+/podcast/3                                                        /podcast/combatting-waste-in-cloud-development
+/podcast/4                                                        /podcast/the-shift-to-smart-cloud-native-applications
+/podcast/5                                                        /podcast/shifting-from-finops-to-financial-engineering
+/podcast/6                                                        /podcast/site-reliability-engineering-and-cloud-native-architecture
+/podcast/7                                                        /podcast/a-shift-left-approach-to-building-serverless-fintech-applications
+/podcast/8                                                        /podcast/how-to-build-for-the-cloud-on-your-laptop
+/podcast/9                                                        /podcast/bringing-the-modern-data-stack-to-engineering-operations
+/podcast/10                                                       /podcast/creating-operational-analytics-with-sql-and-git-repositories
+/podcast/11                                                       /podcast/bitmaps-and-the-future-of-real-time-data-processing
+/podcast/12                                                       /podcast/sql-plus-yaml-equals-dashboards
+/podcast/13                                                       /podcast/data-integration-with-dbt
+/podcast/14                                                       /podcast/what-is-apache-iceberg
+/podcast/15                                                       /podcast/why-data-observability-needs-data-criticality
+/podcast/16                                                       /podcast/elt-for-cloud-infrastructure-data
+/podcast/17                                                       /podcast/itam-and-strategic-operations-at-wix
+/podcast/18                                                       /podcast/how-cloud-costs-are-shifting-left
+/podcast/19                                                       /podcast/security-at-lyft-with-cartography
+/podcast/*                                                        /podcast
 
-/podcasts/:year/:month/:date/*                                                        /podcast/:splat
-/podcasts/*                                                                           /podcast/:splat
-/podcast/:year/:month/:date/*                                                         /podcast/:splat
-/podcast/1                                                                            /podcast/how-to-purchase-from-cloud-vendors
-/podcast/2                                                                            /podcast/measuring-open-source-adoption
-/podcast/3                                                                            /podcast/combatting-waste-in-cloud-development
-/podcast/4                                                                            /podcast/the-shift-to-smart-cloud-native-applications
-/podcast/5                                                                            /podcast/shifting-from-finops-to-financial-engineering
-/podcast/6                                                                            /podcast/site-reliability-engineering-and-cloud-native-architecture
-/podcast/7                                                                            /podcast/a-shift-left-approach-to-building-serverless-fintech-applications
-/podcast/8                                                                            /podcast/how-to-build-for-the-cloud-on-your-laptop
-/podcast/9                                                                            /podcast/bringing-the-modern-data-stack-to-engineering-operations
-/podcast/10                                                                           /podcast/creating-operational-analytics-with-sql-and-git-repositories
-/podcast/11                                                                           /podcast/bitmaps-and-the-future-of-real-time-data-processing
-/podcast/12                                                                           /podcast/sql-plus-yaml-equals-dashboards
-/podcast/13                                                                           /podcast/data-integration-with-dbt
-/podcast/14                                                                           /podcast/what-is-apache-iceberg
-/podcast/15                                                                           /podcast/why-data-observability-needs-data-criticality
-/podcast/16                                                                           /podcast/elt-for-cloud-infrastructure-data
-/podcast/17                                                                           /podcast/itam-and-strategic-operations-at-wix
-/podcast/18                                                                           /podcast/how-cloud-costs-are-shifting-left
-/podcast/19                                                                           /podcast/security-at-lyft-with-cartography
-/podcast/*                                                                            /podcast
+/news/2022/07/07/july-update                                      /blog/product-updates/2022/july
+/news/:year/:month/:date/v2.0.0*                                  /releases/2.0.0
+/news/:year/:month/:date/v*                                       /releases/:splat
+/news/:year/:month/:date/*                                        /releases/:splat
+/news/atom.xml                                                    /releases/atom.xml
+/news/tags/release-notes/*                                        /releases
+/news/tags/*                                                      /releases
+/news/*                                                           /releases
+/release/*                                                        /releases/:splat
+/releases/tags/*                                                  /releases
+/releases/*                                                       /releases
 
-/news/2022/07/07/july-update                                                          /blog/product-updates/2022/july
-/news/:year/:month/:date/v2.0.0*                                                      /releases/2.0.0
-/news/:year/:month/:date/v*                                                           /releases/:splat
-/news/:year/:month/:date/*                                                            /releases/:splat
-/news/atom.xml                                                                        /releases/atom.xml
-/news/tags/release-notes/*                                                            /releases
-/news/tags/*                                                                          /releases
-/news/*                                                                               /releases
-/release/*                                                                            /releases/:splat
-/releases/tags/*                                                                      /releases
-/releases/*                                                                           /releases
-
-/support/*                                                                            /docs
+/support/*                                                        /docs

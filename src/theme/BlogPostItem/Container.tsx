@@ -2,6 +2,7 @@ import { useBlogPost } from '@docusaurus/theme-common/internal';
 import { useBaseUrlUtils } from '@docusaurus/useBaseUrl';
 import { getImage } from '@site/src/utils/socialImageUtils';
 import type { Props } from '@theme/BlogPostItem/Container';
+import { union } from 'lodash';
 import React from 'react';
 
 export default function BlogPostItemContainer({
@@ -25,6 +26,10 @@ export default function BlogPostItemContainer({
         : null,
       authors,
     });
+  const keywords = union([
+    ...(frontMatter.keywords ?? []),
+    ...(tags ?? []).map((tag) => tag.label.toLowerCase()),
+  ]);
 
   return (
     <article
@@ -40,11 +45,8 @@ export default function BlogPostItemContainer({
           content={withBaseUrl(image, { absolute: true })}
         />
       )}
-      {tags.length > 0 && (
-        <meta
-          itemProp="keywords"
-          content={tags.map((tag) => tag.label).join(',')}
-        />
+      {keywords.length > 0 && (
+        <meta itemProp="keywords" content={keywords.join(',')} />
       )}
       {children}
     </article>

@@ -60,9 +60,9 @@ export default function DocItemLayout({ children }: Props): JSX.Element {
               <meta itemProp="description" content={description} />
             )}
             {image && (
-              <meta
+              <link
                 itemProp="image"
-                content={withBaseUrl(image, { absolute: true })}
+                href={withBaseUrl(image, { absolute: true })}
               />
             )}
             {frontMatter.keywords?.length > 0 && (
@@ -77,7 +77,7 @@ export default function DocItemLayout({ children }: Props): JSX.Element {
               itemType="https://schema.org/Organization"
             >
               <meta itemProp="name" content="Some Engineering Inc." />
-              <meta itemProp="url" content="https://some.engineering" />
+              <link itemProp="url" href="https://some.engineering" />
             </div>
             <DocBreadcrumbs />
             <DocVersionBadge />

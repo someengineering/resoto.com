@@ -1,0 +1,40 @@
+---
+pagination_prev: null
+pagination_next: null
+---
+
+# Resoto vs. Google Cloud Asset Inventory
+
+**Resoto is an open-source alternative to Google's [Cloud Asset Inventory](https://cloud.google.com/asset-inventory).**
+
+Cloud Asset Inventory is a managed service that collects metadata from Google Cloud resources to create an inventory, allowing you to monitor asset changes.
+
+## Similarities Between Resoto and Cloud Asset Inventory {#similarities}
+
+**Both Cloud Asset Inventory and Resoto take asset snapshots.**
+
+With either tool, you can:
+
+- Collect metadata from [Google Cloud resources](/docs/how-to-guides/data-sources/collect-google-cloud-resource-data)
+- View a history of resource creation, update, and deletion events
+- Generate metrics and time-series data for Google Cloud resources
+- Monitor changes, write queries, and ask questions about your Google Cloud infrastructure
+
+## Differences Between Resoto and Cloud Asset Inventory {#differences}
+
+Cloud Asset Inventory is a fully managed service that Google introduced after their open-source [Cloud Asset Inventory Import to BigQuery](https://github.com/GoogleCloudPlatform/professional-services/tree/main/tools/asset-inventory) tool gained popularity.
+
+To enable data storage, analytics, notifications and security scenarios, Cloud Asset Inventory requires integration with Google [Cloud Storage](https://cloud.google.com/storage) and [BigQuery](https://cloud.google.com/bigquery).
+
+Cloud Asset Inventory is Google Cloud's native inventory service, and therefore only supports Google Cloud resources and Kubernetes. Cloud Asset Inventory lacks support for other cloud platforms and non-Google tooling such as GitHub.
+
+Resoto, on the other hand, also supports other cloud providers (including [AWS](/docs/how-to-guides/data-sources/collect-aws-resource-data) and [DigitalOcean](/docs/how-to-guides/data-sources/collect-digitalocean-resource-data)).
+
+|  | Resoto | Cloud Asset Inventory |
+| --- | --- | --- |
+| **Resource Coverage** | Offers support for a growing number of [Google Cloud resource types](/docs/reference/unified-data-model/google-cloud). | Supports [about 140 Google Cloud asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types). |
+| **Full-Text Search** | Creates an [inventory](/docs/concepts/asset-inventory-graph) of discovered resources and offers [full-text search](/docs/reference/search/full-text) as an easy way to explore your cloud inventory. | Searches require writing queries using a custom Google syntax and are limited to a set of predefined attributes.<br /><br />Searches require knowledge of asset metadata fields. |
+| **Data Model** | Uses a [unified data model](/docs/reference/unified-data-model) for all platforms and resources.<br /><br />[Unifying base properties and common abstractions allows you to search, sort, aggregate, and act on a higher level of abstraction and query resources across clouds.](/blog/multi-cloud-resource-management) | Requires specialized knowledge of Google Cloud assets and how their attributes are represented. |
+| **Multi-Cloud** | Cloud agnostic and can be used as a single control plane for multiple clouds.<br /><br />Open source and offers an SDK that makes it easy to add support for additional platforms and resources (e.g., on-prem or SaaS). | Purpose-built for Google Cloud and lacks support for other clouds. |
+| **Remediation** | Integrates analytics and governance into a single product to enforce policies and [perform actions on resources](/docs/concepts/resource-management).<br /><br />Offers [commands](/docs/reference/cli) and [jobs](/docs/concepts/automation#jobs) to automate remediation.<br /><br />Can be used to write custom code and rules for any resource in a cloud-agnostic way. | Only offers alerting; lacks remediation capabilities. |
+| **Pricing** | Open-source and free to use. | Free of charge, but requires other Google Cloud services (e.g., [Cloud Storage](https://cloud.google.com/storage) to store data, [BigQuery](https://cloud.google.com/bigquery) to run queries, and [Pub/Sub](https://cloud.google.com/pubsub) for notifications). |

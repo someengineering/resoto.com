@@ -9,7 +9,7 @@ pagination_next: null
 
 Unlike its name may suggest, AWS Nuke is _not_ a native AWS service. AWS Nuke is maintained by [Rebuy](https://rebuy.de), an e-commerce company that provides personalized shopping experiences for [Shopify](https://shopify.com) stores.
 
-## Similarities Between Resoto and AWS Nuke
+## Similarities Between Resoto and AWS Nuke {#similarities}
 
 With both Resoto and AWS Nuke, you can:
 
@@ -20,7 +20,7 @@ With both Resoto and AWS Nuke, you can:
 
 Both Resoto and AWS Nuke are open source.
 
-## Differences Between Resoto and AWS Nuke
+## Differences Between Resoto and AWS Nuke {#differences}
 
 AWS Nuke was built for managing [AWS resources](/docs/how-to-guides/data-sources/collect-aws-resource-data), and addresses a single use case only: deleting AWS resources for cost savings.
 
@@ -29,7 +29,7 @@ Resoto, on the other hand, also supports [Kubernetes](/docs/how-to-guides/data-s
 |  | Resoto | AWS Nuke |
 | --- | --- | --- |
 | **Discovery** | Discovers resources and visualizes the "blast radius" of deleting a resource. | Does not offer resource discovery or inspection.<br /><br />Can only delete resources listed in the AWS Nuke configuration file. |
-| **Cleanup** | Performs dependency-aware resource cleanup, deleting resources in the required order | Performs "brute force" deletion of resources without regard for dependencies, which can lead to errors.<br /><br />Leaves behind orphaned resources that may require AWS support to delete. |
+| **Cleanup** | Performs dependency-aware resource cleanup, deleting resources in the required order based on [delete dependencies](/docs/reference/search/traversals#delete-edges). | Performs "brute force" deletion of resources without regard for dependencies, which can lead to errors.<br /><br />Leaves behind orphaned resources that may require AWS support to delete. |
 | **Data Model** | Uses a [unified data model](/docs/reference/unified-data-model) for all platforms and resources.<br /><br />[Unifying base properties and common abstractions allows you to search, sort, aggregate, and act on a higher level of abstraction and query resources across clouds.](/blog/multi-cloud-resource-management) | Properties (e.g., resource age) are not represented consistently across resources.<br /><br />Only supports filtering by <abbr title="Amazon Resource Names">ARN</abbr>s. |
 | **Automation** | Offers [commands](/docs/reference/cli) and [jobs](/docs/concepts/automation#jobs) to automate [resource management](/docs/concepts/resource-management) and/or remediation.<br /><br />Can be used to write custom code and rules for any resource. | Runs a single time. Does not offer scheduling or job functionality.<br /><br />Requires custom scripts to generate configuration files targeting specific resources and/or resource groups.<br /><br />Can timeout when scheduled using AWS services (e.g., AWS Lambda has a maximum execution time of 15 minutes). |
 | **Multi-Account** | Cleans up resources in any number of accounts in a single run. | Does not offer multi-account support. |

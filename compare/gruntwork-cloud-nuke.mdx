@@ -1,0 +1,33 @@
+---
+pagination_prev: null
+pagination_next: null
+---
+
+# Resoto vs. Gruntwork cloud-nuke
+
+**Resoto is an alternative to Gruntwork's [cloud-nuke](https://cloud.google.com/asset-inventory).**
+
+cloud-nuke is an open-source CLI tool that finds and deletes AWS resources.
+
+## Similarities Between Resoto and cloud-nuke {#similarities}
+
+With both Resoto and cloud-nuke, you can:
+
+- Inspect AWS resources
+- Delete AWS resources
+- Exclude AWS resources from deletion
+
+## Differences Between Resoto and cloud-nuke {#differences}
+
+[Gruntwork](https://gruntwork.io) specializes in AWS infrastructure, so cloud-nuke only supports AWS.
+
+Resoto, on the other hand, also supports other cloud providers (including [AWS](/docs/how-to-guides/data-sources/collect-aws-resource-data) and [DigitalOcean](/docs/how-to-guides/data-sources/collect-digitalocean-resource-data)) and [Kubernetes](/docs/how-to-guides/data-sources/collect-kubernetes-resource-data).
+
+|  | Resoto | cloud-nuke |
+| --- | --- | --- |
+| **Resource Coverage** | Supports over 200 [AWS resource types](/docs/reference/unified-data-model/aws) and all AWS regions. | Supports [about 50 AWS resource types](https://github.com/gruntwork-io/cloud-nuke#aws). |
+| **Full-Text Search** | Creates an [inventory](/docs/concepts/asset-inventory-graph) of discovered resources and offers [full-text search](/docs/reference/search/full-text) as an easy way to explore your cloud inventory. | Lacks search capabilities. |
+| **Discovery** | Discovers resources and creates full snapshots of your [asset inventory](/blog/cloud-asset-inventory) with resource metadata. | Creates a simple list of detected resources without resource metadata or configuration data. |
+| **Cleanup** | Performs dependency-aware resource cleanup, deleting resources in the required order based on [delete dependencies](/docs/reference/search/traversals#delete-edges). | Attempts to remove dependent sub-resources for VPCs. Lacks support for non-VPC delete dependencies. |
+| **Syntax** | Offers intuitive [commands](/docs/reference/cli) and first-class support for [automations](/docs/concepts/automation). | Requires tedious authoring of scripts and editing of configuration files to customize cleanup actions. |
+| **Performance** | Separates [data ingest](/docs/concepts/cloud-data-sync), transformations, [storage](/docs/concepts/asset-inventory-graph), and [queries](/docs/reference/search) for a scalable approach to analyzing infrastructure. | Completes resource analysis and cleanup in an ephemeral environment. |

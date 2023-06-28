@@ -9,18 +9,18 @@ pagination_next: null
 
 AWS Config provides an overview of the configuration of AWS resources in your AWS account, including an overview of how resources are related to one another.
 
-## Similarities Between Resoto and AWS Config
+## Similarities Between Resoto and AWS Config {#similarities}
 
 **Both AWS Config and Resoto offer cloud asset inventory functionality to assess, audit, and evaluate configurations of your AWS resources.**
 
 With either tool, you can:
 
-- Create an inventory of your AWS resources
+- Create an inventory of your [AWS resources](/docs/how-to-guides/data-sources/collect-aws-resource-data)
 - Track changes and manage compliance
 - Filter and find resources that match different criteria
 - Automate remediation
 
-## Differences Between Resoto and AWS Config
+## Differences Between Resoto and AWS Config {#differences}
 
 AWS Config is a native AWS service, and as such it only covers AWS resources and is optimized for integrating with the AWS product ecosystem.
 
@@ -28,8 +28,8 @@ Resoto, on the other hand, also supports [Kubernetes](/docs/how-to-guides/data-s
 
 |  | Resoto | AWS Config |
 | --- | --- | --- |
-| **Coverage** | Offers support for over 204 [AWS resource types](/docs/reference/unified-data-model/aws) and supports all AWS regions. | Covers 204 AWS resource types, not all of which are supported in every AWS region. |
-| **Multi-Cloud** | Cloud agnostic and can be used as a single control plane for multiple clouds.<br /><br />Open source and offers an SDK that makes it easy to add support for additional platforms and resources (e.g., on-prem or SaaS). | Purpose-built for AWS. |
+| **Resource Coverage** | Supports [over 200 AWS resource types](/docs/reference/unified-data-model/aws) and supports all AWS regions. | Covers [about 200 AWS resource types](https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html), not all of which are supported in every AWS region. |
+| **Multi-Cloud** | Cloud agnostic and can be used as a single control plane for multiple clouds.<br /><br />Open source and offers an SDK that makes it easy to add support for additional platforms and resources (e.g., on-prem or SaaS). | Purpose-built for AWS and lacks support for other clouds. |
 | **Full-Text Search** | Creates an [inventory](/docs/concepts/asset-inventory-graph) of discovered resources and offers [full-text search](/docs/reference/search/full-text) as an easy way to explore your cloud inventory. | Does not offer full-text search. |
 | **Resource Visualization** | Offers [dashboards](/docs/reference/user-interface/dashboards) for visual exploration of resources and their relationships.<br /><br />Also includes a graph view, which depicts how resources are connected. | Part of the general [AWS Console](https://aws.amazon.com/console) experience.<br /><br />To visualize data, needs to be integrated with S3 for storage, Athena for querying, and Quicksight for dashboards. |
 | **Remediation** | Integrates analytics and governance into a single product to enforce policies and [perform actions on resources](/docs/concepts/resource-management).<br /><br />Offers [commands](/docs/reference/cli) and [jobs](/docs/concepts/automation#jobs) to automate remediation.<br /><br />Can be used to write custom code and rules for any resource in a cloud-agnostic way. | Offers remediation in combination with [AWS Systems Manager](https://aws.amazon.com/systems-manager) and [AWS Security Hub](https://aws.amazon.com/security-hub).<br /><br />Requires writing custom or using predefined runbooks maintained by AWS. |

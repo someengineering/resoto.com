@@ -19,7 +19,7 @@ export default function AuthorsWrapper(props: Props): JSX.Element {
         itemType="https://schema.org/Organization"
       >
         <meta itemProp="name" content="Some Engineering Inc." />
-        <meta itemProp="url" content="https://some.engineering" />
+        <link itemProp="url" href="https://some.engineering" />
       </div>
       <Authors {...props} />
     </>

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-var-requires */
 // @ts-check
 
@@ -248,8 +247,7 @@ const config = {
     ],
     [
       'pwa',
-      // @ts-ignore
-      /** @type {import('@docusaurus/plugin-pwa').PluginOptions} */
+      /** @type {Partial<import('@docusaurus/plugin-pwa').PluginOptions>} */
       ({
         debug: !isProd,
         swRegister: false,
@@ -441,9 +439,7 @@ const config = {
         insights: true,
       },
       prism: {
-        // @ts-ignore
         theme: require('prism-react-renderer').themes.github,
-        // @ts-ignore
         darkTheme: require('prism-react-renderer').themes.dracula,
         additionalLanguages: ['csv', 'ini', 'powershell', 'ruby', 'csharp', 'php'],
       },

@@ -2,6 +2,7 @@ import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
 import riveWasmUrl from '@rive-app/canvas/rive.wasm';
 import Rive, { RuntimeLoader } from '@rive-app/react-canvas';
+import latestRelease from '@site/latestRelease.json';
 import ContactForm from '@site/src/components/ContactForm';
 import HomepageModules from '@site/src/components/HomepageModules';
 import InstallButton from '@site/src/components/InstallButton';
@@ -11,6 +12,7 @@ import GoogleCloudLogo from '@site/src/img/providers/google-cloud.svg';
 import KubernetesLogo from '@site/src/img/providers/kubernetes.svg';
 import heroAnimationPlaceholder from '@site/src/pages/img/hero/placeholder.webp';
 import heroAnimation from '@site/src/rive/hero.riv';
+import versions from '@site/versions.json';
 import Layout from '@theme/Layout';
 import { clsx } from 'clsx';
 import React, { useCallback, useEffect, useState } from 'react';
@@ -48,20 +50,51 @@ export default function Home(): JSX.Element {
     <>
       <Head>
         <script type="application/ld+json">
-          {JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'WebSite',
-            name: 'Resoto by Some Engineering Inc.',
-            url: 'https://resoto.com',
-            potentialAction: {
-              '@type': 'SearchAction',
-              target: {
-                '@type': 'EntryPoint',
-                urlTemplate: 'https://resoto.com/search?q={search_term_string}',
+          {JSON.stringify([
+            {
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              name: 'Resoto by Some Engineering Inc.',
+              url: 'https://resoto.com',
+              potentialAction: {
+                '@type': 'SearchAction',
+                target: {
+                  '@type': 'EntryPoint',
+                  urlTemplate:
+                    'https://resoto.com/search?q={search_term_string}',
+                },
+                'query-input': 'required name=search_term_string',
               },
-              'query-input': 'required name=search_term_string',
             },
-          })}
+            {
+              '@context': 'http://schema.org',
+              '@type': 'SoftwareApplication',
+              name: 'Resoto',
+              description:
+                'Resoto is a free, open-source infrastructure control plane that continuously monitors and maintains your cloud resources.',
+              url: 'https://resoto.com',
+              image: 'https://resoto.com/img/logo.svg',
+              applicationCategory: [
+                'BusinessApplication',
+                'DeveloperApplication',
+                'FinanceApplication',
+                'SecurityApplication',
+                'UtilitiesApplication',
+              ],
+              operatingSystem: ['Linux', 'macOS', 'Windows'],
+              softwareVersion: latestRelease[versions[0]],
+              releaseNotes: `https://resoto.com/releases/${
+                latestRelease[versions[0]]
+              }`,
+              sameAs: 'https://github.com/someengineering/resoto',
+              alternateName: 'Cloudkeeper',
+              publisher: {
+                '@type': 'Organization',
+                name: 'Some Engineering Inc.',
+                url: 'https://some.engineering',
+              },
+            },
+          ])}
         </script>
         <link
           rel="preload"

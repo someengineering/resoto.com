@@ -4,28 +4,30 @@ import { getImage } from '@site/src/utils/socialImageUtils';
 import React, { useEffect } from 'react';
 
 export default function DocItemMetadata(): JSX.Element {
-  const { metadata, frontMatter, assets } = useDoc();
+  const {
+    metadata: { title, description, unversionedId },
+    frontMatter,
+    assets,
+  } = useDoc();
 
   useEffect(() => {
     if (
-      metadata.unversionedId.startsWith('getting-started/install-resoto') &&
-      metadata.unversionedId !== 'getting-started/install-resoto/index'
+      unversionedId.startsWith('getting-started/install-resoto') &&
+      unversionedId !== 'getting-started/install-resoto/index'
     ) {
       window.localStorage.setItem(
         'docusaurus.tab.install-method',
-        metadata.unversionedId.split('/')[2]
+        unversionedId.split('/')[2]
       );
     }
-  }, [metadata.unversionedId]);
+  }, [unversionedId]);
 
   return (
     <PageMetadata
-      title={metadata.title}
-      description={metadata.description}
+      title={title}
+      description={description}
       keywords={frontMatter.keywords}
-      image={
-        assets.image ?? frontMatter.image ?? getImage({ title: metadata.title })
-      }
+      image={assets.image ?? frontMatter.image ?? getImage({ title: title })}
     />
   );
 }

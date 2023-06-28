@@ -86,7 +86,6 @@ const config = {
                 ]
               : []),
           ],
-          docItemComponent: '@theme/ApiItem',
           lastVersion: versions[0],
           versions: {
             current: { label: 'edge 🚧', path: '/edge', banner: 'unreleased', badge: false },
@@ -105,6 +104,7 @@ const config = {
               )
               .reduce((acc, cur) => ({ ...acc, ...cur }), {}),
           },
+          docItemComponent: '@theme/ApiItem',
         },
         blog: {
           id: 'releases',

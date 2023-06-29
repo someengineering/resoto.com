@@ -9,6 +9,7 @@ type YoutubeEmbedProps = {
   title: string;
   className?: string;
   date?: string;
+  description?: string;
 };
 
 export default function YoutubeEmbed({
@@ -16,6 +17,7 @@ export default function YoutubeEmbed({
   title,
   className,
   date,
+  description,
 }: YoutubeEmbedProps): JSX.Element {
   title = title.replace(/^Episode\s\d+:\s/i, '');
 
@@ -32,6 +34,7 @@ export default function YoutubeEmbed({
               uploadDate: date.split('T', 1)[0],
               contentUrl: `https://youtube.com/watch?v=${id}`,
               embedUrl: `https://youtube.com/embed/${id}`,
+              ...(description ? { description } : null),
               publisher: {
                 '@type': 'Organization',
                 name: 'Some Engineering Inc.',

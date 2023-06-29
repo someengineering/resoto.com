@@ -45,15 +45,13 @@ html[data-theme='dark'] .scrollButton {
 }
 
 .tabListContainer div {
-  --ifm-scrollbar-track-background-color: #f5edff;
-  --ifm-scrollbar-thumb-background-color: var(--ifm-color-content-secondary);
-  --ifm-scrollbar-thumb-hover-background-color: #9f43ee;
+  -ms-overflow-style: none;
   overflow-x: auto;
+  scrollbar-width: none;
 }
 
-html[data-theme='dark'] .tabListContainer div {
-  --ifm-scrollbar-track-background-color: #0e0434;
-  --ifm-scrollbar-thumb-hover-background-color: #f0e4ff;
+.tabListContainer div::-webkit-scrollbar {
+  display: none;
 }
 
 .tabList {
@@ -68,7 +66,6 @@ html[data-theme='dark'] .tabListContainer div {
   flex-direction: column;
   align-items: center;
   cursor: pointer;
-  border-bottom: 1.375px solid var(--ifm-color-primary);
   padding: 18px 0;
   width: 0;
   min-width: 120px;

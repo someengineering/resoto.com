@@ -41,7 +41,7 @@ export default function HomepageModules(): JSX.Element {
   }, [tabListRef, onScroll]);
 
   const scroll = (direction: 'left' | 'right') => {
-    const distance = 100;
+    const distance = 300;
     let scrollAmount = 0;
     const slideTimer = setInterval(() => {
       tabListRef.current.scrollLeft =
@@ -417,7 +417,7 @@ export default function HomepageModules(): JSX.Element {
             >
               <LeftCaret />
             </button>
-            <div className="thin-scrollbar" ref={tabListRef}>
+            <div ref={tabListRef}>
               <TabList className={styles.tabList}>
                 {modules.map((module) => (
                   <Tab

@@ -19,8 +19,6 @@ export default function YoutubeEmbed({
   date,
   description,
 }: YoutubeEmbedProps): JSX.Element {
-  title = title.replace(/^Episode\s\d+:\s/i, '');
-
   return (
     <>
       {date && (

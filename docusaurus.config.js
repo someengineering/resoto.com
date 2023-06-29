@@ -194,7 +194,7 @@ const config = {
         blogTitle: 'Podcast',
         blogDescription: 'Some Engineering Podcast episodes',
         blogSidebarTitle: 'Recent Episodes',
-        blogSidebarCount: 10,
+        blogSidebarCount: 15,
         postsPerPage: 5,
         path: 'podcast',
         routeBasePath: 'podcast',

@@ -16,6 +16,7 @@ https://releases.resoto.com/*                                     https://resoto
 
 /js/script.js                                                     https://plausible.io/js/script.js 200
 /api/event                                                        https://plausible.io/api/event 200
+/apps/index.json                                                  https://cdn.some.engineering/resoto/apps/index.json 200
 
 /resoto/*                                                         /
 /cloud2sql/*                                                      https://cloud2sql.com 301!
@@ -27,15 +28,20 @@ https://releases.resoto.com/*                                     https://resoto
 /blog/april-2023-product-updates                                  /blog/product-updates/2023/april
 /blog/product-updates/*                                           /blog/tags/product-updates
 
+/blog/tags/apps                                                   /blog/tags/resoto-infrastructure-apps
+/blog/tags/cloud                                                  /blog/tags/cloud-asset-inventory
+/blog/tags/cloudformation                                         /blog/tags/aws
 /blog/tags/command                                                /blog/tags/resoto-cli
 /blog/tags/cloud2sql                                              /blog/tags/cloud-2-sql
 /blog/tags/dashboard                                              /blog/tags/resoto-ui
 /blog/tags/data-model                                             /blog/tags/unified-data-model
+/blog/tags/digitalocean                                           /blog/tags/digital-ocean
 /blog/tags/gcp                                                    /blog/tags/google-cloud
 /blog/tags/graph/*                                                /blog/tags/graph-database
 /blog/tags/infrastructure-apps                                    /blog/tags/resoto-infrastructure-apps
 /blog/tags/plugins                                                /blog/tags/resoto-infrastructure-apps
-/blog/tags/shell                                                  /blog/tags/resoto-shell
+/blog/tags/reactive                                               /blog/tags/reactive-infrastructure
+/blog/tags/shell                                                  /blog/tags/resoto-cli
 /blog/tags/tagging                                                /blog/tags/resource-tagging
 /blog/tags/visualization                                          /blog/tags/data-visualization
 /blog/tags/*                                                      /blog/tags
@@ -243,6 +249,7 @@ https://releases.resoto.com/*                                     https://resoto
 /docs/*                                                           /docs
 
 /podcast/tags/cloud                                               /podcast/tags/cloud-infrastructure
+/podcast/tags/devops                                              /podcast/tags/dev-ops
 /podcast/tags/distribution                                        /podcast/tags/software-distribution
 /podcast/tags/finance                                             /podcast/tags/cloud-spend
 /podcast/tags/gcp                                                 /podcast/tags/google-cloud

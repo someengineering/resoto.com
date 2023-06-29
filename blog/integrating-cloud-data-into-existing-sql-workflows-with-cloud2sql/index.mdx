@@ -1,7 +1,7 @@
 ---
 date: 2023-01-16
 authors: [lukas]
-tags: [Cloud2SQL, Data Export]
+tags: [Cloud2SQL, Data Export, SQL, AWS]
 description: Resoto has the ability to enrich the data it collects and make additional connections. This means that Resoto not only gathers raw data about your cloud resources, but also adds additional context and information that can help you better understand your cloud environment.
 ---
 
@@ -31,7 +31,7 @@ Let us take a closer look at the dependencies of an AWS Elastic Load Balancer (E
 
 Here, we see a load balancer is part of a Virtual Private Cloud (VPC) and subnet, and there are EC2 instances underneath an ELB. We also see that sometimes Amazon's Elastic Container Service (ECS) creates ELBs, as there's an edge from a ECS service to the ELB kind.
 
-To represent an individual node, Resoto uses a unified data model with strict typing and support for inheritance. This has the advantage that you can either ask for all of your infrastructure's load balancers, or you can ask for AWS ELBs specifically. Speaking of which, here is the model for an ELB:
+To represent an individual node, Resoto uses a [unified data model](/docs/reference/unified-data-model) with strict typing and support for inheritance. This has the advantage that you can either ask for all of your infrastructure's load balancers, or you can ask for AWS ELBs specifically. Speaking of which, here is the model for an ELB:
 
 <ZoomPanPinch>
 

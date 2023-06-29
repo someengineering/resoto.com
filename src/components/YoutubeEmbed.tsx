@@ -28,7 +28,7 @@ export default function YoutubeEmbed({
               '@context': 'https://schema.org',
               '@type': 'VideoObject',
               name: title,
-              thumbnailUrl: `https://img.youtube.com/vi/${id}/maxresdefault.jpg`,
+              thumbnailUrl: `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`,
               uploadDate: date.split('T', 1)[0],
               contentUrl: `https://youtube.com/watch?v=${id}`,
               embedUrl: `https://youtube.com/embed/${id}`,

@@ -7433,123 +7433,6 @@ gcp_public_delegated_prefix -[#1A83AF]-> gcp_public_advertised_prefix
 
 </details>
 
-## `gcp_quota`
-
-<ZoomPanPinch>
-
-```kroki imgType="plantuml" imgAlt="Diagram of gcp_quota data model"
-@startuml
-hide empty members
-skinparam ArrowColor #ffaf37
-skinparam ArrowFontColor #ffaf37
-skinparam ArrowFontName Helvetica
-skinparam ArrowThickness 2
-skinparam BackgroundColor transparent
-skinparam ClassAttributeFontColor #d9b8ff
-skinparam ClassBackgroundColor #3d176e
-skinparam ClassBorderColor #000d19
-skinparam ClassFontColor #d9b8ff
-skinparam ClassFontName Helvetica
-skinparam ClassFontSize 17
-skinparam NoteBackgroundColor #d9b8ff
-skinparam NoteBorderColor #000d19
-skinparam NoteFontColor #3d176e
-skinparam NoteFontName Helvetica
-skinparam Padding 5
-skinparam RoundCorner 5
-skinparam Shadowing false
-skinparam stereotypeCBackgroundColor #e98df7
-skinparam stereotypeIBackgroundColor #e98df7
-class gcp_deprecation_status {
-**deleted**: string
-**deprecated**: string
-**obsolete**: string
-**replacement**: string
-**state**: string
-}
-class gcp_quota {
-**limit**: double
-**owner**: string
-}
-class gcp_resource {
-**deprecation_status**: gcp_deprecation_status
-**description**: string
-**label_fingerprint**: string
-**link**: string
-}
-class phantom_resource {
-}
-class quota {
-**quota**: double
-**quota_type**: string
-**usage**: double
-}
-class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
-}
-gcp_quota --> gcp_deprecation_status
-gcp_resource <|--- gcp_quota
-quota <|--- gcp_quota
-gcp_resource --> gcp_deprecation_status
-resource <|--- gcp_resource
-resource <|--- phantom_resource
-phantom_resource <|--- quota
-@enduml
-```
-
-</ZoomPanPinch>
-
-<details>
-
-<summary>Relationships to Other Resources</summary>
-
-<div>
-
-<ZoomPanPinch>
-
-```kroki imgType="plantuml" imgAlt="Diagram of gcp_quota resource relationships"
-@startuml
-hide empty members
-skinparam ArrowColor #ffaf37
-skinparam ArrowFontColor #ffaf37
-skinparam ArrowFontName Helvetica
-skinparam ArrowThickness 2
-skinparam BackgroundColor transparent
-skinparam ClassAttributeFontColor #d9b8ff
-skinparam ClassBackgroundColor #3d176e
-skinparam ClassBorderColor #000d19
-skinparam ClassFontColor #d9b8ff
-skinparam ClassFontName Helvetica
-skinparam ClassFontSize 17
-skinparam NoteBackgroundColor #d9b8ff
-skinparam NoteBorderColor #000d19
-skinparam NoteFontColor #3d176e
-skinparam NoteFontName Helvetica
-skinparam Padding 5
-skinparam RoundCorner 5
-skinparam Shadowing false
-skinparam stereotypeCBackgroundColor #e98df7
-skinparam stereotypeIBackgroundColor #e98df7
-class gcp_quota {
-}
-@enduml
-```
-
-</ZoomPanPinch>
-
-</div>
-
-</details>
-
 ## `gcp_region`
 
 <ZoomPanPinch>
@@ -7656,6 +7539,118 @@ class gcp_region {
 class gcp_zone {
 }
 gcp_region -[#1A83AF]-> gcp_zone
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
+## `gcp_region_quota`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of gcp_region_quota data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class gcp_deprecation_status {
+**deleted**: string
+**deprecated**: string
+**obsolete**: string
+**replacement**: string
+**state**: string
+}
+class gcp_quota {
+**limit**: double
+**percentage**: double
+**usage**: double
+}
+class gcp_region_quota {
+**quotas**: dictionary[string, gcp_quota]
+}
+class gcp_resource {
+**deprecation_status**: gcp_deprecation_status
+**description**: string
+**label_fingerprint**: string
+**link**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+gcp_region_quota --> gcp_deprecation_status
+gcp_region_quota --> gcp_quota
+gcp_resource <|--- gcp_region_quota
+gcp_resource --> gcp_deprecation_status
+resource <|--- gcp_resource
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of gcp_region_quota resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class gcp_region_quota {
+}
 @enduml
 ```
 

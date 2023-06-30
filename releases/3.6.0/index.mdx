@@ -1,0 +1,47 @@
+---
+date: 2023-06-30
+---
+
+# 3.6.0
+
+## What's Changed
+
+### Features
+
+- [`2baf9508`](https://github.com/someengineering/resoto/commit/2baf9508) <span class="badge badge--secondary">resotocore</span> Introduce db command (#1672)
+- [`35234d30`](https://github.com/someengineering/resoto/commit/35234d30) <span class="badge badge--secondary">plugins/aws</span> Send EC2 cloudwath metrics while collecting (#1693)
+- [`1eea19f8`](https://github.com/someengineering/resoto/commit/1eea19f8) <span class="badge badge--secondary">gcp</span> Introduce regional quotas. (#1692)
+
+### Fixes
+
+- [`44f5ae1e`](https://github.com/someengineering/resoto/commit/44f5ae1e) <span class="badge badge--secondary">plugins/aws</span> Allow assuming role for org scraping (#1702)
+- [`f43ec681`](https://github.com/someengineering/resoto/commit/f43ec681) <span class="badge badge--secondary">resotocore</span> ReportCheck related is optional (#1697)
+- [`36792285`](https://github.com/someengineering/resoto/commit/36792285) <span class="badge badge--secondary">plugins/gcp</span> Make redundant logging debug level (#1695)
+- [`3e4b1150`](https://github.com/someengineering/resoto/commit/3e4b1150) <span class="badge badge--secondary">resotocore</span> Do not send path for file names (#1696)
+- [`17bd451f`](https://github.com/someengineering/resoto/commit/17bd451f) <span class="badge badge--secondary">resotocore</span> Do not create unnecessary collections when making snapshots (#1691)
+- [`267c5fdd`](https://github.com/someengineering/resoto/commit/267c5fdd) <span class="badge badge--secondary">gcp</span> Zonal Handling, Resource removal and speed improvements (#1689)
+- [`9e92c6c1`](https://github.com/someengineering/resoto/commit/9e92c6c1) <span class="badge badge--secondary">plugins/aws</span> Use a real aws cli instead of translating to boto3 APIs (#1687)
+- [`80c5f0a2`](https://github.com/someengineering/resoto/commit/80c5f0a2) <span class="badge badge--secondary">resotocore</span> Use chunk size of 10 for Slack fields (#1685)
+- [`2665b8b5`](https://github.com/someengineering/resoto/commit/2665b8b5) <span class="badge badge--secondary">ci</span> Do not run on merge (#1684)
+- [`171450ae`](https://github.com/someengineering/resoto/commit/171450ae) <span class="badge badge--secondary">ci</span> Add current helm chart version to GH output (#1681)
+- [`31d81721`](https://github.com/someengineering/resoto/commit/31d81721) <span class="badge badge--secondary">resoto</span> Build homebrew on macos (#1682)
+
+### Chores
+
+- [`2bd50573`](https://github.com/someengineering/resoto/commit/2bd50573) <span class="badge badge--secondary">resoto</span> Bump UI version to 3.6.3 (#1701)
+- [`805d055c`](https://github.com/someengineering/resoto/commit/805d055c) <span class="badge badge--secondary">resoto</span> Update PlantUML address (#1700)
+- [`0eb6e204`](https://github.com/someengineering/resoto/commit/0eb6e204) <span class="badge badge--secondary">resoto</span> Bump 3.6.0 (#1694)
+- [`ee18821c`](https://github.com/someengineering/resoto/commit/ee18821c) <span class="badge badge--secondary">resoto</span> Bump UI version (#1690)
+- [`61a0b05c`](https://github.com/someengineering/resoto/commit/61a0b05c) <span class="badge badge--secondary">resoto</span> bump UI version (#1688)
+- [`7d52da11`](https://github.com/someengineering/resoto/commit/7d52da11) <span class="badge badge--secondary">resoto</span> Bump requirements (#1683)
+- [`82d9b002`](https://github.com/someengineering/resoto/commit/82d9b002) <span class="badge badge--secondary">apps</span> Remove discord and slack command templates (#1686)
+- [`5a2d2f64`](https://github.com/someengineering/resoto/commit/5a2d2f64) <span class="badge badge--secondary">resoto</span> Bump 3.5.4 (#1680)
+
+<!--truncate-->
+
+## Docker Images
+
+- `somecr.io/someengineering/resotocore:3.6.0`
+- `somecr.io/someengineering/resotoworker:3.6.0`
+- `somecr.io/someengineering/resotoshell:3.6.0`
+- `somecr.io/someengineering/resotometrics:3.6.0`

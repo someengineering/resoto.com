@@ -9,7 +9,7 @@ export default function PlausibleToggle(): JSX.Element {
   const [isExcluded, setIsExcluded] = useState<boolean>(false);
   const isProd =
     useIsBrowser() && new URL(window.location.href).hostname === 'resoto.com';
-  const location = useLocation();
+  const { pathname } = useLocation();
 
   useEffect(
     () =>
@@ -62,7 +62,7 @@ export default function PlausibleToggle(): JSX.Element {
               </Link>
               .{' '}
               <strong>
-                <Link href={`http://resoto.com${location}`}>
+                <Link href={`http://resoto.com${pathname}`}>
                   Click here to view this page on <code>resoto.com</code>.
                 </Link>
               </strong>

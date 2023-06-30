@@ -11,13 +11,13 @@ type Props = WrapperProps<typeof FooterType>;
 
 export default function FooterWrapper(props: Props): JSX.Element {
   const [timestamp, setTimestamp] = useState(new Date().getTime());
-  const location = useLocation();
+  const { pathname } = useLocation();
   const isProd =
     useIsBrowser() && new URL(window.location.href).hostname === 'resoto.com';
 
   useEffect(() => {
     setTimestamp(new Date().getTime());
-  }, [location]);
+  }, [pathname]);
 
   return (
     <>

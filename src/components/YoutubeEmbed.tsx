@@ -1,4 +1,5 @@
 import Head from '@docusaurus/Head';
+import { useLocation } from '@docusaurus/router';
 import clsx from 'clsx';
 import React from 'react';
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
@@ -19,29 +20,37 @@ export default function YoutubeEmbed({
   date,
   description,
 }: YoutubeEmbedProps): JSX.Element {
+  const { pathname } = useLocation();
+
   return (
     <>
-      {date && (
-        <Head>
-          <script type="application/ld+json">
-            {JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'VideoObject',
-              name: title,
-              thumbnailUrl: `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`,
-              uploadDate: date.split('T', 1)[0],
-              contentUrl: `https://youtube.com/watch?v=${id}`,
-              embedUrl: `https://youtube.com/embed/${id}`,
-              ...(description ? { description } : null),
-              publisher: {
-                '@type': 'Organization',
-                name: 'Some Engineering Inc.',
-                url: 'https://some.engineering',
-              },
-            })}
-          </script>
-        </Head>
-      )}
+      {date &&
+        !/\/(?:podcast|blog|releases)(?:\/page\/\d+)?/.test(pathname) && (
+          <Head>
+            <script type="application/ld+json">
+              {JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'VideoObject',
+                name: title,
+                thumbnailUrl: `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`,
+                uploadDate: date.split('T', 1)[0],
+                contentUrl: `https://youtube.com/watch?v=${id}`,
+                embedUrl: `https://youtube.com/embed/${id}`,
+                ...(description ? { description } : null),
+                potentialAction: {
+                  '@type': 'SeekToAction',
+                  target: `https://youtu.be/${id}?t={seek_to_second_number}`,
+                  'startOffset-input': 'required name=seek_to_second_number',
+                },
+                publisher: {
+                  '@type': 'Organization',
+                  name: 'Some Engineering Inc.',
+                  url: 'https://some.engineering',
+                },
+              })}
+            </script>
+          </Head>
+        )}
       <div className={clsx('video-container', className)}>
         <LiteYouTubeEmbed
           id={id}

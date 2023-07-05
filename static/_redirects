@@ -29,6 +29,7 @@ https://releases.resoto.com/*                                     https://resoto
 /blog/product-updates/*                                           /blog/tags/product-updates
 
 /blog/tags/apps                                                   /blog/tags/resoto-infrastructure-apps
+/blog/tags/cli                                                    /blog/tags/resoto-cli
 /blog/tags/cloud                                                  /blog/tags/cloud-asset-inventory
 /blog/tags/cloudformation                                         /blog/tags/aws
 /blog/tags/command                                                /blog/tags/resoto-cli
@@ -44,7 +45,6 @@ https://releases.resoto.com/*                                     https://resoto
 /blog/tags/shell                                                  /blog/tags/resoto-cli
 /blog/tags/tagging                                                /blog/tags/resource-tagging
 /blog/tags/visualization                                          /blog/tags/data-visualization
-/blog/tags/*                                                      /blog/tags
 
 /blog/automating-pagerduty-infrastructure-alerts-with-resoto      /blog/automating-pagerduty-infrastructure-alerts
 /blog/building-actionable-cloud-infrastructure-metrics            /blog/actionable-cloud-infrastructure-metrics
@@ -65,7 +65,6 @@ https://releases.resoto.com/*                                     https://resoto
 /blog/solving-cloud-resource-management-challenges-with-resoto    /blog/solving-cloud-resource-management-challenges
 
 /blog/:year/:month/:date/*                                        /blog/:splat
-/blog/*                                                           /blog
 
 /docs/concepts/components/library                                 /docs/reference/components
 /docs/concepts/components/plugins/protect_snowflakes              /docs/reference/components/plugins/protector
@@ -75,7 +74,6 @@ https://releases.resoto.com/*                                     https://resoto
 
 /docs/concepts/automation/job*                                    /docs/concepts/automation#jobs
 /docs/concepts/automation/workflow*                               /docs/concepts/cloud-data-sync
-/docs/concepts/automation/*                                       /docs/concepts/automation
 
 /docs/concepts/graph/*                                            /docs/concepts/asset-inventory-graph
 
@@ -97,7 +95,7 @@ https://releases.resoto.com/*                                     https://resoto
 /contributing/*                                                   /docs/development/:splat
 /docs/contributing/*                                              /docs/development/:splat
 
-/docs/getting-started/install-resoto/aws/*                        /docs/getting-started/install-resoto/aws
+/docs/getting-started/install-resoto/aws/cloudformation           /docs/getting-started/install-resoto/aws
 /docs/getting-started/docker                                      /docs/getting-started/install-resoto/docker
 /docs/getting-started/kubernetes                                  /docs/getting-started/install-resoto/kubernetes
 /docs/getting-started/pip                                         /docs/getting-started/install-resoto/pip
@@ -144,15 +142,7 @@ https://releases.resoto.com/*                                     https://resoto
 /docs/how-to-guides/cleanup/clean-up-orphaned-load-balancers      /docs/how-to-guides/cleanup/clean-up-aws-load-balancers
 /docs/how-to-guides/cleanup/clean-up-unused-aws-ebs-volumes       /docs/how-to-guides/cleanup/clean-up-aws-ebs-volumes
 /docs/how-to-guides/cleanup/clean-up-unused-aws-iam-access-keys   /docs/how-to-guides/cleanup/clean-up-aws-iam-access-keys
-/docs/how-to-guides/cleanup/*                                     /docs/how-to-guides/cleanup
 
-/docs/how-to-guides/security/access-management/*                  /docs/how-to-guides/security/access-management
-/docs/how-to-guides/security/compute/*                            /docs/how-to-guides/security/compute
-/docs/how-to-guides/security/logging/*                            /docs/how-to-guides/security/logging
-/docs/how-to-guides/security/monitoring/*                         /docs/how-to-guides/security/monitoring
-/docs/how-to-guides/security/networking/*                         /docs/how-to-guides/security/networking
-/docs/how-to-guides/security/storage/*                            /docs/how-to-guides/security/storage
-/docs/how-to-guides/security/*                                    /docs/how-to-guides/security
 
 /docs/how-to/*                                                    /docs/how-to-guides/:splat
 /docs/guides/*                                                    /docs/how-to-guides/:splat
@@ -246,7 +236,6 @@ https://releases.resoto.com/*                                     https://resoto
 /docs/2.X/*                                                       /docs/:splat
 /docs/3.x/*                                                       /docs/:splat
 /docs/3.X/*                                                       /docs/:splat
-/docs/*                                                           /docs
 
 /podcast/tags/cloud                                               /podcast/tags/cloud-infrastructure
 /podcast/tags/devops                                              /podcast/tags/dev-ops
@@ -256,7 +245,6 @@ https://releases.resoto.com/*                                     https://resoto
 /podcast/tags/graph                                               /podcast/tags/graph-database
 /podcast/tags/open-source                                         /podcast/tags/open-source-software
 /podcast/tags/site-reliability                                    /podcast/tags/site-reliability-engineering
-/podcast/tags/*                                                   /podcast/tags
 
 /podcasts/:year/:month/:date/*                                    /podcast/:splat
 /podcasts/*                                                       /podcast/:splat
@@ -280,7 +268,6 @@ https://releases.resoto.com/*                                     https://resoto
 /podcast/17                                                       /podcast/itam-and-strategic-operations-at-wix
 /podcast/18                                                       /podcast/how-cloud-costs-are-shifting-left
 /podcast/19                                                       /podcast/security-at-lyft-with-cartography
-/podcast/*                                                        /podcast
 
 /news/2022/07/07/july-update                                      /blog/product-updates/2022/july
 /news/:year/:month/:date/v2.0.0*                                  /releases/2.0.0
@@ -292,6 +279,5 @@ https://releases.resoto.com/*                                     https://resoto
 /news/*                                                           /releases
 /release/*                                                        /releases/:splat
 /releases/tags/*                                                  /releases
-/releases/*                                                       /releases
 
 /support/*                                                        /docs

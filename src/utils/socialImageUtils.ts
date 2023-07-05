@@ -16,11 +16,11 @@ export const getImage = ({
 
   if (title) {
     return `https://og.some.engineering/api/image?theme=resoto&darkMode=0&title=${encodeURIComponent(
-      title
+      title,
     )}${metadata ? `&metadata=${encodeURIComponent(metadata)}` : ''}${
       author
         ? `&authorName=${encodeURIComponent(
-            author.name
+            author.name,
           )}&authorImage=${encodeURIComponent(author.imageURL)}${
             author.title
               ? `&authorTitle=${encodeURIComponent(author.title)}`

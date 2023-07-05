@@ -15,10 +15,10 @@ export default function CopyButton({ code, className }: Props): JSX.Element {
       code
         .split('\n')
         .map((line) =>
-          line.replace(/^((>{3}|\.{3}|[>$])\s*|(\s+|\u200b.*)$)/, '')
+          line.replace(/^((>{3}|\.{3}|[>$])\s*|(\s+|\u200b.*)$)/, ''),
         )
         .filter((line) => line)
-        .join('\n')
+        .join('\n'),
     );
     setIsCopied(true);
     copyTimeout.current = window.setTimeout(() => {
@@ -53,7 +53,7 @@ export default function CopyButton({ code, className }: Props): JSX.Element {
         'clean-btn',
         className,
         styles.copyButton,
-        isCopied && styles.copyButtonCopied
+        isCopied && styles.copyButtonCopied,
       )}
       onClick={handleCopyCode}
     >

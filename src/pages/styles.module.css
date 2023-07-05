@@ -131,7 +131,8 @@ html[data-theme='dark'] .hero {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  transition: filter var(--ifm-transition-slow) ease,
+  transition:
+    filter var(--ifm-transition-slow) ease,
     opacity var(--ifm-transition-fast) ease,
     background-color var(--ifm-transition-fast) ease,
     border var(--ifm-transition-fast) ease;

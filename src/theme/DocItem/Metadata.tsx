@@ -17,7 +17,7 @@ export default function DocItemMetadata(): JSX.Element {
     ) {
       window.localStorage.setItem(
         'docusaurus.tab.install-method',
-        unversionedId.split('/')[2]
+        unversionedId.split('/')[2],
       );
     }
   }, [unversionedId]);

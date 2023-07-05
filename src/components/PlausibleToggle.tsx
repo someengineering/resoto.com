@@ -14,7 +14,7 @@ export default function PlausibleToggle(): JSX.Element {
   useEffect(
     () =>
       setIsExcluded(window.localStorage.getItem('plausible_ignore') === 'true'),
-    []
+    [],
   );
 
   return (

@@ -128,7 +128,7 @@ export default function Home(): JSX.Element {
                   className={clsx(
                     styles.button,
                     styles.outlinedButton,
-                    styles.docsButton
+                    styles.docsButton,
                   )}
                 >
                   Explore Docs
@@ -140,7 +140,7 @@ export default function Home(): JSX.Element {
                 <div
                   className={clsx(
                     styles.heroAnim,
-                    prefersReducedMotion ? styles.heroAnimReducedMotion : ''
+                    prefersReducedMotion ? styles.heroAnimReducedMotion : '',
                   )}
                   aria-hidden="true"
                 />

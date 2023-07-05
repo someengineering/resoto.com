@@ -34,18 +34,18 @@ export default function IamPolicyTable({
         provider,
         // TODO: fix this eslint-disable
         // eslint-disable-next-line react-hooks/rules-of-hooks
-        useStoredJson(`${provider}-${version}-${policyName}`)
+        useStoredJson(`${provider}-${version}-${policyName}`),
       ),
     }),
-    {}
+    {},
   );
 
   const namespaces: string[] = sortBy(
     union(
       ...Object.keys(groupedActions).map((policyName) =>
-        Object.keys(groupedActions[policyName])
-      )
-    )
+        Object.keys(groupedActions[policyName]),
+      ),
+    ),
   );
 
   return (
@@ -79,7 +79,7 @@ export default function IamPolicyTable({
                             <li key={`${policyName}-${namespace}-${idx}`}>
                               <code>{action}</code>
                             </li>
-                          )
+                          ),
                         )}
                       </ul>
                     ) : null}

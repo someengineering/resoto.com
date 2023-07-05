@@ -26,7 +26,7 @@ export default function MDXPage(props: Props): JSX.Element {
     <HtmlClassNameProvider
       className={clsx(
         wrapperClassName ?? ThemeClassNames.wrapper.mdxPages,
-        ThemeClassNames.page.mdxPage
+        ThemeClassNames.page.mdxPage,
       )}
     >
       <PageMetadata

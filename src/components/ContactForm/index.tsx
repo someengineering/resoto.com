@@ -149,7 +149,7 @@ export default function ContactForm(): JSX.Element {
                     type="submit"
                     className={clsx(
                       baseStyles.button,
-                      baseStyles.primaryButton
+                      baseStyles.primaryButton,
                     )}
                     disabled={
                       netlify.submitting ||

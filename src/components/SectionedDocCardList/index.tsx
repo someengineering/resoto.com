@@ -43,7 +43,7 @@ export default function SectionedDocCardList(props: Props): JSX.Element {
             </Heading>
             <DocCardList items={item.items} className={className} />
           </div>
-        ) : null
+        ) : null,
       )}
     </>
   );

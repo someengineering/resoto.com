@@ -41,7 +41,7 @@ function Year({ year, posts }: YearProp) {
                   <div
                     className={clsx(
                       'avatar margin-top--sm col col--6',
-                      styles.authorCol
+                      styles.authorCol,
                     )}
                     key={author.email}
                   >
@@ -70,7 +70,7 @@ function Year({ year, posts }: YearProp) {
                     <ul
                       className={clsx(
                         styles.tags,
-                        'padding--none margin-left--sm'
+                        'padding--none margin-left--sm',
                       )}
                     >
                       {post.metadata.tags.map((tag) => (

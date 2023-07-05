@@ -40,7 +40,7 @@ const sidebars = {
           // eslint-disable-next-line @typescript-eslint/no-var-requires
           items: require('./docs/reference/api/sidebar.js')
             .filter(
-              (item) => item.type !== 'doc' || !item.id?.endsWith('-rest-api')
+              (item) => item.type !== 'doc' || !item.id?.endsWith('-rest-api'),
             )
             .map((item) =>
               item.items?.length
@@ -49,10 +49,10 @@ const sidebars = {
                     items: item.items.filter(
                       (subItem) =>
                         subItem.type !== 'doc' ||
-                        !subItem.id.includes('deprecated-')
+                        !subItem.id.includes('deprecated-'),
                     ),
                   }
-                : item
+                : item,
             )
             .sort((a, b) => (a.label ?? '').localeCompare(b.label ?? '')),
         },

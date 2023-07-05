@@ -17,11 +17,11 @@ export default function DocVersionBadgeWrapper(props: Props): JSX.Element {
   return pluginId === DEFAULT_PLUGIN_ID &&
     versionMetadata.version.substring(
       0,
-      versionMetadata.version.indexOf('.')
+      versionMetadata.version.indexOf('.'),
     ) ===
       latestRelease[versionMetadata.version]?.substring(
         0,
-        latestRelease[versionMetadata.version]?.indexOf('.')
+        latestRelease[versionMetadata.version]?.indexOf('.'),
       ) ? (
     <Link
       to={`/releases/${latestRelease[versionMetadata.version]}`}

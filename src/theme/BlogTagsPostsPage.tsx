@@ -15,7 +15,7 @@ import React from 'react';
 
 function useBlogTagsPostsPageTitle(
   tag: Props['tag'],
-  blogPath: string
+  blogPath: string,
 ): string {
   return `${tag.label} ${blogPath.replace(/^\w/, (c) => c.toUpperCase())} ${
     blogPath === 'podcast' ? 'Episodes' : 'Posts'
@@ -70,7 +70,7 @@ export default function BlogTagsPostsPage(props: Props): JSX.Element {
     <HtmlClassNameProvider
       className={clsx(
         ThemeClassNames.wrapper.blogPages,
-        ThemeClassNames.page.blogTagPostListPage
+        ThemeClassNames.page.blogTagPostListPage,
       )}
     >
       <BlogTagsPostsPageContent {...props} />

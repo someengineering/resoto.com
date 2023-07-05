@@ -33,8 +33,7 @@
     "jsx-a11y/no-noninteractive-tabindex": 0,
     "jsx-a11y/no-onchange": "off",
     "no-console": 1,
-    "no-unused-vars": "off",
-    "prettier/prettier": ["error", { "endOfLine": "auto" }]
+    "no-unused-vars": "off"
   },
   "reportUnusedDisableDirectives": true,
   "settings": {

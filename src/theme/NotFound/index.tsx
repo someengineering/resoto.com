@@ -32,7 +32,7 @@ export default function NotFound(): JSX.Element {
                   className={clsx(
                     baseStyles.button,
                     baseStyles.outlinedButton,
-                    baseStyles.docsButton
+                    baseStyles.docsButton,
                   )}
                 >
                   Explore Docs

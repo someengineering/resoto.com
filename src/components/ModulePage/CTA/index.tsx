@@ -25,7 +25,7 @@ export default function ModulePageCTA({
               className={clsx(
                 baseStyles.button,
                 baseStyles.outlinedButton,
-                baseStyles.docsButton
+                baseStyles.docsButton,
               )}
             >
               Explore Docs

@@ -8,7 +8,7 @@ export const useGithub = (): { stars: number | null } => {
     const getStars = async () => {
       try {
         const res = await new Octokit().request(
-          `/repos/someengineering/resoto`
+          `/repos/someengineering/resoto`,
         );
         setStars(res.data.stargazers_count);
       } catch (err) {

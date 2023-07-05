@@ -27,7 +27,7 @@ export default function DocSidebarItemsWrapper(props: Props): JSX.Element {
             'theme-doc-sidebar-item-link-level-1',
             styles.versionSelector,
             'shadow--lw',
-            'margin-bottom--md'
+            'margin-bottom--md',
           )}
         >
           <strong>Version:</strong>
@@ -38,11 +38,11 @@ export default function DocSidebarItemsWrapper(props: Props): JSX.Element {
           />
           {versionMetadata.version.substring(
             0,
-            versionMetadata.version.indexOf('.')
+            versionMetadata.version.indexOf('.'),
           ) ===
           latestRelease[versionMetadata.version]?.substring(
             0,
-            latestRelease[versionMetadata.version]?.indexOf('.')
+            latestRelease[versionMetadata.version]?.indexOf('.'),
           ) ? (
             <Link
               to={`/releases/${latestRelease[versionMetadata.version]}`}

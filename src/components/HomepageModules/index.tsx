@@ -32,7 +32,7 @@ export default function HomepageModules(): JSX.Element {
     setScrollStart(tabListRef.current.scrollLeft === 0);
     setScrollEnd(
       tabListRef.current.scrollLeft >=
-        tabListRef.current.scrollWidth - tabListRef.current.clientWidth - 1
+        tabListRef.current.scrollWidth - tabListRef.current.clientWidth - 1,
     );
   }, []);
 
@@ -462,7 +462,7 @@ export default function HomepageModules(): JSX.Element {
                       styles.button,
                       baseStyles.button,
                       baseStyles.outlinedButton,
-                      baseStyles.moreButton
+                      baseStyles.moreButton,
                     )}
                   >
                     Discover {module.name}

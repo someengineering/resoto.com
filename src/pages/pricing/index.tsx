@@ -66,7 +66,7 @@ export default function Pricing(): JSX.Element {
                       className={clsx(
                         baseStyles.button,
                         baseStyles.outlinedButton,
-                        styles.button
+                        styles.button,
                       )}
                     >
                       Install Now
@@ -128,7 +128,7 @@ export default function Pricing(): JSX.Element {
                       className={clsx(
                         baseStyles.button,
                         baseStyles.outlinedButton,
-                        styles.button
+                        styles.button,
                       )}
                     >
                       Contact Us

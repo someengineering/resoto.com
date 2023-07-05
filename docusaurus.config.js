@@ -61,7 +61,7 @@ const config = {
                 (item.type !== 'doc' || !item.id.endsWith('index')) &&
                 (item.type !== 'category' ||
                   item.link?.type !== 'doc' ||
-                  !item.link?.id.endsWith('reference/api/index'))
+                  !item.link?.id.endsWith('reference/api/index')),
             );
           },
           exclude: ['**/*-rest-api.info.mdx', '**/deprecated-*.mdx'],
@@ -99,7 +99,7 @@ const config = {
                         ...(version === versions[0] ? null : { path: `/${version.toLowerCase()}` }),
                       },
                     }
-                  : {}
+                  : {},
               )
               .reduce((acc, cur) => ({ ...acc, ...cur }), {}),
           },

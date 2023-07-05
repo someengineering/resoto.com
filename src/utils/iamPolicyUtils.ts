@@ -19,7 +19,7 @@ export interface GcpPolicy {
 export const policyUrl = (
   provider: Provider,
   version: string,
-  name: AwsPolicyName | GcpPolicyName
+  name: AwsPolicyName | GcpPolicyName,
 ): string => {
   const directory = version === 'edge' ? 'edge' : latestRelease[version];
 
@@ -32,7 +32,7 @@ export const policyUrl = (
 
 export const actionsByNamespace = (
   provider: Provider,
-  policy: AwsPolicy | GcpPolicy | null
+  policy: AwsPolicy | GcpPolicy | null,
 ): { [namespace: string]: string[] } => {
   return (
     provider === 'aws'
@@ -57,6 +57,6 @@ export const actionsByNamespace = (
       ...acc,
       [action.namespace]: [...(acc[action.namespace] || []), action.name],
     }),
-    {}
+    {},
   );
 };

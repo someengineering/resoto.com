@@ -1,0 +1,80 @@
+---
+sidebar_label: db
+---
+
+# `db` Command
+
+The `db` command synchronizes data to a SQL database.
+
+## Usage
+
+```bash
+ db sync <db-engine> --host <host> --port <port> --user <user> --password <password> --database <database>
+                --arg key=value --arg key2=value2
+                --complete-schema --drop-existing-tables --batch-size <batch-size>
+```
+
+### Parameters
+
+| Parameter   | Description                 |
+| ----------- | --------------------------- |
+| `db-engine` | The database engine to use. |
+
+| Supported engines |
+| ----------------- |
+| `postgresql`      |
+| `mariadb`         |
+| `mysql`           |
+| `sqlite`          |
+| `snowflake`       |
+
+### Options
+
+| Option                   | Description                                                                                             |
+| ------------------------ | ------------------------------------------------------------------------------------------------------- |
+| `--host`                 | The host of the database server                                                                         |
+| `--port`                 | The port of the database server                                                                         |
+| `--user`                 | The user to use for authentication                                                                      |
+| `--password`             | The password to use for authentication                                                                  |
+| `--database`             | The database to use                                                                                     |
+| `--arg`                  | A key-value pair that will be passed to the connection driver. This property can be used multiple times |
+| `--batch-size`           | The number of rows that will be inserted in a single batch                                              |
+| `--complete-schema`      | Export the entire schema, no matter which data gets exported                                            |
+| `--drop-existing-tables` | Drop all tables that are not part of the current export                                                 |
+
+## Examples
+
+```bash title="Sync the complete graph to a sqlite database"
+ > db sync sqlite --database resoto.db --drop-existing
+```
+
+```bash title="Sync the complete graph to a postgresql database"
+ > db sync postgresql --host localhost --port 5432 --database resoto --user ci --password bombproof
+```
+
+```bash title="Sync the complete graph to a mariadb database"
+ > db sync mariadb --host localhost --port 3306 --user root --password pw --database test
+```
+
+```bash title="Sync the complete graph to a mysql database"
+ > db sync mysql --host localhost --port 3306 --user root --password pw --database test
+```
+
+```bash title="Sync the complete graph to a snowflake database"
+> db sync snowflake --host localhost --port 3306 --user root --password pw --database test
+  --arg warehouse=compute_wh --arg role=accountadmin
+```
+
+```bash title="Select a subset of data and sync it to a sqlite database"
+ > search --with-edges is(graph_root) -[0:2]-> | db sync sqlite --database resoto.db
+```
+
+```bash title="Sync all large instances into a sqlite database"
+ > search instance_cores > 8 | db sync sqlite --database large_instances.db
+```
+
+:::info
+
+When you use `search` to filter the data that should be synced to the database, you can use the `--with-edges` option to include the dependencies between your resources. Resoto DataLink will then create corresponding link tables in the database. If you do not care about the resource dependencies, you can omit the `--with-edges` option.
+
+:::

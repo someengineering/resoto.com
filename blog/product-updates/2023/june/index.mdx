@@ -25,7 +25,7 @@ So whether you're syncing your entire inventory or just specific parts, DataLink
 
 ### Infrastructure Apps
 
-We've transitioned the `discord` and `slack` commands from command templates to infrastructure apps. Simply install them using the `app install discord` and `app install slack` commands. This allows us to keep them updated without the need to release a new version of Resoto.
+We've transitioned the `discord` and `slack` commands from [command templates](/docs/reference/cli/search-commands/templates) to [infrastructure apps](/docs/how-to-guides/infrastructure-apps/install-and-run-infrastructure-apps). Simply install them using the `app install discord` and `app install slack` commands. This allows us to keep them updated without the need to release a new version of Resoto.
 
 Furthermore, Infrastructure Apps can now receive input on stdin. This lets you pipe the output of a search into the app and is the foundation for the aforementioned Discord and Slack commands.
 
@@ -33,7 +33,7 @@ Furthermore, Infrastructure Apps can now receive input on stdin. This lets you p
 
 From now on, you can specify a role to assume for listing organizations and accounts, distinct from the role used for scraping the accounts. This is useful since the `organizations:ListAccounts` permission, required for listing organizations and accounts, is only available in the master account of an organization or delegated administrator accounts.
 
-We have shifted to using the actual aws-cli instead of translating to API calls. This means instead of having to use API names like `s3 list_objects` you can now use the aws-cli names like `s3 ls`.
+We have shifted to using the actual [aws-cli](https://aws.amazon.com/cli/) instead of translating to API calls. This means instead of having to use API names like `s3 list_objects` you can now use the aws-cli names like `s3 ls`.
 
 Resotocore now exposes a http endpoint in addition to https, making it more compatible with K8S mesh networks that expect to be able to introspect traffic. All communication between Resoto components still uses https by default.
 
@@ -43,9 +43,9 @@ Resoto now supports the AWS US Gov and China regions, particularly the absence o
 
 We're proud to announce that through various optimizations, we have nearly doubled the collection speed of GCP resources.
 
-We resolved a bug that involved writing files to the home directory where the file wasn't truncated before writing, leading to old data remaining in the file if the new data was shorter.
+We resolved a bug that involved writing configuration files to the home directory where the file wasn't truncated before writing, leading to old data remaining in the file if the new data was shorter.
 
-For GCP, we now provide a [list of all necessary IAM permissions](/docs/reference/iam-permissions/google-cloud) that is being automatically generated on each release.
+For GCP, we now provide the [list of all necessary IAM permissions](/docs/reference/iam-permissions/google-cloud). The list is automatically generated on every Resoto release.
 
 ### DigitalOcean
 

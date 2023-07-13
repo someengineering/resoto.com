@@ -1,0 +1,60 @@
+---
+date: 2023-07-12
+tags: [Product Updates]
+---
+
+# June 2023 Product Updates
+
+**We merged a total of 75 pull requests in June and released [Resoto 3.6.0](/releases/3.6.0)!** This release brought with it a brand-new feature, [Resoto DataLink](/datalink), along with several bug fixes and enhancements.
+
+<!--truncate-->
+
+## Resoto DataLink
+
+Have you ever wanted to seamlessly sync your entire cloud asset inventory or just specific parts of it with a database? Now you can!
+
+**[Resoto DataLink](/datalink) enables you to pipe any Resoto search into the new [`db` command](/docs/reference/cli/action-commands/db) and sync the results to a database.** As of now, we support Snowflake, PostgreSQL, MySQL/MariaDB, and SQLite.
+
+This feature brings a wealth of flexibility and possibilities. For instance, by applying a search filter, you can choose to sync only your most expensive resources, enabling targeted tracking and optimization. Visualize this data in tools like Grafana or display it on your custom intranet page for wider visibility and better cost control.
+
+Resoto DataLink can be used to monitor security. Filter for access keys that haven't been used for an extended period and highlight them for review or removal, thereby enhancing your cloud security posture.
+
+So whether you're syncing your entire inventory or just specific parts, DataLink gives you the power to make informed decisions.
+
+## Bug Fixes and Improvements
+
+### Infrastructure Apps
+
+We've transitioned the `discord` and `slack` commands from [command templates](/docs/reference/cli/search-commands/templates) to [infrastructure apps](/docs/how-to-guides/infrastructure-apps/install-and-run-infrastructure-apps). Simply install them using the `app install discord` and `app install slack` commands. This allows us to keep them updated without the need to release a new version of Resoto.
+
+Furthermore, Infrastructure Apps can now receive input on stdin. This lets you pipe the output of a search into the app and is the foundation for the aforementioned Discord and Slack commands.
+
+### AWS
+
+From now on, you can specify a role to assume for listing organizations and accounts, distinct from the role used for scraping the accounts. This is useful since the `organizations:ListAccounts` permission, required for listing organizations and accounts, is only available in the master account of an organization or delegated administrator accounts.
+
+We have shifted to using the actual [aws-cli](https://aws.amazon.com/cli/) instead of translating to API calls. This means instead of having to use API names like `s3 list_objects` you can now use the aws-cli names like `s3 ls`.
+
+Resotocore now exposes a http endpoint in addition to https, making it more compatible with K8S mesh networks that expect to be able to introspect traffic. All communication between Resoto components still uses https by default.
+
+Resoto now supports the AWS US Gov and China regions, particularly the absence of certain services. It also automatically identifies the correct AWS partition of any given credentials.
+
+### GCP
+
+We're proud to announce that through various optimizations, we have nearly doubled the collection speed of GCP resources.
+
+We resolved a bug that involved writing configuration files to the home directory where the file wasn't truncated before writing, leading to old data remaining in the file if the new data was shorter.
+
+For GCP, we now provide the [list of all necessary IAM permissions](/docs/reference/iam-permissions/google-cloud). The list is automatically generated on every Resoto release.
+
+### DigitalOcean
+
+All tags in DigitalOcean now appear as they do in other clouds. Previously, only tags created by Resoto were shown. Since DigitalOcean doesn't have a concept of a tag key, we use the tag value as the key with a null value.
+
+## Looking Ahead
+
+We're in the process of developing a new module Resoto LoadLens. This addition will enrich your inventory data with usage statistics. Instead of merely seeing how many resources of which kind you have, you'll also be able to see how they're utilized.
+
+## Share Your Thoughts
+
+We're excited about these updates and hope you are too. Your feedback is instrumental in shaping Resoto's future, so don't hesitate to let us know what you think about the new features and improvements.

@@ -1,0 +1,46 @@
+---
+date: 2023-07-14
+---
+
+# 3.6.1
+
+## What's Changed
+
+### Features
+
+- [`754f2ec0`](https://github.com/someengineering/resoto/commit/754f2ec0) <span class="badge badge--secondary">resoto</span> Bump UI version to 3.7.0 (#1723)
+- [`8e207a83`](https://github.com/someengineering/resoto/commit/8e207a83) <span class="badge badge--secondary">resoto</span> Provide the last collector run timestamp to collectors (#1715)
+- [`0228db04`](https://github.com/someengineering/resoto/commit/0228db04) <span class="badge badge--secondary">resoto-ui</span> bump UI version (#1716)
+- [`e6308e28`](https://github.com/someengineering/resoto/commit/e6308e28) <span class="badge badge--secondary">resotocore</span> Spawn merge process in background (#1712)
+- [`69861aaf`](https://github.com/someengineering/resoto/commit/69861aaf) <span class="badge badge--secondary">k8s</span> Add deferred edge linking (#1713)
+- [`096929f0`](https://github.com/someengineering/resoto/commit/096929f0) <span class="badge badge--secondary">resoto</span> Send individual accounts to Resoto Core (#1711)
+- [`7683d29c`](https://github.com/someengineering/resoto/commit/7683d29c) <span class="badge badge--secondary">resotocore</span> Store usage metrics on the graph (#1709)
+- [`efd95748`](https://github.com/someengineering/resoto/commit/efd95748) <span class="badge badge--secondary">resoto</span> Allow abbreviated names (#1707)
+- [`34b4a505`](https://github.com/someengineering/resoto/commit/34b4a505) <span class="badge badge--secondary">plugins/aws</span> fix the missing utilizaton metrics (#1708)
+- [`716b54e1`](https://github.com/someengineering/resoto/commit/716b54e1) <span class="badge badge--secondary">resoto</span> Set nice level for collectors (#1706)
+- [`e6041b52`](https://github.com/someengineering/resoto/commit/e6041b52) <span class="badge badge--secondary">resotocore</span> Add with_usage to define usage data (#1699)
+- [`a60ebb88`](https://github.com/someengineering/resoto/commit/a60ebb88) <span class="badge badge--secondary">resotocore</span> Fix the usage datapoints representation and only collect metrics from running instances (#1705)
+- [`45b1120f`](https://github.com/someengineering/resoto/commit/45b1120f) <span class="badge badge--secondary">resotocore</span> Store resource usage in a separate collection (#1698)
+
+### Fixes
+
+- [`859526b3`](https://github.com/someengineering/resoto/commit/859526b3) <span class="badge badge--secondary">resoto</span> Fix the metrics import (#1722)
+- [`02006efd`](https://github.com/someengineering/resoto/commit/02006efd) <span class="badge badge--secondary">resotocore</span> Update the graph merge mechanism, use changeid to update usage data (#1721)
+- [`f2cee16f`](https://github.com/someengineering/resoto/commit/f2cee16f) <span class="badge badge--secondary">resotocore</span> Use the right model during the graph merge (#1720)
+- [`03f40d82`](https://github.com/someengineering/resoto/commit/03f40d82) <span class="badge badge--secondary">resotocore</span> Wrong dependency name (#1719)
+
+### Chores
+
+- [`cda01864`](https://github.com/someengineering/resoto/commit/cda01864) <span class="badge badge--secondary">resoto</span> Update pylintrc and devcontainer files (#1717)
+- [`8b024b39`](https://github.com/someengineering/resoto/commit/8b024b39) <span class="badge badge--secondary">resoto</span> Create tempdir per task id (#1714)
+- [`787c67d3`](https://github.com/someengineering/resoto/commit/787c67d3) <span class="badge badge--secondary">resoto</span> Fix require and bump dependencies (#1704)
+- [`30f80c8a`](https://github.com/someengineering/resoto/commit/30f80c8a) <span class="badge badge--secondary">resoto</span> Bump 3.6.1 (#1703)
+
+<!--truncate-->
+
+## Docker Images
+
+- `somecr.io/someengineering/resotocore:3.6.1`
+- `somecr.io/someengineering/resotoworker:3.6.1`
+- `somecr.io/someengineering/resotoshell:3.6.1`
+- `somecr.io/someengineering/resotometrics:3.6.1`

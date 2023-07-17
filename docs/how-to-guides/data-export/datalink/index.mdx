@@ -1,0 +1,84 @@
+---
+sidebar_label: Export Data to Databases
+---
+
+# How to Export Data to Relational Databases
+
+Resoto comes with a built-in module called Resoto DataLink. DataLink introduces [the `db` command](../../../reference/cli/action-commands/db.mdx) and exports your asset inventory data to your favorite database. DataLink supports a wide range of export destinations, including: SQLite files, MySQL and PostgreSQL databases, Snowflake cloud data warehousing platform.
+
+## Prerequisites
+
+- Installed and configured [Resoto Shell](../../../reference/components/shell.mdx)
+- Optionally: Snowflake, MySQL or PostgreSQL database and their host, port, user, password and name of your database
+
+:::tip When running Resoto Shell locally, SQLite databases will be downloaded to the local file system. :::
+
+## Exporting Data to a SQLite File
+
+To export your entire cloud asset inventory data to a local sqlite database file, run the following command in Resoto Shell:
+
+```bash
+> db sync sqlite --database ~/resoto-inventory.sqlite3 --batch-size 500
+```
+
+This will export your cloud asset inventory to a file named `resoto-inventory.sqlite3` in your home directory.
+
+If you have `sqlite3` installed you can switch to your home directory and inspect the database:
+
+```bash
+$ sqlite3 resoto-inventory.sqlite3
+sqlite> .tables
+```
+
+This will give you a list of all the tables Resoto created. You can now query the tables and inspect the data:
+
+```sql
+sqlite> SELECT * FROM aws_ec2_instance;
+```
+
+If you have EC2 instances in your AWS account, you should see a list of all your EC2 instances.
+
+Alternatively for Google Cloud the query would be:
+
+```sql
+sqlite> SELECT * FROM gcp_instance;
+```
+
+## Interesting Queries
+
+### Large Instances
+
+```sql
+SELECT * FROM aws_ec2_instance WHERE instance_cores > 4;
+```
+
+### Unused EBS Volumes
+
+```sql
+SELECT * FROM aws_ec2_volume WHERE volume_status = 'available';
+```
+
+### Users Without MFA
+
+```sql
+SELECT * FROM aws_iam_user WHERE mfa_active = false;
+```
+
+### Load Balancers Without Backends
+
+```sql
+SELECT * FROM aws_elb WHERE json_array_length(backends) = 0;
+```
+
+### Security Groups that allow connecting to ssh
+
+```sql
+SELECT * FROM aws_ec2_security_group, json_each(aws_ec2_security_group.group_ip_permissions) WHERE json_extract(json_each.value, '$.from_port') <= 22 AND json_extract(json_each.value, '$.to_port') >= 22;
+```
+
+:::note The above query uses the [JSON extension](https://www.sqlite.org/json1.html) to query the JSON data in the `group_ip_permissions` column. Databases like MySQL and PostgreSQL have similar extensions but the syntax will be slightly different. :::
+
+## Further Reading
+
+- [`db`](../../../reference/cli/action-commands/db.mdx)
+- [Command-Line Interface](../../../reference/cli/index.mdx)

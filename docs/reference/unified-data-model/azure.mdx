@@ -1,0 +1,3748 @@
+---
+sidebar_label: Azure
+---
+
+# Azure Resource Data Models
+
+## `azure_availability_set`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_availability_set data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_availability_set {
+**platform_fault_domain_count**: int64
+**platform_update_domain_count**: int64
+**proximity_placement_group**: string
+**sku**: azure_sku
+**statuses**: azure_instance_view_status[]
+**virtual_machines_availability**: string[]
+}
+class azure_instance_view_status {
+**code**: string
+**display_status**: string
+**level**: string
+**message**: string
+**time**: datetime
+}
+class azure_resource {
+}
+class azure_sku {
+**capacity**: int64
+**name**: string
+**tier**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_availability_set --> azure_instance_view_status
+azure_resource <|--- azure_availability_set
+azure_availability_set --> azure_sku
+resource <|--- azure_resource
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_availability_set resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_availability_set {
+}
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
+## `azure_capacity_reservation_group`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_capacity_reservation_group data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_capacity_reservation_group {
+**capacity_reservations**: string[]
+**reservation_group_instance_view**: azure_capacity_reservation_group_instance_view
+**virtual_machines_associated**: string[]
+}
+class azure_capacity_reservation_group_instance_view {
+**capacity_reservations**: string[]
+}
+class azure_resource {
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_capacity_reservation_group --> azure_capacity_reservation_group_instance_view
+azure_resource <|--- azure_capacity_reservation_group
+resource <|--- azure_resource
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_capacity_reservation_group resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_capacity_reservation_group {
+}
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
+## `azure_cloud_service`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_cloud_service data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_cloud_service {
+**allow_model_override**: boolean
+**configuration**: string
+**configuration_url**: string
+**extension_profile**: azure_cloud_service_extension_profile
+**network_profile**: azure_cloud_service_network_profile
+**os_profile**: azure_cloud_service_os_profile
+**package_url**: string
+**provisioning_state**: string
+**role_profile**: azure_cloud_service_role_profile
+**start_cloud_service**: boolean
+**system_data**: azure_system_data
+**unique_id**: string
+**upgrade_mode**: string
+}
+class azure_cloud_service_extension_profile {
+**extensions**: azure_extension[]
+}
+class azure_cloud_service_network_profile {
+**load_balancer_configurations**: azure_load_balancer_configuration[]
+**slot_type**: string
+**swappable_cloud_service**: string
+}
+class azure_cloud_service_os_profile {
+**secrets**: azure_cloud_service_vault_secret_group[]
+}
+class azure_cloud_service_role_profile {
+**roles**: azure_cloud_service_role_profile_properties[]
+}
+class azure_cloud_service_role_profile_properties {
+**name**: string
+**sku**: azure_cloud_service_role_sku
+}
+class azure_cloud_service_role_sku {
+**capacity**: int64
+**name**: string
+**tier**: string
+}
+class azure_cloud_service_vault_and_secret_reference {
+**secret_url**: string
+**source_vault**: string
+}
+class azure_cloud_service_vault_secret_group {
+**source_vault**: string
+**vault_certificates**: string[]
+}
+class azure_extension {
+**auto_upgrade_minor_version**: boolean
+**force_update_tag**: string
+**name**: string
+**protected_settings**: any
+**protected_settings_from_key_vault**: azure_cloud_service_vault_and_secret_reference
+**provisioning_state**: string
+**publisher**: string
+**roles_applied_to**: string[]
+**settings**: any
+**type**: string
+**type_handler_version**: string
+}
+class azure_load_balancer_configuration {
+**frontend_ip_configurations**: azure_load_balancer_frontend_ip_configuration[]
+**id**: string
+**name**: string
+}
+class azure_load_balancer_frontend_ip_configuration {
+**name**: string
+**private_ip_address**: string
+**public_ip_address**: string
+**subnet**: string
+}
+class azure_resource {
+}
+class azure_system_data {
+**created_at**: datetime
+**last_modified_at**: datetime
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_cloud_service --> azure_cloud_service_extension_profile
+azure_cloud_service --> azure_cloud_service_network_profile
+azure_cloud_service --> azure_cloud_service_os_profile
+azure_cloud_service --> azure_cloud_service_role_profile
+azure_resource <|--- azure_cloud_service
+azure_cloud_service --> azure_system_data
+azure_cloud_service_extension_profile --> azure_extension
+azure_cloud_service_network_profile --> azure_load_balancer_configuration
+azure_cloud_service_os_profile --> azure_cloud_service_vault_secret_group
+azure_cloud_service_role_profile --> azure_cloud_service_role_profile_properties
+azure_cloud_service_role_profile_properties --> azure_cloud_service_role_sku
+azure_extension --> azure_cloud_service_vault_and_secret_reference
+azure_load_balancer_configuration --> azure_load_balancer_frontend_ip_configuration
+resource <|--- azure_resource
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_cloud_service resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_cloud_service {
+}
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
+## `azure_compute_operation_value`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_compute_operation_value data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_compute_operation_value {
+**display**: azure_compute_operation_value_display
+**origin**: string
+}
+class azure_compute_operation_value_display {
+**description**: string
+**operation**: string
+**provider**: string
+**resource**: string
+}
+class azure_resource {
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_compute_operation_value --> azure_compute_operation_value_display
+azure_resource <|--- azure_compute_operation_value
+resource <|--- azure_resource
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_compute_operation_value resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_compute_operation_value {
+}
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
+## `azure_dedicated_host_group`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_dedicated_host_group data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_dedicated_host_group {
+**host_group_instance_view**: azure_dedicated_host_group_instance_view
+**hosts**: string[]
+**platform_fault_domain_count**: int64
+**support_automatic_placement**: boolean
+**ultra_ssd_enabled**: boolean
+}
+class azure_dedicated_host_group_instance_view {
+**hosts**: string[]
+}
+class azure_resource {
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_dedicated_host_group --> azure_dedicated_host_group_instance_view
+azure_resource <|--- azure_dedicated_host_group
+resource <|--- azure_resource
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_dedicated_host_group resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_dedicated_host_group {
+}
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
+## `azure_disk`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_disk data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_creation_data {
+**create_option**: string
+**gallery_image_reference**: azure_image_disk_reference
+**image_reference**: azure_image_disk_reference
+**logical_sector_size**: int64
+**performance_plus**: boolean
+**security_data_uri**: string
+**source_resource_id**: string
+**source_unique_id**: string
+**source_uri**: string
+**storage_account_id**: string
+**upload_size_bytes**: int64
+}
+class azure_disk {
+**bursting_enabled**: boolean
+**bursting_enabled_time**: datetime
+**completion_percent**: double
+**creation_data**: azure_creation_data
+**data_access_auth_mode**: string
+**disk_access_id**: string
+**disk_encryption**: azure_encryption
+**disk_iops_read_only**: int64
+**disk_iops_read_write**: int64
+**disk_m_bps_read_only**: int64
+**disk_m_bps_read_write**: int64
+**disk_security_profile**: azure_disk_security_profile
+**disk_size_bytes**: int64
+**disk_size_gb**: int64
+**disk_sku**: azure_disk_sku
+**disk_state**: string
+**encryption_settings_collection**: azure_encryption_settings_collection
+**extended_location**: azure_extended_location
+**hyper_v_generation**: string
+**managed_by**: string
+**managed_by_extended**: string[]
+**max_shares**: int64
+**network_access_policy**: string
+**optimized_for_frequent_attach**: boolean
+**os_type**: string
+**property_updates_in_progress**: string
+**provisioning_state**: string
+**public_network_access**: string
+**purchase_plan**: azure_purchase_plan
+**share_info**: string[]
+**supported_capabilities**: azure_supported_capabilities
+**supports_hibernation**: boolean
+**tier**: string
+**time_created**: datetime
+**unique_id**: string
+}
+class azure_disk_security_profile {
+**secure_vm_disk_encryption_set_id**: string
+**security_type**: string
+}
+class azure_disk_sku {
+**name**: string
+**tier**: string
+}
+class azure_encryption {
+**disk_encryption_set_id**: string
+**type**: string
+}
+class azure_encryption_settings_collection {
+**enabled**: boolean
+**encryption_settings**: azure_encryption_settings_element[]
+**encryption_settings_version**: string
+}
+class azure_encryption_settings_element {
+**disk_encryption_key**: azure_key_vault_and_secret_reference
+**key_encryption_key**: azure_key_vault_and_key_reference
+}
+class azure_extended_location {
+**name**: string
+**type**: string
+}
+class azure_image_disk_reference {
+**community_gallery_image_id**: string
+**id**: string
+**lun**: int64
+**shared_gallery_image_id**: string
+}
+class azure_key_vault_and_key_reference {
+**key_url**: string
+**source_vault**: string
+}
+class azure_key_vault_and_secret_reference {
+**secret_url**: string
+**source_vault**: string
+}
+class azure_purchase_plan {
+**name**: string
+**product**: string
+**promotion_code**: string
+**publisher**: string
+}
+class azure_resource {
+}
+class azure_supported_capabilities {
+**accelerated_network**: boolean
+**architecture**: string
+**disk_controller_types**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_creation_data --> azure_image_disk_reference
+azure_disk --> azure_creation_data
+azure_disk --> azure_disk_security_profile
+azure_disk --> azure_disk_sku
+azure_disk --> azure_encryption
+azure_disk --> azure_encryption_settings_collection
+azure_disk --> azure_extended_location
+azure_disk --> azure_purchase_plan
+azure_resource <|--- azure_disk
+azure_disk --> azure_supported_capabilities
+azure_encryption_settings_collection --> azure_encryption_settings_element
+azure_encryption_settings_element --> azure_key_vault_and_key_reference
+azure_encryption_settings_element --> azure_key_vault_and_secret_reference
+resource <|--- azure_resource
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_disk resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_disk {
+}
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
+## `azure_disk_access`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_disk_access data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_disk_access {
+**extended_location**: azure_extended_location
+**private_endpoint_connections**: azure_private_endpoint_connection[]
+**provisioning_state**: string
+**time_created**: datetime
+}
+class azure_extended_location {
+**name**: string
+**type**: string
+}
+class azure_private_endpoint_connection {
+**id**: string
+**name**: string
+**private_endpoint**: string
+**private_link_service_connection_state**: azure_private_link_service_connection_state
+**provisioning_state**: string
+**type**: string
+}
+class azure_private_link_service_connection_state {
+**actions_required**: string
+**description**: string
+**status**: string
+}
+class azure_resource {
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_disk_access --> azure_extended_location
+azure_disk_access --> azure_private_endpoint_connection
+azure_resource <|--- azure_disk_access
+azure_private_endpoint_connection --> azure_private_link_service_connection_state
+resource <|--- azure_resource
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_disk_access resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_disk_access {
+}
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
+## `azure_disk_encryption_set`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_disk_encryption_set data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_api_error {
+**code**: string
+**details**: azure_api_error_base[]
+**innererror**: azure_inner_error
+**message**: string
+**target**: string
+}
+class azure_api_error_base {
+**code**: string
+**message**: string
+**target**: string
+}
+class azure_disk_encryption_set {
+**active_key**: azure_key_for_disk_encryption_set
+**auto_key_rotation_error**: azure_api_error
+**encryption_set_identity**: azure_encryption_set_identity
+**encryption_type**: string
+**federated_client_id**: string
+**last_key_rotation_timestamp**: datetime
+**previous_keys**: azure_key_for_disk_encryption_set[]
+**provisioning_state**: string
+**rotation_to_latest_key_version_enabled**: boolean
+}
+class azure_encryption_set_identity {
+**principal_id**: string
+**tenant_id**: string
+**type**: string
+**user_assigned_identities**: dictionary[string, azure_principalid_clientid]
+}
+class azure_inner_error {
+**errordetail**: string
+**exceptiontype**: string
+}
+class azure_key_for_disk_encryption_set {
+**key_url**: string
+**source_vault**: string
+}
+class azure_principalid_clientid {
+**client_id**: string
+**principal_id**: string
+}
+class azure_resource {
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_api_error --> azure_api_error_base
+azure_api_error --> azure_inner_error
+azure_disk_encryption_set --> azure_api_error
+azure_disk_encryption_set --> azure_encryption_set_identity
+azure_disk_encryption_set --> azure_key_for_disk_encryption_set
+azure_resource <|--- azure_disk_encryption_set
+azure_encryption_set_identity --> azure_principalid_clientid
+resource <|--- azure_resource
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_disk_encryption_set resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_disk_encryption_set {
+}
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
+## `azure_gallery`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_gallery data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_community_gallery_info {
+**community_gallery_enabled**: boolean
+**eula**: string
+**public_name_prefix**: string
+**public_names**: string[]
+**publisher_contact**: string
+**publisher_uri**: string
+}
+class azure_gallery {
+**description**: string
+**identifier**: string
+**provisioning_state**: string
+**sharing_profile**: azure_sharing_profile
+**sharing_status**: azure_sharing_status
+**soft_delete_policy**: boolean
+}
+class azure_regional_sharing_status {
+**details**: string
+**region**: string
+**state**: string
+}
+class azure_resource {
+}
+class azure_sharing_profile {
+**community_gallery_info**: azure_community_gallery_info
+**groups**: azure_sharing_profile_group[]
+**permissions**: string
+}
+class azure_sharing_profile_group {
+**ids**: string[]
+**type**: string
+}
+class azure_sharing_status {
+**aggregated_state**: string
+**summary**: azure_regional_sharing_status[]
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_resource <|--- azure_gallery
+azure_gallery --> azure_sharing_profile
+azure_gallery --> azure_sharing_status
+resource <|--- azure_resource
+azure_sharing_profile --> azure_community_gallery_info
+azure_sharing_profile --> azure_sharing_profile_group
+azure_sharing_status --> azure_regional_sharing_status
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_gallery resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_gallery {
+}
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
+## `azure_image`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_image data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_disk_encryption_set_parameters {
+}
+class azure_extended_location {
+**name**: string
+**type**: string
+}
+class azure_image {
+**extended_location**: azure_extended_location
+**hyper_v_generation**: string
+**provisioning_state**: string
+**source_virtual_machine**: string
+**storage_profile**: azure_image_storage_profile
+}
+class azure_image_os_disk {
+**os_state**: string
+**os_type**: string
+}
+class azure_image_storage_profile {
+**data_disks**: int64[]
+**os_disk**: azure_image_os_disk
+**zone_resilient**: boolean
+}
+class azure_resource {
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_image --> azure_extended_location
+azure_image --> azure_image_storage_profile
+azure_resource <|--- azure_image
+azure_image_os_disk --> azure_disk_encryption_set_parameters
+azure_image_storage_profile --> azure_image_os_disk
+resource <|--- azure_resource
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_image resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_image {
+}
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
+## `azure_location`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_location data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_availability_zone_mappings {
+**logical_zone**: string
+**physical_zone**: string
+}
+class azure_location {
+**availability_zone_mappings**: azure_availability_zone_mappings[]
+**display_name**: string
+**location_metadata**: azure_location_metadata
+**regional_display_name**: string
+**subscription_id**: string
+}
+class azure_location_metadata {
+**geography**: string
+**geography_group**: string
+**home_location**: string
+**latitude**: string
+**longitude**: string
+**paired_region**: azure_paired_region[]
+**physical_location**: string
+**region_category**: string
+**region_type**: string
+}
+class azure_paired_region {
+**id**: string
+**name**: string
+**subscription_id**: string
+}
+class azure_resource {
+}
+class region {
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_location --> azure_availability_zone_mappings
+azure_location --> azure_location_metadata
+azure_resource <|--- azure_location
+region <|--- azure_location
+azure_location_metadata --> azure_paired_region
+resource <|--- azure_resource
+resource <|--- region
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_location resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_location {
+}
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
+## `azure_proximity_placement_group`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_proximity_placement_group data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_instance_view_status {
+**code**: string
+**display_status**: string
+**level**: string
+**message**: string
+**time**: datetime
+}
+class azure_proximity_placement_group {
+**availability_sets**: azure_sub_resource_with_colocation_status[]
+**colocation_status**: azure_instance_view_status
+**intent**: azure_vm_sizes
+**proximity_placement_group_type**: string
+**virtual_machine_scale_sets**: azure_sub_resource_with_colocation_status[]
+**virtual_machines_status**: azure_sub_resource_with_colocation_status[]
+}
+class azure_resource {
+}
+class azure_sub_resource_with_colocation_status {
+**colocation_status**: azure_instance_view_status
+}
+class azure_vm_sizes {
+**vm_sizes**: string[]
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_proximity_placement_group --> azure_instance_view_status
+azure_resource <|--- azure_proximity_placement_group
+azure_proximity_placement_group --> azure_sub_resource_with_colocation_status
+azure_proximity_placement_group --> azure_vm_sizes
+resource <|--- azure_resource
+azure_sub_resource_with_colocation_status --> azure_instance_view_status
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_proximity_placement_group resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_proximity_placement_group {
+}
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
+## `azure_resource`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_resource data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_resource {
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- azure_resource
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_resource resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_resource {
+}
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
+## `azure_resource_group`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_resource_group data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_resource {
+}
+class azure_resource_group {
+**managed_by**: string
+**provisioning_state**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- azure_resource
+azure_resource <|--- azure_resource_group
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_resource_group resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_resource_group {
+}
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
+## `azure_resource_sku`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_resource_sku data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_resource {
+}
+class azure_resource_sku {
+**api_versions**: string[]
+**capabilities**: azure_resource_sku_capabilities[]
+**capacity**: azure_resource_sku_capacity
+**costs**: azure_resource_sku_costs[]
+**family**: string
+**location_info**: azure_resource_sku_location_info[]
+**locations**: string[]
+**resource_type**: string
+**restrictions**: azure_resource_sku_restrictions[]
+**sku_kind**: string
+**sku_size**: string
+**sku_tier**: string
+}
+class azure_resource_sku_capabilities {
+**name**: string
+**value**: string
+}
+class azure_resource_sku_capacity {
+**default**: int64
+**maximum**: int64
+**minimum**: int64
+**scale_type**: string
+}
+class azure_resource_sku_costs {
+**extended_unit**: string
+**meter_id**: string
+**quantity**: int64
+}
+class azure_resource_sku_location_info {
+**extended_locations**: string[]
+**location**: string
+**type**: string
+**zone_details**: azure_resource_sku_zone_details[]
+**zones**: string[]
+}
+class azure_resource_sku_restriction_info {
+**locations**: string[]
+**zones**: string[]
+}
+class azure_resource_sku_restrictions {
+**reason_code**: string
+**restriction_info**: azure_resource_sku_restriction_info
+**type**: string
+**values**: string[]
+}
+class azure_resource_sku_zone_details {
+**capabilities**: azure_resource_sku_capabilities[]
+**name**: string[]
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- azure_resource
+azure_resource <|--- azure_resource_sku
+azure_resource_sku --> azure_resource_sku_capabilities
+azure_resource_sku --> azure_resource_sku_capacity
+azure_resource_sku --> azure_resource_sku_costs
+azure_resource_sku --> azure_resource_sku_location_info
+azure_resource_sku --> azure_resource_sku_restrictions
+azure_resource_sku_location_info --> azure_resource_sku_zone_details
+azure_resource_sku_restrictions --> azure_resource_sku_restriction_info
+azure_resource_sku_zone_details --> azure_resource_sku_capabilities
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_resource_sku resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_resource_sku {
+}
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
+## `azure_restore_point_collection`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_restore_point_collection data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_additional_unattend_content {
+**component_name**: string
+**content**: string
+**pass_name**: string
+**setting_name**: string
+}
+class azure_boot_diagnostics {
+**enabled**: boolean
+**storage_uri**: string
+}
+class azure_diagnostics_profile {
+**boot_diagnostics**: azure_boot_diagnostics
+}
+class azure_disk_encryption_set_parameters {
+}
+class azure_disk_encryption_settings {
+**disk_encryption_key**: azure_key_vault_secret_reference
+**enabled**: boolean
+**key_encryption_key**: azure_key_vault_key_reference
+}
+class azure_disk_restore_point_attributes {
+**encryption**: azure_restore_point_encryption
+**source_disk_restore_point**: string
+}
+class azure_disk_restore_point_instance_view {
+**id**: string
+**replication_status**: azure_disk_restore_point_replication_status
+}
+class azure_disk_restore_point_replication_status {
+**completion_percent**: int64
+**status**: azure_instance_view_status
+}
+class azure_hardware_profile {
+**vm_size**: string
+**vm_size_properties**: azure_vm_size_properties
+}
+class azure_instance_view_status {
+**code**: string
+**display_status**: string
+**level**: string
+**message**: string
+**time**: datetime
+}
+class azure_key_vault_key_reference {
+**key_url**: string
+**source_vault**: string
+}
+class azure_key_vault_secret_reference {
+**secret_url**: string
+**source_vault**: string
+}
+class azure_linux_configuration {
+**disable_password_authentication**: boolean
+**enable_vm_agent_platform_updates**: boolean
+**patch_settings**: azure_linux_patch_settings
+**provision_vm_agent**: boolean
+**ssh**: azure_ssh_configuration
+}
+class azure_linux_patch_settings {
+**assessment_mode**: string
+**automatic_by_platform_settings**: azure_linux_vm_guest_patch_automatic_by_platform_settings
+**patch_mode**: string
+}
+class azure_linux_vm_guest_patch_automatic_by_platform_settings {
+**bypass_platform_safety_checks_on_user_schedule**: boolean
+**reboot_setting**: string
+}
+class azure_managed_disk_parameters {
+**disk_encryption_set**: azure_disk_encryption_set_parameters
+**disk_parameters_security_profile**: azure_vm_disk_security_profile
+**storage_account_type**: string
+}
+class azure_os_profile {
+**admin_password**: string
+**admin_username**: string
+**allow_extension_operations**: boolean
+**computer_name**: string
+**custom_data**: string
+**linux_configuration**: azure_linux_configuration
+**require_guest_provision_signal**: boolean
+**secrets**: azure_vault_secret_group[]
+**windows_configuration**: azure_windows_configuration
+}
+class azure_patch_settings {
+**assessment_mode**: string
+**automatic_by_platform_settings**: azure_windows_vm_guest_patch_automatic_by_platform_settings
+**enable_hotpatching**: boolean
+**patch_mode**: string
+}
+class azure_resource {
+}
+class azure_restore_point {
+**consistency_mode**: string
+**exclude_disks**: string[]
+**provisioning_state**: string
+**restore_point_instance_view**: azure_restore_point_instance_view
+**source_metadata**: azure_restore_point_source_metadata
+**source_restore_point**: string
+**time_created**: datetime
+}
+class azure_restore_point_collection {
+**provisioning_state**: string
+**restore_point_collection_id**: string
+**restore_points**: azure_restore_point[]
+**source**: azure_restore_point_collection_source_properties
+}
+class azure_restore_point_collection_source_properties {
+**id**: string
+**location**: string
+}
+class azure_restore_point_encryption {
+**disk_encryption_set**: azure_disk_encryption_set_parameters
+**type**: string
+}
+class azure_restore_point_instance_view {
+**disk_restore_points**: azure_disk_restore_point_instance_view[]
+**statuses**: azure_instance_view_status[]
+}
+class azure_restore_point_source_metadata {
+**diagnostics_profile**: azure_diagnostics_profile
+**hardware_profile**: azure_hardware_profile
+**hyper_v_generation**: string
+**license_type**: string
+**location**: string
+**os_profile**: azure_os_profile
+**security_profile**: azure_security_profile
+**storage_profile**: azure_restore_point_source_vm_storage_profile
+**user_data**: string
+**vm_id**: string
+}
+class azure_restore_point_source_vm_data_disk {
+**caching**: string
+**disk_restore_point**: azure_disk_restore_point_attributes
+**disk_size_gb**: int64
+**lun**: int64
+**managed_disk**: azure_managed_disk_parameters
+**name**: string
+**write_accelerator_enabled**: boolean
+}
+class azure_restore_point_source_vm_storage_profile {
+**data_disks**: azure_restore_point_source_vm_data_disk[]
+**os_disk**: azure_restore_point_source_vmos_disk
+}
+class azure_restore_point_source_vmos_disk {
+**caching**: string
+**disk_restore_point**: azure_disk_restore_point_attributes
+**disk_size_gb**: int64
+**encryption_settings**: azure_disk_encryption_settings
+**managed_disk**: azure_managed_disk_parameters
+**name**: string
+**os_type**: string
+**write_accelerator_enabled**: boolean
+}
+class azure_security_profile {
+**encryption_at_host**: boolean
+**security_type**: string
+**uefi_settings**: azure_uefi_settings
+}
+class azure_ssh_configuration {
+**public_keys**: azure_ssh_public_key[]
+}
+class azure_ssh_public_key {
+**key_data**: string
+**path**: string
+}
+class azure_uefi_settings {
+**secure_boot_enabled**: boolean
+**v_tpm_enabled**: boolean
+}
+class azure_vault_certificate {
+**certificate_store**: string
+**certificate_url**: string
+}
+class azure_vault_secret_group {
+**source_vault**: string
+**vault_certificates**: azure_vault_certificate[]
+}
+class azure_vm_disk_security_profile {
+**disk_encryption_set**: azure_disk_encryption_set_parameters
+**security_encryption_type**: string
+}
+class azure_vm_size_properties {
+**v_cp_us_available**: int64
+**v_cp_us_per_core**: int64
+}
+class azure_win_rm_configuration {
+**listeners**: azure_win_rm_listener[]
+}
+class azure_win_rm_listener {
+**certificate_url**: string
+**protocol**: string
+}
+class azure_windows_configuration {
+**additional_unattend_content**: azure_additional_unattend_content[]
+**enable_automatic_updates**: boolean
+**enable_vm_agent_platform_updates**: boolean
+**patch_settings**: azure_patch_settings
+**provision_vm_agent**: boolean
+**time_zone**: string
+**win_rm**: azure_win_rm_configuration
+}
+class azure_windows_vm_guest_patch_automatic_by_platform_settings {
+**bypass_platform_safety_checks_on_user_schedule**: boolean
+**reboot_setting**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_diagnostics_profile --> azure_boot_diagnostics
+azure_disk_encryption_settings --> azure_key_vault_key_reference
+azure_disk_encryption_settings --> azure_key_vault_secret_reference
+azure_disk_restore_point_attributes --> azure_restore_point_encryption
+azure_disk_restore_point_instance_view --> azure_disk_restore_point_replication_status
+azure_disk_restore_point_replication_status --> azure_instance_view_status
+azure_hardware_profile --> azure_vm_size_properties
+azure_linux_configuration --> azure_linux_patch_settings
+azure_linux_configuration --> azure_ssh_configuration
+azure_linux_patch_settings --> azure_linux_vm_guest_patch_automatic_by_platform_settings
+azure_managed_disk_parameters --> azure_disk_encryption_set_parameters
+azure_managed_disk_parameters --> azure_vm_disk_security_profile
+azure_os_profile --> azure_linux_configuration
+azure_os_profile --> azure_vault_secret_group
+azure_os_profile --> azure_windows_configuration
+azure_patch_settings --> azure_windows_vm_guest_patch_automatic_by_platform_settings
+resource <|--- azure_resource
+azure_restore_point --> azure_restore_point_instance_view
+azure_restore_point --> azure_restore_point_source_metadata
+azure_resource <|--- azure_restore_point_collection
+azure_restore_point_collection --> azure_restore_point
+azure_restore_point_collection --> azure_restore_point_collection_source_properties
+azure_restore_point_encryption --> azure_disk_encryption_set_parameters
+azure_restore_point_instance_view --> azure_disk_restore_point_instance_view
+azure_restore_point_instance_view --> azure_instance_view_status
+azure_restore_point_source_metadata --> azure_diagnostics_profile
+azure_restore_point_source_metadata --> azure_hardware_profile
+azure_restore_point_source_metadata --> azure_os_profile
+azure_restore_point_source_metadata --> azure_restore_point_source_vm_storage_profile
+azure_restore_point_source_metadata --> azure_security_profile
+azure_restore_point_source_vm_data_disk --> azure_disk_restore_point_attributes
+azure_restore_point_source_vm_data_disk --> azure_managed_disk_parameters
+azure_restore_point_source_vm_storage_profile --> azure_restore_point_source_vm_data_disk
+azure_restore_point_source_vm_storage_profile --> azure_restore_point_source_vmos_disk
+azure_restore_point_source_vmos_disk --> azure_disk_encryption_settings
+azure_restore_point_source_vmos_disk --> azure_disk_restore_point_attributes
+azure_restore_point_source_vmos_disk --> azure_managed_disk_parameters
+azure_security_profile --> azure_uefi_settings
+azure_ssh_configuration --> azure_ssh_public_key
+azure_vault_secret_group --> azure_vault_certificate
+azure_vm_disk_security_profile --> azure_disk_encryption_set_parameters
+azure_win_rm_configuration --> azure_win_rm_listener
+azure_windows_configuration --> azure_additional_unattend_content
+azure_windows_configuration --> azure_patch_settings
+azure_windows_configuration --> azure_win_rm_configuration
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_restore_point_collection resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_restore_point_collection {
+}
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
+## `azure_snapshot`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_snapshot data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_copy_completion_error {
+**error_code**: string
+**error_message**: string
+}
+class azure_creation_data {
+**create_option**: string
+**gallery_image_reference**: azure_image_disk_reference
+**image_reference**: azure_image_disk_reference
+**logical_sector_size**: int64
+**performance_plus**: boolean
+**security_data_uri**: string
+**source_resource_id**: string
+**source_unique_id**: string
+**source_uri**: string
+**storage_account_id**: string
+**upload_size_bytes**: int64
+}
+class azure_disk_security_profile {
+**secure_vm_disk_encryption_set_id**: string
+**security_type**: string
+}
+class azure_encryption {
+**disk_encryption_set_id**: string
+**type**: string
+}
+class azure_encryption_settings_collection {
+**enabled**: boolean
+**encryption_settings**: azure_encryption_settings_element[]
+**encryption_settings_version**: string
+}
+class azure_encryption_settings_element {
+**disk_encryption_key**: azure_key_vault_and_secret_reference
+**key_encryption_key**: azure_key_vault_and_key_reference
+}
+class azure_extended_location {
+**name**: string
+**type**: string
+}
+class azure_image_disk_reference {
+**community_gallery_image_id**: string
+**id**: string
+**lun**: int64
+**shared_gallery_image_id**: string
+}
+class azure_key_vault_and_key_reference {
+**key_url**: string
+**source_vault**: string
+}
+class azure_key_vault_and_secret_reference {
+**secret_url**: string
+**source_vault**: string
+}
+class azure_purchase_plan {
+**name**: string
+**product**: string
+**promotion_code**: string
+**publisher**: string
+}
+class azure_resource {
+}
+class azure_snapshot {
+**completion_percent**: double
+**copy_completion_error**: azure_copy_completion_error
+**creation_data**: azure_creation_data
+**data_access_auth_mode**: string
+**disk_access_id**: string
+**disk_size_bytes**: int64
+**disk_size_gb**: int64
+**disk_state**: string
+**encryption_settings_collection**: azure_encryption_settings_collection
+**extended_location**: azure_extended_location
+**hyper_v_generation**: string
+**incremental**: boolean
+**incremental_snapshot_family_id**: string
+**managed_by**: string
+**network_access_policy**: string
+**os_type**: string
+**provisioning_state**: string
+**public_network_access**: string
+**purchase_plan**: azure_purchase_plan
+**snapshot_encryption**: azure_encryption
+**snapshot_security_profile**: azure_disk_security_profile
+**snapshot_sku**: azure_snapshot_sku
+**supported_capabilities**: azure_supported_capabilities
+**supports_hibernation**: boolean
+**time_created**: datetime
+**unique_id**: string
+}
+class azure_snapshot_sku {
+**name**: string
+**tier**: string
+}
+class azure_supported_capabilities {
+**accelerated_network**: boolean
+**architecture**: string
+**disk_controller_types**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_creation_data --> azure_image_disk_reference
+azure_encryption_settings_collection --> azure_encryption_settings_element
+azure_encryption_settings_element --> azure_key_vault_and_key_reference
+azure_encryption_settings_element --> azure_key_vault_and_secret_reference
+resource <|--- azure_resource
+azure_snapshot --> azure_copy_completion_error
+azure_snapshot --> azure_creation_data
+azure_snapshot --> azure_disk_security_profile
+azure_snapshot --> azure_encryption
+azure_snapshot --> azure_encryption_settings_collection
+azure_snapshot --> azure_extended_location
+azure_snapshot --> azure_purchase_plan
+azure_resource <|--- azure_snapshot
+azure_snapshot --> azure_snapshot_sku
+azure_snapshot --> azure_supported_capabilities
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_snapshot resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_snapshot {
+}
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
+## `azure_ssh_public_key_resource`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_ssh_public_key_resource data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_resource {
+}
+class azure_ssh_public_key_resource {
+**properties**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- azure_resource
+azure_resource <|--- azure_ssh_public_key_resource
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_ssh_public_key_resource resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_ssh_public_key_resource {
+}
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
+## `azure_subscription`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_subscription data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class account {
+}
+class azure_resource {
+}
+class azure_subscription {
+**account_name**: string
+**authorization_source**: string
+**display_name**: string
+**managed_by_tenants**: string[]
+**state**: string
+**subscription_id**: string
+**subscription_policies**: azure_subscription_policies
+**tenant_id**: string
+}
+class azure_subscription_policies {
+**location_placement_id**: string
+**quota_id**: string
+**spending_limit**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- account
+resource <|--- azure_resource
+account <|--- azure_subscription
+azure_resource <|--- azure_subscription
+azure_subscription --> azure_subscription_policies
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_subscription resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_subscription {
+}
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
+## `azure_virtual_machine`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_virtual_machine data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_additional_capabilities {
+**hibernation_enabled**: boolean
+**ultra_ssd_enabled**: boolean
+}
+class azure_additional_unattend_content {
+**component_name**: string
+**content**: string
+**pass_name**: string
+**setting_name**: string
+}
+class azure_api_error {
+**code**: string
+**details**: azure_api_error_base[]
+**innererror**: azure_inner_error
+**message**: string
+**target**: string
+}
+class azure_api_error_base {
+**code**: string
+**message**: string
+**target**: string
+}
+class azure_application_profile {
+**gallery_applications**: azure_vm_gallery_application[]
+}
+class azure_available_patch_summary {
+**assessment_activity_id**: string
+**critical_and_security_patch_count**: int64
+**error**: azure_api_error
+**last_modified_time**: datetime
+**other_patch_count**: int64
+**reboot_pending**: boolean
+**start_time**: datetime
+**status**: string
+}
+class azure_boot_diagnostics {
+**enabled**: boolean
+**storage_uri**: string
+}
+class azure_boot_diagnostics_instance_view {
+**console_screenshot_blob_uri**: string
+**serial_console_log_blob_uri**: string
+**status**: azure_instance_view_status
+}
+class azure_capacity_reservation_profile {
+**capacity_reservation_group**: string
+}
+class azure_data_disk {
+**caching**: string
+**create_option**: string
+**delete_option**: string
+**detach_option**: string
+**disk_iops_read_write**: int64
+**disk_m_bps_read_write**: int64
+**disk_size_gb**: int64
+**image**: string
+**lun**: int64
+**managed_disk**: azure_managed_disk_parameters
+**name**: string
+**to_be_detached**: boolean
+**vhd**: string
+**write_accelerator_enabled**: boolean
+}
+class azure_diagnostics_profile {
+**boot_diagnostics**: azure_boot_diagnostics
+}
+class azure_diff_disk_settings {
+**option**: string
+**placement**: string
+}
+class azure_disk_encryption_set_parameters {
+}
+class azure_disk_encryption_settings {
+**disk_encryption_key**: azure_key_vault_secret_reference
+**enabled**: boolean
+**key_encryption_key**: azure_key_vault_key_reference
+}
+class azure_disk_instance_view {
+**encryption_settings**: azure_disk_encryption_settings[]
+**name**: string
+**statuses**: azure_instance_view_status[]
+}
+class azure_extended_location {
+**name**: string
+**type**: string
+}
+class azure_hardware_profile {
+**vm_size**: string
+**vm_size_properties**: azure_vm_size_properties
+}
+class azure_image_reference {
+**community_gallery_image_id**: string
+**exact_version**: string
+**image_reference_sku**: string
+**offer**: string
+**publisher**: string
+**shared_gallery_image_id**: string
+**version**: string
+}
+class azure_inner_error {
+**errordetail**: string
+**exceptiontype**: string
+}
+class azure_instance_view_status {
+**code**: string
+**display_status**: string
+**level**: string
+**message**: string
+**time**: datetime
+}
+class azure_key_vault_key_reference {
+**key_url**: string
+**source_vault**: string
+}
+class azure_key_vault_secret_reference {
+**secret_url**: string
+**source_vault**: string
+}
+class azure_last_patch_installation_summary {
+**error**: azure_api_error
+**excluded_patch_count**: int64
+**failed_patch_count**: int64
+**installation_activity_id**: string
+**installed_patch_count**: int64
+**last_modified_time**: datetime
+**maintenance_window_exceeded**: boolean
+**not_selected_patch_count**: int64
+**pending_patch_count**: int64
+**start_time**: datetime
+**status**: string
+}
+class azure_linux_configuration {
+**disable_password_authentication**: boolean
+**enable_vm_agent_platform_updates**: boolean
+**patch_settings**: azure_linux_patch_settings
+**provision_vm_agent**: boolean
+**ssh**: azure_ssh_configuration
+}
+class azure_linux_patch_settings {
+**assessment_mode**: string
+**automatic_by_platform_settings**: azure_linux_vm_guest_patch_automatic_by_platform_settings
+**patch_mode**: string
+}
+class azure_linux_vm_guest_patch_automatic_by_platform_settings {
+**bypass_platform_safety_checks_on_user_schedule**: boolean
+**reboot_setting**: string
+}
+class azure_maintenance_redeploy_status {
+**is_customer_initiated_maintenance_allowed**: boolean
+**last_operation_message**: string
+**last_operation_result_code**: string
+**maintenance_window_end_time**: datetime
+**maintenance_window_start_time**: datetime
+**pre_maintenance_window_end_time**: datetime
+**pre_maintenance_window_start_time**: datetime
+}
+class azure_managed_disk_parameters {
+**disk_encryption_set**: azure_disk_encryption_set_parameters
+**disk_parameters_security_profile**: azure_vm_disk_security_profile
+**storage_account_type**: string
+}
+class azure_network_interface_reference {
+**delete_option**: string
+**primary**: boolean
+}
+class azure_network_profile {
+**network_api_version**: string
+**network_interface_configurations**: azure_virtual_machine_network_interface_configuration[]
+**network_interfaces**: azure_network_interface_reference[]
+}
+class azure_os_disk {
+**caching**: string
+**create_option**: string
+**delete_option**: string
+**diff_disk_settings**: azure_diff_disk_settings
+**disk_size_gb**: int64
+**encryption_settings**: azure_disk_encryption_settings
+**image**: string
+**managed_disk**: azure_managed_disk_parameters
+**name**: string
+**os_type**: string
+**vhd**: string
+**write_accelerator_enabled**: boolean
+}
+class azure_os_image_notification_profile {
+**enable**: boolean
+**not_before_timeout**: string
+}
+class azure_os_profile {
+**admin_password**: string
+**admin_username**: string
+**allow_extension_operations**: boolean
+**computer_name**: string
+**custom_data**: string
+**linux_configuration**: azure_linux_configuration
+**require_guest_provision_signal**: boolean
+**secrets**: azure_vault_secret_group[]
+**windows_configuration**: azure_windows_configuration
+}
+class azure_patch_settings {
+**assessment_mode**: string
+**automatic_by_platform_settings**: azure_windows_vm_guest_patch_automatic_by_platform_settings
+**enable_hotpatching**: boolean
+**patch_mode**: string
+}
+class azure_plan {
+**name**: string
+**product**: string
+**promotion_code**: string
+**publisher**: string
+}
+class azure_principalid_clientid {
+**client_id**: string
+**principal_id**: string
+}
+class azure_public_ip_address_sku {
+**name**: string
+**tier**: string
+}
+class azure_resource {
+}
+class azure_scheduled_events_profile {
+**os_image_notification_profile**: azure_os_image_notification_profile
+**terminate_notification_profile**: azure_terminate_notification_profile
+}
+class azure_security_profile {
+**encryption_at_host**: boolean
+**security_type**: string
+**uefi_settings**: azure_uefi_settings
+}
+class azure_ssh_configuration {
+**public_keys**: azure_ssh_public_key[]
+}
+class azure_ssh_public_key {
+**key_data**: string
+**path**: string
+}
+class azure_storage_profile {
+**data_disks**: azure_data_disk[]
+**disk_controller_type**: string
+**image_reference**: azure_image_reference
+**os_disk**: azure_os_disk
+}
+class azure_terminate_notification_profile {
+**enable**: boolean
+**not_before_timeout**: string
+}
+class azure_uefi_settings {
+**secure_boot_enabled**: boolean
+**v_tpm_enabled**: boolean
+}
+class azure_vault_certificate {
+**certificate_store**: string
+**certificate_url**: string
+}
+class azure_vault_secret_group {
+**source_vault**: string
+**vault_certificates**: azure_vault_certificate[]
+}
+class azure_virtual_machine {
+**application_profile**: azure_application_profile
+**availability_set**: string
+**azure_plan**: azure_plan
+**billing_profile**: double
+**capacity_reservation**: azure_capacity_reservation_profile
+**eviction_policy**: string
+**extended_location**: azure_extended_location
+**extensions_time_budget**: string
+**hardware_profile**: azure_hardware_profile
+**host**: string
+**host_group**: string
+**license_type**: string
+**platform_fault_domain**: int64
+**provisioning_state**: string
+**proximity_placement_group**: string
+**scheduled_events_profile**: azure_scheduled_events_profile
+**time_created**: datetime
+**user_data**: string
+**virtual_machine_capabilities**: azure_additional_capabilities
+**virtual_machine_diagnostics_profile**: azure_diagnostics_profile
+**virtual_machine_identity**: azure_virtual_machine_identity
+**virtual_machine_instance_view**: azure_virtual_machine_instance_view
+**virtual_machine_network_profile**: azure_network_profile
+**virtual_machine_os_profile**: azure_os_profile
+**virtual_machine_priority**: string
+**virtual_machine_resources**: azure_virtual_machine_extension[]
+**virtual_machine_scale_set**: string
+**virtual_machine_security_profile**: azure_security_profile
+**virtual_machine_storage_profile**: azure_storage_profile
+**vm_id**: string
+}
+class azure_virtual_machine_agent_instance_view {
+**extension_handlers**: azure_virtual_machine_extension_handler_instance_view[]
+**statuses**: azure_instance_view_status[]
+**vm_agent_version**: string
+}
+class azure_virtual_machine_extension {
+**auto_upgrade_minor_version**: boolean
+**enable_automatic_upgrade**: boolean
+**force_update_tag**: string
+**machine_extension_instance_view**: azure_virtual_machine_extension_instance_view
+**protected_settings**: any
+**protected_settings_from_key_vault**: azure_key_vault_secret_reference
+**provision_after_extensions**: string[]
+**provisioning_state**: string
+**publisher**: string
+**settings**: any
+**suppress_failures**: boolean
+**type**: string
+**type_handler_version**: string
+}
+class azure_virtual_machine_extension_handler_instance_view {
+**status**: azure_instance_view_status
+**type**: string
+**type_handler_version**: string
+}
+class azure_virtual_machine_extension_instance_view {
+**name**: string
+**statuses**: azure_instance_view_status[]
+**substatuses**: azure_instance_view_status[]
+**type**: string
+**type_handler_version**: string
+}
+class azure_virtual_machine_health_status {
+**status**: azure_instance_view_status
+}
+class azure_virtual_machine_identity {
+**principal_id**: string
+**tenant_id**: string
+**type**: string
+**user_assigned_identities**: dictionary[string, azure_principalid_clientid]
+}
+class azure_virtual_machine_instance_view {
+**assigned_host**: string
+**boot_diagnostics**: azure_boot_diagnostics_instance_view
+**computer_name**: string
+**disks**: azure_disk_instance_view[]
+**extensions**: azure_virtual_machine_extension_instance_view[]
+**hyper_v_generation**: string
+**maintenance_redeploy_status**: azure_maintenance_redeploy_status
+**os_name**: string
+**os_version**: string
+**patch_status**: azure_virtual_machine_patch_status
+**platform_fault_domain**: int64
+**platform_update_domain**: int64
+**rdp_thumb_print**: string
+**statuses**: azure_instance_view_status[]
+**vm_agent**: azure_virtual_machine_agent_instance_view
+**vm_health**: azure_virtual_machine_health_status
+}
+class azure_virtual_machine_ip_tag {
+**ip_tag_type**: string
+**tag**: string
+}
+class azure_virtual_machine_network_interface_configuration {
+**delete_option**: string
+**disable_tcp_state_tracking**: boolean
+**dns_settings**: azure_virtual_machine_network_interface_dns_settings_configuration
+**dscp_configuration**: string
+**enable_accelerated_networking**: boolean
+**enable_fpga**: boolean
+**enable_ip_forwarding**: boolean
+**ip_configurations**: azure_virtual_machine_network_interface_ip_configuration[]
+**name**: string
+**network_security_group**: string
+**primary**: boolean
+}
+class azure_virtual_machine_network_interface_dns_settings_configuration {
+**dns_servers**: string[]
+}
+class azure_virtual_machine_network_interface_ip_configuration {
+**application_gateway_backend_address_pools**: string[]
+**application_security_groups**: string[]
+**load_balancer_backend_address_pools**: string[]
+**name**: string
+**primary**: boolean
+**private_ip_address_version**: string
+**public_ip_address_configuration**: azure_virtual_machine_public_ip_address_configuration
+**subnet**: string
+}
+class azure_virtual_machine_patch_status {
+**available_patch_summary**: azure_available_patch_summary
+**configuration_statuses**: azure_instance_view_status[]
+**last_patch_installation_summary**: azure_last_patch_installation_summary
+}
+class azure_virtual_machine_public_ip_address_configuration {
+**delete_option**: string
+**dns_settings**: string
+**idle_timeout_in_minutes**: int64
+**ip_tags**: azure_virtual_machine_ip_tag[]
+**name**: string
+**public_ip_address_version**: string
+**public_ip_allocation_method**: string
+**public_ip_prefix**: string
+**sku**: azure_public_ip_address_sku
+}
+class azure_vm_disk_security_profile {
+**disk_encryption_set**: azure_disk_encryption_set_parameters
+**security_encryption_type**: string
+}
+class azure_vm_gallery_application {
+**configuration_reference**: string
+**enable_automatic_upgrade**: boolean
+**order**: int64
+**package_reference_id**: string
+**tags**: string
+**treat_failure_as_deployment_failure**: boolean
+}
+class azure_vm_size_properties {
+**v_cp_us_available**: int64
+**v_cp_us_per_core**: int64
+}
+class azure_win_rm_configuration {
+**listeners**: azure_win_rm_listener[]
+}
+class azure_win_rm_listener {
+**certificate_url**: string
+**protocol**: string
+}
+class azure_windows_configuration {
+**additional_unattend_content**: azure_additional_unattend_content[]
+**enable_automatic_updates**: boolean
+**enable_vm_agent_platform_updates**: boolean
+**patch_settings**: azure_patch_settings
+**provision_vm_agent**: boolean
+**time_zone**: string
+**win_rm**: azure_win_rm_configuration
+}
+class azure_windows_vm_guest_patch_automatic_by_platform_settings {
+**bypass_platform_safety_checks_on_user_schedule**: boolean
+**reboot_setting**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_api_error --> azure_api_error_base
+azure_api_error --> azure_inner_error
+azure_application_profile --> azure_vm_gallery_application
+azure_available_patch_summary --> azure_api_error
+azure_boot_diagnostics_instance_view --> azure_instance_view_status
+azure_data_disk --> azure_managed_disk_parameters
+azure_diagnostics_profile --> azure_boot_diagnostics
+azure_disk_encryption_settings --> azure_key_vault_key_reference
+azure_disk_encryption_settings --> azure_key_vault_secret_reference
+azure_disk_instance_view --> azure_disk_encryption_settings
+azure_disk_instance_view --> azure_instance_view_status
+azure_hardware_profile --> azure_vm_size_properties
+azure_last_patch_installation_summary --> azure_api_error
+azure_linux_configuration --> azure_linux_patch_settings
+azure_linux_configuration --> azure_ssh_configuration
+azure_linux_patch_settings --> azure_linux_vm_guest_patch_automatic_by_platform_settings
+azure_managed_disk_parameters --> azure_disk_encryption_set_parameters
+azure_managed_disk_parameters --> azure_vm_disk_security_profile
+azure_network_profile --> azure_network_interface_reference
+azure_network_profile --> azure_virtual_machine_network_interface_configuration
+azure_os_disk --> azure_diff_disk_settings
+azure_os_disk --> azure_disk_encryption_settings
+azure_os_disk --> azure_managed_disk_parameters
+azure_os_profile --> azure_linux_configuration
+azure_os_profile --> azure_vault_secret_group
+azure_os_profile --> azure_windows_configuration
+azure_patch_settings --> azure_windows_vm_guest_patch_automatic_by_platform_settings
+resource <|--- azure_resource
+azure_scheduled_events_profile --> azure_os_image_notification_profile
+azure_scheduled_events_profile --> azure_terminate_notification_profile
+azure_security_profile --> azure_uefi_settings
+azure_ssh_configuration --> azure_ssh_public_key
+azure_storage_profile --> azure_data_disk
+azure_storage_profile --> azure_image_reference
+azure_storage_profile --> azure_os_disk
+azure_vault_secret_group --> azure_vault_certificate
+azure_virtual_machine --> azure_additional_capabilities
+azure_virtual_machine --> azure_application_profile
+azure_virtual_machine --> azure_capacity_reservation_profile
+azure_virtual_machine --> azure_diagnostics_profile
+azure_virtual_machine --> azure_extended_location
+azure_virtual_machine --> azure_hardware_profile
+azure_virtual_machine --> azure_network_profile
+azure_virtual_machine --> azure_os_profile
+azure_virtual_machine --> azure_plan
+azure_resource <|--- azure_virtual_machine
+azure_virtual_machine --> azure_scheduled_events_profile
+azure_virtual_machine --> azure_security_profile
+azure_virtual_machine --> azure_storage_profile
+azure_virtual_machine --> azure_virtual_machine_extension
+azure_virtual_machine --> azure_virtual_machine_identity
+azure_virtual_machine --> azure_virtual_machine_instance_view
+azure_virtual_machine_agent_instance_view --> azure_instance_view_status
+azure_virtual_machine_agent_instance_view --> azure_virtual_machine_extension_handler_instance_view
+azure_virtual_machine_extension --> azure_key_vault_secret_reference
+azure_virtual_machine_extension --> azure_virtual_machine_extension_instance_view
+azure_virtual_machine_extension_handler_instance_view --> azure_instance_view_status
+azure_virtual_machine_extension_instance_view --> azure_instance_view_status
+azure_virtual_machine_health_status --> azure_instance_view_status
+azure_virtual_machine_identity --> azure_principalid_clientid
+azure_virtual_machine_instance_view --> azure_boot_diagnostics_instance_view
+azure_virtual_machine_instance_view --> azure_disk_instance_view
+azure_virtual_machine_instance_view --> azure_instance_view_status
+azure_virtual_machine_instance_view --> azure_maintenance_redeploy_status
+azure_virtual_machine_instance_view --> azure_virtual_machine_agent_instance_view
+azure_virtual_machine_instance_view --> azure_virtual_machine_extension_instance_view
+azure_virtual_machine_instance_view --> azure_virtual_machine_health_status
+azure_virtual_machine_instance_view --> azure_virtual_machine_patch_status
+azure_virtual_machine_network_interface_configuration --> azure_virtual_machine_network_interface_dns_settings_configuration
+azure_virtual_machine_network_interface_configuration --> azure_virtual_machine_network_interface_ip_configuration
+azure_virtual_machine_network_interface_ip_configuration --> azure_virtual_machine_public_ip_address_configuration
+azure_virtual_machine_patch_status --> azure_available_patch_summary
+azure_virtual_machine_patch_status --> azure_instance_view_status
+azure_virtual_machine_patch_status --> azure_last_patch_installation_summary
+azure_virtual_machine_public_ip_address_configuration --> azure_public_ip_address_sku
+azure_virtual_machine_public_ip_address_configuration --> azure_virtual_machine_ip_tag
+azure_vm_disk_security_profile --> azure_disk_encryption_set_parameters
+azure_win_rm_configuration --> azure_win_rm_listener
+azure_windows_configuration --> azure_additional_unattend_content
+azure_windows_configuration --> azure_patch_settings
+azure_windows_configuration --> azure_win_rm_configuration
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_virtual_machine resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_virtual_machine {
+}
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
+## `azure_virtual_machine_scale_set`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_virtual_machine_scale_set data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_additional_capabilities {
+**hibernation_enabled**: boolean
+**ultra_ssd_enabled**: boolean
+}
+class azure_additional_unattend_content {
+**component_name**: string
+**content**: string
+**pass_name**: string
+**setting_name**: string
+}
+class azure_application_profile {
+**gallery_applications**: azure_vm_gallery_application[]
+}
+class azure_automatic_os_upgrade_policy {
+**disable_automatic_rollback**: boolean
+**enable_automatic_os_upgrade**: boolean
+**use_rolling_upgrade_policy**: boolean
+}
+class azure_automatic_repairs_policy {
+**enabled**: boolean
+**grace_period**: string
+**repair_action**: string
+}
+class azure_boot_diagnostics {
+**enabled**: boolean
+**storage_uri**: string
+}
+class azure_capacity_reservation_profile {
+**capacity_reservation_group**: string
+}
+class azure_diagnostics_profile {
+**boot_diagnostics**: azure_boot_diagnostics
+}
+class azure_diff_disk_settings {
+**option**: string
+**placement**: string
+}
+class azure_disk_encryption_set_parameters {
+}
+class azure_extended_location {
+**name**: string
+**type**: string
+}
+class azure_image_reference {
+**community_gallery_image_id**: string
+**exact_version**: string
+**image_reference_sku**: string
+**offer**: string
+**publisher**: string
+**shared_gallery_image_id**: string
+**version**: string
+}
+class azure_instance_view_status {
+**code**: string
+**display_status**: string
+**level**: string
+**message**: string
+**time**: datetime
+}
+class azure_key_vault_secret_reference {
+**secret_url**: string
+**source_vault**: string
+}
+class azure_linux_configuration {
+**disable_password_authentication**: boolean
+**enable_vm_agent_platform_updates**: boolean
+**patch_settings**: azure_linux_patch_settings
+**provision_vm_agent**: boolean
+**ssh**: azure_ssh_configuration
+}
+class azure_linux_patch_settings {
+**assessment_mode**: string
+**automatic_by_platform_settings**: azure_linux_vm_guest_patch_automatic_by_platform_settings
+**patch_mode**: string
+}
+class azure_linux_vm_guest_patch_automatic_by_platform_settings {
+**bypass_platform_safety_checks_on_user_schedule**: boolean
+**reboot_setting**: string
+}
+class azure_os_image_notification_profile {
+**enable**: boolean
+**not_before_timeout**: string
+}
+class azure_patch_settings {
+**assessment_mode**: string
+**automatic_by_platform_settings**: azure_windows_vm_guest_patch_automatic_by_platform_settings
+**enable_hotpatching**: boolean
+**patch_mode**: string
+}
+class azure_plan {
+**name**: string
+**product**: string
+**promotion_code**: string
+**publisher**: string
+}
+class azure_principalid_clientid {
+**client_id**: string
+**principal_id**: string
+}
+class azure_priority_mix_policy {
+**base_regular_priority_count**: int64
+**regular_priority_percentage_above_base**: int64
+}
+class azure_public_ip_address_sku {
+**name**: string
+**tier**: string
+}
+class azure_resource {
+}
+class azure_rolling_upgrade_policy {
+**enable_cross_zone_upgrade**: boolean
+**max_batch_instance_percent**: int64
+**max_surge**: boolean
+**max_unhealthy_instance_percent**: int64
+**max_unhealthy_upgraded_instance_percent**: int64
+**pause_time_between_batches**: string
+**prioritize_unhealthy_instances**: boolean
+**rollback_failed_instances_on_policy_breach**: boolean
+}
+class azure_scale_in_policy {
+**force_deletion**: boolean
+**rules**: string[]
+}
+class azure_scheduled_events_profile {
+**os_image_notification_profile**: azure_os_image_notification_profile
+**terminate_notification_profile**: azure_terminate_notification_profile
+}
+class azure_security_posture_reference {
+**exclude_extensions**: azure_virtual_machine_extension[]
+**id**: string
+}
+class azure_security_profile {
+**encryption_at_host**: boolean
+**security_type**: string
+**uefi_settings**: azure_uefi_settings
+}
+class azure_sku {
+**capacity**: int64
+**name**: string
+**tier**: string
+}
+class azure_spot_restore_policy {
+**enabled**: boolean
+**restore_timeout**: string
+}
+class azure_ssh_configuration {
+**public_keys**: azure_ssh_public_key[]
+}
+class azure_ssh_public_key {
+**key_data**: string
+**path**: string
+}
+class azure_terminate_notification_profile {
+**enable**: boolean
+**not_before_timeout**: string
+}
+class azure_uefi_settings {
+**secure_boot_enabled**: boolean
+**v_tpm_enabled**: boolean
+}
+class azure_upgrade_policy {
+**automatic_os_upgrade_policy**: azure_automatic_os_upgrade_policy
+**mode**: string
+**rolling_upgrade_policy**: azure_rolling_upgrade_policy
+}
+class azure_vault_certificate {
+**certificate_store**: string
+**certificate_url**: string
+}
+class azure_vault_secret_group {
+**source_vault**: string
+**vault_certificates**: azure_vault_certificate[]
+}
+class azure_virtual_machine_extension {
+**auto_upgrade_minor_version**: boolean
+**enable_automatic_upgrade**: boolean
+**force_update_tag**: string
+**machine_extension_instance_view**: azure_virtual_machine_extension_instance_view
+**protected_settings**: any
+**protected_settings_from_key_vault**: azure_key_vault_secret_reference
+**provision_after_extensions**: string[]
+**provisioning_state**: string
+**publisher**: string
+**settings**: any
+**suppress_failures**: boolean
+**type**: string
+**type_handler_version**: string
+}
+class azure_virtual_machine_extension_instance_view {
+**name**: string
+**statuses**: azure_instance_view_status[]
+**substatuses**: azure_instance_view_status[]
+**type**: string
+**type_handler_version**: string
+}
+class azure_virtual_machine_scale_set {
+**automatic_repairs_policy**: azure_automatic_repairs_policy
+**azure_plan**: azure_plan
+**constrained_maximum_capacity**: boolean
+**do_not_run_extensions_on_overprovisioned_v_ms**: boolean
+**extended_location**: azure_extended_location
+**host_group**: string
+**orchestration_mode**: string
+**overprovision**: boolean
+**platform_fault_domain_count**: int64
+**priority_mix_policy**: azure_priority_mix_policy
+**provisioning_state**: string
+**proximity_placement_group**: string
+**scale_in_policy**: azure_scale_in_policy
+**scale_set_capabilities**: azure_additional_capabilities
+**scale_set_identity**: azure_virtual_machine_scale_set_identity
+**scale_set_sku**: azure_sku
+**single_placement_group**: boolean
+**spot_restore_policy**: azure_spot_restore_policy
+**time_created**: datetime
+**unique_id**: string
+**upgrade_policy**: azure_upgrade_policy
+**virtual_machine_profile**: azure_virtual_machine_scale_set_vm_profile
+**zone_balance**: boolean
+}
+class azure_virtual_machine_scale_set_data_disk {
+**caching**: string
+**create_option**: string
+**delete_option**: string
+**disk_iops_read_write**: int64
+**disk_m_bps_read_write**: int64
+**disk_size_gb**: int64
+**lun**: int64
+**managed_disk**: azure_virtual_machine_scale_set_managed_disk_parameters
+**name**: string
+**write_accelerator_enabled**: boolean
+}
+class azure_virtual_machine_scale_set_extension {
+**auto_upgrade_minor_version**: boolean
+**enable_automatic_upgrade**: boolean
+**force_update_tag**: string
+**name**: string
+**protected_settings**: any
+**protected_settings_from_key_vault**: azure_key_vault_secret_reference
+**provision_after_extensions**: string[]
+**provisioning_state**: string
+**publisher**: string
+**settings**: any
+**suppress_failures**: boolean
+**type**: string
+**type_handler_version**: string
+}
+class azure_virtual_machine_scale_set_extension_profile {
+**extensions**: azure_virtual_machine_scale_set_extension[]
+**extensions_time_budget**: string
+}
+class azure_virtual_machine_scale_set_hardware_profile {
+**vm_size_properties**: azure_vm_size_properties
+}
+class azure_virtual_machine_scale_set_identity {
+**principal_id**: string
+**tenant_id**: string
+**type**: string
+**user_assigned_identities**: dictionary[string, azure_principalid_clientid]
+}
+class azure_virtual_machine_scale_set_ip_configuration {
+**application_gateway_backend_address_pools**: string[]
+**application_security_groups**: string[]
+**load_balancer_backend_address_pools**: string[]
+**load_balancer_inbound_nat_pools**: string[]
+**name**: string
+**primary**: boolean
+**private_ip_address_version**: string
+**public_ip_address_configuration**: azure_virtual_machine_scale_set_public_ip_address_configuration
+**subnet**: string
+}
+class azure_virtual_machine_scale_set_ip_tag {
+**ip_tag_type**: string
+**tag**: string
+}
+class azure_virtual_machine_scale_set_managed_disk_parameters {
+**disk_encryption_set**: azure_disk_encryption_set_parameters
+**security_profile**: azure_vm_disk_security_profile
+**storage_account_type**: string
+}
+class azure_virtual_machine_scale_set_network_configuration {
+**delete_option**: string
+**disable_tcp_state_tracking**: boolean
+**dns_settings**: azure_virtual_machine_scale_set_network_configuration_dns_settings
+**enable_accelerated_networking**: boolean
+**enable_fpga**: boolean
+**enable_ip_forwarding**: boolean
+**ip_configurations**: azure_virtual_machine_scale_set_ip_configuration[]
+**name**: string
+**network_security_group**: string
+**primary**: boolean
+}
+class azure_virtual_machine_scale_set_network_configuration_dns_settings {
+**dns_servers**: string[]
+}
+class azure_virtual_machine_scale_set_network_profile {
+**health_probe**: string
+**network_api_version**: string
+**network_interface_configurations**: azure_virtual_machine_scale_set_network_configuration[]
+}
+class azure_virtual_machine_scale_set_os_disk {
+**caching**: string
+**create_option**: string
+**delete_option**: string
+**diff_disk_settings**: azure_diff_disk_settings
+**disk_size_gb**: int64
+**image**: string
+**managed_disk**: azure_virtual_machine_scale_set_managed_disk_parameters
+**name**: string
+**os_type**: string
+**vhd_containers**: string[]
+**write_accelerator_enabled**: boolean
+}
+class azure_virtual_machine_scale_set_os_profile {
+**admin_password**: string
+**admin_username**: string
+**allow_extension_operations**: boolean
+**computer_name_prefix**: string
+**custom_data**: string
+**linux_configuration**: azure_linux_configuration
+**require_guest_provision_signal**: boolean
+**secrets**: azure_vault_secret_group[]
+**windows_configuration**: azure_windows_configuration
+}
+class azure_virtual_machine_scale_set_public_ip_address_configuration {
+**delete_option**: string
+**dns_settings**: string
+**idle_timeout_in_minutes**: int64
+**ip_tags**: azure_virtual_machine_scale_set_ip_tag[]
+**name**: string
+**public_ip_address_version**: string
+**public_ip_prefix**: string
+**sku**: azure_public_ip_address_sku
+}
+class azure_virtual_machine_scale_set_storage_profile {
+**data_disks**: azure_virtual_machine_scale_set_data_disk[]
+**disk_controller_type**: string
+**image_reference**: azure_image_reference
+**os_disk**: azure_virtual_machine_scale_set_os_disk
+}
+class azure_virtual_machine_scale_set_vm_profile {
+**application_profile**: azure_application_profile
+**billing_profile**: double
+**capacity_reservation**: azure_capacity_reservation_profile
+**diagnostics_profile**: azure_diagnostics_profile
+**eviction_policy**: string
+**extension_profile**: azure_virtual_machine_scale_set_extension_profile
+**hardware_profile**: azure_virtual_machine_scale_set_hardware_profile
+**license_type**: string
+**network_profile**: azure_virtual_machine_scale_set_network_profile
+**os_profile**: azure_virtual_machine_scale_set_os_profile
+**priority**: string
+**scheduled_events_profile**: azure_scheduled_events_profile
+**security_posture_reference**: azure_security_posture_reference
+**security_profile**: azure_security_profile
+**service_artifact_reference**: string
+**storage_profile**: azure_virtual_machine_scale_set_storage_profile
+**user_data**: string
+}
+class azure_vm_disk_security_profile {
+**disk_encryption_set**: azure_disk_encryption_set_parameters
+**security_encryption_type**: string
+}
+class azure_vm_gallery_application {
+**configuration_reference**: string
+**enable_automatic_upgrade**: boolean
+**order**: int64
+**package_reference_id**: string
+**tags**: string
+**treat_failure_as_deployment_failure**: boolean
+}
+class azure_vm_size_properties {
+**v_cp_us_available**: int64
+**v_cp_us_per_core**: int64
+}
+class azure_win_rm_configuration {
+**listeners**: azure_win_rm_listener[]
+}
+class azure_win_rm_listener {
+**certificate_url**: string
+**protocol**: string
+}
+class azure_windows_configuration {
+**additional_unattend_content**: azure_additional_unattend_content[]
+**enable_automatic_updates**: boolean
+**enable_vm_agent_platform_updates**: boolean
+**patch_settings**: azure_patch_settings
+**provision_vm_agent**: boolean
+**time_zone**: string
+**win_rm**: azure_win_rm_configuration
+}
+class azure_windows_vm_guest_patch_automatic_by_platform_settings {
+**bypass_platform_safety_checks_on_user_schedule**: boolean
+**reboot_setting**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_application_profile --> azure_vm_gallery_application
+azure_diagnostics_profile --> azure_boot_diagnostics
+azure_linux_configuration --> azure_linux_patch_settings
+azure_linux_configuration --> azure_ssh_configuration
+azure_linux_patch_settings --> azure_linux_vm_guest_patch_automatic_by_platform_settings
+azure_patch_settings --> azure_windows_vm_guest_patch_automatic_by_platform_settings
+resource <|--- azure_resource
+azure_scheduled_events_profile --> azure_os_image_notification_profile
+azure_scheduled_events_profile --> azure_terminate_notification_profile
+azure_security_posture_reference --> azure_virtual_machine_extension
+azure_security_profile --> azure_uefi_settings
+azure_ssh_configuration --> azure_ssh_public_key
+azure_upgrade_policy --> azure_automatic_os_upgrade_policy
+azure_upgrade_policy --> azure_rolling_upgrade_policy
+azure_vault_secret_group --> azure_vault_certificate
+azure_virtual_machine_extension --> azure_key_vault_secret_reference
+azure_virtual_machine_extension --> azure_virtual_machine_extension_instance_view
+azure_virtual_machine_extension_instance_view --> azure_instance_view_status
+azure_virtual_machine_scale_set --> azure_additional_capabilities
+azure_virtual_machine_scale_set --> azure_automatic_repairs_policy
+azure_virtual_machine_scale_set --> azure_extended_location
+azure_virtual_machine_scale_set --> azure_plan
+azure_virtual_machine_scale_set --> azure_priority_mix_policy
+azure_resource <|--- azure_virtual_machine_scale_set
+azure_virtual_machine_scale_set --> azure_scale_in_policy
+azure_virtual_machine_scale_set --> azure_sku
+azure_virtual_machine_scale_set --> azure_spot_restore_policy
+azure_virtual_machine_scale_set --> azure_upgrade_policy
+azure_virtual_machine_scale_set --> azure_virtual_machine_scale_set_identity
+azure_virtual_machine_scale_set --> azure_virtual_machine_scale_set_vm_profile
+azure_virtual_machine_scale_set_data_disk --> azure_virtual_machine_scale_set_managed_disk_parameters
+azure_virtual_machine_scale_set_extension --> azure_key_vault_secret_reference
+azure_virtual_machine_scale_set_extension_profile --> azure_virtual_machine_scale_set_extension
+azure_virtual_machine_scale_set_hardware_profile --> azure_vm_size_properties
+azure_virtual_machine_scale_set_identity --> azure_principalid_clientid
+azure_virtual_machine_scale_set_ip_configuration --> azure_virtual_machine_scale_set_public_ip_address_configuration
+azure_virtual_machine_scale_set_managed_disk_parameters --> azure_disk_encryption_set_parameters
+azure_virtual_machine_scale_set_managed_disk_parameters --> azure_vm_disk_security_profile
+azure_virtual_machine_scale_set_network_configuration --> azure_virtual_machine_scale_set_ip_configuration
+azure_virtual_machine_scale_set_network_configuration --> azure_virtual_machine_scale_set_network_configuration_dns_settings
+azure_virtual_machine_scale_set_network_profile --> azure_virtual_machine_scale_set_network_configuration
+azure_virtual_machine_scale_set_os_disk --> azure_diff_disk_settings
+azure_virtual_machine_scale_set_os_disk --> azure_virtual_machine_scale_set_managed_disk_parameters
+azure_virtual_machine_scale_set_os_profile --> azure_linux_configuration
+azure_virtual_machine_scale_set_os_profile --> azure_vault_secret_group
+azure_virtual_machine_scale_set_os_profile --> azure_windows_configuration
+azure_virtual_machine_scale_set_public_ip_address_configuration --> azure_public_ip_address_sku
+azure_virtual_machine_scale_set_public_ip_address_configuration --> azure_virtual_machine_scale_set_ip_tag
+azure_virtual_machine_scale_set_storage_profile --> azure_image_reference
+azure_virtual_machine_scale_set_storage_profile --> azure_virtual_machine_scale_set_data_disk
+azure_virtual_machine_scale_set_storage_profile --> azure_virtual_machine_scale_set_os_disk
+azure_virtual_machine_scale_set_vm_profile --> azure_application_profile
+azure_virtual_machine_scale_set_vm_profile --> azure_capacity_reservation_profile
+azure_virtual_machine_scale_set_vm_profile --> azure_diagnostics_profile
+azure_virtual_machine_scale_set_vm_profile --> azure_scheduled_events_profile
+azure_virtual_machine_scale_set_vm_profile --> azure_security_posture_reference
+azure_virtual_machine_scale_set_vm_profile --> azure_security_profile
+azure_virtual_machine_scale_set_vm_profile --> azure_virtual_machine_scale_set_extension_profile
+azure_virtual_machine_scale_set_vm_profile --> azure_virtual_machine_scale_set_hardware_profile
+azure_virtual_machine_scale_set_vm_profile --> azure_virtual_machine_scale_set_network_profile
+azure_virtual_machine_scale_set_vm_profile --> azure_virtual_machine_scale_set_os_profile
+azure_virtual_machine_scale_set_vm_profile --> azure_virtual_machine_scale_set_storage_profile
+azure_vm_disk_security_profile --> azure_disk_encryption_set_parameters
+azure_win_rm_configuration --> azure_win_rm_listener
+azure_windows_configuration --> azure_additional_unattend_content
+azure_windows_configuration --> azure_patch_settings
+azure_windows_configuration --> azure_win_rm_configuration
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_virtual_machine_scale_set resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_virtual_machine_scale_set {
+}
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>

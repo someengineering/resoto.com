@@ -18,6 +18,7 @@ core = "https://localhost:8900"
 # This list is used as filter: only providers listed here get exported
 providers = [
     "aws",
+    "azure",
     "digitalocean",
     "dockerhub",
     "gcp",
@@ -114,12 +115,12 @@ def write_md(provider: str, kinds: list):
 def load_valid_kinds() -> Dict[str, Any]:
     for _ in range(30):  # number of retries
         try:
-            print("Get available kinds...")
+            print("Getting available kinds...")
             kinds = get_kinds()
             if kinds:
                 return kinds
             else:
-                print(f"Missing some required kinds, trying again in 5 seconds...")
+                print(f"Retrying in 5 seconds...")
         except Exception as ex:
             print(f"Error getting list of kinds: {ex}")
         time.sleep(5)

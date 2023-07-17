@@ -11,9 +11,13 @@ Resoto comes with a built-in module called Resoto DataLink. DataLink introduces 
 - Installed and configured [Resoto Shell](../../../reference/components/shell.mdx)
 - Optionally: Snowflake, MySQL or PostgreSQL database and their host, port, user, password and name of your database
 
-:::tip When running Resoto Shell locally, SQLite databases will be downloaded to the local file system. :::
+:::tip
 
-## Exporting Data to a SQLite File
+When running Resoto Shell locally, SQLite databases will be downloaded to the local file system.
+
+:::
+
+## A First Test Export to a Local SQLite File
 
 To export your entire cloud asset inventory data to a local sqlite database file, run the following command in Resoto Shell:
 
@@ -30,7 +34,9 @@ $ sqlite3 resoto-inventory.sqlite3
 sqlite> .tables
 ```
 
-This will give you a list of all the tables Resoto created. You can now query the tables and inspect the data:
+This will give you a list of all the tables Resoto created.
+
+You can now query the tables and inspect the data:
 
 ```sql
 sqlite> SELECT * FROM aws_ec2_instance;
@@ -76,7 +82,62 @@ SELECT * FROM aws_elb WHERE json_array_length(backends) = 0;
 SELECT * FROM aws_ec2_security_group, json_each(aws_ec2_security_group.group_ip_permissions) WHERE json_extract(json_each.value, '$.from_port') <= 22 AND json_extract(json_each.value, '$.to_port') >= 22;
 ```
 
-:::note The above query uses the [JSON extension](https://www.sqlite.org/json1.html) to query the JSON data in the `group_ip_permissions` column. Databases like MySQL and PostgreSQL have similar extensions but the syntax will be slightly different. :::
+:::note
+
+The above query uses the [JSON extension](https://www.sqlite.org/json1.html) to query the JSON data in the `group_ip_permissions` column. Databases like MySQL and PostgreSQL have similar extensions but the syntax will be slightly different.
+
+:::
+
+## Syncing to different databases
+
+### SQLite
+
+```bash title="Sync the complete graph to a SQLite database"
+ > db sync sqlite --database resoto.db --drop-existing
+```
+
+### PostgreSQL
+
+```bash title="Sync the complete graph to a PostgreSQL database"
+ > db sync postgresql --host localhost --port 5432 --database resoto --user ci --password bombproof
+```
+
+### MariaDB
+
+```bash title="Sync the complete graph to a MariaDB database"
+ > db sync mariadb --host localhost --port 3306 --user root --password pw --database test
+```
+
+### MySQL
+
+```bash title="Sync the complete graph to a MySQL database"
+ > db sync mysql --host localhost --port 3306 --user root --password pw --database test
+```
+
+### Snowflake
+
+```bash title="Sync the complete graph to a Snowflake database"
+> db sync snowflake --host localhost --port 3306 --user root --password pw --database test
+  --arg warehouse=compute_wh --arg role=accountadmin
+```
+
+## Advanced Usage
+
+The `db` command can not only sync the entire inventory graph but also a subset of it. You can use the `search` command to filter the data that should be synced to the database.
+
+```bash title="Select a subset of data and sync it to a SQLite database"
+ > search --with-edges is(graph_root) -[0:2]-> | db sync sqlite --database resoto.db
+```
+
+```bash title="Sync all large instances into a sqlite database"
+ > search instance_cores > 8 | db sync sqlite --database large_instances.db
+```
+
+:::info
+
+When you use `search` to filter the data that should be synced to the database, you can use the `--with-edges` option to include the dependencies between your resources. Resoto DataLink will then create corresponding link tables in the database. If you do not care about the resource dependencies, you can omit the `--with-edges` option.
+
+:::
 
 ## Further Reading
 

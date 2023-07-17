@@ -44,37 +44,4 @@ The `db` command synchronizes data to a SQL database.
 
 ## Examples
 
-```bash title="Sync the complete graph to a sqlite database"
- > db sync sqlite --database resoto.db --drop-existing
-```
-
-```bash title="Sync the complete graph to a postgresql database"
- > db sync postgresql --host localhost --port 5432 --database resoto --user ci --password bombproof
-```
-
-```bash title="Sync the complete graph to a mariadb database"
- > db sync mariadb --host localhost --port 3306 --user root --password pw --database test
-```
-
-```bash title="Sync the complete graph to a mysql database"
- > db sync mysql --host localhost --port 3306 --user root --password pw --database test
-```
-
-```bash title="Sync the complete graph to a snowflake database"
-> db sync snowflake --host localhost --port 3306 --user root --password pw --database test
-  --arg warehouse=compute_wh --arg role=accountadmin
-```
-
-```bash title="Select a subset of data and sync it to a sqlite database"
- > search --with-edges is(graph_root) -[0:2]-> | db sync sqlite --database resoto.db
-```
-
-```bash title="Sync all large instances into a sqlite database"
- > search instance_cores > 8 | db sync sqlite --database large_instances.db
-```
-
-:::info
-
-When you use `search` to filter the data that should be synced to the database, you can use the `--with-edges` option to include the dependencies between your resources. Resoto DataLink will then create corresponding link tables in the database. If you do not care about the resource dependencies, you can omit the `--with-edges` option.
-
-:::
+For a list of usage examples, please refer to the [How-To guide](../../../how-to-guides/data-export/datalink/index.mdx).

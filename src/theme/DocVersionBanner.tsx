@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import Link from '@docusaurus/Link';
 import type {
   PropVersionMetadata,

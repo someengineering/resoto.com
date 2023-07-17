@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable jsx-a11y/no-autofocus */
 
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';

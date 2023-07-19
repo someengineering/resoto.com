@@ -38,7 +38,7 @@
     "@rive-app/react-canvas": "3.0.54",
     "a11y-react-emoji": "1.2.0",
     "clsx": "2.0.0",
-    "docusaurus-plugin-openapi-docs": "0.0.0-beta.660",
+    "docusaurus-plugin-openapi-docs": "1.7.2",
     "docusaurus-theme-openapi-docs": "0.0.0-beta.660",
     "formik": "2.4.2",
     "github-slugger": "2.0.0",

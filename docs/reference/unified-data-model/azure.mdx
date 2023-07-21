@@ -3746,3 +3746,100 @@ class azure_virtual_machine_scale_set {
 </div>
 
 </details>
+
+## `azure_virtual_machine_size`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_virtual_machine_size data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_resource {
+}
+class azure_virtual_machine_size {
+**max_data_disk_count**: int64
+**memory_in_mb**: int64
+**number_of_cores**: int64
+**os_disk_size_in_mb**: int64
+**resource_disk_size_in_mb**: int64
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- azure_resource
+azure_resource <|--- azure_virtual_machine_size
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_virtual_machine_size resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_virtual_machine_size {
+}
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>

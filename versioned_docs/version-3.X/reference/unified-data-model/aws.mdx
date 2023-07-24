@@ -5809,6 +5809,7 @@ class aws_ec2_gpu_device_info {
 **name**: string
 }
 class aws_ec2_gpu_info {
+**gpu_model**: string
 **gpus**: aws_ec2_gpu_device_info[]
 **total_gpu_memory_in_mi_b**: int64
 }
@@ -5832,6 +5833,7 @@ class aws_ec2_instance_type {
 **burstable_performance_supported**: boolean
 **current_generation**: boolean
 **dedicated_hosts_supported**: boolean
+**ecu**: double
 **free_tier_eligible**: boolean
 **hibernation_supported**: boolean
 **hypervisor**: string
@@ -5846,6 +5848,7 @@ class aws_ec2_instance_type {
 **instance_type_processor_info**: aws_ec2_processor_info
 **instance_type_v_cpu_info**: aws_ec2_v_cpu_info
 **memory_info**: int64
+**pretty_name**: string
 **supported_boot_modes**: string[]
 **supported_root_device_types**: string[]
 **supported_usage_classes**: string[]
@@ -5874,6 +5877,7 @@ class aws_ec2_placement_group_info {
 **supported_strategies**: string[]
 }
 class aws_ec2_processor_info {
+**physical_processor**: string
 **supported_architectures**: string[]
 **sustained_clock_speed_in_ghz**: double
 }

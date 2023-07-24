@@ -40,6 +40,7 @@ https://releases.resoto.com/*                                     https://resoto
 /blog/tags/gcp                                                    /blog/tags/google-cloud
 /blog/tags/graph/*                                                /blog/tags/graph-database
 /blog/tags/infrastructure-apps                                    /blog/tags/resoto-infrastructure-apps
+/blog/tags/pagerduty                                              /blog/tags/pager-duty
 /blog/tags/plugins                                                /blog/tags/resoto-infrastructure-apps
 /blog/tags/reactive                                               /blog/tags/reactive-infrastructure
 /blog/tags/shell                                                  /blog/tags/resoto-cli

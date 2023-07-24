@@ -13,7 +13,7 @@ tags: [Product Updates]
 
 Have you ever wanted to seamlessly sync your entire cloud asset inventory or just specific parts of it with a database? Now you can!
 
-**[Resoto DataLink](/datalink) enables you to pipe any Resoto search into the new [`db` command](/docs/reference/cli/action-commands/db) and sync the results to a database.** As of now, we support Snowflake, PostgreSQL, MySQL/MariaDB, and SQLite.
+**[Resoto DataLink](/datalink) enables you to pipe any Resoto search into the new [`db` command](/docs/reference/cli/db) and sync the results to a database.** As of now, we support Snowflake, PostgreSQL, MySQL/MariaDB, and SQLite.
 
 This feature brings a wealth of flexibility and possibilities. For instance, by applying a search filter, you can choose to sync only your most expensive resources, enabling targeted tracking and optimization. Visualize this data in tools like Grafana or display it on your custom intranet page for wider visibility and better cost control.
 
@@ -25,7 +25,7 @@ So whether you're syncing your entire inventory or just specific parts, DataLink
 
 ### Infrastructure Apps
 
-We've transitioned the `discord` and `slack` commands from [command templates](/docs/reference/cli/search-commands/templates) to [infrastructure apps](/docs/how-to-guides/infrastructure-apps/install-and-run-infrastructure-apps). Simply install them using the `app install discord` and `app install slack` commands. This allows us to keep them updated without the need to release a new version of Resoto.
+We've transitioned the `discord` and `slack` commands from [templates](/docs/reference/cli/template) to [infrastructure apps](/docs/how-to-guides/infrastructure-apps/install-and-run-infrastructure-apps). Simply install them using the [`app install discord` and `app install slack` commands](/docs/reference/cli/app/install). This allows us to keep them updated without the need to release a new version of Resoto.
 
 Furthermore, Infrastructure Apps can now receive input on stdin. This lets you pipe the output of a search into the app and is the foundation for the aforementioned Discord and Slack commands.
 

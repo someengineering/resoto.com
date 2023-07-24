@@ -55,7 +55,7 @@
     "react-zoom-pan-pinch": "3.1.0",
     "rehype-katex": "5.0.0",
     "remark-kroki-plugin": "0.1.1",
-    "remark-math": "3.0.1",
+    "remark-math": "5.1.1",
     "yup": "1.2.0"
   },
   "devDependencies": {

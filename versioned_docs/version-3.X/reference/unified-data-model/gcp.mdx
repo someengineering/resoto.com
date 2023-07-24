@@ -984,7 +984,7 @@ class gcp_action {
 }
 class gcp_autoclass {
 **enabled**: boolean
-**toggle_time**: string
+**toggle_time**: datetime
 }
 class gcp_bucket {
 **acl**: gcp_bucket_access_control[]
@@ -1009,8 +1009,8 @@ class gcp_bucket {
 **rpo**: string
 **satisfies_pzs**: boolean
 **storage_class**: string
-**time_created**: string
-**updated**: string
+**time_created**: datetime
+**updated**: datetime
 **versioning_enabled**: boolean
 }
 class gcp_bucket_access_control {
@@ -1025,7 +1025,7 @@ class gcp_bucket_access_control {
 }
 class gcp_bucketpolicyonly {
 **enabled**: boolean
-**locked_time**: string
+**locked_time**: datetime
 }
 class gcp_condition {
 **age**: int64
@@ -1092,7 +1092,7 @@ class gcp_resource {
 **link**: string
 }
 class gcp_retentionpolicy {
-**effective_time**: string
+**effective_time**: datetime
 **is_locked**: boolean
 **retention_period**: string
 }
@@ -1102,7 +1102,7 @@ class gcp_rule {
 }
 class gcp_uniformbucketlevelaccess {
 **enabled**: boolean
-**locked_time**: string
+**locked_time**: datetime
 }
 class gcp_website {
 **main_page_suffix**: string
@@ -1219,7 +1219,7 @@ class gcp_accelerator_config {
 **accelerator_type**: string
 }
 class gcp_allocation_specific_sku_allocation_allocated_instance_properties_reserved_disk {
-**disk_size_gb**: string
+**disk_size_gb**: int64
 **interface**: string
 }
 class gcp_allocation_specific_sku_allocation_reserved_instance_properties {
@@ -2106,7 +2106,7 @@ class gcp_disk {
 **location_hint**: string
 **options**: string
 **physical_block_size_bytes**: string
-**provisioned_iops**: string
+**provisioned_iops**: int64
 **replica_zones**: string[]
 **resource_policies**: string[]
 **satisfies_pzs**: boolean
@@ -2262,7 +2262,7 @@ class gcp_deprecation_status {
 **state**: string
 }
 class gcp_disk_type {
-**default_disk_size_gb**: string
+**default_disk_size_gb**: int64
 **valid_disk_size**: string
 }
 class gcp_resource {
@@ -3506,7 +3506,7 @@ class gcp_file_content_buffer {
 class gcp_image {
 **architecture**: string
 **archive_size_bytes**: string
-**disk_size_gb**: string
+**disk_size_gb**: int64
 **family**: string
 **guest_os_features**: string[]
 **image_encryption_key**: gcp_customer_encryption_key
@@ -3672,7 +3672,7 @@ class gcp_attached_disk {
 **boot**: boolean
 **device_name**: string
 **disk_encryption_key**: gcp_customer_encryption_key
-**disk_size_gb**: string
+**disk_size_gb**: int64
 **force_attach**: boolean
 **guest_os_features**: string[]
 **index**: int64
@@ -3688,12 +3688,12 @@ class gcp_attached_disk_initialize_params {
 **architecture**: string
 **description**: string
 **disk_name**: string
-**disk_size_gb**: string
+**disk_size_gb**: int64
 **disk_type**: string
 **labels**: dictionary[string, string]
 **licenses**: string[]
 **on_update_action**: string
-**provisioned_iops**: string
+**provisioned_iops**: int64
 **resource_manager_tags**: dictionary[string, string]
 **resource_policies**: string[]
 **source_image**: string
@@ -4340,7 +4340,7 @@ class gcp_attached_disk {
 **boot**: boolean
 **device_name**: string
 **disk_encryption_key**: gcp_customer_encryption_key
-**disk_size_gb**: string
+**disk_size_gb**: int64
 **force_attach**: boolean
 **guest_os_features**: string[]
 **index**: int64
@@ -4356,12 +4356,12 @@ class gcp_attached_disk_initialize_params {
 **architecture**: string
 **description**: string
 **disk_name**: string
-**disk_size_gb**: string
+**disk_size_gb**: int64
 **disk_type**: string
 **labels**: dictionary[string, string]
 **licenses**: string[]
 **on_update_action**: string
-**provisioned_iops**: string
+**provisioned_iops**: int64
 **resource_manager_tags**: dictionary[string, string]
 **resource_policies**: string[]
 **source_image**: string
@@ -4423,9 +4423,9 @@ class gcp_instance_properties {
 **tags**: gcp_tags
 }
 class gcp_instance_template {
-**properties**: gcp_instance_properties
 **source_instance**: string
 **source_instance_params**: gcp_source_instance_params
+**template_properties**: gcp_instance_properties
 }
 class gcp_items {
 **key**: string
@@ -5154,7 +5154,7 @@ class gcp_attached_disk {
 **boot**: boolean
 **device_name**: string
 **disk_encryption_key**: gcp_customer_encryption_key
-**disk_size_gb**: string
+**disk_size_gb**: int64
 **force_attach**: boolean
 **guest_os_features**: string[]
 **index**: int64
@@ -5170,12 +5170,12 @@ class gcp_attached_disk_initialize_params {
 **architecture**: string
 **description**: string
 **disk_name**: string
-**disk_size_gb**: string
+**disk_size_gb**: int64
 **disk_type**: string
 **labels**: dictionary[string, string]
 **licenses**: string[]
 **on_update_action**: string
-**provisioned_iops**: string
+**provisioned_iops**: int64
 **resource_manager_tags**: dictionary[string, string]
 **resource_policies**: string[]
 **source_image**: string
@@ -5283,7 +5283,7 @@ class gcp_saved_attached_disk {
 **boot**: boolean
 **device_name**: string
 **disk_encryption_key**: gcp_customer_encryption_key
-**disk_size_gb**: string
+**disk_size_gb**: int64
 **disk_type**: string
 **guest_os_features**: string[]
 **index**: int64
@@ -8955,7 +8955,7 @@ class gcp_snapshot {
 **snapshot_auto_created**: boolean
 **snapshot_chain_name**: string
 **snapshot_creation_size_bytes**: string
-**snapshot_disk_size_gb**: string
+**snapshot_disk_size_gb**: int64
 **snapshot_download_bytes**: string
 **snapshot_license_codes**: string[]
 **snapshot_licenses**: string[]

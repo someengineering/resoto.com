@@ -3097,10 +3097,10 @@
   resolved "https://registry.yarnpkg.com/@rive-app/canvas/-/canvas-1.2.4.tgz#54db7239888fb9e2af0653bf425d5d4df1bd79f2"
   integrity sha512-TfkTM0D+JMKTmkg3WhdoFaarLohMyrLeSLwwPLa9GiHNU9odFPptS0j5iprN/WygrTWsb5WoyXgCXVZpZIKAQg==
 
-"@rive-app/react-canvas@3.0.56":
-  version "3.0.56"
-  resolved "https://registry.yarnpkg.com/@rive-app/react-canvas/-/react-canvas-3.0.56.tgz#7f37aa9f687f7789383b3910054d951e72b6bcb5"
-  integrity sha512-gD888Bo3fsv1/2+v/bXmnZP2Ob9h8Ouco+mRdnFdi7UTt1kY8F5Sq5dzjKI0H3K66WXivachm7xQ5FInx4deVg==
+"@rive-app/react-canvas@3.0.57":
+  version "3.0.57"
+  resolved "https://registry.yarnpkg.com/@rive-app/react-canvas/-/react-canvas-3.0.57.tgz#ee3ff2491aaa94bca44d655c2823de19f14a932a"
+  integrity sha512-igjVzjYueOlKi2Tn4lyresbhHinz8mKg5Gt9z29bcN2O2SAErCYb6PNUdUJ1gMIQinKV1VHMvDdsvJbYkh9kwQ==
   dependencies:
     "@rive-app/canvas" "1.2.4"
 

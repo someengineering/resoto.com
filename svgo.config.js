@@ -10,7 +10,6 @@ module.exports = {
         },
       },
     },
-    'removeDimensions',
     {
       name: 'removeAttributesBySelector',
       params: {

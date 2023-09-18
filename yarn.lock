@@ -3046,17 +3046,17 @@
     redux-thunk "^2.4.2"
     reselect "^4.1.8"
 
-"@rive-app/canvas@2.2.2":
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/@rive-app/canvas/-/canvas-2.2.2.tgz#f78fa622dfb9f5eb7ebea1dca5480f48ed937a15"
-  integrity sha512-F1J4tDfFPUehvznveMdInMIWKvY1HjGZcOenMztWfJBCMZDammfqVz695Y2jaku+XFE2f0g6R8X2EcqozaFwwg==
+"@rive-app/canvas@2.4.1":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@rive-app/canvas/-/canvas-2.4.1.tgz#76e355652f28c55d8c9d17c280a2ef37acd65c45"
+  integrity sha512-+maJPYbs5R1dogqRS2He0/kAriM+gQzmStK9Py/U9f4oCsY7ZmeNshH5RCuvJX3fxDDs8QAcFS1Ro7q5fQGECg==
 
-"@rive-app/react-canvas@4.1.6":
-  version "4.1.6"
-  resolved "https://registry.yarnpkg.com/@rive-app/react-canvas/-/react-canvas-4.1.6.tgz#5a62f93cf647e4678888eedc53e8082474eb6176"
-  integrity sha512-y7jrXU7RYQbpl0mWVX05zbAwNoik8tL5Lon7N+MMqgAedsLPF1rqpSPkZSK7M9q1aLgbhoCsAygMUiPenw4aBw==
+"@rive-app/react-canvas@4.3.1":
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/@rive-app/react-canvas/-/react-canvas-4.3.1.tgz#014446d5e84f7222c972b0e8ee51fc917845cf50"
+  integrity sha512-lDZ01kJyc8p/10SgRmkEXiiFQwDxLGxVVzwcd6yEw8dvRNsDVDL1YFPDsTnuZ5a0NpmmSzPKJi0d07TUJiggZQ==
   dependencies:
-    "@rive-app/canvas" "2.2.2"
+    "@rive-app/canvas" "2.4.1"
 
 "@rollup/plugin-babel@^5.2.0":
   version "5.3.1"

@@ -107,6 +107,13 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class azure_availability_set {
 }
+class azure_proximity_placement_group {
+}
+class azure_virtual_machine {
+}
+azure_availability_set -[#1A83AF]-> azure_proximity_placement_group
+azure_availability_set -[#1A83AF]-> azure_virtual_machine
+azure_virtual_machine -[#1A83AF]-> azure_proximity_placement_group
 @enduml
 ```
 
@@ -206,6 +213,9 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class azure_capacity_reservation_group {
 }
+class azure_virtual_machine {
+}
+azure_capacity_reservation_group -[#1A83AF]-> azure_virtual_machine
 @enduml
 ```
 
@@ -734,6 +744,15 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
+class volume {
+**snapshot_before_delete**: boolean
+**volume_encrypted**: boolean
+**volume_iops**: int64
+**volume_size**: int64
+**volume_status**: volume_status
+**volume_throughput**: int64
+**volume_type**: string
+}
 azure_creation_data --> azure_image_disk_reference
 azure_disk --> azure_creation_data
 azure_disk --> azure_disk_security_profile
@@ -744,10 +763,12 @@ azure_disk --> azure_extended_location
 azure_disk --> azure_purchase_plan
 azure_resource <|--- azure_disk
 azure_disk --> azure_supported_capabilities
+volume <|--- azure_disk
 azure_encryption_settings_collection --> azure_encryption_settings_element
 azure_encryption_settings_element --> azure_key_vault_and_key_reference
 azure_encryption_settings_element --> azure_key_vault_and_secret_reference
 resource <|--- azure_resource
+resource <|--- volume
 @enduml
 ```
 
@@ -786,6 +807,18 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class azure_disk {
 }
+class azure_disk_access {
+}
+class azure_disk_encryption_set {
+}
+class azure_snapshot {
+}
+class azure_virtual_machine {
+}
+azure_disk -[#1A83AF]-> azure_disk_encryption_set
+azure_disk -[#1A83AF]-> azure_snapshot
+azure_disk_access -[#1A83AF]-> azure_disk
+azure_virtual_machine -[#1A83AF]-> azure_disk
 @enduml
 ```
 
@@ -900,8 +933,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class azure_disk {
+}
 class azure_disk_access {
 }
+azure_disk_access -[#1A83AF]-> azure_disk
 @enduml
 ```
 
@@ -1037,8 +1073,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class azure_disk {
+}
 class azure_disk_encryption_set {
 }
+azure_disk -[#1A83AF]-> azure_disk_encryption_set
 @enduml
 ```
 
@@ -1204,8 +1243,6 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class azure_disk_encryption_set_parameters {
-}
 class azure_extended_location {
 **name**: string
 **type**: string
@@ -1228,6 +1265,9 @@ class azure_image_storage_profile {
 }
 class azure_resource {
 }
+class azure_sub_resource {
+**id**: string
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -1243,7 +1283,7 @@ class resource {
 azure_image --> azure_extended_location
 azure_image --> azure_image_storage_profile
 azure_resource <|--- azure_image
-azure_image_os_disk --> azure_disk_encryption_set_parameters
+azure_image_os_disk --> azure_sub_resource
 azure_image_storage_profile --> azure_image_os_disk
 resource <|--- azure_resource
 @enduml
@@ -1284,6 +1324,9 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class azure_image {
 }
+class azure_virtual_machine {
+}
+azure_virtual_machine -[#1A83AF]-> azure_image
 @enduml
 ```
 
@@ -1521,8 +1564,15 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class azure_availability_set {
+}
 class azure_proximity_placement_group {
 }
+class azure_virtual_machine {
+}
+azure_availability_set -[#1A83AF]-> azure_proximity_placement_group
+azure_availability_set -[#1A83AF]-> azure_virtual_machine
+azure_virtual_machine -[#1A83AF]-> azure_proximity_placement_group
 @enduml
 ```
 
@@ -1903,8 +1953,6 @@ class azure_boot_diagnostics {
 class azure_diagnostics_profile {
 **boot_diagnostics**: azure_boot_diagnostics
 }
-class azure_disk_encryption_set_parameters {
-}
 class azure_disk_encryption_settings {
 **disk_encryption_key**: azure_key_vault_secret_reference
 **enabled**: boolean
@@ -1958,7 +2006,7 @@ class azure_linux_vm_guest_patch_automatic_by_platform_settings {
 **reboot_setting**: string
 }
 class azure_managed_disk_parameters {
-**disk_encryption_set**: azure_disk_encryption_set_parameters
+**disk_encryption_set**: azure_sub_resource
 **disk_parameters_security_profile**: azure_vm_disk_security_profile
 **storage_account_type**: string
 }
@@ -2001,7 +2049,7 @@ class azure_restore_point_collection_source_properties {
 **location**: string
 }
 class azure_restore_point_encryption {
-**disk_encryption_set**: azure_disk_encryption_set_parameters
+**disk_encryption_set**: azure_sub_resource
 **type**: string
 }
 class azure_restore_point_instance_view {
@@ -2055,6 +2103,9 @@ class azure_ssh_public_key {
 **key_data**: string
 **path**: string
 }
+class azure_sub_resource {
+**id**: string
+}
 class azure_uefi_settings {
 **secure_boot_enabled**: boolean
 **v_tpm_enabled**: boolean
@@ -2068,7 +2119,7 @@ class azure_vault_secret_group {
 **vault_certificates**: azure_vault_certificate[]
 }
 class azure_vm_disk_security_profile {
-**disk_encryption_set**: azure_disk_encryption_set_parameters
+**disk_encryption_set**: azure_sub_resource
 **security_encryption_type**: string
 }
 class azure_vm_size_properties {
@@ -2117,7 +2168,8 @@ azure_hardware_profile --> azure_vm_size_properties
 azure_linux_configuration --> azure_linux_patch_settings
 azure_linux_configuration --> azure_ssh_configuration
 azure_linux_patch_settings --> azure_linux_vm_guest_patch_automatic_by_platform_settings
-azure_managed_disk_parameters --> azure_disk_encryption_set_parameters
+azure_sub_resource <|--- azure_managed_disk_parameters
+azure_managed_disk_parameters --> azure_sub_resource
 azure_managed_disk_parameters --> azure_vm_disk_security_profile
 azure_os_profile --> azure_linux_configuration
 azure_os_profile --> azure_vault_secret_group
@@ -2129,7 +2181,7 @@ azure_restore_point --> azure_restore_point_source_metadata
 azure_resource <|--- azure_restore_point_collection
 azure_restore_point_collection --> azure_restore_point
 azure_restore_point_collection --> azure_restore_point_collection_source_properties
-azure_restore_point_encryption --> azure_disk_encryption_set_parameters
+azure_restore_point_encryption --> azure_sub_resource
 azure_restore_point_instance_view --> azure_disk_restore_point_instance_view
 azure_restore_point_instance_view --> azure_instance_view_status
 azure_restore_point_source_metadata --> azure_diagnostics_profile
@@ -2147,7 +2199,7 @@ azure_restore_point_source_vmos_disk --> azure_managed_disk_parameters
 azure_security_profile --> azure_uefi_settings
 azure_ssh_configuration --> azure_ssh_public_key
 azure_vault_secret_group --> azure_vault_certificate
-azure_vm_disk_security_profile --> azure_disk_encryption_set_parameters
+azure_vm_disk_security_profile --> azure_sub_resource
 azure_win_rm_configuration --> azure_win_rm_listener
 azure_windows_configuration --> azure_additional_unattend_content
 azure_windows_configuration --> azure_patch_settings
@@ -2190,6 +2242,9 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class azure_restore_point_collection {
 }
+class azure_virtual_machine {
+}
+azure_restore_point_collection -[#1A83AF]-> azure_virtual_machine
 @enduml
 ```
 
@@ -2335,6 +2390,15 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
+class snapshot {
+**description**: string
+**encrypted**: boolean
+**owner_alias**: string
+**owner_id**: string
+**snapshot_status**: string
+**volume_id**: string
+**volume_size**: int64
+}
 azure_creation_data --> azure_image_disk_reference
 azure_encryption_settings_collection --> azure_encryption_settings_element
 azure_encryption_settings_element --> azure_key_vault_and_key_reference
@@ -2350,6 +2414,8 @@ azure_snapshot --> azure_purchase_plan
 azure_resource <|--- azure_snapshot
 azure_snapshot --> azure_snapshot_sku
 azure_snapshot --> azure_supported_capabilities
+snapshot <|--- azure_snapshot
+resource <|--- snapshot
 @enduml
 ```
 
@@ -2386,8 +2452,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class azure_disk {
+}
 class azure_snapshot {
 }
+azure_disk -[#1A83AF]-> azure_snapshot
 @enduml
 ```
 
@@ -2697,8 +2766,6 @@ class azure_diff_disk_settings {
 **option**: string
 **placement**: string
 }
-class azure_disk_encryption_set_parameters {
-}
 class azure_disk_encryption_settings {
 **disk_encryption_key**: azure_key_vault_secret_reference
 **enabled**: boolean
@@ -2784,7 +2851,7 @@ class azure_maintenance_redeploy_status {
 **pre_maintenance_window_start_time**: datetime
 }
 class azure_managed_disk_parameters {
-**disk_encryption_set**: azure_disk_encryption_set_parameters
+**disk_encryption_set**: azure_sub_resource
 **disk_parameters_security_profile**: azure_vm_disk_security_profile
 **storage_account_type**: string
 }
@@ -2869,6 +2936,9 @@ class azure_storage_profile {
 **disk_controller_type**: string
 **image_reference**: azure_image_reference
 **os_disk**: azure_os_disk
+}
+class azure_sub_resource {
+**id**: string
 }
 class azure_terminate_notification_profile {
 **enable**: boolean
@@ -3024,7 +3094,7 @@ class azure_virtual_machine_public_ip_address_configuration {
 **sku**: azure_public_ip_address_sku
 }
 class azure_vm_disk_security_profile {
-**disk_encryption_set**: azure_disk_encryption_set_parameters
+**disk_encryption_set**: azure_sub_resource
 **security_encryption_type**: string
 }
 class azure_vm_gallery_application {
@@ -3059,6 +3129,12 @@ class azure_windows_vm_guest_patch_automatic_by_platform_settings {
 **bypass_platform_safety_checks_on_user_schedule**: boolean
 **reboot_setting**: string
 }
+class instance {
+**instance_cores**: double
+**instance_memory**: double
+**instance_status**: instance_status
+**instance_type**: string
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -3083,12 +3159,15 @@ azure_disk_encryption_settings --> azure_key_vault_secret_reference
 azure_disk_instance_view --> azure_disk_encryption_settings
 azure_disk_instance_view --> azure_instance_view_status
 azure_hardware_profile --> azure_vm_size_properties
+azure_sub_resource <|--- azure_image_reference
 azure_last_patch_installation_summary --> azure_api_error
 azure_linux_configuration --> azure_linux_patch_settings
 azure_linux_configuration --> azure_ssh_configuration
 azure_linux_patch_settings --> azure_linux_vm_guest_patch_automatic_by_platform_settings
-azure_managed_disk_parameters --> azure_disk_encryption_set_parameters
+azure_sub_resource <|--- azure_managed_disk_parameters
+azure_managed_disk_parameters --> azure_sub_resource
 azure_managed_disk_parameters --> azure_vm_disk_security_profile
+azure_sub_resource <|--- azure_network_interface_reference
 azure_network_profile --> azure_network_interface_reference
 azure_network_profile --> azure_virtual_machine_network_interface_configuration
 azure_os_disk --> azure_diff_disk_settings
@@ -3123,6 +3202,7 @@ azure_virtual_machine --> azure_storage_profile
 azure_virtual_machine --> azure_virtual_machine_extension
 azure_virtual_machine --> azure_virtual_machine_identity
 azure_virtual_machine --> azure_virtual_machine_instance_view
+instance <|--- azure_virtual_machine
 azure_virtual_machine_agent_instance_view --> azure_instance_view_status
 azure_virtual_machine_agent_instance_view --> azure_virtual_machine_extension_handler_instance_view
 azure_virtual_machine_extension --> azure_key_vault_secret_reference
@@ -3147,11 +3227,12 @@ azure_virtual_machine_patch_status --> azure_instance_view_status
 azure_virtual_machine_patch_status --> azure_last_patch_installation_summary
 azure_virtual_machine_public_ip_address_configuration --> azure_public_ip_address_sku
 azure_virtual_machine_public_ip_address_configuration --> azure_virtual_machine_ip_tag
-azure_vm_disk_security_profile --> azure_disk_encryption_set_parameters
+azure_vm_disk_security_profile --> azure_sub_resource
 azure_win_rm_configuration --> azure_win_rm_listener
 azure_windows_configuration --> azure_additional_unattend_content
 azure_windows_configuration --> azure_patch_settings
 azure_windows_configuration --> azure_win_rm_configuration
+resource <|--- instance
 @enduml
 ```
 
@@ -3188,8 +3269,27 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class azure_availability_set {
+}
+class azure_capacity_reservation_group {
+}
+class azure_disk {
+}
+class azure_image {
+}
+class azure_proximity_placement_group {
+}
+class azure_restore_point_collection {
+}
 class azure_virtual_machine {
 }
+azure_availability_set -[#1A83AF]-> azure_proximity_placement_group
+azure_availability_set -[#1A83AF]-> azure_virtual_machine
+azure_capacity_reservation_group -[#1A83AF]-> azure_virtual_machine
+azure_restore_point_collection -[#1A83AF]-> azure_virtual_machine
+azure_virtual_machine -[#1A83AF]-> azure_disk
+azure_virtual_machine -[#1A83AF]-> azure_image
+azure_virtual_machine -[#1A83AF]-> azure_proximity_placement_group
 @enduml
 ```
 
@@ -3226,6 +3326,10 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class autoscaling_group {
+**max_size**: int64
+**min_size**: int64
+}
 class azure_additional_capabilities {
 **hibernation_enabled**: boolean
 **ultra_ssd_enabled**: boolean
@@ -3262,8 +3366,6 @@ class azure_diagnostics_profile {
 class azure_diff_disk_settings {
 **option**: string
 **placement**: string
-}
-class azure_disk_encryption_set_parameters {
 }
 class azure_extended_location {
 **name**: string
@@ -3378,6 +3480,9 @@ class azure_ssh_public_key {
 **key_data**: string
 **path**: string
 }
+class azure_sub_resource {
+**id**: string
+}
 class azure_terminate_notification_profile {
 **enable**: boolean
 **not_before_timeout**: string
@@ -3425,7 +3530,7 @@ class azure_virtual_machine_scale_set {
 **automatic_repairs_policy**: azure_automatic_repairs_policy
 **azure_plan**: azure_plan
 **constrained_maximum_capacity**: boolean
-**do_not_run_extensions_on_overprovisioned_v_ms**: boolean
+**do_not_run_extensions_on_overprovisioned_vm_s**: boolean
 **extended_location**: azure_extended_location
 **host_group**: string
 **orchestration_mode**: string
@@ -3502,7 +3607,7 @@ class azure_virtual_machine_scale_set_ip_tag {
 **tag**: string
 }
 class azure_virtual_machine_scale_set_managed_disk_parameters {
-**disk_encryption_set**: azure_disk_encryption_set_parameters
+**disk_encryption_set**: azure_sub_resource
 **security_profile**: azure_vm_disk_security_profile
 **storage_account_type**: string
 }
@@ -3586,7 +3691,7 @@ class azure_virtual_machine_scale_set_vm_profile {
 **user_data**: string
 }
 class azure_vm_disk_security_profile {
-**disk_encryption_set**: azure_disk_encryption_set_parameters
+**disk_encryption_set**: azure_sub_resource
 **security_encryption_type**: string
 }
 class azure_vm_gallery_application {
@@ -3633,8 +3738,10 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
+resource <|--- autoscaling_group
 azure_application_profile --> azure_vm_gallery_application
 azure_diagnostics_profile --> azure_boot_diagnostics
+azure_sub_resource <|--- azure_image_reference
 azure_linux_configuration --> azure_linux_patch_settings
 azure_linux_configuration --> azure_ssh_configuration
 azure_linux_patch_settings --> azure_linux_vm_guest_patch_automatic_by_platform_settings
@@ -3651,6 +3758,7 @@ azure_vault_secret_group --> azure_vault_certificate
 azure_virtual_machine_extension --> azure_key_vault_secret_reference
 azure_virtual_machine_extension --> azure_virtual_machine_extension_instance_view
 azure_virtual_machine_extension_instance_view --> azure_instance_view_status
+autoscaling_group <|--- azure_virtual_machine_scale_set
 azure_virtual_machine_scale_set --> azure_additional_capabilities
 azure_virtual_machine_scale_set --> azure_automatic_repairs_policy
 azure_virtual_machine_scale_set --> azure_extended_location
@@ -3669,7 +3777,7 @@ azure_virtual_machine_scale_set_extension_profile --> azure_virtual_machine_scal
 azure_virtual_machine_scale_set_hardware_profile --> azure_vm_size_properties
 azure_virtual_machine_scale_set_identity --> azure_principalid_clientid
 azure_virtual_machine_scale_set_ip_configuration --> azure_virtual_machine_scale_set_public_ip_address_configuration
-azure_virtual_machine_scale_set_managed_disk_parameters --> azure_disk_encryption_set_parameters
+azure_virtual_machine_scale_set_managed_disk_parameters --> azure_sub_resource
 azure_virtual_machine_scale_set_managed_disk_parameters --> azure_vm_disk_security_profile
 azure_virtual_machine_scale_set_network_configuration --> azure_virtual_machine_scale_set_ip_configuration
 azure_virtual_machine_scale_set_network_configuration --> azure_virtual_machine_scale_set_network_configuration_dns_settings
@@ -3695,7 +3803,7 @@ azure_virtual_machine_scale_set_vm_profile --> azure_virtual_machine_scale_set_h
 azure_virtual_machine_scale_set_vm_profile --> azure_virtual_machine_scale_set_network_profile
 azure_virtual_machine_scale_set_vm_profile --> azure_virtual_machine_scale_set_os_profile
 azure_virtual_machine_scale_set_vm_profile --> azure_virtual_machine_scale_set_storage_profile
-azure_vm_disk_security_profile --> azure_disk_encryption_set_parameters
+azure_vm_disk_security_profile --> azure_sub_resource
 azure_win_rm_configuration --> azure_win_rm_listener
 azure_windows_configuration --> azure_additional_unattend_content
 azure_windows_configuration --> azure_patch_settings
@@ -3783,6 +3891,20 @@ class azure_virtual_machine_size {
 **os_disk_size_in_mb**: int64
 **resource_disk_size_in_mb**: int64
 }
+class instance_type {
+**instance_cores**: double
+**instance_memory**: double
+**instance_type**: string
+**ondemand_cost**: double
+**reservations**: int64
+}
+class phantom_resource {
+}
+class quota {
+**quota**: double
+**quota_type**: string
+**usage**: double
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -3795,8 +3917,15 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
+class type {
+}
 resource <|--- azure_resource
 azure_resource <|--- azure_virtual_machine_size
+instance_type <|--- azure_virtual_machine_size
+type <|--- instance_type
+resource <|--- phantom_resource
+phantom_resource <|--- quota
+quota <|--- type
 @enduml
 ```
 

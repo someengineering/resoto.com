@@ -406,6 +406,12 @@ module.exports = [
       },
       {
         type: 'doc',
+        id: 'reference/api/list-available-benchmarks',
+        label: 'List available benchmarks.',
+        className: 'api-method get',
+      },
+      {
+        type: 'doc',
         id: 'reference/api/perform-a-benchmark-on-a-graph',
         label: 'Perform a benchmark on a graph.',
         className: 'api-method get',

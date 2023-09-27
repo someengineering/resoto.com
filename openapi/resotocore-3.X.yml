@@ -2726,6 +2726,41 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/InspectCheck'
+  /report/benchmarks:
+    get:
+      summary: 'List available benchmarks.'
+      description: 'List available benchmarks.'
+      tags:
+        - report
+      parameters:
+        - name: benchmark
+          in: query
+          description: 'Comma separated list of benchmarks. All if not defined.'
+          schema:
+            type: string
+          example: 'aws_cis_1_5,aws_cis_1_6'
+          explode: false
+        - name: with_checks
+          in: query
+          description: 'Include check definition into the benchmark'
+          schema:
+            type: boolean
+            default: false
+        - name: short
+          in: query
+          description: 'Reduce the information to top level properties.'
+          schema:
+            type: boolean
+            default: false
+      responses:
+        '200':
+          description: 'List of benchmarks.'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Benchmark'
   /report/benchmark/{benchmark}/graph/{graph_id}:
     get:
       summary: 'Perform a benchmark on a graph.'
@@ -2757,6 +2792,17 @@ paths:
           required: false
           explode: false
           example: 123456789012,123456789013
+        - name: action
+          in: query
+          description: |
+            The action to perform. You can either run (create) or load the benchmark.
+            Loading the benchmark requires, that a benchmark has been synchronized to the database before.
+            In case the resources haven't changed since the last synchronization, the result is the same,
+            but the load action is much faster.
+          schema:
+            type: string
+            enum: [run, load]
+            default: run
       responses:
         '200':
           description: 'The checks result.'
@@ -3822,3 +3868,51 @@ components:
           items:
             type: string
           description: 'The related checks of this check'
+    CheckCollection:
+      type: object
+      properties:
+        title:
+          type: string
+          description: 'The title of this check collection'
+        description:
+          type: string
+          description: 'The description of this check collection'
+        documentation:
+          type: string
+          description: 'The documentation of this check collection'
+        checks:
+          type: array
+          items:
+            type: string
+          description: 'Ids of checks in this collection'
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/CheckCollection'
+          description: 'Ids of child collections'
+    Benchmark:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/CheckCollection'
+      properties:
+        id:
+          type: string
+          description: 'The id of this benchmark'
+        framework:
+          type: string
+          description: 'The framework of this benchmark'
+        version:
+          type: string
+          description: 'The version of this benchmark'
+        clouds:
+          type: array
+          items:
+            type: string
+          description: 'The clouds relevant for this benchmark'
+        report_checks:
+          type: array
+          items:
+            oneOf:
+              - type: string
+              - $ref: '#/components/schemas/InspectCheck'
+          description: 'Related checks of this benchmarks'

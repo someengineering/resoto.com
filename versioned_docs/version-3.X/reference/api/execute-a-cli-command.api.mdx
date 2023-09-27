@@ -5,7 +5,7 @@ description: "The body defines the command to execute."
 sidebar_label: "Execute a cli command"
 hide_title: true
 hide_table_of_contents: true
-api: {"description":"The body defines the command to execute.\nThe command is executed and the result is returned to the client.\nRequest and execution are synchronized: the request is done, when the command is done.\n","parameters":[{"name":"env","description":"All search parameter form the environment passed to the CLI interpreter.","in":"query","schema":{"type":"object","additionalProperties":true}}],"requestBody":{"description":"The command will be sent as request body.\nA command can contain multiple command line separated by semicolon.\nEvery single line can contain multiple commands that are combined via the pipe operator.\n","content":{"text/plain":{"schema":{"type":"string","example":"json [1,2,3,4,5,6] | count"}}}},"tags":["cli"],"responses":{"200":{"description":"The result of the command.","content":{"application/json":{"schema":{"type":"array","items":{"type":"object","additionalProperties":true}}},"application/x-ndjson":{"schema":{"type":"array","items":{"type":"object","additionalProperties":true}}}}}},"method":"post","path":"/cli/execute","servers":[{"url":"https://{host}:{port}","variables":{"host":{"default":"localhost"},"port":{"default":"8900"}}}],"info":{"title":"Resoto Core REST API","version":"V1"},"postman":{"name":"Execute a cli command","description":{"content":"The body defines the command to execute.\nThe command is executed and the result is returned to the client.\nRequest and execution are synchronized: the request is done, when the command is done.\n","type":"text/plain"},"url":{"path":["cli","execute"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"key":"Content-Type","value":"text/plain"},{"key":"Accept","value":"application/json"}],"method":"POST","body":{"mode":"raw","raw":"\"\""}}}
+api: eJzdVE1v2zAM/SuCzm6zdh/YfMuKHgoMWNFmu7Q9yDZTq7MlTZLTZF7++x5l52spBuywyxIgiETykXyPVC8rCqXXLmprZC5nNYnCVitR0VwbCiLiorRtq0wlohW0pLKLdHpvZnsGHTaGSiRH2DyFrols8hQ7byjFJ7hGk4mAuKHvHYWYQoZ4FCGUJxFWpqy9NfoHVfkIN/gCr7KGMvFckzmobrQAV2bSKa9aiuSDzO96aXBAd2QWsB12PG0aEUj5shbbIDG3vk3giNCoo0XBMIew6+Li05XQBs7Oc8gpgDXjoUy/wiGUNbVK5r2MK8fJbfFEZYRFVZXm5Kq59taRj5pQZfQdrdcPmRw7/QgVOPpYn03DzxqlFyCLi1NhSxHrBxamW8dSGfw3UWkjWoiiXbNDaSAzILh3lq9Y4dDq0jbWAORygW5E0OYRIcn1T2A8LiomBXFTaBZ9oVXiy2lHgttV0fpBJIZB7YkjWsaJaxRT2B9zF6JHCQihpWqREFdPAbNyd5adZ6+zN9nb7N2D+ImsHfDW+GQyqkcWX2LcZKI1OGsCU93L81evXuZ2nFo73x+t08NalXONLhVHTbiKFytW3iseAx2pDX87Bah+P8nyxFT/KFHKhZmvbYUYZ0NMyxNrnCZgbjLuNQ80+cVmnzrfwKGO0YV8MulrxK3z3lkf1/BcKK9V0QxUs23geq5ALcIaW6omXSM3xxya33+AOOu0CtrMbWpJx6T5DQWL9buwGLCby9uZmF5fcT6UNUj49WzADBG6ceS4+JdDF0Lx47OR9fenoN+J/N+8g+Mw7K0X+Enq9aPMw4LwZg1Cg/ZBsjvZ94UK9MU36zVfDy9bfvewU5hPAKxJVeTTZHwjuMiLgciTGadn96Y7KmPjOy1LcnHP62i/eBS2M3r9+XYG52J8HltbcYxXz7jk31ze48sD9Avtw2dE
 sidebar_class_name: "post api-method"
 info_path: versioned_docs/version-3.X/reference/api/resoto-core-rest-api
 custom_edit_url: null
@@ -36,7 +36,11 @@ The body defines the command to execute. The command is executed and the result 
 
 The command will be sent as request body. A command can contain multiple command line separated by semicolon. Every single line can contain multiple commands that are combined via the pipe operator.
 
-</div></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"string"} required={false} schemaName={undefined} qualifierMessage={undefined} schema={{"type":"string","example":"json [1,2,3,4,5,6] | count"}}></SchemaItem></ul></details></TabItem></MimeTabs><div><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+</div></div><ul style={{"marginLeft":"1rem"}}><div style={{"marginTop":".5rem","marginBottom":".5rem","marginLeft":"1rem"}}>
+
+string
+
+</div></ul></details></TabItem></MimeTabs><div><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
 
 The result of the command.
 

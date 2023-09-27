@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Wait for Netlify deployment
         if: github.event_name != 'workflow_dispatch'
         uses: probablyup/wait-for-netlify-action@3.2.0

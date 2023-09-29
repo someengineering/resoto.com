@@ -75,7 +75,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
 ## Directions
 
-1. Execute the following [`search` command](../../reference/cli/search-commands/search.mdx) in [Resoto Shell](../../reference/components/shell.mdx) or Resoto UI:
+1. Execute the following [`search` command](../../reference/cli/search.mdx) in [Resoto Shell](../../reference/components/shell.mdx) or Resoto UI:
 
    ```bash
    > {command}
@@ -85,7 +85,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
    # highlight-end
    ```
 
-2. Pipe the `search` command into the [`dump` command](../../reference/cli/format-commands/dump.mdx):
+2. Pipe the `search` command into the [`dump` command](../../reference/cli/dump.mdx):
 
    ```bash
    > {command} | dump

@@ -4,7 +4,7 @@ sidebar_label: Collect Kubernetes Resource Data
 
 # How to Collect Kubernetes Resource Data
 
-The [Kubernetes](../../reference/unified-data-model/kubernetes.mdx) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/setup-commands/config/index.mdx) in [Resoto Shell](../../reference/components/shell.mdx).
+The [Kubernetes](../../reference/unified-data-model/kubernetes.mdx) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/config/index.mdx) in [Resoto Shell](../../reference/components/shell.mdx).
 
 ## Prerequisites
 
@@ -14,7 +14,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
 ### 1. Enable the Kubernetes Collector
 
-1. Open the [Resoto Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/setup-commands/config) in [Resoto Shell](../../reference/components/shell):
+1. Open the [Resoto Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/config) in [Resoto Shell](../../reference/components/shell):
 
    ```bash
    > config edit resoto.worker
@@ -43,7 +43,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
 **The easiest way to configure access to Kubernetes is via [kubeconfig files](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig).**
 
-1. Open the [Resoto Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/setup-commands/config) in [Resoto Shell](../../reference/components/shell):
+1. Open the [Resoto Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/config) in [Resoto Shell](../../reference/components/shell):
 
    ```bash
    > config edit resoto.worker
@@ -138,7 +138,7 @@ The required values can be found in the [kubeconfig file](https://kubernetes.io/
 | `token`                      | `users.user.token`                                                                                                  |
 | `certificate_authority_data` | `clusters.cluster.certificate-authority-data`<br />(only required if the server is using a self-signed certificate) |
 
-1. Open the [Resoto Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/setup-commands/config) in [Resoto Shell](../../reference/components/shell):
+1. Open the [Resoto Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/config) in [Resoto Shell](../../reference/components/shell):
 
    ```bash
    > config edit resoto.worker
@@ -172,7 +172,7 @@ The required values can be found in the [kubeconfig file](https://kubernetes.io/
 
 ### 3. Trigger Resource Collection
 
-By default, Resoto performs resource collection each hour. To immediately trigger a collect run, use the [`workflow run` command](../../reference/cli/action-commands/workflow/run.mdx) in [Resoto Shell](../../reference/components/shell):
+By default, Resoto performs resource collection each hour. To immediately trigger a collect run, use the [`workflow run` command](../../reference/cli/workflow/run.mdx) in [Resoto Shell](../../reference/components/shell):
 
 ```bash
 > workflow run collect

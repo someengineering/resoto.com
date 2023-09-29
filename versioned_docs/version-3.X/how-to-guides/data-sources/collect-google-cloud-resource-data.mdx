@@ -4,7 +4,7 @@ sidebar_label: Collect Google Cloud Resource Data
 
 # How to Collect Google Cloud Resource Data
 
-The [Google Cloud](../../reference/unified-data-model/gcp.mdx) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/setup-commands/config/index.mdx) in [Resoto Shell](../../reference/components/shell.mdx).
+The [Google Cloud](../../reference/unified-data-model/gcp.mdx) collector is configured within the [Resoto Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/config/index.mdx) in [Resoto Shell](../../reference/components/shell.mdx).
 
 ## Prerequisites
 
@@ -14,7 +14,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
 ### 1. Enable the Google Cloud Collector
 
-1. Open the [Resoto Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/setup-commands/config) in [Resoto Shell](../../reference/components/shell):
+1. Open the [Resoto Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/config) in [Resoto Shell](../../reference/components/shell):
 
    ```bash
    > config edit resoto.worker
@@ -41,7 +41,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
 <TabItem value="service-account-json" label="Service Account JSON">
 
-1. Open the [Resoto Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/setup-commands/config) in [Resoto Shell](../../reference/components/shell):
+1. Open the [Resoto Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/config) in [Resoto Shell](../../reference/components/shell):
 
 ```bash
 > config edit resoto.worker
@@ -118,7 +118,7 @@ This guide assumes that you have already [installed](../../getting-started/insta
 
 You can specify an empty string for the service account file, and Resoto will automatically discover the service account and all the projects it has access to.
 
-1. Open the [Resoto Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/setup-commands/config) in [Resoto Shell](../../reference/components/shell):
+1. Open the [Resoto Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/config) in [Resoto Shell](../../reference/components/shell):
 
    ```bash
    > config edit resoto.worker
@@ -146,7 +146,7 @@ You can specify an empty string for the service account file, and Resoto will au
 
 ### 3. Trigger Resource Collection
 
-1. By default, Resoto performs resource collection each hour. To immediately trigger a collect run, use the [`workflow run` command](../../reference/cli/action-commands/workflow/run.mdx) in [Resoto Shell](../../reference/components/shell):
+1. By default, Resoto performs resource collection each hour. To immediately trigger a collect run, use the [`workflow run` command](../../reference/cli/workflow/run.mdx) in [Resoto Shell](../../reference/components/shell):
 
    ```bash
    > workflow run collect

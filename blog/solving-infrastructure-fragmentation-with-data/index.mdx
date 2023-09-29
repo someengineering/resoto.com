@@ -112,11 +112,11 @@ Here's an example of what a search looks like in Resoto:
 There are two major components in the above command:
 
 - a [filtered search](/docs/reference/search/filters) for `volume`s, and
-- the [`clean` command](/docs/reference/cli/action-commands/clean) to mark those `volume`s for [cleanup](/docs/concepts/resource-management/cleanup).
+- the [`clean` command](/docs/reference/cli/clean) to mark those `volume`s for [cleanup](/docs/concepts/resource-management/cleanup).
 
 The `search is(volume)` statement searches for all unused (`available`) EBS volumes created at least 30 days ago (`age`) and without any I/O during the past 7 days. The search determines I/O by looking at the last time the resource has either been accessed (`last_access`). We use the 30 days / 7 days combination as a proxy to determine that this volume is unused and can safely be cleaned.
 
-The search generates a list of volumes that match the filter. The result is piped as an input into the [`clean` command](/docs/reference/cli/action-commands/clean). The search filter and action command form a [job](/docs/concepts/automation#jobs) when combined with a [job trigger](/docs/concepts/automation#job-trigger).
+The search generates a list of volumes that match the filter. The result is piped as an input into the [`clean` command](/docs/reference/cli/clean). The search filter and action command form a [job](/docs/concepts/automation#jobs) when combined with a [job trigger](/docs/concepts/automation#job-trigger).
 
 ![Diagram of a typical Resoto job](./img/resoto-job.png)
 

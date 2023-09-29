@@ -29,7 +29,7 @@ A private shared key secures the communication between Resoto and the extension.
 
 ## Defining a Command
 
-The idea behind this feature is to allow the user to select resources via the [`search` command](/docs/reference/cli/search-commands/search) and perform an action on each selected resource:
+The idea behind this feature is to allow the user to select resources via the [`search` command](/docs/reference/cli/search) and perform an action on each selected resource:
 
 ```bash
 > search is(kubernetes_pod) and name~resoto | hello-world
@@ -94,7 +94,7 @@ class MyExtensionsHolder(BasePlugin):
 
 :::info
 
-Once the plugin is loaded and the worker starts, the command is registered and available to the user. We can check this by executing the [`help` command](/docs/reference/cli/miscellaneous-commands/help), which lists all available commands:
+Once the plugin is loaded and the worker starts, the command is registered and available to the user. We can check this by executing the [`help` command](/docs/reference/cli/help), which lists all available commands:
 
 ```bash
 > help
@@ -133,7 +133,7 @@ See a complete example of a custom command in the [Resoto GitHub Repository](htt
 
 ### Usage
 
-We can now combine the [`search` command](/docs/reference/cli/search-commands/search) with our new `hello-world` command to add a `greeting` tag to all resources that match a particular criterion:
+We can now combine the [`search` command](/docs/reference/cli/search) with our new `hello-world` command to add a `greeting` tag to all resources that match a particular criterion:
 
 ```bash
 > search is(instance) and age<1h | hello-world
@@ -185,7 +185,7 @@ The placeholder could come from any resource property. Property paths inside cur
 
 :::tip
 
-See [`format`](/docs/reference/cli/format-commands/format) for details of placeholder value handling.
+See [`format`](/docs/reference/cli/format) for details of placeholder value handling.
 
 :::
 

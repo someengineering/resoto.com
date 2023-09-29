@@ -61,10 +61,8 @@ export default function SentinelPage(): JSX.Element {
             <p>
               <Balancer>
                 Sentinel provides detailed{' '}
-                <Link to="/docs/reference/cli/miscellaneous-commands/report">
-                  reports
-                </Link>{' '}
-                and <Link to="/docs/how-to-guides/alerting">alerts</Link> for
+                <Link to="/docs/reference/cli/report">reports</Link> and{' '}
+                <Link to="/docs/how-to-guides/alerting">alerts</Link> for
                 detected security issues, allowing you to easily address
                 potential threats to your infrastructure before they impact your
                 business.

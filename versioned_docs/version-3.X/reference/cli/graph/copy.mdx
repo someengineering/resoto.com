@@ -1,0 +1,27 @@
+---
+sidebar_label: copy
+pagination_label: graph copy
+---
+
+# `graph copy` Command
+
+The `graph copy` command copies a [Resoto Rewind](/rewind) [asset inventory graph](../../../concepts/asset-inventory-graph/index.mdx) snapshot.
+
+## Usage
+
+```bash
+graph copy [--force] [from_graph_name] <to_graph_name>
+```
+
+## Example
+
+```bash
+> graph copy resoto resoto_backup
+# highlight-start
+Graph resoto copied to resoto_backup.
+# highlight-end
+```
+
+## Aliases
+
+- [`graph snapshot`](./snapshot.mdx)

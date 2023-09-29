@@ -1,0 +1,58 @@
+---
+sidebar_label: add
+pagination_label: job add
+---
+
+# `job add` Command
+
+The `job add` command adds a job to the task handler.
+
+## Usage
+
+```bash
+job add [--id <id>] [--schedule <cron_expression>] [--wait-for-event <event_name>] [--timeout <seconds>] <command>
+```
+
+### Parameters
+
+| Parameter | Description                                                    | Required? | Default Value |
+| --------- | -------------------------------------------------------------- | --------- | ------------- |
+| `command` | CLI command that will be executed when the job is triggered \* | ✔️        |               |
+
+\* It is recommended to either surround the `command` with single quotes (`'`) or escape special characters such as pipes (`|`) or semicolons (`;`). Multiple commands can be delimited using semicolons.
+
+### Options
+
+| Option                          | Description                                                                                                                                                | Required? |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| `--id <id>`                     | Job identifier (if not provided, a random identifier is generated)                                                                                         | ❌        |
+| `--schedule <cron_expression>`  | The schedule as a `cron` expression                                                                                                                        | ➖        |
+| `--wait-for-event <event_name>` | Waits for the specified [event](../../events/index.mdx) to occur (if defined in conjunction with the `--schedule` option, the schedule must trigger first) | ➖        |
+| `--timeout <seconds>`           | Number of seconds for which the job is allowed to run before being terminated (3600 seconds by default)                                                    | ❌        |
+
+## Examples
+
+```bash title="Print 'hello world' to the console every minute"
+> jobs add --id say-hello --schedule "* * * * *" echo hello world
+# highlight-next-line
+​Job say-hello added.
+```
+
+```bash title="At 4am each morning, wait for message of type collect_done and print a message"
+> jobs add --id early_hi --schedule "0 4 * * *" --wait-for-event collect_done 'match is("volume") | format id'
+# highlight-next-line
+​Job early_hi added.
+```
+
+```bash title="Wait for message of type collect_done and print a message"
+> jobs add --id wait_for_collect_done collect_done: echo hello world
+# highlight-next-line
+​Job wait_for_collect_done added.
+```
+
+## Further Reading
+
+- [Cloud Data Sync](../../../concepts/cloud-data-sync/index.mdx)
+- [Automation](../../../concepts/automation/index.mdx)
+- [Events](../../events/index.mdx)
+- [Workflows](../../workflows/index.mdx)

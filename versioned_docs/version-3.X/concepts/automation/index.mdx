@@ -165,7 +165,7 @@ The result of a job filter is a list of resources that is piped as input to [job
 
 #### Job Actions
 
-**A job action is an [action command](../../reference/cli/action-commands/index.mdx) performed on resources matching the optional [filter](#job-filters).**
+**A job action is an [action command](../../reference/cli/index.mdx) performed on resources matching the optional [filter](#job-filters).**
 
 <details>
 
@@ -173,19 +173,19 @@ The result of a job filter is a list of resources that is piped as input to [job
 
 <div>
 
-- Update resource tags using the [`tag update` command](../../reference/cli/action-commands/tag/update.mdx)
+- Update resource tags using the [`tag update` command](../../reference/cli/tag/update.mdx)
 
   ```bash
   search ... | tag update owner=team-cumulus
   ```
 
-- Delete resource tags using the [`tag delete` command](../../reference/cli/action-commands/tag/delete.mdx)
+- Delete resource tags using the [`tag delete` command](../../reference/cli/tag/delete.mdx)
 
   ```bash
   search ... | tag delete costcenter
   ```
 
-- Mark resources for cleanup using the [`clean` command](../../reference/cli/action-commands/clean.mdx)
+- Mark resources for cleanup using the [`clean` command](../../reference/cli/clean.mdx)
 
   ```bash
   search ... | clean "Reason for cleanup"
@@ -227,19 +227,19 @@ The result of a job filter is a list of resources that is piped as input to [job
   search is(aws_ec2_instance) and instance_status=stopped and ... | aws ec2 start-instances --instance-ids {id}
   ```
 
-- Send chunked data to a webhook server using the [`http` command](../../reference/cli/action-commands/http.mdx)
+- Send chunked data to a webhook server using the [`http` command](../../reference/cli/http.mdx)
 
   ```bash
   search ... | chunk 50 | http POST my.node.org/handle
   ```
 
-- Protect resources from cleanup using the [`protect` command](../../reference/cli/action-commands/protect.mdx)
+- Protect resources from cleanup using the [`protect` command](../../reference/cli/protect.mdx)
 
   ```bash
   search ... | protect
   ```
 
-- Edit resource metadata using the [`set_metadata` command](../../reference/cli/action-commands/set_metadata.mdx)
+- Edit resource metadata using the [`set_metadata` command](../../reference/cli/set_metadata.mdx)
 
   ```bash
   search ... | set_metadata owner=team-cumulus
@@ -251,7 +251,7 @@ The result of a job filter is a list of resources that is piped as input to [job
 
 ### Job Management
 
-Jobs are persisted in the Resoto database. The [`job` command](../../reference/cli/action-commands/job/index.mdx) allows you to [add](../../reference/cli/action-commands/job/add.mdx), [update](../../reference/cli/action-commands/job/update.mdx), [delete](../../reference/cli/action-commands/job/delete.mdx), and [list](../../reference/cli/action-commands/job/list.mdx) jobs.
+Jobs are persisted in the Resoto database. The [`job` command](../../reference/cli/job/index.mdx) allows you to [add](../../reference/cli/job/add.mdx), [update](../../reference/cli/job/update.mdx), [delete](../../reference/cli/job/delete.mdx), and [list](../../reference/cli/job/list.mdx) jobs.
 
 :::tip
 
@@ -315,7 +315,7 @@ See [Related How-To Guides](#related-how-to-guides) below for step-by-step instr
 ## Further Reading
 
 - [Cloud Data Sync](../cloud-data-sync/index.mdx)
-- [`job` Command](../../reference/cli/action-commands/job/index.mdx)
+- [`job` Command](../../reference/cli/job/index.mdx)
 - [Command-Line Interface](../../reference/cli/index.mdx)
 - [Events](../../reference/events/index.mdx)
 - [Workflows](../../reference/workflows/index.mdx)

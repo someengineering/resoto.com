@@ -18,7 +18,7 @@ This guide assumes that you have already [installed](../../../getting-started/in
 
 ## Directions
 
-1. Execute the following [`search` command](../../../reference/cli/search-commands/search.mdx) in [Resoto Shell](../../../reference/components/shell.mdx) or Resoto UI:
+1. Execute the following [`search` command](../../../reference/cli/search.mdx) in [Resoto Shell](../../../reference/components/shell.mdx) or Resoto UI:
 
    ```bash
    > search is(aws_s3_bucket) {account_setting: <-[0:]- is(aws_account) --> is(aws_s3_account_settings)} (bucket_public_access_block_configuration.block_public_acls==false and account_setting.reported.bucket_public_access_block_configuration.block_public_acls==false) or (bucket_public_access_block_configuration.ignore_public_acls==false and account_setting.reported.bucket_public_access_block_configuration.ignore_public_acls==false) or (bucket_public_access_block_configuration.block_public_policy==false and account_setting.reported.bucket_public_access_block_configuration.block_public_policy==false) or (bucket_public_access_block_configuration.restrict_public_buckets==false and account_setting.reported.bucket_public_access_block_configuration.restrict_public_buckets==false)
@@ -28,7 +28,7 @@ This guide assumes that you have already [installed](../../../getting-started/in
    # highlight-end
    ```
 
-2. Pipe the `search` command into the [`dump` command](../../../reference/cli/format-commands/dump.mdx):
+2. Pipe the `search` command into the [`dump` command](../../../reference/cli/dump.mdx):
 
    ```bash
    > search is(aws_s3_bucket) {account_setting: <-[0:]- is(aws_account) --> is(aws_s3_account_settings)} (bucket_public_access_block_configuration.block_public_acls==false and account_setting.reported.bucket_public_access_block_configuration.block_public_acls==false) or (bucket_public_access_block_configuration.ignore_public_acls==false and account_setting.reported.bucket_public_access_block_configuration.ignore_public_acls==false) or (bucket_public_access_block_configuration.block_public_policy==false and account_setting.reported.bucket_public_access_block_configuration.block_public_policy==false) or (bucket_public_access_block_configuration.restrict_public_buckets==false and account_setting.reported.bucket_public_access_block_configuration.restrict_public_buckets==false) | dump

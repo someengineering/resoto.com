@@ -224,10 +224,7 @@ export default function HomepageModules(): JSX.Element {
           </p>
           <p>
             <Balancer>
-              Review the{' '}
-              <Link to="/docs/reference/cli/search-commands/history">
-                history
-              </Link>{' '}
+              Review the <Link to="/docs/reference/cli/history">history</Link>{' '}
               and lifecycle of any cloud resource, from its creation time to
               when it is{' '}
               <Link to="/docs/concepts/resource-management/cleanup">

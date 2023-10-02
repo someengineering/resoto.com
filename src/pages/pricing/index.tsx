@@ -43,7 +43,7 @@ export default function Pricing(): JSX.Element {
                         <span>
                           Open source (
                           <Link href="https://github.com/someengineering/resoto/blob/main/LICENSE">
-                            Apache 2.0
+                            AGPLv3
                           </Link>
                           )
                         </span>

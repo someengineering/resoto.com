@@ -1662,6 +1662,9 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class azure_resource {
 }
+class azure_resource_group {
+}
+azure_resource_group -[#1A83AF]-> azure_resource
 @enduml
 ```
 
@@ -1754,8 +1757,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class azure_resource {
+}
 class azure_resource_group {
 }
+azure_resource_group -[#1A83AF]-> azure_resource
 @enduml
 ```
 

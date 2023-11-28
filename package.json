@@ -65,7 +65,7 @@
     "@docusaurus/types": "2.4.3",
     "@tsconfig/docusaurus": "2.0.1",
     "@typescript-eslint/eslint-plugin": "6.7.3",
-    "@typescript-eslint/parser": "6.7.3",
+    "@typescript-eslint/parser": "6.13.1",
     "asciinema-player": "3.6.2",
     "commitizen": "4.3.0",
     "eslint": "8.50.0",

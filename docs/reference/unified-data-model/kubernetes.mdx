@@ -2132,7 +2132,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class kubernetes_cross_object_reference {
+class kubernetes_cross_version_object_reference {
 **api_version**: string
 **name**: string
 **resource_kind**: string
@@ -2144,7 +2144,7 @@ class kubernetes_horizontal_pod_autoscaler {
 class kubernetes_horizontal_pod_autoscaler_spec {
 **max_replicas**: int64
 **min_replicas**: int64
-**scale_target_ref**: kubernetes_cross_object_reference
+**scale_target_ref**: kubernetes_cross_version_object_reference
 **target_cpu_utilization_percentage**: int64
 }
 class kubernetes_horizontal_pod_autoscaler_status {
@@ -2174,7 +2174,7 @@ class resource {
 kubernetes_horizontal_pod_autoscaler --> kubernetes_horizontal_pod_autoscaler_spec
 kubernetes_horizontal_pod_autoscaler --> kubernetes_horizontal_pod_autoscaler_status
 kubernetes_resource <|--- kubernetes_horizontal_pod_autoscaler
-kubernetes_horizontal_pod_autoscaler_spec --> kubernetes_cross_object_reference
+kubernetes_horizontal_pod_autoscaler_spec --> kubernetes_cross_version_object_reference
 resource <|--- kubernetes_resource
 @enduml
 ```

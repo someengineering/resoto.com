@@ -4361,6 +4361,7 @@ class aws_cognito_mfa_option_type {
 class aws_cognito_user {
 **enabled**: boolean
 **mfa_options**: aws_cognito_mfa_option_type[]
+**pool_name**: string
 **user_attributes**: aws_cognito_attribute_type[]
 **user_status**: string
 }
@@ -19739,7 +19740,7 @@ class aws_vpc_peering_connection {
 **connection_accepter_vpc_info**: aws_vpc_peering_connection_vpc_info
 **connection_expiration_time**: datetime
 **connection_requester_vpc_info**: aws_vpc_peering_connection_vpc_info
-**connection_status**: aws_vpc_peering_connection_state_reason
+**peering_connection_status**: aws_vpc_peering_connection_state_reason
 }
 class aws_vpc_peering_connection_options_description {
 **allow_dns_resolution_from_remote_vpc**: boolean

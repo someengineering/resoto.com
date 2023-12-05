@@ -1,0 +1,51 @@
+---
+id: search-the-graph-and-return-all-possible-attribute-names-for-given-property-path
+title: "Search the graph and return all possible attribute names for given property path."
+description: "Search the graph and return all possible attribute names for given property path."
+sidebar_label: "Search the graph and return all possible attribute names for given property path."
+hide_title: true
+hide_table_of_contents: true
+api: eJy9Vt9v0zAQ/lcsP4HUNoMniAQSTDzwBNoGL2uFrsm1MUvszHY2qij/O3d2kjZbqfihoUpVYt+dv/vuu3Na6WHrZHottxbq4ptDsFkhVzNZg4UKPVrebaWmF5n2ViqXM6k0vdfgC3rGH1DVJRtYdMYbWsrRZVbVXhm2uypQqBy1VxuFVpiN8LQSopGtxdtGWcxl6m2DM+myAiuQaSv9ruaozlult7LrZiMSh1mI3QO5bdDujh7L9sOBvZNoHOZiY6yAshS1NTVavxOcjFuIjxuhjRc5bpQmM2voRTkBzjUV5osJ3g2U7gRgYkY3FdNrsTbWYx4hBueZJH4hBw9ydZgZ43mY1p5grtdSH810kojwRsRqhkTvFS2BFiY4AGeNucrA41/yn5lG+9PsfxrPGrTEoLboBYjzm/mHEitSxPycI4kCISeD+0IRYou+sdqFmhGB6yiZuEol+e6ohhjd3W/VY21MiRBp20BT+phq162iNzr/3uQ79njMa08jYSd6icyKwmRGezo9HIE/fFKXwEy0p6Qw1lC5Z7GRWFvPqSyksl4fC6b3zZul5K2lFPP5W6KdiOfOqo126Dj2y7Oz41jJirKLeifR9tCVDlQOkuYcwE+zgLouWQ8UKmF+j+YC1sJUjtdLLcRSmnuNdiln8Y3cshvqloT6jYo2rpNASQYFNm6hTMIqDVuroGflsXLHNBfTn6Z62ZdkGCI9h6yP2NPGObUuUYCnMOvGxzngQi9s1R3qabcsYjcWJucGNI7JCbMtlUk4IGmH0dclg2cyBmcROrR3w7RsbEmehfe1S5OkLShgl7Zc4Y4s78AqIHAhW96Lpex1KUuTQRmWKW32mW6/ek2174Jyld6YwJjyoRgXYfiKc2NRXHy4vBLvPn/k8whWpO3rixjT+QpChftmfgo6JwUbq3rQLIQk8NT2TPd3ELmmB9fMEJceD+im5CNx17Jt1+Dwiy27jpfjKOIi5Moxy/up8ADRKP6nuiaOpnyDu8ntdQdlw1aSZ+vvQ3520c+85+KfRv8JjP099JcA/9vwP5HBcEftU1jtu+8PNfKA8F9/zBzFM8xPvTuEM+Ac5d6tyDaSEeDF7fMIYn7FQfbukxMG23dZhvVhzo/mOnMwjrrPny6vyHjd332VycNHHNzzrUr/qVzSj8fNT0nvhvQ=
+sidebar_class_name: "post api-method"
+info_path: docs/reference/api/resoto-core-rest-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Search the graph and return all possible attribute names for given property path.</h1>
+
+<MethodEndpoint method={"post"} path={"/graph/{graph_id}/property/attributes"}></MethodEndpoint>
+
+<SecuritySchemes infoPath={"docs/reference/api/resoto-core-rest-api"}></SecuritySchemes>
+
+Search the graph and return all possible attribute names for given property path.
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Path Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"graph_id","in":"path","example":"resoto","description":"The identifier of the graph","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Query Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"section","in":"query","description":"The name of the section used for all property paths. If not defined root is assumed.","required":false,"schema":{"type":"string","enum":["reported","desired","metadata"]}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"prop","in":"query","example":"tags\n","description":"The property path to search for with an optional predicate","required":true,"schema":{"type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"count","in":"query","description":"Optional parameter to get a Ck-Element-Count header which returns the number of returned json elements","required":false,"schema":{"type":"boolean","default":true}}}></ParamsItem></ul></div></details><MimeTabs className={"openapi-tabs__mime"}><TabItem label={"text/plain"} value={"text/plain-schema"}><details style={{}} className={"openapi-markdown__details mime"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-mime"}><h3 className={"openapi-markdown__details-summary-header-body"}>Body</h3></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}><div style={{"marginTop":"1rem","marginBottom":"1rem"}}>
+
+The search to perform
+
+</div></div><ul style={{"marginLeft":"1rem"}}><div style={{"marginTop":".5rem","marginBottom":".5rem","marginLeft":"1rem"}}>
+
+string
+
+</div></ul></details></TabItem></MimeTabs><div><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+The result of this search in the defined format
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><li><div style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}>Array [</div></li><div style={{"marginTop":".5rem","marginBottom":".5rem","marginLeft":"1rem"}}>
+
+string
+
+</div><li><div style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}>]</div></li></ul></details></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>

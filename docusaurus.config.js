@@ -82,8 +82,8 @@ const config = {
                       categoryPosition.includes(generatedCategory.label)
                         ? categoryPosition.indexOf(generatedCategory.label)
                         : generatedCategory.label === miscellaneousCategoryName
-                        ? categoryPosition.length + 1
-                        : categoryPosition.length,
+                          ? categoryPosition.length + 1
+                          : categoryPosition.length,
                   );
                 }
 

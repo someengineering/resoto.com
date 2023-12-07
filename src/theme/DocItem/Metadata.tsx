@@ -1,26 +1,26 @@
 import { PageMetadata } from '@docusaurus/theme-common';
 import { useDoc } from '@docusaurus/theme-common/internal';
 import { getImage } from '@site/src/utils/socialImageUtils';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
 export default function DocItemMetadata(): JSX.Element {
   const {
-    metadata: { title, description, unversionedId },
+    metadata: { id, title, description },
     frontMatter,
     assets,
   } = useDoc();
 
   useEffect(() => {
     if (
-      unversionedId.startsWith('getting-started/install-resoto') &&
-      unversionedId !== 'getting-started/install-resoto/index'
+      id.startsWith('getting-started/install-resoto') &&
+      id !== 'getting-started/install-resoto/index'
     ) {
       window.localStorage.setItem(
         'docusaurus.tab.install-method',
-        unversionedId.split('/')[2],
+        id.split('/')[2],
       );
     }
-  }, [unversionedId]);
+  }, [id]);
 
   return (
     <PageMetadata

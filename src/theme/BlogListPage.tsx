@@ -11,7 +11,6 @@ import BlogListPaginator from '@theme/BlogListPaginator';
 import BlogPostItems from '@theme/BlogPostItems';
 import SearchMetadata from '@theme/SearchMetadata';
 import clsx from 'clsx';
-import React from 'react';
 
 function BlogListPageMetadata(props: Props): JSX.Element {
   const { metadata } = props;

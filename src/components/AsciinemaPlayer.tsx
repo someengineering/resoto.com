@@ -1,6 +1,6 @@
 import 'asciinema-player/dist/bundle/asciinema-player.css';
 import clsx from 'clsx';
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 type AsciinemaPlayerProps = {
   src: string;

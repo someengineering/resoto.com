@@ -38,11 +38,8 @@ This guide assumes that you have already [installed](../../getting-started/insta
 **Resoto supports the authentication mechanisms described in the [Boto3 SDK documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html).** You can authenticate with [<abbr title="Amazon Web Services">AWS</abbr>](../../reference/unified-data-model/aws.mdx) via an instance profile, an access key, or profiles. These credentials can be defined in the Resoto Worker configuration or as environment variables.
 
 <Tabs>
-
 <TabItem value="configuration" label="Resoto Worker Configuration">
-
 <Tabs>
-
 <TabItem value="instance-profile" label="Instance Profile">
 
 1. Configure an [instance profile](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html).
@@ -101,7 +98,6 @@ This guide assumes that you have already [installed](../../getting-started/insta
    ```
 
 </TabItem>
-
 <TabItem value="access-key" label="Access Key">
 
 :::note
@@ -133,7 +129,6 @@ Access keys in the configuration are visible to anyone with access to your Resot
    ```
 
 </TabItem>
-
 <TabItem value="profiles" label="Profiles">
 
 1. Create a file `~/.aws/credentials` with the desired profiles:
@@ -213,11 +208,8 @@ Access keys in the configuration are visible to anyone with access to your Resot
    :::
 
 </TabItem>
-
 </Tabs>
-
 </TabItem>
-
 <TabItem value="environment" label="Environment Variables">
 
 :::note
@@ -345,7 +337,6 @@ You can specify a profile using `AWS_PROFILE` and, for local testing, SSO authen
     ```
 
 </TabItem>
-
 </Tabs>
 
 ### 3. Authorize Resoto Access to AWS
@@ -354,7 +345,7 @@ See [How to Roll Out Resoto AWS Permissions with CloudFormation](../configuratio
 
 :::info
 
-If you prefer to deploy the role yourself, the S3 URL of the template to create the `ResotoAccess` role is <https://resotopublic.s3.amazonaws.com/cf/resoto-role.template>.
+If you prefer to deploy the role yourself, the S3 URL of the template to create the `ResotoAccess` role is [https://resotopublic.s3.amazonaws.com/cf/resoto-role.template](https://resotopublic.s3.amazonaws.com/cf/resoto-role.template).
 
 :::
 

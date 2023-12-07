@@ -1,12 +1,12 @@
 import { useDocsVersion } from '@docusaurus/theme-common/internal';
-import React from 'react';
+import { type ReactNode } from 'react';
 
 export default function VersionOnly({
   allowed,
   children,
 }: {
   allowed: string | string[];
-  children: React.ReactNode;
+  children: ReactNode;
 }): JSX.Element {
   const versionMetadata = useDocsVersion();
 

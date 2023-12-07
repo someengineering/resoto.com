@@ -2,7 +2,6 @@ import { useBlogPost } from '@docusaurus/theme-common/internal';
 import type { WrapperProps } from '@docusaurus/types';
 import Authors from '@theme-original/BlogPostItem/Header/Authors';
 import type AuthorsType from '@theme/BlogPostItem/Header/Authors';
-import React from 'react';
 
 type Props = WrapperProps<typeof AuthorsType>;
 

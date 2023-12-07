@@ -38,7 +38,7 @@ Resoto Worker can only write files to its home directory.
 
 :::
 
-:::caution
+:::warning
 
 Resoto Worker will overwrite any existing files with the defined filenames.
 
@@ -49,7 +49,6 @@ Resoto Worker will overwrite any existing files with the defined filenames.
 For [Docker](../../getting-started/install-resoto/docker.mdx) and [Kubernetes](../../getting-started/install-resoto/kubernetes.mdx) installations, you can mount configuration files within the `resotoworker` container instead of defining them in the configuration.
 
 <Tabs groupId="install-method" querystring>
-
 <TabItem value="docker" label="Docker">
 
 1. Add the desired volume definition to the `resotoworker` service in `docker-compose.yaml`:
@@ -84,7 +83,6 @@ For [Docker](../../getting-started/install-resoto/docker.mdx) and [Kubernetes](.
    :::
 
 </TabItem>
-
 <TabItem value="kubernetes" label="Kubernetes">
 
 1. Create a secret with the path to the configuration file:
@@ -118,7 +116,6 @@ For [Docker](../../getting-started/install-resoto/docker.mdx) and [Kubernetes](.
    ```
 
 </TabItem>
-
 </Tabs>
 
 ## Multi-Core Machines
@@ -161,7 +158,7 @@ gcp:
 
 - Within AWS, `aws.region_pool_size` is used to determine how many regions per account are collected concurrently.
 
-:::caution
+:::warning
 
 At peak, Resoto creates concurrent network connections for each region in every account. With a single cloud with 32 accounts and 20 regions per account, for example, there will be a maximum of 32 × 20 = 640 connections.
 

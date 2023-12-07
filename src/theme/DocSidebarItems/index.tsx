@@ -9,7 +9,6 @@ import DocSidebarItems from '@theme-original/DocSidebarItems';
 import NavbarItem from '@theme-original/NavbarItem';
 import type DocSidebarItemsType from '@theme/DocSidebarItems';
 import clsx from 'clsx';
-import React from 'react';
 import styles from './styles.module.css';
 
 type Props = WrapperProps<typeof DocSidebarItemsType>;

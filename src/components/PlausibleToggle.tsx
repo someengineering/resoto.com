@@ -3,7 +3,7 @@ import Link from '@docusaurus/Link';
 import { useLocation } from '@docusaurus/router';
 import useIsBrowser from '@docusaurus/useIsBrowser';
 import Admonition from '@theme/Admonition';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function PlausibleToggle(): JSX.Element {
   const [isExcluded, setIsExcluded] = useState<boolean>(false);

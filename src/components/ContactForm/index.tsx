@@ -1,7 +1,7 @@
 import baseStyles from '@site/src/pages/styles.module.css';
 import clsx from 'clsx';
 import { useFormik } from 'formik';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import {
   Honeypot,
   NetlifyFormComponent,

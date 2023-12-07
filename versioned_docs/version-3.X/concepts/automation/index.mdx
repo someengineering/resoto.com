@@ -33,9 +33,7 @@ There are three types of job triggers: [schedule triggers](#schedule-trigger), [
 **A schedule trigger executes a job at a specific time interval described by a [cron expression](https://crontab.guru).**
 
 <details>
-
 <summary>Examples</summary>
-
 <div>
 
 - Every 5 minutes
@@ -56,7 +54,6 @@ There are three types of job triggers: [schedule triggers](#schedule-trigger), [
   ```
 
 </div>
-
 </details>
 
 :::tip
@@ -74,9 +71,7 @@ Resoto updates the state of resources in the four steps of the [`collect_and_cle
 Each of these steps emits [events](../../reference/events/index.mdx) that can be used to trigger jobs.
 
 <details>
-
 <summary>Examples</summary>
-
 <div>
 
 - When resource collection is complete and the database reflects the latest state of your resources
@@ -89,7 +84,6 @@ Each of these steps emits [events](../../reference/events/index.mdx) that can be
   ```
 
 </div>
-
 </details>
 
 :::info
@@ -111,9 +105,7 @@ See [How to Create an Event-Based Job](../../how-to-guides/automation/create-an-
 Combined triggers are useful if you want to perform an action on a specific schedule, but only after a specific event is fired.
 
 <details>
-
 <summary>Example</summary>
-
 <div>
 
 Let's say you want to clean up development accounts at the end of each week.
@@ -127,7 +119,6 @@ To do so, you could define a [schedule trigger](#schedule-trigger) in addition t
 The above combined trigger executes the job based on the latest state of resources after 10pm every Friday evening.
 
 </div>
-
 </details>
 
 :::tip
@@ -147,9 +138,7 @@ To perform more complex automations, it is possible to define multiple sets of f
 **A job filter is an optional [search](../../reference/search/index.mdx) that returns the resources of interest.** Only resources matching the filter will be processed by the job.
 
 <details>
-
 <summary>Example</summary>
-
 <div>
 
 - Instances without an owner tag in the dev or playground accounts
@@ -158,7 +147,6 @@ To perform more complex automations, it is possible to define multiple sets of f
   ```
 
 </div>
-
 </details>
 
 The result of a job filter is a list of resources that is piped as input to [job actions](#job-actions).
@@ -168,9 +156,7 @@ The result of a job filter is a list of resources that is piped as input to [job
 **A job action is an [action command](../../reference/cli/index.mdx) performed on resources matching the optional [filter](#job-filters).**
 
 <details>
-
 <summary>Examples</summary>
-
 <div>
 
 - Update resource tags using the [`tag update` command](../../reference/cli/tag/update.mdx)
@@ -246,7 +232,6 @@ The result of a job filter is a list of resources that is piped as input to [job
   ```
 
 </div>
-
 </details>
 
 ### Job Management
@@ -260,9 +245,7 @@ See [Related How-To Guides](#related-how-to-guides) below for step-by-step instr
 :::
 
 <details>
-
 <summary>Examples</summary>
-
 <div>
 
 - Add a job that sends a Discord notification when compute instances without an `owner` tag are detected
@@ -303,7 +286,6 @@ See [Related How-To Guides](#related-how-to-guides) below for step-by-step instr
   ```
 
 </div>
-
 </details>
 
 ## Related How-To Guides

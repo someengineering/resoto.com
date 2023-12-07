@@ -6,7 +6,7 @@ The trust between components is established using a [<abbr title="pre-shared key
 
 [Resoto Core](./components/core.mdx) runs a Public Key Infrastructure (PKI) including a Certificate Authority (CA). Upon start, all components will request a certificate from the CA.
 
-## Pre-Shared Key (PSK) {#pre-shared-key}
+## Pre-Shared Key (PSK) \{#pre-shared-key}
 
 Each Resoto [component](./components/index.mdx) accepts a `--psk` flag (which can alternatively be supplied using the environment variables `RESOTOCORE_PSK`, `RESOTOWORKER_PSK`, `RESOTOMETRICS_PSK` and `RESOTOSHELL_PSK`).
 
@@ -14,13 +14,13 @@ The value of the flag is a pre-shared key—a common passphrase that all compone
 
 From this passphrase, a 256 bit key is derived using PKCS#5 password-based key derivation function 2 with HMAC as its pseudo-random function (PBKDF2-HMAC) and a random salt. This derived key is then used to sign <abbr title="JSON web token">JWT</abbr>s.
 
-## JSON Web Token (JWT) {#json-web-token}
+## JSON Web Token (JWT) \{#json-web-token}
 
 If a [<abbr title="pre-shared key">PSK</abbr>](#pre-shared-key) is provided, every request that a component makes to [Resoto Core](./components/core.mdx) must provide a valid `Authentication` header with a <abbr title="JSON web token">JWT</abbr> signed using the <abbr title="pre-shared key">PSK</abbr>.
 
 This is true for encrypted HTTPS and unencrypted HTTP requests, meaning that if TLS is turned off (`--no-tls`) but a <abbr title="pre-shared key">PSK</abbr> was specified, the request will still be authenticated (just not encrypted!).
 
-## Certificate Authority (CA) {#certificate-authority}
+## Certificate Authority (CA) \{#certificate-authority}
 
 **By default, Resoto's built-in CA will be used.**
 
@@ -95,7 +95,7 @@ When interfacing with Resoto's [API endpoints](./api/index.mdx), it is possible 
 
 ### Retrieving and Validating the CA Certificate
 
-The Resoto CA certificate can be retrieved at <https://localhost:8900/ca/cert> (replace `localhost` with the hostname or IP where [Resoto Core](./components/core.mdx) is running).
+The Resoto CA certificate can be retrieved at [https://localhost:8900/ca/cert](https://localhost:8900/ca/cert) (replace `localhost` with the hostname or IP where [Resoto Core](./components/core.mdx) is running).
 
 In a Python 3 REPL with `resotolib` installed, execute the following:
 

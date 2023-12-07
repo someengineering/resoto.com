@@ -6,7 +6,6 @@ import ModulePageSection from '@site/src/components/ModulePage/Section';
 import headerImage from '@site/src/img/modules/inventory.webp';
 import baseStyles from '@site/src/pages/styles.module.css';
 import Layout from '@theme/Layout';
-import React from 'react';
 import Balancer from 'react-wrap-balancer';
 import collectScreenshot from './img/collect.webp';
 import searchScreenshot from './img/search.webp';

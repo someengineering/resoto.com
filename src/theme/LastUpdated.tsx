@@ -1,7 +1,6 @@
 import Translate from '@docusaurus/Translate';
 import { ThemeClassNames } from '@docusaurus/theme-common';
 import type { Props } from '@theme/LastUpdated';
-import React from 'react';
 
 function LastUpdatedAtDate({
   lastUpdatedAt,

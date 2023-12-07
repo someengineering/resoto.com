@@ -8,7 +8,6 @@ import {
 import versions from '@site/versions.json';
 import CodeBlock from '@theme/CodeBlock';
 import useStoredJson from '@theme/useStoredJson';
-import React from 'react';
 import YAML from 'yaml';
 
 export default function IamPolicyDocument({

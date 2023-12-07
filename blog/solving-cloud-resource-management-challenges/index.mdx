@@ -17,7 +17,7 @@ And as that person hacks away in the CLI trying to get an overview of resources 
 
 In this post, I describe a few of the challenges and quirks with the <abbr title="Amazon Web Services">AWS</abbr> API and why we're building Resoto. _(Spoiler alert: It is so that you don't have to!)_
 
-<!--truncate-->
+{/* truncate */}
 
 :::info
 
@@ -79,7 +79,7 @@ At this point I'm sure you're guessing it already: **you don't have to worry abo
 
 Below is a comparison of how to add an `owner: jenkins` tag to an [<abbr title="Elastic Compute Cloud">EC2</abbr> instance](/docs/reference/unified-data-model/aws#aws_ec2_instance) or [<abbr title="Simple Queue Service">SQS</abbr> queue](/docs/reference/unified-data-model/aws#aws_sqs_queue) in the <abbr title="Amazon Web Services">AWS</abbr> CLI versus in [Resoto's CLI](/docs/reference/cli):
 
-:::tip EC2 Instance
+:::tip[EC2 Instance]
 
 ```bash title="Tagging in the AWS CLI 😒"
 > aws ec2 create-tags –resources jenkins-master –tags Key=owner,Value=jenkins
@@ -91,7 +91,7 @@ Below is a comparison of how to add an `owner: jenkins` tag to an [<abbr title="
 
 :::
 
-:::tip SQS Queue
+:::tip[SQS Queue]
 
 ```bash title="Tagging in the AWS CLI 😒"
 > aws sqs tag-queue –queue-url https://sqs.us-west-2.amazonaws.com/123456789012/MyQueue –tags owner=jenkins

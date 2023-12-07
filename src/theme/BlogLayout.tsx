@@ -4,7 +4,6 @@ import type { Props } from '@theme/BlogLayout';
 import BlogSidebar from '@theme/BlogSidebar';
 import Layout from '@theme/Layout';
 import clsx from 'clsx';
-import React from 'react';
 
 export default function BlogLayout(props: Props): JSX.Element {
   const { sidebar, toc, children, ...layoutProps } = props;

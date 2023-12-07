@@ -15,7 +15,7 @@ import tagguardImage from '@site/src/img/modules/tagguard.webp';
 import baseStyles from '@site/src/pages/styles.module.css';
 import clsx from 'clsx';
 import GithubSlugger from 'github-slugger';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import Balancer from 'react-wrap-balancer';
 import LeftCaret from './img/caret-left.svg';

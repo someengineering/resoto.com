@@ -5,7 +5,7 @@ sidebar_label: Filters
 
 # Search Filters
 
-## Selecting Nodes by [Kind](../../concepts/asset-inventory-graph/index.mdx#resource-kinds) {#selecting-nodes-by-kind}
+## Selecting Nodes by [Kind](../../concepts/asset-inventory-graph/index.mdx#resource-kinds) \{#selecting-nodes-by-kind}
 
 ```bash title="Filter by kind"
 > search is(instance)
@@ -156,7 +156,7 @@ Let us assume following document: `{"reported": { "test": [1, 2, 3, 4]}}`, we co
 
 In case no operator modifier is defined, the default is `any`.
 
-:::tip Example Predicates
+:::tip[Example Predicates]
 
 ```bash title="Select nodes with names exactly matching "sunset""
 name == "sunset"
@@ -186,7 +186,7 @@ All listed selections can be combined with `and` and `or` clauses. In order to d
 
 It is possible to negate a simple predicate or more complex term with `not`.
 
-:::tip Examples
+:::tip[Examples]
 
 ```bash title="Select nodes where reported.name is either sunrise or sunset"
 > search name in [sunset, sunrise]
@@ -216,7 +216,7 @@ There are entities that contain complex, deeply nested structures. As explained 
 
 If you need to combine several predicates for nested array elements, it is not sufficient to combine multiple predicates using `[*]` since there is no way to define the same position for all predicates. However, this is achievable using context notation.
 
-:::tip Example
+:::tip[Example]
 
 ```json title="Example document showing the data of an AWS security gateway"
 {
@@ -278,7 +278,7 @@ It is also possible to nest a context within another:
 path[*].{predicate1, nested[*].{predicate2, ...}, ...}
 ```
 
-:::tip Example
+:::tip[Example]
 
 Here is another example of context notation using the example JSON document above:
 
@@ -326,7 +326,7 @@ Values coming from the cloud provider are available in the `reported` section, a
 
 Nodes can be selected based on the fact that a specific property exists, no matter which value this property has. The `has_key(parent, property)` function will select all nodes where the property `parent` has property `property`.
 
-:::tip Example
+:::tip[Example]
 
 We want to find all volumes that are tagged with the tag `owner`.
 
@@ -342,7 +342,7 @@ We want to find all volumes that are tagged with the tag `owner`.
 
 For resources with IPv4 addresses, it is possible to select nodes in a specific subnet range. The function `in_subnet(ipv4_property, cidr)` will select all nodes where the property `ipv4_property` is in the subnet range `cidr`.
 
-:::tip Example
+:::tip[Example]
 
 We want to find all load balancer, where the public IPv4 address is in the subnet range `167.123.0.0/16`.
 

@@ -6,7 +6,6 @@ import { useGithubStars } from '@site/src/hooks/useGithubStars';
 import IconExternalLink from '@theme/Icon/ExternalLink';
 import type { Props } from '@theme/NavbarItem/NavbarNavLink';
 import Emoji from 'a11y-react-emoji';
-import React from 'react';
 
 export default function NavbarNavLink({
   activeBasePath,

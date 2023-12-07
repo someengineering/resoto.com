@@ -23,7 +23,7 @@ import Layout from '@theme/Layout';
 import algoliaSearchHelper from 'algoliasearch-helper';
 import algoliaSearch from 'algoliasearch/lite';
 import clsx from 'clsx';
-import React, { useEffect, useReducer, useRef, useState } from 'react';
+import { useEffect, useReducer, useRef, useState } from 'react';
 import styles from './styles.module.css';
 
 // Very simple pluralization: probably good enough for now

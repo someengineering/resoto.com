@@ -6,12 +6,12 @@ import type {
   PropSidebarItemLink,
 } from '@docusaurus/plugin-content-docs';
 import {
-  findFirstCategoryLink,
+  findFirstSidebarItemLink,
   useDocById,
 } from '@docusaurus/theme-common/internal';
 import type { Props } from '@theme/DocCard';
 import clsx from 'clsx';
-import React, { type ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import styles from './styles.module.css';
 
 function CardContainer({
@@ -60,7 +60,7 @@ function CardLayout({
             className={clsx('text--truncate', styles.cardDescription)}
             title={description}
           >
-            {description}
+            {description.replace(/<br\/>/g, '')}
           </p>
         )}
       </div>
@@ -73,7 +73,7 @@ function CardCategory({
 }: {
   item: PropSidebarItemCategory;
 }): JSX.Element | null {
-  const href = findFirstCategoryLink(item);
+  const href = findFirstSidebarItemLink(item);
 
   // Unexpected: categories that don't have a link have been filtered upfront
   if (!href) {

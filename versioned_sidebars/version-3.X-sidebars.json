@@ -397,7 +397,7 @@
                 },
                 {
                   "type": "doc",
-                  "id": "version-3.X/reference/api/list-available-benchmarks",
+                  "id": "reference/api/list-available-benchmarks",
                   "label": "List available benchmarks.",
                   "className": "api-method get"
                 },

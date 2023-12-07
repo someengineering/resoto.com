@@ -5,7 +5,6 @@ import baseStyles from '@site/src/pages/styles.module.css';
 import { getImage } from '@site/src/utils/socialImageUtils';
 import Layout from '@theme/Layout';
 import clsx from 'clsx';
-import React from 'react';
 import Balancer from 'react-wrap-balancer';
 import styles from './styles.module.css';
 

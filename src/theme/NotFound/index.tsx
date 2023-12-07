@@ -4,7 +4,6 @@ import ContactForm from '@site/src/components/ContactForm';
 import baseStyles from '@site/src/pages/styles.module.css';
 import Layout from '@theme/Layout';
 import clsx from 'clsx';
-import React from 'react';
 import Balancer from 'react-wrap-balancer';
 import styles from './styles.module.css';
 

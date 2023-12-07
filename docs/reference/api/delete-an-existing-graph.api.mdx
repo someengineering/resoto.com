@@ -5,7 +5,7 @@ description: "Delete an existing graph"
 sidebar_label: "Delete an existing graph"
 hide_title: true
 hide_table_of_contents: true
-api: eJytU02L2zAQ/StCpxZMs+2p9W3phrJQaEnTXpZQJvY4FqtIWmmcD4z/e2dsx5tsw0KhucSaz/fezLSaYJN0/qA3EUL9ewsONrhFR3qV6QARtkgYJaLVjh86HyNNqTNtHL8DUM3fJaYimkDGi3FZozIl1zGVwah8pYgtfSrH4gG2wUqxiMmTZ1PEp8ZELHVOscFMp6LGLei81XQMEpkoGrfRXZdNSDjSFUB4QvLUYDzqK7lr7y2C091LmPeCyyQ1MVX8SEiZ4vgdPoNWJVbGGUnL1LohtTdhcJdA8E53K6GQgncJk3T+cHMjf5ftvj2qfY1uyEPLDZUPGEHcag/cuikKTKlqLNMovCOZhPDAA82CBaHZnsn3ZcQmpUpGwb+XFO+GPuAUHkwi1nAaAzOuPSuuhwI6G2aZ61kfMWtPo+5EVIy70yY00XJUTRRSPpu1tU/U5W3wkSRyB9HA2g46iG8QooLG8qe2vgDbmxmr5Fy6P35i5ZjHSoZa+Z69oZ7tol8W9dlHVIv5j6W6/X4v/RjWwPXX+6FmIl5kyRwX5RUNLsSaFuZMby7Y021HccZT4dR8ugTGOvB80G27hoQ/o+06MQ8rKZqVJokoLHcFNuFfnadp/7+lzK7TecTj5fHswDYS1m/xaXr/CPrNYjzgt+r1278KaTSCO57DOUGddO5WHFsjlBh7eIP7lm8m0Fniee3V2Zrfzb/Ol3Nerj8dtrO2
+api: eJytU02L2zAQ/StCpxZMs+2p9W3phrJQaEnTXpZQJvY4FqtIWmmcD4z/e2dsx5tsw0KhucSS3sy892am1QSbpPMHvYkQ6t9bcLDBLTrSq0wHiLBFwiiIVjs+6HxEmlJn2jg+B6Cav/EA22AFEDF58nxVYiqiCWS84JY1KlNyalMZjMpXivimz8bYiE+NiVjqnGKDmU5FjVvQeavpGCRromjcRnddNjFhpCuA8MTkqcF41Fdi195bBKe7l5zuhYRJalKq+JCQMsX4HT4zVCVWxhkJy9S6IbU3YXgugeCd7lYiIQXvEiap/OHmRv4uy317VPsa3RCHlgsqHzCCPKs9cOmmKDClqrEso/COpBOiAw80CxZEZntm9ZeRm6QqmQX/Xkq8G+qAU3gwidjDyXNWXHt2XA8JdDb0MtezHjFrT63uxFSMu9MkNNEyqiYKKZ/N2ton6vI2+EiC3EE0sLaDD/I2GFFBY/lTW1+A7a+Zq8RcPn/8xM6xjpU0tfK9ekO92kU/WOqzj6gW8x9Ldfv9XuoxrUHrr/dDzkQ8yBI5DsorHlyYNQ3Mmd+csJfbjuaMq8Kh+bQJzHXQ+aDbdg0Jf0bbdXI9jKR4VpokprDdFdiEf1Weuv3/hjK7LucRj5fLswPbCKyf4lP3/pH0m8W4wG/V64t+ldJ4Ce54TudEdfK5WzG2Rigx9vSG51vemUBngee5V2djfjf/Ol/Oebj+ABOks7Y=
 sidebar_class_name: "delete api-method"
 info_path: docs/reference/api/resoto-core-rest-api
 custom_edit_url: null
@@ -22,18 +22,139 @@ import SchemaItem from "@theme/SchemaItem";
 import SchemaTabs from "@theme/SchemaTabs";
 import TabItem from "@theme/TabItem";
 
-<h1 className={"openapi__heading"}>Delete an existing graph</h1>
+<h1
+  className={"openapi__heading"}
+>
+  Delete an existing graph
+</h1>
 
-<MethodEndpoint method={"delete"} path={"/graph/{graph_id}"}></MethodEndpoint>
-
-<SecuritySchemes infoPath={"docs/reference/api/resoto-core-rest-api"}></SecuritySchemes>
+<MethodEndpoint
+  method={"delete"}
+  path={"/graph/{graph_id}"}
+>
+  
+</MethodEndpoint>
 
 Delete an existing graph
 
 ## Request
 
-<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Path Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"graph_id","in":"path","description":"The identifier of the graph","example":"resoto","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Query Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"truncate","in":"query","schema":{"type":"boolean"},"description":"If this parameter is set, leave the graph definition, but wipe the data."}}></ParamsItem></ul></div></details><div><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
-
-Ok when the delete operation was successful
-
-</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"text/plain"} value={"text/plain"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}>any</ul></details></TabItem><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"Graph deleted."} language={"shell"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"graph_id","in":"path","example":"resoto","description":"The identifier of the graph","required":true,"schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Query Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"truncate","in":"query","schema":{"type":"boolean"},"description":"If this parameter is set, leave the graph definition, but wipe the data."}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs>
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          Ok when the delete operation was successful
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"text/plain"}
+              value={"text/plain"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      any
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example"}
+                  value={"Example"}
+                >
+                  <ResponseSamples
+                    responseExample={"Graph deleted."}
+                    language={"shell"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>

@@ -1,5 +1,10 @@
 import clsx from 'clsx';
-import React, { useState } from 'react';
+import {
+  cloneElement,
+  isValidElement,
+  useState,
+  type ReactElement,
+} from 'react';
 import Modal from 'react-modal';
 import { TransformComponent, TransformWrapper } from 'react-zoom-pan-pinch';
 import styles from './styles.module.css';
@@ -7,20 +12,20 @@ import styles from './styles.module.css';
 export default function ZoomPanPinch({
   children,
 }: {
-  children: React.ReactElement;
+  children: ReactElement;
 }): JSX.Element {
   const [show, setShow] = useState(false);
 
-  let img: React.ReactElement = children;
+  let img: ReactElement = children;
 
-  while (React.isValidElement(img.props.children)) {
+  while (isValidElement(img.props.children)) {
     img = img.props.children;
   }
 
   return (
     <>
       <p className={styles.paragraph}>
-        {React.cloneElement(img, {
+        {cloneElement(img, {
           onClick: () => setShow(true),
           onKeyDown: () => setShow(true),
           className: styles.image,

@@ -13,7 +13,7 @@ One of the key features of Resoto is its ability to collect data from a wide ran
 
 ![](./img/banner.png)
 
-<!--truncate-->
+{/* truncate */}
 
 For example, when collecting data about Elastic Block Store (EBS) volumes in AWS, Resoto uses Amazon CloudWatch time series data to find out when a volume had its last read and write I/O. This information is then used to enrich the raw volume data with `last_access` and `last_update` timestamp properties, which makes it easy to answer when a particular EBS volume was last used, not just that it is not in use right now.
 
@@ -42,9 +42,7 @@ To represent an individual node, Resoto uses a [unified data model](/docs/refere
 As you can see, every [`aws_elb`](/docs/reference/unified-data-model/aws#aws_elb) inherits `load_balancer`, which in turn inherits from `resource`. Each [`aws_elb`](/docs/reference/unified-data-model/aws#aws_elb) also contains additional data like `aws_elb_policies`, which contain an `aws_elb_app_cookie_stickiness_policy` and `aws_elb_lb_cookie_stickiness_policy`, and so on.
 
 <details>
-
 <summary>Example of an individual <code>aws_elb</code></summary>
-
 <div>
 
 ```json
@@ -108,7 +106,6 @@ As you can see, every [`aws_elb`](/docs/reference/unified-data-model/aws#aws_elb
 ```
 
 </div>
-
 </details>
 
 While a graph data model is well-suited to representing the complex and hierarchical data collected by Resoto, the reality is that many people are familiar with SQL and the traditional database model based on rows and columns. SQL is a mature and well-established language, with a rich ecosystem of tools and applications.

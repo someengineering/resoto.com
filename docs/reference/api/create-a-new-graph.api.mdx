@@ -5,7 +5,7 @@ description: "Create a new graph"
 sidebar_label: "Create a new graph"
 hide_title: true
 hide_table_of_contents: true
-api: eJx9U0tv2zAM/iuGThsQ1G33wOZbVwzDLluQdrsEwcDYTKxWllSJbhsY/u8jZcdNl2C+WHx//Eh2imAbVbFU2wC+/tOAhS02aEmtZspDgAYJg3h0yrKgitFTV2qmtGXZA9X8rjCWQXvSTpS3NWa64jx6ozFkbpMRa1Io++IzNN5IsoDRkWNVwIdWB6xUQaHFmYpljQ2oolO08+IZKWi7VX2/EufonY0YxX55fi6/4/plQCCshqrZk6Y6gQjOUWZdhVy1dJakWY4H740uQeLzuyhJumMQbn2HJXEgVJUWVzDz4DwG0gJmgO4PNJ2617Y6buMUX+I5MKVjAnjG3R6Q1SkmvVAXl+/ef/iYKPMuEFYvVRRhpDMuLvhn+4F9AeK5Sreadix/c1RDk3KTpjSGH0JHL9+/wK4TiRlkFp+m+fFS1E7qeReFjbQChcqTPe/2G9KzKWJ43C9QGwx71UQ+Fnne1RzcF500IZ6PEDSszcCa2IapbqA1/FTGlWCSmjFKzGvzp8+8Bn3aDm03LjE+NrdIO5Zdu4DZ4uvNbXY1/y71GNbQ4++LIWdMPBXTpp/s/RU901gJnyn3BvgiOFVqtBtpGW+LQ4vpdBjl0OFSdd0aIv4Kpu9F/dBi4CEtVy+EJO4qHeXNpG/ARDzCMW2yerMYT+lt9v8rPAl9VILdpZGYViR+3uPu8Pb7FfvWCBWGBG8wX5UlejoIPDoqmc+0PfOfN7c8s78a7onR
+api: eJx9U01v2zAM/SuGThsQ1G33gc23rhiGXbYg7XYJgoGxmVitLKkS3TYw/N9Hyo6bLsF8sUQ9ko+PZKcItlEVS7UN4Os/DVjYYoOW1GqmPARokDAIolOWL6oYkbpSM6Ut3z1QzWd8hsYbAQSMjhybKoxl0J60E9xtjZmuOLTeaAyZ22TElhSNsQEfWh2wUgWFFmcqljU2oIpO0c5L1EhB263q+5WAo3c2YpT3y/Nz+R0nKwMCYTWkyJ401SljcI4y6yrkrKWzJMWyP3hvdAnin99FCdIdk3DrOyyJHaGqtEDBzIPzGEgLmYG6P7B06l7b6riMU+IIcpBFx0TwjKs9ELZTLHqhLi7fvf/wMUnmXSCsXrIowkhnnFz4z/YN+wLEfZVqNe34/s1RDU2KTZpSy36IHL18/xK7TiJmkFl8mprFQ1E7yeddFDXSCBQqT+95t5+Qnp8ihsf9ALXBMKom8rHI865m577opAhBPkLQsDaDavI2dHUDreGjMq4Ek8zMUXxeP3/6zGPQp+nQduOS4mNxizSP2bULmC2+3txmV/Pvko9pDTX+vhhixqRTMU36ydpfyTO1lfCZcm+AN4JDpUK7UZZxt9i1mFaHWQ4VLlXXrSHir2D6XswPLQZu0nL1IkjSrtJRziz6BkzEIx7TJKs3i3GV3mb/X7mT1Ecj2F1qiWnlxsd73B3ufr9ibI1QYUj0huerskRPB45HSyX9maZn/vPmlnv2FxDcidE=
 sidebar_class_name: "post api-method"
 info_path: docs/reference/api/resoto-core-rest-api
 custom_edit_url: null
@@ -22,18 +22,134 @@ import SchemaItem from "@theme/SchemaItem";
 import SchemaTabs from "@theme/SchemaTabs";
 import TabItem from "@theme/TabItem";
 
-<h1 className={"openapi__heading"}>Create a new graph</h1>
+<h1
+  className={"openapi__heading"}
+>
+  Create a new graph
+</h1>
 
-<MethodEndpoint method={"post"} path={"/graph/{graph_id}"}></MethodEndpoint>
-
-<SecuritySchemes infoPath={"docs/reference/api/resoto-core-rest-api"}></SecuritySchemes>
+<MethodEndpoint
+  method={"post"}
+  path={"/graph/{graph_id}"}
+>
+  
+</MethodEndpoint>
 
 Create a new graph
 
 ## Request
 
-<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Path Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"graph_id","in":"path","description":"The identifier of the graph","example":"resoto","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><div><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
-
-The created graph with the root node
-
-</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"kind"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","description":"The kind of this node."}}></SchemaItem><SchemaItem name={"property name*"} required={false} schemaName={"any"} qualifierMessage={undefined} schema={{"type":"object","additionalProperties":true,"properties":{"kind":{"type":"string","description":"The kind of this node."}},"example":{"id":"123456","reported":{"kind":"test.person","name":"Batman","city":"Gotham"}},"title":"Node"}} collapsible={false} discriminator={false}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"id\": \"123456\",\n  \"reported\": {\n    \"kind\": \"test.person\",\n    \"name\": \"Batman\",\n    \"city\": \"Gotham\"\n  }\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"graph_id","in":"path","example":"resoto","description":"The identifier of the graph","required":true,"schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs>
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          The created graph with the root node
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={false}
+                        name={"kind"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"The kind of this node."}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        name={"property name*"}
+                        required={false}
+                        schemaName={"any"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"object","additionalProperties":true,"properties":{"kind":{"type":"string","description":"The kind of this node."}},"example":{"id":"123456","reported":{"kind":"test.person","name":"Batman","city":"Gotham"}},"title":"Node"}}
+                        collapsible={false}
+                        discriminator={false}
+                      >
+                        
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"id\": \"123456\",\n  \"reported\": {\n    \"kind\": \"test.person\",\n    \"name\": \"Batman\",\n    \"city\": \"Gotham\"\n  }\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>

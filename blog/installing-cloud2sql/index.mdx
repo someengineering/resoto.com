@@ -15,7 +15,7 @@ Whether you are looking to integrate cloud data into your existing SQL workflows
 
 <AsciinemaPlayer src={require('./asciinema/cloud2sql.cast').default} cols={80} rows={20} preload={true} autoPlay={true} loop={true} />
 
-<!--truncate-->
+{/* truncate */}
 
 ## Installation
 
@@ -31,7 +31,7 @@ If you only require support for a specific database, you can choose between `clo
 
 :::
 
-:::caution
+:::warning
 
 Snowflake currently only supports Python 3.10. If you are using Python 3.11, use a database-specific package instead of `cloud2sql[all]`.
 
@@ -58,13 +58,9 @@ destinations:
 This tells Cloud2SQL to load the AWS collector. Within the `aws` section, you can configure additional options, but they are optional.
 
 <details>
-
 <summary>Advanced configuration examples</summary>
-
 <div>
-
 <Tabs>
-
 <TabItem value="aws-snowflake" label="AWS / K8S / Snowflake">
 
 ```yaml
@@ -113,7 +109,6 @@ destinations:
 ```
 
 </TabItem>
-
 <TabItem value="gcp-postgres" label="Google Cloud / PostgreSQL">
 
 ```yaml
@@ -135,7 +130,6 @@ sources:
 ```
 
 </TabItem>
-
 <TabItem value="do-parquet" label="DigitalOcean / Parquet">
 
 ```yaml
@@ -152,11 +146,8 @@ destinations:
 ```
 
 </TabItem>
-
 </Tabs>
-
 </div>
-
 </details>
 
 See [`config-template.yaml`](https://github.com/someengineering/cloud2sql/blob/main/config-template.yaml) for a list of all supported configuration options.

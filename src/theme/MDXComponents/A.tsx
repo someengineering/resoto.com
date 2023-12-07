@@ -1,7 +1,7 @@
 import Link from '@docusaurus/Link';
 import IconExternalLink from '@theme/Icon/ExternalLink';
 import type { Props } from '@theme/MDXComponents/A';
-import React from 'react';
+import { isValidElement } from 'react';
 
 export default function MDXA(props: Props): JSX.Element {
   try {
@@ -17,7 +17,7 @@ export default function MDXA(props: Props): JSX.Element {
         }
       >
         {props.children}
-        {React.isValidElement(props.children) ? null : <IconExternalLink />}
+        {isValidElement(props.children) ? null : <IconExternalLink />}
       </Link>
     );
   } catch (e) {

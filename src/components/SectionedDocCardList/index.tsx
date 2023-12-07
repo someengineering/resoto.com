@@ -6,7 +6,6 @@ import type { Props } from '@theme/DocCardList';
 import DocCardList from '@theme/DocCardList';
 import Heading from '@theme/Heading';
 import GithubSlugger from 'github-slugger';
-import React from 'react';
 import styles from './styles.module.css';
 
 function SectionedDocCardListForCurrentSidebarCategory({ className }: Props) {

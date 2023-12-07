@@ -50,6 +50,27 @@ module.exports = [
           'Search and aggregate history events and return the aggregation result.',
         className: 'api-method post',
       },
+      {
+        type: 'doc',
+        id: 'reference/api/search-the-graph-and-return-all-possible-attribute-names-for-given-property-path',
+        label:
+          'Search the graph and return all possible attribute names for given property path.',
+        className: 'api-method post',
+      },
+      {
+        type: 'doc',
+        id: 'reference/api/search-the-graph-and-return-all-possible-attribute-values-for-given-property-path',
+        label:
+          'Search the graph and return all possible attribute values for given property path.',
+        className: 'api-method post',
+      },
+      {
+        type: 'doc',
+        id: 'reference/api/search-the-graph-and-return-all-possible-attribute-values-for-given-property-path',
+        label:
+          'Search the graph and return all possible attribute values for given property path.',
+        className: 'api-method post',
+      },
     ],
   },
   {
@@ -470,6 +491,19 @@ module.exports = [
         type: 'doc',
         id: 'reference/api/transform-the-search-into-the-raw-database-search',
         label: 'Transform the search into the raw database search',
+        className: 'api-method post',
+      },
+    ],
+  },
+  {
+    type: 'category',
+    label: 'timeseries',
+    link: { type: 'doc', id: 'reference/api/timeseries' },
+    items: [
+      {
+        type: 'doc',
+        id: 'reference/api/load-time-series-data',
+        label: 'Load time series data.',
         className: 'api-method post',
       },
     ],

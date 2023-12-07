@@ -15,7 +15,7 @@ import heroAnimation from '@site/src/rive/hero.riv';
 import versions from '@site/versions.json';
 import Layout from '@theme/Layout';
 import { clsx } from 'clsx';
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Balancer from 'react-wrap-balancer';
 import styles from './styles.module.css';
 

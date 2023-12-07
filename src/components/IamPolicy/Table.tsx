@@ -9,7 +9,6 @@ import versions from '@site/versions.json';
 import useStoredJson from '@theme/useStoredJson';
 import GithubSlugger from 'github-slugger';
 import { sortBy, union } from 'lodash';
-import React from 'react';
 
 export default function IamPolicyTable({
   provider,

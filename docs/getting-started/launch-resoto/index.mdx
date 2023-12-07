@@ -17,7 +17,6 @@ Resoto UI is a user-friendly web interface that simplifies managing and explorin
 The steps to launch Resoto UI are dependent on how you installed Resoto.
 
 <Tabs groupId="install-method" querystring>
-
 <TabItem value="aws" label="AWS">
 
 1. Log in to the [AWS CloudFormation console](https://console.aws.amazon.com/cloudformation).
@@ -73,7 +72,6 @@ The steps to launch Resoto UI are dependent on how you installed Resoto.
    :::
 
 </TabItem>
-
 <TabItem value="digitalocean" label="DigitalOcean">
 
 1. Resoto is available via an externally accessible service address. Get the address by executing the following in your terminal:
@@ -120,10 +118,9 @@ The steps to launch Resoto UI are dependent on how you installed Resoto.
    ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
 
 </TabItem>
-
 <TabItem value="docker" label="Docker">
 
-1. Resoto UI listens on port `8900` by default. You can access it by opening <https://localhost:8900> in your browser.
+1. Resoto UI listens on port `8900` by default. You can access it by opening [https://localhost:8900](https://localhost:8900) in your browser.
 
    :::note
 
@@ -160,7 +157,6 @@ The steps to launch Resoto UI are dependent on how you installed Resoto.
    ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
 
 </TabItem>
-
 <TabItem value="kubernetes" label="Kubernetes">
 
 1. Resoto provides a service that exposes Resoto UI on port `8900`. We recommend configuring an [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress) with a valid certificate for UI access, but you can port-forward the service as a temporary solution:
@@ -198,10 +194,9 @@ The steps to launch Resoto UI are dependent on how you installed Resoto.
    ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
 
 </TabItem>
-
 <TabItem value="pip" label="pip">
 
-1. Resoto UI listens on port `8900` by default. You can access it by opening <https://localhost:8900> in your browser.
+1. Resoto UI listens on port `8900` by default. You can access it by opening [https://localhost:8900](https://localhost:8900) in your browser.
 
    :::note
 
@@ -238,7 +233,6 @@ The steps to launch Resoto UI are dependent on how you installed Resoto.
    ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
 
 </TabItem>
-
 </Tabs>
 
 ## Resoto Shell
@@ -248,7 +242,6 @@ Resoto Shell is Resoto's command-line interface.
 The steps to launch Resoto Shell depend on how you installed Resoto.
 
 <Tabs groupId="install-method" querystring>
-
 <TabItem value="aws" label="AWS">
 
 1. Log in to the [AWS CloudFormation console](https://console.aws.amazon.com/cloudformation).
@@ -282,7 +275,6 @@ The steps to launch Resoto Shell depend on how you installed Resoto.
    ```
 
 </TabItem>
-
 <TabItem value="digitalocean" label="DigitalOcean">
 
 Execute the following to access the [Resoto Shell](../../reference/components/shell.mdx) interface:
@@ -292,7 +284,6 @@ kubectl --namespace resoto exec -it service/resoto-resotocore -- resh
 ```
 
 </TabItem>
-
 <TabItem value="docker" label="Docker">
 
 Execute the following to access the [Resoto Shell](../../reference/components/shell.mdx) interface:
@@ -302,7 +293,6 @@ $ docker exec -it resotoshell resh
 ```
 
 </TabItem>
-
 <TabItem value="kubernetes" label="Kubernetes">
 
 1. Make sure that the deployment is available:
@@ -318,7 +308,6 @@ $ docker exec -it resotoshell resh
    ```
 
 </TabItem>
-
 <TabItem value="pip" label="pip">
 
 Execute the following to access the [Resoto Shell](../../reference/components/shell.mdx) interface:
@@ -328,7 +317,6 @@ $ resh
 ```
 
 </TabItem>
-
 </Tabs>
 
 ![Screenshot of Resoto Shell](../explore-resoto/shell/img/shell.png)

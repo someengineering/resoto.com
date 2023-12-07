@@ -18,7 +18,7 @@ The source code can be found in the [`someengineering/resoto-cf` GitHub reposito
 
 :::note
 
-If you prefer to deploy the StackSet yourself, the S3 URL of the template to create the `ResotoAccess` role is <https://resotopublic.s3.amazonaws.com/cf/resoto-role.template>.
+If you prefer to deploy the StackSet yourself, the S3 URL of the template to create the `ResotoAccess` role is [https://resotopublic.s3.amazonaws.com/cf/resoto-role.template](https://resotopublic.s3.amazonaws.com/cf/resoto-role.template).
 
 :::
 
@@ -33,7 +33,6 @@ You also need an [AWS Organization](https://aws.amazon.com/organizations) that m
 ### Deploying the StackSet
 
 <Tabs>
-
 <TabItem value="console" label="AWS Console">
 
 1. Open the [AWS Organizations Console](https://console.aws.amazon.com/organizations/v2/home/accounts) and find the Organization Unit (OU) where you want to deploy the `ResotoAccess` role. The role will be deployed to all accounts in this OU and all child OUs.
@@ -82,7 +81,6 @@ You also need an [AWS Organization](https://aws.amazon.com/organizations) that m
    ![ResotoAccess Role Permissions](./img/resotoaccess_role_permissions.png)![ResotoAccess Role Trust](./img/resotoaccess_role_trust.png)
 
 </TabItem>
-
 <TabItem value="cli" label="AWS CLI">
 
 1. Open the [AWS Organizations Console](https://console.aws.amazon.com/organizations/v2/home/accounts) and find the Organization Unit (OU) where you want to deploy the `ResotoAccess` role. The role will be deployed to all accounts in this OU and all child OUs.
@@ -110,13 +108,11 @@ You also need an [AWS Organization](https://aws.amazon.com/organizations) that m
    :::
 
 </TabItem>
-
 </Tabs>
 
 ### Configuring Resoto to Assume the `ResotoAccess` Role and Scrape the Organization
 
 <Tabs>
-
 <TabItem value="ui" label="Resoto UI">
 
 1. Open the `resoto.worker` configuration and locate the **Aws** section.
@@ -130,7 +126,6 @@ You also need an [AWS Organization](https://aws.amazon.com/organizations) that m
 3. Save the configuration.
 
 </TabItem>
-
 <TabItem value="shell" label="Resoto Shell">
 
 1. In Resoto Shell, execute `config edit resoto.worker` and locate the `aws` section.
@@ -148,7 +143,6 @@ You also need an [AWS Organization](https://aws.amazon.com/organizations) that m
    The `assume_current` and `do_not_scrape_current` options depend on your organization setup. They control whether Resoto should assume the role inside the account it is running in, or just collect that account with the permissions it already has. (For instance, if you deploy Resoto using Kubernetes and it is using a service account that is already using the `ResotoAccess` role, there would be no need to assume the same role again.)
 
 </TabItem>
-
 </Tabs>
 
 ## Further Reading

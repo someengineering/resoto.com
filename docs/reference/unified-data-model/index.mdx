@@ -45,11 +45,8 @@ Every resource in Resoto has the `resource` base kind as its root.
 Resoto also introduces abstract model classes for different resource types, making it easy to query and reason about common data.
 
 <details>
-
 <summary>Example</summary>
-
 <div>
-
 <ZoomPanPinch>
 
 ![Example Resource Model](./img/resource_example.svg)
@@ -67,7 +64,6 @@ Resoto also introduces abstract model classes for different resource types, maki
   A [Google Cloud Disk resource](https://cloud.google.com/compute/docs/reference/rest/v1/disks) is conceptually similar to an AWS EC2 Volume and the two resource types have many properties in common.
 
 </div>
-
 </details>
 
 ## Supported Resource Types
@@ -76,7 +72,7 @@ Resoto has built-in support for resource types from the following cloud provider
 
 <DocCardList />
 
-## Resource Kinds {#kinds}
+## Resource Kinds \{#kinds}
 
 For a list of available kinds, you can use the [`kinds` CLI command](../cli/kinds.mdx):
 
@@ -139,9 +135,7 @@ Since Resoto uses JSON in order to exchange data, all the different simple types
 Resoto also introduces some additional simple types like `datetime` or `date`. The reason for this is the ability to coerce proper values from values given to Resoto.
 
 <details>
-
 <summary>Example</summary>
-
 <div>
 
 **Assume a user wants to query a resource by creation time.**
@@ -167,5 +161,4 @@ According to the model, we would need to filter for the `ctime` property. Since 
 This translates `"-3d"` using the current server time into a valid datetime string.
 
 </div>
-
 </details>

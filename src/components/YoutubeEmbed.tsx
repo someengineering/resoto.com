@@ -1,7 +1,6 @@
 import Head from '@docusaurus/Head';
 import { useLocation } from '@docusaurus/router';
 import clsx from 'clsx';
-import React from 'react';
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 

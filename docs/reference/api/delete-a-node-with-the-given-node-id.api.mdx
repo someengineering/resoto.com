@@ -5,7 +5,7 @@ description: "**Experimental**: This API is not stable and might be subject of c
 sidebar_label: "Delete a node with the given node id."
 hide_title: true
 hide_table_of_contents: true
-api: eJzFU8GO0zAQ/RXLJ6iqTUEcIEJIiO0BCSFUCpdutXKTaWxw7Kw9Ka2i/DszTgItQitYIXGKM57xvHnvTSdLiEUwDRrvZC5ns+WxgWBqcKjsbJaLtTZRvP7wVtDHeRQR1c6CUK4Utak0ih2I2O6+QIHC70Whlavg6uUuZK9u3DVYQEqmyhLEN4NaoAZRmQO4IWbKqxsn5xJVFWW+kRy8rZVTFTAGuZ3LRgVV0zOBEzrp6IeQVkE1+taUVGsYeaNQ0/lynLXmDvSO2RsIjC+151LKhaOqG8uPBYgePYUC3LUmQClzDC3MZSw01ErmncRTw5kRg3GV7Pv5DyQJ8oOAcOVfNd1ycmy8ixD5/uniGX8ue71PvEZRJvJLxiqJP+2pgRyCcj7AzGWWyMi6ic4+Y1BZNw7VU2aEcJjIb4OlIo3YxDzLOu0j9nnX+ICceVDBsDsSNr4bwO1Va+korS+UTWFCxDWX189fLBYEloc0bu/T/AaTPqukj3jjA4jV8uOaDcn9CNYw8+cnw5sRyTtcOWrzRwb8Va1OFt4hu+9/LsQgPcIRs8YqshYNmOjvRu02cjJyfrYMo6fyyZXE5qDERnbdTkX4FGzfc/iuhXCi+PancEnj0kQ+k1v2yka4h5xHq9G5j8X9m/bbYcagcqdkHdvyHx2/wul8v3nT/iGkkZ8HIJoY7bfnC3W9fLdcL8m33wHyQMxZ
+api: eJzFU02P0zAQ/SuWT1BVm4I4QLRCWrE9ICGESuHSrVZuMo0Njp21J6VVlP/OjJNCC6vVgpA42R7Px5s3bzpZQiyCadB4J3M5mcz3DQRTg0NlJ5NcLLWJ4urDW0GH8ygiqo0FoVwpalNpFBsQsd18gQKF34pCK1fBxeUmZK9v3DVYQHKmyBLEN4NaoAZRmR24wWbKixsnpxJVFWW+kmy8rZVTFTAGuZ7KRgVVU5rADp109CCkVVCNvjUlxRpG3ijUdIe9qhvLDgGiR0+m8w6XmotSarM1EBhyQsTZyDfAXWsClDLH0MJUxkJDrWTeSTw0nDViMK6SfT/9gSRB/g3IY6py5B8VXbNzbLyLEPn/+ewFH+e13ideoygT+SVjlcSf9lRADkY5HWDmMkudZ92Rzj5jUFk3NtWTZ4SwO5LfBktBGrGJeZZ12kfs867xAdlzp4JhdSRs/DeA26rW0lVaXyibzISIY86/X76azQgsN2nc1qf+DaZZLtIsxRsfQCzmH5csSK5HsIaePz8bckYk7XDkOJtHCfDXaXWy8A5Zff9zIYbRI+wxa6wiaVGDif5unN1KHlWbnyzDqKn8qEpic5jESnbdRkX4FGzfs/muhXAg+/rn4NKMSxP5TmrZKhvhAXKeLEblPhUPr9W9zYxG5Q5JOrblF12/wuF0v3nT/iGkkZ+/QHRktF+fLtT1/N18OSfdfgfoLsxZ
 sidebar_class_name: "delete api-method"
 info_path: docs/reference/api/resoto-core-rest-api
 custom_edit_url: null
@@ -22,18 +22,69 @@ import SchemaItem from "@theme/SchemaItem";
 import SchemaTabs from "@theme/SchemaTabs";
 import TabItem from "@theme/TabItem";
 
-<h1 className={"openapi__heading"}>Delete a node with the given node id.</h1>
+<h1
+  className={"openapi__heading"}
+>
+  Delete a node with the given node id.
+</h1>
 
-<MethodEndpoint method={"delete"} path={"/graph/{graph_id}/node/{node_id}"}></MethodEndpoint>
-
-<SecuritySchemes infoPath={"docs/reference/api/resoto-core-rest-api"}></SecuritySchemes>
+<MethodEndpoint
+  method={"delete"}
+  path={"/graph/{graph_id}/node/{node_id}"}
+>
+  
+</MethodEndpoint>
 
 **Experimental**: This API is not stable and might be subject of change.<br/> Delete a node with the given node id.
 
 ## Request
 
-<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Path Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"graph_id","in":"path","description":"The identifier of the graph","example":"resoto","required":true,"schema":{"type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"node_id","in":"path","description":"The identifier of the node","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><div><div><ApiTabs><TabItem label={"204"} value={"204"}><div>
-
-Node is deleted
-
-</div><div></div></TabItem></ApiTabs></div></div>
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"graph_id","in":"path","example":"resoto","description":"The identifier of the graph","required":true,"schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"node_id","in":"path","description":"The identifier of the node","required":true,"schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs>
+      <TabItem
+        label={"204"}
+        value={"204"}
+      >
+        <div>
+          
+          
+          Node is deleted
+          
+          
+        </div><div>
+          
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>

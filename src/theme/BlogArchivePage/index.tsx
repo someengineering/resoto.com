@@ -8,7 +8,6 @@ import type { ArchiveBlogPost, Props } from '@theme/BlogArchivePage';
 import Layout from '@theme/Layout';
 import clsx from 'clsx';
 import { orderBy } from 'lodash';
-import React from 'react';
 import styles from './styles.module.css';
 
 type YearProp = {

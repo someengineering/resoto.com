@@ -15,7 +15,7 @@ import {
 } from '@docusaurus/theme-common/internal';
 import type { Props } from '@theme/DocVersionBanner';
 import clsx from 'clsx';
-import React, { type ComponentType } from 'react';
+import { type ComponentType } from 'react';
 
 type BannerLabelComponentProps = {
   versionMetadata: PropVersionMetadata;

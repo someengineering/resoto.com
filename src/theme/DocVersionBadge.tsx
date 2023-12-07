@@ -6,7 +6,6 @@ import type { WrapperProps } from '@docusaurus/types';
 import latestRelease from '@site/latestRelease.json';
 import DocVersionBadge from '@theme-original/DocVersionBadge';
 import type DocVersionBadgeType from '@theme/DocVersionBadge';
-import React from 'react';
 
 type Props = WrapperProps<typeof DocVersionBadgeType>;
 

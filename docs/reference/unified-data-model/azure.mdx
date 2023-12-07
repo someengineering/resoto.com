@@ -489,6 +489,8 @@ class azure_private_link_service_connection_state {
 }
 class azure_resource {
 }
+class gateway {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -531,6 +533,7 @@ azure_application_gateway --> azure_application_gateway_url_path_map
 azure_application_gateway --> azure_application_gateway_web_application_firewall_configuration
 azure_application_gateway --> azure_managed_service_identity
 azure_resource <|--- azure_application_gateway
+gateway <|--- azure_application_gateway
 azure_application_gateway_backend_address_pool --> azure_application_gateway_backend_address
 azure_application_gateway_backend_http_settings --> azure_application_gateway_connection_draining
 azure_application_gateway_http_listener --> azure_application_gateway_custom_error
@@ -557,6 +560,7 @@ azure_private_endpoint --> azure_private_endpoint_ip_configuration
 azure_private_endpoint --> azure_private_link_service_connection
 azure_private_link_service_connection --> azure_private_link_service_connection_state
 resource <|--- azure_resource
+resource <|--- gateway
 @enduml
 ```
 
@@ -595,6 +599,12 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class azure_application_gateway {
 }
+class azure_subnet {
+}
+class azure_web_application_firewall_policy {
+}
+azure_application_gateway -[#1A83AF]-> azure_web_application_firewall_policy
+azure_subnet -[#1A83AF]-> azure_application_gateway
 @enduml
 ```
 
@@ -743,6 +753,7 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class azure_auto_approved_private_link_service {
+**private_link_service_id**: string
 }
 class azure_resource {
 }
@@ -917,7 +928,7 @@ class azure_virtual_machine {
 }
 azure_availability_set -[#1A83AF]-> azure_proximity_placement_group
 azure_availability_set -[#1A83AF]-> azure_virtual_machine
-azure_virtual_machine -[#1A83AF]-> azure_proximity_placement_group
+azure_proximity_placement_group -[#1A83AF]-> azure_virtual_machine
 @enduml
 ```
 
@@ -1131,6 +1142,16 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class azure_bastion_host {
 }
+class azure_public_ip_address {
+}
+class azure_subnet {
+}
+class azure_virtual_network {
+}
+azure_bastion_host -[#1A83AF]-> azure_public_ip_address
+azure_subnet -[#1A83AF]-> azure_bastion_host
+azure_virtual_network -[#1A83AF]-> azure_bastion_host
+azure_virtual_network -[#1A83AF]-> azure_subnet
 @enduml
 ```
 
@@ -1725,6 +1746,12 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class azure_ddos_protection_plan {
 }
+class azure_public_ip_address {
+}
+class azure_virtual_network {
+}
+azure_ddos_protection_plan -[#1A83AF]-> azure_public_ip_address
+azure_ddos_protection_plan -[#1A83AF]-> azure_virtual_network
 @enduml
 ```
 
@@ -2346,52 +2373,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class azure_application_gateway_backend_address {
-**fqdn**: string
-**ip_address**: string
-}
-class azure_application_gateway_backend_address_pool {
-**backend_addresses**: azure_application_gateway_backend_address[]
-**etag**: string
-**name**: string
-**provisioning_state**: string
-**type**: string
-}
-class azure_application_gateway_ip_configuration {
-**etag**: string
-**name**: string
-**provisioning_state**: string
-**subnet**: string
-**type**: string
-}
-class azure_application_security_group {
-**etag**: string
-**id**: string
-**location**: string
-**name**: string
-**provisioning_state**: string
-**resource_guid**: string
-**tags**: dictionary[string, string]
-**type**: string
-}
-class azure_custom_dns_config_properties_format {
-**fqdn**: string
-**ip_addresses**: string[]
-}
-class azure_ddos_settings {
-**ddos_protection_plan**: string
-**protection_mode**: string
-}
-class azure_delegation {
-**actions**: string[]
-**etag**: string
-**name**: string
-**provisioning_state**: string
-**service_name**: string
-**type**: string
-}
 class azure_dscp_configuration {
-**associated_network_interfaces**: azure_network_interface[]
 **destination_ip_ranges**: azure_qos_ip_range[]
 **destination_port_ranges**: azure_qos_port_range[]
 **etag**: string
@@ -2403,269 +2385,6 @@ class azure_dscp_configuration {
 **resource_guid**: string
 **source_ip_ranges**: azure_qos_ip_range[]
 **source_port_ranges**: azure_qos_port_range[]
-}
-class azure_extended_location {
-**name**: string
-**type**: string
-}
-class azure_flow_log {
-**enabled**: boolean
-**etag**: string
-**flow_analytics_configuration**: azure_traffic_analytics_properties
-**format**: azure_flow_log_format_parameters
-**id**: string
-**location**: string
-**name**: string
-**provisioning_state**: string
-**retention_policy**: azure_retention_policy_parameters
-**storage_id**: string
-**tags**: dictionary[string, string]
-**target_resource_guid**: string
-**target_resource_id**: string
-**type**: string
-}
-class azure_flow_log_format_parameters {
-**type**: string
-**version**: int64
-}
-class azure_frontend_ip_configuration {
-**etag**: string
-**gateway_load_balancer**: string
-**inbound_nat_pools**: string[]
-**inbound_nat_rules**: string[]
-**load_balancing_rules**: string[]
-**name**: string
-**outbound_rules**: string[]
-**private_ip_address**: string
-**private_ip_address_version**: string
-**private_ip_allocation_method**: string
-**provisioning_state**: string
-**public_ip_address**: azure_public_ip_address
-**public_ip_prefix**: string
-**subnet**: azure_subnet
-**type**: string
-**zones**: string[]
-}
-class azure_inbound_nat_rule {
-**backend_address_pool**: string
-**backend_port**: int64
-**enable_floating_ip**: boolean
-**enable_tcp_reset**: boolean
-**etag**: string
-**frontend_ip_configuration**: string
-**frontend_port**: int64
-**frontend_port_range_end**: int64
-**frontend_port_range_start**: int64
-**idle_timeout_in_minutes**: int64
-**name**: string
-**protocol**: string
-**provisioning_state**: string
-**type**: string
-}
-class azure_ip_configuration {
-**etag**: string
-**name**: string
-**private_ip_address**: string
-**private_ip_allocation_method**: string
-**provisioning_state**: string
-**public_ip_address**: azure_public_ip_address
-}
-class azure_ip_configuration_profile {
-**etag**: string
-**name**: string
-**properties**: string
-**type**: string
-}
-class azure_ip_tag {
-**ip_tag_type**: string
-**tag**: string
-}
-class azure_link_service_private_endpoint_connection {
-**etag**: string
-**link_identifier**: string
-**name**: string
-**private_endpoint**: azure_private_endpoint
-**private_endpoint_location**: string
-**private_link_service_connection_state**: azure_private_link_service_connection_state
-**provisioning_state**: string
-**type**: string
-}
-class azure_nat_gateway {
-**etag**: string
-**idle_timeout_in_minutes**: int64
-**location**: string
-**provisioning_state**: string
-**public_ip_addresses**: string[]
-**public_ip_prefixes**: string[]
-**resource_guid**: string
-**sku**: string
-**subnet_ids**: string[]
-**type**: string
-**zones**: string[]
-}
-class azure_network_interface {
-**auxiliary_mode**: string
-**auxiliary_sku**: string
-**disable_tcp_state_tracking**: boolean
-**dscp_configuration**: string
-**enable_accelerated_networking**: boolean
-**enable_ip_forwarding**: boolean
-**etag**: string
-**extended_location**: azure_extended_location
-**hosted_workloads**: string[]
-**interface_dns_settings_settings**: azure_network_interface_dns_settings
-**interface_ip_configurations**: azure_network_interface_ip_configuration[]
-**location**: string
-**mac_address**: string
-**migration_phase**: string
-**network_security_group**: azure_network_security_group
-**nic_type**: string
-**primary**: boolean
-**private_endpoint**: azure_private_endpoint
-**private_link_service**: azure_private_link_service
-**provisioning_state**: string
-**resource_guid**: string
-**tap_configurations**: azure_network_interface_tap_configuration[]
-**type**: string
-**virtual_machine**: string
-**vnet_encryption_supported**: boolean
-**workload_type**: string
-}
-class azure_network_interface_dns_settings {
-**applied_dns_servers**: string[]
-**dns_servers**: string[]
-**internal_dns_name_label**: string
-**internal_domain_name_suffix**: string
-**internal_fqdn**: string
-}
-class azure_network_interface_ip_configuration {
-**application_gateway_backend_address_pools**: azure_application_gateway_backend_address_pool[]
-**application_security_groups**: azure_application_security_group[]
-**etag**: string
-**gateway_load_balancer**: string
-**load_balancer_inbound_nat_rules**: azure_inbound_nat_rule[]
-**name**: string
-**primary**: boolean
-**private_ip_address**: string
-**private_ip_address_version**: string
-**private_ip_allocation_method**: string
-**private_link_connection_properties**: azure_network_interface_ip_configuration_private_link_connection_properties
-**provisioning_state**: string
-**public_ip_address**: azure_public_ip_address
-**type**: string
-**virtual_network_taps**: azure_virtual_network_tap[]
-}
-class azure_network_interface_ip_configuration_private_link_connection_properties {
-**fqdns**: string[]
-**group_id**: string
-**required_member_name**: string
-}
-class azure_network_interface_tap_configuration {
-**etag**: string
-**name**: string
-**properties**: string
-**type**: string
-}
-class azure_network_security_group {
-**default_security_rules**: azure_security_rule[]
-**etag**: string
-**flow_logs**: azure_flow_log[]
-**flush_connection**: boolean
-**provisioning_state**: string
-**resource_guid**: string
-**security_rules**: azure_security_rule[]
-}
-class azure_private_endpoint {
-**application_security_groups**: azure_application_security_group[]
-**custom_dns_configs**: azure_custom_dns_config_properties_format[]
-**custom_network_interface_name**: string
-**etag**: string
-**extended_location**: azure_extended_location
-**id**: string
-**ip_configurations**: azure_private_endpoint_ip_configuration[]
-**location**: string
-**manual_private_link_service_connections**: azure_private_link_service_connection[]
-**name**: string
-**private_link_service_connections**: azure_private_link_service_connection[]
-**provisioning_state**: string
-**tags**: dictionary[string, string]
-**type**: string
-}
-class azure_private_endpoint_ip_configuration {
-**etag**: string
-**group_id**: string
-**member_name**: string
-**name**: string
-**private_ip_address**: string
-**type**: string
-}
-class azure_private_link_service {
-**alias**: string
-**auto_approval**: azure_resource_set
-**enable_proxy_protocol**: boolean
-**etag**: string
-**extended_location**: azure_extended_location
-**fqdns**: string[]
-**link_service_ip_configurations**: azure_private_link_service_ip_configuration[]
-**link_service_private_endpoint_connections**: azure_link_service_private_endpoint_connection[]
-**load_balancer_frontend_ip_configurations**: azure_frontend_ip_configuration[]
-**location**: string
-**provisioning_state**: string
-**type**: string
-**visibility**: azure_resource_set
-}
-class azure_private_link_service_connection {
-**etag**: string
-**group_ids**: string[]
-**name**: string
-**private_link_service_connection_state**: azure_private_link_service_connection_state
-**private_link_service_id**: string
-**provisioning_state**: string
-**request_message**: string
-**type**: string
-}
-class azure_private_link_service_connection_state {
-**actions_required**: string
-**description**: string
-**status**: string
-}
-class azure_private_link_service_ip_configuration {
-**etag**: string
-**name**: string
-**primary**: boolean
-**private_ip_address**: string
-**private_ip_address_version**: string
-**private_ip_allocation_method**: string
-**provisioning_state**: string
-**subnet**: azure_subnet
-**type**: string
-}
-class azure_public_ip_address {
-**azure_sku**: azure_sku
-**ddos_settings**: azure_ddos_settings
-**delete_option**: string
-**etag**: string
-**extended_location**: azure_extended_location
-**idle_timeout_in_minutes**: int64
-**ip_address**: string
-**ip_dns_settings**: azure_public_ip_address_dns_settings
-**ip_tags**: azure_ip_tag[]
-**location**: string
-**migration_phase**: string
-**nat_gateway**: azure_nat_gateway
-**provisioning_state**: string
-**public_ip_address_version**: string
-**public_ip_allocation_method**: string
-**public_ip_prefix**: string
-**resource_guid**: string
-**type**: string
-**zones**: string[]
-}
-class azure_public_ip_address_dns_settings {
-**domain_name_label**: string
-**domain_name_label_scope**: string
-**fqdn**: string
-**reverse_fqdn**: string
 }
 class azure_qos_definition {
 **destination_ip_ranges**: azure_qos_ip_range[]
@@ -2685,154 +2404,6 @@ class azure_qos_port_range {
 }
 class azure_resource {
 }
-class azure_resource_navigation_link {
-**etag**: string
-**id**: string
-**link**: string
-**linked_resource_type**: string
-**name**: string
-**provisioning_state**: string
-**type**: string
-}
-class azure_resource_set {
-**subscriptions**: string[]
-}
-class azure_retention_policy_parameters {
-**days**: int64
-**enabled**: boolean
-}
-class azure_route {
-**address_prefix**: string
-**etag**: string
-**has_bgp_override**: boolean
-**name**: string
-**next_hop_ip_address**: string
-**next_hop_type**: string
-**provisioning_state**: string
-**type**: string
-}
-class azure_route_table {
-**disable_bgp_route_propagation**: boolean
-**etag**: string
-**id**: string
-**location**: string
-**name**: string
-**provisioning_state**: string
-**resource_guid**: string
-**routes**: azure_route[]
-**tags**: dictionary[string, string]
-**type**: string
-}
-class azure_security_rule {
-**access**: string
-**description**: string
-**destination_address_prefix**: string
-**destination_address_prefixes**: string[]
-**destination_application_security_groups**: azure_application_security_group[]
-**destination_port_range**: string
-**destination_port_ranges**: string[]
-**direction**: string
-**etag**: string
-**name**: string
-**priority**: int64
-**protocol**: string
-**provisioning_state**: string
-**source_address_prefix**: string
-**source_address_prefixes**: string[]
-**source_application_security_groups**: azure_application_security_group[]
-**source_port_range**: string
-**source_port_ranges**: string[]
-**type**: string
-}
-class azure_service_association_link {
-**allow_delete**: boolean
-**etag**: string
-**link**: string
-**linked_resource_type**: string
-**locations**: string[]
-**name**: string
-**provisioning_state**: string
-**type**: string
-}
-class azure_service_endpoint_policy {
-**contextual_service_endpoint_policies**: string[]
-**etag**: string
-**id**: string
-**location**: string
-**name**: string
-**policy_kind**: string
-**provisioning_state**: string
-**resource_guid**: string
-**service_alias**: string
-**service_endpoint_policy_definitions**: azure_service_endpoint_policy_definition[]
-**tags**: dictionary[string, string]
-**type**: string
-}
-class azure_service_endpoint_policy_definition {
-**description**: string
-**etag**: string
-**name**: string
-**provisioning_state**: string
-**service**: string
-**service_resources**: string[]
-**type**: string
-}
-class azure_service_endpoint_properties_format {
-**locations**: string[]
-**provisioning_state**: string
-**service**: string
-}
-class azure_sku {
-**capacity**: int64
-**family**: string
-**name**: string
-**tier**: string
-}
-class azure_subnet {
-**address_prefix**: string
-**address_prefixes**: string[]
-**application_gateway_ip_configurations**: azure_application_gateway_ip_configuration[]
-**default_outbound_access**: boolean
-**delegations**: azure_delegation[]
-**etag**: string
-**ip_allocations**: string[]
-**ip_configuration_profiles**: azure_ip_configuration_profile[]
-**name**: string
-**nat_gateway**: string
-**network_security_group**: azure_network_security_group
-**private_endpoint_network_policies**: string
-**private_endpoints**: azure_private_endpoint[]
-**private_link_service_network_policies**: string
-**provisioning_state**: string
-**purpose**: string
-**resource_navigation_links**: azure_resource_navigation_link[]
-**route_table**: azure_route_table
-**service_association_links**: azure_service_association_link[]
-**service_endpoint_policies**: azure_service_endpoint_policy[]
-**service_endpoints**: azure_service_endpoint_properties_format[]
-**subnet_ip_configurations**: azure_ip_configuration[]
-**type**: string
-}
-class azure_traffic_analytics_configuration_properties {
-**enabled**: boolean
-**traffic_analytics_interval**: int64
-**workspace_id**: string
-**workspace_region**: string
-**workspace_resource_id**: string
-}
-class azure_traffic_analytics_properties {
-**network_watcher_flow_analytics_configuration**: azure_traffic_analytics_configuration_properties
-}
-class azure_virtual_network_tap {
-**destination_load_balancer_front_end_ip_configuration**: azure_frontend_ip_configuration
-**destination_port**: int64
-**etag**: string
-**location**: string
-**network_interface_tap_configurations**: azure_network_interface_tap_configuration[]
-**provisioning_state**: string
-**resource_guid**: string
-**type**: string
-}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -2845,79 +2416,13 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-azure_application_gateway_backend_address_pool --> azure_application_gateway_backend_address
-azure_dscp_configuration --> azure_network_interface
 azure_dscp_configuration --> azure_qos_definition
 azure_dscp_configuration --> azure_qos_ip_range
 azure_dscp_configuration --> azure_qos_port_range
 azure_resource <|--- azure_dscp_configuration
-azure_flow_log --> azure_flow_log_format_parameters
-azure_flow_log --> azure_retention_policy_parameters
-azure_flow_log --> azure_traffic_analytics_properties
-azure_frontend_ip_configuration --> azure_public_ip_address
-azure_frontend_ip_configuration --> azure_subnet
-azure_ip_configuration --> azure_public_ip_address
-azure_link_service_private_endpoint_connection --> azure_private_endpoint
-azure_link_service_private_endpoint_connection --> azure_private_link_service_connection_state
-azure_resource <|--- azure_nat_gateway
-azure_network_interface --> azure_extended_location
-azure_network_interface --> azure_network_interface_dns_settings
-azure_network_interface --> azure_network_interface_ip_configuration
-azure_network_interface --> azure_network_interface_tap_configuration
-azure_network_interface --> azure_network_security_group
-azure_network_interface --> azure_private_endpoint
-azure_network_interface --> azure_private_link_service
-azure_resource <|--- azure_network_interface
-azure_network_interface_ip_configuration --> azure_application_gateway_backend_address_pool
-azure_network_interface_ip_configuration --> azure_application_security_group
-azure_network_interface_ip_configuration --> azure_inbound_nat_rule
-azure_network_interface_ip_configuration --> azure_network_interface_ip_configuration_private_link_connection_properties
-azure_network_interface_ip_configuration --> azure_public_ip_address
-azure_network_interface_ip_configuration --> azure_virtual_network_tap
-azure_network_security_group --> azure_flow_log
-azure_resource <|--- azure_network_security_group
-azure_network_security_group --> azure_security_rule
-azure_private_endpoint --> azure_application_security_group
-azure_private_endpoint --> azure_custom_dns_config_properties_format
-azure_private_endpoint --> azure_extended_location
-azure_private_endpoint --> azure_private_endpoint_ip_configuration
-azure_private_endpoint --> azure_private_link_service_connection
-azure_private_link_service --> azure_extended_location
-azure_private_link_service --> azure_frontend_ip_configuration
-azure_private_link_service --> azure_link_service_private_endpoint_connection
-azure_private_link_service --> azure_private_link_service_ip_configuration
-azure_resource <|--- azure_private_link_service
-azure_private_link_service --> azure_resource_set
-azure_private_link_service_connection --> azure_private_link_service_connection_state
-azure_private_link_service_ip_configuration --> azure_subnet
-azure_public_ip_address --> azure_ddos_settings
-azure_public_ip_address --> azure_extended_location
-azure_public_ip_address --> azure_ip_tag
-azure_public_ip_address --> azure_nat_gateway
-azure_public_ip_address --> azure_public_ip_address_dns_settings
-azure_resource <|--- azure_public_ip_address
-azure_public_ip_address --> azure_sku
 azure_qos_definition --> azure_qos_ip_range
 azure_qos_definition --> azure_qos_port_range
 resource <|--- azure_resource
-azure_route_table --> azure_route
-azure_security_rule --> azure_application_security_group
-azure_service_endpoint_policy --> azure_service_endpoint_policy_definition
-azure_subnet --> azure_application_gateway_ip_configuration
-azure_subnet --> azure_delegation
-azure_subnet --> azure_ip_configuration
-azure_subnet --> azure_ip_configuration_profile
-azure_subnet --> azure_network_security_group
-azure_subnet --> azure_private_endpoint
-azure_subnet --> azure_resource_navigation_link
-azure_subnet --> azure_route_table
-azure_subnet --> azure_service_association_link
-azure_subnet --> azure_service_endpoint_policy
-azure_subnet --> azure_service_endpoint_properties_format
-azure_traffic_analytics_properties --> azure_traffic_analytics_configuration_properties
-azure_virtual_network_tap --> azure_frontend_ip_configuration
-azure_virtual_network_tap --> azure_network_interface_tap_configuration
-azure_resource <|--- azure_virtual_network_tap
 @enduml
 ```
 
@@ -2956,6 +2461,12 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class azure_dscp_configuration {
 }
+class azure_network_interface {
+}
+class azure_subnet {
+}
+azure_network_interface -[#1A83AF]-> azure_dscp_configuration
+azure_subnet -[#1A83AF]-> azure_dscp_configuration
 @enduml
 ```
 
@@ -3170,6 +2681,15 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class azure_express_route_circuit {
 }
+class azure_express_route_port {
+}
+class azure_express_route_ports_location {
+}
+class azure_virtual_network {
+}
+azure_express_route_circuit -[#1A83AF]-> azure_express_route_port
+azure_express_route_circuit -[#1A83AF]-> azure_express_route_ports_location
+azure_virtual_network -[#1A83AF]-> azure_express_route_circuit
 @enduml
 ```
 
@@ -3400,6 +2920,8 @@ class azure_vnet_route {
 **static_routes**: azure_static_route[]
 **static_routes_config**: azure_static_routes_config
 }
+class gateway {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -3417,11 +2939,13 @@ azure_express_route_connection --> azure_routing_configuration
 azure_express_route_gateway --> azure_bounds
 azure_express_route_gateway --> azure_express_route_connection
 azure_resource <|--- azure_express_route_gateway
+gateway <|--- azure_express_route_gateway
 resource <|--- azure_resource
 azure_routing_configuration --> azure_propagated_route_table
 azure_routing_configuration --> azure_vnet_route
 azure_vnet_route --> azure_static_route
 azure_vnet_route --> azure_static_routes_config
+resource <|--- gateway
 @enduml
 ```
 
@@ -3460,6 +2984,9 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class azure_express_route_gateway {
 }
+class azure_virtual_hub {
+}
+azure_express_route_gateway -[#1A83AF]-> azure_virtual_hub
 @enduml
 ```
 
@@ -3597,8 +3124,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class azure_express_route_circuit {
+}
 class azure_express_route_port {
 }
+azure_express_route_circuit -[#1A83AF]-> azure_express_route_port
 @enduml
 ```
 
@@ -3698,8 +3228,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class azure_express_route_circuit {
+}
 class azure_express_route_ports_location {
 }
+azure_express_route_circuit -[#1A83AF]-> azure_express_route_ports_location
 @enduml
 ```
 
@@ -3839,6 +3372,8 @@ class azure_hub_public_ip_addresses {
 }
 class azure_resource {
 }
+class firewall {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -3859,12 +3394,14 @@ azure_firewall --> azure_firewall_network_rule_collection
 azure_firewall --> azure_firewall_sku
 azure_firewall --> azure_hub_ip_addresses
 azure_resource <|--- azure_firewall
+firewall <|--- azure_firewall
 azure_firewall_application_rule --> azure_firewall_application_rule_protocol
 azure_firewall_application_rule_collection --> azure_firewall_application_rule
 azure_firewall_nat_rule_collection --> azure_firewall_nat_rule
 azure_firewall_network_rule_collection --> azure_firewall_network_rule
 azure_hub_ip_addresses --> azure_hub_public_ip_addresses
 resource <|--- azure_resource
+resource <|--- firewall
 @enduml
 ```
 
@@ -3903,6 +3440,15 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class azure_firewall {
 }
+class azure_firewall_policy {
+}
+class azure_subnet {
+}
+class azure_virtual_hub {
+}
+azure_firewall -[#1A83AF]-> azure_firewall_policy
+azure_firewall -[#1A83AF]-> azure_virtual_hub
+azure_subnet -[#1A83AF]-> azure_firewall
 @enduml
 ```
 
@@ -4130,6 +3676,8 @@ class azure_principalid_clientid {
 }
 class azure_resource {
 }
+class policy {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -4151,6 +3699,7 @@ azure_firewall_policy --> azure_firewall_policy_threat_intel_whitelist
 azure_firewall_policy --> azure_firewall_policy_transport_security
 azure_firewall_policy --> azure_managed_service_identity
 azure_resource <|--- azure_firewall_policy
+policy <|--- azure_firewall_policy
 azure_firewall_policy_insights --> azure_firewall_policy_log_analytics_resources
 azure_firewall_policy_intrusion_detection --> azure_firewall_policy_intrusion_detection_configuration
 azure_firewall_policy_intrusion_detection_configuration --> azure_firewall_policy_intrusion_detection_bypass_traffic_specifications
@@ -4159,6 +3708,7 @@ azure_firewall_policy_log_analytics_resources --> azure_firewall_policy_log_anal
 azure_firewall_policy_transport_security --> azure_firewall_policy_certificate_authority
 azure_managed_service_identity --> azure_principalid_clientid
 resource <|--- azure_resource
+resource <|--- policy
 @enduml
 ```
 
@@ -4195,8 +3745,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class azure_firewall {
+}
 class azure_firewall_policy {
 }
+azure_firewall -[#1A83AF]-> azure_firewall_policy
 @enduml
 ```
 
@@ -4546,6 +4099,13 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class azure_ip_allocation {
 }
+class azure_subnet {
+}
+class azure_virtual_network {
+}
+azure_subnet -[#1A83AF]-> azure_ip_allocation
+azure_virtual_network -[#1A83AF]-> azure_ip_allocation
+azure_virtual_network -[#1A83AF]-> azure_subnet
 @enduml
 ```
 
@@ -4643,6 +4203,9 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class azure_ip_group {
 }
+class azure_virtual_network {
+}
+azure_virtual_network -[#1A83AF]-> azure_ip_group
 @enduml
 ```
 
@@ -4679,23 +4242,6 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class azure_application_gateway_ip_configuration {
-**etag**: string
-**name**: string
-**provisioning_state**: string
-**subnet**: string
-**type**: string
-}
-class azure_application_security_group {
-**etag**: string
-**id**: string
-**location**: string
-**name**: string
-**provisioning_state**: string
-**resource_guid**: string
-**tags**: dictionary[string, string]
-**type**: string
-}
 class azure_backend_address_pool {
 **drain_period_in_seconds**: int64
 **etag**: string
@@ -4712,45 +4258,9 @@ class azure_backend_address_pool {
 **type**: string
 **virtual_network**: string
 }
-class azure_custom_dns_config_properties_format {
-**fqdn**: string
-**ip_addresses**: string[]
-}
-class azure_ddos_settings {
-**ddos_protection_plan**: string
-**protection_mode**: string
-}
-class azure_delegation {
-**actions**: string[]
-**etag**: string
-**name**: string
-**provisioning_state**: string
-**service_name**: string
-**type**: string
-}
 class azure_extended_location {
 **name**: string
 **type**: string
-}
-class azure_flow_log {
-**enabled**: boolean
-**etag**: string
-**flow_analytics_configuration**: azure_traffic_analytics_properties
-**format**: azure_flow_log_format_parameters
-**id**: string
-**location**: string
-**name**: string
-**provisioning_state**: string
-**retention_policy**: azure_retention_policy_parameters
-**storage_id**: string
-**tags**: dictionary[string, string]
-**target_resource_guid**: string
-**target_resource_id**: string
-**type**: string
-}
-class azure_flow_log_format_parameters {
-**type**: string
-**version**: int64
 }
 class azure_frontend_ip_configuration {
 **etag**: string
@@ -4764,9 +4274,7 @@ class azure_frontend_ip_configuration {
 **private_ip_address_version**: string
 **private_ip_allocation_method**: string
 **provisioning_state**: string
-**public_ip_address**: azure_public_ip_address
 **public_ip_prefix**: string
-**subnet**: azure_subnet
 **type**: string
 **zones**: string[]
 }
@@ -4805,24 +4313,6 @@ class azure_inbound_nat_rule {
 **protocol**: string
 **provisioning_state**: string
 **type**: string
-}
-class azure_ip_configuration {
-**etag**: string
-**name**: string
-**private_ip_address**: string
-**private_ip_allocation_method**: string
-**provisioning_state**: string
-**public_ip_address**: azure_public_ip_address
-}
-class azure_ip_configuration_profile {
-**etag**: string
-**name**: string
-**properties**: string
-**type**: string
-}
-class azure_ip_tag {
-**ip_tag_type**: string
-**tag**: string
 }
 class azure_load_balancer {
 **azure_sku**: azure_sku
@@ -4866,32 +4356,10 @@ class azure_load_balancing_rule {
 **provisioning_state**: string
 **type**: string
 }
-class azure_nat_gateway {
-**etag**: string
-**idle_timeout_in_minutes**: int64
-**location**: string
-**provisioning_state**: string
-**public_ip_addresses**: string[]
-**public_ip_prefixes**: string[]
-**resource_guid**: string
-**sku**: string
-**subnet_ids**: string[]
-**type**: string
-**zones**: string[]
-}
 class azure_nat_rule_port_mapping {
 **backend_port**: int64
 **frontend_port**: int64
 **inbound_nat_rule_name**: string
-}
-class azure_network_security_group {
-**default_security_rules**: azure_security_rule[]
-**etag**: string
-**flow_logs**: azure_flow_log[]
-**flush_connection**: boolean
-**provisioning_state**: string
-**resource_guid**: string
-**security_rules**: azure_security_rule[]
 }
 class azure_outbound_rule {
 **allocated_outbound_ports**: int64
@@ -4904,45 +4372,6 @@ class azure_outbound_rule {
 **protocol**: string
 **provisioning_state**: string
 **type**: string
-}
-class azure_private_endpoint {
-**application_security_groups**: azure_application_security_group[]
-**custom_dns_configs**: azure_custom_dns_config_properties_format[]
-**custom_network_interface_name**: string
-**etag**: string
-**extended_location**: azure_extended_location
-**id**: string
-**ip_configurations**: azure_private_endpoint_ip_configuration[]
-**location**: string
-**manual_private_link_service_connections**: azure_private_link_service_connection[]
-**name**: string
-**private_link_service_connections**: azure_private_link_service_connection[]
-**provisioning_state**: string
-**tags**: dictionary[string, string]
-**type**: string
-}
-class azure_private_endpoint_ip_configuration {
-**etag**: string
-**group_id**: string
-**member_name**: string
-**name**: string
-**private_ip_address**: string
-**type**: string
-}
-class azure_private_link_service_connection {
-**etag**: string
-**group_ids**: string[]
-**name**: string
-**private_link_service_connection_state**: azure_private_link_service_connection_state
-**private_link_service_id**: string
-**provisioning_state**: string
-**request_message**: string
-**type**: string
-}
-class azure_private_link_service_connection_state {
-**actions_required**: string
-**description**: string
-**status**: string
 }
 class azure_probe {
 **etag**: string
@@ -4957,128 +4386,7 @@ class azure_probe {
 **request_path**: string
 **type**: string
 }
-class azure_public_ip_address {
-**azure_sku**: azure_sku
-**ddos_settings**: azure_ddos_settings
-**delete_option**: string
-**etag**: string
-**extended_location**: azure_extended_location
-**idle_timeout_in_minutes**: int64
-**ip_address**: string
-**ip_dns_settings**: azure_public_ip_address_dns_settings
-**ip_tags**: azure_ip_tag[]
-**location**: string
-**migration_phase**: string
-**nat_gateway**: azure_nat_gateway
-**provisioning_state**: string
-**public_ip_address_version**: string
-**public_ip_allocation_method**: string
-**public_ip_prefix**: string
-**resource_guid**: string
-**type**: string
-**zones**: string[]
-}
-class azure_public_ip_address_dns_settings {
-**domain_name_label**: string
-**domain_name_label_scope**: string
-**fqdn**: string
-**reverse_fqdn**: string
-}
 class azure_resource {
-}
-class azure_resource_navigation_link {
-**etag**: string
-**id**: string
-**link**: string
-**linked_resource_type**: string
-**name**: string
-**provisioning_state**: string
-**type**: string
-}
-class azure_retention_policy_parameters {
-**days**: int64
-**enabled**: boolean
-}
-class azure_route {
-**address_prefix**: string
-**etag**: string
-**has_bgp_override**: boolean
-**name**: string
-**next_hop_ip_address**: string
-**next_hop_type**: string
-**provisioning_state**: string
-**type**: string
-}
-class azure_route_table {
-**disable_bgp_route_propagation**: boolean
-**etag**: string
-**id**: string
-**location**: string
-**name**: string
-**provisioning_state**: string
-**resource_guid**: string
-**routes**: azure_route[]
-**tags**: dictionary[string, string]
-**type**: string
-}
-class azure_security_rule {
-**access**: string
-**description**: string
-**destination_address_prefix**: string
-**destination_address_prefixes**: string[]
-**destination_application_security_groups**: azure_application_security_group[]
-**destination_port_range**: string
-**destination_port_ranges**: string[]
-**direction**: string
-**etag**: string
-**name**: string
-**priority**: int64
-**protocol**: string
-**provisioning_state**: string
-**source_address_prefix**: string
-**source_address_prefixes**: string[]
-**source_application_security_groups**: azure_application_security_group[]
-**source_port_range**: string
-**source_port_ranges**: string[]
-**type**: string
-}
-class azure_service_association_link {
-**allow_delete**: boolean
-**etag**: string
-**link**: string
-**linked_resource_type**: string
-**locations**: string[]
-**name**: string
-**provisioning_state**: string
-**type**: string
-}
-class azure_service_endpoint_policy {
-**contextual_service_endpoint_policies**: string[]
-**etag**: string
-**id**: string
-**location**: string
-**name**: string
-**policy_kind**: string
-**provisioning_state**: string
-**resource_guid**: string
-**service_alias**: string
-**service_endpoint_policy_definitions**: azure_service_endpoint_policy_definition[]
-**tags**: dictionary[string, string]
-**type**: string
-}
-class azure_service_endpoint_policy_definition {
-**description**: string
-**etag**: string
-**name**: string
-**provisioning_state**: string
-**service**: string
-**service_resources**: string[]
-**type**: string
-}
-class azure_service_endpoint_properties_format {
-**locations**: string[]
-**provisioning_state**: string
-**service**: string
 }
 class azure_sku {
 **capacity**: int64
@@ -5086,40 +4394,10 @@ class azure_sku {
 **name**: string
 **tier**: string
 }
-class azure_subnet {
-**address_prefix**: string
-**address_prefixes**: string[]
-**application_gateway_ip_configurations**: azure_application_gateway_ip_configuration[]
-**default_outbound_access**: boolean
-**delegations**: azure_delegation[]
-**etag**: string
-**ip_allocations**: string[]
-**ip_configuration_profiles**: azure_ip_configuration_profile[]
-**name**: string
-**nat_gateway**: string
-**network_security_group**: azure_network_security_group
-**private_endpoint_network_policies**: string
-**private_endpoints**: azure_private_endpoint[]
-**private_link_service_network_policies**: string
-**provisioning_state**: string
-**purpose**: string
-**resource_navigation_links**: azure_resource_navigation_link[]
-**route_table**: azure_route_table
-**service_association_links**: azure_service_association_link[]
-**service_endpoint_policies**: azure_service_endpoint_policy[]
-**service_endpoints**: azure_service_endpoint_properties_format[]
-**subnet_ip_configurations**: azure_ip_configuration[]
-**type**: string
-}
-class azure_traffic_analytics_configuration_properties {
-**enabled**: boolean
-**traffic_analytics_interval**: int64
-**workspace_id**: string
-**workspace_region**: string
-**workspace_resource_id**: string
-}
-class azure_traffic_analytics_properties {
-**network_watcher_flow_analytics_configuration**: azure_traffic_analytics_configuration_properties
+class load_balancer {
+**backends**: string[]
+**lb_type**: string
+**public_ip_address**: string
 }
 class resource {
 **age**: duration
@@ -5135,12 +4413,6 @@ class resource {
 }
 azure_backend_address_pool --> azure_gateway_load_balancer_tunnel_interface
 azure_backend_address_pool --> azure_load_balancer_backend_address
-azure_flow_log --> azure_flow_log_format_parameters
-azure_flow_log --> azure_retention_policy_parameters
-azure_flow_log --> azure_traffic_analytics_properties
-azure_frontend_ip_configuration --> azure_public_ip_address
-azure_frontend_ip_configuration --> azure_subnet
-azure_ip_configuration --> azure_public_ip_address
 azure_load_balancer --> azure_backend_address_pool
 azure_load_balancer --> azure_extended_location
 azure_load_balancer --> azure_frontend_ip_configuration
@@ -5151,40 +4423,10 @@ azure_load_balancer --> azure_outbound_rule
 azure_load_balancer --> azure_probe
 azure_resource <|--- azure_load_balancer
 azure_load_balancer --> azure_sku
+load_balancer <|--- azure_load_balancer
 azure_load_balancer_backend_address --> azure_nat_rule_port_mapping
-azure_resource <|--- azure_nat_gateway
-azure_network_security_group --> azure_flow_log
-azure_resource <|--- azure_network_security_group
-azure_network_security_group --> azure_security_rule
-azure_private_endpoint --> azure_application_security_group
-azure_private_endpoint --> azure_custom_dns_config_properties_format
-azure_private_endpoint --> azure_extended_location
-azure_private_endpoint --> azure_private_endpoint_ip_configuration
-azure_private_endpoint --> azure_private_link_service_connection
-azure_private_link_service_connection --> azure_private_link_service_connection_state
-azure_public_ip_address --> azure_ddos_settings
-azure_public_ip_address --> azure_extended_location
-azure_public_ip_address --> azure_ip_tag
-azure_public_ip_address --> azure_nat_gateway
-azure_public_ip_address --> azure_public_ip_address_dns_settings
-azure_resource <|--- azure_public_ip_address
-azure_public_ip_address --> azure_sku
 resource <|--- azure_resource
-azure_route_table --> azure_route
-azure_security_rule --> azure_application_security_group
-azure_service_endpoint_policy --> azure_service_endpoint_policy_definition
-azure_subnet --> azure_application_gateway_ip_configuration
-azure_subnet --> azure_delegation
-azure_subnet --> azure_ip_configuration
-azure_subnet --> azure_ip_configuration_profile
-azure_subnet --> azure_network_security_group
-azure_subnet --> azure_private_endpoint
-azure_subnet --> azure_resource_navigation_link
-azure_subnet --> azure_route_table
-azure_subnet --> azure_service_association_link
-azure_subnet --> azure_service_endpoint_policy
-azure_subnet --> azure_service_endpoint_properties_format
-azure_traffic_analytics_properties --> azure_traffic_analytics_configuration_properties
+resource <|--- load_balancer
 @enduml
 ```
 
@@ -5223,6 +4465,20 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class azure_load_balancer {
 }
+class azure_subnet {
+}
+class azure_virtual_machine {
+}
+class azure_virtual_machine_scale_set {
+}
+class azure_virtual_network {
+}
+azure_load_balancer -[#1A83AF]-> azure_virtual_machine
+azure_load_balancer -[#1A83AF]-> azure_virtual_machine_scale_set
+azure_subnet -[#1A83AF]-> azure_load_balancer
+azure_subnet -[#1A83AF]-> azure_virtual_machine
+azure_virtual_network -[#1A83AF]-> azure_load_balancer
+azure_virtual_network -[#1A83AF]-> azure_subnet
 @enduml
 ```
 
@@ -5450,6 +4706,12 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class azure_nat_gateway {
 }
+class azure_public_ip_address {
+}
+class azure_subnet {
+}
+azure_nat_gateway -[#1A83AF]-> azure_public_ip_address
+azure_subnet -[#1A83AF]-> azure_nat_gateway
 @enduml
 ```
 
@@ -5497,13 +4759,6 @@ class azure_application_gateway_backend_address_pool {
 **provisioning_state**: string
 **type**: string
 }
-class azure_application_gateway_ip_configuration {
-**etag**: string
-**name**: string
-**provisioning_state**: string
-**subnet**: string
-**type**: string
-}
 class azure_application_security_group {
 **etag**: string
 **id**: string
@@ -5518,59 +4773,9 @@ class azure_custom_dns_config_properties_format {
 **fqdn**: string
 **ip_addresses**: string[]
 }
-class azure_ddos_settings {
-**ddos_protection_plan**: string
-**protection_mode**: string
-}
-class azure_delegation {
-**actions**: string[]
-**etag**: string
-**name**: string
-**provisioning_state**: string
-**service_name**: string
-**type**: string
-}
 class azure_extended_location {
 **name**: string
 **type**: string
-}
-class azure_flow_log {
-**enabled**: boolean
-**etag**: string
-**flow_analytics_configuration**: azure_traffic_analytics_properties
-**format**: azure_flow_log_format_parameters
-**id**: string
-**location**: string
-**name**: string
-**provisioning_state**: string
-**retention_policy**: azure_retention_policy_parameters
-**storage_id**: string
-**tags**: dictionary[string, string]
-**target_resource_guid**: string
-**target_resource_id**: string
-**type**: string
-}
-class azure_flow_log_format_parameters {
-**type**: string
-**version**: int64
-}
-class azure_frontend_ip_configuration {
-**etag**: string
-**gateway_load_balancer**: string
-**inbound_nat_pools**: string[]
-**inbound_nat_rules**: string[]
-**load_balancing_rules**: string[]
-**name**: string
-**outbound_rules**: string[]
-**private_ip_address**: string
-**private_ip_address_version**: string
-**private_ip_allocation_method**: string
-**provisioning_state**: string
-**public_ip_address**: azure_public_ip_address
-**public_ip_prefix**: string
-**subnet**: azure_subnet
-**type**: string
-**zones**: string[]
 }
 class azure_inbound_nat_rule {
 **backend_address_pool**: string
@@ -5588,47 +4793,6 @@ class azure_inbound_nat_rule {
 **provisioning_state**: string
 **type**: string
 }
-class azure_ip_configuration {
-**etag**: string
-**name**: string
-**private_ip_address**: string
-**private_ip_allocation_method**: string
-**provisioning_state**: string
-**public_ip_address**: azure_public_ip_address
-}
-class azure_ip_configuration_profile {
-**etag**: string
-**name**: string
-**properties**: string
-**type**: string
-}
-class azure_ip_tag {
-**ip_tag_type**: string
-**tag**: string
-}
-class azure_link_service_private_endpoint_connection {
-**etag**: string
-**link_identifier**: string
-**name**: string
-**private_endpoint**: azure_private_endpoint
-**private_endpoint_location**: string
-**private_link_service_connection_state**: azure_private_link_service_connection_state
-**provisioning_state**: string
-**type**: string
-}
-class azure_nat_gateway {
-**etag**: string
-**idle_timeout_in_minutes**: int64
-**location**: string
-**provisioning_state**: string
-**public_ip_addresses**: string[]
-**public_ip_prefixes**: string[]
-**resource_guid**: string
-**sku**: string
-**subnet_ids**: string[]
-**type**: string
-**zones**: string[]
-}
 class azure_network_interface {
 **auxiliary_mode**: string
 **auxiliary_sku**: string
@@ -5644,11 +4808,9 @@ class azure_network_interface {
 **location**: string
 **mac_address**: string
 **migration_phase**: string
-**network_security_group**: azure_network_security_group
 **nic_type**: string
 **primary**: boolean
 **private_endpoint**: azure_private_endpoint
-**private_link_service**: azure_private_link_service
 **provisioning_state**: string
 **resource_guid**: string
 **tap_configurations**: azure_network_interface_tap_configuration[]
@@ -5677,9 +4839,7 @@ class azure_network_interface_ip_configuration {
 **private_ip_allocation_method**: string
 **private_link_connection_properties**: azure_network_interface_ip_configuration_private_link_connection_properties
 **provisioning_state**: string
-**public_ip_address**: azure_public_ip_address
 **type**: string
-**virtual_network_taps**: azure_virtual_network_tap[]
 }
 class azure_network_interface_ip_configuration_private_link_connection_properties {
 **fqdns**: string[]
@@ -5691,15 +4851,6 @@ class azure_network_interface_tap_configuration {
 **name**: string
 **properties**: string
 **type**: string
-}
-class azure_network_security_group {
-**default_security_rules**: azure_security_rule[]
-**etag**: string
-**flow_logs**: azure_flow_log[]
-**flush_connection**: boolean
-**provisioning_state**: string
-**resource_guid**: string
-**security_rules**: azure_security_rule[]
 }
 class azure_private_endpoint {
 **application_security_groups**: azure_application_security_group[]
@@ -5725,21 +4876,6 @@ class azure_private_endpoint_ip_configuration {
 **private_ip_address**: string
 **type**: string
 }
-class azure_private_link_service {
-**alias**: string
-**auto_approval**: azure_resource_set
-**enable_proxy_protocol**: boolean
-**etag**: string
-**extended_location**: azure_extended_location
-**fqdns**: string[]
-**link_service_ip_configurations**: azure_private_link_service_ip_configuration[]
-**link_service_private_endpoint_connections**: azure_link_service_private_endpoint_connection[]
-**load_balancer_frontend_ip_configurations**: azure_frontend_ip_configuration[]
-**location**: string
-**provisioning_state**: string
-**type**: string
-**visibility**: azure_resource_set
-}
 class azure_private_link_service_connection {
 **etag**: string
 **group_ids**: string[]
@@ -5755,193 +4891,7 @@ class azure_private_link_service_connection_state {
 **description**: string
 **status**: string
 }
-class azure_private_link_service_ip_configuration {
-**etag**: string
-**name**: string
-**primary**: boolean
-**private_ip_address**: string
-**private_ip_address_version**: string
-**private_ip_allocation_method**: string
-**provisioning_state**: string
-**subnet**: azure_subnet
-**type**: string
-}
-class azure_public_ip_address {
-**azure_sku**: azure_sku
-**ddos_settings**: azure_ddos_settings
-**delete_option**: string
-**etag**: string
-**extended_location**: azure_extended_location
-**idle_timeout_in_minutes**: int64
-**ip_address**: string
-**ip_dns_settings**: azure_public_ip_address_dns_settings
-**ip_tags**: azure_ip_tag[]
-**location**: string
-**migration_phase**: string
-**nat_gateway**: azure_nat_gateway
-**provisioning_state**: string
-**public_ip_address_version**: string
-**public_ip_allocation_method**: string
-**public_ip_prefix**: string
-**resource_guid**: string
-**type**: string
-**zones**: string[]
-}
-class azure_public_ip_address_dns_settings {
-**domain_name_label**: string
-**domain_name_label_scope**: string
-**fqdn**: string
-**reverse_fqdn**: string
-}
 class azure_resource {
-}
-class azure_resource_navigation_link {
-**etag**: string
-**id**: string
-**link**: string
-**linked_resource_type**: string
-**name**: string
-**provisioning_state**: string
-**type**: string
-}
-class azure_resource_set {
-**subscriptions**: string[]
-}
-class azure_retention_policy_parameters {
-**days**: int64
-**enabled**: boolean
-}
-class azure_route {
-**address_prefix**: string
-**etag**: string
-**has_bgp_override**: boolean
-**name**: string
-**next_hop_ip_address**: string
-**next_hop_type**: string
-**provisioning_state**: string
-**type**: string
-}
-class azure_route_table {
-**disable_bgp_route_propagation**: boolean
-**etag**: string
-**id**: string
-**location**: string
-**name**: string
-**provisioning_state**: string
-**resource_guid**: string
-**routes**: azure_route[]
-**tags**: dictionary[string, string]
-**type**: string
-}
-class azure_security_rule {
-**access**: string
-**description**: string
-**destination_address_prefix**: string
-**destination_address_prefixes**: string[]
-**destination_application_security_groups**: azure_application_security_group[]
-**destination_port_range**: string
-**destination_port_ranges**: string[]
-**direction**: string
-**etag**: string
-**name**: string
-**priority**: int64
-**protocol**: string
-**provisioning_state**: string
-**source_address_prefix**: string
-**source_address_prefixes**: string[]
-**source_application_security_groups**: azure_application_security_group[]
-**source_port_range**: string
-**source_port_ranges**: string[]
-**type**: string
-}
-class azure_service_association_link {
-**allow_delete**: boolean
-**etag**: string
-**link**: string
-**linked_resource_type**: string
-**locations**: string[]
-**name**: string
-**provisioning_state**: string
-**type**: string
-}
-class azure_service_endpoint_policy {
-**contextual_service_endpoint_policies**: string[]
-**etag**: string
-**id**: string
-**location**: string
-**name**: string
-**policy_kind**: string
-**provisioning_state**: string
-**resource_guid**: string
-**service_alias**: string
-**service_endpoint_policy_definitions**: azure_service_endpoint_policy_definition[]
-**tags**: dictionary[string, string]
-**type**: string
-}
-class azure_service_endpoint_policy_definition {
-**description**: string
-**etag**: string
-**name**: string
-**provisioning_state**: string
-**service**: string
-**service_resources**: string[]
-**type**: string
-}
-class azure_service_endpoint_properties_format {
-**locations**: string[]
-**provisioning_state**: string
-**service**: string
-}
-class azure_sku {
-**capacity**: int64
-**family**: string
-**name**: string
-**tier**: string
-}
-class azure_subnet {
-**address_prefix**: string
-**address_prefixes**: string[]
-**application_gateway_ip_configurations**: azure_application_gateway_ip_configuration[]
-**default_outbound_access**: boolean
-**delegations**: azure_delegation[]
-**etag**: string
-**ip_allocations**: string[]
-**ip_configuration_profiles**: azure_ip_configuration_profile[]
-**name**: string
-**nat_gateway**: string
-**network_security_group**: azure_network_security_group
-**private_endpoint_network_policies**: string
-**private_endpoints**: azure_private_endpoint[]
-**private_link_service_network_policies**: string
-**provisioning_state**: string
-**purpose**: string
-**resource_navigation_links**: azure_resource_navigation_link[]
-**route_table**: azure_route_table
-**service_association_links**: azure_service_association_link[]
-**service_endpoint_policies**: azure_service_endpoint_policy[]
-**service_endpoints**: azure_service_endpoint_properties_format[]
-**subnet_ip_configurations**: azure_ip_configuration[]
-**type**: string
-}
-class azure_traffic_analytics_configuration_properties {
-**enabled**: boolean
-**traffic_analytics_interval**: int64
-**workspace_id**: string
-**workspace_region**: string
-**workspace_resource_id**: string
-}
-class azure_traffic_analytics_properties {
-**network_watcher_flow_analytics_configuration**: azure_traffic_analytics_configuration_properties
-}
-class azure_virtual_network_tap {
-**destination_load_balancer_front_end_ip_configuration**: azure_frontend_ip_configuration
-**destination_port**: int64
-**etag**: string
-**location**: string
-**network_interface_tap_configurations**: azure_network_interface_tap_configuration[]
-**provisioning_state**: string
-**resource_guid**: string
-**type**: string
 }
 class resource {
 **age**: duration
@@ -5956,71 +4906,23 @@ class resource {
 **tags**: dictionary[string, string]
 }
 azure_application_gateway_backend_address_pool --> azure_application_gateway_backend_address
-azure_flow_log --> azure_flow_log_format_parameters
-azure_flow_log --> azure_retention_policy_parameters
-azure_flow_log --> azure_traffic_analytics_properties
-azure_frontend_ip_configuration --> azure_public_ip_address
-azure_frontend_ip_configuration --> azure_subnet
-azure_ip_configuration --> azure_public_ip_address
-azure_link_service_private_endpoint_connection --> azure_private_endpoint
-azure_link_service_private_endpoint_connection --> azure_private_link_service_connection_state
-azure_resource <|--- azure_nat_gateway
 azure_network_interface --> azure_extended_location
 azure_network_interface --> azure_network_interface_dns_settings
 azure_network_interface --> azure_network_interface_ip_configuration
 azure_network_interface --> azure_network_interface_tap_configuration
-azure_network_interface --> azure_network_security_group
 azure_network_interface --> azure_private_endpoint
-azure_network_interface --> azure_private_link_service
 azure_resource <|--- azure_network_interface
 azure_network_interface_ip_configuration --> azure_application_gateway_backend_address_pool
 azure_network_interface_ip_configuration --> azure_application_security_group
 azure_network_interface_ip_configuration --> azure_inbound_nat_rule
 azure_network_interface_ip_configuration --> azure_network_interface_ip_configuration_private_link_connection_properties
-azure_network_interface_ip_configuration --> azure_public_ip_address
-azure_network_interface_ip_configuration --> azure_virtual_network_tap
-azure_network_security_group --> azure_flow_log
-azure_resource <|--- azure_network_security_group
-azure_network_security_group --> azure_security_rule
 azure_private_endpoint --> azure_application_security_group
 azure_private_endpoint --> azure_custom_dns_config_properties_format
 azure_private_endpoint --> azure_extended_location
 azure_private_endpoint --> azure_private_endpoint_ip_configuration
 azure_private_endpoint --> azure_private_link_service_connection
-azure_private_link_service --> azure_extended_location
-azure_private_link_service --> azure_frontend_ip_configuration
-azure_private_link_service --> azure_link_service_private_endpoint_connection
-azure_private_link_service --> azure_private_link_service_ip_configuration
-azure_resource <|--- azure_private_link_service
-azure_private_link_service --> azure_resource_set
 azure_private_link_service_connection --> azure_private_link_service_connection_state
-azure_private_link_service_ip_configuration --> azure_subnet
-azure_public_ip_address --> azure_ddos_settings
-azure_public_ip_address --> azure_extended_location
-azure_public_ip_address --> azure_ip_tag
-azure_public_ip_address --> azure_nat_gateway
-azure_public_ip_address --> azure_public_ip_address_dns_settings
-azure_resource <|--- azure_public_ip_address
-azure_public_ip_address --> azure_sku
 resource <|--- azure_resource
-azure_route_table --> azure_route
-azure_security_rule --> azure_application_security_group
-azure_service_endpoint_policy --> azure_service_endpoint_policy_definition
-azure_subnet --> azure_application_gateway_ip_configuration
-azure_subnet --> azure_delegation
-azure_subnet --> azure_ip_configuration
-azure_subnet --> azure_ip_configuration_profile
-azure_subnet --> azure_network_security_group
-azure_subnet --> azure_private_endpoint
-azure_subnet --> azure_resource_navigation_link
-azure_subnet --> azure_route_table
-azure_subnet --> azure_service_association_link
-azure_subnet --> azure_service_endpoint_policy
-azure_subnet --> azure_service_endpoint_properties_format
-azure_traffic_analytics_properties --> azure_traffic_analytics_configuration_properties
-azure_virtual_network_tap --> azure_frontend_ip_configuration
-azure_virtual_network_tap --> azure_network_interface_tap_configuration
-azure_resource <|--- azure_virtual_network_tap
 @enduml
 ```
 
@@ -6057,8 +4959,24 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class azure_dscp_configuration {
+}
 class azure_network_interface {
 }
+class azure_network_security_group {
+}
+class azure_private_link_service {
+}
+class azure_virtual_machine {
+}
+class azure_virtual_network_tap {
+}
+azure_network_interface -[#1A83AF]-> azure_dscp_configuration
+azure_network_security_group -[#1A83AF]-> azure_network_interface
+azure_network_security_group -[#1A83AF]-> azure_virtual_machine
+azure_private_link_service -[#1A83AF]-> azure_network_interface
+azure_virtual_machine -[#1A83AF]-> azure_network_interface
+azure_virtual_network_tap -[#1A83AF]-> azure_network_interface
 @enduml
 ```
 
@@ -6193,6 +5111,13 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class azure_network_profile {
 }
+class azure_subnet {
+}
+class azure_virtual_machine {
+}
+azure_network_profile -[#1A83AF]-> azure_virtual_machine
+azure_subnet -[#1A83AF]-> azure_network_profile
+azure_subnet -[#1A83AF]-> azure_virtual_machine
 @enduml
 ```
 
@@ -6362,8 +5287,19 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class azure_network_interface {
+}
 class azure_network_security_group {
 }
+class azure_subnet {
+}
+class azure_virtual_machine {
+}
+azure_network_security_group -[#1A83AF]-> azure_network_interface
+azure_network_security_group -[#1A83AF]-> azure_virtual_machine
+azure_subnet -[#1A83AF]-> azure_network_security_group
+azure_subnet -[#1A83AF]-> azure_virtual_machine
+azure_virtual_machine -[#1A83AF]-> azure_network_interface
 @enduml
 ```
 
@@ -6516,6 +5452,12 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class azure_network_virtual_appliance {
 }
+class azure_network_virtual_appliance_sku {
+}
+class azure_virtual_network {
+}
+azure_network_virtual_appliance -[#1A83AF]-> azure_network_virtual_appliance_sku
+azure_virtual_network -[#1A83AF]-> azure_network_virtual_appliance
 @enduml
 ```
 
@@ -6615,8 +5557,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class azure_network_virtual_appliance {
+}
 class azure_network_virtual_appliance_sku {
 }
+azure_network_virtual_appliance -[#1A83AF]-> azure_network_virtual_appliance_sku
 @enduml
 ```
 
@@ -6655,6 +5600,7 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class azure_network_watcher {
 **etag**: string
+**location**: string
 **properties**: string
 }
 class azure_resource {
@@ -6711,6 +5657,9 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class azure_network_watcher {
 }
+class azure_virtual_network {
+}
+azure_virtual_network -[#1A83AF]-> azure_network_watcher
 @enduml
 ```
 
@@ -6881,6 +5830,9 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class azure_p2_s_vpn_gateway {
 }
+class azure_virtual_hub {
+}
+azure_p2_s_vpn_gateway -[#1A83AF]-> azure_virtual_hub
 @enduml
 ```
 
@@ -6917,13 +5869,6 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class azure_application_gateway_ip_configuration {
-**etag**: string
-**name**: string
-**provisioning_state**: string
-**subnet**: string
-**type**: string
-}
 class azure_application_security_group {
 **etag**: string
 **id**: string
@@ -6938,77 +5883,9 @@ class azure_custom_dns_config_properties_format {
 **fqdn**: string
 **ip_addresses**: string[]
 }
-class azure_ddos_settings {
-**ddos_protection_plan**: string
-**protection_mode**: string
-}
-class azure_delegation {
-**actions**: string[]
-**etag**: string
-**name**: string
-**provisioning_state**: string
-**service_name**: string
-**type**: string
-}
 class azure_extended_location {
 **name**: string
 **type**: string
-}
-class azure_flow_log {
-**enabled**: boolean
-**etag**: string
-**flow_analytics_configuration**: azure_traffic_analytics_properties
-**format**: azure_flow_log_format_parameters
-**id**: string
-**location**: string
-**name**: string
-**provisioning_state**: string
-**retention_policy**: azure_retention_policy_parameters
-**storage_id**: string
-**tags**: dictionary[string, string]
-**target_resource_guid**: string
-**target_resource_id**: string
-**type**: string
-}
-class azure_flow_log_format_parameters {
-**type**: string
-**version**: int64
-}
-class azure_frontend_ip_configuration {
-**etag**: string
-**gateway_load_balancer**: string
-**inbound_nat_pools**: string[]
-**inbound_nat_rules**: string[]
-**load_balancing_rules**: string[]
-**name**: string
-**outbound_rules**: string[]
-**private_ip_address**: string
-**private_ip_address_version**: string
-**private_ip_allocation_method**: string
-**provisioning_state**: string
-**public_ip_address**: azure_public_ip_address
-**public_ip_prefix**: string
-**subnet**: azure_subnet
-**type**: string
-**zones**: string[]
-}
-class azure_ip_configuration {
-**etag**: string
-**name**: string
-**private_ip_address**: string
-**private_ip_allocation_method**: string
-**provisioning_state**: string
-**public_ip_address**: azure_public_ip_address
-}
-class azure_ip_configuration_profile {
-**etag**: string
-**name**: string
-**properties**: string
-**type**: string
-}
-class azure_ip_tag {
-**ip_tag_type**: string
-**tag**: string
 }
 class azure_link_service_private_endpoint_connection {
 **etag**: string
@@ -7019,28 +5896,6 @@ class azure_link_service_private_endpoint_connection {
 **private_link_service_connection_state**: azure_private_link_service_connection_state
 **provisioning_state**: string
 **type**: string
-}
-class azure_nat_gateway {
-**etag**: string
-**idle_timeout_in_minutes**: int64
-**location**: string
-**provisioning_state**: string
-**public_ip_addresses**: string[]
-**public_ip_prefixes**: string[]
-**resource_guid**: string
-**sku**: string
-**subnet_ids**: string[]
-**type**: string
-**zones**: string[]
-}
-class azure_network_security_group {
-**default_security_rules**: azure_security_rule[]
-**etag**: string
-**flow_logs**: azure_flow_log[]
-**flush_connection**: boolean
-**provisioning_state**: string
-**resource_guid**: string
-**security_rules**: azure_security_rule[]
 }
 class azure_private_endpoint {
 **application_security_groups**: azure_application_security_group[]
@@ -7075,7 +5930,6 @@ class azure_private_link_service {
 **fqdns**: string[]
 **link_service_ip_configurations**: azure_private_link_service_ip_configuration[]
 **link_service_private_endpoint_connections**: azure_link_service_private_endpoint_connection[]
-**load_balancer_frontend_ip_configurations**: azure_frontend_ip_configuration[]
 **location**: string
 **provisioning_state**: string
 **type**: string
@@ -7104,175 +5958,12 @@ class azure_private_link_service_ip_configuration {
 **private_ip_address_version**: string
 **private_ip_allocation_method**: string
 **provisioning_state**: string
-**subnet**: azure_subnet
 **type**: string
-}
-class azure_public_ip_address {
-**azure_sku**: azure_sku
-**ddos_settings**: azure_ddos_settings
-**delete_option**: string
-**etag**: string
-**extended_location**: azure_extended_location
-**idle_timeout_in_minutes**: int64
-**ip_address**: string
-**ip_dns_settings**: azure_public_ip_address_dns_settings
-**ip_tags**: azure_ip_tag[]
-**location**: string
-**migration_phase**: string
-**nat_gateway**: azure_nat_gateway
-**provisioning_state**: string
-**public_ip_address_version**: string
-**public_ip_allocation_method**: string
-**public_ip_prefix**: string
-**resource_guid**: string
-**type**: string
-**zones**: string[]
-}
-class azure_public_ip_address_dns_settings {
-**domain_name_label**: string
-**domain_name_label_scope**: string
-**fqdn**: string
-**reverse_fqdn**: string
 }
 class azure_resource {
 }
-class azure_resource_navigation_link {
-**etag**: string
-**id**: string
-**link**: string
-**linked_resource_type**: string
-**name**: string
-**provisioning_state**: string
-**type**: string
-}
 class azure_resource_set {
 **subscriptions**: string[]
-}
-class azure_retention_policy_parameters {
-**days**: int64
-**enabled**: boolean
-}
-class azure_route {
-**address_prefix**: string
-**etag**: string
-**has_bgp_override**: boolean
-**name**: string
-**next_hop_ip_address**: string
-**next_hop_type**: string
-**provisioning_state**: string
-**type**: string
-}
-class azure_route_table {
-**disable_bgp_route_propagation**: boolean
-**etag**: string
-**id**: string
-**location**: string
-**name**: string
-**provisioning_state**: string
-**resource_guid**: string
-**routes**: azure_route[]
-**tags**: dictionary[string, string]
-**type**: string
-}
-class azure_security_rule {
-**access**: string
-**description**: string
-**destination_address_prefix**: string
-**destination_address_prefixes**: string[]
-**destination_application_security_groups**: azure_application_security_group[]
-**destination_port_range**: string
-**destination_port_ranges**: string[]
-**direction**: string
-**etag**: string
-**name**: string
-**priority**: int64
-**protocol**: string
-**provisioning_state**: string
-**source_address_prefix**: string
-**source_address_prefixes**: string[]
-**source_application_security_groups**: azure_application_security_group[]
-**source_port_range**: string
-**source_port_ranges**: string[]
-**type**: string
-}
-class azure_service_association_link {
-**allow_delete**: boolean
-**etag**: string
-**link**: string
-**linked_resource_type**: string
-**locations**: string[]
-**name**: string
-**provisioning_state**: string
-**type**: string
-}
-class azure_service_endpoint_policy {
-**contextual_service_endpoint_policies**: string[]
-**etag**: string
-**id**: string
-**location**: string
-**name**: string
-**policy_kind**: string
-**provisioning_state**: string
-**resource_guid**: string
-**service_alias**: string
-**service_endpoint_policy_definitions**: azure_service_endpoint_policy_definition[]
-**tags**: dictionary[string, string]
-**type**: string
-}
-class azure_service_endpoint_policy_definition {
-**description**: string
-**etag**: string
-**name**: string
-**provisioning_state**: string
-**service**: string
-**service_resources**: string[]
-**type**: string
-}
-class azure_service_endpoint_properties_format {
-**locations**: string[]
-**provisioning_state**: string
-**service**: string
-}
-class azure_sku {
-**capacity**: int64
-**family**: string
-**name**: string
-**tier**: string
-}
-class azure_subnet {
-**address_prefix**: string
-**address_prefixes**: string[]
-**application_gateway_ip_configurations**: azure_application_gateway_ip_configuration[]
-**default_outbound_access**: boolean
-**delegations**: azure_delegation[]
-**etag**: string
-**ip_allocations**: string[]
-**ip_configuration_profiles**: azure_ip_configuration_profile[]
-**name**: string
-**nat_gateway**: string
-**network_security_group**: azure_network_security_group
-**private_endpoint_network_policies**: string
-**private_endpoints**: azure_private_endpoint[]
-**private_link_service_network_policies**: string
-**provisioning_state**: string
-**purpose**: string
-**resource_navigation_links**: azure_resource_navigation_link[]
-**route_table**: azure_route_table
-**service_association_links**: azure_service_association_link[]
-**service_endpoint_policies**: azure_service_endpoint_policy[]
-**service_endpoints**: azure_service_endpoint_properties_format[]
-**subnet_ip_configurations**: azure_ip_configuration[]
-**type**: string
-}
-class azure_traffic_analytics_configuration_properties {
-**enabled**: boolean
-**traffic_analytics_interval**: int64
-**workspace_id**: string
-**workspace_region**: string
-**workspace_resource_id**: string
-}
-class azure_traffic_analytics_properties {
-**network_watcher_flow_analytics_configuration**: azure_traffic_analytics_configuration_properties
 }
 class resource {
 **age**: duration
@@ -7286,54 +5977,20 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-azure_flow_log --> azure_flow_log_format_parameters
-azure_flow_log --> azure_retention_policy_parameters
-azure_flow_log --> azure_traffic_analytics_properties
-azure_frontend_ip_configuration --> azure_public_ip_address
-azure_frontend_ip_configuration --> azure_subnet
-azure_ip_configuration --> azure_public_ip_address
 azure_link_service_private_endpoint_connection --> azure_private_endpoint
 azure_link_service_private_endpoint_connection --> azure_private_link_service_connection_state
-azure_resource <|--- azure_nat_gateway
-azure_network_security_group --> azure_flow_log
-azure_resource <|--- azure_network_security_group
-azure_network_security_group --> azure_security_rule
 azure_private_endpoint --> azure_application_security_group
 azure_private_endpoint --> azure_custom_dns_config_properties_format
 azure_private_endpoint --> azure_extended_location
 azure_private_endpoint --> azure_private_endpoint_ip_configuration
 azure_private_endpoint --> azure_private_link_service_connection
 azure_private_link_service --> azure_extended_location
-azure_private_link_service --> azure_frontend_ip_configuration
 azure_private_link_service --> azure_link_service_private_endpoint_connection
 azure_private_link_service --> azure_private_link_service_ip_configuration
 azure_resource <|--- azure_private_link_service
 azure_private_link_service --> azure_resource_set
 azure_private_link_service_connection --> azure_private_link_service_connection_state
-azure_private_link_service_ip_configuration --> azure_subnet
-azure_public_ip_address --> azure_ddos_settings
-azure_public_ip_address --> azure_extended_location
-azure_public_ip_address --> azure_ip_tag
-azure_public_ip_address --> azure_nat_gateway
-azure_public_ip_address --> azure_public_ip_address_dns_settings
-azure_resource <|--- azure_public_ip_address
-azure_public_ip_address --> azure_sku
 resource <|--- azure_resource
-azure_route_table --> azure_route
-azure_security_rule --> azure_application_security_group
-azure_service_endpoint_policy --> azure_service_endpoint_policy_definition
-azure_subnet --> azure_application_gateway_ip_configuration
-azure_subnet --> azure_delegation
-azure_subnet --> azure_ip_configuration
-azure_subnet --> azure_ip_configuration_profile
-azure_subnet --> azure_network_security_group
-azure_subnet --> azure_private_endpoint
-azure_subnet --> azure_resource_navigation_link
-azure_subnet --> azure_route_table
-azure_subnet --> azure_service_association_link
-azure_subnet --> azure_service_endpoint_policy
-azure_subnet --> azure_service_endpoint_properties_format
-azure_traffic_analytics_properties --> azure_traffic_analytics_configuration_properties
 @enduml
 ```
 
@@ -7370,8 +6027,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class azure_network_interface {
+}
 class azure_private_link_service {
 }
+azure_private_link_service -[#1A83AF]-> azure_network_interface
 @enduml
 ```
 
@@ -7491,9 +6151,12 @@ class azure_proximity_placement_group {
 }
 class azure_virtual_machine {
 }
+class azure_virtual_machine_scale_set {
+}
 azure_availability_set -[#1A83AF]-> azure_proximity_placement_group
 azure_availability_set -[#1A83AF]-> azure_virtual_machine
-azure_virtual_machine -[#1A83AF]-> azure_proximity_placement_group
+azure_proximity_placement_group -[#1A83AF]-> azure_virtual_machine
+azure_proximity_placement_group -[#1A83AF]-> azure_virtual_machine_scale_set
 @enduml
 ```
 
@@ -7542,19 +6205,6 @@ class azure_ip_tag {
 **ip_tag_type**: string
 **tag**: string
 }
-class azure_nat_gateway {
-**etag**: string
-**idle_timeout_in_minutes**: int64
-**location**: string
-**provisioning_state**: string
-**public_ip_addresses**: string[]
-**public_ip_prefixes**: string[]
-**resource_guid**: string
-**sku**: string
-**subnet_ids**: string[]
-**type**: string
-**zones**: string[]
-}
 class azure_public_ip_address {
 **azure_sku**: azure_sku
 **ddos_settings**: azure_ddos_settings
@@ -7567,7 +6217,6 @@ class azure_public_ip_address {
 **ip_tags**: azure_ip_tag[]
 **location**: string
 **migration_phase**: string
-**nat_gateway**: azure_nat_gateway
 **provisioning_state**: string
 **public_ip_address_version**: string
 **public_ip_allocation_method**: string
@@ -7602,11 +6251,9 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-azure_resource <|--- azure_nat_gateway
 azure_public_ip_address --> azure_ddos_settings
 azure_public_ip_address --> azure_extended_location
 azure_public_ip_address --> azure_ip_tag
-azure_public_ip_address --> azure_nat_gateway
 azure_public_ip_address --> azure_public_ip_address_dns_settings
 azure_resource <|--- azure_public_ip_address
 azure_public_ip_address --> azure_sku
@@ -7647,8 +6294,23 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class azure_bastion_host {
+}
+class azure_ddos_protection_plan {
+}
+class azure_nat_gateway {
+}
 class azure_public_ip_address {
 }
+class azure_public_ip_prefix {
+}
+class azure_virtual_hub {
+}
+azure_bastion_host -[#1A83AF]-> azure_public_ip_address
+azure_ddos_protection_plan -[#1A83AF]-> azure_public_ip_address
+azure_nat_gateway -[#1A83AF]-> azure_public_ip_address
+azure_public_ip_prefix -[#1A83AF]-> azure_public_ip_address
+azure_virtual_hub -[#1A83AF]-> azure_public_ip_address
 @enduml
 ```
 
@@ -7693,19 +6355,6 @@ class azure_ip_tag {
 **ip_tag_type**: string
 **tag**: string
 }
-class azure_nat_gateway {
-**etag**: string
-**idle_timeout_in_minutes**: int64
-**location**: string
-**provisioning_state**: string
-**public_ip_addresses**: string[]
-**public_ip_prefixes**: string[]
-**resource_guid**: string
-**sku**: string
-**subnet_ids**: string[]
-**type**: string
-**zones**: string[]
-}
 class azure_public_ip_prefix {
 **azure_sku**: azure_sku
 **custom_ip_prefix**: string
@@ -7714,7 +6363,6 @@ class azure_public_ip_prefix {
 **ip_prefix**: string
 **ip_tags**: azure_ip_tag[]
 **load_balancer_frontend_ip_configuration**: string
-**nat_gateway**: azure_nat_gateway
 **prefix_length**: int64
 **provisioning_state**: string
 **public_ip_address_version**: string
@@ -7741,10 +6389,8 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-azure_resource <|--- azure_nat_gateway
 azure_public_ip_prefix --> azure_extended_location
 azure_public_ip_prefix --> azure_ip_tag
-azure_public_ip_prefix --> azure_nat_gateway
 azure_resource <|--- azure_public_ip_prefix
 azure_public_ip_prefix --> azure_sku
 resource <|--- azure_resource
@@ -7784,8 +6430,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class azure_public_ip_address {
+}
 class azure_public_ip_prefix {
 }
+azure_public_ip_prefix -[#1A83AF]-> azure_public_ip_address
 @enduml
 ```
 
@@ -9064,6 +7713,321 @@ class azure_ssh_public_key_resource {
 
 </details>
 
+## `azure_subnet`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_subnet data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_application_gateway_ip_configuration {
+**etag**: string
+**name**: string
+**provisioning_state**: string
+**subnet**: string
+**type**: string
+}
+class azure_application_security_group {
+**etag**: string
+**id**: string
+**location**: string
+**name**: string
+**provisioning_state**: string
+**resource_guid**: string
+**tags**: dictionary[string, string]
+**type**: string
+}
+class azure_custom_dns_config_properties_format {
+**fqdn**: string
+**ip_addresses**: string[]
+}
+class azure_delegation {
+**actions**: string[]
+**etag**: string
+**name**: string
+**provisioning_state**: string
+**service_name**: string
+**type**: string
+}
+class azure_extended_location {
+**name**: string
+**type**: string
+}
+class azure_ip_configuration_profile {
+**etag**: string
+**name**: string
+**properties**: string
+**type**: string
+}
+class azure_private_endpoint {
+**application_security_groups**: azure_application_security_group[]
+**custom_dns_configs**: azure_custom_dns_config_properties_format[]
+**custom_network_interface_name**: string
+**etag**: string
+**extended_location**: azure_extended_location
+**id**: string
+**ip_configurations**: azure_private_endpoint_ip_configuration[]
+**location**: string
+**manual_private_link_service_connections**: azure_private_link_service_connection[]
+**name**: string
+**private_link_service_connections**: azure_private_link_service_connection[]
+**provisioning_state**: string
+**tags**: dictionary[string, string]
+**type**: string
+}
+class azure_private_endpoint_ip_configuration {
+**etag**: string
+**group_id**: string
+**member_name**: string
+**name**: string
+**private_ip_address**: string
+**type**: string
+}
+class azure_private_link_service_connection {
+**etag**: string
+**group_ids**: string[]
+**name**: string
+**private_link_service_connection_state**: azure_private_link_service_connection_state
+**private_link_service_id**: string
+**provisioning_state**: string
+**request_message**: string
+**type**: string
+}
+class azure_private_link_service_connection_state {
+**actions_required**: string
+**description**: string
+**status**: string
+}
+class azure_resource {
+}
+class azure_resource_navigation_link {
+**etag**: string
+**id**: string
+**link**: string
+**linked_resource_type**: string
+**name**: string
+**provisioning_state**: string
+**type**: string
+}
+class azure_route {
+**address_prefix**: string
+**etag**: string
+**has_bgp_override**: boolean
+**name**: string
+**next_hop_ip_address**: string
+**next_hop_type**: string
+**provisioning_state**: string
+**type**: string
+}
+class azure_route_table {
+**disable_bgp_route_propagation**: boolean
+**etag**: string
+**id**: string
+**location**: string
+**name**: string
+**provisioning_state**: string
+**resource_guid**: string
+**routes**: azure_route[]
+**tags**: dictionary[string, string]
+**type**: string
+}
+class azure_service_association_link {
+**allow_delete**: boolean
+**etag**: string
+**link**: string
+**linked_resource_type**: string
+**locations**: string[]
+**name**: string
+**provisioning_state**: string
+**type**: string
+}
+class azure_service_endpoint_policy {
+**contextual_service_endpoint_policies**: string[]
+**etag**: string
+**id**: string
+**location**: string
+**name**: string
+**policy_kind**: string
+**provisioning_state**: string
+**resource_guid**: string
+**service_alias**: string
+**service_endpoint_policy_definitions**: azure_service_endpoint_policy_definition[]
+**tags**: dictionary[string, string]
+**type**: string
+}
+class azure_service_endpoint_policy_definition {
+**description**: string
+**etag**: string
+**name**: string
+**provisioning_state**: string
+**service**: string
+**service_resources**: string[]
+**type**: string
+}
+class azure_service_endpoint_properties_format {
+**locations**: string[]
+**provisioning_state**: string
+**service**: string
+}
+class azure_subnet {
+**address_prefix**: string
+**address_prefixes**: string[]
+**application_gateway_ip_configurations**: azure_application_gateway_ip_configuration[]
+**default_outbound_access**: boolean
+**delegations**: azure_delegation[]
+**etag**: string
+**ip_allocations**: string[]
+**ip_configuration_profiles**: azure_ip_configuration_profile[]
+**name**: string
+**private_endpoint_network_policies**: string
+**private_endpoints**: azure_private_endpoint[]
+**private_link_service_network_policies**: string
+**provisioning_state**: string
+**purpose**: string
+**resource_navigation_links**: azure_resource_navigation_link[]
+**route_table**: azure_route_table
+**service_association_links**: azure_service_association_link[]
+**service_endpoint_policies**: azure_service_endpoint_policy[]
+**service_endpoints**: azure_service_endpoint_properties_format[]
+**type**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+azure_private_endpoint --> azure_application_security_group
+azure_private_endpoint --> azure_custom_dns_config_properties_format
+azure_private_endpoint --> azure_extended_location
+azure_private_endpoint --> azure_private_endpoint_ip_configuration
+azure_private_endpoint --> azure_private_link_service_connection
+azure_private_link_service_connection --> azure_private_link_service_connection_state
+resource <|--- azure_resource
+azure_route_table --> azure_route
+azure_service_endpoint_policy --> azure_service_endpoint_policy_definition
+azure_subnet --> azure_application_gateway_ip_configuration
+azure_subnet --> azure_delegation
+azure_subnet --> azure_ip_configuration_profile
+azure_subnet --> azure_private_endpoint
+azure_resource <|--- azure_subnet
+azure_subnet --> azure_resource_navigation_link
+azure_subnet --> azure_route_table
+azure_subnet --> azure_service_association_link
+azure_subnet --> azure_service_endpoint_policy
+azure_subnet --> azure_service_endpoint_properties_format
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of azure_subnet resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class azure_application_gateway {
+}
+class azure_bastion_host {
+}
+class azure_dscp_configuration {
+}
+class azure_firewall {
+}
+class azure_ip_allocation {
+}
+class azure_load_balancer {
+}
+class azure_nat_gateway {
+}
+class azure_network_profile {
+}
+class azure_network_security_group {
+}
+class azure_subnet {
+}
+class azure_virtual_machine {
+}
+class azure_virtual_network {
+}
+azure_load_balancer -[#1A83AF]-> azure_virtual_machine
+azure_network_profile -[#1A83AF]-> azure_virtual_machine
+azure_network_security_group -[#1A83AF]-> azure_virtual_machine
+azure_subnet -[#1A83AF]-> azure_application_gateway
+azure_subnet -[#1A83AF]-> azure_bastion_host
+azure_subnet -[#1A83AF]-> azure_dscp_configuration
+azure_subnet -[#1A83AF]-> azure_firewall
+azure_subnet -[#1A83AF]-> azure_ip_allocation
+azure_subnet -[#1A83AF]-> azure_load_balancer
+azure_subnet -[#1A83AF]-> azure_nat_gateway
+azure_subnet -[#1A83AF]-> azure_network_profile
+azure_subnet -[#1A83AF]-> azure_network_security_group
+azure_subnet -[#1A83AF]-> azure_virtual_machine
+azure_virtual_network -[#1A83AF]-> azure_bastion_host
+azure_virtual_network -[#1A83AF]-> azure_ip_allocation
+azure_virtual_network -[#1A83AF]-> azure_load_balancer
+azure_virtual_network -[#1A83AF]-> azure_subnet
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
 ## `azure_subscription`
 
 <ZoomPanPinch>
@@ -9318,11 +8282,11 @@ class azure_virtual_hub {
 **preferred_routing_gateway**: string
 **provisioning_state**: string
 **route_maps**: string[]
-**route_table**: azure_virtual_hub_route_table
 **routing_state**: string
 **security_partner_provider**: string
 **security_provider_name**: string
 **sku**: string
+**virtual_hub_route_table**: azure_virtual_hub_route_table
 **virtual_hub_route_table_v2s**: azure_virtual_hub_route_table_v2[]
 **virtual_router_asn**: int64
 **virtual_router_auto_scale_configuration**: int64
@@ -9404,8 +8368,26 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class azure_express_route_gateway {
+}
+class azure_firewall {
+}
+class azure_p2_s_vpn_gateway {
+}
+class azure_public_ip_address {
+}
 class azure_virtual_hub {
 }
+class azure_virtual_wan {
+}
+class azure_vpn_gateway {
+}
+azure_express_route_gateway -[#1A83AF]-> azure_virtual_hub
+azure_firewall -[#1A83AF]-> azure_virtual_hub
+azure_p2_s_vpn_gateway -[#1A83AF]-> azure_virtual_hub
+azure_virtual_hub -[#1A83AF]-> azure_public_ip_address
+azure_virtual_wan -[#1A83AF]-> azure_virtual_hub
+azure_vpn_gateway -[#1A83AF]-> azure_virtual_hub
 @enduml
 ```
 
@@ -10023,19 +9005,38 @@ class azure_disk {
 }
 class azure_image {
 }
+class azure_load_balancer {
+}
+class azure_network_interface {
+}
+class azure_network_profile {
+}
+class azure_network_security_group {
+}
 class azure_proximity_placement_group {
 }
 class azure_restore_point_collection {
+}
+class azure_subnet {
 }
 class azure_virtual_machine {
 }
 azure_availability_set -[#1A83AF]-> azure_proximity_placement_group
 azure_availability_set -[#1A83AF]-> azure_virtual_machine
 azure_capacity_reservation_group -[#1A83AF]-> azure_virtual_machine
+azure_load_balancer -[#1A83AF]-> azure_virtual_machine
+azure_network_profile -[#1A83AF]-> azure_virtual_machine
+azure_network_security_group -[#1A83AF]-> azure_network_interface
+azure_network_security_group -[#1A83AF]-> azure_virtual_machine
+azure_proximity_placement_group -[#1A83AF]-> azure_virtual_machine
 azure_restore_point_collection -[#1A83AF]-> azure_virtual_machine
+azure_subnet -[#1A83AF]-> azure_load_balancer
+azure_subnet -[#1A83AF]-> azure_network_profile
+azure_subnet -[#1A83AF]-> azure_network_security_group
+azure_subnet -[#1A83AF]-> azure_virtual_machine
 azure_virtual_machine -[#1A83AF]-> azure_disk
 azure_virtual_machine -[#1A83AF]-> azure_image
-azure_virtual_machine -[#1A83AF]-> azure_proximity_placement_group
+azure_virtual_machine -[#1A83AF]-> azure_network_interface
 @enduml
 ```
 
@@ -10591,8 +9592,14 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class azure_load_balancer {
+}
+class azure_proximity_placement_group {
+}
 class azure_virtual_machine_scale_set {
 }
+azure_load_balancer -[#1A83AF]-> azure_virtual_machine_scale_set
+azure_proximity_placement_group -[#1A83AF]-> azure_virtual_machine_scale_set
 @enduml
 ```
 
@@ -10750,39 +9757,6 @@ skinparam stereotypeIBackgroundColor #e98df7
 class azure_address_space {
 **address_prefixes**: string[]
 }
-class azure_application_gateway_ip_configuration {
-**etag**: string
-**name**: string
-**provisioning_state**: string
-**subnet**: string
-**type**: string
-}
-class azure_application_security_group {
-**etag**: string
-**id**: string
-**location**: string
-**name**: string
-**provisioning_state**: string
-**resource_guid**: string
-**tags**: dictionary[string, string]
-**type**: string
-}
-class azure_custom_dns_config_properties_format {
-**fqdn**: string
-**ip_addresses**: string[]
-}
-class azure_ddos_settings {
-**ddos_protection_plan**: string
-**protection_mode**: string
-}
-class azure_delegation {
-**actions**: string[]
-**etag**: string
-**name**: string
-**provisioning_state**: string
-**service_name**: string
-**type**: string
-}
 class azure_dhcp_options {
 **dns_servers**: string[]
 }
@@ -10810,238 +9784,11 @@ class azure_flow_log_format_parameters {
 **type**: string
 **version**: int64
 }
-class azure_ip_configuration {
-**etag**: string
-**name**: string
-**private_ip_address**: string
-**private_ip_allocation_method**: string
-**provisioning_state**: string
-**public_ip_address**: azure_public_ip_address
-}
-class azure_ip_configuration_profile {
-**etag**: string
-**name**: string
-**properties**: string
-**type**: string
-}
-class azure_ip_tag {
-**ip_tag_type**: string
-**tag**: string
-}
-class azure_nat_gateway {
-**etag**: string
-**idle_timeout_in_minutes**: int64
-**location**: string
-**provisioning_state**: string
-**public_ip_addresses**: string[]
-**public_ip_prefixes**: string[]
-**resource_guid**: string
-**sku**: string
-**subnet_ids**: string[]
-**type**: string
-**zones**: string[]
-}
-class azure_network_security_group {
-**default_security_rules**: azure_security_rule[]
-**etag**: string
-**flow_logs**: azure_flow_log[]
-**flush_connection**: boolean
-**provisioning_state**: string
-**resource_guid**: string
-**security_rules**: azure_security_rule[]
-}
-class azure_private_endpoint {
-**application_security_groups**: azure_application_security_group[]
-**custom_dns_configs**: azure_custom_dns_config_properties_format[]
-**custom_network_interface_name**: string
-**etag**: string
-**extended_location**: azure_extended_location
-**id**: string
-**ip_configurations**: azure_private_endpoint_ip_configuration[]
-**location**: string
-**manual_private_link_service_connections**: azure_private_link_service_connection[]
-**name**: string
-**private_link_service_connections**: azure_private_link_service_connection[]
-**provisioning_state**: string
-**tags**: dictionary[string, string]
-**type**: string
-}
-class azure_private_endpoint_ip_configuration {
-**etag**: string
-**group_id**: string
-**member_name**: string
-**name**: string
-**private_ip_address**: string
-**type**: string
-}
-class azure_private_link_service_connection {
-**etag**: string
-**group_ids**: string[]
-**name**: string
-**private_link_service_connection_state**: azure_private_link_service_connection_state
-**private_link_service_id**: string
-**provisioning_state**: string
-**request_message**: string
-**type**: string
-}
-class azure_private_link_service_connection_state {
-**actions_required**: string
-**description**: string
-**status**: string
-}
-class azure_public_ip_address {
-**azure_sku**: azure_sku
-**ddos_settings**: azure_ddos_settings
-**delete_option**: string
-**etag**: string
-**extended_location**: azure_extended_location
-**idle_timeout_in_minutes**: int64
-**ip_address**: string
-**ip_dns_settings**: azure_public_ip_address_dns_settings
-**ip_tags**: azure_ip_tag[]
-**location**: string
-**migration_phase**: string
-**nat_gateway**: azure_nat_gateway
-**provisioning_state**: string
-**public_ip_address_version**: string
-**public_ip_allocation_method**: string
-**public_ip_prefix**: string
-**resource_guid**: string
-**type**: string
-**zones**: string[]
-}
-class azure_public_ip_address_dns_settings {
-**domain_name_label**: string
-**domain_name_label_scope**: string
-**fqdn**: string
-**reverse_fqdn**: string
-}
 class azure_resource {
-}
-class azure_resource_navigation_link {
-**etag**: string
-**id**: string
-**link**: string
-**linked_resource_type**: string
-**name**: string
-**provisioning_state**: string
-**type**: string
 }
 class azure_retention_policy_parameters {
 **days**: int64
 **enabled**: boolean
-}
-class azure_route {
-**address_prefix**: string
-**etag**: string
-**has_bgp_override**: boolean
-**name**: string
-**next_hop_ip_address**: string
-**next_hop_type**: string
-**provisioning_state**: string
-**type**: string
-}
-class azure_route_table {
-**disable_bgp_route_propagation**: boolean
-**etag**: string
-**id**: string
-**location**: string
-**name**: string
-**provisioning_state**: string
-**resource_guid**: string
-**routes**: azure_route[]
-**tags**: dictionary[string, string]
-**type**: string
-}
-class azure_security_rule {
-**access**: string
-**description**: string
-**destination_address_prefix**: string
-**destination_address_prefixes**: string[]
-**destination_application_security_groups**: azure_application_security_group[]
-**destination_port_range**: string
-**destination_port_ranges**: string[]
-**direction**: string
-**etag**: string
-**name**: string
-**priority**: int64
-**protocol**: string
-**provisioning_state**: string
-**source_address_prefix**: string
-**source_address_prefixes**: string[]
-**source_application_security_groups**: azure_application_security_group[]
-**source_port_range**: string
-**source_port_ranges**: string[]
-**type**: string
-}
-class azure_service_association_link {
-**allow_delete**: boolean
-**etag**: string
-**link**: string
-**linked_resource_type**: string
-**locations**: string[]
-**name**: string
-**provisioning_state**: string
-**type**: string
-}
-class azure_service_endpoint_policy {
-**contextual_service_endpoint_policies**: string[]
-**etag**: string
-**id**: string
-**location**: string
-**name**: string
-**policy_kind**: string
-**provisioning_state**: string
-**resource_guid**: string
-**service_alias**: string
-**service_endpoint_policy_definitions**: azure_service_endpoint_policy_definition[]
-**tags**: dictionary[string, string]
-**type**: string
-}
-class azure_service_endpoint_policy_definition {
-**description**: string
-**etag**: string
-**name**: string
-**provisioning_state**: string
-**service**: string
-**service_resources**: string[]
-**type**: string
-}
-class azure_service_endpoint_properties_format {
-**locations**: string[]
-**provisioning_state**: string
-**service**: string
-}
-class azure_sku {
-**capacity**: int64
-**family**: string
-**name**: string
-**tier**: string
-}
-class azure_subnet {
-**address_prefix**: string
-**address_prefixes**: string[]
-**application_gateway_ip_configurations**: azure_application_gateway_ip_configuration[]
-**default_outbound_access**: boolean
-**delegations**: azure_delegation[]
-**etag**: string
-**ip_allocations**: string[]
-**ip_configuration_profiles**: azure_ip_configuration_profile[]
-**name**: string
-**nat_gateway**: string
-**network_security_group**: azure_network_security_group
-**private_endpoint_network_policies**: string
-**private_endpoints**: azure_private_endpoint[]
-**private_link_service_network_policies**: string
-**provisioning_state**: string
-**purpose**: string
-**resource_navigation_links**: azure_resource_navigation_link[]
-**route_table**: azure_route_table
-**service_association_links**: azure_service_association_link[]
-**service_endpoint_policies**: azure_service_endpoint_policy[]
-**service_endpoints**: azure_service_endpoint_properties_format[]
-**subnet_ip_configurations**: azure_ip_configuration[]
-**type**: string
 }
 class azure_traffic_analytics_configuration_properties {
 **enabled**: boolean
@@ -11067,7 +9814,6 @@ class azure_virtual_network {
 **ip_allocations**: string[]
 **provisioning_state**: string
 **resource_guid**: string
-**subnets**: azure_subnet[]
 **virtual_network_encryption**: azure_virtual_network_encryption
 **virtual_network_peerings**: azure_virtual_network_peering[]
 }
@@ -11098,6 +9844,8 @@ class azure_virtual_network_peering {
 **type**: string
 **use_remote_gateways**: boolean
 }
+class network {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -11113,52 +9861,21 @@ class resource {
 azure_flow_log --> azure_flow_log_format_parameters
 azure_flow_log --> azure_retention_policy_parameters
 azure_flow_log --> azure_traffic_analytics_properties
-azure_ip_configuration --> azure_public_ip_address
-azure_resource <|--- azure_nat_gateway
-azure_network_security_group --> azure_flow_log
-azure_resource <|--- azure_network_security_group
-azure_network_security_group --> azure_security_rule
-azure_private_endpoint --> azure_application_security_group
-azure_private_endpoint --> azure_custom_dns_config_properties_format
-azure_private_endpoint --> azure_extended_location
-azure_private_endpoint --> azure_private_endpoint_ip_configuration
-azure_private_endpoint --> azure_private_link_service_connection
-azure_private_link_service_connection --> azure_private_link_service_connection_state
-azure_public_ip_address --> azure_ddos_settings
-azure_public_ip_address --> azure_extended_location
-azure_public_ip_address --> azure_ip_tag
-azure_public_ip_address --> azure_nat_gateway
-azure_public_ip_address --> azure_public_ip_address_dns_settings
-azure_resource <|--- azure_public_ip_address
-azure_public_ip_address --> azure_sku
 resource <|--- azure_resource
-azure_route_table --> azure_route
-azure_security_rule --> azure_application_security_group
-azure_service_endpoint_policy --> azure_service_endpoint_policy_definition
-azure_subnet --> azure_application_gateway_ip_configuration
-azure_subnet --> azure_delegation
-azure_subnet --> azure_ip_configuration
-azure_subnet --> azure_ip_configuration_profile
-azure_subnet --> azure_network_security_group
-azure_subnet --> azure_private_endpoint
-azure_subnet --> azure_resource_navigation_link
-azure_subnet --> azure_route_table
-azure_subnet --> azure_service_association_link
-azure_subnet --> azure_service_endpoint_policy
-azure_subnet --> azure_service_endpoint_properties_format
 azure_traffic_analytics_properties --> azure_traffic_analytics_configuration_properties
 azure_virtual_network --> azure_address_space
 azure_virtual_network --> azure_dhcp_options
 azure_virtual_network --> azure_extended_location
 azure_virtual_network --> azure_flow_log
 azure_resource <|--- azure_virtual_network
-azure_virtual_network --> azure_subnet
 azure_virtual_network --> azure_virtual_network_bgp_communities
 azure_virtual_network --> azure_virtual_network_encryption
 azure_virtual_network --> azure_virtual_network_peering
+network <|--- azure_virtual_network
 azure_virtual_network_peering --> azure_address_space
 azure_virtual_network_peering --> azure_virtual_network_bgp_communities
 azure_virtual_network_peering --> azure_virtual_network_encryption
+resource <|--- network
 @enduml
 ```
 
@@ -11195,8 +9912,38 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class azure_bastion_host {
+}
+class azure_ddos_protection_plan {
+}
+class azure_express_route_circuit {
+}
+class azure_ip_allocation {
+}
+class azure_ip_group {
+}
+class azure_load_balancer {
+}
+class azure_network_virtual_appliance {
+}
+class azure_network_watcher {
+}
+class azure_subnet {
+}
 class azure_virtual_network {
 }
+azure_ddos_protection_plan -[#1A83AF]-> azure_virtual_network
+azure_subnet -[#1A83AF]-> azure_bastion_host
+azure_subnet -[#1A83AF]-> azure_ip_allocation
+azure_subnet -[#1A83AF]-> azure_load_balancer
+azure_virtual_network -[#1A83AF]-> azure_bastion_host
+azure_virtual_network -[#1A83AF]-> azure_express_route_circuit
+azure_virtual_network -[#1A83AF]-> azure_ip_allocation
+azure_virtual_network -[#1A83AF]-> azure_ip_group
+azure_virtual_network -[#1A83AF]-> azure_load_balancer
+azure_virtual_network -[#1A83AF]-> azure_network_virtual_appliance
+azure_virtual_network -[#1A83AF]-> azure_network_watcher
+azure_virtual_network -[#1A83AF]-> azure_subnet
 @enduml
 ```
 
@@ -11233,63 +9980,6 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class azure_application_gateway_ip_configuration {
-**etag**: string
-**name**: string
-**provisioning_state**: string
-**subnet**: string
-**type**: string
-}
-class azure_application_security_group {
-**etag**: string
-**id**: string
-**location**: string
-**name**: string
-**provisioning_state**: string
-**resource_guid**: string
-**tags**: dictionary[string, string]
-**type**: string
-}
-class azure_custom_dns_config_properties_format {
-**fqdn**: string
-**ip_addresses**: string[]
-}
-class azure_ddos_settings {
-**ddos_protection_plan**: string
-**protection_mode**: string
-}
-class azure_delegation {
-**actions**: string[]
-**etag**: string
-**name**: string
-**provisioning_state**: string
-**service_name**: string
-**type**: string
-}
-class azure_extended_location {
-**name**: string
-**type**: string
-}
-class azure_flow_log {
-**enabled**: boolean
-**etag**: string
-**flow_analytics_configuration**: azure_traffic_analytics_properties
-**format**: azure_flow_log_format_parameters
-**id**: string
-**location**: string
-**name**: string
-**provisioning_state**: string
-**retention_policy**: azure_retention_policy_parameters
-**storage_id**: string
-**tags**: dictionary[string, string]
-**target_resource_guid**: string
-**target_resource_id**: string
-**type**: string
-}
-class azure_flow_log_format_parameters {
-**type**: string
-**version**: int64
-}
 class azure_frontend_ip_configuration {
 **etag**: string
 **gateway_load_balancer**: string
@@ -11302,40 +9992,7 @@ class azure_frontend_ip_configuration {
 **private_ip_address_version**: string
 **private_ip_allocation_method**: string
 **provisioning_state**: string
-**public_ip_address**: azure_public_ip_address
 **public_ip_prefix**: string
-**subnet**: azure_subnet
-**type**: string
-**zones**: string[]
-}
-class azure_ip_configuration {
-**etag**: string
-**name**: string
-**private_ip_address**: string
-**private_ip_allocation_method**: string
-**provisioning_state**: string
-**public_ip_address**: azure_public_ip_address
-}
-class azure_ip_configuration_profile {
-**etag**: string
-**name**: string
-**properties**: string
-**type**: string
-}
-class azure_ip_tag {
-**ip_tag_type**: string
-**tag**: string
-}
-class azure_nat_gateway {
-**etag**: string
-**idle_timeout_in_minutes**: int64
-**location**: string
-**provisioning_state**: string
-**public_ip_addresses**: string[]
-**public_ip_prefixes**: string[]
-**resource_guid**: string
-**sku**: string
-**subnet_ids**: string[]
 **type**: string
 **zones**: string[]
 }
@@ -11345,217 +10002,7 @@ class azure_network_interface_tap_configuration {
 **properties**: string
 **type**: string
 }
-class azure_network_security_group {
-**default_security_rules**: azure_security_rule[]
-**etag**: string
-**flow_logs**: azure_flow_log[]
-**flush_connection**: boolean
-**provisioning_state**: string
-**resource_guid**: string
-**security_rules**: azure_security_rule[]
-}
-class azure_private_endpoint {
-**application_security_groups**: azure_application_security_group[]
-**custom_dns_configs**: azure_custom_dns_config_properties_format[]
-**custom_network_interface_name**: string
-**etag**: string
-**extended_location**: azure_extended_location
-**id**: string
-**ip_configurations**: azure_private_endpoint_ip_configuration[]
-**location**: string
-**manual_private_link_service_connections**: azure_private_link_service_connection[]
-**name**: string
-**private_link_service_connections**: azure_private_link_service_connection[]
-**provisioning_state**: string
-**tags**: dictionary[string, string]
-**type**: string
-}
-class azure_private_endpoint_ip_configuration {
-**etag**: string
-**group_id**: string
-**member_name**: string
-**name**: string
-**private_ip_address**: string
-**type**: string
-}
-class azure_private_link_service_connection {
-**etag**: string
-**group_ids**: string[]
-**name**: string
-**private_link_service_connection_state**: azure_private_link_service_connection_state
-**private_link_service_id**: string
-**provisioning_state**: string
-**request_message**: string
-**type**: string
-}
-class azure_private_link_service_connection_state {
-**actions_required**: string
-**description**: string
-**status**: string
-}
-class azure_public_ip_address {
-**azure_sku**: azure_sku
-**ddos_settings**: azure_ddos_settings
-**delete_option**: string
-**etag**: string
-**extended_location**: azure_extended_location
-**idle_timeout_in_minutes**: int64
-**ip_address**: string
-**ip_dns_settings**: azure_public_ip_address_dns_settings
-**ip_tags**: azure_ip_tag[]
-**location**: string
-**migration_phase**: string
-**nat_gateway**: azure_nat_gateway
-**provisioning_state**: string
-**public_ip_address_version**: string
-**public_ip_allocation_method**: string
-**public_ip_prefix**: string
-**resource_guid**: string
-**type**: string
-**zones**: string[]
-}
-class azure_public_ip_address_dns_settings {
-**domain_name_label**: string
-**domain_name_label_scope**: string
-**fqdn**: string
-**reverse_fqdn**: string
-}
 class azure_resource {
-}
-class azure_resource_navigation_link {
-**etag**: string
-**id**: string
-**link**: string
-**linked_resource_type**: string
-**name**: string
-**provisioning_state**: string
-**type**: string
-}
-class azure_retention_policy_parameters {
-**days**: int64
-**enabled**: boolean
-}
-class azure_route {
-**address_prefix**: string
-**etag**: string
-**has_bgp_override**: boolean
-**name**: string
-**next_hop_ip_address**: string
-**next_hop_type**: string
-**provisioning_state**: string
-**type**: string
-}
-class azure_route_table {
-**disable_bgp_route_propagation**: boolean
-**etag**: string
-**id**: string
-**location**: string
-**name**: string
-**provisioning_state**: string
-**resource_guid**: string
-**routes**: azure_route[]
-**tags**: dictionary[string, string]
-**type**: string
-}
-class azure_security_rule {
-**access**: string
-**description**: string
-**destination_address_prefix**: string
-**destination_address_prefixes**: string[]
-**destination_application_security_groups**: azure_application_security_group[]
-**destination_port_range**: string
-**destination_port_ranges**: string[]
-**direction**: string
-**etag**: string
-**name**: string
-**priority**: int64
-**protocol**: string
-**provisioning_state**: string
-**source_address_prefix**: string
-**source_address_prefixes**: string[]
-**source_application_security_groups**: azure_application_security_group[]
-**source_port_range**: string
-**source_port_ranges**: string[]
-**type**: string
-}
-class azure_service_association_link {
-**allow_delete**: boolean
-**etag**: string
-**link**: string
-**linked_resource_type**: string
-**locations**: string[]
-**name**: string
-**provisioning_state**: string
-**type**: string
-}
-class azure_service_endpoint_policy {
-**contextual_service_endpoint_policies**: string[]
-**etag**: string
-**id**: string
-**location**: string
-**name**: string
-**policy_kind**: string
-**provisioning_state**: string
-**resource_guid**: string
-**service_alias**: string
-**service_endpoint_policy_definitions**: azure_service_endpoint_policy_definition[]
-**tags**: dictionary[string, string]
-**type**: string
-}
-class azure_service_endpoint_policy_definition {
-**description**: string
-**etag**: string
-**name**: string
-**provisioning_state**: string
-**service**: string
-**service_resources**: string[]
-**type**: string
-}
-class azure_service_endpoint_properties_format {
-**locations**: string[]
-**provisioning_state**: string
-**service**: string
-}
-class azure_sku {
-**capacity**: int64
-**family**: string
-**name**: string
-**tier**: string
-}
-class azure_subnet {
-**address_prefix**: string
-**address_prefixes**: string[]
-**application_gateway_ip_configurations**: azure_application_gateway_ip_configuration[]
-**default_outbound_access**: boolean
-**delegations**: azure_delegation[]
-**etag**: string
-**ip_allocations**: string[]
-**ip_configuration_profiles**: azure_ip_configuration_profile[]
-**name**: string
-**nat_gateway**: string
-**network_security_group**: azure_network_security_group
-**private_endpoint_network_policies**: string
-**private_endpoints**: azure_private_endpoint[]
-**private_link_service_network_policies**: string
-**provisioning_state**: string
-**purpose**: string
-**resource_navigation_links**: azure_resource_navigation_link[]
-**route_table**: azure_route_table
-**service_association_links**: azure_service_association_link[]
-**service_endpoint_policies**: azure_service_endpoint_policy[]
-**service_endpoints**: azure_service_endpoint_properties_format[]
-**subnet_ip_configurations**: azure_ip_configuration[]
-**type**: string
-}
-class azure_traffic_analytics_configuration_properties {
-**enabled**: boolean
-**traffic_analytics_interval**: int64
-**workspace_id**: string
-**workspace_region**: string
-**workspace_resource_id**: string
-}
-class azure_traffic_analytics_properties {
-**network_watcher_flow_analytics_configuration**: azure_traffic_analytics_configuration_properties
 }
 class azure_virtual_network_tap {
 **destination_load_balancer_front_end_ip_configuration**: azure_frontend_ip_configuration
@@ -11579,45 +10026,7 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-azure_flow_log --> azure_flow_log_format_parameters
-azure_flow_log --> azure_retention_policy_parameters
-azure_flow_log --> azure_traffic_analytics_properties
-azure_frontend_ip_configuration --> azure_public_ip_address
-azure_frontend_ip_configuration --> azure_subnet
-azure_ip_configuration --> azure_public_ip_address
-azure_resource <|--- azure_nat_gateway
-azure_network_security_group --> azure_flow_log
-azure_resource <|--- azure_network_security_group
-azure_network_security_group --> azure_security_rule
-azure_private_endpoint --> azure_application_security_group
-azure_private_endpoint --> azure_custom_dns_config_properties_format
-azure_private_endpoint --> azure_extended_location
-azure_private_endpoint --> azure_private_endpoint_ip_configuration
-azure_private_endpoint --> azure_private_link_service_connection
-azure_private_link_service_connection --> azure_private_link_service_connection_state
-azure_public_ip_address --> azure_ddos_settings
-azure_public_ip_address --> azure_extended_location
-azure_public_ip_address --> azure_ip_tag
-azure_public_ip_address --> azure_nat_gateway
-azure_public_ip_address --> azure_public_ip_address_dns_settings
-azure_resource <|--- azure_public_ip_address
-azure_public_ip_address --> azure_sku
 resource <|--- azure_resource
-azure_route_table --> azure_route
-azure_security_rule --> azure_application_security_group
-azure_service_endpoint_policy --> azure_service_endpoint_policy_definition
-azure_subnet --> azure_application_gateway_ip_configuration
-azure_subnet --> azure_delegation
-azure_subnet --> azure_ip_configuration
-azure_subnet --> azure_ip_configuration_profile
-azure_subnet --> azure_network_security_group
-azure_subnet --> azure_private_endpoint
-azure_subnet --> azure_resource_navigation_link
-azure_subnet --> azure_route_table
-azure_subnet --> azure_service_association_link
-azure_subnet --> azure_service_endpoint_policy
-azure_subnet --> azure_service_endpoint_properties_format
-azure_traffic_analytics_properties --> azure_traffic_analytics_configuration_properties
 azure_virtual_network_tap --> azure_frontend_ip_configuration
 azure_virtual_network_tap --> azure_network_interface_tap_configuration
 azure_resource <|--- azure_virtual_network_tap
@@ -11657,8 +10066,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class azure_network_interface {
+}
 class azure_virtual_network_tap {
 }
+azure_virtual_network_tap -[#1A83AF]-> azure_network_interface
 @enduml
 ```
 
@@ -11856,8 +10268,14 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class azure_virtual_hub {
+}
 class azure_virtual_wan {
 }
+class azure_vpn_site {
+}
+azure_virtual_wan -[#1A83AF]-> azure_virtual_hub
+azure_virtual_wan -[#1A83AF]-> azure_vpn_site
 @enduml
 ```
 
@@ -12030,6 +10448,8 @@ class azure_vpn_site_link_connection {
 **vpn_link_connection_mode**: string
 **vpn_site_link**: string
 }
+class gateway {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -12057,9 +10477,11 @@ azure_resource <|--- azure_vpn_gateway
 azure_vpn_gateway --> azure_vpn_connection
 azure_vpn_gateway --> azure_vpn_gateway_ip_configuration
 azure_vpn_gateway --> azure_vpn_gateway_nat_rule
+gateway <|--- azure_vpn_gateway
 azure_vpn_gateway_nat_rule --> azure_vpn_nat_rule_mapping
 azure_vpn_site_link_connection --> azure_gateway_custom_bgp_ip_address_ip_configuration
 azure_vpn_site_link_connection --> azure_ipsec_policy
+resource <|--- gateway
 @enduml
 ```
 
@@ -12096,8 +10518,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class azure_virtual_hub {
+}
 class azure_vpn_gateway {
 }
+azure_vpn_gateway -[#1A83AF]-> azure_virtual_hub
 @enduml
 ```
 
@@ -12139,9 +10564,6 @@ class azure_aad_authentication_parameters {
 **aad_issuer**: string
 **aad_tenant**: string
 }
-class azure_address_space {
-**address_prefixes**: string[]
-}
 class azure_ipsec_policy {
 **dh_group**: string
 **ike_encryption**: string
@@ -12152,64 +10574,12 @@ class azure_ipsec_policy {
 **sa_data_size_kilobytes**: int64
 **sa_life_time_seconds**: int64
 }
-class azure_p2_s_connection_configuration {
-**configuration_policy_group_associations**: string[]
-**enable_internet_security**: boolean
-**etag**: string
-**name**: string
-**previous_configuration_policy_group_associations**: azure_vpn_server_configuration_policy_group[]
-**provisioning_state**: string
-**routing_configuration**: azure_routing_configuration
-**vpn_client_address_pool**: azure_address_space
-}
-class azure_p2_s_vpn_gateway {
-**custom_dns_servers**: string[]
-**etag**: string
-**is_routing_preference_internet**: boolean
-**p2_s_connection_configurations**: azure_p2_s_connection_configuration[]
-**provisioning_state**: string
-**virtual_hub**: string
-**vpn_client_connection_health**: azure_vpn_client_connection_health
-**vpn_gateway_scale_unit**: int64
-**vpn_server_configuration**: string
-}
-class azure_propagated_route_table {
-**ids**: string[]
-**labels**: string[]
-}
 class azure_radius_server {
 **radius_server_address**: string
 **radius_server_score**: int64
 **radius_server_secret**: string
 }
 class azure_resource {
-}
-class azure_routing_configuration {
-**associated_route_table**: string
-**inbound_route_map**: string
-**outbound_route_map**: string
-**propagated_route_tables**: azure_propagated_route_table
-**vnet_routes**: azure_vnet_route
-}
-class azure_static_route {
-**address_prefixes**: string[]
-**name**: string
-**next_hop_ip_address**: string
-}
-class azure_static_routes_config {
-**propagate_static_routes**: boolean
-**vnet_local_route_override_criteria**: string
-}
-class azure_vnet_route {
-**bgp_connections**: string[]
-**static_routes**: azure_static_route[]
-**static_routes_config**: azure_static_routes_config
-}
-class azure_vpn_client_connection_health {
-**allocated_ip_addresses**: string[]
-**total_egress_bytes_transferred**: int64
-**total_ingress_bytes_transferred**: int64
-**vpn_client_connections_count**: int64
 }
 class azure_vpn_server_config_radius_client_root_certificate {
 **name**: string
@@ -12231,7 +10601,6 @@ class azure_vpn_server_configuration {
 **aad_authentication_parameters**: azure_aad_authentication_parameters
 **configuration_policy_groups**: azure_vpn_server_configuration_policy_group[]
 **etag**: string
-**p2s_vpn_gateways**: azure_p2_s_vpn_gateway[]
 **provisioning_state**: string
 **radius_client_root_certificates**: azure_vpn_server_config_radius_client_root_certificate[]
 **radius_server_address**: string
@@ -12271,20 +10640,9 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-azure_p2_s_connection_configuration --> azure_address_space
-azure_p2_s_connection_configuration --> azure_routing_configuration
-azure_p2_s_connection_configuration --> azure_vpn_server_configuration_policy_group
-azure_p2_s_vpn_gateway --> azure_p2_s_connection_configuration
-azure_resource <|--- azure_p2_s_vpn_gateway
-azure_p2_s_vpn_gateway --> azure_vpn_client_connection_health
 resource <|--- azure_resource
-azure_routing_configuration --> azure_propagated_route_table
-azure_routing_configuration --> azure_vnet_route
-azure_vnet_route --> azure_static_route
-azure_vnet_route --> azure_static_routes_config
 azure_vpn_server_configuration --> azure_aad_authentication_parameters
 azure_vpn_server_configuration --> azure_ipsec_policy
-azure_vpn_server_configuration --> azure_p2_s_vpn_gateway
 azure_vpn_server_configuration --> azure_radius_server
 azure_resource <|--- azure_vpn_server_configuration
 azure_vpn_server_configuration --> azure_vpn_server_config_radius_client_root_certificate
@@ -12428,6 +10786,8 @@ class azure_vpn_site_link {
 **provisioning_state**: string
 **type**: string
 }
+class peering_connection {
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -12449,8 +10809,10 @@ azure_vpn_site --> azure_device_properties
 azure_vpn_site --> azure_o365_policy_properties
 azure_resource <|--- azure_vpn_site
 azure_vpn_site --> azure_vpn_site_link
+peering_connection <|--- azure_vpn_site
 azure_vpn_site_link --> azure_vpn_link_bgp_settings
 azure_vpn_site_link --> azure_vpn_link_provider_properties
+resource <|--- peering_connection
 @enduml
 ```
 
@@ -12487,8 +10849,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class azure_virtual_wan {
+}
 class azure_vpn_site {
 }
+azure_virtual_wan -[#1A83AF]-> azure_vpn_site
 @enduml
 ```
 
@@ -12525,409 +10890,6 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class azure_application_gateway {
-**application_gateway_ip_configurations**: azure_application_gateway_ip_configuration[]
-**authentication_certificates**: azure_application_gateway_authentication_certificate[]
-**autoscale_configuration**: azure_application_gateway_autoscale_configuration
-**backend_http_settings_collection**: azure_application_gateway_backend_http_settings[]
-**backend_settings_collection**: azure_application_gateway_backend_settings[]
-**custom_error_configurations**: azure_application_gateway_custom_error[]
-**default_predefined_ssl_policy**: string
-**enable_fips**: boolean
-**enable_http2**: boolean
-**etag**: string
-**firewall_policy**: string
-**force_firewall_policy_association**: boolean
-**frontend_ip_configurations**: azure_application_gateway_frontend_ip_configuration[]
-**frontend_ports**: azure_application_gateway_frontend_port[]
-**gateway_backend_address_pools**: azure_application_gateway_backend_address_pool[]
-**gateway_private_endpoint_connections**: azure_application_gateway_private_endpoint_connection[]
-**gateway_probes**: azure_application_gateway_probe[]
-**gateway_sku**: azure_application_gateway_sku
-**gateway_ssl_certificates**: azure_application_gateway_ssl_certificate[]
-**gateway_ssl_policy**: azure_application_gateway_ssl_policy
-**global_configuration**: azure_application_gateway_global_configuration
-**http_listeners**: azure_application_gateway_http_listener[]
-**identity**: azure_managed_service_identity
-**listeners**: azure_application_gateway_listener[]
-**load_distribution_policies**: azure_application_gateway_load_distribution_policy[]
-**operational_state**: string
-**private_link_configurations**: azure_application_gateway_private_link_configuration[]
-**provisioning_state**: string
-**redirect_configurations**: azure_application_gateway_redirect_configuration[]
-**request_routing_rules**: azure_application_gateway_request_routing_rule[]
-**resource_guid**: string
-**rewrite_rule_sets**: azure_application_gateway_rewrite_rule_set[]
-**routing_rules**: azure_application_gateway_routing_rule[]
-**ssl_profiles**: azure_application_gateway_ssl_profile[]
-**trusted_client_certificates**: azure_application_gateway_trusted_client_certificate[]
-**trusted_root_certificates**: azure_application_gateway_trusted_root_certificate[]
-**url_path_maps**: azure_application_gateway_url_path_map[]
-**web_application_firewall_configuration**: azure_application_gateway_web_application_firewall_configuration
-}
-class azure_application_gateway_authentication_certificate {
-**data**: string
-**etag**: string
-**name**: string
-**provisioning_state**: string
-**type**: string
-}
-class azure_application_gateway_autoscale_configuration {
-**max_capacity**: int64
-**min_capacity**: int64
-}
-class azure_application_gateway_backend_address {
-**fqdn**: string
-**ip_address**: string
-}
-class azure_application_gateway_backend_address_pool {
-**backend_addresses**: azure_application_gateway_backend_address[]
-**etag**: string
-**name**: string
-**provisioning_state**: string
-**type**: string
-}
-class azure_application_gateway_backend_http_settings {
-**affinity_cookie_name**: string
-**authentication_certificates**: string[]
-**connection_draining**: azure_application_gateway_connection_draining
-**cookie_based_affinity**: string
-**etag**: string
-**host_name**: string
-**name**: string
-**path**: string
-**pick_host_name_from_backend_address**: boolean
-**port**: int64
-**probe**: string
-**probe_enabled**: boolean
-**protocol**: string
-**provisioning_state**: string
-**request_timeout**: int64
-**trusted_root_certificates**: string[]
-**type**: string
-}
-class azure_application_gateway_backend_settings {
-**etag**: string
-**host_name**: string
-**name**: string
-**pick_host_name_from_backend_address**: boolean
-**port**: int64
-**probe**: string
-**protocol**: string
-**provisioning_state**: string
-**timeout**: int64
-**trusted_root_certificates**: string[]
-**type**: string
-}
-class azure_application_gateway_client_auth_configuration {
-**verify_client_cert_issuer_dn**: boolean
-**verify_client_revocation**: string
-}
-class azure_application_gateway_connection_draining {
-**drain_timeout_in_sec**: int64
-**enabled**: boolean
-}
-class azure_application_gateway_custom_error {
-**custom_error_page_url**: string
-**status_code**: string
-}
-class azure_application_gateway_firewall_disabled_rule_group {
-**rule_group_name**: string
-**rules**: int64[]
-}
-class azure_application_gateway_firewall_exclusion {
-**match_variable**: string
-**selector**: string
-**selector_match_operator**: string
-}
-class azure_application_gateway_frontend_ip_configuration {
-**etag**: string
-**name**: string
-**private_ip_address**: string
-**private_ip_allocation_method**: string
-**private_link_configuration**: string
-**provisioning_state**: string
-**public_ip_address**: string
-**subnet**: string
-**type**: string
-}
-class azure_application_gateway_frontend_port {
-**etag**: string
-**name**: string
-**port**: int64
-**provisioning_state**: string
-**type**: string
-}
-class azure_application_gateway_global_configuration {
-**enable_request_buffering**: boolean
-**enable_response_buffering**: boolean
-}
-class azure_application_gateway_header_configuration {
-**header_name**: string
-**header_value**: string
-}
-class azure_application_gateway_http_listener {
-**custom_error_configurations**: azure_application_gateway_custom_error[]
-**etag**: string
-**firewall_policy**: string
-**frontend_ip_configuration**: string
-**frontend_port**: string
-**host_name**: string
-**host_names**: string[]
-**name**: string
-**protocol**: string
-**provisioning_state**: string
-**require_server_name_indication**: boolean
-**ssl_certificate**: string
-**ssl_profile**: string
-**type**: string
-}
-class azure_application_gateway_ip_configuration {
-**etag**: string
-**name**: string
-**provisioning_state**: string
-**subnet**: string
-**type**: string
-}
-class azure_application_gateway_listener {
-**etag**: string
-**frontend_ip_configuration**: string
-**frontend_port**: string
-**name**: string
-**protocol**: string
-**provisioning_state**: string
-**ssl_certificate**: string
-**ssl_profile**: string
-**type**: string
-}
-class azure_application_gateway_load_distribution_policy {
-**etag**: string
-**load_distribution_algorithm**: string
-**load_distribution_targets**: azure_application_gateway_load_distribution_target[]
-**name**: string
-**provisioning_state**: string
-**type**: string
-}
-class azure_application_gateway_load_distribution_target {
-**backend_address_pool**: string
-**etag**: string
-**name**: string
-**type**: string
-**weight_per_server**: int64
-}
-class azure_application_gateway_path_rule {
-**backend_address_pool**: string
-**backend_http_settings**: string
-**etag**: string
-**firewall_policy**: string
-**load_distribution_policy**: string
-**name**: string
-**paths**: string[]
-**provisioning_state**: string
-**redirect_configuration**: string
-**rewrite_rule_set**: string
-**type**: string
-}
-class azure_application_gateway_private_endpoint_connection {
-**etag**: string
-**link_identifier**: string
-**name**: string
-**private_endpoint**: azure_private_endpoint
-**private_link_service_connection_state**: azure_private_link_service_connection_state
-**provisioning_state**: string
-**type**: string
-}
-class azure_application_gateway_private_link_configuration {
-**etag**: string
-**link_ip_configurations**: azure_application_gateway_private_link_ip_configuration[]
-**name**: string
-**provisioning_state**: string
-**type**: string
-}
-class azure_application_gateway_private_link_ip_configuration {
-**etag**: string
-**name**: string
-**primary**: boolean
-**private_ip_address**: string
-**private_ip_allocation_method**: string
-**provisioning_state**: string
-**subnet**: string
-**type**: string
-}
-class azure_application_gateway_probe {
-**etag**: string
-**host**: string
-**interval**: int64
-**match**: azure_application_gateway_probe_health_response_match
-**min_servers**: int64
-**name**: string
-**path**: string
-**pick_host_name_from_backend_http_settings**: boolean
-**pick_host_name_from_backend_settings**: boolean
-**port**: int64
-**protocol**: string
-**provisioning_state**: string
-**timeout**: int64
-**type**: string
-**unhealthy_threshold**: int64
-}
-class azure_application_gateway_probe_health_response_match {
-**body**: string
-**status_codes**: string[]
-}
-class azure_application_gateway_redirect_configuration {
-**etag**: string
-**include_path**: boolean
-**include_query_string**: boolean
-**name**: string
-**path_rules**: string[]
-**redirect_type**: string
-**request_routing_rules**: string[]
-**target_listener**: string
-**target_url**: string
-**type**: string
-**url_path_maps**: string[]
-}
-class azure_application_gateway_request_routing_rule {
-**backend_address_pool**: string
-**backend_http_settings**: string
-**etag**: string
-**http_listener**: string
-**load_distribution_policy**: string
-**name**: string
-**priority**: int64
-**provisioning_state**: string
-**redirect_configuration**: string
-**rewrite_rule_set**: string
-**rule_type**: string
-**type**: string
-**url_path_map**: string
-}
-class azure_application_gateway_rewrite_rule {
-**action_set**: azure_application_gateway_rewrite_rule_action_set
-**conditions**: azure_application_gateway_rewrite_rule_condition[]
-**name**: string
-**rule_sequence**: int64
-}
-class azure_application_gateway_rewrite_rule_action_set {
-**request_header_configurations**: azure_application_gateway_header_configuration[]
-**response_header_configurations**: azure_application_gateway_header_configuration[]
-**url_configuration**: azure_application_gateway_url_configuration
-}
-class azure_application_gateway_rewrite_rule_condition {
-**ignore_case**: boolean
-**negate**: boolean
-**pattern**: string
-**variable**: string
-}
-class azure_application_gateway_rewrite_rule_set {
-**etag**: string
-**name**: string
-**provisioning_state**: string
-**rewrite_rules**: azure_application_gateway_rewrite_rule[]
-}
-class azure_application_gateway_routing_rule {
-**backend_address_pool**: string
-**backend_settings**: string
-**etag**: string
-**listener**: string
-**name**: string
-**priority**: int64
-**provisioning_state**: string
-**rule_type**: string
-**type**: string
-}
-class azure_application_gateway_sku {
-**capacity**: int64
-**name**: string
-**tier**: string
-}
-class azure_application_gateway_ssl_certificate {
-**data**: string
-**etag**: string
-**key_vault_secret_id**: string
-**name**: string
-**password**: string
-**provisioning_state**: string
-**public_cert_data**: string
-**type**: string
-}
-class azure_application_gateway_ssl_policy {
-**cipher_suites**: string[]
-**disabled_ssl_protocols**: string[]
-**min_protocol_version**: string
-**policy_name**: string
-**policy_type**: string
-}
-class azure_application_gateway_ssl_profile {
-**client_auth_configuration**: azure_application_gateway_client_auth_configuration
-**etag**: string
-**name**: string
-**provisioning_state**: string
-**ssl_policy**: azure_application_gateway_ssl_policy
-**trusted_client_certificates**: string[]
-**type**: string
-}
-class azure_application_gateway_trusted_client_certificate {
-**client_cert_issuer_dn**: string
-**data**: string
-**etag**: string
-**name**: string
-**provisioning_state**: string
-**type**: string
-**validated_cert_data**: string
-}
-class azure_application_gateway_trusted_root_certificate {
-**data**: string
-**etag**: string
-**key_vault_secret_id**: string
-**name**: string
-**provisioning_state**: string
-**type**: string
-}
-class azure_application_gateway_url_configuration {
-**modified_path**: string
-**modified_query_string**: string
-**reroute**: boolean
-}
-class azure_application_gateway_url_path_map {
-**default_backend_address_pool**: string
-**default_backend_http_settings**: string
-**default_load_distribution_policy**: string
-**default_redirect_configuration**: string
-**default_rewrite_rule_set**: string
-**etag**: string
-**name**: string
-**path_rules**: azure_application_gateway_path_rule[]
-**provisioning_state**: string
-**type**: string
-}
-class azure_application_gateway_web_application_firewall_configuration {
-**disabled_rule_groups**: azure_application_gateway_firewall_disabled_rule_group[]
-**enabled**: boolean
-**exclusions**: azure_application_gateway_firewall_exclusion[]
-**file_upload_limit_in_mb**: int64
-**firewall_mode**: string
-**max_request_body_size**: int64
-**max_request_body_size_in_kb**: int64
-**request_body_check**: boolean
-**rule_set_type**: string
-**rule_set_version**: string
-}
-class azure_application_security_group {
-**etag**: string
-**id**: string
-**location**: string
-**name**: string
-**provisioning_state**: string
-**resource_guid**: string
-**tags**: dictionary[string, string]
-**type**: string
-}
-class azure_custom_dns_config_properties_format {
-**fqdn**: string
-**ip_addresses**: string[]
-}
 class azure_exclusion_managed_rule_group {
 **rule_group_name**: string
 **rules**: string[]
@@ -12936,10 +10898,6 @@ class azure_exclusion_managed_rule_set {
 **rule_groups**: azure_exclusion_managed_rule_group[]
 **rule_set_type**: string
 **rule_set_version**: string
-}
-class azure_extended_location {
-**name**: string
-**type**: string
 }
 class azure_group_by_user_session {
 **group_by_variables**: string[]
@@ -12961,12 +10919,6 @@ class azure_managed_rule_set {
 class azure_managed_rules_definition {
 **exclusions**: azure_owasp_crs_exclusion_entry[]
 **managed_rule_sets**: azure_managed_rule_set[]
-}
-class azure_managed_service_identity {
-**principal_id**: string
-**tenant_id**: string
-**type**: string
-**user_assigned_identities**: dictionary[string, azure_principalid_clientid]
 }
 class azure_match_condition {
 **match_values**: string[]
@@ -12998,49 +10950,6 @@ class azure_policy_settings {
 **request_body_inspect_limit_in_kb**: int64
 **state**: string
 }
-class azure_principalid_clientid {
-**client_id**: string
-**principal_id**: string
-}
-class azure_private_endpoint {
-**application_security_groups**: azure_application_security_group[]
-**custom_dns_configs**: azure_custom_dns_config_properties_format[]
-**custom_network_interface_name**: string
-**etag**: string
-**extended_location**: azure_extended_location
-**id**: string
-**ip_configurations**: azure_private_endpoint_ip_configuration[]
-**location**: string
-**manual_private_link_service_connections**: azure_private_link_service_connection[]
-**name**: string
-**private_link_service_connections**: azure_private_link_service_connection[]
-**provisioning_state**: string
-**tags**: dictionary[string, string]
-**type**: string
-}
-class azure_private_endpoint_ip_configuration {
-**etag**: string
-**group_id**: string
-**member_name**: string
-**name**: string
-**private_ip_address**: string
-**type**: string
-}
-class azure_private_link_service_connection {
-**etag**: string
-**group_ids**: string[]
-**name**: string
-**private_link_service_connection_state**: azure_private_link_service_connection_state
-**private_link_service_id**: string
-**provisioning_state**: string
-**request_message**: string
-**type**: string
-}
-class azure_private_link_service_connection_state {
-**actions_required**: string
-**description**: string
-**status**: string
-}
 class azure_resource {
 }
 class azure_state_scrubbingrules {
@@ -13060,7 +10969,6 @@ class azure_web_application_firewall_custom_rule {
 **state**: string
 }
 class azure_web_application_firewall_policy {
-**application_gateways**: azure_application_gateway[]
 **custom_rules**: azure_web_application_firewall_custom_rule[]
 **etag**: string
 **gateway_http_listeners**: string[]
@@ -13088,74 +10996,18 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-azure_application_gateway --> azure_application_gateway_authentication_certificate
-azure_application_gateway --> azure_application_gateway_autoscale_configuration
-azure_application_gateway --> azure_application_gateway_backend_address_pool
-azure_application_gateway --> azure_application_gateway_backend_http_settings
-azure_application_gateway --> azure_application_gateway_backend_settings
-azure_application_gateway --> azure_application_gateway_custom_error
-azure_application_gateway --> azure_application_gateway_frontend_ip_configuration
-azure_application_gateway --> azure_application_gateway_frontend_port
-azure_application_gateway --> azure_application_gateway_global_configuration
-azure_application_gateway --> azure_application_gateway_http_listener
-azure_application_gateway --> azure_application_gateway_ip_configuration
-azure_application_gateway --> azure_application_gateway_listener
-azure_application_gateway --> azure_application_gateway_load_distribution_policy
-azure_application_gateway --> azure_application_gateway_private_endpoint_connection
-azure_application_gateway --> azure_application_gateway_private_link_configuration
-azure_application_gateway --> azure_application_gateway_probe
-azure_application_gateway --> azure_application_gateway_redirect_configuration
-azure_application_gateway --> azure_application_gateway_request_routing_rule
-azure_application_gateway --> azure_application_gateway_rewrite_rule_set
-azure_application_gateway --> azure_application_gateway_routing_rule
-azure_application_gateway --> azure_application_gateway_sku
-azure_application_gateway --> azure_application_gateway_ssl_certificate
-azure_application_gateway --> azure_application_gateway_ssl_policy
-azure_application_gateway --> azure_application_gateway_ssl_profile
-azure_application_gateway --> azure_application_gateway_trusted_client_certificate
-azure_application_gateway --> azure_application_gateway_trusted_root_certificate
-azure_application_gateway --> azure_application_gateway_url_path_map
-azure_application_gateway --> azure_application_gateway_web_application_firewall_configuration
-azure_application_gateway --> azure_managed_service_identity
-azure_resource <|--- azure_application_gateway
-azure_application_gateway_backend_address_pool --> azure_application_gateway_backend_address
-azure_application_gateway_backend_http_settings --> azure_application_gateway_connection_draining
-azure_application_gateway_http_listener --> azure_application_gateway_custom_error
-azure_application_gateway_load_distribution_policy --> azure_application_gateway_load_distribution_target
-azure_application_gateway_private_endpoint_connection --> azure_private_endpoint
-azure_application_gateway_private_endpoint_connection --> azure_private_link_service_connection_state
-azure_application_gateway_private_link_configuration --> azure_application_gateway_private_link_ip_configuration
-azure_application_gateway_probe --> azure_application_gateway_probe_health_response_match
-azure_application_gateway_rewrite_rule --> azure_application_gateway_rewrite_rule_action_set
-azure_application_gateway_rewrite_rule --> azure_application_gateway_rewrite_rule_condition
-azure_application_gateway_rewrite_rule_action_set --> azure_application_gateway_header_configuration
-azure_application_gateway_rewrite_rule_action_set --> azure_application_gateway_url_configuration
-azure_application_gateway_rewrite_rule_set --> azure_application_gateway_rewrite_rule
-azure_application_gateway_ssl_profile --> azure_application_gateway_client_auth_configuration
-azure_application_gateway_ssl_profile --> azure_application_gateway_ssl_policy
-azure_application_gateway_url_path_map --> azure_application_gateway_path_rule
-azure_application_gateway_web_application_firewall_configuration --> azure_application_gateway_firewall_disabled_rule_group
-azure_application_gateway_web_application_firewall_configuration --> azure_application_gateway_firewall_exclusion
 azure_exclusion_managed_rule_set --> azure_exclusion_managed_rule_group
 azure_managed_rule_group_override --> azure_managed_rule_override
 azure_managed_rule_set --> azure_managed_rule_group_override
 azure_managed_rules_definition --> azure_managed_rule_set
 azure_managed_rules_definition --> azure_owasp_crs_exclusion_entry
-azure_managed_service_identity --> azure_principalid_clientid
 azure_match_condition --> azure_match_variable
 azure_owasp_crs_exclusion_entry --> azure_exclusion_managed_rule_set
 azure_policy_settings --> azure_state_scrubbingrules
-azure_private_endpoint --> azure_application_security_group
-azure_private_endpoint --> azure_custom_dns_config_properties_format
-azure_private_endpoint --> azure_extended_location
-azure_private_endpoint --> azure_private_endpoint_ip_configuration
-azure_private_endpoint --> azure_private_link_service_connection
-azure_private_link_service_connection --> azure_private_link_service_connection_state
 resource <|--- azure_resource
 azure_state_scrubbingrules --> azure_web_application_firewall_scrubbing_rules
 azure_web_application_firewall_custom_rule --> azure_group_by_user_session
 azure_web_application_firewall_custom_rule --> azure_match_condition
-azure_web_application_firewall_policy --> azure_application_gateway
 azure_web_application_firewall_policy --> azure_managed_rules_definition
 azure_web_application_firewall_policy --> azure_policy_settings
 azure_resource <|--- azure_web_application_firewall_policy
@@ -13196,8 +11048,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class azure_application_gateway {
+}
 class azure_web_application_firewall_policy {
 }
+azure_application_gateway -[#1A83AF]-> azure_web_application_firewall_policy
 @enduml
 ```
 

@@ -11,7 +11,6 @@ import BlogPostItems from '@theme/BlogPostItems';
 import type { Props } from '@theme/BlogTagsPostsPage';
 import SearchMetadata from '@theme/SearchMetadata';
 import clsx from 'clsx';
-import React from 'react';
 
 function useBlogTagsPostsPageTitle(
   tag: Props['tag'],

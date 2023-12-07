@@ -23,7 +23,7 @@ In theory, this is the correct way to manage resources; in practice, however, th
 
 And, to properly use tagging on a greenfield cloud account is one thing; to retroactively apply tags to sprawling cloud infrastructure is quite another (especially when utilizing a multi-cloud strategy, where you'd need to repeat any operation over multiple interfaces).
 
-<!--truncate-->
+{/* truncate */}
 
 We asked our community about their most challenging aspect of cloud tagging strategies on [LinkedIn](https://linkedin.com/feed/update/urn:li:activity:6987739499686428672):
 
@@ -135,7 +135,6 @@ While the constant cleaning up behind your developers is now entirely hands-off,
 In addition to a repair job, you can also set up notifications for your team to alert them of wrong tags, providing an opportunity to fix the root cause (e.g., Cloudformation templates or Terraform config files):
 
 <Tabs>
-
 <TabItem value="discord" label="Discord">
 
 ```bash title="Create a job to send notifications of untagged resources to Discord"
@@ -144,7 +143,6 @@ webhook="https://discord.com/api/webhooks/..."'
 ```
 
 </TabItem>
-
 <TabItem value="slack" label="Slack">
 
 :::info
@@ -161,7 +159,6 @@ webhook="https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXX
 ```
 
 </TabItem>
-
 </Tabs>
 
 See [Alerting How-To Guides](/docs/how-to-guides/alerting) for additional notification options.

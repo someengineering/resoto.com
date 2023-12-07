@@ -11,7 +11,7 @@ This release introduces the [Security Benchmarks CLI](#security-benchmarks-cli) 
 
 ![Neighborhood View Animation](./img/neighborhood.gif)
 
-<!--truncate-->
+{/* truncate */}
 
 ## Security Benchmarks CLI
 
@@ -29,9 +29,7 @@ Running a security benchmark and writing the output to a file is as simple as:
 ```
 
 <details>
-
 <summary>Generated benchmark report in Markdown format</summary>
-
 <div>
 
 ```markdown title="report.md"
@@ -71,7 +69,6 @@ CloudTrail logs a record of every API call made in your AWS account. These logs 
 ```
 
 </div>
-
 </details>
 
 Markdown rendering is the CLI default, but since benchmark results are returned as a graph, you can use all the existing Resoto commands to filter and alert on these results!
@@ -79,9 +76,7 @@ Markdown rendering is the CLI default, but since benchmark results are returned 
 For example, try piping the output of a `report benchmark run` into the `dump` command to see the raw data structure of the report results:
 
 <details>
-
 <summary>Raw benchmark report data in YAML format</summary>
-
 <div>
 
 ```yaml
@@ -121,7 +116,6 @@ reported:
 ```
 
 </div>
-
 </details>
 
 Or, pipe a report into the `list --csv` command followed by a list of fields to get a CSV-formatted output.

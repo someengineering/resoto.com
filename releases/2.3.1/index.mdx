@@ -49,7 +49,7 @@ And last but not least, the UML model endpoint can generate diagrams with comple
 
 Resoto uses collectors to retrieve data from a specific cloud provider. Those collectors are not only able to collect the resource data, but also define the relationships between the resources. Some relationships cannot be resolved inside the collector, since the relationship points to resources that are not part of this cloud.
 
-:::tip Examples
+:::tip[Examples]
 
 - A [Kubernetes node](/docs/reference/unified-data-model/kubernetes#kubernetes_node) is running on an [AWS EC2 instance](/docs/reference/unified-data-model/aws#aws_ec2_instance). The [Kubernetes collector](/docs/how-to-guides/data-sources/collect-kubernetes-resource-data) is unable to resolve the reference, since it points to a resource provided by [AWS](/docs/how-to-guides/data-sources/collect-aws-resource-data).
 
@@ -59,7 +59,7 @@ Resoto uses collectors to retrieve data from a specific cloud provider. Those co
 
 Resoto now has support for creating edges that cannot be resolved during the phase of collecting the data but are resolved once all collectors have delivered their current snapshot. Going forward, we will continue extend our collectors to provide insights into relationships across cloud providers.
 
-<!--truncate-->
+{/* truncate */}
 
 ## What's Changed
 

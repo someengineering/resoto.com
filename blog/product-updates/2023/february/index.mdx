@@ -7,7 +7,7 @@ tags: [Product Updates]
 
 New month, new release! We shipped [Resoto 3.2](/releases/3.2.0) with a handful of new features and improvements.
 
-<!--truncate-->
+{/* truncate */}
 
 ## Job Editor
 
@@ -29,7 +29,7 @@ You can now override Resoto config using external `yaml` or `json` files. If you
 
 Start `resotocore` with the `--override-path` argument (or the corresponding `RESOTOCORE_OVERRIDE_PATH` environment variable) pointing to a file or directory. (If a directory is specified, Resoto will read all files in the directory with `.yaml`, `.yml`, or `.json` extensions.) The filename must correspond to the name of the Resoto config you would like to override.
 
-:::tip Example
+:::tip[Example]
 
 `resoto.worker.yaml` would override the data in the `resoto.worker` config.
 

@@ -4,7 +4,6 @@ import type { Props } from '@theme/DocItem/Content';
 import Heading from '@theme/Heading';
 import MDXContent from '@theme/MDXContent';
 import clsx from 'clsx';
-import React from 'react';
 
 /**
  Title can be declared inside md content or declared through

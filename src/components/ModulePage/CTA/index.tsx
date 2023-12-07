@@ -2,13 +2,13 @@ import Link from '@docusaurus/Link';
 import InstallButton from '@site/src/components/InstallButton';
 import baseStyles from '@site/src/pages/styles.module.css';
 import clsx from 'clsx';
-import React from 'react';
+import { type ReactNode } from 'react';
 import styles from './styles.module.css';
 
 export default function ModulePageCTA({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }): JSX.Element {
   return (
     <div className={baseStyles.section}>

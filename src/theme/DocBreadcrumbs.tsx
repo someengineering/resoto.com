@@ -3,7 +3,7 @@ import { DEFAULT_PLUGIN_ID } from '@docusaurus/constants';
 import { useActivePlugin } from '@docusaurus/plugin-content-docs/client';
 import { useSidebarBreadcrumbs } from '@docusaurus/theme-common/internal';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import React, { type ReactNode } from 'react';
+import { type ReactNode } from 'react';
 
 function BreadcrumbsItemLink({
   children,

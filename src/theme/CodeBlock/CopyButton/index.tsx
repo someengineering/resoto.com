@@ -4,7 +4,7 @@ import IconCopy from '@theme/Icon/Copy';
 import IconSuccess from '@theme/Icon/Success';
 import { clsx } from 'clsx';
 import copy from 'copy-text-to-clipboard';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './styles.module.css';
 
 export default function CopyButton({ code, className }: Props): JSX.Element {

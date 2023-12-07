@@ -13,7 +13,7 @@ In [Actionable Cloud Infrastructure Metrics](../actionable-cloud-infrastructure-
 
 If you are not familiar with [Python](https://python.org), don't worry—we're going to keep it simple! In [Prerequisites](#prerequisites), we'll go over installing Python and the coding techniques utilized in this project.
 
-<!--truncate-->
+{/* truncate */}
 
 :::info
 
@@ -45,7 +45,6 @@ If you already these prerequisites installed, you can skip ahead to [Environment
 ### Python and `pip`
 
 <Tabs groupId="operating-system">
-
 <TabItem value="linux" label="Linux">
 
 On Linux, there is a good chance the distro already comes with a version of Python 3.x installed. If you are not sure, you can check with the following command:
@@ -60,7 +59,6 @@ $ python3 --version
 If the command returns an error, you can install Python and `pip` using your distro's package manager:
 
 <Tabs groupId="linux-distro">
-
 <TabItem value="debian" label="Debian/Ubuntu">
 
 ```bash
@@ -69,7 +67,6 @@ $ sudo apt install python3 python3-pip
 ```
 
 </TabItem>
-
 <TabItem value="fedora" label="Fedora/CentOS">
 
 ```bash
@@ -77,15 +74,10 @@ $ sudo dnf install python3 python3-pip
 ```
 
 </TabItem>
-
 </Tabs>
-
 </TabItem>
-
 <TabItem value="macos" label="macOS">
-
 <Tabs>
-
 <TabItem value="download" label="Download">
 
 You can download the latest version of Python for macOS from [Python.org](https://python.org/downloads):
@@ -93,7 +85,6 @@ You can download the latest version of Python for macOS from [Python.org](https:
 ![Screenshot of python.org](./img/download-python-macos.png)
 
 </TabItem>
-
 <TabItem value="homebrew" label="Homebrew">
 
 With [Homebrew](https://brew.sh), you can install Python by executing the following command in the **Terminal** app:
@@ -111,15 +102,10 @@ The **Terminal** app can be found under **Utilities** within the **Applications*
 :::
 
 </TabItem>
-
 </Tabs>
-
 </TabItem>
-
 <TabItem value="windows" label="Windows">
-
 <Tabs>
-
 <TabItem value="download" label="Download">
 
 You can download the latest version of Python for Windows from [Python.org](https://python.org/downloads):
@@ -127,7 +113,6 @@ You can download the latest version of Python for Windows from [Python.org](http
 ![Screenshot of python.org](./img/download-python-windows.png)
 
 </TabItem>
-
 <TabItem value="chocolatey" label="Chocolatey">
 
 With [Chocolatey](https://chocolatey.org), you can install Python by executing the following command:
@@ -137,21 +122,15 @@ choco install python
 ```
 
 </TabItem>
-
 </Tabs>
-
 </TabItem>
-
 </Tabs>
 
 If you don't have prior Python or programming experience, please read the following overview of some Python basics before proceeding:
 
 <details>
-
 <summary>Python Basics</summary>
-
 <div>
-
 <h4 id="starting-the-repl">Starting the REPL</h4>
 
 Start Python by running the following command (in PowerShell on Windows or the Terminal app on macOS):
@@ -340,7 +319,6 @@ Multiple conditions can be checked using the `and` and `or` operators:
 ```
 
 </div>
-
 </details>
 
 ### Resoto
@@ -447,7 +425,7 @@ If you are interested in different resource types or metrics, you can easily ada
     numpy
     ```
 
-    :::caution
+    :::warning
 
     In production environments, you should pin the version of each package (e.g., `resotolib==2.4.1`).
 
@@ -1045,9 +1023,7 @@ Finally, we will add a histogram of the instance age distribution. (We're adding
 ### The Final Product
 
 <details>
-
 <summary>Complete App Code</summary>
-
 <div>
 
 ```python title="app.py" showLineNumbers
@@ -1177,7 +1153,6 @@ age_tab.plotly_chart(fig, use_container_width=True)
 ```
 
 </div>
-
 </details>
 
 ## What's Next?

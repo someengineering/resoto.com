@@ -13,7 +13,7 @@ This approach merges multiple nodes in a graph into one node. This combined node
 
 The nested search is executed for every node in the result. The result of the nested search is then merged with the original node data.
 
-:::tip Example
+:::tip[Example]
 
 Most cloud resources are maintained in an account. Accounts are modeled as [nodes](../../concepts/asset-inventory-graph/index.mdx#nodes) in Resoto.
 
@@ -52,7 +52,7 @@ If the merge name is a simple literal, zero or one result of the nested search i
 
 If the expected result of the nested search is a list, than the merge name has to be defined with square brackets.
 
-:::tip Example
+:::tip[Example]
 
 The following search will traverse inbound on every element and collect all predecessors under the name `predecessors`). Please note the square brackets in the name `predecessors[]` - which will tell the search engine to return all predecessors, not only the first one. As a result the node is returned with a new property, which contains the list of all predecessors.
 
@@ -76,7 +76,7 @@ The following search will traverse inbound on every element and collect all pred
 
 It is also possible to define multiple merge queries in one `search` statement.
 
-:::tip Example
+:::tip[Example]
 
 As a result every node that is returned has two additional properties: `account` holds the complete data of the account node, as well `region`, which contains the related region node.
 

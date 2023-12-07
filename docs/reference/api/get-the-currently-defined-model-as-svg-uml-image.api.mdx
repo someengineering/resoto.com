@@ -22,18 +22,148 @@ import SchemaItem from "@theme/SchemaItem";
 import SchemaTabs from "@theme/SchemaTabs";
 import TabItem from "@theme/TabItem";
 
-<h1 className={"openapi__heading"}>Get the currently defined model as svg uml image.</h1>
+<h1
+  className={"openapi__heading"}
+>
+  Get the currently defined model as svg uml image.
+</h1>
 
-<MethodEndpoint method={"get"} path={"/graph/{graph_id}/model/uml"}></MethodEndpoint>
-
-<SecuritySchemes infoPath={"docs/reference/api/resoto-core-rest-api"}></SecuritySchemes>
+<MethodEndpoint
+  method={"get"}
+  path={"/graph/{graph_id}/model/uml"}
+>
+  
+</MethodEndpoint>
 
 Get the currently defined model as svg uml image.
 
 ## Request
 
-<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Path Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"graph_id","in":"path","example":"resoto","description":"The identifier of the graph","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Query Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"output","description":"The output format.","in":"query","schema":{"type":"string","enum":["svg","png"],"default":"svg"},"required":false}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"show","description":"comma separated list of resources to show. Entries can be regexps.","in":"query","schema":{"type":"string"},"required":false,"explode":false,"example":"aws_ec2_instance,gcp.*"}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"hide","description":"comma separated list of resources to hide. Entries can be regexps.\nhide takes precedence over show.\n","in":"query","schema":{"type":"string"},"required":false,"explode":false,"example":"aws_ec2_instance,gcp.*"}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"with_inheritance","description":"Include inheritance relations in the model.","in":"query","schema":{"type":"boolean","default":true}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"with_base_classes","description":"Include all base classes of visible entries","in":"query","schema":{"type":"boolean","default":true}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"with_subclasses","description":"Include all descendant classes of visible entries","in":"query","schema":{"type":"boolean","default":false}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"dependency","description":"comma separated list of dependency relationships.\n","in":"query","schema":{"type":"string"},"required":false,"explode":false,"example":"default"}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"with_predecessors","description":"Include all predecessors of selected entries","in":"query","schema":{"type":"boolean","default":false}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"with_successors","description":"Include all successors of selected entries","in":"query","schema":{"type":"boolean","default":false}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"with_properties","description":"Show properties of selected entries","in":"query","schema":{"type":"boolean","default":true}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"link_classes","description":"Add anchor links to classes.","in":"query","schema":{"type":"boolean","default":false}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"aggregate_roots","description":"Show aggregate roots.","in":"query","schema":{"type":"boolean","default":true}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"sort_props","description":"Sort properties by name.","in":"query","schema":{"type":"boolean","default":true}}}></ParamsItem></ul></div></details><div><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
-
-Returns the model as uml diagram in svg format
-
-</div><div></div></TabItem></ApiTabs></div></div>
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"graph_id","in":"path","example":"resoto","description":"The identifier of the graph","required":true,"schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Query Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"output","description":"The output format.","in":"query","schema":{"type":"string","enum":["svg","png"],"default":"svg"},"required":false}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"show","description":"comma separated list of resources to show. Entries can be regexps.","in":"query","schema":{"type":"string"},"required":false,"explode":false,"example":"aws_ec2_instance,gcp.*"}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"hide","description":"comma separated list of resources to hide. Entries can be regexps.\nhide takes precedence over show.\n","in":"query","schema":{"type":"string"},"required":false,"explode":false,"example":"aws_ec2_instance,gcp.*"}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"with_inheritance","description":"Include inheritance relations in the model.","in":"query","schema":{"type":"boolean","default":true}}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"with_base_classes","description":"Include all base classes of visible entries","in":"query","schema":{"type":"boolean","default":true}}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"with_subclasses","description":"Include all descendant classes of visible entries","in":"query","schema":{"type":"boolean","default":false}}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"dependency","description":"comma separated list of dependency relationships.\n","in":"query","schema":{"type":"string"},"required":false,"explode":false,"example":"default"}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"with_predecessors","description":"Include all predecessors of selected entries","in":"query","schema":{"type":"boolean","default":false}}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"with_successors","description":"Include all successors of selected entries","in":"query","schema":{"type":"boolean","default":false}}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"with_properties","description":"Show properties of selected entries","in":"query","schema":{"type":"boolean","default":true}}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"link_classes","description":"Add anchor links to classes.","in":"query","schema":{"type":"boolean","default":false}}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"aggregate_roots","description":"Show aggregate roots.","in":"query","schema":{"type":"boolean","default":true}}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"sort_props","description":"Sort properties by name.","in":"query","schema":{"type":"boolean","default":true}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs>
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          Returns the model as uml diagram in svg format
+          
+          
+        </div><div>
+          
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>

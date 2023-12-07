@@ -6,7 +6,6 @@ import ModulePageSection from '@site/src/components/ModulePage/Section';
 import headerImage from '@site/src/img/modules/cloudscope.webp';
 import baseStyles from '@site/src/pages/styles.module.css';
 import Layout from '@theme/Layout';
-import React from 'react';
 import Balancer from 'react-wrap-balancer';
 import discoveryScreenshot from './img/discovery.webp';
 import searchScreenshot from './img/search.webp';

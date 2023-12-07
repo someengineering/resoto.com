@@ -4,7 +4,7 @@ import type { WrapperProps } from '@docusaurus/types';
 import useIsBrowser from '@docusaurus/useIsBrowser';
 import Footer from '@theme-original/Footer';
 import type FooterType from '@theme/Footer';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './styles.module.css';
 
 type Props = WrapperProps<typeof FooterType>;

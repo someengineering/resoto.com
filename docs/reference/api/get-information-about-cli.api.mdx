@@ -5,7 +5,7 @@ description: "**Experimental**: This API is not stable and might be subject of c
 sidebar_label: "Get information about CLI"
 hide_title: true
 hide_table_of_contents: true
-api: eJztWN9rGzEM/leMn7YQmmxPWxiDUkpXGKy02V7WEBxHybnz2Tdb1zYc+d8n+S7Nr7YpbSkM8pSc7Pv0Sfp0Mq7kGKIOpkDjnezJVuv4toBgcnCobKvVE/3MRHF4dirox3kUEdXIglBuLHIzzVCMQMRydAUahZ8InSk3hYMvo9D5eulOAIVxEx9yxQ6EGvkSxdH300sn2xLVNMreb6mtkYO2DBAL7yKQrZIfu13+WWfnVA7tdUCikYEt2LW6VsYmctrnOa3EA3KivUMKhsFUUVij04udq8iIlYw6g1zxP5wVQD58CoVeXHd9uhUFZsCR0M4ieMoZmpr5wvk2/UNr7yHJiahdqxDUjB4NQh6fQ0kxoQXwFjHO3gpqxGDcdAu1T2HxTs5oE+IC8UDO20RymtC8gx8Tql71ZPavzEYQk5J1mmgByVZjHF4rW67ijry3oNw9yRuzFCCSnmroBZxooCibCSzBFz5GQ1Wr8VfDeyjsJqD5puOzBqkGj4JqSO6pudbC0coNvdZlGOalRVOQZ6SmjC+LjFBFQhULVJFQk8vEZ5iZulceL8s32tUwbwKpC7QZBrfmEOH2KZDcxbx1R6kJFQ1aRqIdR/WGwzDllb3m9pp7W80NaInn0W5fF5kPKFZsd2RfxjPBRF8G/TwJLsLlNFrrb4D+OlEDCpKgSfPl3cSEiMvNNHF41Bv3/qH0JHOAwioNnMad83B1r7gxmAkSTWAJ1f3V3mpuNR4ndsqerbX5Rjfw0LJGxSE39U4aaSvEV3BHzUkR4RNdisX29O052J8K9l/o/Rd6fyrYa+4/1Nz+VPDIqWDdzuOKjWzOATM/JvsUUpcqzOiho63ppGxSRBCuIcQ0YMpgaTVDLGKv06kyH3HeqwrK51yyhoLh4Zp0ymv1EJ4okhu9Zr1WNplTS4WN5U+fu11mNVipY8P5HKJHL458AHF+fNHnuxH2R7TqZP760LQpUsDL74t88C5ksxzV8s7ije9japWwpDp0FDGOA0lprppi1Hc1TVIoOXVif8uqGtGh6Wew8zmb/5YQZmQfLOvAT0nZagwh1e8PzPgkpDUUKJum56/Y5iUNF+FOGSfHfarLP9UZhgE=
+api: eJztVlFr2zAQ/itCT1sISbenLYxBKKUrDFbabC9tGLJ9sdXJkied0wbj/747OWniuSVjjD31ydbpdPfd991ZbmQGIfW6Qu2snMnR6OyhAq9LsKjMaDQTi0IHMb+8EPSwDkVAlRgQymai1HmBIgER6uQOUhRuJdJC2RwmHxI//XhrzwGFtivnS8UJhEpcjeL088WtlWOJKg9ydiNTo+VyLD2EytkAZGvk25MTfvTRWVXCuB+QYBRgKk6t1kqbCC51ZUk7YUJJUmeRiuFgqqqMTuPB6V3giI0MaQGl4jfcVEA5XCyFDvZTXwyqwAK4EvKsvCPOUHfId8mH8OfGPAGSiehSK+/VhpYaoQx/A0kxoF3gATBm7yBqQK9tPoi6oLLYkxndlriLOJHtmEDmMZqz8GVF6jV99O14CBs1GjZQqNMu0tznsl1SNNbyOKbrwnkUB7aIhHU/fvYTdwfCAz5XUHC1Tw+JSZwzoOwTfGfcPRCoBbtQ2zA8GsoYdw/0akUXUFQu6KjNq5X2AffOpBaPibavKX/7FD3R7KEyKgWexKO9dOgr7jUWIq29p5VYK1PDvsUeNVFZFtEpc9lrkj6ZjEMZrcJ3bomjMKIrhH+QjiaAKsI/TCl27rFzJy8T9TJRw4nq21lqNrK5BCxcRvYcmNxKYUGLKV1L08gmVQR+DT5EcWpvaLdArMJsOm0KF7CdNRXx2ZLnWnnNjRkV5b2ugVeqNvQqjUuViWbKy2f62+/e07VHmJYHOm4xX0Fw6MSp8yCuzq4XfCdzPoLVkfntTRczIBW870757B38uxzN/q78z/8BXZdwS01pjLXlQiLNzVaM7h9hSwqR0xF7I5smoQ/OV2/als0/a/Absi/3OvAqdrbKwEf9fsCGvyJpChVGwfgDORv+HLAIj51xfrYgXX4BGkUpGA==
 sidebar_class_name: "get api-method"
 info_path: docs/reference/api/resoto-core-rest-api
 custom_edit_url: null
@@ -22,34 +22,683 @@ import SchemaItem from "@theme/SchemaItem";
 import SchemaTabs from "@theme/SchemaTabs";
 import TabItem from "@theme/TabItem";
 
-<h1 className={"openapi__heading"}>Get information about CLI</h1>
+<h1
+  className={"openapi__heading"}
+>
+  Get information about CLI
+</h1>
 
-<MethodEndpoint method={"get"} path={"/cli/info"}></MethodEndpoint>
-
-<SecuritySchemes infoPath={"docs/reference/api/resoto-core-rest-api"}></SecuritySchemes>
+<MethodEndpoint
+  method={"get"}
+  path={"/cli/info"}
+>
+  
+</MethodEndpoint>
 
 **Experimental**: This API is not stable and might be subject of change.<br/> Get information about CLI
 
 ## Request
 
-<div><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
-
-name, information and help of available commands.
-
-</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}} className={"openapi-markdown__details"}><summary style={{}}><span className={"openapi-schema__container"}><strong className={"openapi-schema__property"}>commands</strong><span className={"openapi-schema__name"}> object[]</span></span></summary><div style={{"marginLeft":"1rem"}}><div style={{"marginTop":".5rem","marginBottom":".5rem"}}>
-
-All available commands
-
-</div><li><div style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}>Array [</div></li><SchemaItem collapsible={false} name={"name"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","description":"The name of the CLI command."}}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}} className={"openapi-markdown__details"}><summary style={{}}><strong>args</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}></div><div><span className={"badge badge--info"}>oneOf</span><SchemaTabs><TabItem label={"MOD1"} value={"0-property"}><p>MOD1</p></TabItem><TabItem label={"CLICommandArg"} value={"1-property"}><SchemaItem collapsible={false} name={"name"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","description":"The name of the CLI command argument."}}></SchemaItem><SchemaItem collapsible={false} name={"expects_value"} required={false} schemaName={"boolean"} qualifierMessage={undefined} schema={{"type":"boolean","description":"Indicates, if the argument expects a value."}}></SchemaItem><SchemaItem collapsible={false} name={"possible_values"} required={false} schemaName={"string[]"} qualifierMessage={undefined} schema={{"type":"array","items":{"type":"string"},"description":"Possible values for this argument."}}></SchemaItem><SchemaItem collapsible={false} name={"can_occur_multiple_times"} required={false} schemaName={"boolean"} qualifierMessage={undefined} schema={{"type":"boolean","description":"Indicates, if the argument can occur multiple times."}}></SchemaItem><SchemaItem collapsible={false} name={"value_hint"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","description":"Hint for the value of this argument."}}></SchemaItem><SchemaItem collapsible={false} name={"help_text"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","description":"Help text of the CLI command argument."}}></SchemaItem></TabItem></SchemaTabs></div></details></SchemaItem><SchemaItem collapsible={false} name={"info"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","description":"Short description."}}></SchemaItem><SchemaItem collapsible={false} name={"help"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","description":"Help text of the CLI command."}}></SchemaItem><SchemaItem collapsible={false} name={"source"} required={false} schemaName={"boolean"} qualifierMessage={undefined} schema={{"type":"boolean","description":"Indicates, if the command is allowed in source position (first command in a chain)."}}></SchemaItem><li><div style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}>]</div></li></div></details></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}} className={"openapi-markdown__details"}><summary style={{}}><span className={"openapi-schema__container"}><strong className={"openapi-schema__property"}>replacements</strong><span className={"openapi-schema__name"}> object</span></span></summary><div style={{"marginLeft":"1rem"}}><div style={{"marginTop":".5rem","marginBottom":".5rem"}}>
-
-All available replacements with current value
-
-</div><SchemaItem name={"property name*"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}} collapsible={false} discriminator={false}></SchemaItem></div></details></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}} className={"openapi-markdown__details"}><summary style={{}}><span className={"openapi-schema__container"}><strong className={"openapi-schema__property"}>alias_names</strong><span className={"openapi-schema__name"}> object</span></span></summary><div style={{"marginLeft":"1rem"}}><div style={{"marginTop":".5rem","marginBottom":".5rem"}}>
-
-All available aliases
-
-</div><SchemaItem name={"property name*"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}} collapsible={false} discriminator={false}></SchemaItem></div></details></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}} className={"openapi-markdown__details"}><summary style={{}}><span className={"openapi-schema__container"}><strong className={"openapi-schema__property"}>alias_templates</strong><span className={"openapi-schema__name"}> object[]</span></span></summary><div style={{"marginLeft":"1rem"}}><div style={{"marginTop":".5rem","marginBottom":".5rem"}}>
-
-All available alias template name.
-
-</div><li><div style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}>Array [</div></li><SchemaItem collapsible={false} name={"name"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","description":"The name of the CLI command."}}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}} className={"openapi-markdown__details"}><summary style={{}}><strong>args</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}></div><div><span className={"badge badge--info"}>oneOf</span><SchemaTabs><TabItem label={"MOD1"} value={"0-property"}><p>MOD1</p></TabItem><TabItem label={"CLICommandArg"} value={"1-property"}><SchemaItem collapsible={false} name={"name"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","description":"The name of the CLI command argument."}}></SchemaItem><SchemaItem collapsible={false} name={"expects_value"} required={false} schemaName={"boolean"} qualifierMessage={undefined} schema={{"type":"boolean","description":"Indicates, if the argument expects a value."}}></SchemaItem><SchemaItem collapsible={false} name={"possible_values"} required={false} schemaName={"string[]"} qualifierMessage={undefined} schema={{"type":"array","items":{"type":"string"},"description":"Possible values for this argument."}}></SchemaItem><SchemaItem collapsible={false} name={"can_occur_multiple_times"} required={false} schemaName={"boolean"} qualifierMessage={undefined} schema={{"type":"boolean","description":"Indicates, if the argument can occur multiple times."}}></SchemaItem><SchemaItem collapsible={false} name={"value_hint"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","description":"Hint for the value of this argument."}}></SchemaItem><SchemaItem collapsible={false} name={"help_text"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","description":"Help text of the CLI command argument."}}></SchemaItem></TabItem></SchemaTabs></div></details></SchemaItem><SchemaItem collapsible={false} name={"info"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","description":"Short description."}}></SchemaItem><SchemaItem collapsible={false} name={"help"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","description":"Help text of the CLI command."}}></SchemaItem><SchemaItem collapsible={false} name={"source"} required={false} schemaName={"boolean"} qualifierMessage={undefined} schema={{"type":"boolean","description":"Indicates, if the command is allowed in source position (first command in a chain)."}}></SchemaItem><li><div style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}>]</div></li></div></details></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"commands\": [\n    {\n      \"name\": \"string\",\n      \"args\": [\n        {\n          \"name\": \"string\",\n          \"expects_value\": true,\n          \"possible_values\": [\n            \"string\"\n          ],\n          \"can_occur_multiple_times\": true,\n          \"value_hint\": \"string\",\n          \"help_text\": \"string\"\n        }\n      ],\n      \"info\": \"string\",\n      \"help\": \"string\",\n      \"source\": true\n    }\n  ],\n  \"replacements\": {},\n  \"alias_names\": {},\n  \"alias_templates\": [\n    {\n      \"name\": \"string\",\n      \"args\": [\n        {\n          \"name\": \"string\",\n          \"expects_value\": true,\n          \"possible_values\": [\n            \"string\"\n          ],\n          \"can_occur_multiple_times\": true,\n          \"value_hint\": \"string\",\n          \"help_text\": \"string\"\n        }\n      ],\n      \"info\": \"string\",\n      \"help\": \"string\",\n      \"source\": true\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+<div>
+  <div>
+    <ApiTabs>
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          name, information and help of available commands.
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                commands
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object[]
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <div
+                              style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                            >
+                              
+                              
+                              All available commands
+                              
+                              
+                            </div><li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                              >
+                                Array [
+                              </div>
+                            </li><SchemaItem
+                              collapsible={false}
+                              name={"name"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"The name of the CLI command."}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={true}
+                              className={"schemaItem"}
+                            >
+                              <details
+                                style={{}}
+                                className={"openapi-markdown__details"}
+                              >
+                                <summary
+                                  style={{}}
+                                >
+                                  <strong>
+                                    args
+                                  </strong><span
+                                    style={{"opacity":"0.6"}}
+                                  >
+                                     object
+                                  </span>
+                                </summary><div
+                                  style={{"marginLeft":"1rem"}}
+                                >
+                                  
+                                </div><div>
+                                  <span
+                                    className={"badge badge--info"}
+                                  >
+                                    oneOf
+                                  </span><SchemaTabs>
+                                    <TabItem
+                                      label={"MOD1"}
+                                      value={"0-item-properties"}
+                                    >
+                                      <li>
+                                        <div
+                                          style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                                        >
+                                          Array [
+                                        </div>
+                                      </li><SchemaItem
+                                        collapsible={false}
+                                        name={"name"}
+                                        required={false}
+                                        schemaName={"string"}
+                                        qualifierMessage={undefined}
+                                        schema={{"type":"string","description":"The name of the CLI command argument."}}
+                                      >
+                                        
+                                      </SchemaItem><SchemaItem
+                                        collapsible={false}
+                                        name={"expects_value"}
+                                        required={false}
+                                        schemaName={"boolean"}
+                                        qualifierMessage={undefined}
+                                        schema={{"type":"boolean","description":"Indicates, if the argument expects a value."}}
+                                      >
+                                        
+                                      </SchemaItem><SchemaItem
+                                        collapsible={false}
+                                        name={"possible_values"}
+                                        required={false}
+                                        schemaName={"string[]"}
+                                        qualifierMessage={undefined}
+                                        schema={{"type":"array","items":{"type":"string"},"description":"Possible values for this argument."}}
+                                      >
+                                        
+                                      </SchemaItem><SchemaItem
+                                        collapsible={false}
+                                        name={"can_occur_multiple_times"}
+                                        required={false}
+                                        schemaName={"boolean"}
+                                        qualifierMessage={undefined}
+                                        schema={{"type":"boolean","description":"Indicates, if the argument can occur multiple times."}}
+                                      >
+                                        
+                                      </SchemaItem><SchemaItem
+                                        collapsible={false}
+                                        name={"value_hint"}
+                                        required={false}
+                                        schemaName={"string"}
+                                        qualifierMessage={undefined}
+                                        schema={{"type":"string","description":"Hint for the value of this argument."}}
+                                      >
+                                        
+                                      </SchemaItem><SchemaItem
+                                        collapsible={false}
+                                        name={"help_text"}
+                                        required={false}
+                                        schemaName={"string"}
+                                        qualifierMessage={undefined}
+                                        schema={{"type":"string","description":"Help text of the CLI command argument."}}
+                                      >
+                                        
+                                      </SchemaItem><li>
+                                        <div
+                                          style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                                        >
+                                          ]
+                                        </div>
+                                      </li>
+                                    </TabItem><TabItem
+                                      label={"CLICommandArg"}
+                                      value={"1-item-properties"}
+                                    >
+                                      <SchemaItem
+                                        collapsible={false}
+                                        name={"name"}
+                                        required={false}
+                                        schemaName={"string"}
+                                        qualifierMessage={undefined}
+                                        schema={{"type":"string","description":"The name of the CLI command argument."}}
+                                      >
+                                        
+                                      </SchemaItem><SchemaItem
+                                        collapsible={false}
+                                        name={"expects_value"}
+                                        required={false}
+                                        schemaName={"boolean"}
+                                        qualifierMessage={undefined}
+                                        schema={{"type":"boolean","description":"Indicates, if the argument expects a value."}}
+                                      >
+                                        
+                                      </SchemaItem><SchemaItem
+                                        collapsible={false}
+                                        name={"possible_values"}
+                                        required={false}
+                                        schemaName={"string[]"}
+                                        qualifierMessage={undefined}
+                                        schema={{"type":"array","items":{"type":"string"},"description":"Possible values for this argument."}}
+                                      >
+                                        
+                                      </SchemaItem><SchemaItem
+                                        collapsible={false}
+                                        name={"can_occur_multiple_times"}
+                                        required={false}
+                                        schemaName={"boolean"}
+                                        qualifierMessage={undefined}
+                                        schema={{"type":"boolean","description":"Indicates, if the argument can occur multiple times."}}
+                                      >
+                                        
+                                      </SchemaItem><SchemaItem
+                                        collapsible={false}
+                                        name={"value_hint"}
+                                        required={false}
+                                        schemaName={"string"}
+                                        qualifierMessage={undefined}
+                                        schema={{"type":"string","description":"Hint for the value of this argument."}}
+                                      >
+                                        
+                                      </SchemaItem><SchemaItem
+                                        collapsible={false}
+                                        name={"help_text"}
+                                        required={false}
+                                        schemaName={"string"}
+                                        qualifierMessage={undefined}
+                                        schema={{"type":"string","description":"Help text of the CLI command argument."}}
+                                      >
+                                        
+                                      </SchemaItem>
+                                    </TabItem>
+                                  </SchemaTabs>
+                                </div>
+                              </details>
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"info"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"Short description."}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"help"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"Help text of the CLI command."}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"source"}
+                              required={false}
+                              schemaName={"boolean"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"boolean","description":"Indicates, if the command is allowed in source position (first command in a chain)."}}
+                            >
+                              
+                            </SchemaItem><li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                              >
+                                ]
+                              </div>
+                            </li>
+                          </div>
+                        </details>
+                      </SchemaItem><SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                replacements
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <div
+                              style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                            >
+                              
+                              
+                              All available replacements with current value
+                              
+                              
+                            </div><SchemaItem
+                              name={"property name*"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string"}}
+                              collapsible={false}
+                              discriminator={false}
+                            >
+                              
+                            </SchemaItem>
+                          </div>
+                        </details>
+                      </SchemaItem><SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                alias_names
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <div
+                              style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                            >
+                              
+                              
+                              All available aliases
+                              
+                              
+                            </div><SchemaItem
+                              name={"property name*"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string"}}
+                              collapsible={false}
+                              discriminator={false}
+                            >
+                              
+                            </SchemaItem>
+                          </div>
+                        </details>
+                      </SchemaItem><SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                alias_templates
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object[]
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <div
+                              style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                            >
+                              
+                              
+                              All available alias template name.
+                              
+                              
+                            </div><li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                              >
+                                Array [
+                              </div>
+                            </li><SchemaItem
+                              collapsible={false}
+                              name={"name"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"The name of the CLI command."}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={true}
+                              className={"schemaItem"}
+                            >
+                              <details
+                                style={{}}
+                                className={"openapi-markdown__details"}
+                              >
+                                <summary
+                                  style={{}}
+                                >
+                                  <strong>
+                                    args
+                                  </strong><span
+                                    style={{"opacity":"0.6"}}
+                                  >
+                                     object
+                                  </span>
+                                </summary><div
+                                  style={{"marginLeft":"1rem"}}
+                                >
+                                  
+                                </div><div>
+                                  <span
+                                    className={"badge badge--info"}
+                                  >
+                                    oneOf
+                                  </span><SchemaTabs>
+                                    <TabItem
+                                      label={"MOD1"}
+                                      value={"0-item-properties"}
+                                    >
+                                      <li>
+                                        <div
+                                          style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                                        >
+                                          Array [
+                                        </div>
+                                      </li><SchemaItem
+                                        collapsible={false}
+                                        name={"name"}
+                                        required={false}
+                                        schemaName={"string"}
+                                        qualifierMessage={undefined}
+                                        schema={{"type":"string","description":"The name of the CLI command argument."}}
+                                      >
+                                        
+                                      </SchemaItem><SchemaItem
+                                        collapsible={false}
+                                        name={"expects_value"}
+                                        required={false}
+                                        schemaName={"boolean"}
+                                        qualifierMessage={undefined}
+                                        schema={{"type":"boolean","description":"Indicates, if the argument expects a value."}}
+                                      >
+                                        
+                                      </SchemaItem><SchemaItem
+                                        collapsible={false}
+                                        name={"possible_values"}
+                                        required={false}
+                                        schemaName={"string[]"}
+                                        qualifierMessage={undefined}
+                                        schema={{"type":"array","items":{"type":"string"},"description":"Possible values for this argument."}}
+                                      >
+                                        
+                                      </SchemaItem><SchemaItem
+                                        collapsible={false}
+                                        name={"can_occur_multiple_times"}
+                                        required={false}
+                                        schemaName={"boolean"}
+                                        qualifierMessage={undefined}
+                                        schema={{"type":"boolean","description":"Indicates, if the argument can occur multiple times."}}
+                                      >
+                                        
+                                      </SchemaItem><SchemaItem
+                                        collapsible={false}
+                                        name={"value_hint"}
+                                        required={false}
+                                        schemaName={"string"}
+                                        qualifierMessage={undefined}
+                                        schema={{"type":"string","description":"Hint for the value of this argument."}}
+                                      >
+                                        
+                                      </SchemaItem><SchemaItem
+                                        collapsible={false}
+                                        name={"help_text"}
+                                        required={false}
+                                        schemaName={"string"}
+                                        qualifierMessage={undefined}
+                                        schema={{"type":"string","description":"Help text of the CLI command argument."}}
+                                      >
+                                        
+                                      </SchemaItem><li>
+                                        <div
+                                          style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                                        >
+                                          ]
+                                        </div>
+                                      </li>
+                                    </TabItem><TabItem
+                                      label={"CLICommandArg"}
+                                      value={"1-item-properties"}
+                                    >
+                                      <SchemaItem
+                                        collapsible={false}
+                                        name={"name"}
+                                        required={false}
+                                        schemaName={"string"}
+                                        qualifierMessage={undefined}
+                                        schema={{"type":"string","description":"The name of the CLI command argument."}}
+                                      >
+                                        
+                                      </SchemaItem><SchemaItem
+                                        collapsible={false}
+                                        name={"expects_value"}
+                                        required={false}
+                                        schemaName={"boolean"}
+                                        qualifierMessage={undefined}
+                                        schema={{"type":"boolean","description":"Indicates, if the argument expects a value."}}
+                                      >
+                                        
+                                      </SchemaItem><SchemaItem
+                                        collapsible={false}
+                                        name={"possible_values"}
+                                        required={false}
+                                        schemaName={"string[]"}
+                                        qualifierMessage={undefined}
+                                        schema={{"type":"array","items":{"type":"string"},"description":"Possible values for this argument."}}
+                                      >
+                                        
+                                      </SchemaItem><SchemaItem
+                                        collapsible={false}
+                                        name={"can_occur_multiple_times"}
+                                        required={false}
+                                        schemaName={"boolean"}
+                                        qualifierMessage={undefined}
+                                        schema={{"type":"boolean","description":"Indicates, if the argument can occur multiple times."}}
+                                      >
+                                        
+                                      </SchemaItem><SchemaItem
+                                        collapsible={false}
+                                        name={"value_hint"}
+                                        required={false}
+                                        schemaName={"string"}
+                                        qualifierMessage={undefined}
+                                        schema={{"type":"string","description":"Hint for the value of this argument."}}
+                                      >
+                                        
+                                      </SchemaItem><SchemaItem
+                                        collapsible={false}
+                                        name={"help_text"}
+                                        required={false}
+                                        schemaName={"string"}
+                                        qualifierMessage={undefined}
+                                        schema={{"type":"string","description":"Help text of the CLI command argument."}}
+                                      >
+                                        
+                                      </SchemaItem>
+                                    </TabItem>
+                                  </SchemaTabs>
+                                </div>
+                              </details>
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"info"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"Short description."}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"help"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string","description":"Help text of the CLI command."}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"source"}
+                              required={false}
+                              schemaName={"boolean"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"boolean","description":"Indicates, if the command is allowed in source position (first command in a chain)."}}
+                            >
+                              
+                            </SchemaItem><li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                              >
+                                ]
+                              </div>
+                            </li>
+                          </div>
+                        </details>
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"commands\": [\n    {\n      \"name\": \"string\",\n      \"args\": [\n        null\n      ],\n      \"info\": \"string\",\n      \"help\": \"string\",\n      \"source\": true\n    }\n  ],\n  \"replacements\": {},\n  \"alias_names\": {},\n  \"alias_templates\": [\n    {\n      \"name\": \"string\",\n      \"args\": [\n        null\n      ],\n      \"info\": \"string\",\n      \"help\": \"string\",\n      \"source\": true\n    }\n  ]\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>

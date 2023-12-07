@@ -3,7 +3,6 @@ import { useBaseUrlUtils } from '@docusaurus/useBaseUrl';
 import { getImage } from '@site/src/utils/socialImageUtils';
 import type { Props } from '@theme/BlogPostItem/Container';
 import { union } from 'lodash';
-import React from 'react';
 
 export default function BlogPostItemContainer({
   children,

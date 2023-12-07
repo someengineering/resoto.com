@@ -1,7 +1,6 @@
 import Link from '@docusaurus/Link';
 import latestRelease from '@site/latestRelease.json';
 import versions from '@site/versions.json';
-import React from 'react';
 
 export default function InstallButton({
   includeVersion,

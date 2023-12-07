@@ -4,7 +4,7 @@ import latestRelease from '@site/latestRelease.json';
 import versions from '@site/versions.json';
 import OriginalCodeBlock from '@theme-original/CodeBlock';
 import type CodeBlockType from '@theme/CodeBlock';
-import React, { ComponentProps } from 'react';
+import { ComponentProps } from 'react';
 
 type Props = ComponentProps<typeof CodeBlockType>;
 

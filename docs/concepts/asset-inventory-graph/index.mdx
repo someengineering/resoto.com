@@ -10,7 +10,7 @@ Resoto also knows how resources relate to each other. For example, a compute ins
 
 The superpower of Resoto is the ability to provide a complete picture of your cloud assets and how they relate to each other.
 
-## Graph Nodes {#nodes}
+## Graph Nodes \{#nodes}
 
 Each collected resource is a node in the asset inventory graph.
 
@@ -59,7 +59,7 @@ The [`kinds` command](../../reference/cli/kinds.mdx) allows you to list all reso
 
 :::
 
-## Graph Edges {#edges}
+## Graph Edges \{#edges}
 
 Resoto also captures the relationships between resources by encoding the relationships as edges in the graph. This makes it possible to traverse the graph and walk from one resource to another based on a specific relationship. The relationship itself does not have any additional properties.
 
@@ -73,7 +73,7 @@ The list of possible edges are also defined explicitly in our [data model refere
 
 This documentation describes how a resource might be connected. This does not mean that every relationship has to exist. For example, a compute instance might not have a volume attached to it. In this case, there is no edge between the compute instance and the volume.
 
-## Graph Traversal {#traversal}
+## Graph Traversal \{#traversal}
 
 In order to traverse the graph in a meaningful way, it is important to understand the structure. The following diagram serves as an example graph you will find in Resoto to illustrates how we can "walk" edges in a graph:
 

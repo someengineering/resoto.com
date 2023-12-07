@@ -2,7 +2,6 @@ import Link from '@docusaurus/Link';
 import { translate } from '@docusaurus/Translate';
 import type { Props } from '@theme/BlogSidebar/Desktop';
 import clsx from 'clsx';
-import React from 'react';
 import styles from './styles.module.css';
 
 export default function BlogSidebarDesktop({ sidebar }: Props): JSX.Element {
@@ -38,8 +37,8 @@ export default function BlogSidebarDesktop({ sidebar }: Props): JSX.Element {
             sidebar.title.toLowerCase().includes('releases')
               ? 'releases'
               : sidebar.title.toLowerCase().includes('episodes')
-              ? 'podcast'
-              : 'blog'
+                ? 'podcast'
+                : 'blog'
           }/archive`}
           className="button button--block button--outline button--primary"
         >

@@ -13,7 +13,7 @@ sidebar_label: Traversals
 
 `-->` traverses the graph outbound to the next level.
 
-:::tip Example
+:::tip[Example]
 
 ```bash title="Select AWS accounts and traverse the graph outbound"
 > search is(aws_account) -->
@@ -29,7 +29,7 @@ This query would return a list of all matching regions.
 
 `<--` traverses the graph inbound to the next level.
 
-:::tip Example
+:::tip[Example]
 
 ```bash title="Select AWS EC2 instances, traverse the graph inbound, and filter to only return the aws_regions"
 > search is(aws_ec2_instance) <-- is(aws_region)
@@ -43,7 +43,7 @@ This query would return a list of all matching regions.
 
 `-[0:1]->` traverses the graph outbound, starting from the current node **(0)** until the next level **(1)**. The result will contain the current node plus all nodes one level outbound. The same applies for inbound with this statement `<-[0:1]-`.
 
-:::tip Example
+:::tip[Example]
 
 ```bash title="Return all resources "under" an aws_region together with the matching aws_region"
 > search is(aws_region) -[0:1]->`
@@ -53,7 +53,7 @@ This query would return a list of all matching regions.
 
 :::
 
-:::tip Example
+:::tip[Example]
 
 ```bash title="Return all aws_regions with name global, together with all accounts"
 > search is(aws_region) and name==global <-[0:1]-
@@ -69,7 +69,7 @@ This query would return a list of all matching regions.
 
 ![Traversal by Depth Diagram](./img/graph_query_startuntil.png)
 
-:::tip Example
+:::tip[Example]
 
 The following query answers the question, "Which instance profile is used for ec2 instances connected to an alb target group?"
 
@@ -83,7 +83,7 @@ The following query answers the question, "Which instance profile is used for ec
 
 `-[start:]->` traverses the graph outbound starting from a user defined depth to the leafs of the graph. The graph will be traversed from the current node according to this specification. All matching nodes will be returned. The same applies for inbound traversals with `<-[start:]-`.
 
-:::tip Example
+:::tip[Example]
 
 ```bash
 > search is(aws_account) and name==sunshine -[0:]->
@@ -97,7 +97,7 @@ This query will select the aws account with name `sunshine` and then select all 
 
 `<-[start:until]->` traverses the graph inbound and outbound starting from a user defined depth to a user defined depth. The graph will be traversed from the current node according to this specification. All matching nodes will be returned.
 
-:::tip Example
+:::tip[Example]
 
 ```bash title="Select nodes with the name sunset connected on any depth to the AWS account"
 > search name="sunset" and is(aws_account) <-[0:]->
@@ -136,7 +136,7 @@ graph LR;
   network_interface --delete--> instance ;
 ```
 
-:::tip Examples
+:::tip[Examples]
 
 ```bash title="Selects all instances, walk the default edge outbound, and filter on volumes; returns volumes that are attached to an instance"
 > search is(instance) -default-> is(volume)
@@ -173,7 +173,7 @@ There are abbreviations for commonly used traversal selectors:
 | `<-->`               | `<-[1:1]->`            |
 | `<-[x]-`             | `<-[x:x]-`             |
 
-:::tip Examples
+:::tip[Examples]
 
 | Abbreviated                     | Unabbreviated                     |
 | ------------------------------- | --------------------------------- |

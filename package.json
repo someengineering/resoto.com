@@ -63,8 +63,8 @@
     "@docusaurus/module-type-aliases": "3.0.1",
     "@docusaurus/tsconfig": "3.0.1",
     "@docusaurus/types": "3.0.1",
-    "@typescript-eslint/eslint-plugin": "6.13.2",
-    "@typescript-eslint/parser": "6.13.2",
+    "@typescript-eslint/eslint-plugin": "6.14.0",
+    "@typescript-eslint/parser": "6.14.0",
     "asciinema-player": "3.6.3",
     "commitizen": "4.3.0",
     "eslint": "8.55.0",
@@ -78,10 +78,10 @@
     "husky": "8.0.3",
     "lint-staged": "15.2.0",
     "postcss": "8.4.32",
-    "prettier": "3.1.0",
+    "prettier": "3.1.1",
     "prettier-plugin-css-order": "2.0.1",
     "react-lite-youtube-embed": "^2.4.0",
-    "svgo": "3.0.5",
+    "svgo": "3.1.0",
     "typescript": "5.3.3"
   },
   "browserslist": {

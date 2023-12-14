@@ -55,7 +55,7 @@
     "rehype-katex": "7.0.0",
     "remark-kroki-plugin": "0.1.1",
     "remark-math": "6.0.0",
-    "yup": "1.3.2"
+    "yup": "1.3.3"
   },
   "devDependencies": {
     "@commitlint/cli": "18.4.3",

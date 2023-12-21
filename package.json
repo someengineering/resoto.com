@@ -35,7 +35,7 @@
     "@fec/remark-a11y-emoji": "4.0.2",
     "@mdx-js/react": "3.0.0",
     "@octokit/core": "5.0.2",
-    "@rive-app/react-canvas": "4.5.6",
+    "@rive-app/react-canvas": "4.7.0",
     "a11y-react-emoji": "1.2.0",
     "clsx": "2.0.0",
     "docusaurus-plugin-openapi-docs": "3.0.0-beta.3",

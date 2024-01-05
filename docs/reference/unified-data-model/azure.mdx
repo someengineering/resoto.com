@@ -725,99 +725,6 @@ class azure_application_gateway_firewall_rule_set {
 
 </details>
 
-## `azure_auto_approved_private_link_service`
-
-<ZoomPanPinch>
-
-```kroki imgType="plantuml" imgAlt="Diagram of azure_auto_approved_private_link_service data model"
-@startuml
-hide empty members
-skinparam ArrowColor #ffaf37
-skinparam ArrowFontColor #ffaf37
-skinparam ArrowFontName Helvetica
-skinparam ArrowThickness 2
-skinparam BackgroundColor transparent
-skinparam ClassAttributeFontColor #d9b8ff
-skinparam ClassBackgroundColor #3d176e
-skinparam ClassBorderColor #000d19
-skinparam ClassFontColor #d9b8ff
-skinparam ClassFontName Helvetica
-skinparam ClassFontSize 17
-skinparam NoteBackgroundColor #d9b8ff
-skinparam NoteBorderColor #000d19
-skinparam NoteFontColor #3d176e
-skinparam NoteFontName Helvetica
-skinparam Padding 5
-skinparam RoundCorner 5
-skinparam Shadowing false
-skinparam stereotypeCBackgroundColor #e98df7
-skinparam stereotypeIBackgroundColor #e98df7
-class azure_auto_approved_private_link_service {
-**private_link_service_id**: string
-}
-class azure_resource {
-}
-class resource {
-**age**: duration
-**atime**: datetime
-**ctime**: datetime
-**id**: string
-**kind**: string
-**last_access**: duration
-**last_update**: duration
-**mtime**: datetime
-**name**: string
-**tags**: dictionary[string, string]
-}
-azure_resource <|--- azure_auto_approved_private_link_service
-resource <|--- azure_resource
-@enduml
-```
-
-</ZoomPanPinch>
-
-<details>
-
-<summary>Relationships to Other Resources</summary>
-
-<div>
-
-<ZoomPanPinch>
-
-```kroki imgType="plantuml" imgAlt="Diagram of azure_auto_approved_private_link_service resource relationships"
-@startuml
-hide empty members
-skinparam ArrowColor #ffaf37
-skinparam ArrowFontColor #ffaf37
-skinparam ArrowFontName Helvetica
-skinparam ArrowThickness 2
-skinparam BackgroundColor transparent
-skinparam ClassAttributeFontColor #d9b8ff
-skinparam ClassBackgroundColor #3d176e
-skinparam ClassBorderColor #000d19
-skinparam ClassFontColor #d9b8ff
-skinparam ClassFontName Helvetica
-skinparam ClassFontSize 17
-skinparam NoteBackgroundColor #d9b8ff
-skinparam NoteBorderColor #000d19
-skinparam NoteFontColor #3d176e
-skinparam NoteFontName Helvetica
-skinparam Padding 5
-skinparam RoundCorner 5
-skinparam Shadowing false
-skinparam stereotypeCBackgroundColor #e98df7
-skinparam stereotypeIBackgroundColor #e98df7
-class azure_auto_approved_private_link_service {
-}
-@enduml
-```
-
-</ZoomPanPinch>
-
-</div>
-
-</details>
-
 ## `azure_availability_set`
 
 <ZoomPanPinch>
@@ -2685,11 +2592,8 @@ class azure_express_route_port {
 }
 class azure_express_route_ports_location {
 }
-class azure_virtual_network {
-}
 azure_express_route_circuit -[#1A83AF]-> azure_express_route_port
 azure_express_route_circuit -[#1A83AF]-> azure_express_route_ports_location
-azure_virtual_network -[#1A83AF]-> azure_express_route_circuit
 @enduml
 ```
 
@@ -5454,10 +5358,10 @@ class azure_network_virtual_appliance {
 }
 class azure_network_virtual_appliance_sku {
 }
-class azure_virtual_network {
+class azure_subnet {
 }
 azure_network_virtual_appliance -[#1A83AF]-> azure_network_virtual_appliance_sku
-azure_virtual_network -[#1A83AF]-> azure_network_virtual_appliance
+azure_subnet -[#1A83AF]-> azure_network_virtual_appliance
 @enduml
 ```
 
@@ -7996,6 +7900,8 @@ class azure_network_profile {
 }
 class azure_network_security_group {
 }
+class azure_network_virtual_appliance {
+}
 class azure_subnet {
 }
 class azure_virtual_machine {
@@ -8014,6 +7920,7 @@ azure_subnet -[#1A83AF]-> azure_load_balancer
 azure_subnet -[#1A83AF]-> azure_nat_gateway
 azure_subnet -[#1A83AF]-> azure_network_profile
 azure_subnet -[#1A83AF]-> azure_network_security_group
+azure_subnet -[#1A83AF]-> azure_network_virtual_appliance
 azure_subnet -[#1A83AF]-> azure_virtual_machine
 azure_virtual_network -[#1A83AF]-> azure_bastion_host
 azure_virtual_network -[#1A83AF]-> azure_ip_allocation
@@ -8692,6 +8599,7 @@ class azure_virtual_machine {
 **host**: string
 **host_group**: string
 **license_type**: string
+**location**: string
 **platform_fault_domain**: int64
 **provisioning_state**: string
 **proximity_placement_group**: string
@@ -9021,6 +8929,8 @@ class azure_subnet {
 }
 class azure_virtual_machine {
 }
+class azure_virtual_machine_size {
+}
 azure_availability_set -[#1A83AF]-> azure_proximity_placement_group
 azure_availability_set -[#1A83AF]-> azure_virtual_machine
 azure_capacity_reservation_group -[#1A83AF]-> azure_virtual_machine
@@ -9037,6 +8947,7 @@ azure_subnet -[#1A83AF]-> azure_virtual_machine
 azure_virtual_machine -[#1A83AF]-> azure_disk
 azure_virtual_machine -[#1A83AF]-> azure_image
 azure_virtual_machine -[#1A83AF]-> azure_network_interface
+azure_virtual_machine -[#1A83AF]-> azure_virtual_machine_size
 @enduml
 ```
 
@@ -9639,6 +9550,7 @@ skinparam stereotypeIBackgroundColor #e98df7
 class azure_resource {
 }
 class azure_virtual_machine_size {
+**location**: string
 **max_data_disk_count**: int64
 **memory_in_mb**: int64
 **number_of_cores**: int64
@@ -9716,8 +9628,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class azure_virtual_machine {
+}
 class azure_virtual_machine_size {
 }
+azure_virtual_machine -[#1A83AF]-> azure_virtual_machine_size
 @enduml
 ```
 
@@ -9812,6 +9727,7 @@ class azure_virtual_network {
 **flow_logs**: azure_flow_log[]
 **flow_timeout_in_minutes**: int64
 **ip_allocations**: string[]
+**location**: string
 **provisioning_state**: string
 **resource_guid**: string
 **virtual_network_encryption**: azure_virtual_network_encryption
@@ -9916,15 +9832,11 @@ class azure_bastion_host {
 }
 class azure_ddos_protection_plan {
 }
-class azure_express_route_circuit {
-}
 class azure_ip_allocation {
 }
 class azure_ip_group {
 }
 class azure_load_balancer {
-}
-class azure_network_virtual_appliance {
 }
 class azure_network_watcher {
 }
@@ -9937,11 +9849,9 @@ azure_subnet -[#1A83AF]-> azure_bastion_host
 azure_subnet -[#1A83AF]-> azure_ip_allocation
 azure_subnet -[#1A83AF]-> azure_load_balancer
 azure_virtual_network -[#1A83AF]-> azure_bastion_host
-azure_virtual_network -[#1A83AF]-> azure_express_route_circuit
 azure_virtual_network -[#1A83AF]-> azure_ip_allocation
 azure_virtual_network -[#1A83AF]-> azure_ip_group
 azure_virtual_network -[#1A83AF]-> azure_load_balancer
-azure_virtual_network -[#1A83AF]-> azure_network_virtual_appliance
 azure_virtual_network -[#1A83AF]-> azure_network_watcher
 azure_virtual_network -[#1A83AF]-> azure_subnet
 @enduml

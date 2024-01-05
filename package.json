@@ -30,7 +30,7 @@
     "@docusaurus/core": "3.0.1",
     "@docusaurus/plugin-pwa": "3.0.1",
     "@docusaurus/plugin-sitemap": "3.0.1",
-    "@docusaurus/preset-classic": "3.0.1",
+    "@docusaurus/preset-classic": "3.1.0",
     "@docusaurus/theme-mermaid": "3.0.1",
     "@fec/remark-a11y-emoji": "4.0.2",
     "@mdx-js/react": "3.0.0",

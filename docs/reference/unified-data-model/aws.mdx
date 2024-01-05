@@ -49,10 +49,14 @@ class aws_account {
 **global_endpoint_token_version**: int64
 **groups**: int64
 **hard_expiry**: boolean
+**is_organization_master**: boolean
+**is_organization_member**: boolean
 **max_password_age**: int64
 **mfa_devices**: int64
 **mfa_devices_in_use**: int64
 **minimum_password_length**: int64
+**organization_arn**: string
+**organization_id**: string
 **partition**: string
 **password_reuse_prevention**: int64
 **policies**: int64
@@ -2412,6 +2416,9 @@ class aws_cloudformation_stack {
 }
 class aws_region {
 }
+class aws_resource {
+}
+aws_cloudformation_stack -[#1A83AF]-> aws_resource
 aws_region -[#1A83AF]-> aws_cloudformation_stack
 @enduml
 ```
@@ -5519,6 +5526,7 @@ class aws_ec2_instance {
 **instance_tpm_support**: string
 **instance_usage_operation**: string
 **instance_usage_operation_update_time**: datetime
+**instance_user_data**: string
 **instance_virtualization_type**: string
 }
 class aws_ec2_instance_block_device_mapping {
@@ -5708,6 +5716,8 @@ class aws_elb {
 }
 class aws_region {
 }
+class aws_ssm_instance_information {
+}
 class aws_vpc {
 }
 aws_alb_target_group -[#1A83AF]-> aws_ec2_instance
@@ -5735,6 +5745,7 @@ aws_region -[#1A83AF]-> aws_ec2_network_interface
 aws_region -[#1A83AF]-> aws_ec2_volume
 aws_region -[#1A83AF]-> aws_elb
 aws_region -[#1A83AF]-> aws_vpc
+aws_ssm_instance_information -[#1A83AF]-> aws_ec2_instance
 aws_vpc -[#1A83AF]-> aws_alb_target_group
 aws_vpc -[#1A83AF]-> aws_ec2_instance
 aws_vpc -[#1A83AF]-> aws_ec2_network_interface
@@ -7785,6 +7796,110 @@ aws_region -[#1A83AF]-> aws_ec2_volume
 aws_region -[#1A83AF]-> aws_ec2_volume_type
 aws_region -[#1A83AF]-> aws_service_quota
 aws_service_quota -[#1A83AF]-> aws_ec2_volume_type
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
+## `aws_ecr_repository`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ecr_repository data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_ecr_encryption_configuration {
+**encryption_type**: string
+**kms_key**: string
+}
+class aws_ecr_repository {
+**encryption_configuration**: aws_ecr_encryption_configuration
+**image_scan_on_push**: boolean
+**image_tag_mutability**: string
+**registry_id**: string
+**repository_arn**: string
+**repository_uri**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_ecr_repository --> aws_ecr_encryption_configuration
+aws_resource <|--- aws_ecr_repository
+resource <|--- aws_resource
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ecr_repository resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_ecr_repository {
+}
 @enduml
 ```
 
@@ -13264,8 +13379,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class aws_cloudformation_stack {
+}
 class aws_resource {
 }
+aws_cloudformation_stack -[#1A83AF]-> aws_resource
 @enduml
 ```
 
@@ -18609,6 +18727,120 @@ aws_sagemaker_workteam -[#1A83AF]-> aws_sns_topic
 
 </details>
 
+## `aws_secrets_manager_secret`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_secrets_manager_secret data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_resource {
+**arn**: string
+}
+class aws_secrets_manager_rotation_rules_type {
+**automatically_after_days**: int64
+**duration**: string
+**schedule_expression**: string
+}
+class aws_secrets_manager_secret {
+**arn**: string
+**created_date**: datetime
+**deleted_date**: datetime
+**description**: string
+**last_accessed_date**: datetime
+**last_changed_date**: datetime
+**last_rotated_date**: datetime
+**name**: string
+**next_rotation_date**: datetime
+**owning_service**: string
+**primary_region**: string
+**rotation_enabled**: boolean
+**rotation_lambda_arn**: string
+**rotation_rules**: aws_secrets_manager_rotation_rules_type
+**secret_versions_to_stages**: dictionary[string, string[]]
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- aws_resource
+aws_resource <|--- aws_secrets_manager_secret
+aws_secrets_manager_secret --> aws_secrets_manager_rotation_rules_type
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_secrets_manager_secret resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_secrets_manager_secret {
+}
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
 ## `aws_service_quota`
 
 <ZoomPanPinch>
@@ -19322,6 +19554,128 @@ class aws_sqs_queue {
 }
 aws_beanstalk_environment -[#1A83AF]-> aws_sqs_queue
 aws_sqs_queue -[#1A83AF]-> aws_kms_key
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
+## `aws_ssm_instance_information`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ssm_instance_information data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_resource {
+**arn**: string
+}
+class aws_ssm_instance_aggregated_association_overview {
+**detailed_status**: string
+**instance_association_status_aggregated_count**: dictionary[string, int64]
+}
+class aws_ssm_instance_information {
+**activation_id**: string
+**agent_version**: string
+**association_overview**: aws_ssm_instance_aggregated_association_overview
+**association_status**: string
+**computer_name**: string
+**iam_role**: string
+**instance_id**: string
+**ip_address**: string
+**is_latest_version**: boolean
+**last_association_execution_date**: datetime
+**last_ping**: datetime
+**last_successful_association_execution_date**: datetime
+**name**: string
+**ping_status**: string
+**platform_name**: string
+**platform_type**: string
+**platform_version**: string
+**registration_date**: datetime
+**resource_type**: string
+**source_id**: string
+**source_type**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- aws_resource
+aws_resource <|--- aws_ssm_instance_information
+aws_ssm_instance_information --> aws_ssm_instance_aggregated_association_overview
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ssm_instance_information resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_ec2_instance {
+}
+class aws_ssm_instance_information {
+}
+aws_ssm_instance_information -[#1A83AF]-> aws_ec2_instance
 @enduml
 ```
 

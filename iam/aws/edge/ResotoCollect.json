@@ -14,6 +14,7 @@
         "autoscaling:DescribeAutoScalingGroups",
         "cloudformation:DescribeStacks",
         "cloudformation:ListStackInstances",
+        "cloudformation:ListStackResources",
         "cloudformation:ListStackSets",
         "cloudformation:ListStacks",
         "cloudfront:ListCachePolicies",
@@ -65,6 +66,7 @@
         "ec2:DescribeVpcEndpoints",
         "ec2:DescribeVpcPeeringConnections",
         "ec2:DescribeVpcs",
+        "ecr:DescribeRepositories",
         "ecs:DescribeCapacityProviders",
         "ecs:DescribeClusters",
         "ecs:DescribeContainerInstances",
@@ -181,6 +183,7 @@
         "sagemaker:ListTrials",
         "sagemaker:ListUserProfiles",
         "sagemaker:ListWorkteams",
+        "secretsmanager:ListSecrets",
         "servicequotas:ListServiceQuotas",
         "sns:GetPlatformApplicationAttributes",
         "sns:GetSubscriptionAttributes",
@@ -192,7 +195,8 @@
         "sns:ListTopics",
         "sqs:GetQueueAttributes",
         "sqs:ListQueueTags",
-        "sqs:ListQueues"
+        "sqs:ListQueues",
+        "ssm:DescribeInstanceInformation"
       ]
     }
   ]

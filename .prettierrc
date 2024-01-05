@@ -7,10 +7,6 @@
       "options": { "parser": "json" }
     },
     {
-      "files": ["docusaurus.config.js"],
-      "options": { "printWidth": 120 }
-    },
-    {
       "files": ["*.md", "*.mdx"],
       "options": {
         "embeddedLanguageFormatting": "off",

@@ -2,7 +2,8 @@
   "extends": "@docusaurus/tsconfig",
   "compilerOptions": {
     "baseUrl": ".",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "allowArbitraryExtensions": true
   },
   "exclude": [
     "build",

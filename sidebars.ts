@@ -1,5 +1,6 @@
-/** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
-const sidebars = {
+import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
+
+const sidebars: SidebarsConfig = {
   sidebar: [
     {
       type: 'doc',
@@ -38,7 +39,7 @@ const sidebars = {
           label: 'API',
           link: { type: 'doc', id: 'reference/api/index' },
           // eslint-disable-next-line @typescript-eslint/no-var-requires
-          items: require('./docs/reference/api/sidebar.js')
+          items: require('./docs/reference/api/sidebar.ts')
             .filter(
               (item) => item.type !== 'doc' || !item.id?.endsWith('-rest-api'),
             )
@@ -70,4 +71,4 @@ const sidebars = {
   ],
 };
 
-module.exports = sidebars;
+export default sidebars;

@@ -467,9 +467,45 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: 'doc',
+          id: 'reference/api/get-a-check-by-its-id',
+          label: 'Get a check by its id.',
+          className: 'api-method get',
+        },
+        {
+          type: 'doc',
+          id: 'reference/api/create-or-replace-a-check-by-its-id',
+          label: 'Create or replace a check by its id.',
+          className: 'api-method put',
+        },
+        {
+          type: 'doc',
+          id: 'reference/api/delete-a-check-by-its-id',
+          label: 'Delete a check by its id.',
+          className: 'api-method delete',
+        },
+        {
+          type: 'doc',
           id: 'reference/api/list-available-benchmarks',
           label: 'List available benchmarks.',
           className: 'api-method get',
+        },
+        {
+          type: 'doc',
+          id: 'reference/api/get-a-benchmark-by-its-id',
+          label: 'Get a benchmark by its id.',
+          className: 'api-method get',
+        },
+        {
+          type: 'doc',
+          id: 'reference/api/create-or-replace-a-benchmark-by-its-id',
+          label: 'Create or replace a benchmark by its id.',
+          className: 'api-method put',
+        },
+        {
+          type: 'doc',
+          id: 'reference/api/delete-a-benchmark-by-its-id',
+          label: 'Delete a benchmark by its id.',
+          className: 'api-method delete',
         },
         {
           type: 'doc',

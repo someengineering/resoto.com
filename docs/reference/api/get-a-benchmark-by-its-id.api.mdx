@@ -1,0 +1,217 @@
+---
+id: get-a-benchmark-by-its-id
+title: "Get a benchmark by its id."
+description: "Get a benchmark by its id."
+sidebar_label: "Get a benchmark by its id."
+hide_title: true
+hide_table_of_contents: true
+api: eJylVcFu2zAM/RWBpxYw5nTAgM23rSuKnjZ03S5FUCgSXauRLVei0waG/n2gnTqOk2UZdopDiu9Rj9JTCxqD8qYm4yrI4BpJSLHAShWl9EuxWAtDQRj9DhIg+RgguwePtfME8wRq6WWJhJ7jLVSyRMhgKIcEDKPWkgpIJlR3BYqbr8LlggrcUjJRUAWWErIWaF0zYiBvqkeICeCrLGvLMfkSHpQJDxcPHyABj8+N8aghI99gnHMk1K4KGBjn/WzGP/sdbLeqMTeV4RS3oFxFWBEXybq2RknOpE+BK9v9Dt3iCRVBAtLab3mnxjRTe1ejJ9N3RIZ4G9MtHlKpW9oLZYJQBaqlUM5aVN2iOKk5BXIUOQ7sVFNiRfIfoMclR8G7WBihSu/lmg8NYRkOjn+X7kYHJuhxhKk2VBMSY7XH6s80oIxXjZX+7JKBLofy8739DYTG6hFPgBiTt4nCBAX4MO7O3ujTpDR60G97p2ICOd+6F+eXp8EMyw+jrdCHk6e7WXwYSVnX6P8ZKDP0IMKjxZWsSOTO71GN1P4yikZOlEiF05DBI3a3jr0ng7Q3rXQASdvhM7LloF+92VjjLWRQENUhS9O2cIFi1nI5r1xJb+TC9pPkXG8suWwsQQbWKWm7cEyg88md9MdPsxl3OmdrzN3ICeAWgyMnLp1HcXv14058/n4Do/HAr4seM1Apu3Ft/PaoaU+sYfC1v1h9PyfCV0prK013lTpd2o2iwzOQ7Ph9tv0zTzby3EPbLmTAn97GyOHnBv0asvv5Vs1OeG0Cf2vIcmkDHmn+7Hbj9+fiyDtycBdvR7Nad8O0Df+DBJa43nm74jwmUKDU6Lvm+vxnpbCmUeXe68CjHc7g9dUdxPgbH6WN7g==
+sidebar_class_name: "get api-method"
+info_path: docs/reference/api/resoto-core-rest-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import TabItem from "@theme/TabItem";
+
+<h1
+  className={"openapi__heading"}
+>
+  Get a benchmark by its id.
+</h1>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/report/benchmark/{benchmark}"}
+>
+  
+</MethodEndpoint>
+
+Get a benchmark by its id.
+
+## Request
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"benchmark","in":"path","description":"The ID of the benchmark.","schema":{"type":"string"},"example":"aws_cis_1_5","required":true}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs>
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          The benchmark definition.
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={false}
+                        name={"title"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"The title of this check collection"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"description"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"The description of this check collection"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"documentation"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"The documentation of this check collection"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"checks"}
+                        required={false}
+                        schemaName={"string[]"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"array","description":"Ids of checks in this collection","items":{"type":"string"}}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"children"}
+                        required={false}
+                        schemaName={"array"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"array","description":"Ids of child collections"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"id"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"The id of this benchmark"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"framework"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"The framework of this benchmark"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"version"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"The version of this benchmark"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"clouds"}
+                        required={false}
+                        schemaName={"string[]"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"array","items":{"type":"string"},"description":"The clouds relevant for this benchmark"}}
+                      >
+                        
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"id\": \"string\",\n  \"framework\": \"string\",\n  \"version\": \"string\",\n  \"clouds\": [\n    \"string\"\n  ],\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"documentation\": \"string\",\n  \"checks\": [\n    \"string\"\n  ],\n  \"children\": [\n    null\n  ]\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>

@@ -145,6 +145,153 @@ aws_s3_account_settings -[#1A83AF]-> aws_account
 
 </details>
 
+## `aws_acm_certificate`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_acm_certificate data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_acm_certificate {
+**certificate_authority_arn**: string
+**certificate_transparency_logging**: string
+**domain_validation_options**: aws_acm_domain_validation[]
+**extended_key_usages**: aws_acm_extended_key_usage[]
+**failure_reason**: string
+**imported_at**: datetime
+**in_use_by**: string[]
+**issued_at**: datetime
+**issuer**: string
+**key_algorithm**: string
+**key_usages**: string[]
+**not_after**: datetime
+**not_before**: datetime
+**renewal_eligibility**: string
+**renewal_summary**: aws_acm_renewal_summary
+**revocation_reason**: string
+**revoked_at**: datetime
+**serial**: string
+**signature_algorithm**: string
+**status**: string
+**subject**: string
+**subject_alternative_names**: string[]
+**type**: string
+}
+class aws_acm_domain_validation {
+**domain_name**: string
+**resource_record**: aws_acm_resource_record
+**validation_domain**: string
+**validation_emails**: string[]
+**validation_method**: string
+**validation_status**: string
+}
+class aws_acm_extended_key_usage {
+**name**: string
+**oid**: string
+}
+class aws_acm_renewal_summary {
+**domain_validation_options**: aws_acm_domain_validation[]
+**renewal_status**: string
+**renewal_status_reason**: string
+**updated_at**: datetime
+}
+class aws_acm_resource_record {
+**name**: string
+**type**: string
+**value**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_acm_certificate --> aws_acm_domain_validation
+aws_acm_certificate --> aws_acm_extended_key_usage
+aws_acm_certificate --> aws_acm_renewal_summary
+aws_resource <|--- aws_acm_certificate
+aws_acm_domain_validation --> aws_acm_resource_record
+aws_acm_renewal_summary --> aws_acm_domain_validation
+resource <|--- aws_resource
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_acm_certificate resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_acm_certificate {
+}
+class aws_cloudfront_distribution {
+}
+aws_cloudfront_distribution -[#1A83AF]-> aws_acm_certificate
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
 ## `aws_alb`
 
 <ZoomPanPinch>
@@ -362,6 +509,8 @@ class aws_service_quota {
 }
 class aws_vpc {
 }
+class aws_waf_web_acl {
+}
 aws_alb -[#1A83AF]-> aws_alb_target_group
 aws_beanstalk_environment -[#1A83AF]-> aws_alb
 aws_ec2_security_group -[#1A83AF]-> aws_alb
@@ -378,6 +527,7 @@ aws_vpc -[#1A83AF]-> aws_alb
 aws_vpc -[#1A83AF]-> aws_alb_target_group
 aws_vpc -[#1A83AF]-> aws_ec2_security_group
 aws_vpc -[#1A83AF]-> aws_ec2_subnet
+aws_waf_web_acl -[#1A83AF]-> aws_alb
 @enduml
 ```
 
@@ -539,11 +689,11 @@ aws_vpc -[#1A83AF]-> aws_ec2_instance
 
 </details>
 
-## `aws_api_gateway_authorizer`
+## `aws_apigateway_authorizer`
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgAlt="Diagram of aws_api_gateway_authorizer data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_apigateway_authorizer data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -566,7 +716,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class aws_api_gateway_authorizer {
+class aws_apigateway_authorizer {
 **api_link**: string
 **authorizer_auth_type**: string
 **authorizer_credentials**: string
@@ -592,7 +742,7 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-aws_resource <|--- aws_api_gateway_authorizer
+aws_resource <|--- aws_apigateway_authorizer
 resource <|--- aws_resource
 @enduml
 ```
@@ -607,7 +757,7 @@ resource <|--- aws_resource
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgAlt="Diagram of aws_api_gateway_authorizer resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_apigateway_authorizer resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -630,23 +780,23 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class aws_api_gateway_authorizer {
+class aws_apigateway_authorizer {
 }
-class aws_api_gateway_resource {
+class aws_apigateway_resource {
 }
-class aws_api_gateway_rest_api {
+class aws_apigateway_rest_api {
 }
 class aws_iam_role {
 }
 class aws_lambda_function {
 }
-aws_api_gateway_authorizer -[#1A83AF]-> aws_lambda_function
-aws_api_gateway_resource -[#1A83AF]-> aws_api_gateway_authorizer
-aws_api_gateway_resource -[#1A83AF]-> aws_lambda_function
-aws_api_gateway_rest_api -[#1A83AF]-> aws_api_gateway_authorizer
-aws_api_gateway_rest_api -[#1A83AF]-> aws_api_gateway_resource
-aws_api_gateway_rest_api -[#1A83AF]-> aws_lambda_function
-aws_iam_role -[#1A83AF]-> aws_api_gateway_authorizer
+aws_apigateway_authorizer -[#1A83AF]-> aws_lambda_function
+aws_apigateway_resource -[#1A83AF]-> aws_apigateway_authorizer
+aws_apigateway_resource -[#1A83AF]-> aws_lambda_function
+aws_apigateway_rest_api -[#1A83AF]-> aws_apigateway_authorizer
+aws_apigateway_rest_api -[#1A83AF]-> aws_apigateway_resource
+aws_apigateway_rest_api -[#1A83AF]-> aws_lambda_function
+aws_iam_role -[#1A83AF]-> aws_apigateway_authorizer
 @enduml
 ```
 
@@ -656,11 +806,11 @@ aws_iam_role -[#1A83AF]-> aws_api_gateway_authorizer
 
 </details>
 
-## `aws_api_gateway_deployment`
+## `aws_apigateway_deployment`
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgAlt="Diagram of aws_api_gateway_deployment data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_apigateway_deployment data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -683,7 +833,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class aws_api_gateway_deployment {
+class aws_apigateway_deployment {
 **api_link**: string
 **deployment_api_summary**: dictionary[string, dictionary[string, dictionary[string, any]]]
 **description**: string
@@ -703,7 +853,7 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-aws_resource <|--- aws_api_gateway_deployment
+aws_resource <|--- aws_apigateway_deployment
 resource <|--- aws_resource
 @enduml
 ```
@@ -718,7 +868,7 @@ resource <|--- aws_resource
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgAlt="Diagram of aws_api_gateway_deployment resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_apigateway_deployment resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -741,14 +891,14 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class aws_api_gateway_deployment {
+class aws_apigateway_deployment {
 }
-class aws_api_gateway_rest_api {
+class aws_apigateway_rest_api {
 }
-class aws_api_gateway_stage {
+class aws_apigateway_stage {
 }
-aws_api_gateway_deployment -[#1A83AF]-> aws_api_gateway_stage
-aws_api_gateway_rest_api -[#1A83AF]-> aws_api_gateway_deployment
+aws_apigateway_deployment -[#1A83AF]-> aws_apigateway_stage
+aws_apigateway_rest_api -[#1A83AF]-> aws_apigateway_deployment
 @enduml
 ```
 
@@ -758,11 +908,11 @@ aws_api_gateway_rest_api -[#1A83AF]-> aws_api_gateway_deployment
 
 </details>
 
-## `aws_api_gateway_domain_name`
+## `aws_apigateway_domain_name`
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgAlt="Diagram of aws_api_gateway_domain_name data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_apigateway_domain_name data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -785,7 +935,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class aws_api_gateway_domain_name {
+class aws_apigateway_domain_name {
 **domain_certificate_arn**: string
 **domain_certificate_name**: string
 **domain_certificate_upload_date**: datetime
@@ -793,8 +943,8 @@ class aws_api_gateway_domain_name {
 **domain_distribution_hosted_zone_id**: string
 **domain_domain_name_status**: string
 **domain_domain_name_status_message**: string
-**domain_endpoint_configuration**: aws_api_gateway_endpoint_configuration
-**domain_mutual_tls_authentication**: aws_api_gateway_mutual_tls_authentication
+**domain_endpoint_configuration**: aws_apigateway_endpoint_configuration
+**domain_mutual_tls_authentication**: aws_apigateway_mutual_tls_authentication
 **domain_ownership_verification_certificate_arn**: string
 **domain_regional_certificate_arn**: string
 **domain_regional_certificate_name**: string
@@ -802,11 +952,11 @@ class aws_api_gateway_domain_name {
 **domain_regional_hosted_zone_id**: string
 **domain_security_policy**: string
 }
-class aws_api_gateway_endpoint_configuration {
+class aws_apigateway_endpoint_configuration {
 **types**: string[]
 **vpc_endpoint_ids**: string[]
 }
-class aws_api_gateway_mutual_tls_authentication {
+class aws_apigateway_mutual_tls_authentication {
 **truststore_uri**: string
 **truststore_version**: string
 **truststore_warnings**: string[]
@@ -826,9 +976,9 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-aws_api_gateway_domain_name --> aws_api_gateway_endpoint_configuration
-aws_api_gateway_domain_name --> aws_api_gateway_mutual_tls_authentication
-aws_resource <|--- aws_api_gateway_domain_name
+aws_apigateway_domain_name --> aws_apigateway_endpoint_configuration
+aws_apigateway_domain_name --> aws_apigateway_mutual_tls_authentication
+aws_resource <|--- aws_apigateway_domain_name
 resource <|--- aws_resource
 @enduml
 ```
@@ -843,7 +993,7 @@ resource <|--- aws_resource
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgAlt="Diagram of aws_api_gateway_domain_name resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_apigateway_domain_name resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -866,14 +1016,14 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class aws_api_gateway_domain_name {
+class aws_apigateway_domain_name {
 }
 class aws_route53_zone {
 }
 class aws_vpc_endpoint {
 }
-aws_api_gateway_domain_name -[#1A83AF]-> aws_route53_zone
-aws_api_gateway_domain_name -[#1A83AF]-> aws_vpc_endpoint
+aws_apigateway_domain_name -[#1A83AF]-> aws_route53_zone
+aws_apigateway_domain_name -[#1A83AF]-> aws_vpc_endpoint
 @enduml
 ```
 
@@ -883,11 +1033,11 @@ aws_api_gateway_domain_name -[#1A83AF]-> aws_vpc_endpoint
 
 </details>
 
-## `aws_api_gateway_resource`
+## `aws_apigateway_resource`
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgAlt="Diagram of aws_api_gateway_resource data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_apigateway_resource data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -910,7 +1060,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class aws_api_gateway_integration {
+class aws_apigateway_integration {
 **cache_key_parameters**: string[]
 **cache_namespace**: string
 **connection_id**: string
@@ -918,7 +1068,7 @@ class aws_api_gateway_integration {
 **content_handling**: string
 **credentials**: string
 **http_method**: string
-**integration_responses**: dictionary[string, aws_api_gateway_integration_response]
+**integration_responses**: dictionary[string, aws_apigateway_integration_response]
 **integration_type**: string
 **passthrough_behavior**: string
 **request_parameters**: dictionary[string, string]
@@ -927,34 +1077,34 @@ class aws_api_gateway_integration {
 **tls_config**: boolean
 **uri**: string
 }
-class aws_api_gateway_integration_response {
+class aws_apigateway_integration_response {
 **content_handling**: string
 **response_parameters**: dictionary[string, string]
 **response_templates**: dictionary[string, string]
 **selection_pattern**: string
 **status_code**: string
 }
-class aws_api_gateway_method {
+class aws_apigateway_method {
 **api_key_required**: boolean
 **authorization_scopes**: string[]
 **authorization_type**: string
 **authorizer_id**: string
 **http_method**: string
-**method_integration**: aws_api_gateway_integration
-**method_responses**: dictionary[string, aws_api_gateway_method_response]
+**method_integration**: aws_apigateway_integration
+**method_responses**: dictionary[string, aws_apigateway_method_response]
 **operation_name**: string
 **request_models**: dictionary[string, string]
 **request_parameters**: dictionary[string, boolean]
 **request_validator_id**: string
 }
-class aws_api_gateway_method_response {
+class aws_apigateway_method_response {
 **response_models**: dictionary[string, string]
 **response_parameters**: dictionary[string, boolean]
 **status_code**: string
 }
-class aws_api_gateway_resource {
+class aws_apigateway_resource {
 **api_link**: string
-**resource_methods**: dictionary[string, aws_api_gateway_method]
+**resource_methods**: dictionary[string, aws_apigateway_method]
 **resource_parent_id**: string
 **resource_path**: string
 **resource_path_part**: string
@@ -974,11 +1124,11 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-aws_api_gateway_integration --> aws_api_gateway_integration_response
-aws_api_gateway_method --> aws_api_gateway_integration
-aws_api_gateway_method --> aws_api_gateway_method_response
-aws_api_gateway_resource --> aws_api_gateway_method
-aws_resource <|--- aws_api_gateway_resource
+aws_apigateway_integration --> aws_apigateway_integration_response
+aws_apigateway_method --> aws_apigateway_integration
+aws_apigateway_method --> aws_apigateway_method_response
+aws_apigateway_resource --> aws_apigateway_method
+aws_resource <|--- aws_apigateway_resource
 resource <|--- aws_resource
 @enduml
 ```
@@ -993,7 +1143,7 @@ resource <|--- aws_resource
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgAlt="Diagram of aws_api_gateway_resource resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_apigateway_resource resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1016,20 +1166,20 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class aws_api_gateway_authorizer {
+class aws_apigateway_authorizer {
 }
-class aws_api_gateway_resource {
+class aws_apigateway_resource {
 }
-class aws_api_gateway_rest_api {
+class aws_apigateway_rest_api {
 }
 class aws_lambda_function {
 }
-aws_api_gateway_authorizer -[#1A83AF]-> aws_lambda_function
-aws_api_gateway_resource -[#1A83AF]-> aws_api_gateway_authorizer
-aws_api_gateway_resource -[#1A83AF]-> aws_lambda_function
-aws_api_gateway_rest_api -[#1A83AF]-> aws_api_gateway_authorizer
-aws_api_gateway_rest_api -[#1A83AF]-> aws_api_gateway_resource
-aws_api_gateway_rest_api -[#1A83AF]-> aws_lambda_function
+aws_apigateway_authorizer -[#1A83AF]-> aws_lambda_function
+aws_apigateway_resource -[#1A83AF]-> aws_apigateway_authorizer
+aws_apigateway_resource -[#1A83AF]-> aws_lambda_function
+aws_apigateway_rest_api -[#1A83AF]-> aws_apigateway_authorizer
+aws_apigateway_rest_api -[#1A83AF]-> aws_apigateway_resource
+aws_apigateway_rest_api -[#1A83AF]-> aws_lambda_function
 @enduml
 ```
 
@@ -1039,11 +1189,11 @@ aws_api_gateway_rest_api -[#1A83AF]-> aws_lambda_function
 
 </details>
 
-## `aws_api_gateway_rest_api`
+## `aws_apigateway_rest_api`
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgAlt="Diagram of aws_api_gateway_rest_api data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_apigateway_rest_api data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1066,14 +1216,14 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class aws_api_gateway_endpoint_configuration {
+class aws_apigateway_endpoint_configuration {
 **types**: string[]
 **vpc_endpoint_ids**: string[]
 }
-class aws_api_gateway_rest_api {
+class aws_apigateway_rest_api {
 **api_binary_media_types**: string[]
 **api_disable_execute_api_endpoint**: boolean
-**api_endpoint_configuration**: aws_api_gateway_endpoint_configuration
+**api_endpoint_configuration**: aws_apigateway_endpoint_configuration
 **api_key_source**: string
 **api_minimum_compression_size**: int64
 **api_policy**: string
@@ -1096,8 +1246,8 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-aws_api_gateway_rest_api --> aws_api_gateway_endpoint_configuration
-aws_resource <|--- aws_api_gateway_rest_api
+aws_apigateway_rest_api --> aws_apigateway_endpoint_configuration
+aws_resource <|--- aws_apigateway_rest_api
 resource <|--- aws_resource
 @enduml
 ```
@@ -1112,7 +1262,7 @@ resource <|--- aws_resource
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgAlt="Diagram of aws_api_gateway_rest_api resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_apigateway_rest_api resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1135,26 +1285,29 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class aws_api_gateway_authorizer {
+class aws_apigateway_authorizer {
 }
-class aws_api_gateway_deployment {
+class aws_apigateway_deployment {
 }
-class aws_api_gateway_resource {
+class aws_apigateway_resource {
 }
-class aws_api_gateway_rest_api {
+class aws_apigateway_rest_api {
 }
 class aws_lambda_function {
 }
 class aws_vpc_endpoint {
 }
-aws_api_gateway_authorizer -[#1A83AF]-> aws_lambda_function
-aws_api_gateway_resource -[#1A83AF]-> aws_api_gateway_authorizer
-aws_api_gateway_resource -[#1A83AF]-> aws_lambda_function
-aws_api_gateway_rest_api -[#1A83AF]-> aws_api_gateway_authorizer
-aws_api_gateway_rest_api -[#1A83AF]-> aws_api_gateway_deployment
-aws_api_gateway_rest_api -[#1A83AF]-> aws_api_gateway_resource
-aws_api_gateway_rest_api -[#1A83AF]-> aws_lambda_function
-aws_api_gateway_rest_api -[#1A83AF]-> aws_vpc_endpoint
+class aws_waf_web_acl {
+}
+aws_apigateway_authorizer -[#1A83AF]-> aws_lambda_function
+aws_apigateway_resource -[#1A83AF]-> aws_apigateway_authorizer
+aws_apigateway_resource -[#1A83AF]-> aws_lambda_function
+aws_apigateway_rest_api -[#1A83AF]-> aws_apigateway_authorizer
+aws_apigateway_rest_api -[#1A83AF]-> aws_apigateway_deployment
+aws_apigateway_rest_api -[#1A83AF]-> aws_apigateway_resource
+aws_apigateway_rest_api -[#1A83AF]-> aws_lambda_function
+aws_apigateway_rest_api -[#1A83AF]-> aws_vpc_endpoint
+aws_waf_web_acl -[#1A83AF]-> aws_apigateway_rest_api
 @enduml
 ```
 
@@ -1164,11 +1317,11 @@ aws_api_gateway_rest_api -[#1A83AF]-> aws_vpc_endpoint
 
 </details>
 
-## `aws_api_gateway_stage`
+## `aws_apigateway_stage`
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgAlt="Diagram of aws_api_gateway_stage data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_apigateway_stage data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1191,20 +1344,20 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class aws_api_gateway_canary_setting {
+class aws_apigateway_canary_setting {
 **deployment_id**: string
 **percent_traffic**: int64
 **stage_variable_overrides**: dictionary[string, string]
 **use_stage_cache**: boolean
 }
-class aws_api_gateway_stage {
+class aws_apigateway_stage {
 **api_link**: string
 **description**: string
 **stage_access_log_settings**: dictionary[string, string]
 **stage_cache_cluster_enabled**: boolean
 **stage_cache_cluster_size**: string
 **stage_cache_status**: string
-**stage_canary_settings**: aws_api_gateway_canary_setting
+**stage_canary_settings**: aws_apigateway_canary_setting
 **stage_client_certificate_id**: string
 **stage_documentation_version**: string
 **stage_method_settings**: dictionary[string, dictionary[string, any]]
@@ -1227,8 +1380,8 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-aws_api_gateway_stage --> aws_api_gateway_canary_setting
-aws_resource <|--- aws_api_gateway_stage
+aws_apigateway_stage --> aws_apigateway_canary_setting
+aws_resource <|--- aws_apigateway_stage
 resource <|--- aws_resource
 @enduml
 ```
@@ -1243,7 +1396,7 @@ resource <|--- aws_resource
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgAlt="Diagram of aws_api_gateway_stage resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_apigateway_stage resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -1266,11 +1419,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class aws_api_gateway_deployment {
+class aws_apigateway_deployment {
 }
-class aws_api_gateway_stage {
+class aws_apigateway_stage {
 }
-aws_api_gateway_deployment -[#1A83AF]-> aws_api_gateway_stage
+aws_apigateway_deployment -[#1A83AF]-> aws_apigateway_stage
 @enduml
 ```
 
@@ -1725,6 +1878,8 @@ class aws_beanstalk_environment {
 }
 class aws_ec2_instance {
 }
+class aws_ec2_launch_template {
+}
 class aws_ecs_capacity_provider {
 }
 class aws_eks_nodegroup {
@@ -1732,6 +1887,7 @@ class aws_eks_nodegroup {
 class aws_region {
 }
 aws_autoscaling_group -[#1A83AF]-> aws_ec2_instance
+aws_autoscaling_group -[#1A83AF]-> aws_ec2_launch_template
 aws_beanstalk_environment -[#1A83AF]-> aws_autoscaling_group
 aws_beanstalk_environment -[#1A83AF]-> aws_ec2_instance
 aws_ecs_capacity_provider -[#1A83AF]-> aws_autoscaling_group
@@ -2163,7 +2319,7 @@ skinparam stereotypeIBackgroundColor #e98df7
 class aws_cloud_trail {
 **trail_cloud_watch_logs_log_group_arn**: string
 **trail_cloud_watch_logs_role_arn**: string
-**trail_event_selectors**: aws_cloud_trail_event_selector[]
+**trail_event_selectors**: aws_cloud_trail_event_selectors
 **trail_has_custom_event_selectors**: boolean
 **trail_has_insight_selectors**: boolean
 **trail_home_region**: string
@@ -2179,17 +2335,32 @@ class aws_cloud_trail {
 **trail_sns_topic_name**: string
 **trail_status**: aws_cloud_trail_status
 }
+class aws_cloud_trail_advanced_event_selector {
+**field_selectors**: aws_cloud_trail_advanced_field_selector[]
+**name**: string
+}
 class aws_cloud_trail_advanced_field_selector {
 **ends_with**: string[]
 **equals**: string[]
 **not_ends_with**: string[]
 **not_equals**: string[]
 **not_starts_with**: string[]
+**selector_field**: string
 **starts_with**: string[]
 }
+class aws_cloud_trail_data_resource {
+**type**: string
+**values**: string[]
+}
 class aws_cloud_trail_event_selector {
-**field_selectors**: dictionary[string, aws_cloud_trail_advanced_field_selector]
-**name**: string
+**data_resources**: aws_cloud_trail_data_resource[]
+**exclude_management_event_sources**: string[]
+**include_management_events**: boolean
+**read_write_type**: string
+}
+class aws_cloud_trail_event_selectors {
+**advanced_event_selectors**: aws_cloud_trail_advanced_event_selector[]
+**event_selectors**: aws_cloud_trail_event_selector[]
 }
 class aws_cloud_trail_status {
 **is_logging**: boolean
@@ -2225,10 +2396,13 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-aws_cloud_trail --> aws_cloud_trail_event_selector
+aws_cloud_trail --> aws_cloud_trail_event_selectors
 aws_cloud_trail --> aws_cloud_trail_status
 aws_resource <|--- aws_cloud_trail
-aws_cloud_trail_event_selector --> aws_cloud_trail_advanced_field_selector
+aws_cloud_trail_advanced_event_selector --> aws_cloud_trail_advanced_field_selector
+aws_cloud_trail_event_selector --> aws_cloud_trail_data_resource
+aws_cloud_trail_event_selectors --> aws_cloud_trail_advanced_event_selector
+aws_cloud_trail_event_selectors --> aws_cloud_trail_event_selector
 resource <|--- aws_resource
 @enduml
 ```
@@ -2694,6 +2868,16 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class aws_cloudfront_active_trusted_key_groups {
+**enabled**: boolean
+**items**: aws_cloudfront_kg_key_pair_ids[]
+**quantity**: int64
+}
+class aws_cloudfront_active_trusted_signers {
+**enabled**: boolean
+**items**: aws_cloudfront_signer[]
+**quantity**: int64
+}
 class aws_cloudfront_alias_icp_recordal {
 **cname**: string
 **icp_recordal_status**: string
@@ -2705,8 +2889,8 @@ class aws_cloudfront_cache_behavior {
 **default_ttl**: int64
 **field_level_encryption_id**: string
 **forwarded_values**: aws_cloudfront_forwarded_values
-**function_association**: aws_cloudfront_function_association[]
-**lambda_function_association**: aws_cloudfront_lambda_function_association[]
+**function_associations**: aws_cloudfront_function_association[]
+**lambda_function_associations**: aws_cloudfront_lambda_function_association[]
 **max_ttl**: int64
 **min_ttl**: int64
 **origin_request_policy_id**: string
@@ -2744,8 +2928,8 @@ class aws_cloudfront_default_cache_behavior {
 **default_ttl**: int64
 **field_level_encryption_id**: string
 **forwarded_values**: aws_cloudfront_forwarded_values
-**function_association**: aws_cloudfront_function_association[]
-**lambda_function_association**: aws_cloudfront_lambda_function_association[]
+**function_associations**: aws_cloudfront_function_association[]
+**lambda_function_associations**: aws_cloudfront_lambda_function_association[]
 **max_ttl**: int64
 **min_ttl**: int64
 **origin_request_policy_id**: string
@@ -2758,23 +2942,33 @@ class aws_cloudfront_default_cache_behavior {
 **viewer_protocol_policy**: string
 }
 class aws_cloudfront_distribution {
+**distribution_active_trusted_key_groups**: aws_cloudfront_active_trusted_key_groups
+**distribution_active_trusted_signers**: aws_cloudfront_active_trusted_signers
 **distribution_alias_icp_recordals**: aws_cloudfront_alias_icp_recordal[]
-**distribution_aliases**: string[]
-**distribution_cache_behavior**: aws_cloudfront_cache_behavior[]
-**distribution_comment**: string
-**distribution_custom_error_response**: aws_cloudfront_custom_error_response[]
-**distribution_default_cache_behavior**: aws_cloudfront_default_cache_behavior
-**distribution_domain_name**: string
-**distribution_enabled**: boolean
-**distribution_http_version**: string
-**distribution_is_ipv6_enabled**: boolean
-**distribution_origin**: aws_cloudfront_origin[]
-**distribution_origin_group**: aws_cloudfront_origin_group[]
-**distribution_price_class**: string
-**distribution_restrictions**: aws_cloudfront_restrictions
+**distribution_config**: aws_cloudfront_distribution_config
+**distribution_in_progress_invalidation_batches**: int64
 **distribution_status**: string
-**distribution_viewer_certificate**: aws_cloudfront_viewer_certificate
-**distribution_web_acl_id**: string
+}
+class aws_cloudfront_distribution_config {
+**aliases**: string[]
+**cache_behaviors**: aws_cloudfront_cache_behavior[]
+**caller_reference**: string
+**comment**: string
+**continuous_deployment_policy_id**: string
+**custom_error_responses**: aws_cloudfront_custom_error_response[]
+**default_cache_behavior**: aws_cloudfront_default_cache_behavior
+**default_root_object**: string
+**enabled**: boolean
+**http_version**: string
+**is_ipv6_enabled**: boolean
+**logging**: aws_cloudfront_logging_config
+**origin_groups**: aws_cloudfront_origin_group[]
+**origins**: aws_cloudfront_origin[]
+**price_class**: string
+**restrictions**: aws_cloudfront_restrictions
+**staging**: boolean
+**viewer_certificate**: aws_cloudfront_viewer_certificate
+**web_acl_id**: string
 }
 class aws_cloudfront_forwarded_values {
 **cookies**: aws_cloudfront_cookie_preference
@@ -2786,10 +2980,20 @@ class aws_cloudfront_function_association {
 **event_type**: string
 **function_arn**: string
 }
+class aws_cloudfront_kg_key_pair_ids {
+**key_group_id**: string
+**key_pair_ids**: string[]
+}
 class aws_cloudfront_lambda_function_association {
 **event_type**: string
 **include_body**: boolean
 **lambda_function_arn**: string
+}
+class aws_cloudfront_logging_config {
+**bucket**: string
+**enabled**: boolean
+**include_cookies**: boolean
+**prefix**: string
 }
 class aws_cloudfront_origin {
 **connection_attempts**: int64
@@ -2816,7 +3020,7 @@ class aws_cloudfront_origin_group_failover_criteria {
 **status_codes**: string[]
 }
 class aws_cloudfront_origin_group_members {
-**members**: string
+**origin_id**: string
 }
 class aws_cloudfront_origin_shield {
 **enabled**: boolean
@@ -2824,6 +3028,10 @@ class aws_cloudfront_origin_shield {
 }
 class aws_cloudfront_restrictions {
 **geo_restriction**: string[]
+}
+class aws_cloudfront_signer {
+**aws_account_number**: string
+**key_pair_ids**: string[]
 }
 class aws_cloudfront_viewer_certificate {
 **acm_certificate_arn**: string
@@ -2849,21 +3057,27 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
+aws_cloudfront_active_trusted_key_groups --> aws_cloudfront_kg_key_pair_ids
+aws_cloudfront_active_trusted_signers --> aws_cloudfront_signer
 aws_cloudfront_cache_behavior --> aws_cloudfront_forwarded_values
 aws_cloudfront_cache_behavior --> aws_cloudfront_function_association
 aws_cloudfront_cache_behavior --> aws_cloudfront_lambda_function_association
 aws_cloudfront_default_cache_behavior --> aws_cloudfront_forwarded_values
 aws_cloudfront_default_cache_behavior --> aws_cloudfront_function_association
 aws_cloudfront_default_cache_behavior --> aws_cloudfront_lambda_function_association
+aws_cloudfront_distribution --> aws_cloudfront_active_trusted_key_groups
+aws_cloudfront_distribution --> aws_cloudfront_active_trusted_signers
 aws_cloudfront_distribution --> aws_cloudfront_alias_icp_recordal
-aws_cloudfront_distribution --> aws_cloudfront_cache_behavior
-aws_cloudfront_distribution --> aws_cloudfront_custom_error_response
-aws_cloudfront_distribution --> aws_cloudfront_default_cache_behavior
-aws_cloudfront_distribution --> aws_cloudfront_origin
-aws_cloudfront_distribution --> aws_cloudfront_origin_group
-aws_cloudfront_distribution --> aws_cloudfront_restrictions
-aws_cloudfront_distribution --> aws_cloudfront_viewer_certificate
+aws_cloudfront_distribution --> aws_cloudfront_distribution_config
 aws_resource <|--- aws_cloudfront_distribution
+aws_cloudfront_distribution_config --> aws_cloudfront_cache_behavior
+aws_cloudfront_distribution_config --> aws_cloudfront_custom_error_response
+aws_cloudfront_distribution_config --> aws_cloudfront_default_cache_behavior
+aws_cloudfront_distribution_config --> aws_cloudfront_logging_config
+aws_cloudfront_distribution_config --> aws_cloudfront_origin
+aws_cloudfront_distribution_config --> aws_cloudfront_origin_group
+aws_cloudfront_distribution_config --> aws_cloudfront_restrictions
+aws_cloudfront_distribution_config --> aws_cloudfront_viewer_certificate
 aws_cloudfront_forwarded_values --> aws_cloudfront_cookie_preference
 aws_cloudfront_origin --> aws_cloudfront_custom_origin_config
 aws_cloudfront_origin --> aws_cloudfront_origin_custom_header
@@ -2907,6 +3121,8 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
+class aws_acm_certificate {
+}
 class aws_cloudfront_cache_policy {
 }
 class aws_cloudfront_distribution {
@@ -2927,6 +3143,9 @@ class aws_lambda_function {
 }
 class aws_s3_bucket {
 }
+class aws_waf_web_acl {
+}
+aws_cloudfront_distribution -[#1A83AF]-> aws_acm_certificate
 aws_cloudfront_distribution -[#1A83AF]-> aws_cloudfront_cache_policy
 aws_cloudfront_distribution -[#1A83AF]-> aws_cloudfront_field_level_encryption_config
 aws_cloudfront_distribution -[#1A83AF]-> aws_cloudfront_function
@@ -2936,6 +3155,7 @@ aws_cloudfront_distribution -[#1A83AF]-> aws_cloudfront_response_headers_policy
 aws_cloudfront_distribution -[#1A83AF]-> aws_iam_server_certificate
 aws_cloudfront_distribution -[#1A83AF]-> aws_lambda_function
 aws_cloudfront_distribution -[#1A83AF]-> aws_s3_bucket
+aws_cloudfront_distribution -[#1A83AF]-> aws_waf_web_acl
 @enduml
 ```
 
@@ -4567,6 +4787,8 @@ class aws_lambda_function {
 }
 class aws_sagemaker_workteam {
 }
+class aws_waf_web_acl {
+}
 aws_cognito_user_pool -[#1A83AF]-> aws_cognito_group
 aws_cognito_user_pool -[#1A83AF]-> aws_cognito_user
 aws_cognito_user_pool -[#1A83AF]-> aws_kms_key
@@ -4574,6 +4796,7 @@ aws_cognito_user_pool -[#1A83AF]-> aws_lambda_function
 aws_lambda_function -[#1A83AF]-> aws_kms_key
 aws_sagemaker_workteam -[#1A83AF]-> aws_cognito_group
 aws_sagemaker_workteam -[#1A83AF]-> aws_cognito_user_pool
+aws_waf_web_acl -[#1A83AF]-> aws_cognito_user_pool
 @enduml
 ```
 
@@ -4694,11 +4917,11 @@ class aws_config_recorder {
 
 </details>
 
-## `aws_dynamo_db_global_table`
+## `aws_dynamodb_global_table`
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgAlt="Diagram of aws_dynamo_db_global_table data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_dynamodb_global_table data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4721,12 +4944,12 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class aws_dynamo_db_global_table {
+class aws_dynamodb_global_table {
 **dynamodb_global_table_status**: string
-**dynamodb_replication_group**: aws_dynamo_db_replica_description[]
+**dynamodb_replication_group**: aws_dynamodb_replica_description[]
 }
-class aws_dynamo_db_replica_description {
-**global_secondary_indexes**: aws_dynamo_db_replica_global_secondary_index_description[]
+class aws_dynamodb_replica_description {
+**global_secondary_indexes**: aws_dynamodb_replica_global_secondary_index_description[]
 **kms_master_key_id**: string
 **provisioned_throughput_override**: int64
 **region_name**: string
@@ -4734,13 +4957,13 @@ class aws_dynamo_db_replica_description {
 **replica_status**: string
 **replica_status_description**: string
 **replica_status_percent_progress**: string
-**replica_table_class_summary**: aws_dynamo_db_table_class_summary
+**replica_table_class_summary**: aws_dynamodb_table_class_summary
 }
-class aws_dynamo_db_replica_global_secondary_index_description {
+class aws_dynamodb_replica_global_secondary_index_description {
 **index_name**: string
 **provisioned_throughput_override**: int64
 }
-class aws_dynamo_db_table_class_summary {
+class aws_dynamodb_table_class_summary {
 **last_update_date_time**: datetime
 **table_class**: string
 }
@@ -4759,10 +4982,10 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-aws_dynamo_db_global_table --> aws_dynamo_db_replica_description
-aws_resource <|--- aws_dynamo_db_global_table
-aws_dynamo_db_replica_description --> aws_dynamo_db_replica_global_secondary_index_description
-aws_dynamo_db_replica_description --> aws_dynamo_db_table_class_summary
+aws_dynamodb_global_table --> aws_dynamodb_replica_description
+aws_resource <|--- aws_dynamodb_global_table
+aws_dynamodb_replica_description --> aws_dynamodb_replica_global_secondary_index_description
+aws_dynamodb_replica_description --> aws_dynamodb_table_class_summary
 resource <|--- aws_resource
 @enduml
 ```
@@ -4777,7 +5000,7 @@ resource <|--- aws_resource
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgAlt="Diagram of aws_dynamo_db_global_table resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_dynamodb_global_table resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4800,11 +5023,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class aws_dynamo_db_global_table {
+class aws_dynamodb_global_table {
 }
 class aws_kms_key {
 }
-aws_dynamo_db_global_table -[#1A83AF]-> aws_kms_key
+aws_dynamodb_global_table -[#1A83AF]-> aws_kms_key
 @enduml
 ```
 
@@ -4814,11 +5037,11 @@ aws_dynamo_db_global_table -[#1A83AF]-> aws_kms_key
 
 </details>
 
-## `aws_dynamo_db_table`
+## `aws_dynamodb_table`
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgAlt="Diagram of aws_dynamo_db_table data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_dynamodb_table data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -4841,55 +5064,55 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class aws_dynamo_db_archival_summary {
+class aws_dynamodb_archival_summary {
 **archival_backup_arn**: string
 **archival_date_time**: datetime
 **archival_reason**: string
 }
-class aws_dynamo_db_attribute_definition {
+class aws_dynamodb_attribute_definition {
 **attribute_name**: string
 **attribute_type**: string
 }
-class aws_dynamo_db_billing_mode_summary {
+class aws_dynamodb_billing_mode_summary {
 **billing_mode**: string
 **last_update_to_pay_per_request_date_time**: datetime
 }
-class aws_dynamo_db_global_secondary_index_description {
+class aws_dynamodb_global_secondary_index_description {
 **backfilling**: boolean
 **index_arn**: string
 **index_name**: string
 **index_size_bytes**: int64
 **index_status**: string
 **item_count**: int64
-**key_schema**: aws_dynamo_db_key_schema_element[]
-**projection**: aws_dynamo_db_projection
-**provisioned_throughput**: aws_dynamo_db_provisioned_throughput_description
+**key_schema**: aws_dynamodb_key_schema_element[]
+**projection**: aws_dynamodb_projection
+**provisioned_throughput**: aws_dynamodb_provisioned_throughput_description
 }
-class aws_dynamo_db_key_schema_element {
+class aws_dynamodb_key_schema_element {
 **attribute_name**: string
 **key_type**: string
 }
-class aws_dynamo_db_local_secondary_index_description {
+class aws_dynamodb_local_secondary_index_description {
 **index_arn**: string
 **index_name**: string
 **index_size_bytes**: int64
 **item_count**: int64
-**key_schema**: aws_dynamo_db_key_schema_element[]
-**projection**: aws_dynamo_db_projection
+**key_schema**: aws_dynamodb_key_schema_element[]
+**projection**: aws_dynamodb_projection
 }
-class aws_dynamo_db_projection {
+class aws_dynamodb_projection {
 **non_key_attributes**: string[]
 **projection_type**: string
 }
-class aws_dynamo_db_provisioned_throughput_description {
+class aws_dynamodb_provisioned_throughput_description {
 **last_decrease_date_time**: datetime
 **last_increase_date_time**: datetime
 **number_of_decreases_today**: int64
 **read_capacity_units**: int64
 **write_capacity_units**: int64
 }
-class aws_dynamo_db_replica_description {
-**global_secondary_indexes**: aws_dynamo_db_replica_global_secondary_index_description[]
+class aws_dynamodb_replica_description {
+**global_secondary_indexes**: aws_dynamodb_replica_global_secondary_index_description[]
 **kms_master_key_id**: string
 **provisioned_throughput_override**: int64
 **region_name**: string
@@ -4897,49 +5120,49 @@ class aws_dynamo_db_replica_description {
 **replica_status**: string
 **replica_status_description**: string
 **replica_status_percent_progress**: string
-**replica_table_class_summary**: aws_dynamo_db_table_class_summary
+**replica_table_class_summary**: aws_dynamodb_table_class_summary
 }
-class aws_dynamo_db_replica_global_secondary_index_description {
+class aws_dynamodb_replica_global_secondary_index_description {
 **index_name**: string
 **provisioned_throughput_override**: int64
 }
-class aws_dynamo_db_restore_summary {
+class aws_dynamodb_restore_summary {
 **restore_date_time**: datetime
 **restore_in_progress**: boolean
 **source_backup_arn**: string
 **source_table_arn**: string
 }
-class aws_dynamo_db_sse_description {
+class aws_dynamodb_sse_description {
 **inaccessible_encryption_date_time**: datetime
 **kms_master_key_arn**: string
 **sse_type**: string
 **status**: string
 }
-class aws_dynamo_db_stream_specification {
+class aws_dynamodb_stream_specification {
 **stream_enabled**: boolean
 **stream_view_type**: string
 }
-class aws_dynamo_db_table {
-**dynamodb_archival_summary**: aws_dynamo_db_archival_summary
-**dynamodb_attribute_definitions**: aws_dynamo_db_attribute_definition[]
-**dynamodb_billing_mode_summary**: aws_dynamo_db_billing_mode_summary
-**dynamodb_global_secondary_indexes**: aws_dynamo_db_global_secondary_index_description[]
+class aws_dynamodb_table {
+**dynamodb_archival_summary**: aws_dynamodb_archival_summary
+**dynamodb_attribute_definitions**: aws_dynamodb_attribute_definition[]
+**dynamodb_billing_mode_summary**: aws_dynamodb_billing_mode_summary
+**dynamodb_global_secondary_indexes**: aws_dynamodb_global_secondary_index_description[]
 **dynamodb_global_table_version**: string
 **dynamodb_item_count**: int64
-**dynamodb_key_schema**: aws_dynamo_db_key_schema_element[]
+**dynamodb_key_schema**: aws_dynamodb_key_schema_element[]
 **dynamodb_latest_stream_arn**: string
 **dynamodb_latest_stream_label**: string
-**dynamodb_local_secondary_indexes**: aws_dynamo_db_local_secondary_index_description[]
-**dynamodb_provisioned_throughput**: aws_dynamo_db_provisioned_throughput_description
-**dynamodb_replicas**: aws_dynamo_db_replica_description[]
-**dynamodb_restore_summary**: aws_dynamo_db_restore_summary
-**dynamodb_sse_description**: aws_dynamo_db_sse_description
-**dynamodb_stream_specification**: aws_dynamo_db_stream_specification
-**dynamodb_table_class_summary**: aws_dynamo_db_table_class_summary
+**dynamodb_local_secondary_indexes**: aws_dynamodb_local_secondary_index_description[]
+**dynamodb_provisioned_throughput**: aws_dynamodb_provisioned_throughput_description
+**dynamodb_replicas**: aws_dynamodb_replica_description[]
+**dynamodb_restore_summary**: aws_dynamodb_restore_summary
+**dynamodb_sse_description**: aws_dynamodb_sse_description
+**dynamodb_stream_specification**: aws_dynamodb_stream_specification
+**dynamodb_table_class_summary**: aws_dynamodb_table_class_summary
 **dynamodb_table_size_bytes**: int64
 **dynamodb_table_status**: string
 }
-class aws_dynamo_db_table_class_summary {
+class aws_dynamodb_table_class_summary {
 **last_update_date_time**: datetime
 **table_class**: string
 }
@@ -4958,26 +5181,26 @@ class resource {
 **name**: string
 **tags**: dictionary[string, string]
 }
-aws_dynamo_db_global_secondary_index_description --> aws_dynamo_db_key_schema_element
-aws_dynamo_db_global_secondary_index_description --> aws_dynamo_db_projection
-aws_dynamo_db_global_secondary_index_description --> aws_dynamo_db_provisioned_throughput_description
-aws_dynamo_db_local_secondary_index_description --> aws_dynamo_db_key_schema_element
-aws_dynamo_db_local_secondary_index_description --> aws_dynamo_db_projection
-aws_dynamo_db_replica_description --> aws_dynamo_db_replica_global_secondary_index_description
-aws_dynamo_db_replica_description --> aws_dynamo_db_table_class_summary
-aws_dynamo_db_table --> aws_dynamo_db_archival_summary
-aws_dynamo_db_table --> aws_dynamo_db_attribute_definition
-aws_dynamo_db_table --> aws_dynamo_db_billing_mode_summary
-aws_dynamo_db_table --> aws_dynamo_db_global_secondary_index_description
-aws_dynamo_db_table --> aws_dynamo_db_key_schema_element
-aws_dynamo_db_table --> aws_dynamo_db_local_secondary_index_description
-aws_dynamo_db_table --> aws_dynamo_db_provisioned_throughput_description
-aws_dynamo_db_table --> aws_dynamo_db_replica_description
-aws_dynamo_db_table --> aws_dynamo_db_restore_summary
-aws_dynamo_db_table --> aws_dynamo_db_sse_description
-aws_dynamo_db_table --> aws_dynamo_db_stream_specification
-aws_dynamo_db_table --> aws_dynamo_db_table_class_summary
-aws_resource <|--- aws_dynamo_db_table
+aws_dynamodb_global_secondary_index_description --> aws_dynamodb_key_schema_element
+aws_dynamodb_global_secondary_index_description --> aws_dynamodb_projection
+aws_dynamodb_global_secondary_index_description --> aws_dynamodb_provisioned_throughput_description
+aws_dynamodb_local_secondary_index_description --> aws_dynamodb_key_schema_element
+aws_dynamodb_local_secondary_index_description --> aws_dynamodb_projection
+aws_dynamodb_replica_description --> aws_dynamodb_replica_global_secondary_index_description
+aws_dynamodb_replica_description --> aws_dynamodb_table_class_summary
+aws_dynamodb_table --> aws_dynamodb_archival_summary
+aws_dynamodb_table --> aws_dynamodb_attribute_definition
+aws_dynamodb_table --> aws_dynamodb_billing_mode_summary
+aws_dynamodb_table --> aws_dynamodb_global_secondary_index_description
+aws_dynamodb_table --> aws_dynamodb_key_schema_element
+aws_dynamodb_table --> aws_dynamodb_local_secondary_index_description
+aws_dynamodb_table --> aws_dynamodb_provisioned_throughput_description
+aws_dynamodb_table --> aws_dynamodb_replica_description
+aws_dynamodb_table --> aws_dynamodb_restore_summary
+aws_dynamodb_table --> aws_dynamodb_sse_description
+aws_dynamodb_table --> aws_dynamodb_stream_specification
+aws_dynamodb_table --> aws_dynamodb_table_class_summary
+aws_resource <|--- aws_dynamodb_table
 resource <|--- aws_resource
 @enduml
 ```
@@ -4992,7 +5215,7 @@ resource <|--- aws_resource
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgAlt="Diagram of aws_dynamo_db_table resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_dynamodb_table resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -5015,15 +5238,18 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class aws_dynamo_db_table {
+class aws_dynamodb_table {
 }
 class aws_kinesis_stream {
 }
 class aws_kms_key {
 }
-aws_dynamo_db_table -[#1A83AF]-> aws_kinesis_stream
-aws_dynamo_db_table -[#1A83AF]-> aws_kms_key
+class aws_ssm_resource_compliance {
+}
+aws_dynamodb_table -[#1A83AF]-> aws_kinesis_stream
+aws_dynamodb_table -[#1A83AF]-> aws_kms_key
 aws_kinesis_stream -[#1A83AF]-> aws_kms_key
+aws_ssm_resource_compliance -[#1A83AF]-> aws_dynamodb_table
 @enduml
 ```
 
@@ -5409,6 +5635,159 @@ aws_ec2_host -[#1A83AF]-> aws_ec2_instance
 
 </details>
 
+## `aws_ec2_image`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_image data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_ec2_block_device_mapping {
+**device_name**: string
+**ebs**: aws_ec2_ebs_block_device
+**no_device**: string
+**virtual_name**: string
+}
+class aws_ec2_ebs_block_device {
+**delete_on_termination**: boolean
+**encrypted**: boolean
+**iops**: int64
+**kms_key_id**: string
+**outpost_arn**: string
+**snapshot_id**: string
+**throughput**: int64
+**volume_size**: int64
+**volume_type**: string
+}
+class aws_ec2_image {
+**architecture**: string
+**block_device_mappings**: aws_ec2_block_device_mapping[]
+**boot_mode**: string
+**deprecation_time**: string
+**description**: string
+**ena_support**: boolean
+**hypervisor**: string
+**image_location**: string
+**image_owner_alias**: string
+**image_type**: string
+**imds_support**: string
+**kernel_id**: string
+**name**: string
+**owner_id**: string
+**platform**: string
+**platform_details**: string
+**product_codes**: aws_ec2_product_code[]
+**public**: boolean
+**ramdisk_id**: string
+**root_device_name**: string
+**root_device_type**: string
+**source_instance_id**: string
+**sriov_net_support**: string
+**state**: string
+**state_reason**: aws_ec2_state_reason
+**tpm_support**: string
+**usage_operation**: string
+**virtualization_type**: string
+}
+class aws_ec2_product_code {
+**product_code_id**: string
+**product_code_type**: string
+}
+class aws_ec2_state_reason {
+**code**: string
+**message**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_ec2_block_device_mapping --> aws_ec2_ebs_block_device
+aws_ec2_image --> aws_ec2_block_device_mapping
+aws_ec2_image --> aws_ec2_product_code
+aws_ec2_image --> aws_ec2_state_reason
+aws_resource <|--- aws_ec2_image
+resource <|--- aws_resource
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_image resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_ec2_image {
+}
+class aws_ec2_instance {
+}
+aws_ec2_image -[#1A83AF]-> aws_ec2_instance
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
 ## `aws_ec2_instance`
 
 <ZoomPanPinch>
@@ -5700,6 +6079,8 @@ class aws_ec2_elastic_ip {
 }
 class aws_ec2_host {
 }
+class aws_ec2_image {
+}
 class aws_ec2_instance {
 }
 class aws_ec2_instance_type {
@@ -5716,7 +6097,9 @@ class aws_elb {
 }
 class aws_region {
 }
-class aws_ssm_instance_information {
+class aws_ssm_instance {
+}
+class aws_ssm_resource_compliance {
 }
 class aws_vpc {
 }
@@ -5725,6 +6108,7 @@ aws_autoscaling_group -[#1A83AF]-> aws_ec2_instance
 aws_beanstalk_environment -[#1A83AF]-> aws_autoscaling_group
 aws_beanstalk_environment -[#1A83AF]-> aws_ec2_instance
 aws_ec2_host -[#1A83AF]-> aws_ec2_instance
+aws_ec2_image -[#1A83AF]-> aws_ec2_instance
 aws_ec2_instance -[#1A83AF]-> aws_cloudwatch_alarm
 aws_ec2_instance -[#1A83AF]-> aws_ec2_elastic_ip
 aws_ec2_instance -[#1A83AF]-> aws_ec2_keypair
@@ -5745,7 +6129,8 @@ aws_region -[#1A83AF]-> aws_ec2_network_interface
 aws_region -[#1A83AF]-> aws_ec2_volume
 aws_region -[#1A83AF]-> aws_elb
 aws_region -[#1A83AF]-> aws_vpc
-aws_ssm_instance_information -[#1A83AF]-> aws_ec2_instance
+aws_ssm_instance -[#1A83AF]-> aws_ec2_instance
+aws_ssm_resource_compliance -[#1A83AF]-> aws_ec2_instance
 aws_vpc -[#1A83AF]-> aws_alb_target_group
 aws_vpc -[#1A83AF]-> aws_ec2_instance
 aws_vpc -[#1A83AF]-> aws_ec2_network_interface
@@ -6219,6 +6604,346 @@ class aws_region {
 aws_ec2_instance -[#1A83AF]-> aws_ec2_keypair
 aws_region -[#1A83AF]-> aws_ec2_instance
 aws_region -[#1A83AF]-> aws_ec2_keypair
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
+## `aws_ec2_launch_template`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_launch_template data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_ec2_launch_template {
+**created_by**: string
+**is_default_version**: boolean
+**launch_template_data**: aws_ec2_launch_template_data
+**version_description**: string
+**version_number**: int64
+}
+class aws_ec2_launch_template_accelerator_count {
+**max**: int64
+**min**: int64
+}
+class aws_ec2_launch_template_accelerator_total_memory_mi_b {
+**max**: int64
+**min**: int64
+}
+class aws_ec2_launch_template_baseline_ebs_bandwidth_mbps {
+**max**: int64
+**min**: int64
+}
+class aws_ec2_launch_template_block_device_mapping {
+**device_name**: string
+**ebs**: aws_ec2_launch_template_ebs_block_device
+**no_device**: string
+**virtual_name**: string
+}
+class aws_ec2_launch_template_capacity_reservation_specification_response {
+**capacity_reservation_preference**: string
+**capacity_reservation_target**: aws_ec2_launch_template_capacity_reservation_target_response
+}
+class aws_ec2_launch_template_capacity_reservation_target_response {
+**capacity_reservation_id**: string
+**capacity_reservation_resource_group_arn**: string
+}
+class aws_ec2_launch_template_connection_tracking_specification {
+**tcp_established_timeout**: int64
+**udp_stream_timeout**: int64
+**udp_timeout**: int64
+}
+class aws_ec2_launch_template_cpu_options {
+**amd_sev_snp**: string
+**core_count**: int64
+**threads_per_core**: int64
+}
+class aws_ec2_launch_template_data {
+**block_device_mappings**: aws_ec2_launch_template_block_device_mapping[]
+**capacity_reservation_specification**: aws_ec2_launch_template_capacity_reservation_specification_response
+**cpu_options**: aws_ec2_launch_template_cpu_options
+**credit_specification**: string
+**disable_api_stop**: boolean
+**disable_api_termination**: boolean
+**ebs_optimized**: boolean
+**elastic_gpu_specifications**: string[]
+**elastic_inference_accelerators**: aws_ec2_launch_template_elastic_inference_accelerator_response[]
+**enclave_options**: boolean
+**hibernation_options**: boolean
+**iam_instance_profile**: aws_ec2_launch_template_iam_instance_profile_specification
+**image_id**: string
+**instance_initiated_shutdown_behavior**: string
+**instance_market_options**: aws_ec2_launch_template_instance_market_options
+**instance_requirements**: aws_ec2_launch_template_instance_requirements
+**instance_type**: string
+**kernel_id**: string
+**key_name**: string
+**license_specifications**: string[]
+**maintenance_options**: string
+**metadata_options**: aws_ec2_launch_template_instance_metadata_options
+**monitoring**: boolean
+**network_interfaces**: aws_ec2_launch_template_instance_network_interface_specification[]
+**placement**: aws_ec2_launch_template_placement
+**private_dns_name_options**: aws_ec2_launch_template_private_dns_name_options
+**ram_disk_id**: string
+**security_group_ids**: string[]
+**security_groups**: string[]
+**tag_specifications**: aws_ec2_launch_template_tag_specification[]
+**user_data**: string
+}
+class aws_ec2_launch_template_ebs_block_device {
+**delete_on_termination**: boolean
+**encrypted**: boolean
+**iops**: int64
+**kms_key_id**: string
+**snapshot_id**: string
+**throughput**: int64
+**volume_size**: int64
+**volume_type**: string
+}
+class aws_ec2_launch_template_elastic_inference_accelerator_response {
+**count**: int64
+**type**: string
+}
+class aws_ec2_launch_template_ena_srd_specification {
+**ena_srd_enabled**: boolean
+**ena_srd_udp_specification**: boolean
+}
+class aws_ec2_launch_template_iam_instance_profile_specification {
+**arn**: string
+**name**: string
+}
+class aws_ec2_launch_template_instance_ipv6_address {
+**ipv6_address**: string
+**is_primary_ipv6**: boolean
+}
+class aws_ec2_launch_template_instance_market_options {
+**market_type**: string
+**spot_options**: aws_ec2_launch_template_spot_market_options
+}
+class aws_ec2_launch_template_instance_metadata_options {
+**http_endpoint**: string
+**http_protocol_ipv6**: string
+**http_put_response_hop_limit**: int64
+**http_tokens**: string
+**instance_metadata_tags**: string
+**state**: string
+}
+class aws_ec2_launch_template_instance_network_interface_specification {
+**associate_carrier_ip_address**: boolean
+**associate_public_ip_address**: boolean
+**connection_tracking_specification**: aws_ec2_launch_template_connection_tracking_specification
+**delete_on_termination**: boolean
+**description**: string
+**device_index**: int64
+**ena_srd_specification**: aws_ec2_launch_template_ena_srd_specification
+**groups**: string[]
+**interface_type**: string
+**ipv4_prefix_count**: int64
+**ipv4_prefixes**: string[]
+**ipv6_address_count**: int64
+**ipv6_addresses**: aws_ec2_launch_template_instance_ipv6_address[]
+**ipv6_prefix_count**: int64
+**ipv6_prefixes**: string[]
+**network_card_index**: int64
+**network_interface_id**: string
+**primary_ipv6**: boolean
+**private_ip_address**: string
+**private_ip_addresses**: aws_ec2_launch_template_private_ip_address_specification[]
+**secondary_private_ip_address_count**: int64
+**subnet_id**: string
+}
+class aws_ec2_launch_template_instance_requirements {
+**accelerator_count**: aws_ec2_launch_template_accelerator_count
+**accelerator_manufacturers**: string[]
+**accelerator_names**: string[]
+**accelerator_total_memory_mi_b**: aws_ec2_launch_template_accelerator_total_memory_mi_b
+**accelerator_types**: string[]
+**allowed_instance_types**: string[]
+**bare_metal**: string
+**baseline_ebs_bandwidth_mbps**: aws_ec2_launch_template_baseline_ebs_bandwidth_mbps
+**burstable_performance**: string
+**cpu_manufacturers**: string[]
+**excluded_instance_types**: string[]
+**instance_generations**: string[]
+**local_storage**: string
+**local_storage_types**: string[]
+**memory_gi_b_per_v_cpu**: aws_ec2_launch_template_memory_gi_b_per_v_cpu
+**memory_mi_b**: aws_ec2_launch_template_memory_mi_b
+**network_bandwidth_gbps**: aws_ec2_launch_template_network_bandwidth_gbps
+**network_interface_count**: aws_ec2_launch_template_network_interface_count
+**on_demand_max_price_percentage_over_lowest_price**: int64
+**require_hibernate_support**: boolean
+**spot_max_price_percentage_over_lowest_price**: int64
+**total_local_storage_gb**: aws_ec2_launch_template_total_local_storage_gb
+**v_cpu_count**: aws_ec2_launch_template_v_cpu_count_range
+}
+class aws_ec2_launch_template_memory_gi_b_per_v_cpu {
+**max**: double
+**min**: double
+}
+class aws_ec2_launch_template_memory_mi_b {
+**max**: int64
+**min**: int64
+}
+class aws_ec2_launch_template_network_bandwidth_gbps {
+**max**: double
+**min**: double
+}
+class aws_ec2_launch_template_network_interface_count {
+**max**: int64
+**min**: int64
+}
+class aws_ec2_launch_template_placement {
+**affinity**: string
+**availability_zone**: string
+**group_id**: string
+**group_name**: string
+**host_id**: string
+**host_resource_group_arn**: string
+**partition_number**: int64
+**spread_domain**: string
+**tenancy**: string
+}
+class aws_ec2_launch_template_private_dns_name_options {
+**enable_resource_name_dns_a_record**: boolean
+**enable_resource_name_dns_aaaa_record**: boolean
+**hostname_type**: string
+}
+class aws_ec2_launch_template_private_ip_address_specification {
+**primary**: boolean
+**private_ip_address**: string
+}
+class aws_ec2_launch_template_spot_market_options {
+**block_duration_minutes**: int64
+**instance_interruption_behavior**: string
+**max_price**: string
+**spot_instance_type**: string
+**valid_until**: datetime
+}
+class aws_ec2_launch_template_tag_specification {
+**resource_type**: string
+}
+class aws_ec2_launch_template_total_local_storage_gb {
+**max**: double
+**min**: double
+}
+class aws_ec2_launch_template_v_cpu_count_range {
+**max**: int64
+**min**: int64
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_ec2_launch_template --> aws_ec2_launch_template_data
+aws_resource <|--- aws_ec2_launch_template
+aws_ec2_launch_template_block_device_mapping --> aws_ec2_launch_template_ebs_block_device
+aws_ec2_launch_template_capacity_reservation_specification_response --> aws_ec2_launch_template_capacity_reservation_target_response
+aws_ec2_launch_template_data --> aws_ec2_launch_template_block_device_mapping
+aws_ec2_launch_template_data --> aws_ec2_launch_template_capacity_reservation_specification_response
+aws_ec2_launch_template_data --> aws_ec2_launch_template_cpu_options
+aws_ec2_launch_template_data --> aws_ec2_launch_template_elastic_inference_accelerator_response
+aws_ec2_launch_template_data --> aws_ec2_launch_template_iam_instance_profile_specification
+aws_ec2_launch_template_data --> aws_ec2_launch_template_instance_market_options
+aws_ec2_launch_template_data --> aws_ec2_launch_template_instance_metadata_options
+aws_ec2_launch_template_data --> aws_ec2_launch_template_instance_network_interface_specification
+aws_ec2_launch_template_data --> aws_ec2_launch_template_instance_requirements
+aws_ec2_launch_template_data --> aws_ec2_launch_template_placement
+aws_ec2_launch_template_data --> aws_ec2_launch_template_private_dns_name_options
+aws_ec2_launch_template_data --> aws_ec2_launch_template_tag_specification
+aws_ec2_launch_template_instance_market_options --> aws_ec2_launch_template_spot_market_options
+aws_ec2_launch_template_instance_network_interface_specification --> aws_ec2_launch_template_connection_tracking_specification
+aws_ec2_launch_template_instance_network_interface_specification --> aws_ec2_launch_template_ena_srd_specification
+aws_ec2_launch_template_instance_network_interface_specification --> aws_ec2_launch_template_instance_ipv6_address
+aws_ec2_launch_template_instance_network_interface_specification --> aws_ec2_launch_template_private_ip_address_specification
+aws_ec2_launch_template_instance_requirements --> aws_ec2_launch_template_accelerator_count
+aws_ec2_launch_template_instance_requirements --> aws_ec2_launch_template_accelerator_total_memory_mi_b
+aws_ec2_launch_template_instance_requirements --> aws_ec2_launch_template_baseline_ebs_bandwidth_mbps
+aws_ec2_launch_template_instance_requirements --> aws_ec2_launch_template_memory_gi_b_per_v_cpu
+aws_ec2_launch_template_instance_requirements --> aws_ec2_launch_template_memory_mi_b
+aws_ec2_launch_template_instance_requirements --> aws_ec2_launch_template_network_bandwidth_gbps
+aws_ec2_launch_template_instance_requirements --> aws_ec2_launch_template_network_interface_count
+aws_ec2_launch_template_instance_requirements --> aws_ec2_launch_template_total_local_storage_gb
+aws_ec2_launch_template_instance_requirements --> aws_ec2_launch_template_v_cpu_count_range
+resource <|--- aws_resource
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ec2_launch_template resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_autoscaling_group {
+}
+class aws_ec2_launch_template {
+}
+aws_autoscaling_group -[#1A83AF]-> aws_ec2_launch_template
 @enduml
 ```
 
@@ -7840,9 +8565,11 @@ class aws_ecr_repository {
 **encryption_configuration**: aws_ecr_encryption_configuration
 **image_scan_on_push**: boolean
 **image_tag_mutability**: string
+**lifecycle_policy**: dictionary[string, any]
 **registry_id**: string
 **repository_arn**: string
 **repository_uri**: string
+**repository_visibility**: string
 }
 class aws_resource {
 **arn**: string
@@ -9350,6 +10077,7 @@ skinparam stereotypeIBackgroundColor #e98df7
 class aws_efs_file_system {
 **availability_zone_name**: string
 **creation_token**: string
+**file_system_policy**: dictionary[string, any]
 **number_of_mount_targets**: int64
 **owner_id**: string
 **performance_mode**: string
@@ -10275,6 +11003,7 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class aws_elb {
+**elb_attributes**: aws_elb_load_balancer_attributes
 **elb_availability_zones**: string[]
 **elb_backend_server_descriptions**: aws_elb_backend_server_description[]
 **elb_canonical_hosted_zone_name**: string
@@ -10285,6 +11014,16 @@ class aws_elb {
 **elb_source_security_group**: aws_elb_source_security_group
 **scheme**: string
 }
+class aws_elb_access_log {
+**emit_interval**: int64
+**enabled**: boolean
+**s3_bucket_name**: string
+**s3_bucket_prefix**: string
+}
+class aws_elb_additional_attribute {
+**key**: string
+**value**: string
+}
 class aws_elb_app_cookie_stickiness_policy {
 **cookie_name**: string
 **policy_name**: string
@@ -10292,6 +11031,10 @@ class aws_elb_app_cookie_stickiness_policy {
 class aws_elb_backend_server_description {
 **instance_port**: int64
 **policy_names**: string[]
+}
+class aws_elb_connection_draining {
+**enabled**: boolean
+**timeout**: int64
 }
 class aws_elb_health_check {
 **healthy_threshold**: int64
@@ -10314,6 +11057,13 @@ class aws_elb_listener {
 class aws_elb_listener_description {
 **listener**: aws_elb_listener
 **policy_names**: string[]
+}
+class aws_elb_load_balancer_attributes {
+**access_log**: aws_elb_access_log
+**additional_attributes**: aws_elb_additional_attribute[]
+**connection_draining**: aws_elb_connection_draining
+**connection_settings**: int64
+**cross_zone_load_balancing**: boolean
 }
 class aws_elb_policies {
 **app_cookie_stickiness_policies**: aws_elb_app_cookie_stickiness_policy[]
@@ -10347,11 +11097,15 @@ class resource {
 aws_elb --> aws_elb_backend_server_description
 aws_elb --> aws_elb_health_check
 aws_elb --> aws_elb_listener_description
+aws_elb --> aws_elb_load_balancer_attributes
 aws_elb --> aws_elb_policies
 aws_elb --> aws_elb_source_security_group
 aws_resource <|--- aws_elb
 load_balancer <|--- aws_elb
 aws_elb_listener_description --> aws_elb_listener
+aws_elb_load_balancer_attributes --> aws_elb_access_log
+aws_elb_load_balancer_attributes --> aws_elb_additional_attribute
+aws_elb_load_balancer_attributes --> aws_elb_connection_draining
 aws_elb_policies --> aws_elb_app_cookie_stickiness_policy
 aws_elb_policies --> aws_elb_lb_cookie_stickiness_policy
 resource <|--- aws_resource
@@ -10620,6 +11374,7 @@ skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class aws_glacier_vault {
+**glacier_access_policy**: dictionary[string, any]
 **glacier_last_inventory_date**: string
 **glacier_number_of_archives**: int64
 **glacier_size_in_bytes**: int64
@@ -11249,7 +12004,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class aws_api_gateway_authorizer {
+class aws_apigateway_authorizer {
 }
 class aws_cognito_group {
 }
@@ -11302,7 +12057,7 @@ class aws_sagemaker_training_job {
 class aws_sns_subscription {
 }
 aws_ecs_task_definition -[#1A83AF]-> aws_ecs_task
-aws_iam_role -[#1A83AF]-> aws_api_gateway_authorizer
+aws_iam_role -[#1A83AF]-> aws_apigateway_authorizer
 aws_iam_role -[#1A83AF]-> aws_cognito_group
 aws_iam_role -[#1A83AF]-> aws_ecs_service
 aws_iam_role -[#1A83AF]-> aws_ecs_task
@@ -11706,7 +12461,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class aws_dynamo_db_table {
+class aws_dynamodb_table {
 }
 class aws_kinesis_stream {
 }
@@ -11714,8 +12469,8 @@ class aws_kms_key {
 }
 class aws_rds_cluster {
 }
-aws_dynamo_db_table -[#1A83AF]-> aws_kinesis_stream
-aws_dynamo_db_table -[#1A83AF]-> aws_kms_key
+aws_dynamodb_table -[#1A83AF]-> aws_kinesis_stream
+aws_dynamodb_table -[#1A83AF]-> aws_kms_key
 aws_kinesis_stream -[#1A83AF]-> aws_kms_key
 aws_rds_cluster -[#1A83AF]-> aws_kinesis_stream
 aws_rds_cluster -[#1A83AF]-> aws_kms_key
@@ -11769,6 +12524,7 @@ class aws_kms_key {
 **kms_encryption_algorithms**: string[]
 **kms_expiration_model**: string
 **kms_key_manager**: string
+**kms_key_policy**: dictionary[string, any]
 **kms_key_rotation_enabled**: boolean
 **kms_key_spec**: string
 **kms_key_usage**: string
@@ -11859,9 +12615,9 @@ class aws_cloudwatch_log_group {
 }
 class aws_cognito_user_pool {
 }
-class aws_dynamo_db_global_table {
+class aws_dynamodb_global_table {
 }
-class aws_dynamo_db_table {
+class aws_dynamodb_table {
 }
 class aws_ec2_snapshot {
 }
@@ -11922,9 +12678,9 @@ aws_cloud_trail -[#1A83AF]-> aws_sns_topic
 aws_cloudwatch_log_group -[#1A83AF]-> aws_kms_key
 aws_cognito_user_pool -[#1A83AF]-> aws_kms_key
 aws_cognito_user_pool -[#1A83AF]-> aws_lambda_function
-aws_dynamo_db_global_table -[#1A83AF]-> aws_kms_key
-aws_dynamo_db_table -[#1A83AF]-> aws_kinesis_stream
-aws_dynamo_db_table -[#1A83AF]-> aws_kms_key
+aws_dynamodb_global_table -[#1A83AF]-> aws_kms_key
+aws_dynamodb_table -[#1A83AF]-> aws_kinesis_stream
+aws_dynamodb_table -[#1A83AF]-> aws_kms_key
 aws_ec2_snapshot -[#1A83AF]-> aws_kms_key
 aws_ec2_volume -[#1A83AF]-> aws_ec2_snapshot
 aws_ec2_volume -[#1A83AF]-> aws_kms_key
@@ -12009,13 +12765,13 @@ class aws_lambda_cors {
 **expose_headers**: string[]
 **max_age**: int64
 }
+class aws_lambda_environment {
+**error**: aws_lambda_environment_error
+**variables**: dictionary[string, string]
+}
 class aws_lambda_environment_error {
 **error_code**: string
 **message**: string
-}
-class aws_lambda_environment_response {
-**error**: aws_lambda_environment_error
-**variables**: dictionary[string, string]
 }
 class aws_lambda_file_system_config {
 **arn**: string
@@ -12027,7 +12783,7 @@ class aws_lambda_function {
 **function_code_size**: int64
 **function_dead_letter_config**: string
 **function_description**: string
-**function_environment**: aws_lambda_environment_response
+**function_environment**: aws_lambda_environment
 **function_ephemeral_storage**: int64
 **function_file_system_configs**: aws_lambda_file_system_config[]
 **function_handler**: string
@@ -12111,8 +12867,8 @@ class resource {
 }
 class serverless_function {
 }
-aws_lambda_environment_response --> aws_lambda_environment_error
-aws_lambda_function --> aws_lambda_environment_response
+aws_lambda_environment --> aws_lambda_environment_error
+aws_lambda_function --> aws_lambda_environment
 aws_lambda_function --> aws_lambda_file_system_config
 aws_lambda_function --> aws_lambda_function_url_config
 aws_lambda_function --> aws_lambda_image_config_response
@@ -12162,11 +12918,11 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class aws_api_gateway_authorizer {
+class aws_apigateway_authorizer {
 }
-class aws_api_gateway_resource {
+class aws_apigateway_resource {
 }
-class aws_api_gateway_rest_api {
+class aws_apigateway_rest_api {
 }
 class aws_cloudfront_distribution {
 }
@@ -12184,12 +12940,12 @@ class aws_sagemaker_labeling_job {
 }
 class aws_vpc {
 }
-aws_api_gateway_authorizer -[#1A83AF]-> aws_lambda_function
-aws_api_gateway_resource -[#1A83AF]-> aws_api_gateway_authorizer
-aws_api_gateway_resource -[#1A83AF]-> aws_lambda_function
-aws_api_gateway_rest_api -[#1A83AF]-> aws_api_gateway_authorizer
-aws_api_gateway_rest_api -[#1A83AF]-> aws_api_gateway_resource
-aws_api_gateway_rest_api -[#1A83AF]-> aws_lambda_function
+aws_apigateway_authorizer -[#1A83AF]-> aws_lambda_function
+aws_apigateway_resource -[#1A83AF]-> aws_apigateway_authorizer
+aws_apigateway_resource -[#1A83AF]-> aws_lambda_function
+aws_apigateway_rest_api -[#1A83AF]-> aws_apigateway_authorizer
+aws_apigateway_rest_api -[#1A83AF]-> aws_apigateway_resource
+aws_apigateway_rest_api -[#1A83AF]-> aws_lambda_function
 aws_cloudfront_distribution -[#1A83AF]-> aws_lambda_function
 aws_cognito_user_pool -[#1A83AF]-> aws_kms_key
 aws_cognito_user_pool -[#1A83AF]-> aws_lambda_function
@@ -12203,6 +12959,423 @@ aws_sagemaker_labeling_job -[#1A83AF]-> aws_lambda_function
 aws_vpc -[#1A83AF]-> aws_ec2_security_group
 aws_vpc -[#1A83AF]-> aws_ec2_subnet
 aws_vpc -[#1A83AF]-> aws_lambda_function
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
+## `aws_opensearch_domain`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_opensearch_domain data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_opensearch_advanced_security_options {
+**anonymous_auth_disable_date**: datetime
+**anonymous_auth_enabled**: boolean
+**enabled**: boolean
+**internal_user_database_enabled**: boolean
+**saml_options**: aws_opensearch_saml_options_output
+}
+class aws_opensearch_auto_tune_options_output {
+**error_message**: string
+**state**: string
+**use_off_peak_window**: boolean
+}
+class aws_opensearch_change_progress_details {
+**change_id**: string
+**message**: string
+}
+class aws_opensearch_cluster_config {
+**cold_storage_options**: boolean
+**dedicated_master_count**: int64
+**dedicated_master_enabled**: boolean
+**dedicated_master_type**: string
+**instance_count**: int64
+**instance_type**: string
+**multi_az_with_standby_enabled**: boolean
+**warm_count**: int64
+**warm_enabled**: boolean
+**warm_type**: string
+**zone_awareness_config**: int64
+**zone_awareness_enabled**: boolean
+}
+class aws_opensearch_cognito_options {
+**enabled**: boolean
+**identity_pool_id**: string
+**role_arn**: string
+**user_pool_id**: string
+}
+class aws_opensearch_domain {
+**access_policies**: dictionary[string, any]
+**advanced_options**: dictionary[string, string]
+**advanced_security_options**: aws_opensearch_advanced_security_options
+**auto_tune_options**: aws_opensearch_auto_tune_options_output
+**change_progress_details**: aws_opensearch_change_progress_details
+**cluster_config**: aws_opensearch_cluster_config
+**cognito_options**: aws_opensearch_cognito_options
+**created**: boolean
+**deleted**: boolean
+**domain_endpoint_options**: aws_opensearch_domain_endpoint_options
+**ebs_options**: aws_opensearch_ebs_options
+**encryption_at_rest_options**: aws_opensearch_encryption_at_rest_options
+**endpoint**: string
+**endpoint_v2**: string
+**endpoints**: dictionary[string, string]
+**engine_version**: string
+**ip_address_type**: string
+**log_publishing_options**: dictionary[string, aws_opensearch_log_publishing_option]
+**node_to_node_encryption_options**: boolean
+**off_peak_window_options**: aws_opensearch_off_peak_window_options
+**processing**: boolean
+**service_software_options**: aws_opensearch_service_software_options
+**snapshot_options**: int64
+**software_update_options**: boolean
+**upgrade_processing**: boolean
+**vpc_options**: aws_opensearch_vpc_derived_info
+}
+class aws_opensearch_domain_endpoint_options {
+**custom_endpoint**: string
+**custom_endpoint_certificate_arn**: string
+**custom_endpoint_enabled**: boolean
+**enforce_https**: boolean
+**tls_security_policy**: string
+}
+class aws_opensearch_ebs_options {
+**ebs_enabled**: boolean
+**iops**: int64
+**throughput**: int64
+**volume_size**: int64
+**volume_type**: string
+}
+class aws_opensearch_encryption_at_rest_options {
+**enabled**: boolean
+**kms_key_id**: string
+}
+class aws_opensearch_log_publishing_option {
+**cloud_watch_logs_log_group_arn**: string
+**enabled**: boolean
+}
+class aws_opensearch_off_peak_window {
+**window_start_time**: aws_opensearch_window_start_time
+}
+class aws_opensearch_off_peak_window_options {
+**enabled**: boolean
+**off_peak_window**: aws_opensearch_off_peak_window
+}
+class aws_opensearch_saml_idp {
+**entity_id**: string
+**metadata_content**: string
+}
+class aws_opensearch_saml_options_output {
+**enabled**: boolean
+**idp**: aws_opensearch_saml_idp
+**roles_key**: string
+**session_timeout_minutes**: int64
+**subject_key**: string
+}
+class aws_opensearch_service_software_options {
+**automated_update_date**: datetime
+**cancellable**: boolean
+**current_version**: string
+**description**: string
+**new_version**: string
+**optional_deployment**: boolean
+**update_available**: boolean
+**update_status**: string
+}
+class aws_opensearch_vpc_derived_info {
+**availability_zones**: string[]
+**security_group_ids**: string[]
+**subnet_ids**: string[]
+**vpc_id**: string
+}
+class aws_opensearch_window_start_time {
+**hours**: int64
+**minutes**: int64
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_opensearch_advanced_security_options --> aws_opensearch_saml_options_output
+aws_opensearch_domain --> aws_opensearch_advanced_security_options
+aws_opensearch_domain --> aws_opensearch_auto_tune_options_output
+aws_opensearch_domain --> aws_opensearch_change_progress_details
+aws_opensearch_domain --> aws_opensearch_cluster_config
+aws_opensearch_domain --> aws_opensearch_cognito_options
+aws_opensearch_domain --> aws_opensearch_domain_endpoint_options
+aws_opensearch_domain --> aws_opensearch_ebs_options
+aws_opensearch_domain --> aws_opensearch_encryption_at_rest_options
+aws_opensearch_domain --> aws_opensearch_log_publishing_option
+aws_opensearch_domain --> aws_opensearch_off_peak_window_options
+aws_opensearch_domain --> aws_opensearch_service_software_options
+aws_opensearch_domain --> aws_opensearch_vpc_derived_info
+aws_resource <|--- aws_opensearch_domain
+aws_opensearch_off_peak_window --> aws_opensearch_window_start_time
+aws_opensearch_off_peak_window_options --> aws_opensearch_off_peak_window
+aws_opensearch_saml_options_output --> aws_opensearch_saml_idp
+resource <|--- aws_resource
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_opensearch_domain resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_opensearch_domain {
+}
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
+## `aws_organizational_root`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_organizational_root data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_organizational_root {
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_resource <|--- aws_organizational_root
+resource <|--- aws_resource
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_organizational_root resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_organizational_root {
+}
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
+## `aws_organizational_unit`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_organizational_unit data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_organizational_unit {
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_resource <|--- aws_organizational_unit
+resource <|--- aws_resource
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_organizational_unit resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_organizational_unit {
+}
 @enduml
 ```
 
@@ -12287,7 +13460,6 @@ class aws_rds_cluster {
 **rds_monitoring_role_arn**: string
 **rds_multi_az**: boolean
 **rds_network_type**: string
-**rds_percent_progress**: string
 **rds_performance_insights_enabled**: boolean
 **rds_performance_insights_kms_key_id**: string
 **rds_performance_insights_retention_period**: int64
@@ -12451,6 +13623,122 @@ aws_rds_cluster -[#1A83AF]-> aws_kinesis_stream
 aws_rds_cluster -[#1A83AF]-> aws_kms_key
 aws_rds_cluster -[#1A83AF]-> aws_rds_instance
 aws_rds_instance -[#1A83AF]-> aws_kms_key
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
+## `aws_rds_cluster_snapshot`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_rds_cluster_snapshot data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_rds_cluster_snapshot {
+**rds_allocated_storage**: int64
+**rds_attributes**: dictionary[string, string[]]
+**rds_availability_zones**: string[]
+**rds_cluster_create_time**: datetime
+**rds_db_cluster_identifier**: string
+**rds_db_cluster_resource_id**: string
+**rds_db_cluster_snapshot_arn**: string
+**rds_db_system_id**: string
+**rds_engine**: string
+**rds_engine_mode**: string
+**rds_engine_version**: string
+**rds_iam_database_authentication_enabled**: boolean
+**rds_kms_key_id**: string
+**rds_license_model**: string
+**rds_master_username**: string
+**rds_percent_progress**: int64
+**rds_port**: int64
+**rds_snapshot_type**: string
+**rds_source_db_cluster_snapshot_arn**: string
+**rds_status**: string
+**rds_storage_encrypted**: boolean
+**rds_storage_type**: string
+**rds_vpc_id**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+aws_resource <|--- aws_rds_cluster_snapshot
+resource <|--- aws_resource
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_rds_cluster_snapshot resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_rds_cluster_snapshot {
+}
 @enduml
 ```
 
@@ -12747,6 +14035,142 @@ aws_vpc -[#1A83AF]-> aws_rds_instance
 
 </details>
 
+## `aws_rds_snapshot`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_rds_snapshot data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_rds_snapshot {
+**rds_allocated_storage**: int64
+**rds_attributes**: dictionary[string, string[]]
+**rds_availability_zone**: string
+**rds_db_instance_identifier**: string
+**rds_db_system_id**: string
+**rds_dbi_resource_id**: string
+**rds_dedicated_log_volume**: boolean
+**rds_encrypted**: boolean
+**rds_engine**: string
+**rds_engine_version**: string
+**rds_iam_database_authentication_enabled**: boolean
+**rds_instance_create_time**: datetime
+**rds_iops**: int64
+**rds_kms_key_id**: string
+**rds_license_model**: string
+**rds_master_username**: string
+**rds_multi_tenant**: boolean
+**rds_option_group_name**: string
+**rds_original_snapshot_create_time**: datetime
+**rds_percent_progress**: int64
+**rds_port**: int64
+**rds_processor_features**: dictionary[string, string]
+**rds_snapshot_database_time**: datetime
+**rds_snapshot_target**: string
+**rds_snapshot_type**: string
+**rds_source_db_snapshot_identifier**: string
+**rds_source_region**: string
+**rds_storage_throughput**: int64
+**rds_storage_type**: string
+**rds_tde_credential_arn**: string
+**rds_timezone**: string
+**rds_vpc_id**: string
+}
+class aws_resource {
+**arn**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+class snapshot {
+**description**: string
+**encrypted**: boolean
+**owner_alias**: string
+**owner_id**: string
+**snapshot_status**: string
+**volume_id**: string
+**volume_size**: int64
+}
+aws_resource <|--- aws_rds_snapshot
+snapshot <|--- aws_rds_snapshot
+resource <|--- aws_resource
+resource <|--- snapshot
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_rds_snapshot resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_rds_snapshot {
+}
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
 ## `aws_redshift_cluster`
 
 <ZoomPanPinch>
@@ -12809,6 +14233,7 @@ class aws_redshift_cluster {
 **redshift_hsm_status**: aws_redshift_hsm_status
 **redshift_iam_roles**: aws_redshift_cluster_iam_role[]
 **redshift_kms_key_id**: string
+**redshift_logging_status**: aws_redshift_logging_status
 **redshift_maintenance_track_name**: string
 **redshift_manual_snapshot_retention_period**: int64
 **redshift_master_username**: string
@@ -12884,6 +14309,16 @@ class aws_redshift_hsm_status {
 **hsm_client_certificate_identifier**: string
 **hsm_configuration_identifier**: string
 **status**: string
+}
+class aws_redshift_logging_status {
+**bucket_name**: string
+**last_failure_message**: string
+**last_failure_time**: datetime
+**last_successful_delivery_time**: datetime
+**log_destination_type**: string
+**log_exports**: string[]
+**logging_enabled**: boolean
+**s3_key_prefix**: string
 }
 class aws_redshift_network_interface {
 **availability_zone**: string
@@ -12962,6 +14397,7 @@ aws_redshift_cluster --> aws_redshift_deferred_maintenance_window
 aws_redshift_cluster --> aws_redshift_elastic_ip_status
 aws_redshift_cluster --> aws_redshift_endpoint
 aws_redshift_cluster --> aws_redshift_hsm_status
+aws_redshift_cluster --> aws_redshift_logging_status
 aws_redshift_cluster --> aws_redshift_pending_modified_values
 aws_redshift_cluster --> aws_redshift_reserved_node_exchange_status
 aws_redshift_cluster --> aws_redshift_resize_info
@@ -13788,10 +15224,15 @@ class aws_route53_linked_service {
 **description**: string
 **service_principal**: string
 }
+class aws_route53_logging_config {
+**cloud_watch_logs_log_group_arn**: string
+**id**: string
+}
 class aws_route53_zone {
 **zone_caller_reference**: string
 **zone_config**: aws_route53_zone_config
 **zone_linked_service**: aws_route53_linked_service
+**zone_logging_config**: aws_route53_logging_config
 **zone_resource_record_set_count**: int64
 }
 class aws_route53_zone_config {
@@ -13815,6 +15256,7 @@ class resource {
 resource <|--- aws_resource
 aws_resource <|--- aws_route53_zone
 aws_route53_zone --> aws_route53_linked_service
+aws_route53_zone --> aws_route53_logging_config
 aws_route53_zone --> aws_route53_zone_config
 dns_zone <|--- aws_route53_zone
 resource <|--- dns_zone
@@ -13854,13 +15296,13 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class aws_api_gateway_domain_name {
+class aws_apigateway_domain_name {
 }
 class aws_route53_resource_record_set {
 }
 class aws_route53_zone {
 }
-aws_api_gateway_domain_name -[#1A83AF]-> aws_route53_zone
+aws_apigateway_domain_name -[#1A83AF]-> aws_route53_zone
 aws_route53_zone -[#1A83AF]-> aws_route53_resource_record_set
 @enduml
 ```
@@ -14158,6 +15600,8 @@ class aws_sagemaker_training_job {
 }
 class aws_sagemaker_transform_job {
 }
+class aws_ssm_resource_compliance {
+}
 aws_athena_work_group -[#1A83AF]-> aws_s3_bucket
 aws_athena_work_group -[#1A83AF]-> aws_sagemaker_processing_job
 aws_cloud_trail -[#1A83AF]-> aws_s3_bucket
@@ -14188,6 +15632,7 @@ aws_sagemaker_processing_job -[#1A83AF]-> aws_s3_bucket
 aws_sagemaker_processing_job -[#1A83AF]-> aws_sagemaker_training_job
 aws_sagemaker_training_job -[#1A83AF]-> aws_s3_bucket
 aws_sagemaker_transform_job -[#1A83AF]-> aws_s3_bucket
+aws_ssm_resource_compliance -[#1A83AF]-> aws_s3_bucket
 @enduml
 ```
 
@@ -18727,11 +20172,11 @@ aws_sagemaker_workteam -[#1A83AF]-> aws_sns_topic
 
 </details>
 
-## `aws_secrets_manager_secret`
+## `aws_secretsmanager_secret`
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgAlt="Diagram of aws_secrets_manager_secret data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_secretsmanager_secret data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -18757,12 +20202,12 @@ skinparam stereotypeIBackgroundColor #e98df7
 class aws_resource {
 **arn**: string
 }
-class aws_secrets_manager_rotation_rules_type {
+class aws_secretsmanager_rotation_rules_type {
 **automatically_after_days**: int64
 **duration**: string
 **schedule_expression**: string
 }
-class aws_secrets_manager_secret {
+class aws_secretsmanager_secret {
 **arn**: string
 **created_date**: datetime
 **deleted_date**: datetime
@@ -18776,7 +20221,7 @@ class aws_secrets_manager_secret {
 **primary_region**: string
 **rotation_enabled**: boolean
 **rotation_lambda_arn**: string
-**rotation_rules**: aws_secrets_manager_rotation_rules_type
+**rotation_rules**: aws_secretsmanager_rotation_rules_type
 **secret_versions_to_stages**: dictionary[string, string[]]
 }
 class resource {
@@ -18792,8 +20237,8 @@ class resource {
 **tags**: dictionary[string, string]
 }
 resource <|--- aws_resource
-aws_resource <|--- aws_secrets_manager_secret
-aws_secrets_manager_secret --> aws_secrets_manager_rotation_rules_type
+aws_resource <|--- aws_secretsmanager_secret
+aws_secretsmanager_secret --> aws_secretsmanager_rotation_rules_type
 @enduml
 ```
 
@@ -18807,7 +20252,7 @@ aws_secrets_manager_secret --> aws_secrets_manager_rotation_rules_type
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgAlt="Diagram of aws_secrets_manager_secret resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_secretsmanager_secret resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -18830,7 +20275,7 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class aws_secrets_manager_secret {
+class aws_secretsmanager_secret {
 }
 @enduml
 ```
@@ -19346,7 +20791,7 @@ class aws_sns_topic {
 **topic_fifo_topic**: boolean
 **topic_kms_master_key_id**: string
 **topic_owner**: string
-**topic_policy**: string
+**topic_policy**: dictionary[string, any]
 **topic_subscriptions_confirmed**: int64
 **topic_subscriptions_deleted**: int64
 **topic_subscriptions_pending**: int64
@@ -19563,11 +21008,11 @@ aws_sqs_queue -[#1A83AF]-> aws_kms_key
 
 </details>
 
-## `aws_ssm_instance_information`
+## `aws_ssm_document`
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgAlt="Diagram of aws_ssm_instance_information data model"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ssm_document data model"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -19593,11 +21038,159 @@ skinparam stereotypeIBackgroundColor #e98df7
 class aws_resource {
 **arn**: string
 }
-class aws_ssm_instance_aggregated_association_overview {
-**detailed_status**: string
-**instance_association_status_aggregated_count**: dictionary[string, int64]
+class aws_ssm_account_sharing_info {
+**account_id**: string
+**shared_document_version**: string
 }
-class aws_ssm_instance_information {
+class aws_ssm_document {
+**approved_version**: string
+**attachments_information**: string[]
+**author**: string
+**category**: string[]
+**category_enum**: string[]
+**content**: dictionary[string, any]
+**default_version**: string
+**description**: string
+**display_name**: string
+**document_format**: string
+**document_shared_with_accounts**: string[]
+**document_sharing_info**: aws_ssm_account_sharing_info[]
+**document_type**: string
+**document_version**: string
+**hash**: string
+**hash_type**: string
+**latest_version**: string
+**name**: string
+**owner**: string
+**parameters**: aws_ssm_document_parameter[]
+**pending_review_version**: string
+**platform_types**: string[]
+**requires**: aws_ssm_document_requires[]
+**review_information**: aws_ssm_review_information[]
+**review_status**: string
+**schema_version**: string
+**sha1**: string
+**status**: string
+**status_information**: string
+**target_type**: string
+**version_name**: string
+}
+class aws_ssm_document_parameter {
+**default_value**: string
+**description**: string
+**name**: string
+**type**: string
+}
+class aws_ssm_document_requires {
+**name**: string
+**require_type**: string
+**version**: string
+**version_name**: string
+}
+class aws_ssm_review_information {
+**reviewed_time**: datetime
+**reviewer**: string
+**status**: string
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- aws_resource
+aws_resource <|--- aws_ssm_document
+aws_ssm_document --> aws_ssm_account_sharing_info
+aws_ssm_document --> aws_ssm_document_parameter
+aws_ssm_document --> aws_ssm_document_requires
+aws_ssm_document --> aws_ssm_review_information
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ssm_document resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_ssm_document {
+}
+class aws_ssm_resource_compliance {
+}
+aws_ssm_resource_compliance -[#1A83AF]-> aws_ssm_document
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
+## `aws_ssm_instance`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ssm_instance data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_resource {
+**arn**: string
+}
+class aws_ssm_instance {
 **activation_id**: string
 **agent_version**: string
 **association_overview**: aws_ssm_instance_aggregated_association_overview
@@ -19620,6 +21213,10 @@ class aws_ssm_instance_information {
 **source_id**: string
 **source_type**: string
 }
+class aws_ssm_instance_aggregated_association_overview {
+**detailed_status**: string
+**instance_association_status_aggregated_count**: dictionary[string, int64]
+}
 class resource {
 **age**: duration
 **atime**: datetime
@@ -19633,8 +21230,8 @@ class resource {
 **tags**: dictionary[string, string]
 }
 resource <|--- aws_resource
-aws_resource <|--- aws_ssm_instance_information
-aws_ssm_instance_information --> aws_ssm_instance_aggregated_association_overview
+aws_resource <|--- aws_ssm_instance
+aws_ssm_instance --> aws_ssm_instance_aggregated_association_overview
 @enduml
 ```
 
@@ -19648,7 +21245,7 @@ aws_ssm_instance_information --> aws_ssm_instance_aggregated_association_overvie
 
 <ZoomPanPinch>
 
-```kroki imgType="plantuml" imgAlt="Diagram of aws_ssm_instance_information resource relationships"
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ssm_instance resource relationships"
 @startuml
 hide empty members
 skinparam ArrowColor #ffaf37
@@ -19673,9 +21270,148 @@ skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
 class aws_ec2_instance {
 }
-class aws_ssm_instance_information {
+class aws_ssm_instance {
 }
-aws_ssm_instance_information -[#1A83AF]-> aws_ec2_instance
+aws_ssm_instance -[#1A83AF]-> aws_ec2_instance
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
+## `aws_ssm_resource_compliance`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ssm_resource_compliance data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_resource {
+**arn**: string
+}
+class aws_ssm_compliance_execution_summary {
+**execution_id**: string
+**execution_time**: datetime
+**execution_type**: string
+}
+class aws_ssm_compliant_summary {
+**compliant_count**: int64
+**severity_summary**: aws_ssm_severity_summary
+}
+class aws_ssm_non_compliant_summary {
+**non_compliant_count**: int64
+**severity_summary**: aws_ssm_severity_summary
+}
+class aws_ssm_resource_compliance {
+**compliance_type**: string
+**compliant_summary**: aws_ssm_compliant_summary
+**execution_summary**: aws_ssm_compliance_execution_summary
+**non_compliant_summary**: aws_ssm_non_compliant_summary
+**overall_severity**: string
+**resource_id**: string
+**resource_type**: string
+**status**: string
+}
+class aws_ssm_severity_summary {
+**critical_count**: int64
+**high_count**: int64
+**informational_count**: int64
+**low_count**: int64
+**medium_count**: int64
+**unspecified_count**: int64
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- aws_resource
+aws_ssm_compliant_summary --> aws_ssm_severity_summary
+aws_ssm_non_compliant_summary --> aws_ssm_severity_summary
+aws_resource <|--- aws_ssm_resource_compliance
+aws_ssm_resource_compliance --> aws_ssm_compliance_execution_summary
+aws_ssm_resource_compliance --> aws_ssm_compliant_summary
+aws_ssm_resource_compliance --> aws_ssm_non_compliant_summary
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_ssm_resource_compliance resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_dynamodb_table {
+}
+class aws_ec2_instance {
+}
+class aws_s3_bucket {
+}
+class aws_ssm_document {
+}
+class aws_ssm_resource_compliance {
+}
+aws_ssm_resource_compliance -[#1A83AF]-> aws_dynamodb_table
+aws_ssm_resource_compliance -[#1A83AF]-> aws_ec2_instance
+aws_ssm_resource_compliance -[#1A83AF]-> aws_s3_bucket
+aws_ssm_resource_compliance -[#1A83AF]-> aws_ssm_document
 @enduml
 ```
 
@@ -20014,9 +21750,9 @@ skinparam RoundCorner 5
 skinparam Shadowing false
 skinparam stereotypeCBackgroundColor #e98df7
 skinparam stereotypeIBackgroundColor #e98df7
-class aws_api_gateway_domain_name {
+class aws_apigateway_domain_name {
 }
-class aws_api_gateway_rest_api {
+class aws_apigateway_rest_api {
 }
 class aws_ec2_network_interface {
 }
@@ -20032,8 +21768,8 @@ class aws_vpc {
 }
 class aws_vpc_endpoint {
 }
-aws_api_gateway_domain_name -[#1A83AF]-> aws_vpc_endpoint
-aws_api_gateway_rest_api -[#1A83AF]-> aws_vpc_endpoint
+aws_apigateway_domain_name -[#1A83AF]-> aws_vpc_endpoint
+aws_apigateway_rest_api -[#1A83AF]-> aws_vpc_endpoint
 aws_ec2_route_table -[#1A83AF]-> aws_vpc_endpoint
 aws_ec2_security_group -[#1A83AF]-> aws_ec2_network_interface
 aws_ec2_security_group -[#1A83AF]-> aws_vpc_endpoint
@@ -20180,6 +21916,522 @@ class aws_vpc_peering_connection {
 aws_region -[#1A83AF]-> aws_vpc
 aws_region -[#1A83AF]-> aws_vpc_peering_connection
 aws_vpc -[#1A83AF]-> aws_vpc_peering_connection
+@enduml
+```
+
+</ZoomPanPinch>
+
+</div>
+
+</details>
+
+## `aws_waf_web_acl`
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_waf_web_acl data model"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_resource {
+**arn**: string
+}
+class aws_waf_and_statement {
+**statements**: aws_waf_statement[]
+}
+class aws_waf_aws_managed_rules_acfp_rule_set {
+**creation_path**: string
+**enable_regex_in_path**: boolean
+**registration_page_path**: string
+**request_inspection**: aws_waf_request_inspection_acfp
+**response_inspection**: aws_waf_response_inspection
+}
+class aws_waf_aws_managed_rules_atp_rule_set {
+**enable_regex_in_path**: boolean
+**login_path**: string
+**request_inspection**: aws_waf_request_inspection
+**response_inspection**: aws_waf_response_inspection
+}
+class aws_waf_aws_managed_rules_bot_control_rule_set {
+**enable_machine_learning**: boolean
+**inspection_level**: string
+}
+class aws_waf_byte_match_statement {
+**field_to_match**: aws_waf_field_to_match
+**positional_constraint**: string
+**search_string**: string
+**text_transformations**: aws_waf_text_transformation[]
+}
+class aws_waf_captcha_action {
+**custom_request_handling**: aws_waf_custom_http_header[]
+}
+class aws_waf_captcha_config {
+**immunity_time_property**: int64
+}
+class aws_waf_challenge_action {
+**custom_request_handling**: aws_waf_custom_http_header[]
+}
+class aws_waf_challenge_config {
+**immunity_time_property**: int64
+}
+class aws_waf_condition {
+**action_condition**: string
+**label_name_condition**: string
+}
+class aws_waf_cookie_match_pattern {
+**all**: dictionary[string, any]
+**excluded_cookies**: string[]
+**included_cookies**: string[]
+}
+class aws_waf_cookies {
+**match_pattern**: aws_waf_cookie_match_pattern
+**match_scope**: string
+**oversize_handling**: string
+}
+class aws_waf_count_action {
+**custom_request_handling**: aws_waf_custom_http_header[]
+}
+class aws_waf_custom_http_header {
+**name**: string
+**value**: string
+}
+class aws_waf_custom_response {
+**custom_response_body_key**: string
+**response_code**: int64
+**response_headers**: aws_waf_custom_http_header[]
+}
+class aws_waf_custom_response_body {
+**content**: string
+**content_type**: string
+}
+class aws_waf_default_action {
+**allow**: aws_waf_custom_http_header[]
+**block**: aws_waf_custom_response
+}
+class aws_waf_field_to_match {
+**all_query_arguments**: dictionary[string, any]
+**body**: string
+**cookies**: aws_waf_cookies
+**header_order**: string
+**headers**: aws_waf_headers
+**ja3_fingerprint**: string
+**json_body**: aws_waf_json_body
+**method**: dictionary[string, any]
+**query_string**: dictionary[string, any]
+**single_header**: string
+**single_query_argument**: string
+**uri_path**: dictionary[string, any]
+}
+class aws_waf_filter {
+**behavior**: string
+**conditions**: aws_waf_condition[]
+**requirement**: string
+}
+class aws_waf_firewall_manager_rule_group {
+**firewall_manager_statement**: aws_waf_firewall_manager_statement
+**name**: string
+**override_action**: aws_waf_override_action
+**priority**: int64
+**visibility_config**: aws_waf_visibility_config
+}
+class aws_waf_firewall_manager_statement {
+**managed_rule_group_statement**: aws_waf_managed_rule_group_statement
+**rule_group_reference_statement**: aws_waf_rule_group_reference_statement
+}
+class aws_waf_forwarded_ip_config {
+**fallback_behavior**: string
+**header_name**: string
+}
+class aws_waf_geo_match_statement {
+**country_codes**: string[]
+**forwarded_ip_config**: aws_waf_forwarded_ip_config
+}
+class aws_waf_header_match_pattern {
+**all**: dictionary[string, any]
+**excluded_headers**: string[]
+**included_headers**: string[]
+}
+class aws_waf_headers {
+**match_pattern**: aws_waf_header_match_pattern
+**match_scope**: string
+**oversize_handling**: string
+}
+class aws_waf_ip_set_forwarded_ip_config {
+**fallback_behavior**: string
+**header_name**: string
+**position**: string
+}
+class aws_waf_ip_set_reference_statement {
+**arn**: string
+**ip_set_forwarded_ip_config**: aws_waf_ip_set_forwarded_ip_config
+}
+class aws_waf_json_body {
+**invalid_fallback_behavior**: string
+**match_pattern**: aws_waf_json_match_pattern
+**match_scope**: string
+**oversize_handling**: string
+}
+class aws_waf_json_match_pattern {
+**all**: dictionary[string, any]
+**included_paths**: string[]
+}
+class aws_waf_label_match_statement {
+**key**: string
+**scope**: string
+}
+class aws_waf_logging_configuration {
+**log_destination_configs**: string[]
+**logging_filter**: aws_waf_logging_filter
+**managed_by_firewall_manager**: boolean
+**redacted_fields**: aws_waf_field_to_match[]
+}
+class aws_waf_logging_filter {
+**default_behavior**: string
+**filters**: aws_waf_filter[]
+}
+class aws_waf_managed_rule_group_config {
+**aws_managed_rules_acfp_rule_set**: aws_waf_aws_managed_rules_acfp_rule_set
+**aws_managed_rules_atp_rule_set**: aws_waf_aws_managed_rules_atp_rule_set
+**aws_managed_rules_bot_control_rule_set**: aws_waf_aws_managed_rules_bot_control_rule_set
+**login_path**: string
+**password_field**: string
+**payload_type**: string
+**username_field**: string
+}
+class aws_waf_managed_rule_group_statement {
+**excluded_rules**: string[]
+**managed_rule_group_configs**: aws_waf_managed_rule_group_config[]
+**name**: string
+**rule_action_overrides**: aws_waf_rule_action_override[]
+**scope_down_statement**: aws_waf_statement
+**vendor_name**: string
+**version**: string
+}
+class aws_waf_not_statement {
+**statement**: aws_waf_statement
+}
+class aws_waf_or_statement {
+**statements**: aws_waf_statement[]
+}
+class aws_waf_override_action {
+**count**: aws_waf_count_action
+**none**: dictionary[string, any]
+}
+class aws_waf_rate_based_statement {
+**aggregate_key_type**: string
+**custom_keys**: aws_waf_rate_based_statement_custom_key[]
+**forwarded_ip_config**: aws_waf_forwarded_ip_config
+**limit**: int64
+**scope_down_statement**: aws_waf_statement
+}
+class aws_waf_rate_based_statement_custom_key {
+**cookie**: aws_waf_rate_limit
+**forwarded_ip**: dictionary[string, any]
+**header**: aws_waf_rate_limit
+**http_method**: dictionary[string, any]
+**ip**: dictionary[string, any]
+**label_namespace**: string
+**query_argument**: aws_waf_rate_limit
+**query_string**: aws_waf_rate_limit
+**uri_path**: aws_waf_rate_limit_uri_path
+}
+class aws_waf_rate_limit {
+**name**: string
+**text_transformations**: aws_waf_text_transformation[]
+}
+class aws_waf_rate_limit_uri_path {
+**text_transformations**: aws_waf_text_transformation[]
+}
+class aws_waf_regex_match_statement {
+**field_to_match**: aws_waf_field_to_match
+**regex_string**: string
+**text_transformations**: aws_waf_text_transformation[]
+}
+class aws_waf_regex_pattern_set_reference_statement {
+**arn**: string
+**field_to_match**: aws_waf_field_to_match
+**text_transformations**: aws_waf_text_transformation[]
+}
+class aws_waf_request_inspection {
+**password_field**: string
+**payload_type**: string
+**username_field**: string
+}
+class aws_waf_request_inspection_acfp {
+**address_fields**: string[]
+**email_field**: string
+**password_field**: string
+**payload_type**: string
+**phone_number_fields**: string[]
+**username_field**: string
+}
+class aws_waf_response_inspection {
+**body_contains**: aws_waf_response_inspection
+**header**: aws_waf_response_inspection
+**json**: aws_waf_response_inspection
+**status_code**: aws_waf_response_inspection
+}
+class aws_waf_rule {
+**action**: aws_waf_rule_action
+**captcha_config**: aws_waf_captcha_config
+**challenge_config**: aws_waf_challenge_config
+**name**: string
+**override_action**: aws_waf_override_action
+**priority**: int64
+**rule_labels**: string[]
+**statement**: aws_waf_statement
+**visibility_config**: aws_waf_visibility_config
+}
+class aws_waf_rule_action {
+**allow**: aws_waf_custom_http_header[]
+**block**: aws_waf_custom_response
+**captcha**: aws_waf_captcha_action
+**challenge**: aws_waf_challenge_action
+**count**: aws_waf_count_action
+}
+class aws_waf_rule_action_override {
+**action_to_use**: aws_waf_rule_action
+**name**: string
+}
+class aws_waf_rule_group_reference_statement {
+**arn**: string
+**excluded_rules**: string[]
+**rule_action_overrides**: aws_waf_rule_action_override[]
+}
+class aws_waf_size_constraint_statement {
+**comparison_operator**: string
+**field_to_match**: aws_waf_field_to_match
+**size**: int64
+**text_transformations**: aws_waf_text_transformation[]
+}
+class aws_waf_sqli_match_statement {
+**field_to_match**: aws_waf_field_to_match
+**sensitivity_level**: string
+**text_transformations**: aws_waf_text_transformation[]
+}
+class aws_waf_statement {
+**and_statement**: aws_waf_and_statement
+**byte_match_statement**: aws_waf_byte_match_statement
+**geo_match_statement**: aws_waf_geo_match_statement
+**ip_set_reference_statement**: aws_waf_ip_set_reference_statement
+**label_match_statement**: aws_waf_label_match_statement
+**managed_rule_group_statement**: aws_waf_managed_rule_group_statement
+**not_statement**: aws_waf_not_statement
+**or_statement**: aws_waf_or_statement
+**rate_based_statement**: aws_waf_rate_based_statement
+**regex_match_statement**: aws_waf_regex_match_statement
+**regex_pattern_set_reference_statement**: aws_waf_regex_pattern_set_reference_statement
+**rule_group_reference_statement**: aws_waf_rule_group_reference_statement
+**size_constraint_statement**: aws_waf_size_constraint_statement
+**sqli_match_statement**: aws_waf_sqli_match_statement
+**xss_match_statement**: aws_waf_xss_match_statement
+}
+class aws_waf_text_transformation {
+**priority**: int64
+**type**: string
+}
+class aws_waf_visibility_config {
+**cloud_watch_metrics_enabled**: boolean
+**metric_name**: string
+**sampled_requests_enabled**: boolean
+}
+class aws_waf_web_acl {
+**association_inspection_limit**: string
+**capacity**: int64
+**captcha_config**: aws_waf_captcha_config
+**challenge_config**: aws_waf_challenge_config
+**custom_response_bodies**: dictionary[string, aws_waf_custom_response_body]
+**default_action**: aws_waf_default_action
+**description**: string
+**label_namespace**: string
+**logging_configuration**: aws_waf_logging_configuration
+**managed_by_firewall_manager**: boolean
+**post_process_firewall_manager_rule_groups**: aws_waf_firewall_manager_rule_group[]
+**pre_process_firewall_manager_rule_groups**: aws_waf_firewall_manager_rule_group[]
+**rules**: aws_waf_rule[]
+**token_domains**: string[]
+**visibility_config**: aws_waf_visibility_config
+}
+class aws_waf_xss_match_statement {
+**field_to_match**: aws_waf_field_to_match
+**text_transformations**: aws_waf_text_transformation[]
+}
+class resource {
+**age**: duration
+**atime**: datetime
+**ctime**: datetime
+**id**: string
+**kind**: string
+**last_access**: duration
+**last_update**: duration
+**mtime**: datetime
+**name**: string
+**tags**: dictionary[string, string]
+}
+resource <|--- aws_resource
+aws_waf_and_statement --> aws_waf_statement
+aws_waf_aws_managed_rules_acfp_rule_set --> aws_waf_request_inspection_acfp
+aws_waf_aws_managed_rules_acfp_rule_set --> aws_waf_response_inspection
+aws_waf_aws_managed_rules_atp_rule_set --> aws_waf_request_inspection
+aws_waf_aws_managed_rules_atp_rule_set --> aws_waf_response_inspection
+aws_waf_byte_match_statement --> aws_waf_field_to_match
+aws_waf_byte_match_statement --> aws_waf_text_transformation
+aws_waf_captcha_action --> aws_waf_custom_http_header
+aws_waf_challenge_action --> aws_waf_custom_http_header
+aws_waf_cookies --> aws_waf_cookie_match_pattern
+aws_waf_count_action --> aws_waf_custom_http_header
+aws_waf_custom_response --> aws_waf_custom_http_header
+aws_waf_default_action --> aws_waf_custom_http_header
+aws_waf_default_action --> aws_waf_custom_response
+aws_waf_field_to_match --> aws_waf_cookies
+aws_waf_field_to_match --> aws_waf_headers
+aws_waf_field_to_match --> aws_waf_json_body
+aws_waf_filter --> aws_waf_condition
+aws_waf_firewall_manager_rule_group --> aws_waf_firewall_manager_statement
+aws_waf_firewall_manager_rule_group --> aws_waf_override_action
+aws_waf_firewall_manager_rule_group --> aws_waf_visibility_config
+aws_waf_firewall_manager_statement --> aws_waf_managed_rule_group_statement
+aws_waf_firewall_manager_statement --> aws_waf_rule_group_reference_statement
+aws_waf_geo_match_statement --> aws_waf_forwarded_ip_config
+aws_waf_headers --> aws_waf_header_match_pattern
+aws_waf_ip_set_reference_statement --> aws_waf_ip_set_forwarded_ip_config
+aws_waf_json_body --> aws_waf_json_match_pattern
+aws_waf_logging_configuration --> aws_waf_field_to_match
+aws_waf_logging_configuration --> aws_waf_logging_filter
+aws_waf_logging_filter --> aws_waf_filter
+aws_waf_managed_rule_group_config --> aws_waf_aws_managed_rules_acfp_rule_set
+aws_waf_managed_rule_group_config --> aws_waf_aws_managed_rules_atp_rule_set
+aws_waf_managed_rule_group_config --> aws_waf_aws_managed_rules_bot_control_rule_set
+aws_waf_managed_rule_group_statement --> aws_waf_managed_rule_group_config
+aws_waf_managed_rule_group_statement --> aws_waf_rule_action_override
+aws_waf_managed_rule_group_statement --> aws_waf_statement
+aws_waf_not_statement --> aws_waf_statement
+aws_waf_or_statement --> aws_waf_statement
+aws_waf_override_action --> aws_waf_count_action
+aws_waf_rate_based_statement --> aws_waf_forwarded_ip_config
+aws_waf_rate_based_statement --> aws_waf_rate_based_statement_custom_key
+aws_waf_rate_based_statement --> aws_waf_statement
+aws_waf_rate_based_statement_custom_key --> aws_waf_rate_limit
+aws_waf_rate_based_statement_custom_key --> aws_waf_rate_limit_uri_path
+aws_waf_rate_limit --> aws_waf_text_transformation
+aws_waf_rate_limit_uri_path --> aws_waf_text_transformation
+aws_waf_regex_match_statement --> aws_waf_field_to_match
+aws_waf_regex_match_statement --> aws_waf_text_transformation
+aws_waf_regex_pattern_set_reference_statement --> aws_waf_field_to_match
+aws_waf_regex_pattern_set_reference_statement --> aws_waf_text_transformation
+aws_waf_response_inspection --> aws_waf_response_inspection
+aws_waf_rule --> aws_waf_captcha_config
+aws_waf_rule --> aws_waf_challenge_config
+aws_waf_rule --> aws_waf_override_action
+aws_waf_rule --> aws_waf_rule_action
+aws_waf_rule --> aws_waf_statement
+aws_waf_rule --> aws_waf_visibility_config
+aws_waf_rule_action --> aws_waf_captcha_action
+aws_waf_rule_action --> aws_waf_challenge_action
+aws_waf_rule_action --> aws_waf_count_action
+aws_waf_rule_action --> aws_waf_custom_http_header
+aws_waf_rule_action --> aws_waf_custom_response
+aws_waf_rule_action_override --> aws_waf_rule_action
+aws_waf_rule_group_reference_statement --> aws_waf_rule_action_override
+aws_waf_size_constraint_statement --> aws_waf_field_to_match
+aws_waf_size_constraint_statement --> aws_waf_text_transformation
+aws_waf_sqli_match_statement --> aws_waf_field_to_match
+aws_waf_sqli_match_statement --> aws_waf_text_transformation
+aws_waf_statement --> aws_waf_and_statement
+aws_waf_statement --> aws_waf_byte_match_statement
+aws_waf_statement --> aws_waf_geo_match_statement
+aws_waf_statement --> aws_waf_ip_set_reference_statement
+aws_waf_statement --> aws_waf_label_match_statement
+aws_waf_statement --> aws_waf_managed_rule_group_statement
+aws_waf_statement --> aws_waf_not_statement
+aws_waf_statement --> aws_waf_or_statement
+aws_waf_statement --> aws_waf_rate_based_statement
+aws_waf_statement --> aws_waf_regex_match_statement
+aws_waf_statement --> aws_waf_regex_pattern_set_reference_statement
+aws_waf_statement --> aws_waf_rule_group_reference_statement
+aws_waf_statement --> aws_waf_size_constraint_statement
+aws_waf_statement --> aws_waf_sqli_match_statement
+aws_waf_statement --> aws_waf_xss_match_statement
+aws_resource <|--- aws_waf_web_acl
+aws_waf_web_acl --> aws_waf_captcha_config
+aws_waf_web_acl --> aws_waf_challenge_config
+aws_waf_web_acl --> aws_waf_custom_response_body
+aws_waf_web_acl --> aws_waf_default_action
+aws_waf_web_acl --> aws_waf_firewall_manager_rule_group
+aws_waf_web_acl --> aws_waf_logging_configuration
+aws_waf_web_acl --> aws_waf_rule
+aws_waf_web_acl --> aws_waf_visibility_config
+aws_waf_xss_match_statement --> aws_waf_field_to_match
+aws_waf_xss_match_statement --> aws_waf_text_transformation
+@enduml
+```
+
+</ZoomPanPinch>
+
+<details>
+
+<summary>Relationships to Other Resources</summary>
+
+<div>
+
+<ZoomPanPinch>
+
+```kroki imgType="plantuml" imgAlt="Diagram of aws_waf_web_acl resource relationships"
+@startuml
+hide empty members
+skinparam ArrowColor #ffaf37
+skinparam ArrowFontColor #ffaf37
+skinparam ArrowFontName Helvetica
+skinparam ArrowThickness 2
+skinparam BackgroundColor transparent
+skinparam ClassAttributeFontColor #d9b8ff
+skinparam ClassBackgroundColor #3d176e
+skinparam ClassBorderColor #000d19
+skinparam ClassFontColor #d9b8ff
+skinparam ClassFontName Helvetica
+skinparam ClassFontSize 17
+skinparam NoteBackgroundColor #d9b8ff
+skinparam NoteBorderColor #000d19
+skinparam NoteFontColor #3d176e
+skinparam NoteFontName Helvetica
+skinparam Padding 5
+skinparam RoundCorner 5
+skinparam Shadowing false
+skinparam stereotypeCBackgroundColor #e98df7
+skinparam stereotypeIBackgroundColor #e98df7
+class aws_alb {
+}
+class aws_apigateway_rest_api {
+}
+class aws_cloudfront_distribution {
+}
+class aws_cognito_user_pool {
+}
+class aws_waf_web_acl {
+}
+aws_cloudfront_distribution -[#1A83AF]-> aws_waf_web_acl
+aws_waf_web_acl -[#1A83AF]-> aws_alb
+aws_waf_web_acl -[#1A83AF]-> aws_apigateway_rest_api
+aws_waf_web_acl -[#1A83AF]-> aws_cognito_user_pool
 @enduml
 ```
 

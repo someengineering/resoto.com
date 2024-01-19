@@ -5,7 +5,7 @@ description: "Authenticate the user. This endpoint needs to be accessed from a b
 sidebar_label: "This endpoint is used to login the user."
 hide_title: true
 hide_table_of_contents: true
-api: eJzNkstuGzEMRX+F5Xpgu1012gVFUGRXpG42hhecGdoSIIuqyMmjA/17oZkgj35BVwJJ8VK8RzManRXdAWkyLyX8IQuS8NjhyDqUkJfQ4fVknpOFgYzBPMOkXDaw90GB05glJIPEPCqYQM9Aw8CqPMKpyAUI+iKPyuUT3BoEhSyqoY9Ni+xVsFUKj6HwYDw2JUpingvQ2/wgCZTLA5cNdlhYsyRlRTfjl92uHR+fvvcMUc4hQaYzb7DWDi9sXkZ0eGbDDjOZR4fb5Rp2uMo3X2acSkSH3iyr225nL2rVzVmKVezwgUqgPq7jW22df6IpGjqMMlBc0rXD1vOx/PVqt8Na67HDkE7SihYsMjq8YxUT+CaF4e7m5x6uf9y2eVx0Xev+86qpdqHUOhNdeFn3PZKgzdjFytWDV3b4D+IZB0nGyf5n2vac247GT7bNkUJqHiyE5heIB1whHrsXHAec556Uf5VYa0v/nrg8ozsc3+i16P2v+H6zx1r/AkNEFaw=
+api: eJzNUstOJDEM/BXj84gBTjA3tEKIG4KBy4iDp9szHSmThNjNK8q/43SveOwX7KnjVFx2VXVBpb3gaoM06hCz+yB1MeDTAnuWLrs0lSu8NJiDuo6UwY4wCudjWA9OgEOfogsKgbkX0AhbBuo6FuEedjkegGCb46u1HMGNgvWkKOK2vnGRfhE2JHPvMndqrcZEIRqYgb7n20Jgb19sPi4ws6QYhE1EwbOTk/b5vfrayH3cuwCJ9nyMtS7wwKa2N3DPaiSJdLBiOT2zeqZvvhQcszdoUE2yWi7LEEXrqqSYtdrLF8qOTMc0vmHz/B2N3o7oY0d+urahrec3fH5hC9dazW4XdrGB6tSzQXcs0fT/iZnh7up+DZe3N22erTXLejydOUUPFFpnoANPcn9GYudRZitnD76yw38iLtjFoObx/5y2vqemUflNl8mThWUeTAmVvyFucA7RLJ3j2GApWxJ+yL7Wdv08cn63+6fv9Fr186+4vlpbLJ9DRBWs
 sidebar_class_name: "get api-method"
 info_path: versioned_docs/version-3.X/reference/api/resoto-core-rest-api
 custom_edit_url: null
@@ -20,6 +20,8 @@ import ParamsItem from "@theme/ParamsItem";
 import ResponseSamples from "@theme/ResponseSamples";
 import SchemaItem from "@theme/SchemaItem";
 import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
 
 <h1
@@ -41,7 +43,10 @@ Authenticate the user. This endpoint needs to be accessed from a browser! It is 
 
 <div>
   <div>
-    <ApiTabs>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
       <TabItem
         label={"200"}
         value={"200"}

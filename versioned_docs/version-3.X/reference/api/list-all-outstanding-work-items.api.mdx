@@ -5,7 +5,7 @@ description: "All work items that are initiated but not done are listed via this
 sidebar_label: "List all outstanding work items"
 hide_title: true
 hide_table_of_contents: true
-api: eJy1U8GOEzEM/ZXI54gWTjC3FVohJA6rpXApVeVO3E62aZJ1PIVqlH9HnqnoFlUrLsxlZmzn5fn5eQBHpWWfxacIDdyFYH4m3hsvdChGOhSDTMZHLx6FnNn0YmIS41KkMRV80fjRo5HOF0PR5eSjvPkRwYLgrkCzBAVdP/fUE6wsMJWcYqECzQDv5nN9XRNZdBOySVuDIZjUSxGMzsfdC4JgoU1RKIoiYM7Bt6gIs6eiMAOUtqMD6pecMkEDyIwnsDCdv8TT5olaAQuZUyYWP5ETLPt/q1p796KwCPu4g2qnXMQD3cw6FLyFj855bQTDw4ubhHuqFlCEb3J/5VStdhwC8U0eTMKndZv6KFcVPgrtiEeqhC74eKuP82PhQNIlBw3saFQJpYMGZnrxTMcJFgrxkZT+coCeAzTQieTSzGZDl4rUZsiJpYKFI7LHTZgk1txkky32QaCBkFoMY7ha0DPX6fcf5nNltrLg4zaNrL0Epf1IJUkyHxOTebz/ujB3D5/1PuIyue/72wmzyAFHG03zgy/qyFfteOXi4eLO/7BZ0wiEfsksB/RRKY+CDmfdp60DC6PyK3vWcAnDsMFC3zjUquHnnvgEzXJ1kVz/qoWO0KkdlgPs6aRdtC1lGWcT+nGd/t451fuPCz7dL6DW3198h54=
+api: eJy1U02P0zAQ/SuWzxVZOEFvK7RCSBxWS+FSVtU0njbeOraxJ4XIyn9nJl7RdlWtuJBL7Pl8fvOmaIO5TTaSDV4v9a1z6ldIB2UJ+6yoA1KQUFlvyQKhUduBlA+kTPA4u5zNYj9a4HCbFXoTg/X05ofXC02wz3q51lJ083PAAfXjQifMMfiM7Cr63c2N/C6BrLpaWYWdAgYVBsoE3li/PwPIDdrgCT1JBYjR2RakQvOUpUzRue2wBznRGJELQ0owcl7NP9nD9glbYkdMIWIiW8ER5MO/RW2sOQvMlBiqnhbV56HHq14DBNfqgzFWHgLu/qwTpQE5CYjSVeyvZE2cJ8RhuoojIaVx04aB2TyP4EHini0CFcE466+94/lb6B6pC8yD3uPMElDHl0YaNzJOtmVMRxT466KH5NjdEcW8bJrShUzTssSQaOLIIyQLW1cpFl+VyQ4Gx0ftQgtuNnNjybl0v//AumJQLDfrd2FGbckJ7AfMgYL6GFi+D3dfV+r2/rP0Y1hVfd/f1pqZephlVOenv4giX5XjhYrLSZ3/YbPqCAh/UxMdWC+QZ0LLM+916zh0Zp55qByudSlbyPgtuWkSM69lGtn+eKJcblyu45GLHHhUBxzlFW2LkebZuGFep5c7J3z/VcGnuxWP4A9ffIee
 sidebar_class_name: "get api-method"
 info_path: versioned_docs/version-3.X/reference/api/resoto-core-rest-api
 custom_edit_url: null
@@ -20,6 +20,8 @@ import ParamsItem from "@theme/ParamsItem";
 import ResponseSamples from "@theme/ResponseSamples";
 import SchemaItem from "@theme/SchemaItem";
 import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
 
 <h1
@@ -41,7 +43,10 @@ All work items that are initiated but not done are listed via this endpoint.
 
 <div>
   <div>
-    <ApiTabs>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
       <TabItem
         label={"200"}
         value={"200"}

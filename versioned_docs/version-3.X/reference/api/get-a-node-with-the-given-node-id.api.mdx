@@ -5,7 +5,7 @@ description: "**Experimental**: This API is not stable and might be subject of c
 sidebar_label: "Get a node with the given node id"
 hide_title: true
 hide_table_of_contents: true
-api: eJzFVNtqGzEQ/RUxT61Zsm56oRWlkJYQ+lKC6/bFMUFejXeV7EqKNJvGLPvvZbTr2LmQ0lCoX2yPZjRH55yZDjTGIhhPxlmQMJkc33gMpkFLqp5MpJhXJoqj06/CRGEdiUhqVaNQVovGlBWJFYrYri6wIOHWoqiULfHg4yrkn87sCZJQwjqN4pehSlCFojTXaIeY0WcWMiBVRpAL4Nh5o6wqkfvDMgOvgmqQMHBCB1Y1CBLKoHx1bjRkYBi1V1RBdu8p84oboCWzNhgYW+rOpZAB3qjG13xZwOjIQQYBr1oTUIOk0GIGsaiwUSA7oI3nzEjB2BL6PrtFkiA/CwhX/lXTJSdH72zEyOeH0yl/3e01Q2qDTQ00ro1FvW1UOEtMquxAeV+bQnFJfhG5rnvY1yVJIQOlteFUVZ8G5zGQ4f4DWr8X6eDSWP0Q+WN0cOZARHKVxgNmdSdKB0aDhFeHr9+8fZdY8i4Q6l0XIIx04DEw/mwrx2dFjeL/haENSDhxVKkm3U2GktzfmI6ePxk0SJXjy0rklyb1JOTJI3m3dVmfM8K8G7XuIYOI4XrryTbUIKEi8lHmeVe5SL3sGC9nXqtgeGASQXw2aLZWbU0goXaFqlO4z4Br7h6//zCdMtgl+2vtErnjO2bJtuKLCyhmx9/nPKPcD0MceP75argzJkrkrWX/OJP3Fet23vlP+2HwE+EN5b5WxvLDEu3dqNkCtnMt93bD6Hy5HdJlNiqwgK5bqYg/Qt33HL5qMWxALpY7wZK22kT+rUGuVR3xCWJezMZBfimeXjyPPmYMKrtJlqlb/gcZXOJmf93x4vmHkEZ+noFoy2i/7DOoUGkMia/h9Kgo0NNe3YOFw4a+Hb6T4zn0/W/D5DlF
+api: eJzFVO9r2zAQ/VeEPm0h1G33g82MQTdK2ZdRsmxf0lAU62KrdSRVOncNxv/77uQ4SdfSsTJYvkQ+3eme3nunVmqIRTAejbMyl6PR6Z2HYFZgUdWjUS6mlYni5PyLoD/rUERUixqEslqsTFmhWICIzeIKChRuKYpK2RIOPixC9vHCngEKRWUaxE+DlcAKRGluwfYxoy+sHEtUZZT5THLscqWsKoH7y/lYehXUChACJ7TS0gehLIPy1aXRVGsYtVdY0fr+VaYVN6BzzNJAYGypO5dSLtypla/5sADRoaNQgJvGBNAyx9DAWMaigpWSeStx7TkzYjC2lF033iJJkJ8FhCv/qumck6N3NkLk/ePDQ/6732sC2ASbGmhYGgt6aFQ4i0wqlSjva1MoLsmuIte1D/u6JCkVKq0Np6r6PDjyBhru36P1e5FWXhurHyJ/jA7O7IlIrtJwwKzuRGklcZrLo+NXr9+8TSx5FxD0rotEiHhAzRn/eJDjk0LyD9/W4Jq+zxxWapXORoNJ7q9MR8e/sSRnVY4PK4FvmtTLZZY8krWDy7qMEWbtRuuOMiOE28GTTaipqEL0Mc+ytnIRu7xlvJx5q4LhgUkE8V6v2VI1NS1l7QpVpzDB4Zr72+/ek8hd0t7YpUvkbu4xSbYVn10AMTn9NuUZ5X4Eq+f5x1F/ZkyU5FvL/nEmf1es3XnnP70PvZ8Q7jDztaJJo4sl2tuNZjM5zHW+9zZsnJ8PQ0os9grMZNsuVITvoe46Dt80EMgvs/lOsKStNpHXZJGlqiM8QcyLyWaQX4qnH55HL7MJKrtOlqkb/qLlNaz3nzt+eP4hpA0/z0A0MNrNKbUCpSEkvvrdk6IAj3t1Dx4cNvR2+M5Op+TxX8PkOUU=
 sidebar_class_name: "get api-method"
 info_path: versioned_docs/version-3.X/reference/api/resoto-core-rest-api
 custom_edit_url: null
@@ -20,6 +20,8 @@ import ParamsItem from "@theme/ParamsItem";
 import ResponseSamples from "@theme/ResponseSamples";
 import SchemaItem from "@theme/SchemaItem";
 import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
 
 <h1
@@ -70,7 +72,10 @@ import TabItem from "@theme/TabItem";
   </div>
 </details><div>
   <div>
-    <ApiTabs>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
       <TabItem
         label={"200"}
         value={"200"}

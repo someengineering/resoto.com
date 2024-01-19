@@ -5,7 +5,7 @@ description: "The body defines the command to execute."
 sidebar_label: "Execute a cli command"
 hide_title: true
 hide_table_of_contents: true
-api: eJzdVEtv1DAQ/ivWnN3dlpcgt1L1gIREVRYu3T14ndnGxRkbe7LtEvLf0TjZbh8IiQMXLpHieX/fN9NDjdkmF9kFggoWDap1qHeqxo0jzIobVDa0raFacVB4h7ZjnC1p8cDg8t5Qq+LYoEqYO89iSshdIizxJZ13SDxb0iV+7zBzCRnjXSBlEqq8I9ukQO4H1tWUbvR1WdWBUKvbBulRd5NltiTQEE0yLTKmDNVVD2RahAqQtqCfTHzqvcpokm3UfZDahNSW5EhblwK1SKyiyfkwxdnHD8oRY4pJQmagwUm+7x2mHWjItsHWQNUD76IUD+sbtAwaTF07KW78RQoREzvMUHHqcBhWGqZJ34d6J9HP+dkPfOu8V2tUWZoz+R4i4W+2pNN7R2tI2UBsHKm28+yiP2TxjiSFzC70rXcqY+ts8IFmSzrfYtqp7Oja4+j6p2QiF8OFQRvatRPSt84UvKKLqGRcwyGNJEkaJC4Y4R3PozcCYf8cu8zJ0TVowDvTRi9PNzmQujrRL/RL/Uq/1m9W6qeyoSOGYRgGDWyuhXyw3kGBNcdAWaDu4cXx8e+xnVQbNg+lNXvcq4nRO2skai5d/LZjk5IRGTjGNv+tCgb9qMjdEdX/qFCp1SI3oYYKYshclocbqGBuvZtPey2CxrTd71OXPFTQMMdczed9EzIPVR9D4gE0bE1yZu1HqMU2Yr0xnWeowAdrfHkeNEjMY/Pbd8fHQuFKFmoTykiOC+eXmAMHdRYSqsvzzwt1evFB6mHKI4VfT8acmVtT4JoW/3ycQhk5Pntan56C/kDyf3MHJzE8WK9Bj+z1E83jgshmjUSv9ETZFfT92mT8kvwwyPN42aqr1YFh+Rs0NGhqTEUZ33AHFZyNQB4tpLy4++5ZG3vfU2sx8gOvZ/slUrjX6MWnzwvQsJ7OYxtqiUnmFnT5VrCEJYiAfgHtw2dE
+api: eJzdVE1v2zAM/SuCzm6zdh/YfMuKHgoMWNFmu7Q9yDZTq7MlTZLTZF7++x5l52spBuywyxIgiETykXyPVC8rCqXXLmprZC5nNYnCVitR0VwbCiLiorRtq0wlohW0pLKLdHpvZnsGHTaGSiRH2DyFrols8hQ7byjFJ7hGk4mAuKHvHYWYQoZ4FCGUJxFWpqy9NfoHVfkIN/gCr7KGMvFckzmobrQAV2bSKa9aiuSDzO96aXBAd2QWsB12PG0aEUj5shbbIDG3vk3giNCoo0XBMIew6+Li05XQBs7Oc8gpgDXjoUy/wiGUNbVK5r2MK8fJbfFEZYRFVZXm5Kq59taRj5pQZfQdrdcPmRw7/QgVOPpYn03DzxqlFyCLi1NhSxHrBxamW8dSGfw3UWkjWoiiXbNDaSAzILh3lq9Y4dDq0jbWAORygW5E0OYRIcn1T2A8LiomBXFTaBZ9oVXiy2lHgttV0fpBJIZB7YkjWsaJaxRT2B9zF6JHCQihpWqREFdPAbNyd5adZ6+zN9nb7N2D+ImsHfDW+GQyqkcWX2LcZKI1OGsCU93L81evXuZ2nFo73x+t08NalXONLhVHTbiKFytW3iseAx2pDX87Bah+P8nyxFT/KFHKhZmvbYUYZ0NMyxNrnCZgbjLuNQ80+cVmnzrfwKGO0YV8MulrxK3z3lkf1/BcKK9V0QxUs23geq5ALcIaW6omXSM3xxya33+AOOu0CtrMbWpJx6T5DQWL9buwGLCby9uZmF5fcT6UNUj49WzADBG6ceS4+JdDF0Lx47OR9fenoN+J/N+8g+Mw7K0X+Enq9aPMw4LwZg1Cg/ZBsjvZ94UK9MU36zVfDy9bfvewU5hPAKxJVeTTZHwjuMiLgciTGadn96Y7KmPjOy1LcnHP62i/eBS2M3r9+XYG52J8HltbcYxXz7jk31ze48sD9Avtw2dE
 sidebar_class_name: "post api-method"
 info_path: versioned_docs/version-3.X/reference/api/resoto-core-rest-api
 custom_edit_url: null
@@ -20,6 +20,8 @@ import ParamsItem from "@theme/ParamsItem";
 import ResponseSamples from "@theme/ResponseSamples";
 import SchemaItem from "@theme/SchemaItem";
 import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
 
 <h1
@@ -117,7 +119,10 @@ The body defines the command to execute. The command is executed and the result 
   </TabItem>
 </MimeTabs><div>
   <div>
-    <ApiTabs>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
       <TabItem
         label={"200"}
         value={"200"}

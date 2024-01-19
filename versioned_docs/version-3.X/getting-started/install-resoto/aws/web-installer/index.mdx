@@ -1,25 +1,32 @@
 ---
-sidebar_label: Resoto Web Installer
+sidebar_label: Web Installer
 sidebar_position: 1
 pagination_prev: getting-started/index
 pagination_next: getting-started/launch-resoto/index
+unlisted: true
 ---
 
 # Deploy Resoto to AWS with the Resoto Web Installer
 
-:::danger Deprecated
+The Resoto web installer offers one-click deployment of Resoto to <abbr title="Amazon Web Services">AWS</abbr>.
 
-The web installer is not maintained any longer and will be removed in a future release. We recommend running Resoto via [Docker](../../docker.mdx).
+:::warning Deprecation notice
 
-::::
+The Resoto web installer is no longer actively maintained. We recommend [running Resoto using Docker](../../index.mdx).
 
-We provide a web installer for one-click deployment of Resoto to <abbr title="Amazon Web Services">AWS</abbr>.
+:::
 
-:::tip
+:::info
 
 When deploying Resoto, we only use provided AWS credentials for the deployment. Credentials are not stored or retained after the deployment is complete.
 
-If you are not comfortable sharing your credentials, you can alternatively use the [CDK construct](../cdk.mdx) to deploy Resoto.
+If you are not comfortable sharing your credentials, you can alternatively use the [CDK construct](../cdk.mdx) to deploy Resoto to AWS.
+
+:::
+
+:::tip
+
+Don't want to manage your own Resoto installation? Check out **[Fix](https://fix.tt)**, an all-in-one security dashboard built on top of Resoto.
 
 :::
 

@@ -11,7 +11,6 @@ import DocItemTOCDesktop from '@theme/DocItem/TOC/Desktop';
 import DocItemTOCMobile from '@theme/DocItem/TOC/Mobile';
 import DocVersionBadge from '@theme/DocVersionBadge';
 import DocVersionBanner from '@theme/DocVersionBanner';
-import Unlisted from '@theme/Unlisted';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 
@@ -45,14 +44,13 @@ export default function DocItemLayout({ children }: Props): JSX.Element {
   const {
     frontMatter,
     assets,
-    metadata: { title, description, unlisted },
+    metadata: { title, description },
   } = useDoc();
   const image = assets.image ?? frontMatter.image ?? getImage({ title });
 
   return (
     <div className="row">
       <div className={clsx('col', !docTOC.hidden && styles.docItemCol)}>
-        {unlisted && <Unlisted />}
         <DocVersionBanner />
         <div className={styles.docItemContainer}>
           <article itemScope itemType="http://schema.org/Article">

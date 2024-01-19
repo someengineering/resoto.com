@@ -21,28 +21,28 @@ This guide assumes that you have already [installed](../../../getting-started/in
 1. Execute the following [`search` command](../../../reference/cli/search.mdx) in [Resoto Shell](../../../reference/components/shell.mdx) or Resoto UI:
 
    ```bash
-   > search is(aws_api_gateway_rest_api) with(empty, --> is(aws_api_gateway_authorizer))
+   > search is(aws_apigateway_rest_api) with(empty, --> is(aws_api_gateway_authorizer))
    # highlight-start
-   ​kind=aws_api_gateway_rest_api, ..., region=resoto-poweruser
-   ​kind=aws_api_gateway_rest_api, ..., account=poweruser-team
+   ​kind=aws_apigateway_rest_api, ..., region=resoto-poweruser
+   ​kind=aws_apigateway_rest_api, ..., account=poweruser-team
    # highlight-end
    ```
 
 2. Pipe the `search` command into the [`dump` command](../../../reference/cli/dump.mdx):
 
    ```bash
-   > search is(aws_api_gateway_rest_api) with(empty, --> is(aws_api_gateway_authorizer)) | dump
+   > search is(aws_apigateway_rest_api) with(empty, --> is(aws_api_gateway_authorizer)) | dump
    # highlight-start
    ​reported:
    ​  id: /aws/apigateway/123
    ​  name: some-name
    ​  ctime: '2022-12-05T22:53:14Z'
-   ​  kind: aws_api_gateway_rest_api
+   ​  kind: aws_apigateway_rest_api
    ​  age: 2mo28d
    # highlight-end
    ```
 
-   The command output will list the details of all non-compliant [`aws_api_gateway_rest_api` resources](../../../reference/unified-data-model/aws.mdx#aws_api_gateway_rest_api).
+   The command output will list the details of all non-compliant [`aws_apigateway_rest_api` resources](../../../reference/unified-data-model/aws.mdx#aws_apigateway_rest_api).
 
 ## Remediation
 
@@ -58,7 +58,7 @@ Please refer to the [AWS API Gateway documentation](https://docs.aws.amazon.com/
 
 - [Search](../../../reference/search/index.mdx)
 - [Command-Line Interface](../../../reference/cli/index.mdx)
-- [`aws_api_gateway_rest_api` Resource Data Model](../../../reference/unified-data-model/aws.mdx#aws_api_gateway_rest_api)
+- [`aws_apigateway_rest_api` Resource Data Model](../../../reference/unified-data-model/aws.mdx#aws_apigateway_rest_api)
 
 ## External Links
 

@@ -20,6 +20,8 @@ import ParamsItem from "@theme/ParamsItem";
 import ResponseSamples from "@theme/ResponseSamples";
 import SchemaItem from "@theme/SchemaItem";
 import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
 
 <h1
@@ -78,7 +80,10 @@ Note: the server tries to spread the number of tasks evenly over the number of w
   </div>
 </details><div>
   <div>
-    <ApiTabs>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
       <TabItem
         label={"200"}
         value={"200"}

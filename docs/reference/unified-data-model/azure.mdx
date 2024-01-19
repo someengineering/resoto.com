@@ -6569,13 +6569,13 @@ class azure_resource {
 class azure_resource_sku {
 **api_versions**: string[]
 **capabilities**: azure_resource_sku_capabilities[]
-**capacity**: azure_resource_sku_capacity
 **costs**: azure_resource_sku_costs[]
 **family**: string
 **location_info**: azure_resource_sku_location_info[]
 **locations**: string[]
 **resource_type**: string
 **restrictions**: azure_resource_sku_restrictions[]
+**sku_capacity**: azure_resource_sku_capacity
 **sku_kind**: string
 **sku_size**: string
 **sku_tier**: string
@@ -7132,9 +7132,9 @@ class azure_resource {
 class azure_route_filter {
 **etag**: string
 **filter_peerings**: azure_express_route_circuit_peering[]
+**filter_rules**: azure_route_filter_rule[]
 **ipv6_peerings**: azure_express_route_circuit_peering[]
 **provisioning_state**: string
-**rules**: azure_route_filter_rule[]
 }
 class azure_route_filter_rule {
 **access**: string

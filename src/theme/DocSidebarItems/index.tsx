@@ -1,5 +1,6 @@
 import Link from '@docusaurus/Link';
 import { DEFAULT_PLUGIN_ID } from '@docusaurus/constants';
+import type { PropVersionMetadata } from '@docusaurus/plugin-content-docs';
 import { useActivePlugin } from '@docusaurus/plugin-content-docs/client';
 import { ThemeClassNames } from '@docusaurus/theme-common';
 import { useDocsVersion } from '@docusaurus/theme-common/internal';
@@ -14,8 +15,16 @@ import styles from './styles.module.css';
 type Props = WrapperProps<typeof DocSidebarItemsType>;
 
 export default function DocSidebarItemsWrapper(props: Props): JSX.Element {
+  let versionMetadata: PropVersionMetadata;
+
+  try {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    versionMetadata = useDocsVersion();
+  } catch (e) {
+    versionMetadata = null;
+  }
+
   const { pluginId } = useActivePlugin();
-  const versionMetadata = useDocsVersion();
 
   return (
     <>
@@ -35,14 +44,15 @@ export default function DocSidebarItemsWrapper(props: Props): JSX.Element {
             dropdownItemsBefore={[]}
             dropdownItemsAfter={[]}
           />
-          {versionMetadata.version.substring(
+          {versionMetadata &&
+          versionMetadata.version.substring(
             0,
             versionMetadata.version.indexOf('.'),
           ) ===
-          latestRelease[versionMetadata.version]?.substring(
-            0,
-            latestRelease[versionMetadata.version]?.indexOf('.'),
-          ) ? (
+            latestRelease[versionMetadata.version]?.substring(
+              0,
+              latestRelease[versionMetadata.version]?.indexOf('.'),
+            ) ? (
             <Link
               to={`/releases/${latestRelease[versionMetadata.version]}`}
               className="button button--outline button--sm button--primary"

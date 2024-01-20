@@ -96,8 +96,12 @@ https://releases.resoto.com/*                                     https://resoto
 /contributing/*                                                   /docs/development/:splat
 /docs/contributing/*                                              /docs/development/:splat
 
+/docs/getting-started/docker                                      /docs/getting-started/install-resoto
+/docs/getting-started/installation/docker                         /docs/getting-started/install-resoto
+/docs/getting-started/installing-with-docker                      /docs/getting-started/install-resoto
+/docs/getting-started/install-resoto/docker                       /docs/getting-started/install-resoto
+
 /docs/getting-started/install-resoto/aws/cloudformation           /docs/getting-started/install-resoto/aws
-/docs/getting-started/docker                                      /docs/getting-started/install-resoto/docker
 /docs/getting-started/kubernetes                                  /docs/getting-started/install-resoto/kubernetes
 /docs/getting-started/pip                                         /docs/getting-started/install-resoto/pip
 /docs/getting-started/python                                      /docs/getting-started/install-resoto/pip

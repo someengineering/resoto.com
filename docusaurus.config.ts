@@ -12,7 +12,6 @@ import { themes as prismThemes } from 'prism-react-renderer';
 import rehypeKatex from 'rehype-katex';
 import remarkKroki from 'remark-kroki-plugin';
 import remarkMath from 'remark-math';
-import { EnumChangefreq } from 'sitemap';
 import latestRelease from './latestRelease.json';
 import versions from './versions.json';
 
@@ -196,7 +195,7 @@ const config: Config = {
             './src/css/openapi-docs.css',
           ],
         },
-        sitemap: { changefreq: EnumChangefreq.DAILY, priority: 0.5 },
+        sitemap: { changefreq: 'daily', priority: 0.5 },
       } satisfies Preset.Options,
     ],
   ],

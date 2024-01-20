@@ -194,18 +194,6 @@
   display: none;
 }
 
-.sidebar-install-resoto:nth-child(2) {
-  display: none;
-}
-
-.sidebar-install-resoto:first-child:has(+ .sidebar-install-resoto > ul > li) {
-  display: none;
-}
-
-.sidebar-install-resoto:has(> ul > li) {
-  display: block !important;
-}
-
 @media screen and (max-width: 1279px) {
   .navbar__items .social:not(.github) {
     display: none;

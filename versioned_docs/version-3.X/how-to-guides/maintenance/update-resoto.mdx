@@ -7,150 +7,168 @@ sidebar_position: 1
 
 We regularly release [new versions of Resoto](/releases) with bug fixes and new features, and recommend keeping your Resoto installation up to date.
 
+:::tip
+
+Don't want to manage your own Resoto installation? Check out **[Fix](https://fix.tt)**, an all-in-one security dashboard built on top of Resoto.
+
+:::
+
 <Tabs groupId="install-method" querystring>
-  <TabItem value="aws" label="AWS">
+<TabItem value="docker" label="Docker" default>
 
-    ## Prerequisites
+## Prerequisites
 
-    - [AWS command-line interface](https://aws.amazon.com/cli)
+- [Docker](https://docs.docker.com/get-started#download-and-install-docker)
 
-    - [Helm](https://helm.sh) (version 3 or above)
+- [Docker Compose >= 1.29](https://docs.docker.com/compose/install)
 
-    ## Directions
+## Directions
 
-    1.  Log in to the [AWS CloudFormation console](https://console.aws.amazon.com/cloudformation).
+1.  Fetch the `docker-compose.yaml` file for the latest Resoto version. See the [list of versions](https://github.com/someengineering/resoto/releases) if you want to use a specific version.
 
-    2.  Click **Stacks**.
+    ```bash
+    $ curl -Lo docker-compose.yaml {{dockerComposeUrl}}
+    ```
 
-    3.  Enter `ResotoEKS` into the search box, and click on the stack you would like to upgrade.
+2.  Restart the services defined in the `docker-compose.yaml` file:
 
-        ![ResotoEKS stack in AWS CloudFormation](./img/cf-stack.png)
+    ```bash
+    $ docker-compose up -d
+    ```
 
-    4.  Click the **Outputs** tab.
+    :::note
 
-    5.  Enter `ResotoEKSConfigCommand` into the search box. There should be exactly one entry. Copy the value (`aws eks ...`).
+    [Docker Compose V2 integrated compose functions in to the Docker platform.](https://docs.docker.com/compose/#compose-v2-and-the-new-docker-compose-command)
 
-        ![ResotoEKS stack outputs in AWS CloudFormation](./img/cf-output.png)
+    In Docker Compose V2, the command is `docker compose` (no hyphen) instead of `docker-compose`.
 
-    6.  Open a terminal and execute the copied command.
+    :::
 
-        ![Screenshot of ResotoEKS config command in terminal](./img/k8s-access.png)
+    <VersionOnly allowed="current">
 
-    7.  List installed Helm charts:
+    :::info
 
-        ```bash
-        $ helm list
-        ​NAME  	NAMESPACE	CHART       	APP VERSION
-        ​resoto	resoto   	resoto-0.7.4	3.3.1
-        ```
+    Resoto publishes packages for both x86 and ARM architectures for stable releases, but `edge` versions are only available for x86.
 
-        :::note
+    If you have an Apple Silicon or other ARM-based machine, please use the latest stable release (<LatestRelease /> or `latest`).
 
-        The `APP VERSION` column displays the currently installed version of Resoto.
+    :::
 
-        :::
+    </VersionOnly>
 
-    8.  Add the [Some Engineering Helm chart repository](https://helm.some.engineering):
+</TabItem>
+<TabItem value="aws" label="AWS">
 
-        ```bash
-        $ helm repo add someengineering https://helm.some.engineering
-        ```
+:::warning Deprecation notice
 
-    9.  Update cached chart information:
+The Resoto AWS <abbr title="Cloud Development Kit">CDK</abbr> construct is no longer actively maintained. We recommend [running Resoto using Docker](../../getting-started/install-resoto/index.mdx).
 
-        ```bash
-        $ helm repo update
-        ```
+:::
 
-    10. Upgrade the `resoto` chart:
+## Prerequisites
 
-        ```bash
-        $ helm upgrade resoto someengineering/resoto --atomic --reuse-values --set image.tag={{imageTag}}
-        ```
+- [AWS command-line interface](https://aws.amazon.com/cli)
 
-  </TabItem>
-  <TabItem value="docker" label="Docker">
+- [Helm](https://helm.sh) (version 3 or above)
 
-    ## Prerequisites
+## Directions
 
-    - [Docker](https://docs.docker.com/get-started#download-and-install-docker)
+1.  Log in to the [AWS CloudFormation console](https://console.aws.amazon.com/cloudformation).
 
-    - [Docker Compose >= 1.29](https://docs.docker.com/compose/install)
+2.  Click **Stacks**.
 
-    ## Directions
+3.  Enter `ResotoEKS` into the search box, and click on the stack you would like to upgrade.
 
-    1.  Fetch the `docker-compose.yaml` file for the latest Resoto version. See the [list of versions](https://github.com/someengineering/resoto/releases) if you want to use a specific version.
+    ![ResotoEKS stack in AWS CloudFormation](./img/cf-stack.png)
 
-        ```bash
-        $ curl -Lo docker-compose.yaml {{dockerComposeUrl}}
-        ```
+4.  Click the **Outputs** tab.
 
-    2.  Restart the services defined in the `docker-compose.yaml` file:
+5.  Enter `ResotoEKSConfigCommand` into the search box. There should be exactly one entry. Copy the value (`aws eks ...`).
 
-        ```bash
-        $ docker-compose up -d
-        ```
+    ![ResotoEKS stack outputs in AWS CloudFormation](./img/cf-output.png)
 
-        :::note
+6.  Open a terminal and execute the copied command.
 
-        [Docker Compose V2 integrated compose functions in to the Docker platform.](https://docs.docker.com/compose/#compose-v2-and-the-new-docker-compose-command)
+    ![Screenshot of ResotoEKS config command in terminal](./img/k8s-access.png)
 
-        In Docker Compose V2, the command is `docker compose` (no hyphen) instead of `docker-compose`.
+7.  List installed Helm charts:
 
-        :::
+    ```bash
+    $ helm list
+    ​NAME  	NAMESPACE	CHART       	APP VERSION
+    ​resoto	resoto   	resoto-0.7.4	3.3.1
+    ```
 
-        <VersionOnly allowed="current">
+    :::note
 
-          :::info
+    The `APP VERSION` column displays the currently installed version of Resoto.
 
-          Resoto publishes packages for both x86 and ARM architectures for stable releases, but `edge` versions are only available for x86.
+    :::
 
-          If you have an Apple Silicon or other ARM-based machine, please use the latest stable release (<LatestRelease /> or `latest`).
+8.  Add the [Some Engineering Helm chart repository](https://helm.some.engineering):
 
-          :::
+    ```bash
+    $ helm repo add someengineering https://helm.some.engineering
+    ```
 
-        </VersionOnly>
+9.  Update cached chart information:
 
-  </TabItem>
-  <TabItem value="kubernetes" label="Kubernetes">
+    ```bash
+    $ helm repo update
+    ```
 
-    ## Prerequisites
+10. Upgrade the `resoto` chart:
 
-    - [Helm](https://helm.sh) (version 3 or above)
+    ```bash
+    $ helm upgrade resoto someengineering/resoto --atomic --reuse-values --set image.tag={{imageTag}}
+    ```
 
-    ## Directions
+</TabItem>
+<TabItem value="kubernetes" label="Kubernetes">
 
-    1.  List installed Helm charts:
+:::warning Deprecation notice
 
-        ```bash
-        $ helm list
-        ​NAME  	NAMESPACE	CHART       	APP VERSION
-        ​resoto	resoto   	resoto-0.7.4	3.3.1
-        ```
+The Resoto Helm chart is no longer actively maintained. We recommend [running Resoto using Docker](../../getting-started/install-resoto/index.mdx).
 
-        :::note
+:::
 
-        The `APP VERSION` column displays the currently installed version of Resoto.
+## Prerequisites
 
-        :::
+- [Helm](https://helm.sh) (version 3 or above)
 
-    2.  Add the [Some Engineering Helm chart repository](https://helm.some.engineering):
+## Directions
 
-        ```bash
-        $ helm repo add someengineering https://helm.some.engineering
-        ```
+1.  List installed Helm charts:
 
-    3.  Update cached chart information:
+    ```bash
+    $ helm list
+    ​NAME  	NAMESPACE	CHART       	APP VERSION
+    ​resoto	resoto   	resoto-0.7.4	3.3.1
+    ```
 
-        ```bash
-        $ helm repo update
-        ```
+    :::note
 
-    4.  Upgrade the `resoto` chart:
+    The `APP VERSION` column displays the currently installed version of Resoto.
 
-        ```bash
-        $ helm upgrade resoto someengineering/resoto --atomic --reuse-values --set image.tag={{imageTag}}
-        ```
+    :::
 
-  </TabItem>
+2.  Add the [Some Engineering Helm chart repository](https://helm.some.engineering):
+
+    ```bash
+    $ helm repo add someengineering https://helm.some.engineering
+    ```
+
+3.  Update cached chart information:
+
+    ```bash
+    $ helm repo update
+    ```
+
+4.  Upgrade the `resoto` chart:
+
+    ```bash
+    $ helm upgrade resoto someengineering/resoto --atomic --reuse-values --set image.tag={{imageTag}}
+    ```
+
+</TabItem>
 </Tabs>

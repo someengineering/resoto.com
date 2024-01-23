@@ -11,13 +11,12 @@ export default function DocItemMetadata(): JSX.Element {
   } = useDoc();
 
   useEffect(() => {
-    if (
-      id.startsWith('getting-started/install-resoto') &&
-      id !== 'getting-started/install-resoto/index'
-    ) {
+    if (id.startsWith('getting-started/install-resoto')) {
       window.localStorage.setItem(
         'docusaurus.tab.install-method',
-        id.split('/')[2],
+        id === 'getting-started/install-resoto/index'
+          ? 'docker'
+          : id.split('/')[2],
       );
     }
   }, [id]);

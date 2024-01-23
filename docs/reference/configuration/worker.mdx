@@ -49,71 +49,71 @@ Resoto Worker will overwrite any existing files with the defined filenames.
 For [Docker](../../getting-started/install-resoto/index.mdx) and [Kubernetes](../../getting-started/install-resoto/kubernetes.mdx) installations, you can mount configuration files within the `resotoworker` container instead of defining them in the configuration.
 
 <Tabs groupId="install-method" querystring>
-<TabItem value="docker" label="Docker">
+<TabItem value="docker" label="Docker" default>
 
-1. Add the desired volume definition to the `resotoworker` service in `docker-compose.yaml`:
+1.  Add the desired volume definition to the `resotoworker` service in `docker-compose.yaml`:
 
-   ```yaml title="docker-compose.yaml"
-   services:
-     ...
-     resotoworker:
-       image: somecr.io/someengineering/resotoworker:{{imageTag}}
-       container_name: resotoworker
-       ...
-   # highlight-start
-       volumes:
-         - $HOME/.aws:/home/resoto/.aws
-   # highlight-end
-     ...
-   ...
-   ```
+    ```yaml title="docker-compose.yaml"
+    services:
+      ...
+      resotoworker:
+        image: somecr.io/someengineering/resotoworker:{{imageTag}}
+        container_name: resotoworker
+        ...
+    # highlight-start
+        volumes:
+          - $HOME/.aws:/home/resoto/.aws
+    # highlight-end
+      ...
+    ...
+    ```
 
-2. Recreate the `resotoworker` container with the updated service definition:
+2.  Recreate the `resotoworker` container with the updated service definition:
 
-   ```bash
-   $ docker-compose up -d
-   ```
+    ```bash
+    $ docker-compose up -d
+    ```
 
-   :::note
+    :::note
 
-   [Docker Compose V2 integrated compose functions in to the Docker platform.](https://docs.docker.com/compose/#compose-v2-and-the-new-docker-compose-command)
+    [Docker Compose V2 integrated compose functions in to the Docker platform.](https://docs.docker.com/compose/#compose-v2-and-the-new-docker-compose-command)
 
-   In Docker Compose V2, the command is `docker compose` (no hyphen) instead of `docker-compose`.
+    In Docker Compose V2, the command is `docker compose` (no hyphen) instead of `docker-compose`.
 
-   :::
+    :::
 
 </TabItem>
 <TabItem value="kubernetes" label="Kubernetes">
 
-1. Create a secret with the path to the configuration file:
+1.  Create a secret with the path to the configuration file:
 
-   ```bash
-   $ kubectl -n resoto create secret generic resoto-home --from-file=credentials=$HOME/.aws/credentials
-   ```
+    ```bash
+    $ kubectl -n resoto create secret generic resoto-home --from-file=credentials=$HOME/.aws/credentials
+    ```
 
-2. Update `resoto-values.yaml` with `resotoworker` volume mounts and volumes:
+2.  Update `resoto-values.yaml` with `resotoworker` volume mounts and volumes:
 
-   ```yaml title="resoto-values.yaml"
-   ...
-   resotoworker:
-     ...
-   # highlight-start
-     volumeMounts:
-       - mountPath: /home/resoto/.aws
-         name: aws-credentials
-     volumes:
-       - name: aws-credentials
-         secret:
-           secretName: resoto-home
-   # highlight-end
-   ...
-   ```
+    ```yaml title="resoto-values.yaml"
+    ...
+    resotoworker:
+      ...
+    # highlight-start
+      volumeMounts:
+        - mountPath: /home/resoto/.aws
+          name: aws-credentials
+      volumes:
+        - name: aws-credentials
+          secret:
+            secretName: resoto-home
+    # highlight-end
+    ...
+    ```
 
-3. Deploy the changes with Helm:
+3.  Deploy the changes with Helm:
 
-   ```bash
-   $ helm upgrade resoto resoto/resoto --set image.tag={{imageTag}} -f resoto-values.yaml
-   ```
+    ```bash
+    $ helm upgrade resoto resoto/resoto --set image.tag={{imageTag}} -f resoto-values.yaml
+    ```
 
 </TabItem>
 </Tabs>

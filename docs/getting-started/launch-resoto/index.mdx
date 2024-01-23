@@ -17,220 +17,236 @@ Resoto UI is a user-friendly web interface that simplifies managing and explorin
 The steps to launch Resoto UI are dependent on how you installed Resoto.
 
 <Tabs groupId="install-method" querystring>
+<TabItem value="docker" label="Docker" default>
+
+1.  Resoto UI listens on port `8900` by default. You can access it by opening [https://localhost:8900](https://localhost:8900) in your browser.
+
+    :::note
+
+    The SSL certificate is self-signed, but you can safely ignore any browser warnings.
+
+    :::
+
+2.  Log in with your Resoto credentials:
+
+    ![Screenshot of Resoto login form](./img/login-form.png)
+
+    :::note
+
+    If accessing a new Resoto install, you will be prompted to create an administrator account:
+
+    ![Screenshot of Resoto account creation form](./img/create-account.png)
+
+    Additional users can be added via the [CLI](../../reference/cli/index.mdx) using the [`user add` command](../../reference/cli/user/add.mdx).
+
+    See [User Management](../../reference/user-management/index.mdx) for details.
+
+    :::
+
+3.  After logging in, Resoto UI will start.
+
+    :::note
+
+    The first time Resoto UI is launched, a setup wizard will appear to help you configure Resoto:
+
+    ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
+
+    :::
+
+</TabItem>
 <TabItem value="aws" label="AWS">
 
-1. Log in to the [AWS CloudFormation console](https://console.aws.amazon.com/cloudformation).
+:::warning Deprecation notice
 
-2. Click **Stacks**.
+The Resoto AWS <abbr title="Cloud Development Kit">CDK</abbr> construct is no longer actively maintained. We recommend [running Resoto using Docker](../install-resoto/index.mdx).
 
-3. Enter `ResotoEKS` into the search box, and click on the **ResotoEKS** stack.
+:::
 
-   ![ResotoEKS stack in AWS CloudFormation](./img/cf-stack.png)
+1.  Log in to the [AWS CloudFormation console](https://console.aws.amazon.com/cloudformation).
 
-4. Click the **Outputs** tab.
+2.  Click **Stacks**.
 
-5. Enter `ResotoUI` into the search box. There should be exactly one entry. Copy the value (e.g., `https://a3xxxxxx.us-east-1.elb.amazonaws.com:8900`).
+3.  Enter `ResotoEKS` into the search box, and click on the **ResotoEKS** stack.
 
-   :::info
+    ![ResotoEKS stack in AWS CloudFormation](./img/cf-stack.png)
 
-   The value of `ResotoEKS.ResotoUI` in **Outputs** is the URL of the Resoto UI.
+4.  Click the **Outputs** tab.
 
-   :::
+5.  Enter `ResotoUI` into the search box. There should be exactly one entry. Copy the value (e.g., `https://a3xxxxxx.us-east-1.elb.amazonaws.com:8900`).
 
-6. Open the copied URL in your browser.
+    :::info
 
-   :::note
+    The value of `ResotoEKS.ResotoUI` in **Outputs** is the URL of the Resoto UI.
 
-   The SSL certificate is self-signed, but you can safely ignore any browser warnings.
+    :::
 
-   :::
+6.  Open the copied URL in your browser.
 
-7. Log in with your Resoto credentials:
+    :::note
 
-   ![Screenshot of Resoto login form](./img/login-form.png)
+    The SSL certificate is self-signed, but you can safely ignore any browser warnings.
 
-   :::note
+    :::
 
-   If accessing a new Resoto install, you will be prompted to create an administrator account:
+7.  Log in with your Resoto credentials:
 
-   ![Screenshot of Resoto account creation form](./img/create-account.png)
+    ![Screenshot of Resoto login form](./img/login-form.png)
 
-   Additional users can be added via the [CLI](../../reference/cli/index.mdx) using the [`user add` command](../../reference/cli/user/add.mdx).
+    :::note
 
-   See [User Management](../../reference/user-management/index.mdx) for details.
+    If accessing a new Resoto install, you will be prompted to create an administrator account:
 
-   :::
+    ![Screenshot of Resoto account creation form](./img/create-account.png)
 
-8. After logging in, Resoto UI will start.
+    Additional users can be added via the [CLI](../../reference/cli/index.mdx) using the [`user add` command](../../reference/cli/user/add.mdx).
 
-   :::note
+    See [User Management](../../reference/user-management/index.mdx) for details.
 
-   The first time Resoto UI is launched, a setup wizard will appear to help you configure Resoto:
+    :::
 
-   ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
+8.  After logging in, Resoto UI will start.
 
-   :::
+    :::note
+
+    The first time Resoto UI is launched, a setup wizard will appear to help you configure Resoto:
+
+    ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
+
+    :::
 
 </TabItem>
 <TabItem value="digitalocean" label="DigitalOcean">
 
-1. Resoto is available via an externally accessible service address. Get the address by executing the following in your terminal:
+:::warning Deprecation notice
 
-   ```bash
-   export SERVICE_ADDRESS=$(kubectl get --namespace resoto service resoto-resotocore -o jsonpath="{.status.loadBalancer.ingress[0].ip}")
-   echo "Visit https://$SERVICE_ADDRESS:8900 to use Resoto."
-   ```
+The Resoto DigitalOcean Marketplace app is no longer actively maintained. We recommend [running Resoto using Docker](../install-resoto/index.mdx).
 
-2. Copy the URL into your browser to launch Resoto UI.
+:::
 
-   :::note
+1.  Resoto is available via an externally accessible service address. Get the address by executing the following in your terminal:
 
-   The SSL certificate is self-signed, but you can safely ignore any browser warnings.
+    ```bash
+    export SERVICE_ADDRESS=$(kubectl get --namespace resoto service resoto-resotocore -o jsonpath="{.status.loadBalancer.ingress[0].ip}")
+    echo "Visit https://$SERVICE_ADDRESS:8900 to use Resoto."
+    ```
 
-   :::
+2.  Copy the URL into your browser to launch Resoto UI.
 
-3. Log in with your Resoto credentials:
+    :::note
 
-   ![Screenshot of Resoto login form](./img/login-form.png)
+    The SSL certificate is self-signed, but you can safely ignore any browser warnings.
 
-   :::note
+    :::
 
-   If accessing a new Resoto install, you will be prompted to create an administrator account:
+3.  Log in with your Resoto credentials:
 
-   ![Screenshot of Resoto account creation form](./img/create-account.png)
+    ![Screenshot of Resoto login form](./img/login-form.png)
 
-   Additional users can be added via the [CLI](../../reference/cli/index.mdx) using the [`user add` command](../../reference/cli/user/add.mdx).
+    :::note
 
-   See [User Management](../../reference/user-management/index.mdx) for details.
+    If accessing a new Resoto install, you will be prompted to create an administrator account:
 
-   :::
+    ![Screenshot of Resoto account creation form](./img/create-account.png)
 
-4. After logging in, Resoto UI will start.
+    Additional users can be added via the [CLI](../../reference/cli/index.mdx) using the [`user add` command](../../reference/cli/user/add.mdx).
 
-   :::note
+    See [User Management](../../reference/user-management/index.mdx) for details.
 
-   The first time Resoto UI is launched, a setup wizard will appear to help you configure Resoto:
+    :::
 
-   ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
+4.  After logging in, Resoto UI will start.
 
-   :::
+    :::note
 
-   ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
+    The first time Resoto UI is launched, a setup wizard will appear to help you configure Resoto:
 
-</TabItem>
-<TabItem value="docker" label="Docker">
+    ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
 
-1. Resoto UI listens on port `8900` by default. You can access it by opening [https://localhost:8900](https://localhost:8900) in your browser.
-
-   :::note
-
-   The SSL certificate is self-signed, but you can safely ignore any browser warnings.
-
-   :::
-
-2. Log in with your Resoto credentials:
-
-   ![Screenshot of Resoto login form](./img/login-form.png)
-
-   :::note
-
-   If accessing a new Resoto install, you will be prompted to create an administrator account:
-
-   ![Screenshot of Resoto account creation form](./img/create-account.png)
-
-   Additional users can be added via the [CLI](../../reference/cli/index.mdx) using the [`user add` command](../../reference/cli/user/add.mdx).
-
-   See [User Management](../../reference/user-management/index.mdx) for details.
-
-   :::
-
-3. After logging in, Resoto UI will start.
-
-   :::note
-
-   The first time Resoto UI is launched, a setup wizard will appear to help you configure Resoto:
-
-   ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
-
-   :::
-
-   ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
+    :::
 
 </TabItem>
 <TabItem value="kubernetes" label="Kubernetes">
 
-1. Resoto provides a service that exposes Resoto UI on port `8900`. We recommend configuring an [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress) with a valid certificate for UI access, but you can port-forward the service as a temporary solution:
+:::warning Deprecation notice
 
-   ```bash
-   $ kubectl port-forward services/resoto-resotocore 8900
-   ```
+The Resoto Helm chart is no longer actively maintained. We recommend [running Resoto using Docker](../install-resoto/index.mdx).
 
-2. Log in with your Resoto credentials:
+:::
 
-   ![Screenshot of Resoto login form](./img/login-form.png)
+1.  Resoto provides a service that exposes Resoto UI on port `8900`. We recommend configuring an [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress) with a valid certificate for UI access, but you can port-forward the service as a temporary solution:
 
-   :::note
+    ```bash
+    $ kubectl port-forward services/resoto-resotocore 8900
+    ```
 
-   If accessing a new Resoto install, you will be prompted to create an administrator account:
+2.  Log in with your Resoto credentials:
 
-   ![Screenshot of Resoto account creation form](./img/create-account.png)
+    ![Screenshot of Resoto login form](./img/login-form.png)
 
-   Additional users can be added via the [CLI](../../reference/cli/index.mdx) using the [`user add` command](../../reference/cli/user/add.mdx).
+    :::note
 
-   See [User Management](../../reference/user-management/index.mdx) for details.
+    If accessing a new Resoto install, you will be prompted to create an administrator account:
 
-   :::
+    ![Screenshot of Resoto account creation form](./img/create-account.png)
 
-3. After logging in, Resoto UI will start.
+    Additional users can be added via the [CLI](../../reference/cli/index.mdx) using the [`user add` command](../../reference/cli/user/add.mdx).
 
-   :::note
+    See [User Management](../../reference/user-management/index.mdx) for details.
 
-   The first time Resoto UI is launched, a setup wizard will appear to help you configure Resoto:
+    :::
 
-   ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
+3.  After logging in, Resoto UI will start.
 
-   :::
+    :::note
 
-   ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
+    The first time Resoto UI is launched, a setup wizard will appear to help you configure Resoto:
+
+    ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
+
+    :::
 
 </TabItem>
 <TabItem value="pip" label="pip">
 
-1. Resoto UI listens on port `8900` by default. You can access it by opening [https://localhost:8900](https://localhost:8900) in your browser.
+:::warning
 
-   :::note
+Resoto consists of a number of distributed components that are intended to run 24/7 on a server. We recommend [running Resoto using Docker](../install-resoto/index.mdx).
 
-   The SSL certificate is self-signed, but you can safely ignore any browser warnings.
+:::
 
-   :::
+1.  Resoto UI listens on port `8900` by default. You can access it by opening [https://localhost:8900](https://localhost:8900) in your browser.
 
-2. Log in with your Resoto credentials:
+    :::note
 
-   ![Screenshot of Resoto login form](./img/login-form.png)
+    The SSL certificate is self-signed, but you can safely ignore any browser warnings.
 
-   :::note
+    :::
 
-   If accessing a new Resoto install, you will be prompted to create an administrator account:
+2.  Log in with your Resoto credentials:
 
-   ![Screenshot of Resoto account creation form](./img/create-account.png)
+    ![Screenshot of Resoto login form](./img/login-form.png)
 
-   Additional users can be added via the [CLI](../../reference/cli/index.mdx) using the [`user add` command](../../reference/cli/user/add.mdx).
+    :::note
 
-   See [User Management](../../reference/user-management/index.mdx) for details.
+    If accessing a new Resoto install, you will be prompted to create an administrator account:
 
-   :::
+    ![Screenshot of Resoto account creation form](./img/create-account.png)
 
-3. After logging in, Resoto UI will start.
+    Additional users can be added via the [CLI](../../reference/cli/index.mdx) using the [`user add` command](../../reference/cli/user/add.mdx).
 
-   :::note
+    See [User Management](../../reference/user-management/index.mdx) for details.
 
-   The first time Resoto UI is launched, a setup wizard will appear to help you configure Resoto:
+    :::
 
-   ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
+3.  After logging in, Resoto UI will start.
 
-   :::
+    :::note
 
-   ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
+    The first time Resoto UI is launched, a setup wizard will appear to help you configure Resoto:
+
+    ![Screenshot of Resoto UI setup wizard](../explore-resoto/ui/img/setup-wizard.png)
+
+    :::
 
 </TabItem>
 </Tabs>
@@ -242,49 +258,7 @@ Resoto Shell is Resoto's command-line interface.
 The steps to launch Resoto Shell depend on how you installed Resoto.
 
 <Tabs groupId="install-method" querystring>
-<TabItem value="aws" label="AWS">
-
-1. Log in to the [AWS CloudFormation console](https://console.aws.amazon.com/cloudformation).
-
-2. Click **Stacks**.
-
-3. Enter `ResotoEKS` into the search box, and click on the **ResotoEKS** stack.
-
-   ![ResotoEKS stack in AWS CloudFormation](./img/cf-stack.png)
-
-4. Click the **Outputs** tab.
-
-5. Enter `ResotoEKSConfigCommand` into the search box. There should be exactly one entry. Copy the value (`aws eks ...`).
-
-   ![ResotoEKS stack outputs in AWS CloudFormation](./img/cf-output.png)
-
-   :::info
-
-   The value of `ResotoEKS.ResotoEKSConfigCommandXXXX` in **Outputs** is a command to configure `kubectl` to connect to the EKS cluster.
-
-   :::
-
-6. Open a terminal and execute the copied command.
-
-   ![Screenshot of ResotoEKS config command in terminal](./img/k8s-access.png)
-
-7. Execute the following in the terminal to access the [Resoto Shell](../../reference/components/shell.mdx) interface:
-
-   ```bash
-   $ kubectl exec -it service/resoto-resotocore -- resh
-   ```
-
-</TabItem>
-<TabItem value="digitalocean" label="DigitalOcean">
-
-Execute the following to access the [Resoto Shell](../../reference/components/shell.mdx) interface:
-
-```bash
-kubectl --namespace resoto exec -it service/resoto-resotocore -- resh
-```
-
-</TabItem>
-<TabItem value="docker" label="Docker">
+<TabItem value="docker" label="Docker" default>
 
 Execute the following to access the [Resoto Shell](../../reference/components/shell.mdx) interface:
 
@@ -293,22 +267,88 @@ $ docker exec -it resotoshell resh
 ```
 
 </TabItem>
+<TabItem value="aws" label="AWS">
+
+:::warning Deprecation notice
+
+The Resoto AWS <abbr title="Cloud Development Kit">CDK</abbr> construct is no longer actively maintained. We recommend [running Resoto using Docker](../install-resoto/index.mdx).
+
+:::
+
+1.  Log in to the [AWS CloudFormation console](https://console.aws.amazon.com/cloudformation).
+
+2.  Click **Stacks**.
+
+3.  Enter `ResotoEKS` into the search box, and click on the **ResotoEKS** stack.
+
+    ![ResotoEKS stack in AWS CloudFormation](./img/cf-stack.png)
+
+4.  Click the **Outputs** tab.
+
+5.  Enter `ResotoEKSConfigCommand` into the search box. There should be exactly one entry. Copy the value (`aws eks ...`).
+
+    ![ResotoEKS stack outputs in AWS CloudFormation](./img/cf-output.png)
+
+    :::info
+
+    The value of `ResotoEKS.ResotoEKSConfigCommandXXXX` in **Outputs** is a command to configure `kubectl` to connect to the EKS cluster.
+
+    :::
+
+6.  Open a terminal and execute the copied command.
+
+    ![Screenshot of ResotoEKS config command in terminal](./img/k8s-access.png)
+
+7.  Execute the following in the terminal to access the [Resoto Shell](../../reference/components/shell.mdx) interface:
+
+    ```bash
+    $ kubectl exec -it service/resoto-resotocore -- resh
+    ```
+
+</TabItem>
+<TabItem value="digitalocean" label="DigitalOcean">
+
+:::warning Deprecation notice
+
+The Resoto DigitalOcean Marketplace app is no longer actively maintained. We recommend [running Resoto using Docker](../install-resoto/index.mdx).
+
+:::
+
+Execute the following to access the [Resoto Shell](../../reference/components/shell.mdx) interface:
+
+```bash
+kubectl --namespace resoto exec -it service/resoto-resotocore -- resh
+```
+
+</TabItem>
 <TabItem value="kubernetes" label="Kubernetes">
 
-1. Make sure that the deployment is available:
+:::warning Deprecation notice
 
-   ```bash
-   $ kubectl wait --for=condition=available deployment/resoto-resotocore
-   ```
+The Resoto Helm chart is no longer actively maintained. We recommend [running Resoto using Docker](../install-resoto/index.mdx).
 
-2. Execute the following to access the [Resoto Shell](../../reference/components/shell.mdx) interface:
+:::
 
-   ```bash
-   $ kubectl exec -it service/resoto-resotocore -- resh
-   ```
+1.  Make sure that the deployment is available:
+
+    ```bash
+    $ kubectl wait --for=condition=available deployment/resoto-resotocore
+    ```
+
+2.  Execute the following to access the [Resoto Shell](../../reference/components/shell.mdx) interface:
+
+    ```bash
+    $ kubectl exec -it service/resoto-resotocore -- resh
+    ```
 
 </TabItem>
 <TabItem value="pip" label="pip">
+
+:::warning
+
+Resoto consists of a number of distributed components that are intended to run 24/7 on a server. We recommend [running Resoto using Docker](../install-resoto/index.mdx).
+
+:::
 
 Execute the following to access the [Resoto Shell](../../reference/components/shell.mdx) interface:
 

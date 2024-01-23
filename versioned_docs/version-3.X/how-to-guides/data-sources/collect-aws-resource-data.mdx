@@ -42,60 +42,60 @@ This guide assumes that you have already [installed](../../getting-started/insta
 <Tabs>
 <TabItem value="instance-profile" label="Instance Profile">
 
-1. Configure an [instance profile](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html).
+1.  Configure an [instance profile](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html).
 
-2. Open the [Resoto Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/config) in [Resoto Shell](../../reference/components/shell):
+2.  Open the [Resoto Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/config) in [Resoto Shell](../../reference/components/shell):
 
-   ```bash
-   > config edit resoto.worker
-   ```
+    ```bash
+    > config edit resoto.worker
+    ```
 
-3. Add the contents of your `credentials` file to the `resotoworker` section of the configuration as follows:
+3.  Add the contents of your `credentials` file to the `resotoworker` section of the configuration as follows:
 
-   ```yaml title="Resoto Worker configuration"
-   resotoworker:
-     ...
-   # highlight-start
-     write_files_to_home_dir:
-       - path: ~/.aws/credentials
-         content: |
-           [default]
-           region = us-west-2
+    ```yaml title="Resoto Worker configuration"
+    resotoworker:
+      ...
+    # highlight-start
+      write_files_to_home_dir:
+        - path: ~/.aws/credentials
+          content: |
+            [default]
+            region = us-west-2
 
-           role_arn = arn:aws:iam::235059640852:role/Resoto
-           external_id = a5eMybsyGIowimdZqpZWxxxxxxxxxxxx
-           credential_source = Ec2InstanceMetadata
-   # highlight-end
-   ...
-   ```
+            role_arn = arn:aws:iam::235059640852:role/Resoto
+            external_id = a5eMybsyGIowimdZqpZWxxxxxxxxxxxx
+            credential_source = Ec2InstanceMetadata
+    # highlight-end
+    ...
+    ```
 
-   :::note
+    :::note
 
-   If you do not wish to save the contents of your `credentials` file to Resoto's database, you can alternatively [mount the `~/.aws` directory to the `resotoworker` container](../../reference/configuration/worker#mounting-configuration-files-to-container-based-installations).
+    If you do not wish to save the contents of your `credentials` file to Resoto's database, you can alternatively [mount the `~/.aws` directory to the `resotoworker` container](../../reference/configuration/worker#mounting-configuration-files-to-container-based-installations).
 
-   :::
+    :::
 
-   :::info
+    :::info
 
-   Since Resoto is running on your local machine, it can access the `credentials` file directly at `~/.aws/credentials`.
+    Since Resoto is running on your local machine, it can access the `credentials` file directly at `~/.aws/credentials`.
 
-   :::
+    :::
 
-4. Modify the `aws` section of the configuration as follows, making sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null`:
+4.  Modify the `aws` section of the configuration as follows, making sure that `aws.access_key_id` and `aws.secret_access_key` are set to `null`:
 
-   ```yaml title="Resoto Worker configuration"
-   resotoworker:
-     ...
-   ...
-   aws:
-   # highlight-start
-     # AWS Access Key ID (null to load from env - recommended)
-     access_key_id: null
-     # AWS Secret Access Key (null to load from env - recommended)
-     secret_access_key: null
-   # highlight-end
-     ...
-   ```
+    ```yaml title="Resoto Worker configuration"
+    resotoworker:
+      ...
+    ...
+    aws:
+    # highlight-start
+      # AWS Access Key ID (null to load from env - recommended)
+      access_key_id: null
+      # AWS Secret Access Key (null to load from env - recommended)
+      secret_access_key: null
+    # highlight-end
+      ...
+    ```
 
 </TabItem>
 <TabItem value="access-key" label="Access Key">
@@ -106,106 +106,106 @@ Access keys in the configuration are visible to anyone with access to your Resot
 
 :::
 
-1. Open the [Resoto Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/config) in [Resoto Shell](../../reference/components/shell):
+1.  Open the [Resoto Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/config) in [Resoto Shell](../../reference/components/shell):
 
-   ```bash
-   > config edit resoto.worker
-   ```
+    ```bash
+    > config edit resoto.worker
+    ```
 
-2. Modify the `aws` section of the configuration as follows:
+2.  Modify the `aws` section of the configuration as follows:
 
-   ```yaml title="Resoto Worker configuration"
-   resotoworker:
-     ...
-   ...
-   aws:
-   # highlight-start
-     # AWS Access Key ID (null to load from env - recommended)
-     access_key_id: 'AKIAZGZKXXXXXXXXXXXX'
-     # AWS Secret Access Key (null to load from env - recommended)
-     secret_access_key: 'vO51EW/8ILMGrSBV/Ia9Fov6xZnKxxxxxxxxxxxx'
-   # highlight-end
-     ...
-   ```
+    ```yaml title="Resoto Worker configuration"
+    resotoworker:
+      ...
+    ...
+    aws:
+    # highlight-start
+      # AWS Access Key ID (null to load from env - recommended)
+      access_key_id: 'AKIAZGZKXXXXXXXXXXXX'
+      # AWS Secret Access Key (null to load from env - recommended)
+      secret_access_key: 'vO51EW/8ILMGrSBV/Ia9Fov6xZnKxxxxxxxxxxxx'
+    # highlight-end
+      ...
+    ```
 
 </TabItem>
 <TabItem value="profiles" label="Profiles">
 
-1. Create a file `~/.aws/credentials` with the desired profiles:
+1.  Create a file `~/.aws/credentials` with the desired profiles:
 
-   ```ini title="~/.aws/credentials"
-   [production]
-   aws_xxx = yyy
+    ```ini title="~/.aws/credentials"
+    [production]
+    aws_xxx = yyy
 
-   [test]
-   aws_xxx = yyy
+    [test]
+    aws_xxx = yyy
 
-   [dev]
-   aws_xxx = yyy
+    [dev]
+    aws_xxx = yyy
 
-   ...
-   ```
+    ...
+    ```
 
-2. Open the [Resoto Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/config) in [Resoto Shell](../../reference/components/shell):
+2.  Open the [Resoto Worker configuration](../../reference/configuration/index.mdx) via the [`config` command](../../reference/cli/config) in [Resoto Shell](../../reference/components/shell):
 
-   ```bash
-   > config edit resoto.worker
-   ```
+    ```bash
+    > config edit resoto.worker
+    ```
 
-3. Add the contents of your `credentials` file to the `resotoworker` section of the configuration as follows:
+3.  Add the contents of your `credentials` file to the `resotoworker` section of the configuration as follows:
 
-   ```yaml title="Resoto Worker configuration"
-   resotoworker:
-     ...
-   # highlight-start
-     write_files_to_home_dir:
-       - path: ~/.aws/credentials
-         content: |
-           [default]
-           region = us-west-2
+    ```yaml title="Resoto Worker configuration"
+    resotoworker:
+      ...
+    # highlight-start
+      write_files_to_home_dir:
+        - path: ~/.aws/credentials
+          content: |
+            [default]
+            region = us-west-2
 
-           role_arn = arn:aws:iam::235059640852:role/Resoto
-           external_id = a5eMybsyGIowimdZqpZWxxxxxxxxxxxx
-           credential_source = Ec2InstanceMetadata
-   # highlight-end
-   ...
-   ```
+            role_arn = arn:aws:iam::235059640852:role/Resoto
+            external_id = a5eMybsyGIowimdZqpZWxxxxxxxxxxxx
+            credential_source = Ec2InstanceMetadata
+    # highlight-end
+    ...
+    ```
 
-   :::note
+    :::note
 
-   If you do not wish to save the contents of your `credentials` file to Resoto's database, you can alternatively [mount the `~/.aws` directory to the `resotoworker` container](../../reference/configuration/worker#mounting-configuration-files-to-container-based-installations).
+    If you do not wish to save the contents of your `credentials` file to Resoto's database, you can alternatively [mount the `~/.aws` directory to the `resotoworker` container](../../reference/configuration/worker#mounting-configuration-files-to-container-based-installations).
 
-   :::
+    :::
 
-   :::info
+    :::info
 
-   Since Resoto is running on your local machine, it can access the `credentials` file directly at `~/.aws/credentials`.
+    Since Resoto is running on your local machine, it can access the `credentials` file directly at `~/.aws/credentials`.
 
-   :::
+    :::
 
-4. Modify the `aws` section of the configuration as follows, adding one or more profile names from your `~/.aws/credentials` file:
+4.  Modify the `aws` section of the configuration as follows, adding one or more profile names from your `~/.aws/credentials` file:
 
-   ```yaml title="Resoto Worker configuration"
-   resotoworker:
-     ...
-   ...
-   aws:
-     ...
-   # highlight-start
-     profiles:
-       - production
-       - test
-       - dev
-   # highlight-end
-   ```
+    ```yaml title="Resoto Worker configuration"
+    resotoworker:
+      ...
+    ...
+    aws:
+      ...
+    # highlight-start
+      profiles:
+        - production
+        - test
+        - dev
+    # highlight-end
+    ```
 
-   Profiles can be combined with other <abbr title="Amazon Web Services">AWS</abbr> options, such as `aws.role` and `aws.scrape_org`.
+    Profiles can be combined with other <abbr title="Amazon Web Services">AWS</abbr> options, such as `aws.role` and `aws.scrape_org`.
 
-   :::note
+    :::note
 
-   When switching from profiles to another authentication option, be sure to set the value of `aws.profiles` as `null`.
+    When switching from profiles to another authentication option, be sure to set the value of `aws.profiles` as `null`.
 
-   :::
+    :::
 
 </TabItem>
 </Tabs>
@@ -224,9 +224,9 @@ You can specify a profile using `AWS_PROFILE` and, for local testing, SSO authen
 
 1.  Set the required environment variables (e.g., `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`):
 
-    <Tabs groupId="install-method">
+    <Tabs groupId="install-method" querystring>
 
-    <TabItem value="docker" label="Docker">
+    <TabItem value="docker" label="Docker" default>
 
     - Add environment variable definitions to the `resotoworker` service in `docker-compose.yaml`:
 
@@ -351,14 +351,14 @@ If you prefer to deploy the role yourself, the S3 URL of the template to create 
 
 ### 4. Trigger Resource Collection
 
-1. By default, Resoto performs resource collection each hour. To immediately trigger a collect run, use the [`workflow run` command](../../reference/cli/workflow/run.mdx) in [Resoto Shell](../../reference/components/shell):
+1.  By default, Resoto performs resource collection each hour. To immediately trigger a collect run, use the [`workflow run` command](../../reference/cli/workflow/run.mdx) in [Resoto Shell](../../reference/components/shell):
 
-   ```bash
-   > workflow run collect
-   ```
+    ```bash
+    > workflow run collect
+    ```
 
-2. Once the collect run completes, you can view a summary of collected [<abbr title="Amazon Web Services">AWS</abbr> resources](../../reference/unified-data-model/index.mdx) using the following search:
+2.  Once the collect run completes, you can view a summary of collected [<abbr title="Amazon Web Services">AWS</abbr> resources](../../reference/unified-data-model/index.mdx) using the following search:
 
-   ```bash
-   > search is(aws_resource) | count kind
-   ```
+    ```bash
+    > search is(aws_resource) | count kind
+    ```

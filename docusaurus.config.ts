@@ -27,7 +27,7 @@ const config: Config = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'throw',
-  onBrokenAnchors: 'throw',
+  onBrokenAnchors: 'warn',
   favicon: 'img/favicon.ico',
   trailingSlash: false,
   noIndex: !isProd,

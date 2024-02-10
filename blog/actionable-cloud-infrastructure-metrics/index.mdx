@@ -33,11 +33,11 @@ This allows you to [alert](https://prometheus.io/docs/alerting/latest/alertmanag
 
 Another use case is to quickly [identify anomalies](https://prometheus.io/docs/prometheus/latest/querying/functions/#aggregation_over_time) using [the 3σ rule](https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule). If cloud API credentials are leaked or an automated system goes haywire, you would immediately see the spike instead of receiving an unpleasant surprise on your next cloud bill. Best of all, it works across multiple clouds and accounts!
 
-Resoto comes with a handy metrics component, [Resoto Metrics](/docs/reference/components/metrics), which takes aggregation results and exports them to [Prometheus](https://prometheus.io). This blog post describes how to [define your own metrics](#how-metrics-are-made), write some [PromQL queries](https://prometheus.io/docs/prometheus/latest/querying/basics) and build a simple metrics dashboard using [Resoto Metrics](/docs/reference/components/metrics), [Prometheus](https://prometheus.io), and [Grafana](https://grafana.com).
+Resoto comes with a handy metrics component, [Resoto Metrics](/docs/reference/components/metrics), which takes aggregation results and exports them to [Prometheus](https://prometheus.io). This blog post describes how to [define your own metrics](./index.mdx#how-metrics-are-made), write some [PromQL queries](https://prometheus.io/docs/prometheus/latest/querying/basics) and build a simple metrics dashboard using [Resoto Metrics](/docs/reference/components/metrics), [Prometheus](https://prometheus.io), and [Grafana](https://grafana.com).
 
 ## Concepts and Terminology
 
-If you are already familiar with graph and time series databases, metrics, samples, labels, Prometheus, and Grafana, please feel free to [skip ahead](#getting-started). For those new to the cloud-native metrics ecosystem, let's get some concepts and terminology out of the way!
+If you are already familiar with graph and time series databases, metrics, samples, labels, Prometheus, and Grafana, please feel free to [skip ahead](./index.mdx#getting-started). For those new to the cloud-native metrics ecosystem, let's get some concepts and terminology out of the way!
 
 ### Collect
 
@@ -131,7 +131,7 @@ Prometheus has basic graphing capabilities, but [Grafana](https://grafana.com) a
 
 ![Instance cost over time](./img/grafana_instances_total.png)
 
-So here's the plan. First we will learn how to [configure Prometheus to fetch data from Resoto Metrics](#getting-started). Then how to [query that data inside Prometheus](#querying-a-metric). After that we explore from where Resoto retrieves its metrics configuration and how to [define our own metrics](#how-metrics-are-made). Finally we will use Grafana to [create a simple dashboard and visualize the data](#creating-a-metrics-dashboard).
+So here's the plan. First we will learn how to [configure Prometheus to fetch data from Resoto Metrics](./index.mdx#getting-started). Then how to [query that data inside Prometheus](./index.mdx#querying-a-metric). After that we explore from where Resoto retrieves its metrics configuration and how to [define our own metrics](./index.mdx#how-metrics-are-made). Finally we will use Grafana to [create a simple dashboard and visualize the data](./index.mdx#creating-a-metrics-dashboard).
 
 ## Getting Started
 
@@ -177,7 +177,7 @@ Here is one of those metrics from the list:
 resoto_instances_total{cloud="aws", account="eng-production", region="us-west-2", status="running", type="m5.xlarge", instance="localhost:9955", job="resotometrics"} 17
 ```
 
-The `key="value"` pairs inside those curly brackets are those [previously mentioned](#time-series) [labels](https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels). To filter by label let us update the query to:
+The `key="value"` pairs inside those curly brackets are those [previously mentioned](./index.mdx#time-series) [labels](https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels). To filter by label let us update the query to:
 
 ```
 resoto_instances_total{status="running"}
@@ -243,7 +243,7 @@ resotometrics:
   ...
 ```
 
-As [described above](#aggregation), the `aggregate` expression in the `search` field is what creates the samples of a metric.
+As [described above](./index.mdx#aggregation), the `aggregate` expression in the `search` field is what creates the samples of a metric.
 
 Metrics configuration can be updated at runtime. When the `metrics` [workflow](/docs/reference/workflows) is run, [Resoto Metrics](/docs/reference/components/metrics) will generate the new metric for [Prometheus](https://prometheus.io) to consume.
 
@@ -362,7 +362,7 @@ Alright, fasten your seatbelts! This will go fast. 🏎️💨
 
 ## The Final Product
 
-If we repeat the above steps for [all of the metrics present in the configuration](#how-metrics-are-made), the result is a dashboard that looks like this:
+If we repeat the above steps for [all of the metrics present in the configuration](./index.mdx#how-metrics-are-made), the result is a dashboard that looks like this:
 
 ![Finished Dashboard](./img/grafana_finished_dashboard.png)
 

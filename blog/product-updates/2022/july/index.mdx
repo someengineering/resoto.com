@@ -7,7 +7,7 @@ tags: [Product Updates]
 
 Hello everyone, here's an update for July!
 
-In June, we released [Resoto 2.3.2](/releases/2.3.2). The key update that we shipped is a feature that a lot of users have asked for—[support for Kubernetes](#kubernetes-support)! 😎
+In June, we released [Resoto 2.3.2](/releases/2.3.2). The key update that we shipped is a feature that a lot of users have asked for—[support for Kubernetes](./index.mdx#kubernetes-support)! 😎
 
 ## Configuration UI
 
@@ -27,7 +27,7 @@ We think you will be delighted to use Resoto with Kubernetes. For more details, 
 
 ## Nested Properties
 
-To add [Kubernetes support](#kubernetes-support), we first had to build new capabilities into our data model. Nested properties is one such capability.
+To add [Kubernetes support](./index.mdx#kubernetes-support), we first had to build new capabilities into our data model. Nested properties is one such capability.
 
 The first version of Resoto supported simple structures—think "a resource with a property." This simple structure unfortunately doesn't work well with the nested structures commonplace in Kubernetes. For example, one Kubernetes pod can contain multiple containers. Within each of those containers, you then have a long list of possible properties (from the 100+ mentioned above). Each of those nested properties can be accessed and used for filtering or information retrieval.
 

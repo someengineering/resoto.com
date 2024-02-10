@@ -33,7 +33,7 @@ Generally speaking, the API for every service covers the typical resource lifecy
 
 Therefore, we will be on the lookout for any calls in the realm of `list-...`, `get-...-attributes`, or `describe-...`. This is where the divergence begins.
 
-Can you get complete metadata for all resources of the same kind in a single call, or do you have to make nested calls for every item? For <abbr title="Elastic Compute Cloud">EC2</abbr>, we are lucky and get everything in one go. Other services, however, force you to first retrieve a list of resource identifiers (more on that [below](#cloud-resource-identification)) and _then_ query for the attributes or descriptions of each result.
+Can you get complete metadata for all resources of the same kind in a single call, or do you have to make nested calls for every item? For <abbr title="Elastic Compute Cloud">EC2</abbr>, we are lucky and get everything in one go. Other services, however, force you to first retrieve a list of resource identifiers (more on that [below](./index.mdx#cloud-resource-identification)) and _then_ query for the attributes or descriptions of each result.
 
 Obtaining metadata by means of manual exploration is extremely difficult. **Programmatically, however, it is not half as bad because Resoto gathers the complete metadata for each and every resource in each collect run.**
 

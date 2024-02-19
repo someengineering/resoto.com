@@ -1,0 +1,124 @@
+---
+date: 2024-02-19
+tags: [Product Updates]
+---
+
+# February 2024 Product Updates: From Resoto to Fix Inventory
+
+It's been four months since the release of Resoto 3.8. During this time, we have worked in stealth mode on a new product and made some decisions regarding existing ones. 😎
+
+<!--truncate-->
+
+## Introducing Fix
+
+We are excited to announce [Fix](https://fix.security), our cloud asset inventory and <abbr title="Cloud Security Posture Management">CSPM</abbr> system. Fix is a SaaS solution encompassing the [inventory](../../../cloud-asset-inventory/index.mdx) and [security benchmarks](../../../cloud-resource-security-benchmarks/index.mdx) components of Resoto, hosted by us.
+
+**Sign up today at [https://fix.security](https://fix.security) and get one cloud account free, forever.**
+
+### Open Source for Transparency
+
+**Like Resoto, Fix is fully open source.** We strongly believe that if you trust us with your infrastructure data, you have a right to see exactly how we are collecting it and what we are doing with it.
+
+We decided to open source every component of our SaaS, from the frontend and backend code to internal scripts that create database backups.
+
+However&mdash;Fix is very opinionated, with many dependencies on third-party systems, payment interfaces, OAuth providers, infrastructure provisioning tools, etc.&mdash;so, while technically possible, this decision was not so much about offering an option to self-host but for transparency.
+
+### Dedicated Databases for Security
+
+If you are familiar with Resoto, you know that we use [ArangoDB](https://arangodb.com) to store infrastructure data.
+
+**Fix allocates a dedicated database instance to every customer, meaning your cloud infrastructure data is never commingled in a shared database with other Fix customer data.**
+
+This architecture not only segregates customer data (enhancing privacy), but also mitigates a range of security vulnerabilities associated with shared databases, such as SQL injection attacks.
+
+### Affordable Pricing
+
+If you look at the current cloud security space, most commercial offerings target enterprise customers and come with steep six-figure price tags and multi-year contracts.
+
+**We firmly believe that every cloud user should be able to afford a secure cloud infrastructure.**
+
+Fix is priced fairly and competitively. Fix also doesn't require you to talk to a sales rep or have a solutions architect on-site for several days; anyone can sign up and try Fix before making a purchase decision.
+
+## Sunsetting Resoto UI
+
+In the last four months, we've taken a good, hard look at Resoto. We analyzed the functionality people are using&mdash;what is there but rarely or never used, and what is missing despite being in the backlog for years.
+
+**One of the biggest pain points has always been the WebAssembly-based [Resoto UI](https://github.com/someengineering/resoto-ui).**
+
+### Developent Burden
+
+We originally decided to use the [Godot game engine](https://godotengine.org) to build Resoto UI because Godot compiles to Wasm and runs in the browser, comes with built-in UI elements, and has 2D and 3D acceleration (good for rendering the graph).
+
+However, in practice, this decision turned out to be very problematic: the Wasm and WebGL browser support was not what we expected.
+
+Companies often lag behind the latest browser versions, and many don't have dedicated graphics cards. Some browsers only supported WebGL 1.0, others 2.0 but not 1.0, and you can basically forget about mobile (especially on iOS, unless you enjoy interfaces moving at two frames per second).
+
+The issues started with minor things like clipboard functionality (copy and paste) not working in all browsers. In those browsers that did offer support, users were presented with a security pop-up to allow Resoto UI clipboard access. There was also no abstraction for key combinations. Instead, Resoto UI received raw key presses and had to detect your operating system to support to Ctrl+C/V on Linux or Windows and Command+C/V on Mac&mdash;this sometimes worked but often didn't.
+
+Then, we discovered that some graphics shaders worked on some browser versions and with some graphics card drivers but not others. Symptoms ranged from crashing a browser tab to locking up an entire M1-based Macbook.
+
+Wasm also doesn't play nicely with certain browser extensions that capture key events, preventing our app from receiving them. **Many features that would have been available out-of-the-box in the Web world required custom implementations and workarounds, adding to the development burden and increasing the complexity of Resoto UI.**
+
+### Lack of Adoption
+
+Looking at our PostHog metrics, we saw that hardly anyone continued to use Resoto UI after running the initial setup wizard&mdash;most work was done in Resoto's CLI. In hindsight, this is hardly surprising given the poor UX. **We have decided to drop support for Resoto UI in the upcoming Resoto 4.0.**
+
+Despite these challenges noted above, Godot is nevertheless a great engine; we simply used it for a purpose it wasn't built for. Godot's capabilities for game development are outstanding, and our experience shouldn't detract from its potential in its intended use cases.
+
+And&mdash;before the rumor mill gets going, let's set the record straight: the decision to sunset the UI wasn't a sneaky move to push our SaaS. 😉 If you look at the [Resoto UI GitHub repository](https://github.com/someengineering/resoto-ui), you will find that the last commit was over seven months ago, long before we began to build [Fix](https://fix.security).
+
+## Renaming Resoto to Fix Inventory
+
+Now, let's talk about the future of Resoto: **Resoto is being renamed to Fix Inventory.** This wasn't originally planned but an idea that [Matthias](https://linkedin.com/in/matthias-veit) came up with a couple weeks ago.
+
+We updated our GitHub README to list and explain the various components of Fix. The list looked like this:
+
+- `fixfrontend`
+- `fixbackend`
+- `resoto`
+- `fixcf`
+- `fixca`
+- `fixbackup`
+- `fixcloudutils`
+
+As you can see (and [as Sesame Street has taught us](https://www.youtube.com/watch?v=6b0ftfKFEJg)), one of these things is not like the others.
+
+### Timeline and Migration
+
+We dislike breaking changes and are fans of backward compatibility, so will do our best to make the product rename as non-intrusive as possible and provide a smooth migration path.
+
+In fact, one reason why we haven't just removed Resoto UI and cut a new release is that we don't want people who have their container images pinned to `:latest` to be surprised by its removal.
+
+Here's what to expect in the near future:
+
+- First, we will release Resoto 3.9 with Resoto UI. Resoto 3.9 will be the last release named "Resoto."
+
+- The GitHub repository will then be renamed from `resoto` to `fixinventory`, and we will update documentation, sources, and all dependencies.
+
+  Overall, we have a list of 168 to-do items, so expect this process to take a few days. The first version of Fix Inventory will be tagged `4.0`.
+
+- The Resoto website and documentation at [resoto.com](https://resoto.com) will be maintained for at least a couple of months.
+
+  We will launch [https://inventory.fix.security/](https://inventory.fix.security/) with documentation for Fix Inventory 4.0+ (separate and distinct from the Fix SaaS product website and documentation to avoid confusion).
+
+**To migrate to Fix Inventory, all you will need to do is rename any container currently called `resoto…` to `fix…`.** So, `resotocore` becomes `fixcore`, `resotoworker` will be `fixworker`, `resotoshell` will be `fixshell`, etc. Within Fix Inventory, we'll handle the heavy lifting for you, including data migrations and configuration updates.
+
+### Fix Inventory 4.0
+
+So, what new features will Fix Inventory 4.0 contain?
+
+- **Microsoft Azure support:** If you have a multi-cloud environment, you will now find all of your AWS, Google Cloud, and Azure resources inside a single inventory.
+
+- **Updated AWS benchmarks:** We have updated the [CIS AWS Benchmark](https://www.cisecurity.org/benchmark/amazon_web_services) from version 1.5 to 2.0. We have also added the [AWS Well-Architected Framework Security Pillar](https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/welcome.html).
+
+- **AWS Organizations:** You will now see your Organization structure in the graph, right below the cloud level.
+
+- **LoadLens:** As teased in the [previous product update](../../2023/may/index.mdx), Fix Inventory 4.0 will introduce a new feature named LoadLens.
+
+  LoadLens enriches the graph with usage metrics, allowing you to view the minimum, maximum, and average CPU, memory, and disk usage of your compute and storage resources in a new `/usage` section. This enables the creation of dashboards that display comprehensive resource usage across your cloud infrastructure.
+
+  The data for these metrics is sourced from AWS CloudWatch, Google Cloud Monitoring, and Azure Monitor. We adjust the period and granularity of the data retrieval to align with your configured collection interval, ensuring no metrics are overlooked.
+
+## Share Your Thoughts
+
+We're excited about these updates and hope you are too. Your feedback is instrumental in shaping the future of Fix Inventory, so don't hesitate to let us know what you think about these changes!

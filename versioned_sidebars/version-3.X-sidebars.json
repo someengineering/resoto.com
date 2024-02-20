@@ -323,6 +323,24 @@
                   "id": "reference/api/search-and-aggregate-history-events-and-return-the-aggregation-result",
                   "label": "Search and aggregate history events and return the aggregation result.",
                   "className": "api-method post"
+                },
+                {
+                  "type": "doc",
+                  "id": "reference/api/search-the-graph-and-return-all-possible-attribute-names-for-given-property-path",
+                  "label": "Search the graph and return all possible attribute names for given property path.",
+                  "className": "api-method post"
+                },
+                {
+                  "type": "doc",
+                  "id": "reference/api/search-the-graph-and-return-all-possible-attribute-values-for-given-property-path",
+                  "label": "Search the graph and return all possible attribute values for given property path.",
+                  "className": "api-method post"
+                },
+                {
+                  "type": "doc",
+                  "id": "reference/api/search-the-graph-and-return-all-possible-attribute-values-for-given-property-path",
+                  "label": "Search the graph and return all possible attribute values for given property path.",
+                  "className": "api-method post"
                 }
               ]
             },
@@ -407,9 +425,45 @@
                 },
                 {
                   "type": "doc",
+                  "id": "reference/api/get-a-check-by-its-id",
+                  "label": "Get a check by its id.",
+                  "className": "api-method get"
+                },
+                {
+                  "type": "doc",
+                  "id": "reference/api/create-or-replace-a-check-by-its-id",
+                  "label": "Create or replace a check by its id.",
+                  "className": "api-method put"
+                },
+                {
+                  "type": "doc",
+                  "id": "reference/api/delete-a-check-by-its-id",
+                  "label": "Delete a check by its id.",
+                  "className": "api-method delete"
+                },
+                {
+                  "type": "doc",
                   "id": "reference/api/list-available-benchmarks",
                   "label": "List available benchmarks.",
                   "className": "api-method get"
+                },
+                {
+                  "type": "doc",
+                  "id": "reference/api/get-a-benchmark-by-its-id",
+                  "label": "Get a benchmark by its id.",
+                  "className": "api-method get"
+                },
+                {
+                  "type": "doc",
+                  "id": "reference/api/create-or-replace-a-benchmark-by-its-id",
+                  "label": "Create or replace a benchmark by its id.",
+                  "className": "api-method put"
+                },
+                {
+                  "type": "doc",
+                  "id": "reference/api/delete-a-benchmark-by-its-id",
+                  "label": "Delete a benchmark by its id.",
+                  "className": "api-method delete"
                 },
                 {
                   "type": "doc",
@@ -514,6 +568,19 @@
                   "id": "reference/api/send-a-ping-to-the-system-and-expect-a-pong",
                   "label": "Send a ping to the system and expect a pong.",
                   "className": "api-method get"
+                }
+              ]
+            },
+            {
+              "type": "category",
+              "label": "timeseries",
+              "link": { "type": "doc", "id": "reference/api/timeseries" },
+              "items": [
+                {
+                  "type": "doc",
+                  "id": "reference/api/load-time-series-data",
+                  "label": "Load time series data.",
+                  "className": "api-method post"
                 }
               ]
             },

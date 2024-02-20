@@ -85,7 +85,7 @@ def write_md(provider: str, kinds: list):
             )
             file.write("\n```\n\n")
             file.write("</ZoomPanPinch>\n\n")
-            file.write(f"<details>\n\n<summary>Relationships to Other Resources</summary>\n\n<div>\n\n")
+            file.write(f"<details>\n<summary>Relationships to Other Resources</summary>\n<div>\n")
             file.write(
                 f'<ZoomPanPinch>\n\n```kroki imgType="plantuml" imgAlt="Diagram of {name} resource relationships"\n'
             )
@@ -109,7 +109,7 @@ def write_md(provider: str, kinds: list):
                     ).text,
                 ).strip()
             )
-            file.write(f"\n```\n\n</ZoomPanPinch>\n\n</div>\n\n</details>\n\n")
+            file.write(f"\n```\n\n</ZoomPanPinch>\n</div>\n</details>\n\n")
 
 
 def load_valid_kinds() -> Dict[str, Any]:

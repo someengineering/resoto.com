@@ -5485,7 +5485,7 @@ class gcp_network {
 **ipv4_range**: string
 **mtu**: int64
 **network_firewall_policy_enforcement_order**: string
-**peerings**: gcp_network_peering[]
+**network_peerings**: gcp_network_peering[]
 **routing_config**: string
 **self_link_with_id**: string
 **subnetworks**: string[]
@@ -7389,11 +7389,8 @@ resource <|--- gcp_resource
 </ZoomPanPinch>
 
 <details>
-
 <summary>Relationships to Other Resources</summary>
-
 <div>
-
 <ZoomPanPinch>
 
 ```kroki imgType="plantuml" imgAlt="Diagram of gcp_region_quota resource relationships"
@@ -7425,9 +7422,7 @@ class gcp_region_quota {
 ```
 
 </ZoomPanPinch>
-
 </div>
-
 </details>
 
 ## `gcp_resource`
@@ -9073,8 +9068,8 @@ class gcp_sql_database_instance {
 **etag**: string
 **failover_replica**: gcp_sql_failoverreplica
 **gce_zone**: string
+**instance_ip_addresses**: gcp_sql_ip_mapping[]
 **instance_type**: string
-**ip_addresses**: gcp_sql_ip_mapping[]
 **ipv6_address**: string
 **maintenance_version**: string
 **master_instance_name**: string
@@ -9086,7 +9081,7 @@ class gcp_sql_database_instance {
 **replica_names**: string[]
 **root_password**: string
 **satisfies_pzs**: boolean
-**scheduled_maintenance**: gcp_sql_sql_scheduled_maintenance
+**scheduled_maintenance**: gcp_sql_scheduled_maintenance
 **secondary_gce_zone**: string
 **server_ca_cert**: gcp_sql_ssl_cert
 **service_account_email_address**: string
@@ -9171,6 +9166,12 @@ class gcp_sql_replica_configuration {
 **failover_target**: boolean
 **mysql_replica_configuration**: gcp_sql_my_sql_replica_configuration
 }
+class gcp_sql_scheduled_maintenance {
+**can_defer**: boolean
+**can_reschedule**: boolean
+**schedule_deadline_time**: datetime
+**start_time**: datetime
+}
 class gcp_sql_settings {
 **activation_policy**: string
 **active_directory_config**: string
@@ -9204,12 +9205,6 @@ class gcp_sql_settings {
 class gcp_sql_sql_out_of_disk_report {
 **sql_min_recommended_increase_size_gb**: int64
 **sql_out_of_disk_state**: string
-}
-class gcp_sql_sql_scheduled_maintenance {
-**can_defer**: boolean
-**can_reschedule**: boolean
-**schedule_deadline_time**: datetime
-**start_time**: datetime
 }
 class gcp_sql_sql_server_audit_config {
 **bucket**: string
@@ -9247,9 +9242,9 @@ gcp_sql_database_instance --> gcp_sql_failoverreplica
 gcp_sql_database_instance --> gcp_sql_ip_mapping
 gcp_sql_database_instance --> gcp_sql_on_premises_configuration
 gcp_sql_database_instance --> gcp_sql_replica_configuration
+gcp_sql_database_instance --> gcp_sql_scheduled_maintenance
 gcp_sql_database_instance --> gcp_sql_settings
 gcp_sql_database_instance --> gcp_sql_sql_out_of_disk_report
-gcp_sql_database_instance --> gcp_sql_sql_scheduled_maintenance
 gcp_sql_database_instance --> gcp_sql_ssl_cert
 gcp_sql_ip_configuration --> gcp_sql_acl_entry
 gcp_sql_on_premises_configuration --> gcp_sql_instance_reference

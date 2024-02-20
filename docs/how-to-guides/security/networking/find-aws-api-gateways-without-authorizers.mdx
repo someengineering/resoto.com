@@ -21,7 +21,7 @@ This guide assumes that you have already [installed](../../../getting-started/in
 1. Execute the following [`search` command](../../../reference/cli/search.mdx) in [Resoto Shell](../../../reference/components/shell.mdx) or Resoto UI:
 
    ```bash
-   > search is(aws_apigateway_rest_api) with(empty, --> is(aws_api_gateway_authorizer))
+   > search is(aws_apigateway_rest_api) with(empty, --> is(aws_apigateway_authorizer))
    # highlight-start
    ​kind=aws_apigateway_rest_api, ..., region=resoto-poweruser
    ​kind=aws_apigateway_rest_api, ..., account=poweruser-team
@@ -31,7 +31,7 @@ This guide assumes that you have already [installed](../../../getting-started/in
 2. Pipe the `search` command into the [`dump` command](../../../reference/cli/dump.mdx):
 
    ```bash
-   > search is(aws_apigateway_rest_api) with(empty, --> is(aws_api_gateway_authorizer)) | dump
+   > search is(aws_apigateway_rest_api) with(empty, --> is(aws_apigateway_authorizer)) | dump
    # highlight-start
    ​reported:
    ​  id: /aws/apigateway/123

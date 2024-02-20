@@ -59,6 +59,27 @@ const sidebar: SidebarsConfig = {
             'Search and aggregate history events and return the aggregation result.',
           className: 'api-method post',
         },
+        {
+          type: 'doc',
+          id: 'version-3.X/reference/api/search-the-graph-and-return-all-possible-attribute-names-for-given-property-path',
+          label:
+            'Search the graph and return all possible attribute names for given property path.',
+          className: 'api-method post',
+        },
+        {
+          type: 'doc',
+          id: 'version-3.X/reference/api/search-the-graph-and-return-all-possible-attribute-values-for-given-property-path',
+          label:
+            'Search the graph and return all possible attribute values for given property path.',
+          className: 'api-method post',
+        },
+        {
+          type: 'doc',
+          id: 'version-3.X/reference/api/search-the-graph-and-return-all-possible-attribute-values-for-given-property-path',
+          label:
+            'Search the graph and return all possible attribute values for given property path.',
+          className: 'api-method post',
+        },
       ],
     },
     {
@@ -446,9 +467,45 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: 'doc',
+          id: 'version-3.X/reference/api/get-a-check-by-its-id',
+          label: 'Get a check by its id.',
+          className: 'api-method get',
+        },
+        {
+          type: 'doc',
+          id: 'version-3.X/reference/api/create-or-replace-a-check-by-its-id',
+          label: 'Create or replace a check by its id.',
+          className: 'api-method put',
+        },
+        {
+          type: 'doc',
+          id: 'version-3.X/reference/api/delete-a-check-by-its-id',
+          label: 'Delete a check by its id.',
+          className: 'api-method delete',
+        },
+        {
+          type: 'doc',
           id: 'version-3.X/reference/api/list-available-benchmarks',
           label: 'List available benchmarks.',
           className: 'api-method get',
+        },
+        {
+          type: 'doc',
+          id: 'version-3.X/reference/api/get-a-benchmark-by-its-id',
+          label: 'Get a benchmark by its id.',
+          className: 'api-method get',
+        },
+        {
+          type: 'doc',
+          id: 'version-3.X/reference/api/create-or-replace-a-benchmark-by-its-id',
+          label: 'Create or replace a benchmark by its id.',
+          className: 'api-method put',
+        },
+        {
+          type: 'doc',
+          id: 'version-3.X/reference/api/delete-a-benchmark-by-its-id',
+          label: 'Delete a benchmark by its id.',
+          className: 'api-method delete',
         },
         {
           type: 'doc',
@@ -518,6 +575,22 @@ const sidebar: SidebarsConfig = {
           type: 'doc',
           id: 'version-3.X/reference/api/transform-the-search-into-the-raw-database-search',
           label: 'Transform the search into the raw database search',
+          className: 'api-method post',
+        },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'timeseries',
+      link: {
+        type: 'doc',
+        id: 'version-3.X/reference/api/timeseries',
+      },
+      items: [
+        {
+          type: 'doc',
+          id: 'version-3.X/reference/api/load-time-series-data',
+          label: 'Load time series data.',
           className: 'api-method post',
         },
       ],

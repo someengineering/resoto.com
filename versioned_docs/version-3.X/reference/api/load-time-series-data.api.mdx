@@ -1,0 +1,309 @@
+---
+id: load-time-series-data
+title: "Load time series data."
+description: "Load time series data."
+sidebar_label: "Load time series data."
+hide_title: true
+hide_table_of_contents: true
+api: eJylVtuK4zgQ/RWhpxlIOk7ovbRhHnqHWWhYmCaT3YdJQlOx5VizsuSV5O4xxv++VbKdOJe5QIcQFPnURadOldzwEiwUwgvreLxuuMY/POZeFsIJK4XjE54Kl1hZemk0PlrlghGKmYx5XBOUddgbBEvClOBzXFvxXyWtSHnsbSUm3CW5KIDHDfd1SWGct1LvESm+QlGqsGUK8RSyaNtt50I4/4dJa7I7TeXxkPuVZFhvSkklRnuhPXmAslQyAfIw++LITXOZl9l9EYlHw9KaUlhPPBDOg/XX0s+MLQCf8BS8mFISV2kL9td4Yw8Z08azVGRSi5T9xlKoHcusKXD/hUntTTAqgQ7UImE6fUUiaP0zaWDoEGxvTVWOwoG1UFOtvSjcZRrtecilSKtEhHDwDFLBTgkWnDrWH8yJQMwQ2WhSEzrKpML6viL2n8HBeVxWiGJHutnVrESFkiLEzUZ/1Ko+EdEzKBQRe5E+Z8hskmOQ3gUGQc8S8KFSbEcmClUjUvRzIukAf3oG+5QZw969Yxu+U7DhHbWgKwXoqv5+PSsbNHu1nCMn18q60atcOpaApiwFHoUIYYNLZmww0RVRQg4Ctyzr94OrF6lTFKLPwTP0NTrqeQIUhkS0NxhNoQ3WkuWmsoh9CNqCSvlQ+Deow2loirdsxhYREdeGz4R72NNEGk+iMA5cabTr2vE2ii5nwj0bpg7rm7emhAvpHJWuP1M/Gw7J7mgL0rNZ4cVXPysVyOtTYpBcyLc/12VCq7OxhJ0JrxlJkKaSoKAeR8OJBmw7Fl2z0QyFRpE3PMbVIlrMpxF9V1EUh+/nDZ90sCBzws03uu2rcK60vwykFychxnAE5yalsW9cGJo0/WM+O5Zu1hzXLSJw9TzcOJVVCM69L108mzU5+mjjpjTWExK7RlLbhoLTs47gnmuuTAIqbGO6ZHP6+Pc7lEgbLhIidnm8TD4MRB2mOhF0O40W00W0mt/Fi1/j27ubX+Z3n3k/bb8H6CfketDE9ji5vt3+Z90/GmFSZybUXvpQzKVwBvvlvbGCLT98WrH7xwciBznsavPPvCPA+QKCfvp7/Js1OyntQWQjwaO7UJmmL+f69J0gPu3LrjJr3jQ7cOJvq9qWtpFuiydbb4+FDDVPpaM1kpqBcuIinUNz8DfLvpvfsh+8eFw9wnBp6DpoCUWO/3D5r6hP33LaLaJzHAFUMsywA7zv8piuyM3RwUXDtpPB4j5JROlH2HE+21GvPH78tELYrn+xKUxKaAsv9N6EvzHf8KARE1gJ+g/7DVeg9xXsCd9Fp8//cXdZZQ==
+sidebar_class_name: "post api-method"
+info_path: versioned_docs/version-3.X/reference/api/resoto-core-rest-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1
+  className={"openapi__heading"}
+>
+  Load time series data.
+</h1>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/timeseries/{timeseries}"}
+>
+  
+</MethodEndpoint>
+
+Load time series data.
+
+## Request
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"timeseries","description":"The name of the time series.","in":"path","required":true,"schema":{"type":"string","example":"some_name"}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><MimeTabs
+  className={"openapi-tabs__mime"}
+>
+  <TabItem
+    label={"application/json"}
+    value={"application/json-schema"}
+  >
+    <details
+      style={{}}
+      className={"openapi-markdown__details mime"}
+      data-collapsed={false}
+      open={true}
+    >
+      <summary
+        style={{}}
+        className={"openapi-markdown__details-summary-mime"}
+      >
+        <h3
+          className={"openapi-markdown__details-summary-header-body"}
+        >
+          Body
+        </h3>
+      </summary><div
+        style={{"textAlign":"left","marginLeft":"1rem"}}
+      >
+        <div
+          style={{"marginTop":"1rem","marginBottom":"1rem"}}
+        >
+          
+          
+          Parameters of the time series request.
+          
+          
+        </div>
+      </div><ul
+        style={{"marginLeft":"1rem"}}
+      >
+        <SchemaItem
+          collapsible={false}
+          name={"start"}
+          required={false}
+          schemaName={"date-time"}
+          qualifierMessage={undefined}
+          schema={{"type":"string","format":"date-time","description":"The start of the time series. If not defined 7 days from now into the past."}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"end"}
+          required={false}
+          schemaName={"date-time"}
+          qualifierMessage={undefined}
+          schema={{"type":"string","format":"date-time","description":"The end of the time series. If not defined now."}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"group"}
+          required={false}
+          schemaName={"string[]"}
+          qualifierMessage={undefined}
+          schema={{"type":"array","items":{"type":"string"},"description":"Reduce the available groups to the set of defined ones."}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"filter"}
+          required={false}
+          schemaName={"string[]"}
+          qualifierMessage={undefined}
+          schema={{"type":"array","items":{"type":"string"},"description":"Filter available group members by predicate.\nOnly time series values with matching group criteria will be selected.\n","example":"group_var_foo == \"bla\""}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"granularity"}
+          required={false}
+          schemaName={"duration"}
+          qualifierMessage={undefined}
+          schema={{"type":"string","format":"duration","description":"The granularity of the time series.\nThis can be either a duration or the number of items for the time window that is selected.\nThe granularity can not go below one hour.\nIt defaults to (end-start) / 20.\n"}}
+        >
+          
+        </SchemaItem>
+      </ul>
+    </details>
+  </TabItem>
+</MimeTabs><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"400"}
+        value={"400"}
+      >
+        <div>
+          
+          
+          A required property is missing or the request can not be read.
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"text/plain"}
+              value={"text/plain"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <div
+                        style={{"marginTop":".5rem","marginBottom":".5rem","marginLeft":"1rem"}}
+                      >
+                        
+                        
+                        string
+                        
+                        
+                      </div>
+                    </ul>
+                  </details>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem><TabItem
+        label={"default"}
+        value={"default"}
+      >
+        <div>
+          
+          
+          The time series data
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        name={"property name*"}
+                        required={false}
+                        schemaName={"any"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"object","additionalProperties":true}}
+                        collapsible={false}
+                        discriminator={false}
+                      >
+                        
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem><TabItem
+                  label={"Example"}
+                  value={"Example"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"time\": \"2021-01-01T00:00:00Z\",\n  \"value\": 1\n}\n"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>

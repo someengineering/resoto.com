@@ -84,7 +84,7 @@ def write_md(provider: str, kinds: list):
                 ).strip()
             )
             file.write("\n```\n\n")
-            file.write("</ZoomPanPinch>\n\n")
+            file.write("</ZoomPanPinch>\n")
             file.write(f"<details>\n<summary>Relationships to Other Resources</summary>\n<div>\n")
             file.write(
                 f'<ZoomPanPinch>\n\n```kroki imgType="plantuml" imgAlt="Diagram of {name} resource relationships"\n'

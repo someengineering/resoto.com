@@ -390,12 +390,8 @@ const config: Config = {
     ],
     tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 5 },
     announcementBar: {
-      id: `announcementBar-${latestRelease[versions[0]]}`,
-      content: `<span aria-label="star-struck" role="img">🤩</span> <a href="/releases/${
-        latestRelease[versions[0]]
-      }">Check out what's new in Resoto ${
-        latestRelease[versions[0]]
-      }</a>, and don't forget to <a href="https://github.com/someengineering/resoto" target="_blank" rel="noopener noreferrer">star the project on GitHub</a>! <span aria-label="sparkles" role="img">✨</span>`,
+      id: `announcementBar-fix`,
+      content: `Don't want to manage your own Resoto installation? Check out <a href="https://fix.security">Fix</a>, an all-in-one security dashboard built on top of Resoto.`,
     },
     navbar: {
       hideOnScroll: true,

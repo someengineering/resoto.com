@@ -34,7 +34,7 @@
     "@docusaurus/theme-mermaid": "3.1.1",
     "@fec/remark-a11y-emoji": "4.0.2",
     "@mdx-js/react": "3.0.1",
-    "@octokit/core": "5.1.0",
+    "@octokit/core": "6.0.1",
     "@rive-app/react-canvas": "4.8.2",
     "a11y-react-emoji": "1.2.0",
     "clsx": "2.1.0",

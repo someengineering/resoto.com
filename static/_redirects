@@ -21,6 +21,10 @@ https://releases.resoto.com/*                                     https://resoto
 /resoto/*                                                         /
 /cloud2sql/*                                                      https://cloud2sql.com 301!
 
+/docs/edge/*                                                      https://inventory.fix.security/edge/:splat 301!
+/docs/4.x/*                                                       https://inventory.fix.security/:splat 301!
+/docs/4.X/*                                                       https://inventory.fix.security/:splat 301!
+
 /blog/july-2022-product-updates                                   /blog/product-updates/2022/july
 /blog/january-2023-product-updates                                /blog/product-updates/2023/january
 /blog/february-2023-product-updates                               /blog/product-updates/2023/february
@@ -200,7 +204,6 @@ https://releases.resoto.com/*                                     https://resoto
 /reference/*                                                      /docs/reference/:splat
 
 /documentation/*                                                  /docs/:splat
-/docs/edge/*                                                      /docs/:splat
 /docs/2.x/*                                                       /docs/:splat
 /docs/2.X/*                                                       /docs/:splat
 /docs/3.x/*                                                       /docs/:splat
@@ -237,6 +240,8 @@ https://releases.resoto.com/*                                     https://resoto
 /podcast/17                                                       /podcast/itam-and-strategic-operations-at-wix
 /podcast/18                                                       /podcast/how-cloud-costs-are-shifting-left
 /podcast/19                                                       /podcast/security-at-lyft-with-cartography
+
+/pricing                                                          /
 
 /news/2022/07/07/july-update                                      /blog/product-updates/2022/july
 /news/:year/:month/:date/v2.0.0*                                  /releases/2.0.0

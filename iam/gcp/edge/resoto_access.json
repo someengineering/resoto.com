@@ -1,5 +1,5 @@
 {
-  "title": "resoto_access",
+  "title": "fix_access",
   "description": "Permissions required to collect resources.",
   "stage": "GA",
   "includedPermissions": [

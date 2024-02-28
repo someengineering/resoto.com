@@ -1,5 +1,5 @@
 {
-  "title": "resoto_mutate",
+  "title": "fix_mutate",
   "description": "Permissions required to mutate resources.",
   "stage": "GA",
   "includedPermissions": [

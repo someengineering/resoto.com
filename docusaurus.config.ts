@@ -28,6 +28,7 @@ const config: Config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'throw',
   onBrokenAnchors: 'warn',
+  onDuplicateRoutes: 'warn',
   favicon: 'img/favicon.ico',
   trailingSlash: false,
   noIndex: !isProd,
@@ -493,7 +494,6 @@ const config: Config = {
             },
           ],
         },
-        { label: 'Pricing', to: '/pricing', position: 'right' },
         { label: 'Compare', to: '/compare', position: 'right' },
         { label: 'Blog', to: '/blog', position: 'right' },
         { label: 'Podcast', to: '/podcast', position: 'right' },
@@ -562,7 +562,6 @@ const config: Config = {
         {
           title: 'About',
           items: [
-            { label: 'Pricing', to: '/pricing' },
             { label: 'Compare', to: '/compare' },
             { label: 'About', to: '/about' },
             { label: 'Releases', to: '/releases' },

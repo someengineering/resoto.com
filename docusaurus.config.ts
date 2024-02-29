@@ -144,7 +144,7 @@ const config: Config = {
             current: {
               label: 'edge 🚧',
               path: '/edge',
-              banner: 'unreleased',
+              banner: 'none',
               badge: false,
             },
             ...versions
@@ -283,11 +283,6 @@ const config: Config = {
         id: 'openapi',
         docsPluginId: 'classic',
         config: {
-          resotocoreEdge: {
-            specPath: 'openapi/resotocore-edge.yml',
-            outputDir: `docs/reference/api`,
-            sidebarOptions: { groupPathsBy: 'tag', categoryLinkSource: 'tag' },
-          },
           ...versions
             .map((version) => ({
               [`resotocore${version.substring(0, version.indexOf('.'))}`]: {
@@ -307,7 +302,7 @@ const config: Config = {
       '@1password/docusaurus-plugin-stored-data',
       {
         data: {
-          ...['edge', ...versions]
+          ...versions
             .map((version) => ({
               [`aws-${version}-ResotoOrgList`]: path.resolve(
                 __dirname,
@@ -464,7 +459,7 @@ const config: Config = {
             {
               label: 'Overview',
               to: '/docs',
-              activeBaseRegex: '/docs(/edge)?$',
+              activeBaseRegex: '/docs$',
               className: 'docs overview',
             },
             {

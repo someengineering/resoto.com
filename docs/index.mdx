@@ -1,68 +1,17 @@
 ---
-id: overview
-title: Documentation
+title: ''
 pagination_prev: null
 pagination_next: null
 ---
 
-# Overview
+# Resoto is now Fix Inventory!
 
-**Resoto is an [open-source](https://github.com/someengineering/resoto/blob/main/LICENSE) [cloud asset inventory](/blog/cloud-asset-inventory) tool for infrastructure and security engineers.**
+```mdx-code-block
+import Link from '@docusaurus/Link';
+```
 
-Resoto enables a broad set of exploration and [automation](./concepts/automation/index.mdx) scenarios. Its foundation is a [graph-based data model](./concepts/asset-inventory-graph/index.mdx), which exposes resource metadata and [dependency relationships](./concepts/asset-inventory-graph/index.mdx#edges) between your service's assets.
+Please see [February 2024 Product Updates](/blog/product-updates/2024/february#renaming-resoto-to-fix-inventory) for details.
 
-A powerful [CLI](./reference/cli/index.mdx) and user-friendly [UI](./reference/user-interface/index.mdx) allows you to [search](./reference/search/index.mdx), explore, and [manage](./concepts/resource-management/index.mdx) your cloud resources.
+The Fix Inventory website and documentation are now available at [inventory.fix.security](https://inventory.fix.security).
 
-Resoto's [automations](./concepts/automation/index.mdx) facilitates [resource management](./concepts/resource-management/index.mdx) like [tagging](./concepts/resource-management/tagging.mdx) and [cleanup](./concepts/resource-management/cleanup.mdx) based on custom rules and logic, ensuring that your infrastructure remains organized and optimized.
-
-:::info
-
-Resoto's documentation is organized as follows:
-
-- **[Getting Started](./getting-started/index.mdx)** walks you through the installation process. **_Start here if you're new to Resoto._**
-
-- **[How-To Guides](./how-to-guides/index.mdx)** provide step-by-step instructions for performing specific tasks.
-
-- **[Concepts](./concepts/index.mdx)** provide an overview of how Resoto works.
-
-- **[Reference](./reference/index.mdx)** is a manual covering the details of Resoto. It is assumed that you already have a basic understanding of important concepts.
-
-- **[Development](./development/index.mdx)** lists instructions and guidelines for Resoto development and contributions.
-
-:::
-
-:::tip
-
-Don't want to manage your own Resoto installation? Check out **[Fix](https://fix.security)**, an all-in-one security dashboard built on top of Resoto.
-
-:::
-
-## Why Cloud Asset Inventory?
-
-Cloud-native infrastructure today is [fragmented](/blog/tackling-infrastructure-fragmentation-with-reactive-infrastructure) because:
-
-1. **Resource Proliferation in the Cloud**
-
-   With containers and serverless functions, services have become more abstract, and the size of the individual deliverable has become smaller but many times more numerous.
-
-2. **Bulkhead Partitioning of Resources**
-
-   Cloud providers have made partitioning resources into separate accounts, projects, and namespaces easy. This allows for better isolation and security, but also makes it harder to get a consistent view of the state of the world.
-
-3. **Shared Ownership**
-
-   Engineers using Infrastructure-as-code (IaC) in <abbr title= "continuous integration">CI</abbr>/<abbr title= "continuous deployment">CD</abbr> pipelines make it easy to spin up new resources.
-
-4. **Multiple Service Providers**
-
-   Many organizations use multiple services and cloud providers to take advantage of the unique features of each provider.
-
-![Cloud Asset Inventory](./concepts/cloud-data-sync/img/collect.png)
-
-**Resoto helps you overcome these challenges by providing a single source of truth for your cloud assets.**
-
-With Resoto, you can [search](./reference/search/index.mdx), explore, and [manage](./concepts/resource-management/index.mdx) your cloud resources in a consistent manner, no matter which cloud provider, account, project, or namespace they are in.
-
-Resoto's complete, up-to-date picture of your infrastructure combined with [automations](./concepts/automation/index.mdx) enable you to easily [manage all of your cloud assets](./concepts/resource-management/index.mdx).
-
-![React to changes in infrastructure](./concepts/cloud-data-sync/img/react.png)
+<Link href="https://inventory.fix.security" className="button button--primary">Go to Fix Inventory</Link>

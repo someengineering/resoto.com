@@ -27,15 +27,28 @@ export default function DocsVersionDropdownNavbarItem({
   const versions = useVersions(docsPluginId);
   const { savePreferredVersionName } = useDocsPreferredVersion(docsPluginId);
   const versionLinks = versions.map((version) => {
+    if (version.name === 'current') {
+      return {
+        label: version.label,
+        to: activeDocContext.activeDoc.path.replace(
+          '/docs',
+          'https://inventory.fix.security',
+        ),
+        isActive: () => false,
+        onClick: () => {},
+      };
+    }
+
     // We try to link to the same doc, in another version
     // When not possible, fallback to the "main doc" of the version
     const versionDoc =
       activeDocContext.alternateDocVersions[version.name] ??
       getVersionMainDoc(version);
+
     return {
       label: version.label,
       // preserve ?search#hash suffix on version switches
-      to: `${versionDoc.path.replace('/docs/edge', 'https://inventory.fix.security')}${search}${hash}`,
+      to: `${versionDoc.path}${search}${hash}`,
       isActive: () => version === activeDocContext.activeVersion,
       onClick: () => savePreferredVersionName(version.name),
     };

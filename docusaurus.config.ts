@@ -501,7 +501,7 @@ const config: Config = {
         },
         {
           label: 'Discord',
-          href: 'https://discord.gg/someengineering',
+          href: 'https://discord.gg/fixsecurity',
           position: 'left',
           className: 'social discord',
           'aria-label': 'Discord',
@@ -574,7 +574,7 @@ const config: Config = {
           title: 'Community',
           items: [
             { label: 'GitHub', href: 'https://github.com/someengineering' },
-            { label: 'Discord', href: 'https://discord.gg/someengineering' },
+            { label: 'Discord', href: 'https://discord.gg/fixsecurity' },
             {
               label: 'LinkedIn',
               href: 'https://linkedin.com/company/someengineering',

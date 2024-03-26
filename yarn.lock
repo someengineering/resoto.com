@@ -10836,7 +10836,7 @@ postcss-reduce-transforms@^5.1.0:
   dependencies:
     postcss-value-parser "^4.2.0"
 
-postcss-scss@^4.0.3:
+postcss-scss@^4.0.9:
   version "4.0.9"
   resolved "https://registry.yarnpkg.com/postcss-scss/-/postcss-scss-4.0.9.tgz#a03c773cd4c9623cb04ce142a52afcec74806685"
   integrity sha512-AjKOeiwAitL/MXxQW2DliT28EKukvvbEWx3LBmJIRN8KfBGZbRTxNYW0kSqi1COiTZ57nZ9NW06S6ux//N1c9A==
@@ -10909,14 +10909,14 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier-plugin-css-order@2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/prettier-plugin-css-order/-/prettier-plugin-css-order-2.0.1.tgz#fa9abb5e879ccf2fef5d2d7822ead15b8c75c2fc"
-  integrity sha512-Y+wZ0wI7/qFUritirJksQn13KqbcNC3OZXSxGh1ui/X39hAeMW9md+Mp7fjk8H4ZQQ8c5CTYZxShoBfAal/79A==
+prettier-plugin-css-order@2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-css-order/-/prettier-plugin-css-order-2.1.1.tgz#9b7550b3217e53d4a8001c9bf196a81dc270bfdd"
+  integrity sha512-oAnL8g4T31Y8mhdJOn2UtoljFrzl595iogu2mt6T2vcKlDpgid5yCA/y+T8thcu8HWTM+NBmCt3MOBy/5t8Inw==
   dependencies:
     css-declaration-sorter "^7.1.1"
     postcss-less "^6.0.0"
-    postcss-scss "^4.0.3"
+    postcss-scss "^4.0.9"
 
 prettier@3.2.5:
   version "3.2.5"

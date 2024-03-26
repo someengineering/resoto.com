@@ -39,7 +39,7 @@
     "a11y-react-emoji": "1.2.0",
     "clsx": "2.1.0",
     "docusaurus-plugin-openapi-docs": "3.0.0-beta.5",
-    "docusaurus-theme-openapi-docs": "3.0.0-beta.5",
+    "docusaurus-theme-openapi-docs": "3.0.0-beta.10",
     "formik": "2.4.5",
     "github-slugger": "2.0.0",
     "lodash": "4.17.21",

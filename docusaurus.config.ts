@@ -12,7 +12,6 @@ import { themes as prismThemes } from 'prism-react-renderer';
 import rehypeKatex from 'rehype-katex';
 import remarkKroki from 'remark-kroki-plugin';
 import remarkMath from 'remark-math';
-import { EnumChangefreq } from 'sitemap';
 import latestRelease from './latestRelease.json';
 import versions from './versions.json';
 
@@ -197,7 +196,11 @@ const config: Config = {
             './src/css/openapi-docs.css',
           ],
         },
-        sitemap: { changefreq: EnumChangefreq.DAILY, priority: 0.5 },
+        sitemap: {
+          lastmod: 'date',
+          changefreq: null,
+          priority: null,
+        },
       } satisfies Preset.Options,
     ],
   ],
@@ -386,8 +389,8 @@ const config: Config = {
     ],
     tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 5 },
     announcementBar: {
-      id: `announcementBar-fix`,
-      content: `Don't want to manage your own Resoto installation? Check out <a href="https://fix.security">Fix</a>, an all-in-one security dashboard built on top of Resoto.`,
+      content: `<strong>Resoto is now <a href="https://inventory.fix.security">Fix Inventory</a>.</strong><br />Upgrade to Fix Inventory for the latest features and improvements.<br />Don't want to manage your own installation? Get started for free with <a href="https://fix.security">Fix</a>, an all-in-one security dashboard built on top of Fix Inventory.`,
+      isCloseable: false,
     },
     navbar: {
       hideOnScroll: true,

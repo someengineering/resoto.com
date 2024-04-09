@@ -54,7 +54,7 @@ export default function NavbarNavLink({
         href={prependBaseUrlToHref ? normalizedHref : href}
         {...props}
         {...linkContentProps}
-        {...(href.startsWith('https://inventory.fix.security')
+        {...(href?.startsWith('https://inventory.fix.security')
           ? { target: '_self' }
           : {})}
       />
@@ -73,7 +73,7 @@ export default function NavbarNavLink({
       })}
       {...props}
       {...linkContentProps}
-      {...(toUrl.startsWith('https://inventory.fix.security')
+      {...(toUrl?.startsWith('https://inventory.fix.security')
         ? { target: '_self' }
         : {})}
     />

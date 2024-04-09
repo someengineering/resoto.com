@@ -77,6 +77,7 @@
     #b06cff 75%,
     #c596ff
   );
+  --docusaurus-announcement-bar-height: auto !important;
 }
 
 html[data-theme='dark'] {

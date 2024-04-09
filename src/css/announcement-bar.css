@@ -11,6 +11,8 @@ div[class^='announcementBar_'] {
   );
   color: var(--ifm-color-content);
   font-weight: 600;
+  font-size: 115%;
+  padding: 0.25rem 1rem;
 }
 
 html[data-theme='dark'] div[class^='announcementBar_'] {
@@ -18,6 +20,7 @@ html[data-theme='dark'] div[class^='announcementBar_'] {
   --stripe-color2: #3d176e33;
 }
 
-div[class^='announcementBar_'] .close {
-  color: var(--ifm-color-content);
+div[class^='announcementBar_'] strong {
+  font-size: 150%;
+  font-weight: 800;
 }

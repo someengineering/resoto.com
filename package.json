@@ -82,7 +82,7 @@
     "prettier-plugin-css-order": "2.1.2",
     "react-lite-youtube-embed": "^2.4.0",
     "svgo": "3.2.0",
-    "typescript": "5.4.4"
+    "typescript": "5.4.5"
   },
   "browserslist": {
     "production": [

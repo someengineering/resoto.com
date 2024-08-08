@@ -1,18 +1,18 @@
-https://resoto.netlify.app/*                                      https://resoto.com/:splat 301!
-https://main--resoto.netlify.app/*                                https://resoto.com/:splat 301!
-https://resoto.some.engineering/*                                 https://resoto.com/:splat 301!
+https://resoto.netlify.app/*                                      /:splat 301!
+https://main--resoto.netlify.app/*                                /:splat 301!
+https://resoto.some.engineering/*                                 /:splat 301!
 
-https://blog.resoto.com/:year/:month/:date/*                      https://resoto.com/blog/:splat 301!
-https://blog.resoto.com/*                                         https://resoto.com/blog/:splat 301!
-https://docs.resoto.com/*                                         https://resoto.com/docs/:splat 301!
-https://documentation.resoto.com/*                                https://resoto.com/docs/:splat 301!
-https://news.resoto.com/*                                         https://resoto.com/releases/:splat 301!
-https://podcast.resoto.com/:year/:month/:date/*                   https://resoto.com/podcast/:splat 301!
-https://podcast.resoto.com/*                                      https://resoto.com/podcast/:splat 301!
-https://podcasts.resoto.com/:year/:month/:date/*                  https://resoto.com/podcast/:splat 301!
-https://podcasts.resoto.com/*                                     https://resoto.com/podcast/:splat 301!
-https://release.resoto.com/*                                      https://resoto.com/releases/:splat 301!
-https://releases.resoto.com/*                                     https://resoto.com/releases/:splat 301!
+https://blog.resoto.com/:year/:month/:date/*                      /blog/:splat 301!
+https://blog.resoto.com/*                                         /blog/:splat 301!
+https://docs.resoto.com/*                                         /docs/:splat 301!
+https://documentation.resoto.com/*                                /docs/:splat 301!
+https://news.resoto.com/*                                         /releases/:splat 301!
+https://podcast.resoto.com/:year/:month/:date/*                   /podcast/:splat 301!
+https://podcast.resoto.com/*                                      /podcast/:splat 301!
+https://podcasts.resoto.com/:year/:month/:date/*                  /podcast/:splat 301!
+https://podcasts.resoto.com/*                                     /podcast/:splat 301!
+https://release.resoto.com/*                                      /releases/:splat 301!
+https://releases.resoto.com/*                                     /releases/:splat 301!
 
 /js/script.js                                                     https://plausible.io/js/script.js 200
 /api/event                                                        https://plausible.io/api/event 200
@@ -241,8 +241,6 @@ https://releases.resoto.com/*                                     https://resoto
 /podcast/18                                                       /podcast/how-cloud-costs-are-shifting-left
 /podcast/19                                                       /podcast/security-at-lyft-with-cartography
 
-/pricing                                                          /
-
 /news/2022/07/07/july-update                                      /blog/product-updates/2022/july
 /news/:year/:month/:date/v2.0.0*                                  /releases/2.0.0
 /news/:year/:month/:date/v*                                       /releases/:splat
@@ -255,3 +253,61 @@ https://releases.resoto.com/*                                     https://resoto
 /releases/tags/*                                                  /releases
 
 /support/*                                                        /docs
+
+
+/about                                                                  https://fix.security/about 301!
+/blog/a-walk-in-the-graph	                                              https://docs.fix.security/inventory-graph 301!
+/blog/aggregating-search-data	                                          https://inventory.fix.security/reference/search/aggregation 301!
+/blog/automating-pagerduty-infrastructure-alerts	                      https://inventory.fix.security/how-to-guides/alerting/create-pagerduty-alerts 301!
+/blog/building-an-ec2-asset-inventory	                                  https://fix.security/blog/cloud-asset-discovery-and-insights 301!
+/blog/cloud-asset-inventory	                                            https://fix.security/blog/cloud-asset-discovery-and-insights 301!
+/blog/cloud-resource-security-benchmarks	                              https://fix.security/blog/understanding-security-benchmarks 301!
+/blog/cloud-resource-tagging	                                          https://fix.security/blog/harden-security-posture-with-cloud-tagging 301!
+/blog/cloud-security-compliance	                                        https://fix.security/blog/automating-cloud-security-compliance 301!
+/blog/creating-and-managing-automations-with-the-resoto-job-editor	    https://inventory.fix.security/how-to-guides/automation 301!
+/blog/digitalocean-support	                                            https://inventory.fix.security/how-to-guides/data-sources/collect-digitalocean-resource-data 301!
+/blog/discover-kubernetes-resources	                                    https://inventory.fix.security/how-to-guides/data-sources/collect-kubernetes-resource-data 301!
+/blog/effective-cloud-management-tagging-policies	                      https://fix.security/blog/harden-security-posture-with-cloud-tagging 301!
+/blog/installing-cloud2sql	                                            https://cloud2sql.com/docs/installation 301!
+/blog/integrating-cloud-data-into-existing-sql-workflows-with-cloud2sql	https://cloud2sql.com 301!
+/blog/kubernetes-support	                                              https://inventory.fix.security/how-to-guides/data-sources/collect-kubernetes-resource-data 301!
+/blog/multi-cloud-resource-management	                                  https://fix.security/blog/multi-cloud-inventory 301!
+/blog/product-updates/*	                                                https://fix.security/blog/news 301!
+/blog/resoto-at-your-command	                                          https://fix.security/blog/cloud-management-and-remediation-with-fixctl 301!
+/blog/resoto-aws-cdk-construct	                                        https://inventory.fix.security/getting-started/install 301!
+/blog/resoto-infrastructure-apps	                                      https://inventory.fix.security/reference/infrastructure-apps 301!
+/blog/resoto-jupyterlite	                                              https://inventory.fix.security/reference/notebook 301!
+/blog/resoto-meets-jupyter-notebook	                                    https://inventory.fix.security/reference/notebook 301!
+/blog/resoto-rewind	                                                    https://inventory.fix.security/reference/cli/graph 301!
+/blog/resoto-search-101	                                                https://fix.security/blog/cloud-asset-discovery-and-insights 301!
+/blog/resoto-shell-tab-completion	                                      https://inventory.fix.security/getting-started/explore#tab-completion 301!
+/blog/solving-cloud-resource-management-challenges	                    https://fix.security/blog/multi-cloud-inventory 301!
+/blog/visualizing-cloud-inventory-with-resoto-dashboards	              https://docs.fix.security/ui 301!
+/blog/what-we-can-learn-from-history	                                  https://inventory.fix.security/reference/cli/history 301!
+/blog/tags/aws/*	                                                      https://fix.security/blog/tag/aws 301!
+/blog/tags/cloud-2-sql/*	                                              https://cloud2sql.com 301!
+/blog/tags/cloud-asset-inventory/*	                                    https://fix.security/blog/tag/cloud-inventory 301!
+/blog/tags/digital-ocean/*	                                            https://inventory.fix.security/how-to-guides/data-sources/collect-digitalocean-resource-data 301!
+/blog/tags/discord/*	                                                  https://inventory.fix.security/how-to-guides/alerting/send-discord-notifications 301!
+/blog/tags/google-cloud/*	                                              https://fix.security/blog/tag/google-cloud 301!
+/blog/tags/jupyter/*	                                                  https://inventory.fix.security/reference/notebook 301!
+/blog/tags/kubernetes/*	                                                https://inventory.fix.security/how-to-guides/data-sources/collect-kubernetes-resource-data 301!
+/blog/tags/pager-duty/*	                                                https://inventory.fix.security/how-to-guides/alerting/create-pagerduty-alerts 301!
+/blog/tags/product-updates/*	                                          https://fix.security/blog/news 301!
+/blog/tags/resoto-cli/*	                                                https://fix.security/blog/cloud-management-and-remediation-with-fixctl 301!
+/blog/tags/resoto-ui/*	                                                https://docs.fix.security/ui 301!
+/blog/tags/search/*	                                                    https://fix.security/blog/cloud-asset-discovery-and-insights 301!
+/blog/tags/security/*	                                                  https://fix.security/blog/tag/cloud-security 301!
+/blog/tags/slack/*	                                                    https://inventory.fix.security/how-to-guides/alerting/send-slack-notifications 301!
+/blog/tags/unified-data-model/*	                                        https://docs.fix.security/resources 301!
+/blog/*	                                                                https://fix.security/blog 301!
+/compare/aws-config	                                                    https://fix.security/compare/fix-vs-aws-config 301!
+/docs/*	                                                                https://inventory.fix.security/:splat 301!
+/podcast/security-at-lyft-with-cartography	                            https://fix.security/podcast/graph-based-cloud-security 301!
+/podcast/elt-for-cloud-infrastructure-data	                            https://fix.security/podcast/elt-for-cloud-infrastructure-data 301!
+/podcast/*	                                                            https://fix.security/podcast 301!
+/pricing	                                                              https://fix.security/pricing 301!
+/privacy	                                                              https://fix.security/privacy-policy 301!
+/releases/*	                                                            https://inventory.fix.security/releases/:splat 301!
+/terms	                                                                https://fix.security/terms-and-conditions 301!
+/*     	                                                                https://fix.security 301!

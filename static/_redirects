@@ -252,8 +252,6 @@ https://releases.resoto.com/*                                     /releases/:spl
 /release/*                                                        /releases/:splat
 /releases/tags/*                                                  /releases
 
-/support/*                                                        /docs
-
 
 /about                                                                  https://fix.security/about 301!
 /blog/a-walk-in-the-graph	                                              https://docs.fix.security/inventory-graph 301!

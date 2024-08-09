@@ -1,18 +1,18 @@
-https://resoto.netlify.app/*                                      /:splat 301!
-https://main--resoto.netlify.app/*                                /:splat 301!
-https://resoto.some.engineering/*                                 /:splat 301!
+https://resoto.netlify.app/*                                      https://resoto.com/:splat 301!
+https://main--resoto.netlify.app/*                                https://resoto.com/:splat 301!
+https://resoto.some.engineering/*                                 https://resoto.com/:splat 301!
 
-https://blog.resoto.com/:year/:month/:date/*                      /blog/:splat 301!
-https://blog.resoto.com/*                                         /blog/:splat 301!
-https://docs.resoto.com/*                                         /docs/:splat 301!
-https://documentation.resoto.com/*                                /docs/:splat 301!
-https://news.resoto.com/*                                         /releases/:splat 301!
-https://podcast.resoto.com/:year/:month/:date/*                   /podcast/:splat 301!
-https://podcast.resoto.com/*                                      /podcast/:splat 301!
-https://podcasts.resoto.com/:year/:month/:date/*                  /podcast/:splat 301!
-https://podcasts.resoto.com/*                                     /podcast/:splat 301!
-https://release.resoto.com/*                                      /releases/:splat 301!
-https://releases.resoto.com/*                                     /releases/:splat 301!
+https://blog.resoto.com/:year/:month/:date/*                      https://resoto.com/blog/:splat 301!
+https://blog.resoto.com/*                                         https://resoto.com/blog/:splat 301!
+https://docs.resoto.com/*                                         https://resoto.com/docs/:splat 301!
+https://documentation.resoto.com/*                                https://resoto.com/docs/:splat 301!
+https://news.resoto.com/*                                         https://resoto.com/releases/:splat 301!
+https://podcast.resoto.com/:year/:month/:date/*                   https://resoto.com/podcast/:splat 301!
+https://podcast.resoto.com/*                                      https://resoto.com/podcast/:splat 301!
+https://podcasts.resoto.com/:year/:month/:date/*                  https://resoto.com/podcast/:splat 301!
+https://podcasts.resoto.com/*                                     https://resoto.com/podcast/:splat 301!
+https://release.resoto.com/*                                      https://resoto.com/releases/:splat 301!
+https://releases.resoto.com/*                                     https://resoto.com/releases/:splat 301!
 
 /js/script.js                                                     https://plausible.io/js/script.js 200
 /api/event                                                        https://plausible.io/api/event 200
